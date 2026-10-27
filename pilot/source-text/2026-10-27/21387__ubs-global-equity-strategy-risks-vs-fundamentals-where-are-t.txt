@@ -1,0 +1,2151 @@
+ab
+19 October 2026
+Global Research
+Global Equity Strategy
+Risks vs fundamentals: where are the 
+asymmetries?
+De-risking accelerated but signs of resilience waiting for circuit breakers
+Market internals showed signs of accelerated de-risking with large relative moves in 
+defensives>cyclicals, high quality>low and low momentum>high, Europe>US, among 
+others. The AI 100 was down 5% last week as Coreweave's CDS surged but the ex-
+AI 400 was up 2.5% with every equal weighted S&P sector up except Tech as bond 
+yields fell even though CPI was "hot" and WTI oil was up 10% on Iran escalation fears. 
+Risk premiums vs fundamentals: using our frameworks to find asymmetries 
+We see rising odds of both a correlated rally and  selloff with key catalysts the next 2+ 
+weeks (earnings, FOMC, US midterms) determining the path for stocks into 2027, and 
+Iran an increasing overhang. Implied correlations are too low if Tech and ex-Tech / rate 
+sensitive segments can rally or fall at the same time. After the rate spike, the beta of risk 
+premia to moves in rates seems to be higher now as highlighted by CRWV CDS. Amid 
+now higher risk premia and lower P/Es, we look for relative asymmetries to position amid 
+uncertainty using a number of our frameworks including: 1) ML model to identify what 
+overshot macro moves, 2) REVS scores vs rates betas, 3) PEG ratios vs EPS momentum. 
+We highlight the following trade ideas with more detail in the note:
+
+Upside: SPX OTM calls for year-end rally if 1) AI demand/narrative are supportive, 
+2) rates/oil pressures abate,  3) earnings beat low bar after derating, 4) US midterm  
+risks do not realize,  and 5)  buybacks jump post blackout after the OCF surge. 
+
+Hedges: SPX vs XLU put switches for growth/AI hit with Utilities  P/Es near 10+year 
+lows, HYG downside for higher yield+spread "double whammy".
+
+Regions: S&P 500 over FTSE 100, Korea over India. 
+
+Sectors: US Utilities and Industrials over US Staples (buy XLI calls funded with 
+XLP calls), EU Industrials over Consumer cyclicals. Start reducing Energy exposure. 
+
+Baskets: US higher growth+CFROI at a Discount (UBEQHGCD) over Expensive 
+Fundamentals (UBEQEXFN), Long EU Renewables (UBXXERNEW). 
+Circuit breakers:  AI demand, Fed path, oil/Iran, midterms, buybacks  
+AI demand remains the first principal driver of equities though Fed rates have jumped in 
+explaining returns based on our ML model. A local peak in yields and rates vol is key for 
+stocks. Last week's fall in the US 10y and Dec '27 Fed pricing without rates vol rising 
+despite higher CPI and oil is a good sign into FOMC and the thick of earnings.  
+
+Hyperscaler cloud beats. Hyperscaler results need to show accelerating 
+AI demand and OCF, to drive CDS spreads lower like 3mo ago (META  Oct 21 with 
+MSFT, GOOG, AMZN Oct 28-29). UBS analyst forecasts are ~15% above 
+consensus on US cloud sales the next 4 quarters, so upgrades can fuel another leg 
+up in AI trades and the market. Comments about diversification of backlogs as 
+well as AI monetization  in ecosystems will be key as ROI debates need addressing. 
+
+FOMC path. When the Fed hiked <100bp within a year of 10y spikes, ACWI and 
+SPX rallied 8-10% on avg the next 6mo and 15-18% the next year versus weak 
+equities returns on larger Fed hiking cycles. No Fed hike next week combined with 
+less hawkish rhetoric should see rates vol lower, which is positive for stocks. 
+
+Iran and oil. Escalation concerns are rising as US midterms approach. Higher oil 
+prices can hit future demand, lowering the upside value in owning Energy stocks. 
+
+Buybacks. Micron can buy back stock starting Dec 9, with MU+NVDA quarterly 
+This report has been prepared by UBS Securities LLC. ANALYST CERTIFICATION AND REQUIRED DISCLOSURES, including 
+information on the Quantitative Research Review published by UBS, begin on page 31.  
+Equity Strategy
+Global
+Keith Parker
+Strategist
+keith.parker@ubs.com
++1-212-713 3296
+Gerry Fowler
+Strategist
+gerry.fowler@ubs.com
++44-20-7567 5490
+Marc el Koussa
+Strategist
+marc.el-koussa@ubs.com
++44-20-7567 0298
+Maxwell Grinacoff, CFA
+Strategist
+maxwell.grinacoff@ubs.com
++1-212-713 3892
+Shreyas Guntur
+Strategist
+shreyas.guntur@ubs.com
++44-20-7567 0886
+Sunil Tirumalai
+Strategist
+sunil.tirumalai@ubs.com
++91-22-6155 6080
+Sean Simonds
+Strategist
+sean.simonds@ubs.com
++1-212-713 2851
+Sutanya Chedda
+Strategist
+sutanya.chedda@ubs.com
++44-20-7567 8155
+Jack Fu
+Strategist
+jack.fu@ubs.com
++1-212-713 2594
+Artour Danilov
+Strategist
+artour.danilov@ubs.com
++44-20-7567 5203
+Bhanu Baweja
+Strategist
+bhanu.baweja@ubs.com
++44-20-7568 6833
+
+Global Equity Strategy 19 October 2026
+ab 2
+buybacks of $70bn over 25% of total SPX LTM buybacks. Broad  OCF growth at 
+$825bn y/y though points to even larger buyback increases. 
+
+Global Equity Strategy 19 October 2026
+ab 3
+Contents
+Trade ideas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+Rates driving equities: what next? . . . . . . . . . . . . . . . . . . . . . . . 6
+AI demand  key amid AI capex risk on higher rates. . . . . . . . . . . . . . . . . . 7
+Benign hiking cycle points to further rally . . . . . . . . . . . . . . . . . . . . . . . 8
+Rising odds of a correlated rally. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+Hedges for tightening tail, growth/AI spillovers. . . . . . . . . . . . . . . . . . . 11
+Sectors and industries: where are the asymmetries? . . . . . . . . 13
+ML model: rate sensitive sectors overshot. . . . . . . . . . . . . . . . . . . . . . . 13
+REVS and rates betas: pair subindustries on relative fundamental trends 15
+Own low PEG industries with positive revisions . . . . . . . . . . . . . . . . . . 16
+Oil at a fulcrum: demand destruction at higher prices. . . . . . . . . . . . . . 18
+Trade ideas. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+Regions and countries: looking for underpriced growth . . . . . 25
+Look for low PEG ratios, strong revisions amid rate sensitivity . . . . . . . . 25
+Trade ideas. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Equities have greater asymmetry to lower rates (vs higher) . . 29
+Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+Keith Parker
+Strategist
+keith.parker@ubs.com
++1-212-713 3296
+Gerry Fowler
+Strategist
+gerry.fowler@ubs.com
++44-20-7567 5490
+Marc el Koussa
+Strategist
+marc.el-koussa@ubs.com
++44-20-7567 0298
+Maxwell Grinacoff, CFA
+Strategist
+maxwell.grinacoff@ubs.com
++1-212-713 3892
+Shreyas Guntur
+Strategist
+shreyas.guntur@ubs.com
++44-20-7567 0886
+Sunil Tirumalai
+Strategist
+sunil.tirumalai@ubs.com
++91-22-6155 6080
+Sean Simonds
+Strategist
+sean.simonds@ubs.com
++1-212-713 2851
+Sutanya Chedda
+Strategist
+sutanya.chedda@ubs.com
++44-20-7567 8155
+Jack Fu
+Strategist
+jack.fu@ubs.com
++1-212-713 2594
+Artour Danilov
+Strategist
+artour.danilov@ubs.com
++44-20-7567 5203
+Bhanu Baweja
+Strategist
+bhanu.baweja@ubs.com
++44-20-7568 6833
+
+Global Equity Strategy 19 October 2026
+ab 4
+Global Equity Strategy
+UBS Research
+Trade ideas
+
+US: Rates spike and equities: what's next?
+
+Europe part 1: Bond yield effects in European Equities
+
+Europe part 2: Bond yields: the growth offset
+
+EM: Higher yields, hawkish Fed and higher oil
+
+Equity volatility not the only game in town
+Trades for market exposures - Buying cheap growth and hedges
+Buy SPX December OTM calls: Helps position for a broader rally if rates/oil pressures ease, midterm-election risk passes without a 
+major shock, AI demand remains strong and earnings and buybacks provide additional supports - without pretending the macro 
+downside has disappeared. The  S&P 500 has historically rallied by an average of 6% from end-September to end-December in 
+midterm-election years and by 14% through the following March. OTM calls add upside exposure while keeping downside 
+limited amid still-elevated macro risks.
+Buy HYG downside for the yield-plus-spread 'double whammy': We prefer using  HYG downside structures to hedge the tail risk 
+that Treasury yields and high-yield spreads rise together. Credit spreads have remained unusually calm despite higher rates 
+volatility, but an unexpected tightening cycle could expose lower-quality high yield and leveraged loans first. (link).
+Buy SPX puts, funded by selling XLU puts: Index protection remains expensive to carry bas high levels of dispersion continue to 
+mute index-level moves. Utilities have already underperformed by more than expected by our macro model implies at a time 
+where power demand remains supported by the AI build-out. XLU downside volatility is relatively rich versus SPX, and hence 
+selling XLU puts to fund SPX puts therefore provides protection against a broader growth or AI disappointment. 
+Short KOSPI2/SMH/SOXX puts to buy SXXP calls: Take downside risk in Korea (and primarily Korean semis), where strong pricing, 
+cash flow and buybacks are underwritten by DRAM undersupply through 2028 and a multiple already discounting considerable 
+margin mean reversion that we don't expect. Use the rich implied vol to buy more than two times the notional of upside in 
+Europe, where most industry groups are growing earnings above 10% and those expectations are still rising.
+Long SPX vs FTSE 100: SPX has derated ~15% relative to the FTSE despite delivering 22% stronger relative earnings growth 
+during the same period. US equities offer superior exposure to Technology and Industrials, the areas with the strongest growth 
+and revision support, while the FTSE’s defensive mix lacks the earnings growth offset required in a high real yield environment.
+Long KOSPI versus NIFTY 50: Korea offers stronger two-year earnings growth and a lower valuation than India. The position also 
+has appeal across rate scenarios: both markets are rate sensitive, but Korea’s current-account surplus provides a buffer if rates 
+and/or oil increase further, whereas India is more reliant on foreign capital and is more exposed to slowing IT services.
+Trades for risks stabilizing/reversing  - Buying asymmetric recovery potential
+Buy XLI calls, funded by selling XLP calls: Consumer pockets (e.g. XLP, XRT) have rallied aggressively amidst the yield retracement 
+despite oil remaining elevated – upside convexity to yields + oil falling in tandem now appears reduced. We would favor selling  
+XLP upside to fund XLI upside. Fundamentally, Industrials are more attractive amid stronger revision momentum. Investors may 
+consider XLI Dec vs. XLP Dec  25-delta ratio call switches for flat premium, which rewards a scenario in which rates pressure eases 
+and the industrial part of the market recovers alongside an already aggressive Staples recovery.
+US Utilities over US Staples. As rates have risen, Utilities P/E has fallen toward 15x, near 10+ year lows, despite rising medium-term 
+EPS growth expectations on increased capex and power demand. Staples P/E is a lofty~25x, despite falling EPS growth potential. 
+Utilities earnings yields plus EPS CAGR is nearly 16%, compared to just ~11% for Staples. Both are rates sensitive, but Utilities are 
+also less crowded than Staples. In the case of rate pressure abating, we see investors reallocating back to Utilities given its higher 
+growth is now at a substantial discount.
+Long EU renewables (UBXERNEW): Positive revisions, light crowding and a valuation held back by real yields. Renewables trade 
+below our Narrative Radar fair value having underperformed their macro-sensitivities where bond yields going up is negative but 
+gas prices going up is positive but under-priced currently.
+Long US Industrials and Capex Broadening (UBEQCPXB). We believe AI related industrial demand will remain robust amid higher 
+rates. On the other side, capex had been turning up beyond AI/data centers as mfg recovered from a ~3yr recession, while 
+operating cash flow  is up ~$825bn y/y (+25%) and capex to OCF is near historic lows ex hyperscalers. The correction provides an 
+attractive entry point to a secular story related to AI, combined with the potential for a cyclical recovery in other segments. 
+Long EU Industrials (SXNP) vs Consumer (UBXECCYC): AI capex in Europe is moving from product suppliers to the industrials that 
+build capacity. Revisions for these 'industrial capacity beneficiaries' are now as strong as for the 'AI Capex beneficiaries', from 
+cheaper valuations and lighter positioning. Industrials lead European sector revisions while EU Consumer Cyclicals are being cut.
+
+Global Equity Strategy 19 October 2026
+ab 5
+Global Equity Strategy
+UBS Research
+Rates driving equities: what next? 
+Our machine learning (ML) model assesses the key drivers of equities on an absolute and 
+relative basis (see Tactical Dashboard). Our model currently shows that Fed policy 
+expectations have increased in importance in explaining returns, with AI still at the top 
+but down from the highs. While there have been many drivers of the 10yr rise, the shift 
+from expectations of Fed cuts last fall to now pricing more Fed hikes has  been the main 
+driver. The first phase of the bond selloff was fundamental driven by the repricing of 
+growth while the "spike" since early Sep has been exacerbated by positioning unwinds. 
+Investors have been asking what level of US 10y yield breaks the market/cycle. While 
+equities were relatively resilient to the rise in yields given such strong earnings, the SPX P/
+E is down ~20% since late last year and risk premium more broadly have been repriced 
+across sectors and factors with the spikes in France and Coreweave spreads the most 
+visible casualties of the rates spike.
+Figure 1: Rates increase was orderly until the disorderly stress of Sep 
+Rate
+s in
+crea
+se w
+as 
+ord
+erl
+y u
+nti
+l t
+he 
+disord
+erly s
+tress 
+of Sep
+ An or
+derly 
+rise i
+n yields /spreads on stronge
+r growth
+ became 
+excessively volatile on po
+sitioning stress in Sept
+ember. As bond vola
+tility subsides, we thi
+nk bond yields/spreads retrace a little toward fundamentals and lower bond volatility allows equity risk-premia to recover.
+Source: Bloomberg, UBS
+Figure 2: CDS spreads have risen materially across the core four hyperscalers + ORCL and Neoclouds (e.g. CRWV)
+CD
+S s
+pre
+ads
+ ha
+ve 
+ris
+en mat
+eriall
+y acro
+ss the c
+ore
+ fo
+ur 
+hyp
+ersc
+aler
+s + OR
+CL and
+ Neocl
+ouds (e.
+g. 
+CRWV
+)
+Source: Bloomberg, UBS; Avg. 5y CDS spread (in bps) of GOOG, META, AMZN, MSFT
+An orderly rise in yields/spreads on 
+stronger  growth became excessively 
+volatile on positioning stress in 
+September. As bond volatility 
+subsides, we think bond yields/
+spreads retrace a little toward 
+fundamentals and lower bond 
+volatility allows equity risk-premia to 
+recover.
+
+Global Equity Strategy 19 October 2026
+ab 6
+AI demand  key amid AI capex risk on higher rates
+AI demand remains the first principal driver of equities.  CDS spreads fell sharply on Q2 
+cloud beats amid the momentum unwind. Again, hyperscaler beats and commentary 
+are the needed circuit breaker to refocus on accelerating AI demand and OCF. 
+UBS ~15% above consensus for N4Q cloud revenue. UBS analysts  expect US 
+hyperscaler cloud revenue to grow 60% y/y in 3Q, accelerating from 50% in 2Q and 
+ahead of consensus. More important, over the next 4 quarters, UBS expects cloud 
+revenue to reach $574bn, ~15% above consensus and ~73% growth versus prior. Thus, 
+we see the potential for notable upgrades to 2027 cloud sales through Q3 reporting and 
+into next year, which can hopefully act as a circuit breaker for the AI selloffs and reignite 
+interest in the AI infrastructure theme as investors get more confidence in the 
+sustainability of spending amid accelerating OCF. 
+Neocloud 2027 capex share is ~7%. The spike in Coreweave's bond yield further 
+fueled a selloff in the AI complex on worries about financing costs and structure 
+weighing on the ability to fund capex commitments. Though neoclouds are a bigger 
+share of GPU demand, they account for 7% of AI capex in 2027 and neocloud 
+enterprise value is ~$130bn. Compute demand far exceeds supply, so compute will get 
+allocated in the event capital is an issue, with low risk to the broad AI build out in our 
+view  if AI demand is there given core hyperscaler OCF and borrowing capacity. 
+Low bar for Q2 reporting after derating. We see a low bar for Q2 earnings with 
+nearly 70% of companies expected to deliver slower EPS growth than in 2Q and the 
+median stock having derated 7%+ since the start of 2Q reporting. Revisions remain 
+strong, with estimates up 1.8%, including 3.6% for Tech+ and 0.8% for ex-Tech+. 
+Figure 3:  Cloud revenues continue to accelerate
+Cl
+oud
+ re
+ven
+ues
+ co
+nti
+nue
+ to
+ ac
+celera
+te UBS
+ estim
+ates f
+or clo
+ud rev
+enue g
+rowth 
+are well above co
+nsensus for the next fo
+ur quarters (~15% above), pointing to higher odds of consensus forecast upgrades.
+Source: Visible Alpha, Refinitiv, FactSet, UBS 
+Figure 4: Capex estimates and CDS for major AI data center companies
+Capex estim
+ate
+s a
+nd 
+CDS
+ f
+or
+ m
+ajor AI data ce
+nter
+ co
+mpa
+nie
+s
+Source: FactSet, Bloomberg
+Meta's results are Wed Oct 21 with 
+MSFT, GOOG and AMZN next Wed-
+Thu. 
+Comments about diversification of 
+backlogs/cloud revenue as well as 
+AI monetization in ecosystems will 
+be key as the ROI debate needs to be 
+addressed. 
+ UBS estimates for cloud revenue 
+growth are well above consensus for 
+the next four quarters (~15% above), 
+pointing to higher odds of consensus 
+forecast upgrades.  
+
+Global Equity Strategy 19 October 2026
+ab 7
+Benign hiking cycle points to further rally 
+The US10yr has risen +1.5 stdev above its 1yr moving average only seven times in 40 
+years. Many catalysts will affect the path of rates (oil, employment, inflation, midterms), 
+but 10y yields did not meaningfully decline for 2+ months post  this stage of10yr spikes, 
+and yields increased further in full Fed hiking cycles (Rates spike & equities). 
+
+Fed hikes moderate -> equities rallied. When the Fed hiked <100bp within a 
+year of rate spikes in the 2013, 2016, 2021 and 2023 episodes, the US 10yr yield 
+settled at elevated levels for ~2mo on avg before falling. After treading water 
+those ~2mo, ACWI and SPX rallied 8-10% on avg the next 6mo and 15-18% the 
+next year. We see a case for the 10y to return toward 5% if data/catalysts fall the 
+right way and rates vol falling further fueling a rebound in rate sensitive equities. 
+
+Fed hiking cycles -> equities weak. When the Fed hiked by 100+bp within a 
+year of the 10y surge  in 1994, 1999 and 2022, ACWI and SPX returns were 
+negative or flat over the following year. The 10y also took 100 trading days on avg 
+to reach the peak after crossing the +1 stdev threshold (vs 43 for other cases), and 
+took much longer to get back to the moving average (288 days versus 197).
+Figure 5: MSCI ACWI around nominal deviation peaks, all episodes (every 5 
+trading days)
+MS
+CI 
+ACW
+I around nominal devia
+ti
+on
+ p
+ea
+ks
+, a
+ll 
+epi
+sod
+es 
+(ev
+ery
+ 5 
+tra
+d
+in
+g 
+da
+ys)
+Source: Datastream, Bloomberg, UBS
+Figure 6: Drivers of S&P 500 market returns based on 
+machine learning model
+Dr
+iv
+ers
+ of
+ S&
+P 5
+00 
+market
+ retur
+ns bas
+ed on 
+machin
+e lear
+ning m
+odel
+Source: Bloomberg, FactSet, UBS
+Figure 7: Drivers of S&P 500 relative industry returns 
+Dr
+iv
+ers
+ of
+ S&
+P 5
+00 
+rel
+ative 
+indust
+ry ret
+urns
+Source: Bloomberg, FactSet, UBS
+Our baseline is a benign hiking cycle 
+of <100bp of hikes given inflation 
+expectations are elevated but 
+contained and employment trends 
+are not overly strong. 
+
+Global Equity Strategy 19 October 2026
+ab 8
+Rising odds of a correlated rally
+After the rates spike, bond yields are likely to stay elevated near-term and we had 
+highlighted SPX 1x2 call spreads to play for a slow grind through US midterms. However, 
+from late October on, we see rising odds of a more correlated rally in equities if 1) rates/
+oil pressures abate, 2) US midterm election risks do not realize, 3) AI narratives/demand 
+are supportive, 4) earnings beats provide a tailwind, and 5)  corporate buyback activity
++announcements pick up after the OCF surge. In a scenario of these drivers becoming 
+tailwinds around the same time, we see implied correlations as too low if Tech and ex-
+Tech / rate sensitive segments can rally at the same time, and like OTM index options for 
+the theme.
+Figure 8: Midterms pose the largest risk in terms of options-implied pricing
+Midterms pose th
+e largest risk in terms of o
+ptions-implied 
+pricing
+Source: Bloomberg, UBS; Data a/o 16-Oct-2026
+The key catalysts to monitor include:
+
+Fed (FOMC meeting 28th Oct)
+
+Employment/wages(Q3 ECI 30th Oct, Sep JOLTS 3rd Nov, Oct NFP 6th Nov)
+
+Inflation data (Sep PCE 29th Oct, Oct CPI 10th Nov)
+
+Energy prices (especially refined products (Middle East and Ukraine conflict, 
+inventory data)
+
+US midterm elections (polls close on 3rd of November but results could be 
+confirmed in following days/ weeks)
+
+Tech earnings (MSFT 27/10/2026, GOOGL 27/10/2026, META 21/10/2026, AMZN 
+28/10/2026)
+
+Buyback calendar (blackouts end, announcements to pickup in Q3 reporting, MU 
+buyback can start 9th Dec)
+Trade idea: SPX Dec OTM calls
+ We like SPX OTM calls for Dec to position for a more correlated rally and add delta 
+exposure amid still elevated risks. SPX has historically rallied an avg of 6% from end Sep 
+to end Dec in midterm election years, and an avg of 14% from end Sep to end Mar. We 
+see rising odds of a broadening in the equity market rally if the above catalysts turn out 
+largely positive. Rising equity markets associated with rising correlations has historically 
+resulted in stronger returns.
+
+Global Equity Strategy 19 October 2026
+ab 9
+Figure 9: S&P 500 historically rallies post midterm elections
+S&P 500 historically rallies post midterm elections
+Source:  FactSet, UBS; Note: Weekly avg. price used for performance since 1950; 
+Past performance is not indicative of future results
+Figure 10: Spot up, correlation up signals increased 
+breadth, and typically results in a healthier market going 
+forward
+Spo
+t u
+p, 
+co
+rr
+el
+at
+io
+n u
+p s
+ign
+als
+ in
+cre
+ased breadth, and typical
+ly results in a healthier market going forward
+Source: Bloomberg, UBS; Screening for mutually exclusive periods where SPX daily 
+log return is > +1%, and VIX + on day or vs. 1m earlier (for exuberance), or SPX 1m 
+realized correlation + on day and vs. 1m earlier (for breadth); Periods coming out of 
+a significant market drawdown excluded, defined as prior 1m SPX return < -3% or 
+SPX < -5% below its prior 3m high; Data back to 1991; Past performance is not 
+indicative of future results
+Trade idea: Short KOSPI2/SMH/SOXX puts to buy 2x SXXP calls
+Take downside risk in Korea (and primarily Korean semis), where strong pricing, cash 
+flow and buybacks are underwritten by DRAM undersupply through 2028 and a 
+multiple already discounting considerable margin mean reversion that we don't expect. 
+Use the rich implied vol to buy more than two times the notional of upside in Europe, 
+where most industry groups are growing earnings above 10% and those expectations 
+are still rising.
+Figure 11: Free cash flow of Korean memory markets can 
+fund large, supportive buybacks that make downside risks 
+more limited than option pricing implies in our view
+Fre
+e 
+ca
+sh 
+flo
+w o
+f K
+ore
+an 
+mem
+ory
+ mar
+kets
+ can
+ fun
+d lar
+ge, s
+uppor
+tive buybacks that make downsi
+de 
+risks more limited than option pricing implies in our view
+Source: UBS
+Figure 12: We still see upside for European equities on 
+strong fundamentals
+We 
+sti
+ll 
+see
+ up
+si
+de
+ f
+or
+ E
+ur
+opean equi
+ties
+ on strong fundame
+ntals
+Source:  S&P Global, UBS
+Europe has lagged even though PMI new orders, sales and earnings have all been rising 
+across the largest sectors (financials, industrials, tech and pharma). Scarcity has emerged 
+in key areas of industrial capacity. Many European industrials that lagged the first wave 
+of scarcity in data-centre capital goods, are now outperforming as those companies 
+need to build new industrial capacity. In Europe growth is financed by bank lending that 
+has risen to over 4% yoy - supporting ongoing positive banking sector earnings 
+revisions. 
+
+Global Equity Strategy 19 October 2026
+ab 10
+Figure 13: PMI New Orders have clearly started expanding 
+across multiple European sectors important for the equity 
+market
+PM
+I New Orders ha
+ve clearly
+ started expanding 
+across mu
+lti
+pl
+e
+ 
+Eu
+ro
+pe
+an
+ s
+ec
+to
+rs
+ i
+mp
+or
+ta
+nt
+ for the equity market
+Source: S&P Global, UBS
+Figure 14: Earnings revisions reinforce the broadening 
+with financial, industrials, materials and tech (>55% of 
+index cap) all contributing
+Ea
+rn
+i
+n
+g
+s
+ 
+revisions reinforce the broadenin
+g with fi
+nancial, 
+industrials,
+ mater
+ials and t
+ech (>55% o
+f index cap
+) all con
+tributing
+Source: Refinitiv, UBS
+Hedges for tightening tail, growth/AI spillovers
+We discussed in previous sections how non-benign tightening cycles have historically 
+been a large headwind for equities. The three main mechanisms  which rates affect 
+equities are higher real rates, weaker growth, and higher credit spreads, to which every 
+major market has a very large negative beta. An aggressive tightening cycle is not our 
+base case. We also think equities are likely to stay more resilient than rates because of 
+the growth offset and suppressed correlations.
+Rising rate hike probabilities into early 2027 have driven sharp moves across the 
+yield curve. Our Rates Strategists see these moves as difficult to fade as yields remain 
+highly sensitive to oil, the Fed is giving energy prices unusual weight, and the 
+geopolitical backdrop is unlikely to resolve quickly. History further suggests rates stay 
+elevated for at least a few months after similar yield spikes recently witnessed. Rate 
+volatility has already risen notably to reflect this, in line with our view.
+Our credit strategists suggest that spreads have remained unusually 
+complacent (see here), as the link between rate volatility and spreads has historically 
+strengthened during tightening cycles. They see an unexpected tightening cycle as the 
+main downside risk for credit, with stress emerging first in lower-quality HY and 
+leveraged loans. We have already seen early signs of this with yield vs. HY spread 
+correlation just off all-time highs, a 'double whammy' we think is not being fully priced 
+into HYG volatility.
+Trade idea: HYG downside for yield + spread 'double whammy'
+We continue to favor HYG downside structures to hedge an environment in which 
+Treasury yields and HY spreads rise in tandem. Rate risks are more pronounced for 
+companies with debt and will come through in credit spreads more quickly than equity 
+markets skewed heavily toward profitability rather than leverage. Investors may consider 
+HYG 1x1.5 put ratios to position for further downside, exploiting recently higher skew 
+amidst the initial drawdown – see here.
+
+Global Equity Strategy 19 October 2026
+ab 11
+Figure 15: Rate volatility has already well exceeded equity 
+volatility in anticipation of further rate hikes
+R
+a
+t
+e
+ 
+v
+ola
+til
+ity
+ ha
+s a
+lrea
+dy 
+w
+el
+l e
+xce
+ede
+d equity volatility in anticipation of
+ further rate hikes
+Source: Bloomberg, UBS; VIX (VXO) data pre-1986 derived from a multifactor linear 
+regression against S&P 500 1m exponentially-weighted realized volatility and 
+weekly return stream; MOVE data pre-1988 derived from a regression against a 
+simple average of 1m realized volatility across 3m, 2y, 5y, 10y, and 30y Treasurys 
+(data since 1962); Examining all Fed rate hike cycles since 1972; t=0 represents first 
+Fed hike at Sep FOMC
+Figure 16: HYG downside protection remains appealing as 
+yields vs. spreads 'double whammy' not being fully 
+appreciated by HYG volatility
+HY
+G 
+dow
+nsi
+de pr
+otec
+tion
+ rem
+ains
+ a
+ppe
+ali
+ng
+ a
+s 
+yi
+el
+ds
+ v
+s.
+ s
+pr
+ea
+ds
+ d
+ouble whammy not being fully appreciate
+d by HYG 
+volatility
+Source: Bloomberg, UBS
+Trade idea: SPX vs. XLU put switches for growth/AI downside
+Index volatility continues to be very difficult to carry as high levels of dispersion continue 
+to mute index-level moves. This dynamic is typically exacerbated through earnings 
+reporting seasons. We would therefore look to fund any SPX downside protection with 
+protection on sectors in which we fundamentally believe downside could be limited in 
+the near-term. Defensive sectors like Utilities (XLU) appear fundamentally more 
+attractive to sell downside puts as power demand has been rising on the back of prior 
+capex amidst the AI buildout. Additionally, Utilities underperformance the last 3mo has 
+been far greater than the underperformance implied by our ML model. A 
+correlated rate-driven selloff could also see defensives more buffered despite higher 
+yields (similar to 2022). Investors may consider selling XLU puts to fund SPX puts for flat.
+Figure 17: XLU/SPX correlation has historically risen during 
+periods in which defensives are buffered vs. the broader 
+market despite higher yields (e.g. 2022, post-March 2026)
+XLU/
+SPX 
+corr
+elat
+ion 
+has 
+hi
+sto
+ric
+all
+y 
+ri
+se
+n 
+du
+ring periods in which defensives are buffered vs. the broader market despite higher yields (e.g. 2022, post-March 2026)
+Source: Bloomberg, UBS
+Figure 18: XLU downside volatility is relatively rich vs. SPX, 
+which has historically reversed amidst large index 
+drawdowns
+XLU
+ do
+wn
+s
+i
+de
+ v
+ol
+at
+il
+it
+y 
+is relatively rich vs. SPX, 
+which has historically reversed amidst large index drawdowns
+Source: Bloomberg, UBS
+
+Global Equity Strategy 19 October 2026
+ab 12
+Global Equity Strategy
+UBS Research
+Sectors and industries: where are the 
+asymmetries?
+We have leveraged a number of our frameworks and models to assess the backdrop for 
+sectors and industries amid the rate shock. 
+
+ML model residuals. To get an understanding of the tactical setup, we leverage 
+our ML model to look at how industry performance compares to that implied by 
+moves in rates and other macro variables (see Tactical Dashboard). Rate and oil 
+sensitive industry underperformance looks to have overshot implied returns based 
+on macro variable moves.  
+
+REVS scores vs rates betas. Amid elevated rates, we like sectors and 
+subindustries that currently score high on REVS given stronger fundamentals over 
+those that score low on REVS with weaker trends. This reduces exposure to rates 
+vol, and in the event of rates normalizing, investors should be more willing to buy 
+rate-sensitive industries with better fundamentals. 
+
+PEG ratios and revisions. The logic  when looking at sectors and styles is the 
+same as regions and countries. We want to own industries cheaper on growth 
+with stronger earnings momentum. 
+In general, we are looking for sectors and industries where the growth offset is the 
+greatest with strong revisions, that includes parts of  traditional growth  but also parts of 
+cyclical value which are exposed to the 'right' growth. PEG ratios are a good metric as 
+pointed out above, and our REVS framework incorporates earnings and growth 
+momentum together with valuation and positioning. Our ML model gives a read of 
+what areas may have overshot the macro moves. 
+Positive sectors/industries. Putting the three approaches together, the following 
+sectors and industries stand out on the positive side:
+
+In the US, Capital Goods and Transports are positive across all three while Banks,  
+Utilities, Insurance and pockets of Consumer Services (Hotels, Leisure, etc) look 
+good on 2 of 3 while Consumer Durables and to a lesser extent Retail look like 
+potential catch up trades on rates/oil relief. 
+
+In Europe, Utilities/Renewables score well across all three. 
+Negative sectors/industries. The following sectors and industries stand out on the 
+negative side:
+
+In the US, Staples, US Telecom and Materials ex Metals score negatively across all 
+three while Energy and Software & Svcs have both outperformed model implied 
+and look weaker on PEG and REVS, respectively. 
+
+In Europe, Chemicals and Software have outperformed model implied and look 
+weak on PEG/revisions. 
+ML model: rate sensitive sectors overshot
+Figure 20 S&P 50 sector returns: actual vs M
+L m
+odel im
+plied and Figure 15STOX 60 sector returns: actual vs M
+L m
+odel-im
+plied show actual industry group relative performance over the past 
+three months compared with the performance expected by the ML model based on key 
+top down drivers. Most  of the industries  that have underperformed ML model 
+expectations in  the US are  the rate sensitive ones led by Cap Goods, Utilities, Consumer 
+Durables, Real Estate and Banks. Oil sensitive industries have also lagged by more than 
+implied led by Transports and Retail. In Europe, Consumer Durables & Apparel, Food, 
+Beverage & Tobacco and Utilities have underperformed the most relative to ML model 
+implied. 
+
+Global Equity Strategy 19 October 2026
+ab 13
+Figure 19:  US Utilities, Capital Goods and Retail: actual vs ML model-expected performance
+US
+ U
+ti
+li
+ti
+es
+, 
+Cap
+ita
+l G
+oods a
+nd Ret
+ail: a
+ctual 
+vs ML 
+model-
+expect
+ed per
+forman
+ce
+Source: Factset, Bloomberg, UBS
+Figure 20:  S&P 500 sector returns: actual vs ML model implied 
+S&P 500 sector ret
+urns: actual vs ML m
+odel
+ implied
+Source:  Factset, Bloomberg, UBS
+
+Global Equity Strategy 19 October 2026
+ab 14
+REVS and rates betas: pair subindustries on relative 
+fundamental trends
+Comparing our Composite REVS scores to rates betas, top ranking subindustries  Semis, 
+Pharma, Refining and Div Banks  remain attractive and appear less exposed to rates, in 
+our view. We like pairing positive REVS subindustries with higher rates betas against low 
+scoring rate sensitive industries: 
+
+High REVS and negative rates beta: Biotech, Building Products, Consumer 
+Finance, Trading Companies & Distributors, Hotels & Leisure and Regional Banks. 
+Homebuilders have the highest rates beta and neutral REVS, though Building 
+Products offers housing exposure, but scores well ahead on fundamentals.
+
+Low REVS  with negative rates beta: Renewables, Automobiles, Construction 
+Materials and Healthcare Facilities, alongside Auto Retail, Restaurants, Media and 
+Application Software. 
+This US read on REVS vs rates beta shows a relatively supportive fundamental picture for 
+European renewables amid high yield sensitivity, even though US renewables score 
+weaker on REVS. European renewables score high on REVS and are up ~20% year to 
+date against down over 10% for US renewables. The rates sensitivity is a valuation issue, 
+not an earnings one for EU renewables, so a peak in yields matters more for them than 
+for most.
+Figure 21: Subindustry REVS composite scores vs beta to interest rates
+Subindus
+try REVS composite scores vs beta to interest rate s
+Source: UBS
+
+Global Equity Strategy 19 October 2026
+ab 15
+Own low PEG industries with positive revisions 
+ Buying earnings growth at a reasonable valuation is a proven strategy in this 
+environment. Growth alone has not been enough to offset higher yields when the 
+starting valuation is demanding. Our European team shows that earnings have helped 
+parts of cyclical value, while expensive growth can remain sensitive to the price paid and 
+defensives lack a comparable growth offset. The story in EM is similar. Our team shows 
+that the best performing factors when US real yields rise from high levels are high 
+growth, dividend yield and high ROE while the worse ones are high PE and high 
+leverage. 
+European Semis, Cap Goods and Transport offer both earnings growth at a discount and 
+very strong earnings revisions. Telecoms and Banks also offer an attractive mix of strong 
+revisions and revisions.  It is similar in the US with Semis, Mining and Tech Hardware 
+offering the best mix of revisions and PEG. Pharma and Software also look attractive.
+Figure 22: GARP + revisions in Europe
+GARP + revisions in Europe
+Source:  Bloomberg, UBS
+Figure 23: GARP + revisions in the US
+GARP + revisions in the US
+Source: Bloomberg, UBS
+Figure 24: EM factor performance when US real yields are going up
+EM fa
+ctor 
+perfo
+rman
+ce w
+hen 
+US r
+eal 
+yiel
+ds a
+re
+ going up
+Source: IBES, MSCI, Datastream, UBS
+Secondly, buy positive earnings revisions. Europe stocks with positive CFROI 
+revisions of zero to +0.10 percentage points returned 0.0% at the median, against 
++5.8% once revisions exceeded +0.10 points. The +0.25 to +0.50-point group returned 
++9.8%. The result persisted within sectors: 15 of 17 showed a positive within-sector 
+spread at the +0.10-point hurdle. The revision signal is therefore more than a sector 
+allocation. 
+The largest upgrades are not automatically the best investments because of 
+valuation. Returns plateaued above +0.50 points in Europe and some highly valued 
+
+Global Equity Strategy 19 October 2026
+ab 16
+stocks were not rewarded despite substantial upgrades. Valuation is therefore a 
+constraint on the revisions trade. 
+Figure 25: Positive revisions outperformed rising bond yields
+Positive revisions outperformed rising bond yields
+Source:  Bloomberg, UBS 
+
+Global Equity Strategy 19 October 2026
+ab 17
+Global Equity Strategy
+UBS Research
+Oil at a fulcrum: demand destruction at higher 
+prices
+The Energy sector has typically tracked medium- and long-term oil expectations 
+embedded in the forward curve rather than moves in spot prices. But spot and forward 
+oil recently diverged, with forward prices basically flat as front month rose from <$90 in 
+Aug to >$105 in early Sep while forward prices rose as oil price pressures alleviated 
+some. This could potentially reflect demand-destruction concerns, as well as future 
+supply/demand dynamics. More notably, Energy equities have also rallied more than 
+forward oil prices, suggesting more is being priced unlike the early summer when Energy 
+equities lagged oil futures moves.
+Time to start reducing Energy exposures. Our US REVS framework showed Energy 
+at the top across sectors heading into Sep as the regime was shifting (Themes inflecting). 
+Energy has notably outperformed of late, and is up over 50% YTD. With the potential to 
+see demand destruction on even higher oil prices, particularly with less refining capacity 
+globally pushing up product prices, we see less attractive risk reward in the sector and 
+would be paring exposure and reallocating elsewhere. After Energy outperformance of 
+Cap Goods and Transports as oil has jumped, we like reallocating some of that Energy 
+risk to the Industrials.
+Figure 26: The 2y forward WTI crude oil price recently 
+decoupled from front-month...
+The
+ 2y
+ fo
+rwa
+rd 
+WTI
+ cr
+ude
+ oi
+l p
+ric
+e r
+ece
+ntl
+y d
+eco
+uple
+d fr
+om f
+ront
+-month
+...
+Source:  Bloomberg, UBS
+Figure 27: ...reflected in a negative beta of front-month 
+futures vs. 2y out (off which Energy earnings forecasts are 
+more closely-based)
+..
+.r
+e
+f
+l
+e
+c
+t
+ed
+ i
+n 
+a 
+ne
+ga
+ti
+ve
+ b
+et
+a 
+of
+ f
+ront-month futures vs. 2y out
+ (off which Energy earnings forecasts are more closely-based
+)
+Source: Bloomberg, UBS
+Figure 28: Energy performance relative to the market 
+rebased to Jan 26
+Ener
+gy pe
+rform
+ance 
+relat
+ive t
+o the
+ market rebased to Jan 26
+Source: Bloomberg, UBS
+Figure 29: Energy performance relative to Cap Goods 
+rebased to Jan 26
+Ener
+gy pe
+rform
+ance 
+relat
+ive t
+o Cap
+ Goods rebased to Jan 26
+Source: Bloomberg, UBS
+
+Global Equity Strategy 19 October 2026
+ab 18
+Trade ideas
+Based on the analysis above as well as our frameworks and prior work, we would 
+highlight a few trade ideas:
+1. Sell US Staples (XLP) upside to fund US Industrials (XLI). 
+We favor selling US  Consumer Staples (XLP) calls to fund upside elsewhere 
+(XLI), as Staples have rallied substantially (up >8% since 30-Sep) amidst the sharp yield 
+retracement. Fundamentally, Industrials are in a better relative position than other 
+cyclicals with the AI buildout and the potential for recovery in investment outside of 
+Tech, making XLI upside calls attractive. We think this trade could work in an 
+environment where yields and oil come off in tandem, which could spur upside in 
+Industrials – while this move has already been priced in consumer-related pockets like 
+Staples (XLP) and Retail (XRT). Investors may consider XLI vs. XLP call switches – we 
+would  favor selling XLP upside on a Dec expiry (~0.8 XLI:XLP ratio, indicatively). We 
+would also opportunistically look to sell XOP upside to fund other upside given even 
+higher oil 
+Figure 30: Correlation of oil vs. yields is just off 15y+ highs 
+(ex-Covid) – A correlated retracement in yields and oil 
+could spur upside in more cyclical sectors
+Corr
+elat
+io
+n o
+f o
+il 
+vs.
+ y
+ie
+ld
+s 
+is
+ j
+us
+t 
+of
+f 
+15
+y+
+ h
+ig
+hs
+ (ex-Covid) – A correlated retracement in yields and oil could spur upside in more cyclical sector s
+Source: Bloomberg, UBS
+Figure 31: Staples have rallied aggressively to pre-conflict 
+highs as yields retraced from the local peak – we would 
+look to fade further upside
+Stap
+les 
+have
+ ral
+lied
+ agg
+ress
+ivel
+y to
+ p
+re
+-c
+on
+fl
+ic
+t 
+hi
+gh
+s as y
+ields 
+retrac
+ed fro
+m the 
+local 
+peak – w
+e would look to fade furthe
+r ups ide
+Source: Bloomberg, UBS; Past performance is not indicative of future results
+2. Add Industrials and Cap Goods exposure. 
+US industrials have strong fundamental momentum despite ~10% correction. 
+Strong investment activity, led by AI, was a primary reason for the repricing of rates. We 
+believe AI related industrial demand will remain robust amid the higher rates. On the 
+other side, capex had been turning up beyond AI/data centers as mfg recovered from a 
+~3yr recession, while operating cash flow (OCF) is up ~$825bn y/y (+25%) and capex to 
+OCF is near historical lows ex hyperscalers. Higher rates should be a headwind to some 
+activity, but we see the selloff as providing an attractive entry point to a secular story 
+related to AI, combined with the potential for a cyclical recovery in other industrial 
+segments. 
+
+Cap Goods over Energy. As mentioned above, we specifically like reallocating 
+some Energy exposure back to US Cap Goods, as relative performance is now back 
+to 2yr lows despite cap goods new order growth remaining strong and the surge in 
+OCF providing further fuel for corporate capex growth. 
+
+Capex broadening basket (UBEQCPXB) over equal wt SPX. The basket of 48 
+stocks leveraged to capex broadening with less AI exposure is weighted by 
+fundamental momentum relative to what's priced (Themes inflecting). The 
+basket's EPS revisions have climbed toward 2020-21 highs while its earnings score 
+jumped through Q2 reporting. Yet the relative P/E premium has come down 
+notably and crowding is much lower for the basket than the avg stock. 
+
+Global Equity Strategy 19 October 2026
+ab 19
+Figure 32: US real non-residential investment vs US real 
+investment  ex IT equip & IPP (y/y%)
+US r
+eal 
+no
+n-r
+esi
+den
+tia
+l 
+in
+ve
+st
+me
+nt
+ v
+s 
+US
+ r
+ea
+l investment ex IT equip & IPP (
+y/y%)
+Source: BEA, Haver, UBS
+Figure 33: Capital goods order growth points to strong S&P 
+Cap Goods returns
+Capi
+tal 
+good
+s o
+rde
+r g
+rowt
+h po
+ints
+ to 
+str
+on
+g 
+S&P
+ Ca
+p G
+ood
+s 
+re
+tu
+rn
+s
+Source: Haver, UBS
+European industrials are where revisions are accelerating as AI capex is moving 
+down the chain. 'Data-centre capex' beneficiaries  such as Munters and Siemens 
+Energy are capacity-constrained and now spending capex themselves, which becomes 
+the orders of broader 'industrial capacity' beneficiaries. Until late 2025 positive surprises 
+were concentrated in the AI capex beneficiaries. In 2026 they have been as strong and 
+accelerating for those building 'industrial capacity', and European companies have 
+among the most positive revisions. European names are also less crowded.  European 
+defense (UBXESPND) and German fiscal spending (UBXEGFXD) add additional fuel to 
+the theme. 
+Figure 34: AI Capex beneficiaries are now delivering 'scarcity' to Industrial 
+Capacity beneficiaries
+AI Capex beneficiaries are now delivering scarcity to Industrial Capacity beneficiaries
+Source: UBS
+
+Global Equity Strategy 19 October 2026
+ab 20
+Figure 35: Crowding in 'AI Capex' is high and falling in 
+contrast to 'Industrial Capacity'
+Crowding in AI Capex is high and falling in contrast to Industrial Capacity
+Source: UBS
+Figure 36: Earnings revisions remain strong but the more 
+recent revisions and acceleration favour Industrial 
+Capacity beneficiariesEarnings revisions remain strong but the more recent revisions and acceleration favour Industrial Capacity beneficiaries
+Source: UBS
+Long EU Industrials (SXNP) vs EU Consumer Cyclicals (UBXECCYC). EU Industrials 
+have nascent positive earnings revisions, lighter crowding and the multiple drivers of this 
+momentum. EU Consumer Cyclicals have negative revisions and depend on consumers 
+getting real wage relief.
+Figure 37: The conflict in M.E. has held back EU Industrials that we think should/
+will outperform the weaker consumer.
+The 
+conf
+lict
+ in 
+M.E.
+ has
+ held 
+back E
+U Indu
+strial
+s that
+ we th
+ink sh
+ould/w
+ill ou
+tperfo
+rm the weaker consumer.
+Source: Haver, UBS
+
+Global Equity Strategy 19 October 2026
+ab 21
+3. Add Utilities/Renewables exposure. 
+US Utilities over US Staples (and Telecom). After correcting 15% from the Jul highs 
+to the Sep lows, Utilities have had a small bounce in Oct. As rates have risen, Utilities P/E 
+has fallen toward 15x, near 10+ year lows, despite rising medium-term EPS growth 
+expectations on increased capex and power demand. While higher bond yields  raise 
+interest costs for Utilities on new financings for capex and existing bonds, they can 
+usually recapture the increased interest cost in the allowed rate base. On the other side, 
+Staples P/E is a lofty~25x, despite falling EPS growth potential. Telecom also screens near 
+the bottom on REVS and has outperformed the ML implied moves, making it an 
+attractive source of funds for Utilities as well. Utilities earnings yields plus EPS CAGR is 
+nearly 16%, compared to just ~11% for Staples. Both are rates sensitive, but Utilities are 
+also less crowded than Staples. In the case of bond yields normalizing some, we see 
+investors reallocating back to Utilities given its higher growth is now at a big discount. 
+Figure 38: US Utilities vs Staples valuation and growth 
+U
+S
+ 
+U
+t
+il
+it
+ie
+s 
+vs
+ S
+ta
+pl
+es
+ v
+al
+uation a
+nd growth
+Source: UBS, Factset, Bloomberg
+Long EU renewables (UBXERNEW). European renewables tell the same story. Our 
+Narrative Radar macro model puts them 7% below the level implied by moves in yields 
+and other macro drivers over the last 3 months. They have been impacted negatively by 
+rising bond yields more than they have benefitted from rising gas prices (revenue link). A 
+retracement in bond yields should unlock the fundamental momentum in our view.
+Figure 39: EU Utilities have  underperformed a macro 
+model that includes bond yields and gas prices.
+EU Utilities ha
+ve underp
+erformed 
+a macro mod
+el that includ
+es bo
+nd yie
+lds and gas 
+prices
+.
+Source: Bloomberg, FactSet, UBS
+Figure 40: EU Renewables have lagged their energy peers 
+due to rising yields we think will reverse somewhat.
+EU 
+Rene
+wabl
+es h
+ave 
+lagg
+ed t
+heir e
+nergy peers due to rising yields we think will reverse somewhat.
+Source: UBS, Bloomberg
+
+Global Equity Strategy 19 October 2026
+ab 22
+4. Higher Growth+CFROI at a Discount  vs Expensive Fundamentals 
+There is considerable dispersion in growth and CFROI trends with the top 20-40% of 
+companies in terms of forward sales CAGR and CFROI seeing growth and profitability 
+gaps widen vs weaker cohorts. However, there are many higher growth
++CFROI companies that are trading well below levels implied by their stronger 
+fundamentals based on our valuation framework. On the other side, there are many 
+stocks trading at elevated multiples relative to their sales CAGR and profitability. 
+We recommend pairing our Higher Growth and CFROI at a Discount basket 
+(UBEQHGCD) versus our Expensive Fundamentals basket (UBEQEXFN) to take 
+advantage of these "multiple gaps" as it relates to relative growth and CFROI (see 
+
+Growth+CFROI at a Discount trades at a ~30% discount on P/E relative to 
+Expensive Fundamentals and yet has a forward sales CAGR that is ~10pp higher 
+and CFROI that is ~28pp higher. 
+
+Growth+CFROI at a Discount trades at 1.1x PEG ratio based on sales CAGR vs 4.6x 
+for Expensive Fundamentals, despite also much higher FCF yields. 
+
+The fundamental gap is widening: growth, CFROI and sales revisions are improving 
+for Higher Growth and CFROI at a Discount, while trends for Expensive 
+Fundamentals remain flat or deteriorating.
+Figure 41:  Valuation dispersion across growth cohorts remains elevated
+Va
+lu
+ati
+on 
+dis
+per
+sio
+n a
+c
+r
+os
+s 
+gr
+ow
+th 
+cohorts rem
+ains elevat ed
+Source: Factset, UBS
+Figure 42: Relative P/E back to summer 2025 levels
+Re
+la
+ti
+ve
+ P
+/E 
+bac
+k to s
+ummer 
+2025 l
+evels
+Source: FactSet, UBS
+Figure 43: Sales growth spread continues to rise
+S
+a
+l
+e
+s
+ g
+ro
+wt
+h 
+spread
+ conti
+nues t
+o rise
+Source: FactSet, UBS
+
+Global Equity Strategy 19 October 2026
+ab 23
+Global Equity Strategy
+UBS Research
+Regions and countries: looking for 
+underpriced growth 
+As discussed earlier, we want to be positioned in the near-term for rates staying elevated 
+while avoiding  short duration exposure as there  is a good chance rates eventually 
+normalise. We have highlighted that the market  is pricing in lower growth and/or lower 
+profitability for many areas of the market relative to consensus expectations in the US 
+(see Multiple Gaps) and globally (see Broadening Growth, Pricing Doubt). 
+Look for low PEG ratios, strong revisions amid rate 
+sensitivity 
+We compare  P/E to 2yr forward EPS growth PEG ratios to 3mo earnings momentum for 
+regions and countries. The US, the Netherlands, Taiwan  and Korea offer an attractive mix 
+of growth at a discount and relatively  strong positive earnings revisions. The UK, 
+Sweden, Canada, India and France  are the least attractive market with high PEGs and 
+weaker  revisions. Switzerland and Japan have relatively strong  earnings revisions but do 
+not look cheap while China and Germany have an an attractive PEG but subdued 
+earnings revisions. India and  Korea are also both the most negatively exposed to higher 
+yields on our REVS yield beta which makes the pair trade particularly attractive as it 
+would perform well in a normalised yield environment .
+Figure 44: P/E to growth  vs 3m EPS revisions 
+P/E to growth
+ vs 3
+m EPS
+ revis
+ions
+Source: Datastream, Bloomberg, UBS
+Figure 45: P/E to growth  vs beta to US 10y yield 
+P/E to growth
+ vs b
+eta t
+o US 1
+0y yi
+eld
+Source: Datastream, Bloomberg, UBS
+Our view is that: 
+
+A higher discount rate is not necessarily a headwind for equities when it 
+comes with higher earnings growth. Given the rates shock is mainly a real rates 
+shock, it is likely caused by stronger growth expectations, not only energy prices.
+
+We like regions and indices where the growth offset is the greatest.  Higher 
+real rates raise the earnings hurdle for owning stocks .
+
+We want to own growth at reasonable price and which is being revised up. 
+Higher real rates hurt expensive stocks the most via derating and  earnings revisions  
+are the key cushion  against  higher discount rates. 
+
+We want exposure to the "right growth'. We expect the main earnings 
+growth engine to be AI and the broadening in capex. These areas should also 
+outperform even if rate pressures abate.
+
+Some emerging markets are  increasingly interesting in this environment. 
+Many EMs face less of a bond  problem than developed markets. EM equities 
+
+Global Equity Strategy 19 October 2026
+ab 24
+appear less sensitive to moves in US rates than in previous cycles, allowing 
+fundamentals and earnings revisions to play a larger role in performance.
+ We like the following expressions of the view: 
+1. Go long in general of regions and countries with low PEG and strong 
+revisions vs high PEG and weak revisions. We like  pairing  indices with 
+negative yield beta in particular to get convexity to a yield normalisation scenario. 
+2. Long SPX vs FTSE 100. S&P has much stronger fundamentals and  revisions, yet it 
+has still derated by ~10% relative to the FTSE ytd.
+3. Long KOSPI vs NIFTY 50. Korea offers the strongest two-year EPS outlook out of 
+all major markets at a P/E discount to India, whose flattish estimates and slowing IT 
+services put it on the wrong side of the AI trade
+Trade ideas
+Long SPX vs FTSE 100
+The S&P 500 has de-rated by roughly 15% relative to the FTSE 100 over the past two 
+years, despite delivering around 22% stronger relative earnings growth over the same 
+period. As discussed earlier, we think the S&P is quite cheap relative to its fundamentals. 
+The FTSE remains skewed towards defensive sectors that lack the earnings-growth 
+offset needed to absorb higher real yields, while its underweight of Tech and Industrials 
+leaves it underexposed in the strongest parts of the growth cycle. We expect it to 
+underperform even if rates pressure abates. 
+ Historically, the FTSE has also tended to underperform the S&P 500 during rate-shock 
+episodes, even benign hiking  cycles. We believe it will be the same this time as the 
+current environment remains more supportive for US equities where stronger earnings 
+growth continues to offset a higher discount rate.
+Figure 46: S&P vs FTSE relative PE and EPS
+S&
+P 
+vs
+ FT
+SE 
+rel
+ati
+ve PE 
+and EP
+S
+Source: Datastream, UBS
+Figure 47: Historical DMs performance during rate shocks
+Hi
+st
+ori
+cal
+ DM
+s p
+erf orm anc
+e
+ d ur in
+g r
+ate
+ shocks
+Source: Bloomberg, UBS
+Long KOSPI vs NIFTY 50
+Korea offers the strongest two-year EPS outlook out of all Emerging markets, with 
+memory stocks FCF worth 80%+ of market cap  over the next two years. EPS has been 
+revised up by 15% over the last three three months vs 4% for India. India is on the 
+wrong side of the AI trade with its heavy IT services exposures while Korea is at the  
+forefront.  Our EM team is overweight Korea and underweight India. 
+We also like the trade because we think it does well in both a yields normalisation and 
+yield sell off scenario.  Both have the most negative betas to yields so the trade should 
+still perform if yields normalise. In the event of yields selling off even more, Korea's 
+current account surplus at roughly 5-6% of GDP creates a powerful buffer for both the 
+won and equities, while India's c2% of GDP current account deficit leaves it more 
+dependent on foreign capital inflows and vulnerable to energy shocks. 
+
+Global Equity Strategy 19 October 2026
+ab 25
+Figure 48: 27/ 28 EPS CAGR for major EMs
+27
+/ 28 EPS CA
+G
+R
+ f
+or
+ m
+aj
+or
+ E
+Ms
+Source: IBES, MSCI, Datastream, UBS. Note: calculated on the basis of index-
+weighted methodology (video link).
+Figure 49: Korea PE vs India
+K
+or
+ea
+ P
+E 
+vs
+ I
+nd
+ia
+Source: IBES, MSCI, Datastream, UBS. Note: calculated on the basis of index-
+weighted methodology (video link).
+
+Global Equity Strategy 19 October 2026
+ab 26
+Global Equity Strategy
+UBS Research
+Equities have greater asymmetry to 
+lower rates (vs higher)
+Across the UBS Global Equity Strategy team, we have highlighted a number of reasons 
+why equities are more resilient to higher bond yields now than in the past, and have 
+greater asymmetry to a decline in rates. Some of the key points from our work are 
+summarized below. 
+1. Valuation reset has largely happened (Parker)
+The SPX derating is already large. The 10yr is up about ~100bp YTD to 5.1%, and the 
+S&P 500 NTM P/E is down ~20% since November. That matches 1994 and is close to the 
+20% to 30% deratings seen around recessions.  Moreover, The SPX P/E is below fair 
+value and pricing in either weaker growth or higher rates. Stronger forward sales growth 
+and CFROI put the model-implied P/E above 24x, against <20x now. The residual is near  
+2020 and 2011-12 levels. 
+Figure 50: S&P 500 has derated by ~20% already
+S
+&
+P
+ 
+5
+00
+ h
+as
+ d
+er
+a
+t
+ed
+ b
+y 
+~2
+0%
+ a
+lr
+ea
+dy
+Source: Factset, UBS
+Figure 51: The S&P has ~25% implied upside on our model 
+already 
+T
+he
+ S
+&P
+ h
+as
+ ~
+25
+% 
+im
+pl
+ie
+d 
+up
+si
+de
+ o
+n 
+ou
+r 
+mo
+del already
+Source: Bloomberg, UBS
+2. Earnings growth and revisions from AI and the broadening in capex should 
+more than offset higher discount rates 
+The main engines for earnings growth in this cycle are AI and broadening capex. The AI 
+spend cycle is over two years into what prior IT cycles suggest is a ten-year run at ~20% 
+real growth. The next leg has barely started with only 8% of enterprises having deployed 
+AI agents at scale, against ex-Tech OCF up $436bn y/y to fund more. Delivering the data-
+centre build out requires power, grids, electrical equipment, cooling, construction, 
+transportation, etc. - capacity that doesn't yet exist. Security and resilience pending 
+compounds it. 
+3. Yields are partly rising for the right reasons with the broadening capex cycle   
+and rising money velocity, which should be less rate sensitive  than recent cycles 
+(Fowler)
+Defence, AI equipment, infrastructure and power are expanding together, the first cycle 
+like this in a generation. Industrial spend has higher money velocity than services spend. 
+Of the ~130bp rise in the 10yr from end February to 5.00%, 120bp came from real 
+yields, partly reflecting stronger growth expectations. Moreover, Capex is locked in for 
+years. Grid, defence, fab and power projects are not deferred because policy rates move 
+50bp, so committed capital keeps being spent.
+4. EM is not the  blanket long US duration trade it used to be (Tirumalai)
+
+Global Equity Strategy 19 October 2026
+ab 27
+US rates are less of a headwind than in the past due to changed nature of EM stocks and 
+EM investor base. Importantly, local rates are becoming more important. It has also some 
+room to absorb higher rates as it is the fastest  growing major region  due to it exposure 
+to tech and has  attractive valuations. At an aggregate level, EM equity valuation spread 
+over bonds are now near longer term averages (unlike US which is tighter).
+Figure 52: Rolling 12-month correlation of EM equity 
+returns and changes in10y US real yields 
+Roll
+ing 
+12-
+mon
+th 
+cor
+rel
+atio
+n of
+ EM 
+equi
+ty 
+ret
+urn
+s a
+nd 
+chan
+ges 
+in10
+y US
+ rea
+l yi
+elds
+Source: MSCI, Datastream, UBS
+Figure 53: A proxy for ERP: EM equities ex-TW and KR 
+arenow above long term average spreads over local bonds
+A 
+p
+r
+o
+x
+y
+ f
+or ERP: EM equities ex-TW and KR are now ab
+ove long term average s
+pread
+s over loca
+l bonds
+Source: MSCI, Datastream, UBS
+
+Global Equity Strategy 19 October 2026
+ab 28
+Appendix 
+What time-varying betas say about the impact of yields on 
+equities
+We have built a weekly Kalman-filter model in which equity sensitivities are allowed to 
+change over time as new information arrives. Four US macro factors are estimated 
+together: real rates, inflation breakevens, credit spreads and growth. Each coefficient is 
+therefore a partial beta, holding the other factors constant. Absolute betas translate an 
+actual factor move into an equity sensitivity; standardized betas put returns and factors 
+on comparable volatility-adjusted scales.
+Figure 54: Regional standardized beta 
+Regional standardized beta
+Source: Bloomberg, UBS. Note: Ranked descending by nominal-rate beta. *Nominal 
+rate is the sum of standardized real-yield and breakeven betas for separate +1 SD 
+shocks, not an independently estimated beta.
+Figure 55: Regional absolute beta
+Regional absolute beta
+Source: Bloomberg, UBS. Note: Ranked descending by absolute real-yield beta. 
+Absolute factor betas use different units and are not additive. .
+Figure 56: US sectors standardized beta
+US sectors standardized beta
+Source: Ranked descending by nominal-rate beta. *Nominal rate is the sum of 
+standardized real-yield and breakeven betas for separate +1 SD shocks, not an 
+independently estimated beta. Sector standardized betas are copied directly from 
+the 28 August 2026 STD B cells in the US and Europe source workbooks.
+Figure 57: US sectors absolute beta
+US sectors absolute beta
+Source: Ranked descending by absolute real-yield beta. Absolute factor betas use 
+different units and are not additive.
+Figure 58: Europe  sectors standardized beta
+Europe sectors standardized beta
+Source: Ranked descending by nominal-rate beta. *Nominal rate is the sum of 
+standardized real-yield and breakeven betas for separate +1 SD shocks, not an 
+independently estimated beta. Sector standardized betas are copied directly from 
+the 28 August 2026 STD B cells in the US and Europe source workbooks.
+Figure 59: Europe sectors absolute beta
+Europe sectors absolute beta
+Source: Ranked descending by absolute real-yield beta. Absolute factor betas use 
+different units and are not additive.
+
+Global Equity Strategy 19 October 2026
+ab 29
+Valuation Method and Risk Statement
+Investing in global equities poses currency, country, industry, and company-specific risks. 
+Valuations can be impacted by company-specific factors, investor risk appetite, as well as 
+changes in the macroeconomic landscape and financial market stability.
+Equity market returns are influenced by corporate earnings, interest rates, risk premia, as well 
+as other variables influenced by the business cycle. The outlook for any and all of these 
+variables is subject to change.
+Risks of multi-asset investing include but are not limited to market risk, credit risk, interest rate 
+risk, and foreign exchange risk. Correlations of returns among different asset classes may 
+deviate from historical patterns. Geopolitical events and policy shocks pose risks that can 
+reduce asset returns. Valuations may be adversely affected during times of high market 
+volatility, thin liquidity, and economic dislocation.
+Risks include macroeconomic variables (such as GDP growth rates and inflation), economic 
+slowdown, a weakening currency, global economic events, and government policy changes. 
+Our quantitative models rely on reported financial statement information, consensus 
+earnings forecasts and stock prices. Errors in these numbers are sometimes impossible to 
+prevent (as when an item is mis-stated by a company). Also, the models employ historical data 
+to estimate the efficacy of stock selection strategies and the relationships among strategies, 
+which may change in the future. Additionally, unusual company-specific events could 
+overwhelm the systematic influence of the strategies used to rank and score stocks. Past 
+performance is not a guarantee of future performance.
+Options, structured derivative products and futures (including OTC derivatives) are not 
+suitable for all investors. Trading in these instruments is considered risky and may be 
+appropriate only for sophisticated investors. Prior to buying or selling an option, and for the 
+complete risks relating to options, you must receive a copy of "The Characteristics and Risks 
+of Standardized Options." You may read the document at https://www.theocc.com/
+publications/risks/riskchap1.jsp or ask your salesperson for a copy. Various theoretical 
+explanations of the risks associated with these instruments have been published. Supporting 
+documentation for any claims, comparisons, recommendations, statistics or other technical 
+data will be supplied upon request. Past performance is not necessarily indicative of future 
+results. Transaction costs may be significant in option strategies calling for multiple purchases 
+and sales of options, such as spreads and straddles. All foreign options discussed in this note 
+are 'over-the-counter.’
+The securities and futures products described herein may not be eligible for sale in all 
+jurisdictions or to certain categories of investors. Options, derivative products and futures are 
+not suitable for all investors, and trading in these instruments is considered risky. Past 
+performance is not necessarily indicative of future results.
+The HOLT methodology does not assign ratings or a target price to a security. It is an analytical 
+tool that involves use of a set of proprietary quantitative algorithms and warranted value 
+calculations, collectively called the HOLT valuation model, that are consistently applied to all 
+the companies included in its database. The HOLT valuation model is a discounted cash flow 
+model. Third-party data (including consensus earnings estimates) are systematically translated 
+into a number of default variables and incorporated into the algorithms available in the HOLT 
+valuation model. The source financial statement, pricing, and earnings data provided by 
+outside data vendors are subject to quality control and may also be adjusted to more closely 
+measure the underlying economics of firm performance. These adjustments provide 
+consistency when analyzing a single company across time, or analyzing multiple companies 
+across industries or national borders.
+The default scenario that is produced by the HOLT valuation model establishes a warranted 
+price that represents the expected mean value for a security based upon empirically derived 
+fade algorithms that forecast a firm's future return on capital and growth rates over an 
+extended period of time. As the third-party data are updated, the warranted price updates 
+automatically. A company’s future achieved return on capital or growth rate may differ from 
+HOLT default forecast. Additional information about the HOLT methodology is available upon 
+request.
+CFROI, CFROE, HOLT, HOLT Lens, HOLTfolio and “Powered by HOLT” are trademarks or 
+registered trademarks of UBS in the United States and other countries. HOLT is a corporate 
+performance and valuation service of UBS.
+HOLT Business Resilience Dashboard (HBRD) Disclaimer
+The HOLT Business Resilience Dashboard (HBRD) is constructed by applying systematic 
+processes on publicly available records and third-party data to generate quantitative 
+measures. The HBRD consistently assigns scores using a transparent combination of metrics 
+and weights across financial, environmental and governance inputs. Individual companies 
+can be scored on a global-size and/or region-size relative basis. The HBRD is also translated 
+into five textual assessments (e.g. “Highest” or “Lowest”) based on their quintile percentile 
+rank. For further details on the HBRD methodology HOLT Business Resilience Primer please 
+contact UBS Securities LLC, 11 Madison Avenue, New York, NY 10010, USA, Attention: 
+Investment Research. The HBRD does not constitute or imply any endorsement or 
+
+Global Equity Strategy 19 October 2026
+ab 30
+recommendation of any individual company. UBS has not sought to independently verify 
+information obtained from public and third-party sources and makes no representations or 
+warranties as to accuracy, completeness or reliability of such information due to inconsistent 
+reporting of data by companies. Additionally, as global laws, guidelines and regulations in 
+relation to the tracking and provision of such data are evolving, all such disclosures are made 
+on a non-reliance basis and are subject to change. Any figures, values or other data published 
+in this report are neither designed nor administered in line with the standards of the IOSCO 
+Principles for Financial Benchmarks or the EU Benchmarks Regulation (EU) 2016/1011 or any 
+other benchmark related regulatory guidelines and as such you are prohibited from using 
+those figures, values or data in a way which would amount to use of a financial benchmark 
+under those regimes (or any equivalent rules or regulations in any global jurisdiction).
+HOLT transferred to UBS on October 1, 2024 – renamed as UBS HOLT. The UBS HOLT Lens 
+website and materials will be transitioning to UBS branding over time, with expected full 
+redesign to UBS in time.
+
+Global Equity Strategy 19 October 2026
+ab 31
+Required Disclosures
+This document has been prepared by UBS Securities LLC, an affiliate of UBS AG. UBS AG, its subsidiaries, branches and affiliates, 
+including former Credit Suisse AG and its subsidiaries, branches and affiliates are referred to herein as "UBS".
+For information on how UBS manages conflicts and maintains the independence of its UBS Global Research product; historical 
+performance information; certain additional disclosures concerning UBS Global Research recommendations; and terms and conditions 
+for certain third party data used in research report, please visit https://www.ubs.com/disclosures. Unless otherwise indicated, 
+information and data in this report are based on company disclosures including annual, interim and quarterly reports and other 
+company announcements. Figures in performance charts refer to the past; past performance is not a reliable indicator of future results. 
+Additional information will be made available on request. UBS Securities Co. Limited is licensed by the China Securities Regulatory 
+Commission to conduct securities investment consultancy businesses. UBS acts or may act as principal in the debt securities (or in 
+related derivatives) that may be the subject of this report. This recommendation was finalized on: 19 October 2026 04:52 AM GMT. 
+UBS has designated certain UBS Global Research department members as Derivatives Research Analysts where they publish research 
+principally on the analysis of the price or market for a derivative, and provide information reasonably sufficient on which to base a 
+decision to enter into a derivatives transaction. Where Derivatives Research Analysts co-author research reports with Equity Research 
+Analysts or Economists, the Derivatives Research Analyst is responsible for the derivatives investment views, forecasts, and/or 
+recommendations. Quantitative Research Review: UBS Global Research publishes a quantitative assessment of its analysts' 
+responses to certain questions about the likelihood of a number of short term factors occurring, in a product known as the 
+'Quantitative Research Review'. Views in this assessment on a particular stock reflect only those short term factors and a timeframe 
+different to the 12-month timeframe reflected in any equity rating set out in this document. For the latest responses, please see the 
+Quantitative Research Review Addendum at the back of this document, where applicable. For previous responses, please refer to: (i) 
+previous UBS Global Research reports and (ii) where no applicable research report was published that month, the Quantitative 
+Research Review at https://neo.ubs.com/quantitative, or contact your UBS sales representative for access to the report or the 
+Quantitative Research Team at ubs-quant-answers@ubs.com.  A consolidated report containing all responses is also available; for 
+details and pricing, please contact your UBS sales representative or the Quantitative Research team at the above email.
+Analyst Certification: 
+Each research analyst primarily responsible for the content of this research report, in whole or in part, certifies that, with respect to each 
+security or issuer that the analyst covered in this report: (1) all views expressed accurately reflect their personal views about those 
+securities or issuers and were prepared independently, including with respect to UBS, and (2) no part of their compensation was, is, or 
+will be, directly or indirectly, related to the specific recommendations or views expressed by that research analyst in the research report.
+UBS Global Research: Global Equity Rating Definitions
+12-Month Rating
+Definition
+Coverage1
+IB Services2
+Buy
+FSR is > 6% above the MRA.
+55%
+24%
+Neutral
+FSR is between -6% and 6% of the MRA.
+39%
+20%
+Sell
+FSR is > 6% below the MRA.
+6%
+21%
+Source: UBS. Rating allocations are as of 30 September 2026.
+ 1:Percentage of companies under coverage globally within the 12-month rating category.
+ 2:Percentage of companies within the 12-month rating category for which investment banking (IB) services were provided within the 
+past 12 months.
+KEY DEFINITIONS:Forecast Stock Return (FSR) is expected percentage price appreciation plus gross dividend yield over the next 12 
+months. In some cases, this yield may be based on accrued dividends. Market Return Assumption (MRA) is the one-year local 
+market interest rate plus 5% (a proxy for, and not a forecast of, the equity risk premium). Under Review (UR) Stocks may be flagged 
+by the analyst to indicate that the stock's price target and/or rating may change in the near term, usually in response to an event that 
+may affect the investment case or valuation. Equity Price Targets have a 12-month investment horizon.
+EXCEPTIONS AND SPECIAL CASES:UK and European Investment Fund ratings and definitions are: Buy: Positive on factors 
+such as structure, management, performance record and discount; Neutral: Neutral on factors such as structure, management, 
+performance record and discount; Sell: Negative on factors such as structure, management, performance record and discount. Core 
+Banding Exceptions (CBE): Exceptions to the standard +/-6% bands may be granted by the Investment Review Consultation (IRC). 
+Factors considered by the IRC include the stock's volatility and the credit spread of the respective company's debt. As a result, stocks 
+deemed very high or low risk may be subject to higher or lower bands for rating purposes. Where such exceptions apply, they will be 
+identified in the Company Disclosures table in the relevant research piece.
+
+Global Equity Strategy 19 October 2026
+ab 32
+Research analysts contributing to this report who are employed by a non-US affiliate of UBS Securities LLC are not registered or 
+qualified as research analysts with FINRA. Such analysts may not be associated persons of UBS Securities LLC and therefore are not 
+subject to FINRA restrictions on communications with a subject company, public appearances, and trading securities held by a research 
+analyst account. The name of each affiliate and analyst employed by that affiliate contributing to this report, if any, follows.
+UBS AG London Branch: Artour Danilov, Bhanu Baweja, Gerry Fowler, Marc el Koussa, Shreyas Guntur, Sutanya Chedda.UBS 
+Securities India Private Ltd: Sunil Tirumalai.UBS Securities LLC: Jack Fu, Keith Parker, Maxwell Grinacoff, CFA, Sean Simonds.
+Unless otherwise indicated, please refer to the Valuation and Risk sections within the body of this report. For a complete set of 
+disclosure statements associated with the companies discussed in this report, including valuation and risk information, please contact 
+UBS Securities LLC, 11 Madison Avenue, New York, NY 10010, USA, Attention: Investment Research.
+Additional Prices: Meta Platforms, US$709.33 (16 Oct 2026); Alphabet Inc., US$336.91 (16 Oct 2026); Oracle Corporation, US
+$128.23 (16 Oct 2026); Microsoft Corp., US$529.05 (16 Oct 2026); Amazon.com, US$250.00 (16 Oct 2026); Source: UBS. All prices 
+as of local market close.
+
+Global Equity Strategy 19 October 2026
+ab 33
+UBS Global Research Disclaimer
+This document has been prepared by UBS Securities LLC, an affiliate of UBS AG. UBS AG, its subsidiaries, branches and affiliates, including former Credit Suisse 
+AG and its subsidiaries, branches and affiliates are referred to herein as "UBS".
+Any opinions in this document may change without notice and are current only as of the publication date. Different areas, groups, and personnel within UBS may 
+independently produce and distribute separate research products. For example, research publications from UBS CIO are produced by UBS Global Wealth 
+Management. UBS Global Research is produced by UBS Investment Bank. Each research organization may use different methodologies and rating systems, 
+including investment recommendations, investment horizon, model assumptions, and valuation methods. Accordingly, except for certain economic forecasts on 
+which UBS CIO and UBS Global Research may collaborate, investment recommendations, ratings, price targets, and valuations from those research organizations 
+may differ or be inconsistent. You should refer to each relevant research product for details of its methodology and rating system. Not all clients may have access 
+to all products from every organization. Each research product is subject to the policies and procedures of the organization that produces it.
+UBS Global Research is primarily intended for institutional/professional/wholesale clients, and not for retail clients or private individuals (excluding via any UBS 
+approved distribution channel for such clients), as defined under the governing law and regulation of the relevant client jurisdiction.
+This document is provided solely to recipients who are expressly authorized by UBS to receive it. If you are not so authorized you must 
+immediately destroy it. 
+UBS Global Research is provided to our clients through UBS Neo and, in certain instances, UBS.com and any other system or distribution method specifically 
+identified in one or more communications distributed through UBS Neo or UBS.com (each, a “System”) as an approved means of distributing UBS Global 
+Research. It may also be made available through third party vendors and distributed by UBS and/or third parties by e-mail or other electronic means.
+All UBS Global Research is available on UBS Neo. Please contact your UBS sales representative if you wish to discuss access to UBS Neo. Where UBS Global 
+Research refers to "UBS Evidence Lab Inside" or uses data provided by UBS Evidence Lab, and you would like access to that data, please contact your UBS sales 
+representative. UBS Evidence Lab data is available on UBS Neo. The level and types of services provided by UBS Global Research and UBS Evidence Lab to a client 
+may vary depending on factors including a client's preferences as to the frequency and manner of receiving communications, risk profile, and investment focus 
+and perspective (e.g., market wide, sector specific, long-term, short-term), the size and scope of the overall client relationship with UBS Global Research and UBS 
+Evidence Lab, and legal and regulatory constraints. UBS HOLT and UBS Pharma Values are offerings of UBS Global Research. HOLT Lens is a corporate performance 
+platform offering that provides an objective accounting-led framework for comparing and valuing companies and is available to clients of UBS Global Research; 
+for details and pricing, please contact your UBS Sales representative. In particular, HOLT has a variety of warranted prices based on the scenario chosen; if you are 
+interested in the warranted price for a particular company, please mail UBS Securities LLC, 11 Madison Avenue, New York, NY 10010, USA, Attention: Investment 
+Research, subject again to commercial considerations. UBS Pharma Values is an analytical tool involving individual product net present value calculations based on 
+published forecasts of pharmaceutical sales, and is available to clients of UBS Global Research; for details and pricing, please contact your UBS Sales 
+representative. For all other specific disclaimers, please see https://www.ubs.com/disclosures.
+When you receive UBS Global Research through a System, your access to and/or use of it is subject to this UBS Global Research Disclaimer, the UBS Neo Platform 
+Use Agreement (the "Neo Terms"), and any other relevant terms of use governing the applicable System.
+When you receive UBS Global Research via a third party vendor, e-mail or other electronic means, you agree that use shall be subject to this UBS Global Research 
+Disclaimer, the Neo Terms and where applicable the UBS Investment Bank terms of business (https://www.ubs.com/global/en/investment-bank/regulatory.html) 
+and to UBS's Terms of Use/ Disclaimer (https://www.ubs.com/global/en/legalinfo2/disclaimer.html). In addition, you consent to UBS processing your personal data 
+and using cookies in accordance with our Privacy Statement (https://www.ubs.com/global/en/legalinfo2/privacy.html) and Cookie Notice (https://www.ubs.com/
+global/en/legal/privacy/users.html).
+If you receive UBS Global Research, whether through a System or otherwise, you agree not to copy, revise, amend, create derivative works, 
+provide to any third party, or in any way commercially exploit any UBS research provided via UBS Global Research or otherwise, and not to extract 
+data from any research or estimates provided to you via UBS Global Research or otherwise, without UBS’s prior written consent. You also agree 
+not to use UBS Global Research in any artificial intelligence system without UBS’s prior written consent. 
+In certain circumstances, you may receive UBS Global Research other than in your capacity as a UBS client and, you understand and agree that in those 
+circumstances: (i) UBS Global Research is provided to you for information purposes only; (ii) for the purpose of receiving it, you are not intended to be and will not 
+be treated as a “client” of UBS for any legal or regulatory purpose; (iii) UBS Global Research must not be relied on or acted upon for any purpose; and (iv) such 
+content is subject to the relevant disclaimers that follow.
+This document may be distributed only as permitted by law. It is not directed to, or intended for distribution to or use by, any person or entity that is a citizen or 
+resident of, or located in, any locality, state, country or other jurisdiction where such distribution, publication, availability or use would be contrary to law or 
+regulation or would subject UBS to any registration or licensing requirement in that jurisdiction.
+This document is a general communication and educational in nature; it is not an advertisement, solicitation or offer to buy or sell any financial instrument or to 
+participate in any particular trading strategy. Nothing in this document constitutes a representation that any investment strategy or recommendation is suitable or 
+appropriate to an investor’s individual circumstances or otherwise constitutes a personal recommendation. By providing this document, neither UBS nor its 
+representatives has any responsibility or authority to provide, or to have provided, investment advice in a fiduciary or any other capacity. Investments involve risks, 
+and investors should exercise prudence and their own judgment in making investment decisions. Neither UBS nor its representatives is suggesting that the 
+recipient or any other person take a specific course of action, or any action at all. The recipient should read this document carefully and in full and not draw 
+inferences or conclusions from the rating alone. By receiving this document, the recipient acknowledges and agrees with the intended purpose described above 
+and further disclaims any expectation or belief that the information constitutes investment advice to the recipient or otherwise purports to meet the recipient’s 
+investment objectives. The financial instruments described in this document may not be eligible for sale in all jurisdictions or to certain categories of investors.
+Options, structured derivative products and futures (including OTC derivatives) are not suitable for all investors. Trading in these instruments is risky and may be 
+appropriate only for sophisticated investors. Before buying or selling an option, you must receive a copy of "The Characteristics and Risks of Standardized 
+Options" for a full description of options risks. You may read it at https://www.theocc.com/publications/risks/riskchap1.jsp or ask your salesperson for a copy. 
+Various theoretical explanations of the risks of these instruments have been published. Supporting documentation for any claims, comparisons, 
+recommendations, statistics or other technical data will be supplied on request. Past performance is not necessarily indicative of future results. Transaction costs 
+may be significant in option strategies involving multiple purchases and sales, such as spreads and straddles. As tax considerations are important to many options 
+transactions, investors considering options should consult their tax advisor on how taxes affect the outcome of contemplated options transactions.
+Mortgage- and asset-backed securities may involve a high degree of risk and be highly volatile in response to interest rate fluctuations or other market conditions. 
+Foreign currency exchange rates may adversely affect the value, price or income of any security or related instrument referred to in this document. For investment 
+advice, trade execution or other inquiries, clients should contact their local sales representative.
+UBS notes that no globally accepted framework or definition (legal, regulatory or otherwise) currently exists, and there is no market consensus, as to what 
+constitutes “ESG” (Environmental, Social or Governance) or an equivalent label, or what precise attributes are required for the Information (as defined below) to 
+be defined as ESG or equivalently labelled. Any information, data or other content, including from third party sources, contained or referred to herein or used by 
+UBS or a third party for any purpose (“Information”), in relation to any actual or potential ESG objective, issue or consideration, is not intended to be relied upon 
+for ESG classification, regulatory regime or industry initiative purposes (“ESG Regimes”). Nothing in this document is intended to convey, suggest or indicate that 
+UBS considers or represents any product, service, person or body mentioned in it to meet or qualify for any ESG classification, labelling or similar standards that 
+may exist under ESG Regimes. UBS has not assessed compliance with ESG Regimes. Parties should make their own assessments for these purposes.
+The value of any investment or income may go down as well as up, and investors may not get back the full (or any) amount invested. Past performance is not 
+necessarily a guide to future performance. Neither UBS nor any of its directors, employees or agents accepts liability for any loss (including investment loss) or 
+damage arising out of the use of any of the Information.
+Before making any investment or financial decision, any recipient of this document or the information should take steps to understand the investment’s risk and 
+return and seek individualized advice from their personal financial, legal, tax and other professional advisors, taking into account all relevant facts and 
+circumstances of their investment objectives.
+Any prices stated in this document are for information purposes only and do not represent valuations of individual securities or other financial instruments. There 
+is no representation that any transaction can or could have been effected at those prices. They do not necessarily reflect UBS's internal books and records or 
+theoretical model-based valuations and may be based on certain assumptions. Different assumptions by UBS or any other source may yield substantially different 
+results.
+No representation or warranty, express or implied, is given as to the accuracy, completeness or reliability of the information contained in any materials to which 
+this document relates (the "Information"), except with respect to Information concerning UBS. The Information is not intended to be a complete statement or 
+summary of the securities, markets or developments referred to in this document. UBS does not undertake to update or keep current the Information. Any 
+statements contained in this document attributed to a third party represent UBS's interpretation of data, information and/or opinions provided by that third party, 
+publicly or through a subscription service, and such use and interpretation have not been reviewed by that third party. In no circumstances may this document or 
+any Information, including any forecast, value, index or other calculated amount ("Values"), be used for: (i) valuation or accounting purposes; (ii) determining 
+
+Global Equity Strategy 19 October 2026
+ab 34
+amounts due or payable, or the price or value of any financial instrument or financial contract; or (iii) measuring the performance of any financial instrument, 
+including without limitation tracking the return or performance of any Value, defining the asset allocation of a portfolio or computing performance fees.
+By receiving this document and the Information you will be deemed to represent and warrant to UBS that you will not use this document or any of the Information 
+for any of those purposes or otherwise rely upon this document or any of the Information.
+UBS has policies and procedures, including without limitation independence policies and permanent information barriers, intended, and relied on by UBS, to 
+manage potential conflicts of interest and control the flow of information within UBS divisions and among its subsidiaries, branches and affiliates. UBS does and 
+seeks to do business with companies covered in its research documents. As a result, investors should be aware that UBS may have a conflict of interest that could 
+affect this document’s objectivity. Investors should consider this document as only one factor in making an investment decision. For further information on how 
+UBS Global Research manages conflicts and maintains the independence of its research products, historical performance information and certain additional 
+disclosures concerning UBS Global Research recommendations, please visit https://www.ubs.com/disclosures.
+UBS Global Research will initiate, update and cease coverage solely at the discretion of UBS Global Research Management, which also has sole discretion over the 
+timing and frequency of any published research product. The analysis in this document is based on numerous assumptions. All material information relating to 
+published research documents, such as valuation methodology, risk statements, underlying assumptions (including sensitivity analysis of those assumptions), 
+ratings history and other information required by the Market Abuse Regulation, can be found on UBS Neo. Different assumptions could produce materially 
+different results.
+UBS Global Research may use artificial intelligence tools in the preparation of this document. Notwithstanding any such use, this document has undergone 
+human review.
+The analyst(s) responsible for preparing this document may interact with trading desk personnel, sales personnel and other parties to gather, apply and interpret 
+market information. UBS relies on information barriers to control the flow of information from one or more areas within UBS to other areas, units, groups or 
+affiliates. Compensation of the analyst(s) who prepared this document is determined exclusively by UBS Global Research management and senior management 
+(excluding investment banking). It is not based on investment banking revenues; however, it may relate to the revenues of UBS and/or its divisions as a whole, 
+including investment banking, sales and trading, and UBS as a whole.
+For financial instruments admitted to trading on an EU regulated market: UBS (excluding UBS Securities LLC) acts as a market maker or liquidity provider (as those 
+terms are interpreted under English law or, if the activity is not carried out by UBS in the UK, under the law of the relevant jurisdiction in which UBS determines it 
+carries out the activity) in the issuer’s financial instruments, except where liquidity provider activity is carried out in accordance with the definition under the laws 
+and regulations of another EU jurisdiction, in which case it is separately disclosed in this document. For financial instruments admitted to trading on a non-EU 
+regulated market: UBS may act as a market maker, except where that activity is carried out in the US in accordance with the definition under applicable laws and 
+regulations, in which case it will be specifically disclosed in this document. UBS may have issued a warrant whose value is based on one or more financial 
+instruments referred to in this document. UBS and its affiliates and employees may have long or short positions, trade as principal, and buy and sell instruments or 
+derivatives identified herein; such transactions or positions may be inconsistent with the opinions expressed in this document.
+Within the past 12 months, UBS may have received or provided investment services and activities or ancillary services under MiFID II that may have given rise to a 
+payment or promise of payment in relation to those services from or to this company.
+Please note that all transactions conducted by UBS are consistent with sanctions imposed by Switzerland, the European Union, the United Nations, the United 
+Kingdom and the United States, in accordance with UBS’s global sanctions policy. UBS’s opinions as to future investment worthiness assume no new sanctions are 
+imposed.
+US persons are prohibited from purchasing or selling securities of certain companies designated as associated with the Chinese Military in accordance with 
+amended US Presidential Executive Order 13959.
+United Kingdom: Distributed by UBS AG, London Branch to eligible counterparties or professional clients. UBS AG, London Branch is authorised by the 
+Prudential Regulation Authority (“PRA”) and subject to regulation by the Financial Conduct Authority (FCA) and limited regulation by the PRA. Europe: Except as 
+otherwise specified, distributed by UBS Europe SE, a subsidiary of UBS AG, to eligible counterparties or professional clients (as defined under the Bundesanstalt 
+fur Finanzdienstleistungsaufsicht (“BaFin”) Rules and MIFID II) and are available only to such persons. The information in this document does not apply to, and 
+should not be relied on by, retail clients. UBS Europe SE is authorised by the European Central Bank (“ECB”) and regulated by BaFin and the ECB. Germany, 
+Luxembourg, the Netherlands, Belgium and Ireland: Where an analyst of UBS Europe SE has contributed to this document, it is also deemed to have been 
+prepared by UBS Europe SE. In all cases, it is distributed by UBS Europe SE and UBS AG, London Branch. Turkey: Distributed by UBS AG, London Branch. No 
+information in this document is provided for offering, marketing or sale by any means of any capital market instruments or services in the Republic of Turkey. 
+Therefore, this document may not be considered an offer made or to be made to residents of the Republic of Turkey. UBS AG, London Branch is not licensed by the 
+Turkish Capital Market Board under the Capital Market Law (Law No. 6362). Accordingly, neither this document nor any other offering material related to the 
+instruments/services may be used in connection with providing capital market services to persons within the Republic of Turkey without the prior approval of the 
+Capital Market Board. However, under article 15(d)(ii) of Decree No. 32, there is no restriction on the purchase or sale of securities abroad by residents of the 
+Republic of Turkey. Poland: Distributed by UBS Europe SE (spolka z ograniczona odpowiedzialnoscia) Oddzial w Polsce (“UBS Poland”). Where an analyst of UBS 
+Poland has contributed to this document, the document is also deemed to have been prepared by UBS Poland. Russia: Prepared and distributed by UBS Bank 
+(OOO). It should not be construed as an individual Investment Recommendation for the purposes of articles 6.1 and 6.2 of Russian Federal Law No. 39-FZ "On the 
+Securities Market". Switzerland: Distributed by UBS AG to institutional investors only. UBS AG is regulated by the Swiss Financial Market Supervisory Authority 
+(FINMA). Italy: Prepared by UBS Europe SE and distributed by UBS Europe SE and UBS Europe SE, Italy Branch. Where an analyst of UBS Europe SE, Italy Branch has 
+contributed to this document, it is also deemed to have been prepared by UBS Europe SE, Italy Branch. France: Prepared by UBS Europe SE and distributed by UBS 
+Europe SE and UBS Europe SE, France Branch. Where an analyst of UBS Europe SE, France Branch has contributed to this document, it is also deemed to have been 
+prepared by UBS Europe SE, France Branch. Spain: Prepared by UBS Europe SE and distributed by UBS Europe SE and UBS Europe SE, Spain Branch. Where an 
+analyst of UBS Europe SE, Spain Branch has contributed to this document, it is also deemed to have been prepared by UBS Europe SE, Spain Branch. Sweden: 
+Prepared by UBS Europe SE and distributed by UBS Europe SE and UBS Europe SE, Sweden Branch. Where an analyst of UBS Europe SE, Sweden Branch has 
+contributed to this document, it is also deemed to have been prepared by UBS Europe SE, Sweden Branch. South Africa: Distributed by UBS South Africa (Pty) 
+Limited (Registration No. 1995/011140/07), an authorised user of the JSE and an authorised Financial Services Provider (FSP 7328). Saudi Arabia: This document 
+has been issued by UBS AG (and/or any of its subsidiaries, branches or affiliates), a public company limited by shares, incorporated in Switzerland with its 
+registered offices at Aeschenvorstadt 1, CH-4051 Basel and Bahnhofstrasse 45, CH-8001 Zurich. This publication has been approved by UBS Saudi Arabia (a 
+subsidiary of UBS AG), a Saudi closed joint stock company incorporated in the Kingdom of Saudi Arabia under commercial register number 1010257812 having 
+its registered office at Tatweer Towers, P.O. Box 75724, Riyadh 11588, Kingdom of Saudi Arabia. UBS Saudi Arabia is authorized and regulated by the Capital 
+Market Authority to conduct securities business under license number 08113-37. UAE / Dubai: Information distributed by UBS AG Dubai Branch is only intended 
+for Professional Clients and/or Market Counterparties as classified under the DFSA rulebook. No other person should act on this document/communication. The 
+information is not for further distribution within the United Arab Emirates. UBS AG Dubai Branch is regulated by the DFSA in the DIFC. UBS is not licensed to 
+provide banking services in the UAE, nor by the UAE Securities and Commodities Authority. Israel: This document is distributed by UBS AG, London Branch. UBS 
+Securities Israel Ltd is a licensed Investment Marketer supervised by the Israel Securities Authority (ISA). UBS AG, London Branch and its affiliates incorporated 
+outside Israel are not licensed under the Israeli Advisory Law. UBS may engage among others in issuance of Financial Assets or distribution of Financial Assets of 
+other issuers for fees or other benefits. UBS AG, London Branch and its affiliates may prefer various Financial Assets to which they have or may have an Affiliation 
+(as defined under the Israeli Advisory Law). Nothing in this document should be considered investment advice under the Israeli Advisory Law. This document is 
+only issued to and/or directed at persons who are Eligible Clients (within the meaning of the Israeli Advisory Law), and must not be furnished to, relied on or acted 
+upon by any other person. United States: Distributed to US persons by UBS Securities LLC or UBS Financial Services Inc., subsidiaries of UBS AG, or by a group, 
+subsidiary or affiliate of UBS AG not registered as a US broker-dealer (a “non-US affiliate”) to major US institutional investors only. UBS Securities LLC or UBS 
+Financial Services Inc. accepts responsibility for the content of a report prepared by another non-US affiliate when distributed to US persons by UBS Securities LLC 
+or UBS Financial Services Inc. All transactions by a US person in the securities mentioned in this document must be effected through UBS Securities LLC or UBS 
+Financial Services Inc., and not through a non-US affiliate. UBS Securities LLC is not acting as a municipal advisor to any municipal entity or obligated person 
+within the meaning of Section 15B of the Securities Exchange Act (the “Municipal Advisor Rule”), and the opinions or views contained herein are not intended to 
+be, and do not constitute, advice within the meaning of that rule. Canada: Distributed by UBS Securities Canada Inc., a registered investment dealer in Canada 
+and a Member-Canadian Investor Protection Fund, or by another affiliate of UBS AG registered to conduct business in Canada or otherwise exempt from 
+registration. Brazil: Except as otherwise specified herein, this document is prepared by UBS BB Corretora de Câmbio, Títulos e Valores Mobiliários S.A. (“UBS BB 
+CCTVM”) for eligible investors residing in Brazil who are considered Professional Investors (Investidores Profissionais) under applicable regulation, primarily CVM 
+Resolution No. 30 of 11 May 2021 (which determines the duty to verify the suitability of products, services and transactions to the client’s profile). UBS BB CCTVM 
+is a subsidiary of UBS BB Servicos de Assessoria Financeira e Participacoes S.A. (“UBS BB”). UBS BB is an association between UBS AG and Banco do Brasil (through 
+its subsidiary BB Banco de Investimentos S.A.), of which UBS AG is the majority owner, and provides investment banking services and coverage in Brazil, 
+Argentina, Chile, Paraguay, Peru and Uruguay. UBS BB CCTVM is regulated by the Comissao de Valores Mobiliarios (CVM) and the Central Bank of Brazil. 
+Ombudsman: 0800-940-0266 / https://www.ubs.com/br/pt/ubsbb-investment-bank/ombudsman.htmlHong Kong: Distributed by UBS Securities Asia Limited. 
+Please contact local licensed persons of UBS Securities Asia Limited in respect of any matters arising from, or in connection with, the analysis or document. 
+Singapore: Distributed by UBS Securities Pte. Ltd. (Co. Reg. No.: 198500648C] or UBS AG, Singapore Branch. Please contact UBS Securities Pte. Ltd., an exempt 
+financial adviser under the Singapore Financial Advisers Act (Cap. 110), or UBS AG, Singapore Branch, an exempt financial adviser under the Singapore Financial 
+Advisers Act (Cap. 110) and a wholesale bank licensed under the Singapore Banking Act (Cap. 19) and regulated by the Monetary Authority of Singapore, 
+
+Global Equity Strategy 19 October 2026
+ab 35
+regarding any matters arising from, or in connection with, the analysis or document. Recipients of this document represent and warrant that they are accredited 
+and institutional investors as defined in the Securities and Futures Act (Cap. 289). Japan: Distributed by UBS Securities Japan Co., Ltd. to professional investors 
+(except as otherwise permitted). Where this document has been prepared by UBS Securities Japan Co., Ltd., UBS Securities Japan Co., Ltd. is the author, publisher 
+and distributor of the document. Distributed by UBS AG, Tokyo Branch to professional investors (except as otherwise permitted) in relation to foreign exchange 
+and other banking businesses, where relevant. Australia: Recipients through a superannuation fund: Distributed by UBS AG, Australia Branch (ABN 47 088 129 
+613 and holder of Australian Financial Service Licence No. 231087). For all other recipients: Distributed by UBS Securities Australia Limited (ABN 62 008 586 481 
+and holder of Australian Financial Services Licence No. 231098). This document contains general information and/or general advice only and does not constitute 
+personal financial product advice. As such, the Information in this document has been prepared without taking into account any investor’s objectives, financial 
+situation or needs, and investors should, before acting on the Information, consider the appropriateness of the Information, having regard to their objectives, 
+financial situation and needs. If the Information contained in this document relates to the acquisition, or potential acquisition of a particular financial product by 
+a ‘Retail’ client as defined by section 761G of the Corporations Act 2001 where a Product Disclosure Statement would be required, the retail client should obtain 
+and consider the Product Disclosure Statement relating to the product before making any decision about whether to acquire the product. New Zealand: 
+Distributed by UBS New Zealand Ltd. UBS New Zealand Ltd is not a registered bank in New Zealand. You are being provided with this document because you have 
+indicated to UBS that you are a “wholesale client” within the meaning of clause 4 of schedule 5 of the Financial Markets Conduct Act 2013 of New Zealand 
+(“Permitted Client”). This document is not intended for clients who are not Permitted Clients (“non-Permitted Clients”). If you are a non-Permitted Client, you 
+must not rely on this document. If, despite this warning, you nevertheless rely on it, you hereby: (i) acknowledge that you may not rely on its content and that any 
+recommendations or opinions in it are not made or provided to you; and (ii) to the maximum extent permitted by law, (a) indemnify UBS and its associates or 
+related entities (and their respective directors, officers, agents and advisors) (each a “Relevant Person”) for any loss, damage, liability or claim any of them may 
+incur or suffer as a result of, or in connection with, your unauthorised reliance on this document, and (b) waive any rights or remedies you may have against any 
+Relevant Person for any loss, damage, liability or claim you may incur or suffer as a result of, or in connection with, your unauthorised reliance on this publication 
+or document. Korea: Distributed in Korea by UBS Securities Pte. Ltd., Seoul Branch. This document may from time to time have been edited or contributed to by 
+affiliates of UBS Securities Pte. Ltd., Seoul Branch. This document is intended for professional/institutional clients only and not for distribution to any retail clients. 
+Malaysia: This document is authorized for distribution in Malaysia by UBS Securities Malaysia Sdn. Bhd (Capital Markets Services License No.: CMSL/
+A0063/2007). This document is intended for professional/institutional clients only and not for distribution to any retail clients. India: Distributed by UBS Securities 
+India Private Ltd. (Corporate Identity Number U67120MH1996PTC097299) 2/F, 3 North Avenue, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai 
+(India) 400051. Phone: +912261556000. It provides: (i) brokerage services under SEBI Registration Number: INZ000259830; (ii) Merchant Banking services under 
+SEBI Registration Number: INM000013101; and (iii) Research Analyst services under SEBI Registration Number: INH000001204. Compliance Officer: 
+Parameshwaran Shivaramakrishnan. Phone: +912261556151, Email: parameshwaran.s@ubs.com. Grievance Officer: Parameshwaran Shivaramakrishnan. 
+Phone: +912261556151. Email: ol-ubs-sec-compliance@ubs.com. Registration granted by SEBI, and certification from NISM in no way guarantee performance of 
+the intermediary or provide any assurance of returns to investors. UBS may from time to time have debt holdings or positions or financial interests (e.g., loan/
+derivative products, rights to or interests in investments) in the subject Indian company/companies. Within the past 12 months, UBS may have received 
+compensation for non-investment banking securities-related services and/or non-securities services from the subject Indian company/companies. The subject 
+company/companies may have been a client/clients of UBS during the 12 months preceding the date of distribution of the research document with respect to 
+investment banking and/or non-investment banking securities-related services and/or non-securities services. With regard to information on associates, please 
+refer to the Annual Report at: https://www.ubs.com/global/en/about_ubs/investor_relations/annualreporting.html. The Research Annual Compliance Report for 
+UBS Securities India Private Limited is available on www.ubs.com/ubssi under the Research tab. Taiwan: Except as otherwise specified herein, this document may 
+not be distributed in Taiwan. Information and materials on securities/instruments traded on a Taiwan organized exchange are deemed to be issued and distributed 
+by UBS Securities Pte. Ltd., Taipei Branch, which is licensed and regulated by the Taiwan Financial Supervisory Commission. Except for securities/instruments 
+traded in a Taiwan organized exchange, this document should not constitute a “recommendation” to clients or recipients in Taiwan for the covered companies or 
+any companies mentioned in this document. This document may not be reproduced or quoted, in whole or in part, by the press or any other person without 
+authorisation from UBS. Indonesia: This document is distributed by PT UBS Sekuritas Indonesia and delivered by its licensed employee(s), including marketing or 
+sales persons, to its client. PT UBS Sekuritas Indonesia, having its registered office at Sequis Tower Level 22 unit 22-1,Jl.Jend. Sudirman, kav.71, SCBD lot 11B, 
+Jakarta 12190. Indonesia, is a subsidiary of UBS AG and licensed under Capital Market Law no. 8 year 1995, and holds broker-dealer and underwriter licenses 
+issued by the Capital Market and Financial Institution Supervisory Agency (now Otoritas Jasa Keuangan (OJK)). PT UBS Sekuritas Indonesia is also a member of the 
+Indonesia Stock Exchange and supervised by Otoritas Jasa Keuangan (OJK). Neither this document nor any copy may be distributed in Indonesia or to any 
+Indonesian citizens except in compliance with applicable Indonesian capital market laws and regulations. This document is not an offer of securities in Indonesia 
+and may not be distributed within the territory of the Republic of Indonesia or to Indonesian citizens in circumstances constituting an offering within the meaning 
+of Indonesian capital market laws and regulations.
+The disclosures contained in research documents produced by UBS AG, London Branch or UBS Europe SE are governed by and construed in accordance with 
+English law.
+UBS specifically prohibits the redistribution of this document in whole or in part without the written permission of UBS and in any event UBS accepts no liability 
+whatsoever for any redistribution of this document or its contents or the actions of third parties in this respect. Images may depict objects or elements that are 
+protected by third party copyright, trademarks and other intellectual property rights. © UBS 2026. The key symbol and UBS are among the registered and 
+unregistered trademarks of UBS. All rights reserved.
+ab
