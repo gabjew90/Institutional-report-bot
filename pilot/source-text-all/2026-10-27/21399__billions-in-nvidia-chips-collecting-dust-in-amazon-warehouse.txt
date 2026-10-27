@@ -1,0 +1,226 @@
+ 
+Billions In Nvidia Chips Collecting Dust In Amazon 
+Warehouses As AI's "Paperweight" Problem Goes 
+Mainstream 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, OCT 21, 2026 - 03:45 AM 
+For much of the past year, we have been pounding the table on what is probably the most 
+underappreciated problem in the AI capex boom. 
+It goes like this: hyperscalers order hundreds of billions in Nvidia silicon, the chips get built, 
+shipped and delivered on schedule... and then they sit in crates, because the data center they 
+were meant for has no power, no transformers, or no roof. Until those chips are plugged in, they 
+earn nothing, they depreciate anyway, and the scarcity they leave behind keeps the price of 
+every GPU-hour that is online sky-high. In other words, a stockpile of unlit chips is the world's 
+most expensive, and very inflationary, paperweight. 
+Now we have confirmation from inside the biggest cloud of them all. 
+According to a Business Insider report based on internal Amazon documents and a recording of 
+an AWS staff meeting, Nvidia's newest GB300 racks, arriving at a clip of billions of dollars a 
+month, have been staged at "intermediary warehouses" because the AWS sites they were 
+meant for "had room for more racks but not enough available power to turn them on." Or, as we 
+summarized it last night: 
+The "Early Rack Receipt" 
+The details are worth walking through, because they show exactly how a chip shortage turns 
+into a chip glut without anyone ever cancelling an order. 
+Per BI, internal emails from August show Amazon preparing a new "Early Rack Receipt" 
+process for an expected wave of server racks carrying Nvidia's GB300 chips at US facilities. 
+One email projected that Amazon would take delivery of about $5 billion of GB300 racks in 
+August, followed by roughly $3 billion each month "for the foreseeable future." 
+ 
+
+ 
+ 
+Normally, Amazon doesn't pay for racks until the gear is actually installed in a data center, which 
+leaves the suppliers to carry the cost of equipment in transit (a very Amazonian way to conserve 
+cash). Under the new process, however, Amazon takes ownership of the racks earlier in the 
+supply chain, before they ever reach a data center. BI explains why: the scramble for Nvidia 
+GPUs is so intense that Amazon has to compete harder for scarce components, so it grabs the 
+hardware when it can, whether or not there is a socket waiting for it. 
+Translation: Amazon is now paying for chips sooner, and plugging them in later. Any delay in 
+getting racks installed and connected to reliable power "potentially pushes back the moment 
+when revenue starts flowing from these assets," as BI puts it, while the cash is already gone. 
+And it gets better: at least one AWS supply-chain team did not have "a clear forecasted path" for 
+getting racks into data centers, according to one of the emails. Amazon's spokesperson pushed 
+back, saying the company routinely stages finished hardware near deployment sites until power 
+is available and calling the practice "best business practice." Which is probably true... and also 
+exactly what you would say about $3 billion a month of very expensive inventory sitting in a 
+warehouse. 
+Bernstein, cited by BI, offered the sell-side's version of a shrug: power permits, cooling systems, 
+electrical equipment, construction and hardware all move on separate schedules, and "timing is 
+imperfect." 
+ 
+
+ 
+"Congratulations" 
+The most quotable moment, however, came from AWS CFO John Felton, who at an internal 
+September staff meeting had a joke for Prasad Kalyanaraman, the executive running much of 
+Amazon's AI infrastructure buildout: 
+"You've taken us free cash flow negative as a company, so congratulations." 
+Kalyanaraman did not argue. Amazon's machine-learning and AI business is "hugely free cash 
+flow negative," he said, and he expects the company's FCF to stay negative for "the next couple 
+of years or so." As a reminder, three months ago we reported that for the first time in years, 
+Amazon's trailing free cash flow turned decidedly negative, -$7.6 billion, when it reported Q2 in 
+July. 
+ 
+Two years ago, Wall Street was debating what Amazon should do with its cash pile; this year 
+the company is spending $220 billion in capex, and the cash pile is something people reminisce 
+about at staff meetings. 
+He also explained why the warehouses keep filling up. Amazon tries to commit capital at the 
+"last responsible moment," when it has the clearest view of demand, but the forecast "is 
+changing on a daily basis," including when data centers will be ready and how much equipment 
+AWS needs to keep on hand. An eight-week supply buffer might be routine for a smaller 
+company, he said, but at Amazon's scale it can mean holding "billions and billions of dollars" of 
+extra equipment inventory. 
+ 
+
+ 
+Some other gems from the BI piece: 
+●​ Kalyanaraman told Andy Jassy in 2023 that AWS would "surely" be out of its capacity 
+crunch by 2027. Amazon now expects demand to exceed available capacity in 2027 too. 
+●​ An internal AWS dashboard is literally called "Secured Power at Risk," tracking 
+transmission bottlenecks, curtailment requirements and "use it or lose it" clauses that 
+can cost Amazon its grid allocation if a project misses milestones. 
+●​ In West Texas there weren't enough pipefitters and electricians, so AWS is paying to 
+build housing complexes for workers who will live on site for the two or three years it 
+takes to finish the projects. 
+●​ Even the crates the servers ship in have become a material line item. "We have new 
+constraints that keep popping up," Kalyanaraman said. 
+“Per Cleanview Research, Amazon has 44 gigawatts of data center capacity under development 
+across 16 states, more than three times the 13.9 GW it operates today. And that 13.9 GW is 
+already the biggest fleet in the business: 69% more than Microsoft and roughly double Google 
+and Meta. That’s a lot of sockets that will need a lot of power before the racks in the 
+warehouses can fill them. 
+ 
+ 
+
+ 
+"A $1 Trillion Inventory Paperweight" 
+None of this will come as a surprise to regular readers. Back in June, when the debate was still 
+about whether AI capex would ever earn a return, we argued that the market was looking at the 
+wrong metric entirely: 
+Ten days later, after noting that it takes 2.5 years just to get the power transformers for a new 
+data center, we pointed out that the US grid interconnection queue alone was already more than 
+double the entire installed US power plant fleet: 
+And last month, as Oracle's Project Jupiter campus in New Mexico (built to deliver $300 billion 
+of compute to OpenAI) ground to a halt under a force majeure declaration (and looks 
+increasingly like it may never be completed), we asked the obvious follow-up question: 
+We weren't alone in suspecting it. Microsoft's Satya Nadella all but admitted it last November, 
+when he said that "the biggest issue we are now having is not a compute glut, but it's power" 
+and that Microsoft "may actually have a bunch of chips sitting in inventory that I can't plug in" 
+(we covered it here). 
+By April, half of the US data centers scheduled to start in 2026 were set to be canceled or 
+delayed, with only about 5GW of the planned 16GW actually under construction. Michael Burry 
+went further last December, calling for "pics and proof" of Nvidia GPUs being warehoused in 
+mass quantities. Back then it sounded like a conspiracy theory. Now we have Amazon's own 
+emails describing an entire process built around receiving racks before there is anywhere to put 
+them (and that's before even considering double (or triple) ordering). 
+And if Amazon, which by most accounts is the best (or among the best) data center builder on 
+the planet, can't plug its chips in on time, maybe we should ask how everyone else is doing. 
+Idle Chips, Record Rents 
+Which brings us to the part of the story that matters for everyone who doesn't own Amazon 
+stock: inflation. 
+Logic would suggest that a glut of chips in warehouses should crush the price of compute. The 
+opposite is happening, for the simple reason that a GPU in a crate produces exactly zero 
+GPU-hours. What is scarce is energized compute, and its price keeps going up. 
+Goldman's Rich Privorotsky, head of the bank's Delta-One trading desk, made precisely this 
+point in his October 16 "GS Basics" note, (available to pro subs): 
+ 
+
+ 
+"There is too much capital seeking a home relative to the available supply of investable, 
+energized compute. Repricing is a process the market will continue to go through, sometimes 
+gradually, sometimes acutely, with the potential to become systemic. The interesting 
+contradiction is that spot compute pricing remains incredibly strong. B200s, H200s, H100s, even 
+ageing A100s continue to command meaningful rental rates. Compute that should theoretically 
+be depreciating rapidly remains valuable. There is an undeniable scarcity of available compute, 
+which is structurally bullish for those who already own it." 
+His chart shows the Silicon Data B200 on-demand rental index (non-hyperscale) at $6.01 per 
+GPU-hour, within a hair of the March record of $6.11 and up 40% from January's low of $4.29: 
+ 
+Goldman's equity research sees it the same way. In upgrading CoreWeave to Buy yesterday, 
+Goldman's Gabriela Borges argued that compute pricing is "biased to the upside" over the next 
+24 months (a call HSBC promptly took apart, as we discussed in "HSBC Slams Goldman's 
+CoreWeave Bull Case" earlier today). 
+Put the two together and you have the textbook definition of an inflationary bottleneck: 
+enormous amounts of capital, labor, copper and electricity consumed upfront, with the output 
+(compute) delayed for months or years, while the price of whatever capacity is available gets bid 
+up. Every AI lab, enterprise and startup that rents GPUs pays that scarcity premium, and passes 
+it on. 
+The chips sitting in Amazon's staging warehouses were supposed to be the supply response 
+that brings those rental rates down. Instead they're collecting dust! 
+ 
+
+ 
+Revisiting Amazon's $8 Billion "Asset-Light" Chip Sale 
+Which also casts a rather different light on a story from three weeks ago. 
+On October 2, the FT reported that Amazon was seeking to offload about $8 billion of Nvidia 
+Grace Blackwell chips to outside investors through a special-purpose vehicle. Amazon would 
+then lease the chips back from the SPV, which would raise money through debt (expected to get 
+an investment-grade rating off Amazon's AA), with up to 10% of the equity sold as well, so that 
+Amazon "will not own any stakes in the entity." The stated goal: a more "asset-light" balance 
+sheet. 
+At the time we focused on the obvious angle: 
+Later that day we followed up with "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI 
+Circularity "Undeniably Increasing"", adding the Amazon deal to our running tally of hyperscaler, 
+Nvidia and Broadcom off-balance sheet commitments, which by then had hit $3.1 trillion (up 
+$1.3 trillion in three months). Sell the chips, rent them back, call it "asset-light." 
+But with the BI report in hand, the sale looks like it may have been about a lot more than 
+accounting optics. Consider the timeline: 
+●​ August: Amazon rolls out "Early Rack Receipt," slated to take title to ~
+3 billion a month after that, some of which have 
+5𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑜𝑓𝐺𝐵300𝑟𝑎𝑐𝑘𝑠𝑡ℎ𝑎𝑡𝑚𝑜𝑛𝑡ℎ𝑎𝑛𝑑~
+no powered data center to go into. 
+●​ September: The AWS CFO "congratulates" the infrastructure chief for taking Amazon 
+FCF negative. 
+●​ October 2: Amazon is reported to be shopping $8 billion of Nvidia chips to outside 
+investors. 
+Five plus three is, coincidentally, exactly eight: the projected August and September GB300 
+deliveries add up to the precise size of the SPV. Now, to be fair, the FT's sources said the chips 
+in the deal have been "deployed" in more than a dozen US data centers across five states, and 
+the report doesn't say whether they are GB200s or the newer GB300s. So maybe it's just a 
+coincidence. But it is a very convenient one: a company that started taking ownership of billions 
+in racks it couldn't power, and whose cash flow just turned negative, went looking for someone 
+else to own (and finance) $8 billion of Nvidia silicon within weeks. 
+And whoever buys into that SPV is buying a depreciating asset. The FT notes Grace Blackwell 
+"will soon be superseded" by Nvidia's Vera Rubin, while Amazon's filings assume each chip 
+generation lasts at least five years. Every month a rack sits in a warehouse is a month of that 
+five-year economic life burned without a single dollar of revenue (even if the accountants don't 
+ 
+
+ 
+start the depreciation clock until it's plugged in). Then again, when your July $25 billion bond 
+deal already ran into weaker demand for long-dated paper, as the FT also notes, selling chips to 
+insurers and pension funds via an IG-rated SPV is probably the path of least resistance. 
+Past The "Last Responsible Moment" 
+Kalyanaraman's own philosophy, as recorded by BI, is that "if we can wait to spend the capital 
+as late as possible, it's better for us." The AI arms race has flipped that on its head: Amazon is 
+now spending as early as possible, on chips it can't use, just to make sure a competitor doesn't 
+get them first (where they are likely to also sit unused). Multiply that by every hyperscaler and 
+neocloud fighting for the same Nvidia allocation, and you get a warehouse problem measured in 
+the tens of billions, most likely parked in "construction in progress," where, as we explained in 
+"The Teaser Period", it doesn't even start depreciating until it is placed in service. Out of sight, 
+and out of the income statement... for now. 
+Our take: the glut gets bigger before it gets smaller. Much bigger. Nvidia keeps shipping, the "for 
+the foreseeable future" $3 billion a month keeps arriving, and the bottleneck is still power, which 
+no SPV can finance into existence on a 2.5-year transformer backlog. That is why we keep 
+saying "behind the meter" generation has to become mandatory (think modular reactors, gas 
+turbines, and batteries). And since all of this is increasingly financed with debt (as we have been 
+warning since last October), every month a chip sits unplugged is a month of interest paid on an 
+asset that earns nothing. In the meantime, the paperweights keep compute scarce, rental rates 
+keep climbing, and the bill shows up in everyone's cost base. As for the capital markets, they 
+have already started voting on the companies building the warehouses' worth of capacity with 
+borrowed money: 
+ 
+
+ 
+ 
+Amazon is (for now) a very long way from that list. But if the best data center builder in the world 
+needs warehouses, early rack receipts and an $8 billion SPV to keep the conveyor belt moving, 
+we'd hate to see what's sitting in the crates of the neoclouds that rely on 15% bonds to pay for 
+theirs. 
+Much more in the full Goldman Delta One's "GS Basics" note and CoreWeave upgrade note, 
+both available to pro subs. 
+ 
+ 
+ 
+ 
