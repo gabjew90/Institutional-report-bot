@@ -1,0 +1,672 @@
+{
+ "brief": "The SOX underperformed the S&P500 by 13% over the last 9 sessions, its worst stretch in 20+ years, amid an AI-driven de-grossing day; NDX lagged its equal-weight version by ~138bps, a bottom-5 day in 10+ years. US 10YR yields fell ~15bps, its largest one-day move since August 2025, as the AI selloff forces a growth reassessment; GS says equity weakness is easing the rates problem. GS Prime Brokerage shows Fundamental L/S, Systematics and Multi-Strats all down over 1%, the first time since Covid, and the HF Positioning Pair basket fell ~4.2%, its worst move since 2011 and down 10.4% MTD. The AI basket is down 23% from June highs; High Beta Momentum has erased its YTD gains; SPX ex-AI has outperformed by 6% MTD. Flows showed little rotation into defensives, with Asset Managers and Hedge Funds net sellers of large-cap tech and semis. Separately, GS Credit expects spreads to overshoot its prior downside-case peaks (93bp IG, 335bp HY) amid the AI financing wave, alongside record M&A debt issuance and rate-delayed PE sponsor exits. GS reiterates Nvidia Buy post-GTC Berlin, flags Spotify's Q3 subscriber/ad strength, and notes Deckers' sales miss despite a tariff-aided EPS beat and lowered HOKA/UGG guidance.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "The SOX underperformed the S&P500 by 13% over the last 9 sessions, the biggest stretch of underperformance in more than 20 years.",
+   "anchor": "underperformed the S&P500 by 13% over the last 9 sessions (e.g. since Mon 12/10)",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "The NDX lagged the NDX equal-weight index by about 138 basis points, a bottom-5 day in more than 10 years.",
+   "anchor": "the NDX lagged the NDX equalweight by ~138 bps, a bottom 5 day in more than 10 years",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman expects credit spreads to overshoot its prior downside-case peaks of 93bp for IG and 335bp for HY as it approaches those levels.",
+   "anchor": "scenario (93bp for IG, 335bp for HY). We are quickly approaching those levels, however, and now expect",
+   "topic": "AI capital cost repricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Strategic M&A is tracking at year-to-date records in both North America and Europe, led by Technology and Financials.",
+   "anchor": "been the strong pace of strategic M&A, which is tracking at year-to-date records in both North America",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman expects EUR M&A-related debt supply to rise from a low base given the strength of announced European deal activity.",
+   "anchor": "supply to rise from a low base, given the strength of announced European deal activity.",
+   "topic": "AI capital cost repricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Sponsor-related (private equity) M&A transactions have remained muted, constrained by the valuation headwind from higher rates.",
+   "anchor": "transactions have remained more muted, constrained in part by the valuation headwind from higher rates,",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "The exit-activity delay from higher rates is most pressing for 2020-2021 vintage private equity sponsors, formed before AI-related business disruption risk could be underwritten.",
+   "anchor": "has delayed exit activity from private equity sponsors. This remains most pressing for the 2020-",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Nvidia's hyperscaler and neocloud customers are realizing strong unit economics from today's datacenter deployments.",
+   "anchor": "and neoclouds - are realizing strong unit economics from today's datacenter deployments, and the",
+   "topic": "Nvidia GTC Berlin takeaways",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Nvidia's 1HFY27 physical AI revenue of $11B is already well ahead of all of FY26, per Goldman.",
+   "anchor": "diversify its revenue stream toward physical AI - with its 1HFY27 revenue of $11B well ahead of all of",
+   "topic": "Nvidia GTC Berlin takeaways",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1HFY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman maintains its Buy rating on Nvidia, citing a positive catalyst path for the stock.",
+   "anchor": "We maintain our Buy rating as we continue to see a positive catalyst path for the stock, including",
+   "topic": "Nvidia GTC Berlin takeaways",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Nvidia has authorized approximately $235bn in stock buybacks as part of its capital returns program, per Goldman.",
+   "anchor": "strong capital returns (~$235bn in buybacks authorized).",
+   "topic": "Nvidia GTC Berlin takeaways",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Spotify's premium subscriber growth is strong in both the reported quarter and management's forward framing of Q4, with a wider array of geographies increasingly driving it.",
+   "anchor": "strong (both in the reported quarter and mgmt\u2019s forward framing of Q4) with a wider array of geographies",
+   "topic": "Spotify Q3 earnings takeaways",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Spotify's advertising trends in Q3'26 are progressing toward double-digit percentage revenue growth.",
+   "anchor": "progression of advertising trends in Q3'26 towards DD% revenue growth and the implied momentum (not",
+   "topic": "Spotify Q3 earnings takeaways",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Spotify management's margin commentary aligns with the expectation that AI, cloud and product investments are transient rather than permanent.",
+   "anchor": "margin commentary which aligns with mgmt's expectation that AI/cloud/product investments are transient",
+   "topic": "Spotify Q3 earnings takeaways",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's conviction has increased that 2027 will be another period of gross and operating margin progression for Spotify.",
+   "anchor": "conviction level that next year will be another period of gross and operating margin progression; 4)",
+   "topic": "Spotify Q3 earnings takeaways",
+   "status": "forecast",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Spotify's capital returns were a positive in the reported quarter and will continue to be part of management's shareholder value opportunities.",
+   "anchor": "investor fear around disintermediation risk; & 5) capital returns were a positive in the reported quarter and",
+   "topic": "Spotify Q3 earnings takeaways",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Deckers' F2Q EPS of $2.31 included a $0.28 IEEPA tariff-refund benefit.",
+   "anchor": "for both HOKA and UGG. EPS of $2.31 included a $0.28 IEEPA tariff-refund benefit; ex the benefit, EPS",
+   "topic": "Deckers F2Q earnings miss",
+   "status": "released",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "F2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Deckers' F2Q EPS excluding the tariff-refund benefit was $2.03, above GS/FactSet consensus of $1.77 to $1.80.",
+   "anchor": "of $2.03 was above GS/FactSet consensus at $1.77/$1.80. Management pointed to two drivers of the sales",
+   "topic": "Deckers F2Q earnings miss",
+   "status": "released",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "A ~$22mn EMEA third-party-logistics shipment delay weighed on Deckers' F2Q revenue.",
+   "anchor": "miss: (1) A ~$22mn EMEA 3PL shipment delay which weighed on revenue; and (2) A slower rate of",
+   "topic": "Deckers F2Q earnings miss",
+   "status": "released",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "F2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Deckers management lowered its FY sales outlook for both the HOKA and UGG brands after weaker-than-expected F2Q sales.",
+   "anchor": "marked by weaker-than-expected sales across both brands and management lowered its FY sales outlook",
+   "topic": "Deckers F2Q earnings miss",
+   "status": "released",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman sees Deckers' F2Q result as a disappointing update, indicating that pressure in the US footwear market is weighing on its growth momentum.",
+   "anchor": "partners. We see this as a disappointing update: today's result indicates that the pressure in the US",
+   "topic": "Deckers F2Q earnings miss",
+   "status": "released",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Deckers guided HOKA brand growth to be weak in the near term, with management calling for a reacceleration weighted to 4Q and FY28.",
+   "anchor": "guided to be weak in the near-term for the HOKA brand, and management is calling for a 4Q- and FY28-",
+   "topic": "Deckers F2Q earnings miss",
+   "status": "forecast",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "US 10YR yields fell 15bps to 4.97% today, the largest one-day move of the year.",
+   "anchor": "Risk assets under pressure today with acute focus on rates (US 10YR -15bps to 4.97%, largest 1 day move",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Oil is pushing back to year-to-date highs amid escalating tensions in the Middle East.",
+   "anchor": "of the year), Oil pushing back to YTD highs amid escalating tensions in the Middle East, and micro",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "META, TSLA, LRCX and IBM failed to give the market enough to produce moves higher today.",
+   "anchor": "(META, TSLA, LRCX, and IBM) failing to give the market enough to produce moves higher. A few",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [
+    "META",
+    "TSLA",
+    "LRCX",
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman Sachs Prime Brokerage data show Fundamental L/S down 1.1% and Systematics down 1.2% at midday.",
+   "anchor": "1. Performance: As of midday today, GS PB had Fundamental L/S down 1.1%, Systematics down 1.2%,",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Multi-Strats were down 1.4%, marking the first time since Covid that all three Prime Brokerage strategy groups were down more than 1% on the same day.",
+   "anchor": "and Multi-Strats down 1.4%. This marked the first time since Covid that all three strategies were down",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's HF Positioning Pair basket (GSTHVIPP) finished down approximately 4.2% today.",
+   "anchor": "Our HF Positioning Pair (GSTHVIPP) finished down ~4.2%, its worst",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "The HF Positioning Pair basket's move was its worst since 2011, and it is now down 10.4% month-to-date.",
+   "anchor": "move since 2011, and is now down 10.4% MTD.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "MTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "US 10YR yields finished lower by about 15bps today, the largest one-day move since August 2025.",
+   "anchor": "2. Rates: US 10YR yields finished lower by ~15bps, the largest one-day move since August 2025, as the",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's Privo said the correlation between the NDX and US 10YR yields continues to stand out.",
+   "anchor": "between NDX and US 10YR yields continues to stand out. As Privo put it this morning,",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's Privo said the equity weakness is helping solve the rates problem.",
+   "anchor": "creating the equity problem is helping solve the rates problem.\" The 10YR closed below the CTA short",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "The 10YR closing below the CTA short-term threshold should bring out more bond demand in tomorrow morning's flow estimates, per Goldman.",
+   "anchor": "term threshold, a level that should bring out more bond demand in tomorrow morning\u2019s flow estimates.",
+   "topic": "hedge fund de-grossing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's AI basket (GSTMTAIP) is now down 23% from its June highs, a similar drawdown to the one seen before it bounced in July.",
+   "anchor": "(GSTMTAIP) is now down 23% from its June highs, a similar drawdown we saw before bouncing in July.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's High Beta Momentum basket (GSPRHIMO) has erased all of its year-to-date gains, driven by its AI-correlated long leg.",
+   "anchor": "High Beta Momentum (GSPRHIMO) has erased all of its YTD gains, driven by the AI correlated long leg.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman notes that historically, similar momentum drawdowns have been attractive entry points.",
+   "anchor": "Historically, similar momentum drawdowns have been attractive entry points. SPX ex. AI (SPXXAI) has",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's SPX ex-AI basket (SPXXAI) has outperformed the S&P by 6% month-to-date and is quickly closing its performance gap.",
+   "anchor": "outperformed the S&P by 6% MTD and is quickly closing its performance gap (reminder that 45% of SPX",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "MTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's flow desk saw zero signs of offense being played around the AI theme on its pad today.",
+   "anchor": "4. Flows: Zero signs of offense being played around the AI theme on our pad today. While we saw",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman saw very little rotation into defensive sectors today despite moves higher in Consumer, Utilities and pockets of Financials.",
+   "anchor": "very little of that today despite the moves higher in Consumer, Utilities, and pockets of Financials. Our",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's trading floor finished 9.6% better for sale today.",
+   "anchor": "floor finished 9.6% better for sale.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Asset Managers finished about 20% better for sale today, driven by supply in large-cap tech and ETFs.",
+   "anchor": "Asset Managers finished ~20% better for sale driven by supply in large",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Hedge Funds finished about 10% better for sale today, driven by supply in semis and hardware.",
+   "anchor": "cap tech and ETFs. Hedge Funds finished 10% better for sale driven by supply in in semis and hardware",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Hedge Fund selling included an uptick in ETF shorting, with shorts outpacing long sales by 2:1.",
+   "anchor": "(long sales = short sales) as well as an uptick in ETF shorting (shorts outpacing long sales by 2:1).",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman's trading floor rated overall activity levels a 5 on a 1-10 scale today.",
+   "anchor": "Overall, our floor was a 5 on a 1-10 scale in terms of activity levels.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "155 names in the S&P had moves of at least 2.0 standard deviations, the highest count since the May 2025 US-China tariff truce.",
+   "anchor": "5. Dispersion: Beneath the surface, there was significant dispersion, with 155 names in the S&P having",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "335 names in the S&P finished higher on the day, one of the widest spreads between S&P breadth and index performance since the 1990s.",
+   "anchor": "higher on the day (one of the widest spreads between S&P breadth and index performance going back to",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman - Dunn - GS US Daily Download - 23 Oct 2026",
+   "claim": "Goldman forecasts University of Michigan consumer sentiment's October final reading at 46.0, below the 46.3 consensus.",
+   "anchor": "15:00 UKT University of Michigan consumer sentiment, October final (GS 46.0, consensus 46.3, last",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October final"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-27/21699__goldman-dunn-gs-us-daily-download-23-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 47,
+  "matched": 47,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
