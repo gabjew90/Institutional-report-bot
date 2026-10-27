@@ -1286,3 +1286,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — RECAP line "Airlines reported fewer passengers in the third quarter as fuel costs pushed fares higher" has no match in the dump. Unverifiable, not proven wrong.
 - **observation** — No STEP 7 self-review file for today in `qc-reviews/` (last is 10-22).
 - **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
+
+## 2026-10-27
+- **deterministic-fixable** — Stale context again: frontmatter `dumped_at_utc 2026-10-23T15:24Z`, `pdf_count 93`, RECAP is Friday 10-23's tape, and the body is a near copy of 10-26's. Gate on `context.today == run date` and dump age before DRAFT, fail loudly or rebuild. Repeat of the 10-26 finding. The repo's `latest.json` shows 349 notes dated 10-27 and `no_new_research: false`, so the light-day gate is likely wrong too.
+- **deterministic-fixable** — WATCH omits the FOMC decision on 10-28 14:00 EDT (est 4.0%), plus statement and 14:30 press conference. All are in the fallback calendar as impact=high. Fourth day running. Add the FOMC date from `world_context` to the fallback and ping ops about the Finnhub outage.
+- **deterministic-fixable** — Lint `top-3-theme-missing` / `discovered-theme-missing` fire on light editions (5 soft issues). Skip them on `body_source: light`.
+- **prompt-session** — TRADE BOARD on a light day re-posts undated desk calls identical to 10-26 (and a fund manager's letter, One River GOOGL). Date the lines, restrict to desk sources, or drop the board on light days.
+- **observation** — Sixth consecutive light edition. The corpus holds a live AI infrastructure theme (36 banks / 73 PDFs, 8 HIGH-conviction stances) that the pulse never mentions. Check Dropbox ingestion and the light-day gate.
+- **observation** — No STEP 7 self-review for today in `qc-reviews/`. Series gaps persist: no adversarial verdict for 10-12 and 10-14.
+- **observation** — RECAP airline passengers sentence not traced to a source note (unverified, carried from 10-26).

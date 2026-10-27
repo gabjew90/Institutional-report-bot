@@ -879,3 +879,6 @@ no findings (0 FAIL). Two CONCERNs for session material:
 ## 2026-10-25
 
 no findings (1 interaction, graded CONCERN on format and depth only: 88-word answer to a Quick definitional question)
+
+## 2026-10-26
+no findings (0 FAIL). Watch item: Tesla-news answer (13:49) carried an unverified Barclays Overweight/$450 claim; and 5 /ask calls failed after 17:18 UTC with `API key not valid` (INFRA, ops).
