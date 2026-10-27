@@ -1,0 +1,449 @@
+{
+ "brief": "Goldman's mid-day US equities color for Oct 23 frames today's session as reversion from yesterday's violent de-grossing event: GS calls 10/22 the 5th largest de-grossing event of the year at -1.6 standard deviations, driven entirely by long selling (the largest since September 2025) across 9 of 11 sectors, with info tech seeing the largest net selling since September 2024 from both long selling and short additions. Today the momentum pair, the HF positioning pair, the AI basket and the Nasdaq-100 are all bouncing off yesterday's losses, but breadth is deteriorating (over 70% of the S&P 500 is in the red) and Brent crude is surging above $117/bbl on Middle East tensions. The desk's own franchise flows, long-onlys and hedge funds all remain net sellers today. Looking ahead, GS flags CTAs as projected sellers in every tape scenario next week, against a backdrop of heavy event risk: 44% of the S&P reports earnings, including GOOGL, MSFT and AMZN, alongside the Fed's rate decision on Wednesday.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Over 70% of the S&P 500's constituents were trading down on the day, a reversal from yesterday's breadth.",
+   "anchor": "Breadth is flipping vs yesterday with now over 70% of the SPX sitting in the red.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Brent crude surged above $117/bbl on increased tensions in the Middle East.",
+   "anchor": "Oil is not helping the equation with brent surging above $117/bbl off the back of increased tensions in the Middle East.",
+   "topic": "oil geopolitical risk premium",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "GS's momentum basket (GSPRHIMO Index) rose 2.4% today, bouncing after closing down 8% yesterday and erasing its year-to-date gains.",
+   "anchor": "Momentum (GSPRHIMO Index + 2.4%) is bouncing after closing -8% yesterday, erasing YTD gains.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "GS's hedge fund positioning pair (GSTHVIPP Index) rose 38bps today, reverting after its worst move since 2011 when it closed down 4.2% yesterday.",
+   "anchor": "Our HF positioning pair is also reverting (GSTHVIPP Index +38bps) after having its worst move since 2011, closing -4.2% yesterday.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "The Nasdaq-100 is recovering, trading up 30bps after its worst day since mid-June.",
+   "anchor": "The NDX is recovering after its worst day since mid-June, trading +30bps.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "GS's AI basket (GSTMTAIP Index) is trading up 45bps today after finishing down 6% yesterday and is now down 23% from its June highs.",
+   "anchor": "Our AI basket is trading +45bps (GSTMTAIP Index) after finishing -6% yesterday, down 23% from June highs.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "TNGX fell 12.9% after a Phase 1/2 study readout for vopimetostat at EMSO, with heavy multi-player trading volume in the name.",
+   "anchor": "TNGX -12.9% after Phase 1/2 study released of Vopimetostath at EMSO, the desk has been extremely active in this name trading 7fig volume",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TNGX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "INFY fell 4.9% following cuts to its FY revenue guidance, citing softer volumes.",
+   "anchor": "INFY -4.9% following cuts to FY Revs guidance and citing softer volumes.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INFY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "BE fell 11.9% despite a strong headline results print.",
+   "anchor": "BE -11.9% and FIX -7.8% following a strong headline results.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "FIX fell 7.8% despite a strong headline results print.",
+   "anchor": "BE -11.9% and FIX -7.8% following a strong headline results.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FIX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "CCI rose 9.2% as towers stood out in the green following headlines that SpaceX secured 80,000 cell sites.",
+   "anchor": "Towers (CCI +9.2% / SBAC +1.8% / AMT+ 2.6%) stand out in the green following SPCX headlines to secure 80k cell sites.",
+   "topic": "SpaceX wireless tower deal",
+   "status": "released",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "SBAC rose 1.8% as towers stood out in the green following headlines that SpaceX secured 80,000 cell sites.",
+   "anchor": "Towers (CCI +9.2% / SBAC +1.8% / AMT+ 2.6%) stand out in the green following SPCX headlines to secure 80k cell sites.",
+   "topic": "SpaceX wireless tower deal",
+   "status": "released",
+   "instruments": [
+    "SBAC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "AMT rose 2.6% as towers stood out in the green following headlines that SpaceX secured 80,000 cell sites.",
+   "anchor": "Towers (CCI +9.2% / SBAC +1.8% / AMT+ 2.6%) stand out in the green following SPCX headlines to secure 80k cell sites.",
+   "topic": "SpaceX wireless tower deal",
+   "status": "released",
+   "instruments": [
+    "AMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "44% of the S&P 500 is slated to report earnings next week.",
+   "anchor": "Earnings will be in focus next week as 44% of the S&P is slated to report.",
+   "topic": "next week event risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "GOOGL is scheduled to report earnings on Wednesday, October 28.",
+   "anchor": "we will get 3 additional Mag7 prints next week with GOOGL and MSFT on Wednesday (10/28) and AMZN on Thursday (10/29).",
+   "topic": "next week event risk",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "MSFT is scheduled to report earnings on Wednesday, October 28.",
+   "anchor": "we will get 3 additional Mag7 prints next week with GOOGL and MSFT on Wednesday (10/28) and AMZN on Thursday (10/29).",
+   "topic": "next week event risk",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "AMZN is scheduled to report earnings on Thursday, October 29.",
+   "anchor": "we will get 3 additional Mag7 prints next week with GOOGL and MSFT on Wednesday (10/28) and AMZN on Thursday (10/29).",
+   "topic": "next week event risk",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "The Fed's rate decision on Wednesday, October 28 is a key focus for markets next week.",
+   "anchor": "all eyes are focused on the Fed's rate decision on Wednesday 10/28.",
+   "topic": "next week event risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Trading volumes today are muted, tracking 12% below the 5-day moving average.",
+   "anchor": "volumes are muted today tracking -12% vs 5dma.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "ETF volumes are elevated at 34% of the tape, up 4% versus the 20-day moving average.",
+   "anchor": "ETF volumes are elevated at 34% of the tape, up 4% vs the 20dma.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Liquidity is challenged today, with top-of-book depth down 17% versus the 5-day moving average.",
+   "anchor": "Liquidity is challenged with Top of Book -17% vs 5dma.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "CTAs are projected to sell $15bn out of the US over the next week if the tape is flat.",
+   "anchor": "CTAs who are sellers in all scenarios over the next week, selling $15bn in a flat tape",
+   "topic": "hedge fund de-grossing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "CTAs are projected to sell $2.3bn out of the US over the next week even if the tape is up.",
+   "anchor": "selling $15bn in a flat tape, $2.3bn in an up tape",
+   "topic": "hedge fund de-grossing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "CTAs are projected to sell $20.6bn out of the US over the next week if the tape is down.",
+   "anchor": "$2.3bn in an up tape, and $20.6bn in a down tape out of the US",
+   "topic": "hedge fund de-grossing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "GS's overall franchise flows are currently a 4 out of 10 in activity and skewed 2% better for sale.",
+   "anchor": "We are currently a 4 out of 10 in terms of overall activity levels and overall franchise flows are skewed 2% better for sale.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Long-only clients are skewed 4.5% better for sale today, with supply in real estate, industrials and utilities.",
+   "anchor": "LOs are skewed 4.5% better for sale with supply in real estate, industrials, and utilities.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Hedge fund clients are skewed 2.5% better for sale today, with supply in consumer discretionary, consumer staples and energy.",
+   "anchor": "HFs are skewed 2.5% better for sale with supply in consumer discretionary, consumer staples, and energy.",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Yesterday's de-grossing event was the 5th largest of the year, at -1.6 standard deviations.",
+   "anchor": "Yesterday (10/22) was the 5th largest de-grossing event of this year at -1.6 SD",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Yesterday's de-grossing event was driven entirely by long selling, the largest long selling since September 2025.",
+   "anchor": "was driven entirely by long selling, the largest long selling since September 2025",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "9 of 11 sectors saw position unwinds in yesterday's de-grossing event, with info tech seeing long selling plus short additions.",
+   "anchor": "9 of 11 sectors saw unwinds, with info tech specifically seeing long selling in addition to short additions",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color 23 Oct 2026",
+   "claim": "Info tech saw the largest net selling of any sector since September 2024 in yesterday's de-grossing event, from both long selling and short additions.",
+   "anchor": "info tech specifically seeing long selling in addition to short additions, the largest net selling in this sector since September 2024",
+   "topic": "hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-27/21984__gs-equities-mid-day-color-us-equities-mid-day-color-23-oct-2.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
