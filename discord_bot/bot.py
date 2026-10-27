@@ -5335,7 +5335,9 @@ async def _ask_02_call_model_with_tools(
     )
     _ask_est_total = _ask_est_per_round * (_CHAT_SEARCH_MAX_ROUNDS + 1)
     try:
-        get_budget().reserve_or_raise(
+        # /ask's own pool: PDF analysis can no longer lock the room out
+        # (2026-10-27, ai_analysis/token_budget.py POOLS)
+        get_budget("ask").reserve_or_raise(
             estimated_tokens=_ask_est_total,
             caller=f"ask:{(question or '')[:60]}",
         )
@@ -9129,7 +9131,7 @@ async def _ask_10_log_and_render(
     # slur-mask). Moved here 2026-06-10; previously ran before the
     # retries, leaving their usage unmeasured.
     try:
-        get_budget().record_actual(
+        get_budget("ask").record_actual(
             estimated=_ask_est_total,
             actual=_ask_actual_total,
             caller=f"ask:{(question or '')[:60]}",

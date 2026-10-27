@@ -3572,3 +3572,7 @@ Run 6 found the same cause under five shapes: the model, handed the data, listed
 ## 2026-10-27: figure provenance on grounded answers (shadow)
 
 The figure check skipped every web-grounded answer because search results carry only a title and a link. Google's grounding does return `grounding_supports`: the answer passages each result backs (probe on the worker: every MU figure bullet was marked). `figure_provenance.supported_text` reads them, every tool-loop round keeps its passages in `_ask_meta["grounded_passages"]`, and phase 7 adds them to the evidence for a grounded answer. Grounded answers run in shadow while `bot._FP_GROUNDED_LIVE` is False: the guard `figure-provenance:grounded-shadow:<action>[:<lines>:<tokens>]` and a log line record what would be stripped, and the answer is unchanged. Next: review a few days of shadow guards in the audit, then flip the flag (or tune) and retire the per-shape `unforced-*` validators the check makes redundant.
+
+## 2026-10-27: /ask gets its own token budget pool
+
+Dropbox delivered a week of backlog (1,270 PDFs, 16:17-17:09 UTC) after nothing since Oct 19. PDF triage and deep analysis used the whole shared 4M daily token budget by 20:06 UTC, 426 PDFs failed on it, and every /ask after that was refused with "Daily token budget reached". `ai_analysis/token_budget.get_budget(pool)` now keeps one counter per pool: "default" for PDF analysis, "ask" for /ask (`GEMINI_ASK_DAILY_TOKEN_BUDGET`, 4M default). The counters live in process memory, so this deploy also resets the PDF pool for the rest of the UTC day.

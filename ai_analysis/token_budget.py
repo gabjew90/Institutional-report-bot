@@ -60,6 +60,13 @@ The budget is configurable via env var `GEMINI_DAILY_TOKEN_BUDGET`
 generous enough for normal operation while still blocking a 400-page
 PDF runaway).
 
+POOLS (2026-10-27). /ask has its own pool, `get_budget("ask")`, sized by
+`GEMINI_ASK_DAILY_TOKEN_BUDGET` (same 4M default). Until then PDF analysis
+and /ask shared one counter: Dropbox delivered a week of backlog (1,270
+PDFs) at once, PDF triage and deep analysis used the whole 4M by 1:06 PM
+PT, and every /ask after that was refused until UTC midnight. A pool's
+spend never blocks another pool.
+
 HARD-STOP RULE
 ==============
 At 100% of budget: `reserve_or_raise` raises BudgetExceeded.
@@ -93,15 +100,16 @@ class TokenBudget:
 
     DEFAULT_BUDGET = 4_000_000  # tokens/day (~$1.60 at Flash Lite input)
 
-    def __init__(self, daily_budget: int | None = None):
-        env_budget = os.environ.get("GEMINI_DAILY_TOKEN_BUDGET")
+    def __init__(self, daily_budget: int | None = None,
+                 env_var: str = "GEMINI_DAILY_TOKEN_BUDGET"):
+        env_budget = os.environ.get(env_var)
         if daily_budget is None:
             if env_budget:
                 try:
                     daily_budget = int(env_budget)
                 except ValueError:
                     log.warning(
-                        f"Invalid GEMINI_DAILY_TOKEN_BUDGET={env_budget!r}; "
+                        f"Invalid {env_var}={env_budget!r}; "
                         f"falling back to {self.DEFAULT_BUDGET}"
                     )
                     daily_budget = self.DEFAULT_BUDGET
@@ -257,22 +265,26 @@ class TokenBudget:
             log.warning(f"token_budget pipeline_event write failed: {e}")
 
 
-# Singleton instance — every caller in the process shares state.
-_singleton: Optional[TokenBudget] = None
+# One instance per pool; every caller of a pool in the process shares it.
+_POOL_ENV = {"default": "GEMINI_DAILY_TOKEN_BUDGET", "ask": "GEMINI_ASK_DAILY_TOKEN_BUDGET"}
+_pools: dict[str, TokenBudget] = {}
 _singleton_lock = threading.Lock()
 
 
-def get_budget() -> TokenBudget:
-    global _singleton
-    if _singleton is None:
+def get_budget(pool: str = "default") -> TokenBudget:
+    """The counter for `pool`: "default" (PDF analysis) or "ask"."""
+    if pool not in _POOL_ENV:
+        raise ValueError(f"unknown token budget pool {pool!r}")
+    b = _pools.get(pool)
+    if b is None:
         with _singleton_lock:
-            if _singleton is None:
-                _singleton = TokenBudget()
-    return _singleton
+            b = _pools.get(pool)
+            if b is None:
+                b = _pools[pool] = TokenBudget(env_var=_POOL_ENV[pool])
+    return b
 
 
 def reset_for_tests() -> None:
-    """Test-only: wipe the singleton so each test gets a fresh budget."""
-    global _singleton
+    """Test-only: wipe every pool so each test gets a fresh budget."""
     with _singleton_lock:
-        _singleton = None
+        _pools.clear()

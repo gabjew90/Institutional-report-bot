@@ -308,7 +308,7 @@ def test_token_reconciliation_after_retries():
         f"voice-strip, slur-mask), got {n_tallies - 1} call sites"
     )
     # record_actual must come AFTER the retry blocks (after slur-mask)
-    reconcile_idx = src.find("get_budget().record_actual")
+    reconcile_idx = src.find('get_budget("ask").record_actual')
     mask_retry_idx = src.find("masked_resp = await client.aio.models.generate_content")
     assert reconcile_idx > mask_retry_idx > 0, (
         "record_actual must run AFTER the slur-mask retry so retry "
