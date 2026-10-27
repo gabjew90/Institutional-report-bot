@@ -1,0 +1,1361 @@
+Industry Flash
+Electrical Equipment and Multi-Industry
+Industrials
+Electrical Equipment and Multi-Industry
+October 19, 2026
+U.S. Equity Research
+Takes from 20+ Power/Cooling Companies - Open Compute
+Project Conf. & Deep Dive
+Assessing the next phase of DC power and cooling investment. We attended the
+technical sessions from the 2026 Open Compute Project (OCP) Global Summit (virtually)
+including a thorough review of each presentation. Our comprehensive work includes
+assessment of recent announcements and takeaways from over 20+ participants with
+operations across the data center infrastructure value chain. The event brought together
+operators, chipmakers and equipment providers to address the infrastructure required
+for increasingly power-dense AI systems.
+Our review covers VRT, ETN, Schneider Electric, ABB, JCI, nVent, Delta, Megmeet, LITEON,
+DCX, Legrand, Flex, Daikin, CoolIT, Auras, Alfa Laval, STULZ, Gates and VEIR, alongside
+NVIDIA, AMD, Microsoft, Oracle, Lenovo, Gamma Technologies, Chroma and Keysight.
+We connect their architecture roadmaps, product developments and technical findings
+to the equipment needed to deliver power, remove heat and deploy systems at scale.
+Below we examine the main messages and company-specific disclosures, highlighting
+implications for equipment mix, content opportunities and adoption timelines.
+Key Points
+Higher density reshapes infrastructure spending. Our review of OCP presentations
+from leading power/cooling suppliers reinforces a gradual transition toward 800VDC,
+with AC infrastructure remaining integral across multiple deployment configurations.
+Five Key Takeaways: (1) the move toward MW-scale racks makes 800VDC distribution
+imperative; (2) NVIDIA’s GPU/rack rollout will determine the pace of 800V adoption, with
+sidecars and AC/DC coexistence supporting investment ahead of native-800V racks;
+Kyber's rollout remains the key watch item; (3) liquid cooling remains among the most
+attractive structural growth opportunities for equipment providers, with rising penetration
+and broader compute/power applications driving growth ahead of underlying DC capacity
+expansion; (4) power constraints are sharpening equipment providers’ focus on reducing
+consumption and conversion losses, allowing more scarce power to be directed toward
+compute; (5) modular designs are becoming critical to scaling the DC build-out, allowing
+increasingly complex power/cooling systems to be manufactured/tested off-site, then
+installed and commissioned faster/more consistently. Below, we outline incremental
+takeaways for equipment mix, content opportunities and adoption timelines.
+Eaton Corporation
+Core message: Moving AC/DC conversion outside the compute rack changes the
+distribution and protection equipment required around it. Eaton’s Joe Skorjanec
+emphasized that conversion, cabling, circuit protection and maintenance procedures
+must be designed together for reliable, serviceable 800V systems.
+Architecture determines equipment mix: Sidecars supply adjacent compute racks
+through dedicated, protected cables. Eaton illustrated 125A circuits carrying
+approximately 100kW each at 800V. Shared power centers extend distribution across
+a row or pod through DC distribution panels, overhead busway and protected rack
+connections...
+MIZUHO SECURITIES USA LLC
+Connect With Our Analysts
+Brett Linzey | Managing Director
++1 212 282 3579 |  Brett.Linzey@mizuhogroup.com
+Ryan Gilchrist | Associate
++1 212 282 3597 |  Ryan.Gilchrist@mizuhogroup.com
+Please refer to Page 31 of this report for important disclosure and analyst certification information. Mizuho Securities USA LLC does and seeks to do business
+with companies covered in its research reports. As a result, investors should be aware that the Firm may have a conflict of interest that could affect the objectivity of
+this report. Investors should consider this report as only a single factor in making their investment decision.
+1
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+...This requires coordinated protection so a fault on one branch can be isolated without
+shutting down the entire row. Medium-voltage solid-state transformers represent a
+broader facility-level option.
+Protection extends beyond a fast breaker: DC current does not periodically fall
+to zero as AC current does, making fault interruption more challenging. Batteries
+and capacitors can also continue feeding a fault after converters shut down. Eaton
+identified four necessary functions: fault detection, rapid interruption, physical isolation
+and backup protection. This supports requirements for solid-state or hybrid breakers
+alongside disconnects, fuses, interlocks and monitoring.
+Standardization / deployment requirements: A separate, joint ABB/Eaton session
+(ETN's Peter de Bock and ABB’s Paolo Catapane) emphasized common voltage ranges,
+grounding practices, connectors, controls and compatibility between equipment
+generations. Deployment requires components from different suppliers to work
+together, with protection coordinated across the complete installation.
+Why it matters / timing: Our read is that ETN’s opportunity spans conversion, DC
+distribution panels, busway, protection, and system integration. Sidecars concentrate
+this equipment near the rack, while shared power centers extend it into the data hall. The
+architecture selected determines equipment mix, while interoperability, qualification
+and service procedures influence the pace of deployment.
+Exhibit 1 - The Location of 800V Conversion Determines Distribution
+and Protection Requirements
+Source: Eaton, OCP Global Summit 2026
+2
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 2 - Sidecars Supply Compute Racks Through Dedicated,
+Protected DC Connections
+Source: Eaton, OCP Global Summit 2026
+Exhibit 3 - Shared Power Centers Bring DC Busway and Protected Rack
+Connection Into the Data Hall
+Source: Eaton, OCP Global Summit 2026
+Johnson Controls
+Core message: Reducing the electricity consumed by cooling can free power for
+additional compute within the same grid connection. JCI’s Imran Latif and Mohamed
+Eissa proposed combining GPU operating data with cooling-system data so controls
+can adjust water temperatures and pump speeds around computing requirements.
+Illustrative economics: In JCI’s 500MW facility example, cooling demand falls from
+175MW to 75MW, freeing 100MW for IT. Compute power capacity increases from
+325MW to 425MW, or 31%, without increasing total facility power. These figures
+illustrate the potential economics.
+What JCI tested: JCI presented a chip-to-chiller simulation representing approximately
+2MW of IT load, using real equipment data. AI agents adjusted chiller water temperature
+and, in some configurations, CDU pump speed. The best result improved tokens per unit
+3
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+of energy by 11.5% and reduced partial PUE, the modeled system’s power-efficiency
+ratio, by 10.3%.
+Why it matters: We see the relevance for JCI in combining cooling equipment with
+controls that improve overall facility output. For power-constrained customers, the
+investment case can include additional compute capacity and reduced need for power
+expansion, alongside operating-cost savings.
+Timing / caveats: The simulations used a fixed 15°C chilled-water baseline, and
+efficiency gains did not consistently preserve acceptable GPU temperatures. In the two-
+agent configuration controlling both water temperature and pump speed, only two of
+eight models stayed below the 85°C throttling threshold. Integration with real building
+automation systems, broader testing and validation at larger scale remain ahead.
+Exhibit 4 - Cooling Savings Free Scarce Power for Additional Compute
+Source: Johnson Controls, OCP Global Summit 2026
+Exhibit 5 - JCI Illustrates 31% More Compute Capacity Within the Same
+500MW Power Budget
+Source: Johnson Controls, OCP Global Summit 2026
+4
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Vertiv
+Core message: Customers should design today’s facilities to accommodate several
+generations of AI racks. VRT's Scott Armul emphasized that AC and DC architectures
+will coexist for years. Sidecars provide an initial path to 800V while preserving
+upstream AC infrastructure; shared power centers and facility-wide DC distribution
+offer additional options as requirements evolve.
+Equipment emphasis: Busway and cooling pipes are important decisions to get right up
+front, because they are difficult to replace. Vertiv advocated sizing these for future loads
+while retaining flexibility to change tap-off boxes, breakers and rack connections. Armul
+proposed AC/DC-rated busway that could support a subsequent change in architecture,
+while acknowledging that product-development/compliance work remains.
+Protection and power continuity: Vertiv’s technical session distinguished the solid-
+state breaker, which interrupts a local fault rapidly, from the DC Fault Manager, which
+coordinates protection across the system and manages restart. Armul also outlined
+a potential shift of UPS functionality upstream toward medium-voltage systems
+connected to longer-duration battery storage.
+Cooling deployment: The workstream involving Vertiv, AMD and other partners
+emphasized that installing a large CDU does not, by itself, ensure sufficient cooling
+reaches the racks. Pipe sizing, pressure losses, coolant cleanliness and flushing
+procedures determine usable capacity and deployment speed. The group illustrated
+reducing pre-commissioning from seven weeks to one through improved procedures.
+Why it matters / timing: We see opportunities for VRT throughout the
+migration, spanning sidecars, power distribution, cooling infrastructure, controls and
+commissioning services. The commercial value lies in helping customers add denser
+racks while preserving existing infrastructure and supporting subsequent upgrades.
+The session presented several possible migration paths, with adoption dependent on
+customer requirements and equipment readiness.
+NVIDIA
+NVIDIA’s roadmap frames the 800V transition. NVIDIA’s (NVDA, OP, $315PT, Vijay
+Rakesh) presentations were particularly relevant to the 800V timing debate, showing
+how rising rack power drives successive changes in power delivery. Its proposed
+timeline distinguishes an intermediate stage, where racks receive 800V but retain
+54V internally, from a later transition to native 800V distribution inside the compute
+rack. Sidecars support that intermediate stage by converting facility AC to 800V,
+which rack power shelves then step down to 54V (Exhibits 1 & 2). Our accompanying
+timeline (Exhibits 3 & 4) maps these power generations to NVIDIA’s GPU/rack roadmap:
+Rubin Ultra/Oberon NVL72 in 2027, followed by a larger native-800V transition around
+Feynman/Kyber in 2028+. These are our working product/rack assumptions. For
+investors, Kyber’s rollout is the key milestone for native-rack equipment content, while
+external conversion and DC-distribution opportunities will develop earlier.
+5
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 6 - NVIDIA’s Proposed Timeline for the Transition to Native
+800VDC
+Source: NVIDIA, 2026 OCP Global Summit
+Exhibit 7 - NVIDIA Targets Sidecar Readiness in 3Q26, Followed by
+PowerCenters in 2Q27 and PowerBlocks in 1Q28
+Source: NVIDIA, OCP Global Summit 2026
+Dates represent NVIDIA’s proposed equipment deployment-readiness targets. Customer adoption and GPU/rack
+launches could follow separate timelines.
+Mizuho View: Kyber Timing Shapes the Native 800V Ramp. Our working assumption
+is that Rubin Ultra launches in the existing Oberon NVL72 rack in 2027, with the larger
+Kyber NVL144 rack following around the Feynman generation in 2028+. This would
+allow NVIDIA’s compute roadmap to advance while shifting the larger opportunity
+for conversion equipment inside native 800V racks toward 2028+. External power
+upgrades, including sidecars, AC/DC converters, DC distribution/protection and liquid-
+cooled power shelves, could proceed earlier. However, a longer transition does not
+automatically translate into more sidecar demand: customers whose racks remain
+within existing power-system limits could defer those upgrades. For investors, Kyber’s
+timing therefore matters to both the pace and mix of 800V spending, with external
+6
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+infrastructure and conversion inside the rack potentially developing on different
+schedules.
+Exhibit 8 - Mizuho Working Assumptions: Mapping NVIDIA’s GPU/Rack
+Roadmap to 800V Adoption
+Source: NVDA, Company reports, MSUSA est.
+Exhibit 9 - Kyber Drives the Larger Native-800V Transition
+Source: Company reports, MSUSA
+800V adoption creates DC equipment opportunities while preserving AC
+infrastructure. NVIDIA outlined three deployment options that move AC/DC conversion
+outside the compute rack (Exhibit 10).
+• Option A adds sidecar Power Racks to existing AC distribution, providing a retrofit
+path where electrical capacity and floor space allow.
+• Option B groups conversion in shared Power Centers, which distribute 800V through
+DC busway across a compute cluster while preserving the compute-rack layout.
+• Option C targets new facilities, using larger Power Blocks to centralize conversion,
+integrate energy storage and reduce data-hall space requirements.
+For investors, our takeaway is that demand for external conversion, DC busway,
+connectors and protection can develop ahead of native 800V racks, while upstream
+AC switchgear and transformers remain integral to Options A/B. The distinction is
+that conversion location and internal rack voltage are separate choices: all three
+configurations can supply racks that retain 54V internally or adopt native 800V
+distribution.
+7
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 10 - Overview: NVIDIA’s 800V Designs Move AC/DC Conversion
+Outside the Compute Rack
+Source: NVIDIA, OCP Global Summit 2026, MSUSA
+A-C represent deployment options that can coexist. Each can supply racks with 800V-to-54V power shelves or
+native 800V distribution.
+Exhibit 11 - Option A: Sidecars Bring 800V to Compute Racks While
+Retaining Facility AC Distribution
+Source: NVIDIA, OCP Global Summit 2026, MSUSA
+The 660kW Power Rack and 90kW power-shelf figures are equipment ratings. Supported compute load and rack
+counts depend on system configuration and redundancy
+8
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 12 - Option B: Shared Power Centers Consolidate Conversion
+and Extend DC Busway Across the Cluster
+Source: NVIDIA, OCP Global Summit 2026, MSUSA
+Power Center and compute-rack counts are illustrative. Facility AC distribution is retained, with conversion
+shared across the cluster. This configuration can support racks that retain 54V internally.
+9
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 13 - Option C: Facility-Level Power Blocks Centralize
+Conversion and Reduce Data-Hall Space Requirements
+Source: NVIDIA, OCP Global Summit 2026, MSUSA
+The illustrated design includes six active 5MW blocks and one reserve block: 30MW nominal active capacity and
+35MW installed capacity. Power Blocks can use solid-state transformers or conventional transformer/rectifier
+arrangements.
+nVent (not covered)
+Core message: Predominantly liquid-cooled racks can still leave substantial heat for
+air cooling. nVent’s AMD Helios example showed a 246kW rack capturing 89% of heat
+directly in liquid, leaving approximately 27kW in exhaust air.
+Product highlighted: nVent’s rear-door heat exchanger transfers this residual heat
+into water before it reaches the room, allowing the rack to operate close to thermally
+neutral. Developed for AMD’s double-wide rack, the dual-door design uses 48V DC
+power, redundant fans and pressure-based fan controls to match airflow requirements
+without increasing the burden on server fans.
+Deployment features: nVent tailored doors, power connections, hoses and controls to
+Helios. Preassembled, pressure-tested valve/sensor kits and serviceable components
+are intended to simplify installation & maintenance.
+Equipment read-through: Greater liquid-cooling penetration can add cooling content
+at the rack while reducing the load served by room-level air handlers. This matters for
+CRAH suppliers, although facility water system and outdoor heat-rejection equipment
+must still remove the heat. The AMD collaboration also demonstrates how cooling is
+increasingly being designed into the computing platform.
+10
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Delta Electronics (not covered)
+Core message: Delta framed 800V adoption around delivering more compute from
+available power, with conversion, storage and cooling designed together. Ralf Pieper
+and NVIDIA’s Mike Tu described a progression from sidecars supporting lower-voltage
+racks to shared Power Centers and medium-voltage-to-800V Power Blocks.
+Power equipment: Delta presented a 660kW power rack incorporating 480kW of
+battery backup power, alongside 90/108kW DC/DC shelves that convert 800V to 54V
+inside the compute rack. These configurations support external 800V distribution while
+retaining lower-voltage rack internals.
+Cooling content: Delta illustrated approximately 30kW of conversion losses per MW
+at 97% power-supply efficiency, before additional fan consumption. Products included
+liquid-cooled power supplies, a 5,000A liquid-cooled rack busbar, an 800V-powered
+2.5MW CDU with a 4°C approach temperature, and cold plates designed for Vera Rubin
+NVL72.
+Storage and system integration: Delta emphasized storage for smoothing rapid GPU
+load changes as well as outage protection. Its separate microgrid session extended this
+upstream, showing how generation, batteries and controls can coordinate to maintain
+stable power delivery.
+Megmeet (not covered)
+Core message / product: Higher rack densities require power conversion and cooling
+to be designed together. In its joint NVIDIA session, Megmeet presented a fully liquid-
+cooled 110kW AC/DC power shelf delivering 54V in two rack units. Removing fans
+and large heat sinks frees space, reduces fan-power consumption and improves
+component cooling.
+800V transition: Megmeet outlined adjacent power racks, shared Power Centers
+and future facility-level conversion using medium-voltage rectifiers or solid-state
+transformers. Its liquid-cooled 95kW, one-rack-unit shelf converts 800V to 54V,
+illustrating how higher-voltage distribution can support racks that retain lower-voltage
+internals.
+Facility implications: Megmeet argued that liquid cooling must extend into power
+equipment to realize the benefits of a fully liquid-cooled rack. Cooling both compute and
+conversion equipment can remove the thermal requirement for hot/cold aisles serving
+those racks and enable more compact layouts.
+Deployment / caveats: Megmeet highlighted hot-swappable modules, leak detection
+and redundancy. It illustrated potential facility-capex savings of up to approximately
+10% for an optimized, fully liquid-cooled greenfield design, explicitly noting that savings
+depend on facility assumptions.
+Oracle with read-through to 3M (MMM)
+Core message: Oracle (ORCL, OP, $320PT, Siti Panigrahi) framed AI network design
+around reliability, power efficiency and hardware cost. Network interruptions disrupt
+training and reduce GPU utilization, while lower network power consumption leaves
+more electricity available for compute.
+Operating observations: Mark Filer presented data showing that lower-power optical
+modules could improve link stability, with reduced heat generation also lowering
+cooling-fan demand. Oracle attributed approximately 90% of its observed physical-
+link failures to contamination. The broader message reinforces a central OCP theme:
+infrastructure improvements create value by increasing productive compute within the
+available power allocation.
+11
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Technology highlighted: Oracle explicitly discussed 3M’s Expanded Beam Optical
+technology, which enlarges the light beam and uses recessed, non-contact connections
+to reduce sensitivity to dust, oils and handling damage. This addresses contamination
+at optical connections.
+Read-through to MMM: Oracle said it is co-chairing an effort to develop an
+interoperable supplier ecosystem around 3M’s technology. We view this as customer
+validation of the problem the product addresses: reducing connection failures, cleaning
+requirements and installation work as AI networks add more optical connections.
+Daikin
+Core message / study: Local electricity and water economics should determine facility
+cooling design. Daikin modeled a 1MW IT load across 18 U.S. electricity-grid regions,
+comparing dry coolers with evaporative cooling towers for outdoor heat rejection. Both
+configurations included water-cooled chillers and economizers.
+Main finding: Evaporative towers reduce chiller electricity consumption and peak
+power demand, but those savings must offset water and wastewater expense. The
+model favored dry cooling on utility cost in markets including ERCOT and PJM East.
+Daikin identified the water price at which evaporation’s electricity and demand-charge
+savings break even.
+Equipment implications / caveat: Cooling demand will reflect regional economics
+and customer constraints, supporting evaluation of the entire plant, including outdoor
+heat rejection. The comparison concerns utility costs and retains chillers in both
+configurations.
+Alfa Laval / Gamma Technologies / STULZ
+(all private)
+Core message: CDUs should be evaluated by their effect on the whole cooling plant,
+including energy consumption, piping and pumping requirements. The study held
+cooling duty at 2.3MW and varied heat-exchanger configurations within a modeled
+system containing a dry cooler, chiller and facility pump.
+Quantitative findings: Facility water-flow requirements ranged from approximately
+660-940 gallons per minute, while annual cooling-system energy showed a roughly 17%
+spread under Dallas weather conditions. Heat-exchanger hardware costs also varied
+by approximately threefold.
+Why configurations differ: Heat-exchanger selection changes the temperature of
+water returning to the facility plant, influencing how long dry cooling can operate before
+compressor cooling is required. Fouling and coolant composition also affect designs
+differently.
+Specification / caveat: Identical CDU capacity ratings can conceal different
+infrastructure requirements and operating costs. The presenters called for disclosure
+of operating conditions and evaluation across ambient temperatures, coolant choices
+and part loads. The results were modeled; the 17% figure refers to cooling-system
+energy variation, and the cost comparison concerns heat exchangers rather than
+complete CDUs.
+Auras (not covered)
+Core message / controls: Auras presented liquid cooling as a way to reduce
+infrastructure power consumption while protecting GPU performance and availability.
+Its proposed smart CDU integrates with building management and data-center
+12
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+monitoring systems, using predictive flow adjustment to anticipate heavier workloads
+and reduce thermal-throttling risk.
+Serviceability: Modular pumps, controls and filters can be replaced without tools.
+Hot-swappable modules, dry-break fluid connections and N+1 pump redundancy are
+designed to maintain cooling during service, while coolant-flow monitoring supports
+earlier detection of component deterioration.
+Cold-plate technology: Auras presented microchannel cold plates designed for 45°C
+coolant inlet temperatures, alongside diamond-copper bases that spread localized heat
+more effectively.
+Operating implications / caveat: More precise pump control is intended to preserve
+power for compute, while warmer-water operation can enable chiller-free cooling in
+suitable climates. These were presented as design capabilities and objectives, rather
+than quantified operating savings.
+CoolIT (ECL)
+Core message: Higher rack densities require capturing nearly all server heat in liquid,
+extending cooling beyond CPUs and GPUs toward fanless servers. CoolIT’s “100% heat
+capture” objective means near-total capture in practice.
+Residual-air challenge: Under an illustrative 70% liquid/30% air split, a 250kW rack
+leaves 75kW for air cooling; a 500kW rack leaves 150kW. CoolIT argued that these
+residual loads become increasingly difficult and costly to manage.
+Content expansion: Its roadmap extends cooling to memory, optical transceivers,
+storage and power components through cold plates and conductive structures. The
+engineering challenge is integrating this broader coverage with reliable connections,
+effective coolant routing and straightforward assembly & servicing.
+Technology / validation: CoolIT argued that single-phase direct liquid cooling can
+support this progression, citing scalability and an established supplier and operating
+ecosystem. It demonstrated a cold plate validated at 15kW using a thermal test vehicle,
+with 45°C facility water and an 80°C case temperature.
+Microsoft / Lenovo
+MSFT, OP, $600PT, Gregg Moskowitz / 0992 HK, not covered
+Core message / design change: Wider racks and servers can extend air cooling’s
+economic life for general-purpose CPU workloads. Increasing rack width from
+600mm to 900mm provides approximately 50% more airflow area and room for
+larger heat sinks.
+Performance findings: Early data indicated 20–30% lower server fan power per kW
+cooled, as wider passages reduce airflow resistance and allow slower fan speeds.
+The design targets 650W to 1,000W+ CPUs, with rack-level validation still pending.
+Additional width also accommodates future memory configurations.
+Economic rationale: Air cooling retains conventional server servicing and avoids the
+additional CDUs, coolant distribution and fluid-management requirements of direct
+liquid cooling where thermal requirements can still be met.
+Limits / read-through: Liquid remains appropriate when component heat loads, heat
+concentration or site constraints exceed the wider air-cooled design’s capability. The
+proposal supports an ongoing role for air-handling equipment alongside growing
+liquid-cooling deployment.
+13
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Gates (not covered)
+Core message / materials: Hose formulation, cleanliness and flow characteristics
+affect liquid-cooling performance and reliability. After eight weeks of accelerated aging
+at 80°C, Gates found materially different residue levels across peroxide-cured EPDM
+samples, demonstrating that specifying the rubber type alone is insufficient.
+Reliability implications / qualification: Contaminants and material degradation can
+restrict cold-plate flow, impair heat transfer, degrade pumps and contribute to
+corrosion. Gates continues to favor peroxide-cured EPDM, but its initial study was
+affected by contamination. Subsequent testing adds hose rinsing and tighter controls
+to better isolate material interactions.
+Flow-performance work: A separate session questioned whether traditional piping
+velocity limits unnecessarily constrain cooling capacity and rack density. Higher
+velocity can carry more heat through a given hose size, potentially avoiding larger
+connections as cooling requirements rise.
+Testing / caveat: Gates reported operating a two-inch hose at approximately 9.4
+metres per second, with no eroded rubber particles detected in sampled fluid at that
+stage. Testing remains ongoing. Higher flow must be balanced against pressure loss,
+added heat and long-term durability across the complete system.
+Keysight (not covered)
+Core message: AI infrastructure must be validated as a complete system from early
+design through deployment. Ram Periakaruppan explained that synchronized training
+clusters can be held back by a delayed packet or slow network connection, allowing
+problems to emerge at scale even when individual components perform adequately.
+Development approach: Keysight advocated testing each component against an
+emulated version of the surrounding AI system, progressing from software models and
+chip design to physical chips, servers and assembled racks. Reusing models, tests and
+benchmarks is intended to identify problems earlier as development cycles shorten and
+multiple generations proceed concurrently.
+KAI Data Center Builder: Recreates network behavior and AI workloads around the
+component under test, allowing engineers to assess its operation within a larger system
+before that system physically exists.
+KAI Conformance Builder: Applies common protocol tests, workflows and pass/fail
+criteria across development stages, reducing differences between how teams evaluate
+initial designs and finished hardware.
+KAI Inference Builder: Tests infrastructure against application workloads with different
+computing, memory and response-time requirements. Document processing, medical
+imaging and financial applications illustrated why validation must reflect intended use.
+The presentation emphasized realistic workloads and continuous system-level testing
+to expose bottlenecks and assess performance.
+14
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 14 - 800VDC Roadmaps Point to Sidecars as a Key Opportunity Ahead of Native DC Adoption
+*Selected global infrastructure and power-conversion suppliers; not exhaustive. Covers direct 800V products and identified adjacent components.
+*MV = medium voltage; SST = solid-state transformer; TRU = transformer rectifier unit; BESS = battery energy storage system; BBU = battery backup unit; CBU / CESS =
+capacitor backup / energy storage; CDU = coolant distribution unit; SiC = silicon carbide.
+15
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Exhibit 15 - We Expect a More Gradual Transition to Native 800VDC
+Source: MSUSA illustrative estimates
+16
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Price Target Calculation and Key Risks
+3M Company (MMM)
+Investment Thesis
+3M continues to make operational strides with its multi-year restructuring program, largely "ring-fenced" liabilities (but still risk),
+portfolio simplification and end-markets that are mostly tracking at trough. CEO Bill Brown has been making significant operational
+improvements, but from here we await a definitive turn in end markets.
+3M has navigated a tough backdrop over the last several years driven by liability uncertainty, weak markets and an uneven performance.
+We believe there are still plenty of uncertainties in the MMM outlook including a sluggish consumer spending backdrop but recognize
+end-markets have been bouncing along a trough for several quarters now. Distribution/retail channel inventories are in better shape.
+Base Case/PT
+Our $180 price target reflects our Base Case scenario and is based on ~12.5x our 2027E EBITDA estimate. While we continue to
+see opportunities for margin expansion and portfolio improvement, we believe a discount to peers remains warranted given below-
+peer growth, the company's greater exposure to shorter-cycle end markets, and the need for additional evidence of recent operational
+improvements. Our framework assumes continued execution and a stable demand backdrop.
+Bull Case/PT
+Our Bull Case arrives at a price target of $198 and applies a 13.5x multiple to our upsized 2027E EBITDA estimate. This
+framework contemplates stronger-than-expected margin expansion, an acceleration in organic growth, and increasing confidence that
+management's operating initiatives are driving sustainable improvements across the portfolio. In this scenario, investors become more
+willing to value the company in line with higher-quality industrial peers as execution improves and growth begins to close the gap with
+the broader EE/MI peer group.
+Bear Case/PT
+Our Bear Case arrives at a price target of $142 and applies a ~10x multiple to our 2027E EBITDA estimate. This framework contemplates
+a more negative outcome related to PFAS and other potential liabilities, alongside further slowing in consumer-related end markets and
+a deterioration in organic growth versus current expectations.
+Risks
+Risks to our thesis include a more negative outcome related to PFAS and other liabilities, further slowness in Electronic/Consumer and
+auto related markets, conservative limited balance sheet optionality, and lack of a growth rebound.
+AIRO Group Holdings, Inc. (AIRO)
+Investment Thesis
+AIRO is competitively well positioned within its Drone segment (~80%+ sales), largely underpinned by the ongoing war in Ukraine
+which has driven 500 missions for its combat-proven drone technology. With a combined TAM of ~$315B AIRO is in growth mode
+(well above Defense tech and primes) levered to significant cross-platform synergies. Drone contract backlog of $150mm+ provides
+revenue coverage near-term with battle-proven tech and runway for geographic reach into additional NATO countries. Preparation is
+also underway for Drone market entry into the U.S. In Training, there is $1.6B+ of funds available in Close Air Support (CAS) indefinite
+order, indefinite quantity (IDIQ) contracts.
+Base Case/PT
+AIRO trades at ~4.5x our 2027E EBITDA estimates, a sizable discount to key Defense peers AVAV and KTOS at ~23.5x. We see the gap
+narrowing but not closing as AIRO scales and builds a public track record. Our $11 PT implies ~11x EV/EBITDA on our 2027 estimates,
+still a meaningful discount to more mature platforms.
+Bull Case/PT
+Our $12 Bull Case contemplates a smaller discount to more mature peers at ~15x 2027E EBITDA. The re-rating driven by increased
+scale and a broader product offering as AIRO matures, US manufacturing expansion, and incremental DoD program wins that improve
+revenue visibility and validate the platform.
+Bear Case/PT
+Our $5 Bear Case assumes approval delays and program pushouts in North America reduce our 2027 adjusted EBITDA estimate by
+20%, with the multiple held at the current ~4.5x as the market withholds credit for the growth plan until execution is demonstrated.
+17
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Risks
+Despite favorable secular tailwinds, AIRO is exposed to a sudden shift in political sentiment or funding support for drones and eVTOL.
+Execution risk on the Jaunt ramp is the key internal watch item. A global ceasefire (i.e., resolution of the Ukraine conflict) could dampen
+near-term drone demand and AIRO's outlook.
+Allegion Plc (ALLE)
+Investment Thesis
+ALLE has excellent industry moats, operating in a duopoly market structure. However, higher for longer rates, limited consolidation
+levers and less "secular" exposures have been a valuation overhang. Non-residential and residential data points have been mixed and
+present risk to estimates with more downside vs. upside risk forecasts, in our view.
+Base Case/PT
+Our $170 price target reflects a multiple that is slightly below building-related peers at 14x '27E EV/EBITDA vs peer average at 17.5x. The
+stock used to trade at a premium historically on a relative basis over the past 6-7 years. This reflects greater uncertainty underpinning
+the outlook and the market's willingness to “pay” a premium for outgrowth in areas like electrification or those companies with energy-
+efficiency angles.
+Bull Case/PT
+We arrive at a Bull Case scenario of $196, which is based on a ~15.5x '27E EBITDA construct, assuming a more resilient non-residential
+market, especially within the Institutional verticals, as well as prudent portfolio management (i.e. favorable M&A).
+Bear Case/PT
+We arrive at a Bear Case scenario of $136, which is based on ~11x '27E EBITDA — a seven-turn discount to building-related peers
+which assumes a slower development in later cycle construction markets, softening in Institutional and inability to deploy capital at
+acceptable returns.
+Risks
+Risks to our thesis include persisting price/cost headwinds, a sharper retrenchment in the residential channel and a downturn in non-
+residential markets.
+AMETEK Inc. (AME)
+Investment Thesis
+Investors had been concerned over the '26 outlook and the complexion of the start of the year given short-cycle wobbliness. However,
+AME delivered and muscled through, which we believe should boost near-term sentiment. Destock continues (Automation and Paragon),
+but we are encouraged by EMG delivering +DD orders growth. Positive on end-demand being intact despite project delays. No
+cancellations being seen. We are looking for mean-reversion rotation in '26 w/ compounders (including AME) having a chance to post
+better stock performance. While rates aren't rapidly falling, easing should be welcomed and supportive of deal accretion contributions.
+Base Case/PT
+Our $285 PT implies ~22x '27E EBITDA on a balance sheet-usage scenario (2 years FCF+modest leverage) and contemplating cyclical
+recovery. Our valuation reflects a premium to the overall group at ~16.5x '27E EBITDA, which we believe is warranted given the above-
+average FCF generation and EBITDA margins along with shareholder-friendly M&A strategy.
+Bull Case/PT
+We arrive at a Bull Case scenario of $328, which implies a ~25x '27 EV/ EBITDA, a sizable premium to EE/MI peers. This assumes a
+quicker and sharper cycle in the later cycle markets and efficient allocation of M&A capital.
+Bear Case/PT
+We arrive at a Bear Case scenario of $228, which is based on ~17.5x '27 EV/EBITDA. This assumes a slower development in later cycle
+markets, integration friction or inefficiencies with recently acquired businesses and inability to deploy capital at acceptable returns.
+Risks
+Risks to our thesis include a sharper deceleration in later cycle markets, integration friction or inefficiencies with recently acquired
+businesses and inability to deploy capital at acceptable returns.
+18
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Applied Industrial Technologies, Inc. (AIT)
+Investment Thesis
+AIT is a predominantly domestic industrial distributor with attractive exposure to reshoring, automation and an improving short-cycle
+backdrop. Recent Engineered Solutions order momentum and signs of recovery in Fluid Power support a stronger FY27 outlook, while the
+company’s higher-margin mix should drive incremental earnings leverage as volumes recover. AIT also retains meaningful balance-sheet
+capacity and a strong acquisition track record, providing additional upside from capital deployment. We see a favorable combination of
+improving organic growth, margin expansion and M&A optionality supporting continued earnings growth and a premium valuation.
+Base Case/PT
+Our $390 PT contemplates balance sheet usage and a '29E P/E multiple of ~27x, a modest premium to high-quality industrials, which
+we believe is warranted given the cycle runway ahead, the company’s leading market position in key areas (~80% of sales generated
+from No. 1 or No. 2 market positions) and markets definitively inflecting off trough levels.
+Bull Case/PT
+We arrive at a Bull Case of $429, based on ~30x '29 P/E. This scenario contemplates a stronger & more durable short-cycle recovery,
+sustained Engineered Solutions momentum and faster improvement in Fluid Power, driving better organic growth and margin leverage.
+The higher multiple reflecting increased credit for accretive M&A deployment.
+Bear Case/PT
+We arrive at a Bear Case of $254, based on ~18x '29 P/E, with no credit for future M&A. This scenario contemplates renewed
+macroeconomic volatility, weakness in Fluid Power and more limited margin expansion. The lower multiple reflects reduced earnings
+visibility and a return toward a more normalized specialty distributor valuation.
+Risks
+Key risks include extended consumer weakness, continued destocking in off-highway, unfavorable political policy, and a slowing
+consumer from current levels.
+Carrier Global Corp. (CARR)
+Investment Thesis
+Carrier Global (CARR) has undergone a transformational portfolio shuffle by selling its lower return, lower growth Fire, Security and
+Commercial refrigeration assets and redeploying the proceeds into share repurchases and the acquisition of Viessmann – a leader in
+global heat pump, solar and boiler systems. These transactions have created a pure-play climate solutions provider with leading market
+positions, global reach and a more streamlined portfolio. Despite a series of complicated steps the management team has executed
+well and remained steadfast around strategic priorities like aftermarket, connected chiller attachment rates, service extensions and new
+product innovation. Aftermarket has been standout as attachment rates rise. We believe CARR's structural growth entitlement should
+be higher (vs. EE/MI average) over the next 2-3 years given the new portfolio configuration (F&S weighed on growth), while productivity,
+pricing and volume leverage as depressed markets' recovery (resi, T&T, Europe HP and light commercial) should present an attractive
+and differentiated profit algo going forward.
+Base Case/PT
+Our $70 PT reflects ~23x our 2027E EPS, this is ~in line with the HVAC peer group, but still a ~5 turn discount to TT (the most comparable
+portfolio). This discount reflects TT's strong service business, which continues to be a consistent source of growth and cash flow
+generation, although we believe the TT valuation umbrella could provide headroom for a re-rate over time.
+Bull Case/PT
+We arrive at a Bull Case scenario of $78, this contemplates a ~23.5x multiple on a 2027E EPS figure of $3.35 (upside case), which
+assumes a stronger rebound in Residential HVAC shipments in 2026 following a low ebb in industry unit shipments in 2025. This scenario
+also assumes stronger Data Center growth and a Truck/Trailer rebound.
+Bear Case/PT
+We arrive at a Bear Case scenario of $49, based on a ~16x P/E on a 2027E EPS figure of ~$3.00. This scenario would assume incremental
+weakening of the consumer delaying Resi HVAC replacement activity through the 2027 selling season and inability to deliver DC backlog.
+This also implies slower than expected development in commercial HVAC markets, and another setback in Viessmann.
+19
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Risks
+Risks to our thesis include slower than expected development in commercial HVAC markets, a prolonged downturn in resi HVAC and
+negative price/cost despite strong pricing actions, lower FCF leading to elevated net debt levels, cost headwinds outpacing pricing
+initiatives, and further operational disruptions resulting from adverse events.
+Dover Corporation (DOV)
+Investment Thesis
+DOV has a beatable framework based on the current growth profile and bookings rates. Incremental M&A and buyback would be
+additional upside beyond framework. Encouraging to see '26 start strong with 24% bookings including increases across all five
+segments. Headwinds in Traditional Refrigeration appear to have abated. All in, FY26 guide appears to be conservative. Strong
+restructuring carry-over (~$40mm in '26E/~20mm in '27E) should drive margins higher.
+Base Case/PT
+$245 PT on peer valuations, strong balance sheet availability. Current price reflects ~12.5x '27E EBITDA vs. EE/MI at 16.4x. PT reflects
+~15.5x, or in line with the group given the recent strong top line performance and increasing mix of the secular growth profile.
+Bull Case/PT
+We arrive at a Bull Case scenario of $282, based on ~17.5x '27E EBITDA increased by 10%. This scenario contemplates a similar multiple
+in line with EE/MI and pump peers (IR, GGG, IEX, CR, ITT) that trade at ~16.5x (~1/3rd of DOV mix now Pumps & Process). It would also
+classify DOV as a "graduated" compounder as BS deployment continues to accelerate.
+Bear Case/PT
+We arrive at a Bear Case scenario of $172, based on 11x '27E EBITDA. This scenario implies a compression of the multiple to level
+based on a more meaningful step-down in the operating environment and or poor capital allocation.
+Risks
+The primary risks to our thesis are a compression of the multiple to level below long-term historical average without consideration
+for favorable portfolio changes made. DOV’s results are significantly affected by raw material costs, including steel, copper and other
+inputs. If DOV is unable to manage risks associated with expanding its global business, it could have a material adverse effect on growth
+in geographic markets.
+Eaton Corporation plc (ETN)
+Investment Thesis
+ETN remains one of the most attractive large cap electrification plays in Industrials. Electrical activity has shifted into a higher gear as
+the mega-project funnel remains robust and ETN is converting wins at even higher rates, given its proficiency and domain expertise. The
+company provided five-year growth CAGRs for over 40% of its business mix (DC, utility, EV and aero). ETN provided initial thoughts on
+2025 including overall *market* growth of 6-8% inclusive of price but excluding outgrowth potential (Cons: 7.9%). Incremental margins
+were guided to 30-35% on organic growth which includes restructuring savings of $75mm on $50mm of costs. This is not additive
+but included. Below the line HW is 20c. Working through the math the upper end of those ranges including end-market outgrowth and
+some balance sheet usage implies EPS approaching ~$13/share. From here, we believe the stock can continue to grind higher with
+positive EPS revisions.
+Base Case/PT
+Our $485 price target contemplates ~22x '27 EBITDA. This multiple would be a premium to the blended average of other secular stocks
+(TT, VRT, XYL) at ~21.5x, reflecting strong end market growth and solid internal execution.
+Bull Case/PT
+We arrive at a Bull Case scenario of $528, which is based on ~24x '27 EBITDA. This multiple contemplates greater than expected price/
+cost tailwinds, higher electrification growth, and faster market turn in later cycle non-resi exposure as well as mega-projects having a
+larger, more immediate impact on the P&L.
+Bear Case/PT
+We arrive at a Bear Case scenario of $364 which is based on ~16.5x our 2027E EBITDA construct potential. This scenario implies worse
+price/cost, project slippage in large Electrical applications, less impact from mega-projects, a downtick in hyperscale and rising labor
+costs.
+20
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Risks
+Key risks include poor uptake of mega-projects, worsening price/cost, a downturn in hyperscale and a downturn in T&D Trends.
+Emerson Electric Co. (EMR)
+Investment Thesis
+We are impressed by the decisive action to pivot the portfolio into higher secular growth (LSD to HSD/ LDD) and more attractive margins
+(~$18B invested in ~75% GM businesses and ~$18B divested in 32% GMs). Another strong quarter has affirmed our thesis w/ EMR’s
+portfolio structurally positioned to capture secular opportunities while reducing cyclical pressures, as gleaned by the growing project
+pipeline and a healthy project win rate. EMR sold its remaining interests in its Copeland JV (EMR Climate Technologies) to Blackstone for
+~$3.5B with pre-tax cash proceeds of ~$3.4B – net of the release of ~$100mm of future indemnity obligations, and now has announced
+the sale of pro tools and the purchase of remaining AspenTech stake.
+Base Case/PT
+Our $180 PT reflects ~19x '27E EBITDA, above the EE/MI group average, but ~3-turns below secular peers trading at ~22x (VRT, ETN,
+TT, ROK, XYL). Given higher margin entitlement vs. each peer and potentially stronger growth on average, we believe there is ample
+opportunity to close the valuation gap vs secular peers.
+Bull Case/PT
+We arrive at a Bull Case scenario PT of $198, based on ~21x our upside 27 EBITDA and reflecting a valuation in line with secular peers
+and contemplating stable process/hybrid markets but an accelerating recovery across shorter-cycle discrete and T&M markets.
+Bear Case/PT
+We arrive at a Bear Case scenario PT of $126 reflecting 14x '27 EBITDA and a discount to the group. This would assume a downward
+shift in markets and a sharp de-rate.
+Risks
+The primary risks to our thesis are erosion of the multiple related to the energy transition and preference for more sustainable stocks
+(in investors' eyes), miscues regarding the NATI transaction, poor portfolio allocation measures and price/cost challenges into '26.
+Flowserve Corporation (FLS)
+Investment Thesis
+FLS's execution has shifted into a higher gear with cash flow, margin and order levels continuing to improve. Emerging, multi-year
+opportunities developing in Power. Well positioned to participate in large projects, multi-year capex cycle. Bookings continue to be >
+$1B. Near-record backlog providing strong foundation for near-term revenue and earnings growth expectations. Robust M&A funnel to
+help with inorganic growth.
+Base Case/PT
+We value shares of FLS at $85, reflecting ~12x our 2027E EBITDA estimate, or a ~2 turn discount to the group. On 2030, we apply 13x
+P/E earnings power discounted back 1-year and arrive at similar target. Discount warranted given the fossil position LT argument but
+see the discount shrinking as FLS pivots the portfolio into nuclear along with the long-duration self-help margin tailwind.
+Bull Case/PT
+We arrive at a Bull Case scenario of $96, which is based on ~13.5x '27 EBITDA. This scenario assumes a more in-line valuation to energy
+peers on the assumption that process end markets remain strong, AM bookings continue to maintain the ~$600mm mark and flow
+through accretive to margins.
+Bear Case/PT
+We arrive at a Bear Case scenario of $60, which is based on ~9x '27 EBITDA. This contemplates a return of operational issues and less
+traction on the 3D initiative while missing out on an up-cycle in energy capex. This scenario reflects a sizable slide in oil prices, price/
+cost pressures, backlog margin pressure, and a worsening FCF outlook.
+Risks
+The primary risks to our thesis are a slide in oil prices, price/cost, backlog margin pressure, nuclear policy retrenchment, and a worsening
+FCF outlook.
+21
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Fortive Corporation (FTV)
+Investment Thesis
+FTV has been on a long-term portfolio journey focused on higher margins and higher growth including a drastic pivot to vertical software
+assets. Moreover, last year the company completed a tax-free spin-off of its Precision Technologies franchise (now Raliant) to simplify
+the portfolio, which was the logical split in our view as each business had a different growth path and profitability characteristics. While
+this isn't likely the culminating step should shareholder value not be created it has been aggressively shifting the portfolio. Now a new
+CEO and CFO succession has been made, providing a fresh set of eyes with a focus on accelerating the current operating strategy. A
+more balanced capital allocation strategy is being laid out, focused on bolt-on biased M&A and a more disciplined approach to valuations.
+Collectively, these were all the right steps but near-term demand risks and spending shifts on the government side combined with a
+portfolio that still lacks identity keeps us cautious into 2026.
+Base Case/PT
+Our target price of $51 reflects ~13x on '27E EBITDA roughly a 1-turn premium to group average, which feels appropriate given lack
+of near-term catalyst, subpar growth vs. peers and a portfolio that investors view lacks identity. The one turn premium accounts for
+the favorable financial characteristics (above average GM's and 50% recurring mix) but the burden of proof is on management to
+reinvigorate growth.
+Bull Case/PT
+We arrive at a Bull Case scenario of $56, which implies a multiple of ~14x on '27E EBITDA or 2.5 turns above the EE/MI group. This
+scenario contemplates stronger internal execution across the software businesses and an inflection in AHS growth above peers, which
+hasn't been the case in several years.
+Bear Case/PT
+We arrive at a Bear Case scenario of $36, which is based on ~10x '27E EBITDA. This scenario is based on weaker operational execution
+and the lack of a growth snapback across its core businesses. A string of unfavorably priced or unattractive characteristic deals (too
+far out of core) would drive further multiple compression.
+Risks
+The primary risks to our thesis are better than expected margin improvement and a snapback in growth at higher velocity and magnitude
+than we currently envision.
+Honeywell International Inc. (HON)
+Investment Thesis
+Post-separation Honeywell offers a more focused industrial portfolio with attractive exposure to automation, building controls and
+energy-transition markets. The simplified structure should improve earnings visibility and allow management to concentrate capital on
+higher-growth opportunities, while ongoing productivity initiatives provide a path to margin expansion. However, the near-term setup
+depends on successful separation execution, removal of stranded costs and a broader recovery across shorter-cycle end markets.
+Base Case/PT
+We arrive at a Base Case of $255, based on ~21x consensus 2028E EPS. The multiple represents a modest discount to a subset of
+secular industrial peers, including ETN, ROK, EMR and TT, and reflects HON’s improving organic growth, margin expansion opportunity
+and stronger earnings visibility following the Aerospace separation.
+Bull Case/PT
+We arrive at a Bull Case of $273, based on ~22.5x consensus 2028E EPS. This scenario assumes stronger than expected organic growth,
+faster margin expansion and improved earnings visibility, supporting a valuation ~in-line with the peer group of secular industrial peers..
+Bear Case/PT
+We arrive at a Bear Case of $179, based on ~14.5x consensus 2028E EPS. This scenario assumes weaker organic growth, more limited
+margin expansion and slower execution following the Aerospace separation, warranting a larger discount to secular industrial peers.
+Risks
+Key risks include separation execution, higher-than-expected stranded costs, weaker automation and building demand, delayed margin
+improvement, elevated leverage and poor capital deployment.
+22
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Hubbell Incorporated (HUBB)
+Investment Thesis
+We continue to like the electrification mega-trend and HUBB as a pure-play way to gain exposure. Margins are holding up on a FY basis
+with management suggesting this is the new base to grow off with no need to retrenchment. '27 targets imply ~$21 base EPS with ~
+$3.5-4.0B to deploy (~$3-4 per share), equivalent to $24-25 earnings power potential. Chunkier deals in focus. Currently trading below
+historical discount to ETN with some room to re-couple.
+Base Case/PT
+Our price target is $560, which is ~16.5x 2027E EBITDA. This represents a ~3.5x premium vs the EE/MI group which accounts for the
+secular shift we are seeing across the Utility and Electrification markets as the world transitions and potential growth differentiation
+accruing to HUBB.
+Bull Case/PT
+We arrive at a Bull Case scenario of $605, which is ~18x our 2027E EBITDA. This contemplates price realization sticking as raw materials
+decrease, continued robust demand in Utility and Electrification end-markets and a quicker recovery in Aclara and Distribution end
+markets.
+Bear Case/PT
+We arrive at a Bear Case scenario of $420, which represents the potential for weaker earnings development this year into the back half.
+In our downside case, we contemplate weaker conditions across non-residential construction markets and a ~13x '27 EBITDA multiple,
+which is roughly in line with the EE/MI group with secular drivers offsetting weaker earnings growth.
+Risks
+Key risks include a slower recovery in electrical construction markets, no signs of life in Aclara and difficulty maintaining margins, price/
+cost pressure, and a downturn in T&D trends, which have been a source of growth.
+IDEX (IEX)
+Investment Thesis
+We upgrade on evidence that the organic engine is restarting on two independent legs. First, the deliberate repositioning of HST toward
+higher growth, advantaged end-markets including data center, semiconductor and space/defense is now becoming visible in organic
+growth & orders, and with it attractive incremental margins. Second, the legacy short-cycle portfolio, with several end markets still near
+trough levels, has begun showing the distributor-level order improvement that historically precedes broader industrial recovery.
+Base Case/PT
+Our PT of $280 implies ~18.5x 2028E EV/EBITDA, in line with the compounder/high-quality group (AME, NDSN, EMR, ROK, TT, ETN).
+We assume advantaged-market growth continues above company average, with HST volume leverage driving margin expansion. Our
+base case assumes only gradual short-cycle improvement and does not require broad industrial recovery, leaving FMT and FSDP
+participation as additional upside. Convergence to the group avg multiple is warranted given the improving growth outlook and ongoing
+80/20 execution.
+Bull Case/PT
+Our bull case of $300 represents ~20x 2028E EBITDA, a modest premium to the group. It requires short-cycle demand to broaden and
+convert, FMT and FSDP volumes to recover, and flow-through to approach the ~40% management cites for normalized volume growth.
+Advantaged markets need only hold.
+Bear Case/PT
+Our bear case of $195 represents ~13.5x a reduced 2028E EBITDA, which assumes a meaningful reversion in IEX's advantaged markets.
+Risk is concentrated, as advantaged markets currently carry the growth narrative, in which case a slowdown would re-widen its discount
+to the compounder peer group.
+Risks
+Risks include a digestion phase in AI-linked infrastructure or semiconductor spending, which would disproportionately affect HST; and
+execution risk on 80/20 work in acquired businesses still below segment margin.
+23
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Johnson Controls International Plc (JCI)
+Investment Thesis
+There continues to be a healthy degree of investor skepticism on profitably converting orders, but recent quarterly actions were a step
+in the right direction. New leadership can support the story, but we remain on the sidelines to see how the initial moves play out given
+the operational complexity of the company.
+Base Case/PT
+We are valuing JCI at $165, which reflects what we view as a fair valuation at ~20x FY27E EBITDA, ~two turns below TT which is best in
+class albeit JCI is executing extremely well. We believe the discount is warranted given historical execution lumpiness, but acknowledge
+the new leadership in place and solid tone plan developing.
+Bull Case/PT
+We arrive at a Bull Case scenario of $185. Our PT assumes a ~22x EBITDA multiple which is premium to the HVAC group. This represents
+excellent execution from the new management driving margin upside and stronger organic growth from lean business systems and
+Data Center markets.
+Bear Case/PT
+We arrive at a Bear Case scenario of $124. This implies an EBITDA multiple of ~15.5x or a one turn discount to the broader HVAC peer
+group. This contemplates a lack of traction from operational improvements as well as a weakening commercial HVAC market.
+Risks
+Risks to our thesis include a rebound in execution, positive inflection in short-cycle products businesses, and better backlog execution
+than we currently have forecast (i.e. better margin conversion).
+Lennox International Inc. (LII)
+Investment Thesis
+Solid execution with price realization to ramp over the course of '25 related to the refrigerant transition. Additional pricing to come to
+offset tariff headwinds. Volume likely to not come down as much as previously expected, given tariff policies changing for the better.
+Self-help levers largely completed/intact. Cautious resi outlook.
+Base Case/PT
+Our price target of $395 is driven by a broader HVAC peer market de-rating during the increased tariff environment. Our target multiple
+of 12x '27 EBITDA represents a ~3.5 turn discount to its peer TT (Neutral), as we believe TT's strong service business and exposure to
+more secular markets like data center warrant the premium.
+Bull Case/PT
+We arrive at a Bull Case scenario of $436 representing ~13x 2027E EBITDA (should it execute on profit pools previously laid out and
+deploy available FCF), driven by realization on self-help levers around commercial capacity expansion and increased price realization/
+mix on residential HVAC refrigerant regulatory dynamics.
+Bear Case/PT
+We arrive at a Bear Case scenario of $316 representing ~10x 2027E EBITDA, which represents a slight multiple contraction and the
+low end of guidance range due to weaker execution on self-help, slower consumer spending backdrop and softer commercial market
+conditions.
+Risks
+Risks to our thesis include a sharper contraction in the residential replacement market, lower development in commercial, worsening
+price/cost, less price stickiness than expected, and weaker FCF conversion.
+NAPCO Security Technologies, Inc. (NSSC)
+Investment Thesis
+Our Outperform rating on NSSC is predicated on; (1) the underappreciated growth opportunity from the replacement of copper lines with
+the majority still to come, worth ~$110mm of incremental ARR or ~$2+ of earnings power. Additive nature continues to mix up margins;
+(2) 50% of the U.S. dealer base remains un-penetrated (selling to ~12k out of ~30k total) representing >50% of the dollar footprint.
+Partnership with ADI (largest security distributor) is progressing well and provides access to new dealers; (3) positive momentum in radio
+24
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+sales should begin to feed into services at a faster rate; (4) on the tail end of a multi quarter distributor destock cycle setting up for easy
+FY26 comps; (5) new product offerings introduce large TAMs and provide upside optionality that is not yet contemplated in numbers.
+Base Case/PT
+Our $48 price target contemplates a ~18.5x multiple on our FY28 EBITDA. This assumes a ~60% premium to ALLE and ASSA (not
+covered), a haircut to the ~66% 5-year average premium. We believe the premium is warranted given the financial attributes of NAPCO's
+business (higher margins with upside, durable and above average growth rates, attractive FCF generation). Shares are currently trading
+~at the 5-year average forward EV/EBITDA of ~25.5x (on Street numbers) despite accelerating fundamentals and rising estimates.
+Shares also attractive on PEG basis, trading at ~1.2x vs the group average at ~2x.
+Bull Case/PT
+We arrive at a bull case price target of $53, which contemplates the full 65% premium (~20.5x multiple) on our FY28 EBITDA estimate
+increased by ~$8mm to account for a faster ramp of the copper wire replacement cycle as the FCC lends additional support. The ~
+$8mm is derived from service growth rates returning to ~20% in FY26/FY27. We see additional upside to these numbers if the Prima/
+MVP ramp accelerates (could be worth an incremental ~9mm+ of EBITDA).
+Bear Case/PT
+Our bear case price target is $38, which contemplates a ~14.5x multiple. This represents a ~5% premium to the ALLE/ASSA average, in
+line with the low ebb over the last 5 years. This scenario assumes that service growth does not re-accelerate, the copper replacement
+cycle has been overestimated or shifted significantly to the right, and share losses in core hardware offerings.
+Risks
+The primary risks to our Outperform rating include an increasingly competitive environment eroding the radio share position, weaker
+radio sales in the near term leading to slower conversion into service revenue, an extended destocking cycle at the hardware distributors
+due to a weakening macro environment, and a lack of market uptake for new product offerings.
+Parker-Hannifin Corporation (PH)
+Investment Thesis
+Execution has been rock solid and the company has established one of the more credible track records in our coverage universe, not
+only by driving higher margin highs, and lows across the core, but through successful acquisition integrations. PH recently provided
+financial objectives through fiscal 2029 (FYE June) and has now raised their view with margins expected at 30% by FY31, underpinning
+a new upward earnings trajectory and greater cash generation. The prior FY27 adj. margin targets were achieved 3 years early and there
+is line of sight here a few years early. PH has established profit margin targets four times in the last 10 years and has exceeded each
+ahead of schedule – paving the way for more upside conversion.
+Base Case/PT
+Our $1,200 PT contemplates earnings power of $55+ on a hypothetical FY29 or ~25x P/E about in line with a basket of high quality
+trading peers (ETN, ITW, TT, EMR, IR) as PH continued to provide sustained earnings momentum with potential upside from here.
+Meanwhile, PH"s short-cycle businesses are inflecting and A&D remains robust bolstered by OEM and sustained AM demand.
+Bull Case/PT
+We arrive at a Bull Case scenario of $1,309 representing ~28x implied Industrial 2029E P/E slightly above its quality peer average. This
+also contemplates a sustained acceleration in Industrial MRO and capex spending across PH’s served verticals, faster demand pulse
+in Aerospace markets and better price realization.
+Bear Case/PT
+We arrive at a Bear Case scenario of $900 representing ~19x the implied Industrial 2029 P/E and contemplates a more drastic slowing
+across the short-cycle related markets and aftermarket elongated recovery in aerospace markets including weaker aftermarket volumes
+and a retrenchment in flight travel.
+Risks
+Risks to our thesis include slowing across general industries, elongated recovery in aerospace markets including weaker OE volumes
+and a retrenchment in flight travel.
+25
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Pentair Plc (PNR)
+Investment Thesis
+PNR’s near-term outlook is pressured by renewed Pool channel destocking and weaker consumer demand, which drove the recent
+reduction in sales expectations. The stock’s setup now depends on the timing of channel normalization, continued execution on
+Transformation Program savings and the company’s ability to protect margins through the downturn. We view PNR as a structurally
+improved business, but believe clearer evidence of Pool stabilization is needed before the valuation discount to peers can narrow.
+Base Case/PT
+We arrive at a Base Case of $65, based on 13.0x our 2027E adjusted EPS of $5.22. This scenario assumes Pool demand stabilizes
+following the recent destocking reset, while Transformation Program savings support modest margin improvement despite a still-soft
+consumer backdrop. The multiple remains below the broader peer group, reflecting weaker near-term growth and limited visibility into
+the timing of a volume recovery.
+Bull Case/PT
+We arrive at a Bull Case of $73, based on 13.5x 2027E adjusted EPS of $5.50. This scenario contemplates a stronger Pool
+recovery, improved channel inventory levels and better-than-expected margin conversion as volumes return. Continued execution on
+Transformation Program savings and stronger free cash flow would support a narrowing of PNR’s valuation discount to peers.
+Bear Case/PT
+We arrive at a Bear Case of $47, based on 10x 2027E adjusted EPS of $4.70. This scenario assumes a more prolonged downturn in
+Pool demand, continued channel destocking and weaker operating leverage. Slower realization of Transformation Program savings and
+sustained consumer pressure would further limit earnings growth and weigh on the valuation.
+Risks
+Risks to our thesis include a slower recovery in the pool market, slippage on the Transformational Program pushing out margin targets,
+and worsening price cost pressure.
+Rockwell Automation, Inc. (ROK)
+Investment Thesis
+The investor debate remains with the valuation paid and the ultimate trajectory of earnings following a few tough years. With the FY26
+guidance raise capturing the broadening industrial recovery, it implies mid-twenties EPS growth is already baked into FY26 expectations.
+Productivity and cost reduction progress are key to the story from here. An America-first presidential policy under Trump should drive
+capital formation and investment in the U.S. or elsewhere to friendly trading partners but the magnitude and timing of the impact is
+yet to be seen.
+Base Case/PT
+Our price target of $430 reflects ~30x FY27E EPS, well above our EE/MI group at ~22x and ~10 turns above EMR. The multiple
+contemplates the secular nature of ROK’s demand profile, low ebb in markets, and scarcity value as a pure-play automation player.
+However, the burden of proof is on the co. to grow into the multiple.
+Bull Case/PT
+We arrive at a Bull Case scenario of $473 which reflects ~33x FY27E EPS, a ~12 turn premium to the Industrial Technology average
+multiple of ~22x. This premium reflects relative growth outperformance vs. Siemens, sticky price and lower costs and strong growth
+in the book to bill business.
+Bear Case/PT
+We arrive at a Bear Case scenario of $327 which represents ~23x FY27E EPS, still at a premium to the EE/MI average reflecting the
+secular automation end markets and scarcity value of the pure play portfolio. This reflects order weakness and continued project delays
+or cancellations, a step back on realization from cost reduction programs and slower development in software.
+Risks
+Key risks include lower development in software, lower revenue synergies from M&A, slowing in core industrial/discrete automation
+markets, and short cycle book weakness.
+26
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Roper Technologies, Inc. (ROP)
+Investment Thesis
+ROP continues to face a difficult setup as vertical software valuations remain under pressure amid the AI disruption debate, while several
+operating businesses lack near-term growth catalysts. We believe a sustained re-rating requires organic growth to accelerate above the
+mid-single-digit range. Neptune’s backlog has normalized, government funding uncertainty remains a headwind at Deltek, and freight
+activity remains subdued at DAT. While ROP retains a high-quality recurring-revenue portfolio and strong capital deployment capabilities,
+we see limited near-term upside without an improvement in underlying growth.
+Base Case/PT
+We arrive at a Base Case of $335, based on ~12x our 2027E EBITDA. This scenario assumes organic growth remains near the mid-
+single-digit range, with no meaningful recovery at Deltek or DAT and continued valuation pressure across vertical software. The target
+multiple reflects slower growth, elevated AI-related uncertainty and limited catalysts for a near-term re-rating.
+Bull Case/PT
+We arrive at a Bull Case of $367, based on ~13x 2027E EBITDA. This scenario contemplates improving organic growth, better conditions
+at DAT, stabilization at Deltek and diminishing investor concerns around AI displacement. Stronger execution and renewed confidence
+in ROP’s recurring-revenue model would support a partial recovery in the valuation multiple.
+Bear Case/PT
+We arrive at a Bear Case of $285, based on ~10.5x 2027E EBITDA. This scenario assumes a material deterioration in growth and
+profitability as AI-related competition pressures ROP’s software assets, government funding weakness persists at Deltek and freight
+activity remains depressed at DAT. Lower earnings, limited backlog growth at Neptune and reduced confidence in the durability of the
+portfolio would drive significant multiple compression.
+Risks
+The primary risks to our thesis are slower performance in its software-related businesses and consumer willingness to spend in a
+slowdown, and the inability to put capital to work at favorable return hurdles.
+Space Exploration Technologies Corp. (SPCX)
+Investment Thesis
+SpaceX is the infrastructure layer of the orbital economy - three structurally distinct businesses sharing a launch platform and
+compounding independently. We initiate at Outperform with a $200 price target. Starlink is the cash engine. Connectivity generates $7B
++ in 2026E adjusted EBITDA scaling toward $44B by 2029E at 60%+ margins, a recurring-revenue flywheel that funds everything else
+and de-risks the consolidated thesis on its own. Direct-to-cell is the next unlock; with T-Mobile already live, Starlink's TAM expands from
+fixed broadband into the 5B+ mobile subscriber market. Space is the optionality beyond 2029. Falcon 9 dominates global launch share,
+DoD contracts provide a cost-plus floor, and Starship - if it achieves commercial cadence - collapses $/kg to orbit with the incremental
+price being the cost of propellant ($1-2mm). AI is where the asymmetry lives. xAI's Grok and enterprise platform require ~225% revenue
+CAGR to hit the management plan - the most aggressive assumption in our SOTP - but orbital compute represents genuine option value
+that no terrestrial AI peer can replicate.
+Base Case/PT
+Connectivity achieves 90% of plan ($43.6B EBITDA) at 15.0x; Space achieves 100% of plan ($3.1B EBITDA) at 51.1x; AI achieves 90%
+of plan ($107.7B EBITDA) at 16.8x. Total 2029E enterprise value ~$2,618B; equity value ~$2,618B after modest net debt and IPO
+cash. At 13.064B diluted shares, base PT = $200. Meaningful upside from current; contingent on Starlink sub ramp sustaining and xAI
+monetization beginning.
+Bull Case/PT
+Connectivity hits 100% of plan ($48.4B EBITDA) at 18.0x; Space beats plan at 130% ($4.0B EBITDA) at 60.0x on Starship commercial
+cadence + DoD acceleration; AI achieves 95% of plan ($113.7B EBITDA) at 20.0x — Terafab orbital compute operational and xAI
+enterprise traction confirmed. Total EV ~$3,382B. Re-rating requires AI margin scale-up, Starship on schedule, and hyperscaler capex
+holding.
+Bear Case/PT
+Connectivity at 75% of plan ($36.3B EBITDA) at 14.5x on slower sub ramp; Space at 65% ($2.0B EBITDA) at 50.0x on Starship slippage;
+AI at 60% of plan ($71.8B EBITDA) at 13.5x — Terafab delayed, xAI fails to scale near-term. Total EV ~$1,595B. Bear does not require
+27
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+a disaster — multiple compression alone on AI from 16.8x to 13.5x drives the bulk of downside. Governance structure limits minority
+recourse on capital allocation.
+Risks
+1) Hyperscaler capex retrenchment - deflates AI demand assumptions and compresses xAI multiples across all scenarios. 2) Starship
+schedule slippage - each 12-month delay shifts Space EV and pushes Terafab/orbital compute optionality. 3) xAI execution - mgmt plan
+requires ~225% CAGR; bear/base gap on AI alone is $35B EBITDA. 4) Governance - Musk 82.4% voting; Class A minority has limited
+recourse. 5) Lock-up supply overhang - 180-day tranche releases Dec 2026; Musk's 6.4B shares unlock June 2027.
+Stanley Black & Decker, Inc. (SWK)
+Investment Thesis
+SWK has been on a self-help journey through supply chain transformation, SKU walkaways, and SG&A initiatives expected to net ~
+$2B in run rate cost savings by 2025. The platform is well on its way and should help drive the portfolio back to ~35%+ GPMs. While
+prolonged execution issues during the pandemic hangover (2022) weighed on sentiment and pressured earnings, we believe SWK
+has turned the corner operationally. Management appears squarely focused on executing the transformation, simplifying the portfolio
+and simultaneously investing for future growth. Gross margins have steadily marched higher. Inventory days drastically reduced. The
+company is on pace to complete its transformation by the end of 2025. Growth and margin initiatives should carry well into the next 3-4
+years. SWK is looking to trim parts of the portfolio to reduce current elevated debt balances and simplify its portfolio further.
+Base Case/PT
+Our $105 Base Case PT contemplates a 11.5x '27E EV/EBITDA multiple, well below our EE/MI peer average of ~16.5x. This contemplates
+continued sound operational execution and modest growth.
+Bull Case/PT
+We arrive at a Bull Case scenario of $131, which reflects a ~13.5x '27 EV/EBITDA construct. We assume a 4-turn discount to the group
+average peer multiple at ~16.5x and the reduced tariff impact can be fully offset. This would contemplate lower tariff pressure, modest
+growth in DIY and continued execution on the cost-out and growth plan.
+Bear Case/PT
+We arrive at a Bear Case scenario of $70, which equates to ~9x '27 EV/EBITDA. Harsher tariffs return in-part, a consumer retrenchment
+and setback on GM expansion could precipitate this type of Bear Case.
+Risks
+The primary risks to our thesis are retrenchment in DIY trends, greater tariff pressures, a push-out of the residential market recovery
+and cost-reduction plan going off track.
+Trane Technologies plc (TT)
+Investment Thesis
+TT remains the best-in-class and "safest" among HVAC peers where investors retain confidence in execution and Street management.
+The company has taken market share while continuing to reinvest for long-term outgrowth. Valuation keeps us on the sidelines.
+Base Case/PT
+Our TT price target of $485 reflects a ~20x FY27E EV/EBITDA multiple. The 2027E EBITDA multiple is a premium to the HVAC
+manufacturing group at ~19x, reflecting continued outperformance and share gains in the truck/trailer business as well as above-
+average margin profile.
+Bull Case/PT
+We arrive at a Bull Case scenario of $543 representing ~22.5x 2027E EBITDA. This reflects continued share gains (TT has outgrown other
+OEMs by an average of 4% per quarter over the last 2+ years), positive CHVAC performance given its service-rich backlogs, sustained
+order momentum, and outsized wins related to Mega-Projects in its high-quality commercial portfolio.
+Bear Case/PT
+We arrive at a Bear Case scenario of $403 representing ~16.5x 2027E EBITDA. This contemplates price/cost pressure in '25, weaker
+CHVAC performance with less upside from the A2L refrigerant transition, and worsening repair vs replace dynamic.
+28
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Risks
+Risks to our thesis include price/cost pressure, slowdown in Commercial coupled with sharper, elongated contraction in residential unit
+shipments, and worsening repair vs replace dynamic.
+Vertiv Holdings Co (VRT)
+Investment Thesis
+VRT's pure-play focus on the secular data center markets should differentiate earnings and growth vs. peers over the next 2-3 years. AI
+(and liquid cooling applications) are still in their nascent stages with plenty of room to catalyze earnings and profit growth going forward.
+FCF execution has improved. Leverage dramatically reduced (~1x). Loans have been repriced ($13M savings). We see ample tailwinds
+ahead and execution remains solid with growing balance sheet capacity at its disposal. Investor sponsorship remains healthy. We see
+a more de-risked story with VRT regaining considerable credibility under CEO Gio Albertazzi after a period of operational missteps in
+the '21-'22 period.
+Base Case/PT
+Our price target of $280 reflects confidence in Vertiv's long-term outlook and increased revenue opportunity but also de-rating multiples
+across the AI value chain. Our price target construct contemplates ~21.5x our '28E EPS of ~$13, a warranted premium given superior
+growth profile and entrenched position within the Data Center ecosystem.
+Bull Case/PT
+We arrive at a Bull Case scenario of $406 representing ~30x our 2028 EPS increased by ~50c to reflect revenue per MW opportunity.
+This contemplates a faster uplift in liquid cooling sales and sustained Data Center demand.
+Bear Case/PT
+We arrive at a Bear Case scenario of $182, representing ~14x our 2028 EPS estimate. Our downside case contemplates a pullback in
+hyperscale data center spending and the respective multiples paid for these areas of investment. This would reflect a technical crack
+in AI multiples.
+Risks
+Risks to our thesis include any major retrenchment in hyperscale data center spending, a sharper and prolonged slowdown in Asia Pac,
+a fading of the AI euphoria, and lingering supply challenges that limit ability to serve the customer and convert orders.
+Watsco, Inc. (WSO)
+Investment Thesis
+We are concerned about the replace-vs-repair dynamic. Our work suggests that the level of replacement activity has been tightly
+correlated with consumer confidence over a nearly 40-year look back. Management continues to make strides on reducing inventory
+and with additional related margin improvement opportunities through logistics and transport. Inventory picture mixed. Pricing traction
+expected to ramp. Price propensity comes into clearer view heading into selling season but no clear signs of consumer retrenching.
+A2L unit shift to gradually ramp price/mix throughout the year.
+Base Case/PT
+Our $325 PT reflects a valuation of ~24.5x 2027E earnings. Valuation is a modest premium vs. OE peers as WSO displays a more
+defensive business model vs the OEMs and has solidified a #1 market share in the fragmented HVAC distribution space.
+Bull Case/PT
+We arrive at a Bull Case scenario of $359 which would reflect a valuation of ~27x 2027E earnings, reflecting stronger replacement
+demand driving outsized growth, higher realized ASP from regional-SEER changeover and refrigerant transition, and accelerated M&A.
+Bear Case/PT
+We arrive at a Bear Case scenario of $254 representing 19x 2027E earnings, which contemplates more repair vs. replacement activity in
+a prolonged weak consumer confidence environment driving by higher for longer rates, tighter credit and depleted consumer savings.
+This would also contemplate trouble growing GPMs from current levels towards the LT targets.
+Risks
+Risk to our thesis would consist of replacement demand driving stronger than expected growth, higher realized ASPs from regional-
+SEER changeover, and accelerated M&A. Conversely, downside risk would be related to a re-coupling of consumer confidence and
+replacement rates. We found that the level of replacement activity has been tightly correlated with consumer confidence over a nearly
+29
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+40-year look-back. This relationship suggests that replacement (vs. repair) is a quasi-discretionary purchase at times, likely varying on
+a region by region basis. Should a system fail in the middle of the southern summer, there is not much discretion in the replacement
+decision.
+Whirlpool Corporation (WHR)
+Investment Thesis
+Near-term margin pressure from tariffs and lower shipments, persisting consumer softness and the potential for another dividend cut
+as earnings risk elevates keeps us sidelined. Operational execution has been uneven but a targeted restructuring plan and $300mm
+facelift in its laundry division has the opportunity to improve operational performance over time. New product momentum has been
+encouraging driven by KitchenAid small domestic appliance (SDA) strength. Tariff changes potentially leveling playing field vs foreign-
+based manufacturers.
+Base Case/PT
+Our base case PT of $31 reflects ~8.0x our 2027E EBITDA. This is consistent with our view that the stock deserves to trade at a discount
+to peers given the leverage ratio & preferred overhang that together constrain meaningful multiple expansion until the balance sheet is
+demonstrably improving. Our $31 PT implies limited upside from current levels, consistent with our Neutral rating.
+Bull Case/PT
+Our SOTP analysis applies segment-level peer multiples to 2027E EBITDA across three business units: MDA North America (7.0x,
+in-line with ELUX/Haier/Midea), InSinkErator (14.0x, reflecting its dominant aftermarket niche), and SDA Global/KitchenAid (16.5x,
+benchmarked to SN/Breville) — arriving at a blended 9.8x total EV of ~$11.4B. After deducting net debt (~$6.6B), adding back common
+and preferred offering proceeds (~$1.0B), deducting the preferred liquidation value (~$525mm), and crediting the India stake at a 15%
+discount, our pro forma equity value implies a $37 share price — with KitchenAid SDA and InSinkErator as the primary drivers of the
+valuation disconnect.
+Bear Case/PT
+Our bear case PT of $25 applies ~7.9x to downside EBITDA of ~$1.02B, a scenario where promotional normalization stalls, housing
+remains frozen, and tariffs bite harder than management's framework, keeping NA EBIT margins well below the guided ~6%. While pure
+FCF math produces deeply distressed values, our bear case is anchored by asset value: InSinkErator alone was acquired for $3.0B in
+2022, and even at a 50% distressed-discount implies the remaining portfolio is ascribed near-zero value at current prices. Appaloosa's
+~5% stake and public letter add activist optionality — a sale of InSinkErator or KitchenAid would immediately transform the FCF profile.
+Risks
+Near-term margin pressure from tariffs and lower shipments, persisting consumer softness and the potential for another dividend cut
+as earnings risk elevates.
+Xylem Inc. (XYL)
+Investment Thesis
+XYL's internal execution appears to have improved given its simplification and 80/20 framework implemented across its segments.
+Though recent margin execution is encouraging, margin growth would need to be sustained alongside backlog improvement related
+to smart metering in M&CS. Additionally, ESG funds inflow have progressively declined, making it hard to argue to additional upside
+from XYL's current valuation. As a result, we are maintaining our Neutral rating on XYL with investors likely leaning towards better-
+executing secular names.
+Base Case/PT
+Our $110 price target reflects a valuation of ~18.5x 2027E earnings. This is a ~1.5 turn discount to the EE/MI average reflecting the
+recent executional issues the company has had. We believe a secular premium could come back should the company start putting
+points back on the board.
+Bull Case/PT
+We arrive at a Bull Case scenario of $124 representing ~20x 2027E earnings, closer in-line with other secular peers. This case
+contemplates large scale AMI deployments moving though the order book and an accelerated realization of 80/20 and simplification
+benefits.
+30
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Bear Case/PT
+We arrive at a Bear Case scenario of $88 representing ~14.5x our 2027E earnings. This contemplates continued project pushouts and
+de-scoping within M&CS and lackluster growth across the portfolio as 80/20 continues to roll out.
+Risks
+The primary risks to our thesis are a multiple de-rating due to uneven execution, weak FCF generation, inability to grow margins in MCS
+and elongation of cycle in smart meters due to chip shortages that linger.
+Zurn Water Solutions Corporation (ZWS)
+Investment Thesis
+ZWS continues to execute well driven by Drinking Water. We are encouraged by market steadiness, underscoring its balanced retrofit
+vs. new construction business mix. Growth initiatives including Filter First legislation should provide top-line lift next year and beyond.
+Positioning/portfolio mix a positive as well with ZWS over-indexed to stable Education and Healthcare end-markets in Institutional and
+under-indexed to a more volatile Warehouse end-market, especially as Commercial remains weak. Recall ~80% of ZWS Institutional
+exposure is related to ~60% of Dodge Institutional starts, while ~75% of ZWS Commercial tied to ~30% of Dodge starts. Execution has
+been strong and markets have been resilient in aggregate, but valuation keeps us at Neutral. Balance sheet usage will be topical this year.
+Base Case/PT
+Our $52 PT reflects ~16x '27E EBITDA, slightly above the EE/MI peer average. Cautious on non-res end-markets closer to peak with
+incoming data mixed. Moreover, we believe the greater interest rate sensitivity of the stock given its building-related tilt likely garners
+greater engagement this year should rates decline.
+Bull Case/PT
+We arrive at a Bull Case scenario of $57 representing ~17.5x 2027E EBITDA, which reflects a ~3-turn premium vs. EE/MI peers. Evidence
+that market expectations are developing better than anticipated next year and operating leverage proves healthier. Material M&A and/
+or clean drinking water wins would support higher EBITDA or valuation.
+Bear Case/PT
+We arrive at a Bear Case scenario of $42 representing ~13x 2027E EBITDA, which contemplates a slower recovery of non-residential
+markets and market correction across cyclicals. This would be a multiple reversion back below its long-term absolute average multiple.
+Risks
+Risks to our thesis include a sharper drop in non-residential markets (downside) and or material M&A or regulatory wins (upside).
+Companies Mentioned (prices as of 10/16/2026)
+ABB Concise Holdco LLC (ABB Concise Holdco L)
+Daiken Corporation (7905 JP)
+Flex Ltd. (FLEX $87.54)
+KEYSIGHT TECHNOLOGIES IN (KEYS- Not Rated)
+Microsoft Corporation (MSFT- Outperform $533.52)
+Oracle Corporation (ORCL- Outperform $129.59)
+Advanced Micro Devices, Inc. (AMD- Outperform $538.05)
+Delta Electronics, Inc. (2308 TW)
+Gates Industrial Corporation PLC (GTES)
+Lenovo Group Limited (992 HK)
+NVIDIA Corporation (NVDA- Outperform $217.09)
+nVent Electric plc (NVT)
+Important Disclosures
+The disclosures for the subject companies of this report as well as the disclosures for Mizuho Securities USA LLC entire coverage universe can be found at https://
+msusa.bluematrix.com/sellside/Disclosures.action or obtained by contacting EQSupervisoryAnalystUS@mizuhogroup.com or via postal mail at Equity Research Editorial
+Department, Mizuho Securities USA LLC, 1271 Avenue of the Americas, 2nd FL, New York NY, 10020.
+Investment Risks and Valuation Methods can be located in the following section of this research report: Base Case PT and Key Risks.
+Receipt of Compensation
+Mizuho Securities USA LLC and or its affiliates has received compensation for investment banking services for Flowserve Corporation, Honeywell International Inc., IDEX,
+Parker-Hannifin Corporation, Space Exploration Technologies Corp., Trane Technologies plc, Whirlpool Corporation, Flex Ltd. and Oracle Corporation in the past 12 months.
+Mizuho Securities USA LLC and or its affiliates have provided investment banking services for Flowserve Corporation, Honeywell International Inc., IDEX, Parker-Hannifin
+Corporation, Space Exploration Technologies Corp., Trane Technologies plc, Whirlpool Corporation, Flex Ltd. and Oracle Corporation who are or were clients in the past
+12 months.
+Mizuho Securities USA LLC and or its affiliates has managed or co-managed a public offering of securities for Flowserve Corporation, Honeywell International Inc., IDEX,
+Parker-Hannifin Corporation, Space Exploration Technologies Corp., Trane Technologies plc, Whirlpool Corporation, Flex Ltd. and Oracle Corporation in the past 12 months.
+Mizuho Securities USA LLC and or its affiliates expects to receive or intends to seek compensation for investment banking services for Parker-Hannifin Corporation and
+Oracle Corporation in the next 3 months.
+31
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Mizuho Securities USA LLC and or its affiliates makes a market in the following securities: Vertiv Holdings Co, Xylem Inc., Zurn Water Solutions Corporation, Advanced
+Micro Devices, Inc., Flex Ltd. and Gates Industrial Corporation PLC
+Regulation Analyst Certification (AC)
+I, Brett Linzey, hereby certify that the views expressed in this research report accurately reflect my personal views about any and all the subject companies. No part of my
+compensation was, is or will be, directly or indirectly, related to the specific recommendations or views expressed in this research report.
+Rating Definitions
+As of 6/21/2024, Mizuho Securities USA (MSUSA) uses a relative rating system in which stocks are rated as Outperform, Neutral, or Underperform (see definitions below)
+relative to other companies covered by the analyst or a team of analysts that are deemed to be in the same industry (the “relevant industry coverage universe”). Investors
+should read the research report in its entirety, including the definitions of all ratings, and not infer its contents from the rating alone.
+Investment ratings are based on the following definitions: The expected total return calculation includes anticipated dividend yield.
+Outperform (O): The stock's total return is expected to outperform the unweighted, expected total return of the analyst's industry coverage universe over the next 12
+months.
+Neutral (N): The stock’s total return is expected to perform in line with the unweighted, expected total return of the analyst’s industry coverage universe over the next
+12 months.
+Underperform (U): The stock’s total return is expected to underperform the unweighted, expected total return of the analyst’s industry coverage universe over the next
+12 months.
+Restricted (R): In certain circumstances, MSUSA policy and/or applicable securities regulations preclude certain types of communications, including investment
+recommendations, during the course of Mizuho’s engagement in certain transactions and in certain other circumstances.
+Rating Suspended (RS): The rating and target price have been temporarily suspended due to market events that made coverage impracticable or to comply with
+applicable regulations and/or firm policies in certain circumstances.
+Not Covered (NC): MSUSA does not cover the company.
+For disclosure purposes only (NYSE and FINRA ratings distribution requirements), our Outperform, Neutral and Underperform ratings are displayed as Buy, Hold and
+Sell, respectively.
+Prior to 6/21/24, MSUSA’s ratings were Buy, Neutral and Underperform.
+Rating Distribution
+(As of October 19 )
+% of coverage
+IB service past 12 mo
+Buy (Outperform)
+62.56%
+55.80%
+Hold (Neutral)
+33.39%
+52.02%
+Sell (Underperform)
+4.05%
+45.83%
+For disclosure purposes only (NYSE and FINRA ratings distribution requirements), our Outperform, Neutral and Underperform ratings are displayed as Buy, Hold
+and Sell, respectively.
+For additional information: Please log on to http://www.mizuhosecurities.com/us or write to Mizuho Securities USA LLC 1271 Avenue of the Americas, 2nd FL, New York,
+NY 10020.
+Disclaimers
+This report has been prepared by Mizuho Securities USA LLC (“MSUSA”), a subsidiary of Mizuho Americas LLC, solely for the purpose of supplying information to the clients
+of MSUSA and/or its affiliates to whom it is distributed. This report is not, and should not be construed as, a solicitation or offer to buy or sell any securities or related
+financial products.
+This report has been prepared by MSUSA solely from publicly available information. The information contained herein is believed to be reliable but has not been independently
+verified. MSUSA makes no guarantee, representation or warranty, and MSUSA, MHSC and/or their affiliates, directors, employees or agents accept no responsibility or
+liability whatsoever as to the accuracy, completeness or appropriateness of such information or for any loss or damage arising from the use or further communication
+of this report or any part of it. Information contained herein may not be current due to, among other things, changes in the financial markets or economic environment.
+Opinions reflected in this report are subject to change without notice.
+This report does not constitute, and should not be used as a substitute for, tax, legal or investment advice. The report has been prepared without regard to the individual
+financial circumstances, needs or objectives of persons who receive it. The securities and investments related to the securities discussed in this report may not be suitable
+for all investors. Readers should independently evaluate particular investments and strategies, and seek the advice of a financial adviser before making any investment or
+entering into any transaction in relation to the securities mentioned in this report.
+MSUSA has no legal responsibility to any investor who directly or indirectly receives this material. Investment decisions are to be made by and remain as the sole responsibility
+of the investor. Investment involves risks. The price of securities may go down as well as up, and under certain circumstances investors may sustain total loss of investment.
+Past performance should not be taken as an indication or guarantee of future performance. Unless otherwise attributed, forecasts of future performance represent analysts’
+estimates based on factors they consider relevant. Actual performance may vary. Consequently, no express or implied warranty can be made regarding future performance.
+32
+ 
+
+Industry Flash
+Electrical Equipment and Multi-Industry
+Any references in this report to Mizuho Financial Group, Inc. (“MHFG”), MHSC and/or its affiliates are based only on publicly available information. The authors of this report
+are prohibited from using or even obtaining any insider information. As a direct subsidiary of Mizuho Americas LLC and indirect subsidiary of MHFG, MSUSA does not, as
+a matter of corporate policy, cover MHFG or MHSC for investment recommendation purposes.
+MSUSA or other companies affiliated with MHFG, Mizuho Americas LLC or MHSC, together with their respective directors and officers, may have or take positions in the
+securities mentioned in this report, or derivatives of such securities or other securities issued by companies mentioned in this report, for their own account or the accounts
+of others, or enter into transactions contrary to any recommendations contained herein, and also may perform or seek to perform broking and other investment or securities
+related services for the companies mentioned in this report as well as other parties generally.
+Restrictions on Distribution
+This report is not directed to, or intended for distribution to or use by, any person who is a citizen or resident of, or entity located in, any locality, territory, state, country or
+other jurisdiction where such distribution, publication, availability or use would be contrary to or restricted by law or regulation. Persons or entities into whose possession
+this report comes should inform themselves about and observe such restrictions.
+United States: Mizuho Securities USA LLC, a subsidiary of Mizuho Americas LLC, 1271 Avenue of the Americas, 2nd Floor, New York, NY 10020, USA, contact number
++1-212-209-9300, distributes or approves the distribution of this report in the United States and takes responsibility for it. Any transaction by a US investor resulting from
+the information contained in this report may be effected only through MSUSA. Interested US investors should contact their MSUSA sales representative.
+United Kingdom/Germany/European Economic Area: This report is distributed in the United Kingdom by Mizuho International plc (MHI), Mizuho House, 30 Old Bailey,
+London EC4M 7AU. MHI is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority and
+is a member of the London Stock Exchange. This report is distributed in Germany by Mizuho Securities Europe GmbH (MHEU), Taunustor 1, 60310 Frankfurt, Germany.
+MHEU is authorised and regulated by the Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin). This report may be distributed in other member states of the European
+Economic Area by MHI and MHEU. For the avoidance of doubt this report is not intended for persons who are Retail Clients within the meaning of the FCA’s or the BaFin’s
+rules. Details of organizational and administrative controls for the prevention and avoidance of conflicts of interest can be found at https://www.mizuhogroup.com/emea/
+who-we-are/governance/mizuho-international-plc-legal-and-compliance/legal-disclosures.
+Japan: This report is distributed in Japan by Mizuho Securities Co., Ltd. (“MHSC”), Otemachi First Square Otemachi 1-chome, Chiyoda-ku, Tokyo 100-0004, Japan. Registered
+Financial Instruments Firm, No. 94 (Kinsho), issued by the Director, Kanto Local Finance Bureau. MHSC is a member of the Japan Securities Dealers Association, the Japan
+Securities Investment Advisers Association and the Financial Futures Association of Japan, and the Type II Financial Instruments Firms Association.
+Singapore: This report is distributed in Singapore by Mizuho Securities (Singapore) Pte. Ltd. (“MHSS”), a holder of a capital markets services license and an exempt financial
+adviser regulated by the Monetary Authority of Singapore. MHSS may distribute analyses or reports produced by its affiliates or other foreign research houses pursuant to
+an arrangement under Regulation 32C of the Financial Advisers Regulations. This report is only intended for distribution to “institutional investors”, “accredited investors” or
+“expert investors”, as defined under the Financial Advisers Regulations. Singapore recipients of this report should contact MHSS at 12 Marina View, #10-01A Asia Square
+Tower 2, Singapore 018961, for any matter arising from, or in connection with, this report.
+Hong Kong: This report is distributed in Hong Kong by Mizuho Securities Asia Ltd. (‘MHSA’), 14 - 15/F, K11 Atelier, 18 Salisbury Road, Tsim Sha Tsui, Kowloon, Hong Kong,
+a member of MHFG. MHSA is licensed and regulated by the Hong Kong Securities and Futures Commission. This report has been prepared for “professional investors” as
+defined in the Hong Kong Securities and Futures Ordinance. This report has been prepared in accordance with MHSA’s internal conflict of interest management policies.
+Details of MHSA’s organizational and administrative controls for the prevention and avoidance of conflicts of interest are available upon request.
+Australia: This report is being distributed in Australia by MHSA, which is exempted from the requirement to hold an Australian financial services license under the Corporation
+Act 2001 (“CA”) in respect of the financial services provided to the recipients. MHSA is regulated by the Securities and Futures Commission under the laws of Hong Kong,
+which differ from Australian laws. Distribution of this report is intended only for recipients who are “wholesale clients” within the meaning of the CA.
+Dubai: Mizuho International plc (DIFC Branch) is regulated by the Dubai Financial Services Authority and is authorized to provide financial services to Professional Clients
+and Market Counterparties only as defined by the DFSA rulebook. Mizuho International plc (DIFC Branch) registered address is Unit 501, Level 5, The Gate Building, East
+Wing, Dubai International Financial Centre, Dubai, U.A.E., Tel. +971 4 279 4400.
+If you do not wish to receive our reports in the future, please contact your sales person and request to be removed from receiving this distribution.
+© Mizuho Securities USA LLC. All Rights Reserved 2026. This document may not be altered, reproduced (including for purposes of training artificial intelligence models or
+tools), redistributed, passed on to any other party or used to create derivative works, in whole or in part, without the prior written consent of Mizuho Securities USA LLC.
+33
+ 
