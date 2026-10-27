@@ -68,7 +68,10 @@ def compute(leverage: float, account: float | None, positions: list[dict],
         "how_to_read_the_drops": ("a positive number is how far the whole position can fall "
                                   "from entry before the call; zero or negative means equity "
                                   "is already below that maintenance level at entry"),
-        "rules": ("US Reg T allows 2x on stock held overnight and 25% minimum maintenance; "
+        # Reg T is the 50% initial requirement; the 25% maintenance floor is
+        # FINRA Rule 4210 (the 10-27 harness answer called it "Reg T maintenance")
+        "rules": ("Federal Reserve Regulation T allows 2x on stock held overnight (50% initial "
+                  "margin); FINRA Rule 4210 sets the 25% minimum maintenance. "
                   "4x is intraday buying power for pattern day traders, so a 4x position held "
                   "overnight is called at the close unless the broker runs portfolio margin. "
                   "Brokers set their own maintenance and raise it on volatile names."),

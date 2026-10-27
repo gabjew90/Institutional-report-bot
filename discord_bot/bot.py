@@ -8721,9 +8721,10 @@ async def _ask_09_rank_and_regen_guards(
     if _ask_meta.get("slate_week") and answer:
         from discord_bot import slate_week as _sw
         import pytz as _sw_tz
+        _sw_now = datetime.now(_sw_tz.timezone(settings.timezone))
         answer, _sw_days = _sw.fill_missing_days(
-            answer, _ask_meta["slate_week"],
-            datetime.now(_sw_tz.timezone(settings.timezone)).date())
+            answer, _ask_meta["slate_week"], _sw_now.date(),
+            morning_reported=(_sw_now.hour, _sw_now.minute) >= (9, 30))
         if _sw_days:
             _ask_meta["guards"].append("slate-week:" + ",".join(_sw_days))
     # no reminder, timer or ping tool exists: never claim one (2026-10-08)

@@ -926,3 +926,11 @@ def test_audit_2026_10_26_deferred_company_news():
     """Run-6 A24: the parent "What was Tesla news" must fetch the news."""
     r = R.classify("What was Tesla news")
     assert r.tickers == ["TSLA"] and R.T_NEWS in [p[0] for p in r.prefetch]
+
+
+def test_returns_after_events_get_history_and_google_2026_10_27():
+    """Harness run: the SpaceX unlock question went to the view route, which
+    never offers lookup_price_history."""
+    r = R.classify("Give me 1 week and 1 month returns after the last few SpaceX unlocks")
+    assert r.shape == R.HISTORICAL_STAT and R.T_HISTORY in r.allowed_tools() and r.google_allowed()
+    assert R.classify("NVDA reports after the close").shape != R.HISTORICAL_STAT

@@ -839,6 +839,13 @@ _ROOM_OPINION_RE = re.compile(
 _TOKEN_RE = re.compile(
     r"\b(?:tokens?|coins?|memecoins?|shitcoins?|altcoins?|wallets?|airdrops?|on-?chain"
     r"|pump\.?fun|contract\s+address)\b", re.I)
+_EVENT_WORD = (r"(?:unlocks?|lock-?ups?|lockup\s+expir\w*|earnings|prints?|reports?|splits?|ipo"
+               r"|fomc|fed\s+(?:meetings?|decisions?|days?)|cpi(?:\s+prints?)?|dividends?|offerings?)")
+_EVENT_RETURN_RE = re.compile(
+    r"\b(?:returns?|performance|perform(?:ed)?|moves?|reactions?)\b[^?.\n]{0,40}?\b(?:after|following|post)\b"
+    r"[^?.\n]{0,40}?\b" + _EVENT_WORD + r"\b"
+    r"|\bhow\s+(?:did|does)\s+\S+\s+(?:do|trade|move|perform)\s+after\s+(?:the\s+)?(?:last\s+)?(?:few\s+)?"
+    + _EVENT_WORD + r"\b", re.I)
 _TOKEN_WORD = r"(?:token|coin|memecoin|shitcoin|altcoin)"
 
 
@@ -1090,6 +1097,12 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         r.shape, r.reason = PRICE, "margin math"
         r.tickers = [p["symbol"] for p in margin["positions"]] or tickers
         r.prefetch = [(T_MARGIN, margin)]
+        return r
+    # "1 week and 1 month returns after the last few SpaceX unlocks": the
+    # dates come from Google, the returns from lookup_price_history's
+    # event_dates (2026-10-27 harness: the view route never offered it)
+    if tickers and _EVENT_RETURN_RE.search(q):
+        r.shape, r.reason = HISTORICAL_STAT, "returns after dated events"
         return r
     coins = _token_tickers(q, tickers, _parent_text(question))
     if coins:
