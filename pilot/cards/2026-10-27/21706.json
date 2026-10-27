@@ -1,0 +1,501 @@
+{
+ "brief": "Yesterday's AI/semis selloff (Semis -7%, AI-levered -6%, AI data centers -8%) drove GS's HF Popular Pair Basket (GSTHVIPP) down 4.2%, its worst move since 2011, and pushed Global Fundamental L/S, multi-strat and systematic strategies all down more than 1% on the same day for the first time since Covid. Futures show tentative, not fully convincing stabilization this morning, with crude up 1.5% (WTI above $100) and the 10-year yield at 4.98%. Overnight AI-adjacent earnings (WDC, BE, FIX, MXL) mostly beat but produced mixed-to-lower stock reactions; GS expects WDC to trade lower despite strong results because competitor (believed Toshiba) capacity additions could cap HDD multiples, and prefers Seagate on relative pricing momentum. SpaceX is in talks to access 80,000 cell sites, lifting tower stocks (AMT/SBAC/CCI) and pressuring carriers (T/TMUS/VZ), including lease talks with Crown Castle toward building a fourth nationwide carrier. Oracle's October 29 Investor Day arrives amid AI-infrastructure capacity debate; GS flags an inflection in OCI gross profit within 12 months as the key company-specific dynamic to watch.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "GS's HF Popular Pair Basket (GSTHVIPP) fell 4.2% yesterday, its worst move since 2011.",
+   "anchor": "our HF Popular Pair Basket, GSTHVIPP, -4.2% which was its worst move since 2011",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "GS's Private Bank team noted Global Fundamental L/S managers, Multi-strats and Systematics all fell more than 1% on the same day for the first time since Covid.",
+   "anchor": "Global Fundamental L/S managers, Multi-strats and Systematics all fell more than 1% on the same day for first time since Covid",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Investor performance challenges are a major talking point, with yesterday one of the worst days of performance across strategies in recent history.",
+   "anchor": "Investor performance challenges continues to be a major talking point, with yesterday representing one of the worst days of performance, across strategies, in recent history",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Semis fell 7%, AI-levered names fell 6% and AI data center names fell 8% in yesterday's sell-off.",
+   "anchor": "Semis -7%, AI Levered -6%, AI data center -8%",
+   "topic": "AI capital cost repricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "The global AI trade has found some stabilization this morning, though not extremely convincing, after yesterday's sell-off.",
+   "anchor": "the global AI trade has found some stabilization (although not extremely convincing) after yesterday\u2019s sell-off",
+   "topic": "AI capital cost repricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Oracle's Investor Day on 10/29 arrives at a time of heightened debate on the AI infrastructure ecosystem.",
+   "anchor": "Oracle Investor Day on 10/29 will be at a time of heightened debate on the AI infrastructure ecosystem",
+   "topic": "AI capital cost repricing",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "10/29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Oracle has delivered FY26 revenue in line with its original framework since its September 2025 Investor Day.",
+   "anchor": "Oracle has delivered FY26 revenue in line with its original framework",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Oracle raised its FY27 revenue target to above $90 billion.",
+   "anchor": "raised its FY27 target to >$90bn",
+   "topic": "AI capital cost repricing",
+   "status": "target",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Oracle's RPO grew to $664 billion from $455 billion.",
+   "anchor": "grown RPO to $664bn from $455bn",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs expects an inflection in Oracle's OCI gross profit, likely in the next 12 months, as the key company-specific dynamic to watch.",
+   "anchor": "the key company-specific dynamic to watch will be an inflection in OCI gross profit, likely in the next 12 months",
+   "topic": "AI capital cost repricing",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Western Digital reported very strong results and guidance but the stock fell 4% in pre-market trading as management acknowledged potential for competitors to ramp units.",
+   "anchor": "Reported very strong results and guidance, but acknowledged potential for competitors to ramp units (and mgmt. reiterated modestly elevated near-term Capex). Stock -4% in pre.",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "released",
+   "instruments": [
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Bloom Energy reported a solid beat and raised FY26 guidance, but the stock fell 2% in pre-market trading.",
+   "anchor": "Reported solid beat and raised FY26 guide. Stock -2% in pre.",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "released",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Comfort Systems USA's backlog rose $3.8 billion quarter-over-quarter and management cited relentless demand, but the stock fell 3% in pre-market trading.",
+   "anchor": "backlog +$3.8bn qoq and noted \u201crelentless demand\u201d but down -3% in the pre",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "released",
+   "instruments": [
+    "FIX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "MaxLinear guided approximately 10% above the Street and was up 15% quarter-over-quarter, with the stock up 3% in pre-market trading.",
+   "anchor": "guided ~10% above the street and up 15% qoq...up 3% in the pre",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "released",
+   "instruments": [
+    "MXL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs expects Western Digital's stock to trade modestly lower despite a strong quarter and guidance well above the Street.",
+   "anchor": "We expect the stock to trade modestly lower despite a strong quarter and guidance well above the Street.",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "forecast",
+   "instruments": [
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs prefers Buy-rated Seagate over Western Digital on a relative basis given Seagate's stronger pricing momentum through its HAMR technology transition.",
+   "anchor": "prefer Buy-rated Seagate on a relative basis given its stronger pricing momentum as it has navigated through the bulk of its HAMR technology transition",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "forecast",
+   "instruments": [
+    "WDC",
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Bloom Energy raised full-year 2026 revenue guidance to $4.4-4.6 billion, representing 122% year-over-year growth at the midpoint, versus the Street's $4.1 billion estimate.",
+   "anchor": "Raises full year 2026 revenue guidance to $4.4 billion - $4.6 billion, representing 122% year-over-year growth at the midpoint (Street at $4.1 bn)",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "forecast",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Bloom Energy's 3Q adjusted EBITDA of $300 million beat the Street's $241 million estimate, and 3Q revenue of $1.24 billion beat the Street's $1.08 billion estimate.",
+   "anchor": "3Q adj EBITDA of $300 mn ahead of Street at $241 mn. 3Q revenue of $1.24 bn ahead of Street at $1.08 bn.",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "released",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Options pricing implies a 9% move for Bloom Energy on its earnings print.",
+   "anchor": "Expects highlighted beat and raise on revs and 2x capacity narrative consistently throughout the day. 9% implied move.",
+   "topic": "AI earnings beat-selloff disconnect",
+   "status": "level",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "SpaceX aims to secure a minimum of 80,000 cell sites across the US and is in talks with at least one major cellular infrastructure company to reach that goal.",
+   "anchor": "SpaceX aims to secure a minimum of 80,000 cell sites across the US and is in talks with at least one major cellular infrastructure company",
+   "topic": "SpaceX wireless tower deal",
+   "status": "forecast",
+   "instruments": [
+    "AMT",
+    "SBAC",
+    "CCI",
+    "T",
+    "TMUS",
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "SpaceX is discussing cell-site leases with Crown Castle, among other companies, to build a fourth nationwide wireless carrier.",
+   "anchor": "The company is discussing leases with Crown Castle Inc., among other companies, to build a fourth nationwide wireless carrier",
+   "topic": "SpaceX wireless tower deal",
+   "status": "forecast",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "The value of SpaceX's tower lease deals could reach into the billions, as SpaceX plans to use Starlink satellites to establish links with ground users.",
+   "anchor": "The value of the deals with SpaceX could reach into the billions, with the company planning to use its Starlink satellites",
+   "topic": "SpaceX wireless tower deal",
+   "status": "forecast",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Tower stocks CCI, SBAC and AMT rose 6-9% in pre-market trading while carriers T, TMUS and VZ fell 4-5% on the SpaceX cell-site talks.",
+   "anchor": "CCI, SBAC, AMT +6-9% in pre. T, TMUS, VZ -4 to -5% in pre.",
+   "topic": "SpaceX wireless tower deal",
+   "status": "level",
+   "instruments": [
+    "CCI",
+    "SBAC",
+    "AMT",
+    "T",
+    "TMUS",
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Robert Half's Talent Solutions segment returned to positive growth for the first time since 2022, up 2% year-over-year as contract staffing grew 1% and permanent placement rose 6%.",
+   "anchor": "Talent Solutions returned to positive growth for the first time since 2022, increasing 2% y/y as contract staffing grew 1% and permanent placement rose 6%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "RHI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs maintains a Sell rating on Robert Half, citing longer-term AI-related risks to white-collar staffing that constrain the earnings recovery and create downside risk to the shares.",
+   "anchor": "longer-term AI-related risks to white-collar staffing continue to constrain the earnings recovery and create downside risk to the shares. Maintain Sell.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "RHI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs maintains a Sell rating on QuantumScape, citing fundamental risks it believes are not reflected in the current stock price.",
+   "anchor": "we maintain our Sell rating on the stock as several fundamental risks remain in our opinion",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "QS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs assumes QuantumScape will not generate meaningful revenue until starting in 2030.",
+   "anchor": "we continue to see a long path to meaningful commercial volumes (we assume meaningful revenue starting in 2030)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "QS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "China's IC import value rose 74.7% year-over-year and export value rose 136.0% year-over-year in September 2026.",
+   "anchor": "Greater China Semis: Sep: IC import/export value +74.7%/+136.0% YoY",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Goldman Sachs views Micron's technology roadmap updates as having positive implications for Tokyo Electron, Disco and Ebara, all rated Buy, while rating Kokusai Electric Neutral.",
+   "anchor": "positive implications for Tokyo Electron (Buy), Disco (Buy), Ebara (Buy), and Kokusai Electric (Neutral)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "JPMorgan upgraded SKYD to Neutral.",
+   "anchor": "STREET ACTIONS: Upgrades: SKYD (Neutral, JPMorgan)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "SKYD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "The US 10-year Treasury yield rose to 4.98%.",
+   "anchor": "US 10 year yield higher at 4.98%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.23.26",
+   "claim": "Spotify's advertising revenue trended toward double-digit percentage growth in Q3'26, with implied momentum from management's optimistic Q4 revenue commentary.",
+   "anchor": "progression of advertising trends in Q3'26 towards DD% revenue growth and the implied momentum (not explicit) from mgmt's optimism in their Q4 revenue commentary",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-27/21706__gs-bartlett-gs-tmt-today-10-23-26-23-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 9,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
