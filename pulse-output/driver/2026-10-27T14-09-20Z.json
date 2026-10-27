@@ -1,0 +1,15 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-10-27T14:09:26.167647Z"},
+  "omnipulse": {"decision": "LIGHT", "detail": "no new bank research since the last pulse", "at": "2026-10-27T14:09:32.002116Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=93", "at": "2026-10-27T14:09:38.463091Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "clean", "at": "2026-10-27T14:11:02.668351Z"},
+  "lint": {"decision": "SKIP_SCRUB", "detail": "5 soft issue(s) only", "at": "2026-10-27T14:12:07.007113Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-10-27T14:12:13.654534Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-10-27T14:12:13.698598Z"},
+  "adversarial": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-10-27T14:13:07.646366Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane", "at": "2026-10-27T14:13:07.676711Z"}
+ },
+ "budgets": {},
+ "lint": {"last_hard": 0}
+}
