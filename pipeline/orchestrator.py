@@ -231,6 +231,16 @@ async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> Pd
         return analysis
 
     except Exception as e:
+        from ai_analysis.token_budget import BudgetExceeded
+        if isinstance(e, BudgetExceeded):
+            # Not the document's fault: back in the queue for after UTC
+            # midnight, no retry used (2026-10-27: 62 backlog notes spent
+            # all three retries against the same exhausted budget in 15
+            # minutes and were written off).
+            log.warning(f"Budget exhausted; {file_name} waits for the reset: {e}")
+            db.update_pdf_status(pdf_id, "DOWNLOADED")
+            db.log_event(pdf_id, "process", "deferred", "daily Gemini token budget exhausted")
+            return None
         log.error(f"Failed to process {file_name}: {e}", exc_info=True)
         db.update_pdf_status(pdf_id, "FAILED", str(e)[:500])
         db.log_event(pdf_id, "process", "failed", str(e)[:500])
@@ -259,6 +269,13 @@ async def process_pending_queue() -> list[PdfAnalysis]:
             )
     except Exception as e:
         log.error(f"Stale-PROCESSING reaper failed: {e}", exc_info=True)
+
+    # Nothing starts while the PDF budget is spent: triage spends tokens
+    # before the deep-analysis reservation would refuse (2026-10-27).
+    from ai_analysis.token_budget import get_budget
+    if get_budget().exhausted():
+        log.info("Processing queue: daily Gemini token budget spent; waiting for the UTC reset")
+        return []
 
     # Get pending PDFs
     pending = db.get_pending_pdfs(limit=50)

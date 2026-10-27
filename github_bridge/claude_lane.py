@@ -406,6 +406,11 @@ async def _gemini_one(row: dict) -> bool:
         _remove_local(row)
         return True
     except Exception as e:
+        from ai_analysis.token_budget import BudgetExceeded
+        if isinstance(e, BudgetExceeded):
+            # stays routed to Gemini; run_fallbacks waits for the reset
+            log.warning(f"claude lane: Gemini fallback for {pdf_file_id} waits for the budget reset")
+            return False
         log.error(f"claude lane: Gemini fallback failed for {pdf_file_id}: {e}", exc_info=True)
         # FAILED re-enters the normal retry queue, which hands the document
         # to the lane again; a record that arrived meanwhile is then used.
@@ -419,6 +424,9 @@ async def run_fallbacks(limit: int = 10) -> int:
     5-minute job and the pre-pulse sweep never analyse a document twice."""
     if not reachable():
         return 0
+    from ai_analysis.token_budget import get_budget
+    if get_budget().exhausted():
+        return 0        # the rows stay routed to Gemini until the UTC reset
     async with _FALLBACK_LOCK:
         rows = db.get_lane_rows("fallback_to_gemini", _prefix(), limit=limit)
         if not rows:

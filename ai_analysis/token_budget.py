@@ -221,6 +221,13 @@ class TokenBudget:
             if self._reserved < 0:
                 self._reserved = 0
 
+    def exhausted(self, headroom: int = 20_000) -> bool:
+        """True when less than `headroom` tokens remain today: callers stop
+        starting work instead of failing it one call at a time."""
+        with self._lock:
+            self._rollover_if_needed()
+            return self._reserved + headroom >= self._daily_budget
+
     def snapshot(self) -> dict:
         with self._lock:
             self._rollover_if_needed()
