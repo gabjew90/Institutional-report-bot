@@ -1,0 +1,994 @@
+Power BI Desktop
+https://research.ca-cib.com
+Alex Li
+Head of US Rates Strategy
++1 212 261 3950
+alex.li@ca-cib.com
+USD Rates Chart Pack: Futures Positions & Curve Analysis
+19/10/2026 16:29 CET
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+Summary
+The report captures the US Commodity Futures Trading Commission (CFTC)’s Commitment of Traders (COT) data on 
+investor positions in futures at aggregate levels as well as by maturity sectors. 
+The data provides insight on US Treasury market positioning by various investor types, such as asset managers and 
+leverage investors. The butterfly analysis is a useful relative value indicator of Treasury/swap yield curve curvature. Extreme 
+positioning and curvature may lead to rate/curve changes near term. 
+Explanatory Note
+·        According to the CFTC, when an individual reportable trader is identified to the Commission, the trader is classified either as "commercial" or "non-
+commercial." A trading entity generally gets classified as a "commercial" trader by filing a statement with the Commission, on CFTC Form 40: Statement of 
+Reporting Trader, that it is commercially "...engaged in business activities hedged by the use of the futures or option markets."
+·        Butterfly analysis: if the spread (long the belly) is high, the belly is cheap vs wings, and vice versa.
+19/10/2026 16:29 CET
+2
+Source: CME Group, Crédit Agricole CIB
+Futures contract specifications
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+CFTC Commitment of Traders: Non-commercial net positions in Treasury futures
+2Y
+-2M
+-1M
+0M
+2022
+2023
+2024
+2025
+2026
+5Y
+-3M
+-2M
+-1M
+0M
+2022
+2023
+2024
+2025
+2026
+10Y
+-1.0M
+-0.5M
+0.0M
+2022
+2023
+2024
+2025
+2026
+Ultra-Bond
+-0.5M
+-0.4M
+-0.3M
+-0.2M
+2022
+2023
+2024
+2025
+2026
+Ultra-10Y
+-0.5M
+0.0M
+2022
+2023
+2024
+2025
+2026
+Bond
+-0.2M
+-0.1M
+0.0M
+2022
+2023
+2024
+2025
+2026
+Source: CFTC, Crédit Agricole CIB
+19/10/2026 16:29 CET
+3
+TU
+-911.6K
+FV
+-1,080.2K
+TY
+-988.1K
+UXY
+ 
+-212.5K
+US
+-126.4K
+WN
+-321.6K
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+CFTC Commitment of Traders: Non-commercial net positions in futures
+30-day Fed funds
+-0.4M
+-0.2M
+0.0M
+0.2M
+0.4M
+2022
+2023
+2024
+2025
+2026
+1M SOFR
+-0.4M
+-0.2M
+0.0M
+2022
+2023
+2024
+2025
+2026
+3M SOFR
+-4M
+-2M
+0M
+2022
+2023
+2024
+2025
+2026
+E-Mini S&P 500 Index
+-0.4M
+-0.2M
+0.0M
+0.2M
+2022
+2023
+2024
+2025
+2026
+NASDAQ Mini Stock Index
+0K
+50K
+2022
+2023
+2024
+2025
+2026
+Source: CFTC,  Crédit Agricole CIB
+19/10/2026 16:29 CET
+4
+1M SOFR
+-26.6K
+3M SOFR
+-2,434.4K
+FF
+80.2K
+S&P 500 Index
+-141.0K
+NASDAQ 100
+48.5K
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+776.5K
+-97.6K
+-715.7K
+29.8K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+391.5K
+-179.3K
+-154.0K
+-107.2K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+797.5K
+-321.2K
+-335.9K
+-78.0K
+AM
+Dealers
+Leveraged
+ 
+Others
+10/13
+/2026
+2,898.6K
+-632.8K
+-2,205.9K
+-105.3K
+AM
+Dealers
+Leveraged
+ 
+Others
+10/13
+/2026
+2,985.0K
+-918.0K
+-2,104.4K
+8.5K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+1,795.9K
+-481.7K
+-1,367.4K
+18.1K
+CFTC Commitment of Traders: Net positions in Treasury futures by trader types
+2Y
+-2M
+0M
+2M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+5Y
+-4M
+-2M
+0M
+2M
+4M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+10Y
+-2M
+0M
+2M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+Ultra-Bond
+-1M
+0M
+1M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+Ultra-10Y
+-0.5M
+0.0M
+0.5M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+Bond
+-0.5M
+0.0M
+0.5M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+Source:  CFTC, Crédit Agricole CIB
+19/10/2026 16:29 CET
+5
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+75.3K
+-77.9K
+-11.6K
+2.9K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+915.8K
+-602.4K
+-408.7K
+-11.1K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+-22.1K
+-152.9K
+144.9K
+19.0K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+29.7K
+214.8K
+-235.3K
+-9.0K
+ 
+AM
+Dealers
+Leveraged
+Others
+10/13
+/2026
+-466.9K
+2,721.0K
+-2,245.5K
+-8.9K
+CFTC Commitment of Traders: Net positions in futures by trader types
+30-day Fed funds
+-0.5M
+0.0M
+2022
+2024
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+1M SOFR
+-0.5M
+0.0M
+0.5M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+3M SOFR
+-2M
+0M
+2M
+4M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+E-Mini S&P 500 Index
+-1M
+0M
+1M
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+NASDAQ Mini Stock Index
+-0.1M
+0.0M
+0.1M
+2022
+2023
+2024
+2025
+2026
+Asset Managers
+Dealers
+Leveraged
+Others
+Source:  CFTC, Crédit Agricole CIB
+19/10/2026 16:29 CET
+6
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+2 - 30
+-200
+-100
+0
+100
+200
+2020
+2025
+Minimum: -194.50
+Maximum: 180.33
+Average: 8.09
+2 - 5
+-100
+0
+100
+2020
+2025
+Minimum: -100.90
+Maximum: 75.00
+Average: -9.23
+Swap curve
+Source: CMIT, Crédit Agricole CIB
+19/10/2026 16:30 CET
+7
+2 - 10
+-100
+0
+100
+2020
+2025
+Minimum: -142.50
+Maximum: 140.10
+Average: 2.52
+10 - 30
+-50
+0
+50
+2020
+2025
+Minimum: -61.89
+Maximum: 55.90
+Average: 5.63
+5 - 10
+-50
+0
+50
+2020
+2025
+Minimum: -41.60
+Maximum: 73.50
+Average: 11.76
+5 - 30
+-100
+0
+100
+2020
+2025
+Minimum: -93.60
+Maximum: 117.80
+Average: 17.36
+Levels
+ 
+2-5
+2-10
+2-30
+5-10
+5-30
+10-30
+10/16/2026
+1.9
+11.0
+20.0
+9.1
+18.1
+9.0
+10/15/2026
+0.8
+8.8
+17.1
+8.0
+16.3
+8.3
+10/14/2026
+5.1
+13.1
+19.7
+8.0
+14.7
+6.7
+10/13/2026
+5.4
+14.9
+23.3
+9.6
+17.9
+8.3
+10/12/2026
+7.5
+18.6
+27.9
+11.1
+20.3
+9.2
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+Treasury curve
+2 - 30
+-200
+0
+200
+2000
+2020
+Minimum: -116.89
+Maximum: 257.09
+Average: 90.42
+2 - 5
+-100
+0
+100
+2000
+2020
+Minimum: -78.48
+Maximum: 105.77
+Average: 28.75
+Source: CMIT, Crédit Agricole CIB
+19/10/2026 16:30 CET
+8
+2 - 10
+-100
+0
+100
+200
+2000
+2020
+Minimum: -108.15
+Maximum: 176.83
+Average: 56.88
+10 - 30
+0
+50
+100
+2000
+2020
+Minimum: -19.30
+Maximum: 87.19
+Average: 32.81
+5 - 10
+-100
+-50
+0
+50
+100
+2000
+2020
+Minimum: -42.50
+Maximum: 86.07
+Average: 28.78
+5 - 30
+0
+100
+200
+2000
+2020
+Minimum: -45.15
+Maximum: 165.55
+Average: 62.07
+Levels
+ 
+2-5
+2-10
+2-30
+5-10
+5-30
+10-30
+10/16/2026
+15.9
+35.3
+69.2
+19.4
+53.3
+33.9
+10/15/2026
+14.7
+33.1
+65.8
+18.4
+51.1
+32.7
+10/14/2026
+19.6
+38.5
+70.4
+18.8
+50.8
+32.0
+10/13/2026
+20.6
+41.1
+76.0
+20.5
+55.4
+34.9
+10/12/2026
+23.0
+45.1
+81.0
+22.1
+57.9
+35.9
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+Swap butterflies 
+2-5-10
+-30
+-20
+-10
+0
+2024
+2026
+2-10-30
+-40
+-20
+0
+20
+40
+2024
+2026
+5-7-10
+-5
+0
+2024
+2026
+5-10-30
+-5
+0
+5
+10
+15
+2024
+2026
+10-20-30
+0
+5
+10
+15
+20
+2024
+2026
+Source: CMIT, Crédit Agricole CIB
+19/10/2026 16:30 CET
+9
+Levels
+ 
+2-5-10
+2-10-30
+5-7-10
+5-10-30
+10-20-30
+10/16/2026
+-3.6
+1.0
+-2.1
+0.1
+12.1
+10/15/2026
+-3.6
+0.3
+-2.5
+-0.2
+12.1
+10/14/2026
+-1.2
+3.5
+-1.7
+0.7
+11.2
+10/13/2026
+-2.6
+3.3
+-1.7
+0.9
+11.4
+10/12/2026
+-1.8
+4.7
+-1.8
+1.0
+12.4
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+Treasury butterflies 
+5-10-30
+-20
+-10
+0
+2024
+2026
+2-5-10
+-30
+-20
+-10
+0
+2024
+2026
+2-10-30
+-50
+0
+50
+2024
+2026
+5-7-10
+0
+5
+2024
+2026
+10-20-30
+20
+30
+40
+2024
+2026
+Source: CMIT, Crédit Agricole CIB
+19/10/2026 16:30 CET
+10
+Levels
+ 
+2-5-10
+2-10-30
+5-7-10
+5-10-30
+10-20-30
+10/16/2026
+-1.7
+0.8
+-0.7
+-7.1
+21.4
+10/15/2026
+-1.9
+0.1
+-0.7
+-7.1
+21.5
+10/14/2026
+0.3
+3.2
+0.3
+-6.6
+21.5
+10/13/2026
+0.0
+3.1
+-0.2
+-7.2
+22.2
+10/12/2026
+0.5
+4.6
+-0.1
+-6.9
+22.6
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+SOFR futures open interest
+1M SOFR open interest
+0.0M
+0.5M
+1.0M
+1.5M
+Jan 2025
+Jul 2025
+Jan 2026
+Jul 2026
+Open Interest
+1M moving average
+3M SOFR open interest
+10M
+12M
+14M
+Jan 2025
+Jul 2025
+Jan 2026
+Jul 2026
+Open Interest
+1M moving average
+Source: CME Group, US Treasury, Crédit Agricole CIB
+19/10/2026 16:29 CET
+11
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+10Y spread US - Japan
+0
+200
+400
+bp
+2020
+2022
+2024
+2026
+10Y spread US - Germany
+100
+150
+200
+250
+300
+bp
+2020
+2022
+2024
+2026
+Treasury to bund and JGB spreads
+Fed SOMA Holdings
+Source: CMIT, Federal Reserve, Crédit Agricole CIB
+19/10/2026 16:29 CET
+12
+Fed SOMA Portfolio: Treasuries and MBS
+0
+5
+10
+2005
+2010
+2015
+2020
+2025
+MBS
+Treasuries
+Fed SOMA Portfolio: Treasuries
+0M
+2M
+4M
+6M
+2005
+2010
+2015
+2020
+2025
+Bills
+Inflation Compensation
+TIPS
+Notes & Bonds
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+19/10/2026 16:29 CET
+13
+Red Mount Analytics – Interest Rates Research specific dashboards 
+           
+          
+             
+           
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+Valuation and methodology
+Based on their expertise, each analyst defines the information that is relevant to produce their 
+recommendations. This information may change over time. All recommendations focus on FX and 
+fixed income instruments, either spot, cash or derivate markets. Crédit Agricole CIB is currently 
+disclosing investment recommendations either at the issuer level, at the financial instrument level or 
+at the country level. Credit Agricole CIB investment recommendations are based on a risk and 
+reward analysis:
+•Risk analysis may be conducted at the financial instruments level. Among the information normally 
+used to define the risks, are (1) publications produced by other research teams within Crédit 
+Agricole CIB (Economics, FX, Credit Research, Interest rate), (2) country analysis, (3) regulatory 
+filings; (4) regular discussions with relevant stakeholders such as experts or regulatory bodies or (5) 
+any other publicly available sources.
+•Reward analysis is usually based on valuation models. Valuation may be based on proprietary 
+models or external models provided by sources considered as reliable (eg, Bloomberg). Among 
+other factors, valuation models may be based on relative value models, quantitative models, cross-
+asset models.
+•Investment recommendations may also be based on other technical aspects, including positioning 
+flows and observing the market and underlying movements in particular instruments or issuers. This 
+analysis will take into account key criteria such as market liquidity of the financial instrument at the 
+time of production of the recommendation.
+Any change in recommendation is disclosed via specific documents indicating both the new and the 
+previous recommendation and the rationale backing the change.
+Credit Agricole CIB expressly disclaims any responsibility for: (i) the accuracy of the models or 
+estimates used in deriving the recommendations; (ii) any errors or omissions in computing or 
+disseminating the valuations: and (iii) any uses to which the recommendations are put. Any 
+valuation provided may be different from the valuation of the same product that Credit Agricole CIB 
+may use for its own purposes, including those prepared in its own financial records.
+19/10/2026 16:29 CET
+14
+Disclosures and certification
+The views expressed in this report accurately reflect the personal views of the undersigned analyst(s). In addition, the undersigned analyst(s) has not and will not receive any compensation for providing a specific recommendation or 
+view in this report. 
+Alex Li
+Important: Please note that in the United States, this fixed income research report is considered to be fixed income 
+commentary and not fixed income research. Notwithstanding this, the Crédit Agricole CIB Research Disclaimer that can be 
+found at the end of this report applies to this report in the United States as if references to research report were to fixed 
+income commentary. Products and services are provided in the United States through Crédit Agricole Securities (USA), Inc.
+Foreign exchange disclosure statement to clients of CACIB 
+https://www.ca-cib.com/sites/default/files/2017-02/2016-05-04-cacib-fx-disclosure-april-2016_0.pdf  
+Additional recommendation obligations – available from analyst(s) upon request:
+•A list of all the recommendation changes on any financial instrument or issuer disseminated within the last 12 months. 
+•Where Crédit Agricole CIB is a market-maker or liquidity provider in the financial instruments of the issuer.
+This document should not be used by a non legitimate recipient.
+
+Power BI Desktop
+19/10/2026 16:29 CET
+15
+Disclaimer
+This research report or summary has been prepared by Crédit Agricole Corporate and Investment Bank or one of its affiliates (collectively “Crédit Agricole CIB”) frominformation believed to be reliable. Such information has not been independently verified and no guarantee, representation or warranty, 
+express or implied, is made as to its accuracy, completeness or correctness. 
+This report is provided for information purposes only. Nothing in this report should be considered to constitute investment, legal, accounting or taxation advice and you are advised to contact independent advisors in order to evaluate this report. It is not intended, and should not be considered, as an offer, 
+invitation, solicitation or personal recommendation to buy, subscribe for or sell any of the financial instruments described herein, nor is it intended to form the basis for any credit, advice, personal recommendation or other evaluation with respect to such financial instruments and is intended for use only 
+by those professional investors to whom it is made available by Crédit Agricole CIB. Crédit Agricole CIB does not act in a fiduciary capacity to you in respect of this report. 
+Crédit Agricole CIB may at any time stop producing or updating this report. Not all strategies are appropriate at all times. Past performance is not necessarily a guide to future performance. The price, value of and income from any of the financial instruments mentioned in this report can fall as well as rise 
+and you may make losses if you invest in them. Independent advice should be sought. In any case, investors are invited to make their own independent decision as to whether a financial instrument or whether investment in the financial instruments described herein is proper, suitable or appropriate 
+based on their own judgement and upon the advice of any relevant advisors they have consulted. Crédit Agricole CIB has not taken any steps to ensure that any financial instruments referred to in this report are suitable for any investor. Crédit Agricole CIB will not treat recipients of this report as its 
+customers by virtue of their receiving this report. Crédit Agricole CIB, its directors, officers and employees may have financial interests or may effect transactions (whether long or short) in the financial instruments described herein for their own accounts or for the account of others, may have positions 
+relating to other financial instruments of the issuer thereof, or any of its affiliates, or may perform or seek to perform securities, investment banking or other services for such issuer or its affiliates, within the regulatory framework set by Article 37 of Delegated Regulation (EU) 2017/565. Crédit Agricole CIB 
+may have issued, and may in the future issue, other reports that are inconsistent with, and reach different conclusions from, the information presented in this report. Without prejudice to the requirements arising from Article 4 of Delegated Regulation (EU) 2016/958, Crédit Agricole CIB is under no 
+obligation to ensure that such other reports are brought to the attention of any recipient of this report. Crédit Agricole CIB has established a “Policy for Managing Conflicts of Interest” which is available upon request. A summary of this policy is published on the Crédit Agricole CIB website  conflict of 
+interest | Crédit Agricole CIB. This policy also applies to the investment research activity. 
+None of the material, nor its content, nor any copy of it, may be altered in any way, transmitted to, copied or distributed to any other party without the prior express written permission of Crédit Agricole CIB. To the extent permitted by applicable securities laws and regulations, Crédit Agricole CIB accepts 
+no liability whatsoever for any direct or consequential loss arising from the use of this document or its contents. 
+France: Crédit Agricole Corporate and Investment Bank is authorized and regulated by the Autorité de Contrôle Prudentiel et de Résolution (“ACPR”) and supervised by the European Central Bank (“ECB”), the ACPR and the Autorité des Marchés Financiers (“AMF”). Crédit Agricole Corporate and 
+Investment Bank is incorporated in France with limited liability. Registered office: 12, Place des Etats-Unis, CS 70052, 92 547 Montrouge Cedex (France). Companies Register: SIREN 304 187 701 with Registre du Commerce et des Sociétés de Nanterre. United Kingdom: Crédit Agricole CIB is 
+authorised and regulated by the Autorité de Contrôle Prudentiel et de Résolution (the “ACPR”) and supervised by the European Central Bank (the “ECB”), the ACPR and the Autorité des Marchés Financiers (the “AMF”) in France. Crédit Agricole CIB London Branch is authorised by the Prudential 
+Regulation Authority and subject to regulation by the Financial Conduct Authority and limited regulation by the Prudential Regulation Authority. Details about the extent of our regulation by the Financial Conduct Authority and the Prudential Regulation Authority are available from Crédit Agricole CIB 
+London on request. Crédit Agricole Corporate and Investment Bank is a public limited company (“société anonyme”) under French law, incorporated in France under SIREN number 304187701 at the Nanterre Trade and Companies Registry, with limited liability and its head office address at 12, Place 
+des États-Unis, CS 70052, 92547 Montrouge Cedex, France. It is registered in England and Wales as an overseas company at Companies House under company number FC008194, with a UK establishment at Broadwalk House, 5 Appold Street, London, EC2A 2DA, United Kingdom (UK establishment 
+number BR001975). United States of America: This research report is prepared by Crédit Agricole Corporate and Investment Bank and is distributed in the United States solely to persons who qualify as “Major U.S. Institutional Investors” as defined in Rule 15a-6 under the Securities and Exchange Act of 
+1934 and who deal with Crédit Agricole Corporate and Investment Bank. This report does not carry all of the independence and disclosure standards of a retail debt research report or a research report prepared by a U.S. broker-dealer. Recipients of this research in the United States wishing to effect a 
+transaction in any security mentioned herein should do so by contacting Crédit Agricole Securities (USA), Inc. (a broker-dealer registered with the Securities and Exchange Commission (“SEC”) and the Financial Industry Regulatory Authority (“FINRA”). The delivery of this research report to any person in 
+the United States shall not be deemed a recommendation of Crédit Agricole Securities (USA) Inc. to effect any transactions in the securities discussed herein or an endorsement of any opinion expressed herein. This report shall not be re-distributed in the United States without the consent of Crédit 
+Agricole Securities (USA) Inc. Italy: Crédit Agricole Corporate and Investment Bank is authorised and regulated by the Autorité de Contrôle Prudentiel et de Résolution (the “ACPR”) and supervised by the European Central Bank (the “ECB”), the ACPR and the Autorité des Marchés Financiers (the 
+“AMF”) in France. Crédit Agricole Corporate and Investment Bank Milan Branch is subject to supervision by the Bank of Italy and by the Commissione nazionale per le società e la borsa (“CONSOB”). This report is not intended, and should not be considered, as an offer, invitation, solicitation or 
+recommendation to buy or sell any of the financial instruments described herein. This report is not intended, and should not be considered, as advice on investments in securities under the Consolidated Financial Law (Legislative Decree No. 50 of 24 February 1998) and can only be distributed to, and 
+circulated among, professional investors (controparti qualificate), as defined by the relevant Italian securities legislation. Spain: This report may only be distributed to professional investors (as defined in Article 194 of Law 6/2023, of 17 March, of the Securities Markets and the Investment Services, and 
+Article 112 of Royal Decree 813/2023, of 8 November, on the legal regime for investment services firms and other entities providing investment services) and cannot be distributed to other investors that do not fall within the category of professional investors. Hong Kong: Distributed by Crédit Agricole 
+Corporate and Investment Bank, Hong Kong branch, an authorized financial institution registered with the Securities and Futures Commission for Type 1 (dealing in securities), Type 4 (advising on securities) and Type 6 (advising on corporate finance) regulated activities with Central Entity Number 
+AAK816. This research report has not been reviewed or authorised by any regulatory authority in Hong Kong and is available only for professional investors within the meaning of the Securities and Futures Ordinance (Cap.571) and its subsidiary legislations. Japan: Distributed by Crédit Agricole 
+Securities Asia B.V. which is registered for financial instruments business in Japan pursuant to the Financial Instruments and Exchange Act (Act No. 25 of 1948), and is not intended, and should not be considered, as an offer, invitation, solicitation or recommendation to buy or sell any of the financial 
+instruments described herein. This report is not intended, and should not be considered, as advice on investments in securities which is subject to the Financial Instruments and Exchange Act (Act No. 25 of 1948). Singapore: Crédit Agricole Corporate and Investment Bank, Singapore branch (“CACIB 
+SG”) may distribute information/research produced by its head office Crédit Agricole Corporate and Investment Bank incorporated in France, pursuant to an arrangement under Regulation 32C of the Financial Advisers Regulations. Credit Agricole Corporate and Investment Bank only distributes to 
+accredited, expert, or institutional investors (in each case, as defined in the Securities and Futures Act 2001). Switzerland: This report is provided only to institutional clients and/or professional clients within the meaning of the Swiss Financial Services Act and in strict compliance with applicable Swiss 
+law. This document is not a prospectus within the meaning of Swiss Financial Services Act. The products mentioned in this document may not be suitable for all types of investors. Germany:  This report may only be distributed to institutional investors. Australia: Distributed to wholesale investors only. 
+This research, and any access to it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act.
+THE DISTRIBUTION OF THIS DOCUMENT IN OTHER JURISDICTIONS MAY BE RESTRICTED BY LAW, AND PERSONS INTO WHOSE POSSESSION THIS DOCUMENT COMES SHOULD INFORM THEMSELVES ABOUT, AND OBSERVE, ANY SUCH RESTRICTIONS. BY ACCEPTING THIS 
+REPORT, YOU AGREE TO BE BOUND BY THE FOREGOING.                                                                                                                                      
+     09/12/25 
+© 2026, CREDIT AGRICOLE CORPORATE AND INVESTMENT BANK All rights reserved
+This document should not be used by a non legitimate recipient.
