@@ -1,0 +1,308 @@
+ALLIANZGI.COM
+OCTOBER 2026
+The race to pace AI
+Frontier labs – including OpenAI and Anthropic – are 
+the architects of the world’s most advanced artificial 
+intelligence (AI) models, but after several high-risk 
+incidents this year, the industry’s leaders are taking 
+stock of whether AI is outpacing its makers.
+The term AI pacing refers to the speed and direction 
+of the technology’s development. It has recently come 
+into focus following a run of incidents at key frontier 
+artificial intelligence labs moving safety from a 
+background concern to an immediate priority. In several 
+cases the trigger was the same: models operating 
+inside “restricted” cybersecurity testing environments 
+concluded that the most effective route to completing an 
+assigned task was to break out of the environment and 
+pursue the objective by any means available, including 
+compromising live systems. In each case this happened 
+autonomously, with no human in the loop.
+Key takeaways
+•	 Major agentic AI models have revealed 
+breaches and malicious activity 
+•	 Industry players have acknowledged the 
+challenges of the goal-oriented capability of 
+their models
+•	 Global coordination to mitigate potential risks 
+will be critical to limiting further incidents 
+•	 Active investor engagement can contribute to 
+the pacing of AI 
+•	 AI pacing is unlikely to prove a significant 
+headwind to AI’s trajectory
+Brad Reynolds
+Senior Portfolio 
+Manager
+Jeremy Gleeson
+CIO Global 
+Technology Equity
+Sunil George
+Senior Portfolio 
+Manager
+David Shammai 
+Senior Stewardship 
+Analyst
+
+THE RACE TO PACE AI
+2
+Four particular incidents stand out this year:
+Mythos moment – April 2026: Arguably the first clear 
+signal of these safety breaches was when Anthropic’s 
+Mythos model demonstrated it could autonomously 
+discover software vulnerabilities and execute 
+sophisticated, multi-step cyberattacks with minimal 
+human guidance. At the time this was read as an early 
+wake-up call and a spur to improve cybersecurity tools.
+OpenAI compromise of Hugging Face – July 2026: This 
+went further – internal agents escaping their intended 
+testing constraints gained internet access by exploiting 
+vulnerabilities and compromised parts of Hugging Face’s 
+systems. They also breached OpenAI’s own internal 
+grading systems to maximise their score on the task and, 
+more strikingly, communicated and collaborated with one 
+another to cover up any malicious activity. The Hugging 
+Face hack developed from one agent working on a 
+workflow in a separate sandboxed environment1 to over 
+700 agents communicating together and sharing general 
+purpose ways to ‘cheat’ their respective tasks. 
+Prompted by that breach, Anthropic ran a sanity check 
+on its own evaluation suite and found comparable 
+behaviour with its Claude models compromising real-
+world systems. 
+The OpenAI intrusion into an Australian health service 
+– August 2026: This saw agents access Australia’s 
+Medicare Statistics Reporting Service portal, reaching 
+both public and non-public files. The intrusion occurred 
+in June but was only identified in August, during 
+OpenAI’s internal review following the Hugging Face 
+incident. Since then, reports by Transluce, an AI research 
+non-profit, have identified this intrusion as similar to 
+other incidents. The report found that some OpenAI 
+agents conducting mundane data-retrieval tasks would 
+hack databases if they came across security barriers, 
+treating them as ‘obstacles’ meant to be evaded rather 
+than strict boundaries.  
+Google Gemini incident – September 2026: This was a 
+restricted test to find information on a fictional company. 
+The agents located internet access and targeted a 
+real company sharing the same name as the fictional 
+company. Notably, the model reportedly stopped once it 
+realised it had reached real-world systems.
+Taken together, these episodes point to an uncomfortable 
+conclusion: goal-oriented agents are difficult to predict 
+and to contain. Each system pursued whatever course 
+of action was most likely to achieve its objective, and in 
+doing so reached for unintended methods. The tangible 
+impact in every case was minor, but collectively the 
+incidents have been read across the industry as a stark 
+warning about the potential of agentic AI.
+Shift in tone from AI leaders
+In recent weeks, senior figures from frontier labs have 
+publicly backed tighter control over model development. 
+Dario Amodei, Anthropic co-founder, called on the industry 
+to “slow the pace at which we improve the capabilities of 
+AI models.”2 His concern is that recursive self-improvement 
+may be advancing faster than researchers’ ability to 
+understand and control the resulting systems – and that, 
+on the current path, autonomous incidents of the kind 
+above could precede more serious events of bioterrorism 
+and economic disruption within 6–12 months.3 His 
+proposed remedies include independent evaluators, 
+shared safety standards among democratic countries, and 
+further international coordination.
+Sam Altman (OpenAI), Demis Hassabis (DeepMind) and 
+Elon Musk (x.AI) echoed these comments, agreeing on 
+the case for common safety standards across the frontier 
+labs against a backdrop of several safety researchers 
+departing those same labs over precisely these concerns. 
+Not everyone agrees. Mark Zuckerberg (Meta) and 
+Jensen Huang (Nvidia) have argued for safety measures 
+only where clearly needed, rather than as a blanket 
+requirement for all models. They point variously to the 
+merits of free-market discipline, the risk that regulation 
+entrenches progress among incumbents, and a sense that 
+the risks are being overstated.
+1	 Sandbox: a secure, isolated environment where experimental software can run without affecting the main system.
+2, 3	Dario, Amodei, We must pace the frontier, September 2026.
+
+THE RACE TO PACE AI
+3
+When challenges become risks
+The recent incidents have sharpened concerns around 
+recursive self-improvement (RSI) – the process by which AI 
+increasingly contributes to AI research and development 
+in place of human researchers, producing compounding 
+progress. RSI is widely viewed as the primary driver of the 
+industry-wide acceleration in AI development, and the fear 
+is straightforward: progress is beginning to outrun human 
+understanding of what these systems are doing, eroding our 
+ability to control them.
+The scale of the risk is illustrated by Anthropic’s own 
+workflow. By May 2026, Claude was writing more than 
+80% of the code for its models, up from low single digits in 
+February 2025. However, many at Anthropic believed Claude-
+written code was initially of lower quality than human-written 
+code and only reached rough parity recently. This suggests an 
+initial quantity-over-quality dynamic that has since corrected 
+but could be a point of scrutiny elsewhere across the industry.
+We are not yet at full RSI: a human still decides which goals 
+to pursue. But the direction of travel – fully agentic AI – is 
+towards minimising the human contribution, which in turn 
+demands far greater reliability on how agents act. Amodei’s 
+message highlights two areas where that reliability is still 
+lacking. The first is alignment, where considerable work 
+remains to ensure models are trained to be safe, ethical and 
+compliant with guidelines. The second is interpretability: in his 
+words, “we still only understand a tiny fraction of what goes 
+on inside these models.”3 Interpretability is improving as a 
+field, but the pace of capability development far outstrips it. 
+This helps explain why, when a model is handed a goal, 
+its route to that goal is hard to anticipate – the central 
+concern raised by the incidents above. The two problems 
+are also mutually reinforcing: weaker interpretability makes 
+misalignment harder to detect, while stronger interpretability 
+would make it possible to locate misaligned behaviours and 
+remove or modify them. Amodei has argued that getting a 
+handle on interpretability is central to safe and controlled 
+progress – making it an increasingly investable field in its own 
+right, particularly if regulation tightens.
+Pacing, not stopping
+Crucially, “pacing” has been framed explicitly as controlled 
+progress rather than a complete stop. The industry has 
+reached a point of very advanced – and still advancing – 
+capability, largely on the back of RSI and following recent 
+incidents, safety should be reconsidered. As a result, OpenAI 
+decided to pause the release of its newest AI model, GPT-
+6.1, after failing to meet internal safety standards. The Head 
+of Safety Systems at OpenAI, stated a refocus on the ‘trade 
+off’ between alignment and safety after the model showed 
+higher levels of deception and autonomy and occasional 
+pursuit of tasks without user permission.
+For all the focus on pacing the frontier, we do not read this 
+as a headwind for AI infrastructure or capex which underpin 
+current technology valuations and, increasingly, the wider 
+US economy. Increased AI adoption and in particular new AI 
+use cases can result in growing demand for AI Infrastructure. 
+Just recently Meta launched its first consumer personal AI 
+Agent, Muse. Notably Muse is not being run using a frontier 
+model, instead it uses Meta’s internal Muse Spark models, 
+which are not currently at the frontier level. Initial adoption 
+has been viral with millions of users downloading the Muse 
+application within the first week post-launch, making it the 
+most downloaded free app in the US and Canadian Apple 
+app stores. Further consumer AI agent products are expected 
+to be launched later in 2026, potentially creating a new large 
+AI use case. This kind of demand is supportive of the capex 
+trajectory, driven by rising demand for compute. 
+3	 Dario, Amodei, We must pace the frontier, September 2026
+
+THE RACE TO PACE AI
+4
+Our take on proposed steps
+Through our stewardship team, Allianz Global Investors 
+has been engaging on AI governance since 2025 to better 
+understand how companies are balancing innovation 
+with the safeguards needed to mitigate emerging 
+risks. We have previously written about the theme of 
+responsible AI, discussing the importance of alignment 
+of human values with AI development, and we reiterate 
+this now, even more so in the face of technical advances 
+outpacing governance and policy. Against that backdrop, 
+we regard the steps proposed by the frontier labs as a 
+directionally welcome development towards responsible 
+AI, though some are more credible than others:
+•	 Independent third-party evaluation of model 
+development – to verify that models, and the processes 
+behind them, are properly aligned – is widely supported 
+across the industry and, in our view, a necessary first 
+step towards safer models.  
+•	 Shared safety standards are a reasonable mechanism 
+for managing the pace of development. Representatives 
+of OpenAI, Anthropic, Google, Meta and Nvidia recently 
+attended the White House to discuss establishing 
+voluntary industry standards through which frontier 
+developers would, in effect, regulate themselves without 
+government oversight. While the absence of US federal 
+support severely limits the prospect of any industry-
+wide, federally applied standard today, it does provide 
+the foundation for future regulation. It is important 
+to note that leading AI companies made similar 
+voluntary safety commitments in 2023 under the Biden 
+administration. While these helped establish frontier-
+safety norms, recent AI incidents have raised questions 
+about whether voluntary industry commitments alone 
+are sufficient to govern increasingly capable AI systems.
+•	 Global coordination among major governments is the 
+most ambitious of these three proposals. We think broad 
+alignment on regulation is unlikely in the near term but 
+key in the long term. Realistic preliminary steps such as 
+knowledge-sharing around interpretability could still lift 
+the baseline of safety in AI development globally while 
+having limited implications for competitive positioning. 
+The underlying difficulty is that the technology is 
+advancing far faster than any globally coordinated 
+response, leaving a patchwork of regional approaches 
+instead. The US administration has taken the stance 
+of framing AI primarily through geopolitical rivalry 
+and national security rather than safety, which has 
+pushed regulatory activity away from the federal level 
+and down to a growing raft of state initiatives. The EU 
+moved early with the AI Act, but parts of its entry into 
+force have been delayed and further changes may 
+be underway to ensure innovation and productivity 
+improvements are not unnecessarily compromised. China 
+has seen strong progress in AI governance, evolving 
+from a narrow focus on content control to a broader 
+framework covering frontier risk and agentic AI. However, 
+industry transparency remains a notable weakness with 
+inconsistent disclosures on safety reporting. 
+While existing safety measures are widely 
+agreed to be inadequate, a careful approach 
+is needed going forward, in our view. 
+Widespread and nondescript regulation could 
+create limitations to future use cases while 
+unchecked progress could impact trust in the 
+technology, also impeding uptake. We do not 
+see the proposed ‘pacing’ as a headwind to 
+the long-term trajectory of AI or the capex 
+underpinning it, and our engagement on 
+the topic of responsible AI with our investee 
+companies continues to confirm that the risks are 
+understood and mitigated where possible.
+
+THE RACE TO PACE AI
+ 
+Investing involves risk. The value of an investment and the income from it may fall as well as rise and investors might not get back the full 
+amount invested. 
+Past performance does not predict future returns. If the currency in which the past performance is displayed differs from the currency of the 
+country in which the investor resides, then the investor should be aware that due to the exchange rate fluctuations the performance shown may 
+be higher or lower if converted into the investor’s local currency. 
+This is for information only and not to be construed as a solicitation or an invitation to make an offer to buy or sell any securities. The views 
+and opinions expressed herein, which are subject to change without notice, are those of the issuer or its affiliated companies at the time of 
+publication. The data used is derived from various sources and assumed to be accurate and reliable at the time of publication. but it has not 
+been independently verified; its accuracy or completeness is not guaranteed and no liability is assumed for any direct or consequential losses 
+arising from its use, unless caused by gross negligence or willful misconduct. The duplication, publication, extraction or transmission of the 
+contents, irrespective of the form, is not permitted, except for the case of explicit permission by Allianz Global Investors. 
+This material has not been reviewed by any regulatory authorities. 
+This document is being distributed by the following Allianz Global Investors companies: In Australia, this material is presented by Allianz Global 
+Investors Asia Pacific Limited (“AllianzGI AP”) and is intended for the use of investment consultants and other institutional/professional investors 
+only, and is not directed to the public or individual retail investors. AllianzGI AP is not licensed to provide financial services to retail clients in 
+Australia. AllianzGI AP is exempt from the requirement to hold an Australian Foreign Financial Service License under the Corporations Act 2001 (Cth) 
+pursuant to ASIC Class Order (CO 03/1103) with respect to the provision of financial services to wholesale clients only. AllianzGI AP is licensed and 
+regulated by Hong Kong Securities and Futures Commission under Hong Kong laws, which differ from Australian laws; in the European Union, by 
+Allianz Global Investors GmbH, an investment company in Germany, authorized by the German Bundesanstalt für Finanzdienstleistungs-aufsicht 
+(BaFin) and is authorized and regulated in South Africa by the Financial Sector Conduct Authority; in the UK, by Allianz Global Investors (UK) 
+Ltd. company number 11516839, authorised and regulated by the Financial Conduct Authority (FCA); in Switzerland, by Allianz Global Investors 
+(Schweiz) AG, authorised by the Swiss financial markets regulator (FINMA); in HK, by Allianz Global Investors Asia Pacific Ltd., licensed by the Hong 
+Kong Securities and Futures Commission; in Singapore, by Allianz Global Investors Singapore Ltd., regulated by the Monetary Authority of Singapore 
+[Company Registration No. 199907169Z]; in Japan, by Allianz Global Investors Japan Co., Ltd., registered in Japan as a Financial Instruments 
+Business Operator [Registered No. The Director of Kanto Local Finance Bureau (Financial Instruments Business Operator), No. 424], Member of 
+Japan Investment Advisers Association of Japan and Type II Financial Instruments Firms Association; In mainland China, it is for Qualified Domestic 
+Institutional Investors scheme pursuant to applicable rules and regulations and is for information purpose only. in Taiwan, by Allianz Global Investors 
+Taiwan Ltd., licensed by Financial Supervisory Commission in Taiwan; and in Indonesia, by PT. Allianz Global Investors Asset Management Indonesia 
+licensed by Indonesia Financial Services Authority (OJK) and in the Abu Dhabi Global Market by Allianz Global Investors Middle East Limited, which 
+is authorised and regulated by the ADGM Financial Services Regulatory Authority. 
+October 2026	
+	
+ADM 6033644/LDS-260208
+MACS-P-24145320
