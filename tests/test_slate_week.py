@@ -18,6 +18,9 @@ DAYS = [_day("2026-10-26", [], [("CDNS", "Cadence Design Systems, Inc.")]),
         _day("2026-10-29", [("LLY", "Eli Lilly and Company"), ("MRK", "Merck & Company, Inc.")], []),
         _day("2026-10-30", [], [("CVE", "Cenovus Energy Inc", 30_000), ("FUBO", "fuboTV Inc.", 900)]),
         _day("2026-10-31", [], [("XYZ", "Tiny Corp", 2_000)]),
+        {"date": "2026-11-02", "status": "ok", "before_open": [],
+         "after_close": [{"symbol": "FUBO", "name": "FUBO", "market_cap_musd": 50_000,
+                          "date_confirmed": False}]},
         {"date": "2026-11-01", "status": "empty"}]
 
 
@@ -45,6 +48,7 @@ def test_block_is_every_session_from_today_in_order():
         "→ **Thu Oct 29, before the open:** Eli Lilly (LLY), Merck (MRK)",
         "→ **Fri Oct 30, after the close:** Cenovus Energy (CVE)",
         "→ **Sat Oct 31, after the close:** nothing above $10B",
+        "→ **Mon Nov 2, after the close:** FUBO (date not confirmed)",
     ]
     before_open = W.block_lines(W.week_outline(DAYS), date(2026, 10, 27))
     assert before_open[0] == "→ **Tue Oct 27, before the open:** Coca-Cola (KO)"

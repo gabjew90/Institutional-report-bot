@@ -25,7 +25,7 @@ def test_slate_answer_keeps_the_opening_and_drops_the_model_list():
     out, kept = A.compose(ans, [_slate_block()], "all the big earnings this week")
     assert kept and out.startswith("→ Megacap week, the cloud names land Wednesday night.\n\n→ **Tue Oct 27")
     assert "Coca-Cola ($KO)" not in out and "x.com" not in out
-    assert out.endswith("→ **Sat Oct 31, after the close:** nothing above $10B")
+    assert out.endswith("→ **Mon Nov 2, after the close:** FUBO (date not confirmed)")
 
 
 def test_an_opening_that_is_itself_a_list_is_dropped():

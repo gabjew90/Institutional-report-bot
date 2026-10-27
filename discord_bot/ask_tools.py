@@ -1689,6 +1689,7 @@ def _slate_day(date_iso: str, top_n: int = 25) -> dict:
         return {"date": date_iso, "status": "error", "error": "earnings feed unavailable right now"}
     rec = _cd.reconcile_earnings(date_iso, raw, _cd._nasdaq_rows_for(date_iso), _cd.cached_caps)
     caps, conf = rec["caps"], rec["confirmed"]
+    unconfirmed_dates = set(rec.get("finnhub_only_kept") or [])
     if not rec["bmo"] and not rec["amc"]:
         return {"date": date_iso, "status": "empty",
                 "note": "no US earnings scheduled for this date"}
@@ -1701,6 +1702,9 @@ def _slate_day(date_iso: str, top_n: int = 25) -> dict:
             "market_cap_musd": round(float(caps.get(s, {}).get("cap") or 0)),
             # an unconfirmed session is NOT absence from the slate
             "session_confirmed": bool(conf.get(s)),
+            # kept for its size although Nasdaq does not list it for this
+            # date (FUBO and UI on 10/30, 2026-10-27 harness)
+            "date_confirmed": s not in unconfirmed_dates,
         } for s in ranked[:n]]
 
     return {"date": date_iso, "status": "ok",

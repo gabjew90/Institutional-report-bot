@@ -39,9 +39,9 @@ def short_name(name: str) -> str:
 
 
 def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]:
-    """[{date, session, symbols, names, caps}] for each session of a week
-    slate that has names, in date order, biggest names first. `caps` is in
-    millions of dollars, 0 when the feed has none."""
+    """[{date, session, symbols, names, caps, date_unconfirmed}] for each
+    session of a week slate that has names, in date order, biggest names
+    first. `caps` is in millions of dollars, 0 when the feed has none."""
     out: list[dict] = []
     for d in days or []:
         if d.get("status") != "ok":
@@ -51,7 +51,7 @@ def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]
         except ValueError:
             continue
         for key, _label in _SESSIONS:
-            seen, syms, names, caps = set(), [], [], []
+            seen, syms, names, caps, unconfirmed = set(), [], [], [], []
             for r in d.get(key) or []:
                 nm = short_name(r.get("name") or "") or r["symbol"]
                 if nm.lower() in seen:
@@ -60,11 +60,13 @@ def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]
                 syms.append(r["symbol"])
                 names.append(nm)
                 caps.append(float(r.get("market_cap_musd") or 0))
+                if r.get("date_confirmed") is False:
+                    unconfirmed.append(r["symbol"])
                 if len(syms) == per_session:
                     break
             if syms:
                 out.append({"date": dt.isoformat(), "session": key, "symbols": syms,
-                            "names": names, "caps": caps})
+                            "names": names, "caps": caps, "date_unconfirmed": unconfirmed})
     return out
 
 
@@ -103,7 +105,9 @@ def block_lines(outline: list[dict], today: date,
         dt = date.fromisoformat(s["date"])
         big = [(n, sym) for n, sym, c in zip(s["names"], s["symbols"], s.get("caps") or [])
                if c >= CAP_FLOOR_MUSD]
-        body = (", ".join(f"{n} ({sym})" if n != sym else sym for n, sym in big)
+        odd = set(s.get("date_unconfirmed") or [])
+        body = (", ".join((f"{n} ({sym})" if n != sym else sym)
+                          + (" (date not confirmed)" if sym in odd else "") for n, sym in big)
                 or f"nothing above ${floor_b}B")
         lines.append(f"→ **{dt:%a %b} {dt.day}, {labels[s['session']]}:** {body}")
     return lines
