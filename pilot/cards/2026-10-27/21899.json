@@ -1,0 +1,248 @@
+{
+ "brief": "UBS previews the SXXP earnings calendar for 26-30 October 2026: 109 companies, about 30% of index market cap, report in a significant step-up. Energy carries the greatest exposure, ten reporters covering about 77% of sector market cap, with Shell and Total Energies on Thursday driving most of that day's roughly 54% energy reporting share and ExxonMobil on Friday extending the read-through into the week's end. Financials lead by reporter count, 32 names covering about 39% of sector market cap. Healthcare exposure is about 37%, led by Novartis on Tuesday and AstraZeneca on Friday. The calendar builds to 31 reporters Wednesday and peaks at 40 on Thursday. On the US side, Communication Services carries the greatest earnings exposure: Google and Microsoft report Wednesday, Amazon Thursday, making midweek the key window for Technology and AI sentiment, with Oracle's Friday Analyst Day as an additional event. Daily detail adds that Monday is quiet with 2 names in Energy and Materials, Tuesday adds four Technology and four Industrials names, Wednesday adds nine Financials reporters, and Friday adds ten Financials names, with AB InBev headlining Thursday alongside Shell and Total. The note reports the calendar and does not argue a market thesis.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "UBS says 109 SXXP companies, representing about 30% of index market cap, are due to report earnings next week.",
+   "anchor": "109 SXXP companies representing c.30% of index market cap due to report.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week (26-30 October 2026)"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Energy carries the greatest European earnings exposure next week, with ten reporters covering about 77% of the sector's market cap.",
+   "anchor": "Energy carries the greatest European exposure, with ten reporters covering ~77% of sector market cap.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Shell and Total Energies report on Thursday, accounting for the majority of the roughly 54% of Energy sector market cap reporting that day.",
+   "anchor": "Shell and Total Energies on Thursday account for majority of the ~54% reporting that day",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "SHEL",
+    "TTE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "ExxonMobil reports on Friday, extending the Energy sector's earnings read-through into the end of the week.",
+   "anchor": "followed by ExxonMobil on Friday, extending the sector read-through into the week-end.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "XOM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Financials lead the European earnings calendar by number of reporters, with 32 names covering about 39% of sector market cap.",
+   "anchor": "Financials lead by number of reporters, with 32 names covering ~39% of sector market cap.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Healthcare earnings exposure is about 37%, led by Novartis reporting Tuesday and AstraZeneca reporting Friday.",
+   "anchor": "Healthcare exposure is also substantial at ~37%, led by Novartis on Tuesday and AstraZeneca on Friday.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "NVS",
+    "AZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "The European earnings calendar builds through midweek, with 31 companies reporting Wednesday before peaking at 40 on Thursday.",
+   "anchor": "The calendar builds through midweek, with 31 names on Wednesday before peaking at 40 on Thursday",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday-Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "The US earnings calendar also peaks on Thursday, with Communication Services carrying the greatest earnings exposure.",
+   "anchor": "The US calendar also peaks on Thursday, with Communication Services carrying the greatest earnings exposure.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Google and Microsoft report on Wednesday and Amazon on Thursday, making midweek the key window for broader Technology and AI sentiment.",
+   "anchor": "Google and Microsoft on Wednesday, followed by Amazon on Thursday, make midweek the key window for broader Technology and AI sentiment.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL",
+    "MSFT",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday-Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Oracle's Analyst Day on Friday adds another event to watch alongside the earnings calendar.",
+   "anchor": "Oracle\u2019s Analyst Day on Friday adds another event to watch.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Monday is a quiet start to the earnings week, with only 2 companies reporting across Energy and Materials.",
+   "anchor": "Monday \u2014 2 names: A quiet start across Energy and Materials.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Monday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Tuesday's earnings calendar has 16 companies reporting, headlined by Novartis alongside four Technology and four Industrials reporters.",
+   "anchor": "Tuesday \u2014 16 names: Novartis headline, alongside four Technology and four Industrials reporters.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "NVS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Tuesday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Wednesday's calendar has 31 companies reporting, including nine Financials reporters, with Google and Microsoft as the US focus.",
+   "anchor": "Wednesday \u2014 31 names: Nine Financials reporters. US focus: Google and Microsoft.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Thursday's session is the busiest with 40 companies reporting, headlined by Shell, Total Energies and AB InBev, with Amazon as the US focus.",
+   "anchor": "Thursday \u2014 40 names: Shell, Total Energies and AB InBev headline the busiest session. US focus: Amazon.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "SHEL",
+    "TTE",
+    "BUD",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "SXXP Earnings \u2014 Week Ahead 26\u201330 October 2026",
+   "claim": "Friday's calendar has 20 companies reporting, headlined by AstraZeneca with ten Financials reporters, and ExxonMobil as the US focus extending the Energy read-through from Thursday.",
+   "anchor": "Friday \u2014 20 names: AstraZeneca headlines, with ten Financials reporters. US focus: ExxonMobil, extending the Energy read-through from Thursday.",
+   "topic": "SXXP earnings week ahead",
+   "status": "forecast",
+   "instruments": [
+    "AZN",
+    "XOM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Friday"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-27/21899__ubs-s-t-sxxp-earnings-week-ahead-26-30-october-2026-tade-ato.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 15,
+  "matched": 15,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
