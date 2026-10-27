@@ -27,6 +27,7 @@ FEEDS: dict[str, str] = {
     "lookup_ticker_snapshot": "company and trading data (Yahoo)",
     "lookup_treasury_auctions": "Treasury auction results (TreasuryDirect)",
     "margin_math": "margin math from the question's figures and live prices",
+    "event_returns": "event dates (Google) and daily closes (Yahoo)",
     "spy_holdings": "S&P 500 figures from SPY's holdings and prices (Yahoo)",
     "ticker_news": "news search (Google)",
     "ticker_primer": "company background (Google)",
@@ -69,7 +70,8 @@ NUMERIC_TOOLS = frozenset({
     "lookup_market_price", "lookup_earnings_date",
     "lookup_options_chain", "lookup_price_history", "lookup_economic_calendar",
     "lookup_fantasy_league", "lookup_ticker_snapshot", "lookup_trade_log",
-    "lookup_room_positions", "lookup_treasury_auctions", "spy_holdings", "margin_math"})
+    "lookup_room_positions", "lookup_treasury_auctions", "spy_holdings", "margin_math",
+    "event_returns"})
 
 
 def _loose(cores) -> set[str]:

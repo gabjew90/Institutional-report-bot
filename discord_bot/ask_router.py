@@ -80,6 +80,9 @@ T_NEWS = "ticker_news"
 T_PRIMER = "ticker_primer"
 # Prefetch only: discord_bot/margin_math.py with live prices (2026-10-26 A16).
 T_MARGIN = "margin_math"
+# Prefetch only: discord_bot/event_returns.py, event dates by search and
+# returns from the closes (2026-10-27).
+T_EVENTS = "event_returns"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
              T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT,
              T_AUCTION}
@@ -847,6 +850,17 @@ _EVENT_RETURN_RE = re.compile(
     r"|\bhow\s+(?:did|does)\s+\S+\s+(?:do|trade|move|perform)\s+after\s+(?:the\s+)?(?:last\s+)?(?:few\s+)?"
     + _EVENT_WORD + r"\b", re.I)
 _TOKEN_WORD = r"(?:token|coin|memecoin|shitcoin|altcoin)"
+_EVENT_COUNT_RE = re.compile(r"\blast\s+(\d{1,2}|few|couple|several)\b", re.I)
+
+
+def event_args(q: str, symbol: str) -> dict:
+    """The event-returns prefetch's arguments: the event as the asker named
+    it and how many of them ("last few" is four)."""
+    m = re.search(r"\b" + _EVENT_WORD + r"\b", q, re.I)
+    c = _EVENT_COUNT_RE.search(q)
+    word = (c.group(1).lower() if c else "")
+    count = int(word) if word.isdigit() else {"couple": 2, "few": 4, "several": 5}.get(word, 6)
+    return {"symbol": symbol, "event": m.group(0).lower() if m else "events", "count": count}
 
 
 def _token_tickers(q: str, tickers: list[str], parent: str) -> list[str]:
@@ -1099,10 +1113,11 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         r.prefetch = [(T_MARGIN, margin)]
         return r
     # "1 week and 1 month returns after the last few SpaceX unlocks": the
-    # dates come from Google, the returns from lookup_price_history's
-    # event_dates (2026-10-27 harness: the view route never offered it)
+    # dates by search and the returns from the closes, both in code
+    # (discord_bot/event_returns.py, 2026-10-27)
     if tickers and _EVENT_RETURN_RE.search(q):
         r.shape, r.reason = HISTORICAL_STAT, "returns after dated events"
+        r.prefetch = [(T_EVENTS, event_args(q, tickers[0]))]
         return r
     coins = _token_tickers(q, tickers, _parent_text(question))
     if coins:
@@ -1451,6 +1466,9 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                    "Every figure in the answer comes from here: the equity ratio now, the drop from "
                    "entry that triggers a call at each maintenance level, and the assumption it rests on, "
                    "which the answer states."),
+        T_EVENTS: ("RETURNS AFTER EVENTS: the dates from a Google search the system ran, the returns "
+                   "computed by the system from Yahoo's daily closes. Every date and return comes "
+                   "from here. status other than ok: say what is missing, never fill it in."),
         T_RESEARCH: ("INSTITUTIONAL RESEARCH ON THE TICKER, system-fetched from the bank notes "
                      "the bot ingested. This is the primary source for a view question. One arrow "
                      "per bank view, and every arrow carries the desk's own numbers from the "

@@ -2,12 +2,12 @@
 
 2026-10-26 audit A4: "all the big earnings this week" listed Monday to
 Wednesday and stopped, leaving out IBM, TXN, PG, UNP, LMT, WDC and AXP.
-The week slate carries an outline of each session's biggest names, and an
-answer that skips a session still to come gets that session's line added.
-
-Checked per session, not per day (2026-10-27 harness run): the answer
-named Wednesday's morning reports and left out Alphabet and Microsoft
-after the close, and a per-day check counted Wednesday as covered.
+The 2026-10-27 harness run then showed the fill-in check this module had
+(add the line of every session the answer skipped) leaving two writers in
+one post: the model's own lines out of order, the added lines after them,
+and bare small names (FUBO). Since 2026-10-27 the week's lines are the
+answer body, rendered here in date order, and the model writes only the
+opening (discord_bot/answer_block.py).
 """
 from __future__ import annotations
 
@@ -15,6 +15,9 @@ import re
 from datetime import date
 
 PER_SESSION = 4
+# A name below this market cap is not a "big" report; a session with none
+# above it says so rather than listing small caps (FUBO, 2026-10-27).
+CAP_FLOOR_MUSD = 10_000
 _SESSIONS = (("before_open", "before the open"), ("after_close", "after the close"))
 # Legal suffixes the calendar feed carries ("Merck & Company, Inc.",
 # "ExxonMobil Holdings Corporation"); a reader knows the company without them.
@@ -26,7 +29,7 @@ _SUFFIX_RE = re.compile(
 
 def short_name(name: str) -> str:
     """'Merck & Company, Inc.' -> 'Merck', 'Eli Lilly and Company' -> 'Eli Lilly'."""
-    n = (name or "").strip()
+    n = re.sub(r"\s*\(The\)\s*$", "", (name or "").strip())   # "Coca-Cola Company (The)"
     for _ in range(3):
         cut = _SUFFIX_RE.sub("", n).strip(" ,")
         if cut == n or not cut:
@@ -36,8 +39,9 @@ def short_name(name: str) -> str:
 
 
 def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]:
-    """[{date, session, symbols, names, line}] for each session of a week
-    slate that has names, in date order."""
+    """[{date, session, symbols, names, caps}] for each session of a week
+    slate that has names, in date order, biggest names first. `caps` is in
+    millions of dollars, 0 when the feed has none."""
     out: list[dict] = []
     for d in days or []:
         if d.get("status") != "ok":
@@ -46,8 +50,8 @@ def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]
             dt = date.fromisoformat(str(d.get("date"))[:10])
         except ValueError:
             continue
-        for key, label in _SESSIONS:
-            seen, syms, names = set(), [], []
+        for key, _label in _SESSIONS:
+            seen, syms, names, caps = set(), [], [], []
             for r in d.get(key) or []:
                 nm = short_name(r.get("name") or "") or r["symbol"]
                 if nm.lower() in seen:
@@ -55,13 +59,12 @@ def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]
                 seen.add(nm.lower())
                 syms.append(r["symbol"])
                 names.append(nm)
+                caps.append(float(r.get("market_cap_musd") or 0))
                 if len(syms) == per_session:
                     break
             if syms:
-                out.append({
-                    "date": dt.isoformat(), "session": key, "symbols": syms, "names": names,
-                    "line": f"→ **{dt:%a %b} {dt.day}, {label}:** "
-                            + ", ".join(f"{n} ({s})" if n != s else s for n, s in zip(names, syms))})
+                out.append({"date": dt.isoformat(), "session": key, "symbols": syms,
+                            "names": names, "caps": caps})
     return out
 
 
@@ -83,24 +86,31 @@ def _mentions(answer: str, symbol: str, name: str) -> bool:
     return bool(word) and bool(re.search(r"\b" + re.escape(word) + r"\b", answer, re.I))
 
 
-def fill_missing_days(answer: str, outline: list[dict], today: date,
-                      morning_reported: bool = False) -> tuple[str, list[str]]:
-    """Add the line of every session from `today` on whose names the answer
-    never mentions. `morning_reported` (after 9:30 ET) skips today's
-    before-open session, which has happened. Returns (answer, sessions
-    added as 'date:session')."""
-    if not answer or not outline:
-        return answer, []
-    added, lines = [], []
-    for s in outline:
+def block_lines(outline: list[dict], today: date,
+                morning_reported: bool = False) -> list[str]:
+    """One line per session from `today` on, in date order: the names at
+    or above CAP_FLOOR_MUSD, or a line saying there are none.
+    `morning_reported` (after 9:30 ET) skips today's before-open session,
+    which has happened."""
+    labels = dict(_SESSIONS)
+    floor_b = CAP_FLOOR_MUSD // 1000
+    lines = []
+    for s in outline or []:
         if s["date"] < today.isoformat():
             continue
         if morning_reported and s["date"] == today.isoformat() and s["session"] == "before_open":
             continue
-        if any(_mentions(answer, sym, nm) for sym, nm in zip(s["symbols"], s["names"])):
-            continue
-        added.append(f"{s['date']}:{s['session']}")
-        lines.append(s["line"])
-    if not lines:
-        return answer, []
-    return answer.rstrip() + "\n\n" + "\n\n".join(lines), added
+        dt = date.fromisoformat(s["date"])
+        big = [(n, sym) for n, sym, c in zip(s["names"], s["symbols"], s.get("caps") or [])
+               if c >= CAP_FLOOR_MUSD]
+        body = (", ".join(f"{n} ({sym})" if n != sym else sym for n, sym in big)
+                or f"nothing above ${floor_b}B")
+        lines.append(f"→ **{dt:%a %b} {dt.day}, {labels[s['session']]}:** {body}")
+    return lines
+
+
+def mentions_any(text: str, outline: list[dict], today: date) -> int:
+    """How many of the companies from `today` on the text names."""
+    return sum(_mentions(text, sym, nm)
+               for s in outline or [] if s["date"] >= today.isoformat()
+               for sym, nm in zip(s["symbols"], s["names"]))

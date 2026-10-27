@@ -859,6 +859,8 @@ _OCR_INLINE_TRUNCATE = 800
 # ("No response came back (reason: STOP)").
 _CHAT_SEARCH_MAX_ROUNDS = 6
 _ASK_PREFETCH_TIMEOUT_S = 8.0  # router prefetch deadline (2026-09-02)
+# A search then a price history, both in code (discord_bot/event_returns.py).
+_ASK_PREFETCH_TIMEOUT_BY_TOOL = {"event_returns": 14.0}
 # Deadline for a tool the model calls itself (2026-10-18 audit A1: five
 # sequential slate calls with no deadline made one answer take 549 s).
 _ASK_TOOL_TIMEOUT_S = 25.0
@@ -5379,6 +5381,7 @@ async def _ask_02_call_model_with_tools(
     # grounding nets count these as sources.
     from discord_bot import ask_router as _ask_router
     from discord_bot import room_rank as _room_rank
+    from discord_bot.event_returns import _execute_event_returns
     _prefetch_exec = {
         _ask_router.T_SLATE: _execute_earnings_slate,
         _ask_router.T_EDATE: _execute_earnings_date,
@@ -5395,6 +5398,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_CHAT: _execute_chat_search,
         _ask_router.T_AUCTION: _execute_treasury_auctions,
         _ask_router.T_MARGIN: _execute_margin_math,
+        _ask_router.T_EVENTS: _execute_event_returns,
     }
     _ask_meta["route_shape"] = _ask_route.shape
     # Read by the tool loop: a shape without chat search must not reach
@@ -5411,11 +5415,11 @@ async def _ask_02_call_model_with_tools(
         block and the model keeps its own tools."""
         _pf_fn = _prefetch_exec[_pf_tool]
         _pf_t0 = time.monotonic()
+        _pf_deadline = _ASK_PREFETCH_TIMEOUT_BY_TOOL.get(_pf_tool, _ASK_PREFETCH_TIMEOUT_S)
         try:
-            _pf_res = await asyncio.wait_for(_pf_fn(dict(_pf_args)),
-                                             timeout=_ASK_PREFETCH_TIMEOUT_S)
+            _pf_res = await asyncio.wait_for(_pf_fn(dict(_pf_args)), timeout=_pf_deadline)
         except asyncio.TimeoutError:
-            log.warning(f"/ask: prefetch {_pf_tool} exceeded {_ASK_PREFETCH_TIMEOUT_S}s; "
+            log.warning(f"/ask: prefetch {_pf_tool} exceeded {_pf_deadline}s; "
                         "continuing without it")
             # `status` stays in the executors' vocabulary and `via` says
             # who called: a prefix-decorated status string matched
@@ -5466,9 +5470,6 @@ async def _ask_02_call_model_with_tools(
         _extra = (_ask_router.T_NEWS, {"symbol": _fresh["symbol"]})
         _pf_plan = list(_pf_plan) + [_extra]
         _pf_results = list(_pf_results) + [await _run_prefetch(*_extra)]
-    for (_t, _), _r in zip(_pf_plan, _pf_results):
-        if _t == _ask_router.T_SLATE and isinstance(_r, dict) and _r.get("week_outline"):
-            _ask_meta["slate_week"] = _r["week_outline"]     # phase 9 fills a skipped day
     # the calendar feed's consensus and date against Yahoo's (2026-10-26 A11)
     _snap_res = next((_r for (_t, _), _r in zip(_pf_plan, _pf_results)
                       if _t == _ask_router.T_SNAPSHOT and isinstance(_r, dict)), None)
@@ -5477,6 +5478,9 @@ async def _ask_02_call_model_with_tools(
         for (_t, _), _r in zip(_pf_plan, _pf_results):
             if _t == _ask_router.T_EDATE and isinstance(_r, dict) and _rec(_r, _snap_res):
                 _ask_meta["guards"].append("earnings:reconciled-with-yahoo")
+    from discord_bot import answer_block as _answer_block
+    import pytz as _ab_tz
+    _ab_now = datetime.now(_ab_tz.timezone(settings.timezone))
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
@@ -5499,7 +5503,8 @@ async def _ask_02_call_model_with_tools(
             _ask_meta.setdefault("fantasy_estimates", {}).update(_we(_pf_res))
             if _sides(_pf_res):
                 _ask_meta["fantasy_sides"] = _sides(_pf_res)
-        if _pf_tool == _ask_router.T_NEWS and _pf_res.get("status") == "ok":
+        if (_pf_tool in (_ask_router.T_NEWS, _ask_router.T_EVENTS)
+                and _pf_res.get("status") == "ok"):
             # Cited in phase 10 when the answer uses a figure from it.
             _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
                                  "digest": _pf_res.get("digest") or ""}
@@ -5507,6 +5512,13 @@ async def _ask_02_call_model_with_tools(
         _pf_text = _ask_router.inject_text(_pf_tool, _pf_res, has_images=_has_attached_image)
         if not _pf_text:
             continue          # e.g. a primer still being built: no block at all
+        # A list or a calculation the answer posts as written; the model
+        # writes the opening (discord_bot/answer_block.py, 2026-10-27).
+        _blk = _answer_block.build(_pf_tool, _pf_res, _ab_now.date(),
+                                   morning_reported=(_ab_now.hour, _ab_now.minute) >= (9, 30))
+        if _blk:
+            _pf_text += _answer_block.note(_blk)
+            _ask_meta.setdefault("answer_blocks", []).append(_blk)
         contents.append(types.Content(
             role="user",
             parts=[types.Part.from_text(text=_pf_text)],
@@ -8717,16 +8729,6 @@ async def _ask_09_rank_and_regen_guards(
     answer = await _fantasy_percent_guard(
         answer, question, _ask_meta, client, ask_model, safety_settings, types,
         _tally_retry_usage)
-    # a week slate answer covers every day still to come (2026-10-26 A4)
-    if _ask_meta.get("slate_week") and answer:
-        from discord_bot import slate_week as _sw
-        import pytz as _sw_tz
-        _sw_now = datetime.now(_sw_tz.timezone(settings.timezone))
-        answer, _sw_days = _sw.fill_missing_days(
-            answer, _ask_meta["slate_week"], _sw_now.date(),
-            morning_reported=(_sw_now.hour, _sw_now.minute) >= (9, 30))
-        if _sw_days:
-            _ask_meta["guards"].append("slate-week:" + ",".join(_sw_days))
     # no reminder, timer or ping tool exists: never claim one (2026-10-08)
     from discord_bot import action_claims as _ac
     from discord_bot.ask_router import asker_text as _ac_last
@@ -8747,6 +8749,16 @@ async def _ask_09_rank_and_regen_guards(
             _ask_meta["guards"].append("dead-ticker:" + ",".join(_dead))
     except Exception as e:
         log.warning(f"/ask: ticker liveness check failed (non-fatal): {e}")
+    # A list or a calculation is posted as code rendered it, under the
+    # model's opening (discord_bot/answer_block.py, 2026-10-27). After the
+    # liveness check: its tickers come from the feeds, not the model.
+    if _ask_meta.get("answer_blocks"):
+        from discord_bot import answer_block as _ab
+        from discord_bot.ask_router import asker_text as _ab_asker
+        answer, _ab_lead = _ab.compose(answer, _ask_meta["answer_blocks"], _ab_asker(question))
+        _ask_meta["guards"].append(
+            "answer-block:" + ",".join(b["tool"] for b in _ask_meta["answer_blocks"])
+            + ("" if _ab_lead else ":no-lead"))
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))

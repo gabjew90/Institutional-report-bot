@@ -391,12 +391,22 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
             text=_ask_router.deferred_note(_deferred["author"]))]))
     cfg.tools = _ask_router.filter_tools(_route, list(tools))
     _prefetched: list[str] = []
+    # Mirror of production's code-built answer bodies
+    # (discord_bot/answer_block.py, 2026-10-27): the model is shown the
+    # lines, and the posted answer is its opening plus them.
+    from datetime import date as _ab_date
+    from discord_bot import answer_block as _answer_block
+    _ab_today = _ab_date.fromisoformat(fx["today"]) if fx.get("today") else _ab_date.today()
+    _blocks: list[dict] = []
     for _pf_tool, _pf_args in _route.prefetch:
         _stub = (fx.get("tool_stubs") or {}).get(_pf_tool) or {
             "status": "error", "error": f"fixture has no {_pf_tool} stub"}
-        contents.append(types.Content(role="user", parts=[types.Part.from_text(
-            text=_ask_router.inject_text(
-                _pf_tool, _stub, has_images=bool(fx.get("images"))))]))
+        _pf_text = _ask_router.inject_text(_pf_tool, _stub, has_images=bool(fx.get("images")))
+        _blk = _answer_block.build(_pf_tool, _stub, _ab_today)
+        if _blk:
+            _pf_text += _answer_block.note(_blk)
+            _blocks.append(_blk)
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=_pf_text)]))
         _prefetched.append(_pf_tool)
     # Mirror of production's room-ranking rules (discord_bot/room_rank.py,
     # 2026-10-02): the unmeasured-superlative block here, the metric gate
@@ -593,6 +603,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
             answer, retry_answer, tools_called, _strip_sentences,
             **_vctx)
 
+    if _blocks:
+        answer, _ = _answer_block.compose(answer, _blocks, fx.get("question") or "")
     return {"answer": answer, "tools_called": tools_called,
             "grounded": grounded, "model_version": model_version,
             "guard_outcome": guard_outcome,

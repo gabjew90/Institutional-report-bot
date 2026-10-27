@@ -71,7 +71,7 @@ def compute(leverage: float, account: float | None, positions: list[dict],
         # Reg T is the 50% initial requirement; the 25% maintenance floor is
         # FINRA Rule 4210 (the 10-27 harness answer called it "Reg T maintenance")
         "rules": ("Federal Reserve Regulation T allows 2x on stock held overnight (50% initial "
-                  "margin); FINRA Rule 4210 sets the 25% minimum maintenance. "
+                  "margin). FINRA Rule 4210 sets the 25% minimum maintenance. "
                   "4x is intraday buying power for pattern day traders, so a 4x position held "
                   "overnight is called at the close unless the broker runs portfolio margin. "
                   "Brokers set their own maintenance and raise it on volatile names."),
@@ -102,8 +102,74 @@ def compute(leverage: float, account: float | None, positions: list[dict],
         out["equity_now_pct_of_position"] = round((1 - loan / ratio) * 100, 1)
         out["below_maintenance_now"] = {
             f"{int(m * 100)}%": (1 - loan / ratio) < m for m in MAINTENANCE}
+        # value that triggers the call is loan / (1 - m) of the entry value
+        out["further_drop_to_call_pct"] = {
+            f"{int(m * 100)}%": round((1 - loan / (1 - m) / ratio) * 100, 1) for m in MAINTENANCE}
         if account:
             value = account * leverage * ratio
             out["position_value_now"] = round(value)
             out["equity_now"] = round(value - (account * leverage - account))
     return out
+
+
+def _money(v: float) -> str:
+    return f"${v:,.0f}" if abs(v) >= 100 else f"${v:,.2f}"
+
+
+def _levels(keys: list[str]) -> str:
+    return keys[0] if len(keys) == 1 else ", ".join(keys[:-1]) + " and " + keys[-1]
+
+
+def block_lines(r: dict) -> list[str]:
+    """The answer body for a margin question, from compute()'s result
+    (discord_bot/answer_block.py, 2026-10-27)."""
+    lev = r.get("leverage")
+    if not lev:
+        return []
+    levx = f"{lev:g}x"
+    lines = []
+    if r.get("account_equity"):
+        setup = (f"{_money(r['account_equity'])} at {levx} is a {_money(r['gross_position'])} "
+                 f"position with {_money(r['borrowed'])} borrowed")
+    else:
+        setup = f"At {levx}, equity is {r['equity_at_entry_pct_of_position']}% of the position at entry"
+    if r.get("assumption"):
+        setup += f", taking {r['assumption']} (the question gives no split)"
+    lines.append(f"→ **The setup:** {setup}.")
+    rows = r.get("positions") or []
+    if rows and "equity_now_pct_of_position" in r:
+        legs = " · ".join(f"{p['symbol']} {_money(p['price_now'])} vs {_money(p['entry'])} entry "
+                          f"({p['move_from_entry_pct']:+.1f}%)" for p in rows)
+        eq = f"equity {r['equity_now_pct_of_position']}% of the position"
+        if "equity_now" in r:
+            eq = (f"the position is worth {_money(r['position_value_now'])}, equity "
+                  f"{_money(r['equity_now'])} ({r['equity_now_pct_of_position']}% of the position)")
+        lines.append(f"→ **Now:** {legs}. Overall {r['position_move_from_entry_pct']:+.1f}%, {eq}.")
+        below = [k for k, v in r["below_maintenance_now"].items() if v]
+        above = [k for k, v in r["below_maintenance_now"].items() if not v]
+        drops = r["further_drop_to_call_pct"]
+        if not above:
+            verdict = (f"yes. Equity at {r['equity_now_pct_of_position']}% is under {_levels(below)} "
+                       "maintenance.")
+        elif below:
+            verdict = (f"yes at a broker using {_levels(below)} maintenance. At "
+                       + ", ".join(f"{k}, a further {drops[k]}% drop from here" for k in above)
+                       + " triggers it.")
+        else:
+            verdict = ("not yet. A further drop from here triggers it at "
+                       + ", ".join(f"{drops[k]}% for {k}" for k in above) + " maintenance.")
+        lines.append(f"→ **Margin call:** {verdict}")
+    else:
+        parts = []
+        for k, d in r["drop_from_entry_that_triggers_a_call_pct"].items():
+            lvl = k.split()[0]
+            parts.append(f"{lvl}: any drop at all" if d == 0 else
+                         f"{lvl}: under it from the start" if d < 0 else f"{lvl}: a {d}% drop")
+        lines.append("→ **Where the call hits** (fall from entry, by maintenance level): "
+                     + " · ".join(parts) + ".")
+        if rows:
+            missing = [p["symbol"] for p in rows if p.get("price_now") is None]
+            if missing:
+                lines.append(f"→ No live price for {', '.join(missing)}, so the equity now is not computed.")
+    lines.append(f"→ **The rules:** {r['rules']}")
+    return lines
