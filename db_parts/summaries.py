@@ -381,6 +381,11 @@ def append_ask_interaction(
                     bits.append(
                         f"`{meta['route']}/{meta.get('kind', '?')}`"
                     )
+                # The router's shape, read by scripts/ask_scoreboard.py
+                # (2026-10-28). Before this date the scoreboard re-runs
+                # the router on the logged question instead.
+                if meta.get("route_shape"):
+                    bits.append(f"shape: {meta['route_shape']}")
                 if "grounded" in meta:
                     n_src = meta.get("sources") or 0
                     bits.append(
