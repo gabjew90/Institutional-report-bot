@@ -1,0 +1,145 @@
+{
+ "2026-09-16": {
+  "fomc": {
+   "at": "2026-09-16T18:00:30Z",
+   "lines": [
+    "**Fed hikes** · target range 3.75%–4.00% · consensus upper bound 4.00% · vote 12-0"
+   ]
+  }
+ },
+ "2026-09-30": {
+  "pce": {
+   "at": "2026-09-30T12:30:20Z",
+   "lines": [
+    "**PCE m/m** +0.3% · prior +0.1%",
+    "**PCE y/y** 3.4% · prior 3.4%",
+    "**Core PCE m/m** +0.2% · consensus +0.3% · prior +0.2%",
+    "**Core PCE y/y** 3.0% · prior 3.0%"
+   ]
+  }
+ },
+ "2026-10-02": {
+  "jobs": {
+   "at": "2026-10-02T12:31:44Z",
+   "lines": [
+    "• Nonfarm Payrolls: +29K (vs. +89K exp, below)",
+    "• Unemployment Rate: 4.2% (vs. 4.1% exp, above)",
+    "• Avg Hourly Earnings: +0.1% MoM / 3.0% YoY (vs. +0.3% exp, below / prior 3.1%)",
+    "• Participation Rate: 61.8% (up from 61.6%)",
+    "",
+    "**Quick Takeaway**",
+    "• **Payroll miss:** Nonfarm payrolls rose by 29K, falling short of the 89K consensus and the 45K to 65K range forecast by Deutsche Bank, Morgan Stanley, and BofA.",
+    "• **Unemployment and earnings:** The unemployment rate hit 4.2%, matching the upper end of the BofA and Deutsche Bank forecasts. Average hourly earnings grew 0.1% month-over-month, missing the 0.3% consensus.",
+    "",
+    "Source: bls.gov (Employment Situation) <https://www.bls.gov/news.release/empsit.toc.htm> · consensus: ForexFactory"
+   ],
+   "rows": [
+    {
+     "label": "Non Farm Payrolls",
+     "actual_value": 29,
+     "period": "2026-09"
+    },
+    {
+     "label": "Unemployment Rate",
+     "actual_value": 4.2,
+     "period": "2026-09"
+    },
+    {
+     "label": "Avg Hourly Earnings m/m",
+     "actual_value": 0.1,
+     "period": "2026-09"
+    },
+    {
+     "label": "Avg Hourly Earnings y/y",
+     "actual_value": 3.0,
+     "period": "2026-09"
+    },
+    {
+     "label": "Participation Rate",
+     "actual_value": 61.8,
+     "period": "2026-09"
+    }
+   ]
+  }
+ },
+ "2026-10-14": {
+  "cpi": {
+   "at": "2026-10-14T12:31:45Z",
+   "lines": [
+    "• Core CPI (on the month): +0.3% (expected +0.2%, came in higher)",
+    "• Core CPI (over the year): 2.6% (expected 2.5%, came in higher)",
+    "• Headline CPI: +0.6% on the month (in line with +0.6% expected) · 3.7% over the year (expected 3.6%, came in higher)",
+    "• Shelter (on the month): +0.4% (prior +0.3%)",
+    "• Energy (on the month): +5.2% (prior +2.1%)",
+    "• Food (on the month): +0.0% (prior +0.1%)",
+    "• Core CPI 3-month annualized: 3.4%",
+    "",
+    "**Quick Takeaway**",
+    "• **Core inflation surprise:** Core CPI rose 0.3% on the month, exceeding the 0.2% consensus and the 0.24% forecast from Goldman Sachs. This pushed the annual core rate to 2.6%, which is higher than the 2.5% consensus expectation.",
+    "• **Energy drives headline:** Headline CPI increased 0.6% on the month and 3.7% over the year, matching the 0.6% monthly consensus and landing in line with the 3.7% annual forecast from Goldman Sachs. The monthly jump was heavily influenced by a 5.2% surge in energy prices.",
+    "",
+    "Source: bls.gov (CPI-U release) <https://www.bls.gov/cpi/> · consensus: ForexFactory"
+   ],
+   "rows": [
+    {
+     "label": "Core CPI m/m",
+     "actual_value": 0.3,
+     "period": "2026-09"
+    },
+    {
+     "label": "Core CPI y/y",
+     "actual_value": 2.6,
+     "period": "2026-09"
+    },
+    {
+     "label": "CPI m/m",
+     "actual_value": 0.6,
+     "period": "2026-09"
+    },
+    {
+     "label": "CPI y/y",
+     "actual_value": 3.7,
+     "period": "2026-09"
+    },
+    {
+     "label": "Shelter m/m",
+     "actual_value": 0.4,
+     "period": "2026-09"
+    },
+    {
+     "label": "Energy m/m",
+     "actual_value": 5.2,
+     "period": "2026-09"
+    },
+    {
+     "label": "Food m/m",
+     "actual_value": 0.0,
+     "period": "2026-09"
+    }
+   ]
+  }
+ },
+ "2026-10-28": {
+  "fomc": {
+   "at": "2026-10-28T18:00:27Z",
+   "lines": [
+    "• Target range: 3.75% to 4.00% (in line with 4.00% expected)",
+    "• Fed holds · vote 10-2",
+    "",
+    "**Quick Takeaway**",
+    "• **Fed holds rates:** The FOMC kept the target range at 3.75% to 4.00% as expected. This decision aligns with the baseline forecast from UBS and Morgan Stanley, which anticipated a pause in October following the September hike.",
+    "• **Dissent and future hikes:** The 10-2 vote reflects the hawkish bias Morgan Stanley and UBS expected. Bank of America economists held a non-consensus call for a 25bp hike this month, while the market priced in only a 10% probability of such a move.",
+    "",
+    "Source: federalreserve.gov, FOMC statement"
+   ],
+   "rows": [
+    {
+     "label": "Target range",
+     "actual_value": 4.0,
+     "period": "2026-10"
+    }
+   ],
+   "statement": "--> --> --> --> --> --> The Federal Open Market Committee approved the following statement for release by a 10 - 2 vote: The Committee decided to maintain the target range for the federal funds rate at 3-3/4 to 4 percent, in support of the Federal Reserve's dual mandate. The Committee is continuing its policy of maintaining ample reserves in the banking system. Economic activity is expanding at a strong pace. While uncertainty remains elevated owing, in part, to geopolitical developments, domestic spending has been resilient. Productivity growth is strong, and capital investment is robust. Job gains have kept pace with the workforce, and the unemployment rate has changed little. Inflation remains elevated. The accumulation of more information will help the Committee determine the policy stance appropriate to ensure a timely return of inflation to the Committee's 2 percent goal. The Committee will deliver price stability. Voting against the monetary policy action were Lisa D. Cook and Beth M. Hammack, who preferred to raise the target range for the federal funds rate by 1/4 percentage point at this meeting."
+  }
+ }
+}

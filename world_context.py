@@ -302,7 +302,8 @@ def upcoming_market_events(today_iso: str, days_ahead: int = 12) -> list[str]:
 # The agencies' own published release schedules for the rest of 2026,
 # read from bls.gov/schedule (empsit, cpi), bea.gov/news/schedule and
 # the Fed's FOMC calendar on 2026-09-25, and ISM's dates (manufacturing
-# and services PMI, 10:00 ET) on 2026-10-05. UPDATE ANNUALLY, like
+# and services PMI, 10:00 ET) on 2026-10-05, and PPI (bls.gov/schedule/
+# news_release/ppi.htm) on 2026-10-28. UPDATE ANNUALLY, like
 # US_MARKET_HOLIDAYS; report/print_watch.py pings ops once this table
 # runs out. Moved here from print_watch on 2026-10-05 so the print
 # alerts and the omni-calendar read one table.
@@ -329,12 +330,14 @@ OFFICIAL_RELEASES: dict[str, tuple[str, ...]] = {
     "2026-11-04": ("ism_services",),
     "2026-11-06": ("jobs",),
     "2026-11-10": ("cpi",),
+    "2026-11-13": ("ppi",),
     "2026-11-25": ("pce",),
     "2026-12-01": ("ism_manufacturing",),
     "2026-12-03": ("ism_services",),
     "2026-12-04": ("jobs",),
     "2026-12-09": ("fomc",),
     "2026-12-10": ("cpi",),
+    "2026-12-15": ("ppi",),
     "2026-12-23": ("pce",),
 }
 

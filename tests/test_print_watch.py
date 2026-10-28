@@ -28,24 +28,24 @@ def test_bls_payload_parses_by_calendar_month():
     assert PW.parse_bls({"status": "REQUEST_NOT_PROCESSED"}) == {}
 
 
-def test_cpi_lines_match_the_bls_print():
+def test_cpi_rows_match_the_bls_print():
     obs = PW.parse_bls(BLS)
     assert PW.release_ready(PW.CPI, obs, "2026-08")
     assert not PW.release_ready(PW.CPI, obs, "2026-09"), "September is not out"
-    lines = PW.build_lines(PW.CPI, obs, "2026-08", FF)
-    assert lines[0].startswith("**Core CPI m/m** +0.3%") and "consensus +0.2%" in lines[0]
-    assert lines[1].startswith("**Core CPI y/y** 2.4%"), lines[1]
-    assert lines[2].startswith("**CPI m/m** +0.4%") and "consensus +0.4%" in lines[2] and "prior +0.1%" in lines[2]
-    assert lines[3].startswith("**CPI y/y** 3.4%")
+    rows = {r["label"]: r for r in PW.build_rows(PW.CPI, obs, "2026-08", FF)}
+    assert (rows["Core CPI m/m"]["actual"], rows["Core CPI m/m"]["consensus"]) == ("+0.3%", "+0.2%")
+    assert rows["Core CPI y/y"]["actual"] == "2.4%"
+    assert (rows["CPI m/m"]["actual"], rows["CPI m/m"]["consensus"], rows["CPI m/m"]["prior"]) == ("+0.4%", "+0.4%", "+0.1%")
+    assert rows["CPI y/y"]["actual"] == "3.4%"
 
 
-def test_jobs_lines_from_the_same_payload():
+def test_jobs_rows_from_the_same_payload():
     obs = PW.parse_bls(BLS)
-    lines = PW.build_lines(PW.JOBS, obs, "2026-08", [])
-    assert lines[0].startswith("**Non Farm Payrolls** +162K"), lines[0]
-    assert lines[1].startswith("**Unemployment Rate** 4.1%")
-    assert lines[2].startswith("**Avg Hourly Earnings m/m** +0.3%")
-    assert "prior" in lines[0], "prior falls back to the series when the feed has none"
+    rows = {r["label"]: r for r in PW.build_rows(PW.JOBS, obs, "2026-08", [])}
+    assert rows["Non Farm Payrolls"]["actual"] == "+162K"
+    assert rows["Unemployment Rate"]["actual"] == "4.1%"
+    assert rows["Avg Hourly Earnings m/m"]["actual"] == "+0.3%"
+    assert rows["Non Farm Payrolls"]["prior"], "prior falls back to the series when the feed has none"
 
 
 def test_a_missing_reference_month_is_not_ready_and_computes_nothing():
@@ -61,7 +61,7 @@ def test_a_missing_reference_month_is_not_ready_and_computes_nothing():
 def test_fomc_statement_parses_range_action_and_vote():
     p = PW.parse_fomc_statement(FOMC_HTML)
     text = p.pop("text")
-    assert p == {"action": "maintain", "low": 3.5, "high": 3.75, "vote": "9-3"}, p
+    assert p == {"action": "maintain", "low": 3.5, "high": 3.75, "size": None, "vote": "9-3"}, p
     # the statement body alone, not the page (the ledger diffs it next meeting)
     assert text.startswith("The Federal Open Market Committee approved the following statement"), text[:120]
     assert "target range for the federal funds rate" in text and "<" not in text
@@ -73,8 +73,6 @@ def test_fomc_statement_parses_range_action_and_vote():
     assert PW.parse_fomc_statement(hike)["action"] == "raise"
     assert PW.parse_fomc_statement(hike)["high"] == 4.0
     assert PW.parse_fomc_statement("nothing here") is None
-    ff = [{"event": "FOMC Interest Rate Decision", "estimate": 3.75, "prev": 3.75}]
-    assert PW.fomc_lines(p, ff)[0] == "**Fed holds** · target range 3.50%–3.75% · consensus upper bound 3.75% · vote 9-3"
 
 
 def test_due_releases_come_from_the_calendar_and_the_slot():
@@ -128,13 +126,13 @@ def test_posted_ledger_dedupes_within_a_day():
 
 def test_job_posts_once_and_records_it():
     """The watch with everything stubbed: the calendar says CPI today,
-    BLS has the month, one embed goes out, the ledger records it, a
+    BLS has the month, one alert goes out, the ledger records it, a
     second run is a no-op."""
     sent = []
 
     class _Chan:
-        async def send(self, embed=None, **kw):
-            sent.append(embed)
+        async def send(self, content=None, embed=None, **kw):
+            sent.append((content, embed))
             return object()
 
     class _Bot:
@@ -146,7 +144,6 @@ def test_job_posts_once_and_records_it():
          patch("config.settings.print_alert_channel_id", "123"), \
          patch("report.print_watch._ff_rows_for_day", return_value=FF), \
          patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
-         patch("report.print_watch._takeaway_lines", return_value=[]), \
          patch("report.print_watch.datetime") as dt:
         from datetime import datetime as real
         fixed = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
@@ -156,17 +153,18 @@ def test_job_posts_once_and_records_it():
         dt.fromisoformat = real.fromisoformat
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1
-        assert sent[0].title == "August CPI Inflation Print"
-        # bullet body since 2026-09-30 (tests/test_print_watch_format.py has the layout)
-        assert "Headline CPI" in sent[0].description and "3.4% over the year" in sent[0].description
-        assert "Source: bls.gov" in sent[0].description
-        assert "**Quick Takeaway**" not in sent[0].description, "no header without bullets"
-        assert sent[0].footer.text == "released 08:30 ET · BLS"
+        content, embed = sent[0]
+        assert content == "@everyone Aug CPI: Hotter than expected"
+        lines = embed.description.split("\n")
+        assert lines[0].startswith("Core CPI MoM +0.3% vs +0.2% expected (+0.")
+        assert "Headline CPI YoY 3.4% vs 3.4% expected" in lines
+        assert lines[-1].startswith("Takeaway: Core inflation rose more than expected.")
+        assert embed.footer.text == "BLS · forecast: ForexFactory · released 8:30 AM ET"
         ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
-        assert ledger["cpi"]["rows"][0]["label"] == "Core CPI m/m"
-        assert ledger["cpi"]["rows"][0]["period"] == "2026-08"
-        assert ledger["cpi"]["rows"][0]["actual_value"] == 0.3
-        assert ledger["cpi"]["lines"] == sent[0].description.split("\n")
+        assert ledger["cpi"]["rows"][0] == {"label": "Core CPI m/m", "actual_value": 0.3, "period": "2026-08"}
+        assert ledger["cpi"]["lines"] == lines
+        assert ledger["cpi"]["content"] == "Aug CPI: Hotter than expected"
+        assert ledger["cpi"]["verdict"]["direction"] == "hawkish"
         assert "statement" not in ledger["cpi"]
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1, "second run must not repost"
@@ -179,8 +177,8 @@ def test_fomc_job_posts_the_decision_with_the_statement_changes():
     sent = []
 
     class _Chan:
-        async def send(self, embed=None, **kw):
-            sent.append(embed)
+        async def send(self, content=None, embed=None, **kw):
+            sent.append((content, embed))
             return object()
 
     class _Bot:
@@ -190,7 +188,8 @@ def test_fomc_job_posts_the_decision_with_the_statement_changes():
     parsed = PW.parse_fomc_statement(FOMC_HTML)
     kept = "The Committee is continuing its policy of maintaining ample reserves in the banking system."
     assert kept in parsed["text"]
-    prev_text = parsed["text"].replace(kept, "The Committee is continuing to reduce its holdings of Treasury securities.")
+    old = "The Committee is continuing to reduce its holdings of Treasury securities."
+    prev_text = parsed["text"].replace(kept, old)
     ff = [{"event": "FOMC Interest Rate Decision", "country": "US", "time": "2026-10-28T18:00:00",
            "estimate": 3.75, "prev": 3.75, "actual": None, "unit": "%"}]
     with tempfile.TemporaryDirectory() as td, \
@@ -198,67 +197,40 @@ def test_fomc_job_posts_the_decision_with_the_statement_changes():
          patch("config.settings.print_alert_channel_id", "123"), \
          patch("report.print_watch._ff_rows_for_day", return_value=ff), \
          patch("report.print_watch.fetch_fomc_today", return_value=dict(parsed)), \
-         patch("report.print_watch._takeaway_lines", return_value=[]), \
          patch("report.print_watch.datetime") as dt:
         from datetime import datetime as real
         dt.now.return_value = real(2026, 10, 28, 14, 1, tzinfo=PW._ET)
         dt.utcnow.return_value = real(2026, 10, 28, 18, 1)
         dt.strptime = real.strptime
         dt.fromisoformat = real.fromisoformat
-        PW.mark_posted("2026-09-17", "fomc", ["y"], statement=prev_text)
+        PW.mark_posted("2026-09-17", "fomc", ["Fed holds · vote 9-3"], statement=prev_text)
         asyncio.run(PW.print_watch_job(_Bot(), "14:00"))
         assert len(sent) == 1
-        assert sent[0].title == "October FOMC Decision"
-        lines = sent[0].description.split("\n")
-        assert lines[0] == "• Target range: 3.50% to 3.75% (in line with 3.75% expected)"
-        assert lines[1] == "• Fed holds · vote 9-3"
-        changes = [ln for ln in lines if ln.startswith("• Statement change:")]
-        assert changes == [f"• Statement change: {kept}"], changes
+        content, embed = sent[0]
+        # the same three dissents as last time: no change, so as expected
+        assert content == "@everyone Oct FOMC: Hold as expected"
+        lines = embed.description.split("\n")
+        assert lines[:3] == ["Decision: Hold, as expected", "Target range: 3.50% to 3.75%", "Vote: 9-3"]
+        assert "Dissent: Hammack, Kashkari and Logan wanted a quarter-point hike" in lines
+        assert lines[lines.index("Statement changes:") + 1:][:2] == [f"Was: {old}", f"Now: {kept}"]
         assert not any("Skip to main content" in ln for ln in lines)
-        assert sent[0].footer.text == "released 14:00 ET · Federal Reserve"
-        assert lines[-1] == "Source: federalreserve.gov, FOMC statement"
+        assert embed.footer.text == "Federal Reserve statement · released 2:00 PM ET"
         ledger = json.loads((Path(td) / "print-alerts" / "2026-10-28.json").read_text(encoding="utf-8"))
         assert ledger["fomc"]["statement"] == parsed["text"]
         assert ledger["fomc"]["rows"] == [{"label": "Target range", "actual_value": 3.75, "period": "2026-10"}]
         assert ledger["fomc"]["lines"] == lines
+        assert ledger["fomc"]["action"] == "hold" and ledger["fomc"]["dissent_net"] == 3
 
 
-def test_job_puts_the_takeaway_under_the_numbers_once():
-    """The takeaway bullets come from print_takeaway.generate and
-    render_release adds the header, so the header appears exactly once."""
-    sent = []
-
-    class _Chan:
-        async def send(self, embed=None, **kw):
-            sent.append(embed)
-            return object()
-
-    class _Bot:
-        def get_channel(self, cid):
-            return _Chan()
-
-    with tempfile.TemporaryDirectory() as td, \
-         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
-         patch("config.settings.print_alert_channel_id", "123"), \
-         patch("report.print_watch._ff_rows_for_day", return_value=FF), \
-         patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
-         patch("report.print_watch._takeaway_lines", return_value=["• **X:** y"]) as tk, \
-         patch("report.print_watch.datetime") as dt:
-        from datetime import datetime as real
-        dt.now.return_value = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
-        dt.utcnow.return_value = real(2026, 9, 11, 12, 31)
-        dt.strptime = real.strptime
-        dt.fromisoformat = real.fromisoformat
-        asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
-    assert len(sent) == 1
-    desc = sent[0].description
-    assert "**Quick Takeaway**" in desc
-    assert desc.count("**Quick Takeaway**") == 1
-    assert desc.index("3.4% over the year") < desc.index("**Quick Takeaway**") < desc.index("• **X:** y") < desc.index("Source: bls.gov")
-    key, title, rows, computed, period = tk.call_args.args
-    assert key == "cpi" and title == "August CPI Inflation Print" and period == "2026-08"
-    assert [r["label"] for r in rows][:2] == ["Core CPI m/m", "Core CPI y/y"]
-    assert any(c.startswith("Core CPI 3-month annualized:") for c in computed), computed
+def test_no_model_is_called_on_the_release_path():
+    """2026-10-28: the takeaway is templated. The module that called
+    Gemini is gone and nothing in the watch builds a client."""
+    import inspect
+    from report import print_data, print_render, print_templates, print_verdict
+    for mod in (PW, print_data, print_render, print_templates, print_verdict):
+        src = inspect.getsource(mod)
+        assert "make_client" not in src and "genai" not in src, mod.__name__
+    assert not Path("report/print_takeaway.py").exists()
 
 
 def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_the_rest():
@@ -274,7 +246,7 @@ def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_th
         async def send(self, embed=None, **kw):
             if self.cid == 999:
                 raise RuntimeError("no access")
-            sent.append((self.cid, embed.title))
+            sent.append((self.cid, kw.get("content")))
             return object()
 
     class _Bot:
@@ -286,7 +258,6 @@ def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_th
          patch("config.settings.print_alert_channel_id", "123, 456,999,123"), \
          patch("report.print_watch._ff_rows_for_day", return_value=FF), \
          patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
-         patch("report.print_watch._takeaway_lines", return_value=[]), \
          patch("discord_bot.sender._RETRY_SLEEP_S", 0, create=True), \
          patch("report.print_watch.datetime") as dt:
         from datetime import datetime as real
@@ -329,14 +300,16 @@ def test_bea_payload_parses_by_calendar_month_and_skips_annual_rows():
     assert PW.parse_bea({"BEAAPI": {"Results": {"Error": {"APIErrorCode": "3", "APIErrorDescription": "bad key"}}}}) == {}
 
 
-def test_pce_lines_match_the_bea_print():
+def test_pce_rows_match_the_bea_print():
     obs = PW.parse_bea(BEA)
     assert PW.release_ready(PW.PCE, obs, "2026-08")
-    lines = PW.build_lines(PW.PCE, obs, "2026-08", FF_PCE)
-    assert lines[0] == "**Core PCE m/m** +0.2% · consensus +0.2% · prior +0.3%"
-    assert lines[1].startswith("**Core PCE y/y** 3.3%")
-    assert lines[2] == "**PCE m/m** +0.3%"  # no calendar row and no June index, so no consensus or prior
-    assert lines[3].startswith("**PCE y/y** 3.2%")
+    rows = {r["label"]: r for r in PW.build_rows(PW.PCE, obs, "2026-08", FF_PCE)}
+    core = rows["Core PCE m/m"]
+    assert (core["actual"], core["consensus"], core["prior"]) == ("+0.2%", "+0.2%", "+0.3%")
+    assert rows["Core PCE y/y"]["actual"] == "3.3%"
+    # no calendar row and no June index, so no consensus or prior
+    assert (rows["PCE m/m"]["actual"], rows["PCE m/m"]["consensus"], rows["PCE m/m"]["prior"]) == ("+0.3%", None, None)
+    assert rows["PCE y/y"]["actual"] == "3.2%"
 
 
 def test_pce_is_armed_only_with_a_bea_key():
@@ -367,12 +340,12 @@ def test_specs_carry_the_extra_series_as_optional_lines():
     assert [ln.series for ln in core] == ["DPCCRG", "DPCCRG", "DPCERG", "DPCERG"]
     assert {ln.series for ln in extra} == {"DPCERX", "DPCERC", "A065RC", "A072RC"}
     assert {ln.table for ln in extra} == {"T20806", "T20600"}
-    assert [ln.pair for ln in core] == ["", "", "headline", "headline"]
-    assert {ln.row for ln in extra if ln.row} == {"income"}
     assert {ln.series for ln in PW.CPI.lines if ln.optional} == {"CUSR0000SAH1", "CUSR0000SA0E", "CUSR0000SAF1"}
-    assert {ln.series for ln in PW.JOBS.lines if ln.optional} == {"LNS11300000"}
-    assert PW.CPI.headline == "CPI Inflation Print" and PW.JOBS.headline == "Jobs Report"
-    assert PW.PCE.headline == "PCE Inflation Print" and PW.FOMC.headline == "FOMC Decision"
+    assert {ln.series for ln in PW.JOBS.lines if ln.optional} == {"LNS11300000", "CES0500000002",
+                                                                   "LNS13000000", "LNS11000000"}
+    assert {ln.series for ln in PW.JOBS.lines if ln.hidden} == {"LNS13000000", "LNS11000000"}
+    assert {ln.series for ln in PW.PPI.lines if ln.optional} == {"WPSFD49116"}
+    assert [s.name for s in PW.SPECS] == ["CPI", "Jobs", "FOMC", "PCE", "PPI"]
 
 
 def test_release_ready_ignores_optional_lines_and_build_rows_drops_them_when_absent():
@@ -380,7 +353,7 @@ def test_release_ready_ignores_optional_lines_and_build_rows_drops_them_when_abs
     assert PW.release_ready(PW.CPI, obs, "2026-08")
     rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
     assert [r["label"] for r in rows] == ["Core CPI m/m", "Core CPI y/y", "CPI m/m", "CPI y/y"]
-    assert rows[2]["pair"] == "headline" and rows[0]["display"] == "Core CPI (on the month)"
+    assert rows[0]["display"] == "Core CPI MoM" and rows[2]["display"] == "Headline CPI MoM"
     assert rows[0]["actual_value"] == 0.3 and rows[0]["consensus_value"] == 0.2
 
 
@@ -438,7 +411,9 @@ def test_the_schedule_holds_the_published_dates():
     assert O["2026-09-30"] == ("pce",) and O["2026-10-29"] == ("pce",)
     assert "2026-09-25" not in O and "2026-10-30" not in O
     assert O["2026-10-14"] == ("cpi",) and O["2026-12-09"] == ("fomc",)
-    assert all(k in {"cpi", "jobs", "pce", "fomc", "ism_manufacturing", "ism_services"}
+    # bls.gov/schedule/news_release/ppi.htm, read 2026-10-28
+    assert O["2026-11-13"] == ("ppi",) and O["2026-12-15"] == ("ppi",)
+    assert all(k in {"cpi", "jobs", "pce", "ppi", "fomc", "ism_manufacturing", "ism_services"}
                for ks in O.values() for k in ks)
 
 
@@ -482,46 +457,36 @@ def test_ledger_keeps_rows_and_statement_and_finds_the_previous_post():
         assert PW.previous_post("pce", before="2026-10-29") is None
 
 
-def test_revision_line_compares_last_months_posted_payrolls_with_the_new_vintage():
+def test_without_freds_archive_the_ledger_gives_last_months_revision():
+    from report import print_data as PD
     obs = PW.parse_bls(BLS)          # August +162K; July is whatever the payload now says
     july_now = PW.compute(obs["CES0000000001"], "m_change_k", "2026-07")
     prev = {"rows": [{"label": "Non Farm Payrolls", "actual_value": july_now + 20, "period": "2026-07"}]}
-    line = PW.revision_line(PW.JOBS, obs, "2026-08", prev)
-    assert line == f"Prior month revised: {PW._fmt(july_now, 'K', 'm_change_k')} from {PW._fmt(july_now + 20, 'K', 'm_change_k')}"
+    rev = PD.payroll_revisions(PW.JOBS, obs, "2026-08", None, prev)
+    assert rev == {"months": [{"period": "2026-07", "now": july_now, "was": july_now + 20}], "net": -20}
     same = {"rows": [{"label": "Non Farm Payrolls", "actual_value": july_now, "period": "2026-07"}]}
-    assert PW.revision_line(PW.JOBS, obs, "2026-08", same) == ""
-    assert PW.revision_line(PW.JOBS, obs, "2026-08", None) == ""
+    assert PD.payroll_revisions(PW.JOBS, obs, "2026-08", None, same) is None
+    assert PD.payroll_revisions(PW.JOBS, obs, "2026-08", None, None) is None
 
 
-def test_fomc_row_carries_the_feeds_expected_upper_bound():
+def test_fomc_release_reads_the_expected_move_from_the_feed():
+    from report import print_data as PD
     parsed = PW.parse_fomc_statement(FOMC_HTML)     # maintain, 3.50 to 3.75, 9-3
-    ff = [{"event": "FOMC Interest Rate Decision", "estimate": 3.75, "prev": 3.75}]
-    row = PW._fomc_row(parsed, ff, "2026-07")
-    assert row["actual"] == "3.50% to 3.75%" and row["actual_value"] == 3.75 and row["period"] == "2026-07"
-    assert row["consensus"] == "3.75%" and row["consensus_value"] == 3.75 and row["verdict"] == "as expected"
-    assert PW.render_release([row]) == ["• Target range: 3.50% to 3.75% (in line with 3.75% expected)"]
-    # a surprise hold against an expected cut, and an expected cut delivered
-    cut_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 3.5}]
-    assert PW._fomc_row(parsed, cut_exp, "2026-07")["verdict"] == "higher than expected"
-    hike_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 4.0}]
-    assert PW._fomc_row(parsed, hike_exp, "2026-07")["verdict"] == "lower than expected"
-    # no feed row: the bullet is the range alone
-    bare = PW._fomc_row(parsed, [], "2026-07")
-    assert bare["consensus"] is None and bare["consensus_value"] is None and bare["verdict"] == ""
-    assert PW.render_release([bare]) == ["• Target range: 3.50% to 3.75%"]
+    rel = PD.fomc_release(parsed, [{"event": "FOMC Interest Rate Decision", "estimate": 3.75}], None, "2026-07-29")
+    f = rel.fomc
+    assert (f["action"], f["prior_high"], f["expected"], f["expected_action"]) == ("hold", 3.75, 3.75, "hold")
+    assert rel.rows["Target range"]["actual_value"] == 3.75 and rel.period == "2026-07"
+    cut = PD.fomc_release(parsed, [{"event": "FOMC Interest Rate Decision", "estimate": 3.5}], None, "2026-07-29")
+    assert cut.fomc["expected_action"] == "cut"
+    bare = PD.fomc_release(parsed, [], None, "2026-07-29")
+    assert bare.fomc["expected"] is None and bare.fomc["expected_action"] is None
+    assert bare.fomc["prev_dissent_net"] is None and bare.fomc["dissent_net"] == 3
 
 
-def test_statement_changes_list_the_sentences_that_moved():
-    prev = "The Committee decided to maintain the target range. Inflation remains elevated. Job gains have been solid."
-    cur = "The Committee decided to maintain the target range. Inflation has eased somewhat. Job gains have been solid. The Committee will monitor carefully."
-    changes = PW.statement_changes(prev, cur)
-    assert changes == ["Inflation has eased somewhat.", "The Committee will monitor carefully."]
-    assert PW.statement_changes("", cur) == [] and PW.statement_changes(cur, cur) == []
-    # abbreviations and initials do not end a sentence
+def test_sentences_split_around_abbreviations_and_initials():
     abbr = "Growth in the U.S. economy slowed. For release at 2:00 p.m. EDT. Voting for were Stephen I. Miran and Lisa D. Cook."
     assert PW._sentences(abbr) == ["Growth in the U.S. economy slowed.", "For release at 2:00 p.m. EDT.",
                                    "Voting for were Stephen I. Miran and Lisa D. Cook."]
-    assert PW.statement_changes(prev, prev + " " + abbr) == PW._sentences(abbr)
 
 
 def test_ppi_fills_the_calendar_row_and_arms_the_watch():
@@ -543,4 +508,4 @@ def test_ppi_fills_the_calendar_row_and_arms_the_watch():
     assert out[0]["actual_source"] == "bls:WPSFD4"
     ff = [{"event": "PPI m/m", "country": "US", "time": "2026-10-15T12:30:00"}]
     assert [s.key for s in PW.due_releases("2026-10-15", ff, "08:30")] == ["ppi"]
-    assert "bls.gov" in PW.source_line(PW.PPI)
+    assert PW.PPI.agency == "BLS"

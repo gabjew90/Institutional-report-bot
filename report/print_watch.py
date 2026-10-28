@@ -11,10 +11,11 @@ Two jobs, one module:
 1. The WATCH. On a day the ForexFactory calendar lists a supported US
    release, a scheduler job wakes just before the release time, polls
    the agency until the reference month appears (CPI on September 11
-   reports August; anything else is not the print), posts one embed in
-   the owner's bullet layout (each series against its consensus, the
-   Quick Takeaway from report/print_takeaway.py, the agency source
-   line), and records the post so a restart cannot repeat it.
+   reports August; anything else is not the print), posts one alert
+   built with no model call (2026-10-28: report/print_data.py,
+   print_verdict.py, print_templates.py, print_render.py; the verdict
+   line is the message text a phone shows), and records the post so a
+   restart cannot repeat it.
 2. The FEED. `enrich_rows_with_agency_actuals` fills `actual` on the
    econ-calendar rows from the same agency data, ahead of the FRED
    layer, so /ask and the pulse context carry the print as soon as it
@@ -63,15 +64,15 @@ _UA = {"User-Agent": "omnibeta-print-watch/1.0", "Content-Type": "application/js
 class Line:
     label: str
     series: str              # agency series id ("" for FOMC)
-    transform: str           # mom | yoy | m_change_k | level | range
+    transform: str           # mom | yoy | m_change_k | level | raw
     ff_event: str            # ForexFactory event name for consensus/prior ("" = none)
     unit: str = "%"
     source: str = "bls"      # bls | bea
     table: str = ""          # BEA NIPA table, "" means the release default (BEA_PCE_TABLE)
     display: str = ""        # reader-facing name, defaults to label
-    pair: str = ""           # m/m and y/y lines that share one bullet share a key
-    row: str = ""            # short lines that share one bullet with " | " share a key
     optional: bool = False   # not needed to post, dropped when the agency has no value
+    signed: bool | None = None  # None: changes (mom, m_change_k) carry a sign, rates and levels do not
+    hidden: bool = False     # an input to a computed value (the unrounded jobless rate), never shown
 
 
 @dataclass
@@ -82,35 +83,39 @@ class ReleaseSpec:
     ff_arming_events: tuple  # any of these on today's FF calendar arms the watch
     lines: list[Line] = field(default_factory=list)
     agency: str = "BLS"      # footer credit
-    headline: str = ""       # the title after the month, e.g. "CPI Inflation Print"
+    name: str = ""           # the alert's short name: "Sep CPI: Hotter than expected"
 
 
 CPI = ReleaseSpec(
-    key="cpi", title="CPI", release_et="08:30", headline="CPI Inflation Print",
+    key="cpi", title="CPI", release_et="08:30", name="CPI",
     ff_arming_events=("CPI m/m", "Core CPI m/m", "CPI y/y"),
     lines=[
-        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI (on the month)"),
-        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI (over the year)"),
-        Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m", display="Headline CPI", pair="headline"),
-        Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y", display="Headline CPI", pair="headline"),
-        Line("Shelter m/m", "CUSR0000SAH1", "mom", "", display="Shelter (on the month)", optional=True),
-        Line("Energy m/m", "CUSR0000SA0E", "mom", "", display="Energy (on the month)", optional=True),
-        Line("Food m/m", "CUSR0000SAF1", "mom", "", display="Food (on the month)", optional=True),
+        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI MoM"),
+        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI YoY"),
+        Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m", display="Headline CPI MoM"),
+        Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y", display="Headline CPI YoY"),
+        Line("Shelter m/m", "CUSR0000SAH1", "mom", "", display="Shelter", optional=True),
+        Line("Food m/m", "CUSR0000SAF1", "mom", "", display="Food", optional=True),
+        Line("Energy m/m", "CUSR0000SA0E", "mom", "", display="Energy", optional=True),
     ])
 
 JOBS = ReleaseSpec(
-    key="jobs", title="Employment Situation", release_et="08:30", headline="Jobs Report",
+    key="jobs", title="Employment Situation", release_et="08:30", name="Jobs",
     ff_arming_events=("Non Farm Payrolls", "Unemployment Rate"),
     lines=[
-        Line("Non Farm Payrolls", "CES0000000001", "m_change_k", "Non Farm Payrolls", unit="K", display="Nonfarm Payrolls"),
-        Line("Unemployment Rate", "LNS14000000", "level", "Unemployment Rate"),
-        Line("Avg Hourly Earnings m/m", "CES0500000003", "mom", "Average Hourly Earnings m/m", display="Avg Hourly Earnings", pair="ahe"),
-        Line("Avg Hourly Earnings y/y", "CES0500000003", "yoy", "", display="Avg Hourly Earnings", pair="ahe"),
-        Line("Participation Rate", "LNS11300000", "level", "", optional=True),
+        Line("Non Farm Payrolls", "CES0000000001", "m_change_k", "Non Farm Payrolls", unit="K", display="Nonfarm payrolls"),
+        Line("Unemployment Rate", "LNS14000000", "level", "Unemployment Rate", display="Unemployment"),
+        Line("Avg Hourly Earnings m/m", "CES0500000003", "mom", "Average Hourly Earnings m/m", display="Avg hourly earnings MoM"),
+        Line("Avg Hourly Earnings y/y", "CES0500000003", "yoy", "", display="Avg hourly earnings YoY", signed=True),
+        Line("Participation Rate", "LNS11300000", "level", "", display="Participation", optional=True),
+        Line("Avg Weekly Hours", "CES0500000002", "level", "", unit="", display="Weekly hours", optional=True),
+        # the unemployed and the labor force, for the jobless rate before rounding
+        Line("Unemployed", "LNS13000000", "raw", "", unit="", optional=True, hidden=True),
+        Line("Labor Force", "LNS11000000", "raw", "", unit="", optional=True, hidden=True),
     ])
 
 FOMC = ReleaseSpec(
-    key="fomc", title="FOMC decision", release_et="14:00", headline="FOMC Decision",
+    key="fomc", title="FOMC decision", release_et="14:00", name="FOMC",
     ff_arming_events=("FOMC Interest Rate Decision",),
     lines=[Line("Target range", "", "range", "FOMC Interest Rate Decision")],
     agency="Federal Reserve")
@@ -128,21 +133,21 @@ FOMC = ReleaseSpec(
 # carries on the first live run and the line is dropped from the body,
 # while the core lines still post.
 PCE = ReleaseSpec(
-    key="pce", title="PCE price index", release_et="08:30", headline="PCE Inflation Print",
+    key="pce", title="PCE price index", release_et="08:30", name="PCE",
     ff_arming_events=("Core PCE Price Index m/m",),
     lines=[
-        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE (on the month)"),
-        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE (over the year)"),
-        Line("PCE m/m", "DPCERG", "mom", "", source="bea", display="Headline PCE", pair="headline"),
-        Line("PCE y/y", "DPCERG", "yoy", "", source="bea", display="Headline PCE", pair="headline"),
+        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE MoM"),
+        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE YoY"),
+        Line("PCE m/m", "DPCERG", "mom", "", source="bea", display="Headline PCE MoM"),
+        Line("PCE y/y", "DPCERG", "yoy", "", source="bea", display="Headline PCE YoY"),
         Line("Real Consumer Spending m/m", "DPCERX", "mom", "", source="bea", table="T20806",
-             display="Real Consumer Spending", optional=True),
+             display="Real consumer spending", optional=True),
         Line("Personal Spending m/m", "DPCERC", "mom", "Personal Spending m/m", source="bea", table="T20600",
-             display="Personal Spending", optional=True),
+             display="Personal spending", optional=True),
         Line("Personal Income m/m", "A065RC", "mom", "Personal Income m/m", source="bea", table="T20600",
-             display="Personal Income", row="income", optional=True),
+             display="Personal income", optional=True),
         Line("Saving Rate", "A072RC", "level", "", source="bea", table="T20600",
-             display="Saving Rate", row="income", optional=True),
+             display="Saving rate", optional=True),
     ],
     agency="BEA")
 
@@ -150,15 +155,18 @@ PCE = ReleaseSpec(
 # out two minutes after it printed, because nothing filled the calendar
 # row's actual. Final demand SA for m/m, NSA for y/y, the way BLS headlines
 # them; core is final demand less foods and energy (WPSFD49104 +0.7% for
-# September 2026, matching the release table).
+# September 2026, matching the release table), the same measure every
+# release. WPSFD49116 also leaves out trade services (retail and wholesale
+# margins), the steadier measure economists quote beside it.
 PPI = ReleaseSpec(
-    key="ppi", title="PPI", release_et="08:30", headline="Producer Prices (PPI)",
+    key="ppi", title="PPI", release_et="08:30", name="PPI",
     ff_arming_events=("PPI m/m", "Core PPI m/m"),
     lines=[
-        Line("Core PPI m/m", "WPSFD49104", "mom", "Core PPI m/m", display="Core PPI (on the month)"),
-        Line("Core PPI y/y", "WPUFD49104", "yoy", "Core PPI y/y", display="Core PPI (over the year)"),
-        Line("PPI m/m", "WPSFD4", "mom", "PPI m/m", display="Headline PPI", pair="headline"),
-        Line("PPI y/y", "WPUFD4", "yoy", "PPI y/y", display="Headline PPI", pair="headline"),
+        Line("Core PPI m/m", "WPSFD49104", "mom", "Core PPI m/m", display="Core PPI MoM"),
+        Line("Core PPI y/y", "WPUFD49104", "yoy", "Core PPI y/y", display="Core PPI YoY"),
+        Line("PPI m/m", "WPSFD4", "mom", "PPI m/m", display="Headline PPI MoM"),
+        Line("PPI y/y", "WPUFD4", "yoy", "PPI y/y", display="Headline PPI YoY"),
+        Line("PPI ex trade m/m", "WPSFD49116", "mom", "", display="PPI ex food, energy, trade MoM", optional=True),
     ])
 
 SPECS = (CPI, JOBS, FOMC, PCE, PPI)
@@ -334,6 +342,8 @@ def compute(obs: list[tuple[str, float]], transform: str, period: str) -> float 
     cur = _value_at(obs, period)
     if cur is None:
         return None
+    if transform == "raw":
+        return cur
     if transform == "level":
         return round(cur, 1)
     if transform == "m_change_k":
@@ -348,6 +358,13 @@ def compute(obs: list[tuple[str, float]], transform: str, period: str) -> float 
     return None
 
 
+def unrounded_change(obs: list[tuple[str, float]], period: str) -> float | None:
+    """The month-on-month change in percent before rounding, from the
+    index levels the agency publishes: the figure behind a headline 0.3%."""
+    cur, prev = _value_at(obs, period), _value_at(obs, month_shift(period, -1))
+    return None if cur is None or not prev else (cur / prev - 1) * 100
+
+
 def release_ready(spec: ReleaseSpec, obs_by_series: dict, period: str) -> bool:
     """Every required line of the release has its reference-month
     observation. Optional lines never hold a post."""
@@ -358,8 +375,8 @@ def release_ready(spec: ReleaseSpec, obs_by_series: dict, period: str) -> bool:
 # ---------------------------------------------------------------- FOMC
 
 _RANGE_RE = re.compile(
-    r"(maintain|raise|lower|increase|decrease|reduce)\s+the\s+target\s+range\s+for\s+the\s+federal\s+funds\s+rate"
-    r"\s+(?:at|to|by\s+\S+\s+percentage\s+points?\s+to)\s+([0-9][0-9\-/ ]*?)\s+to\s+([0-9][0-9\-/ ]*?)\s+percent",
+    r"(?P<action>maintain|raise|lower|increase|decrease|reduce)\s+the\s+target\s+range\s+for\s+the\s+federal\s+funds\s+rate"
+    r"\s+(?:at|to|by\s+(?P<size>\S+)\s+percentage\s+points?\s+to)\s+(?P<low>[0-9][0-9\-/ ]*?)\s+to\s+(?P<high>[0-9][0-9\-/ ]*?)\s+percent",
     re.I)
 # the dash between the tallies has arrived as an en dash, a hyphen and
 # a replacement character depending on the fetch's decoding
@@ -367,8 +384,11 @@ _VOTE_RE = re.compile(r"by\s+a\s+(\d+)\s*[^\d\s]\s*(\d+)\s+vote", re.I)
 
 
 def _fraction(s: str) -> float | None:
-    """'3-1/2' -> 3.5, '4' -> 4.0, '3-3/4' -> 3.75."""
+    """'3-1/2' -> 3.5, '4' -> 4.0, '3-3/4' -> 3.75, '1/4' -> 0.25 (a move's size)."""
     s = s.strip().replace(" ", "")
+    bare = re.match(r"^(\d+)/(\d+)$", s)
+    if bare:
+        return float(bare.group(1)) / float(bare.group(2))
     m = re.match(r"^(\d+)(?:-(\d+)/(\d+))?$", s)
     if not m:
         try:
@@ -407,30 +427,95 @@ def _statement_body(txt: str, range_at: int) -> str:
         if j >= 0:
             end = j
             break
-    return txt[start:end].strip()
+    # 2026-10-28: the stored statement opened with "--> --> -->", the tail
+    # of HTML comments whose bodies held a "<" the tag strip cut at
+    return re.sub(r"^(?:-->\s*)+", "", txt[start:end].strip())
 
 
 def parse_fomc_statement(html_text: str) -> dict | None:
-    """{'action', 'low', 'high', 'vote', 'text'} from a statement's HTML,
-    or None. The Fed sets '3-1/2' with a non-breaking hyphen (U+2011) and
-    the vote tally with an en dash; both fold to '-' before matching.
-    'text' is the statement body alone (no page navigation or footer),
-    kept in the ledger so the next decision can list the sentences that
-    changed."""
-    txt = _html.unescape(re.sub(r"<[^>]+>", " ", html_text or ""))
+    """{'action', 'low', 'high', 'size', 'vote', 'text'} from a statement's
+    HTML, or None. 'action' is raise / maintain / lower, 'size' the move in
+    percentage points when the statement states it (None on a hold). The
+    Fed sets '3-1/2' with a non-breaking hyphen (U+2011) and the vote tally
+    with an en dash; both fold to '-' before matching. 'text' is the
+    statement body alone (no page navigation or footer), kept in the
+    ledger so the next decision can show the sentences that changed."""
+    raw = re.sub(r"<!--.*?-->", " ", html_text or "", flags=re.S)
+    txt = _html.unescape(re.sub(r"<[^>]+>", " ", raw))
     txt = re.sub(r"\s+", " ", txt.replace("﻿", "").replace("\xa0", " ").translate(_DASHES)).strip()
     m = _RANGE_RE.search(txt)
     if not m:
         return None
-    low, high = _fraction(m.group(2)), _fraction(m.group(3))
+    low, high = _fraction(m.group("low")), _fraction(m.group("high"))
     if low is None or high is None:
         return None
-    action = m.group(1).lower()
+    action = m.group("action").lower()
     action = {"increase": "raise", "decrease": "lower", "reduce": "lower"}.get(action, action)
     v = _VOTE_RE.search(txt)
     return {"action": action, "low": low, "high": high,
+            "size": _fraction(m.group("size")) if m.group("size") else None,
             "vote": f"{v.group(1)}-{v.group(2)}" if v else "",
             "text": _statement_body(txt, m.start())}
+
+
+# A dissent names the members and the move they preferred: "Voting
+# against the monetary policy action were Lisa D. Cook and Beth M.
+# Hammack, who preferred to raise the target range for the federal funds
+# rate by 1/4 percentage point at this meeting." Several groups chain with
+# ", and": "... at this meeting, and Michelle W. Bowman, who preferred no
+# change".
+_MOVE_RANK = {"cut": -1, "hold": 0, "hike": 1}
+FED_ACTION = {"raise": "hike", "maintain": "hold", "lower": "cut"}
+
+
+def _last_names(names: str) -> list[str]:
+    parts = [p.strip() for p in re.split(r",\s*(?:and\s+)?|\s+and\s+", names) if p.strip()]
+    return [p.split()[-1] for p in parts]
+
+
+def _preferred_move(pref: str) -> tuple[str, float | None]:
+    p = pref.lower()
+    move = "hike" if "raise" in p else "cut" if "lower" in p else "hold"
+    size = re.search(r"by\s+(\S+)\s+percentage\s+point", p)
+    return move, (_fraction(size.group(1)) if size else None)
+
+
+def parse_dissents(text: str) -> list[dict]:
+    """[{'names': ['Cook', 'Hammack'], 'move': 'hike', 'size': 0.25}] from
+    the statement's "Voting against" sentence; [] when the vote was
+    unanimous or the sentence is missing."""
+    s = next((x for x in _sentences(text or "") if x.startswith("Voting against")), "")
+    m = re.match(r"Voting against .*? (?:were|was) (.*)$", s)
+    if not m:
+        return []
+    parts = re.split(r",?\s*who preferred\s+", m.group(1).rstrip("."))
+    groups, names = [], parts[0]
+    for chunk in parts[1:]:
+        nxt = re.match(r"(.*?)(?:[,;]\s*and\s+)([A-Z].*)$", chunk)
+        pref, following = (nxt.group(1), nxt.group(2)) if nxt else (chunk, "")
+        move, size = _preferred_move(pref)
+        if _last_names(names):
+            groups.append({"names": _last_names(names), "move": move, "size": size})
+        names = following
+    return groups
+
+
+def _signed_move(move: str, size: float | None) -> float:
+    """The change in points a move stands for; a hike or cut of unstated
+    size counts as a quarter point."""
+    return 0.0 if move == "hold" else _MOVE_RANK[move] * (size or 0.25)
+
+
+def dissent_net(groups: list[dict], action: str, size: float | None = None) -> int:
+    """Members who wanted a higher rate than the decision minus those who
+    wanted a lower one. `action` is hike / hold / cut and `size` its move,
+    so a dissent for a bigger cut counts as wanting a lower rate."""
+    base = _signed_move(action, size)
+    total = 0
+    for g in groups:
+        want = _signed_move(g["move"], g.get("size"))
+        total += len(g["names"]) * ((want > base) - (want < base))
+    return total
 
 
 # Periods that do not end a sentence: "U.S.", "p.m.", "a.m." and a
@@ -445,13 +530,29 @@ def _sentences(text: str) -> list[str]:
     return [s.replace(_DOT_HOLD, ".").strip() for s in parts if s.strip()]
 
 
-def statement_changes(prev_text: str, cur_text: str, limit: int = 3) -> list[str]:
-    """Sentences in the new statement that were not in the previous one,
-    in order, up to `limit`. Empty without a previous statement."""
+# The decision and the vote get their own lines, so their sentences are
+# never shown as a wording change.
+_DECISION_SENTENCE_RE = re.compile(r"target range for the federal funds rate|\bvot(?:e|ing)\b", re.I)
+
+
+def statement_diff(prev_text: str, cur_text: str, limit: int = 2) -> list[tuple[str | None, str | None]]:
+    """(was, now) pairs for the sentences that changed since the previous
+    statement, in order, up to `limit`: a rewritten sentence is a pair, a
+    new one has no `was`, a dropped one no `now`. Empty without a previous
+    statement."""
+    import difflib
     if not prev_text or not cur_text:
         return []
-    before = set(_sentences(prev_text))
-    return [s for s in _sentences(cur_text) if s not in before][:limit]
+    before = [s for s in _sentences(prev_text) if not _DECISION_SENTENCE_RE.search(s)]
+    after = [s for s in _sentences(cur_text) if not _DECISION_SENTENCE_RE.search(s)]
+    out: list[tuple[str | None, str | None]] = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(a=before, b=after, autojunk=False).get_opcodes():
+        if op == "equal":
+            continue
+        olds, news = before[i1:i2], after[j1:j2]
+        for k in range(max(len(olds), len(news))):
+            out.append((olds[k] if k < len(olds) else None, news[k] if k < len(news) else None))
+    return out[:limit]
 
 
 def _http_text(url: str, timeout: int = 20) -> str:
@@ -544,14 +645,20 @@ def due_releases(today_iso: str, ff_rows: list[dict], release_et: str | None = N
     return out
 
 
-def _fmt(value: float | None, unit: str, transform: str) -> str:
+def _fmt(value: float | None, unit: str, transform: str, signed: bool | None = None) -> str:
+    """A value at the agency's precision. Changes carry a sign (+0.3%,
+    +142K), rates and levels do not (2.6%, 4.2%), zero never does."""
     if value is None:
-        return "—"
+        return ""
     if unit == "K":
         return f"{value:+,.0f}K"
-    if transform in ("mom",):
-        return f"{value:+.1f}%"
-    return f"{value:.1f}%"
+    if unit == "":
+        return f"{value:.1f}"
+    if round(value, 1) == 0:
+        return "0.0%"
+    if signed is None:
+        signed = transform in ("mom", "m_change_k")
+    return f"{value:+.1f}%" if signed else f"{value:.1f}%"
 
 
 def _ff_value(ff_rows: list[dict], event: str, key: str) -> float | None:
@@ -577,64 +684,37 @@ def build_rows(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: lis
         if ln.optional and actual is None:
             log.info(f"print-watch: {spec.key} extra line {ln.label} has no {period} value, dropped")
             continue
-        out.append({
-            "label": ln.label, "display": ln.display or ln.label,
-            "pair": ln.pair, "row": ln.row, "optional": ln.optional,
-            "unit": ln.unit, "transform": ln.transform, "period": period,
-            "actual": _fmt(actual, ln.unit, ln.transform), "actual_value": actual,
-            "consensus": _fmt(cons, ln.unit, ln.transform) if cons is not None else None, "consensus_value": cons,
-            "prior": _fmt(prior, ln.unit, ln.transform) if prior is not None else None, "prior_value": prior,
-            "verdict": verdict(actual, cons, ln.unit, ln.transform),
-        })
+        out.append(make_row(ln, period, actual, cons, prior))
     return out
+
+
+def make_row(ln: Line, period: str, actual: float | None, cons: float | None = None,
+             prior: float | None = None) -> dict:
+    """One series as the alert reads it: values, their formatted text and
+    the verdict against consensus."""
+    def fmt(v):
+        return _fmt(v, ln.unit, ln.transform, ln.signed) if v is not None else None
+    return {
+        "label": ln.label, "display": ln.display or ln.label,
+        "optional": ln.optional, "hidden": ln.hidden,
+        "unit": ln.unit, "transform": ln.transform, "period": period,
+        "actual": fmt(actual), "actual_value": actual,
+        "consensus": fmt(cons), "consensus_value": cons,
+        "prior": fmt(prior), "prior_value": prior,
+        "verdict": verdict(actual, cons, ln.unit, ln.transform),
+    }
 
 
 def verdict(actual: float | None, cons: float | None, unit: str, transform: str) -> str:
     """'above' / 'below' / 'in line' against consensus at the displayed
-    precision, '' when either side is missing. Direction words only:
-    whether above is good depends on the series, and the reader knows."""
+    precision, '' when either side is missing. The forecast feed has one
+    decimal, so a +0.34% that publishes as +0.3% against +0.3% is in line."""
     if actual is None or cons is None:
         return ""
     a, c = _fmt(actual, unit, transform), _fmt(cons, unit, transform)
     if a == c:
         return "in line"
     return "above" if actual > cons else "below"
-
-
-def build_lines(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: list[dict]) -> list[str]:
-    """One rendered line per series: actual, consensus, prior. The job
-    posts render_release's body and the ledger keeps that body (Task 3,
-    2026-09-30), so this is the plain shape the tests check."""
-    out = []
-    for r in build_rows(spec, obs_by_series, period, ff_rows):
-        bits = [f"**{r['label']}** {r['actual']}"]
-        if r["consensus"] is not None:
-            bits.append(f"consensus {r['consensus']}")
-        if r["prior"] is not None:
-            bits.append(f"prior {r['prior']}")
-        out.append(" · ".join(bits))
-    return out
-
-
-BULLET = "•"
-
-SOURCES = {
-    "cpi": "Source: bls.gov (CPI-U release) <https://www.bls.gov/cpi/> · consensus: ForexFactory",
-    "jobs": "Source: bls.gov (Employment Situation) <https://www.bls.gov/news.release/empsit.toc.htm> · consensus: ForexFactory",
-    "pce": "Source: bea.gov (NIPA tables 2.8.4, 2.6, 2.8.6) <https://www.bea.gov/data/personal-consumption-expenditures-price-index> · consensus: ForexFactory",
-    "fomc": "Source: federalreserve.gov, FOMC statement",
-    "ppi": "Source: bls.gov (PPI release) <https://www.bls.gov/ppi/> · consensus: ForexFactory",
-}
-
-
-def source_line(spec: ReleaseSpec) -> str:
-    return SOURCES.get(spec.key, f"Source: {spec.agency}")
-
-
-def release_title(spec: ReleaseSpec, period: str) -> str:
-    """'August CPI Inflation Print': the reference month and the headline."""
-    month = period_label(period).split()[0]
-    return f"{month} {spec.headline or spec.title}"
 
 
 def annualized_3m(series: list[tuple[str, float]], period: str) -> float | None:
@@ -645,27 +725,6 @@ def annualized_3m(series: list[tuple[str, float]], period: str) -> float | None:
     if not end or not start:
         return None
     return round(((end / start) ** 4 - 1) * 100, 1)
-
-
-def revision_line(spec: ReleaseSpec, obs_by_series: dict, period: str, prev: dict | None) -> str:
-    """'Prior month revised: +120K from +142K' when the agency's new value
-    for last month differs from what we posted last month. Empty when
-    there is no prior post, no payroll line, or no change."""
-    if not prev:
-        return ""
-    ln = next((x for x in spec.lines if x.transform == "m_change_k"), None)
-    if ln is None:
-        return ""
-    last = month_shift(period, -1)
-    posted = next((r for r in prev.get("rows") or []
-                   if r.get("label") == ln.label and r.get("period") == last), None)
-    if not posted or posted.get("actual_value") is None:
-        return ""
-    now = compute(obs_by_series.get(ln.series) or [], ln.transform, last)
-    if now is None or round(now) == round(posted["actual_value"]):
-        return ""
-    return (f"Prior month revised: {_fmt(now, ln.unit, ln.transform)} "
-            f"from {_fmt(posted['actual_value'], ln.unit, ln.transform)}")
 
 
 # FRED twins of the agency series whose revisions the post reports.
@@ -696,174 +755,14 @@ def payroll_vintage(spec: ReleaseSpec, period: str, today_iso: str) -> list[tupl
             if o.get("value") not in (None, ".")]
 
 
-def payroll_revisions(spec: ReleaseSpec, obs_by_series: dict, period: str,
-                      before: list[tuple[str, float]] | None) -> str:
-    """'Revisions: July -10K (was +21K) · August +133K (was +162K) · net
-    -60K over two months'. BLS revises the two months before the
-    reference month in every jobs report; `before` is payroll_vintage, so
-    the line needs no earlier post of ours (on 2026-10-02 our ledger had
-    no August post and the -60K revision never reached the room). Empty
-    when nothing changed or the vintage is missing."""
-    ln = _revised_line(spec)
-    if ln is None or not before:
-        return ""
-    now_obs = obs_by_series.get(ln.series) or []
-    parts, net, changed = [], 0.0, False
-    for back in (-2, -1):
-        month = month_shift(period, back)
-        was = compute(before, "m_change_k", month)
-        now = compute(now_obs, "m_change_k", month)
-        if was is None or now is None:
-            return ""
-        net += now - was
-        changed = changed or round(now) != round(was)
-        parts.append(f"{period_label(month).split()[0]} {_fmt(now, ln.unit, ln.transform)} "
-                     f"(was {_fmt(was, ln.unit, ln.transform)})")
-    if not changed:
-        return ""
-    return "Revisions: " + " · ".join(parts) + f" · net {_fmt(net, ln.unit, ln.transform)} over two months"
-
-
-def _level_change(r: dict) -> str:
-    a, p = r.get("actual_value"), r.get("prior_value")
-    if a is None or p is None:
-        return ""
-    if r["actual"] == r["prior"]:
-        return f"unchanged from {r['prior']}"
-    return f"{'up' if a > p else 'down'} from {r['prior']}"
-
-
-# Plain words for a reader who does not know the shorthand (2026-10-05
-# audit: "(vs. +0.3% exp, below / prior 3.1%)" mixed the monthly forecast
-# with the yearly prior in one bracket, and "MoM", "exp" and "above" went
-# unexplained). Direction only: whether higher is good depends on the
-# series, and the Quick Takeaway says what it means.
-_VERDICT_WORD = {"above": "higher", "below": "lower",
-                 "higher than expected": "higher", "lower than expected": "lower"}
-
-
-def _versus(r: dict) -> str:
-    v = r.get("verdict") or ""
-    if v in ("in line", "as expected"):
-        return f"in line with {r['consensus']} expected"
-    v = _VERDICT_WORD.get(v, v)
-    return f"expected {r['consensus']}" + (f", came in {v}" if v else "")
-
-
-def _comparison(r: dict) -> str:
-    if r.get("consensus") is not None:
-        return _versus(r)
-    if r.get("transform") == "level":
-        change = _level_change(r)
-        if change:
-            return change
-    if r.get("prior") is not None:
-        return f"prior {r['prior']}"
-    return ""
-
-
-def _single(r: dict) -> str:
-    cmp_ = _comparison(r)
-    return f"{r['display']}: {r['actual']}" + (f" ({cmp_})" if cmp_ else "")
-
-
-_PERIOD_TAG = {"mom": "on the month", "yoy": "over the year"}
-
-
-def _pair(a: dict, b: dict) -> str:
-    """m/m and y/y on one line, each value followed by its own comparison
-    (forecast, else prior), so a forecast never sits beside the other
-    side's number: 'Avg Hourly Earnings: +0.1% on the month (expected
-    +0.3%, came in lower) · 3.0% over the year (prior 3.1%)'."""
-    def side(r: dict) -> str:
-        cmp_ = _comparison(r)
-        tag = _PERIOD_TAG.get(r.get("transform"), "")
-        return f"{r['actual']} {tag}".rstrip() + (f" ({cmp_})" if cmp_ else "")
-
-    return f"{a['display']}: {side(a)} · {side(b)}"
-
-
-def render_release(rows: list[dict], computed: list[str] | tuple = (), takeaway: list[str] | tuple = (),
-                   source: str = "") -> list[str]:
-    """The embed body in the owner's layout (2026-09-30): one bullet per
-    series, m/m and y/y pairs on one line, short series sharing a line,
-    computed lines, the Quick Takeaway, then the source citation.
-    `computed` items get the bullet prepended here, while `takeaway` lines
-    arrive already bulleted (print_takeaway.guard produces them)."""
-    if not rows:
-        return []
-    out: list[str] = []
-    done: set[int] = set()
-    for i, r in enumerate(rows):
-        if i in done:
-            continue
-        if r.get("pair"):
-            j = next((k for k in range(i + 1, len(rows)) if rows[k].get("pair") == r["pair"] and k not in done), None)
-            if j is not None:
-                done.update({i, j})
-                out.append(f"{BULLET} {_pair(r, rows[j])}")
-                continue
-        if r.get("row"):
-            mates = [k for k in range(i, len(rows)) if rows[k].get("row") == r["row"] and k not in done]
-            done.update(mates)
-            out.append(f"{BULLET} " + " | ".join(_single(rows[k]) for k in mates))
-            continue
-        done.add(i)
-        out.append(f"{BULLET} {_single(r)}")
-    for c in computed:
-        out.append(f"{BULLET} {c}")
-    if takeaway:
-        out += ["", "**Quick Takeaway**", *takeaway]
-    if source:
-        out += ["", source]
-    return out
-
-
-def _fomc_row(parsed: dict, ff_rows: list[dict], period: str) -> dict:
-    """The one row the FOMC decision renders through render_release. The
-    actual is the range, the consensus is the feed's expected upper bound
-    (None without a feed row), and the verdict compares the new upper
-    bound with it, so the bullet reads
-    '• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)'."""
-    high = parsed["high"]
-    cons = _ff_value(ff_rows, "FOMC Interest Rate Decision", "estimate")
-    if cons is None:
-        verdict_ = ""
-    elif f"{high:.2f}" == f"{cons:.2f}":
-        verdict_ = "as expected"
-    else:
-        verdict_ = "higher than expected" if high > cons else "lower than expected"
-    return {"label": "Target range", "display": "Target range", "pair": "", "row": "",
-            "optional": False, "unit": "%", "transform": "range", "period": period,
-            "actual": f"{parsed['low']:.2f}% to {high:.2f}%", "actual_value": high,
-            "consensus": f"{cons:.2f}%" if cons is not None else None, "consensus_value": cons,
-            "prior": None, "prior_value": None, "verdict": verdict_}
-
-
-# The trader's verbs for a decision, shared by the body and fomc_lines.
-_FED_VERBS = {"maintain": "holds", "raise": "hikes", "lower": "cuts"}
-
-
-def fomc_lines(parsed: dict, ff_rows: list[dict]) -> list[str]:
-    verb = _FED_VERBS.get(parsed["action"], parsed["action"])
-    line = f"**Fed {verb}** · target range {parsed['low']:.2f}%–{parsed['high']:.2f}%"
-    cons = _ff_value(ff_rows, "FOMC Interest Rate Decision", "estimate")
-    if cons is not None:
-        line += f" · consensus upper bound {cons:.2f}%"
-    if parsed.get("vote"):
-        line += f" · vote {parsed['vote']}"
-    return [line]
-
-
-def period_label(period: str) -> str:
-    return datetime.strptime(period + "-01", "%Y-%m-%d").strftime("%B %Y")
-
-
 # ---------------------------------------------------------------- dedupe
 
+def _ledger_dir() -> Path:
+    return Path(settings.db_path).resolve().parent / "print-alerts"
+
+
 def _ledger_path(today_iso: str) -> Path:
-    base = Path(settings.db_path).resolve().parent / "print-alerts"
-    return base / f"{today_iso}.json"
+    return _ledger_dir() / f"{today_iso}.json"
 
 
 def already_posted(today_iso: str, key: str) -> bool:
@@ -874,10 +773,11 @@ def already_posted(today_iso: str, key: str) -> bool:
 
 
 def mark_posted(today_iso: str, key: str, lines: list[str], rows: list[dict] | None = None,
-                statement: str | None = None) -> None:
+                statement: str | None = None, extra: dict | None = None) -> None:
     """Record the print: the body lines, the rows with their numeric
-    actuals (next month's revision line compares against them) and, for
-    the FOMC, the statement text (next meeting's changes diff against it)."""
+    actuals (next month's revision line compares against them), for the
+    FOMC the statement text (next meeting's changes diff against it), and
+    `extra` (the message text, the verdict, the FOMC action and dissents)."""
     p = _ledger_path(today_iso)
     try:
         p.parent.mkdir(parents=True, exist_ok=True)
@@ -889,30 +789,50 @@ def mark_posted(today_iso: str, key: str, lines: list[str], rows: list[dict] | N
         entry["rows"] = [{k: r.get(k) for k in ("label", "actual_value", "period")} for r in rows]
     if statement:
         entry["statement"] = statement[:8000]
+    entry.update(extra or {})
     d[key] = entry
     p.write_text(json.dumps(d, indent=1), encoding="utf-8")
 
 
-def previous_post(key: str, before: str) -> dict | None:
-    """The most recent ledger entry for `key` on a day before `before`."""
-    base = Path(settings.db_path).resolve().parent / "print-alerts"
+def _ledger_days(before: str) -> list[str]:
     try:
-        days = sorted((f.stem for f in base.glob("*.json") if f.stem < before), reverse=True)
+        return sorted((f.stem for f in _ledger_dir().glob("*.json") if f.stem < before), reverse=True)
     except OSError:
-        return None
-    for day in days:
+        return []
+
+
+def _ledger_entries(key: str, before: str):
+    for day in _ledger_days(before):
         try:
-            d = json.loads((base / f"{day}.json").read_text(encoding="utf-8"))
+            d = json.loads((_ledger_dir() / f"{day}.json").read_text(encoding="utf-8"))
         except Exception:
             continue
         if isinstance(d, dict) and isinstance(d.get(key), dict):
-            return d[key]
-    return None
+            yield d[key]
+
+
+def previous_post(key: str, before: str) -> dict | None:
+    """The most recent ledger entry for `key` on a day before `before`."""
+    return next(_ledger_entries(key, before), None)
+
+
+def fomc_history(before: str, n: int = 4) -> list[dict]:
+    """The last `n` FOMC decisions in the ledger before `before`, newest first."""
+    out = []
+    for entry in _ledger_entries("fomc", before):
+        out.append(entry)
+        if len(out) >= n:
+            break
+    return out
 
 
 # ------------------------------------------------------------- the job
 
 POLL_S_WITH_KEY = 10
+# The first two minutes after the release time poll faster: with no model
+# call left on the path (2026-10-28), the poll interval is the delay.
+POLL_S_FAST = 5
+FAST_WINDOW_S = 120
 POLL_S_NO_KEY = 30          # 25 unregistered requests a day; ~20 per watch
 MAX_WAIT_S = 12 * 60
 # BEA's API has not yet been watched through a live release, and an
@@ -920,23 +840,6 @@ MAX_WAIT_S = 12 * 60
 # minutes (2026-09-25 review). BLS stays at 12: unregistered BLS allows
 # 25 requests a day and the 30 s poll spends about 20 of them.
 MAX_WAIT_S_BY_AGENCY = {"BEA": 30 * 60}
-# A hung Gemini call must never delay the print.
-TAKEAWAY_TIMEOUT_S = 20
-
-
-def _takeaway_lines(key: str, title: str, rows: list[dict], computed: list[str],
-                    period: str = "") -> list[str]:
-    """The Quick Takeaway bullets, or [] on any failure. Runs in a thread.
-    Only the bullets: render_release adds the header, so the module that
-    knows the body layout owns it and it appears once. `period` is the
-    release's YYYY-MM, turned into the month name banks' notes carry."""
-    try:
-        from report import print_takeaway
-        month = period_label(period).split()[0] if period else ""
-        return print_takeaway.generate(key, title, rows, computed, period=month)
-    except Exception as e:
-        log.warning(f"print-watch: takeaway skipped ({e})")
-        return []
 
 
 def alert_channel_ids() -> list[int]:
@@ -960,20 +863,20 @@ EMBED_COLOR = 0x228B22
 MENTION_EVERYONE = True
 
 
-async def _post(bot, title: str, lines: list[str], footer: str) -> bool:
-    """Post the same embed to every alert channel at once. True when at
-    least one channel took it; the ledger then marks the print posted."""
+async def _post(bot, content: str, lines: list[str], footer: str) -> bool:
+    """Post the alert to every alert channel at once: `content` is the
+    message text a phone notification shows, the embed carries the body.
+    True when at least one channel took it; the ledger then marks the
+    print posted."""
     import discord
     from discord_bot.sender import _send_with_retry
     cids = alert_channel_ids()
     if not cids:
         return False
-    embed = discord.Embed(title=title, description="\n".join(lines), color=EMBED_COLOR)
+    embed = discord.Embed(description="\n".join(lines), color=EMBED_COLOR)
     embed.set_footer(text=footer)
-    send_kw: dict = {}
-    if MENTION_EVERYONE:
-        send_kw = {"content": "@everyone",
-                   "allowed_mentions": discord.AllowedMentions(everyone=True)}
+    text = f"@everyone {content}" if MENTION_EVERYONE else content
+    mentions = discord.AllowedMentions(everyone=MENTION_EVERYONE)
 
     async def _one(cid: int) -> bool:
         try:
@@ -981,16 +884,53 @@ async def _post(bot, title: str, lines: list[str], footer: str) -> bool:
             if channel is None:
                 channel = await bot.fetch_channel(cid)
             ok, err = await _send_with_retry(
-                lambda emb=embed: channel.send(embed=emb, **send_kw),
-                label=f"print-watch {title} -> {cid}")
+                lambda emb=embed: channel.send(content=text, embed=emb, allowed_mentions=mentions),
+                label=f"print-watch {content} -> {cid}")
         except Exception as e:
             ok, err = False, str(e)
         if not ok:
-            log.warning(f"print-watch: post failed for {title!r} in {cid}: {err}")
+            log.warning(f"print-watch: post failed for {content!r} in {cid}: {err}")
         return bool(ok)
 
     results = await asyncio.gather(*(_one(c) for c in cids))
     return any(results)
+
+
+def compose_alert(spec: ReleaseSpec, rel, today_iso: str, release_et: str):
+    """(alert, verdict) for a release: the verdict by rule, the policy
+    state from the FOMC ledger, the templated takeaway, the rendered text.
+    No network and no model call."""
+    from report import print_data, print_render, print_templates, print_verdict
+    v = print_verdict.verdict_for(rel)
+    policy = print_verdict.policy_state([print_data.ledger_action(e) for e in fomc_history(before=today_iso)])
+    take = print_templates.takeaway(rel, v, policy, today_iso)
+    return print_render.render(spec, rel, v, take, release_et), v
+
+
+async def _publish(bot, spec: ReleaseSpec, rel, today_iso: str, release_et: str,
+                   statement: str | None) -> bool:
+    alert, v = compose_alert(spec, rel, today_iso, release_et)
+    if not await _post(bot, alert.content, alert.lines, alert.footer):
+        return False
+    extra = {"content": alert.content,
+             "verdict": {"label": v.label, "kind": v.kind, "direction": v.direction, "signals": v.signals}}
+    if rel.fomc:
+        extra.update({"action": rel.fomc["action"], "dissent_net": rel.fomc["dissent_net"]})
+    mark_posted(today_iso, spec.key, alert.lines, rows=rel.ledger_rows(), statement=statement, extra=extra)
+    log.info(f"print-watch: posted {spec.key} for {rel.period}: {alert.content}")
+    return True
+
+
+def _poll_s(release_at: datetime) -> int:
+    if not settings.bls_api_key:
+        return POLL_S_NO_KEY
+    early = (datetime.now(_ET) - release_at).total_seconds() < FAST_WINDOW_S
+    return POLL_S_FAST if early else POLL_S_WITH_KEY
+
+
+def _has_a_core_value(spec: ReleaseSpec, obs: dict | None, period: str) -> bool:
+    return bool(obs) and any(_value_at(obs.get(ln.series) or [], period) is not None
+                             for ln in spec.lines if ln.series and not ln.optional)
 
 
 async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
@@ -999,6 +939,7 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     if not (settings.print_alert_channel_id or settings.reminder_channel_id) or bot is None:
         return
     from discord_bot.ops_alert import ops_alert
+    from report import print_data
     now = datetime.now(_ET)
     today = now.date().isoformat()
     if official_calendar_exhausted(today):
@@ -1039,13 +980,13 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     wait = (release_at - datetime.now(_ET)).total_seconds()
     if wait > 0:
         await asyncio.sleep(wait)
-    poll = POLL_S_WITH_KEY if settings.bls_api_key else POLL_S_NO_KEY
     wait_s = max(MAX_WAIT_S_BY_AGENCY.get(s.agency, MAX_WAIT_S) for s in due)
     deadline = datetime.now(_ET) + timedelta(seconds=wait_s)
     pending = list(due)
     # What the ledger holds from the last post of each release: the rows
-    # the revision line compares against, the statement the FOMC diffs.
+    # the revision lines compare against, the statement the FOMC diffs.
     prev_by_key = {s.key: previous_post(s.key, before=today) for s in pending}
+    last_obs: dict = {}
     while pending and datetime.now(_ET) < deadline:
         for spec in list(pending):
             try:
@@ -1054,53 +995,36 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                     parsed = await asyncio.to_thread(fetch_fomc_today, today)
                     if not parsed:
                         continue
-                    # One row for the renderer, with the feed's expected
-                    # upper bound as its consensus. The action and vote lead
-                    # the computed lines, then the sentences that changed
-                    # since the statement the ledger kept last decision.
-                    rows = [_fomc_row(parsed, ff_rows, today[:7])]
-                    computed = [f"Fed {_FED_VERBS.get(parsed['action'], parsed['action'])}"
-                                + (f" · vote {parsed['vote']}" if parsed.get("vote") else "")]
-                    computed += [f"Statement change: {s}" for s in
-                                 statement_changes((prev or {}).get("statement", ""), parsed.get("text", ""))]
-                    title = release_title(spec, today[:7])
+                    rel = print_data.fomc_release(parsed, ff_rows, prev, today)
                     statement = parsed.get("text", "")
                 else:
                     obs = await asyncio.to_thread(fetch_observations, spec.lines, force=True)
+                    last_obs[spec.key] = obs
                     if not release_ready(spec, obs, period):
                         continue
-                    rows = build_rows(spec, obs, period, ff_rows)
-                    computed = []
-                    core = next((x for x in spec.lines if x.label.startswith("Core") and x.transform == "mom"), None)
-                    if core is not None:
-                        a3 = annualized_3m(obs.get(core.series) or [], period)
-                        if a3 is not None:
-                            computed.append(f"{core.display.split(' (')[0]} 3-month annualized: {a3:.1f}%")
-                    rev = (payroll_revisions(spec, obs, period, vintages.get(spec.key))
-                           or revision_line(spec, obs, period, prev))
-                    if rev:
-                        computed.append(rev)
-                    title = release_title(spec, period)
+                    rel = print_data.data_release(spec, obs, period, ff_rows, prev, vintages.get(spec.key))
                     statement = None
-                try:
-                    takeaway = await asyncio.wait_for(
-                        asyncio.to_thread(_takeaway_lines, spec.key, title, rows, computed,
-                                          today[:7] if spec.key == "fomc" else period),
-                        timeout=TAKEAWAY_TIMEOUT_S)
-                except asyncio.TimeoutError:
-                    log.warning(f"print-watch: takeaway for {spec.key} took over {TAKEAWAY_TIMEOUT_S}s, posting without it")
-                    takeaway = []
-                body = render_release(rows, computed=computed, takeaway=takeaway, source=source_line(spec))
-                footer = f"released {release_et} ET · {spec.agency}"
-                if await _post(bot, title, body, footer):
-                    mark_posted(today, spec.key, body, rows=rows, statement=statement)
-                    log.info(f"print-watch: posted {spec.key} for {period}")
+                await _publish(bot, spec, rel, today, release_et, statement)
                 pending.remove(spec)
             except Exception as e:
                 log.warning(f"print-watch: {spec.key} attempt failed: {e}")
         if pending:
-            await asyncio.sleep(poll)
+            await asyncio.sleep(_poll_s(release_at))
     for spec in pending:
+        obs = last_obs.get(spec.key)
+        if spec.key != "fomc" and _has_a_core_value(spec, obs, period):
+            # Part of the release is out and the rest never came: post what
+            # there is, titled as incomplete, rather than nothing.
+            try:
+                rel = print_data.data_release(spec, obs, period, ff_rows, prev_by_key.get(spec.key),
+                                              vintages.get(spec.key), incomplete=True)
+                if await _publish(bot, spec, rel, today, release_et, None):
+                    await ops_alert(f"print-watch: {spec.title} posted as incomplete data after "
+                                    f"{wait_s // 60} min; a core series never published",
+                                    dedupe_key=f"print-watch-partial-{today}-{spec.key}")
+                    continue
+            except Exception as e:
+                log.warning(f"print-watch: {spec.key} incomplete post failed: {e}")
         log.warning(f"print-watch: {spec.key} not published within {wait_s // 60} min of {release_et} ET")
         await ops_alert(f"print-watch: {spec.title} was due {release_et} ET and the agency "
                         f"had not published it after {wait_s // 60} min; nothing posted",
