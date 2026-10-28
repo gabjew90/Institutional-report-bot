@@ -282,8 +282,9 @@ def append_ask_interaction(
     Completeness extensions (2026-06-10 — the QC grader was producing
     false FAILs because the log showed neither tool activity nor the
     raw model output, so tool-grounded answers looked fabricated):
-      - `interaction_type`: "gemini" (full path) | "short_circuit_slur_count"
-        | "short_circuit_message_count" | "quota_capped" | "failed".
+      - `interaction_type`: "gemini" (full path) | "short_circuit_chat_count"
+        (before 2026-10-28: "short_circuit_slur_count" and
+        "short_circuit_message_count") | "quota_capped" | "failed".
         Rendered as a tag line so QC sees the FULL record, not just the
         Gemini path.
       - `tool_trace`: compact list of {tool, args, status, result_chars}

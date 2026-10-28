@@ -197,6 +197,9 @@ def main(argv: list[str]) -> int:
     from config import settings
     conn = _open_readonly(args.db or settings.db_path)
     _install_stubs(db, conn)
+    # The worker builds the member alias map at boot and hourly; without it
+    # only the pinned aliases resolve and "Abe" names nobody. A read.
+    db.refresh_member_aliases()
     # bot.py binds `db` at import; the stubs above replace attributes on the
     # module object, so they hold there too.
     import discord_bot.bot as bot

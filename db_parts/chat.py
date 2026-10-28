@@ -1322,6 +1322,109 @@ def search_chat_messages_for_ask(
     return [dict(r) for r in rows]
 
 
+# ---------------------------------------------------------------- counts
+#
+# Read by discord_bot/chat_count.py (2026-10-28): every "how many times
+# has X said Y" and "how many messages has X sent" answer. Members by
+# author_id, channels by channel_id, windows as UTC ISO bounds.
+
+def _count_where(author_ids=None, since_iso=None, until_iso=None, channel_id=None,
+                 like_terms=None) -> tuple[str, list]:
+    where, params = ["1=1"], []
+    if author_ids:
+        where.append(f"author_id IN ({','.join('?' * len(author_ids))})")
+        params.extend(int(a) for a in author_ids)
+    if since_iso:
+        where.append("posted_at >= ?")
+        params.append(since_iso)
+    if until_iso:
+        where.append("posted_at < ?")
+        params.append(until_iso)
+    if channel_id:
+        where.append("channel_id = ?")
+        params.append(int(channel_id))
+    if like_terms:
+        where.append("(" + " OR ".join("LOWER(COALESCE(content, '')) LIKE ?" for _ in like_terms) + ")")
+        params.extend(f"%{t.lower()}%" for t in like_terms)
+    return " AND ".join(where), params
+
+
+def chat_count_rows(*, like_terms, author_ids=None, since_iso=None, until_iso=None,
+                    channel_id=None) -> list[tuple]:
+    """(author_id, channel_id, content, posted_at) of messages whose text
+    holds any of `like_terms`, newest first. A substring prefilter: the
+    caller matches whole words."""
+    w, p = _count_where(author_ids, since_iso, until_iso, channel_id, like_terms)
+    return [tuple(r) for r in _db.get_connection().execute(
+        f"SELECT author_id, channel_id, content, posted_at FROM chat_messages WHERE {w} "
+        "ORDER BY posted_at DESC", p).fetchall()]
+
+
+def chat_count_groups(*, author_ids=None, since_iso=None, until_iso=None,
+                      channel_id=None) -> list[tuple]:
+    """(author_id, channel_id, messages) for every author and channel in scope."""
+    w, p = _count_where(author_ids, since_iso, until_iso, channel_id)
+    return [tuple(r) for r in _db.get_connection().execute(
+        f"SELECT author_id, channel_id, COUNT(*) FROM chat_messages WHERE {w} "
+        "GROUP BY author_id, channel_id", p).fetchall()]
+
+
+def chat_log_start(*, author_ids=None, channel_id=None) -> str | None:
+    """The first logged message in scope (retention trims the start)."""
+    w, p = _count_where(author_ids, None, None, channel_id)
+    row = _db.get_connection().execute(
+        f"SELECT MIN(posted_at) FROM chat_messages WHERE {w}", p).fetchone()
+    return row[0] if row else None
+
+
+def chat_recent_pool(channel_id: int, *, since_iso: str, n: int) -> tuple[list, list]:
+    """(rows since `since_iso`, the last `n` rows) of one channel, each row
+    (author_id, posted_at), newest first."""
+    conn = _db.get_connection()
+    since = conn.execute(
+        "SELECT author_id, posted_at FROM chat_messages WHERE channel_id = ? AND posted_at >= ? "
+        "ORDER BY posted_at DESC", (int(channel_id), since_iso)).fetchall()
+    last = conn.execute(
+        "SELECT author_id, posted_at FROM chat_messages WHERE channel_id = ? "
+        "ORDER BY posted_at DESC LIMIT ?", (int(channel_id), int(n))).fetchall()
+    return [tuple(r) for r in since], [tuple(r) for r in last]
+
+
+def chat_author_by_name(name: str) -> int | None:
+    """The member logged under exactly this username, else exactly this
+    display name. A prank rename borrows a display name for a few
+    messages, so the author with the most messages under it wins."""
+    n = (name or "").strip().lstrip("@").lower()
+    if len(n) < 2:
+        return None
+    conn = _db.get_connection()
+    for col in ("author_username", "author_display"):
+        r = conn.execute(
+            f"SELECT author_id, COUNT(*) AS k FROM chat_messages WHERE LOWER({col}) = ? "
+            "GROUP BY author_id ORDER BY k DESC LIMIT 1", (n,)).fetchone()
+        if r:
+            return int(r[0])
+    return None
+
+
+def chat_names(*, author_ids=(), channel_ids=()) -> tuple[dict, dict]:
+    """({author_id: (display, username)}, {channel_id: name}), each from
+    the latest logged message."""
+    conn = _db.get_connection()
+    people, chans = {}, {}
+    for a in {int(x) for x in author_ids}:
+        r = conn.execute("SELECT author_display, author_username FROM chat_messages "
+                         "WHERE author_id = ? ORDER BY posted_at DESC LIMIT 1", (a,)).fetchone()
+        if r:
+            people[a] = (r[0] or r[1] or "", r[1] or "")
+    for c in {int(x) for x in channel_ids}:
+        r = conn.execute("SELECT channel_name FROM chat_messages WHERE channel_id = ? "
+                         "ORDER BY posted_at DESC LIMIT 1", (c,)).fetchone()
+        if r:
+            chans[c] = r[0] or ""
+    return people, chans
+
+
 def find_user_messages_matching(
     username: str,
     needle: str,

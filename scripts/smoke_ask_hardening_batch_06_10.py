@@ -148,17 +148,12 @@ def test_append_ask_interaction_new_params():
 
 def test_short_circuits_log_to_ask_log():
     import discord_bot.bot as bot_mod
-    src_slur = inspect.getsource(bot_mod._answer_slur_count_directly)
-    src_msg = inspect.getsource(bot_mod._answer_message_count_directly)
-    assert "append_ask_interaction" in src_slur, (
-        "slur-count short-circuit must log to the ask-log"
+    src = inspect.getsource(bot_mod._answer_chat_count_directly)
+    assert "append_ask_interaction" in src, (
+        "the chat-count short-circuit must log to the ask-log"
     )
-    assert "short_circuit_slur_count" in src_slur
-    assert "append_ask_interaction" in src_msg, (
-        "message-count short-circuit must log to the ask-log"
-    )
-    assert "short_circuit_message_count" in src_msg
-    _ok("both short-circuits log to the ask-log with type markers")
+    assert "short_circuit_chat_count" in src
+    _ok("the chat-count short-circuit logs to the ask-log with its type marker")
 
 
 def test_failures_log_to_ask_log():
@@ -227,7 +222,7 @@ def test_anti_recycling_seven_day_window():
 
 
 def test_slang_vocab_added():
-    from discord_bot.bot import _is_slur_count_question
+    from discord_bot.bot import _chat_count_question as _is_slur_count_question
     # The exact 2026-06-10 miss
     assert _is_slur_count_question(
         "can i get a tally of the total slangs used in here for everyone"

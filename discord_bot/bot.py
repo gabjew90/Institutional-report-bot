@@ -92,6 +92,7 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
 )
 from discord_bot.news_tool import _execute_ticker_news  # noqa: E402
 from discord_bot.primer_tool import _execute_ticker_primer  # noqa: E402
+from discord_bot.chat_count import is_count_question as _chat_count_question  # noqa: E402
 from discord_bot.snapshot_tool import (  # noqa: E402,F401  re-exported for the fixture harness
     _build_snapshot_tool,
     _execute_snapshot,
@@ -1498,7 +1499,7 @@ def _strip_voice_sections(
 # survives the filter where the previous two attempts didn't.
 #
 # Covers the same token family as the other slur checks in this module
-# (_KNOWN_SLURS + variants caught by the voice-strip regex). Word-
+# (chat_count.KNOWN_SLURS + variants caught by the voice-strip regex). Word-
 # boundary anchored so we don't mask "Pajama" or similar near-matches.
 _SLUR_MASK_RE = re.compile(
     r"\b(?:nigg[ae]r?s?|chink|spic|kike|fag(?:got)?|pajeet)\b",
@@ -1681,7 +1682,7 @@ def _question_needs_person_material(
     if re.search(r"<@!?\d+>", q):
         return True, "mentions-member"
     try:
-        if _is_slur_count_question(q) or _is_message_count_question(q):
+        if _chat_count_question(q):
             # These ARE the racism/message analytics — the material is
             # the answer, not decoration.
             return True, "room-analytics"
@@ -3180,405 +3181,45 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     return cleaned, hit_kinds
 
 
-# Slur-count question detection. The "how many times was X used" /
-# "word count of X" question shape consistently trips Gemini's
-# unconfigurable filter because:
-#   1. Question text often contains the slur literally
-#   2. Recent chat context block carries 3-5 slur tokens from the
-#      room's normal register
-#   3. Voice-strip retry (commit 137e310) handles profile-section
-#      slurs but doesn't mask question/chat slurs
-# So route directly via search_chat_messages, format response in
-# Python — no Gemini prose generation, no filter trip risk.
-# Concrete failure observed 2026-06-04 16:57-16:58 UTC: 4 blocks in
-# 90 seconds, all asking about slur usage stats.
-_KNOWN_SLURS = (
-    "nigga", "nigger", "chink", "spic", "kike",
-    "fag", "faggot", "pajeet",
-)
-
-_COUNT_INTENT_RE = re.compile(
-    # 'tally' added 2026-06-10: SV asked "can i get a tally of the total
-    # slangs used in here" — count-shaped, missed by the prior vocab.
-    r"\b(?:how\s+many\s+times|word\s+count|frequency|how\s+often|"
-    r"tally(?:\s+of)?|"
-    r"count\s+(?:the\s+)?(?:word|slurs?|slangs?|uses?))\b",
-    re.IGNORECASE,
-)
-
-_SLUR_REFERENCE_RE = re.compile(
-    # Literal slurs (any variant) | meta keyword | euphemisms.
-    # 'slang(s)' added 2026-06-10 — the room's euphemism for slurs
-    # ("tally of the total slangs used in here" = slur-count ask).
-    r"\b(?:nigg[ae]r?s?|chink|spic|kike|fag(?:got)?|pajeet|"
-    r"slurs?|slangs?|"
-    r"n[-\s]?word|"
-    r"word\s+(?:use\s+)?with\s+an?\s+n)\b",
-    re.IGNORECASE,
-)
-
-
-def _is_slur_count_question(question: str) -> bool:
-    """Detect 'how many times was X used' shape where X references slurs.
-
-    Strips reply-chain prefix so the scoring matches the asker's actual
-    typed question, not the embedded prior message.
-    """
-    from discord_bot.ask_router import asker_text
-    # The asker's typed words only: a quoted block of another member's
-    # messages sits after the reply marker too (2026-10-10 audit).
-    q = asker_text(question)
-    if not q:
-        return False
-    return bool(_COUNT_INTENT_RE.search(q)) and bool(_SLUR_REFERENCE_RE.search(q))
-
-
-def _extract_slur_targets(question: str) -> list[str]:
-    """Extract which slurs to count from the question. Returns:
-      - the specific slur(s) named when explicitly referenced
-      - all known slurs when only meta references ('slur', 'n-word',
-        'word with an N') appear
-    """
-    q = (question or "").lower()
-    explicit = []
-    for slur in _KNOWN_SLURS:
-        if re.search(rf"\b{re.escape(slur)}\b", q):
-            explicit.append(slur)
-    if explicit:
-        return explicit
-    return list(_KNOWN_SLURS)
-
-
-async def _answer_slur_count_directly(
+# Chat counts ("how many times has Abe said slam", "how many messages
+# has BK sent today", slur tallies) are counted and written in code by
+# discord_bot/chat_count.py, with no model call (2026-10-28). It replaced
+# a slur-count and a message-count shortcut here that ignored the member
+# or the window the asker named.
+async def _answer_chat_count_directly(
     question: str,
+    spec: dict,
     user_id: int,
+    channel_id: int | None,
     asker_display_name: str = "",
-    channel_name: str = "",
-) -> discord.Embed:
-    """Bypass Gemini for slur-count questions. Calls
-    db.search_chat_messages_for_ask once per target slur and assembles
-    a deterministic count response. Records the /ask query for quota
-    tracking the same way the Gemini path does."""
-    targets = _extract_slur_targets(question)
-    days = 30
-
-    counts: list[tuple[str, int]] = []
-    for slur in targets:
-        try:
-            rows = db.search_chat_messages_for_ask(
-                keyword=slur,
-                days=days,
-                channel_name=channel_name or None,
-                limit=10000,  # large enough we don't truncate the count
-            )
-            counts.append((slur, len(rows)))
-        except Exception as e:
-            log.warning(f"slur-count search failed for {slur!r}: {e}")
-            counts.append((slur, -1))
-
-    valid = [(s, n) for s, n in counts if n >= 0]
-    if not valid:
-        desc = "→ Couldn't pull chat history right now — DB hiccup. Try again."
-    elif len(valid) == 1:
-        slur, n = valid[0]
-        scope = f"in #{channel_name}" if channel_name else "across all chat"
-        desc = (
-            f"→ `{slur}` used **{n}** time{'s' if n != 1 else ''} "
-            f"{scope} in the last {days} days."
-        )
-    else:
-        total = sum(n for _, n in valid)
-        scope = f"in #{channel_name}" if channel_name else "across all chat"
-        lines = [
-            f"→ Slur uses {scope} in the last {days} days — total **{total}**:",
-        ]
-        valid.sort(key=lambda kv: (-kv[1], kv[0]))
-        for slur, n in valid:
-            if n > 0:
-                lines.append(f"  • `{slur}` — **{n}**")
-        desc = "\n".join(lines)
-
-    try:
-        db.record_ask_query(user_id)
-    except Exception as e:
-        log.warning(f"slur-count record_ask_query non-fatal failure: {e}")
-
-    # Ask-log completeness: short-circuit answers were previously
-    # invisible to QC (only the Gemini path logged).
-    try:
-        db.append_ask_interaction(
-            asker_display_name=asker_display_name,
-            asker_username="",
-            channel_name=channel_name,
-            question=question,
-            answer=desc,
-            interaction_type="short_circuit_slur_count",
-        )
-    except Exception:
-        pass
-
-    return discord.Embed(description=desc, color=0x1ABC9C)
-
-
-# Message-count question detection. The bot's 2026-06-04 22:29 UTC
-# answer of "BK has sent 9 messages today" came from Gemini inferring
-# the count from the visible recent-50-chat-window block — which is
-# artificially small (50 messages span minutes-to-hours, not a day).
-# Per user direction: "for message count look up either 100 or the
-# last 6 hours, whichever has more messages" — pull both windows,
-# take the larger as the sample pool, count target user's messages
-# from that pool, return a deterministic answer with the window scope
-# visible to the asker.
-_MSG_COUNT_INTENT_RE = re.compile(
-    r"\b(?:how\s+many|number\s+of|count\s+(?:of|the))\b"
-    r"[\s\S]{0,40}"
-    r"\b(?:messages?|posts?|texts?)\b",
-    re.IGNORECASE,
-)
-
-# Target-name extraction patterns. Most natural shapes the asker uses:
-#   "did NAME send/post"      → "did kyle send"
-#   "from NAME"               → "messages from kyle"
-#   "by NAME"                 → "messages by kyle"
-#   "@NAME"                   → discord mention shape
-#   "NAME's messages"         → possessive
-_TARGET_EXTRACT_PATTERNS = [
-    re.compile(r"\bdid\s+([A-Za-z][\w._-]*)\b", re.IGNORECASE),
-    re.compile(r"\bfrom\s+([A-Za-z][\w._-]*)\b", re.IGNORECASE),
-    re.compile(r"\bby\s+([A-Za-z][\w._-]*)\b", re.IGNORECASE),
-    re.compile(r"@(\w[\w._-]*)\b"),
-    re.compile(r"\b([A-Za-z][\w._-]+)['’]s\s+messages?\b", re.IGNORECASE),
-    re.compile(r"\bhas\s+([A-Za-z][\w._-]*)\s+(?:sent|posted)\b", re.IGNORECASE),
-]
-
-# Words that look like names but are actually function words / time
-# markers. Filter out so the extractor doesn't return them as targets.
-_TARGET_EXTRACTION_STOPWORDS = {
-    "today", "yesterday", "this", "the", "did", "send", "post",
-    "tomorrow", "anyone", "someone", "everyone",
-}
-
-
-def _is_message_count_question(question: str) -> bool:
-    from discord_bot.ask_router import asker_text
-    q = asker_text(question)
-    if not q:
-        return False
-    return bool(_MSG_COUNT_INTENT_RE.search(q))
-
-
-def _extract_message_count_target(question: str) -> str | None:
-    """Pull the target user/name from the question. Returns the raw
-    matched substring (e.g. 'kyle', 'BK', 'grandnagusyeezy'). The
-    resolver below normalizes to a real user_id."""
-    from discord_bot.ask_router import asker_text
-    q = asker_text(question)
-    for pat in _TARGET_EXTRACT_PATTERNS:
-        m = pat.search(q)
-        if m:
-            name = m.group(1).strip()
-            if name.lower() in _TARGET_EXTRACTION_STOPWORDS:
-                continue
-            if len(name) < 2:
-                continue
-            return name
-    return None
-
-
-def _resolve_chat_target(name: str) -> tuple[int | None, str | None, str | None]:
-    """Resolve a name to (user_id, canonical_username, display_name).
-    Tries three paths in order:
-      1. Exact username via db.resolve_username_to_user_id
-      2. Display-name OR username LIKE match in user_profiles
-      3. Most-recent author_display / author_username LIKE match in
-         chat_messages (catches users who chat but have no profile yet)
-    Returns (None, None, None) when nothing matches.
-    """
-    if not name:
-        return None, None, None
-    needle = name.lower().strip().lstrip("@")
-    if not needle:
-        return None, None, None
-
-    uid = db.resolve_username_to_user_id(needle)
-    if uid:
-        try:
-            conn = db.get_connection()
-            row = conn.execute(
-                "SELECT user_id, username, display_name FROM user_profiles "
-                "WHERE user_id = ? LIMIT 1",
-                (uid,),
-            ).fetchone()
-            if row:
-                return (
-                    int(row["user_id"]),
-                    row["username"],
-                    row["display_name"],
-                )
-        except Exception:
-            pass
-        return uid, needle, None
-
-    try:
-        conn = db.get_connection()
-        row = conn.execute(
-            "SELECT user_id, username, display_name FROM user_profiles "
-            "WHERE LOWER(display_name) LIKE ? OR LOWER(username) LIKE ? "
-            "LIMIT 1",
-            (f"%{needle}%", f"%{needle}%"),
-        ).fetchone()
-        if row:
-            return int(row["user_id"]), row["username"], row["display_name"]
-    except Exception:
-        pass
-
-    try:
-        conn = db.get_connection()
-        row = conn.execute(
-            "SELECT author_id, author_username, author_display "
-            "FROM chat_messages "
-            "WHERE LOWER(author_display) LIKE ? "
-            "   OR LOWER(author_username) LIKE ? "
-            "ORDER BY posted_at DESC LIMIT 1",
-            (f"%{needle}%", f"%{needle}%"),
-        ).fetchone()
-        if row:
-            return (
-                int(row["author_id"]),
-                row["author_username"],
-                row["author_display"],
-            )
-    except Exception:
-        pass
-
-    return None, None, None
-
-
-async def _answer_message_count_directly(
-    question: str,
-    user_id: int,
     asker_username: str = "",
     channel_name: str = "",
 ):
-    """Bypass Gemini for message-count questions. Queries the LARGER
-    of {100 most recent channel messages, last 6h of channel messages}
-    and counts the target user's messages from that pool. Returns a
-    Discord embed, or None when target resolution fails (caller falls
-    back to Gemini in that case).
-    """
-    from datetime import datetime, timedelta, timezone
-
-    target_raw = _extract_message_count_target(question)
-    if not target_raw:
-        return None
-
-    target_uid, target_username, target_display = _resolve_chat_target(target_raw)
-    if not target_uid:
-        log.info(
-            f"/ask: msg-count target {target_raw!r} unresolved — "
-            f"falling back to Gemini"
-        )
-        return None
-
-    now_utc = datetime.now(timezone.utc)
-
-    # Pool A: most recent 100 messages in the channel. Use a 30-day
-    # outer window since search_chat_messages_for_ask needs either a
-    # keyword OR a window; limit=100 + ORDER BY posted_at DESC gives
-    # us the 100 newest within that window regardless of time span.
-    far_back = (now_utc - timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    now_iso = now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+    """The count embed, or None to hand the question to the model."""
+    from discord_bot import chat_count as _cc
     try:
-        pool_100 = db.search_chat_messages_for_ask(
-            start_iso=far_back, end_iso=now_iso,
-            channel_name=channel_name or None,
-            limit=100,
-        )
+        desc = await asyncio.to_thread(_cc.answer, spec, user_id, channel_id)
     except Exception as e:
-        log.warning(f"msg-count pool_100 query failed: {e}")
-        pool_100 = []
-
-    # Pool B: last 6 hours of messages in the channel
-    six_h_ago = (now_utc - timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    try:
-        pool_6h = db.search_chat_messages_for_ask(
-            start_iso=six_h_ago, end_iso=now_iso,
-            channel_name=channel_name or None,
-            limit=10000,
-        )
-    except Exception as e:
-        log.warning(f"msg-count pool_6h query failed: {e}")
-        pool_6h = []
-
-    # Take the LARGER pool per the design choice ("whichever has more")
-    if len(pool_6h) >= len(pool_100):
-        pool, pool_label = pool_6h, "last 6 hours"
-    else:
-        pool, pool_label = pool_100, "last 100 channel messages"
-
-    # Filter to the target user. Use author_username (canonical) and
-    # also accept rows where author_username matches the resolved name.
-    target_username_low = (target_username or "").lower()
-    target_msgs = [
-        m for m in pool
-        if (m.get("author_username") or "").lower() == target_username_low
-    ]
-    target_count = len(target_msgs)
-
-    # Compute window span for honesty in the response
-    span_label = ""
-    if pool:
-        try:
-            timestamps = [m.get("posted_at", "") for m in pool if m.get("posted_at")]
-            if timestamps:
-                from datetime import datetime as _dt
-                earliest = min(timestamps)
-                latest = max(timestamps)
-                e_dt = _dt.fromisoformat(earliest.replace(" ", "T")[:19])
-                l_dt = _dt.fromisoformat(latest.replace(" ", "T")[:19])
-                span_h = (l_dt - e_dt).total_seconds() / 3600
-                if span_h < 1:
-                    span_label = f"~{int(span_h * 60)}min span"
-                else:
-                    span_label = f"~{span_h:.1f}h span"
-        except Exception:
-            pass
-
-    display = target_display or target_username or target_raw
-    scope = f"in #{channel_name}" if channel_name else "in this channel"
-    pool_size = len(pool)
-
-    if target_count == 0:
-        desc = (
-            f"→ **{display}** has no logged messages {scope} in the "
-            f"{pool_label} ({pool_size} total messages, {span_label})."
-        )
-    else:
-        desc = (
-            f"→ **{display}** sent **{target_count}** message"
-            f"{'s' if target_count != 1 else ''} {scope} in the "
-            f"{pool_label} ({pool_size} total, {span_label})."
-        )
-
+        log.warning(f"/ask: chat count failed, handing to the model: {e}")
+        return None
+    if not desc:
+        return None
     try:
         db.record_ask_query(user_id)
     except Exception as e:
-        log.warning(f"msg-count record_ask_query non-fatal: {e}")
-
-    # Ask-log completeness: short-circuit answers were previously
-    # invisible to QC (only the Gemini path logged).
+        log.warning(f"chat-count record_ask_query non-fatal failure: {e}")
+    # Ask-log completeness: short-circuit answers are logged for QC too.
     try:
         db.append_ask_interaction(
-            asker_display_name="",
+            asker_display_name=asker_display_name,
             asker_username=asker_username,
             channel_name=channel_name,
             question=question,
             answer=desc,
-            interaction_type="short_circuit_message_count",
+            interaction_type="short_circuit_chat_count",
         )
     except Exception:
         pass
-
     return discord.Embed(description=desc, color=0x1ABC9C)
 
 
@@ -9264,42 +8905,24 @@ async def _answer_with_gemini(
                 color=0xE67E22,
             )
 
-    # Slur-count question shape — bypass Gemini entirely to avoid the
-    # filter trip pattern observed on 2026-06-04 (4 blocks in 90 seconds).
-    # See module-level _is_slur_count_question for the rationale.
-    if _is_slur_count_question(question):
-        log.info(
-            f"/ask: slur-count query short-circuit "
-            f"(asker_id={user_id}, q={question[:80]!r})"
-        )
-        return await _answer_slur_count_directly(
-            question=question,
-            user_id=user_id,
+    # A chat count is counted and written in code, with no model call:
+    # it keeps slur tallies clear of Gemini's filter (2026-06-04) and the
+    # count from being the model's guess (discord_bot/chat_count.py).
+    from discord_bot import chat_count as _chat_count
+    from discord_bot.ask_router import asker_text as _cc_asker
+    _cc_spec = _chat_count.parse(_cc_asker(question))
+    if _cc_spec:
+        log.info(f"/ask: chat-count short-circuit attempt "
+                 f"(asker_id={user_id}, q={question[:80]!r})")
+        embed = await _answer_chat_count_directly(
+            question, _cc_spec, user_id, channel_id,
             asker_display_name=asker_display_name,
-            channel_name=channel_name,
-        )
-
-    # Message-count question shape — bypass Gemini, query larger of
-    # {100 most recent channel messages, last 6h of channel messages}.
-    # Bot's prior failure (2026-06-04 22:29: "BK has sent 9 messages
-    # today") came from Gemini inferring the count from the visible
-    # recent-50-chat-window block — artificially small. The 6h-or-100
-    # logic gives an honest count over a meaningful window. Falls back
-    # to Gemini if target user can't be resolved.
-    if _is_message_count_question(question):
-        log.info(
-            f"/ask: message-count query short-circuit attempt "
-            f"(asker_id={user_id}, q={question[:80]!r})"
-        )
-        embed = await _answer_message_count_directly(
-            question=question,
-            user_id=user_id,
             asker_username=asker_username,
             channel_name=channel_name,
         )
         if embed is not None:
             return embed
-        # else: target user couldn't be resolved; fall through to Gemini
+        # a name nobody is logged under: the model takes it
 
     client = _get_gemini_ask_client()
     if client is None:

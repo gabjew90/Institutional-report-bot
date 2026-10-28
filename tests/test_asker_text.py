@@ -26,12 +26,12 @@ def test_asker_text_is_the_typed_words():
 
 
 def test_a_quoted_block_does_not_trigger_the_slur_count():
-    assert not B._is_slur_count_question(BK_THOUGHTS)
+    assert not B._chat_count_question(BK_THOUGHTS)
 
 
 def test_a_real_count_question_still_does():
-    assert B._is_slur_count_question("how many times was the n word used this week")
-    assert B._is_slur_count_question(
+    assert B._chat_count_question("how many times was the n word used this week")
+    assert B._chat_count_question(
         "[MESSAGE BEING REPLIED TO — from x]\n\"hi\"\n\n[BK's message to you]\n"
         "how many times was the n word used")
 
@@ -42,4 +42,4 @@ def test_a_quoted_insult_is_not_the_asker_attacking_the_bot():
 
 def test_a_quoted_count_is_not_a_message_count_question():
     q = BK_THOUGHTS.replace("idk how many times", "how many messages")
-    assert not B._is_message_count_question(q)
+    assert not B._chat_count_question(q)

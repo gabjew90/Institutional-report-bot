@@ -376,7 +376,7 @@
   "baseline_seconds": 5
  },
  "smoke_message_count_short_circuit": {
-  "tier": "fast",
+  "tier": "retired",
   "baseline_seconds": 7
  },
  "smoke_missing_pulse_watchdog": {
@@ -556,7 +556,7 @@
   "baseline_seconds": 1
  },
  "smoke_slur_count_short_circuit": {
-  "tier": "fast",
+  "tier": "retired",
   "baseline_seconds": 7
  },
  "smoke_slur_mask_retry": {
