@@ -28,10 +28,17 @@ merging — over-fragmentation is recoverable, false-positive merges
 silently corrupt the theme map.
 """
 
+import copy
+import hashlib
+from array import array
+import json
 import logging
 import math
+import threading
+from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+import numpy as np
 from google import genai
 from google.genai import types
 
@@ -78,6 +85,43 @@ _LABEL_PARALLELISM = 8
 # well under any plausible per-request cap.
 _EMBED_BATCH_SIZE = 100
 
+# Caches (2026-10-27). The bridge rebuilds the pulse context every 15
+# minutes, and on a backlog day (473 notes, 3,541 mentions) each rebuild
+# re-embedded every mention and re-clustered them in pure Python, pinning
+# the CPU for most of the interval and starving the Discord thread. The
+# embedding of a string never changes, so vectors are kept (bounded, least
+# recently used out first), and a clustering call whose input matches the
+# previous call returns the previous result without any API call. Vectors
+# are kept as array('d'), 24 KB each at 3,072 dimensions. A list of Python
+# floats is four times that.
+_EMBED_CACHE_MAX = 6000
+_embed_cache: "OrderedDict[str, array]" = OrderedDict()
+_memo: dict[str, tuple[str, object]] = {}
+_cache_lock = threading.Lock()
+
+
+def _input_key(*parts) -> str:
+    return hashlib.sha256(
+        json.dumps(parts, sort_keys=True, default=str).encode()).hexdigest()
+
+
+def _memo_get(name: str, key: str):
+    with _cache_lock:
+        hit = _memo.get(name)
+    return copy.deepcopy(hit[1]) if hit and hit[0] == key else None
+
+
+def _memo_put(name: str, key: str, value) -> None:
+    with _cache_lock:
+        _memo[name] = (key, copy.deepcopy(value))
+
+
+def clear_caches() -> None:
+    """Tests: forget cached vectors and results."""
+    with _cache_lock:
+        _embed_cache.clear()
+        _memo.clear()
+
 
 def _cosine(a: list[float], b: list[float]) -> float:
     if not a or not b or len(a) != len(b):
@@ -109,6 +153,28 @@ def _embed_strings(client: genai.Client, strings: list[str]) -> dict[str, list[f
 
     Returns {} only when `strings` is empty.
     """
+    if not strings:
+        return {}
+    cached: dict[str, list[float]] = {}
+    with _cache_lock:
+        for s in strings:
+            v = _embed_cache.get(s)
+            if v is not None:
+                _embed_cache.move_to_end(s)
+                cached[s] = v
+    out = _embed_uncached(client, [s for s in dict.fromkeys(strings) if s not in cached])
+    with _cache_lock:
+        for s, v in out.items():
+            if v:
+                _embed_cache[s] = array("d", v)
+                _embed_cache.move_to_end(s)
+        while len(_embed_cache) > _EMBED_CACHE_MAX:
+            _embed_cache.popitem(last=False)
+    cached.update(out)
+    return cached
+
+
+def _embed_uncached(client: genai.Client, strings: list[str]) -> dict[str, list[float]]:
     if not strings:
         return {}
     out: dict[str, list[float]] = {}
@@ -167,34 +233,46 @@ def _greedy_agglomerative(
     with the highest centroid cosine similarity above threshold, or
     starts a new cluster. Centroid is updated as a running mean — cheap
     and stable for our cluster sizes (typically 1-5 members).
+
+    Vectorised with numpy (2026-10-27): the same walk, the same running
+    mean and the same first-highest tie-break as the pure-Python loop it
+    replaces, which took minutes on 3,541 mentions and held the GIL
+    throughout. A vector of another length, or of zero norm, never matches
+    and starts its own cluster, as `_cosine` returning 0.0 did.
     """
     clusters: list[list[str]] = []
-    centroids: list[list[float]] = []
+    dim = next((len(v) for v in embeddings.values() if v), 0)
+    cap = len(embeddings)
+    centroids = np.zeros((cap, dim))
+    norms = np.zeros(cap)
+    k = 0
 
     for s, vec in embeddings.items():
-        if not vec:
+        if not vec or len(vec) != dim:
             clusters.append([s])
-            centroids.append(vec)
+            k += 1  # its row stays zero-norm: never matched
             continue
+        v = np.asarray(vec, dtype=float)
+        nv = float(np.sqrt(v @ v))
         best_idx = -1
-        best_sim = threshold
-        for i, c in enumerate(centroids):
-            if not c:
-                continue
-            sim = _cosine(vec, c)
-            if sim > best_sim:
-                best_sim = sim
+        if k and nv > 0.0:
+            with np.errstate(divide="ignore", invalid="ignore"):
+                sims = (centroids[:k] @ v) / (norms[:k] * nv)
+            sims[~np.isfinite(sims) | (norms[:k] == 0.0)] = -np.inf
+            i = int(np.argmax(sims))
+            if sims[i] > threshold:
                 best_idx = i
         if best_idx >= 0:
             clusters[best_idx].append(s)
             n = len(clusters[best_idx])
-            old = centroids[best_idx]
-            centroids[best_idx] = [
-                ((n - 1) * o + v) / n for o, v in zip(old, vec)
-            ]
+            centroids[best_idx] = ((n - 1) * centroids[best_idx] + v) / n
+            c = centroids[best_idx]
+            norms[best_idx] = float(np.sqrt(c @ c))
         else:
             clusters.append([s])
-            centroids.append(list(vec))
+            centroids[k] = v
+            norms[k] = nv
+            k += 1
     return clusters
 
 
@@ -240,6 +318,48 @@ def _pick_canonical_label(
     except Exception as e:
         log.warning(f"Canonical-label call failed for cluster {cluster[:2]}...: {e}")
     return max(cluster, key=len)
+
+
+def _centroid_label_sims(
+    clusters: list[list[str]],
+    embeddings: dict[str, list[float]],
+    covered_pairs: list[tuple[str, list[float]]],
+) -> list[list[float | None]]:
+    """sims[cluster][label]: cosine between the cluster's mean vector and the
+    label's vector. None where either is empty (the old loop skipped those),
+    0.0 where lengths differ or a norm is zero (as `_cosine` returns)."""
+    if not covered_pairs:
+        return [[] for _ in clusters]
+    dim = next((len(v) for v in embeddings.values() if v), 0)
+    n_lab = len(covered_pairs)
+    lab = np.zeros((n_lab, dim))
+    lab_ok = np.zeros(n_lab, dtype=bool)
+    for j, (_label, cv) in enumerate(covered_pairs):
+        if cv and len(cv) == dim:
+            lab[j] = cv
+            lab_ok[j] = True
+    lab_empty = [not cv for _label, cv in covered_pairs]
+    lab_norm = np.sqrt((lab * lab).sum(axis=1))
+
+    out: list[list[float | None]] = []
+    for c in clusters:
+        vectors = [embeddings[m] for m in c if m in embeddings]
+        if not vectors or not vectors[0]:
+            out.append([None] * n_lab)
+            continue
+        centroid = np.asarray([v for v in vectors if len(v) == dim], dtype=float).mean(axis=0)
+        cn = float(np.sqrt(centroid @ centroid))
+        dots = lab @ centroid
+        row: list[float | None] = []
+        for j in range(n_lab):
+            if lab_empty[j]:
+                row.append(None)
+            elif not lab_ok[j] or cn == 0.0 or lab_norm[j] == 0.0:
+                row.append(0.0)
+            else:
+                row.append(float(dots[j] / (cn * lab_norm[j])))
+        out.append(row)
+    return out
 
 
 def discover_uncovered_clusters(
@@ -302,6 +422,13 @@ def discover_uncovered_clusters(
     if not string_to_banks:
         return [], []
 
+    key = _input_key("discover", [list(m) for m in mentions], list(covered_labels),
+                     threshold, min_banks)
+    hit = _memo_get("discover", key)
+    if hit is not None:
+        log.info("discovery: input unchanged since the last run, reusing its result")
+        return hit
+
     try:
         client = genai.Client(api_key=settings.google_api_key)
     except Exception as e:
@@ -326,20 +453,14 @@ def discover_uncovered_clusters(
 
     raw_clusters = _greedy_agglomerative(mention_embeddings, threshold)
 
-    # Compute centroid per cluster (mean of member vectors).
-    cluster_centroids: list[list[float]] = []
-    for c in raw_clusters:
-        vectors = [mention_embeddings[m] for m in c if m in mention_embeddings]
-        if not vectors:
-            cluster_centroids.append([])
-            continue
-        dim = len(vectors[0])
-        centroid = [sum(v[i] for v in vectors) / len(vectors) for i in range(dim)]
-        cluster_centroids.append(centroid)
+    # Centroid per cluster (mean of member vectors) and its cosine against
+    # every covered label, as one matrix product (2026-10-27; the per-pair
+    # Python loop was 1,425 clusters x 50 labels x 3,072 dimensions).
+    sims = _centroid_label_sims(raw_clusters, mention_embeddings, covered_pairs)
 
     # Per-cluster decision: covered? thin? promotable?
     decisions: list[dict] = []
-    for cluster, centroid in zip(raw_clusters, cluster_centroids):
+    for ci, cluster in enumerate(raw_clusters):
         banks: set[str] = set()
         pdf_ids: set[int] = set()
         for m in cluster:
@@ -347,10 +468,10 @@ def discover_uncovered_clusters(
             pdf_ids |= string_to_pdf_ids.get(m, set())
         max_sim = 0.0
         nearby_phase_a: list[tuple[str, float]] = []
-        for label, cv in covered_pairs:
-            if not cv or not centroid:
+        for li, (label, _cv) in enumerate(covered_pairs):
+            s = sims[ci][li]
+            if s is None:
                 continue
-            s = _cosine(centroid, cv)
             if s > max_sim:
                 max_sim = s
             if s >= threshold:
@@ -402,6 +523,7 @@ def discover_uncovered_clusters(
     near_miss = near_miss_pool[:NEAR_MISS_CAP]
 
     if not promoted_raw:
+        _memo_put("discover", key, ([], near_miss))
         return [], near_miss
 
     # LLM canonical labels for promoted clusters only.
@@ -447,6 +569,7 @@ def discover_uncovered_clusters(
         f"{len(raw_clusters)} clusters → {len(promoted)} promoted, "
         f"{len(near_miss)} near-miss"
     )
+    _memo_put("discover", key, (promoted, near_miss))
     return promoted, near_miss
 
 
@@ -478,6 +601,12 @@ def cluster_themes(
     """
     if not tags_with_context:
         return {}, []
+
+    key = _input_key("themes", list(tags_with_context.items()), threshold)
+    hit = _memo_get("themes", key)
+    if hit is not None:
+        log.info("theme clustering: input unchanged since the last run, reusing its result")
+        return hit
 
     # Build embedding inputs: tag + arg for disambiguation.
     embed_inputs: dict[str, str] = {}
@@ -538,4 +667,5 @@ def cluster_themes(
         f"theme clustering: {len(tags_with_context)} tags → "
         f"{len(raw_clusters)} clusters (threshold={threshold})"
     )
+    _memo_put("themes", key, (orig_to_canonical, raw_clusters))
     return orig_to_canonical, raw_clusters

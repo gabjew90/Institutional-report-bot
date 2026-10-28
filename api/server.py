@@ -62,15 +62,20 @@ async def _pulse_context(request: web.Request) -> web.Response:
     # Load analyses for the window
     from datetime import datetime, timedelta
     cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
-    rows = db.get_analyses_since(cutoff)
+    # Off the event loop: this handler runs in the bot process, and the
+    # context build (market data, news, theme clustering) takes seconds to
+    # minutes, all of it time the Discord gateway would not be served.
+    import asyncio
+    rows = await asyncio.to_thread(db.get_analyses_since, cutoff)
     if not rows:
         return web.json_response({"error": "no analyses in window", "hours": hours}, status=404)
 
-    analyses = _load_analyses_from_db(rows)
+    analyses = await asyncio.to_thread(_load_analyses_from_db, rows)
     if not analyses:
         return web.json_response({"error": "no parseable analyses"}, status=500)
 
-    ctx = build_pulse_context(analyses, use_prev_context=use_prev_context)
+    ctx = await asyncio.to_thread(build_pulse_context, analyses,
+                                  use_prev_context=use_prev_context)
     ctx["window_hours"] = hours
     ctx["use_prev_context"] = use_prev_context
     return web.json_response(ctx)

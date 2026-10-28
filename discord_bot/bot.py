@@ -10054,7 +10054,12 @@ def create_bot() -> commands.Bot:
                 "Manual /refresh_profiles triggered by %s (force=%s)",
                 interaction.user, force,
             )
-            await _user_profile_refresh_job(bot=bot, force=force)
+            if not await _user_profile_refresh_job(bot=bot, force=force):
+                await interaction.followup.send(
+                    "A profile refresh is already running. Try again when it finishes.",
+                    ephemeral=True,
+                )
+                return
             mode = "FORCED (all users)" if force else "delta-gated"
             await interaction.followup.send(
                 f"✅ Profile refresh complete ({mode}). "

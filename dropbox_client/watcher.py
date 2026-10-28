@@ -14,6 +14,46 @@ import db
 
 log = logging.getLogger(__name__)
 
+# A PDF carries this marker in its first 1024 bytes. On 2026-10-27 Dropbox
+# delivered 305 files named like research notes that held only the 17-byte
+# reply {"success":false}: the uploader's download from the bank portal had
+# failed and it saved the error body under the note's name.
+PDF_MAGIC = b"%PDF-"
+NOT_PDF_PREFIX = "not a PDF"
+# The smallest real PDF on record is about 2.5 KB. A FAILED row under this
+# size is treated as a non-PDF even when it predates NOT_PDF_PREFIX.
+JUNK_MAX_BYTES = 1024
+
+
+def not_pdf_reason(local_path: Path) -> str:
+    """'' when the file looks like a PDF (or cannot be read, which extraction
+    will report), else the error line stored on the row."""
+    try:
+        with open(local_path, "rb") as f:
+            head = f.read(1024)
+        size = local_path.stat().st_size
+    except OSError:
+        return ""
+    if PDF_MAGIC in head:
+        return ""
+    return f"{NOT_PDF_PREFIX}: Dropbox file is {size} bytes starting {head[:40]!r}"
+
+
+def not_pdf_alert(count: int, example_name: str, example_reason: str) -> str:
+    return (f"Dropbox delivered {count} file(s) in one poll that are not PDFs, "
+            f"for example \"{example_name}\" ({example_reason}). The uploader that "
+            f"fills /Current saved an error reply in place of the note. Re-upload "
+            f"them and the bot downloads the new versions on its next poll.")
+
+
+def is_junk_row(row: dict) -> bool:
+    """A pdf_files row whose Dropbox file was not a PDF."""
+    if row.get("status") != "FAILED":
+        return False
+    size = row.get("file_size_bytes")
+    return ((row.get("error_message") or "").startswith(NOT_PDF_PREFIX)
+            or (size is not None and size < JUNK_MAX_BYTES))
+
 
 def _get_client() -> dropbox.Dropbox:
     return dropbox.Dropbox(
@@ -177,21 +217,27 @@ def poll_and_download() -> list[dict]:
     log.info(f"Found {len(new_files)} new PDF(s)")
 
     downloaded = []
+    not_pdfs: list[tuple[str, str]] = []
     for entry in new_files:
         # Skip if already in database. INTENTIONAL: dedup is by path only.
         # A bank re-uploading a corrected PDF at the same path (new rev)
         # is skipped — rev is stored but not compared. Accepted for this
         # feed: banks version by filename ("...v2.pdf"), and reprocessing
         # same-path re-uploads would re-analyze on every metadata touch.
+        # The exception is a path whose file was not a PDF: a new revision
+        # there is the uploader re-sending the note, so it is downloaded.
         existing = db.get_pdf_by_path(entry.path)
-        if existing:
+        if existing and not (is_junk_row(existing)
+                             and entry.rev != existing.get("dropbox_rev")):
             continue
 
         # Download
         safe_name = entry.name.replace("/", "_")
         local_path = Path(settings.pdf_download_dir) / safe_name
+        if existing and existing.get("local_path"):
+            local_path = Path(existing["local_path"])
         # Handle duplicate filenames
-        if local_path.exists():
+        elif local_path.exists():
             stem = local_path.stem
             suffix = local_path.suffix
             counter = 1
@@ -201,6 +247,25 @@ def poll_and_download() -> list[dict]:
 
         try:
             download_file(entry.path, local_path)
+            reason = not_pdf_reason(local_path)
+            meta = dict(dropbox_rev=entry.rev, file_size_bytes=entry.size,
+                        dropbox_modified_at=entry.server_modified)
+            if reason:
+                pdf_id = existing["id"] if existing else db.insert_pdf_file(
+                    dropbox_path=entry.path, file_name=entry.name,
+                    local_path=str(local_path), status="FAILED", **meta)
+                db.mark_pdf_not_a_pdf(pdf_id, reason, **meta)
+                db.log_event(pdf_id, "download", "failed", reason)
+                not_pdfs.append((entry.name, reason))
+                log.warning(f"Not a PDF: {entry.path} ({reason})")
+                continue
+            if existing:
+                db.reset_pdf_for_reupload(existing["id"], local_path=str(local_path), **meta)
+                db.log_event(existing["id"], "download", "completed",
+                             f"Re-upload replaced a non-PDF. Size: {entry.size} bytes")
+                downloaded.append(db.get_pdf_by_path(entry.path))
+                log.info(f"Re-upload registered: {entry.name} (id={existing['id']})")
+                continue
             pdf_id = db.insert_pdf_file(
                 dropbox_path=entry.path,
                 file_name=entry.name,
@@ -214,6 +279,11 @@ def poll_and_download() -> list[dict]:
             log.info(f"Registered PDF: {entry.name} (id={pdf_id})")
         except Exception as e:
             log.error(f"Failed to download {entry.path}: {e}")
+            if existing:
+                # A re-upload over a non-PDF row: the row stays as it was.
+                db.log_event(existing["id"], "download", "failed",
+                             f"re-upload of a non-PDF failed to download: {e}")
+                continue
             # Register a FAILED row BEFORE the cursor advances (2026-08-20
             # review, HIGH): the cursor moves past this entry permanently
             # below, so without a row the PDF was silently gone unless
@@ -237,6 +307,15 @@ def poll_and_download() -> list[dict]:
             except Exception as e2:
                 log.error(f"Could not register failed download row: {e2}")
                 db.log_event(None, "download", "failed", f"{entry.path}: {e}")
+
+    if not_pdfs:
+        name, reason = not_pdfs[0]
+        try:
+            from discord_bot.ops_alert import ops_alert_sync
+            ops_alert_sync(not_pdf_alert(len(not_pdfs), name, reason),
+                           dedupe_key=f"dropbox-not-pdf-{datetime.utcnow():%Y-%m-%d}")
+        except Exception as ae:
+            log.warning(f"not-a-PDF alert failed: {ae}")
 
     # Advance the cursor: every entry now has a pdf_files row (DOWNLOADED
     # or FAILED-for-retry), so nothing is lost by moving past it.

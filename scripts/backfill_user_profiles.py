@@ -2090,13 +2090,14 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
             # fallback below stays in place for cold-start / failure
             # recovery.
             _STORE_COVERAGE_FLOOR = 100  # min rows to consider the store usable
-            store_rows = db.count_chat_messages_for_channels(channels, days=days)
+            store_rows = await asyncio.to_thread(
+                db.count_chat_messages_for_channels, channels, days=days)
             use_store = store_rows >= _STORE_COVERAGE_FLOOR
             if use_store:
                 (
                     by_user, user_meta, images_by_user,
                     slur_counts, slur_examples,
-                ) = _load_user_data_from_store(channels, days)
+                ) = await asyncio.to_thread(_load_user_data_from_store, channels, days)
 
             # Fix #5: Discord scan path removed. chat_ingestion is the
             # canonical source of historical Discord messages — anything
@@ -2183,8 +2184,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                     (
                         by_user_deep, _deep_meta, _deep_images,
                         _deep_slur_counts, _deep_slur_examples,
-                    ) = _load_user_data_from_store(
-                        channels, _DEEP_REBUILD_DAYS
+                    ) = await asyncio.to_thread(
+                        _load_user_data_from_store, channels, _DEEP_REBUILD_DAYS
                     )
                     # Rebuild users take the deep window's meta/slur/image
                     # data — a 90d slur count superset beats the 30d one,
@@ -2227,8 +2228,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 (
                     _aw_users, _aw_meta, _aw_images,
                     _aw_slurs, _aw_slur_ex,
-                ) = _load_user_data_from_store(
-                    channels, _ADAPTIVE_WINDOW_DAYS
+                ) = await asyncio.to_thread(
+                    _load_user_data_from_store, channels, _ADAPTIVE_WINDOW_DAYS
                 )
                 _widened = 0
                 for _uid in _thin:

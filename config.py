@@ -489,6 +489,11 @@ class Settings(BaseSettings):
     # MEDIUM PDFs to the same lane, behind the HIGH notes in each run;
     # same timeout and fallbacks. Acceptable values: "gemini" | "claude_lane"
     medium_ingestion_backend: str = "gemini"
+    # Batch process (2026-10-27): PDF ingestion, the Claude lane, the bridge's
+    # pulse-context build and the profile refresh run in a child process so
+    # their CPU and memory cannot starve the Discord connection
+    # (scheduler/batch_proc.py). False runs every job in one process again.
+    batch_process_enabled: bool = True
     claude_lane_timeout_minutes: int = 120
     opus_bridge_timeout_minutes: int = 30
     # PDFs over these limits skip the bridge and go straight to Gemini fallback.

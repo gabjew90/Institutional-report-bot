@@ -107,6 +107,16 @@ def _schema_ready_reset_if_new_path() -> None:
         _schema_ready = False
 
 
+def assume_schema_ready() -> None:
+    """For a second process on a database the main process has already set
+    up (scheduler/batch_main.py): skip the schema pass. That pass runs
+    CREATE/ALTER statements under the write lock, and from a second process
+    it contended with the live worker for 30 minutes on 2026-09-04."""
+    global _schema_ready, _schema_path
+    _schema_path = str(settings.db_path)
+    _schema_ready = True
+
+
 def reset_connections() -> None:
     """Close and forget every connection this module holds (tests)."""
     global _conn, _schema_ready
@@ -1584,6 +1594,8 @@ from db_parts.pdf import (  # noqa: E402,F401
     set_ingest_feed_cursor,
     max_announceable_analysis_id,
     get_pdf_by_path,
+    mark_pdf_not_a_pdf,
+    reset_pdf_for_reupload,
     get_pending_bridge_pdfs,
     get_pending_pdfs,
     get_pipeline_stats,

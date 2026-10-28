@@ -53,8 +53,17 @@ async def main() -> None:
     # Create Discord bot
     bot = create_bot()
 
-    # Setup scheduler (attaches to bot's event loop)
-    scheduler = setup_scheduler(bot)
+    # Setup scheduler (attaches to bot's event loop). With the batch process
+    # on, PDF ingestion, the Claude lane, the pulse-context build and the
+    # profile refresh run in a child process instead (scheduler/batch_proc.py).
+    batch = None
+    if settings.batch_process_enabled:
+        from scheduler.batch_proc import BatchSupervisor
+        scheduler = setup_scheduler(bot, role="bot")
+        batch = BatchSupervisor()
+        batch.start()
+    else:
+        scheduler = setup_scheduler(bot)
     scheduler.start()
     log.info("Scheduler started")
 
@@ -71,6 +80,9 @@ async def main() -> None:
         log.info(f"Received signal {sig}, shutting down...")
         scheduler.shutdown(wait=False)
         loop = asyncio.get_event_loop()
+        if batch is not None:
+            batch.terminate_now()
+            loop.create_task(batch.stop())
         if api_runner is not None:
             loop.create_task(api_runner.cleanup())
         loop.create_task(bot.close())

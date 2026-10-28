@@ -53,6 +53,40 @@ def insert_pdf_file(
     return cur.lastrowid
 
 
+def mark_pdf_not_a_pdf(pdf_id: int, error_message: str, *, dropbox_rev: str | None,
+                       file_size_bytes: int | None, dropbox_modified_at: str | None) -> None:
+    """FAILED with a retry count no sweep picks up: re-downloading the same
+    revision returns the same bytes. A new revision in Dropbox reopens the
+    row (`reset_pdf_for_reupload`)."""
+    conn = _db.get_connection()
+    conn.execute(
+        """UPDATE pdf_files
+           SET status = 'FAILED', error_message = ?, retry_count = 99,
+               dropbox_rev = ?, file_size_bytes = ?, dropbox_modified_at = ?,
+               updated_at = datetime('now')
+           WHERE id = ?""",
+        (error_message, dropbox_rev, file_size_bytes, dropbox_modified_at, pdf_id),
+    )
+    conn.commit()
+
+
+def reset_pdf_for_reupload(pdf_id: int, *, local_path: str, dropbox_rev: str | None,
+                           file_size_bytes: int | None, dropbox_modified_at: str | None) -> None:
+    """A file that was not a PDF came back as one under the same path: queue
+    it as a fresh download."""
+    conn = _db.get_connection()
+    conn.execute(
+        """UPDATE pdf_files
+           SET status = 'DOWNLOADED', error_message = NULL, retry_count = 0,
+               local_path = ?, dropbox_rev = ?, file_size_bytes = ?,
+               dropbox_modified_at = ?, downloaded_at = ?, updated_at = datetime('now')
+           WHERE id = ?""",
+        (local_path, dropbox_rev, file_size_bytes, dropbox_modified_at,
+         datetime.utcnow().isoformat(), pdf_id),
+    )
+    conn.commit()
+
+
 def get_latest_dropbox_modified_at() -> str | None:
     """Newest Dropbox server_modified we have registered, ISO string, or
     None on an empty table. Used as the floor when a cursor reset forces

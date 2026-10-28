@@ -11,8 +11,11 @@ from config import settings
 log = logging.getLogger(__name__)
 
 
-def setup_scheduler(bot=None) -> AsyncIOScheduler:
-    """Create and configure the scheduler with all pipeline jobs."""
+def setup_scheduler(bot=None, role: str = "all") -> AsyncIOScheduler:
+    """Create and configure the scheduler with all pipeline jobs.
+
+    `role` "bot" or "batch" keeps only that process's share of the jobs
+    (scheduler/batch_proc.py); "all" keeps every job in one process."""
     from pytz import timezone
     tz = timezone(settings.timezone)
 
@@ -636,6 +639,15 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         f"{'bridge active (Opus routine produces pulses)' if bridge_active else f'daily pulse at {settings.daily_pulse_hour}:{settings.daily_pulse_minute:02d} ET (Gemini)'}"
     )
 
+    # Split between the bot and batch processes (scheduler/batch_proc.py).
+    if role != "all":
+        from scheduler.batch_proc import keeps_job
+        dropped = [j.id for j in scheduler.get_jobs() if not keeps_job(j.id, role)]
+        for job_id in dropped:
+            scheduler.remove_job(job_id)
+        log.info(f"Scheduler role {role}: {len(scheduler.get_jobs())} job(s), "
+                 f"{len(dropped)} left to the other process")
+
     return scheduler
 
 
@@ -1068,6 +1080,13 @@ async def _user_profile_refresh_job(bot=None, force: bool = False):
     gets re-profiled. Used after a prompt change to refresh all
     existing dossiers in one shot.
     """
+    # One refresh at a time across both processes: the nightly run is in the
+    # batch process, /refresh_profiles runs in the bot process, and
+    # max_instances only covers one scheduler.
+    lock = _try_file_lock("profile-refresh.lock")
+    if lock is False:
+        log.warning("User-profile refresh: another refresh is running, skipped")
+        return False
     try:
         from scripts.backfill_user_profiles import run as backfill_run
         import db
@@ -1115,6 +1134,28 @@ async def _user_profile_refresh_job(bot=None, force: bool = False):
                 )
     except Exception as e:
         log.error(f"User-profile refresh failed: {e}", exc_info=True)
+    finally:
+        if lock:
+            lock.close()
+    return True
+
+
+def _try_file_lock(name: str):
+    """An exclusive lock file next to the database, held until the returned
+    file is closed. False when another process holds it, None where the
+    platform has no fcntl (local Windows runs, which have one process)."""
+    try:
+        import fcntl
+    except ImportError:
+        return None
+    from pathlib import Path
+    f = open(Path(settings.db_path).parent / name, "a")
+    try:
+        fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        f.close()
+        return False
+    return f
 
 
 async def _chat_catchup_periodic_job(bot=None):
@@ -1299,8 +1340,13 @@ async def _research_feed_watchdog_job(bot=None):
                 return
         except Exception:
             pass
+        # A file that was not a PDF is not research: 305 of them arrived on
+        # 2026-10-27 and would have reset this clock.
+        from dropbox_client.watcher import JUNK_MAX_BYTES, NOT_PDF_PREFIX
         last = db.get_connection().execute(
-            "SELECT MAX(created_at) FROM pdf_files").fetchone()[0]
+            "SELECT MAX(created_at) FROM pdf_files WHERE NOT (status = 'FAILED' AND "
+            "(IFNULL(file_size_bytes, ?) < ? OR IFNULL(error_message, '') LIKE ?))",
+            (JUNK_MAX_BYTES, JUNK_MAX_BYTES, NOT_PDF_PREFIX + "%")).fetchone()[0]
         gap_h = None
         if last:
             # created_at is SQLite's space format, UTC

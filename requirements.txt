@@ -29,6 +29,10 @@ pyflakes==3.4.0
 # (introduced ~2024); raw urllib hits HTTP 401 from Railway IPs.
 # yfinance handles the crumb-session dance internally.
 yfinance==1.7.0
+# Theme clustering's cosine math (report/theme_clusterer.py, 2026-10-27).
+# Already installed as a yfinance/pandas dependency; pinned here because
+# the clusterer now imports it directly. Same version as requirements.lock.
+numpy==2.5.2
 # FORWARD-RISK disposition (2026-08-26, owner: harness gate).
 # discord.py imports the stdlib `audioop`, removed in Python
 # 3.13. audioop-lts is the PSF-blessed backport; declaring it
