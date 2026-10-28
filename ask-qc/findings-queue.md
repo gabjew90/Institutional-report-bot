@@ -882,3 +882,10 @@ no findings (1 interaction, graded CONCERN on format and depth only: 88-word ans
 
 ## 2026-10-26
 no findings (0 FAIL). Watch item: Tesla-news answer (13:49) carried an unverified Barclays Overweight/$450 claim; and 5 /ask calls failed after 17:18 UTC with `API key not valid` (INFRA, ops).
+
+## 2026-10-27
+
+- **regex-able** (18:46 UTC, BK, "how do these odds change if you're in a 12-man league and top 8 teams make playoffs", reply to a Yahoo playoff-odds tweet): ungrounded fantasy answer invented record-to-playoff percentages ("75–80%", "45–50%", "15–20%") and assumed the original league was 12 teams with 6 spots. Bad answer verbatim: `a 4-3 record flips from a coin-flip (~49%) to a comfortable 75–80% expectation ... climbing from a bleak 22.5% all the way to a viable 45–50% toss-up. Even a 2-5 start stays mathematically breathing in the 15–20% range`. Assertion: on a fantasy-shape turn with no playoff-odds payload, any percent in the answer that is not present in the quoted message or tool payload must fail (`\d{1,3}\s?[–-]\s?\d{1,3}%` ranges are a strong signal). The `fantasy-percent` guard fired but its `kept-original` path restored the unsourced figures, and `figure-provenance:all-unsourced` only logged. Direction: when all-unsourced and the stripped version differs, post the stripped version or the arithmetic-only answer (8 of 12 = 66.7%), not the original with a footer.
+- **judgment (CONCERN)** (21:43 UTC, BK, Discord discoverability): two different rollout dates in one answer (mid-December vs "November 16") and unverified settings paths; a pointless `lookup_market_price GOOGL` ran.
+- **infra** (00:31 UTC): `API key not valid` on a fantasy question (ops; same fault as 10-26).
+- **tooling note**: the CI validator CLI still lacks `aiohttp`; triage by CLI is uninformative (sixth day running).

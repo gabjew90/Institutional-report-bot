@@ -1295,3 +1295,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Sixth consecutive light edition. The corpus holds a live AI infrastructure theme (36 banks / 73 PDFs, 8 HIGH-conviction stances) that the pulse never mentions. Check Dropbox ingestion and the light-day gate.
 - **observation** — No STEP 7 self-review for today in `qc-reviews/`. Series gaps persist: no adversarial verdict for 10-12 and 10-14.
 - **observation** — RECAP airline passengers sentence not traced to a source note (unverified, carried from 10-26).
+
+## 2026-10-28
+- **deterministic-fixable** — Omnipulse body is stale relative to the run date: "Thursday delivered", "the 10-year fell about 15bp Thursday", "Next week decides it ... options pricing 1.80% through October 30" on a Wednesday 10-28 pulse whose WATCH has GOOGL/MSFT reporting that night. Gate on the omnipulse body's date against the run date (the body is locked, so the check must precede lock) and fall back to classic or light when older than 1 trading day.
+- **deterministic-fixable** — Checker findings on locked omnipulse text ($61bn CoreWeave, WDC move, 313bp, 4.85% trigger, Brent +$7 on the week, Lynam attribution) shipped unrepaired. Either unlock the body for repairs or block publish on unresolved adversarial findings.
+- **deterministic-fixable** — `pulse-context/latest.json` in the archive is a later rebuild (16:49Z, 21 PDFs) than the context the pulse ran on (525 PDFs, 14:04Z), so QC cannot verify figures. Archive the dump the pulse was written from, keyed by `QC_PULSE_TS`.
+- **prompt-session** — TRADE BOARD last line truncated mid-sentence ("JPM applies an in-line multiple to Mag7 and…"), undated desk calls, and $SMR attributed to "TriDot Research" while the text cites Barclays. Truncate at a sentence boundary and attribute to the named desk.
+- **observation** — No STEP 7 self-review file in `qc-reviews/` since 10-22 (six runs). Adversarial verdict gaps persist for 10-12 and 10-14.
+- **observation** — Driver trail is a condensed hand note (full driver_state.json not pushed, progress commits 403). Gate counts cannot be audited.
