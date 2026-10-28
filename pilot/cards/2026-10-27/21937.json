@@ -1,0 +1,130 @@
+{
+ "brief": "The Market Ear catalogs a run of extreme-low hedge fund positioning readings across metrics, framed as observations rather than a thesis. US long/short net leverage has collapsed to 43.4%, the 0th percentile of its five-year range (Goldman Sachs Prime Brokerage), and the fundamental long/short ratio by market value sits at the same 0th percentile. Global equity long/short net leverage is at the 2nd-3rd percentile (JPMorgan PI). Despite this de-risking, hedge funds were down 3.3% MTD following Thursday's selloff versus a 0.2% S&P 500 gain, so the hedging did not protect performance. The AI trade has also lost its edge: the S&P 500 ex-AI has outperformed the headline index YTD (Goldman Sachs trading desk). Jefferies' desk flow shows heavy Tech selling, over $1B net sold on 7 of the last 10 days and one of its most dramatic 20-day net-selling periods in Tech. The exception is Magnificent Seven exposure, which Morgan Stanley data puts at the 81st/77th percentile, far from washed out. The note explicitly states it draws no conclusions and distrusts the usual contrarian-bullish read of such low positioning.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs Prime Brokerage",
+   "document": "A Lot of Doughnuts",
+   "claim": "US long/short net leverage among hedge funds has collapsed to 43.4%, the 0th percentile of its five-year range.",
+   "anchor": "US long/short net leverage has collapsed to 43.4%, putting positioning at the 0th percentile over the past five years.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs Prime Brokerage",
+   "document": "A Lot of Doughnuts",
+   "claim": "The US fundamental long/short ratio by market value has also decreased to the 0th percentile of its five-year range.",
+   "anchor": "US Fundamental long/short ratio (MV) also decreased to 0th percentile five-year.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan Prime Brokerage",
+   "document": "A Lot of Doughnuts",
+   "claim": "Global equity long/short net leverage among hedge funds is hovering around the 2nd to 3rd percentile of its range.",
+   "anchor": "Global equity long/short net leverage is hovering around the 2nd\u20133rd percentile.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan Prime Brokerage",
+   "document": "A Lot of Doughnuts",
+   "claim": "Following Thursday's selloff, global hedge funds were down 3.3% month to date, versus a 0.2% gain for the S&P 500 over the same period.",
+   "anchor": "global hedge funds were down 3.3% MTD, versus a 0.2% gain for the S&P 500.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month to date"
+  },
+  {
+   "bank": "Goldman Sachs trading desk",
+   "document": "A Lot of Doughnuts",
+   "claim": "The S&P 500 excluding AI-related stocks has outperformed the headline S&P 500 on a year-to-date basis, leaving AI with zero outperformance versus the overall market.",
+   "anchor": "The S&P 500 ex AI has eclipsed the S&P 500 on YTD returns.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Jefferies trading desk",
+   "document": "A Lot of Doughnuts",
+   "claim": "Over the last 10 days, the Jefferies trading desk was a net seller of more than $1 billion in Tech on 7 of those days.",
+   "anchor": "in the last 10 days, we\u2019ve been net for sale in Tech to the tune of > $1B on 7 of those days",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last 10 days"
+  },
+  {
+   "bank": "Jefferies trading desk",
+   "document": "A Lot of Doughnuts",
+   "claim": "The Jefferies trading desk's net trading flows over the past 20 days show one of the most dramatic net-selling periods in Tech it has seen in recent years.",
+   "anchor": "here\u2019s our net trading flows over a 20D period, one of the more dramatic net selling periods we\u2019ve seen in Tech in recent years.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "20 days"
+  },
+  {
+   "bank": "Morgan Stanley Prime Brokerage",
+   "document": "A Lot of Doughnuts",
+   "claim": "Hedge fund net exposure to the Magnificent Seven still ranks at the 81st percentile since 2020 and the 77th percentile over the past year, far from washed out despite de-grossing elsewhere.",
+   "anchor": "Net Mag 7 exposure still ranks at the 81st percentile since 2020 and the 77th percentile over the past year.",
+   "topic": "hedge fund de-grossing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-27/21937__a-lot-of-doughnuts.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
