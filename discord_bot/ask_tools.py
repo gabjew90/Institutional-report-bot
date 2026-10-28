@@ -1143,6 +1143,11 @@ async def _execute_price_history(args: dict) -> dict:
         from datetime import date as _date, timedelta
         start = (_date.fromisoformat(events[0]) - timedelta(days=10)).isoformat()
         end, interval = None, "1d"
+    ath = not events and str(args.get("all_time_high") or "").lower() in ("true", "1")
+    if ath:
+        # Monthly bars back to the listing: the default 90 days never holds
+        # the high (2026-10-28 scoreboard).
+        start, end, interval = "1970-01-01", None, "1mo"
     if not start:
         from datetime import timedelta
         start = (datetime.utcnow() - timedelta(days=90)).strftime("%Y-%m-%d")
@@ -1171,6 +1176,9 @@ async def _execute_price_history(args: dict) -> dict:
                                 "that many trading sessions later; a horizon that has not "
                                 "happened yet is marked so"),
                 "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")}
+    if ath:
+        return {"status": "ok", "symbol": symbol, **all_time_high(hist),
+                "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")}
     return {
         "status": "ok",
         "symbol": symbol,
@@ -1179,6 +1187,24 @@ async def _execute_price_history(args: dict) -> dict:
         "count": len(hist[-400:]),
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
+
+
+def all_time_high(hist: list[dict]) -> dict:
+    """The record high from monthly bars (oldest first): its month, the last
+    close, and how far below the high that close sits. A bar without a high
+    counts its close. Yahoo's bars are split-adjusted."""
+    rows = [h for h in hist if (h.get("high") or h.get("close")) is not None]
+    if not rows:
+        return {"error": "no bars with a high or close"}
+    top = max(rows, key=lambda h: float(h.get("high") or h.get("close")))
+    high = float(top.get("high") or top.get("close"))
+    last = next((float(h["close"]) for h in reversed(rows) if h.get("close") is not None), None)
+    out = {"all_time_high": round(high, 2), "high_month": str(top.get("date"))[:7],
+           "history_starts": str(rows[0].get("date"))[:7]}
+    if last is not None:
+        out["last_close"] = round(last, 2)
+        out["pct_below_high"] = round((1 - last / high) * 100, 1)
+    return out
 
 
 _HORIZONS = (("1_day", 1), ("1_week", 5), ("1_month", 21))
@@ -1268,6 +1294,13 @@ def _build_price_history_tool():
                             description=("True when the events land after the open: an "
                                          "after-close earnings report, a 2 PM Fed decision. "
                                          "Returns are then measured from that day's close."),
+                        ),
+                        "all_time_high": types.Schema(
+                            type=types.Type.BOOLEAN,
+                            description=("True for an all-time-high question. Returns the "
+                                         "highest monthly high on record with its month, the "
+                                         "last close and the percent below the high, computed "
+                                         "here. Ignores start, end and interval."),
                         ),
                     },
                     required=["symbol"],

@@ -68,3 +68,15 @@ def test_no_dates_is_no_data(monkeypatch):
 def test_dates_without_links_are_flagged():
     out = {"events": [{"date": "2026-08-06", "label": "", "error": "x"}], "dates_confirmed": False}
     assert E.block_lines(out)[-1].startswith("→ The search behind these dates returned no links")
+
+
+def test_all_time_high_from_monthly_bars():
+    from discord_bot.ask_tools import all_time_high
+    bars = [{"date": "2020-01-01", "high": 50.0, "close": 40.0},
+            {"date": "2024-07-01", "high": 210.0, "close": 180.0},
+            {"date": "2026-10-01", "high": None, "close": 168.0}]
+    out = all_time_high(bars)
+    assert out["all_time_high"] == 210.0 and out["high_month"] == "2024-07"
+    assert out["last_close"] == 168.0 and out["pct_below_high"] == 20.0
+    assert out["history_starts"] == "2020-01"
+    assert "error" in all_time_high([])

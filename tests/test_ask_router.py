@@ -934,3 +934,72 @@ def test_returns_after_events_get_history_and_google_2026_10_27():
     r = R.classify("Give me 1 week and 1 month returns after the last few SpaceX unlocks")
     assert r.shape == R.HISTORICAL_STAT and R.T_HISTORY in r.allowed_tools() and r.google_allowed()
     assert R.classify("NVDA reports after the close").shape != R.HISTORICAL_STAT
+
+
+def test_scoreboard_2026_10_28_catch_all_misses():
+    """Factual questions the 2026-10-28 scoreboard found in the catch-all,
+    each with the existing shape it belonged to, and the room's league-channel
+    asides that must stay off the league."""
+    ff, st = "🏈-fantasy-football-yapping-🏈", "💬-stonks-yapping-💬"
+    cases = [
+        ("what are the major earning releases this week", st, R.EARNINGS_SLATE),
+        ("what earnings we have after 4pm", st, R.EARNINGS_SLATE),
+        ("earnings after hours ? List them to me", st, R.EARNINGS_SLATE),
+        ("was this morning earnings decent ?", st, R.EARNINGS_SLATE),
+        ("what time are earnings today", st, R.EARNINGS_SLATE),
+        ("when's ibm report", st, R.EARNINGS_DATE),
+        ("what time apld report earnings", st, R.EARNINGS_DATE),
+        ("what data comes out tomorrow", st, R.ECON_CALENDAR),
+        ("any big data releases rest of week", st, R.ECON_CALENDAR),
+        ("what are the upcoming market events in the next 10 trading days", st, R.ECON_CALENDAR),
+        ("give me key calendar events for this week  that can affect the market", st, R.ECON_CALENDAR),
+        ("odds fed dont raise rates", st, R.ECON_CALENDAR),
+        ("why has TOST been trading down", st, R.NEWS_EVENT),
+        ("what just happened with shop", st, R.NEWS_EVENT),
+        ("what are all the good headlines that came out re: SMCI this week", st, R.NEWS_EVENT),
+        ("what are the fundamentals for CRWD", st, R.PRICE),
+        ("remind me if I have any open calls in members alert from past 7 days.", st, R.MEMBER_LEDGER),
+        ("What calls do I have open that I haven't closed in members", st, R.MEMBER_LEDGER),
+        ("has abe won a goog trade ever", st, R.MEMBER_LEDGER),
+        ("what's abe glw play", st, R.MEMBER_LEDGER),
+        ("what are abes and kyles current positions?", st, R.MEMBER_LEDGER),
+        ("how many total messages have I sent in this channel", st, R.CHAT_HISTORY),
+        ("can you give me a summary of this chat for the last 3 hours?", st, R.CHAT_HISTORY),
+        ("what are all the matchups that are still close?", ff, R.FANTASY),
+        ("who's currently projected to have the lowest score this week", ff, R.FANTASY),
+        ("do i have any zero players", ff, R.FANTASY),
+        ("whats the score of my game", ff, R.FANTASY),
+        ("how likely am I to win my line up this week", ff, R.FANTASY),
+        ("am i winning", ff, R.FANTASY),
+        ("how am I looking this week", ff, R.FANTASY),
+        # not league questions, though asked in the league channel
+        ("what would a 3 leg parlay today of georgia alavama and texas all losing have paid?", ff, R.UNKNOWN),
+        ("So a 100$ parlay wouldve paid 17.5k?", ff, R.UNKNOWN),
+        ("What's the legal punishment, if any, for getting caught cheating on an ACT", ff, R.UNKNOWN),
+        # a ranking question is not a price question
+        ("Have I moved up or down in slurs ranking in the last month", st, R.UNKNOWN),
+    ]
+    for q, ch, shape in cases:
+        assert R.classify(q, fantasy_enabled=True, channel_name=ch).shape == shape, q
+    assert R.classify("when's ibm report").tickers == ["IBM"]
+    # "kyle accepted the trade" in the league channel is the league
+    assert R.classify("did kyle accept the trade", fantasy_enabled=True,
+                      channel_name=ff).shape == R.FANTASY
+
+
+def test_all_time_high_prefetches_each_name_2026_10_28():
+    r = R.classify("tell me how far off % wise all time highs for WDC, SNDK, MU and SKHY")
+    assert r.shape == R.PRICE_HISTORY
+    assert r.prefetch == [(R.T_HISTORY, {"symbol": s, "all_time_high": True})
+                          for s in ("WDC", "SNDK", "MU", "SKHY")]
+
+
+def test_scoreboard_2026_10_28_review_precision():
+    """Code review: session words do not take a named stock's print, and a
+    member name beside a verb is banter."""
+    for q in ("TSLA earnings after hours move", "NVDA earnings premarket reaction",
+              "how did MU trade in the earnings run after 3 days"):
+        assert R.classify(q).shape != R.EARNINGS_SLATE, q
+    for q in ("Damn I guess I have to follow Abe plays instead",
+              "It's nice that Abe makes the call after market closes", "kyle calls me lol"):
+        assert R.classify(q).shape != R.MEMBER_LEDGER or "member ledger words" in R.classify(q).reason, q

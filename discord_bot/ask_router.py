@@ -326,6 +326,9 @@ _LOWER_CONTEXT_RE = re.compile(
     r"|\b([a-z]{2,5})(?:'s)?\s+(?=" + _COMPANY_WORD + r"\b)"
     # "spcx is reporting after close on 10/20" (audit A9)
     r"|^\s*([a-z]{2,5})\s+(?:is|are)\s+report(?:s|ing)\b"
+    # "when's ibm report", "what time apld report earnings" (2026-10-28
+    # scoreboard: no ticker, so the date shape never fired)
+    r"|\b(?:when'?s|when\s+(?:does|is|will)|what\s+time\s+(?:does|is|will|did)?)\s*([a-z]{2,5})\s+report"
     # "Your forgot spcx", "what about aapl" (2026-10-26 audit A3)
     r"|\b(?:forgot|forget|missed|left\s+out|leaving\s+out|what\s+about|how\s+about)\s+\$?([a-z]{2,5})\b",
     re.I)
@@ -393,6 +396,7 @@ _COMMON_WORDS = {
     # ("quick thoughts?", "bear thoughts") are not tickers.
     "quick", "bear", "bull", "bears", "bulls", "final", "honest", "other", "early",
     "wild", "crazy", "nice", "few", "two", "three", "ur", "yall", "hot", "fresh",
+    "score",
 }
 
 
@@ -400,11 +404,18 @@ _COMMON_WORDS = {
 
 _SLATE_RE = re.compile(
     r"\b(?:who(?:'s|s| is| are)?\s+(?:all\s+)?report(?:s|ing)?"
-    r"|(?:reports?|reporting|earnings)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?"
+    r"|(?:reports?|reporting|earnings?)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?"
     r"|this\s+week|next\s+week|after\s+(?:the\s+)?(?:close|bell)|before\s+(?:the\s+)?(?:open|bell)"
     r"|on\s+deck|slate|lineup|calendar))\b", re.I)
+# A session word beside "earnings" ("earnings after hours? list them", "what
+# earnings we have after 4pm", "was this morning earnings decent") is the
+# slate only when no ticker is named: "TSLA earnings after hours move" is
+# about TSLA (2026-10-28 scoreboard).
+_SLATE_SESSION_RE = re.compile(
+    r"\bearnings?\b.{0,40}?\b(?:after\s*hours?|after\s+\d{1,2}\s*(?:pm|p\.m\.)|pre-?market)"
+    r"|\b(?:this\s+morning|tonight|today|tomorrow|after\s*hours?|pre-?market)(?:'?s)?\s+earnings?\b", re.I)
 _EDATE_RE = re.compile(
-    r"\b(?:when\s+(?:does|is|do|will)\b.{0,30}?\b(?:report|earnings)"
+    r"\b(?:(?:when\s+(?:does|is|do|will)|when'?s|what\s+time(?:\s+(?:does|is|do|will|did))?)\b.{0,30}?\b(?:report|earnings)"
     r"|earnings\s+date|next\s+(?:quarter|earnings|report)"
     r"|did\s+\S+\s+(?:beat|miss)|(?:beat|miss)\s+(?:last\s+quarter|earnings|estimates)"
     r"|(?:expected|consensus|estimates?)\s+(?:for|on)\s+\S+\s+earnings"
@@ -423,22 +434,48 @@ _ECON_RE = re.compile(
     r"\b(?:CPI|PCE|PPI|GDP|NFP|non-?farm|payrolls|jobs\s+(?:report|number)|ISM|FOMC|Fed\s+(?:meeting|decision|rate)"
     r"|rate\s+(?:cut|hike|decision)|fed\b.{0,24}?\b(?:cut|cutting|hik|meeting|decision|pause)"
     r"|retail\s+sales|jobless|unemployment|econ(?:omic)?\s+(?:calendar|data|events?|prints?)"
-    r"|data\s+(?:this\s+week|today|tomorrow)|powell|warsh)\b", re.I)
+    r"|data\s+(?:this\s+week|today|tomorrow)|powell|warsh"
+    # "what data comes out tomorrow", "any big data releases rest of week",
+    # "upcoming market events in the next 10 trading days", "odds fed dont
+    # raise rates" (2026-10-28 scoreboard: all fell to the catch-all)
+    r"|(?:data|econ\w*)\s+(?:comes?\s+out|is\s+out|releases?|drops?|pieces?)"
+    r"|events\b[^?\n]{0,40}\b(?:this\s+week|next\s+week|coming\s+up|rest\s+of\s+(?:the\s+)?week"
+    r"|next\s+\d+\s+(?:trading\s+)?days|today|tomorrow)|upcoming\s+(?:\w+\s+){0,2}events"
+    r"|(?:raise|raising|hike|hiking|cut|cutting)\s+(?:interest\s+)?rates"
+    r"|(?:interest\s+)?rates?\s+(?:raised|hiked|cut))\b", re.I)
+# All-time highs, computed by lookup_price_history (2026-10-28 scoreboard:
+# "how far off all time highs for WDC, SNDK, MU" fell to the catch-all).
+_ATH = r"all[\s-]*time[\s-]*highs?|\bath\b|record\s+highs?"
+_ATH_RE = re.compile(_ATH, re.I)
 _HISTORY_RE = re.compile(
     r"\b(?:how\s+(?:has|did|have)\s+\S+\s+(?:done|performed|traded)|since\s+(?:january|the\s+start|ipo|\d{4})"
     r"|(?:last|past)\s+(?:\d+\s+)?(?:days?|weeks?|months?|years?)\s+(?:chart|performance|return|move)"
-    r"|ytd\b|year\s+to\s+date|(?:1|3|6|12)[- ]?month\s+(?:return|performance)|from\s+\$?\d+\s+to\s+\$?\d+)\b", re.I)
+    r"|ytd\b|year\s+to\s+date|(?:1|3|6|12)[- ]?month\s+(?:return|performance)|from\s+\$?\d+\s+to\s+\$?\d+"
+    r"|" + _ATH + r")\b", re.I)
 _PROFILE_RE = re.compile(
     r"\b(?:what\s+(?:does|do)\s+\S+\s+(?:do|make|sell)|what\s+is\s+\S+\s*\??$|tell\s+me\s+about\s+\S+"
     r"|who\s+(?:is|are)\s+\S+\s*\??$|what\s+(?:kind|type)\s+of\s+company)\b", re.I)
 _LEDGER_RE = re.compile(
     r"\b(?:(?:abe|kyle|bk|jamal|his|her|their|my|\w+'s)\s+(?:trades?|book|holdings?|positions?|calls?|win\s*rate|track\s+record|p&?l|pnl|record|ledger|open\s+positions?)"
-    r"|win\s*rate|track\s+record|full\s*port(?:ed)?\s+into|current\s+holdings|open\s+positions|trade\s+log)\b", re.I)
+    r"|win\s*rate|track\s+record|full\s*port(?:ed)?\s+into|current\s+holdings|open\s+positions|trade\s+log"
+    # "do I have any open calls", "what calls do I have open" (2026-10-28)
+    r"|\b(?:i|we)\s+(?:\w+\s+){0,2}open\s+(?:calls?|puts?|trades?|plays?)"
+    r"|(?:calls?|puts?|trades?|plays?)\s+(?:do|did)\s+(?:i|we)\s+(?:have|got)\s+open)\b", re.I)
+# A named caller's trades with a few words between ("has abe won a goog
+# trade", "what's abe glw play", "abes and kyles current positions").
+# At least one word between, and plural calls/puts only: "follow Abe plays",
+# "kyle calls me" and "Abe makes the call" are banter. Not in the football
+# channel, where "kyle accepted the trade" is the league.
+_MEMBER_TRADE_RE = re.compile(
+    r"\b(?:abe|kyle|bk|jamal)(?:'?s)?\b(?:\s+\w+){1,3}?\s+(?:trades?|plays?|puts|calls|positions?)\b", re.I)
 _CHAT_RE = re.compile(
     r"\b(?:who\s+said|what\s+did\s+\S+\s+say|room\s+(?:saying|think|consensus)|what(?:'s| is)\s+the\s+room"
     r"|(?:earlier|yesterday|last\s+week)\s+(?:someone|\S+)\s+(?:said|posted|called)"
     r"|quote\s+(?:from\s+)?(?:abe|kyle|bk|jamal|him|her|them|me|\w+'s)\b"
-    r"|messages?\s+(?:from|about)|how\s+many\s+messages"
+    r"|messages?\s+(?:from|about)|how\s+many\s+(?:\w+\s+)?messages"
+    # "summary of this chat for the last 3 hours", "summarize Owen's
+    # messages" (2026-10-28 scoreboard)
+    r"|summar(?:y|ize|ise)\b[^?\n]{0,30}\b(?:chat|messages|convo|conversation)"
     # "how many times" is the room's history only when someone said or
     # posted something ("how many times do I need to 10x $100" is math,
     # 2026-10-10 audit)
@@ -457,7 +494,7 @@ _PUBLIC_FIGURE_RE = re.compile(
     r"\b(?:powell|warsh|fed|trump|musk|elon|jensen|huang|bessent|dimon|zuck(?:erberg)?"
     r"|altman|buffett|lutnick|hassett|waller|the\s+(?:president|treasury|ecb|boj|white\s+house))\b", re.I)
 _FANTASY_RE = re.compile(
-    r"\b(?:fantasy|sleeper|waiver|matchup|roster|standings|league|faab"
+    r"\b(?:fantasy|sleeper|waiver|matchups?|roster|standings|league|faab"
     # Bare "draft" is a league question in this room. DraftKings is not.
     r"|draft(?!\s*kings)\b(?!\s*kings)"
     r"|start\s+or\s+sit|sit\s+or\s+start|who\s+(?:should|do|would)\s+i\s+start"
@@ -496,7 +533,8 @@ _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
         r"|compare|versus|\bvs\.?\b|who(?:'s|s| is)\s+better|better\s+(?:start|play|option|than)"
         r"|flex\s+(?:spot|play|start)|bench|lineup)\b", re.I)),
     ("matchups", re.compile(
-        r"\b(?:matchup|who\s+(?:am|is)\s+\w+\s+playing|score(?:s|board)?\s+(?:this|last)\s+week"
+        r"\b(?:matchups?|who\s+(?:am|is)\s+\w+\s+playing|score(?:s|board)?\s+(?:this|last)\s+week"
+        r"|score\s+of\s+my\s+game|am\s+i\s+(?:winning|losing)|still\s+close"
         r"|(?:winning|wins?)\s+(?:this|my|the)\s+(?:week|match)|gonna\s+win\s+(?:the\s+)?match"
         r"|beat\s+\w+\s+this\s+week)\b", re.I)),
     ("roster", re.compile(
@@ -533,7 +571,12 @@ _FANTASY_CHANNEL_RE = re.compile(r"(?:fantasy|football)", re.I)
 _FOOTBALL_RE = re.compile(
     r"\b(?:nfl|qb|rb|wr|te|dst|d/st|kicker|touchdown|tds?|snap\s+count|target\s+share"
     r"|injur(?:y|ed|ies)|questionable|doubtful|\bir\b|bye\s+week|handcuff|stream(?:er|ing)?"
-    r"|start|sit|bench|flex|lineup|points?|matchup|trade|drop(?:ped|s)?|add(?:ed|s)?|pick(?:ed)?\s*up|claim"
+    r"|start|sit|bench|flex|line\s*up|points?|matchups?|trade|drop(?:ped|s)?|add(?:ed|s)?|pick(?:ed)?\s*up|claim"
+    # "am i winning", "whats the score of my game", "do i have any zero
+    # players", "who's projected lowest" (2026-10-28 scoreboard)
+    r"|scor(?:e|es|ing)|players?|projected|projections?|swap|best\s+team|worst\s+team"
+    r"|win\s+(?:it\s+all|the\s+(?:whole\s+thing|league|title|chip))"
+    r"|am\s+i\s+(?:winning|losing|ahead|behind)|my\s+(?:game|opponent|guys)"
     r"|bust|boom|sleeper|breakout|my\s+team|first\s+place|last\s+place"
     r"|outlook|rank(?:ed|ings?)?|tiers?|compare|versus|\bvs\.?\b|better"
     r"|gonna\s+win|whos?\s+winning|waiver|claim|stash|grab"
@@ -546,7 +589,7 @@ _FOOTBALL_RE = re.compile(
     r"|odds|probabilit(?:y|ies)|win\s*(?:pct|percentage)"
     # "how do I know if I'm doing well" in the football channel is about
     # the asker's team; it got trading advice (2026-10-07).
-    r"|how\s+(?:am\s+i|are\s+we|is\s+my\s+team|'?s\s+my\s+team)\s+doing"
+    r"|how\s+(?:am\s+i|are\s+we|is\s+my\s+team|'?s\s+my\s+team)\s+(?:doing|looking)"
     r"|(?:am\s+i|i'?m|i\s+am|we'?re)\s+doing\s+(?:well|good|ok(?:ay)?|bad(?:ly)?|great|terrible|alright)"
     r"|cardinals|falcons|ravens|bills|panthers|bears|bengals|browns|cowboys|broncos"
     r"|lions|packers|texans|colts|jaguars|jags|chiefs|raiders|chargers|rams|dolphins"
@@ -557,6 +600,7 @@ _FOOTBALL_RE = re.compile(
 _WIN_CHANCE_RE = re.compile(
     r"\b(?:(?:chances?|odds|probabilit(?:y|ies))\s+(?:of|to|at|for)\s+(?:win|winning|pull)"
     r"|win(?:ning)?\s+(?:chances?|odds|probabilit(?:y|ies)|pct|percentage)"
+    r"|how\s+likely\s+(?:am\s+i|are\s+we|is\s+\w+)\s+to\s+win"
     r"|gonna\s+win|going\s+to\s+win|pull\s+(?:it\s+)?out\s+(?:a\s+|the\s+)?w(?:in)?)\b", re.I)
 
 
@@ -723,13 +767,13 @@ _STAT_RE = re.compile(
     r"|(?:seasonal|seasonality)|(?:september|october|december|january)\s+(?:effect|returns?|performance)"
     r"|(?:how\s+often|what\s+percent(?:age)?\s+of)\b)", re.I)
 _NEWS_RE = re.compile(
-    r"\b(?:why\s+(?:is|are|did|was|were)\s+\S+\s+(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving"
+    r"\b(?:why\s+(?:is|are|did|was|were|has|have)\s+\S+\s+(?:been\s+)?(?:trading\s+)?(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving"
     r"|dropping|dropped|crashing|bleeding|sliding|sinking|plunging|selling\s+off|pumping|surging|jumping|soaring|rallying|spiking"
     # base forms after "did" and "going up/down" ("why did googl dump",
     # "why is MRNA going down", 2026-10-26 audit A20)
     r"|dump|tank|drop|crash|rip|pump|moon|fall|sell\s+off|go\s+(?:up|down)|going\s+(?:up|down))"
     r"|(?:news|what(?:'s|s|\s+is))\s+(?:driving|behind|moving)\s+\$?[A-Za-z]{1,5}\b"
-    r"|what\s+happened\s+(?:to|with)\b|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
+    r"|what\s+(?:just\s+)?happened\s+(?:to|with)\b|headlines?|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
     r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with"
     # Figures a reader expects sourced, not recalled (2026-09-03 ask
     # log: a Kalshi/Polymarket probability and an NVDA shares-outstanding
@@ -750,7 +794,7 @@ _VALUATION = (r"(?:forward\s+)?p\s*/\s*e\b|(?:forward\s+)?pe(?:\s+ratio)?\b|pric
               r"|p\s*/\s*s\b|valuation|earnings\s+multiple|(?:what|which)\s+multiple")
 _SNAPSHOT_FIELD_RE = re.compile(
     r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?"
-    r"|short\s+interest|how\s+many\s+shares"
+    r"|short\s+interest|how\s+many\s+shares|fundamentals?"
     # valuation, computed in the snapshot (2026-10-26 audit A12)
     r"|" + _VALUATION + r")", re.I)
 # A fund's positions (2026-10-18 audit A10). The fund word may sit in the
@@ -1093,6 +1137,9 @@ def classify(question: str, *, fantasy_enabled: bool = False,
                                asker_manager=asker_manager)
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
         return r
+    if not in_channel and _MEMBER_TRADE_RE.search(q):
+        r.shape, r.reason = MEMBER_LEDGER, "a named caller's trades"
+        return r
     # A member's own trading in a name ("when did Abe last buy GLW calls and
     # sell them for a profit") is the trade log, not a view on the stock
     # (2026-10-26 audit A18: it got the GLW outline).
@@ -1173,7 +1220,10 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         r.tickers = ["SPY", "QQQ"]
         r.prefetch = [(T_PRICE, {"symbols": ["SPY", "QQQ"], "with_volume": True})]
         return r
-    if _SLATE_RE.search(q) and not _EDATE_RE.search(q):
+    # The date shape needs a ticker, so without one a date phrasing ("what
+    # time are earnings today") must not cost the question its slate.
+    if ((_SLATE_RE.search(q) or (_SLATE_SESSION_RE.search(q) and not tickers))
+            and not (_EDATE_RE.search(q) and tickers)):
         wk = re.search(r"\b(this|next)\s+week\b", ql)
         if wk:
             # The slate answers a whole week in one call since 2026-10-18;
@@ -1269,6 +1319,10 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if _ECON_RE.search(q) and not strong:
         r.shape, r.reason = ECON_CALENDAR, "macro print words"
         r.prefetch = [(T_ECON, {"days": 7})]
+        return r
+    if _HISTORY_RE.search(q) and tickers and _ATH_RE.search(q):
+        r.shape, r.reason = PRICE_HISTORY, "all-time high"
+        r.prefetch = [(T_HISTORY, {"symbol": price_symbol(t), "all_time_high": True}) for t in tickers[:4]]
         return r
     if _HISTORY_RE.search(q) and tickers:
         r.shape, r.reason = PRICE_HISTORY, "history words + ticker"
