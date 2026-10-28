@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-27/21724__gs-privorotsky-gs-basics-systematic-unwinds-repricing-ai-cap.txt (cross-checked against pilot-data/pilot/source-text/2026-10-27/21950__we-re-all-rudderless-goldman-s-trading-floor-maps-the-ai-unw.txt and 21913__meta-plunges-cds-hits-record-as-barclays-spots-massive-spend.txt for the supporting figures)",
+ "source_span": "the issue is simply a repricing of the cost of capital... You either cut capex, delay deployment or increasingly fund through equity. None are particularly supportive of equity prices.",
+ "source_chain": "AI stocks sold off despite confirmed-robust demand (WDC's ~20% guidance beat reversed from +4% to -8%, Bloom Energy fell on a beat) therefore the market is repricing the cost of capital funding the buildout, not doubting demand, therefore issuers are left with only unsupportive choices: cut capex, delay deployment, or dilute via equity. Invalidation: next week's hyperscaler results \u2014 specifically how they convert backlog to revenue, their deployment pace, and what they say about funding.",
+ "pulse_chain": "Thursday delivered demand confirmation (Meta's ad beat, WDC's ~20% guide beat) and the market sold anyway (Meta -6.98%, WDC reversed +4% to -8%, AI underperformed the index) therefore Goldman's Privorotsky argues the mechanism is the cost of capital, not demand, therefore issuers face cut spending, delay deployment, or raise equity, none of which support share prices, reinforced by forced systematic de-grossing. Invalidation: next week's hyperscaler results on backlog-to-revenue conversion, deployment pace, and funding commentary, with options pricing a 1.80% index move.",
+ "preserved": true,
+ "why": "The pulse reproduces Privorotsky's exact chain (demand confirmed, therefore capital-cost repricing, therefore cut/delay/dilute with none supporting equity prices) and his own invalidation (next week's hyperscaler backlog-to-revenue, deployment pace, funding commentary), even though one supporting statistic -- the $3.6 trillion hyperscaler off-balance-sheet debt figure -- is attributed to Goldman when the source material explicitly credits it to a financial blog's own running tally rather than Goldman research, a sourcing error that doesn't reverse or alter the argument's steps.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-27/21724__gs-privorotsky-gs-basics-systematic-unwinds-repricing-ai-cap.txt",
+ "source_span": "the issue is simply a repricing of the cost of capital ... You either cut capex, delay deployment or increasingly fund through equity. None are particularly supportive of equity prices.",
+ "source_chain": "AI names sold off hard (worst relative day vs. SPX ex-AI) even as results confirmed demand (Bloom Energy, WDC beat-and-raise) therefore the real driver isn't demand but a repricing of the cost of capital funding the buildout therefore issuers are left with three bad options \u2014 cut capex, delay deployment, or fund via equity \u2014 none of which support share prices; invalidation/test is next week's hyperscaler earnings, specifically how backlog converts to revenue, deployment pace, and what they say about funding.",
+ "pulse_chain": "Meta's beat confirmed AI ad demand and the stock still fell with its CDS widening, and WDC's ~20% guidance beat still reversed, therefore (per Goldman's Privorotsky) the mechanism is funding, not products: the selloff reprices the cost of capital paying for the buildout, leaving issuers three choices \u2014 cut spending, delay deployment, or raise equity \u2014 none of which support share prices; invalidation is next week's hyperscaler reports, per Privorotsky testing backlog-to-revenue conversion, deployment pace, and funding commentary.",
+ "preserved": true,
+ "why": "The pulse keeps the same three-choice capital-repricing argument attributed correctly to Goldman's Privorotsky, in the same direction, with the same hyperscaler-earnings invalidation condition, adding only compression and supporting figures from other sources rather than altering or reversing a step.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,73 @@
+{
+ "metric": 1,
+ "total_cards": 1265,
+ "fragmentation_sets": [
+  {
+   "subject": "Thursday's selloff was mechanical, not fundamental \u2014 hedge fund de-grossing, momentum-factor unwind, and CTA/leveraged-ETP selling triggers",
+   "labels": [
+    "hedge fund de grossing",
+    "momentum factor crash",
+    "systematic selling mechanics"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "Market breadth broadening away from AI leaders \u2014 ex-AI names and defensives outperforming while the AI basket lags",
+   "labels": [
+    "s p breadth dispersion",
+    "equity market broadening trade"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Treasury yields rallying hard as the market's AI-growth-shock hedge, with a correlation regime shift into bonds/yen",
+   "labels": [
+    "dollar yen ai risk hedge",
+    "treasury flight quality"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex-driven selloff pushing corporate credit spreads past prior stress peaks",
+   "labels": [
+    "ai capital cost repricing",
+    "corporate credit stress"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.07,
+ "mis_merges": [
+  {
+   "label": "ai capital cost repricing",
+   "subjects": [
+    "AI capex selloff and credit-spread stress",
+    "Strategic M&A activity at record highs / rising EUR M&A debt supply"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The two M&A cards are thin, generic scheduling-style facts with no named deals or figures, unlikely to win a brief slot on a day already crowded with bigger stories regardless of which label holds them."
+  },
+  {
+   "label": "next week event risk",
+   "subjects": [
+    "Hyperscaler earnings dominance and S&P earnings-growth concentration risk next week",
+    "Central bank decision week (FOMC/BOC/ECB/BOJ)",
+    "Brazil presidential election runoff"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Brazil already has its own richer dedicated label elsewhere so nothing is lost there, and the single Fed-week line carries no pricing or analysis, reading as calendar filler rather than a genuine theme contender either way."
+  }
+ ],
+ "pass": true,
+ "notes": "misc holds 12 of 1265 cards (<1%) and is correctly declared overflow. Oil/gas (Hormuz-linked but different commodity desks and theses) and the two next-week earnings-calendar labels (one US-earnings-concentration argument, one pure European earnings schedule) show surface overlap but were judged distinct enough in thesis/grain not to count as fragmentation.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Good earnings (Meta ad beat, WDC beat-and-raise) failed to stop the selloff, therefore Goldman's trading floor reframes it as a cost-of-capital/funding repricing rather than a demand problem, therefore credit (HY/CCC spreads, Meta CDS), prime brokerage positioning and quant books all show the same funding stress spreading from long/short into systematic funds, therefore Treasuries rallied as a hedge but that reflexivity is fragile, therefore next week's hyperscaler earnings and funding commentary are the real test.",
+   "brief_chain": "Same: strong prints (Meta, WDC) didn't stop the selloff, Goldman reframes it as cost-of-capital repricing not demand, evidenced across Meta commitments/CoreWeave/Oracle/off-balance-sheet debt and credit spreads, funding stress spilled into systematic funds for the first triple hedge-fund loss since COVID, Treasuries rallied but reflexivity is fragile, next week's earnings funding commentary is the test.",
+   "distortions": [
+    {
+     "what": "Brief says Oracle's RPO 'has outrun its profit inflection'; source states RPO grew to $664bn from $455bn while the OCI gross-profit inflection is still 'likely in the next 12 months' \u2014 a paraphrase rather than a quoted comparison.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same underlying fact (RPO growth has outpaced the profit inflection), just reworded."
+    },
+    {
+     "what": "Brief says Privorotsky 'calls that reflexivity fragile'; source's actual words are 'Not necessarily the most supportive reflexivity for equities' and a description of a 'narrow path' \u2014 brief supplies the adjective 'fragile' rather than quoting.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same characterization of the bond-equity reflexivity risk, just a different adjective."
+    },
+    {
+     "what": "Brief narrows Privorotsky's three-part test for next week ('how they translate backlog into revenue, the pace of deployment and what they say about funding') down to just 'funding commentary.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 funding is explicitly flagged in the source as 'the one item to watch,' so the narrowing doesn't change the catalyst being named, just drops two of three sub-points."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d4",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "France's sovereign-spread stress, fresh AI growth fears, and Middle East oil-escalation risk combined, therefore a broad risk-off move hit equities and credit (while defensives/equal-weight outperformed), therefore Treasuries rallied as a safe haven despite strong US jobless-claims data, therefore the selloff has stabilized in US/European futures overnight (Asian equities remain weak but off their lows) while Japan's core CPI ran above target.",
+   "brief_chain": "Same three stress points drove a broad risk-off move (France/ECB odds, AI fears hitting semis/CoreWeave/Meta, oil/Middle East risk), Treasuries rallied despite strong jobless-claims data, and overnight the selloff has stabilised with US/European futures and most Asian indices only slightly lower, plus Japan's hot core CPI.",
+   "distortions": [
+    {
+     "what": "Brief characterizes 'most Asian indices' as 'only slightly lower' overnight; source separates this, calling Asian equities 'weak' (Nikkei -0.90%, KOSPI -0.89%, CSI 300/Shanghai at 15-month lows) and reserves 'only very slightly lower' for US/European futures and Stoxx specifically.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's a descriptive blur of degree in an overnight stabilization note, not a stance, level, or figure a trade hinges on."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d13",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Private-wealth demand for OpenAI's round came in weak ('zero clamouring'), therefore OpenAI cut its valuation target to $1.25T from $1.4T, therefore this follows Anthropic's own investor markdown to ~$1.5T, therefore together the two labs have cut ~$650B in a week amid an AI-driven market selloff that desks (Goldman, JPM) frame as a cost-of-capital/funding-confidence story rather than a demand problem, therefore both labs' IPOs plus next week's hyperscaler earnings (MSFT/GOOGL/AMZN) are now the proof points the market needs.",
+   "brief_chain": "Same: weak private-wealth demand drove OpenAI's valuation cut to $1.25T, following Anthropic's markdown to ~$1.5T, the two labs have cut ~$650B amid the AI selloff, Goldman frames it as a cost-of-capital repricing, JPM flags low positioning but stays Tactically Bullish, and both IPOs plus next week's hyperscaler earnings are the proof points needed.",
+   "distortions": [
+    {
+     "what": "Brief says 'JPMorgan reports very low positioning'; the source's JPM quote describes 'very low' client demand in hyperscalers/Neoclouds and separately 'Positioning is low. Confidence is low' \u2014 brief picks the positioning word from an adjacent sentence of the same quote block rather than the demand sentence.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both demand and positioning are described as low in the same JPM commentary, so the substitution doesn't change the read."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d27",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Headline S&P calm (range-bound, low realized vol) masks underlying stress (VIP pair trade pain despite a 47bp index move, sustained prime-book de-risking, heaviest tech-selling day in two years), therefore growing AI skepticism around power/capital constraints on the buildout's path and sequence, plus oil breaking out and midterms, add further pressure, therefore Pasquariello has limited conviction but reads the de-grossing (vol firming, cyclicals-vs-defensives hit, Risk Appetite Indicator negative for the first time since March) as wall-of-worry support for the bull case, therefore next week's hyperscaler earnings carry the day against his EPS growth sequence (+29%/+18%/+11%), while corporate credit has turned ugly beyond AI names.",
+   "brief_chain": "Same: range-bound S&P with low realized vol hides stress (VIP pair hit, prime de-risking, heaviest tech-selling day in two years); AI skepticism over power/capital constraints plus oil and midterms add pressure; Pasquariello has limited conviction but reads de-grossing as wall-of-worry support for the bull case; hyperscaler earnings next week test his EPS growth path; credit has turned ugly beyond AI.",
+   "distortions": [
+    {
+     "what": "Brief states hyperscaler earnings next week will 'test GS's EPS growth path'; the source presents 'hyperscaler earnings will carry the day next week' and the EPS growth sequence as two separate, adjacent points rather than explicitly framing the earnings as a test of the growth path.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's a reasonable synthesis of two adjacent points in the same note (earnings next week matter; growth deceleration is the ambivalence driving his limited conviction), not a new claim or changed stance."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

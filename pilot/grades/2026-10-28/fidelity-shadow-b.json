@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21656__early-morning-reid-macro-strategy.txt",
+   "span": "After its results the night before, Meta (-6.98%) fell and its CDS widened +7.2bps to 118bps",
+   "why": "DB Reid confirms the exact -6.98% move and CDS widening; GS Johnstone note (21546) confirms the revenue beat with advertising growth of 26% and 'healthy AI-led advertising... demand', supporting the advertising-demand framing."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21724__gs-privorotsky-gs-basics-systematic-unwinds-repricing-ai-cap.txt",
+   "span": "the issue is simply a repricing of the cost of capital... You either cut capex, delay deployment or increasingly fund through equity. None are particularly supportive of equity prices.",
+   "why": "Direct match to Rich Privorotsky's (Goldman) note: repricing of cost of capital, three choices, none support equity prices."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21724__gs-privorotsky-gs-basics-systematic-unwinds-repricing-ai-cap.txt",
+   "span": "Definitely felt like a lot of positions were flushed, with price action moving well beyond individual fundamentals",
+   "why": "Generic bridging sentence (no figures/attribution) supported by the de-grossing/stop-out narrative running through multiple sources (GS Singhal Prime HFs Update, 'Historic Degrossing' piece, Privorotsky's 'positions were flushed').",
+   "searched": [
+    "forced selling",
+    "de-grossing"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21698__us-equities-weekly-rundown-10-23-26.txt",
+   "span": "reposition selectively back into the AI complex starting with Power, Hyperscalers, Inference and Cyber. For limited loss implementations, GSTMTAIP Nov 105 120% call spread costs 2.75%... we would be using GSXUCYCL Index as a funding short",
+   "why": "Goldman's US Equities Weekly Rundown matches the basket names, the 2.75% Nov call spread, and funding via shorting the cyclicals index exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21963__barclays-global-portfolio-manager-s-digest-clouds-of-doubt-2.txt",
+   "span": "we maintain our view \"use any bounce to de-risk\"",
+   "why": "Barclays' Asia fund-positioning team's exact phrase; BTIG's 'Midterms Unlikely a Clearing Event' note (21964) separately confirms SPX 200-DMA test toward 7300 instead of a post-midterm rally."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21950__we-re-all-rudderless-goldman-s-trading-floor-maps-the-ai-unw.txt",
+   "span": "now expect spreads to moderately overshoot those ranges... she sees the risks firmly tilted towards more widening",
+   "why": "Direct quote/paraphrase of Goldman's Amanda Lynam on spreads overshooting the downside case with risk tilted to widening."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21963__barclays-global-portfolio-manager-s-digest-clouds-of-doubt-2.txt",
+   "span": "the fundamental picture appears more resilient than recent price action would suggest... Contagion remains contained, with hyperscalers, broader Tech & Growth style largely insulated",
+   "why": "Barclays' neo-cloud/equities note matches both the 'fundamentals better' and 'spillover to hyperscalers contained' claims verbatim in substance."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21948__sell-the-news-or-120-goldman-traders-lay-out-the-two-ways-th.txt",
+   "span": "the lowest level of gas inventories in 14 years... a year-end TTF forecast of 70 EUR/MWh vs 87 EUR/MWh trading now",
+   "why": "Goldman commodity strategists' note matches NW Europe's 14-year-low inventories and the 87-to-70 EUR/MWh Dutch (TTF) gas forecast exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21945__hedging-the-ai-bust-goldman-ficc-says-look-to-tokyo-as-franc.txt",
+   "span": "10y OAT/Bund spreads are now at their widest since the introduction of the Euro... Goldman's Bloomberg chart now has it at 173bps, with French 10Y yields at 5.08%",
+   "why": "Exact match for yield, spread, and 'widest since the euro' framing, sourced to Goldman."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21840__skipper-warsh-and-his-hawkish-crew.txt",
+   "span": "We expect the Committee to keep the target range for the federal funds rate unchanged at 3.75-4.00%... We are likely to see Hammack, Kashkari and Logan repeat their July dissents in favor of a hike",
+   "why": "Rabobank's FOMC Preview matches the rate hold, non-unanimous framing, and all three named dissenters exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "\"There has been zero clamouring,\" said one of the people. \"All the prior times [OpenAI] have been on there's been a frenzy. This time is a bit of a thud.\"",
+   "why": "Direct quote match for zero clamouring vs. prior frenzy."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "talking about a valuation of around $1.5 trillion, some $500 billion below the $2 trillion previously penciled in for its November IPO... the two biggest frontier labs have shaved some $650 billion off what they hoped to be worth in the span of seven days",
+   "why": "Exact match on all three figures and the one-week framing."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "OpenAI, which is on the hook for some $1.5 trillion in compute commitments",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "\"The market needs to see a successful IPO,\" said Chang. \"These companies need funding.\"",
+   "why": "Jimmy Chang, CIO at Rockefeller Global Family Office, quoted verbatim; 'listing' is a faithful paraphrase of 'IPO'."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "JPM's Matt Reiner said demand was \"very low in hyperscalers and Neoclouds across the board,\" with the only real pocket of buying in security software",
+   "why": "Direct match for attribution and content."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-10-27/21336__tdageneric-nam-10232026.txt",
+   "span": "Shares of the company closed 6.98% lower at $648.85... The cost of insuring the social media giant's debt against default also hit an all-time high",
+   "why": "Exact 6.98% decline and CDS/default-insurance widening both stated; the beat/strong forecast and AI capex link to advertising strength is corroborated in GS's Meta first-take ('application of AI compute to its core operations is acting as a sustained tailwind to the core business')."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21724__gs-privorotsky-gs-basics-systematic-unwinds-repricing-ai-cap.txt",
+   "span": "the issue is simply a repricing of the cost of capital... You either cut capex, delay deployment or increasingly fund through equity. None are particularly supportive of equity prices.",
+   "why": "Matches Privorotsky's framing and the three named options and 'none support share prices' verbatim in substance; byline is Rich Privorotsky, Goldman Sachs."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21950__we-re-all-rudderless-goldman-s-trading-floor-maps-the-ai-unw.txt",
+   "span": "Definitely felt like a lot of positions were flushed, with price action moving well beyond individual fundamentals.",
+   "why": "Privorotsky's own description of technical/positioning-driven (non-fundamental) selling supports the connective claim that positioning turned the move into forced selling; same theme echoed across the degrossing/unwind pieces in the corpus."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21705__gs-miller-global-reflections-23-oct-2026.txt",
+   "span": "reposition selectively back into the AI Complex starting with Power, Hyperscalers, Inference and Cyber. For limited loss implementations, GSTMTAIP Nov 105 120% call spread costs 2.75%... we would be using GSXUCYCL Index as a funding short",
+   "why": "Exact match on the basket names, the 2.75% November call-spread cost, and funding the trade via a cyclicals short."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21963__barclays-global-portfolio-manager-s-digest-clouds-of-doubt-2.txt",
+   "span": "Unwinds accelerated this week. But even after the sharp moves we maintain our view \"use any bounce to de-risk\".",
+   "why": "Barclays' Asia-desk section of the Global PM Digest gives the de-risk call; BTIG's Krinsky note separately gives the 7300 SPX 200-DMA target and explicitly argues against a post-midterm rally ('we think the opposite is actually more likely')."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21950__we-re-all-rudderless-goldman-s-trading-floor-maps-the-ai-unw.txt",
+   "span": "now expect spreads to moderately overshoot those ranges... she sees the risks \"firmly tilted towards more widening.\"",
+   "why": "Direct quote attributed to Amanda Lynam matches overshoot and year-end widening-risk claims exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21963__barclays-global-portfolio-manager-s-digest-clouds-of-doubt-2.txt",
+   "span": "the fundamental picture appears more resilient than recent price action would suggest... it is not surprising that neo-clouds would not be highly correlated with hyperscalers in terms of price action.",
+   "why": "Supports both the resilience-vs-price-action claim and the contained-spillover-to-hyperscalers claim."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21948__sell-the-news-or-120-goldman-traders-lay-out-the-two-ways-th.txt",
+   "span": "North West Europe... is about to start the winter with the lowest level of gas inventories in 14 years... a year-end TTF forecast of 70 EUR/MWh vs 87 EUR/MWh trading now",
+   "why": "Both the 14-year inventory low and the Goldman 70-vs-87 EUR/MWh forecast are explicit in the Goldman commodities note."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21945__hedging-the-ai-bust-goldman-ficc-says-look-to-tokyo-as-franc.txt",
+   "span": "10y OAT/Bund spreads are now at their widest since the introduction of the Euro... French 10Y yields at 5.08%... Goldman's Bloomberg chart now has it at 173bps",
+   "why": "Figures match exactly. Note: a separate source (GS Pisanelli) describes the same 173bp print as 'widest since November 2011' rather than since the euro's introduction; the pulse's framing is still directly sourced to this document."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21840__skipper-warsh-and-his-hawkish-crew.txt",
+   "span": "We expect the FOMC to remain on hold in October... We are likely to see Hammack, Kashkari and Logan repeat their July dissents in favor of a hike at this meeting.",
+   "why": "Rabobank note (byline addresses @Rabobank.com) gives 3.75-4.00% hold and the named hawkish dissents verbatim."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "\"There has been zero clamouring,\" said one of the people. \"All the prior times [OpenAI] have been on there's been a frenzy. This time is a bit of a thud.\"",
+   "why": "Direct quote from a person familiar with the Morgan Stanley-led funding process matches exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "some of Anthropic's own investors walked out of its investor day talking about a valuation of around $1.5 trillion, some $500 billion below the $2 trillion previously penciled in... the two biggest frontier labs have shaved some $650 billion off what they hoped to be worth in the span of seven days.",
+   "why": "All figures ($1.5tn, $500bn, $2tn, $650bn, ~one week) match exactly."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "OpenAI, which is on the hook for some $1.5 trillion in compute commitments",
+   "why": "Exact figure and attribution to OpenAI's compute commitments."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "\"The market needs to see a successful IPO,\" said Chang. \"These companies need funding.\" -- Jimmy Chang, CIO at the Rockefeller Global Family Office",
+   "why": "Direct quote and attribution match exactly."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-27/21943__haircut-season-spreads-openai-trims-valuation-target-to-1-25.txt",
+   "span": "JPM's Matt Reiner said demand was \"very low in hyperscalers and Neoclouds across the board,\" with the only real pocket of buying in security software",
+   "why": "Direct quote and attribution match exactly."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

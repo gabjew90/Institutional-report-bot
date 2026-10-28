@@ -1,0 +1,63 @@
+{
+ "metric": 1,
+ "total_cards": 1265,
+ "fragmentation_sets": [
+  {
+   "subject": "S&P breadth divergence / market broadening beneath the AI-driven headline decline",
+   "labels": [
+    "s p breadth dispersion",
+    "equity market broadening trade"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Next week's earnings and central-bank event calendar",
+   "labels": [
+    "next week event risk",
+    "sxxp earnings week ahead"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Market complacency / bearish setup heading into and after the midterms",
+   "labels": [
+    "s p range bound low volatility",
+    "spx 200 dma bearish setup"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.0466,
+ "mis_merges": [
+  {
+   "label": "ai capital cost repricing",
+   "subjects": [
+    "AI-driven equity selloff in semis/CoreWeave/Meta and the market-wide reaction",
+    "credit-spread outlook and record M&A activity"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The credit-spread figures duplicate the dedicated corporate-credit-stress label almost verbatim and the M&A lines are an unrelated tail of 2 cards, too small to hide or create a theme an editor would otherwise miss."
+  },
+  {
+   "label": "next week event risk",
+   "subjects": [
+    "next week's macro/earnings calendar and Fed-growth outlook",
+    "Brazil presidential election risk"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The two Brazil cards here duplicate a fully-formed dedicated Brazil label, so an editor would still catch and lead with that theme from its own label regardless of this leak."
+  }
+ ],
+ "pass": true,
+ "notes": "Only a sample of cards per label was shown against a stated 1265-card total, so fragmented_mass_share is a lower-bound estimate from visible cards only. Meta's earnings reaction is scattered thinly across three labels (ai capital cost repricing, ai earnings beat selloff disconnect, meta ai monetization bull case) but each holds too little Meta-specific content to count as a clean fragmentation pair; worth a reader note for day 2 if the pattern repeats.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

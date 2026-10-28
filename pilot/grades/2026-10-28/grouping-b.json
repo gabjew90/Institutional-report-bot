@@ -1,0 +1,70 @@
+{
+ "metric": 1,
+ "total_cards": 1265,
+ "fragmentation_sets": [
+  {
+   "subject": "Oct-22 AI-driven equity de-grossing and Treasury flight-to-quality (hedge-fund/CTA/momentum unwind, breadth dispersion, rates mechanics)",
+   "labels": [
+    "hedge fund de grossing",
+    "ai capital cost repricing",
+    "momentum factor crash",
+    "systematic selling mechanics",
+    "s p breadth dispersion",
+    "equity market broadening trade",
+    "dollar yen ai risk hedge",
+    "s p range bound low volatility",
+    "treasury flight quality",
+    "global rates duration positioning"
+   ],
+   "cards": 100
+  },
+  {
+   "subject": "Next week's mega-cap earnings and central-bank decision calendar (US + Europe)",
+   "labels": [
+    "next week event risk",
+    "sxxp earnings week ahead"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Brazil presidential runoff election risk",
+   "labels": [
+    "next week event risk",
+    "brazil presidential election risk"
+   ],
+   "cards": 7
+  },
+  {
+   "subject": "Meta's AI monetization story: bull thesis vs. earnings-reaction/credit-stress read",
+   "labels": [
+    "ai capital cost repricing",
+    "meta ai monetization bull case"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.38,
+ "mis_merges": [
+  {
+   "label": "next week event risk",
+   "subjects": [
+    "US/European mega-cap earnings and central-bank calendar for next week",
+    "Brazil presidential election (Sunday runoff)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Brazil's election already has its own dedicated label with fuller coverage, so burying two cards here scatters rather than suppresses the subject from an editor's view."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmentation is driven mainly by the Oct-22 AI de-grossing wave, split 10 ways by instrument (equity flow, momentum/CTA mechanics, breadth, Treasuries), plus Meta's bull case and Brazil's election each split from their bear-case/calendar siblings. misc is ~3% of sampled cards and excluded from fragmented mass; the share is estimated from the representative claims shown per label against the day's stated 1265-card total.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

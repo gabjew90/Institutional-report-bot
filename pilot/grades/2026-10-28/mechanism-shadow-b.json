@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-27/21724__gs-privorotsky-gs-basics-systematic-unwinds-repricing-ai-cap.txt",
+ "source_span": "the issue is simply a repricing of the cost of capital... You either cut capex, delay deployment or increasingly fund through equity. None are particularly supportive of equity prices.",
+ "source_chain": "Demand confirmed (WDC ~20% EPS guide beat, Meta ad beat) but stocks fell anyway, therefore the selloff isn't a demand problem, therefore it's a repricing of the cost of capital funding the AI buildout, therefore issuers are left with three unsupportive choices (cut capex, delay deployment, or fund through equity), therefore none of those choices support equity prices. Invalidation/catalyst: next week's hyperscaler earnings, specifically how backlog converts to revenue, the pace of deployment, and what management says about funding.",
+ "pulse_chain": "Meta's beat confirmed AI ad demand and WDC guided ~20% above, yet both stocks fell, therefore (per Privorotsky) the mechanism is funding not products, therefore the selloff reprices the cost of capital paying for the buildout, therefore issuers face three choices (cut spending, delay deployment, raise equity), therefore none of those choices support share prices \u2014 reinforced by Meta's spending commitments ($825B vs $700B), hyperscaler off-balance-sheet debt ($3.6T, headed above $4T) and CoreWeave's ~$61B funding gap. Invalidation/catalyst: next week decides it \u2014 Privorotsky's test of how hyperscalers turn backlog into revenue, how fast they deploy, and what they say about funding.",
+ "preserved": true,
+ "why": "The pulse reproduces Privorotsky's exact causal sequence (demand confirmed \u2192 not a demand problem \u2192 cost-of-capital repricing \u2192 three unsupportive funding choices) and his exact invalidation (next week's hyperscaler earnings on backlog-to-revenue, deployment pace, funding commentary), attributed to the correct bank, with only compression and added corroborating figures.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

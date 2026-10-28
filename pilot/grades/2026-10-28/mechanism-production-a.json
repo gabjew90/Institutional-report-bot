@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-27/21950__we-re-all-rudderless-goldman-s-trading-floor-maps-the-ai-unw.txt",
+ "source_span": "the issue is simply a repricing of the cost of capital. The assumption of effectively unlimited cheap capital to fund this buildout is being challenged. You either cut capex, delay deployment or increasingly fund through equity.",
+ "source_chain": "AI demand is confirmed (Meta beats on ads, WDC beats-and-raises ~20%) but both stocks sell off anyway, therefore (per Goldman's Privorotsky) the selloff isn't about demand but a repricing of the cost of capital funding the AI buildout, therefore issuers are left with only costly options \u2014 cut capex, delay deployment, or dilute through equity \u2014 none of which support share prices; invalidation is next week's hyperscaler earnings showing how backlog converts to revenue, deployment pace, and what they say about funding.",
+ "pulse_chain": "Meta's demand beat and WDC's earnings beat both sell off anyway ('capital, not demand, is what broke'), therefore Goldman's Privorotsky argues the selloff reprices the cost of capital paying for the buildout, leaving issuers only costly choices (cut spending, delay deployment, raise equity) that don't support share prices, therefore funding stress (Meta's spending commitments, hyperscaler off-balance-sheet debt, CoreWeave's funding gap) turns into forced hedge-fund selling; invalidation is next week's hyperscaler earnings on backlog-to-revenue conversion, deployment pace and funding commentary, with options pricing a 1.80% move through Oct 30.",
+ "preserved": true,
+ "why": "The pulse reproduces Privorotsky's funding/cost-of-capital trilemma (cut capex, delay, or dilute) in the same direction, correctly attributed to Goldman, and carries the same invalidation (next week's hyperscaler results on backlog-to-revenue, deployment pace, funding); the one flaw is that the $3.6T/$4T off-balance-sheet tally is actually ZeroHedge's own count misattributed to 'Goldman tracks,' but that doesn't reverse or redirect the argued causal chain itself.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

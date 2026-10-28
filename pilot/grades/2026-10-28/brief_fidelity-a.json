@@ -1,0 +1,86 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Demand proved real (Meta ad beat, WDC beat-and-raise) but the market sold off anyway, so Privorotsky reframes it as a cost-of-capital repricing, not a demand problem, forcing issuers to cut capex/delay/dilute via equity -> evidence stacks up (Meta commitments to $825bn, CoreWeave needing ~$61bn, Oracle RPO outrunning its profit inflection, $3.6trn off-balance-sheet debt) -> credit is already through Goldman's own downside case (HY, record Meta CDS, 3-yr-wide CCCs) -> the de-risking wave rolled from long/short into systematic funds, the first same-day >1% loss across all three HF strategies since COVID, with gross exposure still crowded -> Treasuries rallied as the hedge but that reflexivity is fragile -> next week's hyperscaler earnings and their funding commentary are the real test.",
+   "brief_chain": "Same chain: demand confirmed but sold off anyway -> cost-of-capital repricing, not demand problem -> cut capex/delay/dilute -> Meta $825bn, CoreWeave ~$61bn, Oracle RPO vs profit inflection, $3.6trn off-balance-sheet debt -> HY through downside case, 3-yr-wide CCC, record Meta CDS -> stress spilled into systematic funds, first >1% loss across all three strategies since COVID, gross still crowded -> Treasuries rallied as hedge, fragile reflexivity -> next week's hyperscaler funding commentary is the test.",
+   "distortions": [
+    {
+     "what": "Brief compresses Oracle's RPO growth ($455bn to $664bn) against a profit inflection 'still likely in the next 12 months' into the phrase 'RPO has outrun its profit inflection' \u2014 a characterization, not a quoted figure.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same point (backlog growing faster than realized profit), no stance or figure changes."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d4",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Three stress points combined into one risk-off move: France (Franco-German spread to 174bps, near the Nov-2011 189bps peak, ECB December hike odds falling to 69% from 90%) led, with Italian spreads and European HY widening in sympathy and STOXX Banks at a 4-month low; AI growth fears hit the Philly semi index, CoreWeave and Meta (whose post-earnings rally reversed on capex concerns), dragging the S&P/Nasdaq to their worst sessions since July/June even as defensives and the equal-weight index outperformed; Middle East escalation risk (US-Israel strike plan, Houthi attack claim) pushed Brent to a 5-month high -> Treasuries rallied despite strong jobless claims, showing stress over fundamentals -> overnight the selloff has stabilized, with Japan's core CPI rising above target.",
+   "brief_chain": "Same three-stress-point chain, same figures (174bps/189bps, 69%/90%, 369bps HY, 4-month STOXX Banks low), same AI-fear leg (Philly semis, CoreWeave, Meta reversal, S&P/Nasdaq worst since July/June, defensives and equal-weight outperforming), same oil/geopolitics leg, same Treasury-rally-despite-strong-data point, same overnight-stabilization-plus-Japan-CPI close.",
+   "distortions": [
+    {
+     "what": "Brief's closing line attributes 'only slightly lower' overnight moves to 'US and European futures and most Asian indices' together; in the source that phrase describes only S&P/Nasdaq/Stoxx futures, while Asian cash indices are described separately and more unevenly (Shanghai/CSI at 15-month lows, Hang Seng actually up, Nikkei/Kospi recovering from larger losses).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the overall point (the selloff has stabilized overnight) still holds; this is a loose generalization across two source sentences, not a changed call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d13",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "OpenAI cuts its round's valuation target to $1.25trn from $1.4trn after Morgan Stanley/Dragoneer found weak private-wealth demand ('zero clamouring' vs past 'frenzy') -> the up-to-$30bn round is now expected to be led by Coatue and UAE funds, commitments due Oct 30 -> this follows Anthropic investors marking its pre-IPO valuation down to ~$1.5trn from a prior $2trn -> together the two labs have cut ~$650bn off hoped valuations in a week, against an AI-selloff backdrop (S&P -1.2%, Nasdaq -2.9%, hedge funds' worst day since 2011 by one GS measure, GS AI basket -23% from June highs, credit approaching and expected to overshoot March-2026 peaks) -> Goldman's Privorotsky frames it as a cost-of-capital repricing, not a demand problem; JPMorgan sees very low positioning but stays Tactically Bullish -> both labs' pending IPOs plus next week's MSFT/GOOGL/AMZN earnings are the proof points the market now needs.",
+   "brief_chain": "Same chain and same figures throughout: $1.25trn vs $1.4trn ask, MS/Dragoneer 'zero clamouring'/'frenzy'/'thud', Coatue + UAE funds leading an up-to-$30bn round due Oct 30, Anthropic's ~$1.5trn (down from $2trn) IPO valuation, ~$650bn combined cut in a week, Thursday's S&P -1.2%/Nasdaq -2.9%, hedge funds' worst day since 2011, GS AI basket -23%, credit approaching/overshooting March-2026 peaks, Privorotsky's cost-of-capital framing, JPMorgan's low-positioning-but-Tactically-Bullish read, and MSFT/GOOGL/AMZN earnings plus the IPOs as the market's proof points.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d27",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "S&P has gone nowhere for three months (60-day realized vol ~10%, bottom quartile) even though the hedge fund VIP pair trade was pummeled again this week on a mere 47bp S&P move, because pressure is one part positioning (a terrific H1/epic Q2 gave way to a drawdown since late June as crowded AI-theme length unwound, with sustained net-and-gross de-risking and the heaviest tech-selling day in two years) and one part fundamental (AI skepticism up even as mega-cap execution/demand holds, because power and capital constraints add uncertainty to the buildout's path/sequence), plus oil breaking out and midterms turning negative -> Pasquariello has limited conviction but reads the month's de-risking, firming IV, cyclicals-vs-defensives hit and the first negative Risk Appetite Indicator since March as wall-of-worry support for the bull case -> next week's hyperscaler earnings carry the day against GS's EPS growth path (+29%/+18%/+11%) -> credit has turned ugly beyond AI names, with contacts calling conditions 'melting down'.",
+   "brief_chain": "Same chain and figures: range-bound S&P, 10% realized vol bottom quartile, VIP pair hit on a 47bp move, terrific H1/epic Q2 into a late-June drawdown as AI-theme length unwound, sustained net/gross de-risking plus heaviest tech-selling day in two years, AI skepticism up despite held-up mega-cap execution/demand because of power/capital constraints, oil breakout and midterms as added negatives, limited conviction but de-risking/IV/cyclicals-defensives/negative RAI read as wall-of-worry bull support, hyperscaler earnings versus the +29%/+18%/+11% EPS path, and credit turning ugly beyond AI with 'melting down' commentary.",
+   "distortions": [
+    {
+     "what": "Brief links the VIP-pair pain to the H1/Q2-into-drawdown point with 'because', where the source frames the week's pressure as split between a positioning explanation (the H1/drawdown point) and a separate fundamental explanation, not a single causal chain.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both explanations are still present in the brief and the overall read (positioning unwind plus fundamental skepticism) is unchanged."
+    },
+    {
+     "what": "Brief labels the month's activity 'de-grossing'; the source's own word for the same cluster of facts (de-risking, firming IV, cyclicals-vs-defensives, negative RAI) is 'de-risking'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same underlying facts and same wall-of-worry conclusion, just a near-synonym swap."
+    },
+    {
+     "what": "Brief drops Pasquariello's 'swimming closer to shore' line and the bullish-morning/bearish-afternoon anecdote that color his 'limited conviction' point.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the stated takeaway ('limited conviction') survives without the supporting anecdote."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}
