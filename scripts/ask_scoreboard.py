@@ -47,8 +47,11 @@ from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from discord_bot import ask_router  # noqa: E402  (pure regex, no db)
+
+import ask_outcomes  # noqa: E402  (same folder)
 
 DEFAULT_DIR = "/data/ask-logs"
 UNKNOWN = ask_router.UNKNOWN
@@ -57,6 +60,8 @@ _ENTRY_RE = re.compile(r"^## (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) UTC\s*$", re.
 _ROUTE_RE = re.compile(r"^\*\*Route:\*\*\s*(.*)$", re.M)
 _TYPE_RE = re.compile(r"^\*\*Type:\*\*\s*`([^`]+)`", re.M)
 _CHANNEL_RE = re.compile(r"^\*\*Asker:\*\*.* in #(.+)$", re.M)
+# "**Asker:** BK (`bankerkyle`) in #..." or "**Asker:** 2Pale in #..."
+_ASKER_RE = re.compile(r"^\*\*Asker:\*\*\s*(.*?)(?:\s+\(`([^`]+)`\))?\s+in\s+#", re.M)
 _Q_RE = re.compile(r"^\*\*Q:\*\*\s*(.*?)(?=^\*\*A:\*\*)", re.S | re.M)
 _A_RE = re.compile(r"^\*\*A:\*\*\s*(.*?)(?=^\*\*Tools called:\*\*|^<details>|\Z)",
                    re.S | re.M)
@@ -88,6 +93,7 @@ def parse_entry(ts: str, block: str) -> dict:
     route_line = route_m.group(1) if route_m else ""
     type_m = _TYPE_RE.search(head)
     chan_m = _CHANNEL_RE.search(head)
+    asker_m = _ASKER_RE.search(head)
     q_m = _Q_RE.search(head)
     a_m = _A_RE.search(block)
     raw_m = _RAW_RE.search(block)
@@ -112,6 +118,8 @@ def parse_entry(ts: str, block: str) -> dict:
     return {
         "ts": ts,
         "channel": chan_m.group(1).strip() if chan_m else "",
+        "asker": ((asker_m.group(2) or asker_m.group(1)).strip().lower() if asker_m else ""),
+        "answer": answer,
         "type": type_m.group(1) if type_m else "gemini",
         "route": rk.group(1) if rk else "",
         "kind": rk.group(2) if rk else "",
@@ -184,6 +192,7 @@ def _p90(xs: list[float]) -> float | None:
 
 def summarize(entries: list[dict], examples: int = 15) -> dict:
     n = len(entries)
+    placed = ask_outcomes.mark(entries)
     by_shape: dict[str, list[dict]] = defaultdict(list)
     for e in entries:
         by_shape[group(e)].append(e)
@@ -197,6 +206,8 @@ def summarize(entries: list[dict], examples: int = 15) -> dict:
             "shape": shape,
             "asks": len(es),
             "share_pct": _pct(len(es), n),
+            "corrected_pct": _pct(sum(e["corrected"] for e in es), len(es)),
+            "reasked_pct": _pct(sum(e["reasked"] for e in es), len(es)),
             "inferred": sum(e["shape_inferred"] for e in es),
             "median_s": round(statistics.median(lats), 1) if lats else None,
             "p90_s": _p90(lats),
@@ -228,6 +239,14 @@ def summarize(entries: list[dict], examples: int = 15) -> dict:
         "last": entries[-1]["ts"] if entries else None,
         "failed": sum(e["type"] == "failed" for e in entries),
         "short_circuit": sum(e["type"].startswith("short_circuit") for e in entries),
+        "corrected": sum(e["corrected"] for e in entries),
+        "reasked": sum(e["reasked"] for e in entries),
+        "unplaced_corrections": placed["unplaced_corrections"],
+        "corrected_examples": [
+            {"ts": e["ts"], "shape": group(e),
+             "question": ask_router._last_line(e["question"])[:120],
+             "correction": e["corrections"][0]}
+            for e in [e for e in entries if e["corrected"]][-examples:]],
         "changed": sum(e["answer_changed"] for e in entries),
         "punctuation_only": sum(e["punctuation_only"] for e in entries),
         "no_check": sum(not e["checks"] for e in entries),
@@ -251,6 +270,10 @@ def render(s: dict) -> str:
         f"# /ask scoreboard: {s['first']} to {s['last']} UTC",
         "",
         f"- Answers: {n} (failed {s['failed']}, short-circuit {s['short_circuit']})",
+        f"- Corrected by the room: {s['corrected']} ({_pct(s['corrected'], n)}%)"
+        + (f", {s['unplaced_corrections']} more not matched to an answer"
+           if s["unplaced_corrections"] else ""),
+        f"- Asked again within 10 minutes: {s['reasked']} ({_pct(s['reasked'], n)}%)",
         f"- Words changed after the model wrote them: {s['changed']} ({_pct(s['changed'], n)}%)",
         f"- Punctuation cleanup only: {s['punctuation_only']} ({_pct(s['punctuation_only'], n)}%)",
         f"- No check fired: {s['no_check']} ({_pct(s['no_check'], n)}%)",
@@ -258,12 +281,13 @@ def render(s: dict) -> str:
         "",
         "## By shape",
         "",
-        "| shape | asks | share | median s | p90 s | words changed | retried | failed | top checks | top tools |",
-        "|---|---|---|---|---|---|---|---|---|---|",
+        "| shape | asks | share | corrected | asked again | median s | p90 s | words changed | retried | failed | top checks | top tools |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in s["shapes"]:
         lines.append(
-            f"| {r['shape']} | {r['asks']} | {r['share_pct']}% | {r['median_s']} | "
+            f"| {r['shape']} | {r['asks']} | {r['share_pct']}% | {r['corrected_pct']}% | "
+            f"{r['reasked_pct']}% | {r['median_s']} | "
             f"{r['p90_s']} | {r['changed_pct']}% | {r['retried_pct']}% | {r['failed']} | "
             f"{_fmt_pairs(r['top_checks'])} | {_fmt_pairs(r['top_tools'])} |")
     lines += [
@@ -276,6 +300,10 @@ def render(s: dict) -> str:
     for r in s["checks"]:
         lines.append(f"| {r['check']} | {r['fires']} | {r['share_pct']}% | "
                      f"{r['changed_pct']}% | {_fmt_pairs(r['shapes'])} |")
+    if s["corrected_examples"]:
+        lines += ["", "## Latest answers the room corrected", ""]
+        lines += [f"- {e['ts'][:16]} [{e['shape']}] {e['question']} → \"{e['correction']}\""
+                  for e in s["corrected_examples"]]
     if s["unknown_examples"]:
         lines += ["", "## Latest factual questions on the catch-all", ""]
         lines += [f"- {e['ts'][:16]} #{e['channel']}: {e['question']}"
