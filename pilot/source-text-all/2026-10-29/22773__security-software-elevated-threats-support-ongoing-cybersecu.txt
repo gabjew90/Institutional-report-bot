@@ -1,0 +1,4112 @@
+North America Equity Research
+28 October 2026
+J P M O R G A N
+www.jpmorganmarkets.com
+Security Software
+Elevated Threats Support Ongoing Cybersecurity 
+Demand: Previewing CHKP, FROG, QLYS, RPD, CLBT 
+Software - Large Cap / Mid & Small 
+Cap
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+John Lee
+(1-212) 622-6064
+john.h.lee@jpmorgan.com
+J.P. Morgan Securities LLC
+The authors wish to thank Suryaansh 
+Jindal, of the J.P. Morgan Global 
+Research Center, for contributions to this 
+report.
+Rising critical vulnerabilities should drive ongoing cybersecurity 
+spending. We have seen a continued elevated threat environment in recent 
+quarters, with AI-driven discovery surfacing more severe vulnerabilities across 
+widely used software at a faster pace (Figure 1). We highlighted the recent critical 
+PHP vulnerability, which affects roughly 70% of websites globally, in our note 
+Black October Is Haunting C-Suites (link here). We think vulnerabilities of 
+comparable severity will become recurring events rather than isolated incidents as 
+frontier models continue to improve. Cybersecurity has moved from an IT concern 
+to a board-level business continuity priority, tied to protecting critical 
+infrastructure, customer data, and operations. We see potential for security budgets 
+to accelerate into 2027 even as other IT spending areas face closer scrutiny. Partner 
+conversations indicate that enterprises are willing to invest more in security, as the 
+post-Mythos era has brought a sense of urgency to migrate off of legacy Network 
+Security, Endpoint and Identity environments to get the latest versions of 
+hardware, software, and operating systems into their networks. Considering 
+typical sales cycles of 6-12 months, we expect more of the upside will come 
+through in 4Q and 2027 rather than in 3Q results. We think vendors with exposure 
+to the following will benefit most: 1) Next-generation platforms with robust 
+detection and response capabilities as the window between discovery and 
+exploitation compresses (CRWD, PANW), 2) software supply chain governance, 
+as more agent-generated code and binaries move into production (FROG), Next-
+generation idenity platforms to help govern the wave of agentic identities on the 
+horizon (OKTA, SAIL, PANW), 3) exposure management, as security teams sort 
+through a rising volume of vulnerabilities (TENB, QLYS), and 4) software supply 
+chain governance, as more agent-generated code and binaries move into 
+production (FROG). We expect investor focus will center on forward-looking 
+demand indicators, pipeline conversion, and early views on 2027 budgets as the 
+clearest signals that threat urgency is converting into revenue. Among those 
+reporting over the next few weeks, we remain Overweight FROG and CLBT, 
+Neutral CHKP and QLYS, and Underweight RPD.
+Equity Ratings and Price Targets
+Mkt Cap
+Rating
+Price Target
+Company
+Ticker
+($ mn)
+Price ($)
+Cur
+Prev
+Cur
+End 
+Date
+Prev
+End 
+Date
+Check Point Software
+CHKP US
+16,543.44
+159.84
+N
+n/c
+167.00 Dec-27
+135.00
+n/c
+JFrog
+FROG US
+11,578.01
+100.46
+OW
+n/c
+115.00 Dec-27
+n/c
+n/c
+Qualys
+QLYS US
+7,983.34
+227.90
+N
+n/c
+241.00 Dec-27
+173.00
+n/c
+Rapid7
+RPD US
+1,378.96
+17.60
+UW
+n/c
+12.00 Dec-27
+n/c
+n/c
+Cellebrite
+CLBT US
+3,092.88
+11.93
+OW
+n/c
+16.00 Dec-27
+n/c
+n/c
+Source: Company data, Bloomberg Finance L.P., J.P. Morgan estimates. n/c = no change.All prices as of 27 Oct 26.
+See page 19 for analyst certification and important disclosures.
+
+2
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Figure 1: The Volume & Severity of Vulnerabilities Is Accelerating
+Absolute CVE Count Stacked by Severity
+0
+5,000
+10,000
+15,000
+20,000
+25,000
+30,000
+35,000
+CVE Count
+Low
+Medium
+High
+Critical
+Mythos release
+Source: J.P. Morgan Research, CVE.org.
+
+3
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+CheckPoint (CHKP)
+CHKP is scheduled to report 3Q earnings on November 2nd before market open
+Execution in focus as FY26 guidance relies on a stronger 4Q. We expect 3Q26 
+product revenue to decline at a similar rate to 2Q (14% y/y), as CHKP anticipates 
+several large appliance deals pushing into 4Q. The company took a prudent approach to 
+3Q guidance, assuming those deals push along with a lower win rate vs. last year, and 
+we see modest room for upside if some close in the quarter. Unchanged FY26 guidance 
+implies roughly 6.5% y/y revenue growth in 4Q at the midpoint, which we think sets a 
+high bar with little margin for additional deal delays. CHKP noted that its 4Q pipeline is 
+significantly higher than the same period last year, including late-stage deals, though 
+channel conversations point to greater use of discounting and retention rebates to protect 
+the installed base. Focus remains on pipeline conversion, particularly win rates as the 
+sales organization stabilizes after the go-to-market reorganization earlier this year. We 
+remain Neutral rated, as we view risk/reward as balanced until we see a sustained 
+recovery in sales performance.
+Pricing actions and emerging products set up FY27. Partner conversations indicate 
+that CHKP’s firewall and SASE growth has trailed larger platform peers this year, which 
+we think puts more weight on emerging products to complement the core business. 
+Combined ARR across Email Security, CTEM (continuous threat exposure 
+management), and AI Security grew more than 40% y/y in 2Q, and we expect the 
+elevated threat environment to sustain demand for CTEM as customers look to prioritize 
+exposures. We view the new AI Network Firewall, which embeds AI protection directly 
+in CHKP’s appliances, as an AI security entry point into the company’s large installed 
+base, though adoption remains early. We see pricing as another lever for growth, with 
+CHKP implementing a 12% increase on SMB and branch products effective October 1st 
+and more than 20% for enterprise. Guidance does not include the October increases, 
+which should also help offset elevated memory costs and support the FY26 operating 
+margin outlook. Higher discounting largely offset the two 5% increases earlier this year, 
+and channel checks indicate that CHKP had not raised prices at the partner level as of 
+mid-October. We think discounting could again absorb a good portion of the uplift. The 
+Analyst Day during Check Point Experience (CPX) in February could represent the next 
+non-earnings catalyst for the stock, and the event should offer an opportunity for an 
+update on the multi-year outlook.
+3Q26 Metrics We’re Watching
+•
+Revenue consensus of $672mm
+•
+Product revenue consensus of $109mm
+•
+Subscription revenue consensus of $338mm
+•
+Operating margin consensus of 38.3%
+•
+FCF consensus of $250mm
+
+4
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+JFrog (FROG)
+FROG is scheduled to report 3Q earnings on November 5th after market close
+Consumption momentum supports potential upside to cloud guidance. We expect 
+strong 3Q26 results driven by AI-related binary volume flowing through the platform. 
+Cloudflare (covered by Samik Chatterjee) recently announced that 10 million 
+developers are now building on its platform, up from 7.4 million in the prior quarter, 
+with daily requests from AI agents on its network up more than 1,700% y/y. We view 
+the data as a positive read-through for FROG, as faster AI-driven application 
+development should translate into more binaries flowing through Artifactory, the 
+company’s binary repository. FROG’s guidance continues to de-risk large deals for 
+timing and excludes any benefit from cloud usage above contractual commitments, 
+which we think leaves room for results to exceed the outlook. We expect investor focus 
+to remain on consumption durability, as partner conversations indicate that enterprises 
+plan to place guardrails on AI spend over the next 6-12 months, starting with token 
+caps. We think token caps pose limited risk to FROG, which monetizes binary traffic 
+rather than AI prompts. The company’s sales team is focused on converting usage above 
+contracted minimums into higher annual commitments. We remain Overweight rated, as 
+FROG continues to deliver consistent Rule of 40 execution with multiple levers for 
+outperformance across DevSecOps, AI, MLOps, and governance markets.
+Security, governance, and SaaS migration add growth levers. Security has become a 
+key driver of FROG’s largest deals, as more than 80% of customers that crossed $1mm 
+in ARR in 2Q added security. We expect security attach to keep expanding deal sizes 
+and support more multi-year contracts. We think the Network-Layer Protection (Traffic 
+Controller) and new AppTrust governance capabilities introduced at the company’s 
+swampUP user conference in early September extend FROG’s reach from developer 
+teams to security and compliance teams. FROG now counts four frontier AI labs as 
+customers, and the wins reinforce its position as the neutral system of record for binaries 
+across an increasingly fragmented toolchain. The recent zero-day vulnerability in self-
+hosted Artifactory could also accelerate migration to FROG’s SaaS platform, as more 
+customers view SaaS as the more secure environment.
+3Q26 Metrics We’re Watching
+•
+Revenue consensus of $166mm
+•
+SaaS Revenue consensus of $89mm  
+•
+Operating margin consensus of 17.0%
+•
+NDR consensus of 120%
+
+5
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Qualys (QLYS)
+QLYS is scheduled to report 3Q earnings on November 9th after market close
+Vulnerability urgency supports installed-base upgrades. We expect healthy 3Q26 
+results as accelerating vulnerability volumes support upgrades from VMDR, the 
+company’s core vulnerability management product, to Enterprise TruRisk Management 
+(ETM), its risk management offering. Channel conversations indicate that customers are 
+setting aside new budget to address vulnerabilities and accelerating upgrades of 
+outdated systems that no longer receive security updates. We think this trend could 
+benefit QLYS’s asset inventory (CSAM) and Patch Management offerings, which help 
+customers find unpatched systems and fix them at scale. ETM, CSAM, and Patch 
+Management each rose as a share of the bookings mix in 2Q, and rising remediation 
+urgency should sustain the shift. We see the larger opportunity in 2027, as fixing AI-
+discovered vulnerabilities becomes a multi-year budget priority rather than a single-
+quarter project. We expect investor focus to center on whether new-product attach 
+continues to build and on early adoption of the Risk Operations Center (ROC). We 
+remain Neutral rated, as we look for the tailwind to extend beyond renewals into new 
+business.
+Remediation-led upgrades anchor the ETM opportunity. We expect TruRisk 
+Eliminate, the company’s autonomous remediation capability, to strengthen the case for 
+upgrading to ETM. Newer launches such as InstaScan and Agent Val add faster 
+detection and exploit validation ahead of remediation. Management’s guidance implies 
+7-8% y/y current billings growth in 2H, which we view as conservative after 16% y/y 
+growth in 2Q. We expect 2H billings to be weighted toward 4Q, the company’s 
+seasonally heavier renewal quarter, as some 3Q renewal customers still evaluating new 
+products could push decisions into 4Q. Management indicated that 9.5-10% y/y current 
+billings growth is a starting point for FY27, assuming net dollar expansion steady at 
+105% and a modest contribution from new business. We view the framework as a 
+reasonable floor, with potential upside if upgrade conversion continues under the new 
+ETM leadership.
+3Q26 Metrics We’re Watching
+•
+Revenue consensus of $187mm
+•
+Operating margin consensus of 43.3%
+•
+NRR consensus of 105%
+
+6
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Rapid7 (RPD)
+RPD is scheduled to report 3Q earnings on November 4th after market close
+Transition remains a multi-quarter process. We anticipate 3Q26 results will reflect 
+the reset framework outlined last quarter, with 3Q ARR guided to roughly $812mm as 
+non-core offerings decline. We look for stability in the core business as evidence that the 
+transition is on track, supported by early adoption of Exposure Command (the 
+company’s exposure management platform) and steady detection and response growth. 
+Restructuring savings should support the roughly 20% non-GAAP operating margin 
+targeted for 4Q, and we expect investors will focus on whether the savings arrive on 
+schedule. The balance sheet should be able to cover $600mm of convertible notes due 
+March 2027, with $702.6mm of cash and short-term investments at the end of 2Q, 
+which should limit refinancing risk. RPD has benefited from the strength across the 
+security group, but we think peers are better positioned to capture the vulnerability-
+driven tailwind while the new leadership team works through product and sales changes. 
+We remain Underweight rated until we see a consistent path of delivery against the 
+updated targets.
+3Q26 Metrics We’re Watching
+•
+Revenue consensus of $209mm
+•
+ARR consensus of $813mm
+•
+Operating margin consensus of 16.8%
+
+7
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Cellebrite (CLBT)
+CLBT is scheduled to report 3Q earnings on November 12th before market open
+Execution against a reset outlook in focus, with the US redomicile adding longer-
+term upside. We view 3Q26 results as the first test of the updated FY26 outlook, after 
+several large deals slipped on new administrative requirements tied to CLBT’s foreign-
+entity status. CLBT lowered its FY26 ARR and revenue guidance on softer pricing, 
+Inseyets conversion (the company’s upgraded digital forensics suite) and more prudent 
+deal-timing assumptions. We think the updated outlook is conservative, as guidance 
+removes potential upside from larger, more complicated deals. CLBT noted that none of 
+the delayed deals were lost and that $4mm had already closed at the time of the 2Q call. 
+The federal fiscal year-end in 3Q should help CLBT recapture more of the remaining 
+government business, now that the company has secured a master permit to expedite 
+federal orders. We expect questions on large-deal timing with government customers, 
+Inseyets conversion economics, and early priorities under the new CEO. The board 
+recently authorized a reorganization under a new US parent company, moving the 
+domicile from Israel to the US (expected by 1H27). We think the move will ease 
+procurement friction tied to foreign-entity status on US federal deals and position CLBT 
+for potential S&P and Russell index eligibility, which could broaden its shareholder 
+base. We remain Overweight rated, as we view valuation as undemanding, though 
+consistent execution over multiple quarters is needed to rebuild investor conviction.
+3Q26 Metrics We’re Watching
+•
+Revenue consensus of $146mm
+•
+ARR consensus of $526mm
+•
+Adjusted EBITDA margin consensus of 29.6%
+
+8
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Investment Thesis, Valuation and Risks
+Check Point Software (Neutral; Price Target: $167.00)
+Investment Thesis
+We think that near-term execution risk and weakening competitive position put the stock at 
+risk. Our thesis is based on the recent partner checks which points to: 1) firewall share loss 
+to larger platform vendors, driven by more favorable discounting and stronger platform 
+positioning 2) CHKP screening below peers in SASE, citing gaps in technology, integration, 
+and platform breadth; and 3) sales and technical turnover across pre-sales, solution 
+architects, and the field, a sign that recent GTM disruption will likely linger longer than 
+expected.
+Valuation
+Our Dec 2027 price target of $167 (from $135) is derived using a 8x CY28E FCF multiple 
+(CY27 estimate of $1,410.4mm), which implies 9.4x on CY27E FCF Multiple (CY27 
+estimates of $1,306.5mm). The higher multiple is due to overall peer multiple expansion but 
+continues to represent a discount to the average of cyber security peers. We think the 
+discount is warranted given the near-term execution risk and weakening competitive 
+position.
+Risks to Rating and Price Target
+(+) Meaningful Subscription re-acceleration led by emerging products (email, SASE, 
+CTEM), traction with AI Security offerings. (-) Market share loss, elevated competition in 
+emerging markets, lack of customer growth, peer pricing pressure.
+
+9
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Investment Thesis, Valuation and Risks
+JFrog (Overweight; Price Target: $115.00)
+Investment Thesis
+JFrog is a software company that offers a DevSecOps platform that helps software 
+developers to efficiently manage, secure and distribute binaries (compiled source code, also 
+called artifacts) in an automated way, meaningfully reducing software development cycle 
+times, which is a key consideration as businesses race toward digital transformation. JFrog’s 
+Artifactory product is considered the “gold standard” for artifact repository, but it has 
+gradually developed more into a complete DevSecOps platform, adding integrated security 
+capabilities that can scan compiled code for security vulnerabilities before the software 
+“build process.” Additionally, the company has developed CI/CD capabilities that help in 
+the integration of the various binary packages as well as deployment of the code into 
+runtime. Our Overweight rating reflects our strong fundamental positive bias toward JFrog 
+given plenty of tailwinds in the DevSecOps space, and we see its expansion into security, 
+solid cloud growth and its evolving cloud-aligned go-to-market motion, with extending 
+DevSecOps into the edge as a potential future catalyst. We are also impressed by the 
+financial model driving high-90s% gross retention, and over 30% revenue growth and being 
+sustainable FCF positive since 2019, achieving a “Rule of 40” consistently since its IPO. 
+Valuation
+Our CY27 price target of $115 is derived from 60.5x EV/CY27E FCF ($232.6mm for 
+CY27E FCF). The multiple represents a premium to our high-growth coverage (>20%), 
+which is justified in our view as FCF growth could approach 50% y/y next year.
+Risks to Rating and Price Target
+Downside Risks
+Execution Risk: We believe execution is one of the key risks to the story. In the case of 
+JFrog, management is looking to scale a fast-growing business. While the company 
+primarily has had a bottom-up, community focused approach to driving adoption of its 
+product, JFrog is leaning into a high-touch strategic sales team focused on top-tier accounts. 
+While we think it's executing pretty well so far, it is difficult to predict execution as we enter 
+a potentially choppier macro backdrop. 
+Competitive Pressure from Microsoft (GitHub), GitLab, and Others. The three main 
+external competitive risks come from Microsoft, Sonatype and other DevSecOps platform 
+players like GitLab. Microsoft’s acquisition of GitHub positioned it as the clear leader in 
+VCS (version control systems), the single source of truth in the development phase of 
+DevSecOps and precursor to the artifact repository that is the single source of truth for the 
+operations phase. It could make sense for a single vendor to offer products in both 
+categories, and that might mean Microsoft enters the space through development or 
+acquisition, and that would be a risk. Similar to GitHub, GitLab is also a competitor and has 
+expanded into adjacent areas of the DevSecOps platform, with strong capabilities in CI/CD, 
+but lacking in areas such as artifact repository and security, with the latter having breadth 
+rather than depth. There are also private companies that are attempting to provide a complete 
+DevOps suite of products that include the artifact repository, which if successful could eat 
+into FROG’s market share. Finally, JFrog’s primary competitor is Sonatype, which we think 
+is moving more into security but if it attracted strategic interest by the likes of a GitLab or 
+Microsoft, that could pose a challenge for JFrog. 
+
+10
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+General Risks 
+Security Breaches and Outages. JFrog provides its software as a self-managed as well as 
+a SaaS subscription. With respect to the SaaS solution, service can be provided over the 
+internet, which involves transmission of its customers’ data. Additionally, JFrog’s 
+applications are hosted, and the data is stored in third-party data centres. Any unauthorized 
+access to the data due to security breaches or any outages that might impact the uptime of 
+the systems could negatively impact JFrog’s business. 
+Macroeconomic Gyrations. Any persistent macroeconomic headwinds could prompt 
+buyers to more carefully consider their purchase or delay purchasing altogether, which 
+could adversely affect JFrog’s business prospects. For example, the current Israel-Hamas 
+conflict escalating further could impact business operations as close to half of JFrog’s 
+employees are based in Israel.
+
+11
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Investment Thesis, Valuation and Risks
+Qualys (Neutral; Price Target: $241.00)
+Investment Thesis
+We believe that top-line growth for Qualys is currently reliant on existing customer 
+expansion rather than new customer additions, and consequently view the detection and 
+remediation product adjacencies as key to successful revenue expansion beyond core VA/
+VM offerings. However, we remain cautious as valuation remains elevated for a company 
+with single-digit growth, contracting margins, and declining FCF. We see better risk/reward 
+elsewhere in our coverage. 
+Valuation
+Our CY27 price target of $241 is based on a 19.5x EV/CY28E FCF multiple (CY28 FCF 
+of $364.8mm), which implies 22x on a CY27E FCF Multiple (CY27 FCF of $335mm) with 
+higher multiple due to overall peer multiple expansion. Our current multiple reflects a 
+discount to the company’s low growth security peer group, which we believe is warranted 
+due to the risk-reward profile of the company.
+Risks to Rating and Price Target
+(+) Accelerated adoption of Cloud Agent Platform, traction with platform approach, rate of 
+SMB market penetration. (−) Sales execution headwinds, slower bookings mix shift toward 
+ETM/CSAM, margin contraction from accelerating S&M investment.
+
+12
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Investment Thesis, Valuation and Risks
+Rapid7 (Underweight; Price Target: $12.00)
+Investment Thesis
+Rapid7 has had a decelerating growth profile over the past few years, and execution 
+challenges have resulted in lower net new ARR in recent quarters. The company completed 
+a string of acquisitions over the past few years that have added to its IP and product offerings, 
+but this activity has tapered off and we are concerned that this is one reason for weaker ARR 
+traction. Additionally, the company accelerated its transition to a subscription model last 
+year, compounding revenue headwinds. We believe that the timing of margin expansion 
+remains a critical issue for investors who are seeking improved operating leverage. Finally, 
+Rapid7’s market positioning exposes it to a higher proportion of SMB customers compared 
+with other companies in our coverage universe, which could also represent a drag to top-line 
+performance in the event macro conditions continue to deteriorate.  
+Valuation
+Our Dec 2027 price target of $12 is derived from a 7.0x EV/CY27E FCF multiple (FCF of 
+$136.8mm for CY27), a discount to the average multiple of Security Software peers. We 
+think the discount is justified considering muted growth as we wait for signs of better sales 
+execution and product traction.
+Risks to Rating and Price Target
+(+) Margins inflect for expansion faster than expected, RPD gains faster traction outside of 
+core VM offerings, ARR per customer benefits from increased upsell to existing customers.
+
+13
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Investment Thesis, Valuation and Risks
+Cellebrite (Overweight; Price Target: $16.00)
+Investment Thesis
+Investigations by government agencies, police, and enterprises are going through the same 
+digital transformation that we are seeing across industries. These customers are moving 
+away from manual processes and point products toward a more comprehensive suite of 
+digital solutions that drive better efficacy and efficiency across the investigatory process. 
+Cellebrite has established itself as a leader in this industry with a presence in most of the 
+major relevant customers, and now the focus is on expanding its presence through cross-
+selling and up-selling. In addition, Cellebrite is in the process of transitioning to a 
+subscription-based business model that we believe will improve revenue visibility, growth, 
+and profitability/cash flow. These dynamics, combined with what we view as an attractive 
+valuation that is at a discount to the overall software universe, could lead to share price 
+outperformance as investors become more aware of this uniquely positioned company.
+Valuation 
+Our Dec 2027 price target of $16 is derived from a 17.8x EV/CY27E FCF multiple (FCF 
+of $197.1mm for CY27E), which is a discount to the average across our Security Software 
+coverage universe. We think the current multiple is warranted given the FY26 outlook reset 
+and CEO transition, as we look for consistent execution against the revised framework over 
+the coming quarters.
+Risks to Rating and Price Target
+(-) New technologies make collection much harder or too easy, complexity and structure 
+make valuation tougher to understand, Cellebrite already has a presence in most of the target 
+customers, headline risks on control and usage of product.
+
+14
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Check Point Software: Summary of Financials
+Income Statement - Annual
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Revenue
+2,565
+2,725
+2,819
+2,991
+3,223
+COGS
+(319)
+(362)
+(379)
+(353)
+(371)
+Gross profit
+2,279
+2,410
+2,491
+2,673
+2,887
+SG&A
+(975)
+(1,076)
+(1,156)
+(1,236)
+(1,327)
+Adj. EBITDA
+1,122
+1,139
+1,134
+1,214
+1,318
+D&A
+(84)
+(93)
+(78)
+(79)
+(79)
+Adj. EBIT
+1,098
+1,114
+1,107
+1,186
+1,291
+Net Interest
+0
+0
+0
+0
+0
+Adj. PBT
+1,194
+1,228
+1,272
+1,358
+1,462
+Tax
+(126)
+112
+(153)
+(182)
+(199)
+Minority Interest
+-
+-
+-
+-
+-
+Adj. Net Income
+1,039
+1,307
+1,092
+1,147
+1,235
+Reported EPS
+7.45
+9.63
+7.91
+8.98
+10.20
+Adj. EPS
+9.15
+11.90
+10.63
+11.71
+13.28
+DPS
+-
+-
+-
+-
+-
+Payout ratio
+-
+-
+-
+-
+-
+Shares outstanding
+114
+110
+103
+98
+93
+Balance Sheet & Cash Flow Statement
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Cash and cash equivalents
+1,372
+3,015
+2,239
+2,233
+2,332
+Accounts receivable
+729
+769
+852
+905
+987
+Inventories
+0
+0
+0
+0
+0
+Other current assets
+822
+949
+1,043
+1,154
+1,213
+Current assets
+2,193
+3,964
+3,282
+3,387
+3,545
+PP&E
+81
+83
+84
+83
+85
+LT investments
+1,412
+1,327
+1,930
+1,942
+1,954
+Other non current assets
+1,572
+1,641
+2,291
+2,296
+2,301
+Total assets
+5,743
+7,806
+7,829
+7,886
+8,000
+ 
+ 
+  
+ 
+ 
+Short term borrowings
+0
+0
+0
+0
+0
+Payables
+473
+407
+398
+389
+417
+Other short term liabilities
+1,471
+1,530
+1,667
+1,787
+1,847
+Current liabilities
+1,944
+1,937
+2,065
+2,176
+2,264
+Long-term debt
+0
+1,972
+1,975
+1,975
+1,975
+Other long term liabilities
+561
+2,658
+2,713
+2,771
+2,815
+Total liabilities
+2,954
+4,924
+5,181
+5,395
+5,575
+Shareholders' equity
+2,789
+2,882
+2,647
+2,491
+2,424
+Minority interests
+0
+0
+0
+0
+0
+Total liabilities & equity
+5,743
+7,806
+7,829
+7,886
+8,000
+BVPS
+25.18
+26.87
+25.88
+25.65
+26.30
+y/y Growth
+4.4%
+6.7%
+(3.7%)
+(0.9%)
+2.5%
+Net debt/(cash)
+(1,372)
+(1,043)
+(264)
+(258)
+(357)
+ 
+ 
+ 
+ 
+ 
+ 
+Cash flow from operating activities
+1,059
+1,234
+1,242
+1,333
+1,439
+o/w Depreciation & amortization
+24
+25
+27
+28
+28
+o/w Changes in working capital
+(19)
+(97)
+87
+103
+121
+Cash flow from investing activities
+(210)
+(460)
+(125)
+(27)
+(29)
+o/w Capital expenditure
+(24)
+(27)
+(28)
+(27)
+(29)
+as % of sales
+0.9%
+1.0%
+1.0%
+0.9%
+0.9%
+Cash flow from financing activities
+(1,060)
+752
+(1,267)
+(1,300)
+(1,300)
+o/w Dividends paid
+0
+0
+0
+0
+0
+o/w Net debt issued/(repaid)
+0
+1,780
+0
+0
+0
+Net change in cash
+(176)
+1,558
+(173)
+7
+110
+Adj. Free cash flow to firm
+1,035
+1,208
+1,213
+1,306
+1,410
+y/y Growth
+1.8%
+16.7%
+0.5%
+7.7%
+8.0%
+Income Statement - Quarterly
+ 
+1Q26A
+2Q26A
+3Q26E
+4Q26E
+Revenue
+ 
+668A
+674A
+681
+797
+COGS
+ 
+(98)A
+(100)A
+(83)
+(99)
+Gross profit
+ 
+585A
+588A
+609
+709
+SG&A
+ 
+(276)A
+(277)A
+(288)
+(316)
+Adj. EBITDA
+ 
+271A
+267A
+268
+328
+D&A
+ 
+(20)A
+(19)A
+(20)
+(20)
+Adj. EBIT
+ 
+265A
+260A
+261
+321
+Net Interest
+ 
+0A
+0A
+0
+0
+Adj. PBT
+ 
+307A
+303A
+303
+363
+Tax
+ 
+(34)A
+(33)A
+(38)
+(47)
+Minority Interest
+ 
+-
+-
+-
+-
+Adj. Net Income
+ 
+265A
+263A
+257
+309
+Reported EPS
+ 
+1.81A
+1.87A
+1.89
+2.33
+Adj. EPS
+ 
+2.50A
+2.55A
+2.52
+3.06
+DPS
+ 
+-
+-
+-
+-
+Payout ratio
+ 
+-
+-
+-
+-
+Shares outstanding
+ 
+106A
+104A
+102
+101
+Ratio Analysis
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Gross margin
+88.9%
+88.4%
+88.4%
+89.4%
+89.6%
+EBITDA margin
+43.7%
+41.8%
+40.2%
+40.6%
+40.9%
+EBIT margin
+42.8%
+40.9%
+39.3%
+39.7%
+40.0%
+Net profit margin
+40.5%
+48.0%
+38.7%
+38.4%
+38.3%
+ 
+ 
+  
+ 
+ 
+ROE
+37.0%
+46.1%
+39.5%
+44.7%
+50.2%
+ROA
+18.2%
+19.3%
+14.0%
+14.6%
+15.5%
+ROCE
+34.1%
+27.3%
+20.0%
+22.1%
+24.6%
+SG&A/Sales
+38.0%
+39.5%
+41.0%
+41.3%
+41.2%
+Net debt/equity
+NM
+NM
+NM
+NM
+NM
+ 
+ 
+  
+ 
+ 
+P/E (x)
+17.5
+13.4
+15.0
+13.7
+12.0
+P/BV (x)
+6.3
+5.9
+6.2
+6.2
+6.1
+EV/EBITDA (x)
+12.3
+10.7
+10.9
+10.2
+9.3
+Dividend Yield
+-
+-
+-
+-
+-
+ 
+ 
+  
+ 
+ 
+Sales/Assets (x)
+0.4
+0.4
+0.4
+0.4
+0.4
+Interest cover (x)
+-
+-
+-
+-
+-
+Operating leverage
+27.4%
+24.0% (19.1%)
+118.4%
+113.2%
+ 
+ 
+ 
+ 
+ 
+ 
+Revenue y/y Growth
+6.2%
+6.3%
+3.4%
+6.1%
+7.8%
+EBITDA y/y Growth
+1.8%
+1.5%
+(0.4%)
+7.1%
+8.6%
+Tax rate
+12.9%
+6.4%
+14.2%
+15.5%
+15.5%
+Adj. Net Income y/y Growth
+4.2%
+25.8% (16.4%)
+5.1%
+7.6%
+EPS y/y Growth
+8.6%
+30.1% (10.7%)
+10.1%
+13.4%
+DPS y/y Growth
+-
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: Company reports and J.P. Morgan estimates.
+Note: $ in millions (except per-share data).Fiscal year ends Dec. o/w - out of which
+
+15
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+JFrog: Summary of Financials
+Income Statement - Annual
+FY24A
+FY25A
+FY26E
+FY27E
+Revenue
+428
+532
+652
+783
+COGS
+(98)
+(123)
+(147)
+(189)
+Gross profit
+330
+408
+505
+594
+SG&A
+(260)
+(305)
+(353)
+(385)
+Adj. EBITDA
+67
+96
+124
+176
+D&A
+(21)
+(25)
+(23)
+(23)
+Adj. EBIT
+63
+92
+120
+168
+Net Interest
+25
+26
+32
+39
+Adj. PBT
+89
+118
+152
+207
+Tax
+(3)
+(6)
+(4)
+(12)
+Minority Interest
+-
+-
+-
+-
+Adj. Net Income
+75
+100
+129
+176
+Reported EPS
+(0.60)
+(0.59)
+(0.29)
+0.06
+Adj. EPS
+0.65
+0.82
+1.00
+1.33
+DPS
+-
+-
+-
+-
+Payout ratio
+-
+-
+-
+-
+Shares outstanding
+115
+122
+129
+132
+.
+ 
+ 
+ 
+ 
+Balance Sheet & Cash Flow Statement
+FY24A
+FY25A
+FY26E
+FY27E
+Cash and cash equivalents
+50
+76
+164
+396
+Accounts receivable
+91
+120
+131
+173
+Inventories
+-
+-
+-
+-
+Other current assets
+127
+169
+196
+240
+Current assets
+649
+873
+1,088
+1,364
+PP&E
+6
+6
+8
+9
+LT investments
+-
+-
+-
+-
+Other non current assets
+43
+51
+63
+71
+Total assets
+1,130
+1,341
+1,552
+1,822
+ 
+ 
+  
+ 
+Short term borrowings
+-
+-
+-
+-
+Payables
+11
+14
+27
+31
+Other short term liabilities
+307
+393
+456
+535
+Current liabilities
+318
+408
+482
+567
+Long-term debt
+-
+-
+-
+-
+Other long term liabilities
+39
+46
+50
+56
+Total liabilities
+356
+454
+532
+623
+Shareholders' equity
+774
+887
+1,020
+1,200
+Minority interests
+-
+-
+-
+-
+Total liabilities & equity
+1,130
+1,341
+1,552
+1,822
+BVPS
+7.05
+7.64
+8.26
+9.39
+y/y Growth
+7.3%
+8.3%
+8.2%
+13.6%
+Net debt/(cash)
+14
+12
+23
+24
+ 
+ 
+ 
+ 
+ 
+Cash flow from operating activities
+111
+146
+165
+241
+o/w Depreciation & amortization
+21
+25
+23
+23
+o/w Changes in working capital
+25
+33
+13
+39
+Cash flow from investing activities
+(165)
+(152)
+(105)
+(9)
+o/w Capital expenditure
+0
+0
+0
+0
+as % of sales
+0.0%
+0.0%
+0.0%
+0.0%
+Cash flow from financing activities
+21
+31
+29
+0
+o/w Dividends paid
+-
+-
+-
+-
+o/w Net debt issued/(repaid)
+-
+-
+-
+-
+Net change in cash
+(34)
+26
+88
+233
+Adj. Free cash flow to firm
+86
+120
+131
+200
+y/y Growth
+64.7%
+39.2%
+8.9%
+52.4%
+Income Statement - Quarterly
+1Q26A
+2Q26A
+3Q26E
+4Q26E
+Revenue
+154A
+164A
+166
+168
+COGS
+(34)A
+(36)A
+(38)
+(39)
+Gross profit
+120A
+128A
+128
+129
+SG&A
+(81)A
+(87)A
+(91)
+(94)
+Adj. EBITDA
+34A
+33A
+30
+26
+D&A
+(6)A
+(6)A
+(6)
+(6)
+Adj. EBIT
+33A
+33A
+29
+25
+Net Interest
+7A
+8A
+8
+9
+Adj. PBT
+40A
+40A
+37
+34
+Tax
+(2)A
+1A
+(2)
+(0)
+Minority Interest
+-
+-
+-
+-
+Adj. Net Income
+34A
+34A
+32
+29
+Reported EPS
+(0.07)A
+(0.03)A
+(0.09)
+(0.10)
+Adj. EPS
+0.27A
+0.27A
+0.24
+0.22
+DPS
+-
+-
+-
+-
+Payout ratio
+-
+-
+-
+-
+Shares outstanding
+125A
+128A
+130
+133
+ 
+ 
+ 
+ 
+ 
+Ratio Analysis
+FY24A
+FY25A
+FY26E
+FY27E
+Gross margin
+77.1%
+76.8%
+77.5%
+75.9%
+EBITDA margin
+15.7%
+18.0%
+19.0%
+22.5%
+EBIT margin
+14.8%
+17.3%
+18.4%
+21.5%
+Net profit margin
+17.4%
+18.8%
+19.8%
+22.5%
+ 
+  
+ 
+ 
+ROE
+10.3%
+12.0%
+13.5%
+15.8%
+ROA
+7.1%
+8.1%
+8.9%
+10.4%
+ROCE
+7.2%
+9.3%
+10.5%
+12.6%
+SG&A/Sales
+60.8%
+57.4%
+54.1%
+49.2%
+Net debt/equity
+0.0
+0.0
+0.0
+0.0
+ 
+  
+ 
+ 
+P/E (x)
+155.1
+122.4
+100.5
+75.6
+P/BV (x)
+14.2
+13.2
+12.2
+10.7
+EV/EBITDA (x)
+141.8
+99.4
+76.2
+52.2
+Dividend Yield
+-
+-
+-
+-
+ 
+  
+ 
+ 
+Sales/Assets (x)
+0.4
+0.4
+0.5
+0.5
+Interest cover (x)
+NM
+NM
+NM
+NM
+Operating leverage
+277.7%
+187.9%
+134.3%
+200.5%
+ 
+ 
+ 
+ 
+ 
+Revenue y/y Growth
+22.5%
+24.1%
+22.6%
+20.0%
+EBITDA y/y Growth
+58.1%
+42.3%
+29.4%
+42.4%
+Tax rate
+15.7%
+15.2%
+14.9%
+15.0%
+Adj. Net Income y/y Growth
+33.0%
+33.9%
+29.1%
+36.2%
+EPS y/y Growth
+25.8%
+26.7%
+21.8%
+32.9%
+DPS y/y Growth
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: Company reports and J.P. Morgan estimates.
+Note: $ in millions (except per-share data).Fiscal year ends Dec. o/w - out of which
+
+16
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Qualys: Summary of Financials
+Income Statement - Annual
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Revenue
+608
+669
+736
+808
+880
+COGS
+(101)
+(104)
+(112)
+(125)
+(136)
+Gross profit
+507
+565
+624
+683
+743
+SG&A
+(149)
+(167)
+(190)
+(214)
+(223)
+Adj. EBITDA
+283
+313
+336
+364
+403
+D&A
+(16)
+(12)
+(11)
+(13)
+(13)
+Adj. EBIT
+267
+301
+325
+351
+390
+Net Interest
+26
+25
+25
+24
+24
+Adj. PBT
+290
+326
+347
+372
+411
+Tax
+(61)
+(69)
+(70)
+(74)
+(82)
+Minority Interest
+-
+-
+-
+-
+-
+Adj. Net Income
+229
+258
+277
+298
+328
+Reported EPS
+4.65
+5.44
+5.92
+6.61
+7.41
+Adj. EPS
+6.13
+7.08
+7.86
+8.67
+9.68
+DPS
+-
+-
+-
+-
+-
+Payout ratio
+-
+-
+-
+-
+-
+Shares outstanding
+37
+36
+35
+34
+34
+Balance Sheet & Cash Flow Statement
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Cash and cash equivalents
+232
+250
+307
+443
+607
+Accounts receivable
+165
+171
+186
+198
+218
+Inventories
+-
+-
+-
+-
+-
+Other current assets
+204
+212
+229
+245
+268
+Current assets
+586
+658
+712
+864
+1,052
+PP&E
+30
+23
+23
+22
+20
+LT investments
+201
+255
+279
+277
+274
+Other non current assets
+350
+407
+432
+429
+426
+Total assets
+974
+1,095
+1,174
+1,322
+1,505
+ 
+ 
+  
+ 
+ 
+Short term borrowings
+0
+0
+0
+0
+0
+Payables
+1
+1
+1
+1
+2
+Other short term liabilities
+427
+466
+500
+534
+564
+Current liabilities
+428
+467
+501
+535
+566
+Long-term debt
+0
+0
+0
+0
+0
+Other long term liabilities
+68
+67
+66
+68
+77
+Total liabilities
+496
+534
+567
+603
+642
+Shareholders' equity
+477
+561
+607
+719
+863
+Minority interests
+-
+-
+-
+-
+-
+Total liabilities & equity
+974
+1,095
+1,174
+1,322
+1,505
+BVPS
+12.78
+15.40
+17.25
+20.94
+25.43
+y/y Growth
+30.4%
+20.5%
+12.0%
+21.4%
+21.4%
+Net debt/(cash)
+(232)
+(250)
+(307)
+(443)
+(607)
+ 
+ 
+ 
+ 
+ 
+ 
+Cash flow from operating activities
+244
+309
+317
+345
+373
+o/w Depreciation & amortization
+19
+14
+13
+13
+13
+o/w Changes in working capital
+0
+13
+17
+20
+17
+Cash flow from investing activities
+(71)
+(106)
+(20)
+(9)
+(8)
+o/w Capital expenditure
+(12)
+(5)
+(11)
+(9)
+(8)
+as % of sales
+2.0%
+0.7%
+1.4%
+1.2%
+0.9%
+Cash flow from financing activities
+(146)
+(185)
+(240)
+(200)
+(200)
+o/w Dividends paid
+-
+-
+-
+-
+-
+o/w Net debt issued/(repaid)
+0
+0
+0
+0
+0
+Net change in cash
+27
+18
+57
+135
+165
+Adj. Free cash flow to firm
+211
+284
+287
+316
+345
+y/y Growth
+(5.0%)
+34.6%
+0.9%
+10.0%
+9.3%
+Income Statement - Quarterly
+ 
+1Q26A
+2Q26A
+3Q26E
+4Q26E
+Revenue
+ 
+176A
+182A
+187
+191
+COGS
+ 
+(27)A
+(28)A
+(28)
+(29)
+Gross profit
+ 
+148A
+155A
+159
+162
+SG&A
+ 
+(43)A
+(47)A
+(50)
+(50)
+Adj. EBITDA
+ 
+83A
+84A
+83
+86
+D&A
+ 
+(2)A
+(2)A
+(3)
+(3)
+Adj. EBIT
+ 
+81A
+81A
+80
+83
+Net Interest
+ 
+6A
+6A
+6
+6
+Adj. PBT
+ 
+87A
+87A
+85
+88
+Tax
+ 
+(17)A
+(17)A
+(17)
+(18)
+Minority Interest
+ 
+-
+-
+-
+-
+Adj. Net Income
+ 
+70A
+69A
+68
+70
+Reported EPS
+ 
+1.42A
+1.50A
+1.48
+1.53
+Adj. EPS
+ 
+1.95A
+1.98A
+1.94
+1.99
+DPS
+ 
+-
+-
+-
+-
+Payout ratio
+ 
+-
+-
+-
+-
+Shares outstanding
+ 
+36A
+35A
+35
+35
+Ratio Analysis
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Gross margin
+83.5%
+84.5%
+84.7%
+84.5%
+84.5%
+EBITDA margin
+46.6%
+46.8%
+45.7%
+45.1%
+45.8%
+EBIT margin
+44.0%
+45.1%
+44.2%
+43.5%
+44.4%
+Net profit margin
+37.7%
+38.5%
+37.6%
+36.8%
+37.3%
+ 
+ 
+  
+ 
+ 
+ROE
+54.2%
+49.7%
+47.4%
+44.9%
+41.5%
+ROA
+25.7%
+24.9%
+24.4%
+23.8%
+23.2%
+ROCE
+50.0%
+45.9%
+44.4%
+42.4%
+39.5%
+SG&A/Sales
+24.6%
+24.9%
+25.8%
+26.5%
+25.4%
+Net debt/equity
+NM
+NM
+NM
+NM
+NM
+ 
+ 
+  
+ 
+ 
+P/E (x)
+37.2
+32.2
+29.0
+26.3
+23.5
+P/BV (x)
+17.8
+14.8
+13.2
+10.9
+9.0
+EV/EBITDA (x)
+27.4
+24.7
+22.8
+20.7
+18.3
+Dividend Yield
+-
+-
+-
+-
+-
+ 
+ 
+  
+ 
+ 
+Sales/Assets (x)
+0.7
+0.6
+0.6
+0.6
+0.6
+Interest cover (x)
+NM
+NM
+NM
+NM
+NM
+Operating leverage
+142.0%
+126.5%
+78.2%
+83.1%
+124.0%
+ 
+ 
+ 
+ 
+ 
+ 
+Revenue y/y Growth
+9.6%
+10.1%
+10.0%
+9.8%
+8.9%
+EBITDA y/y Growth
+9.1%
+10.8%
+7.3%
+8.3%
+10.6%
+Tax rate
+21.0%
+21.0%
+20.1%
+20.0%
+20.0%
+Adj. Net Income y/y Growth
+15.6%
+12.6%
+7.4%
+7.5%
+10.4%
+EPS y/y Growth
+16.3%
+15.4%
+11.1%
+10.2%
+11.7%
+DPS y/y Growth
+-
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: Company reports and J.P. Morgan estimates.
+Note: $ in millions (except per-share data).Fiscal year ends Dec. o/w - out of which
+
+17
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Rapid7: Summary of Financials
+Income Statement - Annual
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Revenue
+844
+860
+839
+842
+859
+COGS
+(251)
+(255)
+(260)
+(258)
+(267)
+Gross profit
+593
+605
+579
+585
+592
+SG&A
+(385)
+(403)
+(384)
+(385)
+(381)
+Adj. EBITDA
+208
+181
+178
+176
+185
+D&A
+(45)
+(45)
+(45)
+(45)
+(45)
+Adj. EBIT
+164
+136
+133
+131
+140
+Net Interest
+10
+13
+12
+9
+9
+Adj. PBT
+173
+159
+146
+140
+149
+Tax
+(16)
+(7)
+(0)
+0
+0
+Minority Interest
+-
+-
+-
+-
+-
+Adj. Net Income
+169
+158
+143
+133
+142
+Reported EPS
+0.35
+0.31
+0.11
+0.00
+0.00
+Adj. EPS
+2.35
+2.08
+1.81
+1.64
+1.70
+DPS
+-
+-
+-
+-
+-
+Payout ratio
+-
+-
+-
+-
+-
+Shares outstanding
+72
+76
+79
+81
+84
+Balance Sheet & Cash Flow Statement
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Cash and cash equivalents
+335
+247
+532
+167
+185
+Accounts receivable
+168
+167
+165
+167
+170
+Inventories
+-
+-
+-
+-
+-
+Other current assets
+264
+263
+257
+283
+289
+Current assets
+786
+737
+1,008
+556
+700
+PP&E
+32
+32
+26
+21
+15
+LT investments
+37
+184
+0
+0
+0
+Other non current assets
+124
+271
+93
+104
+106
+Total assets
+1,652
+1,726
+1,828
+1,364
+1,489
+ 
+ 
+  
+ 
+ 
+Short term borrowings
+-
+-
+-
+-
+-
+Payables
+19
+11
+10
+8
+9
+Other short term liabilities
+611
+564
+1,165
+596
+605
+Current liabilities
+630
+575
+1,176
+604
+613
+Long-term debt
+-
+-
+-
+-
+-
+Other long term liabilities
+1,004
+996
+397
+386
+373
+Total liabilities
+1,634
+1,572
+1,573
+990
+986
+Shareholders' equity
+18
+155
+255
+374
+502
+Minority interests
+-
+-
+-
+-
+-
+Total liabilities & equity
+1,652
+1,726
+1,828
+1,364
+1,489
+BVPS
+0.28
+2.39
+3.78
+5.32
+6.92
+y/y Growth
+(114.5%)
+745.8%
+58.1%
+40.9%
+29.9%
+Net debt/(cash)
+-
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+Cash flow from operating activities
+172
+153
+137
+143
+162
+o/w Depreciation & amortization
+45
+45
+45
+45
+45
+o/w Changes in working capital
+(10)
+(16)
+(14)
+(21)
+(12)
+Cash flow from investing activities
+(47)
+(209)
+146
+91
+(143)
+o/w Capital expenditure
+(3)
+(8)
+(7)
+(7)
+(7)
+as % of sales
+0.4%
+0.9%
+0.8%
+0.8%
+0.8%
+Cash flow from financing activities
+6
+(45)
+3
+0
+0
+o/w Dividends paid
+-
+-
+-
+-
+-
+o/w Net debt issued/(repaid)
+0
+(2)
+0
+0
+0
+Net change in cash
+128
+(95)
+285
+235
+19
+Adj. Free cash flow to firm
+163
+138
+139
+140
+158
+y/y Growth
+72.3% (15.3%)
+0.6%
+0.7%
+12.9%
+Income Statement - Quarterly
+ 
+1Q26A
+2Q26A
+3Q26E
+4Q26E
+Revenue
+ 
+210A
+211A
+209
+209
+COGS
+ 
+(65)A
+(66)A
+(65)
+(65)
+Gross profit
+ 
+145A
+145A
+144
+144
+SG&A
+ 
+(97)A
+(94)A
+(97)
+(96)
+Adj. EBITDA
+ 
+36A
+40A
+47
+55
+D&A
+ 
+(11)A
+(11)A
+(11)
+(11)
+Adj. EBIT
+ 
+24A
+29A
+36
+44
+Net Interest
+ 
+3A
+3A
+3
+3
+Adj. PBT
+ 
+28A
+33A
+39
+47
+Tax
+ 
+(1)A
+0A
+(0)
+0
+Minority Interest
+ 
+-
+-
+-
+-
+Adj. Net Income
+ 
+28A
+34A
+37
+44
+Reported EPS
+ 
+0.01A
+0.08A
+(0.00)
+0.02
+Adj. EPS
+ 
+0.36A
+0.44A
+0.46
+0.55
+DPS
+ 
+-
+-
+-
+-
+Payout ratio
+ 
+-
+-
+-
+-
+Shares outstanding
+ 
+77A
+78A
+80
+81
+Ratio Analysis
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Gross margin
+70.3%
+70.3%
+69.0%
+69.4%
+69.0%
+EBITDA margin
+24.7%
+21.1%
+21.2%
+20.9%
+21.6%
+EBIT margin
+19.4%
+15.8%
+15.9%
+15.5%
+16.3%
+Net profit margin
+20.1%
+18.3%
+17.0%
+15.8%
+16.5%
+ 
+ 
+  
+ 
+ 
+ROE
+(337.3%)
+182.8%
+69.8%
+42.3%
+32.4%
+ROA
+10.7%
+9.3%
+8.0%
+8.3%
+9.9%
+ROCE
+(307.5%)
+150.7%
+62.6%
+39.6%
+30.4%
+SG&A/Sales
+45.6%
+46.8%
+45.8%
+45.7%
+44.4%
+Net debt/equity
+-
+-
+-
+-
+-
+ 
+ 
+  
+ 
+ 
+P/E (x)
+7.5
+8.5
+9.8
+10.7
+10.4
+P/BV (x)
+62.3
+7.4
+4.7
+3.3
+2.5
+EV/EBITDA (x)
+2.3
+3.1
+1.5
+3.6
+3.4
+Dividend Yield
+-
+-
+-
+-
+-
+ 
+ 
+  
+ 
+ 
+Sales/Assets (x)
+0.5
+0.5
+0.5
+0.5
+0.6
+Interest cover (x)
+NM
+NM
+NM
+NM
+NM
+Operating leverage
+703.3% (905.8%)
+83.7% (374.4%)
+351.0%
+ 
+ 
+ 
+ 
+ 
+ 
+Revenue y/y Growth
+8.5%
+1.9%
+(2.4%)
+0.4%
+2.0%
+EBITDA y/y Growth
+40.7% (13.1%)
+(1.7%)
+(1.0%)
+5.1%
+Tax rate
+5.5%
+4.3%
+3.7%
+5.0%
+5.0%
+Adj. Net Income y/y Growth
+53.8%
+(7.0%)
+(9.3%)
+(6.9%)
+6.6%
+EPS y/y Growth
+53.8% (11.4%) (13.3%)
+(9.1%)
+3.5%
+DPS y/y Growth
+-
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: Company reports and J.P. Morgan estimates.
+Note: $ in millions (except per-share data).Fiscal year ends Dec. o/w - out of which
+
+18
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Cellebrite: Summary of Financials
+Income Statement - Annual
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Revenue
+401
+476
+560
+650
+745
+COGS
+(60)
+(71)
+(84)
+(98)
+(112)
+Gross profit
+341
+405
+477
+552
+633
+SG&A
+(150)
+(171)
+(195)
+(228)
+(258)
+Adj. EBITDA
+99
+128
+157
+182
+212
+D&A
+(7)
+(8)
+(13)
+(10)
+(10)
+Adj. EBIT
+92
+120
+143
+173
+202
+Net Interest
+-
+-
+-
+-
+-
+Adj. PBT
+109
+144
+164
+201
+230
+Tax
+(11)
+(14)
+(21)
+(30)
+(35)
+Minority Interest
+-
+-
+-
+-
+-
+Adj. Net Income
+98
+130
+143
+171
+196
+Reported EPS
+(1.25)
+0.31
+0.27
+0.38
+0.44
+Adj. EPS
+0.43
+0.51
+0.55
+0.64
+0.72
+DPS
+-
+-
+-
+-
+-
+Payout ratio
+-
+-
+-
+-
+-
+Shares outstanding
+227
+255
+260
+267
+273
+Balance Sheet & Cash Flow Statement
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Cash and cash equivalents
+447
+437
+579
+776
+1,005
+Accounts receivable
+82
+105
+118
+126
+149
+Inventories
+9
+8
+12
+10
+12
+Other current assets
+120
+139
+161
+171
+205
+Current assets
+568
+576
+740
+947
+1,211
+PP&E
+17
+22
+25
+23
+23
+LT investments
+-
+-
+-
+-
+-
+Other non current assets
+66
+140
+109
+152
+172
+Total assets
+691
+939
+1,109
+1,342
+1,611
+ 
+ 
+  
+ 
+ 
+Short term borrowings
+-
+-
+-
+-
+-
+Payables
+11
+17
+13
+14
+14
+Other short term liabilities
+284
+353
+398
+454
+525
+Current liabilities
+296
+370
+411
+468
+539
+Long-term debt
+-
+-
+-
+-
+-
+Other long term liabilities
+59
+85
+83
+105
+121
+Total liabilities
+355
+455
+494
+572
+660
+Shareholders' equity
+336
+484
+615
+770
+951
+Minority interests
+-
+-
+-
+-
+-
+Total liabilities & equity
+691
+939
+1,109
+1,342
+1,611
+BVPS
+1.48
+1.90
+2.36
+2.89
+3.48
+y/y Growth
+791.1%
+28.6%
+24.2%
+22.2%
+20.5%
+Net debt/(cash)
+-
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+Cash flow from operating activities
+132
+174
+178
+206
+239
+o/w Depreciation & amortization
+11
+12
+25
+25
+25
+o/w Changes in working capital
+42
+47
+39
+29
+34
+Cash flow from investing activities
+(149)
+(268)
+(33)
+(12)
+(14)
+o/w Capital expenditure
+(9)
+(13)
+(10)
+(8)
+(10)
+as % of sales
+2.1%
+2.8%
+1.8%
+1.3%
+1.3%
+Cash flow from financing activities
+21
+25
+7
+0
+0
+o/w Dividends paid
+-
+-
+-
+-
+-
+o/w Net debt issued/(repaid)
+-
+-
+-
+-
+-
+Net change in cash
+2
+(67)
+151
+193
+225
+Adj. Free cash flow to firm
+124
+160
+168
+197
+229
+y/y Growth
+27.7%
+29.7%
+4.5%
+17.7%
+16.4%
+Income Statement - Quarterly
+ 
+1Q26A
+2Q26A
+3Q26E
+4Q26E
+Revenue
+ 
+128A
+131A
+148
+153
+COGS
+ 
+(18)A
+(19)A
+(23)
+(24)
+Gross profit
+ 
+110A
+112A
+125
+130
+SG&A
+ 
+(46)A
+(46)A
+(49)
+(53)
+Adj. EBITDA
+ 
+31A
+37A
+44
+45
+D&A
+ 
+(2)A
+(8)A
+(2)
+(2)
+Adj. EBIT
+ 
+29A
+30A
+42
+43
+Net Interest
+ 
+-
+-
+-
+-
+Adj. PBT
+ 
+33A
+34A
+48
+49
+Tax
+ 
+(2)A
+(4)A
+(7)
+(7)
+Minority Interest
+ 
+-
+-
+-
+-
+Adj. Net Income
+ 
+31A
+30A
+41
+41
+Reported EPS
+ 
+0.04A
+0.02A
+0.10
+0.10
+Adj. EPS
+ 
+0.12A
+0.11A
+0.16
+0.16
+DPS
+ 
+-
+-
+-
+-
+Payout ratio
+ 
+-
+-
+-
+-
+Shares outstanding
+ 
+259A
+260A
+261
+262
+Ratio Analysis
+FY24A
+FY25A
+FY26E
+FY27E
+FY28E
+Gross margin
+85.0%
+85.1%
+85.1%
+85.0%
+84.9%
+EBITDA margin
+24.8%
+26.8%
+28.0%
+28.1%
+28.5%
+EBIT margin
+23.0%
+25.2%
+25.6%
+26.6%
+27.2%
+Net profit margin
+24.4%
+27.3%
+25.5%
+26.3%
+26.3%
+ 
+ 
+  
+ 
+ 
+ROE
+52.8%
+31.7%
+26.0%
+24.6%
+22.7%
+ROA
+16.0%
+15.9%
+13.9%
+13.9%
+13.3%
+ROCE
+44.7%
+26.4%
+22.7%
+21.2%
+20.0%
+SG&A/Sales
+37.5%
+35.9%
+34.8%
+35.1%
+34.7%
+Net debt/equity
+-
+-
+-
+-
+-
+ 
+ 
+  
+ 
+ 
+P/E (x)
+27.7
+23.4
+21.8
+18.7
+16.7
+P/BV (x)
+8.1
+6.3
+5.1
+4.1
+3.4
+EV/EBITDA (x)
+35.3
+27.6
+21.5
+17.4
+13.9
+Dividend Yield
+-
+-
+-
+-
+-
+ 
+ 
+  
+ 
+ 
+Sales/Assets (x)
+0.7
+0.6
+0.5
+0.5
+0.5
+Interest cover (x)
+-
+-
+-
+-
+-
+Operating leverage
+284.7%
+163.6%
+108.5%
+128.6%
+116.9%
+ 
+ 
+ 
+ 
+ 
+ 
+Revenue y/y Growth
+23.4%
+18.6%
+17.8%
+16.0%
+14.6%
+EBITDA y/y Growth
+60.4%
+28.4%
+22.8%
+16.3%
+16.5%
+Tax rate
+10.2%
+9.9%
+13.0%
+15.0%
+15.0%
+Adj. Net Income y/y Growth
+60.5%
+32.9%
+9.8%
+19.6%
+14.7%
+EPS y/y Growth
+45.6%
+18.6%
+7.4%
+16.8%
+11.9%
+DPS y/y Growth
+-
+-
+-
+-
+-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: Company reports and J.P. Morgan estimates.
+Note: $ in millions (except per-share data).Fiscal year ends Dec. o/w - out of which
+
+19
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+ Companies Discussed in This Report (all prices in this report as of market close on 27 October 2026, unless otherwise 
+indicated)
+CrowdStrike(CRWD/$268.02/OW), Okta(OKTA/$226.07/OW), Palo Alto Networks(PANW/$401.70/OW), SailPoint(SAIL/
+$22.39/OW), Tenable(TENB/$48.65/OW) 
+ Analyst Certification:  The Research Analyst(s) denoted by an “AC” on the cover of this report certifies (or, where multiple Research Analysts 
+are primarily responsible for this report, the Research Analyst denoted by an “AC” on the cover or within the document individually certifies, 
+with respect to each security or issuer that the Research Analyst covers in this research) that: (1) all of the views expressed in this report 
+accurately reflect the Research Analyst’s personal views about any and all of the subject securities or issuers; and (2) no part of any of the 
+Research Analyst's compensation was, is, or will be directly or indirectly related to the specific recommendations or views expressed by the 
+Research Analyst(s) in this report. For all Korea-based Research Analysts listed on the front cover, if applicable, they also certify, as per KOFIA 
+requirements, that the Research Analyst’s analysis was made in good faith and that the views reflect the Research Analyst’s own opinion, 
+without undue influence or intervention.
+ All authors named within this report are Research Analysts who produce independent research unless otherwise specified. In Europe, Sector 
+Specialists (Sales and Trading) may be shown on this report as contacts but are not authors of the report or part of the Research Department.
+Important Disclosures
+Company-Specific Disclosures: J.P. Morgan does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. Investors should consider this report 
+as only a single factor in making their investment decision. Important disclosures, including price charts and credit opinion history tables (if 
+applicable), are available for compendium reports and all J.P. Morgan–covered companies, and certain non-covered companies, by visiting 
+https://www.jpmm.com/research/disclosures, calling 1-800-477-0406, or e-mailing research.disclosure.inquiries@jpmorgan.com with your 
+request.
+Explanation of Equity Research Ratings, Designations and Analyst(s) Coverage Universe: 
+J.P. Morgan uses the following rating system: Overweight (over the duration of the price target indicated in this report, we expect this stock will 
+outperform the average total return of the stocks in the Research Analyst’s, or the Research Analyst’s team’s, coverage universe); Neutral (over 
+the duration of the price target indicated in this report, we expect this stock will perform in line with the average total return of the stocks in the 
+Research Analyst’s, or the Research Analyst’s team’s, coverage universe); and Underweight (over the duration of the price target indicated in 
+this report, we expect this stock will underperform the average total return of the stocks in the Research Analyst’s, or the Research Analyst’s 
+team’s, coverage universe. NR is Not Rated. In this case, J.P. Morgan has removed the rating and, if applicable, the price target, for this stock 
+because of either a lack of a sufficient fundamental basis or for legal, regulatory or policy reasons. The previous rating and, if applicable, the 
+price target, no longer should be relied upon. An NR designation is not a recommendation or a rating. Some stocks under coverage have a rating 
+but no price target; in these cases, we expect the stock will outperform/perform in line/underperform the average total return of the stocks in the 
+Research Analyst’s, or the Research Analyst’s team’s, coverage universe of the relevant duration of the region. In our Asia (ex-Australia and ex-
+India) and U.K. small- and mid-cap Equity Research, each stock’s expected total return is compared to the expected total return of a benchmark 
+country market index, not to those Research Analysts’ coverage universe. If it does not appear in the Important Disclosures section of this report, 
+the certifying Research Analyst’s coverage universe can be found on J.P. Morgan’s Research website, https://www.jpmorganmarkets.com. 
+Coverage Universe: Essex, Brian : C3.ai (AI), Cellebrite (CLBT), Check Point Software (CHKP), CrowdStrike (CRWD), Elastic (ESTC), 
+Fortinet (FTNT), GitLab (GTLB), International Business Machines (IBM), JFrog (FROG), Netskope (NTSK), Okta (OKTA), Palo Alto 
+Networks (PANW), Qualys (QLYS), Rapid7 (RPD), SailPoint (SAIL), SentinelOne (S), Tenable (TENB), Varonis (VRNS), Zscaler (ZS)
+J.P. Morgan Equity Research Ratings Distribution, as of October 03, 2026
+Overweight
+(buy)
+Neutral
+(hold)
+Underweight
+(sell)
+J.P. Morgan Global Equity Research Coverage*
+53%
+35%
+12%
+    IB clients**
+83%
+81%
+72%
+JPMS Equity Research Coverage*
+51%
+37%
+12%
+    IB clients**
+95%
+93%
+88%
+*Please note that the percentages may not add to 100% because of rounding.
+**Percentage of subject companies within each of the "buy," "hold" and "sell" categories for which J.P. Morgan has provided 
+investment banking services within the previous 12 months. 
+For purposes of FINRA ratings distribution rules only, our Overweight rating falls into a buy rating category; our Neutral rating falls 
+into a hold rating category; and our Underweight rating falls into a sell rating category. Please note that stocks with an NR designation 
+are not included in the table above. This information is current as of the end of the most recent calendar quarter.
+ Equity Valuation and Risks:  For valuation methodology and risks associated with covered companies or price targets for covered companies, 
+please see the most recent company-specific research report at  http://www.jpmorganmarkets.com, contact the primary analyst or your J.P. 
+
+20
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Morgan representative, or email research.disclosure.inquiries@jpmorgan.com. For material information about the proprietary models used, 
+please see the Summary of Financials in company-specific research reports and the Company Tearsheets, which are available to download on 
+the company pages of our client website,  http://www.jpmorganmarkets.com. This report also sets out within it the material underlying 
+assumptions used.
+History of Investment Recommendations:
+A history of J.P. Morgan investment recommendations disseminated during the preceding 12 months can be accessed on the Research & 
+Commentary page of  http://www.jpmorganmarkets.com where you can also search by analyst name, sector or financial instrument.
+ Analysts' Compensation:The research analysts responsible for the preparation of this report receive compensation based upon various factors, 
+including the quality and accuracy of research, client feedback, competitive factors, and overall firm revenues. 
+ Other Disclosures 
+J.P. Morgan is a marketing name for investment banking businesses of JPMorgan Chase & Co. and its subsidiaries and affiliates worldwide.
+UK MIFID FICC research unbundling exemption: UK clients should refer to UK MIFID Research Unbundling exemption for details of J.P. 
+Morgan’s implementation of the FICC research exemption and guidance on relevant FICC research categorisation. 
+All research material made available to clients are simultaneously available on our client website, J.P. Morgan Markets, unless specifically 
+permitted by relevant laws. Not all research content is redistributed, e-mailed or made available to third-party aggregators. For all research 
+material available on a particular stock, please contact your sales representative.
+Any long form nomenclature for references to China; Hong Kong; Taiwan; and Macau within this research material are Mainland China; Hong 
+Kong SAR (China); Taiwan (China); and Macau SAR (China).
+ J.P. Morgan Research may, from time to time, write on issuers or securities targeted by economic or financial sanctions imposed or administered 
+by the governmental authorities of the U.S., EU, UK or other relevant jurisdictions (Sanctioned Securities). Nothing in this report is intended to 
+be read or construed as encouraging, facilitating, promoting or otherwise approving investment or dealing in such Sanctioned Securities. Clients 
+should be aware of their own legal and compliance obligations when making investment decisions. 
+ Digital assets, which may also be referred to as virtual or crypto assets or crypto currencies (e.g. bitcoin), discussed in this research report are 
+subject to a rapidly changing regulatory landscape. The application of relevant laws in respect of such assets may be unsettled, and the legality 
+of any digital asset investment may be unclear. Prior to making any investment decision regarding any digital asset, investors should seek their 
+own legal advice and be aware of any legal considerations regarding the purchase, holding or selling of such an investment. For relevant 
+regulatory advisories on digital assets, including bitcoin and ethereum, please see 
+https://www.jpmorgan.com/disclosures/cryptoasset-disclosure.
+ The author(s) of this research report may not be licensed to carry on regulated activities in your jurisdiction and, if not licensed, do not hold 
+themselves out as being able to do so. 
+ Exchange-Traded Funds (ETFs): J.P. Morgan Securities LLC (“JPMS”) acts as authorized participant for substantially all U.S.-listed ETFs. To 
+the extent that any ETFs are mentioned in this report, JPMS may earn commissions and transaction-based compensation in connection with the 
+distribution of those ETF shares and may earn fees for performing other trade-related services, such as securities lending to short sellers of the 
+ETF shares. JPMS may also perform services for the ETFs themselves, including acting as a broker or dealer to the ETFs. In addition, affiliates 
+of JPMS may perform services for the ETFs, including trust, custodial, administration, lending, index calculation and/or maintenance and other 
+services. 
+Options and Futures related research: If the information contained herein regards options- or futures-related research, such information is 
+available only to persons who have received the proper options or futures risk disclosure documents. Please contact your J.P. Morgan 
+Representative or visit https://www.theocc.com/components/docs/riskstoc.pdf  for a copy of the Option Clearing Corporation's Characteristics 
+and Risks of Standardized Options or 
+https://www.finra.org/sites/default/files/2020-08/Security_Futures_Risk_Disclosure_Statement_2020.pdf for a copy of the Security Futures 
+Risk Disclosure Statement. 
+Changes to Interbank Offered Rates (IBORs) and other benchmark rates: Certain interest rate benchmarks are, or may in the future 
+become, subject to ongoing international, national and other regulatory guidance, reform and proposals for reform. For more information, please 
+consult: https://www.jpmorgan.com/global/disclosures/interbank_offered_rates
+Private Bank Clients: Where you are receiving research as a client of the private banking businesses offered by JPMorgan Chase & Co. and its 
+subsidiaries (“J.P. Morgan Private Bank”), research is provided to you by J.P. Morgan Private Bank and not by any other division of J.P. Morgan, 
+including, but not limited to, the J.P. Morgan Corporate and Investment Bank and its Global Research division.
+Legal entity responsible for the production and distribution of research: The legal entity identified below the name of the Reg AC Research 
+Analyst who authored this material is the legal entity responsible for the production of this research. Where multiple Reg AC Research Analysts 
+authored this material with different legal entities identified below their names, these legal entities are jointly responsible for the production of 
+
+21
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+this research. Where more than one legal entity is listed under an analyst’s name, the first legal entity is responsible for the production unless 
+stated otherwise. Research Analysts from various J.P. Morgan affiliates may have contributed to the production of this material but may not be 
+licensed to carry out regulated activities in your jurisdiction (and do not hold themselves out as being able to do so). Unless otherwise stated 
+below in the legal entity disclosures, this material has been distributed by the legal entity responsible for production, or where more than one 
+legal entity is listed under the analyst’s name, the first legal entity will be responsible for distribution. If you have any queries, please contact the 
+relevant Research Analyst in your jurisdiction or the entity in your jurisdiction that has distributed this research material.
+Legal Entities Disclosures and Country-/Region-Specific Disclosures:
+ Argentina: JPMorgan Chase Bank N.A Sucursal Buenos Aires is regulated by Banco Central de la República Argentina (“BCRA”- Central 
+Bank of Argentina) and Comisión Nacional de Valores (“CNV”- Argentinian Securities Commission - ALYC y AN Integral N°51). 
+Australia: J.P. Morgan Securities Australia Limited (“JPMSAL”) (ABN 61 003 245 234/AFS Licence No: 238066) is regulated by the 
+Australian Securities and Investments Commission and is a Market Participant of ASX Limited, a Clearing and Settlement Participant of ASX 
+Clear Pty Limited and a Clearing Participant of ASX Clear (Futures) Pty Limited. This material is issued and distributed in Australia by or on 
+behalf of JPMSAL only to "wholesale clients" (as defined in section 761G of the Corporations Act 2001). A list of all financial products covered 
+can be found by visiting https://www.jpmm.com/research/disclosures. J.P. Morgan seeks to cover companies of relevance to the domestic and 
+international investor base across all Global Industry Classification Standard (GICS) sectors, as well as across a range of market capitalisation 
+sizes. If applicable, in the course of conducting public side due diligence on the subject company(ies), the Research Analyst team may at times 
+perform such diligence through corporate engagements such as site visits, discussions with company representatives, management presentations, 
+etc. Research issued by JPMSAL has been prepared in accordance with J.P. Morgan Australia’s Research Independence Policy which can be 
+found at the following link: J.P. Morgan Australia - Research Independence Policy. 
+Brazil: Banco J.P. Morgan S.A. is regulated by the Comissao de Valores Mobiliarios (CVM) and by the Central Bank of Brazil. Ombudsman 
+J.P. Morgan: 0800-7700847 / 0800-7700810 (For Hearing Impaired) / ouvidoria.jp.morgan@jpmchase.com. 
+Canada: J.P. Morgan Securities Canada Inc. is a registered investment dealer, regulated by the Canadian Investment Regulatory Organization 
+and the Ontario Securities Commission and is the participating member on Canadian exchanges. This material is distributed in Canada by or on 
+behalf of J.P.Morgan Securities Canada Inc. 
+Chile: Inversiones J.P. Morgan Limitada is an unregulated entity incorporated in Chile. 
+China: J.P. Morgan Securities (China) Company Limited has been approved by CSRC to conduct the securities investment consultancy 
+business. 
+Colombia: Banco J.P. Morgan Colombia S.A. is supervised by the Superintendencia Financiera de Colombia (SFC). Any reference in this 
+material to products or services offered abroad by entities other than the Bank in Colombia is included exclusively for descriptive purposes. 
+Such references do not constitute, and should not be construed as, promotional activity or the provision of financial products or services within 
+Colombian territory, as defined under applicable Colombian regulation. 
+Dubai International Financial Centre (DIFC): JPMorgan Chase Bank, N.A., Dubai Branch is regulated by the Dubai Financial Services 
+Authority (DFSA) and its registered address is Dubai International Financial Centre - The Gate, West Wing, Level 3 and 9 PO Box 506551, 
+Dubai, UAE. This material has been distributed by JP Morgan Chase Bank, N.A., Dubai Branch to persons regarded as professional clients or 
+market counterparties as defined under the DFSA rules. 
+European Economic Area (EEA): Unless specified to the contrary, research is distributed in the EEA by J.P. Morgan SE (“JPM SE”), which is 
+authorised as a credit institution by the Federal Financial Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and 
+jointly supervised by the BaFin, the German Central Bank (Deutsche Bundesbank) and the European Central Bank (ECB). JPM SE is a 
+company headquartered in Frankfurt with registered address at TaunusTurm, Taunustor 1, Frankfurt am Main, 60310, Germany. The material 
+has been distributed in the EEA to persons regarded as professional investors (or equivalent) pursuant to Art. 4 para. 1 no. 10 and Annex II of 
+MiFID II and its respective implementation in their home jurisdictions (“EEA professional investors”). This material must not be acted on or 
+relied on by persons who are not EEA professional investors. Any investment or investment activity to which this material relates is only 
+available to EEA relevant persons and will be engaged in only with EEA relevant persons. 
+Hong Kong: J.P. Morgan Securities (Asia Pacific) Limited (CE number AAJ321) is regulated by the Hong Kong Monetary Authority and the 
+Securities and Futures Commission in Hong Kong, and J.P. Morgan Broking (Hong Kong) Limited (CE number AAB027) is regulated by the 
+Securities and Futures Commission in Hong Kong. JP Morgan Chase Bank, N.A., Hong Kong Branch (CE Number AAL996) is regulated by the 
+Hong Kong Monetary Authority and the Securities and Futures Commission, is organized under the laws of the United States with limited 
+liability. Where the distribution of this material is a regulated activity in Hong Kong, the material is distributed in Hong Kong by or through J.P. 
+Morgan Securities (Asia Pacific) Limited and/or J.P. Morgan Broking (Hong Kong) Limited. 
+India: J.P. Morgan India Private Limited (Corporate Identity Number - U67120MH1992FTC068724), having its registered office at J.P. Morgan 
+Tower, Off. C.S.T. Road, Kalina, Santacruz - East, Mumbai – 400098, is registered with the Securities and Exchange Board of India (SEBI) as a 
+‘Research Analyst’ having registration number INH000001873. J.P. Morgan India Private Limited is also registered with SEBI as a member of 
+the National Stock Exchange of India Limited and the Bombay Stock Exchange Limited (SEBI Registration Number – INZ000239730) and as a 
+Merchant Banker (SEBI Registration Number - MB/INM000002970). Telephone: 91-22-6157 3000, Facsimile: 91-22-6157 3990 and Website: 
+http://www.jpmipl.com. JPMorgan Chase Bank, N.A. - Mumbai Branch is licensed by the Reserve Bank of India (RBI) (Licence No. 53/ 
+
+22
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+Licence No. BY.4/94; SEBI - IN/CUS/014/ CDSL : IN-DP-CDSL-444-2008/ IN-DP-NSDL-285-2008/ INBI00000984/ INE231311239) as a 
+Scheduled Commercial Bank in India, which is its primary license allowing it to carry on Banking business in India and other activities, which a 
+Bank branch in India are permitted to undertake. For non-local research material, this material is not distributed in India by J.P. Morgan India 
+Private Limited. Compliance Officer: Ashutosh Sharma; ashutosh.j.sharma@jpmchase.com; +912261575002. Grievance Officer: Ramprasadh 
+K, jpmipl.research.feedback@jpmorgan.com; +912261573000. Registration granted by SEBI and certification from NISM in no way guarantee 
+performance of the intermediary or provide any assurance of returns to investors. Please visit Terms and Conditions and Most Important Terms 
+and Conditions (MITC). The annual Compliance audit report is available at http://www.jpmipl.com/#research. 
+Indonesia: PT J.P. Morgan Sekuritas Indonesia is a member of the Indonesia Stock Exchange and is registered and supervised by the Otoritas 
+Jasa Keuangan (OJK). 
+Korea: J.P. Morgan Securities (Far East) Limited, Seoul Branch, is a member of the Korea Exchange (KRX). JPMorgan Chase Bank, N.A., 
+Seoul Branch, is licensed as a branch office of foreign bank (JPMorgan Chase Bank, N.A.) in Korea. Both entities are regulated by the Financial 
+Services Commission (FSC) and the Financial Supervisory Service (FSS). For non-macro research material, the material is distributed in Korea 
+by or through J.P. Morgan Securities (Far East) Limited, Seoul Branch. 
+Japan: JPMorgan Securities Japan Co., Ltd. and JPMorgan Chase Bank, N.A., Tokyo Branch are regulated by the Financial Services Agency in 
+Japan. 
+Malaysia: This material is issued and distributed in Malaysia by JPMorgan Securities (Malaysia) Sdn Bhd (18146-X), which is a Participating 
+Organization of Bursa Malaysia Berhad and holds a Capital Markets Services License issued by the Securities Commission in Malaysia. 
+Mexico: J.P. Morgan Casa de Bolsa, S.A. de C.V., J.P. Morgan Grupo Financiero is member of the Mexican Stock Exchange (“Bolsa Mexicana 
+de Valores”) and the Institutional Stock Exchange (“Bolsa Institucional de Valores”), and it is authorized to act as a broker dealer by the 
+National Banking and Securities Exchange Commission (“Comisión Nacional Bancaria y de Valores”). 
+New Zealand: This material is issued and distributed by JPMSAL in New Zealand only to "wholesale clients" (as defined in the Financial 
+Markets Conduct Act 2013). JPMSAL is registered as a Financial Service Provider under the Financial Service providers (Registration and 
+Dispute Resolution) Act of 2008. 
+Nigeria: J.P. Morgan Chase Representative Office (Nigeria) Limited is regulated by the Central Bank of Nigeria.
+Philippines: J.P. Morgan Securities Philippines Inc. is a Trading Participant of the Philippine Stock Exchange and a member of the Securities 
+Clearing Corporation of the Philippines and the Securities Investor Protection Fund. It is regulated by the Securities and Exchange Commission. 
+Singapore: This material is issued and distributed in Singapore by or through J.P. Morgan Securities Singapore Private Limited (JPMSS) 
+[MDDI (P) 070/08/2026 and Co. Reg. No.: 199405335R], which is a member of the Singapore Exchange Securities Trading Limited, and/or 
+JPMorgan Chase Bank, N.A., Singapore branch (JPMCB Singapore), both of which are regulated by the Monetary Authority of Singapore. This 
+material is issued and distributed in Singapore only to accredited investors, expert investors and institutional investors, as defined in Section 4A 
+of the Securities and Futures Act, Cap. 289 (SFA). This material is not intended to be issued or distributed to any retail investors or any other 
+investors that do not fall into the classes of “accredited investors,” “expert investors” or “institutional investors,” as defined under Section 4A of 
+the SFA. Recipients of this material in Singapore are to contact JPMSS or JPMCB Singapore in respect of any matters arising from, or in 
+connection with, the material. 
+South Africa: J.P. Morgan Equities South Africa Proprietary Limited and JPMorgan Chase Bank, N.A., Johannesburg Branch are members of 
+the Johannesburg Securities Exchange and are regulated by the Financial Services Conduct Authority (FSCA). 
+Taiwan: J.P. Morgan Securities (Taiwan) Limited is a participant of the Taiwan Stock Exchange (company-type) and regulated by the Taiwan 
+Securities and Futures Bureau. Material relating to equity securities is issued and distributed in Taiwan by J.P. Morgan Securities (Taiwan) 
+Limited, subject to the license scope and the applicable laws and the regulations in Taiwan. To the extent that J.P. Morgan Securities 
+(Taiwan) Limited produces research materials on securities not listed on the Taiwan Stock Exchange or Taipei Exchange (“Non-Taiwan 
+Listed Securities”), these materials shall not constitute securities recommendations for the purpose of applicable Taiwan regulations, 
+and, for the avoidance of doubt, J.P. Morgan Securities (Taiwan) Limited does not act as broker for Non-Taiwan Listed Securities. 
+According to Paragraph 2, Article 7-1 of Operational Regulations Governing Securities Firms Recommending Trades in Securities to Customers 
+(as amended or supplemented) and/or other applicable laws or regulations, please note that the recipient of this material is not permitted to 
+engage in any activities in connection with the material that may give rise to conflicts of interests, unless otherwise disclosed in the “Important 
+Disclosures” in this material. 
+Thailand: This material is issued and distributed in Thailand by JPMorgan Securities (Thailand) Ltd., which is a member of the Stock Exchange 
+of Thailand and is regulated by the Ministry of Finance and the Securities and Exchange Commission. The registered address is 548 One City 
+Center Building, 50th Floor, Ploenchit Road, Lumphini, Pathum Wan, Bangkok 10330. 
+UK: Research is produced in the UK by J.P. Morgan Securities plc (“JPMS plc”) which is a member of the London Stock Exchange and is 
+authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority or 
+J.P. Morgan Markets Limited (“JPMML Ltd”) which is authorised and regulated by the Financial Conduct Authority. Unless specified to the 
+contrary, this material is distributed in the UK by JPMS plc and is directed in the UK only to: (a) persons having professional experience in 
+matters relating to investments falling within article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) (Order) 2005 
+
+23
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+(“the FPO”); (b) persons outlined in article 49 of the FPO (high net worth companies, unincorporated associations or partnerships, the trustees of 
+high value trusts, etc.); or (c) any persons to whom this communication may otherwise lawfully be made; all such persons being referred to as 
+"UK relevant persons". This material must not be acted on or relied on by persons who are not UK relevant persons. Any investment or 
+investment activity to which this material relates is only available to UK relevant persons and will be engaged in only with UK relevant persons. 
+A description of J.P. Morgan EMEA’s policy for prevention and avoidance of conflicts of interest related to the production of Research can be 
+found at the following link: J.P. Morgan EMEA - Research Independence Policy. 
+U.S.: J.P. Morgan Securities LLC (“JPMS”) is a member of the NYSE, FINRA, SIPC, and the NFA. JPMorgan Chase Bank, N.A. is a member 
+of the FDIC. Material published by non-U.S. affiliates is distributed in the U.S. by JPMS who accepts responsibility for its content.
+General: Additional information is available upon request. The information in this material has been obtained from sources believed to be 
+reliable. While all reasonable care has been taken to ensure that the facts stated in this material are accurate and that the forecasts, opinions and 
+expectations contained herein are fair and reasonable, JPMorgan Chase & Co. or its affiliates and/or subsidiaries (collectively J.P. Morgan) make 
+no representations or warranties whatsoever to the completeness or accuracy of the material provided, except with respect to any disclosures 
+relative to J.P. Morgan and the Research Analyst's involvement with the issuer that is the subject of the material. Accordingly, no reliance should 
+be placed on the accuracy, fairness or completeness of the information contained in this material. There may be certain discrepancies with data 
+and/or limited content in this material as a result of calculations, adjustments, translations to different languages, and/or local regulatory 
+restrictions, as applicable. These discrepancies should not impact the overall investment analysis, views and/or recommendations of the subject 
+company(ies) that may be discussed in the material. Artificial intelligence tools may have been used in the preparation of this material, including 
+assisting in data analysis, pattern recognition, and content drafting for research material. J.P. Morgan accepts no liability whatsoever for any loss 
+arising from any use of this material or its contents, and neither J.P. Morgan nor any of its respective directors, officers or employees, shall be in 
+any way responsible for the contents hereof, apart from the liabilities and responsibilities that may be imposed on them by the relevant 
+regulatory authority in the jurisdiction in question, or the regulatory regime thereunder. Opinions, forecasts or projections contained in this 
+material represent J.P. Morgan's current opinions or judgment as of the date of the material only and are therefore subject to change without 
+notice. Periodic updates may be provided on companies/industries based on company-specific developments or announcements, market 
+conditions or any other publicly available information. There can be no assurance that future results or events will be consistent with any such 
+opinions, forecasts or projections, which represent only one possible outcome. Furthermore, such opinions, forecasts or projections are subject 
+to certain risks, uncertainties and assumptions that have not been verified, and future actual results or events could differ materially. The value 
+of, or income from, any investments referred to in this material may fluctuate and/or be affected by changes in exchange rates. All pricing is 
+indicative as of the close of market for the securities discussed, unless otherwise stated. Past performance is not indicative of future results. 
+Accordingly, investors may receive back less than originally invested. This material is not intended as an offer or solicitation for the purchase or 
+sale of any financial instrument. The opinions and recommendations herein do not take into account individual client circumstances, objectives, 
+or needs and are not intended as recommendations of particular securities, financial instruments or strategies to particular clients. This material 
+may include views on structured securities, options, futures and other derivatives. These are complex instruments, may involve a high degree of 
+risk and may be appropriate investments only for sophisticated investors who are capable of understanding and assuming the risks involved. The 
+recipients of this material must make their own independent decisions regarding any securities or financial instruments mentioned herein and 
+should seek advice from such independent financial, legal, tax or other adviser as they deem necessary. J.P. Morgan may trade as a principal on 
+the basis of the Research Analysts’ views and research, and it may also engage in transactions for its own account or for its clients’ accounts in a 
+manner inconsistent with the views taken in this material, and J.P. Morgan is under no obligation to ensure that such other communication is 
+brought to the attention of any recipient of this material. Others within J.P. Morgan, including Strategists, Sales staff and other Research 
+Analysts, may take views that are inconsistent with those taken in this material. Employees of J.P. Morgan not involved in the preparation of this 
+material may have investments in the securities (or derivatives of such securities) mentioned in this material and may trade them in ways 
+different from those discussed in this material. This material is not an advertisement for or marketing of any issuer, its products or services, or its 
+securities in any jurisdiction.
+Confidentiality and Security Notice: This transmission may contain information that is privileged, confidential, legally privileged, and/or 
+exempt from disclosure under applicable law. If you are not the intended recipient, you are hereby notified that any disclosure, copying, 
+distribution, or use of the information contained herein (including any reliance thereon) is STRICTLY PROHIBITED. Although this 
+transmission and any attachments are believed to be free of any virus or other defect that might affect any computer system into which it is 
+received and opened, it is the responsibility of the recipient to ensure that it is virus free and no responsibility is accepted by JPMorgan Chase & 
+Co., its subsidiaries and affiliates, as applicable, for any loss or damage arising in any way from its use. If you received this transmission in 
+error, please immediately contact the sender and destroy the material in its entirety, whether in electronic or hard copy format. This message is 
+subject to electronic monitoring: https://www.jpmorgan.com/disclosures/email
+MSCI: Certain information herein (“Information”) is reproduced by permission of MSCI Inc., its affiliates and information providers (“MSCI”) 
+©2026. No reproduction or dissemination of the Information is permitted without an appropriate license. MSCI MAKES NO EXPRESS OR 
+IMPLIED WARRANTIES (INCLUDING MERCHANTABILITY OR FITNESS) AS TO THE INFORMATION AND DISCLAIMS ALL 
+LIABILITY TO THE EXTENT PERMITTED BY LAW. No Information constitutes investment advice, except for any applicable Information 
+from MSCI ESG Research. Subject also to msci.com/disclaimer
+Any mentions of third-party trademarks, brand names, products, and services are for referential purposes only and any mention thereof is not 
+meant to imply any sponsorship, endorsement, or affiliation.
+ Sustainalytics: Certain information, data, analyses and opinions contained herein are reproduced by permission of Sustainalytics and: (1) 
+
+24
+Brian Essex, CFA AC
+(1-212) 622-5990
+brian.essex@jpmchase.com
+North America Equity Research
+28 October 2026
+J P M O R G A N
+includes the proprietary information of Sustainalytics; (2) may not be copied or redistributed except as specifically authorized; (3) do not 
+constitute investment advice nor an endorsement of any product or project; (4) are provided solely for informational purposes; and (5) are not 
+warranted to be complete, accurate or timely. Sustainalytics is not responsible for any trading decisions, damages or other losses related to it or 
+its use. The use of the data is subject to conditions available at https://www.sustainalytics.com/legal-disclaimers. ©2026 Sustainalytics. All 
+Rights Reserved. 
+"Other Disclosures" last revised October 17, 2026. 
+Copyright 2026 JPMorgan Chase & Co. All rights reserved. This material or any portion hereof may not be reprinted, sold or 
+redistributed without the written consent of J.P. Morgan. Without prior written consent from J.P. Morgan, it is prohibited to (A) use or 
+share any material, commentary, information or other data received from J.P. Morgan or an authorized third-party ("J.P. Morgan 
+Data") in any artificial intelligence ("AI") systems or models, or (B) use automated means, including robots, crawlers, web-scrapers or 
+other automated tools or scripts, to access, collect, extract or harvest any J.P. Morgan Data, including scraping of user data, content, 
+metadata, pricing information or other information. #$J&098$#*P
+Completed 28 Oct 2026 12:43 AM EDT
+Disseminated 28 Oct 2026 04:51 AM EDT
