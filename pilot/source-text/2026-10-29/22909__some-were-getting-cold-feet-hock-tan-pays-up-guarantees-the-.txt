@@ -1,0 +1,226 @@
+ 
+"Some Were Getting Cold Feet": Hock Tan Pays Up, 
+Guarantees The Loss To Get Anthropic's $63 Billion 
+Chip Deal Done 
+ 
+BY TYLER DURDEN 
+TUESDAY, OCT 27, 2026 - 03:05 PM 
+The good news for the AI trade: the largest AI chip financing ever is done. The less good news: 
+it only got done once the company selling the chips agreed to pay more and eat the losses. 
+Late on Monday, Bloomberg reported that Broadcom (AVGO) had arranged a $63 billion deal 
+with Bank of America, Blackstone, Citigroup and Morgan Stanley to finance the purchase of 
+chips for Anthropic. Per the joint statement, a newly formed special purpose vehicle will buy 
+Broadcom XPU accelerators and networking gear and lease them to Anthropic, with deliveries 
+starting in 2027. BofA, Citi and MS arranged the first lien; Blackstone is the sole provider of the 
+committed second lien. And the key line: Broadcom "is providing residual value support to the 
+SPV in an amount equivalent to the first lien portion of the financing." 
+How big is that portion? According to Reuters, the first lien is about $43.5 billion, or 69% of the 
+total. In other words, more than two-thirds of the biggest AI debt deal on record is effectively 
+guaranteed by the vendor. 
+The timing could hardly be more on the nose. The deal landed the same day Anthropic filed its 
+S-1, which we dissected in "Anthropic's S-1 Is Out" and "Two Single Shares, Seven Seats, And 
+A Non-Voting Amazon," and the same day Meta asked shareholders for up to $95 billion, a 
+number which by Tuesday morning had grown to $97.5 billion (more on that below). Add 
+SpaceX closing its $40 billion Nvidia chip lease with Apollo, and Monday's AI capital call came 
+to roughly TWO HUNDRED BILLION DOLLARS IN ONE DAY! 
+ 
+
+ 
+ 
+Wall Street, as Bloomberg put it, had been watching the Broadcom deal "for reassurance that 
+investors are still keen to back AI's build-out." It got its reassurance, and AVGO was up 2.3% to 
+around $336 in the premarket. The question is what that reassurance cost. 
+"Some Were Getting Cold Feet" 
+Quite a lot, it turns out. Hours after the announcement, the Wall Street Journal's Anissa Gardizy 
+and colleagues reported what went on behind the scenes of what was internally called "Project 
+North Star": 
+"SCOOP: Broadcom CEO Hock Tan was getting impatient. He needed lenders to commit $40 
+billon in the largest AI debt deal ever—so Anthropic could afford TPUs—but some were getting 
+cold feet. In the end, Broadcom's CEO held 11th-hour talks with bank executives over the 
+weekend to get them to finalize their commitments. Broadcom also agreed to higher interest 
+rates on the loans, sweetening the deal." - Anissa Gardizy, WSJ 
+According to the pickup of the Journal's report, some banks felt they "weren't being paid enough 
+for the risk" and considered pulling out altogether, as rates rose and AI ventures got harder to 
+finance. Tan spent nearly two months trying to get them to commit, and in the end gave the 
+banks more comfort on Broadcom's guarantees in case Anthropic defaults, on top of the higher 
+coupon. 
+Put differently, the lenders said no until the seller of the collateral agreed to stand behind the 
+collateral. Our reaction, shortly before midnight: 
+ 
+
+ 
+Nothing, that is, except Broadcom, whose own balance sheet is now the backstop for a growing 
+share of the AI buildout (and whose CDS has been telling that story for months; more on that 
+below). 
+The deal also grew on the way to the finish line. When Bloomberg first reported on Oct 2 that 
+Broadcom was amassing "$60 billion" for Anthropic, syndication letters went out for a $42 billion 
+senior-secured tranche, with Blackstone leading an $18 billion junior piece, as we noted in "'The 
+Crowding Out Effect Is Immense': Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV 
+Stampede" (Oct 8). The final version: $63 billion total, with roughly $43.5 billion of first lien. 
+Bigger, pricier and more guaranteed. Which, maybe, tells you more about the current state of AI 
+credit than any spread chart. 
+Seller, Lender, Guarantor... Shareholder 
+Regular readers know this is the second time around. Back in June, Broadcom set up the "Big 
+Sky" platform with Apollo and Blackstone, which raised $35 billion to finance Anthropic's 
+purchase of Google TPUs (made by Broadcom), with Broadcom backstopping the senior 
+tranches, as we detailed in "Apollo And Blackstone Raise $35 Billion For Anthropic In One Of 
+The Biggest Ever Private Credit SPV Deals" (Jun 8). At the time we summed it up as follows: 
+Per Reuters, Broadcom's backstop on Big Sky was up to $29 billion, according to a company 
+filing. Now add North Star's roughly $43.5 billion of residual value support. Then add the $42 
+billion convertible note facility Broadcom extended to Anthropic, which, per the S-1, Anthropic 
+can draw to pay its lease bills and which converts into non-voting Class N shares at 90% of the 
+30-day VWAP (85% if Anthropic misses its revenue targets). That's roughly $114 billion of 
+guarantees and lending to a single customer, before the $50 billion-plus OpenAI chip financing 
+Broadcom is still working on, and before its share of the up to $5 billion that Nvidia, AMD and 
+Broadcom "indicated an interest" in putting into Meta's offering. 
+ 
+
+ 
+ 
+So Broadcom sells the chips, lends the customer the money to pay the rent on the chips 
+(convertible into the customer's stock), guarantees the lenders who bought the chips, and buys 
+stock in another customer so that customer can buy more chips. Goldman's Bobby Molavi 
+described the genre perfectly in his Monday "Ruminations" note (available to pro subs): 
+"Elsewhere we get vendor financing..or balance sheet as a service...where the link between 
+providers and customers becomes grey and revenue and financing lines also blur." 
+Balance sheet as a service. We'll be borrowing that one. 
+Meta, for its part, did its best to keep up. Its common stock offering was upsized to $25 billion 
+and priced at $625 per share, alongside $12.5 billion of mandatory converts (250 million 
+depositary shares at $50 each), plus the $60 billion ATM program, for a total of $97.5 billion, the 
+largest equity raise ever, per Reuters. Nvidia separately said it would put $3 billion into the deal. 
+We covered the original $95 billion version in "Debt Window Slams Shut: Meta Taps 
+Shareholders For Up To $95 Billion, With Its Own Chip Suppliers Buying In," and our real-time 
+take on the cornerstone investors still stands: 
+Anthropic's Biggest Bill Has Broadcom's Name On It 
+Why does Broadcom keep doing this? Because Anthropic is now one of its biggest customers, 
+and Anthropic can't pay for the chips on its own. The S-1 spells out roughly $637 billion of 
+named compute commitments, and the single biggest line is about $161.2 billion of rent 
+(excluding interest) on five-year Broadcom master equipment leases for Google TPU hardware, 
+more than Anthropic owes SpaceXAI, Google Cloud or AWS: 
+ 
+
+ 
+ 
+Those leases sit in two special-purpose subsidiaries that Anthropic consolidates. Their 
+obligations are guaranteed by Anthropic, secured by the chips, and carry "customary events of 
+default, including cross-defaults." The S-1 also notes Broadcom has already assigned part of 
+one lease "to another third party," and is admirably upfront about how all this gets paid for: "a 
+portion of our compute and infrastructure build-out has been funded or supported by capital or 
+credit support provided or facilitated by certain of our CSPs and chip partners." 
+Now consider who that tenant is. Anthropic disclosed 
+974 million in 
+16. 3𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑜𝑓𝑟𝑒𝑣𝑒𝑛𝑢𝑒𝑖𝑛𝑡ℎ𝑒𝑓𝑖𝑟𝑠𝑡ℎ𝑎𝑙𝑓, 𝑖𝑡𝑠𝑓𝑖𝑟𝑠𝑡𝑞𝑢𝑎𝑟𝑡𝑒𝑟𝑙𝑦𝐺𝐴𝐴𝑃𝑜𝑝𝑒𝑟𝑎𝑡𝑖𝑛𝑔𝑝𝑟𝑜𝑓𝑖𝑡(
+Q2), and an 
+72.4 billion of which came from marking up 
+80. 7𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑓𝑖𝑟𝑠𝑡−ℎ𝑎𝑙𝑓𝑛𝑒𝑡𝑙𝑜𝑠𝑠(
+convertible notes and other instruments). It had $131.7 billion of cash and short-term 
+investments at June 30, which is plenty... for a company that hadn't just signed up for $637 
+billion of compute (roughly $780-810 billion once the estimated TPU and AMD tranches are 
+added). The $63 billion North Star financing alone is almost four times Anthropic's first-half 
+revenue. 
+Which is why the guarantee matters so much. For the first-lien lenders, Anthropic and the resale 
+value of the TPUs are mostly someone else's problem: if the chips are worth less than the loan 
+when the lease ends, Broadcom makes up the difference. What they really own is Broadcom 
+credit, with Anthropic as the middleman. Blackstone's second lien is where the actual AI lab risk 
+sits, and you can be sure it is priced accordingly. 
+Moody's, for what it's worth, still calls Broadcom one of the strongest large technology 
+companies, but warned that the risk would rise if it did multiple transactions in a short period to 
+ 
+
+ 
+meet the large funding needs of frontier AI labs. Big Sky in June, North Star in October, OpenAI 
+next. We'd say "multiple" and "short period" are already covered. 
+The Bond Market Has Been Here Before 
+The CDS market figured this out a long time ago. When Bloomberg reported in August that 
+Broadcom was looking to raise up to $100 billion through an off-balance sheet SPV, we wrote 
+"Broadcom CDS Explodes As It Seeks Up To $100 Billion In Massive Off-Balance Sheet Debt 
+Deal" (Aug 20), and then: 
+It didn't stop there. By mid-October, Broadcom's 5-year CDS was at 133bp, a few bps below its 
+record 136bp and more than triple its May level. That was the same week Hock Tan warned a 
+Singapore conference that "a lot of investors have no clue what they are investing in," as we 
+discussed in "Hock Tan Warns AI Investors Are Gambling In A Casino... Whose Chips His Own 
+Credit Is Paying For." The casino, as of Monday, has a $43.5 billion bigger line of credit. 
+And Broadcom is hardly the only chipmaker writing guarantees. In his weekend "IG Credit Week 
+in Review" (available to pro subs), Goldman IG trader Brad Shelofsky wrote that last week saw 
+"a significant re-rating of AI risk as markets reassessed the feasibility of funding the buildout," 
+with the IG hyperscaler basket 17bps wider, "its worst week on record outside of the similar 
+moves in July," and the 30-year hyperscaler basket at new wides, 85bps cheap to the IG100 
+ex-hyperscalers: 
+ 
+
+ 
+ 
+Shelofsky also flagged SpaceX's chip deal, which was expected to "likely price next week" (it 
+did, on Monday), and noted that the shorter duration of these deals sent the curve flatter, with 
+SPCX 2031s 55bps wider on the week. He also said, notably, that a bounce "can't happen until 
+the Meta and SpaceX Chip deals are cleared." Well, both are now cleared, as is Broadcom's. 
+Credit did catch a bid on Monday: per Goldman's credit desk, Meta CDS closed 10bps tighter 
+and chip names 2-3bps tighter, while SpaceX and Oracle went 5bps wider. By Tuesday 
+morning, though, the IG hyperscaler basket was already 2.5bps off its Monday tights. 
+Elsewhere, the plumbing still looks awful. Goldman's morning credit dashboard has USD CCC 
+spreads at 1,118bp, up 298bp in three months and at the 100th percentile of the past three 
+years, and the 10-year at 4.99%. And as Goldman's Tony Pasquariello noted over the weekend, 
+in conversations with the firm's credit "blackbelts," "the tone has been strikingly dark, and a 
+characterization of market conditions as 'melting down' was used more than once." 
+ 
+
+ 
+"Increasingly About The Market's Willingness To Supply Capital" 
+What does the sellside make of it? Goldman's Rich Privorotsky, who first warned that "the 
+crowding out effect is potentially immense" earlier this month, summed it up in his Tuesday "GS 
+Basics" note (available to pro subs): 
+"Some relief in AI credit, with spreads coming off Friday's wides, but this remains the most 
+important thing to watch. At this point in the cycle, it's increasingly about the market's willingness 
+to supply capital and at what price... What is clear is that the cost of capital has risen materially, 
+and that's changing the economics of the entire complex. Any sustained relief in credit should 
+be a powerful catalyst." 
+A day earlier, Privorotsky laid out the four possible paths for the hyperscalers: worst case, 
+"capex accelerates, funded increasingly by expensive debt"; arguably worse, "capex gets cut 
+because financing isn't available"; best case, capex funded by "accelerating organic cash flow"; 
+and the middle ground, "capex flat/up, demand robust, but more equity financing. Bad for 
+hyperscaler equity, potentially good for credit." Meta just picked door number four. Broadcom, 
+meanwhile, picked an option Goldman didn't list: the vendor guarantees the expensive debt. 
+For balance, JPMorgan's International Market Intelligence desk sees the glass half full. In 
+Tuesday's briefing (available to pro subs), it argues that "news from the IPO landscape, plus 
+financing announcements from META and AVGO/SPCX deals, should make it less likely that 
+capex gets cut materially because financing isn't available." Fair enough. But the same desk 
+concedes "we still haven't resolved concerns on monetization, and this is what is causing the 
+financing bottleneck," and in Monday's edition relayed a JPM FICC view that "circular financing 
+and Nvidia credit support may be necessary to finance depreciating GPUs through 
+investment-grade markets, although these arrangements introduced meaningful concentration 
+and correlated downside risks." It also noted that banks are buying CDS protection to hedge 
+their growing data center lending exposure. Which, maybe, includes some of the same banks 
+that just committed to North Star. 
+Here is how Monday's deals fit into the broader chip-debt conga line which we started tracking 
+earlier this month: roughly $278 billion and counting, not including Oracle's still-unsized SPV or 
+Nvidia's $500 billion "compute financing platform": 
+ 
+
+ 
+ 
+When The Seller Is The Bank 
+We've been warning since last October that the AI buildout runs on debt, and since the summer 
+that the debt is migrating into SPVs, where the risk ends up back with the vendors, as we laid 
+out in "Forget CDOs, Meet CCOs" (Aug 14). Monday's deals confirm both, at a scale nobody 
+would have predicted a year ago: in one session, the AI complex lined up about $200 billion of 
+capital, and the largest debt piece cleared only after the chip seller raised the coupon and took 
+the first-loss economics. 
+The bull case is simple: the money is there, Anthropic's revenue is compounding, deliveries start 
+in 2027, and by then the IPO will have recapitalized the tenant. Maybe. But consider what the 
+bulls are cheering. When banks need the vendor's guarantee to lend against the vendor's own 
+product to a customer that lost $80 billion (on paper) in six months, the risk in the trade sits 
+squarely on Broadcom's balance sheet, and Broadcom's CDS has been at or near record wides 
+for two months. As Hock Tan himself put it, a lot of investors have no clue what they are 
+investing in. In this case, it's probably his balance sheet. 
+And the bigger risk is correlation. Broadcom guarantees Anthropic's chips; Anthropic owes 
+Broadcom $161 billion in rent; Broadcom's notes convert into Anthropic stock; Anthropic's IPO 
+prices off Anthropic's revenue, which is funded by... well, you get the idea. Then again, Moody's 
+ 
+
+ 
+did say the risk rises with "multiple transactions in a short period." Broadcom is working on the 
+next one as we speak. 
+Much more in the full Goldman "IG Credit Week in Review," the Goldman "GS Basics" and the 
+JPMorgan "International Market Intelligence" notes, all available to pro subs. 
+ 
+ 
