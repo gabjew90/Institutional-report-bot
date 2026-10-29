@@ -1,0 +1,581 @@
+{
+ "brief": "A GS industrials/materials desk note opens with cross-asset levels (S&P futures flat, Asia up, Europe down on 13-year-low consumer confidence, oil at local highs, gold sub-$4k, 10Y at 4.98%, Fed hold expected) ahead of a big central-bank week. A risk commentary (Privo) argues front-end rates have stabilized (good for risk), energy is too high but more likely to cause chop than a selloff, and credit is the real worry, still flashing yellow-to-red; if credit calms it could be a rally catalyst. This week's test for hyperscalers is capex, backlog conversion, FCF and financing choices, not headline beats; tech flows turned slightly less one-sided (net selling eased). Three earnings-season reads follow: defense is catching a fundamentals-driven bid (LMT, NOC up; watching GD, LHX) into midterms; non-residential construction ex-data-center is broadly improving, setting up CAT this week, with ALLE now top-weighted in the homebuilding index; and European earnings moves have largely happened, so fading the next prints (named pairs) may make more sense. Overnight, WHR, GBX, JBLU and CLW all missed or guided down, each with large implied moves.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "US S&P futures are holding flattish after the prior day's gains.",
+   "anchor": "US S&P futures holding flattish after yesterday\u2019s gains.",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "KOSPI is up 309 basis points and Japan's market is up 173 basis points, with overseas markets trading constructively.",
+   "anchor": "Overseas markets constructive with KOSPI up 309bps, Japan up 173bps.",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "European equities are trading down, with France off 24 basis points as regional consumer confidence hits a 13-year low.",
+   "anchor": "Europe trading down France off 24bps as consumer confidence in the region hits 13 year lows.",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Crude oil is modestly bid, with WTI near $102 and Brent near $116, both at local highs.",
+   "anchor": "crude modestly bid after grinding higher through the day yesterday WTI $102, Brent $116 at local highs.",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Gold is trading below $4,000 and silver is down double digits over the past week, continuing to move opposite oil.",
+   "anchor": "gold sub $4k and silver down double digits in the last week.",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The 10-year Treasury yield is holding just below 5%, at 4.98%.",
+   "anchor": "10-year holding just below 5% to 4.98%",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Bitcoin is trading below $80,000.",
+   "anchor": "dollar steady and Bitcoin below $80k.",
+   "topic": "daily cross-asset recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The market is pricing a Fed hold this week.",
+   "anchor": "expectations for a Fed hold in the US.",
+   "topic": "daily cross-asset recap",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Front-end interest rates have stabilized, which the desk views as objectively good for risk assets.",
+   "anchor": "We\u2019ve stabilized in front end rates, objectively good for risk.",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Energy prices remain too high for comfort but are more likely to produce range-bound trading than a sustained selloff absent a new escalation.",
+   "anchor": "Energy remains too high for comfort, but that\u2019s more likely to produce chop than a sustained selloff absent another escalation.",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Credit is the one risk the desk is worried about, still flashing yellow to red relative to equities.",
+   "anchor": "Credit is the one to worry about. Still flashing yellow to red relative to equities.",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "If credit stress calms down, the desk thinks that could be a meaningful catalyst for a broader equity rally.",
+   "anchor": "We need credit to calm down, and if it does, I think that could be a meaningful catalyst for a broader rally.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Hyperscaler earnings and the Fed decision are the main market events this week.",
+   "anchor": "Hyperscalers + Fed are the main event this week.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Flat-to-up hyperscaler capex is acceptable, but a capex decline would be disastrous for the picks-and-shovels suppliers to AI infrastructure.",
+   "anchor": "Capex: flat/up is fine, down would be disastrous for picks and shovels.",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "After being net sellers of tech for weeks, the desk saw client demand return on the buy side, at least in Europe.",
+   "anchor": "Having been net sellers of tech for much of the past few weeks, we finally saw some client demand engaging on the other side (at least in Europe).",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Defense stocks are catching a bid that the desk attributes to fundamentals, not defensive positioning.",
+   "anchor": "Defense is catching a bid \u2013 not just as defensives in our view and not positioning related.",
+   "topic": "defense earnings bid",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Lockheed Martin, a consensus-long name, rose mid-single digits on a clean earnings report.",
+   "anchor": "LMT \u2013 consensus long up mid single digits on a clear report.",
+   "topic": "defense earnings bid",
+   "status": "released",
+   "instruments": [
+    "LMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Northrop Grumman, a consensus-short name, rose a similar amount to LMT after its report.",
+   "anchor": "NOC \u2013 consensus short \u2013 up similar.",
+   "topic": "defense earnings bid",
+   "status": "released",
+   "instruments": [
+    "NOC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The desk cites progress on agreements that could lead to higher volumes going forward as part of the favorable backdrop for defense names.",
+   "anchor": "progress on agreements that could lead to uptick in volumes going forward",
+   "topic": "defense earnings bid",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The desk is watching General Dynamics and L3Harris this week, noting L3Harris carries particularly low expectations.",
+   "anchor": "Watching GD and LHX this week \u2013 the latter of which has particularly low expectations.",
+   "topic": "defense earnings bid",
+   "status": "forecast",
+   "instruments": [
+    "GD",
+    "LHX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Non-residential construction data is standing out favorably in the earnings season so far.",
+   "anchor": "Non-residential construction sticks out favorably.",
+   "topic": "construction recovery reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Previously troubled areas like warehouse, retail, and commercial office appear to be getting better or less bad, beyond the data-center-driven strength.",
+   "anchor": "some of the troubled areas of the last few years whether it\u2019s warehouse, retail, commercial office (amongst others) appear to be getting better or less worse.",
+   "topic": "construction recovery reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "United Rentals' commentary, Allegion's organic growth, and Fastenal's results are all supportive of the construction recovery read.",
+   "anchor": "URI commentary, ALLE organic growth and FAST all supportive.",
+   "topic": "construction recovery reads",
+   "status": "released",
+   "instruments": [
+    "URI",
+    "ALLE",
+    "FAST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The desk thinks this construction data could set up Caterpillar well this week tactically after its large selloff.",
+   "anchor": "We think this could set up CAT well this week tactically after a large sell off.",
+   "topic": "construction recovery reads",
+   "status": "forecast",
+   "instruments": [
+    "CAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Allegion is now the top-weighted member of the homebuilding index heading into November, a seasonally favorable period for housing names.",
+   "anchor": "ALLE is now the top member in the homebuilding index.",
+   "topic": "construction recovery reads",
+   "status": "released",
+   "instruments": [
+    "ALLE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "heading into November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Wartsila fell 10% on a strong order bear in Q3, following a previously debated upgrade.",
+   "anchor": "WRT1V FH -10% strong order bear in Q3 following Daniela\u2019s debated upgrade.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Wartsila's order beat was driven by its energy segment while marine orders missed, with sales in line, EBIT modestly ahead, and guidance unchanged.",
+   "anchor": "Energy drove the order beat while Marine missed. Sales were in line and EBIT modestly ahead. Guidance unchanged.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "ASSA ABLOY was flat in Q3 with an EBIT beat driven by Americas strength that offset weaker Global Technologies.",
+   "anchor": "ASSAB SS flat Q3 EBIT beat with sales in line driven by strength in Americas (as seen in ALLE) and EMEA offset by weaker Global Technologies.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Alfa Laval rose 1% on a 14% Q3 order beat and good margin execution despite a sales miss, with ocean the main driver of the order beat.",
+   "anchor": "ALFA SS +1% on Q3 order beat 14% and good margin execution despite sales miss.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Porsche rose 2% after a profit beat despite lower volumes, bucking the broader downturn trend in autos.",
+   "anchor": "P911 GR up 2% after a profit beat despite lower volumes bucking the trend in autos.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The desk thinks most of the European earnings-reaction moves have already happened and suggests the other side could make more sense for upcoming prints.",
+   "anchor": "Europe reads have been obvious \u2013 we generally think the moves have happened \u2013 and would suggest the other side could make more sense for prints.",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "The desk names IR, WHR, and OTIS as the US-listed sides of European-pattern fade pairs it flags for upcoming prints.",
+   "anchor": "ATCOA \u2013 IR, ELUXB SS \u2013 WHR, SCHN SW \u2013 OTIS to name a few.",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [
+    "IR",
+    "WHR",
+    "OTIS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Clearwater Paper missed Q3 sales at $385 million versus $392 million expected, with EBITDA of $24 million versus a $25 million consensus.",
+   "anchor": "CLW Q3 sales miss $385mm vs. $392mm. EBITDA $24mm vs. $25mm consensus.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CLW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Clearwater Paper's earnings call carries a 7% implied move, with management optimistic about a continued recovery in SBS industry conditions despite transportation and chemicals cost headwinds.",
+   "anchor": "Call at 5pm with a 7% implied move. We are optimistic about a continued recovery in SBS industry conditions, even as we face cost headwinds in transportation and chemicals.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "CLW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Greenbrier missed Q4 EPS at $0.39 versus $0.80 expected, on revenue of $591 million versus $605 million expected.",
+   "anchor": "GBX Q4 EPS miss $0.39 vs. $0.80 on revenue that came in light $591mm vs. $605mm.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GBX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Greenbrier guided 2027 revenue to $2.8-3.2 billion versus a $2.7 billion consensus, but guided EBIT margin to 7-7.5%, well below the 10% consensus.",
+   "anchor": "Guiding 2027 revenue $2.8-3.2bn vs. $2.7bn consensus and EBIT margin 7-7.5% well below 10% consensus.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GBX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "JetBlue posted a 60 cent per share Q3 loss versus 55 cents consensus, with revenue roughly in line at $2.8 billion.",
+   "anchor": "JBLU out for good measure with a 60c loss in Q3 vs. 55c in consensus. Revenues came more or less in line $2.8bn.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "JBLU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "JetBlue guided Q4 RASM up 18-22%, ASM up 3-4%, flat CASMx, and capex of $300 million.",
+   "anchor": "Sees Q4 RASM +18-22%, ASM +3-4%, guiding flat CASMx for Q4, capex $300mm.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "JBLU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Whirlpool posted a Q3 loss of $0.21 per share versus a positive $0.76 expected, with EBIT well below guidance on sales of $3.68 billion beneath the $3.91 billion consensus.",
+   "anchor": "WHR Q3 loss of $0.21 vs. positive $0.76 expected. Ongoing EBIT well below $97mm vs. $176mm on sales of $3.68bn beneath $3.91bn consensus.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "WHR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials Europe reads 3 pts from EPS WHR JBLU GBX CLW 27 Oct 2026",
+   "claim": "Whirlpool cut full-year revenue guidance to $14.5 billion from $15 billion prior and guided to an ongoing loss per share of $1.30 versus $2.50-3.00 of positive EPS guided previously.",
+   "anchor": "Full year outlook down to $14.5bn on topline vs. $15bn prior. Sees ongoing loss per share of $1.30 vs. EPS of $2.5-3.00 positive prior.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "WHR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "full year"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22557__gs-novak-gs-u-s-industrials-materials-europe-reads-3-pts-fro.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 40,
+  "matched": 40,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
