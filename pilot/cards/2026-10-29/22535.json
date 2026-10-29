@@ -1,0 +1,253 @@
+{
+ "brief": "Goldman's global macro view expects growth to hold roughly its 2026 pace into 2027 but flags downside risk from higher energy prices, higher bond yields and slower AI investment growth, and expects fewer rate hikes than priced across major developed-market central banks as AI-related labor effects become more visible and inflation declines. The GOAL Kickstart asset allocation stays modestly pro-risk (overweight equities, underweight credit, overweight cash), arguing AI, Middle East and mid-term-election risk could keep near-term volatility elevated, but earnings support, lighter positioning and lower valuations should help equities into year-end. Single-name calls: Apple is expected to post in-line F4Q26 results, with iPhone revenue up 15% yoy on iPhone 18 Pro/Max price increases and the Duo launch offsetting volume declines, services revenue up 10% yoy, and 47.8% gross margin. Allianz's 3Q26 operating profit is forecast about 1% below consensus on weaker P&C and asset management. DSV keeps its Buy rating and DKK2,300 target as quarterly EBIT is expected to reach DKK7-8bn in 2027. Gjensidige is downgraded to Neutral on normalising pricing, with FY27-30 EPS cut 2.4%. Unibail-Rodamco-Westfield's Buy rating is maintained despite a 2% price-target cut to \u20ac121, and the European M&A basket is refreshed with nine new additions.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects global growth to hold a similar pace in 2027 but sees downside risks building from higher energy prices, higher bond yields and slower AI investment growth.",
+   "anchor": "downside risks are building because of higher energy prices, higher bond yields, and the prospect of slower AI investment growth next year",
+   "topic": "Central banks to deliver fewer hikes than priced",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects fewer rate hikes than priced for most major DM central banks as AI-related labor market effects grow more visible and inflation declines.",
+   "anchor": "we expect fewer rate hikes than priced for most major DM central banks",
+   "topic": "Central banks to deliver fewer hikes than priced",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs remains modestly pro-risk, overweight equities for 3 and 12 months, underweight credit for 3 and 12 months, and overweight cash for 3 months.",
+   "anchor": "We remain modestly pro-risk in our asset allocation: OW Equities for 3m/12m, balanced by UW Credit (for 3m/12m), OW Cash for 3m",
+   "topic": "Central banks to deliver fewer hikes than priced",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3m/12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs flags AI concerns, Middle East tensions and mid-term elections as risks that could sustain near-term equity volatility.",
+   "anchor": "AI concerns, Middle East tensions and mid-term elections could sustain near-term volatility.",
+   "topic": "Central banks to deliver fewer hikes than priced",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects earnings support, lighter positioning and lower valuations to help equities into year-end.",
+   "anchor": "we think earnings support, lighter positioning and lower valuations should help equities into year-end.",
+   "topic": "Central banks to deliver fewer hikes than priced",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects Apple's iPhone revenue to grow 15% year over year in F4Q26 on price increases for the iPhone 18 Pro and Pro Max and the Duo launch offsetting volume declines.",
+   "anchor": "iPhone revenue growth of +15% yoy as price increases on the iPhone 18 Pro and Pro Max",
+   "topic": "Apple earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects Apple's services revenue to grow 10% year over year in F4Q26 despite slowing App Store growth.",
+   "anchor": "Services revenue growth of +10% yoy despite slowing App Store growth",
+   "topic": "Apple earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects Apple's F4Q26 gross margin at 47.8%, including a 1 point benefit from tariff refunds offset by component cost inflation.",
+   "anchor": "gross margins of 47.8% which includes a 1pp benefit from tariff refunds and reflects headwinds from component cost inflation.",
+   "topic": "Apple earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "F4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs estimates Allianz's 3Q'26 operating profit about 1% below consensus, driven by weaker P&C and asset management results.",
+   "anchor": "our 3Q'26 operating profit estimate is c.1% below company-collected consensus (published 26/10/26) primarily driven by P&C (-2%) and Asset Management (-2%).",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs attributes its lower Allianz P&C profit estimate to a 15 basis point less favourable combined ratio and 2% lower insurance revenue.",
+   "anchor": "Our lower P&C operating profit estimate is underpinned by a c.15bps less favourable headline COR and c.2% lower Insurance Revenue",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs reiterates a Buy rating on DSV, on its Conviction List, with a 12-month DCF-based price target unchanged at DKK 2,300.",
+   "anchor": "Our 12m, DCF-based price target is unchanged at DKK 2,300.",
+   "topic": "European earnings reads",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs expects DSV's quarterly EBIT to improve to a DKK 7-8bn range during 2027, up from DKK 6.3bn in Q3'26.",
+   "anchor": "we expect DSV to improve to a DKK 7-8bn quarterly EBIT range during 2027.",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs downgrades Gjensidige to Neutral as the pricing environment normalises, leaving limited room to beat high expectations.",
+   "anchor": "Downgrading to Neutral as pricing normalises, leaving limited room to beat high expectations",
+   "topic": "European earnings reads",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs cuts its Gjensidige FY27e-30e EPS estimates by about 2.4% on average, reflecting lower growth and margin expansion.",
+   "anchor": "Reflecting lower growth and margin expansion, we reduce our FY27e-30e EPS by c.2.4% on average.",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27e-30e"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs rebalanced its European M&A basket (GSTRACQN), adding Abivax, Haleon, Moncler, Burberry, Prada, Swatch Group, Rightmove, Scout24 and Zegona, with about 65% in Industrials, Consumer Discretionary and Healthcare and about 35% UK-domiciled names.",
+   "anchor": "with additions including Abivax, Haleon, Moncler, Burberry, Prada, Swatch Group, Rightmove Plc, Scout24 and Zegona",
+   "topic": "European M&A basket refresh",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs lowers its Unibail-Rodamco-Westfield 2026E-2030E EPS forecasts by 0-2% on higher refinancing costs.",
+   "anchor": "Our 2026E-2030E EPS forecasts are down 0-2% on higher refinancing costs",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026E-2030E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Macro / Goal Kickstart / Apple / Allianz / DSV / Gjensidige / M&A Basket / Unibail / Building Mats / Solaria / Argenx",
+   "claim": "Goldman Sachs cuts its Unibail-Rodamco-Westfield 12-month price target 2% to \u20ac121.0 from \u20ac124.0, implying 34% upside, while maintaining its Buy rating.",
+   "anchor": "Our 12m PT is 2% lower at \u20ac121.0 (previously \u20ac124.0), implying 34% upside potential",
+   "topic": "European earnings reads",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22535__gs-blekos-global-macro-goal-kickstart-apple-allianz-dsv-gjen.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 17,
+  "matched": 17,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
