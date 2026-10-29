@@ -1,0 +1,144 @@
+{
+ "unread_source_files_at_edit": 17,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 22,
+  "cards": 732,
+  "max_doc_id": 22904
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 89,
+  "brief_citations": 1,
+  "distinct_cards_cited": 89,
+  "card_count": 732,
+  "quintiles": [
+   16,
+   14,
+   17,
+   24,
+   18
+  ],
+  "edge_quintile_share": 0.382,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "The Nasdaq 100 rose 130 basis points (one-hundredth of a percent) and reclaimed its 100-day average price [c608], the Russell 2000 added 81 basis points [c609] and the S&P 500 added 67 [c610], but 286",
+    "cite": "c608,c609,c610",
+    "reason": "figures not in cited card(s): ['286', '50bp']"
+   },
+   {
+    "sentence": "Goldman's baskets show where the money went, with neocloud names up 585 basis points, optical networking up 5%, inference chips up 466 basis points and memory up 368 [c221, c222, c223, c224].",
+    "cite": "",
+    "reason": "figures with no card citation: ['368', '466bp', '5%', '585bp']"
+   },
+   {
+    "sentence": "Goldman's Lee Coppersmith has a relief rally as his base case given the size of the hedge fund unwind, and prefers call spreads to outright longs because borrowed exposure is still high and systematic",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "UBS's flow desk argues the oversold bounce in tech has likely already run its course and wants to cut exposure that only pays on further upside, pointing to software up just 1.1% since Thursday agains",
+    "cite": "",
+    "reason": "figures with no card citation: ['0.8%', '1.1%']"
+   },
+   {
+    "sentence": "UBS's own model has Nasdaq positioning roughly halved over two weeks with a further $1.2 billion of selling projected, though improving Dow momentum could pull in $1.5 billion of buying [c571, c548].",
+    "cite": "",
+    "reason": "figures with no card citation: ['1200000000', '1500000000']"
+   },
+   {
+    "sentence": "Through the October 13 to 20 selloff, non-dealer net positioning in Nasdaq futures hit a new nominal high, with $9.5 billion bought as the index lost 3.5%, a third straight week of buying for a cumula",
+    "cite": "",
+    "reason": "figures with no card citation: ['21800000000', '3.5%', '9500000000']"
+   },
+   {
+    "sentence": "From October 22 to 26 the index recovered 1.1% and $9 billion of that open interest unwound as both the tactical shorts and some longs closed out [c585, c586].",
+    "cite": "",
+    "reason": "figures with no card citation: ['1.1%', '9000000000']"
+   },
+   {
+    "sentence": "That was worth about 7% on the KOSPI, its best day in three months, with Samsung up about 8% [c280, c282].",
+    "cite": "",
+    "reason": "figures with no card citation: ['7%', '8%']"
+   },
+   {
+    "sentence": "Brent fell 1.6% to $114 a barrel after Iran's Mojtaba Khamenei called for pursuing the conditions Iranian officials have set to end the war [c512, c495].",
+    "cite": "",
+    "reason": "figures with no card citation: ['1.6%', '114']"
+   },
+   {
+    "sentence": "Room against the fiscal targets may have fallen to around \u00a310 billion from \u00a323.6 billion in March [c459], and the Chancellor is expected to rebuild only about \u00a315 billion through smaller tax rises whi",
+    "cite": "c459",
+    "reason": "figures not in cited card(s): ['15000000000']"
+   },
+   {
+    "sentence": "The live equity risk is the bank levy, where verbal market consensus has it moving to 8% from 3% [c460]: UBS models a rise to 6% as a 3% to 4% cut to NatWest and Lloyds earnings and 1% to 2% for Barcl",
+    "cite": "c460",
+    "reason": "figures not in cited card(s): ['1%', '2%', '4%', '6%']"
+   },
+   {
+    "sentence": "The Reserve Bank of New Zealand left its official cash rate at 2.75% against expectations of a 25 basis point hike, on a 4 to 3 vote with Governor Breman among those holding [c338, c339], and the New ",
+    "cite": "c697",
+    "reason": "figures not in cited card(s): ['2.75%', '25bp']"
+   },
+   {
+    "sentence": "Australia went the other way, with third-quarter trimmed-mean inflation at 1.0% quarter on quarter and 3.7% year on year and headline at 4.3% [c687, c688].",
+    "cite": "",
+    "reason": "figures with no card citation: ['1.0%', '3.7%', '4.3%']"
+   },
+   {
+    "sentence": "UBS's desk is buying dips in the Australian dollar against the New Zealand dollar around 1.2475 to 1.2485 [c693].",
+    "cite": "c693",
+    "reason": "figures not in cited card(s): ['1.2485']"
+   },
+   {
+    "sentence": "Goldman's Brazil desk traded around $80 billion of currency volume against a $30 billion to $40 billion average [c357], and local rate futures needed a third trading halt before the market reopened [c",
+    "cite": "c357,c305",
+    "reason": "figures not in cited card(s): ['30000000000']"
+   },
+   {
+    "sentence": "Goldman's Alberto Ramos says the fiscal starting point has visibly deteriorated after a series of expensive campaign promises, with primary spending up close to 6% a year in real terms over the last f",
+    "cite": "",
+    "reason": "figures with no card citation: ['6%']"
+   },
+   {
+    "sentence": "Celestica beat and guided fiscal 2027 revenue to $40.0 billion and adjusted earnings to $21.50 a share, about 11% and 9% above street estimates [c53], which implies 90% revenue growth and came with ma",
+    "cite": "c53",
+    "reason": "figures not in cited card(s): ['90%']"
+   },
+   {
+    "sentence": "Cadence beat and raised its 2026 guidance with $8.2 billion of backlog, and framed AI as something that increases usage of its core chip-design tools rather than a threat to them [c47, c49, c48].",
+    "cite": "",
+    "reason": "figures with no card citation: ['8199999999.999999']"
+   },
+   {
+    "sentence": "Seagate beat and guided revenue up 14% quarter on quarter and fell 7% after the bell anyway [c144, c145].",
+    "cite": "",
+    "reason": "figures with no card citation: ['14%', '7%']"
+   },
+   {
+    "sentence": "Against that, Whirlpool lost $0.21 a share against $0.76 expected and cut full-year revenue guidance to $14.5 billion from $15 billion [c156, c157], and Greenbrier guided 2027 operating margin to 7% t",
+    "cite": "c102",
+    "reason": "figures not in cited card(s): ['0.21', '0.76', '14500000000', '15000000000']"
+   },
+   {
+    "sentence": "HSBC fell 5.6% in Hong Kong as competition for deposits in the UK and Hong Kong squeezes the interest income banks earn on loans [c63, c321], and Goldman flags the same competition spreading across Eu",
+    "cite": "c322",
+    "reason": "figures not in cited card(s): ['5.6%']"
+   },
+   {
+    "sentence": "The AI rally has created a factor setup that favours high-beta momentum and crowded shorts over low-volatility defensives [c573], which is why senior housing REITs fell 4% to 6% and CME dropped 4% on ",
+    "cite": "c573",
+    "reason": "figures not in cited card(s): ['4%', '6%']"
+   }
+  ],
+  "word_count": 2448
+ }
+}
