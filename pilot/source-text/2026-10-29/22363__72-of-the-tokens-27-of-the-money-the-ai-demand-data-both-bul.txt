@@ -1,0 +1,149 @@
+ 
+72% Of The Tokens, 27% Of The Money: The AI 
+Demand Data Both Bulls And Bears Are Using To 
+Prove They're Right 
+ 
+BY TYLER DURDEN 
+MONDAY, OCT 26, 2026 - 11:00 PM 
+Here is a fun one: take the same set of AI demand numbers, hand them to a bull and a bear, 
+and watch both of them declare victory. 
+That, according to Goldman's Bobby Molavi, is exactly where the AI debate stands after three 
+weeks of what he calls (in a note we discussed earlier today) an "unplayable" market. In his 
+latest Ruminations (available to pro subs), Molavi lays out the supply/demand data, and his 
+verdict is that "one thing is clear for now...the demand is growing." What that demand is worth is 
+a different question entirely. 
+27x More Tokens 
+Start with demand. Citing OpenRouter, Molavi writes that token demand is up 27x since last 
+November, with open-weight models now accounting for 72% of those tokens. OpenRouter's 
+own "Token State of Play" puts the longer run in perspective: weekly volume went from 0.5 
+trillion tokens in mid-January 2025 to 128.4 trillion in the week of September 14, or roughly 250x 
+in 20 months. 
+ 
+
+ 
+ 
+Whatever else you think about AI, nobody can call that usage curve fake. 
+Six-Year-Old Chips, Brand New Pricing 
+The second leg is GPU pricing. Per Molavi, H200 rental pricing is up 160% YTD, B200 is up 
+120% and "even" the H100 is up 35%. And then the kicker: 
+...even the 6 year old A100 is renting for more today than it did at the start of the year re-writing 
+depreciation forecasts and earnings potential for the full cohort looking out. 
+ 
+
+ 
+ 
+Regular readers know why this matters. The single biggest accounting fight in AI has been the 
+useful life of these chips: if a GPU is economically dead after three years, hyperscaler earnings 
+are flattered by six-year depreciation schedules. A 2020-vintage A100 earning more today than 
+in January is the bulls' best exhibit yet that the chips last longer than the skeptics assumed. 
+For what it's worth, this is a rather different picture from the one we painted a month ago, when 
+Goldman calculated how much revenue is needed to justify $1.7 trillion in hyperscaler capex, 
+and we noted the catch: 
+Which is precisely the point: depending on the window, the source and the chip, the GPU data 
+can be made to say almost anything. Token prices, on the other hand, have only gone one way 
+(we put it this way last week: "OpenAi tokens can't really get any cheaper"). 
+The Plunging Price Of Thought 
+Just how fast are token prices falling? Faster than anything in modern economic history, it turns 
+out. According to Epoch AI's latest study, "The plunging price of thought" (Sep 22), the price of 
+reaching a given level of AI performance has fallen about 47% per quarter since 2023, or 
+roughly 13x per year. Near the frontier it's even faster: an average of 66% per quarter, or 75x 
+per year. 
+ 
+
+ 
+Epoch's favorite example: in January 2025, OpenAI's o3 cost roughly $0.30 per question to 
+score 75% on the GPQA Diamond benchmark of PhD-level science questions. Today GPT-5.6 
+Luna hits the same score for $0.0004 per question, a 725-fold drop in under 18 months. Epoch 
+compares it to a car's sticker price falling from $50,000 to $69. 
+The older data tell the same story. In March 2023, GPT-4 cost $37.50 per million tokens. By 
+February 2025, Gemini 2.0 Flash matched its MMLU score for $0.18, which is roughly 200x 
+cheaper in under two years: 
+ 
+To put that in perspective, Epoch compares it to other famous deflationary technologies. In log 
+terms, LLM inference prices have fallen 4x faster than DNA sequencing, 6x faster than 
+computing power (1940-2001), 18x faster than lithium-ion batteries and 54x faster than 
+electricity. Moore would blush. 
+ 
+
+ 
+ 
+There is one catch, and it's an important one for anyone modeling AI revenue. What customers 
+actually pay falls a lot more slowly than the list price, because they keep trading up. YipitData, 
+which tracks nearly 2 quadrillion annualized tokens, found that effective token pricing across API 
+services fell 39% in the second half of 2025 (44% on OpenRouter) but only 6% year-to-date 
+through May 2026. Developers on OpenRouter keep chasing cheaper models, with blended 
+pricing there down about 15% in Q1. Enterprises, meanwhile, are increasing the share of their 
+tokens going to high-end models. 
+In other words, the revenue per token is being propped up by the frontier labs' ability to charge a 
+premium for the newest model. And as Epoch's numbers show, that premium has a half-life 
+measured in quarters before an open-weight clone does the same job for pennies. Jevons 
+paradox, meet margin paradox: cheaper tokens mean 250x more tokens, but somebody still has 
+to pay for the GPUs that serve them. 
+72% Of The Tokens, 27% Of The Money 
+Which brings us to Molavi's central observation: "both bulls and bears using at as confirmatory 
+of their arguments." 
+ 
+
+ 
+The bulls argument demand broadening and tam growing....and the bears talking about the cost 
+per token vs the rev per token going wrong way as balance of power shifts to open weight. The 
+tug of war continues in the debate around roi and winners/losers.... 
+OpenRouter's data shows the bear case in one picture. Open-weight models handled 72% of 
+tokens, yet collected only 27% of spend in the second week of September, when closed-weight 
+models still took 73% of the money (down from 89% in the first week of January). In other 
+words, most of the volume growth is flowing to the models that charge the least. And for good 
+measure, 69% of OpenRouter's tokens in mid-September came from Chinese labs. Recall that 
+the Goldman momo basket peaked in late June, just before Chinese open-weight models 
+flooded AI. 
+ 
+Put differently, rising GPU rents and collapsing token prices are the same squeeze seen from 
+two ends: the cost of serving a token is going up while the price of selling one is going down. 
+That's great news if you rent out GPUs. For the companies paying those rents, maybe less so. 
+ 
+
+ 
+The S&P 493 Isn't Feeling It (Yet) 
+Meanwhile, the productivity payoff that is supposed to fund all of this has yet to show up outside 
+the tech bubble... sorry, universe. Molavi cites one strategist report finding that AI is "not yet 
+showing tangible productivity gains in the numbers that matter outside of the tech universe": 
+revenue per worker is up for the Mag 7 but flat for the S&P 493, and profit margins are up for 
+the Mag 7 but flat for the S&P 493. 
+The result is that "the belly of the corporate world (maybe even the bulk)" is starting to change 
+how it thinks about AI, shifting from "token spend correlation with growth and productivity 
+towards token spend and costs and impact to margins." Translation: the CFOs have found the 
+AI line item, and they want to know what it's buying them. 
+Boom Loops And "Balance Sheet As A Service" 
+Which leaves the question of who keeps paying for the buildout. Molavi describes the "boom 
+loop" in which a capex ramp creates its own revenue tailwind: 
+The more hyperscalers spend...the more it drives revenues into the ai ecosystem. This in turn 
+pulls venture capital and growth equity capital towards the growth so you get a two way funding 
+all driven by one initial thing....Ai capex. The missing link here is sustainability and the ability for 
+those revenues to persist and grow without that capex anchor. Elsewhere we get vendor 
+financing..or balance sheet as a service...where the link between providers and customers 
+becomes grey and revenue and financing lines also blur. 
+Having pounded the table on precisely this for the past year, starting with "AI Is Now A Debt 
+Bubble Too" last October and most recently in "Inside The Bottomless Pit", we'll allow ourselves 
+a modest victory lap. The private markets haven't gotten the memo either: Molavi notes exits 
+that are "spectacular but extremely concentrated (spacex/cerebras/cursor/hugging face) and 
+also very inter dependent", with valuation ramps that in some cases have "no catalyst to the 
+rerate other than a termsheet", and a private market trading "like Korea and Hynix in H1 as 
+though it is an era of tokens forever and disruption of everything." 
+Who Pays The Bill 
+Molavi's own framing is that the debate comes down to "cost of build, who pays the bill, whether 
+the pain is worth the gain...and how long we will have to wait for those revenues." On the first 
+ 
+
+ 
+two, this morning gave us an answer: with the debt window shut, Meta just tapped shareholders 
+for up to $95 billion, with its own chip suppliers buying in. Vendor financing, now in equity form. 
+So yes, the demand is growing, and nobody should doubt the token curve. But demand growing 
+250x while the money accrues to the cheapest models, the rents accrue to whoever owns the 
+GPUs, and the bill gets passed back to shareholders is not quite the ROI story the capex was 
+sold on. Our bet is the bears end up with the better half of this tug of war. In any case, here is 
+the loop everyone is now trying to price: 
+ 
+Much more in the full Molavi Ruminations note, available to pro subs. 
+ 
+ 
+ 
+ 
