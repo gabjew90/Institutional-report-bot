@@ -678,9 +678,13 @@ def build_rows(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: lis
     for ln in spec.lines:
         actual = compute(obs_by_series.get(ln.series) or [], ln.transform, period)
         cons = _ff_value(ff_rows, ln.ff_event, "estimate") if ln.ff_event else None
-        prior = _ff_value(ff_rows, ln.ff_event, "prev") if ln.ff_event else None
-        if prior is None and ln.series:
-            prior = compute(obs_by_series.get(ln.series) or [], ln.transform, month_shift(period, -1))
+        # the agency's own figure for last month first: it carries this
+        # release's revision, the feed's copy may not (Oct 29: the feed
+        # had core PCE's August at 0.2%, BEA at 0.3%)
+        prior = compute(obs_by_series.get(ln.series) or [], ln.transform, month_shift(period, -1)) \
+            if ln.series else None
+        if prior is None and ln.ff_event:
+            prior = _ff_value(ff_rows, ln.ff_event, "prev")
         if ln.optional and actual is None:
             log.info(f"print-watch: {spec.key} extra line {ln.label} has no {period} value, dropped")
             continue

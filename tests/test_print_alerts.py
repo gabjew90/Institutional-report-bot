@@ -241,11 +241,11 @@ def test_golden_oct2_jobs(ledger_dir):
         "2-month revision -60K",
         "Unemployment 4.2% vs 4.1% expected",
         "Avg hourly earnings MoM +0.1% vs +0.3% expected",
-        "Avg hourly earnings YoY +3.0%",
+        "Avg hourly earnings YoY +3.0%, down from +3.1%",
         "",
         "July revised to -10K from +21K",
         "August revised to +133K from +162K",
-        "Participation 61.8%",
+        "Participation 61.8%, up from 61.6%",
         "",
         "Takeaway: Payroll growth fell short of expectations, unemployment came in higher than "
         "expected and wage growth was slower than expected. The two prior months were revised "
@@ -265,7 +265,7 @@ def test_golden_oct14_cpi(ledger_dir):
         "Core CPI YoY 2.6% vs 2.5% expected",
         "Headline CPI MoM +0.6% vs +0.6% expected",
         "Headline CPI YoY 3.7% vs 3.6% expected",
-        "Core CPI 3M 3.4%",
+        "Core CPI, last 3 months annualized: 3.4%",
         "",
         "Shelter +0.4%",
         "Food 0.0%",
@@ -421,10 +421,23 @@ def test_a_large_ppi_revision_replaces_the_pce_pointer():
     assert "August core revised to +0.4% from +0.2%" in a.lines
 
 
+def test_a_level_without_a_forecast_is_set_against_the_month_before():
+    rel = release("pce", {"Core PCE m/m": (0.3, 0.3), "Core PCE y/y": (3.1, None, 3.1),
+                          "PCE m/m": (0.5,), "PCE y/y": (3.6, None, 3.4)}, three_m=2.9)
+    a, _ = alert(rel)
+    assert a.lines[:5] == [
+        "Core PCE MoM +0.3% vs +0.3% expected",
+        "Core PCE YoY 3.1%, unchanged",
+        "Headline PCE MoM +0.5%",
+        "Headline PCE YoY 3.6%, up from 3.4%",
+        "Core PCE, last 3 months annualized: 2.9%",
+    ]
+
+
 def test_pce_secondary_lines_and_spending_sentence():
     a, _ = alert(release("pce", _scenarios()["pce"]["hotter"]))
     assert a.lines[a.lines.index("") + 1:a.lines.index("", a.lines.index("") + 1)] == [
-        "Real consumer spending +0.6%", "Personal income +0.3% vs +0.4% expected", "Saving rate 4.1%"]
+        "Real consumer spending +0.6%", "Personal income +0.3% vs +0.4% expected", "Saving rate 4.1%, down from 4.4%"]
     assert "Real consumer spending rose 0.6% and the saving rate fell to 4.1%." in takeaway_of(a)
 
 

@@ -46,7 +46,7 @@ Core CPI MoM +0.3% vs +0.2% expected (+0.31% unrounded)
 Core CPI YoY 2.6% vs 2.5% expected
 Headline CPI MoM +0.6% vs +0.6% expected
 Headline CPI YoY 3.7% vs 3.6% expected
-Core CPI 3M 3.4%
+Core CPI, last 3 months annualized: 3.4%
 
 Shelter +0.4%
 Food 0.0%
@@ -59,7 +59,8 @@ Takeaway: Core inflation rose more than expected. Shelter rose 0.4% and energy 5
 
 - One metric per line. No column alignment with spaces (Discord's proportional font breaks it), no tables, no code blocks, no pipes, arrows, emoji, or all-caps headings.
 - `vs` between actual and consensus, then `expected`. A metric with a consensus is never shown without it.
-- MoM, YoY and 3M (three-month annualized). K for thousands of jobs.
+- MoM and YoY. The three-month rate is written out ("Core CPI, last 3 months annualized: 3.4%", owner 2026-10-29). K for thousands of jobs.
+- A yearly rate or a level with no forecast is set against the month before: "Headline PCE YoY 3.6%, up from 3.4%", "Core PCE YoY 3.1%, unchanged" (owner 2026-10-29). A line with a forecast compares to the forecast only.
 - Signs: changes and growth rates carry a sign (`+0.3%`, `-0.1%`, `+142K`); levels do not (`4.2%` unemployment, `4.1%` saving rate, `62.6%` participation). A y/y inflation rate is shown without a sign, as the agencies headline it.
 - Precision: the agency's published precision. The unrounded value appears only on the lead line, as `(+0.31% unrounded)`.
 - Revisions: `August revised to 180K from 190K`.
@@ -69,7 +70,7 @@ Takeaway: Core inflation rose more than expected. Shelter rose 0.4% and energy 5
 
 ## Precision and comparison
 
-The verdict compares at the precision both sides share. The forecast feed gives one decimal, so a published +0.3% against +0.3% expected is in line even when the unrounded value is +0.34%. The unrounded value is context, never evidence of a beat. Unrounded values come from the agency's index levels (CPI, PPI, PCE) or levels (unemployment from the unemployed count and the labor force), never from a rounded display value. The 3M rate is computed from index levels, as today.
+The verdict compares at the precision both sides share. The forecast feed gives one decimal, so a published +0.3% against +0.3% expected is in line even when the unrounded value is +0.34%. The unrounded value is context, never evidence of a beat. Unrounded values come from the agency's index levels (CPI, PPI, PCE) or levels (unemployment from the unemployed count and the labor force), never from a rounded display value. The three-month rate is computed from index levels, as today.
 
 ## Signals
 
@@ -185,9 +186,9 @@ The owner signs off on every template's text once. A later change to a template 
 
 | Release | Primary (in order) | Secondary |
 |---|---|---|
-| CPI | Core CPI MoM (unrounded on the line), Core CPI YoY, Headline CPI MoM, Headline CPI YoY, Core CPI 3M | Shelter, Food, Energy |
+| CPI | Core CPI MoM (unrounded on the line), Core CPI YoY, Headline CPI MoM, Headline CPI YoY, Core CPI 3-month annualized | Shelter, Food, Energy |
 | PPI | Core PPI MoM (final demand less foods and energy, `WPSFD49104`, every release), Core PPI YoY, Headline PPI MoM, Headline PPI YoY | `PPI ex food, energy, trade MoM` (final demand less foods, energy and trade services), prior-month revisions of 0.1 point or more |
-| PCE | Core PCE MoM (unrounded), Core PCE YoY, Headline PCE MoM, Headline PCE YoY, Core PCE 3M | Real consumer spending, Personal income, Saving rate, prior-month revisions of 0.1 point or more. Nominal personal spending only when the feed has its consensus and real spending has none |
+| PCE | Core PCE MoM (unrounded), Core PCE YoY, Headline PCE MoM, Headline PCE YoY, Core PCE 3-month annualized | Real consumer spending, Personal income, Saving rate, prior-month revisions of 0.1 point or more. Nominal personal spending only when the feed has its consensus and real spending has none |
 | Jobs | Nonfarm payrolls, 2-month net revision, Unemployment (unrounded), Avg hourly earnings MoM, Avg hourly earnings YoY | Each prior month's revision, Participation, Avg weekly hours |
 | FOMC | Decision (`Hold, as expected`), Target range, Vote | Dissenters and what they wanted, changed statement sentences as `Was:` / `Now:` (at most two, never the decision or vote sentence), projections at projection meetings (median for this year, next year and the long run, each `3.4% to 3.6%`), the Fed's bond holdings only when the implementation note changes them |
 

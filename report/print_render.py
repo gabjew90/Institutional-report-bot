@@ -30,7 +30,7 @@ _SECONDARY = {
     "pce": ["Real Consumer Spending m/m", "Personal Spending m/m", "Personal Income m/m", "Saving Rate"],
     "jobs": ["Participation Rate", "Avg Weekly Hours"],
 }
-_THREE_M = {"cpi": "Core CPI 3M", "pce": "Core PCE 3M"}
+_THREE_M = {"cpi": "Core CPI, last 3 months annualized:", "pce": "Core PCE, last 3 months annualized:"}
 _SHORT_MONTH = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
 
@@ -46,10 +46,18 @@ def _unrounded(label: str, value: float) -> str:
 
 
 def metric_line(row: dict, unrounded: float | None = None) -> str:
-    """'Core CPI MoM +0.3% vs +0.2% expected (+0.31% unrounded)'."""
+    """'Core CPI MoM +0.3% vs +0.2% expected (+0.31% unrounded)'. A yearly
+    rate or a level with no forecast is set against the month before
+    instead ('Headline PCE YoY 3.6%, up from 3.4%'), since a bare level
+    does not say which way it moved (owner, 2026-10-29)."""
     line = f"{row['display']} {row['actual']}"
     if row.get("consensus") is not None:
         line += f" vs {row['consensus']} expected"
+    elif row.get("transform") in ("yoy", "level") and row.get("prior") is not None:
+        if row["prior"] == row["actual"]:
+            line += ", unchanged"
+        else:
+            line += f", {'up' if row['actual_value'] > row['prior_value'] else 'down'} from {row['prior']}"
     if unrounded is not None:
         line += f" ({_unrounded(row['label'], unrounded)} unrounded)"
     return line
