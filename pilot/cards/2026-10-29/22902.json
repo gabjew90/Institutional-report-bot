@@ -1,0 +1,143 @@
+{
+ "brief": "Meta's new stock offering and Anthropic's upcoming IPO add to a surfeit of equity supply that poses a structural headwind for stocks. Net equity supply hit a record high above $150 billion in Q2. Since the late 1990s net equity supply has been negative almost every quarter, with buybacks and M&A outweighing secondary issuance and IPOs, but that pattern has flipped this year. Hyperscalers' perceived need for capital to build out compute capacity has pushed them toward more equity financing alongside debt issuance, as debt becomes more expensive. Unlisted firms increasingly want public-market funding, exemplified by Anthropic's IPO, which is set to eclipse SpaceX's record-sized summer offering. Buybacks continue as long as firms stay free-cash-flow positive after the capex uplift, but aggregate S&P 500 free cash flow is projected to fall given the scale of capex, which could crimp buyback plans and strengthen the equity-supply headwind.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "Meta's new stock offering and Anthropic's upcoming IPO add to the surfeit of equity supply, posing a structural headwind for the stock market.",
+   "anchor": "will add to the surfeit of supply of equity, posing a structural headwind for the stock market.",
+   "topic": "equity supply glut",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "Net equity supply in the second quarter was the highest on record, coming in at over $150 billion.",
+   "anchor": "Net equity supply in the second quarter was the highest on record, coming in at over $150 billion.",
+   "topic": "equity supply glut",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "Net equity supply has been negative in almost every quarter since the late 1990s, as buybacks and M&A outweighed new supply from secondary issuance and IPOs.",
+   "anchor": "In almost every quarter back to the late 1990s, net equity supply has been negative.",
+   "topic": "equity supply glut",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "The historical pattern of negative net equity supply has flipped this year, with new issuance now outweighing buybacks and M&A.",
+   "anchor": "but that has been flipped on its head this year.",
+   "topic": "equity supply glut",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "Hyperscalers' perceived need for capital to build out compute capacity has led them to increasingly rely on equity financing alongside debt issuance, as debt becomes more expensive.",
+   "anchor": "has led them to increasingly reach for equity financing in addition to debt issuance, especially as the latter starts to become more expensive.",
+   "topic": "equity supply glut",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "Anthropic's upcoming IPO is set to eclipse SpaceX's previous record-sized initial offering from the summer, as unlisted firms increasingly seek public-market funding.",
+   "anchor": "with Anthropic\u2019s IPO set to eclipse the previous record sized initial offering from SpaceX in the summer.",
+   "topic": "equity supply glut",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "Firms will continue to repurchase their stock as long as they remain free-cash-flow positive after the capex uplift.",
+   "anchor": "If firms are still free-cash-flow positive after the capex uplift, they will continue to repurchase their stock.",
+   "topic": "equity supply glut",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "In aggregate, S&P 500 firms' free cash flow is set to fall given the enormous size of capex spending.",
+   "anchor": "in the aggregate for S&P 500 firms, FCF is set to fall given the enormous size of capex.",
+   "topic": "equity supply glut",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Buybacks Have A Lot Of Work To Do To Counter New Issuance",
+   "claim": "A fall in aggregate S&P 500 free cash flow may interfere with buyback plans, which would strengthen the headwind from positive equity supply.",
+   "anchor": "That may interfere with buyback plans, in which case the headwind from positive equity supply would strengthen.",
+   "topic": "equity supply glut",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22902__stock-buybacks-have-a-lot-of-work-to-do-to-counter-new-issua.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
