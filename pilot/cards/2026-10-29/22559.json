@@ -1,0 +1,162 @@
+{
+ "brief": "GS tracks Nasdaq futures positioning through an Oct 13-20 selloff and a Meta-driven shock. Despite the index losing 3.5% over Oct 13-20, Non-Dealer net positioning (per CFTC) reached a new nominal high: Non-Dealers bought $9.5bn, a third straight week of buying for a cumulative $21.8bn since Sept 29. Meta's earnings disappointment then triggered short reinstatements: on Oct 22 Meta fell 7.0%, leading a broad AI-related decline (HyperScalers -4.1%, Memory -8.6%, Semiconductors -6.5%), Nasdaq fell 2.9%, and futures open interest jumped $10.6bn, the largest one-day rise of 2026 excluding roll periods, as funding underperformed and sizeable shorts were initiated. From Oct 22-26 markets stabilized: Nasdaq recouped 1.1%, open interest retraced $9bn, as tactical shorts covered and longs also cut as funding cheapened, likely CTA-driven given a momentum-framework break. Net: length remains elevated heading into Amazon, Microsoft and Alphabet earnings; a disappointment there could trigger meaningful futures selling.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "Despite price turbulence over October 13th-20th, Nasdaq Non-Dealer net positioning reached a new nominal high per Commitment of Traders data.",
+   "anchor": "Despite price turbulence over October 13th - 20th, Nasdaq Non-Dealer net positioning reached a new nominal high per Commitment of Traders",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "Non-Dealers purchased $9.5bn in Nasdaq futures as the index lost 3.5% during October 13th-20th.",
+   "anchor": "Non-Dealers purchased $9.5bn as the index lost 3.5%",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "The week of October 13th-20th marked the third straight week of Non-Dealer buying in Nasdaq futures, a cumulative $21.8bn since September 29th.",
+   "anchor": "This marked the 3rd straight week of buying for a cumulative $21.8bn since September 29th",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "Meta fell 7.0% on October 22nd, leading a broad decline in AI-related exposure with HyperScalers down 4.1%, Memory down 8.6%, and Semiconductors down 6.5%.",
+   "anchor": "Meta (-7.0%) led a broad based decline in AI related exposure: HyperScalers -4.1%, Memory -8.6%, Semiconductors -6.5%",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "Nasdaq fell 2.9% on October 22nd and futures aggregate open interest jumped $10.6bn, the largest one-day jump in 2026 excluding roll periods.",
+   "anchor": "Nasdaq fell 2.9% and futures aggregate open interest (OI) skyrocketed $10.6bn- the largest 1 day jump in 2026, excluding roll periods",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "Nasdaq funding underperformed on October 22nd, so sizeable new shorts were initiated in the futures market.",
+   "anchor": "Funding underperformed. Thus sizeable shorts initiated",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "During October 22nd-26th Nasdaq recouped 1.1% and futures open interest retraced $9bn as markets stabilized.",
+   "anchor": "During October 22nd - 26th, Nasdaq recouped 1.1%. Futures OI retraced $9bn",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "Nasdaq funding cheapened on both an outright and relative basis during the October 22nd-26th stabilization, indicating longs also cut positions.",
+   "anchor": "funding cheapened on an outright and relative basis. Therefore longs also cut",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "CTAs were likely a key driver of the October 22nd-26th futures unwind, given a momentum break on GS Futures Strategists' framework.",
+   "anchor": "CTA's were likely a key driver, given a momentum break on GS Futures Strategists' framework",
+   "topic": "Nasdaq futures positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Is Length Still Elevated?",
+   "claim": "If upcoming earnings announcements from Amazon, Microsoft, and Alphabet fail to impress, meaningful Nasdaq futures selling could ensue given elevated length.",
+   "anchor": "If announcements from Amazon, Microsoft, and Alphabet fail to impress, meaningful futures selling could ensue",
+   "topic": "Nasdaq futures positioning",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "heading into upcoming MegaCap tech earnings"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22559__gs-quinn-nasdaq-futures-is-length-still-elevated-27-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
