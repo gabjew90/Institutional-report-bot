@@ -1,0 +1,542 @@
+{
+ "brief": "Broadcom closed its $63 billion \"North Star\" SPV to finance Anthropic's chip purchases only after agreeing to pay higher interest and guarantee residual value equal to the roughly $43.5 billion (69%) first lien, after some lenders got cold feet; so Broadcom, the seller of the chips, now backstops the loan that buys them. That guarantee stacks on Big Sky's $29 billion backstop and a $42 billion convertible note, for roughly $114 billion of Broadcom exposure to Anthropic before OpenAI financing is even sized. Anthropic's S-1 shows $637 billion of compute commitments against $16.3 billion of first-half revenue and an $80 billion six-month paper loss, so first-lien lenders are effectively buying Broadcom credit, not Anthropic risk; Blackstone's second lien carries the real AI-lab risk. Credit markets already price this: Broadcom's CDS sits near record wides, the IG hyperscaler basket had its worst week outside July, and USD CCC spreads sit at the 100th percentile of three years. Meta's $97.5 billion raise and the deal's completion gave credit a one-day bid, but it had already faded by Tuesday morning.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Broadcom arranged a $63 billion financing deal with Bank of America, Blackstone, Citigroup and Morgan Stanley to fund Anthropic's chip purchases.",
+   "anchor": "Broadcom (AVGO) had arranged a $63 billion deal with Bank of America, Blackstone, Citigroup and Morgan Stanley",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Reuters",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The North Star deal's first lien is about $43.5 billion, or 69% of the $63 billion total, effectively guaranteed by Broadcom.",
+   "anchor": "the first lien is about $43.5 billion, or 69% of the total",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Broadcom",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Per the joint statement, Broadcom is providing residual value support to the SPV equal to the first lien portion of the North Star financing.",
+   "anchor": "is providing residual value support to the SPV in an amount equivalent to the first lien portion of the financing",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The Wall Street Journal reported Broadcom CEO Hock Tan held 11th-hour weekend talks with bank executives to finalize their commitments after some lenders got cold feet on the deal.",
+   "anchor": "Broadcom's CEO held 11th-hour talks with bank executives over the weekend to get them to finalize their commitments",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Broadcom agreed to higher interest rates on the North Star loans to sweeten the deal for lenders who had been getting cold feet.",
+   "anchor": "Broadcom also agreed to higher interest rates on the loans, sweetening the deal",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The North Star financing grew from an initially reported $60 billion to a final $63 billion total, with roughly $43.5 billion of first lien.",
+   "anchor": "The final version: $63 billion total, with roughly $43.5 billion of first lien",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Per a company filing, Broadcom's backstop on the earlier Big Sky platform was up to $29 billion.",
+   "anchor": "Broadcom's backstop on Big Sky was up to $29 billion, according to a company filing",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The author tallies roughly $114 billion of Broadcom guarantees and lending to Anthropic alone, before the $50 billion-plus OpenAI chip financing Broadcom is still arranging.",
+   "anchor": "That's roughly $114 billion of guarantees and lending to a single customer, before the $50 billion-plus OpenAI chip financing",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Per the S-1, the $42 billion Broadcom convertible note facility to Anthropic converts into non-voting Class N shares at 90% of the 30-day VWAP, or 85% if Anthropic misses its revenue targets.",
+   "anchor": "converts into non-voting Class N shares at 90% of the 30-day VWAP (85% if Anthropic misses its revenue targets)",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Anthropic",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Anthropic's S-1 discloses roughly $637 billion of named compute commitments, with the single largest line about $161.2 billion of rent on five-year Broadcom master equipment leases for Google TPU hardware.",
+   "anchor": "roughly $637 billion of named compute commitments, and the single biggest line is about $161.2 billion of rent",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Reuters",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Meta's common stock offering was upsized to $25 billion and priced at $625 per share, part of a total $97.5 billion raise Reuters called the largest equity raise ever.",
+   "anchor": "Its common stock offering was upsized to $25 billion and priced at $625 per share",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nvidia",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Nvidia separately said it would put $3 billion into Meta's capital raise.",
+   "anchor": "Nvidia separately said it would put $3 billion into the deal",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Moody's",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Moody's still rates Broadcom as one of the strongest large technology companies but warned the risk would rise if it did multiple AI financing transactions in a short period.",
+   "anchor": "still calls Broadcom one of the strongest large technology companies, but warned that the risk would rise",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "By mid-October, Broadcom's 5-year CDS was at 133bp, a few basis points below its record of 136bp and more than triple its May level.",
+   "anchor": "Broadcom's 5-year CDS was at 133bp, a few bps below its record 136bp and more than triple its May level",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's Brad Shelofsky wrote the IG hyperscaler basket moved 17bps wider last week, its worst week on record outside of similar moves in July.",
+   "anchor": "the IG hyperscaler basket 17bps wider, \"its worst week on record outside of the similar moves in July,\"",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The 30-year hyperscaler credit basket hit new wides, trading 85bps cheap to the IG100 index excluding hyperscalers.",
+   "anchor": "the 30-year hyperscaler basket at new wides, 85bps cheap to the IG100 ex-hyperscalers",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "SpaceX's 2031 bonds widened 55bps on the week as shorter-duration AI chip debt deals flattened the curve.",
+   "anchor": "SPCX 2031s 55bps wider on the week",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Per Goldman's credit desk, Meta CDS closed 10bps tighter and chip names 2-3bps tighter on Monday, while SpaceX and Oracle CDS went 5bps wider.",
+   "anchor": "Meta CDS closed 10bps tighter and chip names 2-3bps tighter, while SpaceX and Oracle went 5bps wider",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "By Tuesday morning, the IG hyperscaler basket had already given back 2.5bps of Monday's tightening.",
+   "anchor": "the IG hyperscaler basket was already 2.5bps off its Monday tights",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's morning credit dashboard showed USD CCC spreads at 1,118bp, up 298bp over three months and at the 100th percentile of the past three years.",
+   "anchor": "USD CCC spreads at 1,118bp, up 298bp in three months and at the 100th percentile of the past three years",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's morning credit dashboard also showed the 10-year Treasury yield at 4.99%.",
+   "anchor": "years, and the 10-year at 4.99%",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's Tony Pasquariello said conversations with the firm's credit traders found the tone strikingly dark, with 'melting down' used more than once to describe market conditions.",
+   "anchor": "the tone has been strikingly dark, and a characterization of market conditions as 'melting down' was used more than once",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's Rich Privorotsky said there was some relief in AI credit with spreads coming off Friday's wides, but called credit conditions the most important thing to watch.",
+   "anchor": "Some relief in AI credit, with spreads coming off Friday's wides, but this remains the most important thing to watch",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Privorotsky said the cost of capital has risen materially, changing the economics of the entire AI buildout complex, and that sustained relief in credit should be a powerful catalyst.",
+   "anchor": "the cost of capital has risen materially, and that's changing the economics of the entire complex",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's Privorotsky described a middle-ground hyperscaler financing path of capex flat-to-up on robust demand but funded with more equity, which he said is bad for hyperscaler equity and potentially good for credit.",
+   "anchor": "capex flat/up, demand robust, but more equity financing",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Goldman's Privorotsky's worst-case hyperscaler path is capex accelerating, funded increasingly by expensive debt.",
+   "anchor": "capex accelerates, funded increasingly by expensive debt",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The article says Meta picked door number four, the middle-ground hyperscaler financing path funded by more equity.",
+   "anchor": "Meta just picked door number four",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The article says Broadcom picked a financing option outside Goldman's four scenarios: having the vendor itself guarantee the expensive debt.",
+   "anchor": "picked an option Goldman didn't list: the vendor guarantees the expensive debt",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "JPMorgan's International Market Intelligence desk argued financing announcements from Meta and the AVGO/SpaceX deals make it less likely capex gets cut materially because financing isn't available.",
+   "anchor": "financing announcements from META and AVGO/SPCX deals, should make it less likely that capex gets cut materially because financing isn't available",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The same JPMorgan desk conceded it still hasn't resolved concerns on monetization, which it says is causing the AI financing bottleneck.",
+   "anchor": "we still haven't resolved concerns on monetization, and this is what is causing the financing bottleneck",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "A JPMorgan FICC view relayed in the note said circular financing and Nvidia credit support may be necessary to finance depreciating GPUs through investment-grade markets.",
+   "anchor": "circular financing and Nvidia credit support may be necessary to finance depreciating GPUs through investment-grade markets",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "JPMorgan's note said banks are buying CDS protection to hedge their growing data center lending exposure.",
+   "anchor": "banks are buying CDS protection to hedge their growing data center lending exposure",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The article tallies the AI chip-debt conga line at roughly $278 billion and counting, not including Oracle's still-unsized SPV or Nvidia's $500 billion compute financing platform.",
+   "anchor": "roughly $278 billion and counting, not including Oracle's still-unsized SPV or Nvidia's $500 billion \"compute financing platform\"",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "ORCL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "The article says Anthropic lost $80 billion on paper over six months, the risk banks are now effectively lending against with Broadcom's guarantee.",
+   "anchor": "a customer that lost $80 billion (on paper) in six months",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Broadcom's CDS has been at or near record wides for two months, reflecting the risk concentration from its vendor guarantees.",
+   "anchor": "Broadcom's CDS has been at or near record wides for two months",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Some Were Getting Cold Feet: Hock Tan Pays Up, Guarantees The Loss To Get Anthropic's $63 Billion Chip Deal Done",
+   "claim": "Broadcom shares rose 2.3% to around $336 in premarket trading after the North Star deal was announced.",
+   "anchor": "AVGO was up 2.3% to around $336 in the premarket",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22909__some-were-getting-cold-feet-hock-tan-pays-up-guarantees-the-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 36,
+  "matched": 36,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
