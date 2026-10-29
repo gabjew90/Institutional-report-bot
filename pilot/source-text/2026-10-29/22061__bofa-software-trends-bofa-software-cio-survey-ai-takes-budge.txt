@@ -1,0 +1,2263 @@
+ 
+BofA Securities does and seeks to do business with issuers covered in its research 
+reports. As a result, investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of this report. Investors should consider this 
+report as only a single factor in making their investment decision. 
+Refer to important disclosures on page 24 to 26. Analyst Certification on page 22. Price 
+Objective Basis/Risk on page 18.  
+ 
+ 
+ 
+ 
+Software Trends 
+BofA Software CIO Survey: AI takes budget 
+share, returns must follow 
+Industry Overview 
+   
+ 
+ 
+AI is the highest priority, software budgets up ~5% in ‘27 
+Our 2H26 survey of ~300 CIOs/technology budget decision makers reinforces that AI 
+now sits at the forefront of IT spending plans. AI deployment is the highest 2027 priority 
+for ~40% of respondents, with ~36% expecting AI to exceed 10% of software budgets, 
+up from ~29% in 2026. Total software budgets are expected to increase by 5.3% in 
+2027, with AI applications, including agents/assistants for front- and back-office 
+workflows, are expected to see the largest spending increase, alongside continued 
+investment in data, cloud, and security. At the bottom of the list, the areas with the 
+lowest spending priorities are CRM, ERP and HCM/Workforce, trends that are well 
+reflected in the revenue trends of the underlying sector leaders.  
+Exhibit 1: AI deployment captures ~40% of 2027 priorities, more than 3x the next category 
+What is your organization’s single highest IT priority for 2027? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+Microsoft and large AI labs are leading the field for now 
+Our survey suggests that Microsoft and the AI labs are leaders across nearly every AI 
+capability category. Microsoft ranked first in cloud infrastructure at ~88% and 
+infrastructure software at ~83%, best positioned to monetize through applications, 
+cloud, and security. On Infrastructure software, AI labs were in the range of 70%, likely 
+because of their interface layer, followed by Snowflake, ServiceNow, and Atlassian at 
+~50% each. In front-office applications, AI labs lead at ~70% likelihood to use their 
+front-office AI solutions, followed by Salesforce at ~60%. AI labs also lead the back-
+office applications, followed by Docusign (58%), ServiceNow (54%) and Workday (54%).  
+Security and commercial friction temper AI deployment 
+AI deployment plans remain nascent, and only ~37% of respondents noted they plan to 
+move 25% of AI pilots into production. About 54% and 47% of respondents noted that 
+Cybersecurity risks and pricing represent the most notable inhibitors for AI deployment. 
+AI security concerns drive incremental security spending, with AI security and identity 
+leading the spending priorities, and 22% of CIOs noting it plans to allocate more than 
+10% of the cybersecurity budgets to protecting AI deployments and workloads.  
+39.8%
+12.3%
+10.7%
+10.7%
+9.4%
+6.8%
+5.8%
+4.5%
+0%
+10%
+20%
+30%
+40%
+AI deployment
+Infra modernization
+Cybersecurity
+Cost optimization
+Data and analytics
+Software development
+Cloud modernization
+Customer experience
+23 October 2026   
+Equity 
+United States 
+Software 
+Tal Liani 
+Research Analyst 
+BofAS 
++1 646 855 5107 
+tal.liani@bofa.com 
+Koji Ikeda, CFA 
+Research Analyst 
+BofAS 
++1 415 913 2106 
+koji.ikeda@bofa.com 
+Matt Bullock 
+Research Analyst 
+BofAS 
++1 646 556 2903 
+matthew.bullock2@bofa.com 
+Tomer Zilberman 
+Research Analyst 
+BofAS 
++1 646 855 3203 
+tomer.zilberman@bofa.com 
+Eden Vacnich 
+Research Analyst 
+BofAS 
++1 646 855 1971 
+eden.vacnich@bofa.com 
+Kevin Niederpruem 
+Research Analyst 
+BofAS 
++1 646 855-1540 
+kevin.niederpruem@bofa.com 
+George McGreehan 
+Research Analyst 
+BofAS 
++1 415 913 4315 
+george.mcgreehan@bofa.com 
+Jacob Gideon 
+Research Analyst 
+BofAS 
++1 646 855-3874 
+jacob.gideon@bofa.com 
+Trevor Dodds 
+Research Analyst 
+BofAS 
++1 415 940 4065 
+trevor.dodds@bofa.com 
+Glossary on pg. 17 
+Accessible version 
+
+ 
+ 
+2 
+Software Trends | 23 October 2026 
+ 
+ 
+ BofA CIO Survey: Software budgets up, AI 
+strategies are the focus 
+We conducted our 2H26 CIO spending survey with responses from more than 300 
+technology budget decision makers across various verticals and company sizes. 
+Respondents represent ~20% SMBs (<1,000 employees) with a weighted average IT 
+budget of $57mn, ~40% mid-sized organizations (1,001-5,000 employees) with IT 
+budgets of $134mn, and ~40% enterprise organizations (5,000+ employees) with IT 
+budgets of $422mn. We believe the survey results are a good directional indicator, as 
+opposed to an absolute indicator of spending intentions. 
+Key takeaways 
+• 
+Software budgets are expected to grow 5.3% in 2027, with cloud and 
+cybersecurity spending growing faster. 
+• 
+AI is taking a larger share of software budgets, funded through both 
+incremental budgets and reallocation of existing budgets. 
+• 
+Three top priorities for spending (in order): AI, Cloud and on-prem 
+infrastructure and Cybersecurity 
+• 
+Cybersecurity budgets are expected to grow 6.9%, with AI security and identity 
+leading incremental spending priorities. 
+• 
+Bottom three priorities (lowest priority first): HCM/workforce, ERP and CRM. 
+• 
+Reasons to deploy AI - Productivity and cost savings, but only 17% report 
+measurable enterprise-wide returns from AI. 
+• 
+At the enterprise level, AI adoption remains early, with most organizations 
+moving only a small portion of AI pilots into production. Cybersecurity risks and 
+pricing remain key barriers to broader AI deployment. 
+• 
+Back office leads enterprise software AI investment interest, with 
+ITSM/ITOM ranking above CRM, ERP and HCM in overall spending priorities 
+• 
+Public cloud budgets are expected to grow 8.4% in 2027, with hybrid cloud 
+remaining the most common deployment strategy. 
+Vendor specific highlights 
+Microsoft winning across the stack 
+• 
+MSFT stands out for breadth across the entire IT stack, from infrastructure and 
+cloud to security, applications and AI. It leads cloud-infrastructure AI consideration 
+at 88.4%, while Copilot reaches 76.7% current or planned production use. The 
+breadth of offerings supports monetization across multiple channels, with Azure 
+capturing the core infrastructure consumption behind enterprise AI deployments and 
+Copilot supporting safe AI deployment at scale through governance, business 
+context, security and workflow logic. 
+Enterprise software: AI interest yet to translate into paid adoption 
+• 
+ServiceNow: Registered 54.5% back-office AI usage likelihood, while ITSM/ITOM 
+ranks above ERP and HCM in overall back-office AI budget priorities. These results 
+support our view that NOW can capture incremental spending through workflow 
+automation, measurable productivity gains, and cost savings for customers. 
+• 
+Salesforce: Leads traditional front-office application vendors at 60% AI usage 
+likelihood. In our view, this supports AI monetization opportunities across data 
+preparation, workflows and agentic use cases, but incremental spending will depend 
+on competitive pricing and measurable sales and service improvements. 
+
+ 
+ 
+Software Trends | 23 October 2026
+3
+ 
+ 
+• 
+Box: AI application and data platforms account for the largest % of planned AI 
+spending increases in 2027. Box is on a multi-year acceleration path as enterprises 
+prioritize data modernization and leverage Box as an AI automation platform for 
+content-related workflows. 
+• 
+HubSpot: “CRM and engagement" ranks in the lower quartile of spending priorities. 
+We think there are high ROI use-cases for AI product cycles in CRMs for SMBs, but 
+these projects are a secondary priority to modernizing data estates and establishing 
+AI infrastructure 
+• 
+BlackLine: Survey results reinforced a mixed demand outlook. ERP and finance 
+ranked second-lowest among IT budget priorities with only 7.7% of respondents 
+likely to use BlackLine back-office AI capabilities in the next 12 months. However, 
+consideration improves to 21% when isolating enterprises with 5k-10k employees, 
+supporting BlackLine’s stronger positioning in more complex enterprise finance 
+workflows. 
+• 
+Paycom (PAYC)/Paylocity (PCTY): Survey results point to limited near-term 
+upside from AI for both companies, with fewer than 16% of respondents ranking 
+HCM/workforce among their top IT-budget priorities, the lowest priority among 11 
+areas in the survey. Paycom performed modestly better, with ~11% of SMB and 
+midmarket organizations likely to use the Company for back-office AI versus only 
+~7% for Paylocity among organizations with fewer than 5k employees, though the 
+recent timing of the Aidora acquisition and Ignite AI’s launch could support 
+improving awareness over time. 
+Infrastructure: production growth widens opportunity 
+• 
+Snowflake: We think the survey results are directionally positive for continued 
+strong demand for AI data clouds like Snowflake. Snowflake ranked especially 
+strong with infrastructure vendor AI usage at 52%, the highest ranking behind 
+Microsoft and the AI labs. 
+• 
+Datadog: We think the survey results are clear that AI is an observability workload 
+accelerant and Datadog stands to take disproportionate share. Datadog also showed 
+well in the infrastructure vendor AI usage survey at 30%, demonstrating its bits AI 
+agentic strategy is ramping nicely.  
+• 
+Atlassian: Atlassian is positioned to provide the context necessary for agents to 
+work better. The survey points to accelerating AI usage and applications being built, 
+which we think will be a demand tailwind for the business. The company also scored 
+well in the infrastructure vendor AI usage survey at 50%, near the high end of the 
+peer group, good evidence that its Rovo strategy is attractively positioned. 
+Security: AI protection drives spending  
+• 
+CrowdStrike: Ranks second only to Microsoft for the largest cybersecurity 
+spending increases, with 35.6% of respondents selecting it. We view AI-security and 
+identity spending positively for CRWD, with additional opportunities as customers 
+seek integrated protection across endpoint, cloud, identity and AI workloads. 
+• 
+Palo Alto Networks: 22.3% of respondents selected Palo Alto for their largest 
+security spending increases. The emphasis on AI security and identity should favor 
+PANW, following the CyberArk acquisition, while respondents’ expectations of share 
+loss at Wiz could signal additional opportunities for its cloud-security offerings. 
+ 
+ 
+
+ 
+ 
+4 
+Software Trends | 23 October 2026 
+ 
+ 
+Software budgets expected to grow ~5% in 2027  
+The survey suggests a ~5.3% software budget growth, with flat headcount and slight 
+increase in IT staffing.  
+Exhibit 2: Software budgets are expected to increase by ~5% in 
+2027 on a weighted average basis 
+Do you expect your software budget to increase/decrease in 2027? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+Exhibit 3: Slightly more modest increases of ~3% in IT staffing and 
+hiring trends expected for 2027, on a weighted average basis 
+Do you expect your IT staffing and hiring budget (people) to increase/ 
+decrease in 2027? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+IT department hiring plans up modestly at ~3% for 2027 
+AI is the top budget priority for 2026, HCM is the lowest 
+When asking respondents to pick its highest budget priorities, AI ranked at the top at 
+88.3%. Cybersecurity and cloud/on-prem infrastructure followed with 72.8% and 51.8%, 
+respectively, as cybersecurity and data readiness remain the primary gating factors for 
+enterprise adoption of AI tools at scale.  
+The results highlight continued attention to software that supports core business 
+processes and day-to-day operations alongside AI investment which is expected to drive 
+efficiency, revenue growth, and enhanced customer experience. Back-office categories 
+like ERP and finance, and HCM/workforce were the two lowest ranking categories at 
+31.1% and 15.5% respectively.  
+Exhibit 4: AI and data platforms dominate 2026 priorities, leading cybersecurity by ~15% 
+Highest priorities for the 2026 IT budget (select five) 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+AI expands the wallet by ~14% with business-critical software staying in focus 
+AI is taking a larger share of software budgets, rising from 8.3% in 2026 to 9.4% in 
+2027. Interestingly, about 61% of respondents suggested AI funding is a new budget, 
+while ~38% suggested funding is primarily reallocation between existing categories 
+(Exhibit 6).  
+19.1%
+26.5%
+30.7%
+13.3%
+5.8%
+2.9%
+1.6%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+Increase over 10%
+Increase of 6% to 10%
+Increase of 1% to 5%
+No change
+Decrease of 1% to 5%
+Decrease of 6% to 10%
+Decrease of over 10%
+13.3%
+22.0%
+25.9%
+21.0%
+10.0%
+4.2%
+3.6%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+Increase over 10%
+Increase of 6% to 10%
+Increase of 1% to 5%
+No change
+Decrease of 1% to 5%
+Decrease of 6% to 10%
+Decrease of over 10%
+88.3%
+72.8%
+51.8%
+44.7%
+42.1%
+41.7%
+38.8%
+36.9%
+36.2%
+31.1%
+15.5%
+0%
+20%
+40%
+60%
+80%
+100%
+AI platforms
+Cybersecurity
+Cloud/on-prem infra
+Industry-specific apps
+ITSM/ITOM
+Automation
+Software dev/DevSecOps
+Observability
+CRM/engagement
+ERP and finance
+HCM/workforce
+
+ 
+ 
+Software Trends | 23 October 2026
+5
+ 
+ 
+Exhibit 5: AI claims a bigger slice of the software wallet as more respondents plan allocations above 10% in 2027 
+For 2026 and 2027 – What portion of software budget is allocated to AI? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 6: Mostly incremental funding leads at ~36% with primarily new budgets accounting for another ~25% 
+How is your organization’s IT budget for AI-related initiatives funded? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+84.5% are ready to deploy agents in the next year 
+AI deployments are currently nascent, but the momentum is strong. About 85% of 
+respondents noted they will deploy agents within the next 12 months and we see 
+opportunities for software vendors to capture spending on out-of-the-box AI tools, the 
+data and infrastructure needed to run them, and cybersecurity that allows for 
+deployment at scale.  
+Exhibit 7: Agent plans are widespread, with ~85% agreeing on deployment within 12 months 
+Plans to deploy agents in the next 12 months (scale of 1-5) 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+CIOs focusing AI to improve productivity and reduce costs 
+Our survey suggests productivity and cost reduction are the most common AI use cases, 
+cited by 88.0% of respondents, followed by customer experience at 81.9% and revenue 
+growth at 65.4%. 
+0.3%
+22.3%
+37.5%
+35.9%
+3.9%
+1.6%
+32.4%
+34.3%
+28.5%
+3.2%
+0%
+10%
+20%
+30%
+40%
+0%
+1-5%
+6-10%
+Over 10%
+Don’t know
+2027
+2026
+24.9%
+35.9%
+24.9%
+12.9%
+1.3%
+0%
+10%
+20%
+30%
+40%
+Primarily incremental or new IT budget
+Mostly incremental budget, with some
+reallocation from other IT categories
+Mostly reallocation from other IT categories,
+with some incremental budget
+Primarily reallocation fromother IT categories
+I don’t know
+45.3%
+39.2%
+11.0%
+3.6%
+1.0%
+0%
+10%
+20%
+30%
+40%
+50%
+1 - Strongly agree
+2 - Agree
+3 - Neither agree nor disagree
+4 - Disagree
+5 - Strongly disagree
+
+ 
+ 
+6 
+Software Trends | 23 October 2026 
+ 
+ 
+Exhibit 8: Efficiency leads AI use with ~88% 
+in agreement 
+We are using AI to improve productivity and 
+reduce operating costs 
+Source: BofA Global Research Survey conducted on Occam by 
+AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+Exhibit 9: ~82% use AI to improve customer 
+experience 
+We are using AI to improve customer experience 
+Source: BofA Global Research Survey conducted on Occam by 
+AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+Exhibit 10: ~65% use AI to drive revenue 
+growth 
+We are using AI to increase revenues 
+Source: BofA Global Research Survey conducted on Occam by 
+AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+~17% already see AI ROI, additional 31% expect to see it in 12 months 
+As AI projects move into production, the next test is whether they deliver measurable 
+returns. Enterprise-wide ROI is already reported by 17.2% of respondents, with another 
+31.4% expecting it within 12 months. Combined, 48.6% see current or near-term 
+returns, while 30.7% expect them in one to two years. 
+In our view, continued investment will increasingly depend on whether customers see 
+productivity gains, cost savings, or revenue benefits that justify the expense. If ROI fails 
+to materialize over the near-to-medium term, organizations could become more cautious 
+about expanding AI budgets, particularly where higher usage brings less predictable and 
+often higher costs. 
+Exhibit 11: Nearly half of respondents expect returns within 12 months or are already realizing ROI 
+When do AI initiatives generate measurable enterprise-wide ROI? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+AI applications expected to get the largest share of AI budget increases in 2027 
+In terms of AI spending priorities, AI applications are at 40%, followed by data platforms 
+at 20.1%, AI infrastructure at 15.9%, and AI security/governance at 14.9%. We think 
+these results are positive for Snowflake, which operates across all four of the highest 
+ranking priorities. 
+42.7%
+45.3%
+9.4%
+2.3%
+0.3%
+0%
+20%
+40%
+60%
+Strongly
+agree
+Agree
+Neither
+agree nor
+disagree
+Disagree
+Strongly
+disagree
+28.8%
+53.1%
+13.9%
+4.2%
+0.0%
+0%
+20%
+40%
+60%
+Strongly
+agree
+Agree
+Neither
+agree nor
+disagree
+Disagree
+Strongly
+disagree
+20.1%
+45.3%
+24.6%
+9.4%
+0.6%
+0%
+20%
+40%
+60%
+Strongly
+agree
+Agree
+Neither
+agree nor
+disagree
+Disagree
+Strongly
+disagree
+17.2%
+31.4%
+30.7%
+13.9%
+1.9%
+4.9%
+0%
+10%
+20%
+30%
+Already generating ROI
+Within 12 months
+1-2 years
+2-3 years
+More than 3 years
+Unsure
+
+ 
+ 
+Software Trends | 23 October 2026
+7
+ 
+ 
+Exhibit 12: AI applications lead at ~40% across respondents for plan spending in the year ahead 
+Which area will receive the largest increase in AI-related spending in 2027? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+AI ambitions need production follow-through 
+About 85% of respondents plan to deploy AI agents within the next 12 months, but the 
+conversion from pilots to production is less uniform, with almost 60% of respondents 
+suggesting only 1-25% of the pilots will be converted to production next year. We think 
+the findings confirm broad appetite for AI, but a less consistent appetite for immediate 
+deployment, likely due to Cybersecurity and pricing concerns.  
+Exhibit 13: ~37% move more than a quarter of AI pilots into production 
+Share of AI pilots that progressed into production over LTM 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Production AI = higher compute cost; pricing is a high concern 
+As AI-led initiatives move from early testing stages into production, pricing remains a 
+key concern with 46.6% of respondents expressing reservations about the consumption 
+pricing model.  
+ 
+AI applications
+39.8%
+Data platforms
+20.1%
+AI infrastructure
+15.9%
+AI security and 
+governance
+14.9%
+AI services/consulting
+9.1%
+Other
+0.3%
+15.9%
+21.4%
+30.1%
+27.5%
+3.9%
+1.3%
+0%
+10%
+20%
+30%
+Over 50%
+26-50%
+11-25%
+1-10%
+None
+Don’t know
+
+ 
+ 
+8 
+Software Trends | 23 October 2026 
+ 
+ 
+Exhibit 14: Pricing concerns outweigh comfort, with ~47% expressing reservations 
+How comfortable are you with consumption-based pricing for Software and AI products? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Existing vendors have an opening but not a full claim on AI budgets 
+We asked CIOs if they prefer to source AI modules from existing application vendors, 
+and the results were split, suggesting existing legacy vendors have an opportunity, but 
+not assured one. Almost 47% of respondents noted that they prefer existing vendors, 
+with 37% neutral and 16.5% disagree. Current or planned production use spans several 
+offerings, including Microsoft Copilot at 76.7%, AI labs at 70%, and Google Gemini at 
+30.4%.  
+ 
+ 
+ 
+We think existing relationships can help vendors enter the discussion, but the large 
+neutral group leaves room for capability, cost, and demonstrated benefits to influence 
+selection.  
+ 
+ 
+ 
+ 
+6.8%
+27.2%
+19.4%
+35.3%
+11.3%
+0%
+10%
+20%
+30%
+40%
+Very comfortable
+Somewhat comfortable
+Neutral
+Concerned
+Highly concerned
+Exhibit 15: Copilot exceed 76% in current or planned production use 
+Which types of AI models are your organization currently using or planning to use 
+in production? (select all that apply) 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+Exhibit 16: ~47% favor incumbent AI models with over a third 
+remaining neutral 
+We prefer to deploy AI modules from our existing software vendors, rather 
+than buy them from third party solutions 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+76.7%
+66.9%
+30.4%
+12.6%
+7.1%
+0%
+20%
+40%
+60%
+80%
+Microsoft’s
+Copilot
+AI labs
+Google’s
+Gemini
+Open-weight
+ third-party
+models
+Other
+11.0%
+35.6%
+36.9%
+14.2%
+2.3%
+0%
+10%
+20%
+30%
+40%
+Strongly agree
+Agree
+Neither agree
+nor disagree
+Disagree
+Strongly
+disagree
+
+ 
+ 
+Software Trends | 23 October 2026
+9
+ 
+ 
+AI investment categories: Surprise! Back-
+office is the highest? 
+Our survey results provide evidence that overall software budgets are expanding, as 
+investment considerations for areas with increased AI capabilities spans back-office at 
+67.6%, followed by front-office at 64.7%, cloud infrastructure at 60.2%, and 
+infrastructure software at 55.3%.  
+We found it interesting that the back-office software category ranked the highest in our 
+survey as a software category under consideration for AI investment. Interestingly, these 
+back-office categories like ERP and finance, and HCM/workforce were the lowest 
+ranking priorities for 2026, suggesting CIOs are looking to harvest cost savings and 
+improve efficiency through AI tools for these areas and the associated headcount 
+reductions.  
+Exhibit 17: Back office leads at ~68% with every major category attracting >50% 
+Software categories under consideration for AI investment 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Front office: AI labs lead while Salesforce follows 
+AI labs score highest in front-office usage. We partly attribute this to their control of the 
+user interface, supported by their frontier LLMs for reasoning, but note that their 
+products still need access to incumbent software data for context and business logic. 
+Among traditional software vendors, Salesforce leads at 60.1%, with SMB-focused 
+vendors trailing. 
+Exhibit 18: AI labs lead in consideration with Salesforce standing out among applications at ~60% likelihood 
+Vendor usage likelihood for FRONT OFFICE AI capabilities over the next 12 months 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 200 
+BofA GLOBAL RESEARCH 
+ 
+67.6%
+64.7%
+60.2%
+55.3%
+0.6%
+0%
+20%
+40%
+60%
+80%
+Back office
+Front office
+Cloud infrastructure
+Infrastructure
+None of these
+0%
+10%
+20%
+30%
+40%
+50%
+Very likely
+Likely
+Neither likely nor unlikely
+Unlikely
+Very unlikely
+
+ 
+ 
+10 
+Software Trends | 23 October 2026 
+ 
+ 
+In our view, incumbents enjoy from established position within the enterprise technology 
+stack, including the workflows, data relationships, governance and business context they 
+already support, creating an opportunity to embed AI into existing customer processes. 
+However, AI labs offer an alternative user interface that could shift customer 
+engagement away from incumbent platforms while still accessing their data through 
+MCP or APIs. Software vendors could monetize AI under either scenario, but retaining 
+the end-to-end customer experience is likely more financially rewarding. To maintain 
+engagement and earn incremental budget share, vendors must offer competitive pricing 
+for AI offerings, alongside measurable KPIs in sales, customer service or marketing 
+effectiveness. 
+Back office: labs win interest, incumbents retain workflow 
+Similar to front-office trends, AI labs lead in back-office AI usage likelihood over the 
+next 12 months. Among traditional application vendors, Docusign leads, followed closely 
+by ServiceNow and Workday. Workday’s AI consideration stands out against HCM’s low 
+overall spending priority, although that stated interest might not necessarily translate 
+into incremental budgets. SMB/midmarket-focused vendors register lower consideration, 
+although results vary by customer size. For example, BlackLine’s AI usage likelihood rises 
+from 7.7% overall to 21% among organizations with 5,001-10,000 employees, 
+highlighting stronger consideration within that segment.  
+Exhibit 19: AI labs lead back-office interest, both ServiceNow and Workday following at ~54% 
+Vendor usage likelihood for BACK OFFICE AI capabilities over the next 12 months 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 200 
+BofA GLOBAL RESEARCH 
+In our view, ITSM/ITOM offers a clearer path to AI monetization through workflow 
+automation, productivity gains and cost reduction, aligning with the efficiency-led use 
+cases highlighted in exhibits 8 and 9. ServiceNow’s AI consideration and ITSM/ITOM’s 
+higher budget priority support this opportunity. 
+The HCM opportunity, with HCM remaining a low spending priority, growth 
+reacceleration depends on demonstrating measurable benefits that customers are 
+willing to pay for, which is challenging for a space enterprises are less willing to invest 
+in. 
+ 
+0%
+10%
+20%
+30%
+40%
+50%
+Very likely
+Likely
+Neither likely nor unlikely
+Unlikely
+Very unlikely
+
+ 
+ 
+Software Trends | 23 October 2026
+11
+ 
+ 
+Infrastructure: production growth widens opportunity 
+Microsoft leads infrastructure AI consideration at 82.7%, followed by the AI labs. 
+Snowflake leads the next tier of traditional software vendors at 51.7%, with ServiceNow, 
+Atlassian and GitLab close behind. 
+Exhibit 20: Microsoft sets the pace at ~83% and AI labs following at ~71% 
+Vendor usage likelihood for INFRASTRUCTURE AI capabilities over the next 12 months 
+ 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 200 
+BofA GLOBAL RESEARCH 
+Workload demand is expanding, with 91.3% of respondents reporting higher AI compute 
+usage than 12 months ago, including 54.0% reporting a significant increase. However, 
+uneven pilot conversion and consumption-pricing concerns suggest that spending 
+growth will depend on customers moving projects into production at an acceptable cost. 
+Although pricing concerns could temper the pace of adoption, we think rising workloads 
+reinforce the infrastructure opportunity. We see Snowflake benefiting with AI workload 
+monetization as well as enterprises continuing to process more enterprise data on the 
+platform. Datadog could gain as AI and agentic use cases could increase observability 
+needs. Additionally, Elastic and JFrog offer flexibility for customers prioritizing security 
+through on-premises or hybrid deployments, while MongoDB provides deployment 
+flexibility across fully managed cloud and self-managed environments 
+Public cloud: Budgets up ~8%, hybrid most common 
+deployment strategy 
+Public cloud budgets are expected to increase ~8.4% in 2027, with ~81% of respondents 
+expecting related spending to uptick. Hybrid cloud remains the most common strategy at 
+39.8%, followed by multi-cloud at 25.6%.  
+Further, we compare cloud spending growth and deployment options on an organization 
+size level:  
+• 
+Enterprise: cloud demand is strongest, with 82.3% expecting higher spending 
+and 32.2% projecting growth above 10%. Hybrid remains the leading strategy 
+at 39.5%, followed by multi-cloud at 28.2%. 
+• 
+Mid-sized: 80.5% expect spending to rise. Hybrid and multi-cloud account for 
+35.0% and 27.6%, respectively. 
+• 
+SMB: 79.0% expect higher spending, including 33.9% above 10%. Deployment 
+is more concentrated in hybrid cloud at 50.0%, versus 16.1% for multi-cloud. 
+Overall, cloud growth is consistent across organization sizes, while larger enterprises 
+display slightly higher demand levels. Enterprise environments also skew more toward 
+multi-cloud, creating a larger opportunity for vendors that can manage complex 
+infrastructures. Conversely, SMB demand remains concentrated in hybrid cloud, favoring 
+simpler, integrated platforms. 
+0%
+10%
+20%
+30%
+40%
+50%
+Very likely
+Likely
+Neither likely nor unlikely
+Unlikely
+Very unlikely
+
+ 
+ 
+12 
+Software Trends | 23 October 2026 
+ 
+ 
+Exhibit 21: Public cloud budgets are expected to increase ~8% in 2027 
+on a weighted average basis 
+How do you expect your public cloud spending to change in 2027? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+Exhibit 22: Hybrid cloud leads at ~40%, multi-cloud trailing at ~26% 
+Which best describes your current cloud strategy? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Microsoft is the most preferred AI cloud infrastructure vendor  
+Microsoft receives the highest ratings for AI cloud workloads, at 88.4%, followed by 
+Amazon AWS, Google Cloud, and Oracle. We view Microsoft and AWS as the clearest 
+potential beneficiaries of expanding cloud budgets and AI demand.  
+ 
+Exhibit 23: Microsoft and AWS lead cloud AI consideration at ~88% and ~72% 
+Vendor usage likelihood for CLOUD INFRASTRUCTURE AI capabilities over the next 12 months 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 200 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+8.4%
+25.2%
+47.2%
+16.8%
+2.3%
+0%
+20%
+40%
+60%
+Increase
+>20%
+Increase 10-
+20%
+Increase 1-
+10%
+Flat
+Decline
+39.8%
+25.6%
+14.9%
+14.6%
+5.2%
+0%
+10%
+20%
+30%
+40%
+Hybrid cloud
+Multi-cloud
+Cloud penetration
+No major change
+On-prem
+0%
+20%
+40%
+60%
+Microsoft
+Amazon AWS
+Google (GCP)
+Oracle
+Coreweave
+Nebius
+Very likely
+Likely
+Neither likely nor unlikely
+Unlikely
+Very unlikely
+
+ 
+ 
+Software Trends | 23 October 2026
+13
+ 
+ 
+Cybersecurity: Budgets up ~7% for 2027, AI security and 
+IAM most important categories 
+We expect cybersecurity budgets to expand ~6.9% in 2027. Cybersecurity budgets are 
+expected to increase for 86.0% of respondents overall, with 43.0% anticipating growth 
+of 6-15% and 6.8% expecting more than 15% budget growth in 2017. AI Security leads 
+the incremental domain selections at 60.8%, followed by identity/access management at 
+45.0% and data security/DLP at 38.5%.  
+We view this positively for Palo Alto Networks and CrowdStrike, given both companies 
+are leaders in securing AI and identity platforms. The Identity trends bode well for pure-
+plays Okta and SailPoint, and the importance of Endpoint Security is positive for 
+SentinelOne and CrowdStrike once again. Security concerns are slowing AI deployment 
+for 53.7%, while 21.7% allocate more than 10% of security budgets to protecting AI 
+deployments and workloads. 
+Exhibit 24: Cybersecurity budgets are expected to increase ~7% in 2027 on a weighted average basis 
+How do you expect your cybersecurity budget to change in 2027? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 25: AI security leads in priority at ~61%, followed by identity and data protection 
+Cybersecurity domains expected to receive the most additional spending 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Microsoft leads the pack in cybersecurity, least favored is Check Point and Wiz  
+We ask respondents to rank the companies on the basis of spending growth intentions. 
+Microsoft leads the pack at 69.3%, followed by CrowdStrike at 35.6%, Palo Alto 
+Networks at 22.3%, and Okta at 21.0%. Interestingly, Wiz (part of Google) closes the list 
+with 4.9%, similar to Check Point level.  
+6.8%
+43.0%
+36.2%
+12.9%
+1.0%
+0%
+10%
+20%
+30%
+40%
+50%
+Increase >15%
+Increase 6-15%
+Increase 1-5%
+No change
+Decrease
+60.8%
+45.0%
+38.5%
+31.7%
+31.4%
+31.1%
+24.9%
+18.4%
+18.1%
+0%
+20%
+40%
+60%
+AI Security
+Identity &
+Access Mgmt
+Data Security /
+DLP
+Endpoint
+Security
+Cloud Security
+Network
+Security
+Application
+Security
+Security
+Operations
+Third Party Risk
+Mgmt
+
+ 
+ 
+14 
+Software Trends | 23 October 2026 
+ 
+ 
+Exhibit 26: Microsoft leads at ~69% with CrowdStrike and Palo Alto rounding out the top three 
+Over the next 12 months, which of your vendors do you expect to increase cybersecurity spending with the most? (select up to 
+three) 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+We also asked CIOs to rank the cybersecurity vendors, based on their view of potential 
+share loss.  
+Cisco receives the most perceived share-loss expectations, at 29.1% of respondents, 
+followed by Check Point at 24.9% and Fortinet at 22.0%, while Microsoft and Cloudflare 
+carry the lowest share loss expectations, at 12.9% and 8.4% respectively. 
+Wiz stands out with a relatively high expectation for share loss, which could be an 
+opportunity for likes of CrowdStrike and Palo Alto. 
+Exhibit 27: Cisco, Check Point and Fortinet draw the most share-loss selections at ~29%, ~25% and ~22% 
+Which of the following vendors, IN YOUR VIEW, will LOSE THE MOST market share in the next 12-18 months? (select up to three) 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+69.3%
+35.6%
+22.3%
+21.0%
+18.8%
+15.9%
+15.5%
+13.3%
+11.0%
+4.9%
+4.9%
+7.8%
+0%
+20%
+40%
+60%
+80%
+Microsoft
+CrowdStrike
+Palo Alto
+Okta
+Cisco
+Cloudflare
+Zscaler
+SentinelOne
+Fortinet
+Wiz
+Check Point
+Other
+29.1%
+24.9%
+22.0%
+21.0%
+20.1%
+16.8%
+16.8%
+13.9%
+13.6%
+12.9%
+8.4%
+2.6%
+0%
+10%
+20%
+30%
+Cisco
+Check Point
+Fortinet
+Wiz
+Okta
+Palo Alto
+Zscaler
+CrowdStrike
+SentinelOne
+Microsoft
+Cloudflare
+Other
+
+ 
+ 
+Software Trends | 23 October 2026
+15
+ 
+ 
+Appendix 
+We estimate average annual IT budgets of $57mn for SMBs (<1,000 employees), 
+$134mn for mid-sized organizations (1,001-5,000 employees), and $422mn for large 
+enterprises (5,000+ employees). To derive these figures, we paired each respondent’s 
+organization size with its reported IT-budget range and assigned the midpoint of that 
+range: $0.5mn for less than $1mn, $50.5mn for $1-100mn, and $550mn for $100mn-
+less than $1bn. Additionally, we used $1.5bn for the open-ended $1bn+ category and 
+excluded “Don’t know” responses. We then averaged the assigned values within each 
+size group. The results are midpoint-based estimates rather than averages of exact 
+reported spending. 
+Exhibit 28: Respondents span ~40% large (5,000+), ~40% mid-sized (1,001-5,000) and ~20% SMB (<1,000) organizations 
+How big is your organization globally (number of employees)? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 29: ~64% of respondents oversee $1-100mn IT budgets with an overall average of ~$234mn (at the midpoint) across 
+surveyed population 
+Approximately what is your organization's annual total IT budget? (incl. software, infrastructure, cloud, IT services, cybersecurity, data, AI, and IT 
+personnel costs) 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 30: Financial services and Healthcare lead the sample size, representing ~43% of respondents 
+Which industry segment does your organization operate in? 
+Source: BofA Global Research Survey conducted on Occam by AlphaROC (October 2026), n = 309 
+BofA GLOBAL RESEARCH 
+10.4%
+9.7%
+14.9%
+24.9%
+17.2%
+23.0%
+0%
+5%
+10%
+15%
+20%
+25%
+1-500
+501-1,000
+1,001-2,000
+2,001-5,000
+5,001-10,000
+10,000+
+6.1%
+64.1%
+23.6%
+4.5%
+1.6%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+Less than $1 million
+$1 million to $100 million
+$100 million to <$1 billion
+OVER $1 billion
+Don't know
+21.7%
+21.4%
+16.2%
+11.3%
+8.7%
+4.9%
+2.6%
+13.3%
+0%
+5%
+10%
+15%
+20%
+25%
+Financial services
+Healthcare
+Telecom / media / technology
+Manufacturing and industrials
+Retail and consumer
+Government
+Energy / utilities / resources
+Other
+
+ 
+ 
+16 
+Software Trends | 23 October 2026 
+ 
+ 
+Methodology and calculations 
+• 
+Exhibit 2: We estimated software budget growth by assigning the midpoint to 
+each response range: 3% for ±1–5%, 8% for ±6–10%, and 0% for no change. 
+We assumed ±15% for the open-ended increase or decrease of more than 10%, 
+multiplied each assigned value by the response count, and divided the sum by 
+all 309 responses. This produces a midpoint-weighted estimate of 
+approximately 5.3% software budget growth in 2027. 
+• 
+Exhibit 3: We estimated IT staffing and hiring budget growth by assigning the 
+midpoint to each response range: 3% for ±1–5%, 8% for ±6–10%, and 0% for 
+no change. We assumed ±15% for the open-ended increase or decrease of 
+more than 10%, multiplied each assigned value by the response count, and 
+divided the sum by all 309 responses. This produces a midpoint-weighted 
+estimate of approximately 3.4% hiring growth in 2027. 
+• 
+Exhibit 5: We estimated the 2026 and 2027 allocations by assigning 
+representative values to each response category: 0% to the 0% category, 3% 
+(midpoint) to 1-5%. 8% (midpoint) to 6-10%, and 15% to the open-ended “over 
+10%” category. For each year, we multiplied these assigned values by the 
+number of responses in each category, summed the results, and divided by the 
+number of respondents providing a known answer, excluding “don’t know” 
+responses. This yields midpoint-weighted estimates of 8.3% in 2026 and 9.4% 
+in 2027, up 14.2% YoY. 
+• 
+Exhibit 22: We assigned 5.5% (midpoint) to the 1-10% increase category, 15% 
+(midpoint) to the 10-20% increase category, 25% to the increases above 20%, 
+0% to flat spending, and -5% to declines. Each assigned value was multiplied by 
+its response count, with the sum divided by all 309 respondents. This yields a 
+midpoint-weighted average estimate of ~8.4% public cloud budget growth in 
+2027. 
+• 
+Exhibit 22 / Exhibit 23: We grouped respondents by organization size: SMB 
+(<1,000 employees), mid-sized (1,001-5,000 employees), and enterprise (5,000+ 
+employees). Within each group, we divided the number selecting each public-
+cloud spending or deployment option by the total respondents in that size 
+group: 62 SMBs, 123 mid-sized organizations, and 124 enterprises. Spending 
+growth includes all three increases categories, while growth above 10% 
+combines the “10-20%” and “over 20%” responses. Cloud-strategy percentages 
+were calculated using the same group totals, allowing direct comparison of 
+hybrid, multi-cloud, and other deployment approaches by organization size. 
+• 
+Exhibit 25: We assigned 3% (midpoint) to the 1-5% increase category, 10.5% 
+(midpoint) to 6-15%, 20% to increases above 15%, 0% to no change, and -5% 
+to decreases. Each value was multiplied by its response count, with the sum 
+divided by all 309 respondents. This yields a midpoint-weighted average of 
+~6.9% cybersecurity budget growth in 2027. 
+ 
+ 
+
+ 
+ 
+Software Trends | 23 October 2026
+17
+ 
+ 
+Glossary 
+• 
+AI = Artificial Intelligence 
+• 
+ API = Application Programming Interface 
+• 
+ CIO = Chief Information Officer 
+• 
+ CRM = Customer Relationship Management 
+• 
+ DLP = Data Loss Prevention 
+• 
+ ERP = Enterprise Resource Planning 
+• 
+ HCM = Human Capital Management 
+• 
+ IAM = Identity and Access Management 
+• 
+ IT = Information Technology 
+• 
+ ITOM = IT Operations Management 
+• 
+ ITSM = IT Service Management 
+• 
+ LTM = Last Twelve Months 
+• 
+ MCP = Model Context Protocol 
+• 
+ ROI = Return on Investment 
+• 
+ SMB = Small and Medium-Sized Business 
+• 
+ UI = User Interface 
+• 
+ YoY = Year over Year 
+ 
+ 
+
+ 
+ 
+18 
+Software Trends | 23 October 2026 
+ 
+ 
+ 
+  
+ 
+Stocks mentioned 
+Prices and ratings for stocks mentioned in this report 
+BofA Ticker 
+Bloomberg ticker 
+Company name 
+Price 
+Rating 
+ADBE 
+ADBE US 
+Adobe 
+US$ 270.55 
+B-3-9 
+TEAM 
+TEAM US 
+Atlassian 
+US$ 223.16 
+C-1-9 
+BL 
+BL US 
+BlackLine, Inc. 
+US$ 34.37 
+C-3-9 
+BOX 
+BOX US 
+Box Inc 
+US$ 42.78 
+B-1-9 
+NET 
+NET US 
+Cloudflare 
+US$ 303.61 
+C-1-9 
+CRWD 
+CRWD US 
+CrowdStrike 
+US$ 237.94 
+C-2-9 
+DDOG 
+DDOG US 
+Datadog Inc 
+US$ 257.75 
+C-1-9 
+HUBS 
+HUBS US 
+HubSpot 
+US$ 267.19 
+C-3-9 
+FROG 
+FROG US 
+JFrog 
+US$ 93.89 
+C-1-9 
+MSFT 
+MSFT US 
+Microsoft 
+US$ 521.08 
+B-1-7 
+OKTA 
+OKTA US 
+Okta Inc 
+US$ 201.33 
+C-2-9 
+PANW 
+PANW US 
+Palo Alto Networks 
+US$ 354.92 
+C-1-9 
+PAYC 
+PAYC US 
+Paycom 
+US$ 272.61 
+C-3-7 
+PCTY 
+PCTY US 
+Paylocity 
+US$ 177.67 
+B-1-9 
+SAIL 
+SAIL US 
+SailPoint 
+US$ 20.06 
+C-2-9 
+CRM 
+CRM US 
+Salesforce 
+US$ 250.29 
+B-1-7 
+NOW 
+NOW US 
+ServiceNow 
+US$ 157 
+C-1-9 
+SNOW 
+SNOW US 
+Snowflake 
+US$ 313.96 
+C-1-9 
+ 
+Price objective basis & risk 
+Adobe (ADBE) 
+Our PO of $220 is based on an EV/FCF multiple of 8x our CY27E free cash flow estimate 
+benchmarked against the 9.7x average multiple for a broad set of software peers 
+(discount justified by the company's weaker revenue growth), reflecting a more muted 
+growth outlook, increasing competitive pressure from point solutions and AI-native 
+entrants, and an AI monetization strategy that we view as primarily defensive rather 
+than accretive at this stage. 
+ 
+Downside risks to our PO are 1) faster-than-expected disruption from AI-native and 
+lower-cost competitors, particularly in lower-end and prosumer use cases, 2) weaker-
+than-expected conversion of AI-driven engagement into durable, high-quality ARR, 
+resulting in further pressure on growth and monetization, and 3) incremental pressure on 
+the seat-based model, including potential cannibalization of higher-margin legacy 
+revenue streams. 
+ 
+Upside risks to our PO are 1) stronger-than-expected AI monetization, with consumption 
+and enterprise adoption scaling faster than anticipated, and 2) sustained resilience in 
+professional and enterprise workflows, supporting pricing power and seat expansion. 
+Atlassian Corp (TEAM) 
+Our PO of $252 is based on 33.3x CY27E EV/FCF, a premium to infrastructure software 
+comps at 31.3x given category leadership and traction with AI products, balanced 
+against AI competition risks, cloud transition risks, and go-to-market transition execution 
+risks. 
+ 
+Downside risks to our PO are: 1) further valuation multiple compression in high-growth 
+
+ 
+ 
+ 
+Software Trends | 23 October 2026
+19
+ 
+ 
+software, 2) higher cash taxes headwind, 3) despite a low-cost product, Atlassian's 40% 
+of revs from EMEA could be impacted from macro conditions, 4) increased competition, 
+5) technology issues with the platform. 
+BlackLine, Inc. (BL) 
+Our $26 PO is based on 9x CY27E EV/FCF. The multiple is at a discount to the 
+applications peer average of 13-15x, warranted for stalled billings growth, soft net 
+revenue retention (NRR) levels, and risk of AI disruption. 
+ 
+Downside risks to our PO are 1) Key growth metrics, revenue and billings could stall 
+and/or decelerate, 2) competition increases, 3) free cash flow margins contract due to a 
+higher investment profile, 4) net revenue retention contracts to near 100% or lower, and 
+5) the adoption of strategic products is slower than expected. 
+ 
+Upside risks to our PO are: 1) Pace of enterprise finance department transformations 
+accelerates 2) competition decreases, 3) better than expected free cash flow and margin 
+expansion, 4) net revenue retention expands faster than expected, 5) adoption of SaaS 
+Financials platforms slow, increasing the need for multi-ERP visibility tools, and 6) 
+platform pricing and AI solution growth accelerates 
+Box Inc (BOX) 
+Our $50 PO is based on a CY27E EV/FCF multiple of 16x, a slight discount to the 
+applications software peer group average of 18x. We believe this multiple is justified 
+given BOX's improving growth profile and favorable margins. 
+ 
+Downside risks to our PO: 1) increased competition leading to greater-than-expected 
+pricing pressure, 2) greater-than-expected user churn, and 3) slower-than-expected 
+paying user growth. 
+Cloudflare (NET) 
+Our $380 PO is based on roughly 37x CY27E EV/Sales. The company has traded 
+historically at a premium of 30-40% to high growth SaaS peers which we believe is 
+justified given its technological advantages that position the company strongly in 
+multiple market areas across security, compute and AI. 
+ 
+Upside risks to our price objective are: 1) accelerated adoption of new security and edge 
+compute products including AI, 2) increase in enterprise customers and the number of 
+products they purchase. 
+ 
+Downside risks to our price objective are: slower adoption of security & edge compute 
+products, product convergence leading to a shrinking market with larger competitors, 
+accelerated commoditization in Cloudflare's core markets. 
+CrowdStrike Holdings Inc. (CRWD) 
+Our PO of $260 is based on roughly 36x our FY27E EV/Sales, which is a premium to 
+high-growth Software as a Service (SaaS) peers, which trade closer to 13-19x. Our 
+premium valuation is supported by CrowdStrike's strong competitive positioning in 
+endpoint security and long-term growth opportunities across Cloud security, log 
+management, and identity protection. In addition, we note CrowdStrike's higher growth 
+profile and potential to take meaningful share in new markets that would increase the 
+total addressable market (TAM) and potentially accelerate growth. The positives of 
+CrowdStrike's high growth and long-term opportunities are somewhat offset by lower 
+margins and expected growth deceleration. 
+ 
+Downside risks to our PO are 1) investor sentiment and sensitivity to the premium 
+valuation levels, 2) a lower take-rate of new offerings, 3) potential slowdown in new 
+
+ 
+ 
+20 
+Software Trends | 23 October 2026 
+ 
+ 
+customer adoption and expansion deals, 4) risk of security breaches, and 5) an increase 
+in competition from incumbent vendors and newer next-generation players. 
+Datadog Inc (DDOG) 
+Our $335 PO is based on an EV/revenue multiple of 22.6x EV/CY27E revenue. This is a 
+premium compared to its infrastructure software peers at 7.3x, which we think is 
+justified given its revenue growth and free cash flow upside potential and category 
+leadership. 
+ 
+Downside risks to our PO: 1) valuation risk, 2) competition, 3) deteriorating net revenue 
+retention, 4) execution, and 5) enterprise software spend can be cyclical. 
+HubSpot, Inc. (HUBS) 
+Our $200 price target is based on a 9x CY2027E EV/FCF multiple, below app peers at 
+18x for higher execution risk associated with the company's go to market transition and 
+SMB exposure in an uncertain macro environment, partially offset by faster growth. 
+ 
+Upside risks to our PO are 1) faster than expected ramp of AI agent revenue, 2) better 
+than expected margin expansion, and 3) overall revenue growth reacceleration 
+ 
+Downside risks to our PO are 1) higher customer attrition rate (low teens) may limit 
+future growth, particularly as the company grows and the dollar attrition amount grows, 
+2) Intensifying competition from frontier model providers which could pose a risk to 
+long-term growth, 3) we believe that HubSpot's business has a high degree of exposure 
+to the macro economic cycle, given the company's focus on selling applications into the 
+SMB market segment. Applications projects are discretionary and can be delayed in the 
+event of a shrinking IT budget, unlike projects involving more mission critical 
+infrastructure or security technologies. Also, SMB mortality increases during cyclical 
+downturns, which could affect HubSpot's renewal rate. 
+JFrog Ltd (FROG) 
+Our $115 PO is based on 18.1x EV/C27E revenue, which compares to JFrog's 
+infrastructure peers at 7.3x revenue, warranted in our view given JFrog's better growth 
+profile vs. the peer average (i.e., c.20% vs. low double-digit). 
+ 
+Downside risks to our PO are macroeconomic downturn, increase in competition, ability 
+to upsell installed base, ability to convert free users to paid subscriptions, ability to 
+expand into adjacent markets, and ability to sustain high R&D innovation. 
+Microsoft Corporation (MSFT) 
+Our price objective of $600 is based on 28x our CY27E P/E, a premium to the peer group 
+of 18-25x. Sustained revenue growth and margin profile warrants the multiple above the 
+high end of the peer group range, in our view. 
+ 
+Downside risks to our price objective: 1) near term gross margin pressure as the Azure 
+business grows as a percentage of overall revenue. 2) AI applications and model 
+providers could innovate at a faster rate than Microsoft, potentially limiting the 
+company's growth profile. 3) Enterprise application spending has proven to be highly 
+cyclical, given the more discretionary nature of applications projects. 
+Okta Inc (OKTA) 
+Our PO of $220 is based on 12x CY27E EV/Sales. This multiple is in the middle of the 
+range of cybersecurity peers that trade at 6-17x, but we believe this is warranted given 
+AI tailwinds to revenue growth and dependency of ongoing execution. 
+ 
+Upside risks to our PO are 1) higher growth rates on greater adoption of Okta's 
+Customer Identity products, 2) higher growth rates if Okta's products warrant a premium 
+
+ 
+ 
+ 
+Software Trends | 23 October 2026
+21
+ 
+ 
+compared to other IAM vendors and 3) margin uplift from a more efficient sales force. 
+ 
+Downside risks to our PO are 1) continued price erosion of Okta's core products due to 
+more intense competition, 2) purchase pushouts of additional products should customer 
+budgets come down and 3) lower margin ramp if execution issues worsen. 
+Palo Alto Networks (PANW) 
+Our price objective of $420 is based on roughly 19x CY27E EV/Sales, which is above the 
+high-end range of appliance companies, which trade at roughly 6-8x forward EV/Sales. 
+The migration to Software and Cloud warrants a higher valuation, in our view, with 
+successful SaaS vendors trading at 13-19x forward revenues. 
+ 
+Downside risks to our PO are increased competition and execution-related challenges as 
+the company transitions to the cloud and SASE models. 
+Paycom (PAYC) 
+Our $200 PO is based on 14x CY27E EV/FCF, slightly below the application software 
+peer average of 15x, reflecting Paycom's strong FCF margins and cash generative 
+profile, offset by its slower revenue outlook and limited share gains. 
+ 
+Downside risks to our PO are 1) Revenue and billings decelerate, 2) competition 
+intensifies, 3) client or employee-record expansion weakens, 4) SMB churn and 
+workforce reductions pressure revenue, and 5) AI monetization and upmarket traction 
+remain limited. 
+ 
+Upside risks to our PO are 1) Revenue returns to 10% or higher, 2) billings and client 
+expansion improve, 3) AI products drive greater adoption and monetization, 4) upmarket 
+and international initiatives gain traction, 5) FCF margins exceed expectations, and 6) 
+buybacks and interest income provide greater support than expected. 
+Paylocity (PCTY) 
+Our $190 PO is based on 21x EV/FY26E FCF, slightly above payroll and HR peers and 
+above the broader application software peer average of 15x, reflecting our expectations 
+for sustained double-digit growth and a margin inflection. 
+ 
+Downside risks to our PO are 1) intense competition in the midmarket driving sustained 
+pricing pressure, 2) interest rate sensitivity, and 3) integration and go-to-market 
+execution complexity as products multiply through organic investments and acquisitions. 
+SailPoint (SAIL) 
+Our PO of $22 is based on 8x FY28E EV/Sales, which is at the lower end of the SaaS 
+Security peers' range of 5-10x as SAIL is seeing decelerating growth from being a single 
+point solution. 
+ 
+Upside risks to our price objective are improved ability to size the market, and stronger 
+conversion of qualified customers that are currently in the pipeline. 
+ 
+Downside risks to our price objective are difficulties sizing the market, investor 
+sentiment and sensitivity to the premium valuation levels, and an increase in 
+competition. 
+Salesforce Inc (CRM) 
+Our $285 PO is based on 16x our CY27E EV/FCF estimate, representing a modest 
+premium to the software peer-group average of 15x. We believe the premium is 
+supported by Salesforce's comprehensive enterprise AI strategy, improving organic 
+growth outlook and continued strong FCF generation. 
+ 
+
+ 
+ 
+22 
+Software Trends | 23 October 2026 
+ 
+ 
+Downside risks to our price objective are slower-than-expected AI monetization, weaker 
+organic growth due to competition, increasing upsell or pricing pressure, and greater 
+value capture by third-party AI interfaces. 
+ 
+Upside risks to our price objective are faster-than-expected organic growth 
+reacceleration, stronger Agentforce and Data 360 consumption, greater premium-edition 
+adoption and improved upsell efficiency. 
+ServiceNow (NOW) 
+Our PO of $180 is based on a 27x CY27E FCF multiple, above the large cap software 
+group trading at 10-20x, for superior revenue growth levels and FCF margins. 
+ 
+Downside risks to our PO are as follows: 1) ServiceNow shares currently trade at a 
+premium versus its large cap software peer group, and we recognize the risk of a 
+potential pullback in the event of changes to market sentiment or a disappointing 
+bookings quarter. 2) Inability to maintain key product advantages may slow share gains, 
+and large established competitors in the space may pose threats to ServiceNow's goal of 
+continuing to capture market share by competing on price. 3) Application spending is 
+highly cyclical, which could present a higher degree of risk for a bookings deceleration 
+for ServiceNow and other application vendors in the event of an economic slowdown. 4) 
+Increased AI adoption could pressure the traditional SaaS model through higher compute 
+costs, changes in pricing constructs, or customer expectations around AI functionality 
+being bundled rather than monetized separately. 
+Snowflake (SNOW) 
+Our PO of $470 is based on 22.4x CY27E revenue, a premium to the infrastructure 
+software group at 5.5x for durability of growth stemming from Snowflake's traction in 
+the AI software market, which has a large, growing TAM of $155bn. 
+ 
+Upside risks to our PO: Snowflake recognizes revenue based on actual consumption 
+(versus subscription ratably in arrears). In the event of changes to market sentiment on 
+macro abating and IT spend returning to normal, consumption and revenue growth could 
+quickly reaccelerate which could drive multiple expansion. 
+ 
+Downside risks to our PO: 1) Snowflake trades at a premium to its software large-cap 
+peer group. In the event of changes to market sentiment stemming from global macro 
+uncertainty, or potentially disappointing quarterly revenue results, there could be risk of 
+a potential pullback, 2) The company's consumption model implies more revenue 
+volatility than a traditional subscription model, 3) Snowflake serves in a highly 
+competitive market, which consists of deep-pocketed next-gen DBMS vendors, public 
+cloud vendors and legacy DBMS. An inability to execute on a product roadmap for added 
+capabilities could result in slowing share gains or even share losses. 
+  
+Analyst Certification 
+We, Tal Liani, Koji Ikeda, CFA, Matt Bullock and Tomer Zilberman, hereby certify that the 
+views each of us has expressed in this research report accurately reflect each of our 
+respective personal views about the subject securities and issuers.  We also certify that 
+no part of our respective compensation was, is, or will be, directly or indirectly, related to 
+the specific recommendations or view expressed in this research report. 
+ 
+Special Disclosures 
+BofA Securities is currently acting as financial advisor to Workday Inc in connection 
+with its proposed acquisition of ConductorOne Inc (doing business as C1.ai), which 
+was announced on October 13, 2026. 
+  
+
+ 
+ 
+ 
+Software Trends | 23 October 2026
+23
+ 
+ 
+ 
+US - Networking and Software Coverage Cluster 
+Investment rating 
+Company 
+BofA Ticker 
+Bloomberg symbol 
+Analyst 
+BUY 
+Akamai 
+AKAM 
+AKAM US 
+Tal Liani 
+Amdocs 
+DOX 
+DOX US 
+Tal Liani 
+Arista Networks 
+ANET 
+ANET US 
+Tal Liani 
+Asana 
+ASAN 
+ASAN US 
+Matt Bullock 
+Atlassian Corp 
+TEAM 
+TEAM US 
+Koji Ikeda, CFA 
+Autodesk 
+ADSK 
+ADSK US 
+Tomer Zilberman 
+Bentley Systems 
+BSY 
+BSY US 
+Tomer Zilberman 
+Box Inc 
+BOX 
+BOX US 
+Matt Bullock 
+Ciena 
+CIEN 
+CIEN US 
+Tal Liani 
+Cisco Systems 
+CSCO 
+CSCO US 
+Tal Liani 
+Cloudflare 
+NET 
+NET US 
+Tal Liani 
+Coreweave 
+CRWV 
+CRWV US 
+Tal Liani 
+Datadog Inc 
+DDOG 
+DDOG US 
+Koji Ikeda, CFA 
+Dynatrace 
+DT 
+DT US 
+Koji Ikeda, CFA 
+Extreme Networks, Inc. 
+EXTR 
+EXTR US 
+Tomer Zilberman 
+Figma 
+FIG 
+FIG US 
+Tal Liani 
+Fortinet 
+FTNT 
+FTNT US 
+Tal Liani 
+Global-e Online Ltd. 
+GLBE 
+GLBE US 
+Matt Bullock 
+Hinge Health, Inc. 
+HNGE 
+HNGE US 
+Tomer Zilberman 
+JFrog Ltd 
+FROG 
+FROG US 
+Koji Ikeda, CFA 
+Microsoft Corporation 
+MSFT 
+MSFT US 
+Tal Liani 
+MongoDB Inc 
+MDB 
+MDB US 
+Koji Ikeda, CFA 
+Motorola Solutions 
+MSI 
+MSI US 
+Tomer Zilberman 
+Nebius Group N.V. 
+NBIS 
+NBIS US 
+Tal Liani 
+Oracle Corporation 
+ORCL 
+ORCL US 
+Tal Liani 
+Palo Alto Networks 
+PANW 
+PANW US 
+Tal Liani 
+Paylocity 
+PCTY 
+PCTY US 
+Tomer Zilberman 
+Salesforce Inc 
+CRM 
+CRM US 
+Tal Liani 
+Samsara 
+IOT 
+IOT US 
+Matt Bullock 
+SentinelOne, Inc. 
+S 
+S US 
+Tal Liani 
+ServiceNow 
+NOW 
+NOW US 
+Tal Liani 
+Shopify, Inc. 
+SHOP 
+SHOP US 
+Tal Liani 
+Snowflake 
+SNOW 
+SNOW US 
+Koji Ikeda, CFA 
+Twilio 
+TWLO 
+TWLO US 
+Koji Ikeda, CFA 
+Zeta Global 
+ZETA 
+ZETA US 
+Matt Bullock 
+Zoom Communications 
+ZM 
+ZM US 
+Matt Bullock 
+Zscaler 
+ZS 
+ZS US 
+Tal Liani 
+NEUTRAL 
+Amplitude, Inc. 
+AMPL 
+AMPL US 
+Koji Ikeda, CFA 
+Bandwidth Inc 
+BAND 
+BAND US 
+Koji Ikeda, CFA 
+Check Point Software Technologies 
+CHKP 
+CHKP US 
+Tal Liani 
+CrowdStrike Holdings Inc. 
+CRWD 
+CRWD US 
+Tal Liani 
+Elastic NV 
+ESTC 
+ESTC US 
+Koji Ikeda, CFA 
+GitLab Inc. 
+GTLB 
+GTLB US 
+Koji Ikeda, CFA 
+Intuit 
+INTU 
+INTU US 
+Tal Liani 
+Monday.com 
+MNDY 
+MNDY US 
+Matt Bullock 
+Okta Inc 
+OKTA 
+OKTA US 
+Tal Liani 
+SailPoint 
+SAIL 
+SAIL US 
+Tal Liani 
+Workday Inc. 
+WDAY 
+WDAY US 
+Tal Liani 
+UNDERPERFORM 
+Adobe 
+ADBE 
+ADBE US 
+Tal Liani 
+BlackLine, Inc. 
+BL 
+BL US 
+Tomer Zilberman 
+C3.ai 
+AI 
+AI US 
+Koji Ikeda, CFA 
+Coveo 
+YCVO 
+CVO CN 
+Koji Ikeda, CFA 
+Docusign Inc 
+DOCU 
+DOCU US 
+Matt Bullock 
+Dropbox 
+DBX 
+DBX US 
+Matt Bullock 
+F5 Inc 
+FFIV 
+FFIV US 
+Tal Liani 
+Fastly 
+FSLY 
+FSLY US 
+Tal Liani 
+HubSpot, Inc. 
+HUBS 
+HUBS US 
+Matt Bullock 
+Lightspeed Commerce Inc. 
+LSPD 
+LSPD US 
+Matt Bullock 
+Lightspeed Commerce Inc. 
+YLSPD 
+LSPD CN 
+Matt Bullock 
+PagerDuty 
+PD 
+PD US 
+Koji Ikeda, CFA 
+Paycom 
+PAYC 
+PAYC US 
+Tomer Zilberman 
+
+ 
+ 
+24 
+Software Trends | 23 October 2026 
+ 
+ 
+US - Networking and Software Coverage Cluster 
+Investment rating 
+Company 
+BofA Ticker 
+Bloomberg symbol 
+Analyst 
+UiPath 
+PATH 
+PATH US 
+Koji Ikeda, CFA 
+ZoomInfo 
+GTM 
+GTM US 
+Matt Bullock 
+   Disclosures 
+Important Disclosures 
+ 
+   
+Equity Investment Rating Distribution: Technology Group (as of 30 Sep 2026) 
+Coverage Universe 
+Count 
+Percent 
+Inv. Banking Relationships R1  
+Count 
+Percent 
+Buy 
+255 
+62.04% 
+Buy 
+157 
+61.57% 
+Hold 
+82 
+19.95% 
+Hold 
+46 
+56.10% 
+Sell 
+74 
+18.00% 
+Sell 
+31 
+41.89% 
+ 
+Equity Investment Rating Distribution: Telecommunications Group (as of 30 Sep 2026) 
+Coverage Universe 
+Count 
+Percent 
+Inv. Banking Relationships R1  
+Count 
+Percent 
+Buy 
+58 
+55.24% 
+Buy 
+49 
+84.48% 
+Hold 
+23 
+21.90% 
+Hold 
+17 
+73.91% 
+Sell 
+24 
+22.86% 
+Sell 
+21 
+87.50% 
+ 
+Equity Investment Rating Distribution: Global Group (as of 30 Sep 2026) 
+Coverage Universe 
+Count 
+Percent 
+Inv. Banking Relationships R1  
+Count 
+Percent 
+Buy 
+2057 
+57.03% 
+Buy 
+1386 
+67.38% 
+Hold 
+806 
+22.35% 
+Hold 
+563 
+69.85% 
+Sell 
+744 
+20.63% 
+Sell 
+446 
+59.95% 
+R1 Issuers that were investment banking clients of BofA Securities or one of its affiliates within the past 12 months. For purposes of this Investment Rating Distribution, the coverage universe includes only stocks. A stock 
+rated Neutral is included as a Hold, and a stock rated Underperform is included as a Sell. 
+    
+FUNDAMENTAL EQUITY OPINION KEY: Opinions include a Volatility Risk Rating, an Investment Rating and an Income Rating. VOLATILITY RISK RATINGS, indicators 
+of potential price fluctuation, are: A - Low, B - Medium and C - High. INVESTMENT RATINGS reflect the analyst’s assessment of both a stock’s absolute total return 
+potential as well as its attractiveness for investment relative to other stocks within its Coverage Cluster (defined below). Our investment ratings are: 1 - Buy stocks 
+are expected to have a total return of at least 10% and are the most attractive stocks in the coverage cluster; 2 - Neutral stocks are expected to remain flat or 
+increase in value and are less attractive than Buy rated stocks and 3 - Underperform stocks are the least attractive stocks in a coverage cluster. An investment rating 
+of 6 (No Rating) indicates that a stock is no longer trading on the basis of fundamentals. Analysts assign investment ratings considering, among other things, the 0-
+12 month total return expectation for a stock and the firm’s guidelines for ratings dispersions (shown in the table below). The current price objective for a stock 
+should be referenced to better understand the total return expectation at any given time. The price objective reflects the analyst’s view of the potential price 
+appreciation (depreciation). 
+Investment rating 
+Total return expectation (within 12-month period of date of initial 
+rating) 
+Ratings dispersion guidelines for coverage clusterR2 
+Buy 
+≥ 10% 
+≤ 70% 
+Neutral 
+≥ 0% 
+≤ 30% 
+Underperform 
+N/A 
+≥ 20% 
+R2Ratings dispersions may vary from time to time where BofA Global Research believes it better reflects the investment prospects of stocks in a Coverage Cluster. 
+INCOME RATINGS, indicators of potential cash dividends, are: 7 - same/higher (dividend considered to be secure), 8 - same/lower (dividend not considered to be secure) 
+and 9 - pays no cash dividend. Coverage Cluster is comprised of stocks covered by a single analyst or two or more analysts sharing a common industry, sector, 
+region or other classification(s). A stock’s coverage cluster is included in the most recent BofA Global Research report referencing the stock. 
+ 
+ 
+Price Charts for the securities referenced in this research report are available on the Price Charts website, or call 1-800-MERRILL to have them mailed. 
+BofAS or one of its affiliates acts as a market maker for the equity securities recommended in the report: Adobe, Atlassian, BlackLine, Inc., Box Inc, Cloudflare, CrowdStrike, Datadog Inc, HubSpot, 
+JFrog, Microsoft, Okta Inc, Palo Alto Networks, Paycom, Paylocity, SailPoint, Salesforce, ServiceNow, Snowflake. 
+BofAS or an affiliate was a manager of a public offering of securities of this issuer within the last 12 months: Salesforce, ServiceNow, Inc., Snowflake Inc. 
+The issuer is or was, within the last 12 months, an investment banking client of BofAS and/or one or more of its affiliates: Adobe, Atlassian, BlackLine, Inc., Cloudflare, CrowdStrike, Datadog Inc, 
+HubSpot, JFrog, Microsoft Corp, Palo Alto Networks, Paycom Software, Sailpoint, Salesforce, ServiceNow, Inc., Snowflake Inc. 
+BofAS or an affiliate has received compensation from the issuer for non-investment banking services or products within the past 12 months: Adobe, Atlassian, BlackLine, Inc., Box, Inc., 
+Cloudflare, CrowdStrike, HubSpot, Microsoft Corp, Okta Inc, Palo Alto Networks, Paycom Software, Paylocity, Sailpoint, Salesforce, ServiceNow, Inc., Snowflake Inc. 
+The issuer is or was, within the last 12 months, a non-securities business client of BofAS and/or one or more of its affiliates: Adobe, Atlassian, BlackLine, Inc., Box, Inc., Cloudflare, CrowdStrike, 
+Datadog Inc, HubSpot, Microsoft Corp, Okta Inc, Palo Alto Networks, Paycom Software, Paylocity, Sailpoint, Salesforce, ServiceNow, Inc., Snowflake Inc. 
+An officer, director or employee of BofAS or one of its affiliates is an officer or director of this issuer: Salesforce. 
+BofAS or an affiliate has received compensation for investment banking services from this issuer within the past 12 months: HubSpot, Paycom Software, Salesforce, ServiceNow, Inc., Snowflake 
+Inc. 
+BofAS or an affiliate expects to receive or intends to seek compensation for investment banking services from this issuer or an affiliate of the issuer within the next three months: Adobe, 
+Atlassian, BlackLine, Inc., Cloudflare, CrowdStrike, Datadog Inc, HubSpot, JFrog, Microsoft Corp, Palo Alto Networks, Sailpoint, Salesforce, ServiceNow, Inc., Snowflake Inc. 
+BofAS together with its affiliates beneficially owns one percent or more of the common stock of this issuer. If this report was issued on or after the 9th day of the month, it reflects the 
+ownership position on the last day of the previous month. Reports issued before the 9th day of a month reflect the ownership position at the end of the second month preceding the date of 
+the report: BlackLine, Inc., Box, Inc., CrowdStrike, HubSpot, JFrog, Microsoft Corp, Palo Alto Networks, Salesforce, Snowflake Inc. 
+BofAS or one of its affiliates is willing to sell to, or buy from, clients the common equity of the issuer on a principal basis: Adobe, Atlassian, BlackLine, Inc., Box Inc, Cloudflare, CrowdStrike, 
+
+ 
+ 
+ 
+Software Trends | 23 October 2026
+25
+ 
+ 
+Datadog Inc, HubSpot, JFrog, Microsoft, Okta Inc, Palo Alto Networks, Paycom, Paylocity, SailPoint, Salesforce, ServiceNow, Snowflake. 
+The issuer is or was, within the last 12 months, a securities business client (non-investment banking) of BofAS and/or one or more of its affiliates: Adobe, Atlassian, BlackLine, Inc., Box, Inc., 
+CrowdStrike, HubSpot, Microsoft Corp, Okta Inc, Palo Alto Networks, Paycom Software, Paylocity, Sailpoint, Salesforce, ServiceNow, Inc., Snowflake Inc. 
+BofA Global Research personnel (including the analyst(s) responsible for this report) receive compensation based upon, among other factors, the overall profitability of Bank of America 
+Corporation, including profits derived from investment banking. The analyst(s) responsible for this report may also receive compensation based upon, among other factors, the overall 
+profitability of the Bank’s sales and trading businesses relating to the class of securities or financial instruments for which such analyst is responsible. 
+ 
+ 
+Other Important Disclosures 
+From time to time research analysts conduct site visits of covered issuers. BofA Global Research policies prohibit research analysts from accepting payment or reimbursement for travel 
+expenses from the issuer for such visits. 
+Prices are indicative and for information purposes only. Except as otherwise stated in the report, for any recommendation in relation to an equity security, the price referenced is the publicly 
+traded price of the security as of close of business on the day prior to the date of the report or, if the report is published during intraday trading, the price referenced is indicative of the traded 
+price as of the date and time of the report and in relation to a debt security (including equity preferred and CDS), prices are indicative as of the date and time of the report and are from various 
+sources including BofA Securities trading desks. 
+The date and time of completion of the production of any recommendation in this report shall be the date and time of dissemination of this report as recorded in the report timestamp. 
+ 
+Recipients who are not institutional investors or market professionals should seek the advice of their independent financial advisor before considering information in this report in connection 
+with any investment decision, or for a necessary explanation of its contents. 
+Officers of BofAS or one or more of its affiliates (other than research analysts) may have a financial interest in securities of the issuer(s) or in related investments. 
+Refer to BofA Global Research policies relating to conflicts of interest. 
+"BofA Securities" includes BofA Securities, Inc. ("BofAS") and its affiliates. Investors should contact their BofA Securities representative or Merrill Global Wealth Management financial 
+advisor if they have questions concerning this report or concerning the appropriateness of any investment idea described herein for such investor. "BofA Securities" is a global brand 
+for BofA Global Research. 
+Information relating to Non-US affiliates of BofA Securities and Distribution of Affiliate Research Reports: 
+BofAS and/or Merrill Lynch, Pierce, Fenner & Smith Incorporated ("MLPF&S") may in the future distribute, information of the following non-US affiliates in the US (short name: legal name, 
+regulator): Merrill Lynch (South Africa): Merrill Lynch South Africa (Pty) Ltd., regulated by the Financial Sector Conduct Authority; MLI (UK): Merrill Lynch International, regulated by the Financial 
+Conduct Authority (FCA) and the Prudential Regulation Authority (PRA); BofASE (France): BofA Securities Europe SA is authorized by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) 
+and regulated by the ACPR and the Autorité des Marchés Financiers (AMF). BofA Securities Europe SA ("BofASE") with registered address at 51, rue La Boétie, 75008 Paris is registered under no 
+842 602 690 RCS Paris. In accordance with the provisions of French Code Monétaire et Financier (Monetary and Financial Code), BofASE is an établissement de crédit et d'investissement (credit 
+and investment institution) that is authorised and supervised by the European Central Bank and the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and regulated by the ACPR and the 
+Autorité des Marchés Financiers. BofASE's share capital can be found at www.bofaml.com/BofASEdisclaimer; BofA Europe (Milan): Bank of America Europe Designated Activity Company, Milan 
+Branch, regulated by the Bank of Italy, the European Central Bank (ECB) and the Central Bank of Ireland (CBI); BofA Europe (Frankfurt): Bank of America Europe Designated Activity Company, 
+Frankfurt Branch regulated by BaFin, the ECB and the CBI; BofA Europe (Zurich): Bank of America Europe Designated Activity Company, Zurich Branch, regulated by the Swiss Financial Market 
+Supervisory Authority FINMA, the ECB and CBI; BofA Europe (Madrid): Bank of America Europe Designated Activity Company, Sucursal en España, regulated by the Bank of Spain, the ECB and the 
+CBI; Merrill Lynch (Australia): Merrill Lynch Equities (Australia) Limited, regulated by the Australian Securities and Investments Commission; Merrill Lynch (Hong Kong): Merrill Lynch (Asia Pacific) 
+Limited, regulated by the Hong Kong Securities and Futures Commission (HKSFC); Merrill Lynch (Singapore): Merrill Lynch (Singapore) Pte Ltd, regulated by the Monetary Authority of Singapore 
+(MAS); Merrill Lynch (Canada): Merrill Lynch Canada Inc, regulated by the Canadian Investment Regulatory Organization; Merrill Lynch (Mexico): Merrill Lynch Mexico, SA de CV, Casa de Bolsa, 
+regulated by the Comisión Nacional Bancaria y de Valores; BofAS Japan: BofA Securities Japan Co., Ltd., regulated by the Financial Services Agency; Merrill Lynch (Seoul): Merrill Lynch 
+International, LLC Seoul Branch, regulated by the Financial Supervisory Service; Merrill Lynch (Taiwan): Merrill Lynch Securities (Taiwan) Ltd., regulated by the Securities and Futures Bureau; 
+BofAS India: BofA Securities India Limited, regulated by the Securities and Exchange Board of India (SEBI); Merrill Lynch (Israel): Merrill Lynch Israel Limited, regulated by Israel Securities 
+Authority; Merrill Lynch (DIFC): Merrill Lynch International (DIFC Branch), regulated by the Dubai Financial Services Authority (DFSA); Merrill Lynch (Brazil): Merrill Lynch S.A. Corretora de Títulos e 
+Valores Mobiliários, regulated by Comissão de Valores Mobiliários; Merrill Lynch KSA Company: Merrill Lynch Kingdom of Saudi Arabia Company, regulated by the Capital Market Authority. 
+This information: has been approved for publication and is distributed in the United Kingdom (UK) to professional clients and eligible counterparties (as each is defined in the rules of the FCA 
+and the PRA) by MLI (UK), which is authorized by the PRA and regulated by the FCA and the PRA - details about the extent of our regulation by the FCA and PRA are available from us on request; 
+has been approved for publication and is distributed in the European Economic Area (EEA) by BofASE (France), which is authorized by the ACPR and regulated by the ACPR and the AMF; has 
+been considered and distributed in Japan by BofAS Japan, a registered securities dealer under the Financial Instruments and Exchange Act in Japan, or its permitted affiliates; is issued and 
+distributed in Hong Kong by Merrill Lynch (Hong Kong) which is regulated by HKSFC; is issued and distributed in Taiwan by Merrill Lynch (Taiwan); is issued and distributed in India by BofAS 
+India; and is issued and distributed in Singapore to institutional investors and/or accredited investors (each as defined under the Financial Advisers Regulations) by Merrill Lynch (Singapore) 
+(Company Registration No 198602883D). Merrill Lynch (Singapore) is regulated by MAS. Merrill Lynch Equities (Australia) Limited (ABN 65 006 276 795), AFS License 235132 (MLEA) distributes 
+this information in Australia only to 'Wholesale' clients as defined by s.761G of the Corporations Act 2001. With the exception of Bank of America N.A., Australia Branch, neither MLEA nor any of 
+its affiliates involved in preparing this information is an Authorised Deposit-Taking Institution under the Banking Act 1959 nor regulated by the Australian Prudential Regulation Authority. No 
+approval is required for publication or distribution of this information in Brazil and its local distribution is by Merrill Lynch (Brazil) in accordance with applicable regulations. Merrill Lynch (DIFC) is 
+authorized and regulated by the DFSA. Information prepared and issued by Merrill Lynch (DIFC) is done so in accordance with the requirements of the DFSA conduct of business rules. BofA 
+Europe (Frankfurt) distributes this information in Germany and is regulated by BaFin, the ECB and the CBI. BofA Securities entities, including BofA Europe and BofASE (France), may 
+outsource/delegate the marketing and/or provision of certain research services or aspects of research services to other branches or members of the BofA Securities group. You may be contacted 
+by a different BofA Securities entity acting for and on behalf of your service provider where permitted by applicable law. This does not change your service provider. Please refer to the Electronic 
+Communications Disclaimers for further information. 
+This information has been prepared and issued by BofAS and/or one or more of its non-US affiliates. The author(s) of this information may not be licensed to carry on regulated activities in your 
+jurisdiction and, if not licensed, do not hold themselves out as being able to do so. BofAS and/or MLPF&S is the distributor of this information in the US and accepts full responsibility for 
+information distributed to BofAS and/or MLPF&S clients in the US by its non-US affiliates. Any US person receiving this information and wishing to effect any transaction in any security 
+discussed herein should do so through BofAS and/or MLPF&S and not such foreign affiliates. Hong Kong recipients of this information should contact Merrill Lynch (Asia Pacific) Limited in 
+respect of any matters relating to dealing in securities or provision of specific advice on securities or any other matters arising from, or in connection with, this information. Singapore recipients 
+of this information should contact Merrill Lynch (Singapore) Pte Ltd in respect of any matters arising from, or in connection with, this information. For clients that are not accredited investors, 
+expert investors or institutional investors Merrill Lynch (Singapore) Pte Ltd accepts full responsibility for the contents of this information distributed to such clients in Singapore. 
+General Investment Related Disclosures: 
+Taiwan Readers: Neither the information nor any opinion expressed herein constitutes an offer or a solicitation of an offer to transact in any securities or other financial instrument. No part of 
+this report may be used or reproduced or quoted in any manner whatsoever in Taiwan by the press or any other person without the express written consent of BofA Securities. 
+This document provides general information only, and has been prepared for, and is intended for general distribution to, BofA Securities clients. Neither the information nor any opinion 
+expressed constitutes an offer or an invitation to make an offer, to buy or sell any securities or other financial instrument or any derivative related to such securities or instruments (e.g., options, 
+futures, warrants, and contracts for differences). This document is not intended to provide personal investment advice and it does not take into account the specific investment objectives, 
+financial situation and the particular needs of, and is not directed to, any specific person(s). This document and its content do not constitute, and should not be considered to constitute, 
+investment advice for purposes of ERISA, the US tax code, the Investment Advisers Act or otherwise. Investors should seek financial advice regarding the appropriateness of investing in financial 
+instruments and implementing investment strategies discussed or recommended in this document and should understand that statements regarding future prospects may not be realized. Any 
+decision to purchase or subscribe for securities in any offering must be based solely on existing public information on such security or the information in the prospectus or other offering 
+
+ 
+ 
+26 
+Software Trends | 23 October 2026 
+ 
+ 
+document issued in connection with such offering, and not on this document. 
+Securities and other financial instruments referred to herein, or recommended, offered or sold by BofA Securities, are not insured by the Federal Deposit Insurance Corporation and are not 
+deposits or other obligations of any insured depository institution (including, Bank of America, N.A.). Investments in general and, derivatives, in particular, involve numerous risks, including, 
+among others, market risk, counterparty default risk and liquidity risk. No security, financial instrument or derivative is suitable for all investors. Digital assets are extremely speculative, volatile 
+and are not regulated in a manner similar to U.S. securities markets. In some cases, securities and other financial instruments may be difficult to value or sell and reliable information about the 
+value or risks related to the security or financial instrument may be difficult to obtain. Investors should note that income from such securities and other financial instruments, if any, may 
+fluctuate and that price or value of such securities and instruments may rise or fall and, in some cases, investors may lose their entire principal investment. Past performance is not necessarily a 
+guide to future performance. Levels and basis for taxation may change. 
+This report may contain a short-term trading idea or recommendation, which highlights a specific near-term catalyst or event impacting the issuer or the market that is anticipated to have a 
+short-term price impact on the equity securities of the issuer. Short-term trading ideas and recommendations are different from and do not affect a stock's fundamental equity rating, which 
+reflects both a longer term total return expectation and attractiveness for investment relative to other stocks within its Coverage Cluster. Short-term trading ideas and recommendations may 
+be more or less positive than a stock's fundamental equity rating. 
+BofA Securities is aware that the implementation of the ideas expressed in this report may depend upon an investor's ability to "short" securities or other financial instruments and that such 
+action may be limited by regulations prohibiting or restricting "shortselling" in many jurisdictions. Investors are urged to seek advice regarding the applicability of such regulations prior to 
+executing any short idea contained in this report. 
+Foreign currency rates of exchange may adversely affect the value, price or income of any security or financial instrument mentioned herein. Investors in such securities and instruments, 
+including ADRs, effectively assume currency risk. 
+BofAS or one of its affiliates is a regular issuer of traded financial instruments linked to securities or digital assets that may have been recommended or discussed in this report. BofAS or one of 
+its affiliates may, at any time, hold a trading position (long or short) in the securities and financial instruments recommended or discussed in this report. 
+BofA Securities, through business units other than BofA Global Research, may have issued and may in the future issue trading ideas or recommendations that are inconsistent with, and reach 
+different conclusions from, the information presented herein. Such ideas or recommendations may reflect different time frames, assumptions, views and analytical methods of the persons who 
+prepared them, and BofA Securities is under no obligation to ensure that such other trading ideas or recommendations are brought to the attention of any recipient of this information. 
+In the event that the recipient received this information pursuant to a contract between the recipient and BofAS for the provision of research services for a separate fee, and in connection 
+therewith BofAS may be deemed to be acting as an investment adviser, such status relates, if at all, solely to the person with whom BofAS has contracted directly and does not extend beyond 
+the delivery of this report (unless otherwise agreed specifically in writing by BofAS). If such recipient uses the services of BofAS in connection with the sale or purchase of a security referred to 
+herein, BofAS may act as principal for its own account or as agent for another person. BofAS is and continues to act solely as a broker-dealer in connection with the execution of any transactions, 
+including transactions in any securities referred to herein. 
+Copyright and General Information:  
+Copyright 2026 Bank of America Corporation. All rights reserved. iQdatabase® is a registered service mark of Bank of America Corporation. This information is prepared for the use of BofA 
+Securities clients and may not be redistributed, retransmitted or disclosed, in whole or in part, or in any form or manner, without the express written consent of BofA Securities. This document 
+and its content is provided solely for informational purposes and cannot be used for training or developing artificial intelligence (AI) models or as an input in any AI application (collectively, an AI 
+tool). Any attempt to utilize this document or any of its content in connection with an AI tool without explicit written permission from BofA Global Research is strictly prohibited. BofA Global 
+Research utilizes AI, including machine learning and other technologies, to enhance the services we provide to our clients. These technologies assist our analysts in various aspects of their work, 
+including but not limited to data analysis, content extraction, content creation, data aggregation and summarization and identifying relevant information from diverse sources. All AI-driven 
+processes are subject to review by BofA Global Research employees. BofA Global Research information is distributed simultaneously to internal and client websites and other portals by BofA 
+Securities and is not publicly-available material. Any unauthorized use or disclosure is prohibited. Receipt and review of this information constitutes your agreement not to redistribute, 
+retransmit, or disclose to others the contents, opinions, conclusion, or information contained herein (including any investment recommendations, estimates or price targets) without first 
+obtaining express permission from an authorized officer of BofA Securities. 
+Materials prepared by BofA Global Research personnel are based on public information. Facts and views presented in this material have not been reviewed by, and may not reflect information 
+known to, professionals in other business areas of BofA Securities, including investment banking personnel. BofA Securities has established information barriers between BofA Global Research 
+and certain business groups. As a result, BofA Securities does not disclose certain client relationships with, or compensation received from, such issuers. To the extent this material discusses 
+any legal proceeding or issues, it has not been prepared as nor is it intended to express any legal conclusion, opinion or advice. Investors should consult their own legal advisers as to issues of 
+law relating to the subject matter of this material. BofA Global Research personnel’s knowledge of legal proceedings in which any BofA Securities entity and/or its directors, officers and 
+employees may be plaintiffs, defendants, co-defendants or co-plaintiffs with or involving issuers mentioned in this material is based on public information. Facts and views presented in this 
+material that relate to any such proceedings have not been reviewed by, discussed with, and may not reflect information known to, professionals in other business areas of BofA Securities in 
+connection with the legal proceedings or matters relevant to such proceedings. 
+This information has been prepared independently of any issuer of securities mentioned herein and not in connection with any proposed offering of securities or as agent of any issuer of any 
+securities. None of BofAS any of its affiliates or their research analysts has any authority whatsoever to make any representation or warranty on behalf of the issuer(s). BofA Global Research 
+policy prohibits research personnel from disclosing a recommendation, investment rating, or investment thesis for review by an issuer prior to the publication of a research report containing 
+such rating, recommendation or investment thesis. 
+Any information relating to sustainability in this material is limited as discussed herein and is not intended to provide a comprehensive view on any sustainability claim with respect to any 
+issuer or security. 
+Any information relating to the tax status of financial instruments discussed herein is not intended to provide tax advice or to be used by anyone to provide tax advice. Investors are urged to 
+seek tax advice based on their particular circumstances from an independent tax professional. 
+The information herein (other than disclosure information relating to BofA Securities and its affiliates) was obtained from various sources and we do not guarantee its accuracy. This information 
+may contain links to third-party websites. BofA Securities is not responsible for the content of any third-party website or any linked content contained in a third-party website. Content 
+contained on such third-party websites is not part of this information and is not incorporated by reference. The inclusion of a link does not imply any endorsement by or any affiliation with BofA 
+Securities. Access to any third-party website is at your own risk, and you should always review the terms and privacy policies at third-party websites before submitting any personal information 
+to them. BofA Securities is not responsible for such terms and privacy policies and expressly disclaims any liability for them. 
+All opinions, projections and estimates constitute the judgment of the author as of the date of publication and are subject to change without notice. Prices also are subject to change without 
+notice. BofA Securities is under no obligation to update this information and BofA Securities ability to publish information on the subject issuer(s) in the future is subject to applicable quiet 
+periods. You should therefore assume that BofA Securities will not update any fact, circumstance or opinion contained herein. 
+Subject to the quiet period applicable under laws of the various jurisdictions in which we distribute research reports and other legal and BofA Securities policy-related restrictions on the 
+publication of research reports, fundamental equity reports are produced on a regular basis as necessary to keep the investment recommendation current. 
+Certain outstanding reports or investment opinions relating to securities, financial instruments and/or issuers may no longer be current.  Always refer to the most recent research report relating 
+to an issuer prior to making an investment decision. 
+In some cases, an issuer may be classified as Restricted or may be Under Review or Extended Review. In each case, investors should consider any investment opinion relating to such issuer (or 
+its security and/or financial instruments) to be suspended or withdrawn and should not rely on the analyses and investment opinion(s) pertaining to such issuer (or its securities and/or financial 
+instruments) nor should the analyses or opinion(s) be considered a solicitation of any kind. Sales persons and financial advisors affiliated with BofAS or any of its affiliates may not solicit 
+purchases of securities or financial instruments that are Restricted or Under Review and may only solicit securities under Extended Review in accordance with firm policies. 
+Neither BofA Securities nor any officer or employee of BofA Securities accepts any liability whatsoever for any direct, indirect or consequential damages or losses arising from any use of this 
+information. 
+  
