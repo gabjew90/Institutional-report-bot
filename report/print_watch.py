@@ -833,6 +833,9 @@ POLL_S_WITH_KEY = 10
 # call left on the path (2026-10-28), the poll interval is the delay.
 POLL_S_FAST = 5
 FAST_WINDOW_S = 120
+# At projection meetings the FOMC post waits this long after the
+# statement for the projection table before posting without it.
+PROJECTION_GRACE_S = 120
 POLL_S_NO_KEY = 30          # 25 unregistered requests a day; ~20 per watch
 MAX_WAIT_S = 12 * 60
 # BEA's API has not yet been watched through a live release, and an
@@ -915,7 +918,8 @@ async def _publish(bot, spec: ReleaseSpec, rel, today_iso: str, release_et: str,
     extra = {"content": alert.content,
              "verdict": {"label": v.label, "kind": v.kind, "direction": v.direction, "signals": v.signals}}
     if rel.fomc:
-        extra.update({"action": rel.fomc["action"], "dissent_net": rel.fomc["dissent_net"]})
+        extra.update({"action": rel.fomc["action"], "dissent_net": rel.fomc["dissent_net"],
+                      "projections": rel.fomc.get("projections")})
     mark_posted(today_iso, spec.key, alert.lines, rows=rel.ledger_rows(), statement=statement, extra=extra)
     log.info(f"print-watch: posted {spec.key} for {rel.period}: {alert.content}")
     return True
@@ -939,7 +943,7 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     if not (settings.print_alert_channel_id or settings.reminder_channel_id) or bot is None:
         return
     from discord_bot.ops_alert import ops_alert
-    from report import print_data
+    from report import fed_projections, print_data
     now = datetime.now(_ET)
     today = now.date().isoformat()
     if official_calendar_exhausted(today):
@@ -987,15 +991,28 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     # the revision lines compare against, the statement the FOMC diffs.
     prev_by_key = {s.key: previous_post(s.key, before=today) for s in pending}
     last_obs: dict = {}
+    statement_seen_at: dict = {}
     while pending and datetime.now(_ET) < deadline:
         for spec in list(pending):
             try:
                 prev = prev_by_key.get(spec.key)
+                proj_missing = False
                 if spec.key == "fomc":
                     parsed = await asyncio.to_thread(fetch_fomc_today, today)
                     if not parsed:
                         continue
-                    rel = print_data.fomc_release(parsed, ff_rows, prev, today)
+                    proj = None
+                    if fed_projections.is_projection_meeting(today):
+                        proj = await asyncio.to_thread(fed_projections.fetch_projections, today)
+                        if proj is None:
+                            # The projections come out with the statement; give
+                            # the table a short grace, then post without it.
+                            seen = statement_seen_at.setdefault(spec.key, datetime.now(_ET))
+                            if ((datetime.now(_ET) - seen).total_seconds() < PROJECTION_GRACE_S
+                                    and datetime.now(_ET) < deadline - timedelta(seconds=30)):
+                                continue
+                            proj_missing = True
+                    rel = print_data.fomc_release(parsed, ff_rows, prev, today, proj)
                     statement = parsed.get("text", "")
                 else:
                     obs = await asyncio.to_thread(fetch_observations, spec.lines, force=True)
@@ -1004,7 +1021,11 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                         continue
                     rel = print_data.data_release(spec, obs, period, ff_rows, prev, vintages.get(spec.key))
                     statement = None
-                await _publish(bot, spec, rel, today, release_et, statement)
+                if await _publish(bot, spec, rel, today, release_et, statement) and proj_missing:
+                    await ops_alert(f"print-watch: the FOMC projection table for {today} was not "
+                                    f"published {PROJECTION_GRACE_S} s after the statement; "
+                                    f"posted the decision without it",
+                                    dedupe_key=f"print-watch-proj-{today}")
                 pending.remove(spec)
             except Exception as e:
                 log.warning(f"print-watch: {spec.key} attempt failed: {e}")

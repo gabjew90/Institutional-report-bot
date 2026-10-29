@@ -537,3 +537,113 @@ def test_fast_polling_for_the_first_two_minutes():
         assert PW._poll_s(at - timedelta(seconds=PW.FAST_WINDOW_S + 1)) == PW.POLL_S_WITH_KEY
     with patch("config.settings.bls_api_key", ""):
         assert PW._poll_s(at) == PW.POLL_S_NO_KEY
+
+
+# ------------------------------------------------------- rate projections
+
+from report import fed_projections as FP
+
+
+def _proj_fixture(ymd):
+    return FP.parse_projection_table(
+        Path(f"tests/fixtures/print_alerts/fomcprojtabl{ymd}.htm").read_text(encoding="utf-8"))
+
+
+def test_projection_table_parses_the_real_pages():
+    """Three real Fed pages: the cell ids differ (xt1b2 against xb2) and
+    June's table has no 2029 column."""
+    assert _proj_fixture("20260916") == {
+        "label": "September 2026", "columns": ["2026", "2027", "2028", "2029", "Longer run"],
+        "median": {"2026": 4.1, "2027": 4.1, "2028": 3.9, "2029": 3.6, "Longer run": 3.2},
+        "prev_label": "June", "prev_median": {"2026": 3.8, "2027": 3.6, "2028": 3.4, "Longer run": 3.1}}
+    june = _proj_fixture("20260617")
+    assert (june["label"], june["prev_label"]) == ("June 2026", "March")
+    assert june["median"] == {"2026": 3.8, "2027": 3.6, "2028": 3.4, "Longer run": 3.1}
+    assert june["prev_median"] == {"2026": 3.4, "2027": 3.1, "2028": 3.1, "Longer run": 3.1}
+    dec = _proj_fixture("20251210")
+    assert (dec["label"], dec["prev_label"]) == ("December 2025", "September")
+    assert dec["median"]["2026"] == dec["prev_median"]["2026"] == 3.4
+
+
+def test_projection_table_rejects_other_pages():
+    assert FP.parse_projection_table("<html><h4>Table 2. Something else</h4><table></table></html>") is None
+    assert FP.parse_projection_table("") is None
+
+
+@pytest.mark.parametrize("now,was,signal", [(4.1, 3.6, 1), (3.1, 3.4, -1), (3.4, 3.4, 0), (3.4, None, None)])
+def test_projection_signal_compares_next_year(now, was, signal):
+    proj = {"median": {"2027": now}, "prev_median": {} if was is None else {"2027": was}, "prev_label": "Sep"}
+    assert FP.projection_signal(proj, "2026-12-09") == signal
+    assert FP.projection_signal(None, "2026-12-09") is None
+
+
+def test_fetch_projections_handles_404_and_another_meetings_table():
+    import urllib.error
+    err = urllib.error.HTTPError("u", 404, "Not Found", {}, None)
+    with patch("report.print_watch._http_text", side_effect=err):
+        assert FP.fetch_projections("2026-12-09") is None
+    page = Path("tests/fixtures/print_alerts/fomcprojtabl20260916.htm").read_text(encoding="utf-8")
+    with patch("report.print_watch._http_text", return_value=page) as get:
+        # September's table served on the December date is not December's
+        assert FP.fetch_projections("2026-12-09") is None
+        got = FP.fetch_projections("2026-09-16")
+        assert got["label"] == "September 2026"
+        assert get.call_args[0][0] == "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm"
+
+
+def test_projection_meetings_are_the_quarter_end_months():
+    assert [m for m in range(1, 13) if FP.is_projection_meeting(f"2026-{m:02d}-15")] == [3, 6, 9, 12]
+
+
+def test_golden_sep16_fomc_hike_with_projections(ledger_dir):
+    """The Sep 16 hike with that day's real projection table: officials
+    moved the 2027 median up half a point, so the expected hike reads
+    hawkish."""
+    parsed = {"action": "raise", "low": 3.75, "high": 4.0, "size": 0.25, "vote": "12-0", "text": ""}
+    rel = PD.fomc_release(parsed, [{"event": "FOMC Interest Rate Decision", "estimate": 4.0}], None,
+                          "2026-09-16", _proj_fixture("20260916"))
+    a, v = PW.compose_alert(PW.FOMC, rel, "2026-09-16", "14:00")
+    assert v.signals["projections"] == 1
+    assert a.content == "Sep FOMC: Hawkish hike"
+    assert a.lines == [
+        "Decision: Hike, as expected",
+        "Target range: 3.75% to 4.00%",
+        "Vote: 12-0",
+        "",
+        "Median rate projections vs June:",
+        "End of 2026: 4.1%, was 3.8%",
+        "End of 2027: 4.1%, was 3.6%",
+        "Longer run: 3.2%, was 3.1%",
+        "",
+        "Takeaway: The Fed raised rates by a quarter point to 3.75% to 4.00%, as expected. "
+        "Officials now see rates at 4.1% at the end of 2027, up from 3.6% in June. "
+        "Decisions like this tend to lift Treasury yields.",
+    ]
+    assert all(len(ln) <= PR.MAX_DATA_LINE for ln in a.lines if not ln.startswith("Takeaway"))
+    assert not _voice_clean(a)
+
+
+def test_unchanged_projections_say_so():
+    """December 2025's table: next year's median unchanged from September."""
+    rel = _fomc()
+    rel.period = "2025-12"
+    rel.fomc["projections"] = _proj_fixture("20251210")
+    rel.fomc["projection_signal"] = FP.projection_signal(rel.fomc["projections"], "2025-12-10")
+    v = PV.verdict_for(rel)
+    assert v.label == "Hold as expected"
+    take = PT.takeaway(rel, v, TIGHTENING, "2025-12-10")
+    assert "Officials still see rates at 3.4% at the end of 2026, as in September." in take
+    a = PR.render(PW.FOMC, rel, v, take, "14:00")
+    assert "End of 2025: 3.6%, unchanged" in a.lines
+    assert "Longer run: 3.0%, unchanged" in a.lines
+
+
+def test_projections_take_sentence_two_from_the_statement_topics():
+    rel = _fomc(projection=-1)
+    rel.fomc["changes"] = [("Inflation has moved up.", "Inflation has eased.")]
+    rel.fomc["projections"] = {"median": {"2027": 3.1}, "prev_median": {"2027": 3.4}, "prev_label": "September"}
+    v = PV.verdict_for(rel)
+    assert v.label == "Dovish hold"
+    take = PT.takeaway(rel, v, TIGHTENING, "2026-10-28")
+    assert "down from 3.4% in September" in take
+    assert "statement changed" not in take

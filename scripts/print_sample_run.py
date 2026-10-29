@@ -38,7 +38,10 @@ def main(argv: list[str]) -> int:
     if key == "fomc":
         parsed = PW.parse_fomc_statement(PW._http_text(arg))
         parsed["url"] = arg
-        rel = PD.fomc_release(parsed, ff_rows, prev, today)
+        from report import fed_projections as FP
+        proj = FP.fetch_projections(today) if FP.is_projection_meeting(today) else None
+        print("projections:", proj)
+        rel = PD.fomc_release(parsed, ff_rows, prev, today, proj)
     else:
         period = arg
         obs = PW.fetch_observations(spec.lines, force=True)

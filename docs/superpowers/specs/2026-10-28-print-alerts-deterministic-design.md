@@ -207,7 +207,7 @@ The owner signs off on every template's text once. A later change to a template 
 | PPI less foods, energy, trade services | BLS `WPSFD49116` | confirm ID |
 | PPI and PCE prior-month revisions | the same series re-read, against the ledger | ledger already stores rows |
 | FOMC dissent names and direction | the statement text already fetched | regex on "Voting against ... preferred to {raise|lower}" |
-| FOMC projections | the Fed's projection table published at 2:00 PM on projection meetings | next one Dec 9; needs a fetcher and parser |
+| FOMC projections | the Fed's projection table published at 2:00 PM on projection meetings | built 2026-10-28 (`report/fed_projections.py`); next one Dec 9 |
 | PPI on the release schedule | `world_context.OFFICIAL_RELEASES` | PPI arms only from the ForexFactory feed today |
 | Statement body cleanup | `_statement_body` | today's stored text starts with `--> --> -->` page residue |
 

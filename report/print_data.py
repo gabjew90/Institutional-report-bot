@@ -14,6 +14,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from report import fed_projections
 from report import print_watch as PW
 from report.fred_data import month_shift
 
@@ -164,10 +165,13 @@ def _previous_upper(entry: dict | None) -> float | None:
     return None
 
 
-def fomc_release(parsed: dict, ff_rows: list[dict], prev: dict | None, today_iso: str) -> Release:
+def fomc_release(parsed: dict, ff_rows: list[dict], prev: dict | None, today_iso: str,
+                 projections: dict | None = None) -> Release:
     """The decision against the feed's expected upper bound, the dissents
-    against the previous meeting's, and the statement sentences that
-    changed. `parsed` is parse_fomc_statement's result plus its 'url'."""
+    against the previous meeting's, the statement sentences that changed,
+    and at projection meetings the officials' median rate projections.
+    `parsed` is parse_fomc_statement's result plus its 'url';
+    `projections` is fed_projections.fetch_projections' result."""
     action = PW.FED_ACTION.get(parsed.get("action"), "hold")
     high, low = parsed["high"], parsed["low"]
     size = parsed.get("size")
@@ -196,8 +200,7 @@ def fomc_release(parsed: dict, ff_rows: list[dict], prev: dict | None, today_iso
         "dissents": dissents, "dissent_net": PW.dissent_net(dissents, action, size),
         "prev_dissent_net": previous_dissent_net(prev),
         "changes": PW.statement_diff((prev or {}).get("statement", ""), parsed.get("text", "")),
-        # the officials' rate projections, published at four meetings a
-        # year; None until a projection fetcher exists
-        "projection_signal": None,
+        "projections": projections,
+        "projection_signal": fed_projections.projection_signal(projections, today_iso),
         "url": parsed.get("url", ""),
     })

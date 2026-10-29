@@ -88,6 +88,31 @@ def _dissent_line(g: dict) -> str:
     return f"Dissent: {_names(g['names'])} wanted {what}"
 
 
+def _projection_lines(proj: dict | None, year: str) -> list[str]:
+    """This year, next year and the longer run, each against the previous
+    projection meeting: 'End of 2027: 4.1%, was 3.6%'."""
+    if not proj:
+        return []
+    prev = proj.get("prev_median") or {}
+    lines = []
+    for col in (year, str(int(year) + 1), "Longer run"):
+        now = proj["median"].get(col)
+        if now is None:
+            continue
+        name = "Longer run" if col == "Longer run" else f"End of {col}"
+        was = prev.get(col) if proj.get("prev_label") else None
+        if was is None:
+            lines.append(f"{name}: {now:.1f}%")
+        elif round(now - was, 4) == 0:
+            lines.append(f"{name}: {now:.1f}%, unchanged")
+        else:
+            lines.append(f"{name}: {now:.1f}%, was {was:.1f}%")
+    if not lines:
+        return []
+    head = f"Median rate projections vs {proj['prev_label']}:" if proj.get("prev_label") else "Median rate projections:"
+    return [head] + lines
+
+
 def _fomc_blocks(rel: Release, v: Verdict) -> tuple[list[str], list[str]]:
     f = rel.fomc or {}
     word = f["action"].capitalize()
@@ -104,6 +129,7 @@ def _fomc_blocks(rel: Release, v: Verdict) -> tuple[list[str], list[str]]:
     if f.get("vote"):
         primary.append(f"Vote: {f['vote']}")
     secondary = [_dissent_line(g) for g in f.get("dissents") or []]
+    secondary += _projection_lines(f.get("projections"), rel.period[:4])
     changes = f.get("changes") or []
     if changes:
         secondary.append("Statement changes:")

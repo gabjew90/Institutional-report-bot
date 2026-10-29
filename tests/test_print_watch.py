@@ -509,3 +509,76 @@ def test_ppi_fills_the_calendar_row_and_arms_the_watch():
     ff = [{"event": "PPI m/m", "country": "US", "time": "2026-10-15T12:30:00"}]
     assert [s.key for s in PW.due_releases("2026-10-15", ff, "08:30")] == ["ppi"]
     assert PW.PPI.agency == "BLS"
+
+
+def _fomc_day_run(proj_side_effect, clock_step_s=0):
+    """The 14:00 slot on Dec 9 (a projection meeting) with the statement
+    out. The clock advances `clock_step_s` per read so a wait can end."""
+    from datetime import datetime as real, timedelta
+    sent, alerts = [], []
+
+    class _Chan:
+        async def send(self, content=None, embed=None, **kw):
+            sent.append((content, embed))
+            return object()
+
+    class _Bot:
+        def get_channel(self, cid):
+            return _Chan()
+
+    async def _ops(msg, **kw):
+        alerts.append(msg)
+
+    async def _nosleep(*a, **k):
+        return None
+
+    t = [real(2026, 12, 9, 14, 0, 5, tzinfo=PW._ET)]
+
+    def _now(tz=None):
+        t[0] += timedelta(seconds=clock_step_s)
+        return t[0]
+
+    parsed = PW.parse_fomc_statement(FOMC_HTML)
+    ff = [{"event": "FOMC Interest Rate Decision", "country": "US", "time": "2026-12-09T19:00:00",
+           "estimate": 3.75, "prev": 3.75, "actual": None, "unit": "%"}]
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
+         patch("config.settings.print_alert_channel_id", "123"), \
+         patch("report.print_watch._ff_rows_for_day", return_value=ff), \
+         patch("report.print_watch.fetch_fomc_today", return_value=dict(parsed)), \
+         patch("report.fed_projections.fetch_projections", side_effect=proj_side_effect) as fp, \
+         patch("discord_bot.ops_alert.ops_alert", _ops), \
+         patch("report.print_watch.asyncio.sleep", _nosleep), \
+         patch("report.print_watch.datetime") as dt:
+        dt.now.side_effect = _now
+        dt.utcnow.return_value = real(2026, 12, 9, 19, 0, 5)
+        dt.strptime = real.strptime
+        dt.fromisoformat = real.fromisoformat
+        asyncio.run(PW.print_watch_job(_Bot(), "14:00"))
+        ledger = json.loads((Path(td) / "print-alerts" / "2026-12-09.json").read_text(encoding="utf-8")) \
+            if (Path(td) / "print-alerts" / "2026-12-09.json").exists() else {}
+    return sent, alerts, fp.call_count, ledger
+
+
+def test_projection_meeting_waits_for_the_table_then_posts_with_it():
+    proj = {"label": "December 2026", "columns": ["2026", "2027", "Longer run"],
+            "median": {"2026": 3.6, "2027": 3.9, "Longer run": 3.2}, "prev_label": "September",
+            "prev_median": {"2026": 4.1, "2027": 4.1, "Longer run": 3.2}, "url": "u"}
+    sent, alerts, calls, ledger = _fomc_day_run([None, None, proj], clock_step_s=1)
+    assert calls == 3, "the post waited for the table"
+    assert len(sent) == 1 and not alerts
+    content, embed = sent[0]
+    assert content == "@everyone Dec FOMC: Dovish hold"
+    lines = embed.description.split("\n")
+    assert "Median rate projections vs September:" in lines
+    assert "End of 2027: 3.9%, was 4.1%" in lines
+    assert ledger["fomc"]["projections"]["median"]["2027"] == 3.9
+
+
+def test_projection_meeting_posts_without_the_table_after_the_grace():
+    sent, alerts, calls, ledger = _fomc_day_run(lambda today: None, clock_step_s=5)
+    assert len(sent) == 1
+    assert sent[0][0] == "@everyone Dec FOMC: Hold as expected"
+    assert not any("projection" in ln.lower() for ln in sent[0][1].description.split("\n"))
+    assert len(alerts) == 1 and "projection table" in alerts[0]
+    assert calls > 1

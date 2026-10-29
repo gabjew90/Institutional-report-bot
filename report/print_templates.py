@@ -239,6 +239,25 @@ def _dissent_clause(dissents: list[dict]) -> str:
     return _join(bits)
 
 
+def projection_sentence(proj: dict | None, year: str) -> str | None:
+    """Next year's median rate projection against the previous projection
+    meeting's: 'Officials now see rates at 3.6% at the end of 2027, up
+    from 3.4% in September.'"""
+    if not proj:
+        return None
+    nxt = str(int(year) + 1)
+    now, was = proj["median"].get(nxt), proj["prev_median"].get(nxt)
+    if now is None:
+        return None
+    if was is None or not proj.get("prev_label"):
+        return f"Officials see rates at {now:.1f}% at the end of {nxt}."
+    if round(now - was, 4) == 0:
+        return f"Officials still see rates at {now:.1f}% at the end of {nxt}, as in {proj['prev_label']}."
+    way = "up" if now > was else "down"
+    return (f"Officials now see rates at {now:.1f}% at the end of {nxt}, "
+            f"{way} from {was:.1f}% in {proj['prev_label']}.")
+
+
 def _fomc(rel: Release, v: Verdict) -> list[str]:
     f = rel.fomc or {}
     rng = f"{f['low']:.2f}% to {f['high']:.2f}%"
@@ -256,8 +275,13 @@ def _fomc(rel: Release, v: Verdict) -> list[str]:
     if f.get("dissents"):
         s1 += f", and {_dissent_clause(f['dissents'])}"
     out = [s1 + "."]
+    # at projection meetings the rate outlook takes the second sentence,
+    # otherwise the statement's changed topics do
+    outlook = projection_sentence(f.get("projections"), rel.period[:4])
     topics = statement_topics(f.get("changes") or [])
-    if topics:
+    if outlook:
+        out.append(outlook)
+    elif topics:
         out.append(f"The statement changed how it describes {_join(topics)}.")
     if v.direction in (HAWKISH, DOVISH):
         out.append(f"Decisions like this tend to {_YIELDS[v.direction]}.")
