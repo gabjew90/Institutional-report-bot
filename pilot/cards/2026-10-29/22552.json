@@ -1,0 +1,441 @@
+{
+ "brief": "GS Sales & Trading's morning digest reports China's industrial profits accelerating to +14.4% y/y in September (from +4.2%) as AI-driven manufacturing offsets weak domestic demand, and South Korea's Q3 GDP beating estimates (+1% vs +0.8%) on an AI chip export and investment boom, though a consumption contraction complicates the rate-hike path. The BoJ's core inflation gauge surged to 3.2% y/y, the highest in three years and well above its 2% target. French consumer confidence hit a 13-year low on a bond selloff and protests. Politically: Brazil's Bolsonaro dropped his election challenge, turning attention to whether Lula reins in spending as fiscal strain mounts; China will send envoys to the Middle East to help prevent a resumption of US-Israeli strikes on Iran; the US and Canada are negotiating easing tariffs on Canadian steel and autos; Israelis vote today in a razor-thin Netanyahu-Eisenkot race. Separately, PE funds are racing to extend loans against a $300bn 2028 debt wall as rates rise, and hedge fund gross leverage stays elevated (312%, 96th percentile) even as net leverage fell to a one-year low (47%), reflecting defensive positioning without de-grossing. The note also carries about twenty sell-side rating actions and the day's earnings/econ calendar.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "China's industrial profits accelerated to +14.4% year-over-year in September, up from +4.2% in August, as AI-driven manufacturing offset weak domestic demand.",
+   "anchor": "China\u2019s industrial profits for Sept accelerate to +14.4%, up from +4.2% in Aug",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "South Korea's Q3 GDP grew +1% quarter-over-quarter annualized, ahead of the Street's +0.8% estimate, on an AI chip export and investment boom, even as consumption contracted.",
+   "anchor": "South Korea\u2019s Q3 GDP came in ahead of expectations at +1% Q/Q annualized (vs. the Street +0.8%)",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "The BoJ's core inflation gauge (consumer prices excluding fresh food and special factors) rose 3.2% year-over-year in September, the highest in three years and well above the BoJ's 2% target.",
+   "anchor": "Consumer prices excluding fresh food and special factors rose 3.2% in September from a year earlier",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BOJ",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "French consumer confidence fell to a 13-year low in October as households grappled with a bond selloff and violent protests.",
+   "anchor": "French consumer confidence plunged to a 13-year low in October as households grappled with a bond selloff and violent protests.",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "With Brazil's election conceded, attention turns to whether Lula da Silva will rein in spending as the country's fiscal strains mount.",
+   "anchor": "Attention now turns to how Lula da Silva will govern as fiscal strains mount and investors question whether he\u2019ll rein in spending.",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "China will send special envoys to the Middle East to help defuse tensions and prevent a resumption of US-Israeli strikes against Iran.",
+   "anchor": "China will send special envoys to the Middle East, adding to efforts to defuse tensions and prevent the resumption of US-Israeli strikes against Iran.",
+   "topic": "Gulf de-escalation and oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Private-equity fund managers are racing to negotiate loan extensions on a $300 billion wall of debt coming due starting in 2028, as rising rates make refinancing more expensive.",
+   "anchor": "Fund managers are racing to negotiate loan extensions on much of a $300 billion wall of debt that is coming due starting in 2028.",
+   "topic": "PE debt wall and refinancing risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "The United States and Canada are working on a deal to ease US tariffs on Canadian steel and autos as the two governments try to repair relations.",
+   "anchor": "The United States and Canada are working on a deal to ease US tariffs on Canadian steel and autos",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Israelis are voting in their first election since the 2023 Hamas attack, with Benjamin Netanyahu seeking another term in a razor-thin race.",
+   "anchor": "Israelis are voting in their first election since the 2023 Hamas attack, with Benjamin Netanyahu seeking another term in a razor-thin race",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Hedge fund gross leverage stood at 312% (96th percentile over five years) while fundamental net leverage fell to a new one-year low of 47%, as investors turned defensive without reducing gross exposure.",
+   "anchor": "Overall HF gross leverage still stood at 312% (96th percentile over five years), while fundamental net leverage had fallen to 47%, a new one-year low",
+   "topic": "hedge fund leverage and positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Macom (MTSI) was raised to Outperform at Raymond James with a $300 price target.",
+   "anchor": "MTSI US: Macom Raised to Outperform at Raymond James; PT $300",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "MTSI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "SLB was raised to Hold at Freedom Capital with a $48 price target.",
+   "anchor": "SLB US: SLB Raised to Hold at Freedom Capital; PT $48",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "SLB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Bank of Hawaii (BOH) was cut to Market Perform at KBW with a $78 price target.",
+   "anchor": "BOH US: Bank of Hawaii Cut to Market Perform at KBW; PT $78",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "BOH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Bio-Techne (TECH) was cut to Sell at Argus.",
+   "anchor": "TECH US: Bio-Techne Cut to Sell at Argus",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [
+    "TECH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "HubSpot (HUBS) was cut to Neutral at UBS with a $310 price target.",
+   "anchor": "HUBS US: HubSpot Cut to Neutral at UBS; PT $310",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "HUBS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Huntington (HBAN) was downgraded at Wolfe over the bank's credibility gap.",
+   "anchor": "HBAN US: Huntington Downgraded at Wolfe on Bank\u2019s \u2018Credibility Gap\u2019",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [
+    "HBAN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Range Resources (RRC) was cut to Hold at Texas Capital with a $54 price target.",
+   "anchor": "RRC US: Range Resources Cut to Hold at Texas Capital; PT $54",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "RRC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Surgery Partners (SGRY) was cut to Neutral at Cantor with a $23.50 price target.",
+   "anchor": "SGRY US: Surgery Partners Cut to Neutral at Cantor; PT $23.50",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "SGRY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Affirm Holdings (AFRM) was initiated with a new Buy rating at Monness Crespi and a $90 price target.",
+   "anchor": "AFRM US: Affirm Holdings Rated New Buy at Monness Crespi; PT $90",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "AFRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Chime Financial (CHYM) was initiated with a new Neutral rating at Monness Crespi and a $31 price target.",
+   "anchor": "CHYM US: Chime Financial Rated New Neutral at Monness Crespi; PT $31",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "CHYM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Dave Inc (DAVE) was initiated with a new Neutral rating at Monness Crespi and a $350 price target.",
+   "anchor": "DAVE US: Dave Rated New Neutral at Monness Crespi; PT $350",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "DAVE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Dianthus Therapeutics (DNTH) was initiated with a new Buy rating at Roth Capital Partners.",
+   "anchor": "DNTH US: Dianthus Therapeutics Inc Rated New Buy at Roth Capital Partners",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [
+    "DNTH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Forgent Power Solutions (FPS) was initiated with a new Buy rating at Clear Street and a $58 price target.",
+   "anchor": "FPS US: Forgent Power Solutions Rated New Buy at Clear Street; PT $58",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "HF Sinclair (DINO) was reinstated at Overweight at Piper Sandler with a $152 price target.",
+   "anchor": "DINO US: HF Sinclair Reinstated Overweight at Piper Sandler; PT $152",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "DINO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Nasdaq Inc (NDAQ) was reinstated at Buy at William O'Neil.",
+   "anchor": "NDAQ US: Nasdaq Inc. Reinstated Buy at William O\u2019Neil",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [
+    "NDAQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Nubank (NU) was initiated with a new Buy rating at Monness Crespi and a $20 price target.",
+   "anchor": "NU US: Nubank Rated New Buy at Monness Crespi; PT $20",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "NU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "SoFi Technologies (SOFI) was initiated with a new Buy rating at Monness Crespi and a $20 price target.",
+   "anchor": "SOFI US: SoFi Technologies Rated New Buy at Monness Crespi; PT $20",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "SOFI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Trimble (TRMB) was initiated with a new Buy rating at Loop Capital and a $76 price target.",
+   "anchor": "TRMB US: Trimble Rated New Buy at Loop Capital; PT $76",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "TRMB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Stories - Jack McKeon, 27 Oct 2026",
+   "claim": "Zegna Group (ZGN) was initiated with a new Outperform rating at RBC and a $16 price target.",
+   "anchor": "ZGN US: Zegna Group Rated New Outperform at RBC; PT $16",
+   "topic": "daily cross-asset recap",
+   "status": "target",
+   "instruments": [
+    "ZGN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22552__gs-mckeon-top-stories-27-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 29,
+  "matched": 29,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
