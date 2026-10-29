@@ -1,0 +1,616 @@
+{
+ "brief": "A claimed Houthi missile strike on Saudi Arabia 550kb/d Ras Tanura refinery, unconfirmed by Aramco, pushed Brent to $116/b against a stalled Iran ceasefire track. UBS flags Israel election and the US midterms as the next catalysts, citing reports the US and Israel may prepare a short, intense post-midterm strike on Iran to force a more flexible stance. UBS base case for tonight FOMC: the Fed holds rates unchanged, likely 10-2, Warsh keeping a hawkish more work to do message because inflation is sticky near 3% rather than accelerating, so UBS expects 25bp hikes in December and January. Markets price about 10% odds of an October hike versus 92% for December. UK Autumn Budget is expected cautious because fiscal headroom has fallen from 23.6bn pounds in March toward 10bn pounds, so the Chancellor rebuilds only a roughly 15bn pound buffer via smaller tax rises while deferring welfare cuts to 2027. UBS models a bank levy rise from 3% to 6%, cutting NatWest and Lloyds EPS 3-4% and Barclays and HSBC 1-2%. Equinor 3Q26 operating earnings beat 1% at 12.4bn dollars, adjusted operating profit beat 4%, but net income missed 15%, while FY production guidance was raised to 4% from 3%.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Yemen's Houthis said they hit Saudi Arabia's Ras Tanura refinery, the kingdom's biggest, with a ballistic missile.",
+   "anchor": "they had hit Saudi Arabia's Ras Tanura Ioil refinery, the biggest in the kingdom, with a ballistic missile",
+   "topic": "Gulf de-escalation and oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "The claimed Ras Tanura attack drove oil prices up this morning, with Brent touching $116/b.",
+   "anchor": "has driven oil prices up this morning with Brent touching $116/b",
+   "topic": "Gulf de-escalation and oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Saudi Aramco has not yet confirmed the Ras Tanura attack.",
+   "anchor": "Saudi Aramco has not yet confirmed the attack",
+   "topic": "Gulf de-escalation and oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "The US and Israel may be preparing a short, intense military escalation against Iran after the US midterms to pressure it into a more flexible negotiating stance.",
+   "anchor": "the US and Israel may be preparing for a short but intense military escalation following the US midterms designed to pressure",
+   "topic": "Gulf de-escalation and oil risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "after the US midterms"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "UBS's base case is that the FOMC holds rates unchanged this evening, likely by a 10-2 vote.",
+   "anchor": "rates are held unchanged likely by a 10\u20132 vote",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this evening"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "UBS expects the Fed to deliver 25bp hikes in both December and January.",
+   "anchor": "then for 25bp hikes in both December and January",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December and January"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Markets price only about a 10% chance of an October Fed hike versus 92% for a 25bp December hike.",
+   "anchor": "pricing only around a 10% chance of an October hike versus 92% for a 25bp December hike",
+   "topic": "FOMC October rate decision",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "UK fiscal headroom may have fallen from \u00a323.6bn in March to around \u00a310bn.",
+   "anchor": "Fiscal headroom may have fallen from \u00a323.6bn in March to around \u00a310bn",
+   "topic": "UK Autumn Budget outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "The UK Chancellor is expected to rebuild only a modest buffer of roughly \u00a315bn through smaller tax increases.",
+   "anchor": "expected to rebuild only a modest buffer of roughly \u00a315bn through smaller tax increases",
+   "topic": "UK Autumn Budget outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Autumn Budget"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Verbal market consensus indicates the UK bank levy moves towards 8% from the current 3%.",
+   "anchor": "indicates the bank levy moves towards 8% from the current 3%",
+   "topic": "UK Autumn Budget outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "UBS models a UK bank levy rise from 3% to 6%, implying a 3-4% cut to NatWest and Lloyds numbers and a 1-2% cut for Barclays and HSBC.",
+   "anchor": "UBS has modelled 3% -> 6% which translates to an implied 3-4% cut to NWG/LLOY numbers and 1-2% cut for BARC/HSBC numbers",
+   "topic": "UK Autumn Budget outlook",
+   "status": "forecast",
+   "instruments": [
+    "NWG",
+    "LYG",
+    "BCS",
+    "HSBC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Equinor's 3Q26 operating earnings of $12.4bn were a 1% beat.",
+   "anchor": "Equinor 3Q26 Operating earnings of $12.4bn were a 1% beat",
+   "topic": "Equinor earnings beat",
+   "status": "released",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Equinor's adjusted operating profit of $3.53bn was a 4% beat.",
+   "anchor": "Adj. OP of $3.53bn a 4% beat, though financial items",
+   "topic": "Equinor earnings beat",
+   "status": "released",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Financial items drove a 15% miss at Equinor's net income level.",
+   "anchor": "financial items drove a 15% miss at NI level",
+   "topic": "Equinor earnings beat",
+   "status": "released",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Equinor's CFFO ex working capital of $8.1bn was a 1% beat.",
+   "anchor": "CFFO ex WC of $8.1bn was a 1% beat",
+   "topic": "Equinor earnings beat",
+   "status": "released",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Equinor's marketing, midstream and processing segment beat by 13% on refining and gas trading, the standout at the operating level.",
+   "anchor": "Strong MMP (13% beat on refining and gas trading) was the standout at",
+   "topic": "Equinor earnings beat",
+   "status": "released",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Equinor's gearing fell to 3.8%, below UBS's 6.3% estimate.",
+   "anchor": "Gearing fell to 3.8% (vs UBSe 6.3%)",
+   "topic": "Equinor earnings beat",
+   "status": "released",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Equinor raised its FY production guidance to 4% from 3% previously.",
+   "anchor": "FY Production guidance raised to 4% from 3% previously",
+   "topic": "Equinor earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "EQNR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "KOSPI rose about 7%, on track for its best day in three months.",
+   "anchor": "KOSPI +c7%, on track for its best day in three months",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "KOSPI's rally followed a blowout SK Hynix Q3 print and a capital return of about 100 trillion won (about $45bn), with shares up 10%.",
+   "anchor": "after a blowout SK Hynix Q3 print and capital return of ~I100tn (~$45bn), shares +10%",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "TAIEX rose about 2% after news of OpenAI and Oracle partnerships with Google.",
+   "anchor": "TAIEX +2% after news of OpenAI and Oracle partnerships with Google",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "TSMC is lifting advanced packaging prices by 20% on AI demand.",
+   "anchor": "TSMC is lifting advanced packaging prices by 20% on AI demand",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "US equities traded sideways post the European close, with the S&P up 60bps, Nasdaq up 1.2%, and SOX/memory leading up 3-3.5%.",
+   "anchor": "US markets trading sideways post the European close (S&P +60bps, Nasdaq +1.2%), SOX and memory leading +3-3.5%.",
+   "topic": "daily cross-asset recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Qatar LNG has extended its force majeure on cargoes through December.",
+   "anchor": "Qatar LNG has extended force majeure through December",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "through December"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Turkey is targeting production of 1 million barrels of oil and natural gas a day.",
+   "anchor": "target to produce 1 million barrels Iof oil and natural gas a day",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "US crude stocks fell by 2.03 million barrels in the week ended October 23, per API data.",
+   "anchor": "Crude stocks fell by 2.03 million barrels in the week ended October 23",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "week ended October 23"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "US gasoline stocks rose by nearly 2.39 million barrels, per API data.",
+   "anchor": "Gasoline stocks rose by nearly 2.39 million barrels",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "US distillate inventories edged higher by about 426,000 barrels, per API data.",
+   "anchor": "distillate inventories edged higher by about 426,000 barrels",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Russian oil refineries increased crude processing by 25% in the second half of October versus the start of the month.",
+   "anchor": "Russian oil refineries increased crude processing by 25% in the second half of October",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "second half of October"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Trump said ending Biden's methane regulations would save consumers and energy producers $45 billion in costs.",
+   "anchor": "to save consumers and energy producers $45 billion in costs",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Trump said rolling back methane rules would unlock vast quantities of Texas natural gas and produce 210 million barrels of oil.",
+   "anchor": "unlock Ivast quantities of Texas natural gas and produce 210 million barrels of oil",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Expand Energy posted an adjusted profit of $1.46 per share, beating the analyst estimate of $1.27 per share.",
+   "anchor": "posted an adjusted profit of $1.46 per share for the Iquarter, compared with analysts' average estimate of $1.27 per share",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "EXE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Baker Hughes reported a 5% adjusted EBITDA beat versus Street.",
+   "anchor": "BKR reported a 5% Adj. EBITDA beat vs. Street",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Baker Hughes raised its Horizon 2 energy-transition order target by another $5bn to more than $50bn.",
+   "anchor": "increasing its Horizon 2 IET order target another $5Bn to >$50Bn",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "BKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "MPLX increased its quarterly dividend by 12.5% to $1.211.",
+   "anchor": "MPLX increases quarterly dividend by 12.5% to $1.211",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MPLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "NABEP confirmed it supplied 1 million barrels of Venezuelan oil as part of the US-NABEP deal.",
+   "anchor": "NABEP confirmed in a statement it supplied 1 million barrels of Venezuelan oil as",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Dangote's refinery IPO drew about 6.4 trillion naira ($4.78 billion) of orders from Nigerian investors.",
+   "anchor": "has about 6.4 trillion naira ($4.78 billion) of orders from Nigerian",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Dangote could exercise a greenshoe option that would increase its IPO size to as much as $2.1 billion.",
+   "anchor": "increase the size of the offering to as much as $2.1 billion",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "France plans to start releasing 10 million barrels of diesel from its strategic reserves on November 1.",
+   "anchor": "start the release of 10 Imillion barrels of diesel from its strategic reserves Ion",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "starting November 1"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Tanzania discovered an estimated 223 billion cubic feet of natural gas in the Mnazi Bay area.",
+   "anchor": "223 billion cubic feet of Inatural gas in the Mnazi Bay area",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "Mitsubishi Power says gas turbine delivery wait times have been pushed out to around 2031.",
+   "anchor": "We\u2019re talking about delivery at around 2031",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "around 2031"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "ONEOK reported a modest 3Q26 beat and raised guidance.",
+   "anchor": "OKE Reports modest 3Q26 beat, Raises Guidance",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "OKE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Equinor 3Qs, Ras Tanura hit + Oil & Gas Daily 28-10-26",
+   "claim": "ADNOC Drilling's 3Q26 results were broadly in line, with guidance narrowed to the lower end and a surprise special dividend.",
+   "anchor": "guidance narrowed to lower end of the guidance, surprise special dividend",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22876__ubs-s-t-equinor-3qs-ras-tanura-hit-oil-gas-daily-28-10-26-do.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 43,
+  "matched": 43,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 20,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
