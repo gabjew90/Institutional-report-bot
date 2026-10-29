@@ -1,0 +1,448 @@
+{
+ "brief": "TS Lombard expects the Fed to lean hawkish at the October FOMC meeting given strengthening US macro data. The firm argues the roughly 30bp pullback in 10y yields since early October reflects markets pricing a higher chance of an AI-bust scenario that could force aggressive Fed cuts; if that fear fades, yields face renewed upside because jobless claims are at 57-year lows, growth is solid (Atlanta Fed Nowcast running 4.3% for Q3), inflation surprised higher again, and price pressures (oil, ISM prices paid, shipping, food, inflation expectations, Fed speak) are not abating. Kevin Warsh wants inflation back to target quickly, making the Fed less likely to wait for disinflation given higher second-round-effect risk in the US. TS Lombard says this hawkish backdrop could drive the next leg lower in homebuilders, whose margins are already below pre-Covid levels on falling new-home prices, rising input costs, weakening construction starts, rising inventory and crashed NAHB buyer sentiment. It adds a long S&P 500 equal-weight (RSP) vs short homebuilders (XHB) trade at a 1.75:1 ratio. Separately, its Taiwan-vs-India and Japan-banks trades were stopped out; it now prefers short JPY rates via long Canada vs short Japan 2y government bonds.",
+ "cards": [
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "TS Lombard thinks the Fed will lean very hawkish at today's FOMC meeting.",
+   "anchor": "we think the Fed will lean very hawkish at today's meeting",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today's FOMC meeting"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "US 10-year Treasury yields have rallied roughly 30 basis points since peaking in early October.",
+   "anchor": "US 10y yields have rallied c. 30bp since peaking in early October",
+   "topic": "FOMC October rate decision",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Markets are now attributing a higher probability to an AI-bust scenario that could prompt the Fed to cut rates aggressively if it materializes.",
+   "anchor": "attributing a higher probability to an AI bust scenario, which could prompt the Fed to cut rates aggressively",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "If AI-bust angst dissipates, US rates would likely face renewed upside pressure because the macro backdrop continues to look very hawkish.",
+   "anchor": "US rates would likely face renewed upside pressure as the US macro backdrop continues to look very hawkish",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "US initial jobless claims have fallen to their lowest level in 57 years.",
+   "anchor": "US initial jobless claims have fallen to the lowest level in 57 years",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Consensus US growth forecasts are now higher than they were before the start of the Iran war.",
+   "anchor": "consensus growth forecasts are now higher than before the start of the Iran war",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "The Atlanta Fed Nowcast for Real Final Sales is running at 4.3% for Q3.",
+   "anchor": "the Altanta Fed Nowcast for Real Final Sales is running at 4.3% for Q3",
+   "topic": "FOMC October rate decision",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "US inflation has once again surprised to the upside this month.",
+   "anchor": "inflation has once again surprised to the upside this month",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Oil prices have risen significantly again.",
+   "anchor": "oil prices have risen significantly again",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "The oil term structure now suggests higher-for-longer oil prices.",
+   "anchor": "the oil term structure now suggest higher for longer prices",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Output price surveys remain high across measures including ISM prices paid and S&P Global PMIs.",
+   "anchor": "output price survey remain high across a range of measures (e.g., ISM prices paid and S&P Global PMIs)",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Shipping costs are still off the charts.",
+   "anchor": "shipping costs are still off the charts",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "A good amount of food price inflation is now in the pipeline owing to the recent increase in agricultural commodity prices.",
+   "anchor": "a good amount of food price inflation is now in the pipeline owing to the recent increase in agricultural commodity prices",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "US inflation expectations continue to rise according to the New York Fed's survey.",
+   "anchor": "Inflation expectations in the US continue to rise, too, according to the New York Fed's survey",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Fed speak is currently very hawkish on both Bloomberg's Fed speak tracker and the read of the Fed minutes.",
+   "anchor": "Fed speak is currently very hawkish on both Bloomberg's Fed speak tracker and the read of the Fed minutes",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Kevin Warsh has made clear he wants to bring inflation back to target in a timely manner.",
+   "anchor": "Kevin Warsh has made clear that he wants to bring inflation back to target in a timely manner",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "The Fed is less likely to simply wait for disinflation to show up on its own.",
+   "anchor": "the Fed is less likely to simply wait for disinflation to show up",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "The risk of second-round inflation effects is higher in the US than elsewhere.",
+   "anchor": "the risk of second-round effects is higher in the US than elsewhere",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "A more hawkish Fed could herald the next leg lower in homebuilders.",
+   "anchor": "A more hawkish Fed could herald the next leg lower in homebuilders",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "US homebuilder margins are now below pre-Covid levels.",
+   "anchor": "Homebuilder margins are now below pre-Covid levels",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Higher input costs across labour, building materials, financing and tariffs are putting pressure on US homebuilder profitability.",
+   "anchor": "higher input costs (e.g., labour, building materials, financing, tariffs) put pressure on profitability",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "New home prices are falling in the US.",
+   "anchor": "New home prices are falling in the US",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "US homebuilder construction starts are weakening.",
+   "anchor": "construction starts are weakening, inventory for homes is rising",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Inventory for US homes is rising.",
+   "anchor": "inventory for homes is rising and the prospective buyer component of the NAHB index",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "The prospective buyer component of the NAHB index has crashed to its lowest level since the Covid-19 recession.",
+   "anchor": "the prospective buyer component of the NAHB index has now crashed to its lowest level since the Covid-19 recession",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "Affordability is a key headwind for US homebuyers.",
+   "anchor": "affordability is a key headwind for buyers",
+   "topic": "FOMC October rate decision",
+   "status": "released",
+   "instruments": [
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "TS Lombard adds a long S&P 500 equal-weight (RSP) vs short US homebuilders (XHB) trade to its portfolio at a 1.75:1 ratio.",
+   "anchor": "we add a long on the S&P 500 equal weight vs short homebuilders (RSP vs XHB) to our portfolio at a 1.75:1 ratio",
+   "topic": "FOMC October rate decision",
+   "status": "target",
+   "instruments": [
+    "RSP",
+    "XHB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "TS Lombard's long Taiwan vs short India equity trade was stopped out at +14% P&L.",
+   "anchor": "Our long Taiwan vs short India equity trade hit the stop at +14% P&L.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "TS Lombard still likes Tech but is waiting for the Fed meeting before adding new Tech-focused trades to its portfolio.",
+   "anchor": "We still like Tech, but we wait for the Fed meeting before adding new Tech-focused trades",
+   "topic": "FOMC October rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "TS Lombard's long Japanese banks trade was stopped out at -5% P&L and will not be re-entered.",
+   "anchor": "Our long Japanese banks trades hit the stop at -5% P%L and we do not re-enter",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Positioning For A Hawkish FOMC",
+   "claim": "TS Lombard is focusing on short JPY rates, remaining long 2-year Canadian vs short 2-year Japanese government bonds.",
+   "anchor": "opting to focus instead on short JPY rates (we remain long 2y Canadian vs short 2y Japanese 2y govvies).",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "BOJ",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22864__2026-10-28-positioning-for-a-hawkish-fomc-en.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 3,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
