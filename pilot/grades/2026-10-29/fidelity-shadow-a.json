@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+   "span": "Demand is clearly not the problem today... AI sells just fine; what matters now is what the money to build it costs",
+   "why": "GS Basics (Privorotsky) directly frames the debate as having moved from demand to the cost/discounting of capital; the article's framing of a fragile bounce ('Bounce Or Bottom?', 'nothing approaching a full-scale return to risk-on') supports the fragility claim."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+   "span": "Demand is clearly not the problem today... The debate is how much we should discount those future cash flows given the uncertainty around supply, competition and financing",
+   "why": "Verbatim quote attributed to 'the head of Goldman's EMEA delta-one desk' (Privorotsky, Goldman Sachs International, London); the cost-of-capital/no-obvious-solve line is his Oct 26 note in the same file set."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+   "span": "Goldman's chief credit strategist Amanda Lynam... puts off-balance sheet leases and purchase commitments across five leading hyperscalers at $2.8 trillion, an eightfold increase since 2023",
+   "why": "Figure, attribution, and multiple ('eight times') all match exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+   "span": "Per Goldman's credit sales strats, USD CCC spreads closed at 1,118bp... at the 100th percentile of the past three years",
+   "why": "CCC is the riskiest junk tier; 100th percentile of the 3-year lookback is a fair restatement of 'highest in three years'."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22166__gs-pasi-global-views-downside-growth-risks-26-oct-2026.txt",
+   "span": "GS still expects a 25bp hike to 4-4.25% on Dec 9... Rates: Strongest view is that central banks will hike less than priced",
+   "why": "Both the specific Fed call and the 'strongest view' framing are verbatim in Goldman's Global Views summary."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+   "span": "We've stabilized in front end rates, objectively good for risk",
+   "why": "Direct Privorotsky quote; front-end rates = short-dated rates."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22902__stock-buybacks-have-a-lot-of-work-to-do-to-counter-new-issua.txt",
+   "span": "The hyperscalers' perceived existential need for capital to build out compute capacity has led them to increasingly reach for equity financing in addition to debt issuance, especially as the latter starts to become more expensive",
+   "why": "Near-verbatim match of the causal claim."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22902__stock-buybacks-have-a-lot-of-work-to-do-to-counter-new-issua.txt",
+   "span": "But in the aggregate for S&P 500 firms, FCF is set to fall given the enormous size of capex. That may interfere with buyback plans, in which case the headwind from positive equity supply would strengthen",
+   "why": "Matches the FCF, capex and buyback-crimping claim exactly; citation markers [c638, c639] are not evidence per instructions."
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source document frames any specific index as 'the clearest live read' on AI demand vs. AI financing; the sentence names no index or bank and the framing is not traceable to any single note.",
+   "searched": [
+    "clearest live read",
+    "AI demand or AI financing wins",
+    "best barometer",
+    "clearest route AI demand financing"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22550__gs-johnstone-gs-tmt-spec-sales-orange-beats-tieto-warns-info.txt / 22338__daily-us-en-1668670.txt / 22534__gs-blekos-marketcolour-m-a-basket-global-macro-gjensidige-wa.txt",
+   "span": "Brazil's EWZ fell 20%, its worst session outside of Covid... The Ibovespa closed 13.9% lower... BRLUSD down another 9%",
+   "why": "All four figures (ETF -20%, worst-outside-Covid, Bovespa -14% rounding from 13.9%, real -9%) independently confirmed across multiple desk notes."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22541__gs-crook-gs-morning-1-jan-hatzius-latest-views-2-brl-eod-vie.txt",
+   "span": "Lula's team is considering cutting tax incentives, streamlining social benefits, and changing how the constitutional health and education spending floors are calculated",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22541__gs-crook-gs-morning-1-jan-hatzius-latest-views-2-brl-eod-vie.txt",
+   "span": "FX Trading Views: Running light risk. Waiting on Fin Min and fiscal measures... Thiago Marinheiro (Head of Brazil Macro Trading): ...BRL could potentially outperform Rates for the next few years",
+   "why": "Both the 'running light risk' positioning and Marinheiro's FX-over-rates call are verbatim."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+   "span": "Celestica (CLS) surged ~17% after hours after guiding to $40 billion of 2027 revenue",
+   "why": "Figure matches exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22550__gs-johnstone-gs-tmt-spec-sales-orange-beats-tieto-warns-info.txt",
+   "span": "Also CLS beat & raise... Positive Flex, AVGO, ANET in the US, no read in Europe",
+   "why": "AVGO=Broadcom, ANET=Arista; ticker-to-name expansion is faithful per the grading instructions."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22557__gs-novak-gs-u-s-industrials-materials-europe-reads-3-pts-fro.txt",
+   "span": "URI commentary, ALLE organic growth and FAST all supportive... ALLE is now the top member in the homebuilding index... heading into November with seasonality on the side of resi names",
+   "why": "FAST=Fastenal ticker; desk shorthand expanded to company names per the ticker-expansion rule."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 0,
+ "unsupported": 1,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

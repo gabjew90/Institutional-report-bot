@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-29/22370__no-obvious-solve-goldman-says-ai-s-cost-of-capital-has-objec.txt",
+ "source_span": "debt becomes capex, becomes revenue, becomes EPS. Without debt, there is no EPS growth... if the cut is forced by a closed financing window rather than chosen, there is nothing bullish about it",
+ "source_chain": "AI's cost of capital has objectively repriced (hyperscaler/data-center credit spreads widened across the capital structure) therefore the buildout's financing shifts from cheap debt toward dilutive equity or forced capex cuts therefore this is bad for hyperscaler equity even though demand itself is intact; invalidated only by the 'best case' of cash flow accelerating enough to self-fund, which Meta's own capex-over-operating-cash-flow print (first negative FCF quarter since its 2012 IPO, per Goldman's Shelofsky in 22291) shows is not happening now.",
+ "pulse_chain": "Rising borrowing costs (Goldman: 30Y hyperscaler basket +17bp, AI junk +78bp vs +22bp non-AI, 93bp IG bear case being overrun) force the biggest borrower, Meta, to dilute via a $95B stock sale instead of bonds therefore crowded, near-record-gross hedge funds keep selling the same names and trend-following CTAs sit one ~1.3% trend break from forced selling therefore options structure (0DTE flow dampens small moves, but tail protection is expensive) means a small miss gets sold hard, so prices fall faster than the demand data changes even though demand hasn't cracked (Celestica, SK Hynix, Cadence beats; Azure beat); invalidated by a good Amazon print that could force a short squeeze, with UBS calling the move structural and JPMorgan calling the credit widening hedging-driven rather than damage.",
+ "preserved": true,
+ "why": "Every step, figure and bank attribution in the pulse's chain (Meta's $95B raise over bonds, the 17bp/78bp/93bp credit figures, the 96th-percentile gross/$38.5B CTA/1.3% trend-break setup, the 66% same-day-options/Cboe vol-spread detail, and the UBS-structural vs. JPM-hedging-demand split) traces to the same notes that made them with the same direction and the same self-funding/good-print invalidation, with no reversed step, no swapped bank, and no invented mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

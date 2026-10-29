@@ -1,0 +1,65 @@
+{
+ "metric": 1,
+ "total_cards": 1189,
+ "fragmentation_sets": [
+  {
+   "subject": "AI-trade basket stabilization/bounce",
+   "labels": [
+    "daily cross asset recap",
+    "us momentum bounce ahead fed"
+   ],
+   "cards": 7
+  },
+  {
+   "subject": "Brazil election shock (equity/FX crash and its fiscal/political fallout)",
+   "labels": [
+    "daily cross asset recap",
+    "brazil fiscal reform brl positioning"
+   ],
+   "cards": 15
+  }
+ ],
+ "fragmented_mass_share": 0.03,
+ "mis_merges": [
+  {
+   "label": "daily cross asset recap",
+   "subjects": [
+    "US index/sector breadth snapshot (S&P/Nasdaq/Russell levels, basket moves)",
+    "Brazil election market crash (EWZ -20%, BRL -9%)",
+    "US equity market-structure trend (dark pool/OTC share gains since 2024)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Brazil's crash is independently and fully surfaced by the dedicated 13-card 'brazil fiscal reform brl positioning' label, so an editor would still pick the theme; the merge adds noise and scatters evidence but doesn't cause a miss."
+  },
+  {
+   "label": "rbnz aud cpi preview",
+   "subjects": [
+    "RBNZ (New Zealand) rate-path forecast and meeting outcome",
+    "Australian CPI print and RBA commentary"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both are peripheral antipodean macro items unlikely to be picked as a lead theme on a day dominated by FOMC/AI-capex/Brazil, so conflating the two countries doesn't change which themes the editor selects."
+  },
+  {
+   "label": "hedge fund leverage positioning",
+   "subjects": [
+    "Fundamental hedge fund equity gross/net leverage levels (GS)",
+    "CTA systematic positioning in duration, FX and credit (UBS)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both are thin data-point color with no standout narrative; merging different fund types under one label doesn't risk losing a lead theme since neither was a likely pick on its own."
+  }
+ ],
+ "pass": true,
+ "notes": "misc holds 12 cards (~1% of 1189), mostly legitimate singleton overflow (Microsoft buyouts, China high-tech GDP share, prediction-market volumes, a wealth-concentration stat) plus two Apple and two Brazil cards that duplicate content already carried by the dedicated 'apple earnings preview' and 'brazil fiscal reform brl positioning' labels. Assessment is based on the card excerpt shown (~250 of 1189 cards); the remaining ~940 cards were not visible and are not covered by this grading pass.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

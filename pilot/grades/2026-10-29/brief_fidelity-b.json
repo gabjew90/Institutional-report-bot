@@ -1,0 +1,86 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI financing fears ease (META offering, AVGO funding) + hyperscaler earnings/capex ahead + CLS EPS beat/oversold bounce therefore AI complex (neocloud/optical/inference/memory/semis) rallies and leads a broad tech rebound (NDX/R2K/SPX up, breadth still weak) therefore momentum factor recovers off its drawdown even as fundamental L/S exposure stays near YTD lows, against a backdrop of lighter volumes, improved top-of-book liquidity, and a 1% sell-skewed desk (LO supply in comms/macro vs. tech/discretionary demand, HFs 10% better buy).",
+   "brief_chain": "Same: easing AI-financing concern + hyperscaler earnings anticipation + CLS beat/oversold bounce therefore AI-complex-led rebound (NDX reclaiming 100DMA, R2K, SPX, weak breadth) therefore momentum recovery off a 20% drawdown despite L/S momentum exposure near YTD lows, with volumes/ETF share slightly below average, liquidity improved, and desk flow 1% better for sale (LO supply comms/macro vs. tech/discretionary demand, HF 10% better buy).",
+   "distortions": [
+    {
+     "what": "Brief drops the desk's self-rated activity level ('3 out of 10 across the floor') and the finer HF sector breakdown (demand in comms/tech/financials vs. supply in discretionary/macro), keeping only the net skew figures.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the stated flow conclusion (1% sell skew, LO supply vs. HF demand direction) is preserved; only sub-sector granularity is compressed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "A multi-item sales roundup, not a single causal chain: US tech bounce spreads to Asia but fades as oil rises, leaving the desk asking bounce-vs-recovery amid muted activity ahead of central-bank decisions and heavy earnings, with neoclouds still pressured by Musk's comments and AI credit spreads the key watch item; separately, Cadence and Celestica both beat-and-raise on AI-driven demand (read-through to Flex/AVGO/ANET); separately, Orange beats and raises on Spain/France strength, Tieto cuts revenue guidance but raises margin guidance on cost discipline, Informa cuts revenue guidance on Saudi disruption but keeps earnings guidance with a flagged ongoing geopolitical caveat, and Verizon's SpaceX tone hardens quarter-over-quarter while the EU separately moves to protect satellite spectrum from Starlink/Kuiper.",
+   "brief_chain": "Same selected items, same structure and same calls (Cadence/Celestica beat-and-raise with read-through; Orange beat-and-raise; Tieto revenue cut/margin raise; Informa guidance cut with 'risk already priced' framing; Verizon tone-hardening presented alongside the EU spectrum move) \u2014 brief omits UMG, BESI/AMAT, Apple preview, semis supply-chain items, and the desk's QQQ call-spread trade idea entirely rather than distorting them.",
+   "distortions": [
+    {
+     "what": "Brief states the desk's view as Informa's risk being 'already priced' without the source's explicit caveat that further US-Iran escalation/disruption risk remains and whether next year normalizes is uncertain.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 brief states no trade or conviction level for Informa either way; dropping a secondary caveat doesn't flip a stance that was never asserted."
+    },
+    {
+     "what": "Brief frames 'AI-driven EDA tool adoption' itself as the incremental growth driver, where the source frames AI broadly as the driver and EDA adoption as the evidence of it.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both versions are bullish on the same beat-and-raise and the same AI thesis; the inversion is semantic, not directional."
+    },
+    {
+     "what": "Brief juxtaposes Verizon's Q2-to-Q3 tone hardening with the EU's satellite-spectrum move as one item, though the source treats them as separate, unlinked bullets.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no trade or stance is asserted for either Verizon or the satellite names in the brief; the conflation affects narrative flow, not a call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d29",
+   "tier": "rest",
+   "bank": "Handelsbanken",
+   "source_chain": "Fed holds at 3.75-4.0% as expected but with two dissents for a hike therefore Warsh's unexpectedly dovish, uncommitted communication (echoing July) raises dovish-policy-mistake risk therefore curve steepens and dollar weakens, and Handelsbanken expects members to walk the move back; Handelsbanken still calls December hike on healthy GDP and a strengthening labor market underpinning inflation, even as it agrees with Warsh that financial conditions aren't tight; separately, the FOMC is cutting its meeting count to 7 (2027) and 6 (2028).",
+   "brief_chain": "Same: hold as expected, non-unanimous (two dissents for a hike) under Warsh therefore unexpectedly dovish communication resembling the July meeting raises dovish-mistake risk therefore curve steepens, dollar weakens, Fed expected to walk it back; Handelsbanken keeps its December-hike call on healthy GDP/strengthening labor market, sharing Warsh's own view that conditions aren't tight; separately, FOMC meeting count cut to 7 in 2027, 6 in 2028.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d37",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "SOX's two up days plus an Asia rally raise the bottomed-or-not question therefore positioning data show real washout in places (GS Prime momentum exposure 70%\u219215%, Asia net leverage down 16.9pts to 48%) but not everywhere (Nasdaq futures length still elevated into MegaCap earnings, CTA trend signals weakening) therefore in semis, Callahan says estimates/valuation support a re-entry but investors stay reluctant until the market rewards revisions rather than compressing multiples on peak fears, while S&P-ex-AI fades from highs and Nasdaq 100 bounces off its range low; bottom line: fundamentals improving, positioning messy, machines indifferent.",
+   "brief_chain": "Same: two SOX up days plus Asia rally raise the bottom question therefore momentum exposure collapse (70%\u219215%) and Asia net-leverage cut (16.9pts to 48%, 21st percentile) show washout in places therefore Callahan's painful-stretch semis read (rising capex/EPS, cheap SOX valuation, reluctance to re-enter until revisions are rewarded) therefore S&P-ex-AI fading from highs vs. Nasdaq 100 bouncing off its range low, offset by elevated Nasdaq futures length and weakening CTA signals that could amplify a further leg down; same bottom line verbatim.",
+   "distortions": [
+    {
+     "what": "Brief drops Callahan's full name/title ('King Callahan') and his aside that he doesn't read sentiment as outright bearish.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the substantive read (painful stretch, rising fundamentals, reluctance to re-enter) is preserved; only a minor qualifier and honorific are compressed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+ "source_span": "Demand is clearly not the problem today. The debate is how much we should discount those future cash flows given the uncertainty around supply, competition and financing.",
+ "source_chain": "Hyperscaler AI demand is genuinely strong (Celestica/Cadence beats, AWS capacity sold out, no near-term memory oversupply) therefore the real argument has shifted off demand and onto the cost of capital, which has 'objectively repriced' with 'no obvious solve' (evidenced by $2.8T in off-balance-sheet hyperscaler obligations, eightfold since 2023, and CCC spreads at 1,118bp, the highest in three years) therefore hyperscalers are forced toward costlier financing paths -- expensive debt, forced capex cuts, or equity dilution -- with Meta already choosing dilution (its up-to-$97.5B stock sale), the 'middle ground' that is bad for hyperscaler equity holders and good for bondholders; invalidation/catalyst: a sustained narrowing in AI credit spreads would be the catalyst that turns the bounce into a real rally, while hyperscaler capex guiding down (not just flat/up) would be disastrous for the suppliers.",
+ "pulse_chain": "Monday's rebound is narrow (AI names up, 286 S&P names down, ex-AI index lower) and largely short-covering, not fresh demand, therefore the fragility is that the debate has moved off whether anyone wants AI compute and onto what the money to build it costs: Goldman's delta-one desk says demand isn't the problem, the question is how heavily to discount future AI cash flows given supply/competition/financing uncertainty, with cost of capital repriced and no obvious solve (same $2.8T and 1,118bp figures, same Hatzius GDP-impulse figures) therefore Meta already answered the financing question by selling stock instead of borrowing, the 'middle ground' Privorotsky calls bad for shareholders and good for bondholders; invalidation/catalyst: a sustained narrowing in AI credit spreads would turn the bounce into a rally, against Goldman's binary test of capex flat/up (fine) versus down (disastrous for suppliers).",
+ "preserved": true,
+ "why": "The lead theme keeps Privorotsky's exact mechanism (demand is fine, the fight is over the cost/availability of capital), the same supporting figures, the correct Goldman/delta-one attribution, the same Meta-equity-as-financing-answer step, and the same credit-spread-narrowing invalidation, just compressed and reworded.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

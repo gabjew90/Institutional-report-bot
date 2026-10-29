@@ -1,0 +1,66 @@
+{
+ "metric": 1,
+ "total_cards": 1189,
+ "fragmentation_sets": [
+  {
+   "subject": "Brazil election fallout: market crash (EWZ/BRL) plus fiscal and FX desk positioning",
+   "labels": [
+    "daily cross asset recap",
+    "brazil fiscal reform brl positioning"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "AI/Nasdaq bounce explained as CTA short-covering and factor rotation ahead of FOMC and hyperscaler earnings",
+   "labels": [
+    "us momentum bounce ahead fed",
+    "nasdaq futures positioning",
+    "daily cross asset recap"
+   ],
+   "cards": 25
+  },
+  {
+   "subject": "Hyperscaler AI-capex funding stress showing up as rising equity issuance (Meta offering, Anthropic IPO, credit spreads)",
+   "labels": [
+    "ai capex credit stress",
+    "equity supply glut"
+   ],
+   "cards": 21
+  }
+ ],
+ "fragmented_mass_share": 0.25,
+ "mis_merges": [
+  {
+   "label": "daily cross asset recap",
+   "subjects": [
+    "Brazil election market crash",
+    "AI-trade basket stabilization / flow-desk commentary",
+    "generic index-level daily recap",
+    "market-structure dark-pool/OTC share trend"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Brazil and AI-momentum cards here duplicate material that is fuller under dedicated labels, so an editor choosing lead themes would pull from those instead; the remaining recap/structure cards aren't lead-theme candidates either."
+  },
+  {
+   "label": "hedge fund leverage positioning",
+   "subjects": [
+    "equity hedge-fund gross/net leverage level (GS prime-brokerage stat)",
+    "CTA rates/credit directional positioning (Treasury duration shorts, emerging credit shorts)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Only 5 cards total and each thread is a single stat, too thin to be a lead theme on its own, but the equity-leverage title buries the distinct credit-positioning angle."
+  }
+ ],
+ "pass": false,
+ "notes": "Card counts are drawn from the claims actually listed per label (244 total), not the ledger's stated 1189-card day total, since no per-label breakdown beyond the visible samples was given; share should be read as an estimate from that sample. misc holds 12/244 (4.9%) of cards and is excluded from fragmented mass per the frozen rule. Apple earnings-preview content (iPhone/Services growth, gross margin) also sits duplicated inside misc alongside the dedicated 'apple earnings preview' label, but since misc is exempt from mis-merge/fragmentation judgment this isn't counted, only noted.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

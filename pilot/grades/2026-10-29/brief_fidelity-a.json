@@ -1,0 +1,107 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI-financing fears ease (META offering, AVGO funding) + hyperscaler earnings/capex anticipation + CLS beat and an oversold bounce, therefore AI-complex baskets (neocloud/optical/inference-chip/memory/semis) rally sharply, therefore tech leads a broad index rebound (NDX/R2K/SPX up) even as breadth stays weak and momentum recovers off its drawdown, with desk flow skewed better-for-sale from long-onlys against hedge-fund buying.",
+   "brief_chain": "Same chain: AI financing relief + hyperscaler earnings anticipation + CLS beat/oversold bounce, therefore AI baskets outperform, therefore tech-led broad rebound with weak breadth and recovering momentum, with LO supply vs. HF demand flows.",
+   "distortions": [
+    {
+     "what": "Brief drops the specific $12.2m top-of-book liquidity level, keeping only the +25% vs. 5-day-average figure.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional read (liquidity improving) is unchanged; only a supporting absolute figure is dropped."
+    },
+    {
+     "what": "Brief omits the desk's own activity-level read ('3 out of 10 across the floor').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a secondary intensity gauge, not a call or figure status."
+    },
+    {
+     "what": "Brief compresses the hedge-fund flow detail, dropping which sectors HFs were buying/selling (comms/tech/financials vs. cons disc/macro) and keeping only the 10% better-to-buy headline.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the net HF skew direction (buying) is preserved; only sector granularity is lost."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "US tech rebound spreads into Asia but fades as oil rises, therefore the desk stays cautious ahead of central-bank decisions and mega-cap earnings, reading recent bounces as easing selling rather than renewed buying, therefore individual prints (Cadence/Celestica/Orange beat-and-raise; Tieto/Informa guidance cuts) and separate telecom/satellite items (Verizon's own cost-and-timeline defense against SpaceX; the EU's unrelated spectrum-reservation policy against Starlink/Kuiper) round out the day's color as independent items.",
+   "brief_chain": "Same macro/earnings chain, but the brief links Verizon's tone-hardening to the EU spectrum decision with 'as,' presenting two independent desk items as cause and effect.",
+   "distortions": [
+    {
+     "what": "Brief states Verizon's tone hardened 'as the EU moved to reserve satellite spectrum against Starlink and Kuiper,' but the source reports these as two separate, unrelated items: Verizon's tone shift is explained by its own cost/build-time analysis of a competing SpaceX network, while the EU spectrum story is a distinct European policy item with no stated link to Verizon's commentary.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no trade or stance is built on this link; it is a narrative compression that invents a causal connection between two true, independently-reported facts without changing any desk call."
+    },
+    {
+     "what": "Brief drops Informa's caveat that shifting events to 2027 does not remove the risk of further US-Iran escalation or prolonged disruption, and the desk's personal 'no rush' framing on buying the dip.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the core call (guidance cut, risk largely anticipated, earnings maintained) is preserved; only a secondary risk caveat is dropped."
+    },
+    {
+     "what": "Brief drops 'no read in Europe' when reporting Celestica's beat-and-raise as positive for Flex/AVGO/ANET.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the US read-through named in the brief is accurate; omitting the Europe non-read doesn't change any named stock's direction."
+    },
+    {
+     "what": "Brief omits the UMG private-equity talks and AMAT's stake increase in BESI entirely, though both are named in the source title.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are separate, self-contained items; their absence doesn't distort any claim the brief does make."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 4
+  },
+  {
+   "id": "d29",
+   "tier": "rest",
+   "bank": "Handelsbanken",
+   "source_chain": "Fed holds as expected but Warsh's dovish, backward-looking communication (missing leading inflation indicators, two dissents for a hike) raises policy-mistake risk, therefore the curve steepens and the dollar weakens, therefore Handelsbanken keeps its December-hike call on a healthy GDP/labor outlook despite Warsh's own admission that conditions aren't tight; separately, the FOMC cuts its meeting count from next autumn.",
+   "brief_chain": "Same chain: hold as expected, two dissents, unexpectedly dovish Warsh resembling the July delivery raises policy-mistake risk, curve steepens/dollar weakens, Handelsbanken keeps the December hike call on GDP/labor strength despite Warsh's 'not tight' admission; separate meeting-count cut.",
+   "distortions": [
+    {
+     "what": "Brief drops the source's 'rearview mirror' framing \u2014 that Warsh ignores leading indicators, growth/inflation drivers, and anchored-but-rising inflation expectations \u2014 keeping only the GDP/labor justification for the December call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the call itself (December hike) and its headline rationale are both preserved; only supporting critique detail is compressed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d37",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "SOX's two up days and an Asia rally raise the 'is the worst over' question, therefore Prime data show momentum/leverage positioning has washed out substantially in places, therefore semis fundamentals (rising capex/EPS, cheap valuation) keep improving while investors stay reluctant to re-enter until the market rewards revisions, and the picture isn't fully clean (elevated Nasdaq futures length, weakening CTA trend signals), so: fundamentals improving, positioning messy, machines indifferent.",
+   "brief_chain": "Same chain, same bottom line (fundamentals improving, positioning messy, machines don't care).",
+   "distortions": [
+    {
+     "what": "Brief drops 'dynamic' from Callahan's description of the stretch as 'one of the more dynamic & painful stretches,' rendering it as 'one of the most painful.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a single descriptive adjective is dropped from a direct quote; the substance of the quote (fundamentals rising, valuations cheap, reluctance to re-enter) is intact."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

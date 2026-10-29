@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+ "source_span": "\"Demand is clearly not the problem today. The debate is how much we should discount those future cash flows given the uncertainty around supply, competition and financing.\"",
+ "source_chain": "AI demand is genuinely robust (Celestica/Cadence beats, AWS capacity sold through 2027, memory rally) therefore the real debate has shifted from demand to the cost of capital (no obvious solve, $2.8T off-balance-sheet total up 8x since 2023, CCC spreads at 1,118bp) therefore hyperscalers are pushed toward equity over debt financing, Meta's $97.5B stock sale being the 'middle ground' (bad for equity holders, good for credit) therefore desks split on the rebound (Coppersmith: relief rally base case but call spreads not longs given elevated gross leverage; Tyler: no real risk-on) \u2014 invalidated/resolved only by a sustained calming in AI credit spreads, which Privorotsky calls the catalyst for a broader rally.",
+ "pulse_chain": "AI names alone drove Monday's rebound (narrow breadth, Goldman baskets up, flow desk calls it supply abatement not fresh demand) therefore the argument has moved off demand and onto cost of capital (Goldman delta-one: demand isn't the problem, debate is the discount rate given supply/competition/financing uncertainty; cost of capital repriced with no obvious solve; $2.8T off-balance-sheet total via Lynam; CCC spreads at 1,118bp) therefore Meta already answered the financing question by selling stock instead of borrowing, the 'middle ground' Privorotsky calls bad for hyperscaler shareholders and good for bondholders therefore desks split (Coppersmith: relief rally base case but call spreads not longs given elevated borrowed exposure; UBS: cut exposure, bounce has run its course) \u2014 invalidated/resolved by Microsoft/Alphabet/Amazon earnings and Goldman's capex test, with a sustained narrowing in AI credit spreads as the catalyst that turns a bounce into a rally.",
+ "preserved": true,
+ "why": "The pulse reproduces the note's exact A-therefore-B-therefore-C-therefore-D sequence (demand-is-fine to cost-of-capital to Meta's equity-financing middle ground to a desk split) and its invalidation (credit spreads must calm/narrow) with correct bank attribution (Goldman/Privorotsky) and no reversed or invented steps.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

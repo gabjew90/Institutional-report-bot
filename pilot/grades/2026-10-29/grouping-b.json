@@ -1,0 +1,72 @@
+{
+ "metric": 1,
+ "total_cards": 1189,
+ "fragmentation_sets": [
+  {
+   "subject": "Brazil election shock to markets (EWZ crash, BRL weakness, FX-desk and fiscal-reform positioning)",
+   "labels": [
+    "daily cross asset recap",
+    "brazil fiscal reform brl positioning"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "AI/tech trade bounce reflecting positioning unwind rather than fresh demand",
+   "labels": [
+    "daily cross asset recap",
+    "us momentum bounce ahead fed"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.135,
+ "mis_merges": [
+  {
+   "label": "daily cross asset recap",
+   "subjects": [
+    "US equity index-level recap",
+    "Brazil election market crash",
+    "AI trade stabilization/no-fresh-buying",
+    "European sector basket bounce",
+    "market-structure dark-pool/OTC share trend"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Brazil and the AI-bounce threads already surface in full under their own dedicated labels, and the remaining contents (index levels, EU basket moves, dark-pool share stats) are routine data points too minor to be a lead theme on their own."
+  },
+  {
+   "label": "financials earnings reactions",
+   "subjects": [
+    "TFC asset sale",
+    "SOFI short squeeze",
+    "SPGI strategic-review debate",
+    "CME/CBOE prediction-market momentum",
+    "CBRE/JLL trough debate",
+    "Hotels vs Lodging REIT RevPAR debate",
+    "ARES/BDC M&A read-through"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Each item is a single-name footnote too small individually to be a pulse lead theme, so bundling them buries minor color without costing the editor a real theme choice."
+  },
+  {
+   "label": "hedge fund leverage positioning",
+   "subjects": [
+    "equity hedge-fund gross/net leverage levels (GS)",
+    "CTA short-duration positioning in rates and credit (UBS)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both are thin positioning color on different asset classes, neither substantial enough to be a selected lead theme whether merged or split."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmented-mass share (0.135) is estimated by scaling the 21 fragmented cards plus the 12 misc-overflow cards over the 244 claims actually enumerated in this excerpt (ledger header states 1189 cards day-wide, implying collapsed duplicates not shown here); misc alone is ~4.9% of the sample and includes an Apple F4Q26-preview duplicate of the dedicated 'apple earnings preview' label and a Brazil-crash duplicate of 'brazil fiscal reform brl positioning', both exempt from mis-merge scoring by rule.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

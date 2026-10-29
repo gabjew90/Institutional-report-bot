@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-29/22365__debt-window-slams-shut-meta-taps-shareholders-for-up-to-95-b.txt",
+ "source_span": "the AI debt pipeline has seized up, and even the strongest borrowers in the space would rather dilute shareholders than test it",
+ "source_chain": "Meta's capex now exceeds its operating cash flow and the bond market can't absorb the hundreds of billions it needs without hurting its own credit rating, therefore even an AA- rated hyperscaler chooses equity dilution over debt, therefore the entire sector's AI buildout (which rests on a debt pipeline that has to get much bigger) now has a financing problem that the next borrowers (Oracle, SpaceX, Microsoft, Alphabet, Amazon) will have to face too; invalidated if the Meta/SpaceX deals clear and earnings confirm demand, letting the 'machine' turn back on for a Q4 squeeze.",
+ "pulse_chain": "Meta sold $95B of stock instead of bonds after its first negative FCF quarter, and lenders are charging AI borrowers more (hyperscaler and AI junk spreads widening), therefore crowded hedge funds and trend-followers are selling the same AI names together, therefore costly options protection amplifies each wobble instead of cushioning it, so prices fall faster than the demand data (which is still fine per Celestica/SK Hynix/Cadence/Azure) changes; invalidated by Amazon's print tonight, where a clear funding plan and in-line-or-better capex could trigger the squeeze UBS's positioning data says is loaded.",
+ "preserved": true,
+ "why": "The pulse keeps the note's exact direction (funding, not demand, is cracking), attributes the dilution-over-debt choice and its sector-wide implication correctly to Meta/Goldman, folds in the JPMorgan rebuttal (hedging demand not damage, power not capital as constraint) with the right bank and right argument, and preserves the same invalidation condition (a clean print/funding plan triggering a squeeze) rather than inventing one.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
