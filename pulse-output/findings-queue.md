@@ -1303,3 +1303,10 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — TRADE BOARD last line truncated mid-sentence ("JPM applies an in-line multiple to Mag7 and…"), undated desk calls, and $SMR attributed to "TriDot Research" while the text cites Barclays. Truncate at a sentence boundary and attribute to the named desk.
 - **observation** — No STEP 7 self-review file in `qc-reviews/` since 10-22 (six runs). Adversarial verdict gaps persist for 10-12 and 10-14.
 - **observation** — Driver trail is a condensed hand note (full driver_state.json not pushed, progress commits 403). Gate counts cannot be audited.
+
+## 2026-10-29
+- **deterministic-fixable** — Driver trail missing for the 10-29 run (`driver/2026-10-29T14-28-55Z.json` not archived; latest is 10-28) and no lint file. Gate counts cannot be audited. Make publish fail or ping ops when the driver file is not pushed.
+- **deterministic-fixable** — `pulse-context/latest.json` is a later rebuild (15:51 EDT, 505 PDFs) than the one the pulse ran on (dumped 14:24Z, 338 PDFs). QC cannot verify figures. Archive the dump keyed by `QC_PULSE_TS` (repeat of 10-28).
+- **observation** — SK Hynix "104 trillion won against 98 trillion expected" and "defensive stocks up 8.2%, growth down 4.5% quarter to date" not found in the available dump. Unverified, not proven wrong.
+- **prompt-session** — TRADE BOARD lines are undated and several are model notes, not calls ($AWI price-target raise on estimates, $VALE "UP" worded as an earnings downgrade).
+- **observation** — No STEP 7 self-review since 10-22. Adversarial verdict gaps persist for 10-12 and 10-14.

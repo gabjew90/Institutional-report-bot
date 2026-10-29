@@ -889,3 +889,15 @@ no findings (0 FAIL). Watch item: Tesla-news answer (13:49) carried an unverifie
 - **judgment (CONCERN)** (21:43 UTC, BK, Discord discoverability): two different rollout dates in one answer (mid-December vs "November 16") and unverified settings paths; a pointless `lookup_market_price GOOGL` ran.
 - **infra** (00:31 UTC): `API key not valid` on a fantasy question (ops; same fault as 10-26).
 - **tooling note**: the CI validator CLI still lacks `aiohttp`; triage by CLI is uninformative (sixth day running).
+
+## 2026-10-28
+
+- **HOOD crypto-hole (00:33)** — bucket: regex-able / judgment. Desk credited with an inference its note doesn't make ("hypersensitive to volume dry-ups and after-hours sweeps", "local highs", "cycle lows"), plus "off the print" with no earnings evidence. Validator CLI returns no applicable violation (only "detector unavailable: aiohttp" in the CI env). Candidate fixture:
+  - question: `is hood in a crypto hole ?`
+  - bad answer (bullet 3): `Goldman’s desk points to Robinhood margin usage hitting local highs while retail search interest sits near cycle lows, leaving the stock hypersensitive to sudden volume dry-ups and after-hours sweeps.`
+  - tool stubs: lookup_research Goldman note text = "Retail searches ... lowest weekly rate since August 2025 while Robinhood margin use rises."
+  - assertion: a bullet attributed to a desk ("<bank>'s desk|per <bank>|<bank> notes") must not contain words absent from that note's insights, and an after-hours move with no earnings row in the tool payload must not be described as "the print" (`\boff the print\b|\bon the print\b` requires an earnings/news tool row for the symbol in the last 3 days).
+- **ELMT / DOD stake (15:48)** — bucket: judgment (sub-piece regex-able). Primer timed out and research/news were empty, yet the answer asserted a product line (tungsten, molybdenum), an IPO date (inferred from S-1 filing dates) and "no direct equity stake" for DOD. Also "DOD" was treated as a ticker. Candidate fixture:
+  - question: `what does elmt do? How much stake does DOD have in it?`
+  - assertion: when `ticker_primer` status is `timeout` and `lookup_research`/`ticker_news` are `no_data`, the answer must not contain `\bwent public\b|\bIPO\b` unless the snapshot has an IPO date, and a question about a government or institutional stake must get an "I don't have that" line (`can't verify|don't have|no data on`) rather than a stake statement.
+- **GOOGL why dump (20:39)** — bucket: judgment. The business-line guard's rewrite attached "driven by Google Cloud selling enterprise infrastructure..." to the EPS miss as if causal. Check that `_business_line_guard` ties the segment to a driver of the figure it modifies, not to the reported miss. Also ZeroHedge was credited with a hyperscaler-capex preview that the visible payload doesn't show.
