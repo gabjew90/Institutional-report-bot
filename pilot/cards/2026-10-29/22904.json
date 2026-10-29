@@ -1,0 +1,674 @@
+{
+ "brief": "Goldman's EMEA delta-one desk (Privorotsky) argues AI demand is not the problem; the debate is how much to discount future AI cash flows given the uncertainty around supply, competition and financing. Demand proof points are strong (Celestica, Cadence, Korean memory names, AWS capacity sold out, little chance of memory oversupply through 2029), but Goldman's Hatzius sees the AI capex impulse to GDP peaking near 1.5% in Q4 2026 and falling to roughly 0.6% by end 2027, compounded by a roughly 100bp yield rise adding a cumulative 0.6% of GDP drag. That is why this week's hyperscaler test is binary: capex flat or up is fine, down would be disastrous for picks and shovels. Meta answered by raising up to $97.5 billion in equity rather than debt, Privorotsky's 'middle ground' scenario (bad for equity, potentially good for credit), while its free cash flow turned negative and its CDS widened. Off-balance-sheet hyperscaler obligations now total $2.8 trillion, up eightfold since 2023, and credit stress concentrates in neoclouds. Credit still flags yellow to red versus equities even as a tentative, hedged relief rally builds into Microsoft, Alphabet and Amazon earnings and the Fed.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Celestica shares surged roughly 17% after hours after guiding to $40 billion of 2027 revenue, up 90% year over year.",
+   "anchor": "Celestica (CLS) surged ~17% after hours after guiding to $40 billion of 2027 revenue, up 90% YoY",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "CLS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Cadence beat and raised its guidance, with $8.2 billion in backlog.",
+   "anchor": "Cadence (CDNS) beat and raised with $8.2 billion in backlog",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Korea's memory names rallied, with Hynix up about 5%, Samsung up about 4%, and the KOSPI up about 3%.",
+   "anchor": "Korea's memory names ripped (Hynix +5%, Samsung +4%, KOSPI +3%)",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Bloomberg puts the total value of Meta's new financing plan at up to $97.5 billion, with the common stock portion upsized to $25 billion from $22.5 billion.",
+   "anchor": "Bloomberg puts the total at up to $97.5 billion, and the common stock deal was upsized to $25 billion from $22.5 billion",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Broadcom is arranging a $63 billion financing, with BofA, Blackstone, Citi and Morgan Stanley, to buy chips for Anthropic.",
+   "anchor": "Broadcom is arranging a $63 billion financing (with BofA, Blackstone, Citi and Morgan Stanley) to buy chips for Anthropic",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Elon Musk",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Elon Musk is warning that most of the 200-plus neocloud companies face 'guppy-level death' because lenders have stopped writing checks.",
+   "anchor": "Elon Musk is warning that most of the 200+ neoclouds face \"guppy-level death\" because lenders have stopped writing checks",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's EMEA delta-one desk says AI demand is not the problem; the debate is how much to discount future AI cash flows given uncertainty around supply, competition and financing.",
+   "anchor": "the micro remains incredibly robust... Demand is clearly not the problem today. The debate is how much we should discount those future cash flows",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky said the prior day that the cost of capital had 'objectively repriced' with 'no obvious solve.'",
+   "anchor": "the cost of capital had \"objectively repriced\" with \"no obvious solve.\"",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says AI credit spreads saw some relief, coming off Friday's wides, after neoclouds came under pressure on Musk's financing and consolidation comments.",
+   "anchor": "Neoclouds under pressure yesterday following Elon's comments on financing and consolidation. Some relief in AI credit, with spreads coming off Friday's wides",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky raises, while calling it unclear, the possibility that the sheer scale of AI spending eventually drives compute oversupply into 2027/28, structurally lower returns and lower multiples.",
+   "anchor": "There's a lot of theoretical debate about compute oversupply into 2027/28. Perhaps we're being too flippant about the sheer scale of spending",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says the cost of capital has risen materially, changing the economics of the entire AI financing complex.",
+   "anchor": "the cost of capital has risen materially, and that's changing the economics of the entire complex.",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says any sustained relief in AI credit spreads would be a powerful catalyst for the broader AI trade.",
+   "anchor": "Any sustained relief in credit should be a powerful catalyst.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Per Ramp data flagged by Goldman's TMT desk, enterprise token spending has barely grown for two months even as token volumes keep rising, as cheaper, more efficient models eat the usage growth.",
+   "anchor": "enterprise token spending has barely grown for two months even as token volumes keep rising: cheaper, more efficient models are eating the usage growth.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says Celestica's 2028 demand indications are even stronger, a positive read-through for the networking and optical segment.",
+   "anchor": "Celestica's 2028 demand indications are \"even stronger\" (a \"positive read through for networking/optical\")",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "CLS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Amazon",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Amazon's Andy Jassy says AWS's 2026 cloud capacity is sold out, with most of 2027 already booked.",
+   "anchor": "Amazon's Andy Jassy says AWS's 2026 capacity is sold outwith most of 2027 booked",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nvidia",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Nvidia's Jensen Huang sees little chance of memory oversupply through 2029.",
+   "anchor": "Jensen Huang sees little chance of memory oversupply through 2029.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Jan Hatzius sees the AI capex impulse, as a share of US GDP, peaking at roughly 1.5% in Q4 2026 before dropping to roughly 0.6% by the end of 2027.",
+   "anchor": "the AI capex impulse tops out at roughly 1.5% of GDP in Q4 2026, then drops to roughly 0.6% by the end of 2027.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Jan Hatzius estimates the roughly 100bp rise in developed-market long-end yields this year adds a cumulative 0.6% of GDP drag, only partly reflected in Goldman's own forecasts.",
+   "anchor": "the ~100bp surge in DM long-end yields this year adds what he estimates is a cumulative 0.6% of GDP drag",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says hyperscaler capex staying flat or rising this week would be fine, but a decline would be disastrous for AI picks-and-shovels names.",
+   "anchor": "Capex: flat/up is fine, down would be disastrous for picks and shovels.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's TMT desk notes that Meta has turned free-cash-flow negative and that its CDS has widened.",
+   "anchor": "Goldman's TMT desk notes Meta has turned free-cash-flow negative and its CDS widened.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Eric Sheridan reiterates a Buy rating and $885 price target on Meta, unchanged despite the dilution from its new stock offerings.",
+   "anchor": "Sheridan's response? Buy rating and $885 price target reiterated, with no change for the dilution.",
+   "topic": "AI capex and credit stress",
+   "status": "target",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky calls Meta's path the 'middle ground' scenario: hyperscaler capex flat or up with robust demand but more equity financing, bad for hyperscaler equity but potentially good for credit.",
+   "anchor": "Middle ground: capex flat/up, demand robust, but more equity financing. Bad for hyperscaler equity, potentially good for credit.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Meta carries $628 billion in off-balance-sheet obligations disclosed in a footnote.",
+   "anchor": "Meta, with its $628 billion \"footnote\" of off-balance sheet obligations",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's chief credit strategist Amanda Lynam puts off-balance-sheet leases and purchase commitments across five leading hyperscalers at $2.8 trillion, an eightfold increase since 2023.",
+   "anchor": "puts off-balance sheet leases and purchase commitments across five leading hyperscalers at $2.8 trillion, an eightfold increase since 2023.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Amanda Lynam says some companies are now openly talking about securing capital before the market gets saturated.",
+   "anchor": "some companies are now openly talking about securing capital before the market gets saturated.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says credit is still flashing yellow to red relative to equities and remains the thing to worry about.",
+   "anchor": "Credit is the one to worry about. Still flashing yellow to red relative to equities.",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Per Goldman's credit sales strats, USD CCC spreads closed at 1,118bp, up 298bp in three months and at the 100th percentile of the past three years.",
+   "anchor": "USD CCC spreads closed at 1,118bp, up 298bp in three months and at the 100th percentile of the past three years",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "The 10-year Treasury yield at 4.99% sits at the 99th percentile since 2010.",
+   "anchor": "while the 10Y at 4.99% sits at the 99th percentile since 2010.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "The VIX sits at a calm 18-handle even as credit spreads and the 10-year yield trade near multi-year extremes.",
+   "anchor": "The VIX? A sleepy 18-handle. And as Musk",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Bernstein recently found a $76 billion funding hole at CoreWeave.",
+   "anchor": "Bernstein recently found a $76 billion funding hole at CoreWeave.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "JPMorgan's private bank, per CoinDesk, says one unnamed debt-laden AI infrastructure firm's 5-year CDS has hit 1,100bp, implying roughly coin-flip default odds.",
+   "anchor": "one unnamed debt-laden AI infrastructure firm's 5Y CDS has hit 1,100bp, implying roughly coin-flip default odds.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky's fourth hyperscaler test asks how companies fund their next leg of AI spending and whether they increasingly choose equity over debt given the strength of their underlying businesses.",
+   "anchor": "Financing: how do they fund the next leg, and do they increasingly choose equity over debt given the strength of their underlying businesses?",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Zero Hedge argues that if Microsoft, Alphabet and Amazon follow Meta to the equity financing window, AI credit may get the relief Privorotsky is hoping for, but only because shareholders pick up the tab.",
+   "anchor": "If Microsoft, Alphabet and Amazon follow Meta to the equity window, credit may well get the relief Privorotsky is hoping for, but only because shareholders",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Zero Hedge says if the hyperscalers don't shift to equity financing, the funding burden keeps landing on a credit market where CCC spreads are already north of 1,100bp.",
+   "anchor": "if they don't, then the bill keeps landing on a credit market where CCCs are already north of 1,100bp.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "JPMorgan's desk said a week earlier that the only question was whether debt or equity would be cheaper when Meta needed to raise financing.",
+   "anchor": "we flagged JPMorgan's desk saying the only question was whether debt or equity would be cheaper when Meta needed to raise",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky's worst-case scenario is that hyperscaler capex accelerates, funded increasingly by expensive debt.",
+   "anchor": "Worst case: capex accelerates, funded increasingly by expensive debt.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky's best-case scenario is that hyperscaler capex rises alongside accelerating organic cash flow, with a credible path to self-funding through 2027/28.",
+   "anchor": "Best case: capex rises alongside accelerating organic cash flow, with a credible path to self funding through 2027/28.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says an arguably worse scenario is that hyperscaler capex gets cut because financing isn't available.",
+   "anchor": "Arguably worse: capex gets cut because financing isn't available.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Microsoft and Alphabet report earnings on Wednesday, Amazon reports on Thursday, with a Fed meeting in between this week.",
+   "anchor": "With Microsoft and Alphabet on Wednesday, Amazon on Thursday and the Fed in between",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "MSFT",
+    "GOOGL",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky frames the overnight rally as either an oversold bounce in the Nasdaq-100 (QQQ) or the beginning of something more sustainable.",
+   "anchor": "an oversold bounce in QQQ's or the beginning of something more sustainable",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says the week ahead of major political events such as the midterms tends to be constructive given how much risk premium is already priced in.",
+   "anchor": "the week ahead of major political events (i.e., the midterms) tends to be constructive with this much risk premium already priced",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says the market struggles to go down even though people remain reluctant to add risk.",
+   "anchor": "The market struggles to go down, even if people remain reluctant to add risk.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky says flows turned a little more supportive as clients who had been net sellers of tech for weeks finally stepped in on the other side, at least in Europe.",
+   "anchor": "Flows were \"a little more supportive,\" as clients who had been net sellers of tech for weeks finally stepped in on the other side",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Lee Coppersmith sees a relief rally as the base case given the scale of the hedge fund unwind.",
+   "anchor": "Lee Coppersmith sees a relief rally as the base case given the scale of the hedge fund unwind",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Lee Coppersmith prefers call spreads over outright long positions because gross leverage is still elevated and systematic flows are still negative.",
+   "anchor": "prefers call spreads over outright longs, because gross leverage is still elevated and systematic flows are still negative",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "JPMorgan's Andrew Tyler says there's nothing approaching a full-scale return to risk-on, and nobody has strong incentive to be a hero ahead of a big week.",
+   "anchor": "There's nothing approaching a full-scale return to risk-on, and nobody has strong incentives to be a hero ahead of a big week",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Optimism In Pockets, Vigilance Warranted : Goldman Says The AI Boom Now Lives Or Dies In The Credit Market",
+   "claim": "Goldman's Privorotsky summarizes his view as optimism in pockets but vigilance still warranted.",
+   "anchor": "Optimism in pockets, but vigilance still warranted.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22904__optimism-in-pockets-vigilance-warranted-goldman-says-the-ai-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 47,
+  "matched": 47,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
