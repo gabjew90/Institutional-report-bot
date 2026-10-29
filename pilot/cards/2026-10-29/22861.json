@@ -1,0 +1,185 @@
+{
+ "brief": "Mag 7 implied vol trades at a steep discount to the broader tech complex, with the relative vol ratio at just the 15th percentile over four years. Yet the NDX/SPX implied vol spread, despite compressing sharply over three days (the largest compression in four years) after last week's blowout, still sits at the 94th percentile, so tech vol stays historically expensive versus the S&P 500 beneath that Mag 7 discount. Underneath, skew remains well bid and vol-of-vol has swung violently since mid-October, with downside protection still in demand. Nomura's McElligott flags aggressive Mag 7 upside call buying ahead of earnings (AAPL, GOOGL, MSFT, about $1.6bn combined delta) alongside a positioning split: hedge fund Mag 7 beta near the 97th percentile historically versus mutual funds near the 11th. Goldman, treating the resetting vol as an opportunity to add upside, likes AMZN Dec 280/310 call spreads into earnings (citing a July deleveraging analog when AMZN surged 15% on earnings), SPY November $780 calls for potential clearing events, and EWY December 180/210 call spreads on a Korea AI-momentum squeeze after heavy hedge fund de-risking.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Mag 7 implied volatility is trading at a substantial discount to the broader tech complex, with the relative vol ratio at just the 15th percentile over the past four years.",
+   "anchor": "The relative vol ratio sits at just the 15th percentile over the past four years",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "AAPL saw 70,000 January $380 calls bought representing $570mn in delta exposure, while GOOGL attracted $430mn and MSFT $630mn, roughly $1.6bn combined delta exposure ahead of earnings.",
+   "anchor": "AAPL saw 70k January $380 calls bought, representing $570mn in delta exposure, while GOOGL attracted $430mn and MSFT $630mn",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "released",
+   "instruments": [
+    "AAPL",
+    "GOOGL",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Long/short hedge funds have pushed their rolling Mag 7 beta toward the 97th percentile historically, while mutual fund beta remains near the 11th percentile.",
+   "anchor": "Long/short hedge funds have pushed their rolling Mag 7 beta toward the 97th percentile historically, while mutual fund beta remains near the 11th percentile",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "The NDX/SPX implied vol spread compressed sharply over three days, the largest such compression in four years, yet the 1-month ATM spread still sits at the 94th percentile.",
+   "anchor": "The three-day compression was the largest in four years, yet the 1-month ATM spread still sits at the 94th percentile",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Skew remains very well bid and price action has become increasingly erratic beneath the recent vol compression.",
+   "anchor": "Beneath the surface, skew remains very well bid, but price action has become increasingly erratic",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "AMZN has pulled back from all-time highs but its big-picture uptrend remains firmly intact.",
+   "anchor": "AMZN has pulled back from all-time highs, but the big-picture uptrend remains firmly intact",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "level",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Goldman Sachs favors AMZN Dec 280/310 call spreads at $4.50, 19 delta, with the stock referenced at $253.60, ahead of this week's earnings.",
+   "anchor": "favoring Dec 280/310 call spreads at $4.50 (19 delta, stock ref. $253.60)",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "target",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "ahead of this week's earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Goldman Sachs says the recent tech deleveraging resembles July's setup, when AMZN surged 15% following earnings.",
+   "anchor": "the recent tech deleveraging resembles July's setup, when AMZN surged 15% following earnings",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Goldman Sachs favors SPY November 6 $780 calls, positioning for potential clearing events that could drive equities toward new highs.",
+   "anchor": "GS favors SPY November 6 $780 calls, positioning for potential clearing events that could drive equities toward new highs",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "target",
+   "instruments": [
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "Goldman Sachs likes EWY December 18 $180/$210 call spreads, arguing renewed AI momentum could trigger a positioning squeeze after heavy hedge fund selling.",
+   "anchor": "GS likes EWY December 18 $180/$210 call spreads, arguing that renewed AI momentum could trigger a positioning squeeze",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "target",
+   "instruments": [
+    "EWY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Volatility Paradox Cheap Mag 7, Expensive Tech, And A Market On Edge",
+   "claim": "EWY has reclaimed its 200-day moving average for the first time since the breakdown, adding technical confirmation to the positioning squeeze.",
+   "anchor": "EWY has also reclaimed its 200-day moving average for the first time since the breakdown",
+   "topic": "Mag 7 volatility dislocation",
+   "status": "level",
+   "instruments": [
+    "EWY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22861__the-volatility-paradox-cheap-mag-7-expensive-tech-and-a-mark.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
