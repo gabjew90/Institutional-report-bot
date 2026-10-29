@@ -1,0 +1,148 @@
+27 October 2026
+A Data Centre Boom
+Built for Yesterday’s AI
+Marketing communication
+Kirsti Sunde Midttun
+The data centre boom depends on several assumptions about the future of AI.
+There are growing reasons to question whether they will hold.
+The data centre boom depends on several assumptions about the future of AI. There are growing
+reasons to question whether they will hold.
+Trillions are being committed to AI infrastructure on the assumption that demand for computing power will
+keep growing exponentially. The stakes are enormous. A recent report by Columbia Business School professor
+Stijn Van Nieuwerburgh suggests that, for US data centre owners to earn a 10% return, total data centre
+revenue would need to reach 9-14% of projected US GDP by 2032. Our concern is that the assumptions
+underpinning these investments are starting to crack.
+For a long time, the AI industry operated under a simple premise: bigger models meant better models.
+Each new generation of notable AI models was signiﬁcantly larger than the last, and increasing the number
+of parameters was an important driver of performance gains. Better data and improved algorithms mattered,
+but scale was widely viewed as the primary driver of progress. The expectation was that models would keep
+getting bigger. Growth in model size has since slowed, but the models have remained big, and demand
+has continued to flow towards them. The most widely used AI services run on these large models, and
+large models require a lot of computing power. This has kept demand for data centre capacity high and
+reinforced the case for massive investments.
+However, as AI technology has continued to improve, smaller models have become substantially
+more capable. This was recently illustrated in the Financial Times, which highlighted a study from Stanford
+University. The study benchmarks the performance of small models against bigger models on the simpler
+tasks that account for much of the market. It ﬁnds that smaller models can already match, and in some cases
+outperform, larger models on the types of queries that dominate current chat usage, while rapidly improving
+on reasoning tasks.
+Why does all of this matter?
+corporate.nordea.com/article/104651/a-data-centre-boom-built-for-yesterdays-ai
+
+It challenges one of the key assumptions underpinning the current data centre buildout: that demand for
+computing power will continue to rise exponentially.
+According to the IEA, a small language model (SLM) can use as little as 3% of the energy required by a
+large reasoning model. That dierence is substantial and is even greater when compared with the largest
+frontier models. There is little doubt that frontier models will continue to play an important role, but it is not
+unreasonable to expect that a growing share of AI queries can be handled by smaller models. Because they
+require far less compute and energy, they are also signiﬁcantly cheaper to run. If smaller models can deliver
+good-enough quality at a fraction of the cost, it is only natural that a growing share of inference
+demand migrates toward them.
+This shift becomes even more likely when we consider how cost-sensitive AI demand has become.
+Demand for AI remains strong, but much of the rapid adoption so far has taken place at subsidised prices. As
+providers have increasingly started charging more directly for usage, customers have become more conscious
+of how much AI costs. Some companies have already reduced or limited their use of AI as costs have risen,
+while a recent KPMG survey found that 49% of business leaders had scaled back, postponed or paused AI
+initiatives because expected costs were becoming too high. This suggests that users are willing to adopt
+AI rapidly, but not at any price. As a result, cheaper models that can deliver good-enough performance are
+likely to capture a growing share of demand.
+This shift is also reflected in the prices users are paying for AI. The Silicon Data LLM Token Expenditure
+Index measures the usage-weighted price paid for one million tokens and has fallen to around half its May
+peak. The index can decline for several reasons: providers may cut their prices, models may become cheaper
+to serve, or usage may shift toward lower-cost models. In this case, most of the decline is attributed to the
+third factor, as trac has increasingly moved toward cheaper Chinese open-weight models. This shift is also
+visible across routing platforms such as OpenRouter. While smaller model size is not the only reason these
+models are cheaper, the same underlying dynamic applies: when lower-cost models provide good-enough
+performance, demand naturally shifts toward them.
+And in a cost-sensitive market, with smaller models becoming increasingly capable, it is likely only a
+matter of time before more demand shifts towards them.
+Another reason smaller models pose such a threat is that they could bypass data centres altogether.
+Today, when you ask ChatGPT a question, your request is routed to a data centre. There, GPUs process the
+query and generate an answer, which is then sent back to your device. The current data centre buildout
+assumes that this centralized model will remain dominant. But as smaller models become capable of
+running directly on users’ devices, that assumption is becoming increasingly uncertain.
+The main reason AI models have not traditionally run directly on users’ devices, known as local AI, is that
+they have simply been too large. Models with hundreds of billions of parameters require more memory and
+computing power than a typical computer can provide. Smaller models, however, can increasingly ﬁt and run
+on ordinary devices. This creates the possibility that some AI demand could bypass data centres altogether,
+with queries processed directly on laptops, phones or other devices instead.
+Local AI also oers clear advantages.
+corporate.nordea.com/article/104651/a-data-centre-boom-built-for-yesterdays-ai
+
+Firstly, it can be signiﬁcantly cheaper. This is because once the device has been purchased, running AI
+locally comes at virtually no additional cost. Instead of paying a provider every time a query is processed in a
+remote data centre, the model runs directly on hardware you already own. You only need to charge it.
+Secondly, it also oers greater protection for sensitive data. Rather than sending information to external
+servers, data can remain on the device where the model is running. Keeping data locally reduces the risk
+of sensitive information being leaked or accessed by third parties, while also preventing it from being used
+to train future models. As concerns around privacy and data security continue to grow, local AI is likely to
+become increasingly attractive to both consumers and businesses.
+Nvidia has already moved into the market for computers designed to run AI locally, together with partners
+such as Dell and Lenovo. This suggests that demand for local AI is already substantial, but it may also
+reflect where Nvidia expects the market to go. Open-weight models are becoming increasingly capable,
+and because they can be downloaded and run locally, they could shift a growing share of AI inference away
+from data centres and onto individual devices. Seen in this light, Nvidia’s move into the computer market
+makes strategic sense. If more AI inference takes place locally, the company will be positioned to beneﬁt from
+that shift.
+The datacentre buildout faces other challenges as well.
+An enormous amount of capacity needs to be built in a relatively short period of time, raising questions
+about whether everything from power generation to grid infrastructure can be expanded quickly enough. If
+projects are completed but cannot access sucient power, some companies could end up with expensive
+assets that they are unable to fully operate.
+At the same time, the enormous flow of capital into the sector increases the risk of overcrowding, as
+more and more companies build capacity based on similar expectations for future AI demand. Much of
+this expansion is also debt-ﬁnanced, making the economics more vulnerable to higher interest rates and
+weaker-than-expected revenues.
+And ultimately, someone has to pay for all this capacity. That depends heavily on AI labs surviving and
+scaling as planned, so that they can pay for their enormous compute commitments.
+Most important of all is the question of timing. A large AI data centre typically takes three to ﬁve years
+from planning to operation, and longer where grid capacity is scarce. A data centre planned today may
+therefore not be fully running until the end of the decade. Yet ChatGPT was launched less than four years
+ago, and the AI landscape has changed dramatically since then. In other words, we are making fairly certain
+commitments for a fairly uncertain future. If smaller models or local AI take a larger share of demand in
+the meantime, the capacity being planned today could end up serving a very dierent market than the one it
+was built for.
+That is a structural mismatch at the heart of the data centre boom.
+corporate.nordea.com/article/104651/a-data-centre-boom-built-for-yesterdays-ai
+
+The Silicon Data LLM Token Expenditure Index has fallen to around half its May peak, largely reflecting
+a shift in usage towards lower-cost models. This suggests that the market is becoming increasingly cost-
+sensitive.
+corporate.nordea.com/article/104651/a-data-centre-boom-built-for-yesterdays-ai
+
+The Wall Street Journal estimates that OpenAI plans to spend around $750bn on compute through 2030,
+while Anthropic’s S-1 suggests future compute and infrastructure commitments exceeding $600bn, though
+spread over a longer period.
+Kirsti Sunde Midttun
+Analyst
+kirsti.sunde.midttun@nordea.com
+4797798187
+corporate.nordea.com/article/104651/a-data-centre-boom-built-for-yesterdays-ai
+
+ 
+ 
+ 
+ 
+ 
+ 
+DISCLAIMERNordea Markets is the commercial name for Nordea’s international capital markets operation. The information provided herein is intended for background information only and for the sole use of the intended recipient. The views and other information provided herein are the current views of Nordea Markets as of the date of this document and are subj
+ect to change without notice. This notice is not an exhaustive description of the described 
+product or the risks related to it, and it should not be relied on as such, nor is it a substitute for the judgement of the recipient. The information provided her
+ein is not intended to constitute and does not constitute investment advice nor is the 
+information intended as an offer or solicitation for the purchase or sale of any financial instrument. The information contained herein has no regard to the specific inv
+estment objectives, the financial situation or particular needs of any 
+particular recipient. Relevant and specific professional advice should always be obtained before making any investment or credit decision. It is important to note that past performance 
+is not indicative of future results. 
+Nordea Markets is not and does not purport to be an adviser as to legal, taxation, accounting or regulatory matters in any jurisdiction. This document may not be reproduced, distributed or published for any purpose wi
+thout the prior written consent from 
+Nordea Markets.In the United States, to the extent that this publication or report includes an analysis of the price or market for any derivative and is not otherwise exempt from the applicable U.S. Commodity Futures T
+rading Commission (CFTC) 
+regulations, it is approved for distribution in the United States to US persons that are eligible contract participants from a CFTC perspective. Nordea Bank Abp is a provisionally registered swap dealer with the CFTC. Any derivativ
+es 
+transactions with US persons must be effected in accordance with the provisions of the Dodd
+-Frank Wall Street 
+Reform and Consumer Protection Act.Nordea Bank Abp, Satamaradankatu 5, FI
+-00020 NORDEA, Finland, domicile Helsinki, Business ID 2858394
+- 9 
+Fu rther information on Nordea available on 
+www.nordea.com
