@@ -1,0 +1,11 @@
+{
+  "pulse_date": "2026-10-29",
+  "window_label": "since-last-daily (2026-10-28T14:20)",
+  "themes": "(see pulse-output/qc-inputs; 7 validated: ai investment cycle and sustainability, ai driven eda growth, midterm election market impact, us treasury yield outlook, middle east oil risk, central bank policy outlook, tech earnings volatility)",
+  "discarded_themes": [
+    {
+      "theme": "french sovereign debt risk",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
