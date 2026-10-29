@@ -1,0 +1,976 @@
+{
+ "brief": "US tech rebound spread into Asia (Hynix, Samsung, KOSPI up), fading as oil rises, leaving the desk asking whether this is an oversold QQQ bounce or a sustainable recovery. Activity stays muted ahead of FOMC, BoC, ECB and BoJ decisions and earnings from 44% of S&P 500 market cap led by MSFT, GOOG, AMZN and INTC, with recent bounces read as easing selling rather than renewed buying. Neoclouds remain pressured on Musk's financing and consolidation comments. AI credit spreads narrowed from Friday's wides but stay the key watch item. Cadence beat and raised, citing AI-driven EDA tool adoption as an incremental growth driver rather than a disruption risk. Celestica also beat and raised FY27 guidance above street, reading positive for Flex, AVGO and ANET in the US. In Europe, Orange beat and raised on Spain and France outperformance. Tieto's revenue missed worse than expected but margins beat, so it cut FY26 revenue guidance while raising margin guidance. Informa cut 2026 revenue growth guidance on Saudi disruption but kept earnings guidance, arguing most of the risk was already priced. Verizon's tone toward SpaceX hardened between Q2 and Q3 calls as the EU moved to reserve satellite spectrum against Starlink and Kuiper.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The US equity rebound carried into Asian tech, with Hynix up about 5%, Samsung up about 4% and the KOSPI up about 3%, though gains are fading as oil rises.",
+   "anchor": "Hynix +5%, Samsung +4% and the KOSPI +3%, although gains are fading as oil rises.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The desk frames the key market question as whether the current rally is an oversold QQQ bounce or a more sustainable recovery.",
+   "anchor": "The key question is whether this is an oversold QQQ bounce or a more sustainable recovery.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "AI is showing near-term signs of stabilisation, but desk activity remains muted ahead of the FOMC, BoC, ECB and BoJ policy decisions.",
+   "anchor": "AI is showing near term signs of stabilisation, but desk activity remains muted ahead of FOMC, BoC, ECB and BoJ decisions",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "This week brings results from 44% of S&P 500 market capitalisation, led by MSFT, GOOG, AMZN and INTC.",
+   "anchor": "results from 44% of S&P 500 market capitalisation, led by MSFT, GOOG, AMZN and INTC",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [
+    "MSFT",
+    "GOOG",
+    "AMZN",
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The desk assesses that recent market rebounds have been driven more by easing selling pressure than by renewed buying.",
+   "anchor": "Recent rebounds appear driven more by easing selling pressure than renewed buying.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Neocloud stocks came under renewed pressure after Elon Musk's comments on financing and consolidation.",
+   "anchor": "Neoclouds again under pressure on Elon\u2019s comments on financing and consolidation.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "AI-related credit spreads have narrowed from Friday's wides but remain the key indicator to watch.",
+   "anchor": "AI credit spreads have narrowed from Friday\u2019s wides but remain the key indicator to watch.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Cadence beat and raised guidance, with management raising its 2026 guidance and framing AI as an incremental growth driver rather than a disruption risk.",
+   "anchor": "Cadence beat and raise - with management raising 2026 guidance and reinforcing the view that AI is becoming an incremental growth driver",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The key positive in Cadence's results was evidence that AI adoption is accelerating usage of core EDA tools.",
+   "anchor": "The key positive was evidence that AI adoption is accelerating usage of core EDA tools.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Celestica (CLS) beat and raised, guiding FY27 revenue of $40.0bn and adjusted EPS of $21.50, about 11% and 9% above street estimates respectively.",
+   "anchor": "Also CLS beat & raise \u2013 their FY27 outlook of $40.0bn revenue / $21.50 adj-EPS is ~11% / ~9% above street.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "CLS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Celestica's results read positively for Flex, AVGO and ANET in the US, with no read-across noted in Europe.",
+   "anchor": "Positive Flex, AVGO, ANET in the US, no read in Europe",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [
+    "FLEX",
+    "AVGO",
+    "ANET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Celestica management sees 2028 customer demand forecasts meaningfully higher than 2027.",
+   "anchor": "management sees 2028 customer demand forecasts meaningfully higher than 2027",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "CLS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Applied Materials (AMAT) plans to increase its stake in BESI to approximately 20% from about 9%, building on its initial investment made in April 2025.",
+   "anchor": "AMAT plans to increase its stake in BESI to approximately 20% from circa 9%, building on its initial investment in April 2025.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "AMAT views its BESI investment as long-term, has no current intention of increasing the stake beyond approximately 20%, and does not intend to seek board representation.",
+   "anchor": "views the investment as long term, currently has no intention of increasing its stake beyond approximately 20% and does not intend to seek board representation",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "TSMC's CoWoS advanced-packaging price hikes could reach 20% amid severe capacity shortages.",
+   "anchor": "CoWoS price hikes could reach 20% amid severe capacity shortages.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "TSMC's advanced-packaging lead times have reportedly extended from 3-6 months to 6-8 months, with customers prioritizing guaranteed deliveries over price.",
+   "anchor": "Advanced packaging lead times have reportedly extended from 3\u20136 months to 6\u20138 months, with customers prioritizing guaranteed deliveries over pricing.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Industry estimates suggest TSMC's CoWoS monthly capacity could exceed 130k wafers in 2026 and target 200k wafers in 2027.",
+   "anchor": "Industry estimates suggest CoWoS monthly capacity could exceed 130k wafers in 2026 and target 200k in 2027",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Texas Instruments sees resilient AI data-center demand alongside recovering industrial and automotive orders.",
+   "anchor": "Texas Instruments sees resilient AI data-center demand alongside recovering industrial and automotive orders",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "NVIDIA identified Unimicron, KYEC and ASE as partners in its advanced-substrate, testing and CPO expansion in Taiwan.",
+   "anchor": "NVIDIA identified Unimicron (3037 TT), KYEC (2449 TT) and ASE(3711 TT) as partners in its advanced-substrate, testing and CPO",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "NVIDIA's substrate capacity is targeted to reach 2.5 times its current level over three years, while CPO optical-engine capacity could expand 30-fold by end-2028.",
+   "anchor": "Substrate capacity is targeted to reach 2.5 times its current level over three years, while CPO optical-engine capacity could expand 30-fold by end-2028.",
+   "topic": "AI capex and credit stress",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by end-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "NVIDIA, Intel and AMD reportedly committed more than NT$100bn in capacity prepayments to secure future high-end substrate supply.",
+   "anchor": "Industry reports suggest the three companies committed more than NT$100bn to secure future high-end substrate supply.",
+   "topic": "AI capex and credit stress",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "INTC",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "NVIDIA is developing Optics-on-Interposer technology that integrates optical engines directly onto the silicon interposer rather than conventional organic substrates.",
+   "anchor": "NVIDIA is developing an architecture that integrates optical engines directly onto the silicon interposer rather than conventional organic substrates",
+   "topic": "AI capex and credit stress",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Orange beat and raised its EBITDAaL guide, keeping the OCF beat on track for potentially four straight quarters of beat-and-raise.",
+   "anchor": "ORANGE: beat and raises EBITDA guide keeps the OCF beat for Q4 to potentially have four quarters of beat & raise",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [
+    "ORAN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Orange's topline beat at \u20ac12.19bn, driven by Spain coming in 1.9% ahead and France 1.1% ahead of expectations.",
+   "anchor": "Topline beats at \u20ac12.19B driven by both Spain 1.9% ahead and France 1.1% ahead).",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [
+    "ORAN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Orange's EBITDAaL beat by 0.9% at \u20ac4.14bn, up 4.6% year on year, and slightly higher capex means OFCF came in about 1% ahead.",
+   "anchor": "EBITDAaL 0.9% beat at \u20ac4.14B (+4.6%) and slightly higher capex means OFCF is 1% ahead.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [
+    "ORAN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Orange raised its FY EBITDAaL growth guidance to exceeding +4.5%, from above +4% previously, against street at 4.1%, implying small upgrades.",
+   "anchor": "its FY EBITDAaL growth guidance to exceeding +4.5% vs prior guidance above +4 (street at 4.1% so will see small upgrades)",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [
+    "ORAN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Orange's organic cash flow is reaching around \u20ac4.3bn, a target that was raised back in Q2 2026.",
+   "anchor": "Organic cash flow reaching around \u20ac4.3B (target raised in Q2 2026).",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [
+    "ORAN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Tieto pre-announced mixed Q3 2026 results, with organic revenue falling about 11% year on year, worse than GS and consensus expectations of -10%/-9%, as Tech Consulting remained weak.",
+   "anchor": "Tieto pre-announced mixed Q3 2026 results: organic revenue fell c.11% year on year, worse than GS/consensus expectations of -10%/-9%, as Tech Consulting remained weak.",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Tieto's adjusted operating profit beat expectations, with an 18% margin versus 15.4%/16.2% expected from GS and consensus.",
+   "anchor": "adjusted operating profit beat expectations, with an 18% margin versus 15.4%/16.2% expected",
+   "topic": "European earnings reads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Tieto cut its FY26 organic revenue growth guidance, excluding FX, to -6% to -5% from -5% to -3% previously, versus GS and consensus at -5.3%/-4.6%.",
+   "anchor": "For FY26, Tieto cut its organic revenue growth guidance, excluding FX, to -6% to -5% from -5% to -3% (GS/consensus: -5.3%/-4.6%)",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The guidance midpoint implies a c.3% revenue decline for Tieto in Q4, in line with GS estimates but below street at -1%.",
+   "anchor": "The midpoint implies a c.3% revenue decline in Q4, in line with GS estimates (below street at -1%).",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Tieto raised its adjusted operating margin guidance to 15.5-16% from 14.8-15.8%, supported by cost savings.",
+   "anchor": "Tieto raised its adjusted operating margin guidance to 15.5\u201316% from 14.8\u201315.8%, supported by cost savings",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The open question on Tieto's call is the implication for 2027, where street currently models +1.8% growth and 16% margins.",
+   "anchor": "The question on the call is what is the implication for 2027 where street has +1.8% growth and margins of 16%.",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Informa cut its 2026 underlying revenue growth guidance to around 3% from around 6%, versus GS and street at 5.4%/5.6%, following force majeure disruption in Saudi Arabia.",
+   "anchor": "Informa has cut its 2026 underlying revenue growth guidance to around 3% from around 6% (GS/Street: 5.4%/5.6%) following force majeure disruption in Saudi Arabia",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Informa moved Cityscape Global in Riyadh to January 2027 but maintained guidance for double-digit underlying earnings growth.",
+   "anchor": "with Cityscape Global in Riyadh moved to January 2027, but has maintained guidance for double-digit underlying earnings growth",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "GS's Middle East update put the worst-case revenue impact of cancelling all of Informa's Saudi events at around 2.7%.",
+   "anchor": "James\u2019s Middle East update put the worst-case revenue impact of cancelling all Saudi events at around 2.7%.",
+   "topic": "European earnings reads",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Consensus models around 11% underlying EPS growth for Informa, and the rest of the business appears to be trading well.",
+   "anchor": "with consensus at around 11% underlying EPS growth, while the rest of the business appears to be trading well",
+   "topic": "European earnings reads",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Informa's shares are trading around -3% from the placing price.",
+   "anchor": "the shares are around -3% from the placing price.",
+   "topic": "European earnings reads",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Verizon's CEO's tone on satellite competition became more defensive between the Q2 and Q3 earnings calls.",
+   "anchor": "Verizon\u2019s CEO\u2019s tone on satellite on the Q3 call became more defensive between Q2 and Q3.",
+   "topic": "satellite competition in telecom",
+   "status": "released",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Verizon argues a competitive SpaceX terrestrial network would require 65-80k macro sites and substantial spectrum, radio access infrastructure and backhaul.",
+   "anchor": "Verizon argues that a competitive SpaceX terrestrial network would require 65\u201380k macro sites, substantial spectrum, radio access infrastructure and backhaul",
+   "topic": "satellite competition in telecom",
+   "status": "level",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Verizon hardened its stance against an MVNO deal with satellite players, from Q2's 'no reason' to Q3's 'absolutely no benefit whatsoever.'",
+   "anchor": "Verizon has also hardened its stance on offering satellite players an MVNO agreement: Q2\u2019s \u201cno reason\u201d became \u201cabsolutely no benefit whatsoever\u201d in Q3",
+   "topic": "satellite competition in telecom",
+   "status": "released",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "DT is down just 3% over the past week versus a 9% decline for TMUS, raising questions about DT's relative resilience.",
+   "anchor": "DT\u2019s relative resilience: it is down just 3% over the past week, versus a 9% decline for TMUS.",
+   "topic": "satellite competition in telecom",
+   "status": "released",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Verizon beat on net-add expectations today but with little boost to service revenue.",
+   "anchor": "today Verizon beat on net-add expectations, but with little boost to service revenue",
+   "topic": "satellite competition in telecom",
+   "status": "released",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "US Towers stocks are up again today, as last week's moves in US telcos raised questions about relative resilience.",
+   "anchor": "US Towers are up again today, while last week\u2019s moves in US telcos have raised questions",
+   "topic": "satellite competition in telecom",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The EU will maintain plans to reserve at least 70% of its upcoming 2 GHz satellite spectrum tender for European firms, despite US pressure.",
+   "anchor": "Europe will maintain plans to reserve at least 70% of its upcoming 2 GHz satellite spectrum tender for European firms despite US pressure",
+   "topic": "satellite competition in telecom",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The EU's spectrum reservation policy creates a barrier to Starlink and Amazon's Project Kuiper as they pursue global expansion.",
+   "anchor": "The policy creates a barrier to Starlink and Amazon\u2019s Project Kuiper as they pursue global expansion",
+   "topic": "satellite competition in telecom",
+   "status": "level",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "UK Culture Secretary Lisa Nandy is seeking stronger government powers to manage failures in the highly leveraged telecoms sector.",
+   "anchor": "Culture Secretary Lisa Nandy is seeking stronger government powers to manage failures in the highly leveraged telecoms sector",
+   "topic": "UK telecom sector distress and regulation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "BT received emergency approval for a \u00a3400m rescue takeover of TalkTalk out of administration, protecting broadband services for 2.5 million customers.",
+   "anchor": "emergency approval of BT\u2019s \u00a3400m rescue takeover of TalkTalk out of administration to protect broadband services for 2.5 million customers",
+   "topic": "UK telecom sector distress and regulation",
+   "status": "released",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Proposed UK telecom reforms include a supplier-of-last-resort framework to protect customers when providers collapse.",
+   "anchor": "Proposed reforms include a supplier-of-last-resort framework to protect customers when providers collapse.",
+   "topic": "UK telecom sector distress and regulation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "GS expects in-line Apple F4Q26 results, with iPhone revenue +15% yoy, Services +10% and gross margins of 47.8%, including a 1pp tariff-refund benefit.",
+   "anchor": "We expect in-line results, with iPhone revenue +15% yoy, Services +10% and gross margins of 47.8%, including a 1pp tariff-refund benefit.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "F4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "GS expects higher iPhone prices and the Duo launch to offset modest volume declines linked to pricing and the delayed iPhone 18 launch.",
+   "anchor": "Higher iPhone prices and the Duo launch should offset modest volume declines linked to pricing and the delayed iPhone 18 launch.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Brazil's EWZ fell 20%, its worst session outside Covid's 23% decline, after Lula overcame a first-round deficit to win the presidential election.",
+   "anchor": "Brazil\u2019s EWZ fell 20%, its worst session outside Covid\u2019s 23% decline, after Lula overcame a first-round deficit to win the presidential election",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "GS describes the Brazilian election result as Polymarket's third incorrect presidential-election call.",
+   "anchor": "the notes describe this as Polymarket\u2019s third incorrect presidential-election call.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The desk favours short-dated QQQ call spreads for a potential positioning squeeze, highlighting the 13 November 735/755 call spread at just under 5x gross payout.",
+   "anchor": "the desk favours short-dated QQQ call spreads for a potential positioning squeeze, highlighting the 13 November 735/755 call spread at just under 5x gross payout.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "13 November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "With AMZN more than 12% below its August high ahead of Thursday's results, the desk prefers capped upside structures through December.",
+   "anchor": "With AMZN more than 12% below its August high ahead of Thursday\u2019s results, the desk also prefers capped upside structures through December",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Tomorrow's S&P implied move closed at 50bps, with daily straddles expected to remain around that level.",
+   "anchor": "Tomorrow\u2019s S&P implied move closed at 50bps, with daily straddles expected to remain around that level.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Skew and spot volatility fell sharply, but NDX volatility underperformed despite tech's rally, leaving a steep NDX/S&P volatility spread.",
+   "anchor": "Skew and spot volatility fell sharply, but NDX volatility underperformed despite tech\u2019s rally, leaving a steep NDX/S&P volatility spread.",
+   "topic": "US momentum bounce ahead of Fed",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "UMG management held preliminary talks with private equity firms including Apollo, TPG and Blackstone, with the board's knowledge, about going private.",
+   "anchor": "management held preliminary talks with private equity firms including Apollo, TPG and Blackstone, with the board\u2019s knowledge.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "UMG's going-private talks have not progressed, and the company has not started a sale process.",
+   "anchor": "the talks have not progressed, and the company has not started a sale process.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Axel Springer's CEO pitched to be part of a deal to buy TikTok's European operations.",
+   "anchor": "Axel Springer CEO pitched to be part of a deal to buy TikTok's European operations.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "GS analyst Adam raised his OLX valuation to 12.9x EV/EBITDA from 10.9x and applied a 15% premium to peers.",
+   "anchor": "with Adam raising his OLX valuation to 12.9x EV/EBITDA (from 10.9x) and applying a 15% premium to peers.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Tencent's 9% share price decline since mid-October reduced the value of Prosus' Tencent stake, leading to lower SOTP valuations and price targets.",
+   "anchor": "Tencent's 9% share price decline since mid-October, reducing the value of Prosus' Tencent stake and leading to lower SOTP valuations and price targets",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "GS's Adam remains Neutral on Prosus as it still trades broadly in line with its historical NAV discount.",
+   "anchor": "Adam remains Neutral as Prosus still trades broadly in line with its historical NAV discount",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Stagwell has acquired Freestar, which helps digital publishers monetize with ads.",
+   "anchor": "Stagwell has acquired Freestar, which helps digital publishers monetize with ads.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "STGW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Freestar claims to handle 50 billion ad requests monthly and works with more than 1,000 publishers.",
+   "anchor": "Freestar claims to handle 50 billion ad requests monthly, and works with more than 1,000 publishers.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "STGW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "Zoopla says 35% of UK homes are in postcode areas where house prices are falling, up from 12% a year ago.",
+   "anchor": "Zoopla says 35% of UK homes are in postcode areas where house prices are falling, up from 12% a year ago.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Orange beats; Tieto warns, Informa cuts guide; UMG looked at PE; BESI AMAT upps stake; VZ read 27 Oct 2026",
+   "claim": "The number of UK home sales agreed over the last four weeks is 7% lower than a year ago across the UK.",
+   "anchor": "The number of sales agreed over the last four weeks is 7%lower than a year ago across the UK.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-29/22550__gs-johnstone-gs-tmt-spec-sales-orange-beats-tieto-warns-info.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 67,
+  "matched": 67,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 14,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
