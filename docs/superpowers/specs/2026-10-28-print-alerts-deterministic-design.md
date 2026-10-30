@@ -159,11 +159,14 @@ Two or three sentences: what came in hotter, cooler, stronger or weaker (sentenc
 | dovish | That leans dovish and eases pressure on the Fed to hike again | That leans dovish and adds to the case for another cut | That leans dovish |
 | none | The report gives the Fed no clear new signal | same | same |
 
+PCE with no direction (owner review, 2026-10-29): `Core PCE is running at {3.1}% a year, against the Fed's 2% goal.` in place of the none row, when the takeaway has room for it (three sentences at most). CPI and PPI keep the none row, since the 2% goal is set on PCE.
+
 followed by the market clause: hawkish `, and reports like this tend to lift Treasury yields.`, dovish `, and reports like this tend to pull Treasury yields lower.`, none: no clause.
 
 **CPI and PCE**
 - Hotter: `Core inflation rose more than expected.` Cooler: `Core inflation rose less than expected.` In line with headline the same: `Core and headline inflation matched expectations.` In line with headline different: `Core inflation matched expectations, while headline came in {higher|lower}.` Mixed: `Core and headline inflation pointed in opposite directions.`
-- Sentence 2, CPI: the shelter and energy MoM, and food when it moved 0.3 point or more: `Shelter rose 0.4% and energy 5.2% on the month.` PCE: `Real consumer spending rose 0.6% and the saving rate fell to 4.1%.`
+- Sentence 2, CPI: the shelter and energy MoM, and food when it moved 0.3 point or more: `Shelter rose 0.4% and energy 5.2% on the month.` PCE: `Real consumer spending was flat, and the saving rate fell to 3.8% from 4.0% as spending outpaced income.` The reason clause appears only when nominal spending and income growth point the way the saving rate moved (`as income outpaced spending` when it rose).
+- PCE headline (owner review, 2026-10-29): when the headline month is 0.4% or more or negative, or the yearly rate moved 0.2 point or more, `Headline inflation rose 0.5% on the month, and the yearly rate rose to 3.6% from 3.4%.` takes sentence 2 and the spending sentence moves to 3. On a hawkish or dovish day the Fed sentence keeps slot 3 and the spending sentence is dropped.
 - PCE sentence 1 names the gauge once when the verdict is hotter or cooler: `Core PCE, the Fed's preferred inflation gauge, rose more than expected.`
 
 **PPI**

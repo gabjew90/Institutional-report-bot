@@ -20,6 +20,10 @@ from report.print_verdict import DOVISH, HAWKISH, Verdict
 FOOD_MIN_PT = 0.3
 # Net payroll revisions this size are worth a sentence, in thousands.
 REVISION_SENTENCE_K = 50
+# A PCE headline move this size gets a sentence: the month's change in
+# percent, the yearly rate's change in points.
+HEADLINE_MOM_PT = 0.4
+HEADLINE_YOY_PT = 0.2
 
 _FED = {
     (HAWKISH, "tightening"): "That leans hawkish and adds to the case for another hike",
@@ -125,24 +129,64 @@ def _cpi(rel: Release, v: Verdict) -> list[str]:
     return out
 
 
-def _pce(rel: Release, v: Verdict) -> list[str]:
-    subject = "Core PCE, the Fed's preferred inflation gauge," if v.kind in ("hotter", "cooler") \
-        else "Core inflation"
-    out = [_inflation_opening(rel, v, subject, "inflation")]
+def _headline_pce(rel: Release) -> str:
+    """'Headline inflation rose 0.5% on the month, and the yearly rate rose
+    to 3.6% from 3.4%.' PCE's headline has no forecast, so it never reaches
+    the verdict; the sentence appears when it moved enough to be news
+    (owner review, 2026-10-29)."""
+    mom, yoy_row = rel.value("PCE m/m"), rel.rows.get("PCE y/y") or {}
+    yoy, before = yoy_row.get("actual_value"), yoy_row.get("prior_value")
+    yoy_step = None if yoy is None or before is None else round(yoy, 1) - round(before, 1)
+    big_month = mom is not None and (mom >= HEADLINE_MOM_PT - 1e-9 or round(mom, 1) < 0)
+    big_year = yoy_step is not None and abs(yoy_step) >= HEADLINE_YOY_PT - 1e-9
+    if mom is None or not (big_month or big_year):
+        return ""
+    text = f"Headline inflation {_moved(mom)} on the month"
+    if yoy_step is None:
+        return text + "."
+    if round(yoy_step, 1) == 0:
+        return f"{text}, and the yearly rate held at {yoy:.1f}%."
+    return f"{text}, and the yearly rate {'rose' if yoy_step > 0 else 'fell'} to {yoy:.1f}% from {before:.1f}%."
+
+
+def _spending_pce(rel: Release) -> str:
+    """'Real consumer spending was flat, and the saving rate fell to 3.8%
+    from 4.0% as spending outpaced income.' The reason clause is stated
+    only when the two growth rates point the way the saving rate moved."""
     real = rel.value("Real Consumer Spending m/m")
-    saving, saving_row = rel.value("Saving Rate"), rel.rows.get("Saving Rate")
+    saving, before = rel.value("Saving Rate"), (rel.rows.get("Saving Rate") or {}).get("prior_value")
+    spend, income = rel.value("Personal Spending m/m"), rel.value("Personal Income m/m")
     parts = []
     if real is not None:
         parts.append(f"real consumer spending {_moved(real)}")
     if saving is not None:
-        before = (saving_row or {}).get("prior_value")
         if before is None or round(before, 1) == round(saving, 1):
             parts.append(f"the saving rate held at {saving:.1f}%")
         else:
-            parts.append(f"the saving rate {'rose' if saving > before else 'fell'} to {saving:.1f}%")
-    if parts:
-        out.append(_cap(_join(parts)) + ".")
-    return out
+            fell = saving < before
+            clause = f"the saving rate {'fell' if fell else 'rose'} to {saving:.1f}% from {before:.1f}%"
+            agree = spend is not None and income is not None \
+                and round(spend, 1) != round(income, 1) and (spend > income) == fell
+            if agree:
+                clause += " as spending outpaced income" if fell else " as income outpaced spending"
+            parts.append(clause)
+    if not parts:
+        return ""
+    return _cap(", and ".join(parts) if len(parts) == 2 else parts[0]) + "."
+
+
+def goal_sentence(rel: Release) -> str | None:
+    """In place of NO_SIGNAL on a PCE report the verdict gives no
+    direction to: where core PCE, the gauge the Fed's 2% goal is set on,
+    stands over the year (owner review, 2026-10-29)."""
+    yoy = rel.value("Core PCE y/y")
+    return None if yoy is None else f"Core PCE is running at {yoy:.1f}% a year, against the Fed's 2% goal."
+
+
+def _pce(rel: Release, v: Verdict) -> list[str]:
+    subject = "Core PCE, the Fed's preferred inflation gauge," if v.kind in ("hotter", "cooler") \
+        else "Core inflation"
+    return [_inflation_opening(rel, v, subject, "inflation"), _headline_pce(rel), _spending_pce(rel)]
 
 
 def next_release(key: str, today_iso: str) -> str:
@@ -310,5 +354,9 @@ def takeaway(rel: Release, v: Verdict, policy: dict, today_iso: str) -> str:
         body = _cpi(rel, v)
     body = [b for b in body if b]
     if v.kind != "no_forecast":
-        body = body[:2] + [fed_sentence(v.direction, policy)]
+        goal = goal_sentence(rel) if rel.key == "pce" and v.direction not in (HAWKISH, DOVISH) else None
+        if goal is None:
+            body = body[:2] + [fed_sentence(v.direction, policy)]
+        elif len(body) < 3:
+            body = body + [goal]
     return " ".join(body[:3])

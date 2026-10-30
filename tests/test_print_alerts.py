@@ -438,7 +438,67 @@ def test_pce_secondary_lines_and_spending_sentence():
     a, _ = alert(release("pce", _scenarios()["pce"]["hotter"]))
     assert a.lines[a.lines.index("") + 1:a.lines.index("", a.lines.index("") + 1)] == [
         "Real consumer spending +0.6%", "Personal income +0.3% vs +0.4% expected", "Saving rate 4.1%, down from 4.4%"]
-    assert "Real consumer spending rose 0.6% and the saving rate fell to 4.1%." in takeaway_of(a)
+    # the 0.4% headline month takes the second sentence on a directional day
+    assert takeaway_of(a).split(". ")[1] == "Headline inflation rose 0.4% on the month"
+    rel = release("pce", {**_scenarios()["pce"]["hotter"], "PCE m/m": (0.2,)})
+    assert ("Real consumer spending rose 0.6%, and the saving rate fell to 4.1% from 4.4%."
+            in takeaway_of(alert(rel)[0]))
+
+
+def test_golden_oct29_pce():
+    """The first live post under the new format, with the 10-29 review's
+    lines and takeaway: headline, spending against income, and no 'no
+    clear new signal'."""
+    rel = release("pce", {"Core PCE m/m": (0.3, 0.3), "Core PCE y/y": (3.1, None, 3.0),
+                          "PCE m/m": (0.5,), "PCE y/y": (3.6, None, 3.4),
+                          "Real Consumer Spending m/m": (0.0,), "Personal Spending m/m": (0.5, 0.6),
+                          "Personal Income m/m": (0.2, 0.3), "Saving Rate": (3.8, None, 4.0)},
+                  three_m=2.9, unrounded={"Core PCE m/m": 0.3165})
+    a, v = PW.compose_alert(PW.PCE, rel, "2026-10-29", "08:30")
+    assert a.content == "Sep PCE: In line with expectations"
+    assert a.lines == [
+        "Core PCE MoM +0.3% vs +0.3% expected (+0.32% unrounded)",
+        "Core PCE YoY 3.1%, up from 3.0%",
+        "Headline PCE MoM +0.5%",
+        "Headline PCE YoY 3.6%, up from 3.4%",
+        "Core PCE, last 3 months annualized: 2.9%",
+        "",
+        "Real consumer spending 0.0%",
+        "Personal spending +0.5% vs +0.6% expected",
+        "Personal income +0.2% vs +0.3% expected",
+        "Saving rate 3.8%, down from 4.0%",
+        "",
+        "Takeaway: Core inflation matched expectations. Headline inflation rose 0.5% on the month, "
+        "and the yearly rate rose to 3.6% from 3.4%. Real consumer spending was flat, and the saving "
+        "rate fell to 3.8% from 4.0% as spending outpaced income.",
+    ]
+
+
+@pytest.mark.parametrize("values,text", [
+    # a quiet headline month leaves room for the 2% sentence
+    ({"Core PCE m/m": (0.2, 0.2), "Core PCE y/y": (2.9,), "PCE m/m": (0.2,), "PCE y/y": (2.7, None, 2.6)},
+     "Core inflation matched expectations. Core PCE is running at 2.9% a year, against the Fed's 2% goal."),
+    # the yearly step alone triggers the headline sentence, and a fall reads as one
+    ({"Core PCE m/m": (0.2, 0.2), "Core PCE y/y": (2.9,), "PCE m/m": (0.1,), "PCE y/y": (2.4, None, 2.7)},
+     "Core inflation matched expectations. Headline inflation rose 0.1% on the month, and the yearly "
+     "rate fell to 2.4% from 2.7%. Core PCE is running at 2.9% a year, against the Fed's 2% goal."),
+    # a negative month always does
+    ({"Core PCE m/m": (0.2, 0.2), "PCE m/m": (-0.1,), "PCE y/y": (2.6, None, 2.6)},
+     "Core inflation matched expectations. Headline inflation fell 0.1% on the month, and the yearly "
+     "rate held at 2.6%. The report gives the Fed no clear new signal."),
+])
+def test_pce_headline_and_goal_sentences(values, text):
+    assert takeaway_of(alert(release("pce", values))[0]) == text
+
+
+def test_saving_reason_only_when_the_growth_rates_agree():
+    base = {"Core PCE m/m": (0.2, 0.2), "Real Consumer Spending m/m": (0.1,)}
+    rose = takeaway_of(alert(release("pce", {**base, "Personal Spending m/m": (0.2, 0.3),
+                                              "Personal Income m/m": (0.5,), "Saving Rate": (4.3, None, 4.0)}))[0])
+    assert "the saving rate rose to 4.3% from 4.0% as income outpaced spending." in rose
+    odd = takeaway_of(alert(release("pce", {**base, "Personal Spending m/m": (0.5, 0.3),
+                                             "Personal Income m/m": (0.2,), "Saving Rate": (4.3, None, 4.0)}))[0])
+    assert "the saving rate rose to 4.3% from 4.0%." in odd and "outpaced" not in odd
 
 
 def test_jobs_revisions_cancelling_a_beat_are_named():
