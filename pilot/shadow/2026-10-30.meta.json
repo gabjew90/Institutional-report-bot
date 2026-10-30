@@ -1,0 +1,89 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 44,
+  "cards": 1356,
+  "max_doc_id": 22910
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 85,
+  "brief_citations": 3,
+  "distinct_cards_cited": 85,
+  "card_count": 1356,
+  "quintiles": [
+   16,
+   14,
+   27,
+   19,
+   9
+  ],
+  "edge_quintile_share": 0.294,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "The Fed left its policy rate at 3.75 to 4.00 percent on a 10-2 vote, with Governor Cook and Cleveland's Hammack voting to raise it 25 basis points, one basis point being a hundredth of a percent [c739",
+    "cite": "c739,c752",
+    "reason": "figures not in cited card(s): ['4.00']"
+   },
+   {
+    "sentence": "September core PCE, the inflation measure the Fed targets, was due the following day at 0.3 percent on the month [c1351], and Warsh said he is unwilling and unable to call financial conditions tight e",
+    "cite": "c1351,c744",
+    "reason": "figures not in cited card(s): ['0.3']"
+   },
+   {
+    "sentence": "Microsoft and Alphabet report Wednesday and Amazon Thursday [c61], inside a week carrying 44.5 percent of S&P 500 market value [c1059].",
+    "cite": "c61,c1059",
+    "reason": "figures not in cited card(s): ['44.5']"
+   },
+   {
+    "sentence": "Goldman sits above the street on the cloud lines, with Azure growth in constant currency of 46 to 47 percent against 45 [c81] and Google Cloud near 100 percent against consensus of 96 [c49], and below",
+    "cite": "c81,c49,c55",
+    "reason": "figures not in cited card(s): ['100']"
+   },
+   {
+    "sentence": "The KOSPI rose 6.63 percent on stronger than expected SK Hynix earnings [c336], Samsung rose about 8 percent [c357], and SK Hynix rose about 10 percent on a capital return of roughly $45 billion [c326",
+    "cite": "c336,c357,c326,c347",
+    "reason": "figures not in cited card(s): ['6.63']"
+   },
+   {
+    "sentence": "Goldman's basket of companies that rent out AI computing power rose 585 basis points [c264] and its memory basket rose 368 [c267].",
+    "cite": "c264,c267",
+    "reason": "figures not in cited card(s): ['368']"
+   },
+   {
+    "sentence": "UBS reads the move as mechanical: software gained only 1.1 percent since Thursday [c171] and the S&P 500 0.8 percent [c1017] while the VIX fell 9.6 percent [c1221], which it calls an unwind of bets pl",
+    "cite": "c171,c1017,c1221,c1167",
+    "reason": "figures not in cited card(s): ['0.8', '1.1', '9.6']"
+   },
+   {
+    "sentence": "BTIG's Jonathan Krinsky notes the group was up 157 percent year to date as of October 26, nearly double its prior record year [c810], then fell 6.8 percent intraday, its worst day since the April 2025",
+    "cite": "c810,c811",
+    "reason": "figures not in cited card(s): ['157', '6.8']"
+   },
+   {
+    "sentence": "TS Lombard's case is that builder fundamentals have rotted while the chart still looks orderly.",
+    "cite": "",
+    "reason": "bank named (['ts lombard']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "The NAHB buyer traffic index has fallen to 18, its weakest since the Covid recession [c428], mortgage rates are back near 7.3 percent [c429], and inventories are rising even as starts and permits weak",
+    "cite": "c428,c429,c431",
+    "reason": "figures not in cited card(s): ['7.3']"
+   },
+   {
+    "sentence": "Gilts have stayed calm into it, 10-year yields holding a 5.31 to 5.35 percent range [c954].",
+    "cite": "c954",
+    "reason": "figures not in cited card(s): ['5.35']"
+   }
+  ],
+  "word_count": 1566
+ }
+}
