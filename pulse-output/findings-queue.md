@@ -1310,3 +1310,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — SK Hynix "104 trillion won against 98 trillion expected" and "defensive stocks up 8.2%, growth down 4.5% quarter to date" not found in the available dump. Unverified, not proven wrong.
 - **prompt-session** — TRADE BOARD lines are undated and several are model notes, not calls ($AWI price-target raise on estimates, $VALE "UP" worded as an earnings downgrade).
 - **observation** — No STEP 7 self-review since 10-22. Adversarial verdict gaps persist for 10-12 and 10-14.
+
+## 2026-10-30
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild (market snapshot 11:21 EDT, prev_consensus_block already holds today's pulse), so RECAP prices cannot be verified. Archive the dump keyed by `QC_PULSE_TS` (repeat of 10-28, 10-29).
+- **deterministic-fixable** — TRADE BOARD on a light day carries stale, undated calls: $NCK "Plunged 15.57%" comes from a 22 Oct GS Asia midday note. Add a max age for board lines.
+- **prompt-session** — TRADE BOARD $TLN "PT $499 / Highest Talen target in the series" and $SMR "PT $5 / burn $139m a quarter / cut from $11" not found in the dump ($499 appears only as a 2026 EBITDA forecast); $SMR credited to "TriDot Research" while the text cites Barclays. Possible mis-read figures.
+- **observation** — Adversarial verdict file shows zero findings while the driver trail reports 2 soft findings repaired; the file is not the record of what was checked. 
+- **observation** — Light edition again with no_new_research=true over a 96h window while the corpus has 1030 PDFs and live themes (midterms 53 banks, AI capex 44 banks / 145 PDFs). Re-check the no-new-research gate.
+- **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
