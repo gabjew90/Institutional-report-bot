@@ -1,0 +1,95 @@
+{
+ "metric": 1,
+ "total_cards": 1356,
+ "fragmentation_sets": [
+  {
+   "subject": "Korean equity valuation / KOSPI outlook after the target cut",
+   "labels": [
+    "kospi target cut",
+    "korea equity valuation positioning"
+   ],
+   "cards": 6
+  },
+  {
+   "subject": "Goldman's 2027 global growth outlook (AI wealth-effect reversal + fewer DM rate hikes priced)",
+   "labels": [
+    "central banks deliver fewer hikes than priced",
+    "ai wealth effect reversal"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "Post-midterm / correction-bottom rally debate (Wilson's breadth-bottoming case plus midterm seasonality vs. Krinsky's breadth-divergence skepticism)",
+   "labels": [
+    "s p correction clearing events",
+    "midterm election market outlook",
+    "spx breadth divergence"
+   ],
+   "cards": 22
+  }
+ ],
+ "fragmented_mass_share": 0.15,
+ "mis_merges": [
+  {
+   "label": "daily cross asset recap",
+   "subjects": [
+    "US index levels (Monday wrap)",
+    "Brazil election crash (EWZ/BRL)",
+    "AI-trade stabilization signal",
+    "European sector basket moves (defense/semis/French banks)",
+    "dark pool/OTC market-structure share stat"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Brazil crash and AI-trade bounce are both covered in full elsewhere (their own dedicated labels), so nothing a pulse would brief is lost, just duplicated; the remaining European-basket and market-structure items are too minor to be standalone briefs."
+  },
+  {
+   "label": "financials earnings reactions",
+   "subjects": [
+    "V/HOOD/LPLA preview",
+    "PFG pushback",
+    "SPGI bear case",
+    "SOFI short squeeze",
+    "TFC asset sale",
+    "CBRE/JLL trough debate",
+    "CME/CBOE momentum",
+    "Hotels vs Lodging REIT debate",
+    "ARES BDC read-through"
+   ],
+   "would_change_theme_selection": false,
+   "why": "These are eight unconnected single-name desk notes bundled only by sector-and-day; none individually rises to brief-worthy, so an editor loses nothing by their being lumped together."
+  },
+  {
+   "label": "european earnings reads",
+   "subjects": [
+    "Allianz 3Q miss",
+    "DSV Buy/EBIT outlook",
+    "Gjensidige downgrade",
+    "Unibail-Rodamco-Westfield estimate cuts",
+    "Wartsila order beat"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Five distinct single-name European prints with no shared thesis; low-stakes RECAP-grade color, not competing macro themes."
+  },
+  {
+   "label": "rbnz aud cpi preview",
+   "subjects": [
+    "RBNZ (New Zealand) rate-path forecast",
+    "Australian CPI preview and RBA Governor Bullock commentary"
+   ],
+   "would_change_theme_selection": false,
+   "why": "RBNZ's own decision and the separate Australian CPI/RBA story are different countries and events merged under one label, but both are calendar-grade items unlikely to be elevated to a brief on their own."
+  }
+ ],
+ "pass": false,
+ "notes": "Per-label card lists appear capped at ~12 (17 of 39 labels show exactly 12), so the visible sample totals 322 of the stated 1356 cards; fragmentation/mass figures above are computed on that visible sample and may understate the true share. misc holds 12 of the 322 visible cards (~3.7%) and is excluded from mis-merge judgment per the frozen rule.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

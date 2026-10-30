@@ -1,0 +1,151 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "This is a pipeline/editorial status claim (the light-pulse frontmatter reason), not content a bank research PDF can attest to. No source document addresses whether new research arrived since the prior pulse. Circumstantial support exists (the source-text day folders stop at 2026-10-29, with note_dates capping at 2026-10-28, and no 2026-10-30 folder exists), but that is a property of the file bundle provided, not a source document supporting the sentence's claim.",
+   "searched": [
+    "2026-10-30 folder",
+    "note_date 2026-10-29",
+    "no new bank research"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "n/a",
+   "span": "",
+   "why": "Live intraday price move for QQQ/SPY; not the kind of fact a prior day's bank PDF would carry.",
+   "searched": [
+    "QQQ",
+    "2.61%",
+    "SPY",
+    "1.16%"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "n/a",
+   "span": "",
+   "why": "Live intraday GLD move; no PDF in the corpus reports today's gold ETF price action.",
+   "searched": [
+    "GLD",
+    "2.52%",
+    "gold sold off"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22907__three-clearing-events-to-capitulation-morgan-stanley-s-wilso.txt",
+   "span": "as semis dropped 11% in a week, retail bought the dip with 3x leverage, in record size, while hedge funds reversed all of their AI net buying since the start of 2025 into that bid... hedge fund positioning \"has come down substantially",
+   "why": "Multiple sources (this Morgan Stanley Wilson piece, and Goldman's 22904/22371/22377/22368) converge on the same theme for the week: hedge funds cutting/reducing gross and AI exposure, AI/semis stocks the epicenter of the damage, and leverage (hedge fund gross, retail 3x leverage, AI debt funding) central to the narrative. The sentence is a fair high-level synthesis, not a specific figure that could be mismatched."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22148__gs-coppersmith-us-equities-a-pulse-check-25-oct-2026.txt",
+   "span": "My bias is that we could see a relief rally after two weeks of relentless selling... I hold that view pretty loosely given elevated gross exposures, negative systematic flow asymmetry... For now, that leaves us favoring call spreads to express upside.",
+   "why": "Direct match: Goldman's Coppersmith (confirmed as Goldman's equity/derivatives desk) frames a relief rally as his base case, prefers call spreads over outright longs, and cites elevated gross exposure and negative systematic flow as the caveats \u2014 exactly what the sentence reports. The note is SPX-framed throughout (SPX levels/vol discussed repeatedly), supporting the 'S&P 500' specification. 'Systematic flows (selling by rule-based funds)' is a standard, accurate gloss of 'systematic flow asymmetry.'"
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "n/a",
+   "span": "",
+   "why": "Live BTC price/move; not present in any source PDF (these are bank research notes, not live price feeds).",
+   "searched": [
+    "76,818",
+    "76818",
+    "1.51%"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "Same claim as s1 \u2014 a pipeline-state statement no bank research PDF can confirm or deny.",
+   "searched": [
+    "2026-10-30 folder",
+    "note_date 2026-10-29"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "Self-referential editorial note about the pulse's own format/edition; not a market or research claim any source document could support.",
+   "searched": [
+    "full edition",
+    "current",
+    "next research"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "Standard, universally correct definitions of UW/UP/PT as financial shorthand; not a claim drawn from or checkable against a specific bank note, but not inaccurate either."
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "An economic/earnings-calendar claim, sourced (per the architecture) to the live calendar data layer, not to any bank research PDF in this corpus.",
+   "searched": [
+    "no major catalysts",
+    "quiet calendar",
+    "October 30"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22447__oil-on-edge-with-fear-of-new-attacks-on-iran-after-us-midter.txt",
+   "span": "Donald Trump has clearly wanted to delay fresh strikes against Iran till after the US midterm elections on 3 November... there is a significant risk premium in crude oil prices for the risk that the US/Israel will attack Iran in the coming weeks.",
+   "why": "The sentence invents two specifics that do not match the sources: (1) no source describes a 'tanker attack' \u2014 the actual Middle East oil-risk event in the corpus is a Houthi strike on Saudi Arabia's Ras Tanura refinery (22876), not a tanker; (2) no source has Trump saying the Iran war will be 'wrapped up soon' \u2014 every oil/Iran source (22447, 22214/middle-east.txt) has Trump delaying and threatening further strikes after the midterms, with markets pricing a risk premium for a NEW attack, the opposite framing from a war being wound down. The underlying theme (oil driven by Iran-strike risk) is real and sourced, but the two cited facts supporting 'pulling in opposite directions' are fabricated/inverted.",
+   "searched": [
+    "tanker attack",
+    "Strait of Hormuz",
+    "wrapped up",
+    "Trump Iran deal",
+    "finish off Iran"
+   ]
+  }
+ ],
+ "faithful": 4,
+ "distorted": 1,
+ "unsupported": 10,
+ "faithful_rate": 0.364,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": true,
+ "problems": [
+  "counts do not match the sentence list"
+ ]
+}

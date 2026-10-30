@@ -1,0 +1,82 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d38",
+   "tier": "rest",
+   "bank": "SEB",
+   "source_chain": "Fed holds rate at 3.75-4.00% (10-2, Cook+Hammack dissent for a hike) therefore the statement's wait-for-more-information language echoes Williams/Jefferson/Waller and the September dot plot (one more hike, not back-to-back) therefore Warsh's press conference reads more dovish than expected (growth upgraded to 'strong', financial conditions tightened but still not called 'tight') therefore SEB keeps its call for one more December hike then a hold, with cuts resuming late 2027, Middle East/energy as the upside risk and real yields as the downside risk, while balance-sheet and meeting-schedule changes are deferred and markets price the outcome as dovish.",
+   "brief_chain": "Same chain: 10-2 vote and dissent lineage, statement language tied to the same three officials and dot plot, Warsh read as more dovish on the same growth/financial-conditions details, SEB's December-hike-then-hold call with the same two risks, same balance-sheet/meeting-schedule notes, same dovish market reaction.",
+   "distortions": [
+    {
+     "what": "Brief says 'front-end yields fell' on the announcement; source shows yields rose a couple bp immediately after the statement before declining through the press conference (2y down ~10bp, 5y down 5bp at most).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the net move and SEB's read of the reaction as dovish are preserved; only the initial uptick is dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d35",
+   "tier": "rest",
+   "bank": "Scotiabank",
+   "source_chain": "FOMC holds at 3.75-4% (10-2, Cook+Hammack dissent, Kashkari/Logan no longer dissenting) therefore the statement's upgraded growth language and new wait-for-information line read as slightly dovish therefore Holt argues the Fed skipped a hike mainly to avoid violating its own dot plot and triggering a December repricing/internal tension before hawkish voters rotate off therefore OIS still favors the December hike Scotia expects, while Warsh discloses fewer policy meetings/more strategy meetings and the balance-sheet/task-force timeline.",
+   "brief_chain": "Same chain and same figures/attributions, down to the dot-plot rationale, the OIS move, the meeting-schedule change, and the task-force/hearing details.",
+   "distortions": [
+    {
+     "what": "Brief labels both dissenters 'Governors Cook and Hammack'; source identifies Hammack as the Cleveland Fed president, not a Fed governor.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the dissent itself (two votes for a 25bp hike) and its directional read are unchanged; only a title is misapplied."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d42",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "FOMC holds at 3.75-4.0% with dissents from Hammack (expected) and Cook (not) therefore JPM reads the new 'more information' sentence as a hawkish bias keeping December live and keeps expecting a December hike therefore the press conference gives no clear rationale for the pause, leaving the market less convinced of December despite Warsh denying midterms played a role therefore the Fed discloses strategy-only meetings in 2027/2028 creating 12-13 week gaps unlike prior framework reviews that preserved the schedule therefore Cook's dissent surprises JPM given where the hawkish dot-plot votes were presumed to originate, against the backdrop of the White House's effort to remove her and her December hearing.",
+   "brief_chain": "Same chain, same attributions and figures throughout (expected vs. unexpected dissent, hawkish-bias read, December hike call, 12-13 week gaps, 2020 framework-review precedent, Cook/dot-plot reasoning, removal effort and December hearing).",
+   "distortions": [
+    {
+     "what": "Brief says the market 'has become less convinced a December hike is planned'; source qualifies this as 'a little less convinced,' and separately source calls Cook's dissent 'very unexpected' where the brief just says 'not' expected.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 direction of market conviction and surprise is preserved; only an intensity qualifier is dropped in each case."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d29",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "The AI-momentum factor reasserts (AI vs. AI-at-risk basket, datacenters, semis all higher) therefore the factor setup favors high-beta momentum/crowded shorts over defensives therefore within Financials, large/trust banks lead regionals while alts stay choppy therefore defensives (senior housing REITs, exchanges, P&C) leak lower intraday on positioning/factors rather than fundamentals, with P&C bears vocal on reinsurance/BRO/HIG read-throughs, therefore no buyers step in to defend senior housing or exchanges ahead of FOMC; separately, earnings-season inbounds show pushback on PFG, persistent SPGI bulls, a SOFI squeeze against shorts, and a mixed-but-positive read on TFC's asset sale per Nash's accretion math.",
+   "brief_chain": "Same chain and same figures/attributions for the factor setup, the Financials pecking order, the defensives sell-off and its positioning-not-fundamentals framing, the FOMC-driven hesitancy to buy the dip, and the same four earnings-inbound items with the same numbers.",
+   "distortions": [
+    {
+     "what": "Brief writes 'AI-at-risk basket +6%' for the source's 'AI vs AI at risk +6% (GS Custom Basket)', dropping the 'vs' that marks this as a relative/spread basket rather than a reading on AI-at-risk names alone.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the surrounding sentence still correctly states the AI-momentum-over-defensives thesis, so the actionable read (favor high-beta AI momentum, fade defensives) is unchanged even though the figure's exact referent is blurred."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 4,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

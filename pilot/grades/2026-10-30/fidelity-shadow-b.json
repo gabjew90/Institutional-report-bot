@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22856__split-fed-left-rates-unchanged-waiting-for-more-information-.txt",
+   "span": "Yields increased a couple of bp after the statement but declined thereafter, with 2-year yields down almost 10 bp at the most and 5-year by 5 bp compared to before the announcement. ... Longer-dated yields were little changed, resulting in a renewed steepening of the curve.",
+   "why": "Exact match on direction, magnitude and the steepening conclusion."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22793__october-2026-fomc-recap.txt",
+   "span": "Against that backdrop, December is not a done deal. Markets price roughly an 80% chance of a 25bp hike versus our 55% probability",
+   "why": "Transition sentence with no standalone figure; the genuine cross-bank disagreement over December hike odds (80% market vs 55% house, Scotiabank's small pricing trim in s3) is well documented across sources, so the framing is grounded rather than invented."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22848__scotiaflash20261028a.txt",
+   "span": "OIS pricing for the December 9th meeting was very slightly trimmed by 1\u20132bps but still leans heavily toward a hick at that meeting which we expect. In my opinion, the main argument for skipping today was that a surprise hike would violate the dots.",
+   "why": "Attribution, figure and mechanism all match the Scotiabank note exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22909__some-were-getting-cold-feet-hock-tan-pays-up-guarantees-the-.txt",
+   "span": "Broadcom 'is providing residual value support to the SPV in an amount equivalent to the first lien portion of the financing.' ... the first lien is about $43.5 billion, or 69% of the [total]... guaranteed by the vendor.",
+   "why": "All figures ($63bn, $43.5bn, 69%) and the residual-value-support mechanism match."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22547__gs-equities-mid-day-color-us-equities-mid-day-color-27-oct-2.txt",
+   "span": "AI complex the clear outperformer today with neoclouds GSXUNEOC +585bps, optical GSXUOPTI +5%, inference chips GSXUINFR +466bps, memory GSTMTMEM +368bp",
+   "why": "GS neoclouds basket (companies renting out AI compute) +585bps and memory basket +368bp match exactly; ticker-to-plain-English expansion is faithful desk-shorthand translation."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22884__ubs-s-t-global-equities-a-return-to-defensives-and-selective.txt",
+   "span": "the iShares Expanded Tech-Software Sector ETF (IGV) is up just 1.1% and the S&P 500 is up 0.8%. At the same time, VIX has fallen 9.6%. ... I would be fading these moves which are likely an unwind of the increased hedging nets.",
+   "why": "Figures match exactly and UBS's own framing is 'unwind of hedging nets' rather than fresh buying, matching the sentence's characterization."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22908__priced-for-perfection-btig-says-refiners-worst-day-since-lib.txt",
+   "span": "As of 10/26, refiners were +157% YTD, by far the best year in the last three decades by nearly a factor of 2x. ... The S&P 500 refiners index was down 6.8% intraday, per Krinsky, its worst day since the Liberation Day crash of April 2025",
+   "why": "All figures, attribution to Jonathan Krinsky/BTIG, and the April 2025 comparison match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22908__priced-for-perfection-btig-says-refiners-worst-day-since-lib.txt",
+   "span": "Krinsky overlays the refiners index with the 3-2-1 crack spread, the benchmark margin for turning three barrels of crude into two of gasoline and one of distillate ... The crack has fallen from a peak of roughly $70/bbl in September ... to about $51 ... The stocks, meanwhile, kept climbing until about two weeks ago.",
+   "why": "Definition, both dollar figures, and the equities-vs-margin divergence timing all match."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22860__something-is-breaking-beneath-the-us-housing-market.txt",
+   "span": "US homebuilders are holding a massive trading range, but the fundamentals beneath the surface are deteriorating ... TS Lombard sees the risk of further homebuilder underperformance.",
+   "why": "Matches TS Lombard's thesis that chart range (orderly) masks deteriorating fundamentals; 'rotted' is a stylistic rather than factual distortion of 'deteriorating'."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22673__early-morning-reid-macro-strategy.txt",
+   "span": "the WSJ reported last night that the US has told several Gulf Arab countries to be prepared for a short, intense military campaign after the midterm elections.",
+   "why": "Matches exactly; correctly framed as reporting relayed to clients (WSJ via Deutsche Bank's note), not an assertion of fact by the bank itself."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22901__peak-ai-impulse-goldman-says-wealth-effect-has-topped-as-oil.txt",
+   "span": "In the base case, where 2027 Gulf supply runs just 0.3mb/d below February levels, Brent slides back toward $75 by late 2027. In the upside case, where Gulf supply stays 5mb/d short, Brent peaks above $140 next spring ... Commodities: 'Targeted exposures to oil products and European natural gas to hedge near-term escalation risks...'",
+   "why": "Base/upside figures and conditions match exactly; the commodities recommendation is a direct Goldman quote attributed correctly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22881__ubs-s-t-fomc-ahead-rbnz-s-surprise-hold-uk-budget-day-sk-hyn.txt",
+   "span": "Chancellor John Healey's first Budget on Wednesday is likely to favour modest household relief over a fiscal reset.",
+   "why": "Name, title and day match exactly."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22781__strategy-daily.txt",
+   "span": "Gilts have stayed remarkably calm into the Budget, with 10Y yields holding yesterday's 5.31-5.35% range.",
+   "why": "Verbatim match on range and characterization."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22891__ubs-s-t-ubs-cash-trading-main-themes-28th-october-joe-dickin.txt",
+   "span": "A windfall tax consideration for Banks has been socialised in press in recent weeks ... UBS has modelled 3% -> 6% which translates to an implied 3-4% cut to NWG/LLOY numbers and 1-2% cut for BARC/HSBC numbers.",
+   "why": "The bank levy is indeed the substance of the equity-side Budget story in the source (UK bank earnings impact model); framing sentence is grounded rather than inventing a separate claim."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22891__ubs-s-t-ubs-cash-trading-main-themes-28th-october-joe-dickin.txt",
+   "span": "UBS has modelled 3% -> 6% which translates to an implied 3-4% cut to NWG/LLOY numbers and 1-2% cut for BARC/HSBC numbers.",
+   "why": "Exact match; NWG/LLOY/BARC/HSBC ticker expansion to NatWest/Lloyds/Barclays/HSBC is faithful shorthand translation."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

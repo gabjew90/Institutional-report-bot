@@ -1,0 +1,144 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": "",
+   "why": "This is pipeline frontmatter (the light-day reason field), not a claim about market or research content. No source PDF makes or could make this claim about the ingestion pipeline's own state.",
+   "searched": [
+    "no new bank research",
+    "light_reason"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": null,
+   "span": "",
+   "why": "Live intraday price move (QQQ/SPY), sourced to a live market-data feed per design, not to any research PDF. Flagged live_market per grading rule.",
+   "searched": [
+    "2.61",
+    "1.16"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": null,
+   "span": "",
+   "why": "Live intraday GLD move; not a claim any bank PDF in this day's set makes.",
+   "searched": [
+    "2.52",
+    "GLD"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22368__hedge-funds-suffer-deepseek-sized-rout-as-goldman-flags-a-65.txt",
+   "span": "TMT-focused hedge funds are now down 9.6% month-to-date... This still feels much more like an investor leverage unwind... funds have hedged their AI books without actually selling them",
+   "why": "Confirms hedge funds cutting/de-grossing through the week, AI/TMT books taking the worst damage, and leverage ('investor leverage unwind', 'hidden leverage came due') as the central dynamic."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22148__gs-coppersmith-us-equities-a-pulse-check-25-oct-2026.txt",
+   "span": "My bias is that we could see a relief rally after two weeks of relentless selling... I hold that view pretty loosely given elevated gross exposures, negative systematic flow asymmetry... For now, that leaves us favoring call spreads to express upside",
+   "why": "Goldman's Coppersmith (equity desk) states a relief-rally lean as his working view, favors call spreads, and cites elevated gross exposure and negative systematic flow as the caveats \u2014 matches the sentence's content; the note's SPX-framed discussion throughout supports reading the call spreads as index (S&P) calls."
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": null,
+   "span": "",
+   "why": "Live BTC price/quote, sourced to a live price feed, not a research PDF.",
+   "searched": [
+    "76,818",
+    "76818"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": "",
+   "why": "Same pipeline-state claim as s1, restated in prose. No PDF supports or could support a claim about what did/didn't arrive in the ingestion pipeline.",
+   "searched": [
+    "no new bank research",
+    "came in since"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": "",
+   "why": "Structural/navigational sentence about the pulse format itself, not a market or research claim any source document could support.",
+   "searched": [
+    "market read above",
+    "full edition returns"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": "",
+   "why": "A glossary/legend defining rating abbreviations. The definitions are standard usage but are not drawn from or attributable to any specific source document in this day's set.",
+   "searched": [
+    "own less than the index",
+    "expected to lag its sector"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": "",
+   "why": "Calendar-section claim about the rest of the day; not phrased as or traceable to any source PDF's content.",
+   "searched": [
+    "no major catalysts",
+    "catalysts still to come"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22200__jpm-us-market-intell-afternoon-briefing-20261026.txt",
+   "span": "Trump said he will soon decide whether to \u201cmake a deal\u201d with Iran or \u201cfinish it off\u201d (CNBC). Trump threatened \u201canother little Operation Epic Fury\u201d but ruled out immediate action",
+   "why": "The tanker-attack/Hormuz premise is supported (source-text-all/2026-10-29/22052, 'An attack on a product tanker near Oman raises risks beyond Hormuz'), but the sentence's characterization of Trump's comment as promising the Iran war 'will be wrapped up soon' inverts the actual reporting: Trump's comment was a binary, still-threatening choice between a deal and 'finishing it off,' with markets reacting positively only to the absence of immediate action, not to any statement that the war would end soon. This overstates/changes the direction of what was said.",
+   "searched": [
+    "wrapped up soon",
+    "Iran war ends",
+    "finish it off"
+   ]
+  }
+ ],
+ "faithful": 2,
+ "distorted": 1,
+ "unsupported": 8,
+ "faithful_rate": 0.182,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

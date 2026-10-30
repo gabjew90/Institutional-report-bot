@@ -1,0 +1,107 @@
+{
+ "metric": 1,
+ "total_cards": 325,
+ "fragmentation_sets": [
+  {
+   "subject": "Brazil election market crash and fiscal/FX fallout from Lula's re-election",
+   "labels": [
+    "daily cross asset recap",
+    "brazil fiscal reform brl positioning"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Goldman (Hatzius) 2027 global growth outlook: fading AI wealth effect, fewer rate hikes than priced, mounting downside risks",
+   "labels": [
+    "central banks deliver fewer hikes than priced",
+    "ai wealth effect reversal"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "Korea/KOSPI equity valuation re-rating debate",
+   "labels": [
+    "kospi target cut",
+    "korea equity valuation positioning"
+   ],
+   "cards": 6
+  },
+  {
+   "subject": "S&P 500 correction/breadth state and the post-midterm 'clearing event' debate",
+   "labels": [
+    "s p correction clearing events",
+    "spx breadth divergence"
+   ],
+   "cards": 15
+  }
+ ],
+ "fragmented_mass_share": 0.175,
+ "mis_merges": [
+  {
+   "label": "daily cross asset recap",
+   "subjects": [
+    "Brazil election market crash (EWZ/BRL)",
+    "AI-trade sector basket stabilization",
+    "dark pool/OTC market-structure share stats"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Brazil crash duplicates the dedicated Brazil label while the unrelated dark-pool market-share statistic has no home with either of the label's other stories and would be dropped rather than surfaced as its own brief."
+  },
+  {
+   "label": "financials earnings reactions",
+   "subjects": [
+    "SOFI short squeeze",
+    "TFC accretive asset sale",
+    "CBRE/JLL real-estate trough debate",
+    "CME/CBOE prediction-market momentum",
+    "PFG/SPGI earnings-call scrutiny",
+    "Hotels vs Lodging REIT RevPAR debate",
+    "ARES BDC M&A read-through"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Specific, brief-worthy stories (the SOFI squeeze, the TFC sale) are flattened into one undifferentiated financials grab-bag an editor would likely skip rather than mine for a lead."
+  },
+  {
+   "label": "mag 7 volatility dislocation",
+   "subjects": [
+    "Mag7 implied-vol discount and mega-cap earnings options positioning",
+    "EWY/Korea AI-momentum squeeze trade idea"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The EWY trade has nothing to do with Mag7 vol and belongs with the Korea valuation story split across 'kospi target cut' and 'korea equity valuation positioning', so it would be missed building either theme."
+  },
+  {
+   "label": "hedge fund leverage positioning",
+   "subjects": [
+    "Equity long/short hedge-fund gross and net leverage (GS)",
+    "CTA short-covering in rates and credit (UBS)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The CTA rates/credit short-covering content is a positioning story that belongs with the Fed/10-year-yield theme, not equity L/S leverage stats, and would be missed there."
+  },
+  {
+   "label": "european earnings reads",
+   "subjects": [
+    "Allianz 3Q miss",
+    "DSV reiterate Buy",
+    "Gjensidige downgrade",
+    "Unibail-Rodamco-Westfield estimate cuts",
+    "Wartsila order beat"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Five unconnected single-name items with no shared thesis, but each is minor enough that a pulse would treat the label as one European-earnings-miscellany brief rather than split it, so no theme is lost."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12 of 325 visible cards (3.7%), correctly excluded from fragmented mass; it also duplicates the dedicated Apple preview label's content verbatim, a reader-overflow quality issue worth a separate note. Counts are computed over the 325 cards actually shown in this input, not the ledger's stated 1356-card total for the day, since only a sample reached this grading pass.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

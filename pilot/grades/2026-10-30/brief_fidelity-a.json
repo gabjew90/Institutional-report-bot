@@ -1,0 +1,87 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d38",
+   "tier": "rest",
+   "bank": "SEB",
+   "source_chain": "Fed holds 10-2 (Cook+Hammack dissent, the 4th hike-vote this year after Hammack/Logan/Kashkari in July) therefore new 'more information' statement line echoes Williams/Jefferson/Waller and the Sept dot plot's one-more-hike call therefore Warsh's press conference reads more dovish (strong vs solid, 'strengthened,' tightened-but-not-tight) therefore SEB keeps its Dec-hike-then-hold-then-late-2027-cuts call, flagging Mideast/energy upside risk and real-yield downside risk, with balance-sheet/meeting-schedule housekeeping and a dovish market reaction.",
+   "brief_chain": "Same chain: 10-2 hold, 4th hike-dissent of the year, statement/press-conference read dovish, SEB's Dec-hike-then-hold-then-2027-cuts call with the same two risks, Q1 balance-sheet task force, fall-2027 strategy meetings, dovish market pricing.",
+   "distortions": [
+    {
+     "what": "Brief says 'markets priced the statement as dovish'; source says the initial reaction to the statement itself was hawkish (yields rose first) and it was Warsh's press-conference comments that produced the dovish re-pricing (yields net lower, Nasdaq higher).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 SEB's own call (one more December hike, then hold, then cuts in late 2027) is unaffected by which part of the event moved markets; this is a narrative-attribution compression, not a change to any stance or figure."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d35",
+   "tier": "rest",
+   "bank": "Scotiabank",
+   "source_chain": "FOMC holds 10-2, with two previously hawkish members (Kashkari, Logan) not dissenting this time therefore the 'strong' upgrade and new 'more information' line read as slightly dovish therefore Holt argues the real reason for skipping was to protect the dot plot from creating runaway December pricing and internal tension before hawks lose votes therefore Scotia still expects a December hike (OIS trimmed only 1-2bp) alongside balance-sheet/task-force/meeting-schedule housekeeping.",
+   "brief_chain": "Same chain: 10-2 hold, two hawks stood down, statement changes read slightly dovish, Holt's dot-plot-protection rationale, Scotia's own December-hike expectation, same housekeeping items (balance sheet from Q1, task forces, fewer future meetings, Nov 16 hearing).",
+   "distortions": [
+    {
+     "what": "Brief omits the piece's 'Conflicting styles: Warsh looks backward, Macklem looks forward' observation and the full Q&A detail (midterms denial, Cook-hearing question, AI/rates Q&A).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 none of this bears on Scotia's own December-hike call or any figure; it is dropped secondary color, not a changed stance."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d42",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "FOMC holds, with Hammack's expected dissent plus Cook's unexpected one therefore JPM reads the new 'more information' sentence as a hawkish bias meant to keep December live therefore JPM keeps its December-hike call despite the press conference giving no clear rationale for the pause and the market growing less convinced of a hike therefore the chair discloses a new reduced-meeting schedule (unlike past framework reviews, e.g. 2020, which kept the schedule intact) therefore Cook's dissent is notable because the September dot plot's four hike votes were presumed to come from hawkish reserve-bank presidents, not a governor, against the backdrop of the White House's year-long, Supreme-Court-blocked effort to remove her ahead of a December hearing.",
+   "brief_chain": "Same chain: expected Hammack + unexpected Cook dissent, hawkish-bias reading of the new sentence, JPM's own December-hike call maintained, unclear press-conference rationale and reduced market conviction, midterms denial, new reduced-meeting-schedule disclosure vs. past framework reviews (incl. 2020), Cook's surprising dissent against the dot-plot presumption, and the White House/Supreme-Court/December-hearing context.",
+   "distortions": [
+    {
+     "what": "Brief drops JPM's aside that the phrase 'getting in the cracks' originates with Jeremy Stein and originally meant something else (macro-prudential policy, not this context).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is etymological color about a phrase, unconnected to JPM's December-hike call or any figure."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d29",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "The AI trade reasserts (AI-vs-AI-at-risk basket, Datacenters, AI Semis all up) therefore the factor setup favors high-beta momentum/crowded shorts over low-vol defensives, with Large/Trust banks over Regionals within Financials therefore defensives (Senior Housing REITs, Exchanges) leak lower on positioning/factors with no fundamental pushback, while P&C bears separately cite real negative read-throughs (reinsurers, RYAN, workers comp) though P&C has partly stabilized therefore no dip-buying has emerged in Senior Housing/Exchanges because investors are wary of fighting what may be an early-stage factor regime shift into FOMC; separately, earnings-season inbounds cover PFG (pushback on the rally), SPGI (vocal bulls despite the strategic review), SOFI (squeeze against crowded shorts) and TFC's asset sale (mixed-to-positive, Nash's note calling it accretive on an 80bp vs 1.1% ROA).",
+   "brief_chain": "Same chain and same conclusion: AI trade reasserting, momentum/crowded-shorts favored over defensives, Large/Trust > Regionals, Senior Housing/Exchanges leaking on positioning/factors vs. P&C's fundamentals-based bear case, no dip-buying yet ahead of FOMC, and the same four earnings-inbound items (PFG, SPGI, SOFI, TFC/Nash) with the same figures.",
+   "distortions": [
+    {
+     "what": "Source's 'AI vs AI at risk +6% (GS Custom Basket)' denotes a relative-value AI-winners-vs-AI-at-risk-names basket; the brief renders it as 'AI-at-risk basket +6%,' which reads as the at-risk basket itself rising rather than a winners-over-laggards spread.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the factor call (favor high-beta momentum/crowded shorts over defensives) is independently supported by the Datacenter/Semis figures and the rest of the note; the basket label doesn't change which side of the trade GS favors."
+    },
+    {
+     "what": "Brief omits that V, HOOD and LPLA are named as tonight/tomorrow's top prints drawing the most inbounds.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 naming which prints are most-asked-about carries no stance or trade call on those names; it's dropped supporting detail."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

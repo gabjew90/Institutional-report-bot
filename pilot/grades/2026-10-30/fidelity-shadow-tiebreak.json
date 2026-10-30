@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22856__split-fed-left-rates-unchanged-waiting-for-more-information-.txt",
+   "span": "2-year yields down almost 10 bp at the most and 5-year by 5 bp compared to before the announcement... Longer-dated yields were little changed, resulting in a renewed steepening of the curve.",
+   "why": "Exact figures for 2y (-10bp), 5y (-5bp), unchanged long end, and renewed steepening all match."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22848__scotiaflash20261028a.txt",
+   "span": "OIS pricing for the December 9th meeting was very slightly trimmed by 1-2bps but still leans heavily toward a hike",
+   "why": "Scene-setting line; multiple sources (Scotiabank, JPM, ING, 22795) genuinely debate how certain/large the December move is, supporting a real cross-desk disagreement over December's pricing."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22848__scotiaflash20261028a.txt",
+   "span": "the main argument for skipping today was that a surprise hike would violate the dots... OIS pricing for the December 9th meeting was very slightly trimmed by 1-2bps but still leans heavily toward a hike at that meeting which we expect",
+   "why": "Matches Scotiabank's dot-plot rationale and the 1-2bp December trim with continued lean to a hike, exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22909__some-were-getting-cold-feet-hock-tan-pays-up-guarantees-the-.txt",
+   "span": "Broadcom had arranged a $63 billion deal... the first lien is about $43.5 billion, or 69% of the... Broadcom 'is providing residual value support to the SPV in an amount equivalent to the first lien portion of the financing.'",
+   "why": "All figures ($63bn, $43.5bn, 69%, residual value support equal to first lien) match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22171__gs-u-s-equities-color-us-equities-color-stable-start-26-oct-.txt",
+   "span": "neoclouds GSXUNEOC +585bps... memory GSTMTMEM +368bp",
+   "why": "Neoclouds (companies renting out AI compute, e.g. CoreWeave) +585bp and memory basket +368bp match; 'rent out AI computing power' is a faithful expansion of desk shorthand 'neoclouds', confirmed by other sources describing neoclouds as depending on AI data-center compute revenue."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22884__ubs-s-t-global-equities-a-return-to-defensives-and-selective.txt",
+   "span": "the iShares Expanded Tech-Software Sector ETF (IGV) is up just 1.1% and the S&P 500 is up 0.8%. At the same time, VIX has fallen 9.6%... this came on the back of increased risk management led net shorts (to hedge)... I would be fading these moves which are likely an unwind of the increased hedging nets",
+   "why": "Figures (1.1%, 0.8%, -9.6%) and the 'unwind of hedges, not fresh buying' framing both match UBS's note exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22908__priced-for-perfection-btig-says-refiners-worst-day-since-lib.txt",
+   "span": "As of 10/26, refiners were +157% YTD, by far the best year in the [record]... 2026 is at +157.3%... down 6.8% intraday... its worst day since the Liberation Day crash of April 2025",
+   "why": "All figures and attribution to BTIG's Jonathan Krinsky match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22908__priced-for-perfection-btig-says-refiners-worst-day-since-lib.txt",
+   "span": "the 3-2-1 crack spread, the benchmark margin for turning three barrels of crude into two of gasoline and one of distillate... has fallen from a peak of roughly $70/bbl in September... to about $51... The stocks, meanwhile, kept climbing until about two weeks ago.",
+   "why": "Figures ($70 to $51) and the stocks-vs-margin divergence timing match; 'distillate' vs 'diesel' is a standard synonym."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22860__something-is-breaking-beneath-the-us-housing-market.txt",
+   "span": "US homebuilders are holding a massive trading range, but the fundamentals beneath the surface are becoming increasingly uncomfortable... Homebuilder profitability is deteriorating fast.",
+   "why": "Matches TS Lombard's thesis that fundamentals are rotting while the chart (range-bound, 'remains intact') still looks orderly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22673__early-morning-reid-macro-strategy.txt",
+   "span": "the US has told several Gulf Arab countries to be prepared for a short, intense military campaign after",
+   "why": "Exact wording match, correctly attributed as WSJ reporting relayed to clients rather than asserted directly by the bank."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22901__peak-ai-impulse-goldman-says-wealth-effect-has-topped-as-oil.txt",
+   "span": "In the base case, where 2027 Gulf supply runs just 0.3mb/d below February levels, Brent slides back toward $75 by late 2027. In the upside case, where Gulf supply stays 5mb/d short, Brent peaks above $140 next spring... 'Targeted exposures to oil products and European natural gas to hedge near-term escalation risks'",
+   "why": "Base case $75/late 2027, upside $140/next spring, and the commodities team's targeted-exposure recommendation all match; 'rather than flat crude' is a reasonable editorial inference from the scenario framing, not a distorted fact."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22740__gs-privorotsky-gs-basics-fed-hyperscalers-uk-budget-cross-as.txt",
+   "span": "UK Budget: Today... whether Healey delivers something more moderate.",
+   "why": "Note dated 28 Oct 2026, a Wednesday, confirms Budget day and names Healey as the one presenting."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22781__strategy-daily.txt",
+   "span": "Gilts have stayed remarkably calm into the Budget, with 10Y yields holding yesterday's 5.31-5.35% range.",
+   "why": "Exact match on the range and the 'calm' framing."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22891__ubs-s-t-ubs-cash-trading-main-themes-28th-october-joe-dickin.txt",
+   "span": "maintaining the fiscal rules should be supportive for gilts... and equities offer selective opportunities... rather than a broad-based UK equity rerating. A windfall tax consideration for Banks has been socialised in press",
+   "why": "Reflects UBS's own framing that, with gilts calm, the bank levy/windfall tax is the specific equity-relevant item from the Budget."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-29/22891__ubs-s-t-ubs-cash-trading-main-themes-28th-october-joe-dickin.txt",
+   "span": "UBS has modelled 3% -> 6% which translates to an implied 3-4% cut to NWG/LLOY numbers and 1-2% cut for BARC/HSBC numbers.",
+   "why": "Exact match: 3%->6% levy, 3-4% NatWest/Lloyds earnings cut, 1-2% Barclays/HSBC cut."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

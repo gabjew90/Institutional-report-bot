@@ -1,0 +1,145 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "This is a pipeline-state/frontmatter field (light_reason), not a factual claim any research PDF could confirm or deny \u2014 no document asserts whether new bank research arrived since the prior pulse.",
+   "searched": [
+    "light_reason",
+    "no new bank research"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "",
+   "span": "",
+   "why": "Intraday live price move (QQQ/SPY, 'twenty minutes into Friday's session') \u2014 no source document can contain a same-day live quote; all source PDFs are dated Oct 26-28.",
+   "searched": [
+    "QQQ down 2.61",
+    "SPY down 1.16",
+    "Friday's session"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "",
+   "span": "",
+   "why": "Live intraday price move for GLD plus a same-day interpretive claim ('not acting as shelter') \u2014 not present in any dated research document.",
+   "searched": [
+    "GLD -2.52",
+    "gold sold off shelter"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-10-29/22147__gs-coppersmith-us-equities-a-pulse-check-25-oct-2026.txt",
+   "span": "all three major hedge fund cohorts ... lost more than 1% ... TMT-focused HFs are now down -9.6% MTD ... overall HF gross leverage still stood at 312%",
+   "why": "GS's Coppersmith note (echoed in the ZeroHedge summary '22368') directly supports hedge funds cutting positions over the week, AI/TMT stocks hit hardest, and leverage ('gross leverage 312%', 'investor leverage unwind') as the central mechanism."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-10-29/22147__gs-coppersmith-us-equities-a-pulse-check-25-oct-2026.txt",
+   "span": "My bias is that we could see a relief rally ... But I hold that view pretty loosely given elevated gross exposures, negative systematic flow asymmetry, and the geopolitical wildcards. For now, that leaves us favoring call spreads",
+   "why": "The call spreads, gross-exposure and systematic-flow warnings are faithful, but the source explicitly calls the relief rally a loosely-held 'bias', not a 'base case' \u2014 the pulse inflates the desk's conviction level.",
+   "searched": [
+    "base case relief rally",
+    "S&P 500 call spreads"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "",
+   "span": "",
+   "why": "Live BTC price quote for the current session; not contained in any dated research PDF.",
+   "searched": [
+    "76,818",
+    "BTC down 1.51"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "Same pipeline-state claim as s1 (duplicated) \u2014 no research document can confirm or deny whether new research arrived since the last pulse.",
+   "searched": [
+    "no new bank research came in",
+    "since the last pulse"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "Structural/editorial statement about the pulse's own publishing cadence, not a claim any source document addresses.",
+   "searched": [
+    "market read above",
+    "full edition returns with the next research"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text-all/2026-10-29/22063__barclays-it-hardware-and-communications-equipment-implied-ai.txt",
+   "span": "OW = Overweight; EW = Equal Weight; UW = Underweight ... Guide to the Barclays Research Price Target",
+   "why": "Standard sell-side rating/price-target glossary boilerplate (UW, PT) matches the convention used verbatim in the source corpus's own disclosure footers."
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-10-29/22157__gs-kaplan-gs-week-ahead-23-oct-2026.txt",
+   "span": "Busy week of both macro and micro with a full slate of central bank decisions (FOMC + BOC Wed, ECB Thurs, BOJ Fri)",
+   "why": "GS's week-ahead note flags a BOJ rate decision for this Friday \u2014 the same day s2/s3 place 'today' \u2014 directly contradicting the claim that no major catalysts remain today.",
+   "searched": [
+    "no major catalysts",
+    "nothing scheduled today"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-10-29/22777__jpm-us-market-intell-morning-briefing-20261028.txt",
+   "span": "Trump indicated that he is nearing a decision on Iran, negotiation or continue attacks as a third aircraft carrier nears the region",
+   "why": "The tanker-attack/Hormuz framing is supported ('22052__global-oil-market-tracker-issue-22.txt': 'Tanker attacks reached an all-time high... near Hormuz'), but no source has Trump asserting the war will be 'wrapped up soon' \u2014 every source describes an unresolved binary (deal or renewed strikes), and other notes ('22901', '22673') describe Trump/the US threatening new attacks, the opposite of a wind-down signal.",
+   "searched": [
+    "wrapped up soon",
+    "Iran war end",
+    "Trump Iran decision"
+   ]
+  }
+ ],
+ "faithful": 2,
+ "distorted": 3,
+ "unsupported": 6,
+ "faithful_rate": 0.182,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

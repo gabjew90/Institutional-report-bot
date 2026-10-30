@@ -1,0 +1,12 @@
+{
+ "failed": true,
+ "dim": "mechanism",
+ "agent": "b",
+ "artifact": "production",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "raw_tail": "The \"Lead theme\" section in this grading task is empty \u2014 there's no production pulse text to evaluate against the source notes. I can't identify a mechanism, quote a span, or compare chains without the actual lead-theme content.\n\nCould you paste the production pulse's `## 2. THE MAIN EVENT` text (or confirm it's genuinely missing for this date)? Once I have it, I'll grep the listed source-text files for the figures/names it cites, quote the driving note's mechanism, and return the STRICT JSON verdict.\n"
+}

@@ -1,0 +1,62 @@
+{
+ "metric": 1,
+ "total_cards": 322,
+ "fragmentation_sets": [
+  {
+   "subject": "Hyperscaler AI capex is outrunning free cash flow, forcing new equity issuance (Meta's Class C raise, Anthropic's IPO) \u2014 the same funding-stress event split into a company-earnings framing and a market-structure framing",
+   "labels": [
+    "ai capex credit stress",
+    "equity supply glut"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "GS's 2027 global growth call: the AI wealth effect fading argues for fewer DM central-bank hikes than priced \u2014 one Hatzius note split across two labels, with cards duplicated verbatim in both (the 100bp DM-yield/0.6% GDP line, the '2026 remarkably unremarkable' line)",
+   "labels": [
+    "central banks deliver fewer hikes than priced",
+    "ai wealth effect reversal"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "Is the S&P's correction finished and a clearing-event rally coming, or does breadth divergence argue against it \u2014 MS's bull case and BTIG's bear case on the same question",
+   "labels": [
+    "s p correction clearing events",
+    "spx breadth divergence"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Korea/KOSPI valuation and positioning debate \u2014 GS's target cut and JPM/GS's cheap-valuation-but-light-allocation read are the same cheap-but-unloved thesis",
+   "labels": [
+    "kospi target cut",
+    "korea equity valuation positioning"
+   ],
+   "cards": 6
+  }
+ ],
+ "fragmented_mass_share": 0.23,
+ "mis_merges": [
+  {
+   "label": "hedge fund leverage positioning",
+   "subjects": [
+    "equity hedge fund gross/net leverage levels",
+    "CTA short-covering positioning in Treasuries and credit"
+   ],
+   "would_change_theme_selection": false,
+   "why": "4 of its 5 cards are UBS rates/credit CTA positioning (relevant to the UST yield debate elsewhere in the ledger), not the equity leverage stat the label implies, but the bucket is only 5 cards and too thin to have flipped theme selection on its own."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12 cards (3.7% of the 322 shown) and is counted as ungrouped fragmented mass per the frozen rule, though several of its cards (Apple PT, iPhone/Services/margin guidance) duplicate the apple earnings preview label almost verbatim. Every label's card list appeared capped near 12, so counts and the share are based on the visible sample, not the ledger's stated 1356-card total.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,12 @@
+{
+ "failed": true,
+ "dim": "mechanism",
+ "agent": "a",
+ "artifact": "production",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "raw_tail": "The lead theme text block in this request is empty \u2014 there's nothing under `### Lead theme` to grade against the source files. I can't produce a metric-3 grading without the actual pulse text being evaluated.\n\nCould you paste the production pulse's `## 2. THE MAIN EVENT` section text? Once I have that, I'll identify which of the listed source files it rests on (grepping for the figures/names it cites), quote the mechanism span, and return the STRICT JSON verdict per the frozen grader spec.\n"
+}
