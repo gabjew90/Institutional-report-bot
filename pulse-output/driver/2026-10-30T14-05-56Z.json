@@ -1,0 +1,15 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-10-30T14:06:00.880054Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=1030; anchors 747/763 matched, 0 empty, 6 too_short (rate=0.979)", "at": "2026-10-30T14:06:00.955591Z"},
+  "omnipulse": {"decision": "LIGHT", "detail": "no new bank research since the last pulse", "at": "2026-10-30T14:06:01.059439Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "clean", "at": "2026-10-30T14:07:01.604928Z"},
+  "lint": {"decision": "SKIP_SCRUB", "detail": "6 soft issue(s) only", "at": "2026-10-30T14:11:41.440813Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-10-30T14:11:42.008251Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-10-30T14:11:42.058782Z"},
+  "adversarial": {"decision": "DISPATCH_SOFT_REPAIR", "detail": "0 hard, 2 soft; soft repair applied", "at": "2026-10-30T14:09:36.100709Z"},
+  "adversarial_recheck": {"decision": "CONTINUE", "detail": "0 hard findings (after 1 hard repair round)", "at": "2026-10-30T14:11:41.229838Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane", "at": "2026-10-30T14:11:42.088359Z"}
+ },
+ "budgets": {"adversarial_soft_repairs": 1, "adversarial_repairs": 1}
+}
