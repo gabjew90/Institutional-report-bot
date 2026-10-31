@@ -1005,3 +1005,19 @@ def test_scoreboard_2026_10_28_review_precision():
     for q in ("Damn I guess I have to follow Abe plays instead",
               "It's nice that Abe makes the call after market closes", "kyle calls me lol"):
         assert R.classify(q).shape != R.MEMBER_LEDGER or "member ledger words" in R.classify(q).reason, q
+
+
+def test_one_company_beside_a_session_word_is_that_company_2026_10_31():
+    """"MSTR earnings after the bell." got the day's whole slate (2026-10-30
+    audit). One listed company beside a session word is its own print; a
+    request for the list, or two companies, is still the slate."""
+    for q in ("MSTR earnings after the bell.", "mstr earnings tonight", "$mstr earnings tonight",
+              "tesla earnings tonight", "MSTR earnings this week", "AAPL earnings tomorrow?"):
+        r = R.classify(q)
+        assert r.shape == R.EARNINGS_DATE, q
+        assert r.prefetch[0][0] == R.T_EDATE and R.T_RESEARCH in [p[0] for p in r.prefetch], q
+    r = R.classify("is AAPL reporting today")
+    assert r.shape == R.EARNINGS_DATE and R.T_RESEARCH not in [p[0] for p in r.prefetch]
+    for q in ("who reports tonight besides NVDA", "what else reports after the bell besides MSTR",
+              "AMZN and AAPL earnings tonight", "earnings after the bell today", "WHO REPORTS TONIGHT"):
+        assert R.classify(q).shape == R.EARNINGS_SLATE, q

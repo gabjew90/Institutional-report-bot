@@ -501,6 +501,13 @@ _SLATE_RE = re.compile(
     r"|(?:reports?|reporting|earnings?)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?"
     r"|this\s+week|next\s+week|after\s+(?:the\s+)?(?:close|bell)|before\s+(?:the\s+)?(?:open|bell)"
     r"|on\s+deck|slate|lineup|calendar))\b", re.I)
+# A request for the list itself, which a named company does not narrow:
+# "who reports tonight besides NVDA", "what earnings should we play today
+# for HPE like returns".
+_WHO_REPORTS_RE = re.compile(
+    r"\b(?:who(?:'s|s| is| are| else)?\b|what\s+else|what\s+(?:earnings|econ|data|names|companies|stocks)"
+    r"|which|do\s+we\s+have|anyone|anything|any\s+(?:other|big|good)"
+    r"|besides|other\s+than|except|aside\s+from|beyond|slate|lineup|list)\b", re.I)
 # A session word beside "earnings" ("earnings after hours? list them", "what
 # earnings we have after 4pm", "was this morning earnings decent") is the
 # slate only when no ticker is named: "TSLA earnings after hours move" is
@@ -1370,6 +1377,23 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
     # time are earnings today") must not cost the question its slate.
     if ((_SLATE_RE.search(q) or (_SLATE_SESSION_RE.search(q) and not tickers))
             and not (_EDATE_RE.search(q) and tickers)):
+        # "MSTR earnings after the bell." is about MSTR: one listed company
+        # beside a session word is that company's print, not the day's
+        # slate. "who reports tonight besides NVDA" still asks for the
+        # list (2026-10-30 audit). A lowercase English word is no company
+        # here ("which big companies has earnings" named Hasbro).
+        words = _listed.english_words()
+        named = [t for t in tickers if listed(t) and not (
+            t not in strong and t.lower() in words
+            and re.search(r"(?<![\w$])" + re.escape(t.lower()) + r"\b", q))]
+        if len(named) == 1 and not _WHO_REPORTS_RE.search(q):
+            sym = named[0]
+            r.tickers = named
+            date_check = bool(re.search(r"\b(?:is|are|does|do|will)\s+\$?\w+\s+report", ql))
+            r.shape, r.reason = EARNINGS_DATE, "one company beside an earnings session word"
+            r.prefetch = [(T_EDATE, {"symbol": sym}), (T_PRICE, {"symbols": [price_symbol(sym)]})] + \
+                _stock_prefetch(sym, research=not date_check)
+            return r
         wk = re.search(r"\b(this|next)\s+week\b", ql)
         if wk:
             # The slate answers a whole week in one call since 2026-10-18;
