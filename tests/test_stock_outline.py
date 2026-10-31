@@ -114,3 +114,12 @@ def test_a_feed_tag_in_lowercase_is_dropped():
     out = S.strip_source_tags("→ **$ELMT $23.19**, down **-3.7%** for the session [finnhub]\n"
                               "→ Supplies the F-35 [Yahoo]", set())
     assert out == "→ **$ELMT $23.19**, down **-3.7%** for the session\n→ Supplies the F-35 (Yahoo)"
+
+
+def test_an_outline_label_in_parentheses_is_dropped_and_a_publisher_kept():
+    """2026-10-31 harness: "... semiconductor industries (Company Background)"."""
+    from discord_bot import stock_outline as S
+    out = S.strip_source_tags("→ Makes components for semiconductor industries (Company Background)\n"
+                              "→ A $36M contract (GlobeNewswire), short interest 27.8% (Yahoo)", set())
+    assert out == ("→ Makes components for semiconductor industries\n"
+                   "→ A $36M contract (GlobeNewswire), short interest 27.8% (Yahoo)")

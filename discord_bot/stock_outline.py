@@ -270,6 +270,7 @@ def strip_source_tags(answer: str, banks: set[str] | None = None) -> str:
             return f"{lead}{tag}" if inside else f"{lead}({tag})"
         return ""
     text = _SOURCE_TAG_RE.sub(_drop, text)
+    text = _PAREN_LABEL_RE.sub("", text)
     # Several tags in one bracket at the end of a line ("[live prices, ticker
     # snapshot]", "[Goldman Sachs, exchange data]"), 2026-10-18 live harness.
     return _TAG_LIST_RE.sub("", text)
@@ -279,8 +280,15 @@ _TAG_LIST_RE = re.compile(
     r"[ \t]*\[(?:[A-Za-z][A-Za-z.&' -]{1,30})(?:,\s*[A-Za-z][A-Za-z.&' -]{1,30})+\](?=[ \t]*(?:\n|$))")
 
 
-_GENERIC_TAGS = {"live prices", "company report", "consensus data", "exchange and filing data",
-                 "options chain", "news search", "company and trading data", *_FEED_TAGS}
+_LABELS = ("live prices", "company report", "consensus data", "exchange and filing data",
+           "options chain", "news search", "company and trading data")
+_GENERIC_TAGS = {*_LABELS, *_FEED_TAGS}
+# The outline's labels copied in parentheses ("... semiconductor industries
+# (Company Background)", 2026-10-31 harness). Only the labels: a publisher
+# in parentheses, "(GlobeNewswire)" or "(Yahoo)", is a real attribution.
+_PAREN_LABEL_RE = re.compile(
+    r"[ \t]*\((?:" + "|".join(re.escape(t) for t in (*_LABELS, "company background")) + r")\)",
+    re.I)
 
 
 def outline_banks(research: dict | None) -> set[str]:
