@@ -5088,6 +5088,9 @@ async def _ask_02_call_model_with_tools(
             "figs": _trace_figs(_pf_res),
             "excerpt": _trace_excerpt(_pf_res),
             "seconds": round(time.monotonic() - _pf_t0, 2),
+            # a tool that names the feed it actually used (event_returns:
+            # Yahoo's earnings dates or a search) overrides the footer label
+            **({"feed": _pf_res["feed"]} if _pf_res.get("feed") else {}),
         })
         return _pf_res
 

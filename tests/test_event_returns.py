@@ -80,3 +80,62 @@ def test_all_time_high_from_monthly_bars():
     assert out["last_close"] == 168.0 and out["pct_below_high"] == 20.0
     assert out["history_starts"] == "2020-01"
     assert "error" in all_time_high([])
+
+
+# Earnings dates come from Yahoo, with the beat or miss (2026-10-30 audit A9:
+# "which earnings beats sold off?" under an RDDT answer got no quarter).
+_ROWS = [
+    {"date": "2026-11-05", "session": "after the close", "epsActual": None, "epsEstimate": 0.9},
+    {"date": "2026-08-06", "session": "after the close", "epsActual": 0.45, "epsEstimate": 0.32},
+    {"date": "2026-05-07", "session": "before the open", "epsActual": -0.1, "epsEstimate": 0.02},
+]
+
+
+def test_earnings_events_from_yahoo_rows():
+    ev = E.earnings_events(_ROWS, 3, date(2026, 10, 30))
+    assert [e["date"] for e in ev] == ["2026-08-06", "2026-05-07"]
+    assert ev[0] == {"date": "2026-08-06", "label": "EPS $0.45 vs $0.32 expected (beat)", "after_close": True}
+    assert ev[1]["label"] == "EPS -$0.10 vs $0.02 expected (miss)" and not ev[1]["after_close"]
+
+
+def test_earnings_use_yahoo_not_search(monkeypatch):
+    async def no_search(*a):
+        raise AssertionError("an earnings question must not search for dates")
+    monkeypatch.setattr(E, "_search", no_search)
+    from report import market_data, ticker_snapshot
+    monkeypatch.setattr(ticker_snapshot, "earnings_rows", lambda sym, limit: _ROWS)
+    monkeypatch.setattr(market_data, "fetch_price_history", lambda *a: _hist())
+    E._CACHE.clear()
+    out = asyncio.run(E._execute_event_returns({"symbol": "RDDT", "event": "earnings", "count": 3}))
+    assert out["status"] == "ok" and out["dates_confirmed"]
+    assert out["feed"] == "earnings dates and daily closes (Yahoo)"
+    # after the close on Aug 6: the base is that day's close (103)
+    assert out["events"][0]["base_date"] == "2026-08-06"
+    assert E.block_lines(out)[-1].startswith(
+        "→ **Aug 6, 2026**, EPS $0.45 vs $0.32 expected (beat): from $103.00")
+
+
+def test_earnings_fall_back_to_search_when_yahoo_fails(monkeypatch):
+    async def fake_search(sym, event, n, name):
+        return "2026-08-06: Q2 earnings, after the close (reuters.com)", [{"title": "r", "url": "https://r"}]
+    monkeypatch.setattr(E, "_search", fake_search)
+    from report import market_data, ticker_snapshot
+
+    def boom(sym, limit):
+        raise RuntimeError("yahoo down")
+    monkeypatch.setattr(ticker_snapshot, "earnings_rows", boom)
+    monkeypatch.setattr(market_data, "fetch_price_history", lambda *a: _hist())
+    E._CACHE.clear()
+    out = asyncio.run(E._execute_event_returns({"symbol": "RDDT", "event": "earnings", "count": 3}))
+    assert out["status"] == "ok" and out["feed"].startswith("event dates (Google)")
+
+
+def test_earnings_reaction_questions_route_to_event_returns():
+    r = R.classify("how has rddt performed last 3 earnings")
+    assert r.prefetch == [(R.T_EVENTS, {"symbol": "RDDT", "event": "earnings", "count": 3})]
+    under = ('[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n'
+             '"→ **RDDT** after its last three reports: ..."\n\n'
+             "[SUNNY's message to you]\nwhich earnings beats sold off?")
+    r = R.classify(under)
+    assert r.shape == R.HISTORICAL_STAT and r.tickers == ["RDDT"]
+    assert r.prefetch == [(R.T_EVENTS, {"symbol": "RDDT", "event": "earnings", "count": 6})]

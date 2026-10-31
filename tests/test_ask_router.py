@@ -853,7 +853,9 @@ def test_a_bot_answers_capitals_are_not_its_subject():
          "[Sam's message to you]\nHow many shares unlocked?")
     assert R.reply_parent_tickers(q) == ["ELMT"]
     member = q.replace("from omniwiz", "from Sam").replace("**ELMT**", "ELMT")
-    assert "DLA" in R.reply_parent_tickers(member)
+    # a member's capitals count, but only ones something is listed under
+    # (2026-10-30 audit, design note 1): DLA is the Defense Logistics Agency
+    assert R.reply_parent_tickers(member) == ["ELMT"]
 
 
 def test_a_reply_under_a_league_answer_stays_fantasy_2026_10_18():

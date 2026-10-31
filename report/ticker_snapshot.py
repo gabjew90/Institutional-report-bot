@@ -301,6 +301,27 @@ def render_valuation(v: dict) -> str | None:
     return "valuation (computed from the price and consensus): " + ", ".join(bits)
 
 
+def _earnings_history(t, limit: int = 8) -> list[dict]:
+    """Report dates with actual vs estimate. Unlike earnings_history (keyed
+    by quarter end) this says WHEN the print came out, which is what tells
+    a fresh result from an old one."""
+    out = []
+    for idx, row in t.get_earnings_dates(limit=limit).iterrows():
+        sp = _num(row.get("Surprise(%)"))
+        out.append({"date": str(idx)[:10], "session": _session(idx),
+                    "epsActual": _num(row.get("Reported EPS")),
+                    "epsEstimate": _num(row.get("EPS Estimate")),
+                    "surprisePercent": None if sp is None else sp / 100})
+    return out
+
+
+def earnings_rows(symbol: str, limit: int = 8) -> list[dict]:
+    """A stock's report dates, newest first, with session and EPS against
+    the estimate (discord_bot/event_returns.py). Raises on a Yahoo failure."""
+    import yfinance as yf
+    return _earnings_history(yf.Ticker((symbol or "").strip().upper()), limit)
+
+
 def _fetch_growth(t, sym: str) -> dict:
     """The four Yahoo reads behind growth_block; any one may fail alone."""
     rev_est = eps_est = {}
@@ -315,16 +336,7 @@ def _fetch_growth(t, sym: str) -> dict:
     except Exception as e:
         log.info(f"snapshot {sym}: eps estimate failed ({e})")
     try:
-        # Report dates with actual vs estimate. Unlike earnings_history
-        # (keyed by quarter end) this says WHEN the print came out, which
-        # is what tells a fresh result from an old one.
-        ed = t.get_earnings_dates(limit=8)
-        for idx, row in ed.iterrows():
-            sp = _num(row.get("Surprise(%)"))
-            history.append({"date": str(idx)[:10], "session": _session(idx),
-                            "epsActual": row.get("Reported EPS"),
-                            "epsEstimate": row.get("EPS Estimate"),
-                            "surprisePercent": None if sp is None else sp / 100})
+        history = _earnings_history(t)
     except Exception as e:
         log.info(f"snapshot {sym}: earnings dates failed ({e})")
     try:

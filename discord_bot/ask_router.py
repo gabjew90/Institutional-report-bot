@@ -24,8 +24,11 @@ unit-tested against the room's real questions.
 """
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass, field
+
+from discord_bot import listed_symbols as _listed
 
 # --------------------------------------------------------------- shapes
 
@@ -144,6 +147,9 @@ class Route:
     # Set by the caller when a subjectless question ("what happened") took
     # its subject from the asker's own last messages.
     context_tickers: list[str] = field(default_factory=list)
+    # A stock question that asks for a fact ("is Amazon on net negative
+    # cashflow?", "what is ELMT stock") rather than a view. Set by classify.
+    factual: bool = False
 
     @property
     def deterministic(self) -> bool:
@@ -151,7 +157,7 @@ class Route:
 
     @property
     def is_factual(self) -> bool:
-        return self.shape in FACTUAL_SHAPES
+        return self.shape in FACTUAL_SHAPES or (self.shape == TICKER_OPINION and self.factual)
 
     @property
     def needs_web(self) -> bool:
@@ -219,6 +225,7 @@ COMPANY_TICKERS = {
 }
 _COMPANY_RE = re.compile(r"\b(" + "|".join(sorted(map(re.escape, COMPANY_TICKERS), key=len, reverse=True))
                          + r")\b", re.I)
+_COMPANY_SYMBOLS = frozenset(COMPANY_TICKERS.values())
 
 
 def company_tickers(text: str) -> list[str]:
@@ -227,6 +234,72 @@ def company_tickers(text: str) -> list[str]:
         t = COMPANY_TICKERS[m.group(1).lower()]
         if t not in out:
             out.append(t)
+    return out
+
+
+# Five letters ending in F or Y: an OTC foreign share or ADR (KRKNF, TCEHY).
+# Nasdaq's directory lists exchange securities only.
+_OTC_RE = re.compile(r"^[A-Z]{4}[FY]$")
+_ROOM_WORDS_PATH = os.path.join(os.path.dirname(_listed.SNAPSHOT), "room_words.txt")
+_room_words_cache: frozenset[str] | None = None
+
+
+def _room_words() -> frozenset[str]:
+    """Listed symbols the room types as words ("tho", "ppl", "ngl"),
+    measured from its chat by scripts/build_room_words.py."""
+    global _room_words_cache
+    if _room_words_cache is None:
+        try:
+            with open(_ROOM_WORDS_PATH, encoding="utf-8") as f:
+                _room_words_cache = frozenset(w.strip() for w in f if w.strip())
+        except OSError:
+            _room_words_cache = frozenset()
+    return _room_words_cache
+
+
+def listed(t: str) -> bool:
+    """A symbol the room could mean: on a US exchange (Nasdaq's directory,
+    discord_bot/listed_symbols.py), an index or coin the router knows, a
+    named company's ticker, or an OTC foreign symbol. 2026-10-30 audit,
+    design note 1: DOD, EXXON and TTM were looked up as stocks. True for
+    everything when no table is loaded, as before the table existed."""
+    t = (t or "").upper()
+    if t in _KEEP or t in _COMPANY_SYMBOLS or _OTC_RE.match(t):
+        return True
+    ok = _listed.is_listed(t)
+    return ok is None or ok
+
+
+def _is_word(tok: str) -> bool:
+    w = tok.lower()
+    return (w in _COMMON_WORDS or w in _listed.english_words() or w in _room_words()
+            or tok.upper() in _NOT_TICKERS)
+
+
+def _resolve(tok: str) -> str | None:
+    """The listed symbol a token in a ticker slot stands for: itself, or the
+    one company whose name starts with it ("Exxon" -> XOM). None when
+    nothing is listed under it."""
+    t = tok.upper()
+    if listed(t):
+        return t
+    return None if _is_word(tok) else _listed.by_name(tok)
+
+
+# A lowercase symbol with no lead-in ("how has rddt performed", "what does
+# elmt do"): any listed one that is not a word, in a stock question.
+_FREE_RE = re.compile(r"(?<![$A-Za-z'])([a-z]{3,5})(?![A-Za-z'])")
+
+
+def _free_lowercase(text: str) -> list[str]:
+    out: list[str] = []
+    # a link's path is not the asker's words
+    for m in _FREE_RE.finditer(re.sub(r"https?://\S+", " ", text or "")):
+        w = m.group(1)
+        if _is_word(w) or not _listed.is_listed(w.upper()):
+            continue
+        if w.upper() not in out:
+            out.append(w.upper())
     return out
 
 
@@ -251,7 +324,12 @@ def extract_tickers(text: str, *, lowercase: bool = True,
     `all_tiers` keeps the bare-token pass even when a cashtag matched:
     the price backstop needs every symbol a sentence asserts a level
     for ("$SPX at 6500 while NVDA sits at $180"), where a question
-    router wants the one the asker tagged."""
+    router wants the one the asker tagged.
+
+    A token nothing is listed under (DOD, EXXON, a coin) is kept only when
+    no listed one is found, so "what does elmt do? How much stake does
+    DOD have in it?" is about ELMT. A capitalised company name in a ticker
+    slot becomes its symbol ("When is Exxon earnings" -> XOM)."""
     text = text or ""
     out: list[str] = []
     for m in _CASHTAG_RE.finditer(text):
@@ -266,6 +344,7 @@ def extract_tickers(text: str, *, lowercase: bool = True,
             out.append(t)
     if out and not all_tiers:
         return out
+    weak: list[str] = []
     shouting = _shouting(text)
     for m in _BARE_RE.finditer(text):
         t = m.group(1)
@@ -273,18 +352,23 @@ def extract_tickers(text: str, *, lowercase: bool = True,
             continue
         if shouting and t not in _KEEP:
             continue        # capitals are tone here, not symbols
-        if t not in out:
-            out.append(t)
+        r = _resolve(t)
+        if r and r not in out:
+            out.append(r)
+        elif not r and t not in weak:
+            weak.append(t)
     if out:
         return out
     if all_tiers:
-        return out
+        return weak
     for m in _LOWER_KEEP_RE.finditer(text):
         t = m.group(1).upper()
         if t not in out:
             out.append(t)
-    if out or not lowercase:
+    if out:
         return out
+    if not lowercase:
+        return weak
     # The room types tickers in lowercase ("why is mrvl down off avgo
     # earnings", "explain pltr death"). With no cashtag and no uppercase
     # token, take the 2-5 letter word that follows a lead-in verb, unless
@@ -293,12 +377,17 @@ def extract_tickers(text: str, *, lowercase: bool = True,
         t = m.group(1).upper()
         if t in _NOT_TICKERS or t.lower() in _COMMON_WORDS:
             continue
+        r = _resolve(m.group(1))
+        if r and r not in out:
+            out.append(r)
+        elif not r and t not in weak:
+            weak.append(t)
+    for t in lower_context_tickers(text, weak):
         if t not in out:
             out.append(t)
-    for t in lower_context_tickers(text):
-        if t not in out:
-            out.append(t)
-    return out
+    if not out and stock_intent(text):
+        out = _free_lowercase(text)
+    return out or weak
 
 
 # "think of mu" / "thoughts on mu" joined the lead-ins 2026-09-30: the
@@ -346,17 +435,21 @@ _ADJ_BEFORE_COMPANY_WORD = {
 }
 
 
-def lower_context_tickers(text: str) -> list[str]:
-    """Lowercase tokens named next to a company word, never a known word."""
+def lower_context_tickers(text: str, weak: list[str] | None = None) -> list[str]:
+    """Lowercase tokens named next to a company word, never a known word,
+    and only ones something is listed under. An unlisted one ("pepe news",
+    a coin) goes into `weak` when the caller passes it."""
     out: list[str] = []
     for m in _LOWER_CONTEXT_RE.finditer(text or ""):
         tok = next(g for g in m.groups() if g)
-        t = tok.upper()
-        if (tok != tok.lower() or t in _NOT_TICKERS or tok.lower() in _COMMON_WORDS
+        if (tok != tok.lower() or tok.upper() in _NOT_TICKERS or tok.lower() in _COMMON_WORDS
                 or tok.lower() in _ADJ_BEFORE_COMPANY_WORD):
             continue
-        if t not in out:
+        t = _resolve(tok)
+        if t and t not in out:
             out.append(t)
+        elif not t and weak is not None and tok.upper() not in weak:
+            weak.append(tok.upper())
     return out
 
 
@@ -888,11 +981,20 @@ _TOKEN_RE = re.compile(
     r"|pump\.?fun|contract\s+address)\b", re.I)
 _EVENT_WORD = (r"(?:unlocks?|lock-?ups?|lockup\s+expir\w*|earnings|prints?|reports?|splits?|ipo"
                r"|fomc|fed\s+(?:meetings?|decisions?|days?)|cpi(?:\s+prints?)?|dividends?|offerings?)")
+# "which beats sold off": a question over several prints. "NVDA beat and
+# still dropped, why" is about today's move and stays a news question.
+_BEAT_MOVE = (r"\b(?:which|what)\b[^?.\n]{0,20}?\b(?:beats|misses)\b[^?.\n]{0,25}?\b(?:sold\s+off|sell\s+off"
+              r"|dumped|dropped|fell|tanked|ripped|rallied|popped|went\s+(?:up|down))\b")
 _EVENT_RETURN_RE = re.compile(
     r"\b(?:returns?|performance|perform(?:ed)?|moves?|reactions?)\b[^?.\n]{0,40}?\b(?:after|following|post)\b"
     r"[^?.\n]{0,40}?\b" + _EVENT_WORD + r"\b"
     r"|\bhow\s+(?:did|does)\s+\S+\s+(?:do|trade|move|perform)\s+after\s+(?:the\s+)?(?:last\s+)?(?:few\s+)?"
-    + _EVENT_WORD + r"\b", re.I)
+    + _EVENT_WORD + r"\b"
+    # "how has rddt performed last 3 earnings", and "which earnings beats
+    # sold off?" under that answer (2026-10-30 audit A9)
+    r"|\b(?:perform(?:ed|ance)?|done|traded|reacted|moved)\b[^?.\n]{0,30}?\b(?:last|past|previous|recent)\s+"
+    r"(?:\d{1,2}\s+|few\s+|couple\s+(?:of\s+)?|several\s+)?" + _EVENT_WORD + r"\b"
+    r"|" + _BEAT_MOVE, re.I)
 _TOKEN_WORD = r"(?:token|coin|memecoin|shitcoin|altcoin)"
 _EVENT_COUNT_RE = re.compile(r"\blast\s+(\d{1,2}|few|couple|several)\b", re.I)
 
@@ -901,6 +1003,8 @@ def event_args(q: str, symbol: str) -> dict:
     """The event-returns prefetch's arguments: the event as the asker named
     it and how many of them ("last few" is four)."""
     m = re.search(r"\b" + _EVENT_WORD + r"\b", q, re.I)
+    if not m and re.search(_BEAT_MOVE, q, re.I):
+        return {"symbol": symbol, "event": "earnings", "count": 6}
     c = _EVENT_COUNT_RE.search(q)
     word = (c.group(1).lower() if c else "")
     count = int(word) if word.isdigit() else {"couple": 2, "few": 4, "several": 5}.get(word, 6)
@@ -1098,6 +1202,21 @@ def _straight(q: str) -> str:
     return q.translate(_CURLY)
 
 
+# A stock question that asks for a fact: it opens with a question word and
+# asks no view. "will" and "can" open predictions ("will MU rip"), and "do
+# you think" is a view.
+_FACT_OPEN_RE = re.compile(
+    r"^\s*(?:what|what'?s|whats|when|when'?s|where|which|who|how\s+(?:much|many|big|long|often|has|have"
+    r"|did|does|is|are|was)|is|are|does|did|has|have|was|were)\b", re.I)
+_VIEW_ASK_RE = re.compile(r"\b(?:you|u|ya)\s+think\b|\bshould\s+(?:i|we)\b|\bworth\b", re.I)
+
+
+def is_fact_question(q: str, tickers: list[str] | None = None) -> bool:
+    return bool(_FACT_OPEN_RE.search(q or "")) and not (
+        _OPINION_RE.search(q) or _SINGLE_TICKER_OPINION_RE.search(q) or _VIEW_ASK_RE.search(q)
+        or (tickers and _trailing_view(q, tickers)))
+
+
 def classify(question: str, *, fantasy_enabled: bool = False,
              channel_name: str = "", asker_manager: str = "",
              channel_id: int | None = None, names_member: bool = False) -> Route:
@@ -1105,13 +1224,28 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     specific shape wins, and the ledger/chat shapes beat the data shapes
     when a member is named ("Abe's win rate on semi calls" is a ledger
     question even though it says 'calls')."""
+    r = _classify(question, fantasy_enabled=fantasy_enabled, channel_name=channel_name,
+                  asker_manager=asker_manager, channel_id=channel_id, names_member=names_member)
+    # A fact asked about a stock gets the factual register, not banter
+    # (2026-10-30 audit A17: "is Amazon on net negative cashflow?" ran as
+    # banter).
+    if r.shape == TICKER_OPINION:
+        r.factual = is_fact_question(_last_line(question), r.tickers)
+    return r
+
+
+def _classify(question: str, *, fantasy_enabled: bool = False,
+              channel_name: str = "", asker_manager: str = "",
+              channel_id: int | None = None, names_member: bool = False) -> Route:
     q = _last_line(question)
     ql = q.lower()
     in_channel = fantasy_enabled and in_fantasy_channel(channel_name, channel_id)
     tickers = extract_tickers(q)
     # Cashtag or uppercase only: a lowercase lead-in guess must not veto
-    # the macro route ("when is the next fed meeting").
-    strong = extract_tickers(q, lowercase=False)
+    # the macro route ("when is the next fed meeting"). Nor does a capital
+    # word nothing is listed under (DOD, 2026-10-30 audit A6).
+    strong = [t for t in extract_tickers(q, lowercase=False)
+              if listed(t) or re.search(r"\$" + re.escape(t) + r"\b", q, re.I)]
     r = Route(shape=UNKNOWN, tickers=tickers)
     if not q:
         r.shape = UNKNOWN
@@ -1162,10 +1296,14 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     # "1 week and 1 month returns after the last few SpaceX unlocks": the
     # dates by search and the returns from the closes, both in code
     # (discord_bot/event_returns.py, 2026-10-27)
-    if tickers and _EVENT_RETURN_RE.search(q):
-        r.shape, r.reason = HISTORICAL_STAT, "returns after dated events"
-        r.prefetch = [(T_EVENTS, event_args(q, tickers[0]))]
-        return r
+    if _EVENT_RETURN_RE.search(q):
+        # the stock can be the one the replied-to answer is about
+        subject = tickers[:1] or reply_parent_tickers(question)[:1]
+        if subject:
+            r.shape, r.reason = HISTORICAL_STAT, "returns after dated events"
+            r.tickers = subject
+            r.prefetch = [(T_EVENTS, event_args(q, subject[0]))]
+            return r
     coins = _token_tickers(q, tickers, _parent_text(question))
     if coins:
         r.shape, r.reason = PRICE, "a crypto token"
@@ -1382,6 +1520,11 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         strong = named
     # A company named in words is a deliberate subject ("WHAT ABOUT SPACEX").
     named = named or [t for t in company_tickers(q) if t in strong]
+    # A lowercase listed symbol in a stock question: "is hood in a crypto
+    # hole?" got no stock data at all (2026-10-30 audit A3).
+    if not strong and not names_member and tickers and listed(tickers[0]) and (
+            _MARKET_WORD_RE.search(q) or not _is_word(tickers[0])):
+        strong = named = tickers[:1]
     # Under the bot's earnings answer, a named company is an earnings-date
     # question (2026-10-26 audit A3: SPCX, the day it reported).
     if named and re.search(r"\b(?:earnings|reports?|reporting|after close|before (?:the )?open)\b",
@@ -1442,7 +1585,20 @@ _MARKET_WORD_RE = re.compile(
     r"|moon(?:ing)?|crash(?:ing|ed)?|pump(?:ing|ed)?|squeez(?:e|ing)|stock|shares?"
     r"|earnings|revenue|sales|guidance|news|chart|calls?|puts?|price\s+target|pt"
     r"|(?:market\s+)?cap|worth|debt|valuation|float|dilution|offering|iv|options?"
+    # "is hood in a crypto hole?" (2026-10-30 audit A3: no stock data ran)
+    r"|crypto|bitcoin|cash\s*flow"
     r"|a\s+buy|a\s+sell|bull(?:ish)?|bear(?:ish)?)\b", re.I)
+
+
+def stock_intent(text: str) -> bool:
+    """The question asks something about a stock, whatever the ticker: a
+    market word or one of the stock shapes' phrasings. Decided before a
+    lowercase symbol with no lead-in is taken as a ticker (2026-10-30
+    audit, design note 1: intent first)."""
+    q = text or ""
+    return any(rx.search(q) for rx in (
+        _MARKET_WORD_RE, _PROFILE_RE, _EDATE_RE, _PRICE_RE, _NEWS_RE, _OPINION_RE, _HISTORY_RE,
+        _CHAIN_RE, _EVENT_RETURN_RE, _SNAPSHOT_FIELD_RE))
 
 
 def reply_parent_tickers(question: str) -> list[str]:
@@ -1460,8 +1616,15 @@ def reply_parent_tickers(question: str) -> list[str]:
         # and primed as the stock behind an ELMT answer).
         marked = re.findall(r"\$([A-Z]{1,5})\b|\(([A-Z]{1,5})\)|\*\*([A-Z]{1,5})\b", text)
         text = " ".join(f"${next(g for g in t if g)}" for t in marked)
+    elif not _MARKET_WORD_RE.search(text):
+        # A pasted article that says Google indexes Discord ("per TC") is
+        # not about GOOGL or TC (2026-10-30 audit A16): outside a message
+        # about markets, a company named in words and a two-letter capital
+        # are not tickers.
+        text = re.sub(r"(?<!\$)\b[A-Z]{2}\b", " ", _COMPANY_RE.sub(" ", text))
     found = [t for t in extract_tickers(text, lowercase=False)
-             if is_stock(t) and t.lower() not in _COMMON_WORDS]
+             if is_stock(t) and t.lower() not in _COMMON_WORDS
+             and (listed(t) or "$" + t in text)]
     return found if 1 <= len(found) <= 2 else []
 
 

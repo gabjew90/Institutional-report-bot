@@ -24,6 +24,7 @@ from datetime import date, timedelta
 log = logging.getLogger(__name__)
 
 SEARCH_TIMEOUT_S = 9.0         # under the 14 s prefetch deadline bot.py gives this tool
+YAHOO_TIMEOUT_S = 4.0          # Yahoo's earnings dates, then the search, still inside 14 s
 MAX_EVENTS = 8
 CACHE_TTL_S = 30 * 60
 _CACHE: dict[tuple[str, str, int], tuple[float, dict]] = {}
@@ -103,6 +104,43 @@ async def _search(sym: str, event: str, n: int, name: str) -> tuple[str, list[di
     return (getattr(resp, "text", None) or "").strip(), _sources(getattr(cand, "grounding_metadata", None))
 
 
+_EARNINGS_EVENT_RE = re.compile(r"^(?:earnings|prints?|reports?)$")
+
+
+def _eps(v: float) -> str:
+    return f"-${abs(v):,.2f}" if v < 0 else f"${v:,.2f}"
+
+
+def earnings_events(rows: list[dict], n: int, today: date) -> list[dict]:
+    """[{date, label, after_close}] from Yahoo's earnings dates
+    (report.ticker_snapshot.earnings_rows), newest first: reported rows
+    only, each labelled with EPS against the estimate."""
+    out = []
+    for h in sorted(rows or [], key=lambda x: str(x.get("date")), reverse=True):
+        act, est = h.get("epsActual"), h.get("epsEstimate")
+        try:
+            d = date.fromisoformat(str(h.get("date"))[:10])
+        except ValueError:
+            continue
+        if act is None or d > today:
+            continue
+        label = f"EPS {_eps(act)}"
+        if est is not None:
+            verdict = "beat" if act > est else "miss" if act < est else "in line"
+            label += f" vs {_eps(est)} expected ({verdict})"
+        out.append({"date": d.isoformat(), "label": label,
+                    "after_close": h.get("session") == "after the close"})
+        if len(out) >= n:
+            break
+    return out
+
+
+async def _yahoo_earnings(sym: str, n: int, today: date) -> list[dict]:
+    from report import ticker_snapshot as _ts
+    rows = await asyncio.wait_for(asyncio.to_thread(_ts.earnings_rows, sym, n + 6), YAHOO_TIMEOUT_S)
+    return earnings_events(rows, n, today)
+
+
 async def _execute_event_returns(args: dict) -> dict:
     """The dates of a ticker's recent events and the returns after each."""
     from datetime import datetime
@@ -118,16 +156,27 @@ async def _execute_event_returns(args: dict) -> dict:
     if hit and time.monotonic() - hit[0] < CACHE_TTL_S:
         return hit[1]
     today = datetime.now(ZoneInfo("America/New_York")).date()
-    try:
-        text, sources = await _search(sym, event, n, str(args.get("name") or "").strip())
-    except asyncio.TimeoutError:
-        return {"status": "timeout", "symbol": sym, "event": event,
-                "error": "The search for the event dates did not finish in time."}
-    except Exception as e:
-        log.warning(f"event returns {sym} {event}: search failed: {e}")
-        return {"status": "error", "symbol": sym, "event": event,
-                "error": "The search for the event dates failed."}
-    events = parse_events(text, today, event)
+    # Earnings dates are Yahoo's, with the session and the EPS against the
+    # estimate (2026-10-30 audit A9: "which earnings beats sold off?" got no
+    # quarter at all). A search is the fallback.
+    events, text, sources, from_yahoo = [], "", [], False
+    if _EARNINGS_EVENT_RE.match(event):
+        try:
+            events = await _yahoo_earnings(sym, n, today)
+            from_yahoo = bool(events)
+        except Exception as e:
+            log.info(f"event returns {sym}: Yahoo earnings dates failed ({e})")
+    if not events:
+        try:
+            text, sources = await _search(sym, event, n, str(args.get("name") or "").strip())
+        except asyncio.TimeoutError:
+            return {"status": "timeout", "symbol": sym, "event": event,
+                    "error": "The search for the event dates did not finish in time."}
+        except Exception as e:
+            log.warning(f"event returns {sym} {event}: search failed: {e}")
+            return {"status": "error", "symbol": sym, "event": event,
+                    "error": "The search for the event dates failed."}
+        events = parse_events(text, today, event)
     if not events:
         return {"status": "no_data", "symbol": sym, "event": event,
                 "error": f"No dated {event} found for {sym}: say so, never guess dates."}
@@ -147,12 +196,15 @@ async def _execute_event_returns(args: dict) -> dict:
     out = {"status": "ok", "symbol": sym, "event": event, "events": rows,
            # A reply with no links may be the model's memory, not the search
            # (the SPCX unlock dates were invented three times, 2026-06-17).
-           "dates_confirmed": bool(sources),
+           "dates_confirmed": from_yahoo or bool(sources),
+           "feed": ("earnings dates and daily closes (Yahoo)" if from_yahoo
+                    else "event dates (Google) and daily closes (Yahoo)"),
            "digest": "\n".join(ln.strip() for ln in text.splitlines() if _LINE_RE.match(ln)),
            "sources": sources,
-           "how_to_read": ("dates from a Google search; base is the last close before the date "
-                           "(that day's close when the event came after the open); each horizon "
-                           "is 1, 5 and 21 trading sessions later")}
+           "how_to_read": (("report dates and EPS from Yahoo" if from_yahoo else "dates from a Google search")
+                           + "; base is the last close before the date (that day's close when the "
+                           "event came after the open); each horizon is 1, 5 and 21 trading "
+                           "sessions later")}
     now = time.monotonic()
     for k, (ts, _) in list(_CACHE.items()):
         if now - ts >= CACHE_TTL_S:

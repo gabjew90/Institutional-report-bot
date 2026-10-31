@@ -48,6 +48,8 @@ def _label(entry: dict) -> str | None:
     a racism board was footed 'room trade ledger'), and a lookup by
     username returns both ranks."""
     tool = str(entry.get("tool") or "")
+    if entry.get("feed"):
+        return str(entry["feed"])
     if tool == "lookup_user_profile":
         args = entry.get("args") or {}
         metric = str(args.get("metric") or "").lower() if isinstance(args, dict) else ""
