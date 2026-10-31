@@ -7993,6 +7993,13 @@ async def _ask_09_rank_and_regen_guards(
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
+    # a snapshot figure is narrated, never graded: "heavy short interest at
+    # 27.8%" loses "heavy" (discord_bot/metric_grades.py, owner 2026-09-30)
+    if answer and "lookup_ticker_snapshot" in (_ask_meta.get("route_prefetch") or []):
+        from discord_bot import metric_grades as _mg
+        answer, _mg_words = _mg.strip(answer)
+        if _mg_words:
+            _ask_meta["guards"].append("metric-grade:" + ",".join(w.lower() for w in _mg_words))
     # block labels and status tokens on every answer ("[LEAGUE STATE]",
     # "`past_no_data`"), 2026-10-18 audit F4/A27
     from discord_bot import internal_labels as _il
