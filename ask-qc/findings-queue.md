@@ -910,3 +910,9 @@ no findings (0 FAIL). Watch item: Tesla-news answer (13:49) carried an unverifie
 - **judgment (CONCERN)** (20:37 UTC, bulch, SNDK split): "up +23% y/y" is a sequential figure from the news digest, labelled y/y, against a snapshot showing +363.6% y/y for the same quarter. A single-fact question (split date) got a three-bullet earnings recap.
 - **judgment (CONCERN)** (19:08 UTC, Monsoon): a yes/no question ("is Amazon on net negative cashflow?") got four bullets including a JPMorgan target.
 - **tooling note**: the CI validator CLI still lacks `aiohttp`; triage by CLI is uninformative (seventh day running).
+
+## 2026-10-30
+
+- **judgment** (04:53 UTC, Monsoon, "I miss wock what I do"): clapback-fidelity guard output says Monsoon "called him a forty-year-old dick doctor". The verbatim block shows Wock wrote that line (speaker reversed). Quote-fidelity checks the words, not the speaker. Mechanical check possible by `author_id` on the quoted line vs who the answer says said it, but the claim is free-form, so not drafted as a fixture. Note the git log shows `clapback-fidelity` last touched 2026-10-31, after this turn: possible predates-class.
+- **judgment (CONCERN)** (19:09 UTC, "When is Exxon earnings"): `EXXON` was passed to `lookup_earnings_date`/`lookup_ticker_snapshot`/`ticker_primer` as the symbol and returned no_data; the name should have mapped to XOM. Answer came from a single Google source. Worth a check that the listed_symbols name->symbol step runs before prefetch on the reply-to-bot path.
+- **tooling note**: the CI validator CLI still lacks `aiohttp`; triage by CLI is uninformative (eighth day running).
