@@ -220,6 +220,7 @@ def test_a_long_search_names_the_company_and_its_moves(monkeypatch):
     monkeypatch.setattr(N, "_get_client", lambda: c)
     r = asyncio.run(N._execute_ticker_news({"symbol": "ELMT", "days": 90}))
     assert "The Elmet Group" in c.kw["contents"] and "2026-09-14 +33.1%" in c.kw["contents"]
+    assert c.kw["contents"].startswith("Search the web for why shares of The Elmet Group")
     assert r["status"] == "ok" and "$450M" in r["digest"] and r["window_days"] == 90
     assert r["moves"] == [{"date": "2026-09-14", "pct": 33.1}]
     from discord_bot import ask_router as R
@@ -246,7 +247,7 @@ def test_the_week_and_the_quarter_are_cached_apart(monkeypatch):
     monkeypatch.setattr(N, "_get_client", lambda: calls.append(1) or c)
     asyncio.run(N._execute_ticker_news({"symbol": "MU"}))
     asyncio.run(N._execute_ticker_news({"symbol": "MU", "days": 90}))
-    assert len(calls) == 2 and "last 90 days" in c.kw["contents"]
+    assert len(calls) == 2 and "major company events of" in c.kw["contents"]
 
 
 def test_a_profile_question_gets_the_long_search():

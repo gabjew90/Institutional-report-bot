@@ -7046,6 +7046,28 @@ async def _ask_07_validation_ladder(
             _ask_meta["guards"].append("figure-provenance:skipped-image")
     except Exception as _fpe:
         log.warning(f"/ask: figure provenance guard failed (non-fatal): {_fpe}")
+    # A sentence that denies a stake, deal or filing needs a source that
+    # denies it too (discord_bot/absence_claims.py, 2026-10-30 audit A5:
+    # "holds no direct reported equity stake" after an empty news search).
+    # The evidence is the tool payloads, the injected blocks and Google's
+    # backed passages; chat and the bot's earlier answers are left out.
+    try:
+        if answer and _route_is_factual:
+            from discord_bot import absence_claims as _abs
+            from discord_bot.figure_provenance import supported_text as _abs_sup
+            from discord_bot.guard_floor import gutted as _abs_gutted
+            _abs_ev = (_ask_evidence_text(contents, response, "", user_content)
+                       .replace(_evidence_context(user_content), "", 1)
+                       + "\n" + _abs_sup(grounding_metadata))
+            _abs_out, _abs_cut = _abs.check(answer, _abs_ev)
+            if _abs_cut and _abs_gutted(answer, _abs_out):
+                _ask_meta["guards"].append(f"absence-claim:stood-down:{len(_abs_cut)}")
+            elif _abs_cut:
+                answer = _abs_out
+                _ask_meta["guards"].append(f"absence-claim:stripped:{len(_abs_cut)}")
+                log.info(f"/ask: stripped unbacked denial(s) {_abs_cut[:2]} (q={question[:80]!r})")
+    except Exception as _abse:
+        log.warning(f"/ask: absence-claim guard failed (non-fatal): {_abse}")
     return (answer, grounding_metadata, response)
 
 

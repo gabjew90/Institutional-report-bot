@@ -58,15 +58,19 @@ PROMPT = (
 LONG_DAYS = 90
 MAX_MOVES = 3
 HISTORY_TIMEOUT_S = 2.5
+# The moves come first: asked as one item among "the largest events", the
+# search answered NO RECENT NEWS in four tokens (harness, 2026-10-30); asked
+# why the stock moved on each day, it found the stake with 5 to 13 links.
 LONG_PROMPT = (
-    "Search the web for the largest company-specific events for the US-listed stock {sym}{name} "
-    "in the last {days} days, today included: earnings results against the estimates, government "
-    "or strategic investments and stakes, acquisitions and deals, major contracts, share offerings, "
-    "index additions, executive changes, regulatory or legal events.{moves}"
-    " Report only facts, newest first, at most 8 lines, each line starting with its date "
-    "(YYYY-MM-DD) and ending with the publisher in parentheses. No opinions, no background. If "
-    "you find nothing dated in the window, reply exactly: NO RECENT NEWS."
+    "{head} major company events of {who} since {since}: earnings "
+    "results against the estimates, government or strategic investments and stakes, deals, "
+    "contracts, share offerings. One line per event, newest first, at most 8 lines, each "
+    "starting with its date (YYYY-MM-DD) and ending with the publisher in parentheses. Facts "
+    "only, plain text, no markdown. If a search finds nothing for a day, leave that day out. If "
+    "you find nothing at all, reply exactly: NO RECENT NEWS."
 )
+MOVES_CLAUSE = ("Search the web for why shares of {who} moved on each of these days: {moves}. "
+                "Then search for the other")
 
 
 def _get_client():
@@ -120,11 +124,13 @@ async def _execute_ticker_news(args: dict) -> dict:
     if days == WINDOW_DAYS:
         prompt = PROMPT.format(sym=sym, name=name_part)
     else:
+        from datetime import date, timedelta
         moves = await _largest_moves(sym, days)
-        clause = (" Find the cause of each of these one-day moves in its share price: "
-                  + "; ".join(f"{m['date']} {m['pct']:+.1f}%" for m in moves) + "."
-                  if moves else "")
-        prompt = LONG_PROMPT.format(sym=sym, name=name_part, days=days, moves=clause)
+        who = f"{name} ({sym}, US-listed)" if name else f"the US-listed stock {sym}"
+        head = (MOVES_CLAUSE.format(who=who, moves="; ".join(
+            f"{m['date']} {m['pct']:+.1f}%" for m in moves)) if moves else "Search the web for the")
+        prompt = LONG_PROMPT.format(head=head, who=who,
+                                    since=(date.today() - timedelta(days=days)).isoformat())
     config = types.GenerateContentConfig(
         tools=[types.Tool(google_search=types.GoogleSearch())],
         temperature=0.1, max_output_tokens=900,
@@ -203,7 +209,8 @@ async def _largest_moves(sym: str, days: int) -> list[dict]:
     return largest_moves(hist or [])
 
 
-_DATED_RE = re.compile(r"^\s*[-*•]?\s*\(?(20\d\d-\d\d-\d\d)")
+# "**2026-10-21 (+11.5%)**:" is how a move line came back bolded (2026-10-30)
+_DATED_RE = re.compile(r"^\s*[-*•]?\s*(?:\*\*)?\(?(20\d\d-\d\d-\d\d)")
 
 
 WINDOW_DAYS = 7
