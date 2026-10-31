@@ -32,7 +32,7 @@ def _build_snapshot_tool():
                     "pct_above_52w_low, atr, atr_pct, beta, adv_shares, adv_dollars, "
                     "today_volume, relative_volume, float_shares, shares_outstanding, "
                     "short_pct_float, days_to_cover, short_interest_as_of, total_cash, "
-                    "total_debt, operating_cashflow_ttm, free_cashflow_ttm, "
+                    "total_debt, operating_cashflow_ttm, capex_ttm, ocf_minus_capex_ttm, cashflow_period_end, "
                     "offering_filings_12m: [{date, form}], as_of}. Absent fields were not "
                     "reported. status=not_a_stock for an ETF, index or fund."
                 ),

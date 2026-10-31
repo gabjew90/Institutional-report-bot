@@ -68,7 +68,8 @@ def test_render_is_narration_not_a_verdict():
     assert "AEVA: Aeva Technologies, Inc. (Technology / Scientific & Technical Instruments)" in text
     assert "short interest 18.3% of float, 5.1 days to cover (exchange-reported as of 2026-09-15)" in text
     assert "S-3ASR on 2026-06-03" in text
-    assert "free cash flow, trailing 12 months -$139.0M" in text
+    assert "operating cash flow -$120.0M (trailing 12 months)" in text
+    assert "free cash flow" not in text and "-$139.0M" not in text, "Yahoo's own estimate is not shown"
     assert not re.search(r"\b(low float|liquid|illiquid|squeeze|risky|safe|thin|heavy)\b", text, re.I)
     none = S.render(S.build("X", {"quoteType": "EQUITY", "longName": "X"}, [], [],
                             today=date(2026, 9, 30)))
@@ -160,6 +161,11 @@ class _FakeTicker:
         _FakeTicker.calls.append(("filings", self.sym))
         return self._filings
 
+    @property
+    def ttm_cashflow(self):
+        _FakeTicker.calls.append(("ttm_cashflow", self.sym))
+        return _amzn_ttm()
+
 
 def _fake_yf(monkeypatch, **kw):
     import sys
@@ -206,3 +212,45 @@ def test_executor_times_out_and_rejects_an_empty_symbol(monkeypatch):
     import time
     monkeypatch.setattr(S, "fetch", lambda sym: time.sleep(0.2) or {"status": "ok"})
     assert asyncio.run(T._execute_snapshot({"symbol": "$mu"}))["status"] == "error"
+
+
+def _amzn_ttm():
+    """Yahoo's trailing series for Amazon as read on 2026-10-31."""
+    import pandas as pd
+    return pd.DataFrame({pd.Timestamp("2026-09-30"): [168.3e9, -215.192e9, -46.892e9],
+                         pd.Timestamp("2025-09-30"): [130.7e9, -115.9e9, 14.8e9]},
+                        index=["Operating Cash Flow", "Capital Expenditure", "Free Cash Flow"])
+
+
+def test_cash_flow_is_operating_cash_flow_minus_capital_spending():
+    # Audit A8 (2026-10-29): Yahoo's quote-summary freeCashflow read +$3.2B
+    # for Amazon while Amazon's trailing figure was negative.
+    cf = S.cashflow_ttm(_amzn_ttm())
+    assert cf == {"operating_cashflow_ttm": 168.3e9, "cashflow_period_end": "2026-09-30",
+                  "capex_ttm": 215.192e9, "ocf_minus_capex_ttm": 168.3e9 - 215.192e9}
+    info = dict(INFO, operatingCashflow=161.4e9, freeCashflow=3.219e9)
+    snap = S.build("AMZN", info, BARS, [], today=date(2026, 10, 31), cashflow=cf)
+    assert snap["operating_cashflow_ttm"] == 168.3e9 and "free_cashflow_ttm" not in snap
+    text = S.render(snap)
+    assert ("operating cash flow $168.3B, capital spending $215.2B, operating cash flow minus "
+            "capital spending -$46.9B (four quarters to 2026-09-30)") in text
+    assert "$3.2B" not in text
+
+
+def test_cash_flow_series_missing_or_partial():
+    import pandas as pd
+    assert S.cashflow_ttm(pd.DataFrame()) == {}
+    assert S.cashflow_ttm(None) == {}
+    only_ocf = pd.DataFrame({pd.Timestamp("2026-06-30"): [-3.171e6]}, index=["Operating Cash Flow"])
+    assert S.cashflow_ttm(only_ocf) == {"operating_cashflow_ttm": -3.171e6,
+                                        "cashflow_period_end": "2026-06-30"}
+
+
+def test_fetch_reads_the_trailing_cash_flow(monkeypatch):
+    _fake_yf(monkeypatch, info=dict(INFO, freeCashflow=3.219e9), filings=FILINGS)
+    snap = S.fetch("AMZN")
+    assert snap["ocf_minus_capex_ttm"] == 168.3e9 - 215.192e9
+    assert ("ttm_cashflow", "AMZN") in _FakeTicker.calls
+    _fake_yf(monkeypatch, info={"quoteType": "ETF", "longName": "SPDR"})
+    S.fetch("SPY")
+    assert ("ttm_cashflow", "SPY") not in _FakeTicker.calls

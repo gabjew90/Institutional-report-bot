@@ -119,10 +119,43 @@ def offering_filings(filings: list[dict], today: date | None = None) -> list[dic
     return out[:MAX_FILINGS]
 
 
+def cashflow_ttm(df) -> dict:
+    """Operating cash flow and capital spending for the four quarters to the
+    newest period in Yahoo's trailing series (`Ticker.ttm_cashflow`), and
+    their difference, with the period end.
+
+    Yahoo's quote-summary `freeCashflow` is not this. It is Yahoo's own
+    levered estimate, and on 2026-10-29 it read +$3.2B for Amazon while
+    Amazon's trailing figure through June was -$7.6B (audit A8, Monsoon:
+    "Not so accurate on Amazon"). The quote-summary `operatingCashflow`
+    also lagged a quarter. Capital spending here is gross, so a company
+    that nets out asset sales and incentives reports a smaller outflow
+    (Amazon through September: -$42.4B reported, -$46.9B here)."""
+    try:
+        cols = sorted(df.columns, reverse=True)
+        if not cols or "Operating Cash Flow" not in df.index:
+            return {}
+        col = cols[0]
+        ocf = _num(df.loc["Operating Cash Flow", col])
+        capex = (_num(df.loc["Capital Expenditure", col])
+                 if "Capital Expenditure" in df.index else None)
+    except Exception:
+        return {}
+    if ocf is None:
+        return {}
+    out = {"operating_cashflow_ttm": ocf, "cashflow_period_end": str(col)[:10]}
+    if capex is not None:
+        out["capex_ttm"] = abs(capex)
+        out["ocf_minus_capex_ttm"] = ocf - abs(capex)
+    return out
+
+
 def build(symbol: str, info: dict, history: list[dict], filings: list[dict],
-          today: date | None = None) -> dict:
+          today: date | None = None, cashflow: dict | None = None) -> dict:
     """Assemble the snapshot from already-fetched Yahoo data. Pure, so it is
-    tested without the network."""
+    tested without the network. `cashflow` is cashflow_ttm's result; without
+    it the snapshot carries the quote summary's operating cash flow and no
+    free cash flow figure."""
     sym = (symbol or "").upper()
     qt = (info.get("quoteType") or "").upper()
     if qt and qt != "EQUITY":
@@ -157,9 +190,9 @@ def build(symbol: str, info: dict, history: list[dict], filings: list[dict],
         "total_cash": _num(info.get("totalCash")),
         "total_debt": _num(info.get("totalDebt")),
         "operating_cashflow_ttm": _num(info.get("operatingCashflow")),
-        "free_cashflow_ttm": _num(info.get("freeCashflow")),
         "offering_filings_12m": offering_filings(filings, today),
     })
+    snap.update(cashflow or {})
     si = _num(info.get("dateShortInterest"))
     if si:
         snap["short_interest_as_of"] = datetime.fromtimestamp(si, timezone.utc).date().isoformat()
@@ -386,7 +419,13 @@ def fetch(symbol: str) -> dict:
             filings = list(t.sec_filings or [])
         except Exception as e:
             log.info(f"snapshot {sym}: filings failed ({e})")
-    snap = build(sym, info, rows, filings)
+    cashflow: dict = {}
+    if (info.get("quoteType") or "EQUITY").upper() == "EQUITY":
+        try:
+            cashflow = cashflow_ttm(t.ttm_cashflow)
+        except Exception as e:
+            log.info(f"snapshot {sym}: trailing cash flow failed ({e})")
+    snap = build(sym, info, rows, filings, cashflow=cashflow)
     # The four growth reads come last and only with time to spare: the
     # executor gives the whole fetch 12 s, and a slow estimate table must
     # cost the growth lines, not the business, float and filings above.
@@ -542,11 +581,17 @@ def render(snap: dict) -> str:
     if fl:
         lines.append("shares: " + ", ".join(fl))
     bs = []
-    for key, label in (("total_cash", "cash"), ("total_debt", "debt"),
-                       ("operating_cashflow_ttm", "operating cash flow, trailing 12 months"),
-                       ("free_cashflow_ttm", "free cash flow, trailing 12 months")):
+    for key, label in (("total_cash", "cash"), ("total_debt", "debt")):
         if s.get(key) is not None:
             bs.append(f"{label} {_money(s[key])}")
+    if s.get("operating_cashflow_ttm") is not None:
+        end = s.get("cashflow_period_end")
+        span = f"four quarters to {end}" if end else "trailing 12 months"
+        cf = f"operating cash flow {_money(s['operating_cashflow_ttm'])}"
+        if s.get("capex_ttm") is not None:
+            cf += (f", capital spending {_money(s['capex_ttm'])}, operating cash flow minus "
+                   f"capital spending {_money(s['ocf_minus_capex_ttm'])}")
+        bs.append(f"{cf} ({span})")
     if bs:
         lines.append("balance sheet: " + ", ".join(bs))
     lines += render_growth(s.get("growth") or {})
