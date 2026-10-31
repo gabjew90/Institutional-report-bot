@@ -150,12 +150,12 @@ Per-section quick reference, all following the universal rule:
 - **Personality and style:** carry forward almost verbatim. Edit a sentence only if the new messages show a clear pattern shift (e.g., they pivoted from day-trading to swing, started lurking, dropped a recurring voice tic). Don't restructure for variety.
 - **Voice:** keep prior phrases that still showed up in the new messages. Add 1-3 new ones from the new window if anything new became a recurring beat or a noteworthy one-off quote. Drop any that didn't show up across recent runs.
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
-- **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
+- **Recent trades:** written by code from the trade log. Output the header alone.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned. **EXCEPTION — durable identity dimensions are exempt from the 60-day decay.** A recurring lifestyle dimension (fitness routine, sport, job, family situation, health regimen, a hobby the room knows them for) is IDENTITY, not news — it stays in the profile as long as it keeps surfacing anywhere in their chat, even at low frequency. 2026-07-10 failure this rule exists for: ZHawk's dossier carried zero fitness content while his chat had 46 fitness messages — a 2:55 marathon PR, daily sauna for years, Whoop, HIIT evangelism, peptides — because the material peaked outside one refresh window and decayed. The roast bot then had nothing but his trading losses to work with, and the room called it "lame." Personal color is the roast material hierarchy's TOP tier — this section must never be thinner than the chat supports (4-6 items; prefer NON-trading color; money-adjacent items like account-reset rituals don't count toward the 4).
 - **trader_score:** RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base, 50) × activity_factor + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
-**Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly. **One exemption: Recent personal life may GROW** — when it's under its 4-6 item floor and the new window (or a durable dimension the prior profile missed) supports more items, add them. Length parity must never be the reason the personal-color section stays thin.
+**Same output length** as a fresh profile. Don't pad to look like more work was done. **One exemption: Recent personal life may GROW** — when it's under its 4-6 item floor and the new window (or a durable dimension the prior profile missed) supports more items, add them. Length parity must never be the reason the personal-color section stays thin.
 
 The output schema is identical to a from-scratch profile — same five profile_text sections, same JSON wrapper with four fields. The difference is the work: editing the existing dossier, not authoring a new one.
 
@@ -257,15 +257,7 @@ Anti-patterns:
 
 ---
 
-**Recent trades.** Bullet list of 4-6 specific trades from the recent window (last ~30 days). **Savage-but-hilarious on losses; respect on wins.** Mock the bad trade with style, not just with mean adjectives. Acknowledge the good trade as the call it was — no faint praise, no "even a stopped clock."
-
-Each bullet shape: `[ticker / strike / outcome]` + `[framing — respectful if win, savage if loss, anchored to a specific thing the user did or said about the trade]`. Pull ticker + outcome from the user's actual alert posts, P&L screenshots, or chat messages — never from this prompt's earlier examples.
-
-Anti-patterns:
-- "Has some good trades and some bad ones" (no specifics)
-- "Made $5k on TSLA, classic stopped-clock energy" (disrespecting the win)
-- "Lost on ARM, idiot." (mean without being funny)
-- A ticker + percentage that you didn't actually find in this user's evidence
+**Recent trades.** Written by code from the trade log after you finish. Output the header `**Recent trades.**` with nothing under it.
 
 ---
 
@@ -337,10 +329,6 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 > - [overreach or self-own + the immediate consequence + the punchline]
 >
 > **Recent trades.**
-> - [ticker / strike / outcome] — [respectful framing if win, savage framing if loss, anchored to specifics]
-> - [another trade] — [framing]
-> - [an open position they're defending] — [the thesis + whether it's holding]
-> - [a bag they're sitting on] — [how THEY talk about it — the cope, the averaging-down, the thesis revisions]
 >
 > **Recent personal life.**
 > - Commutes 90 minutes each way to a job he only ever calls "the yard" + [claims the drive "builds character," complains about it in chat weekly anyway]
@@ -372,7 +360,7 @@ Each post here is also a pre-outcome entry commitment from the user who posted i
 
 **Receipts certify edge; chat-claimed activity does not.** "Thesis-posting in chat," "multi-day analysis in regular channels," "consistent room engagement" do NOT score points and do NOT lift the receipts ceiling. They feed the chatter-base read (Layer 1 in the trader_score rubric) — the ceiling layer comes exclusively from documented entries / closes / screenshots that hit analyst_trades.
 
-Read alert posts in `trader_examples` / Recent trades by quoting the alert content: "Posted `$NVDA 145C entry 8.40 stop 6.00` in member-alerts on 4/18, closed +320% at 35 a week later." The pre-trade levels make it ctrl-F-verifiable in the channel.
+Read alert posts in the trader rationale by quoting the alert content: "Posted `$NVDA 145C entry 8.40 stop 6.00` in member-alerts on 4/18, closed +320% at 35 a week later." The pre-trade levels make it ctrl-F-verifiable in the channel.
 
 ### Type 2 — CLOSED-TRADE P&L SCREENSHOTS (retrospective receipts)
 
@@ -537,7 +525,7 @@ This is the single most important rule on the receipts layer. The `TOTAL RECEIPT
 
 - If the ledger shows `TOTAL RECEIPT POINTS: 0`, the receipt contribution is **0**. Final score = chatter base (clipped at 50). Do NOT invent points based on chat-claimed trades, casual P&L brags, alert-channel posts mentioned in chat but not extracted into analyst_trades, "documented" trades you remember from MESSAGES, or any other source. The structured ledger IS the source of truth.
 - If the ledger shows `TOTAL RECEIPT POINTS: 14`, the receipt contribution is **14**. Not 20 because the chat mentions more trades. Not 8 because some of the wins look small. **14**.
-- A trade mentioned in the user's chat but NOT in the structured ledger means OCR didn't extract it or the watcher didn't process it. That's a pipeline gap, NOT a license to credit the trade in the score. Note the trade in Recent trades section (sourced from analyst_trades + chat), but do NOT add fictional points for it.
+- A trade mentioned in the user's chat but NOT in the structured ledger means OCR didn't extract it or the watcher didn't process it. That's a pipeline gap, NOT a license to credit the trade in the score. Do NOT add fictional points for it.
 - The failure mode this rule blocks: model reads chat, sees "I closed BTC short for +210%," infers that's worth ~40 points, adds it on top of chatter base, produces a final score 30-50 points higher than the user actually earned. That's hallucination — the chat claim is not a receipt; only an analyst_trades row is a receipt.
 
 If you find yourself wanting to inflate receipt points above the ledger total because "the chat clearly shows trades that aren't in the ledger," STOP. The ledger value stands. Lower the chatter base if you must to reflect the trader's true skill — but receipts are the ledger total, full stop.
@@ -571,23 +559,11 @@ The total points above are computed from analyst_trades (real entries / closes /
 
 ---
 
-STRUCTURED TRADE LOG — source of truth for Recent trades section:
+STRUCTURED TRADE LOG (code writes the Recent trades section from it):
 
 {analyst_trades_block}
 
-**BINDING RULE on Recent trades.** The structured trade log above (sourced from `analyst_trades` — OCR-extracted entries and exits posted by THIS user in their alert channel and gain-loss-porn) is the source of truth for any percentage / dollar / outcome you cite in the **Recent trades** section. Specifically:
-- If a trade appears in the log above, quote its `gain_pct` and dates EXACTLY as shown. Don't round, don't restate, don't infer "approximately."
-- If a trade does NOT appear in the log above but the user mentioned a position in chat (MESSAGES block below), describe it WITHOUT a percentage — e.g. "mentioned a TSLA position around 5/22, no documented outcome in log." Do NOT invent a `+X%` figure that isn't in the structured log.
-- The model's previous failure mode: inventing percentages on trades that closed at materially different actual numbers, or marking a documented loss as "Flat" because the chat-text inference missed the structured close. The structured log above prevents this — use it.
-- If the structured log is empty (the user has no analyst_trades rows in the window), the Recent trades section must lean on chat-described positions WITHOUT percentages, OR be brief / skipped if signal is thin.
-
-**BINDING RULE on trade STATUS and OUTCOME (not just percentages).** The same source-of-truth discipline applies to whether a trade is open, closed, expired, won, or lost — this is where the profile has fabricated and lost member trust (2026-06-16: a TSLA 410C that expired 06-12 was narrated as "Open, waiting for his reversal thesis to materialize" four days after expiry; a no-close BTC position as "still held in limbo"). Read the status tag on each log row and obey it EXACTLY:
-- `[EXPIRED — … OUTCOME UNKNOWN]`: the option's expiry passed and no close was posted. State it expired and that the outcome is unknown — e.g. "his TSLA 410Cs hit 6/12 expiry with no close posted, outcome unrecorded." You may NOT say it "expired worthless," "is dead," "is still open," or "is waiting" — you do not know which, and asserting one is fabrication. (You can still mock the RISK of a naked weekly bet — just not a made-up result.)
-- `[OPEN per log — no exit posted …]`: we only ingest screenshotted trades, so a missing close does NOT mean still-held. Say "opened X on <date>, no exit posted" — never "still holding," "currently defending," "in limbo," or any present-tense status that implies you know they're still in it.
-- `[EXIT only — no logged entry]`: a close with no matching open — describe the exit only, don't invent the entry.
-- Never write present-tense narrative status ("waiting to materialize," "being defended," "still riding it") for any position whose outcome the log does not record. Describe what was POSTED, not what you imagine is happening now.
-
-This rule overrides any contrary inference from the MESSAGES block below for the Recent trades section. Voice / Personality / Retarded takes / Recent personal life still source from MESSAGES; only Recent trades is anchored to the structured log.
+**Wherever you mention a trade (Personality and style, the rationales), its percentage, dates and outcome come from this log exactly as shown.** A trade the log does not hold gets no percentage and no outcome. Read each row's status tag: an expired option with no close has an unknown outcome, and an open with no exit posted may have been closed without a screenshot, so never say it is still held, worthless or "in limbo".
 
 ---
 
@@ -610,6 +586,11 @@ except ImportError:
         "__OWNED_CHANNELS_BLOCK__",
         "KNOWN OWNED ALERT CHANNELS: see world_context.OWNED_ALERT_CHANNELS",
     )
+
+
+def _strip_source_tags(profile_text: str) -> str:
+    from scripts import profile_guards
+    return "\n".join(profile_guards.strip_tag(l) for l in profile_text.split("\n"))
 
 
 def _verify_profile_claims(
@@ -1543,7 +1524,10 @@ async def _generate_profile(
         ts = existing_profile.get("trader_score")
         prior_profile_block = PRIOR_PROFILE_TEMPLATE.format(
             last_seen=last_seen or "(unknown)",
-            prior_profile_text=existing_profile.get("profile_text") or "(no prior text)",
+            # without the code-written "(said Oct 12)" tails: they are
+            # re-derived from the source messages before save
+            prior_profile_text=_strip_source_tags(
+                existing_profile.get("profile_text") or "") or "(no prior text)",
             prior_trader_score=ts if ts is not None else "n/a",
             prior_trader_rationale=existing_profile.get("trader_rationale") or "(none)",
         )
@@ -2879,21 +2863,18 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 profile, uid, claim_check.get("verified_quotes") or [])
                             for _d in _pgd:
                                 print(f"  [guards] {meta['username']}: dropped {_d[:140]}")
-                            trader_rationale = _pg.fix_receipts_claim(trader_rationale, profile)
                         except Exception as _e:
                             print(f"  [guards] skipped for {uid}: {_e}")
-                        # Recent-trades commentary may not claim an
-                        # outcome the log lacks (2026-10-08 audit:
-                        # "stopped out", "realized loss" on open trades).
+                        # Recent trades is written from the trade log in
+                        # code; the writer's version is discarded
+                        # (2026-10-30 audit, design note 3).
                         try:
                             from scripts import profile_trades as _pt
-                            profile, _fixed = _pt.ground_recent_trades(
-                                profile, _pt.member_trades(uid),
-                                older_rows=_pt.member_trades(uid, days=365))
-                            for _f in _fixed:
-                                print(f"  [trades] {meta['username']}: {_f}")
+                            profile = _pt.write_recent_trades(profile, _pt.member_trades(uid))
+                            from scripts import profile_guards as _pg
+                            trader_rationale = _pg.fix_receipts_claim(trader_rationale, profile)
                         except Exception as _e:
-                            print(f"  [trades] grounding skipped for {uid}: {_e}")
+                            print(f"  [trades] Recent trades not written for {uid}: {_e}")
                         db.upsert_user_profile(
                             user_id=uid,
                             username=meta["username"],

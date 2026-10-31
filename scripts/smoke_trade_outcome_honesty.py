@@ -98,14 +98,14 @@ def test_formatter_emits_status_tags():
 def test_profile_prompt_status_rule():
     import backfill_user_profiles as bf
     p = bf.PROFILE_PROMPT
-    assert "BINDING RULE on trade STATUS and OUTCOME" in p
-    assert "OUTCOME UNKNOWN" in p
-    assert "still held" in p.lower() or "still holding" in p.lower()
-    assert "waiting to materialize" in p, (
-        "rule must name the observed present-tense-narrative failure"
-    )
-    _ok("profile prompt: status/outcome binding rule present with the "
-        "observed failure modes")
+    # Since 2026-10-30 code writes the Recent trades section from the log
+    # (scripts/profile_trades.py write_recent_trades); the prompt keeps the
+    # status rule for trades mentioned anywhere else.
+    assert "code writes the Recent trades section" in p
+    assert "unknown outcome" in p
+    assert "never say it is still held" in p
+    _ok("profile prompt: Recent trades written by code, status rule kept "
+        "for trades mentioned elsewhere")
 
 
 def test_live_ask_prompt_outcome_rule():

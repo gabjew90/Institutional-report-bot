@@ -9,6 +9,7 @@ single-quoted anchor (M5), a room-reaction claim (M8), and a trader
 rationale saying "no documented receipts" beside a +150% close (M7).
 """
 import itertools
+import re
 
 import db
 from scripts import profile_guards as G
@@ -130,3 +131,84 @@ def test_a_recent_bullet_needs_a_recent_quote_2026_10_26():
 def test_a_gif_link_is_not_a_quote():
     text, dropped = G.apply("**Voice.**\n- Reacts: \"https://tenor.com/view/pout-kiss-4\"\n", ME, [])
     assert "tenor" not in text and "GIF" in " ".join(dropped)
+
+
+def _post(author, text, channel, reply_to=None, days_ago=0, name=None):
+    mid = next(_ids)
+    conn = db.get_connection()
+    conn.execute(
+        "INSERT INTO chat_messages (discord_message_id, channel_id, channel_name, author_id, "
+        "author_username, author_display, content, posted_at, reply_parent_id) "
+        "VALUES (?, ?, 'stonks', ?, ?, ?, ?, datetime('now', ?), ?)",
+        (mid, channel, author, f"u{author}", name or f"U{author}", text, f"-{days_ago} day", reply_to))
+    conn.commit()
+    return mid
+
+
+def test_run7_a_line_answering_someone_about_someone_else(monkeypatch):
+    """Run 7 M1/M5/M6: a joke about Grand, a reply about the other person's
+    cat, both written up as the member's own life."""
+    monkeypatch.setattr(db, "member_aliases", lambda: {"grand": OTHER})
+    _post(OTHER, "why did grand leave", 501)
+    _post(ME, "Got goth chick pregnant", 501)
+    parent = _post(OTHER, "my cat weighs 30 pounds", 502)
+    _post(ME, "your cat is fatter than the fed balance sheet", 502, reply_to=parent)
+    _post(OTHER, "what are you up to", 503)
+    _post(ME, "Gym then picking up the kids", 503)
+    text, dropped = G.apply(
+        "**Recent personal life.**\n"
+        "- Dad now: \"Got goth chick pregnant\" — [a family man]\n"
+        "- Fat cat: \"your cat is fatter than the fed balance sheet\"\n"
+        "- Gym dad: \"Gym then picking up the kids\"\n", ME, [])
+    assert "goth" not in text and "Fat cat" not in text
+    assert "Gym dad" in text and "answers someone about someone else" in " ".join(dropped)
+
+
+def test_run7_verdicts_frequency_repeats_and_one_word_voice():
+    """M2/M14 (the writer ruling a claim false), M17 ("constantly" from
+    one message), M18 (a quote used twice), M19 (a one-word voice line)."""
+    _post(ME, "SPACEX IS PUBLIC NOW BOYS", 510)
+    _post(ME, "buying the dip on everything", 510)
+    text, dropped = G.apply(
+        "**Voice.**\n- \"retard\"\n- \"buying the dip on everything\"\n\n"
+        "**Retarded takes.**\n"
+        "- SpaceX: \"SPACEX IS PUBLIC NOW BOYS\" — [which was incorrect]\n"
+        "- Dip addict: constantly \"buying the dip on everything\"\n", ME, [])
+    reasons = " ".join(dropped)
+    assert "SpaceX" not in text and "rules on whether a claim was true" in reasons
+    assert "one-word voice line" in reasons
+    assert "Dip addict" not in text and "repeats a quote" in reasons
+    text, _ = G.apply("**Retarded takes.**\n- Dip addict: constantly \"buying the dip on everything\"\n", ME, [])
+    assert "constantly" not in text and "Dip addict:" in text
+
+
+def test_run7_kept_bullets_carry_their_date_and_who_they_replied_to():
+    parent = _post(OTHER, "who is buying this", 520, name="Wock")
+    _post(ME, "I bought the whole float of this garbage", 520, reply_to=parent)
+    text, _ = G.apply("**Retarded takes.**\n- Bagholder: \"I bought the whole float of this garbage\"\n", ME, [])
+    assert re.search(r"\(said [A-Z][a-z]{2} \d{1,2}, replying to Wock\)$", text)
+    # a second pass replaces the tag, it does not stack one on another
+    again, _ = G.apply(text, ME, [])
+    assert again == text
+
+
+def test_run7_old_two_word_quotes_acronyms_and_unit_figures():
+    """M4 (a short quote months old as recent life), M10 (acronyms the
+    member never wrote), M11 ("$16k" from a stray 16, "4 AM" from "at 4")."""
+    _post(ME, "ski season", 530, days_ago=120)
+    text, dropped = G.apply("**Recent personal life.**\n- Skier: \"ski season\"\n", ME, [])
+    assert "Skier" not in text and "older than 60 days" in " ".join(dropped)
+    hay = G._norm("lost 16 bucks, see you at 4")
+    assert G.unsupported_terms("- Job — works in IT", hay, set()) == ["IT"]
+    assert G.unsupported_terms("- Spent $16k on it", hay, set()) == ["$16k"]
+    assert G.unsupported_terms("- Up at 4 AM", hay, set()) == ["4"]
+    assert G.unsupported_terms("- Spent $16k on it", G._norm("dropped 16k on a watch"), set()) == []
+
+
+def test_run7_a_pasta_with_a_double_space_is_still_a_pasta():
+    """M3: an exact LIKE missed a meme pasted with a double space."""
+    meme = ("WE ARE ALL GONNA MAKE IT  THE CANDLES WILL BE GREEN AND THE BEARS WILL BE BROKE, "
+            "HOLD THE LINE BROTHERS AND SISTERS, THE MOON IS CLOSER THAN IT LOOKS TONIGHT OK, "
+            "DIAMOND HANDS ONLY, PAPER HANDS GET LEFT AT THE STATION")
+    _post(ME, meme, 540)
+    assert G.is_copypasta("WE ARE ALL GONNA MAKE IT THE CANDLES", ME)

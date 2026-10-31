@@ -26,86 +26,6 @@ def test_impossible_gains_are_blank():
     assert T.shown_gain(-100.0) == -100.0 and T.shown_gain(-600) is None
 
 
-PROFILE = """**Voice.**
-- "x"
-
-**Recent trades.**
-- TSLA 385C (exp 10-09) [OPEN per log — no exit posted] — [added to his position while calling for a rocket move, only to get stopped out shortly after]
-- AAOI 120C (exp 10-09) [EXIT — closed +525.00%] — [a clean, documented win that he timed perfectly]
-- MU 1025P exp 10-07 — [Closed at a realized loss after he tripled down on a bearish thesis]
-- NVDA 200C exp 10-09 — [a loss he will never admit]
-- SPCX 155C exp 10-09 — [cashed out a massive triple-digit return]
-- Brazil — [scaled out for profit]
-
-**Recent personal life.**
-- "y"
-"""
-
-
-def test_invented_outcomes_on_open_trades_are_replaced_with_the_log():
-    rows = [_row("open", "TSLA", 385, "call", "2026-10-06T15:00"),
-            _row("close", "AAOI", 120, "call", "2026-10-06T16:00", gain=525.0),
-            _row("open", "MU", 1025, "put", "2026-10-07T14:00"),
-            _row("close", "NVDA", 200, "call", "2026-10-07T15:00", gain=80.0),
-            _row("close", "SPCX", 155, "call", "2026-10-07T15:30", gain=300.0)]
-    text, fixed = T.ground_recent_trades(PROFILE, rows)
-    assert "stopped out" not in text and "realized loss" not in text
-    assert "TSLA 385C (exp 10-09) [OPEN per log — no exit posted] — [no exit posted in the log]" in text
-    assert "MU 1025P exp 10-07 — [no exit posted in the log]" in text
-    # a loss claimed on a winning close takes the log's number
-    assert "NVDA 200C exp 10-09 — [closed +80.00% per the log]" in text
-    # supported outcomes stay, and so does a line the log cannot check
-    assert "a clean, documented win" in text and "cashed out a massive" in text
-    assert "Brazil — [scaled out for profit]" in text
-    assert len(fixed) == 3
-    assert text.endswith('**Recent personal life.**\n- "y"\n')
-
-
-def test_no_log_rows_removes_only_the_per_log_claims():
-    # 2026-10-18 audit M9: "Open per log" for a member with no logged
-    # trades claims a log that does not exist; everything else stays.
-    text, fixed = T.ground_recent_trades(PROFILE, [])
-    assert fixed and "per log" not in text
-    assert text.replace("[OPEN — no exit posted]", "") == PROFILE.replace(
-        "[OPEN per log — no exit posted]", "")
-    plain = "**Recent trades.**\n- TSLA 385C — [still holding]\n"
-    assert T.ground_recent_trades(plain, []) == (plain, [])
-
-
-def test_a_strikeless_line_is_judged_by_its_own_exit_2026_10_18():
-    """Audit M6: "QQQ -94.65% [closed +88.74% per the log]"."""
-    rows = [_row("close", "QQQ", None, "", "2026-10-15T15:01", gain=-94.65),
-            _row("close", "QQQ", 725, "call", "2026-10-15T19:00", gain=88.74)]
-    text, fixed = T.ground_recent_trades(
-        "**Recent trades.**\n- QQQ (Exp 10-15): Gain -94.65% — [closed +88.74% per the log]\n", rows)
-    assert fixed and "[closed -94.65% per the log]" in text
-
-
-def test_a_ticker_traded_only_before_the_window_is_dropped():
-    rows = [_row("open", "TSLA", 385, "call", "2026-10-06T15:00")]
-    old = [_row("open", "SNDK", 1550, "call", "2026-08-27T15:00")]
-    text, fixed = T.ground_recent_trades(
-        "**Recent trades.**\n- SNDK 1550C — [big swing]\n- TSLA 385C — [still holding]\n",
-        rows, older_rows=old + rows)
-    assert "SNDK" not in text and "TSLA 385C" in text
-
-
-def test_a_bullet_that_starts_with_a_verb_is_checked():
-    rows = [_row("open", "TSLA", 385, "call", "2026-10-06T15:00")]
-    text, fixed = T.ground_recent_trades(
-        "**Recent trades.**\n- Closed TSLA 385C for a loss — [got stopped out]\n", rows)
-    assert fixed and "[no exit posted in the log]" in text
-
-
-def test_an_earlier_round_trip_does_not_license_a_reopen():
-    rows = [_row("open", "TSLA", 385, "call", "2026-10-01T15:00"),
-            _row("close", "TSLA", 385, "call", "2026-10-02T15:00", gain=40.0),
-            _row("open", "TSLA", 385, "call", "2026-10-06T15:00")]
-    text, fixed = T.ground_recent_trades(
-        "**Recent trades.**\n- TSLA 385C — [stopped out again]\n", rows)
-    assert fixed and "[no exit posted in the log]" in text
-
-
 def test_a_spread_strike_does_not_break_the_block():
     assert "TSLA 450/460" in T.render_block([_row("open", "TSLA", "450/460", "call", "2026-10-06T15:00")])
 
@@ -120,30 +40,49 @@ def test_a_share_close_up_thousands_of_percent_is_an_extraction_error():
     assert T.shown_gain(1500.0, "put") == 1500.0
 
 
-def test_review_2026_10_18_comment_color_and_caps_survive():
-    """Code review: a percent in a strike-specific comment is color, and an
-    uppercase word on a chat-only line is not an old ticker."""
-    rows = [_row("close", "TSLA", 385, "call", "2026-10-06T15:00", gain=40.0)]
-    line = "**Recent trades.**\n- TSLA 385C — [closed +40% before the stock ran 15% more]\n"
-    assert T.ground_recent_trades(line, rows) == (line, [])
-    old = [_row("open", "IT", 200, "call", "2026-08-01T15:00")]
-    chat = "**Recent trades.**\n- Brazil ETF puts — [IT got crushed]\n- TSLA 385C — [closed +40%]\n"
-    text, _ = T.ground_recent_trades(chat, rows, older_rows=old + rows)
-    assert "Brazil" in text
+PROFILE = """**Voice.**
+- "x y"
+
+**Recent trades.**
+- TSLA 385C [OPEN per log] - [got stopped out, then bought back]
+- LITE 980C +169.27%
+
+**Recent personal life.**
+- "y z"
+"""
 
 
-def test_an_open_trade_carries_no_pnl_2026_10_26():
-    """Audit A17: "ASTS 38P [OPEN] — [down 30%]" was served as current."""
-    rows = [_row("open", "ASTS", 38, "put", "2026-10-16T15:00")]
-    line = "**Recent trades.**\n- ASTS 38P — [defending the position while down 30%]\n"
-    text, fixed = T.ground_recent_trades(line, rows)
-    assert fixed and "down 30%" not in text and "[no exit posted in the log]" in text
+def test_recent_trades_are_written_from_the_log_2026_10_30():
+    """Run 7 design note 3: the writer's section is discarded. M7 (a gain
+    the log lacks), M8 (an outcome on an open trade) and M20 (a logged win
+    left out) cannot appear; the other sections are untouched."""
+    rows = [_row("open", "TSLA", 385, "call", "2026-10-06T15:00", expiry="2026-11-20"),
+            _row("open", "NDX", 25000, "call", "2026-10-07T15:00"),
+            _row("close", "NDX", 25000, "call", "2026-10-08T15:00", gain=580.0),
+            _row("close", "QQQ", 600, "put", "2026-10-09T15:00", gain=-45.0)]
+    text = T.write_recent_trades(PROFILE, rows, today=date(2026, 10, 30))
+    assert "stopped out" not in text and "169" not in text
+    assert "- NDX 25000C exp 10/09: opened Oct 7, closed Oct 8, +580.0%" in text
+    assert "- QQQ 600P exp 10/09: exit posted Oct 9, -45.0%, no entry logged" in text
+    assert "- TSLA 385C exp 11/20: opened Oct 6, no exit posted" in text
+    assert text.index("NDX") < text.index("TSLA")          # closes first
+    assert '**Voice.**\n- "x y"' in text and '**Recent personal life.**\n- "y z"' in text
 
 
-def test_stale_lines_drop_with_an_empty_window_2026_10_26():
-    """Audit M5: the stale filter did not run when the 30-day log was empty."""
-    old = [_row("open", "SNDK", 1550, "call", "2026-08-27T15:00")]
-    text, fixed = T.ground_recent_trades(
-        "**Recent trades.**\n- SNDK 1550C [OPEN per log] — [big swing]\n- Brazil puts — [chat only]\n",
-        [], older_rows=old)
-    assert "SNDK" not in text and "Brazil puts" in text and fixed
+def test_an_expired_open_and_an_empty_log_2026_10_30():
+    rows = [_row("open", "NET", 380, "call", "2026-09-25T15:00", expiry="2026-10-16"),
+            _row("open", "MON", 5, "call", "2026-10-01T15:00")]       # M21: a weekday
+    text = T.write_recent_trades("**Recent trades.**\n- NET to the moon", rows, today=date(2026, 10, 30))
+    assert text == ("**Recent trades.**\n- NET 380C exp 10/16: opened Sep 25, "
+                    "expiry passed with no exit posted, outcome unknown")
+    assert T.write_recent_trades("**Recent trades.**\n- stuff\n\n**Recent personal life.**\n- a", []) == (
+        "**Recent trades.**\n- No trades logged in the last 30 days.\n\n**Recent personal life.**\n- a")
+
+
+def test_a_reopen_after_a_close_shows_both_2026_10_30():
+    rows = [_row("open", "TSLA", 385, "call", "2026-10-01T15:00"),
+            _row("close", "TSLA", 385, "call", "2026-10-02T15:00", gain=40.0),
+            _row("open", "TSLA", 385, "call", "2026-10-06T15:00")]
+    lines = T.section_lines(rows, today=date(2026, 10, 7))
+    assert lines == ["- TSLA 385C exp 10/09: opened Oct 1, closed Oct 2, +40.0%",
+                     "- TSLA 385C exp 10/09: opened Oct 6, no exit posted"]

@@ -10,10 +10,9 @@ Three defects in how the ledger reached the profile writer, one subsystem:
 3. Impossible gains (-600%) were printed as fact.
 
 On top of that the writer invented outcomes ("stopped out", "closed at a
-realized loss", "took profits") for trades the log shows still open. The
-prompt already forbids it; `ground_recent_trades` enforces it in code:
-any Recent-trades commentary that claims an outcome the log does not
-have is replaced with what the log says.
+realized loss", "took profits") for trades the log shows still open.
+Since 2026-10-30 the Recent trades section is written here from the log
+(`write_recent_trades`) and the writer's version is thrown away.
 """
 from __future__ import annotations
 
@@ -121,158 +120,88 @@ def render_block(rows: list[dict], today: date | None = None) -> str:
     return "\n".join(lines)
 
 
-# Outcome claims a Recent-trades line may make only when the log has an
-# exit for that contract.
-_OUTCOME_RE = re.compile(
-    r"\b(?:stopped\s+out|stop(?:ped)?[\s-]loss(?:ed)?|realized\s+(?:a\s+)?(?:loss|gain|profit)"
-    r"|took\s+(?:profits?|gains|the\s+(?:win|loss|[lw]))|took\s+(?:a|the)\s+(?:loss|hit)"
-    r"|scaled\s+out|cashed\s+out|locked\s+in|cut\s+(?:it|the|his|her|their|losses|bait)"
-    r"|(?:sold|closed|exited|dumped|bailed)\b|expired\s+worthless|went\s+to\s+zero"
-    r"|recover(?:ed|y)|banked|watch(?:ed)?\s+(?:the\s+)?stock\s+recover)", re.I)
-_LOSS_RE = re.compile(r"\b(?:loss|lost|losing|bagholder|blew\s+up|wiped|zeroed)\b", re.I)
-_WIN_RE = re.compile(r"\b(?:win|won|profit(?:s|able)?|printed|cashed)\b", re.I)
-_CONTRACT_RE = re.compile(r"\$?\b([A-Z]{1,6})\s+\$?(\d+(?:\.\d+)?)\s*([CcPp])\b")
-_COMMENT_RE = re.compile(r"\[[^\[\]]*\]\s*$")
-_SECTION_RE = re.compile(r"(\*\*Recent trades\.\*\*\s*\n)(.*?)(?=\n\s*\*\*|\Z)", re.S)
+_SECTION_RE = re.compile(r"\*\*Recent trades\.?\*\*.*?(?=\n\s*\*\*|\Z)", re.S | re.I)
+# Words the extractor has read as tickers (2026-10-30 audit M21: "MON").
+_NOT_TICKERS = {"", "?", "UNCLEAR", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"}
+SECTION_LINES = 6
 
 
-def _log_says(contract_rows: list[dict], exits: list[dict]) -> str:
-    if exits:
-        last = sorted(exits, key=lambda e: e.get("posted_at") or "")[-1]
-        g = shown_gain(last.get("gain_pct"), last.get("contract_type"))
-        return f"[closed {g:+.2f}% per the log]" if g is not None else "[an exit is logged, gain not recorded]"
-    return "[no exit posted in the log]"
+def _day(ts: str) -> str:
+    try:
+        d = date.fromisoformat((ts or "")[:10])
+    except ValueError:
+        return "?"
+    return f"{d:%b} {d.day}"
 
 
-# Capitalised words on a trade line that are not symbols.
-_NOT_SYMBOLS = {"OPEN", "EXIT", "CLOSED", "CLOSE", "LOG", "EXP", "IV", "OI", "ATM", "OTM", "ITM",
-                "DTE", "EOD", "AH", "PM", "AM", "ET", "YOLO", "CALL", "PUT", "CALLS", "PUTS", "IT",
-                "US", "AI", "ETF", "EPS", "TRIM", "ADD", "PER"}
-_PER_LOG_RE = re.compile(r"\s*\(?\b(?:per|in)\s+(?:the\s+)?(?:trade\s+)?log\b\)?", re.I)
+def _contract(r: dict) -> str:
+    ticker = (r.get("ticker") or "?").upper()
+    ct = (r.get("contract_type") or "").lower()
+    if ct in ("call", "put"):
+        exp = r.get("expiry") or ""
+        exp = f" exp {exp[5:7]}/{exp[8:10]}" if len(exp) >= 10 else ""
+        return f"{ticker} {_strike_str(r.get('strike'))}{ct[0].upper()}{exp}"
+    return f"{ticker} shares" if ct == "stock" else ticker
 
 
-def ground_recent_trades(profile_text: str, rows: list[dict],
-                         older_rows: list[dict] | None = None) -> tuple[str, list[str]]:
-    """Replace Recent-trades commentary that claims an outcome the log does
-    not show. Returns the text and the replaced lines (for the run log).
-    Lines about tickers the log does not hold are left alone: they come
-    from chat and cannot be checked here.
+def section_lines(rows: list[dict], today: date | None = None,
+                  limit: int = SECTION_LINES) -> list[str]:
+    """One line per contract from the log: what was opened and when, and
+    the logged exit with its gain, or that no exit was posted. Closes come
+    first, newest first, so a logged win is never left out for a run of
+    opens (2026-10-30 audit M20)."""
+    today = today or date.today()
+    by_key: dict[tuple, list[dict]] = {}
+    for r in sorted(rows, key=lambda x: x.get("posted_at") or ""):
+        if (r.get("ticker") or "").upper() in _NOT_TICKERS:
+            continue
+        by_key.setdefault(_key(r), []).append(r)
+    closed, other = [], []
+    for events in by_key.values():
+        entry = None                    # the first open since the last exit
+        for e in events:
+            if (e.get("action") or "").lower() in _EXITS:
+                g = shown_gain(e.get("gain_pct"), e.get("contract_type"))
+                result = f"{g:+.1f}%" if g is not None else "gain not recorded"
+                if entry is not None:
+                    text = (f"{_contract(entry)}: opened {_day(entry.get('posted_at'))}, "
+                            f"closed {_day(e.get('posted_at'))}, {result}")
+                else:
+                    text = f"{_contract(e)}: exit posted {_day(e.get('posted_at'))}, {result}, no entry logged"
+                closed.append((e.get("posted_at") or "", text))
+                entry = None
+            elif entry is None and (e.get("action") or "").lower() in _OPENS:
+                entry = e
+        if entry is None:
+            continue
+        price = entry.get("price")
+        at = f" at {price:g}" if isinstance(price, (int, float)) and price else ""
+        expiry = entry.get("expiry") or ""
+        expired = (entry.get("inferred_status") or "").lower() == "expired_unknown"
+        if len(expiry) >= 10:
+            try:
+                expired = expired or date.fromisoformat(expiry[:10]) < today
+            except ValueError:
+                pass
+        tail = "expiry passed with no exit posted, outcome unknown" if expired else "no exit posted"
+        other.append((entry.get("posted_at") or "",
+                      f"{_contract(entry)}: opened {_day(entry.get('posted_at'))}{at}, {tail}"))
+    picked = sorted(closed, reverse=True)[:limit]
+    picked += sorted(other, reverse=True)[:limit - len(picked)]
+    return [f"- {t}" for _, t in picked]
 
-    2026-10-18 audit: with no log rows at all, "Open per log" claims a log
-    that does not exist (M9), so "per log" goes; and a line about a ticker
-    the member traded only before this window (`older_rows`) is stale and
-    goes (M11: July trades listed as recent)."""
+
+def write_recent_trades(profile_text: str, rows: list[dict],
+                        today: date | None = None) -> str:
+    """The profile with its Recent trades section written from the log.
+
+    The writer's version is discarded (2026-10-30 audit, design note 3):
+    it invented gains (M7), outcomes on open trades (M8), listed months-old
+    chat trades as recent (M9), left the header empty (M15) and skipped
+    logged wins (M20). Four regex passes on its text had not stopped it."""
+    lines = section_lines(rows, today) or ["- No trades logged in the last 30 days."]
+    section = "**Recent trades.**\n" + "\n".join(lines)
     m = _SECTION_RE.search(profile_text or "")
     if not m:
-        return profile_text, []
-    if not rows:
-        # A ticker traded only before the window is stale here too: with an
-        # empty 30-day log this branch used to skip the check, and seven
-        # profiles listed 30-day-old trades as recent (2026-10-26 audit M5).
-        stale = {(r.get("ticker") or "").upper() for r in (older_rows or [])}
-        body = m.group(2)
-        kept, notes, per_log = [], [], False
-        for ln in body.split("\n"):
-            if ln.lstrip().startswith("-"):
-                named = {w.upper() for w in re.findall(r"\$?\b([A-Z]{2,6})\b", ln)} - _NOT_SYMBOLS
-                if named & stale:
-                    notes.append(f"dropped stale line: {ln.strip()[:100]}")
-                    continue
-                cut = _PER_LOG_RE.sub("", ln)
-                per_log = per_log or cut != ln
-                ln = cut
-            kept.append(ln)
-        if per_log:
-            notes.append("removed 'per log' claims: the member has no logged trades")
-        if not notes:
-            return profile_text, []
-        return profile_text[:m.start(2)] + "\n".join(kept) + profile_text[m.end(2):], notes
-    by_ticker: dict[str, list[dict]] = {}
-    for r in rows:
-        by_ticker.setdefault((r.get("ticker") or "").upper(), []).append(r)
-    stale = {(r.get("ticker") or "").upper() for r in (older_rows or [])} - set(by_ticker)
-    exits = exits_by_contract(rows)
-    fixed, out_lines = [], []
-    for line in m.group(2).split("\n"):
-        if line.lstrip().startswith("-") and stale:
-            named = {w.upper() for w in re.findall(r"\$?\b([A-Z]{2,6})\b", line)} - _NOT_SYMBOLS
-            if named & stale and not named & set(by_ticker):
-                fixed.append(f"dropped stale line: {line.strip()[:100]}")
-                continue
-        com = _COMMENT_RE.search(line)
-        if not line.lstrip().startswith("-") or not com:
-            out_lines.append(line)
-            continue
-        head = line[:com.start()]
-        # the contract anywhere before the commentary ("- Closed TSLA 385C")
-        cm = _CONTRACT_RE.search(head)
-        ticker = cm.group(1).upper() if cm else next(
-            (w.upper() for w in re.findall(r"\$?\b([A-Za-z]{1,6})\b", head)
-             if w.upper() in by_ticker), "")
-        if ticker not in by_ticker:
-            out_lines.append(line)
-            continue
-        pinned = False   # the line's own gain picked its exit (M6)
-        if cm and cm.group(1).upper() == ticker:
-            key = (ticker, float(cm.group(2)), cm.group(3).lower())
-            contract_rows = [r for r in by_ticker[ticker] if _key(r) == key]
-            contract_exits = exits.get(key, [])
-        else:
-            contract_rows = by_ticker[ticker]
-            contract_exits = [e for k, v in exits.items() if k[0] == ticker for e in v]
-            # No strike on the line: when its own gain is a logged exit's,
-            # the line is about that exit, not the ticker's latest one
-            # (2026-10-18 audit M6: "QQQ -94.65% [closed +88.74% per the log]").
-            head_gains = {round(float(x), 2) for x in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", head)}
-            same = [e for e in contract_exits
-                    if shown_gain(e.get("gain_pct"), e.get("contract_type")) is not None
-                    and round(shown_gain(e.get("gain_pct"), e.get("contract_type")), 2) in head_gains]
-            if same:
-                contract_exits, pinned = same, True
-        if not contract_rows:
-            out_lines.append(line)
-            continue
-        comment = com.group(0)
-        # A comment quoting a logged exit's own gain is about that exit.
-        logged = {round(g, 2) for g in (shown_gain(e.get("gain_pct"), e.get("contract_type")) for e in contract_exits)
-                  if g is not None}
-        quoted = {round(float(x), 2) for x in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", comment)}
-        if logged & quoted or {abs(q) for q in quoted} & {abs(g) for g in logged}:
-            out_lines.append(line)
-            continue
-        # Otherwise an exit counts only after the latest open: an earlier
-        # round trip on the same strike says nothing about a re-open.
-        opens = [r.get("posted_at") or "" for r in contract_rows
-                 if (r.get("action") or "").lower() in _OPENS]
-        if opens:
-            contract_exits = [e for e in contract_exits
-                              if (e.get("posted_at") or "") >= max(opens)]
-        bad = False
-        if not contract_exits:
-            claims_loss = (_LOSS_RE.search(comment)
-                           and not re.search(r"\bunrealized\b", comment, re.I))
-            # an open trade has no P&L in the log: "down 30%" is a guess that
-            # goes stale ("currently down 30% on ASTS puts" while they had
-            # printed, 2026-10-26 audit A17)
-            open_pnl = re.search(r"\b(?:down|up)\s+\d+(?:\.\d+)?\s*%|[+-]\d+(?:\.\d+)?\s*%", comment)
-            bad = bool(_OUTCOME_RE.search(comment) or claims_loss or open_pnl)
-        else:
-            last = sorted(contract_exits, key=lambda e: e.get("posted_at") or "")[-1]
-            g = shown_gain(last.get("gain_pct"), last.get("contract_type"))
-            if g is not None:
-                bad = bool((g > 0 and _LOSS_RE.search(comment))
-                           or (g < 0 and _WIN_RE.search(comment))
-                           # a comment quoting another exit's gain, on a line
-                           # whose own gain named its exit
-                           or (pinned and quoted
-                               and round(abs(g), 2) not in {abs(q) for q in quoted}))
-        if bad:
-            new = line[:com.start()] + _log_says(contract_rows, contract_exits)
-            out_lines.append(new)
-            fixed.append(f"{line.strip()[:120]} -> {_log_says(contract_rows, contract_exits)}")
-        else:
-            out_lines.append(line)
-    if not fixed:
-        return profile_text, []
-    text = profile_text[:m.start(2)] + "\n".join(out_lines) + profile_text[m.end(2):]
-    return text, fixed
+        return (profile_text or "").rstrip() + "\n\n" + section
+    return profile_text[:m.start()] + section + profile_text[m.end():]

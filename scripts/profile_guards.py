@@ -15,7 +15,17 @@ writer put AROUND the quotes:
       got past the lint.
 
 Each check drops the bullet that fails it; nothing is rewritten. The
-trades section is grounded separately (scripts/profile_trades.py).
+trades section is written from the log (scripts/profile_trades.py).
+
+2026-10-30 audit (run 7, design note 4): the writer was shown each line's
+reply parent and the messages before it and still wrote a joke about
+Grand as kloh's life, cemini23's remarks about another trader's orange
+juice trades as his own, and two-to-five-month-old messages as "recent".
+So every quote is now traced to its source message here
+(`member_messages`, `find_source`), and the bullet is judged by that
+message: its date, whether it answers someone about someone else, and how
+many messages carry it. Kept bullets in the takes and life sections end
+with the source's date, and who it replied to, so /ask sees them too.
 """
 from __future__ import annotations
 
@@ -47,6 +57,26 @@ _STOP_TITLE = {
 }
 
 
+_FIRST_PERSON_RE = re.compile(
+    r"\b(?:i|i'm|im|i've|ive|i'd|i'll|ill|me|my|mine|myself|we|we're|our|ours)\b", re.I)
+_SECOND_PERSON_RE = re.compile(r"\b(?:you|your|you're|youre|yours|ur)\b", re.I)
+# Framing that rules on whether a claim was true: the writer has no data
+# for that and called SpaceX being public "incorrect" (run 7 M2, M14).
+_VERDICT_RE = re.compile(
+    r"\b(?:incorrect(?:ly)?|factually|untrue|(?:not|isn't|wasn't|isnt|wasnt) true"
+    r"|(?:is|was|are|were) (?:false|wrong)|false (?:claim|statement|premise)"
+    r"|(?:failed|fails) to materiali[sz]e|never materiali[sz]ed|didn't materiali[sz]e"
+    r"|debunked|(?:which|that) (?:never|didn't) happen(?:ed)?)\b", re.I)
+# A frequency the evidence must show more than once (run 7 M17).
+_FREQ_RE = re.compile(
+    r"\s*\b(?:constantly|regularly|frequently|routinely|habitually|repeatedly|perpetually"
+    r"|religiously|always)\b", re.I)
+# The code-written tail on a kept bullet; removed before a line is checked.
+_TAG_RE = re.compile(r"\s*\(said [^()]*\)\s*$")
+_TAG_SECTIONS = ("retarded takes", "recent personal life")
+_CTX_WINDOW_S = 600
+
+
 def _norm(s: str) -> str:
     s = (s or "").lower().replace("’", "'").replace("‘", "'")
     s = re.sub(r"[^\w\s$%'.]", " ", s)
@@ -56,15 +86,112 @@ def _norm(s: str) -> str:
 RECENT_DAYS = 60   # what a "Recent ..." section may draw on (2026-10-26 audit M6)
 
 
-def member_haystack(user_id: int, limit: int = 5000, days: int | None = None) -> str:
-    """Everything the member wrote, with their screenshots' text, normalised.
-    `days` keeps only the last that many days."""
-    since = "AND posted_at >= datetime('now', ?) " if days else ""
-    args = (int(user_id), *((f"-{int(days)} day",) if days else ()), int(limit))
+def _like_words(text: str) -> str:
+    words = [w.replace("%", "").replace("_", "") for w in text.split()]
+    return "%" + "%".join(w for w in words if w) + "%"
+
+
+def member_messages(user_id: int, limit: int = 5000) -> list[dict]:
+    """The member's messages, newest first, each with its normalised text."""
     rows = db.get_connection().execute(
-        "SELECT content, image_ocr_text FROM chat_messages WHERE author_id = ? "
-        + since + "ORDER BY posted_at DESC LIMIT ?", args).fetchall()
-    return _norm(" \n ".join(f"{r[0] or ''} {r[1] or ''}" for r in rows))
+        "SELECT id, channel_id, posted_at, content, image_ocr_text, reply_parent_id "
+        "FROM chat_messages WHERE author_id = ? ORDER BY posted_at DESC LIMIT ?",
+        (int(user_id), int(limit))).fetchall()
+    return [{"id": r[0], "channel_id": r[1], "posted_at": r[2] or "", "content": r[3] or "",
+             "reply_parent_id": r[5], "norm": _norm(f"{r[3] or ''} {r[4] or ''}")} for r in rows]
+
+
+def find_source(phrase: str, msgs: list[dict]) -> tuple[dict | None, int]:
+    """(the newest message carrying the quote, how many messages carry it)."""
+    p = _norm(phrase)
+    if not p:
+        return None, 0
+    hits = [m for m in msgs if p in m["norm"]]
+    return (hits[0] if hits else None), len(hits)
+
+
+def _context(msg: dict, user_id: int) -> tuple[str | None, list[str]]:
+    """(who the message replied to, if someone else; the text it answered:
+    the reply parent and up to two messages by others just before it in
+    its channel, within ten minutes)."""
+    from datetime import datetime
+    conn = db.get_connection()
+    replied_to, texts = None, []
+    if msg.get("reply_parent_id"):
+        r = conn.execute(
+            "SELECT author_id, COALESCE(author_display, author_username), content "
+            "FROM chat_messages WHERE discord_message_id = ?", (msg["reply_parent_id"],)).fetchone()
+        if r and r[0] != user_id:
+            replied_to, texts = r[1], [r[2] or ""]
+    try:
+        t = datetime.fromisoformat(msg["posted_at"].replace("Z", "+00:00"))
+    except ValueError:
+        return replied_to, texts
+    for a_id, at, content in conn.execute(
+            "SELECT author_id, posted_at, content FROM chat_messages WHERE channel_id = ? AND id < ? "
+            "ORDER BY id DESC LIMIT 2", (msg["channel_id"], msg["id"])).fetchall():
+        if a_id == user_id:
+            break               # their own earlier line: they started this
+        try:
+            gap = (t - datetime.fromisoformat((at or "").replace("Z", "+00:00"))).total_seconds()
+        except (ValueError, TypeError):
+            break
+        if gap > _CTX_WINDOW_S:
+            break
+        texts.append(content or "")
+    return replied_to, texts
+
+
+def _other_names(user_id: int) -> set[str]:
+    """Names other members go by, without this member's own."""
+    names: dict[str, set] = {}
+    try:
+        for alias, uid in db.member_aliases().items():
+            names.setdefault(alias.lower(), set()).add(uid)
+    except Exception:
+        pass
+    try:
+        for uid, u, d in db.get_connection().execute(
+                "SELECT user_id, username, display_name FROM user_profiles").fetchall():
+            for v in (u, d):
+                for tok in re.findall(r"[A-Za-z]{4,}", v or ""):
+                    names.setdefault(tok.lower(), set()).add(uid)
+    except Exception:
+        pass
+    return {n for n, uids in names.items() if user_id not in uids}
+
+
+def about_someone_else(msg: dict, user_id: int, others: set[str]) -> bool:
+    """A line that answers a message naming another member, or speaks to
+    the person it answers, and says nothing in the first person, is about
+    that other person: kloh's "Got goth chick pregnant" came right after
+    "why did grand leave" (run 7 M1), and a cat, an orange juice trade and
+    a shared login were other members' (M5, M6)."""
+    text = msg.get("content") or ""
+    if _FIRST_PERSON_RE.search(text):
+        return False
+    replied_to, ctx = _context(msg, user_id)
+    if not ctx and not replied_to:
+        return False
+    if _SECOND_PERSON_RE.search(text):
+        return True
+    words = set(re.findall(r"[a-z]{3,}", " ".join(ctx).lower()))
+    return bool(words & others)
+
+
+def strip_tag(line: str) -> str:
+    return _TAG_RE.sub("", line)
+
+
+def _tag(msg: dict, user_id: int) -> str:
+    from datetime import date
+    try:
+        d = date.fromisoformat(msg["posted_at"][:10])
+    except ValueError:
+        return ""
+    replied_to, _ = _context(msg, user_id)
+    to = f", replying to {replied_to}" if replied_to else ""
+    return f" (said {d:%b} {d.day}{to})"
 
 
 _PASTA_MIN_CHARS = 120   # a copypasta is a long block, not a catchphrase
@@ -80,10 +207,12 @@ def is_copypasta(phrase: str, user_id: int, days: int = 120) -> bool:
     if len(probe) < 12:
         return False
     conn = db.get_connection()
+    # word by word, so a double space or a line break in the message does
+    # not hide it (run 7 M3: an all-caps meme got past an exact LIKE)
     rows = conn.execute(
         "SELECT content FROM chat_messages WHERE author_id = ? AND content LIKE ? COLLATE NOCASE "
         "AND posted_at >= datetime('now', ?) LIMIT 3",
-        (int(user_id), f"%{probe}%", f"-{int(days)} day")).fetchall()
+        (int(user_id), _like_words(probe), f"-{int(days)} day")).fetchall()
     for (content,) in rows:
         if len(content or "") < _PASTA_MIN_CHARS:
             continue
@@ -92,10 +221,10 @@ def is_copypasta(phrase: str, user_id: int, days: int = 120) -> bool:
         letters = [c for c in content if c.isalpha()]
         if len(content) >= 200 and letters and sum(c.isupper() for c in letters) > 0.7 * len(letters):
             return True
-        head = content.strip()[:60]
+        head = " ".join(content.split()[:10])
         n = conn.execute(
             "SELECT COUNT(DISTINCT author_id) FROM chat_messages WHERE content LIKE ? COLLATE NOCASE "
-            "AND posted_at >= datetime('now', ?)", (f"{head}%", f"-{int(days)} day")).fetchone()
+            "AND posted_at >= datetime('now', ?)", (_like_words(head), f"-{int(days)} day")).fetchone()
         if n and int(n[0] or 0) >= 2:
             return True
     return False
@@ -140,13 +269,26 @@ def _unit_form(token: str, after: str) -> str | None:
     if not d:
         return None
     if re.match(r"\s*(?:a\.?m\.?|p\.?m\.?)\b", after, re.I):
-        return r"(?<![\d.])" + re.escape(d) + r"(?::\d\d)?\s*(?:a\.?m|p\.?m)\b|\bat\s+" + re.escape(d) + r"\b"
+        # a time needs its am/pm: "at 4" is not "4 AM" (run 7 M11)
+        return r"(?<![\d.])" + re.escape(d) + r"(?::\d\d)?\s*(?:a\.?m|p\.?m)\b"
     if re.search(r"[kK]$", token.strip()):
         return (r"(?<![\d.])" + re.escape(d) + r"\s*(?:k\b|grand\b|thousand\b)|(?<![\d.])"
                 + re.escape(d) + r",?000\b")
     if re.search(r"(?:m|M|bn|B)$", token.strip()):
         return r"(?<![\d.])" + re.escape(d) + r"\s*(?:m\b|mil|million|b\b|bn\b|billion)"
     return None
+
+
+_ACRONYM_RE = re.compile(r"(?<![$\w])[A-Z]{2,5}(?![\w'])")
+_STOP_ACRONYMS = {
+    "AI", "CEO", "CFO", "ETF", "IPO", "ATH", "ATL", "YOLO", "DTE", "ODTE", "OTM", "ITM", "ATM",
+    "EOD", "AH", "PM", "AM", "ET", "PT", "EST", "PST", "US", "USA", "UK", "EU", "LOL", "LMAO",
+    "OK", "NFL", "NBA", "MLB", "NHL", "UFC", "PNL", "PL", "OCR", "GIF", "TV", "DM", "DMS", "ID",
+    "IRL", "FOMO", "FUD", "IV", "OI", "EPS", "GDP", "CPI", "PCE", "FOMC", "FED", "SEC", "IRS",
+    "DD", "TA", "VIX", "SPX", "SPY", "QQQ", "NDX", "RUT", "BTC", "ETH", "ER", "YTD", "WTF",
+    "OMG", "IMO", "TBH", "NGL", "FR", "BRB", "RIP", "MAGA", "GOP", "DEI", "CNBC", "AF", "OP",
+    "LLC", "OS", "HR", "PR", "NY", "LA", "SF", "DC", "MOASS", "WSB", "GG", "NPC", "POV", "FAQ",
+}
 
 
 def unsupported_terms(line: str, haystack: str, known: set[str]) -> list[str]:
@@ -169,16 +311,24 @@ def unsupported_terms(line: str, haystack: str, known: set[str]) -> list[str]:
             if lw in _STOP_TITLE or lw in known or _written(w, haystack):
                 continue
             missing.append(w)
+    for m in _ACRONYM_RE.finditer(text):
+        # "works in IT", "NYC ski trips": none of it in his chat (run 7 M10)
+        a = m.group(0)
+        if a not in _STOP_ACRONYMS and a.lower() not in known and not re.search(
+                r"\b" + re.escape(a.lower()) + r"\b", haystack):
+            missing.append(a)
     for m in _NUMBER_RE.finditer(text):
         digits = re.sub(r"[^\d.]", "", m.group(1)).strip(".")
-        if len(digits.replace(".", "")) < 2:
-            # "1", "5": too common to judge alone, but with a unit the figure
-            # is checkable: "$4k jacket", "wakes at 4 AM" were invented
-            # (2026-10-26 audit M8)
-            unit = _unit_form(m.group(1), text[m.end():m.end() + 6])
-            if unit and not re.search(unit, haystack):
+        # A figure with a unit is checked in the member's own form of it:
+        # "$4k jacket", "wakes at 4 AM" were invented (2026-10-26 audit M8),
+        # and "$16k" matched a stray 16 (run 7 M11).
+        unit = _unit_form(m.group(1), text[m.end():m.end() + 6])
+        if unit:
+            if not re.search(unit, haystack.replace(",", "")):
                 missing.append(m.group(1).strip())
             continue
+        if len(digits.replace(".", "")) < 2:
+            continue                    # "1", "5": too common to judge alone
         if re.fullmatch(r"(?:19|20)\d\d", digits):
             continue                    # a year is often arithmetic on the quote
         if not re.search(r"(?<![\d.])" + re.escape(digits) + r"(?!\d)", haystack.replace(",", "")):
@@ -216,21 +366,47 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None
     """The profile with failing bullets removed, and what was removed and why."""
     if not profile:
         return profile, []
-    haystack = member_haystack(user_id)
-    recent = None                       # read once, on the first Recent bullet
+    from datetime import datetime, timedelta, timezone
+    msgs = member_messages(user_id)
+    haystack = " \n ".join(m["norm"] for m in msgs)
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=RECENT_DAYS)).strftime("%Y-%m-%d")
     known = _known_names()
+    others: set[str] | None = None      # read once, on the first life bullet
     verified = {_norm(q) for q in (verified_quotes or [])}
     pasta_cache: dict[str, bool] = {}
+    used: set[str] = set()
     keep, dropped = [], []
     for section, line in _sections(profile):
         if not line.lstrip().startswith("-") or any(s.lower() in section.lower() for s in _SKIP_SECTIONS):
             keep.append(line)
             continue
+        line = strip_tag(line)              # re-derived below from the source
+        sec = section.lower()
         reason = ""
         dq = [q for q in _DQ_RE.findall(line) if len(q.split()) >= 4]
+        # every quote of two words or more is traced to its message
+        sources = {q: find_source(q, msgs) for q in _DQ_RE.findall(line) if len(q.split()) >= 2}
+        found = [(q, m, n) for q, (m, n) in sources.items() if m is not None]
+        if "voice" in sec and _DQ_RE.findall(line) and not sources and "://" not in line:
+            reason = "a one-word voice line"                         # run 7 M19
+        if not reason and found and all(_norm(q) in used for q, _, _ in found):
+            reason = f"repeats a quote used above: {found[0][0][:50]}"  # run 7 M18
+        if not reason and "recent" in sec and found and all(
+                m["posted_at"][:10] < cutoff for _, m, _ in found):
+            # Recent life from messages two to five months old read as current
+            # (2026-10-26 audit M6); run 7 M4 found the old four-word floor
+            # let most of them through, so every traced quote counts now.
+            reason = f"older than {RECENT_DAYS} days: {found[0][0][:50]}"
+        if not reason and "personal life" in sec and found:
+            if others is None:
+                others = _other_names(user_id)
+            if all(about_someone_else(m, user_id, others) for _, m, _ in found):
+                reason = f"answers someone about someone else: {found[0][0][:50]}"
+        if not reason and _VERDICT_RE.search(_outside_quotes(line)):
+            reason = "rules on whether a claim was true"            # run 7 M2, M14
         # every quote of two words or more is checked against pastas: the
         # 10/14 kids pasta came back as a three-word quote (2026-10-26 M2)
-        for q in [q for q in _DQ_RE.findall(line) if len(q.split()) >= 2]:
+        for q in [q for q in _DQ_RE.findall(line) if len(q.split()) >= 2 and not reason]:
             if q not in pasta_cache:
                 pasta_cache[q] = is_copypasta(q, user_id)
             if pasta_cache[q]:
@@ -244,14 +420,6 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None
                 reason = f"invented single-quoted anchor: {sq[0][:50]}"
         if not reason and re.search(r"(?:tenor\.com|giphy\.com|\.gif\b)", " ".join(_DQ_RE.findall(line)), re.I):
             reason = "a GIF link is not a quote"         # 2026-10-26 audit M10
-        if not reason and "recent" in section.lower() and dq:
-            # Recent life from messages two to five months old read as current
-            # (2026-10-26 audit M6): its quote must be from the last 60 days.
-            if recent is None:
-                recent = member_haystack(user_id, days=RECENT_DAYS)
-            if haystack and not any(_norm(q) in recent for q in dq) and any(
-                    _norm(q) in haystack for q in dq):
-                reason = f"older than {RECENT_DAYS} days: {dq[0][:50]}"
         if not reason and _ROOM_CLAIM_RE.search(_outside_quotes(line)):
             reason = "room-reaction claim"
         if not reason and haystack:
@@ -260,8 +428,16 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None
                 reason = "not in their messages: " + ", ".join(miss[:4])
         if reason:
             dropped.append(f"{reason} | {line.strip()[:100]}")
-        else:
-            keep.append(line)
+            continue
+        used |= {_norm(q) for q, _, _ in found}
+        if found and sum(n for _, _, n in found) <= 1:
+            # "constantly" from one message (run 7 M17): the word goes
+            parts = re.split(r"([\"“][^\"“”\n]*[\"”])", line)
+            line = "".join(p if i % 2 else _FREQ_RE.sub("", p) for i, p in enumerate(parts))
+        if found and any(s in sec for s in _TAG_SECTIONS):
+            newest = max((m for _, m, _ in found), key=lambda m: m["posted_at"])
+            line = line.rstrip() + _tag(newest, user_id)
+        keep.append(line)
     return "\n".join(keep), dropped
 
 
