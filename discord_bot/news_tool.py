@@ -161,9 +161,10 @@ async def _execute_ticker_news(args: dict) -> dict:
         text = (getattr(resp, "text", None) or "").strip()
         cand = (getattr(resp, "candidates", None) or [None])[0]
         sources = _sources(getattr(cand, "grounding_metadata", None))
-        # A line older than a week counts only when the search returned
-        # links (see dated_lines).
-        dated = dated_lines(text, days=days if sources else WINDOW_DAYS)
+        # Unlinked lines count in the long window too: four live ELMT runs
+        # on 2026-10-30 returned the stake, the contract and the Q2 results,
+        # all correct and all without grounding metadata (see dated_lines).
+        dated = dated_lines(text, days=days)
         if dated:
             # Links when the API returned them; the in-window dates are what
             # make the lines news rather than memory (see dated_lines).
@@ -225,8 +226,8 @@ def dated_lines(text: str, today=None, days: int = WINDOW_DAYS) -> list[str]:
     of the grounded replies on 2026-09-30 came back with no grounding
     metadata at all while carrying that evening's print, which only a
     search could supply; a line dated in the last week cannot come from
-    the model's training data. A longer window is used only when the
-    reply carries links."""
+    the model's training data. The 90-day window rests on the same
+    ground: its oldest date is still past what the model was trained on."""
     from datetime import date, datetime, timedelta, timezone
     from zoneinfo import ZoneInfo
     today = today or datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()

@@ -228,14 +228,21 @@ def test_a_long_search_names_the_company_and_its_moves(monkeypatch):
     assert "largest events of the last 90 days" in block and "2026-09-14 +33.1%" in block
 
 
-def test_old_lines_without_links_are_dropped(monkeypatch):
+def test_the_long_window_keeps_unlinked_lines_and_drops_older_ones(monkeypatch):
+    """Four live ELMT searches (2026-10-30) were right and all unlinked."""
     async def moves(sym, days):
         return []
     monkeypatch.setattr(N, "_largest_moves", moves)
-    c = _Client(_resp(f"{OLD}: an event (x)\n{D}: today's item (x)", []))
+    ancient = (_TODAY - _td(days=200)).isoformat()
+    c = _Client(_resp(f"{OLD}: an event (x)\n{D}: today's item (x)\n{ancient}: old (x)", []))
     monkeypatch.setattr(N, "_get_client", lambda: c)
     r = asyncio.run(N._execute_ticker_news({"symbol": "ELMT", "days": 90}))
-    assert r["status"] == "ok" and OLD not in r["digest"] and D in r["digest"]
+    assert r["status"] == "ok" and OLD in r["digest"] and D in r["digest"]
+    assert ancient not in r["digest"]
+    # the week's search still drops the month-old line
+    N._CACHE.clear()
+    r = asyncio.run(N._execute_ticker_news({"symbol": "ELMT"}))
+    assert OLD not in r["digest"]
 
 
 def test_the_week_and_the_quarter_are_cached_apart(monkeypatch):
