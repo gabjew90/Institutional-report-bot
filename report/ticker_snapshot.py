@@ -420,11 +420,17 @@ def fetch(symbol: str) -> dict:
         except Exception as e:
             log.info(f"snapshot {sym}: filings failed ({e})")
     cashflow: dict = {}
-    if (info.get("quoteType") or "EQUITY").upper() == "EQUITY":
+    # The cash flow read (0.2 to 0.9 s) runs only with time to spare and is
+    # not counted against the growth reads' budget below: it must not cost
+    # the growth lines, the figure the owner wants first.
+    if ((info.get("quoteType") or "EQUITY").upper() == "EQUITY"
+            and time.monotonic() - t0 < GROWTH_BUDGET_S):
+        t_cf = time.monotonic()
         try:
             cashflow = cashflow_ttm(t.ttm_cashflow)
         except Exception as e:
             log.info(f"snapshot {sym}: trailing cash flow failed ({e})")
+        t0 += time.monotonic() - t_cf
     snap = build(sym, info, rows, filings, cashflow=cashflow)
     # The four growth reads come last and only with time to spare: the
     # executor gives the whole fetch 12 s, and a slow estimate table must

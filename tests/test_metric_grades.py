@@ -37,3 +37,15 @@ def test_no_figure_no_edit():
 
 def test_with_is_not_a_figure_lead_in():
     assert strip("Cash is solid with debt low at $10M") == ("Cash is solid with debt at $10M", ["low"])
+
+
+def test_a_digit_that_is_not_the_metrics_figure_is_no_reason():
+    for text in ("low float names rallied 20% today",
+                 "heavy volume into the 11/16 print",
+                 "elevated short interest, and the stock is up 12%"):
+        assert strip(text) == (text, [])
+
+
+def test_a_bold_that_closes_on_the_grade_is_left_alone():
+    text = "**Positioning: heavy** volume of 13.9M"
+    assert strip(text) == (text, [])

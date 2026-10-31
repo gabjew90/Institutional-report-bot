@@ -10,8 +10,8 @@ interest at 27.8% of float" (10-28), "short interest sitting heavy at
 the snapshot.
 
 The fix deletes the grading word and keeps the figure: "short interest
-sitting at 27.8% of float". Only a word attached to a metric whose figure
-follows in the same sentence is touched, so the edit never removes data
+sitting at 27.8% of float". Only a word attached to a metric whose own
+figure follows ("of 13.9M", "standing at 29.5%") is touched, so the edit never removes data
 and never changes what a sentence claims beyond the grade. A grade with no
 figure beside it ("High valuation expectations") is left alone: deleting
 the word there would leave a sentence with nothing in it.
@@ -31,18 +31,20 @@ _GRADE = (r"(?:heavy|hefty|elevated|high|low|light|thin|tiny|small|massive|huge|
           r"crowded|rich|cheap|expensive|stretched|lofty|modest|healthy|strong|weak|solid|"
           r"steep|juicy|sizable|sizeable|extreme|tight|bloated|outsized|meaningful|significant)")
 _ADVERB = r"(?:(?:very|extremely|really|quite|fairly|relatively|super|pretty|notably)\s+)?"
-# the metric's figure: a digit before the sentence ends
-_FIGURE_AHEAD = r"(?=[^.!?\n]{0,60}?\d)"
+# the metric's own figure: "of 13.9M", "standing at **29.5%**". A digit
+# elsewhere in the sentence is not it ("low float names rallied 20%").
+_LEAD_IN = r"(?:at|of|near|around|above|below)"
+_FIGURE = r"\s+[*$~(+-]*\d"
 
 # "heavy short interest of 29.5%", "**elevated** short interest at 27.8%"
 _BEFORE_RE = re.compile(
     r"(?<![\w*])(an?\s+)?(\*\*)?" + _ADVERB + r"(" + _GRADE + r")(\*\*)?\s+(?=" + _METRIC
-    + r"\b" + _FIGURE_AHEAD + r")", re.I)
+    + r"\b(?:\*\*)?(?:\s+[\w-]+){0,2}?\s+" + _LEAD_IN + _FIGURE + r")", re.I)
 # "short interest sitting heavy at 27.8%", "volume is light at 2.1M"
 _AFTER_RE = re.compile(
     r"\b(" + _METRIC + r"\s+(?:(?:is|are|remains|stays|sits|sitting|runs|running|stands|"
     r"standing|looks|looking|comes\s+in|coming\s+in)\s+)?)" + _ADVERB + r"(" + _GRADE
-    + r")\s+(?=(?:at|of|near|around|above|below)\b" + _FIGURE_AHEAD + r")", re.I)
+    + r")\s+(?=" + _LEAD_IN + _FIGURE + r")", re.I)
 
 
 def _article(a: str | None, following: str) -> str:
@@ -65,11 +67,14 @@ def strip(answer: str) -> tuple[str, list[str]]:
     removed: list[str] = []
 
     def before(m: re.Match) -> str:
+        if m.group(4) and not m.group(2):
+            # "**Positioning: heavy** volume": deleting the word leaves a
+            # bold that ends on a space, which Discord prints as asterisks
+            return m.group(0)
         removed.append(m.group(3))
         out = _article(m.group(1), answer[m.end():])
-        # "**heavy** volume" loses both marks; "**heavy volume**" keeps the
-        # opening one and "**Positioning: heavy** volume" the closing one
-        bold = "" if bool(m.group(2)) == bool(m.group(4)) else "**"
+        # "**heavy** volume" loses both marks, "**heavy volume**" keeps one
+        bold = "**" if m.group(2) and not m.group(4) else ""
         if not out and m.group(3)[:1].isupper():
             # the grade opened the sentence: the metric now does
             return bold + "\x00"
