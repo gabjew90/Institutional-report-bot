@@ -106,3 +106,11 @@ def test_no_outline_for_other_shapes_or_too_little_data():
     assert O.build_outline(_results(), "price", "MU") == ""
     assert O.build_outline({R.T_PRICE: PRICE}, "ticker_opinion", "MU") == ""
     assert O.outline_symbol([(R.T_CHAIN, {"symbol": "ACN"}), (R.T_SNAPSHOT, {"symbol": "acn"})]) == "ACN"
+
+
+def test_a_feed_tag_in_lowercase_is_dropped():
+    """2026-10-31 harness: "down -3.7% for the session [finnhub]"."""
+    from discord_bot import stock_outline as S
+    out = S.strip_source_tags("→ **$ELMT $23.19**, down **-3.7%** for the session [finnhub]\n"
+                              "→ Supplies the F-35 [Yahoo]", set())
+    assert out == "→ **$ELMT $23.19**, down **-3.7%** for the session\n→ Supplies the F-35 (Yahoo)"

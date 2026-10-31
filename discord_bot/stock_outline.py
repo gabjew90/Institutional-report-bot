@@ -238,10 +238,14 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
 
 # The source tags the outline puts in brackets. The model copied them into
 # the first live answers ("+1.0% session-to-date [live prices]",
-# "... [JPMorgan]"); they are for the model, not the reader.
+# "... [JPMorgan]"); they are for the model, not the reader. A feed named
+# in lowercase ("$23.19 ... [finnhub]", 2026-10-31 harness) goes too: the
+# Data footer names the feeds.
+_FEED_TAGS = ("finnhub", "yahoo", "coingecko", "binance.us", "nasdaq", "google")
 _SOURCE_TAG_RE = re.compile(
     r"\s*\[(?:live prices|company report|consensus data|company background[^\]\n]*|"
     r"exchange and filing data|options chain|news search|company and trading data|"
+    + "|".join(re.escape(t) for t in _FEED_TAGS) + "|"
     r"the publisher[^\]\n]*|[A-Z][A-Za-z0-9.&' -]{1,40}; this view only|"
     r"[A-Z][A-Za-z0-9.&' -]{1,40})\](?!\()")
 
@@ -276,7 +280,7 @@ _TAG_LIST_RE = re.compile(
 
 
 _GENERIC_TAGS = {"live prices", "company report", "consensus data", "exchange and filing data",
-                 "options chain", "news search", "company and trading data"}
+                 "options chain", "news search", "company and trading data", *_FEED_TAGS}
 
 
 def outline_banks(research: dict | None) -> set[str]:
