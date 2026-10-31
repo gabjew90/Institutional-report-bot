@@ -65,7 +65,7 @@ def test_a_miss_is_cached_briefly_and_unlinked_news_is_flagged(monkeypatch):
     c = _Client(_resp("NO RECENT NEWS", []))
     monkeypatch.setattr(N, "_get_client", lambda: c)
     assert asyncio.run(N._execute_ticker_news({"symbol": "QUIET"}))["status"] == "no_data"
-    age = _t.monotonic() - N._CACHE["QUIET"][0]
+    age = _t.monotonic() - N._CACHE["QUIET:7"][0]
     assert N.CACHE_TTL_S - age <= N.MISS_TTL_S + 1, "a miss expires in about two minutes"
     from discord_bot import ask_router as R
     block = R.inject_text(R.T_NEWS, {"status": "ok", "symbol": "MU", "digest": f"{D} beat",
@@ -197,3 +197,70 @@ def test_an_earnings_move_uses_the_first_expiry_after_the_report():
     assert f(ex, "2026-10-16", "after market close") == "2026-10-23"
     assert f(ex, "2026-10-16", "before market open") == "2026-10-16"
     assert f(ex, "2026-11-30", "") is None
+
+
+# A "what is X" question searches the last 90 days and asks what caused the
+# stock's largest one-day moves (2026-10-30 audit A7: "what is ELMT stock"
+# searched one week and missed the Defense Department's stake from 9-14).
+
+def test_the_largest_moves_come_from_the_closes():
+    hist = [{"date": "2026-09-11", "close": 10.0}, {"date": "2026-09-14", "close": 13.3},
+            {"date": "2026-09-15", "close": 13.0}, {"date": "2026-09-16", "close": 11.7},
+            {"date": "2026-09-17", "close": None}, {"date": "2026-09-18", "close": 11.8}]
+    assert N.largest_moves(hist, 2) == [{"date": "2026-09-16", "pct": -10.0},
+                                        {"date": "2026-09-14", "pct": 33.0}]
+
+
+def test_a_long_search_names_the_company_and_its_moves(monkeypatch):
+    async def moves(sym, days):
+        return [{"date": "2026-09-14", "pct": 33.1}]
+    monkeypatch.setattr(N, "_largest_moves", moves)
+    c = _Client(_resp(f"{OLD}: Defense Department invests $450M in Elmet (war.gov)\n"
+                      f"{D}: Elmet wins a contract (Elmet)", [("war.gov", "https://w/1")]))
+    monkeypatch.setattr(N, "_get_client", lambda: c)
+    r = asyncio.run(N._execute_ticker_news({"symbol": "ELMT", "days": 90}))
+    assert "The Elmet Group" in c.kw["contents"] and "2026-09-14 +33.1%" in c.kw["contents"]
+    assert r["status"] == "ok" and "$450M" in r["digest"] and r["window_days"] == 90
+    assert r["moves"] == [{"date": "2026-09-14", "pct": 33.1}]
+    from discord_bot import ask_router as R
+    block = R.inject_text(R.T_NEWS, r)
+    assert "largest events of the last 90 days" in block and "2026-09-14 +33.1%" in block
+
+
+def test_old_lines_without_links_are_dropped(monkeypatch):
+    async def moves(sym, days):
+        return []
+    monkeypatch.setattr(N, "_largest_moves", moves)
+    c = _Client(_resp(f"{OLD}: an event (x)\n{D}: today's item (x)", []))
+    monkeypatch.setattr(N, "_get_client", lambda: c)
+    r = asyncio.run(N._execute_ticker_news({"symbol": "ELMT", "days": 90}))
+    assert r["status"] == "ok" and OLD not in r["digest"] and D in r["digest"]
+
+
+def test_the_week_and_the_quarter_are_cached_apart(monkeypatch):
+    async def moves(sym, days):
+        return []
+    monkeypatch.setattr(N, "_largest_moves", moves)
+    c = _Client(_resp(f"{D} beat (x)", [("x", "https://x")]))
+    calls = []
+    monkeypatch.setattr(N, "_get_client", lambda: calls.append(1) or c)
+    asyncio.run(N._execute_ticker_news({"symbol": "MU"}))
+    asyncio.run(N._execute_ticker_news({"symbol": "MU", "days": 90}))
+    assert len(calls) == 2 and "last 90 days" in c.kw["contents"]
+
+
+def test_a_profile_question_gets_the_long_search():
+    from discord_bot import ask_router as R
+    for q in ("what is ELMT stock", "what is ELMT?", "who is $RDDT?", "what does elmt do?"):
+        r = R.classify(q)
+        assert r.shape == R.COMPANY_PROFILE, q
+        assert (R.T_NEWS, {"symbol": r.tickers[0], "days": 90}) in r.prefetch, q
+    r = R.classify("what do you think of MU")
+    assert (R.T_NEWS, {"symbol": "MU"}) in r.prefetch
+
+
+def test_who_is_a_member_is_not_a_company_profile():
+    from discord_bot import ask_router as R
+    assert R.classify("who is BK?", names_member=True).shape != R.COMPANY_PROFILE
+    assert R.classify("who is sam?").shape != R.COMPANY_PROFILE
+    assert R.classify("what is BK?", names_member=True).shape != R.COMPANY_PROFILE

@@ -102,7 +102,7 @@ def test_a_pasted_article_is_not_about_google():
 
 def test_fact_questions_about_a_stock_are_factual():
     """Audit A17: 'is Amazon on net negative cashflow ?' ran as banter."""
-    for q in ("is Amazon on net negative cashflow ?", "what is ELMT stock",
+    for q in ("is Amazon on net negative cashflow ?",
               "when are those sandisk guys splitting the stock"):
         r = R.classify(q)
         assert r.shape == R.TICKER_OPINION and r.is_factual, q

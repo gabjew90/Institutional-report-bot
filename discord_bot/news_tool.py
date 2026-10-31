@@ -12,6 +12,14 @@ model a dated, sourced digest beside the bank notes and the snapshot.
 Prefetch only: the model is not offered it as a tool (it already has
 Google). Its cost is one grounded Flash-Lite call per single-stock question,
 recorded in the spend ledger as `ask_news`.
+
+A "what is X" question asks for the last LONG_DAYS (2026-10-30 audit A7:
+"what is ELMT stock" searched the last week and never found the Defense
+Department's $450M stake from six weeks earlier, the event that defines
+the stock). That search names the stock's largest one-day moves, computed
+in code from Yahoo's closes, and asks what caused each: a search for "the
+biggest events" alone returned three minor September items and missed the
+stake (probe 2026-10-30).
 """
 from __future__ import annotations
 
@@ -46,6 +54,18 @@ PROMPT = (
     "- today's move and its stated reason, if reported\n"
     "No opinions, no forecasts of your own, no background. If you find nothing dated in "
     "the window, reply exactly: NO RECENT NEWS."
+)
+LONG_DAYS = 90
+MAX_MOVES = 3
+HISTORY_TIMEOUT_S = 2.5
+LONG_PROMPT = (
+    "Search the web for the largest company-specific events for the US-listed stock {sym}{name} "
+    "in the last {days} days, today included: earnings results against the estimates, government "
+    "or strategic investments and stakes, acquisitions and deals, major contracts, share offerings, "
+    "index additions, executive changes, regulatory or legal events.{moves}"
+    " Report only facts, newest first, at most 8 lines, each line starting with its date "
+    "(YYYY-MM-DD) and ending with the publisher in parentheses. No opinions, no background. If "
+    "you find nothing dated in the window, reply exactly: NO RECENT NEWS."
 )
 
 
@@ -82,14 +102,29 @@ async def _execute_ticker_news(args: dict) -> dict:
     sym = (args.get("symbol") or "").strip().upper().lstrip("$")
     if not sym:
         return {"status": "error", "error": "No symbol provided."}
-    hit = _CACHE.get(sym)
+    days = LONG_DAYS if int(args.get("days") or WINDOW_DAYS) > WINDOW_DAYS else WINDOW_DAYS
+    key = f"{sym}:{days}"
+    hit = _CACHE.get(key)
     if hit and time.monotonic() - hit[0] < CACHE_TTL_S:
         return hit[1]
     client = _get_client()
     if client is None:
         return {"status": "error", "symbol": sym, "error": "No Gemini key configured."}
-    name = (args.get("name") or "").strip()
-    prompt = PROMPT.format(sym=sym, name=f" ({name})" if name else "")
+    t0 = time.monotonic()
+    # The company's name makes the search find it: "ELMT" alone returned
+    # nothing, "The Elmet Group Co. (ELMT)" its September news.
+    from discord_bot import listed_symbols as _listed
+    name = (args.get("name") or "").strip() or _listed.name(sym)
+    name_part = f" ({name})" if name else ""
+    moves: list[dict] = []
+    if days == WINDOW_DAYS:
+        prompt = PROMPT.format(sym=sym, name=name_part)
+    else:
+        moves = await _largest_moves(sym, days)
+        clause = (" Find the cause of each of these one-day moves in its share price: "
+                  + "; ".join(f"{m['date']} {m['pct']:+.1f}%" for m in moves) + "."
+                  if moves else "")
+        prompt = LONG_PROMPT.format(sym=sym, name=name_part, days=days, moves=clause)
     config = types.GenerateContentConfig(
         tools=[types.Tool(google_search=types.GoogleSearch())],
         temperature=0.1, max_output_tokens=900,
@@ -98,7 +133,6 @@ async def _execute_ticker_news(args: dict) -> dict:
         # and was the fastest setting measured on 2026-09-30.
         thinking_config=types.ThinkingConfig(thinking_level="MINIMAL"),
     )
-    t0 = time.monotonic()
     out: dict = {"status": "error", "symbol": sym, "error": "News search failed."}
     # A second try when the first fails or comes back with nothing dated,
     # as long as it can still finish inside the prefetch deadline. On
@@ -120,15 +154,20 @@ async def _execute_ticker_news(args: dict) -> dict:
             continue
         text = (getattr(resp, "text", None) or "").strip()
         cand = (getattr(resp, "candidates", None) or [None])[0]
-        dated = dated_lines(text)
+        sources = _sources(getattr(cand, "grounding_metadata", None))
+        # A line older than a week counts only when the search returned
+        # links (see dated_lines).
+        dated = dated_lines(text, days=days if sources else WINDOW_DAYS)
         if dated:
             # Links when the API returned them; the in-window dates are what
             # make the lines news rather than memory (see dated_lines).
             out = {"status": "ok", "symbol": sym, "digest": _clip("\n".join(dated)),
-                   "sources": _sources(getattr(cand, "grounding_metadata", None))}
+                   "sources": sources, "window_days": days}
             break
         out = {"status": "no_data", "symbol": sym,
-               "error": f"No dated news on {sym} in the last {WINDOW_DAYS} days."}
+               "error": f"No dated news on {sym} in the last {days} days."}
+    if moves:
+        out["moves"] = moves
     if out["status"] in ("ok", "no_data"):
         now = time.monotonic()
         for k, (ts, _) in list(_CACHE.items()):
@@ -137,8 +176,31 @@ async def _execute_ticker_news(args: dict) -> dict:
         # A miss is kept briefly: a release can cross minutes after it.
         # Stored with a back-dated stamp so the shared TTL check expires it.
         stamp = now if out["status"] == "ok" else now - (CACHE_TTL_S - MISS_TTL_S)
-        _CACHE[sym] = (stamp, out)
+        _CACHE[key] = (stamp, out)
     return out
+
+
+def largest_moves(hist: list[dict], n: int = MAX_MOVES) -> list[dict]:
+    """The `n` largest close-to-close moves in `hist` (oldest first), by
+    size, as [{date, pct}] newest first."""
+    rows = [h for h in hist or [] if h.get("close") and h.get("date")]
+    moves = [{"date": str(b["date"])[:10], "pct": round((b["close"] / a["close"] - 1) * 100, 1)}
+             for a, b in zip(rows, rows[1:])]
+    top = sorted(moves, key=lambda m: abs(m["pct"]), reverse=True)[:n]
+    return sorted(top, key=lambda m: m["date"], reverse=True)
+
+
+async def _largest_moves(sym: str, days: int) -> list[dict]:
+    from datetime import date, timedelta
+    from report import market_data as _md
+    start = (date.today() - timedelta(days=days + 1)).isoformat()
+    try:
+        hist = await asyncio.wait_for(
+            asyncio.to_thread(_md.fetch_price_history, sym, start, None, "1d"), HISTORY_TIMEOUT_S)
+    except Exception as e:
+        log.info(f"ticker news {sym}: no price history for the moves ({e})")
+        return []
+    return largest_moves(hist or [])
 
 
 _DATED_RE = re.compile(r"^\s*[-*•]?\s*\(?(20\d\d-\d\d-\d\d)")
@@ -147,8 +209,8 @@ _DATED_RE = re.compile(r"^\s*[-*•]?\s*\(?(20\d\d-\d\d-\d\d)")
 WINDOW_DAYS = 7
 
 
-def dated_lines(text: str, today=None) -> list[str]:
-    """The lines that open with a date inside the last WINDOW_DAYS (New
+def dated_lines(text: str, today=None, days: int = WINDOW_DAYS) -> list[str]:
+    """The lines that open with a date inside the last `days` (New
     York calendar). The model writes "NO RECENT NEWS" under one category
     while listing real items under another (NVDA, 2026-09-30, beside the
     $150B buyback), so the phrase anywhere cannot mean the reply is empty.
@@ -156,7 +218,8 @@ def dated_lines(text: str, today=None) -> list[str]:
     of the grounded replies on 2026-09-30 came back with no grounding
     metadata at all while carrying that evening's print, which only a
     search could supply; a line dated in the last week cannot come from
-    the model's training data."""
+    the model's training data. A longer window is used only when the
+    reply carries links."""
     from datetime import date, datetime, timedelta, timezone
     from zoneinfo import ZoneInfo
     today = today or datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
@@ -169,7 +232,7 @@ def dated_lines(text: str, today=None) -> list[str]:
             d = date.fromisoformat(m.group(1))
         except ValueError:
             continue
-        if today - timedelta(days=WINDOW_DAYS) <= d <= today + timedelta(days=1):
+        if today - timedelta(days=days) <= d <= today + timedelta(days=1):
             out.append(ln.strip())
     return out
 

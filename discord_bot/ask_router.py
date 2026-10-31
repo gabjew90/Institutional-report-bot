@@ -79,6 +79,7 @@ T_AUCTION = "lookup_treasury_auctions"
 # Prefetch only, never declared to the model (it already has Google):
 # discord_bot/news_tool.py runs the grounded search in code.
 T_NEWS = "ticker_news"
+NEWS_PROFILE_DAYS = 90
 # Prefetch only: discord_bot/primer_tool.py, the stored business primer.
 T_PRIMER = "ticker_primer"
 # Prefetch only: discord_bot/margin_math.py with live prices (2026-10-26 A16).
@@ -546,8 +547,13 @@ _HISTORY_RE = re.compile(
     r"|ytd\b|year\s+to\s+date|(?:1|3|6|12)[- ]?month\s+(?:return|performance)|from\s+\$?\d+\s+to\s+\$?\d+"
     r"|" + _ATH + r")\b", re.I)
 _PROFILE_RE = re.compile(
-    r"\b(?:what\s+(?:does|do)\s+\S+\s+(?:do|make|sell)|what\s+is\s+\S+\s*\??$|tell\s+me\s+about\s+\S+"
-    r"|who\s+(?:is|are)\s+\S+\s*\??$|what\s+(?:kind|type)\s+of\s+company)\b", re.I)
+    # The end-anchored forms use a lookahead: a closing \b cannot match
+    # after "?", so "what is NVDA?" missed the shape until 2026-10-30.
+    # "Who is X" asks about a person ("who is BK?", "who is sam?" are
+    # members, BK and SAM are listed), so only a cashtag makes it a stock.
+    r"\b(?:what\s+(?:does|do)\s+\S+\s+(?:do|make|sell)"
+    r"|what\s+is\s+\S+(?:\s+(?:stock|company|ticker))?(?=\s*\?*\s*$)|tell\s+me\s+about\s+\S+"
+    r"|who\s+(?:is|are)\s+\$\S+(?=\s*\?*\s*$)|what\s+(?:kind|type)\s+of\s+company)\b", re.I)
 _LEDGER_RE = re.compile(
     r"\b(?:(?:abe|kyle|bk|jamal|his|her|their|my|\w+'s)\s+(?:trades?|book|holdings?|positions?|calls?|win\s*rate|track\s+record|p&?l|pnl|record|ledger|open\s+positions?)"
     r"|win\s*rate|track\s+record|full\s*port(?:ed)?\s+into|current\s+holdings|open\s+positions|trade\s+log"
@@ -1064,10 +1070,12 @@ def is_stock(sym: str) -> bool:
     return bool(s) and s not in _CRYPTO and s not in INDEX_SYMBOLS and s not in _NOT_STOCKS
 
 
-def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None) -> list:
+def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None,
+                    news_days: int = 0) -> list:
     """Bank research, recent news and the snapshot for a single stock;
     nothing for a fund, an index or a coin. News follows research unless
-    set: a price read does not need it, a view or a print does."""
+    set: a price read does not need it, a view or a print does.
+    `news_days` widens the news search past the last week."""
     if not is_stock(sym):
         return []
     want_news = research if news is None else news
@@ -1075,7 +1083,7 @@ def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None
     if research:
         out.append((T_RESEARCH, {"symbol": sym, "days": 14}))
     if want_news:
-        out.append((T_NEWS, {"symbol": sym}))
+        out.append((T_NEWS, {"symbol": sym, **({"days": news_days} if news_days else {})}))
     out.append((T_SNAPSHOT, {"symbol": sym}))
     # A price or date lookup does not wait on a cold primer build; it
     # starts one for the next question.
@@ -1482,9 +1490,13 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
         if len(tickers) == 1:
             r.prefetch += _stock_prefetch(tickers[0], research=False)
         return r
-    if _PROFILE_RE.search(q) and tickers and not _SINGLE_TICKER_OPINION_RE.search(q):
+    if (_PROFILE_RE.search(q) and tickers and not names_member
+            and not _SINGLE_TICKER_OPINION_RE.search(q)):
         r.shape, r.reason = COMPANY_PROFILE, "what-does-X-do shape"
-        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})] + _stock_prefetch(tickers[0])
+        # "What is X" is answered by what defined the stock, which can be
+        # weeks old (2026-10-30 audit A7: ELMT's DoD stake, 6 weeks back).
+        r.prefetch = ([(T_PRICE, {"symbols": [price_symbol(tickers[0])]})]
+                      + _stock_prefetch(tickers[0], news_days=NEWS_PROFILE_DAYS))
         return r
     # A bare ticker ("MU?", "$mu", "aeva??") is a view question: the room
     # asks that way and it fell to the catch-all with no data at all.
@@ -1777,7 +1789,12 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         return f"[{lead}{tail}]\n" + render_research(result)[:7000]
     if tool == T_NEWS and (result or {}).get("status") == "ok":
         pubs = ", ".join(s.get("title") or "" for s in result.get("sources") or [] if s.get("title"))
-        return (f"[{lead}{tail}]\nNEWS ON {result.get('symbol')}:\n{result.get('digest')}"
+        days = result.get("window_days") or 0
+        head = (f"NEWS ON {result.get('symbol')}, the largest events of the last {days} days"
+                if days > 7 else f"NEWS ON {result.get('symbol')}")
+        moves = "; ".join(f"{m['date']} {m['pct']:+.1f}%" for m in result.get("moves") or [])
+        return (f"[{lead}{tail}]\n{head}:\n{result.get('digest')}"
+                + (f"\nLargest one-day moves in that time, from Yahoo's closes: {moves}" if moves else "")
                 + (f"\n(searched: {pubs})" if pubs else
                    "\n(the search returned no links: attribute a line only to the publisher it "
                    "names, and do not present a line with no publisher as confirmed)"))

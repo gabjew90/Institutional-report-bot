@@ -193,6 +193,11 @@ def is_etf(sym: str) -> bool:
     return bool(_ensure().get((sym or "").upper(), ("", False))[1])
 
 
+def name(sym: str) -> str:
+    """The security's name from the directory ("The Elmet Group Co."), or ''."""
+    return _ensure().get((sym or "").upper(), ("", False))[0]
+
+
 def by_name(word: str) -> str | None:
     """The one listed stock whose name starts with `word` ("exxon" ->
     XOM, from "ExxonMobil Holdings"). None when several do or none does.
