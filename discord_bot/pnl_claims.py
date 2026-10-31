@@ -148,7 +148,7 @@ def claim_candidates(answer: str, members: dict[str, int],
             if is_loss and ("loss", surface, uid) not in seen:
                 seen.add(("loss", surface, uid))
                 out.append({"kind": "loss", "surface": surface,
-                            "user_id": uid, "sentence": sent[:300]})
+                            "user_id": uid, "sentence": sent})
             for tick in tickers:
                 key = ("position", surface, uid, tick)
                 if key in seen:
@@ -156,7 +156,7 @@ def claim_candidates(answer: str, members: dict[str, int],
                 seen.add(key)
                 out.append({"kind": "position", "surface": surface,
                             "user_id": uid, "ticker": tick,
-                            "sentence": sent[:300]})
+                            "sentence": sent})
     return out
 
 
@@ -186,52 +186,18 @@ def judge_candidates(candidates: list[dict],
     return bad_loss, bad_pos
 
 
-def correction_note(bad_loss: list[dict], bad_pos: list[dict],
-                    protected: bool = False) -> str:
-    """The directive appended to a regeneration.
+def strip_claims(answer: str, bad_loss: list[dict], bad_pos: list[dict]) -> str:
+    """The answer without the sentences the ledger contradicts.
 
-    States the receipts and points at the material the prompt already
-    prefers. Never names a replacement target: the model's instinct on
-    being told a position is not X's is to move it to Y's.
+    Until 2026-10-30 a regeneration was asked to "change the claim"; it
+    never saw the draft, could move a position onto another name, and
+    when it was rejected the original shipped with the disproved claim
+    (audit design note 2). The sentence goes and nothing replaces it,
+    which is also what a protected asker is owed."""
+    out = answer or ""
+    for c in list(bad_loss) + list(bad_pos):
+        out = out.replace(c["sentence"], "")
+    out = re.sub(r"(?m)^[ \t]*(?:→|-|\*)[ \t]*$", "", out)
+    out = re.sub(r"[ \t]{2,}", " ", out)
+    return re.sub(r"\n{3,}", "\n\n", out).strip()
 
-    `protected` switches to a subtractive directive for a protected
-    asker — drop the claim, put nothing in its place.
-    """
-    if not bad_loss and not bad_pos:
-        return ""
-    lines = ["[LEDGER CHECK] Your draft states something about a member's "
-             "trading that the documented log contradicts. The log wins."]
-    for c in bad_loss:
-        lines.append(
-            f"- **{c['surface']}** is not losing: {c['wins']} documented "
-            f"win(s) against {c['losses']} loss(es) in the last 21 days."
-        )
-    for b in bad_pos:
-        lines.append(
-            f"- **{b['surface']}** has no logged {b['ticker']} trade. "
-            f"That position is not theirs."
-        )
-    if protected:
-        # A protected asker is protected from having personal material
-        # turned on them, which is what the ordinary note points the
-        # model at. Leaving the claim standing is not the alternative:
-        # it publishes something untrue about the person the rule exists
-        # to protect (2026-09-19 review). So: drop it, replace it with
-        # nothing.
-        lines.append(
-            "Rewrite so no sentence makes these claims. Do not move a "
-            "position onto a different name and do not invent a "
-            "replacement trade. Do not substitute another jab or any "
-            "personal material about them — drop the claim and say "
-            "nothing in its place. Keep the rest of the answer as it is."
-        )
-        return "\n".join(lines)
-    lines.append(
-        "Rewrite so no sentence claims these people are losing money, "
-        "blowing up accounts, holding bags, or holding a position they do "
-        "not have. Do not move a position onto a different name to fix it, "
-        "and do not invent a replacement trade. Their own takes, habits and "
-        "messages are the stronger material anyway. Keep the register and "
-        "the length; change the claim."
-    )
-    return "\n".join(lines)

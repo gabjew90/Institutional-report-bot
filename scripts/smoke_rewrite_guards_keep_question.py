@@ -15,8 +15,9 @@ they cannot know the answer had two parts, or that it was answering
 anything at all. Every answer that reaches them is treated as a single
 jab at the asker, and a two-part answer gets collapsed into one.
 
-Both rewriters must receive the question and be told the output is
-still an ANSWER: same parts, same format.
+Both rewriters had to receive the question and be told the output was
+still an ANSWER. Since 2026-10-30 neither rewrites at all; the gates
+below still decide which answers the roast checks may touch.
 """
 
 import inspect
@@ -35,68 +36,18 @@ def _fail(msg):
     sys.exit(1)
 
 
-def _guard_window(src, marker, size=2200):
-    i = src.find(marker)
-    assert i != -1, f"marker {marker!r} not found — guard renamed?"
-    return src[i:i + size]
-
-
-def test_recycle_rewrite_receives_the_question():
+def test_the_roast_guards_never_regenerate_the_answer():
+    """Since 2026-10-30 (quality audit, design note 2) neither guard asks
+    the model to rewrite: roast-recycle strips the sentences carrying the
+    recycled hooks, P&L-monotone only records the turn. A rewrite that
+    cannot drop half the question is one that does not run."""
     import discord_bot.bot as bot
     src = bot._ask_pipeline_source()
-    win = _guard_window(src, "_rr_prompt = (")
-    assert "{question" in win, (
-        "the roast-recycle rewrite prompt never includes the question, "
-        "so it cannot know what the answer was supposed to cover"
-    )
-    _ok("roast-recycle rewrite is given the question")
-
-
-def test_pnl_rewrite_receives_the_question():
-    import discord_bot.bot as bot
-    src = bot._ask_pipeline_source()
-    win = _guard_window(src, "_pm_prompt = (")
-    assert "{question" in win, (
-        "the P&L-monotone rewrite prompt never includes the question"
-    )
-    _ok("P&L-monotone rewrite is given the question")
-
-
-def test_both_rewrites_demand_the_answer_survive():
-    """Not enough to see the question — the prompt must say the output
-    is still an answer to it, in the same shape."""
-    import discord_bot.bot as bot
-    src = bot._ask_pipeline_source()
-    for marker, name in (("_rr_prompt = (", "roast-recycle"),
-                         ("_pm_prompt = (", "P&L-monotone")):
-        win = _guard_window(src, marker)
-        low = win.lower()
-        assert "still answer" in low, (
-            f"{name} rewrite must require the answer keep answering "
-            f"the question — otherwise a two-part answer collapses "
-            f"into one jab"
-        )
-        assert "arrow" in low, (
-            f"{name} rewrite must preserve the arrow-bullet format; "
-            f"a Type 1 answer rewritten as prose is a format break"
-        )
-    _ok("both rewrites require the answer (and its shape) to survive")
-
-
-def test_rewrites_do_not_assume_a_roast():
-    """The opening line taught the model that whatever it received was
-    a roast at the asker. That framing is what redirected a question
-    about the ROOM into a jab at BK."""
-    import discord_bot.bot as bot
-    src = bot._ask_pipeline_source()
-    for marker, name in (("_rr_prompt = (", "roast-recycle"),
-                         ("_pm_prompt = (", "P&L-monotone")):
-        win = _guard_window(src, marker)
-        assert "Rewrite the following Discord bot roast." not in win, (
-            f"{name} still opens by calling the input a roast — that "
-            f"framing collapses non-roast answers into jabs at the asker"
-        )
-    _ok("neither rewrite assumes its input is a roast")
+    for marker in ("# Roast-recycle guard", "# P&L-monotone check"):
+        i = src.find(marker)
+        assert i != -1, f"{marker!r} not found — guard renamed?"
+        assert "generate_content(" not in src[i:i + 2600], f"{marker} calls the model"
+    _ok("roast-recycle and P&L-monotone make no model call")
 
 
 def test_roast_guards_skip_analysis_answers():
@@ -184,10 +135,7 @@ def test_boeing_shape_not_roastable():
 
 if __name__ == "__main__":
     print("=== rewrite-guard question-preservation smoke ===")
-    test_recycle_rewrite_receives_the_question()
-    test_pnl_rewrite_receives_the_question()
-    test_both_rewrites_demand_the_answer_survive()
-    test_rewrites_do_not_assume_a_roast()
+    test_the_roast_guards_never_regenerate_the_answer()
     test_roast_guards_skip_analysis_answers()
     test_roast_guards_require_clapback_shape()
     test_boeing_shape_not_roastable()

@@ -6088,9 +6088,9 @@ async def _ask_05_strip_asker_mockery(
     # material — co-loaded dossiers in multi-party threads are the
     # cross-attribution source (kyle got ZHawk's XSP trade, Austin,
     # and Excel material); grounded banter may legitimately cite
-    # the web. One rewrite naming the offenders; then strip; a
-    # fully-stripped answer becomes a disengage line — the move the
-    # prompt prescribes when the receipts run dry.
+    # the web. The offending sentences are stripped (never rewritten,
+    # 2026-10-30); a gutted answer becomes a disengage line on a hostile
+    # exchange, the move the prompt prescribes when the receipts run dry.
     _fid_material = ""
     if (answer and not _route_is_factual and not _round_gm_chunks
             and _is_clapback_shaped(answer)):
@@ -6136,14 +6136,14 @@ async def _ask_05_strip_asker_mockery(
         # tokens while inventing "pontoon"). Provenance rule: a
         # distinctive word that appears in NEITHER the subject's
         # material NOR the prompt's own context was invented.
-        # Surfaced as rewrite input only — a false positive costs
-        # one rewrite, never a stripped or mangled answer.
+        # Recorded in the meta only: a false positive must never strip
+        # or mangle an answer.
         _fid_invented = _invented_personal_details(
             answer, _fid_material, question, chat_context or "",
         )[:6]
         if _fid_invented:
             _ask_meta["invented_details"] = _fid_invented
-        if _fid_viol or _fid_invented:
+        if _fid_viol:
             _ask_meta["guards"].append("clapback-fidelity")
             _fid_who = (
                 f"{_fid_disp} ({_fid_uname})" if _fid_subject
@@ -6151,132 +6151,70 @@ async def _ask_05_strip_asker_mockery(
             )
             log.warning(
                 f"/ask: clapback carries material not belonging to "
-                f"{_fid_who} ({_fid_viol[:6]}) — requesting fidelity "
-                f"rewrite"
+                f"{_fid_who} ({_fid_viol[:6]}) — stripping"
             )
-            try:
-                _fid_contents = list(contents) + [types.Content(
-                    role="user",
-                    parts=[types.Part.from_text(text=(
-                        "[FIDELITY CHECK] This reply is about "
-                        f"{_fid_who}. Your draft attributed material "
-                        f"that is NOT theirs: "
-                        + ", ".join((_fid_viol + _fid_invented)[:8]) +
-                        ". Those belong to other members or to "
-                        "nobody — anything listed that appears in "
-                        "no profile, no message and no part of this "
-                        "prompt was INVENTED, which is how a member "
-                        "gets told about a boat they do not own. "
-                        "Rewrite the reply using ONLY "
-                        f"{_fid_who}'s documented material: their "
-                        "profile, their own messages, this "
-                        "question. Never substitute a new invented "
-                        "specific for a corrected one. If you have "
-                        "no fresh receipts left, deliver a short "
-                        "one-line disengage instead. Output only "
-                        "the reply."
-                    ))],
-                )]
-                _fid_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=_fid_contents,
-                    config=types.GenerateContentConfig(
-                        system_instruction=(
-                            _build_runtime_system_instruction(_prompt_extra)
-                        ),
-                        safety_settings=safety_settings,
-                        max_output_tokens=1000,
-                        temperature=0.4,
-                        thinking_config=types.ThinkingConfig(
-                            thinking_budget=512),
-                    ),
-                )
-                _tally_retry_usage(_fid_resp)
-                try:
-                    _fid_answer = (_fid_resp.text or "").strip()
-                except Exception:
-                    _fid_answer = ""
-                if _fid_answer:
-                    _fid_answer, _ = _clean_voice_violations(
-                        _fid_answer
-                    )
-                from discord_bot.guard_floor import plausible_rewrite
-                if plausible_rewrite(answer, _fid_answer) and not _clapback_fidelity_violations(
-                        _fid_answer, _fid_material):
-                    answer = _fid_answer
-                    log.info("/ask: fidelity rewrite accepted")
-                else:
-                    _bad = [
-                        s for s in _split_sentences(answer)
-                        if _clapback_fidelity_violations(
-                            s, _fid_material)
-                    ]
-                    _stripped_f = _strip_sentences(answer, _bad)
-                    if _stripped_f.strip():
-                        answer = _stripped_f
-                        _ask_meta["guards"].append(
-                            "clapback-fidelity-strip")
-                        log.warning(
-                            f"/ask: stripped {len(_bad)} "
-                            f"non-asker sentence(s) from clapback"
-                        )
-                    elif _is_hostile_exchange(question):
-                        answer = "you done?"
-                        _ask_meta["guards"].append(
-                            "clapback-fidelity-disengage")
-                        log.warning(
-                            "/ask: whole clapback was non-asker "
-                            "material — disengaging"
-                        )
-                    else:
-                        # The disengage line is a response to an
-                        # ATTACK. On a benign question it reads as
-                        # the bot being hostile for no reason
-                        # (2026-08-25). Re-ask plainly instead.
-                        _ask_meta["guards"].append(
-                            "clapback-fidelity-plain-retry")
-                        log.warning(
-                            "/ask: fidelity strip emptied a "
-                            "NON-hostile answer — plain re-ask"
-                        )
-                        try:
-                            _plain = await client.aio.models.generate_content(
-                                model=ask_model,
-                                contents=[types.Content(
-                                    role="user",
-                                    parts=[types.Part.from_text(text=(
-                                        "Answer this plainly and "
-                                        "usefully. No jokes about "
-                                        "the asker, no jabs, no "
-                                        "personal material — just "
-                                        "the answer.\n\n"
-                                        + question[:4000]
-                                    ))],
-                                )],
-                                config=types.GenerateContentConfig(
-                                    system_instruction=(
-                                        _build_runtime_system_instruction(
-                                            _prompt_extra)
-                                    ),
-                                    safety_settings=safety_settings,
-                                    max_output_tokens=800,
-                                    temperature=0.3,
-                                    thinking_config=types.ThinkingConfig(
-                                        thinking_budget=256),
-                                ),
-                            )
-                            _tally_retry_usage(_plain)
-                            _pa = (_plain.text or "").strip()
-                            if _pa:
-                                _pa, _ = _clean_voice_violations(_pa)
-                            answer = _pa or answer
-                        except Exception as e:
-                            log.warning(f"/ask: plain re-ask failed: {e}")
-            except Exception as fe:
+            # Strip, never rewrite (2026-10-30 audit A12): the rewrite that
+            # ran here regenerated the roast without the draft and put
+            # Wock's line in Monsoon's mouth, a swap the draft did not have.
+            from discord_bot.guard_floor import gutted as _gutted
+            # The invented-detail signal is fuzzy and only labels the turn
+            # (`invented_details` in the meta); it never strips.
+            _bad = [
+                s for s in _split_sentences(answer)
+                if _clapback_fidelity_violations(s, _fid_material)
+            ]
+            _stripped_f = _strip_sentences(answer, _bad)
+            if _stripped_f.strip() and not _gutted(answer, _stripped_f):
+                answer = _stripped_f
+                _ask_meta["guards"].append("clapback-fidelity-strip")
                 log.warning(
-                    f"/ask: fidelity rewrite call failed "
-                    f"(non-fatal): {fe}"
+                    f"/ask: stripped {len(_bad)} "
+                    f"non-asker sentence(s) from clapback"
                 )
+            elif _is_hostile_exchange(question):
+                answer = "you done?"
+                _ask_meta["guards"].append("clapback-fidelity-disengage")
+                log.warning(
+                    "/ask: whole clapback was non-asker material — disengaging"
+                )
+            else:
+                # The disengage line is a response to an ATTACK. On a
+                # benign question it reads as the bot being hostile for no
+                # reason (2026-08-25). Re-ask plainly, with no personal
+                # material, instead.
+                _ask_meta["guards"].append("clapback-fidelity-plain-retry")
+                log.warning(
+                    "/ask: fidelity strip emptied a NON-hostile answer — plain re-ask"
+                )
+                try:
+                    _plain = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=[types.Content(
+                            role="user",
+                            parts=[types.Part.from_text(text=(
+                                "Answer this plainly and usefully. No jokes "
+                                "about the asker, no jabs, no personal "
+                                "material — just the answer.\n\n"
+                                + question[:4000]
+                            ))],
+                        )],
+                        config=types.GenerateContentConfig(
+                            system_instruction=(
+                                _build_runtime_system_instruction(_prompt_extra)
+                            ),
+                            safety_settings=safety_settings,
+                            max_output_tokens=800,
+                            temperature=0.3,
+                            thinking_config=types.ThinkingConfig(thinking_budget=256),
+                        ),
+                    )
+                    _tally_retry_usage(_plain)
+                    _pa = (_plain.text or "").strip()
+                    if _pa:
+                        _pa, _ = _clean_voice_violations(_pa)
+                    answer = _pa or answer
+                except Exception as e:
+                    log.warning(f"/ask: plain re-ask failed: {e}")
 
     # Ledger check on claims about a member's trading (2026-09-18/19).
     # The prompt bound the P&L half from 2026-08-20 and the model
@@ -6305,12 +6243,8 @@ async def _ask_05_strip_asker_mockery(
             _bad_loss, _bad_pos = _pnl_claims.judge_candidates(_cands, _stats)
         else:
             _bad_loss, _bad_pos = [], []
-        # `_asker_protected`: the ordinary rewrite points the model at
-        # personal material, which is exactly what a protected asker is
-        # protected from. Dropping the findings instead was worse — it
-        # published a claim the ledger had just disproved about the one
-        # person the rule exists to protect (2026-09-19 review). The
-        # protected note is subtractive: remove the claim, add nothing.
+        # A protected asker gets the same strip: the claim goes and
+        # nothing replaces it (2026-09-19 review, 2026-10-30).
         if (_bad_loss or _bad_pos) and _asker_protected:
             _ask_meta["guards"].append("pnl-ledger:protected-neutral")
         if _bad_loss:
@@ -6319,7 +6253,7 @@ async def _ask_05_strip_asker_mockery(
             log.warning(
                 "/ask: answer claims a losing record the ledger contradicts "
                 f"({[(c['surface'], c['wins']) for c in _bad_loss[:4]]}) "
-                f"— requesting rewrite (q={question[:60]!r})")
+                f"— stripping (q={question[:60]!r})")
         if _bad_pos:
             _ask_meta["guards"].append(
                 "pnl-position:" + ",".join(
@@ -6327,68 +6261,16 @@ async def _ask_05_strip_asker_mockery(
             log.warning(
                 "/ask: answer puts a position on someone whose log lacks it "
                 f"({[(b['surface'], b['ticker']) for b in _bad_pos[:4]]}) "
-                f"— requesting rewrite (q={question[:60]!r})")
+                f"— stripping (q={question[:60]!r})")
         if _bad_loss or _bad_pos:
-            _pnl_resp = await client.aio.models.generate_content(
-                model=ask_model,
-                contents=list(contents) + [types.Content(
-                    role="user",
-                    parts=[types.Part.from_text(
-                        text=_pnl_claims.correction_note(
-                            _bad_loss, _bad_pos,
-                            protected=bool(_asker_protected)))],
-                )],
-                config=types.GenerateContentConfig(
-                    system_instruction=(
-                        _build_runtime_system_instruction(_prompt_extra)
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=900,
-                    temperature=0.6,
-                    thinking_config=types.ThinkingConfig(thinking_budget=512),
-                ),
-            )
-            _tally_retry_usage(_pnl_resp)
-            _pnl_text = (_pnl_resp.text or "").strip()
+            # Strip, never rewrite (2026-10-30 audit, design note 2).
+            _pnl_text = _pnl_claims.strip_claims(answer, _bad_loss, _bad_pos)
             if _pnl_text:
-                _pnl_text, _ = _clean_voice_violations(_pnl_text)
-            # Accept only a rewrite that actually dropped the claim AND
-            # did not invent material belonging to someone else. The
-            # fidelity guard above already ran, so without this re-check
-            # the rewrite is the one path out of this phase that nothing
-            # checks (2026-09-19 review).
-            _ok_rewrite = False
-            if _pnl_text:
-                _re_cands = _pnl_claims.claim_candidates(
-                    _pnl_text, _members, subject_surfaces=_subj_surfaces)
-                # Re-judging against only the ORIGINAL subjects' ledgers
-                # waves through the model's most likely move: the note
-                # tells it a position is not X's, and it hands the
-                # position to Y. Y was never a candidate, so Y has no
-                # entry in `_stats` and `judge_candidates` skips the
-                # claim as unevidenced. Fetch whoever the rewrite newly
-                # named before grading it.
-                _new_ids = {c["user_id"] for c in _re_cands} - set(_stats)
-                if _new_ids:
-                    _stats = dict(_stats)
-                    _stats.update(await asyncio.to_thread(
-                        _member_ledger_stats, _new_ids))
-                _re_loss, _re_pos = _pnl_claims.judge_candidates(
-                    _re_cands, _stats)
-                # Best-effort: `_fid_material` is only populated on a
-                # clapback-shaped answer, so on the FACT route (where
-                # the MSTR misattribution lived) this contributes
-                # nothing and the re-judge above is the real check.
-                _re_fid = (_clapback_fidelity_violations(
-                    _pnl_text, _fid_material) if _fid_material else [])
-                _ok_rewrite = not (_re_loss or _re_pos or _re_fid)
-                if _re_fid:
-                    _ask_meta["guards"].append("pnl-ledger:rewrite-unfaithful")
-            if _ok_rewrite:
                 answer = _pnl_text
-                _ask_meta["guards"].append("pnl-ledger:rewritten")
+                _ask_meta["guards"].append("pnl-ledger:stripped")
             else:
-                _ask_meta["guards"].append("pnl-ledger:rewrite-rejected")
+                answer = "→ Their trade log doesn't show that."
+                _ask_meta["guards"].append("pnl-ledger:emptied")
     except Exception as _pe:
         log.warning(f"/ask: ledger claim check failed (non-fatal): {_pe}")
     return (answer,)
@@ -6431,12 +6313,11 @@ async def _ask_06_roast_subject_guards(
     # bot's reply quotes the ASKER's message, an unnamed "him" has
     # nothing anchoring it to the subject.
     #
-    # Deliberately weak: ONE rewrite request, accepted only if it
-    # names the subject AND still passes fidelity. Otherwise the
-    # original ships. Ambiguous attribution is a readability problem,
-    # not a correctness one, and a guard that rewrites correct roasts
-    # to fix presentation is how pnl-monotone vandalized a factual
-    # answer (2026-08-04).
+    # Since 2026-10-30 the name is put in front in code; nothing else
+    # in the reply changes. Ambiguous attribution is a readability
+    # problem, and a guard that rewrites correct roasts to fix
+    # presentation is how pnl-monotone vandalized a factual answer
+    # (2026-08-04).
     # NOT gated on _is_clapback_shaped. That heuristic is the right
     # gate for the fidelity guard, which polices receipts inside a
     # clapback, and the wrong one here: it returns False for the
@@ -6481,69 +6362,13 @@ async def _ask_06_roast_subject_guards(
                 for d, u in _nm_subjects for h in (d, u) if len(h) >= 3
             )
             if not _named and _THIRD_PERSON_REF_RE.search(answer):
+                # The name goes in front, in code (2026-10-30 audit,
+                # design note 2): the rewrite that ran here regenerated
+                # the reply without the draft, so "change NOTHING else"
+                # could not hold.
+                answer = f"**{_nm_disp}:** {answer.lstrip()}"
                 _ask_meta["guards"].append("subject-unnamed")
-                log.warning(
-                    f"/ask: third-party roast never names its subject "
-                    f"({_nm_disp}) — requesting one naming rewrite"
-                )
-                try:
-                    _nm_material = _member_material_surface(
-                        profiles_block, chat_context, _nm_uname,
-                        _nm_disp, question,
-                    )
-                    _nm_resp = await client.aio.models.generate_content(
-                        model=ask_model,
-                        contents=list(contents) + [types.Content(
-                            role="user",
-                            parts=[types.Part.from_text(text=(
-                                "[NAMING] This reply is about "
-                                f"{_nm_disp}, but it never says so. It "
-                                "reads as if it could be about anyone "
-                                "in the room. Rewrite it so "
-                                f"{_nm_disp} is named once, early and "
-                                "naturally. Change NOTHING else: same "
-                                "claims, same jokes, same length, same "
-                                "voice. Do not add material. Output "
-                                "only the reply."
-                            ))],
-                        )],
-                        config=types.GenerateContentConfig(
-                            system_instruction=(
-                                _build_runtime_system_instruction(
-                                    _prompt_extra)
-                            ),
-                            safety_settings=safety_settings,
-                            max_output_tokens=1000,
-                            temperature=0.3,
-                            thinking_config=types.ThinkingConfig(
-                                thinking_budget=256),
-                        ),
-                    )
-                    _tally_retry_usage(_nm_resp)
-                    try:
-                        _nm_answer = (_nm_resp.text or "").strip()
-                    except Exception:
-                        _nm_answer = ""
-                    if _nm_answer:
-                        _nm_answer, _ = _clean_voice_violations(_nm_answer)
-                    from discord_bot.guard_floor import acceptable_rewrite
-                    _nm_ok = acceptable_rewrite(answer, _nm_answer) and any(
-                        re.search(rf"\b{re.escape(h)}\b", _nm_answer,
-                                  re.I)
-                        for h in (_nm_disp, _nm_uname) if len(h) >= 3
-                    ) and not _clapback_fidelity_violations(
-                        _nm_answer, _nm_material)
-                    if _nm_ok:
-                        answer = _nm_answer
-                        log.info("/ask: naming rewrite accepted")
-                    else:
-                        log.info(
-                            "/ask: naming rewrite rejected — keeping the "
-                            "original (presentation issue, not a "
-                            "correctness one)"
-                        )
-                except Exception as e:
-                    log.warning(f"/ask: naming rewrite failed: {e}")
+                log.info(f"/ask: third-party roast never named {_nm_disp}; name added")
 
     # Seam counter, NOT a guard (2026-08-27 review, session 1): a
     # FACT-routed answer that names a member from WHO'S TALKING.
@@ -6576,24 +6401,21 @@ async def _ask_06_roast_subject_guards(
 
     # Roast-recycle guard (BANTER-gated) — a roast that remixes the
     # same hooks as a prior answer to this asker reads as "doesn't
-    # know you or how to insult you." Force ONE rewrite with the
-    # recycled hooks banned; ship the original if the rewrite can't
-    # do better (repetition is weak, not dangerous).
+    # know you or how to insult you." The sentences carrying the
+    # recycled hooks are stripped when enough of the answer is left;
+    # otherwise the original ships (repetition is weak, not dangerous).
+    # The rewrite that ran here until 2026-10-30 rebuilt the jab from
+    # the dossier and could pin material on the wrong person (audit
+    # design note 2).
     # `not _analysis_extra`: a room-ranking question routes
-    # LOCAL/BANTER, so without this an answer built from query_data +
-    # Python with a chart attached was eligible to be rewritten as a
-    # roast. A roast rewriter has no business touching an analysis.
+    # LOCAL/BANTER; an analysis is not a roast.
     # `_is_clapback_shaped(answer)`: the BANTER route is NOT proof
     # the answer is a roast — the router misroutes factual questions
     # to BANTER regularly (citadel 07-30, Boeing + earnings calendar
-    # 08-03). On 08-03 the pnl-monotone guard classified a clean
-    # factual Boeing answer as a lazy roast (dense trading vocab,
-    # zero personal color — the definition of factual) and stapled a
-    # personal jab onto every arrow; the asker complained in the
-    # room. An answer must actually address the asker in second
-    # person before either roast guard may touch it.
-    # `not _asker_protected`: these rewrites INJECT jabs (the 08-03
-    # Boeing incident) — they must never run on a protected asker.
+    # 08-03). An answer must actually address the asker in second
+    # person before this guard may touch it.
+    # `not _asker_protected`: a protected asker's answer is left alone.
+    from discord_bot.guard_floor import gutted as _gutted
     if (answer and not _route_is_factual and not _analysis_extra
             and not _asker_protected
             and _is_clapback_shaped(answer)
@@ -6601,128 +6423,22 @@ async def _ask_06_roast_subject_guards(
         _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
         if len(_recycled) >= _RECYCLE_HOOK_MIN:
             _ask_meta["guards"].append("roast-recycle")
+            _rr_bad = [s for s in _split_sentences(answer)
+                       # hooks are stems: "torch" matches "torched"
+                       if any(re.search(r"\b" + re.escape(h), s, re.I)
+                              for h in _recycled)]
+            _rr_answer = _strip_sentences(answer, _rr_bad)
+            if _rr_answer.strip() and not _gutted(answer, _rr_answer):
+                answer = _rr_answer
+                _ask_meta["guards"].append("roast-recycle:stripped")
             log.warning(
                 f"/ask: roast recycles {len(_recycled)} hooks from a "
-                f"prior answer to this asker "
-                f"({', '.join(_recycled[:6])}) — requesting rewrite"
+                f"prior answer to this asker ({', '.join(_recycled[:6])})"
             )
-            try:
-                # 2026-07-17 fix: this prompt used to say "rebuild
-                # from material ALREADY in this conversation's
-                # context" while receiving ONLY the original answer
-                # — an instruction it could only satisfy by
-                # inventing. The dossier now rides along as the
-                # actual material, and the novel-content check
-                # below rejects inventions.
-                _rr_material = (profiles_block or "")[:6000]
-                # 2026-07-30 fix: this opened with "rewrite the
-                # following roast" and shipped ONLY the answer, so
-                # every input was treated as a single jab at the
-                # asker. "who are the happiest people in the chat?
-                # How about the angriest" came back with the
-                # happiest arrow deleted. The question rides along
-                # now and the answer has to survive rewriting.
-                _rr_prompt = (
-                    "Rewrite the ANSWER below. It is a bot's answer "
-                    "to a real question — it may be a roast, or a "
-                    "list, or a straight answer. Whatever shape it "
-                    "is, the rewrite must STILL ANSWER the question "
-                    "in full: every part the question asked for, "
-                    "every subject the original covered. If the "
-                    "original is arrow bullets, return the same "
-                    "number of arrow bullets on the same subjects. "
-                    "Never redirect an answer about other people "
-                    "into a jab at the asker.\n\n"
-                    f"QUESTION:\n{question}\n\n"
-                    "The problem to fix: it "
-                    "recycles the SAME hooks you already used on this "
-                    "person recently — they noticed, and a repeated "
-                    "roast reads as not knowing them at all. BANNED "
-                    "material for this rewrite (do not mention or "
-                    "paraphrase): "
-                    + ", ".join(_recycled)
-                    + ". Rebuild the jab from DIFFERENT material in "
-                    "the SUBJECT MATERIAL below — "
-                    "their PERSONAL color first (recent personal "
-                    "life, retarded takes, personality); trading-"
-                    "loss angles only "
-                    "if the ledger material is specific and fresh. "
-                    "The SUBJECT MATERIAL is your ONLY allowed "
-                    "source — inventing traits, habits, or behaviors "
-                    "is a hard failure. Same heat, same length, same "
-                    "voice. Do NOT invent new facts, tickers, or "
-                    "numbers. Output ONLY the rewritten answer.\n\n"
-                    + (
-                        f"SUBJECT MATERIAL:\n{_rr_material}\n\n"
-                        if _rr_material else ""
-                    )
-                    + "ORIGINAL ANSWER:\n"
-                    f"{answer}"
-                )
-                _rr_config = types.GenerateContentConfig(
-                    system_instruction=(
-                        "You are a sharp trader rewriting a roast so "
-                        "it lands fresh. Direct, in-register, no AI "
-                        "tells, no recycled material."
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=1500,
-                    temperature=0.6,
-                    thinking_config=types.ThinkingConfig(
-                        thinking_budget=512),
-                )
-                _rr_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=[types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=_rr_prompt)],
-                    )],
-                    config=_rr_config,
-                )
-                _tally_retry_usage(_rr_resp)
-                try:
-                    _rr_answer = (_rr_resp.text or "").strip()
-                except Exception:
-                    _rr_answer = ""
-                if _rr_answer:
-                    _rr_answer, _ = _clean_voice_violations(_rr_answer)
-                    _still = _recycled_roast_hooks(
-                        _rr_answer, _prior_bot_answer_texts
-                    )
-                    _rr_novel = _rewrite_novel_ratio(
-                        _rr_answer,
-                        f"{answer} {profiles_block or ''} "
-                        f"{question or ''}",
-                    )
-                    if _rr_novel > _REWRITE_NOVEL_MAX_RATIO:
-                        _ask_meta["guards"].append(
-                            "rewrite:novel-rejected"
-                        )
-                        log.warning(
-                            f"/ask: roast-recycle rewrite invented "
-                            f"content (novel ratio {_rr_novel:.2f}) "
-                            f"— shipping original"
-                        )
-                    elif len(_still) < _RECYCLE_HOOK_MIN:
-                        answer = _rr_answer
-                        log.info("/ask: roast-recycle rewrite succeeded")
-                    else:
-                        log.warning(
-                            "/ask: roast-recycle rewrite still recycled "
-                            "— shipping original"
-                        )
-            except Exception as e:
-                log.warning(f"/ask: roast-recycle rewrite failed: {e}")
     # Verbatim-span repeat (2026-09-19). Not gated on clapback shape:
     # the answers that repeated were RANKINGS, which carry no clapback
-    # shape, and this rewrite only asks for different words rather than
-    # injecting a roast. Runs before the hook check so the cheaper,
-    # safer fix gets first refusal.
-    # Condition deliberately not shaped like the two roast guards
-    # below. smoke_rewrite_guards_keep_question scans for their
-    # `_prior_bot_answer_texts):` marker and requires a clapback-shape
-    # gate on whatever it finds, which is correct for a guard that
-    # injects a roast and wrong for this one.
+    # shape. The sentence carrying the span is stripped when enough of
+    # the answer is left (never reworded since 2026-10-30).
     _span_pool = (_prior_bot_answer_texts
                   if (answer and not _route_is_factual
                       and not _analysis_extra) else [])
@@ -6732,49 +6448,15 @@ async def _ask_06_roast_subject_guards(
         if _span:
             _ask_meta["guards"].append("repeat-span")
             log.warning(
-                f"/ask: answer repeats a span the room already heard "
-                f"({_span[:70]!r}) — requesting a reword")
-            try:
-                _span_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=list(contents) + [types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=(
-                            "[ALREADY SAID] You used this exact phrasing in "
-                            "a recent answer in this channel: \""
-                            + _span + "\". The room has read it. Say the "
-                            "same thing with different words and a "
-                            "different angle, or use different material "
-                            "entirely. Keep the length, the register and "
-                            "the verdict; change the words. Output only "
-                            "the reply."
-                        ))],
-                    )],
-                    config=types.GenerateContentConfig(
-                        system_instruction=(
-                            _build_runtime_system_instruction(_prompt_extra)
-                        ),
-                        safety_settings=safety_settings,
-                        max_output_tokens=900,
-                        temperature=0.85,
-                        thinking_config=types.ThinkingConfig(
-                            thinking_budget=512),
-                    ),
-                )
-                _tally_retry_usage(_span_resp)
-                _span_text = (_span_resp.text or "").strip()
-                if _span_text:
-                    _span_text, _ = _clean_voice_violations(_span_text)
-                from discord_bot.guard_floor import acceptable_rewrite as _ok_rw
-                if _span_text and not _repeated_span(
-                        _span_text, _span_pool) and not _repeated_joke(
-                        _span_text, _span_pool) and _ok_rw(answer, _span_text):
-                    answer = _span_text
-                    _ask_meta["guards"].append("repeat-span:reworded")
-                elif _span_text:
-                    _ask_meta["guards"].append("repeat-span:reword-rejected")
-            except Exception as _se:
-                log.warning(f"/ask: reword on repeat failed (non-fatal): {_se}")
+                f"/ask: answer repeats a span the room already heard ({_span[:70]!r})")
+            # the span is normalised words, so the sentences are too
+            _sp_head = " ".join(_span.split()[:_REPEATED_JOKE_MIN_WORDS])
+            _sp_bad = [s for s in _split_sentences(answer)
+                       if _sp_head in " ".join(re.findall(r"[a-z0-9$%']+", s.lower()))]
+            _sp_answer = _strip_sentences(answer, _sp_bad)
+            if _sp_bad and _sp_answer.strip() and not _gutted(answer, _sp_answer):
+                answer = _sp_answer
+                _ask_meta["guards"].append("repeat-span:stripped")
 
     return (answer,)
 
@@ -6808,85 +6490,19 @@ async def _ask_07_validation_ladder(
     """
     grounding_metadata = None
 
-    # P&L-monotone guard (BANTER-gated) — "your roasts need to
+    # P&L-monotone check (BANTER-gated) — "your roasts need to
     # target more personal stuff than trading money losses cuz it's
-    # just lame and repetitive" (user, 2026-07-10). A roast that is
-    # all trading-loss vocabulary and touches NONE of the dossier's
-    # personal color gets one rewrite pointed at the personal
-    # sections. Ship the original if the rewrite doesn't improve —
-    # monotone is weak, not dangerous.
+    # just lame and repetitive" (user, 2026-07-10). Recorded, not
+    # rewritten (2026-10-30 audit, design note 2): the rewrite was asked
+    # for personal color while it received no profile, so its only
+    # source was invention, and nothing checked what it added.
     if (answer and not _route_is_factual and not _analysis_extra
             and not _asker_protected
             and profiles_block
             and _is_clapback_shaped(answer)
             and _roast_is_pnl_monotone(answer, profiles_block)):
         _ask_meta["guards"].append("pnl-monotone")
-        log.warning(
-            f"/ask: P&L-monotone roast (q={question[:80]!r}) — "
-            f"requesting personal-color rewrite"
-        )
-        try:
-            _pm_prompt = (
-                "Rewrite the ANSWER below. It is a bot's answer to a "
-                "real question. The rewrite must STILL ANSWER that "
-                "question in full — every part it asked for, every "
-                "subject the original covered — and keep the same "
-                "shape (arrow bullets in, the same arrow bullets "
-                "out). Never redirect an answer about other people "
-                "into a jab at the asker.\n\n"
-                f"QUESTION:\n{question}\n\n"
-                "The problem to fix: every jab "
-                "in it is a trading-losses jab (bags, exits, account, "
-                "casino) — the laziest register, and this room has "
-                "called it out. Rebuild the heat from the target's "
-                "PERSONAL color that is ALREADY in this conversation's "
-                "context: their recent personal life, retarded takes, "
-                "personality quirks, or what they said in the current "
-                "chat window. One trading reference may survive if "
-                "it's specific, but the roast's spine must be "
-                "personal. Same heat, same length, same voice. Do NOT "
-                "invent new facts, tickers, or numbers — only material "
-                "from the context. Output ONLY the rewritten "
-                "answer.\n\nORIGINAL ANSWER:\n"
-                f"{answer}"
-            )
-            _pm_config = types.GenerateContentConfig(
-                system_instruction=(
-                    "You are a sharp trader rewriting a roast so it "
-                    "hits the person, not their P&L. Direct, "
-                    "in-register, no AI tells."
-                ),
-                safety_settings=safety_settings,
-                max_output_tokens=1500,
-                temperature=0.6,
-                thinking_config=types.ThinkingConfig(
-                    thinking_budget=512),
-            )
-            _pm_resp = await client.aio.models.generate_content(
-                model=ask_model,
-                contents=[types.Content(
-                    role="user",
-                    parts=[types.Part.from_text(text=_pm_prompt)],
-                )],
-                config=_pm_config,
-            )
-            _tally_retry_usage(_pm_resp)
-            try:
-                _pm_answer = (_pm_resp.text or "").strip()
-            except Exception:
-                _pm_answer = ""
-            if _pm_answer:
-                _pm_answer, _ = _clean_voice_violations(_pm_answer)
-                if not _roast_is_pnl_monotone(_pm_answer, profiles_block):
-                    answer = _pm_answer
-                    log.info("/ask: P&L-monotone rewrite succeeded")
-                else:
-                    log.warning(
-                        "/ask: P&L-monotone rewrite still monotone — "
-                        "shipping original"
-                    )
-        except Exception as e:
-            log.warning(f"/ask: P&L-monotone rewrite failed: {e}")
+        log.info(f"/ask: P&L-monotone roast (q={question[:80]!r})")
 
     grounding_metadata = None
     try:
@@ -7562,95 +7178,23 @@ async def _ask_08_technical_analysis_guard(
     # Member-outcome guard — clapbacks can't have no truth behind
     # them. If the answer asserts someone's P&L STATE ("underwater
     # on your bags", "down 40%") and this turn consulted no trade
-    # data, rewrite the jab onto documented material; strip what
-    # survives. (2026-07-02: Cpig clapback asserted "underwater" —
-    # his ledger shows zero documented outcomes.)
+    # data, the sentences that assert it are stripped. (2026-07-02:
+    # Cpig clapback asserted "underwater" — his ledger shows zero
+    # documented outcomes.) Never rewritten since 2026-10-30 (audit
+    # design note 2); a clapback minus its invented outcome is still
+    # a clapback, and an answer that was nothing else says so.
     _oc_names = _known_member_names()
     if answer and _has_unsourced_outcome_claims(
         answer, _ask_tool_trace, user_content, _oc_names
     ):
-        oc0 = _outcome_violations(answer, user_content, _oc_names)
+        to_strip = _outcome_violations(answer, user_content, _oc_names)
         _ask_meta["guards"].append("outcome")
+        stripped = _strip_sentences(answer, to_strip)
+        answer = stripped if stripped.strip() else "→ Their trade log doesn't show that."
         log.warning(
-            f"/ask: unsourced member-outcome claim(s) "
-            f"(q={question[:80]!r}, n={len(oc0)}) — requesting rewrite"
+            f"/ask: stripped {len(to_strip)} unsourced outcome sentence(s) "
+            f"(q={question[:80]!r})"
         )
-        try:
-            oc_prompt = (
-                "Rewrite the following Discord bot answer. It asserts "
-                "someone's profit/loss STATE (e.g. 'underwater', 'down "
-                "bad', 'bleeding', 'down N%', 'his plays are a road to "
-                "ruin') with NO documented source — the trade ledger "
-                "only records what people POST, so an asserted P&L "
-                "state is fabrication. This applies to ANY member named "
-                "in the answer, not just the person being addressed — "
-                "trashing a third member's plays without their ledger "
-                "is the same invention. Replace each "
-                "such claim with what IS verifiable in the answer's own "
-                "remaining material: documented behavior (entries with "
-                "no posted exit, spamming a ticker, their own quoted "
-                "words), or drop the claim. Do NOT add any new facts, "
-                "tickers, percentages, or events. Keep the same length, "
-                "voice, and heat — the jab stays, the invented outcome "
-                "goes. Output ONLY the rewritten answer, no preamble.\n\n"
-                "ORIGINAL:\n"
-                f"{answer}"
-            )
-            oc_config = types.GenerateContentConfig(
-                system_instruction=(
-                    "You are a senior trader rewriting another trader's "
-                    "message. Direct, in-register, no AI tells. Never "
-                    "state an outcome the material doesn't document."
-                ),
-                safety_settings=safety_settings,
-                max_output_tokens=1500,
-                temperature=0.4,
-                thinking_config=types.ThinkingConfig(thinking_budget=512),
-            )
-            oc_resp = await client.aio.models.generate_content(
-                model=ask_model,
-                contents=[types.Content(
-                    role="user",
-                    parts=[types.Part.from_text(text=oc_prompt)],
-                )],
-                config=oc_config,
-            )
-            _tally_retry_usage(oc_resp)
-            try:
-                oc_answer = (oc_resp.text or "").strip()
-            except Exception:
-                oc_answer = ""
-            if oc_answer and not _outcome_violations(
-                oc_answer, user_content, _oc_names
-            ):
-                answer = oc_answer
-                log.info("/ask: outcome-claim rewrite succeeded")
-            else:
-                # Strip the offending sentences from whichever draft
-                # is cleaner; a clapback minus its invented outcome
-                # is still a clapback.
-                base = oc_answer if (
-                    oc_answer
-                    and len(_outcome_violations(
-                        oc_answer, user_content, _oc_names))
-                    < len(oc0)
-                ) else answer
-                to_strip = _outcome_violations(
-                    base, user_content, _oc_names)
-                stripped = _strip_sentences(base, to_strip)
-                if stripped:
-                    answer = stripped
-                    log.warning(
-                        f"/ask: stripped {len(to_strip)} unsourced "
-                        f"outcome sentence(s)"
-                    )
-                else:
-                    log.warning(
-                        "/ask: outcome strip would empty the answer — "
-                        "shipping original"
-                    )
-        except Exception as e:
-            log.warning(f"/ask: outcome-claim rewrite call failed: {e}")
     return (answer, grounding_metadata, response)
 
 
@@ -8385,15 +7929,12 @@ async def _ask_09_rank_and_regen_guards(
     if "outline" in _ask_meta.get("guards", []) and answer:
         # the outline's [source] tags are for the model, not the reader
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
-    answer = await _fresh_print_guard(
-        answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
-    answer = await _business_line_guard(
-        answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
-    answer = await _implied_move_guard(
-        answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
-    answer = await _fantasy_percent_guard(
-        answer, question, _ask_meta, client, ask_model, safety_settings, types,
-        _tally_retry_usage)
+    # Phase 9's stock and fantasy checks add a line built from data or
+    # strip a sentence; none asks the model to rewrite (2026-10-30 audit).
+    answer = _fresh_print_guard(answer, _ask_meta)
+    answer = _business_line_guard(answer, _ask_meta)
+    answer = _implied_move_guard(answer, _ask_meta)
+    answer = _fantasy_percent_guard(answer, question, _ask_meta)
     # no reminder, timer or ping tool exists: never claim one (2026-10-08)
     from discord_bot import action_claims as _ac
     from discord_bot.ask_router import asker_text as _ac_last
@@ -8437,92 +7978,59 @@ async def _ask_09_rank_and_regen_guards(
     return (answer, grounding_metadata)
 
 
-async def _business_line_guard(answer, _ask_meta, client, ask_model, safety_settings, types,
-                               _tally_retry_usage):
+def _business_line_guard(answer, _ask_meta):
     """A stock answer names the part of the business that drives its
-    figures (owner, 2026-09-30). When a business primer was injected and
-    the answer names no segment or product line from it, rewrite once with
-    the primer in hand; keep the rewrite only if it now names one and kept
-    every figure. Code, not prompt text (CLAUDE.md /ask policy rule 1)."""
+    figures (owner, 2026-09-30). The outline built in code carries the
+    primer's DRIVER line for the model to write from (owner, 2026-10-01).
+    An answer that still names no segment is recorded, not rewritten:
+    the rewrite that used to run here put "driven by Google Cloud" on a
+    GOOGL miss that came from the SpaceX mark (2026-10-30 audit A10) and
+    spliced a garbled clause into RDDT (A11)."""
     from discord_bot import business_line as _bl
     primer = (_ask_meta.get("primer") or {})
-    if (not _rewritable_stock_answer(answer, _ask_meta, _BUSINESS_LINE_SHAPES)
-            or not primer.get("primer")
-            or _bl.names_business_line(answer, primer["primer"])):
-        return answer
-    return await _stock_answer_rewrite(
-        "business-line", answer, _ask_meta, client, ask_model, safety_settings, types,
-        _tally_retry_usage,
-        prompt=_bl.REWRITE_PROMPT.format(sym=primer.get("symbol") or "the company",
-                                         primer=primer["primer"], answer=answer),
-        accept=lambda new: _bl.names_business_line(new, primer["primer"]))
+    if (_rewritable_stock_answer(answer, _ask_meta, _BUSINESS_LINE_SHAPES)
+            and primer.get("primer")
+            and not _bl.names_business_line(answer, primer["primer"])):
+        _ask_meta["guards"].append("business-line:missing")
+    return answer
 
 
 def _rewritable_stock_answer(answer, _ask_meta, shapes) -> bool:
     """A real answer on one of `shapes`. A canned fallback ("ran out of
-    room", "no response came back") or banter has no figures; rewriting it
-    would ship a primer or chain recital as the answer."""
+    room", "no response came back") or banter has no figures; a line added
+    to it would ship a lone figure as the answer."""
     from discord_bot import data_footer as _df
     return bool(answer and _ask_meta.get("route_shape") in shapes
                 and not _ask_meta.get("empty_retry") and _df.figures(answer))
 
 
-async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safety_settings,
-                                types, _tally_retry_usage, *, prompt, accept,
-                                keep_figures=True,
-                                system="You edit a trading-room bot's answer about a stock."):
-    """One rewrite of an answer for a named code check. The rewrite gets
-    phase 4's voice cleanup and is kept only when `accept(new)` and, with
-    keep_figures, it keeps every figure (numeric cores, so spelled-out
-    units pass). A check whose job is to remove a wrong figure passes
-    keep_figures=False."""
-    from discord_bot import data_footer as _df
-    _ask_meta["guards"].append(name)
-    try:
-        resp = await client.aio.models.generate_content(
-            model=ask_model,
-            contents=[types.Content(role="user", parts=[types.Part.from_text(text=prompt)])],
-            config=types.GenerateContentConfig(
-                system_instruction=f"{system} Direct, plain English, same register.",
-                safety_settings=safety_settings, max_output_tokens=1500, temperature=0.3,
-                thinking_config=types.ThinkingConfig(thinking_budget=512),
-            ),
-        )
-        _tally_retry_usage(resp)
-        new = (resp.text or "").strip()
-    except Exception as e:
-        log.warning(f"/ask: {name} rewrite failed (non-fatal): {e}")
-        return answer
-    new, _ = _clean_voice_violations(new)
-    from discord_bot.guard_floor import plausible_rewrite
-    if plausible_rewrite(answer, new) \
-            and (not keep_figures or _df.numeric_cores(answer) <= _df.numeric_cores(new)) \
-            and accept(new):
-        log.info(f"/ask: {name} rewrite applied")
-        return new
-    _ask_meta["guards"].append(f"{name}:kept-original")
-    return answer
-
-
 _FRESH_PRINT_SHAPES = {"ticker_opinion", "options_chain", "news_event", "company_profile",
                        "earnings_date"}
 
-_FRESH_PRINT_PROMPT = (
-    "Rewrite the answer below. {sym} already reported, {date} {session}: EPS ${actual:,.2f} "
-    "against ${estimate:,.2f} expected ({surprise}). Open with that result. Any bank view "
-    "written before it is a preview: give it as what the desks expected, set against the "
-    "result, never as the outlook into a report still to come. Keep every other figure, date, "
-    "bank name and attribution exactly as written. Keep the arrow format; you may add one "
-    "arrow. Output only the rewritten answer.\n\nANSWER:\n{answer}"
-)
+
+def fresh_print_line(fresh: dict) -> str:
+    """The printed result as one line, from Yahoo's earnings dates."""
+    try:
+        d = datetime.strptime(fresh["date"][:10], "%Y-%m-%d")
+        day = f"{d:%b} {d.day}"
+    except (KeyError, TypeError, ValueError):
+        day = fresh.get("date") or ""
+    session = f" {fresh['session']}" if fresh.get("session") else ""
+    sp = fresh.get("surprise_pct")
+    surprise = f" ({sp:+.1f}%)" if sp is not None else ""
+    sym = fresh.get("symbol")
+    who = f"**${sym}**" if sym else "The company"
+    return (f"→ {who} reported {day}{session}: EPS **${fresh['actual']:,.2f}** against "
+            f"**${fresh['estimate']:,.2f}** expected{surprise}.")
 
 
-async def _fresh_print_guard(answer, _ask_meta, client, ask_model, safety_settings, types,
-                             _tally_retry_usage):
+def _fresh_print_guard(answer, _ask_meta):
     """A stock answer in the days after a print carries the printed EPS
     (2026-09-30/10-01: two MU answers given after the report led with the
     banks' 'into the print' previews). The report date, actual and estimate
-    come from Yahoo's earnings dates in the snapshot."""
+    come from Yahoo's earnings dates in the snapshot, and the line is
+    written here from them; a model rewrite asked to add it could change
+    anything else in the answer (2026-10-30 audit, design note 2)."""
     from discord_bot import data_footer as _df
     fresh = _ask_meta.get("fresh_print") or {}
 
@@ -8540,17 +8048,8 @@ async def _fresh_print_guard(answer, _ask_meta, client, ask_model, safety_settin
                 and "ticker_news" not in (_ask_meta.get("route_prefetch") or []))
             or _has_actual(answer)):
         return answer
-    sp = fresh.get("surprise_pct")
-    return await _stock_answer_rewrite(
-        "fresh-print", answer, _ask_meta, client, ask_model, safety_settings, types,
-        _tally_retry_usage,
-        prompt=_FRESH_PRINT_PROMPT.format(
-            sym=fresh.get("symbol") or "The company", date=fresh["date"],
-            session=fresh.get("session") or "", actual=fresh["actual"],
-            estimate=fresh["estimate"],
-            surprise=f"{sp:+.1f}%" if sp is not None else "against the estimate",
-            answer=answer),
-        accept=_has_actual)
+    _ask_meta["guards"].append("fresh-print")
+    return fresh_print_line(fresh) + "\n\n" + answer
 
 
 def _states_move(answer: str, move: dict) -> bool:
@@ -8565,23 +8064,23 @@ def _states_move(answer: str, move: dict) -> bool:
     return bool(cores & want)
 
 
-_IMPLIED_MOVE_PROMPT = (
-    "Rewrite the answer below so it states the move the options market is pricing on "
-    "{sym}: about {pct:.1f}% (${dollars:.2f}) either way by the {expiration} expiration, from "
-    "the at-the-money straddle. Put it beside what the desks or the consensus expect, so the "
-    "reader can weigh the price of the bet against the expectation. Do not quote implied "
-    "volatility as a bare percentage. Keep every figure, date, bank name and attribution "
-    "exactly as written. Keep the arrow format; you may add one arrow. Output only the "
-    "rewritten answer.\n\nANSWER:\n{answer}"
-)
+def implied_move_line(move: dict) -> str:
+    """The straddle's move as one line."""
+    dollars = f" (**${move['dollars']:,.2f}**)" if move.get("dollars") else ""
+    exp = move.get("expiration")
+    try:
+        d = datetime.strptime(exp[:10], "%Y-%m-%d")
+        by = f" by the {d:%b} {d.day} expiration"
+    except (TypeError, ValueError):
+        by = ""
+    return (f"→ Options are pricing a move of about **{move['pct']:.1f}%**{dollars} "
+            f"either way{by}, from the at-the-money straddle.")
 
 
-async def _implied_move_guard(answer, _ask_meta, client, ask_model, safety_settings, types,
-                              _tally_retry_usage):
+def _implied_move_guard(answer, _ask_meta):
     """An options question whose chain priced a move must say the move
     (owner, 2026-10-01: the ACN calls answer dropped it, the one figure an
-    options question turns on)."""
-    from discord_bot import business_line as _bl
+    options question turns on). The line is written here from the chain."""
     move = _ask_meta.get("chain_move") or {}
     if (not _rewritable_stock_answer(answer, _ask_meta, {"options_chain"})
             # a bet on the print; an open-interest or put/call question
@@ -8589,25 +8088,17 @@ async def _implied_move_guard(answer, _ask_meta, client, ask_model, safety_setti
             or "lookup_earnings_date" not in (_ask_meta.get("route_prefetch") or [])
             or move.get("pct") is None or _states_move(answer, move)):
         return answer
-    primer = (_ask_meta.get("primer") or {}).get("primer") or ""
-    had_line = bool(primer) and _bl.names_business_line(answer, primer)
-    return await _stock_answer_rewrite(
-        "implied-move", answer, _ask_meta, client, ask_model, safety_settings, types,
-        _tally_retry_usage,
-        prompt=_IMPLIED_MOVE_PROMPT.format(
-            sym=move.get("symbol") or "the stock", pct=move["pct"],
-            dollars=move.get("dollars") or 0.0, expiration=move.get("expiration") or "nearest",
-            answer=answer),
-        # and it keeps the business line the previous guard may have added
-        accept=lambda new: _states_move(new, move)
-        and (not had_line or _bl.names_business_line(new, primer)))
+    _ask_meta["guards"].append("implied-move")
+    return answer.rstrip() + "\n\n" + implied_move_line(move)
 
 
-async def _fantasy_percent_guard(answer, question, _ask_meta, client, ask_model,
-                                 safety_settings, types, _tally_retry_usage):
+def _fantasy_percent_guard(answer, question, _ask_meta):
     """A win percentage in a fantasy answer must be one of the league
     payload's estimates (discord_bot/fantasy_guard.py, 2026-10-05: BK's own
-    posted 23% was given as Jamal's chance, twice)."""
+    posted 23% was given as Jamal's chance, twice). A sentence that puts a
+    side's players or chance on the wrong side, or gives a stray win
+    percentage, is removed; nothing is rewritten (2026-10-30 audit,
+    design note 2)."""
     from discord_bot import fantasy_guard as _fg
     # a fantasy route, or any answer the model built from league data
     if (not answer or _ask_meta.get("empty_retry")
@@ -8620,41 +8111,23 @@ async def _fantasy_percent_guard(answer, question, _ask_meta, client, ask_model,
         _ask_meta["guards"].append("fantasy-attribution")
     # each side's players and chance stay with that side (2026-10-11 audit)
     _sides = _ask_meta.get("fantasy_sides") or {}
-    if _fg.wrong_side(answer, _sides):
-        answer = await _stock_answer_rewrite(
-            "fantasy-sides", answer, _ask_meta, client, ask_model, safety_settings, types,
-            _tally_retry_usage,
-            prompt=_fg.wrong_side_prompt(answer, question, _sides),
-            accept=lambda new: not _fg.wrong_side(new, _sides),
-            keep_figures=False,
-            system="You edit a fantasy-football room bot's answer.")
-        _bad = _fg.wrong_side(answer, _sides)
-        if _bad:
-            # the rewrite failed: the wrong side must not ship
-            from discord_bot.guard_floor import gutted as _gutted
-            _trim = answer
-            for _sent in _bad:
-                _trim = _trim.replace(_sent, "")
-            _trim = re.sub(r"\n{3,}", "\n\n",
-                           re.sub(r"(?m)^\s*→\s*$", "", _trim)).strip()
-            if _trim and not _gutted(answer, _trim):
-                answer = _trim
-                _ask_meta["guards"].append("fantasy-sides:stripped")
+    _bad = _fg.wrong_side(answer, _sides)
+    if _bad:
+        _ask_meta["guards"].append("fantasy-sides")
+        from discord_bot.guard_floor import gutted as _gutted
+        _trim = answer
+        for _sent in _bad:
+            _trim = _trim.replace(_sent, "")
+        _trim = re.sub(r"\n{3,}", "\n\n",
+                       re.sub(r"(?m)^\s*→\s*$", "", _trim)).strip()
+        if _trim and not _gutted(answer, _trim):
+            answer = _trim
+            _ask_meta["guards"].append("fantasy-sides:stripped")
     est = _ask_meta.get("fantasy_estimates") or {}
     if not _fg.stray_percents(answer, est, question):
         return answer
-    new = await _stock_answer_rewrite(
-        "fantasy-percent", answer, _ask_meta, client, ask_model, safety_settings, types,
-        _tally_retry_usage,
-        prompt=_fg.rewrite_prompt(answer, question, est),
-        accept=lambda new: not _fg.stray_percents(new, est, question),
-        keep_figures=False,
-        system="You edit a fantasy-football room bot's answer.")
-    if _fg.stray_percents(new, est, question):
-        # the rewrite failed: the wrong figure must not ship regardless
-        _ask_meta["guards"].append("fantasy-percent:stripped")
-        new = _fg.strip_stray(new, est, question)
-    return new
+    _ask_meta["guards"].append("fantasy-percent:stripped")
+    return _fg.strip_stray(answer, est, question)
 
 
 # The shapes that wait for the primer (ask_router._stock_prefetch with

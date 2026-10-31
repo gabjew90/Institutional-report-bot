@@ -259,12 +259,13 @@ def test_naming_guard_is_advisory_only():
         _fail("naming guard does not gate on a third-person reference")
     if "subject-unnamed" not in block:
         _fail("naming guard does not stamp a guard name")
-    if "_clapback_fidelity_violations(" not in block:
-        _fail("naming rewrite is accepted without re-checking fidelity — it "
-              "could introduce material that is not the subject's")
-    if "keeping the" not in block:
-        _fail("naming guard does not fall back to the original answer")
-    _ok("naming guard rewrites once and keeps the original on failure")
+    # 2026-10-30 (quality audit, design note 2): the name is put in front
+    # in code and nothing else changes, so there is no material to re-check
+    if "generate_content(" in block:
+        _fail("naming guard calls the model — it may only add the name")
+    if 'f"**{_nm_disp}:** ' not in block:
+        _fail("naming guard does not put the subject's name in front")
+    _ok("naming guard adds the name in code and changes nothing else")
 
 
 def test_prompt_requires_naming_the_subject():

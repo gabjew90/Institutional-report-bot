@@ -37,61 +37,37 @@ def test_notes_written_before_the_report_are_marked_previews():
     assert not R._is_preview({"published": "2026-09-30"}, before_open)
 
 
-class _Client:
-    def __init__(self, text):
-        self.calls = 0
-
-        async def gen(**kw):
-            self.calls += 1
-            return types.SimpleNamespace(text=text)
-        self.aio = types.SimpleNamespace(models=types.SimpleNamespace(generate_content=gen))
-
-
-def _run(answer, client, shape="ticker_opinion"):
+def _run(answer, shape="ticker_opinion", prefetch=None):
     from discord_bot import bot
-    from google.genai import types as gt
-    meta = {"guards": [], "route_shape": shape,
+    meta = {"guards": [], "route_shape": shape, "route_prefetch": prefetch or [],
             "fresh_print": R.fresh_print(SNAP, today=date(2026, 10, 1))}
-    out = asyncio.run(bot._fresh_print_guard(answer, meta, client, "m", None, gt, lambda r: None))
-    return out, meta["guards"]
+    return bot._fresh_print_guard(answer, meta), meta["guards"]
 
 
 PREVIEW_ANSWER = ("→ **$MU** closed at **$1,065.11** heading into the print.\n\n→ JPMorgan expects "
                   "the guide well above the Street's **$56.3B** revenue and **$35.71** EPS.")
+LED = "→ **$MU** reported Sep 30 after the close: EPS **$33.42** against **$31.82** expected (+5.0%)."
 
 
-def test_an_answer_without_the_printed_eps_is_rewritten_to_lead_with_it():
-    led = ("→ **$MU** reported after the close: EPS **$33.42** vs **$31.82** expected (+5.0%). "
-           "Stock **$1,065.11**.\n\n→ JPMorgan had expected the guide above the Street's "
-           "**$56.3B** revenue and **$35.71** EPS.")
-    c = _Client(led)
-    out, guards = _run(PREVIEW_ANSWER, c)
-    assert out == led and guards == ["fresh-print"]
+def test_an_answer_without_the_printed_eps_leads_with_a_line_from_yahoo():
+    """2026-10-30 audit, design note 2: the line is written in code, the
+    rest of the answer is left as the model wrote it."""
+    out, guards = _run(PREVIEW_ANSWER)
+    assert out == LED + "\n\n" + PREVIEW_ANSWER and guards == ["fresh-print"]
 
 
 def test_the_print_check_needs_the_exact_figure_and_stays_off_without_a_fresh_print():
-    c = _Client("x")
     ok = "→ MU beat: **$33.42** vs **$31.82**, revenue $54.2B"
-    assert _run(ok, c)[0] == ok
-    assert _run(PREVIEW_ANSWER, c, shape="price")[0] == PREVIEW_ANSWER
-    assert c.calls == 0
+    assert _run(ok) == (ok, [])
+    assert _run(PREVIEW_ANSWER, shape="price") == (PREVIEW_ANSWER, [])
     rounded = "→ MU earned about **$33** a share, revenue $54.2B"
-    c2 = _Client(rounded)                       # the rewrite still lacks $33.42
-    out, guards = _run(rounded, c2)
-    assert out == rounded and guards[-1] == "fresh-print:kept-original"
+    assert _run(rounded)[0].startswith(LED)
 
 
-def test_a_next_date_lookup_is_not_rewritten_but_a_result_question_is():
-    from discord_bot import bot
-    from google.genai import types as gt
-    c = _Client("→ MU reported **$33.42** vs **$31.82**. Next report Dec 17, $61.3B")
-    for prefetch, calls in ((["lookup_earnings_date", "lookup_ticker_snapshot"], 0),
-                            (["lookup_earnings_date", "ticker_news"], 1)):
-        meta = {"guards": [], "route_shape": "earnings_date", "route_prefetch": prefetch,
-                "fresh_print": R.fresh_print(SNAP, today=date(2026, 10, 1))}
-        asyncio.run(bot._fresh_print_guard("→ MU reports next on Dec 17, consensus $61.3B",
-                                           meta, c, "m", None, gt, lambda r: None))
-        assert c.calls == calls
+def test_a_next_date_lookup_gets_no_print_line_but_a_result_question_does():
+    ans = "→ MU reports next on Dec 17, consensus $61.3B"
+    assert _run(ans, "earnings_date", ["lookup_earnings_date", "lookup_ticker_snapshot"])[1] == []
+    assert _run(ans, "earnings_date", ["lookup_earnings_date", "ticker_news"])[1] == ["fresh-print"]
 
 
 def test_a_release_yahoo_has_not_filled_yet_still_marks_previews():

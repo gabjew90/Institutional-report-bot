@@ -51,12 +51,6 @@ def test_strip_leaves_an_honest_line_when_nothing_is_left():
     assert fg.strip_stray(JAMAL, EST) == fg.NO_ESTIMATE_LINE
 
 
-def test_rewrite_prompt_lists_the_estimates_or_says_none():
-    p = fg.rewrite_prompt(JAMAL, "what % chance did Jamal have", EST)
-    assert "- farmerjamal: 96%" in p and "OWN matchup" in p
-    assert "give no win percentage at all" in fg.rewrite_prompt(JAMAL, "q", {})
-
-
 def test_a_win_percentage_is_never_credited_to_sleeper_2026_10_10():
     """"Sleeper has you holding a 62% win probability": the figure was the
     bot's own estimate, which no Sleeper API publishes."""

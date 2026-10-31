@@ -102,7 +102,7 @@ def test_guard_wired_banter_gated():
     src = bot._ask_pipeline_source()
     assert "_roast_is_pnl_monotone(answer, profiles_block)" in src, \
         "monotone guard not wired"
-    win = src.split("P&L-monotone guard", 1)[1][:4200]
+    win = src.split("P&L-monotone check", 1)[1][:1400]
     # 2026-07-30: this pinned "not _route_is_factual and profiles_block"
     # as adjacent text and broke when `not _analysis_extra` was inserted
     # between them. Check the condition contains the gate, not its exact
@@ -114,10 +114,10 @@ def test_guard_wired_banter_gated():
     assert "not _analysis_extra" in _cond, \
         "guard must not rewrite analysis answers as roasts"
     assert '"pnl-monotone"' in win, "meta stamp missing"
-    assert "PERSONAL color" in win, "rewrite must point at personal color"
-    assert "_roast_is_pnl_monotone(_pm_answer, profiles_block)" in win, \
-        "rewrite acceptance must re-check monotone"
-    _ok("wired: BANTER-gated detect -> personal-color rewrite -> re-check")
+    # 2026-10-30 (quality audit, design note 2): recorded, never rewritten.
+    # The rewrite was asked for personal color with no profile in hand.
+    assert "generate_content(" not in win, "the check must not regenerate"
+    _ok("wired: BANTER-gated detect, recorded, no rewrite")
 
 
 def test_prompt_hierarchy_present():
@@ -174,19 +174,6 @@ def test_injection_reorders_personal_above_trades():
     _ok("injection reorder: personal life above trades, content intact")
 
 
-def test_recycle_directive_leads_personal():
-    import discord_bot.bot as bot
-    src = bot._ask_pipeline_source()
-    # window widened 2026-07-17: the recycle rewrite gained SUBJECT
-    # MATERIAL + the novel-content fidelity check, growing the section
-    rr = src.split("Roast-recycle guard", 1)[1][:8000]
-    assert "PERSONAL color first" in rr, \
-        "recycle rewrite must lead with personal material"
-    assert "recent trades" not in rr.split("PERSONAL color first", 1)[1][:400], \
-        "recycle rewrite must not suggest 'recent trades' as material"
-    _ok("recycle directive: personal color first, trades demoted")
-
-
 if __name__ == "__main__":
     print("=== /ask P&L-monotone + personal-color smoke ===")
     test_pure_pnl_roast_trips()
@@ -195,5 +182,4 @@ if __name__ == "__main__":
     test_guard_wired_banter_gated()
     test_prompt_hierarchy_present()
     test_injection_reorders_personal_above_trades()
-    test_recycle_directive_leads_personal()
     print("\nALL P&L-MONOTONE SMOKE TESTS PASS")

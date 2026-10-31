@@ -132,10 +132,11 @@ def test_outcome_guard_wired():
     assert "_has_unsourced_outcome_claims(" in src, "guard not in answer path"
     assert "user_content" in src.split("_has_unsourced_outcome_claims(", 1)[1][:80], \
         "guard must see the injected context for the sourced-% exemption"
-    window = src.split("Member-outcome guard", 1)[1][:6000]
-    assert "Do NOT add any new facts" in window, "rewrite must not invent"
-    assert "_strip_sentences(" in window, "strip fallback missing"
-    _ok("outcome guard wired: detect -> no-new-facts rewrite -> strip fallback")
+    window = src.split("Member-outcome guard", 1)[1][:1800]
+    # 2026-10-30 (quality audit, design note 2): strip only, no rewrite
+    assert "_strip_sentences(" in window, "strip missing"
+    assert "generate_content(" not in window, "the guard must not regenerate"
+    _ok("outcome guard wired: detect -> strip the unsourced sentences")
 
 
 def test_passive_aggressive_lint():

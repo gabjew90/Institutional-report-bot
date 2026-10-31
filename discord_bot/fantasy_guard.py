@@ -8,8 +8,8 @@ sending the question to the league data: the model reaches for the nearest
 percentage in the chat. Sleeper's own Win% is not in any Sleeper API, so
 the only win chances the bot has are its own estimates in the payload
 (report/sleeper_data.win_chance). A fantasy answer whose win percentage is
-not one of those is rewritten once to use them, and the rewrite is kept
-only if no stray percentage is left.
+not one of those loses the sentence that carries it (`strip_stray`);
+the rewrite that ran first until 2026-10-30 is gone (audit design note 2).
 """
 from __future__ import annotations
 
@@ -83,7 +83,7 @@ NO_ESTIMATE_LINE = ("→ I don't have a win chance for that one: Sleeper doesn't
 
 
 def strip_stray(answer: str, estimates: dict[str, int], question: str = "") -> str:
-    """Last resort when the rewrite failed: drop the sentences that carry
+    """Drop the sentences that carry
     a stray win percentage. If nothing of substance is left, say plainly
     that the bot has no win chance for it."""
     kept = []
@@ -101,27 +101,6 @@ def strip_stray(answer: str, estimates: dict[str, int], question: str = "") -> s
     if not body:
         return NO_ESTIMATE_LINE
     return out
-
-
-REWRITE_PROMPT = (
-    "Rewrite the fantasy answer below. It gives a win percentage that is not in the league "
-    "data. Percentages members post in chat are about their OWN matchup and never another "
-    "member's. The only win chances the bot has are its own estimates from current points and "
-    "the projections still to come:\n{estimates}\n"
-    "Use the estimate for the manager the question is about and say it is the bot's estimate "
-    "(Sleeper's in-app Win% is not available to the bot). If the question asks about a moment "
-    "the data does not cover, such as before a game, say the bot only has the estimate as of "
-    "now. {empty}Keep every other figure and name as written and keep the arrow format. Output "
-    "only the rewritten answer.\n\nQUESTION:\n{question}\n\nANSWER:\n{answer}"
-)
-
-
-def rewrite_prompt(answer: str, question: str, estimates: dict[str, int]) -> str:
-    lines = "\n".join(f"- {k}: {v}%" for k, v in sorted(estimates.items())) or "- none"
-    empty = ("No estimate is available right now, so give no win percentage at all. "
-             if not estimates else "")
-    return REWRITE_PROMPT.format(estimates=lines, empty=empty, question=question,
-                                 answer=answer)
 
 
 # Sleeper credited with a win percentage it never published (2026-10-10
@@ -234,16 +213,3 @@ def wrong_side(answer: str, s: dict) -> list[str]:
                 and s["opp_pct"] in pcts and s.get("you_pct") not in pcts):
             bad.append(sent.strip())
     return bad
-
-
-def wrong_side_prompt(answer: str, question: str, s: dict) -> str:
-    return (
-        "A fantasy-football bot answered the question below, but some sentences "
-        "give the asker the OTHER manager's players or win chance. Rewrite the "
-        "answer with each side right. Keep everything else, same voice and length. "
-        "Output only the answer.\n\n"
-        f"The asker is {s['you_manager']}: {s['you_pct']}% to win; their starters: "
-        f"{', '.join(s['you_players'][:20])}.\n"
-        f"The opponent is {s['opp_manager']}: {s['opp_pct']}% to win; their starters: "
-        f"{', '.join(s['opp_players'][:20])}.\n\n"
-        f"QUESTION: {question}\n\nANSWER:\n{answer}")

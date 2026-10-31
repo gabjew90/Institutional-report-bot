@@ -161,18 +161,19 @@ def test_invented_personal_details():
 
 
 def test_invented_signal_cannot_mangle_an_answer():
-    """A fuzzy signal must never drive the destructive paths: it feeds
-    the rewrite instruction only. The strip/disengage cascade stays
+    """A fuzzy signal must never drive the destructive paths. Since
+    2026-10-30 there is no rewrite for it to feed (quality audit, design
+    note 2), so it only labels the turn; the strip/disengage cascade stays
     gated on hard token violations."""
-    import inspect
     import discord_bot.bot as b
     src = b._ask_pipeline_source()
     assert "_fid_invented" in src, "signal must be computed"
-    assert "if _fid_viol or _fid_invented:" in src,         "invented details should be able to trigger a rewrite"
+    assert 'ask_meta["invented_details"] = _fid_invented' in src, "signal must be recorded"
+    assert "if _fid_viol:" in src, "only hard violations open the strip path"
     # the strip block must reference ONLY _clapback_fidelity_violations
     strip = src[src.index("_bad = ["):src.index("_stripped_f =")]
-    assert "_fid_invented" not in strip,         "the fuzzy signal must never drive sentence stripping"
-    _ok("invented signal: rewrite-only, never strips")
+    assert "_fid_invented" not in strip, "the fuzzy signal must never drive sentence stripping"
+    _ok("invented signal: recorded, never strips")
 
 
 if __name__ == "__main__":

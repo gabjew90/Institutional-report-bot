@@ -71,21 +71,6 @@ def test_a_percentage_of_the_askers_number_is_arithmetic():
     assert rep.action == "none", [f.token for f in rep.unsourced]
 
 
-def test_a_rewrite_that_is_the_models_notes_is_rejected_2026_10_11():
-    """The naming check shipped the model's working notes as the reply."""
-    from discord_bot.guard_floor import plausible_rewrite
-    before = ("looks like deepfried's actually gonna hand jamal his first loss of the year, "
-              "backed by that massive game from bucky irving. classic stuff.")
-    leaked = ("**...)` -> Keep it simple:\n        `→ **Week 5 Matchup:** DeeP FRieD DΞFi "
-              "(**1-3**) is up **25.3 points")
-    assert not plausible_rewrite(before, leaked)
-    good = ("DeeP FRieD looks like he's actually gonna hand jamal his first loss of the year, "
-            "backed by that massive game from bucky irving. classic stuff.")
-    assert plausible_rewrite(before, good)
-    assert not plausible_rewrite(before, "DeeP FRieD.")          # gutted
-    assert not plausible_rewrite(before, "Here is the rewrite: " + good)
-
-
 def test_a_stake_added_back_is_sourced_2026_10_18():
     """Audit F6: "$100 at +17,500 clears $17,500 profit, returning $17,600"
     drew the couldn't-verify hedge; the return is the profit plus the stake."""

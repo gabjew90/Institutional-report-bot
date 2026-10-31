@@ -117,15 +117,25 @@ def test_common_acronyms_are_not_tickers():
         assert [c for c in cands if c["kind"] == "position"] == [], s
 
 
-# --- the correction note ----------------------------------------------
-def test_the_note_states_receipts_and_forbids_moving_the_position():
+# --- the strip (2026-10-30 audit, design note 2) ------------------------
+def test_the_contradicted_sentence_goes_and_nothing_replaces_it():
+    keep = "→ BK posted QQQ closes at +234% this week."
+    answer = keep + "\n\n→ " + MSTR_ANSWER
+    _, bad_pos = _judge(answer, {SUNNY: SUNNY_LEDGER})
+    assert bad_pos
+    assert P.strip_claims(answer, [], bad_pos) == keep
     bad_loss, _ = _judge(LOSS_ANSWER, {BK: WINNER}, subjects=["BK"])
-    _, bad_pos = _judge(MSTR_ANSWER, {SUNNY: SUNNY_LEDGER})
-    note = P.correction_note(bad_loss, bad_pos)
-    assert "17 documented win(s)" in note
-    assert "no logged MSTR trade" in note
-    assert "not move a position onto a different name" in note
-    assert P.correction_note([], []) == ""
+    assert P.strip_claims(LOSS_ANSWER, bad_loss, []) == "crushing it?"
+
+
+def test_the_phase_strips_and_never_regenerates():
+    """A regeneration never saw the draft and could hand the position to
+    another name; a rejected one shipped the disproved claim."""
+    src = inspect.getsource(B._ask_05_strip_asker_mockery)
+    assert "_pnl_claims.strip_claims(" in src
+    assert "pnl-ledger:protected-neutral" in src and "_asker_protected" in src
+    tail = src.split("# Ledger check on claims about a member", 1)[1]
+    assert "generate_content(" not in tail
 
 
 # --- wiring ------------------------------------------------------------
@@ -149,34 +159,7 @@ def test_detection_does_no_io_and_the_reads_run_off_the_loop():
     assert "db.compute_member_points" not in wiring
 
 
-def test_a_protected_asker_gets_the_claim_dropped_not_kept():
-    """Skipping the rewrite for a protected asker published the false
-    claim about the very person the rule protects (2026-09-19 review).
-    The protected path rewrites subtractively instead."""
-    src = inspect.getsource(B._ask_05_strip_asker_mockery)
-    assert "pnl-ledger:protected-neutral" in src
-    assert "skipped-protected" not in src
-    assert "protected=bool(_asker_protected)" in src
-
-    note = P.correction_note(
-        [{"surface": "BK", "wins": 17, "losses": 3}], [], protected=True)
-    assert "say nothing in its place" in note
-    assert "stronger material" not in note, \
-        "the protected note must not point at personal material"
-    # the ordinary note still does
-    assert "stronger material" in P.correction_note(
-        [{"surface": "BK", "wins": 17, "losses": 3}], [])
-
-
-def test_the_rewrite_is_gated_and_rechecked():
-    src = inspect.getsource(B._ask_05_strip_asker_mockery)
-    assert "_asker_protected" in src
-    # the rewrite is the one path out of this phase the fidelity guard
-    # would otherwise never see
-    assert "_re_fid" in src and "pnl-ledger:rewrite-rejected" in src
-
-
-# --- the rewrite must not relocate the claim (2026-09-19 review) -------
+# --- a claim moved to another name is caught (2026-09-19 review) ------
 def test_the_rewrite_grades_names_it_newly_introduced():
     """The note tells the model a position is not X's. Its instinct is
     to hand the position to Y. Y was never a candidate, so grading the
@@ -190,12 +173,3 @@ def test_the_rewrite_grades_names_it_newly_introduced():
     # graded with the newly-named member's ledger -> caught
     _, bad = P.judge_candidates(cands, {MONS: SUNNY_LEDGER})
     assert len(bad) == 1 and bad[0]["ticker"] == "MSTR"
-
-
-def test_the_acceptance_path_fetches_those_new_ledgers():
-    src = inspect.getsource(B._ask_05_strip_asker_mockery)
-    tail = src.split("_ok_rewrite = False", 1)[1]
-    assert "_new_ids" in tail, "rewrite acceptance must widen the stats"
-    assert "asyncio.to_thread(" in tail, "the extra reads stay off the loop"
-    i, j = tail.index("_new_ids"), tail.index("judge_candidates(\n")
-    assert i < j, "stats must widen BEFORE the rewrite is judged"

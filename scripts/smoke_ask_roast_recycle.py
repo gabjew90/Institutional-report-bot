@@ -118,18 +118,15 @@ def test_guard_wired_banter_gated():
         "recycle guard must be BANTER-gated"
     assert "not _analysis_extra" in _cond, \
         "recycle guard must not rewrite analysis answers as roasts"
-    # window widened 2026-07-17: SUBJECT MATERIAL + fidelity check grew
-    # the section
-    win = src.split("Roast-recycle guard", 1)[1][:8000]
+    win = src.split("Roast-recycle guard", 1)[1][:2600]
     assert "_recycled_roast_hooks(answer, _prior_bot_answer_texts)" in win
     assert '"roast-recycle"' in win, "meta stamp missing"
-    assert "BANNED" in win, "rewrite must ban the recycled hooks"
-    # ("new facts" straddles a source line break — use a contiguous piece)
-    assert "Do NOT invent new" in win, "no-new-facts rule missing"
-    # accept-check re-runs the detector on the rewrite
-    assert "_recycled_roast_hooks(" in win.split("ORIGINAL", 1)[1], \
-        "rewrite acceptance must re-check recycling"
-    _ok("wired: BANTER-gated detect -> banned-hooks rewrite -> re-check")
+    # 2026-10-30 (quality audit, design note 2): the sentences carrying
+    # the recycled hooks are stripped, behind the shared floor; the
+    # rewrite that rebuilt the jab from the dossier is gone
+    assert "_strip_sentences(answer, _rr_bad)" in win and "_gutted(" in win
+    assert "generate_content(" not in win, "the guard must not regenerate"
+    _ok("wired: BANTER-gated detect -> strip the recycled sentences, floor-checked")
 
 
 def test_reply_trigger_fires_even_when_tagging_others():

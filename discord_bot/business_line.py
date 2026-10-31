@@ -6,8 +6,9 @@ primer (discord_bot/primer_tool.py) puts that in front of the model, and
 the first live answers still left it out: the ACN answer named Goldman's
 book-to-bill and the implied move and never said Accenture is half
 consulting, half outsourcing. This module decides, in code, whether an
-answer names a business line from the primer; bot phase 9 rewrites once
-when it does not.
+answer names a business line from the primer. Phase 9 records an answer
+that names none (`business-line:missing`); the rewrite it ran until
+2026-10-30 put a false cause on a GOOGL miss (audit A10).
 """
 from __future__ import annotations
 
@@ -143,18 +144,3 @@ def names_business_line(answer: str, primer: str) -> bool:
     the primer; also True when the primer gives nothing to check."""
     terms = driver_terms(primer) or business_terms(primer)
     return not terms or _mentions(answer, terms)
-
-
-REWRITE_PROMPT = (
-    "Rewrite the answer below so it says which part of {sym}'s business matters for the "
-    "figures it discusses, using the BUSINESS PRIMER and its DRIVERS line: name the segment "
-    "or product that is driving growth or margin now and say in plain words what it sells. "
-    "For a reported result, say how that segment produced it. For a forecast (a consensus, "
-    "an estimate, a guide not yet reported), do not say the segment drives the total: say "
-    "what the result turns on in that segment, the figure to watch and why it matters. One "
-    "sentence, as a reason, never a list of segments hung on a total and never a claim the "
-    "primer does not support. Keep every figure, date, bank name and attribution exactly as "
-    "written. Add no figure that is not in the answer or the primer. Keep the arrow format; "
-    "you may add one arrow. Output only the rewritten answer.\n\n"
-    "BUSINESS PRIMER:\n{primer}\n\nANSWER:\n{answer}"
-)

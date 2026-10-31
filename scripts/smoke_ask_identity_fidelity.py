@@ -160,14 +160,14 @@ def test_wiring():
         "tool-result size clamp missing"
     assert "contents grew to" in src and "Largest parts" in src, \
         "contents-size guard with part diagnostics missing"
-    # both rewrite sites carry SUBJECT MATERIAL + the novel check
-    assert src.count("SUBJECT MATERIAL") >= 2, \
-        "both rewrite prompts must carry the dossier as allowed material"
-    assert src.count("_rewrite_novel_ratio(") >= 2, \
-        "both rewrite accept-sites must run the fidelity check"
-    assert src.count("rewrite:novel-rejected") >= 2, \
-        "rejections must be stamped for QC"
-    _ok("wiring: notes injected, clamps in the loop, both rewrites checked")
+    # the register rewrite carries SUBJECT MATERIAL + the novel check (the
+    # roast-recycle rewrite, the other site, strips since 2026-10-30)
+    assert "SUBJECT MATERIAL" in src, \
+        "the register rewrite must carry the dossier as allowed material"
+    assert "_rewrite_novel_ratio(" in src.split("_register_rewrite_kinds = {", 1)[1], \
+        "the register rewrite's accept-site must run the fidelity check"
+    assert "rewrite:novel-rejected" in src, "rejections must be stamped for QC"
+    _ok("wiring: notes injected, clamps in the loop, the rewrite checked")
 
 
 if __name__ == "__main__":
