@@ -64,6 +64,38 @@ def test_the_print_check_needs_the_exact_figure_and_stays_off_without_a_fresh_pr
     assert _run(rounded)[0].startswith(LED)
 
 
+def test_the_printed_eps_without_its_estimate_gets_the_estimate_beneath_it_2026_10_31():
+    """'diluted EPS printed $44.75, beating expectations' never gave the
+    figure it beat. The line goes under the one with the actual."""
+    ans = ("→ **$MU** reported Q4, EPS printed **$33.42**, beating expectations\n\n"
+           "→ Revenue came in at **$54.2B**")
+    out, guards = _run(ans)
+    assert out == ("→ **$MU** reported Q4, EPS printed **$33.42**, beating expectations\n\n"
+                   "→ Analysts expected EPS of **$31.82**, so the result came in **5.0%** above it.\n\n"
+                   "→ Revenue came in at **$54.2B**")
+    assert guards == ["fresh-print:estimate"]
+    last = "→ Revenue **$54.2B**\n\n→ EPS printed **$33.42**"
+    assert _run(last)[0] == last + "\n\n→ Analysts expected EPS of **$31.82**, so the result came in **5.0%** above it."
+
+
+def test_a_loss_already_stated_gets_no_line():
+    from discord_bot import bot
+    meta = {"guards": [], "route_shape": "ticker_opinion", "route_prefetch": [],
+            "fresh_print": {"symbol": "RIVN", "date": "2026-10-29", "actual": -0.42,
+                            "estimate": -0.30, "surprise_pct": -40.0}}
+    ans = "→ **$RIVN** lost **-$0.42** a share against **-$0.30** expected"
+    assert bot._fresh_print_guard(ans, meta) == ans and meta["guards"] == []
+
+
+def test_the_estimate_line_says_below_on_a_miss_and_handles_a_match():
+    from discord_bot import bot
+    miss = {"actual": -0.42, "estimate": -0.30, "surprise_pct": None}
+    assert bot.fresh_estimate_line(miss) == (
+        "→ Analysts expected EPS of **-$0.30**, so the result came in **40.0%** below it.")
+    assert bot.fresh_estimate_line({"actual": 1.0, "estimate": 1.0}).endswith("the figure reported.")
+    assert "%" not in bot.fresh_estimate_line({"actual": 0.05, "estimate": 0.0})
+
+
 def test_a_next_date_lookup_gets_no_print_line_but_a_result_question_does():
     ans = "→ MU reports next on Dec 17, consensus $61.3B"
     assert _run(ans, "earnings_date", ["lookup_earnings_date", "lookup_ticker_snapshot"])[1] == []

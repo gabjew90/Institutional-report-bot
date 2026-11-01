@@ -8053,8 +8053,26 @@ def fresh_print_line(fresh: dict) -> str:
     surprise = f" ({sp:+.1f}%)" if sp is not None else ""
     sym = fresh.get("symbol")
     who = f"**${sym}**" if sym else "The company"
-    return (f"→ {who} reported {day}{session}: EPS **${fresh['actual']:,.2f}** against "
-            f"**${fresh['estimate']:,.2f}** expected{surprise}.")
+    return (f"→ {who} reported {day}{session}: EPS **{_eps(fresh['actual'])}** against "
+            f"**{_eps(fresh['estimate'])}** expected{surprise}.")
+
+
+def _eps(v: float) -> str:
+    """'$1.25', and '-$0.30' for a loss rather than '$-0.30'."""
+    return f"-${abs(v):,.2f}" if v < 0 else f"${v:,.2f}"
+
+
+def fresh_estimate_line(fresh: dict) -> str:
+    """The estimate the printed EPS is set against, as one line."""
+    a, e = fresh["actual"], fresh["estimate"]
+    est = f"→ Analysts expected EPS of **{_eps(e)}**"
+    if a == e:
+        return est + ", the figure reported."
+    sp = fresh.get("surprise_pct")
+    if sp is None and e:
+        sp = (a - e) / abs(e) * 100
+    pct = f" **{abs(sp):.1f}%**" if sp is not None else ""
+    return est + f", so the result came in{pct} {'above' if a > e else 'below'} it."
 
 
 def _fresh_print_guard(answer, _ask_meta):
@@ -8067,10 +8085,10 @@ def _fresh_print_guard(answer, _ask_meta):
     from discord_bot import data_footer as _df
     fresh = _ask_meta.get("fresh_print") or {}
 
-    def _has_actual(text):
+    def _has(text, v):
         # exact cents only ("$33.42"; "$3.8" for $3.80); a rounded "$33" or
-        # "$4" could be any figure
-        v = fresh["actual"]
+        # "$4" could be any figure. Unsigned, as numeric_cores reads "-$0.42"
+        v = abs(v)
         forms = {f"{v:.2f}"} | ({f"{v:.1f}"} if round(v, 1) == round(v, 2) else set())
         return bool(forms & _df.numeric_cores(text))
     if (not fresh or fresh.get("actual") is None or fresh.get("estimate") is None
@@ -8078,11 +8096,22 @@ def _fresh_print_guard(answer, _ask_meta):
             # a next-date lookup ("when does MU report") is not about the
             # print; the router sends news only to a result question
             or (_ask_meta.get("route_shape") == "earnings_date"
-                and "ticker_news" not in (_ask_meta.get("route_prefetch") or []))
-            or _has_actual(answer)):
+                and "ticker_news" not in (_ask_meta.get("route_prefetch") or []))):
         return answer
-    _ask_meta["guards"].append("fresh-print")
-    return fresh_print_line(fresh) + "\n\n" + answer
+    if not _has(answer, fresh["actual"]):
+        _ask_meta["guards"].append("fresh-print")
+        return fresh_print_line(fresh) + "\n\n" + answer
+    if _has(answer, fresh["estimate"]):
+        return answer
+    # The printed EPS without the figure it beat (2026-10-31: "MSTR ...
+    # diluted EPS printed $44.75, beating expectations" never gave the
+    # $22.89). The estimate goes in its own line under the one that has
+    # the actual; the model's sentence is left as written.
+    lines = answer.split("\n")
+    at = next((i for i, ln in enumerate(lines) if _has(ln, fresh["actual"])), len(lines) - 1)
+    lines.insert(at + 1, "\n" + fresh_estimate_line(fresh))
+    _ask_meta["guards"].append("fresh-print:estimate")
+    return "\n".join(lines)
 
 
 def _states_move(answer: str, move: dict) -> bool:
