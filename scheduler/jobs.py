@@ -648,7 +648,90 @@ def setup_scheduler(bot=None, role: str = "all") -> AsyncIOScheduler:
         log.info(f"Scheduler role {role}: {len(scheduler.get_jobs())} job(s), "
                  f"{len(dropped)} left to the other process")
 
+    if scheduler.get_job("user_profile_refresh"):
+        _schedule_missed_profile_refresh(scheduler, bot, tz)
+
     return scheduler
+
+
+PROFILE_CATCHUP_DELAY_S = 120
+
+
+def missed_profile_slot(hours: str, tz, last_run_utc, now):
+    """The latest scheduled refresh time at or before `now` when no
+    refresh has completed since it, else None. `hours` is the cron hour
+    list ("21" or "3,9,15,21"); `last_run_utc` is a naive UTC datetime
+    (pipeline_events) or None when no refresh was ever recorded."""
+    from datetime import datetime, time, timedelta, timezone as _utc
+    if last_run_utc is None:
+        return None
+    local = now.astimezone(tz)
+    slots = []
+    for h in (int(x) for x in str(hours).split(",") if x.strip()):
+        for back in (0, 1):
+            day = (local - timedelta(days=back)).date()
+            naive = datetime.combine(day, time(hour=h))
+            # pytz needs localize(); tzinfo= would give the zone's 1883 offset
+            slot = tz.localize(naive) if hasattr(tz, "localize") else naive.replace(tzinfo=tz)
+            if slot <= local:
+                slots.append(slot)
+    if not slots:
+        return None
+    slot = max(slots)
+    return slot if last_run_utc.replace(tzinfo=_utc.utc) < slot else None
+
+
+def _schedule_missed_profile_refresh(scheduler, bot, tz) -> None:
+    """A refresh whose slot passed while no process was running it is run
+    once, two minutes after start. The scheduler keeps its jobs in memory,
+    so a restart forgets a slot it was in the middle of: on 2026-10-28 the
+    01:00 UTC refresh was cut off by the 01:50 deploy and nothing ran that
+    night (2026-10-30 audit M13)."""
+    from datetime import datetime, timedelta, timezone as _utc
+    try:
+        import db
+        rows = db.get_recent_pipeline_events("profile_refresh", limit=1)
+        last = datetime.fromisoformat(rows[0]["created_at"]) if rows else None
+        now = datetime.now(_utc.utc)
+        slot = missed_profile_slot(settings.profile_refresh_hours, tz, last, now)
+    except Exception as e:
+        log.warning(f"User-profile refresh: missed-slot check failed: {e}")
+        return
+    if slot is None:
+        return
+    # One attempt per slot: a refresh that crashes the process would
+    # otherwise be retried on every restart.
+    try:
+        tried = db.get_recent_pipeline_events("profile_refresh_catchup", limit=1)
+        if tried and datetime.fromisoformat(tried[0]["created_at"]).replace(
+                tzinfo=_utc.utc) >= slot:
+            log.warning(f"User-profile refresh: the {slot:%Y-%m-%d %H:%M %Z} run was already "
+                        f"retried once; waiting for the next slot")
+            return
+    except Exception as e:
+        log.warning(f"User-profile refresh: catch-up history unreadable, not retrying: {e}")
+        return
+    log.warning(f"User-profile refresh: the {slot:%Y-%m-%d %H:%M %Z} run never completed; "
+                f"running it in {PROFILE_CATCHUP_DELAY_S}s")
+    from apscheduler.triggers.date import DateTrigger
+    scheduler.add_job(
+        _profile_refresh_catchup_job,
+        trigger=DateTrigger(run_date=now + timedelta(seconds=PROFILE_CATCHUP_DELAY_S)),
+        id="user_profile_refresh_catchup",
+        name="User profiles: catch up a missed refresh",
+        kwargs={"bot": bot, "slot": f"{slot:%b %d %H:%M %Z}"},
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+
+
+async def _profile_refresh_catchup_job(bot=None, slot: str = ""):
+    import db
+    from discord_bot.ops_alert import ops_alert
+    db.record_pipeline_event("profile_refresh_catchup", "started", {"slot": slot})
+    await ops_alert(f"Profile refresh for {slot} never completed (restart or crash); "
+                    f"running it now.", dedupe_key="profile-refresh-catchup")
+    await _user_profile_refresh_job(bot)
 
 
 async def _poll_dropbox_job():
