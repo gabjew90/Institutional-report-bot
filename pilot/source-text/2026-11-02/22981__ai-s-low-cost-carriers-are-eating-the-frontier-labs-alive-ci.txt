@@ -1,0 +1,140 @@
+ 
+AI's "Low-Cost Carriers" Are Eating The Frontier 
+Labs Alive; Citadel Securities Says Tokenomics 2.0 
+Is Here And Margins Are Getting Destroyed 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, OCT 28, 2026 - 04:05 PM 
+Authored by Frank Flight, head of macro strategy at Citadel Securities, 
+Consumption weighted token prices have declined approximately 50% over six months and 
+average token prices have declined 62% at the frontier, reflecting both the growing share of 
+cheaper open-weight models and price cuts by proprietary providers, likely driven by some 
+combination of improved inference efficiency and competitive pressure. Increased competition 
+from open-weight models may exert pressure on margins at the frontier through time, but the 
+expansion of token volume suggests overall inference demand is accelerating. 
+Token Prices Have Declined Significantly 
+Token Expenditure Index, Level and 21d Log Growth Rate 
+ 
+Source: Bloomberg, Silicon Data, Ornn, Citadel Securities, data as of Oct 2026. Figures are for 
+illustrative purposes only. Past performance does not guarantee future returns. 
+ 
+
+ 
+Open-weight models now account for around 65-70% of smart routing token volume, potentially 
+putting pressure on excess rents at the frontier as cheaper models become “good enough” for a 
+growing range of enterprise tasks, especially given US-developed open-weight models offer 
+greater flexibility around customisation, hosting and data control. Caution is warranted in 
+extrapolating from OpenRouter and Vercel data, since users who self-select into model-routing 
+platforms may be more willing to experiment with and switch between models, exhibiting less 
+inertia than the broader AI customer base; however the direction of travel is nevertheless 
+informative, especially as we expect adoption to become increasingly cost-conscious through 
+time. 
+Open Weight Volumes Are Becoming Dominant on Smart Routers 
+Open Weight Volume and Total Spend, Percentages of Total AI Gateway Volume (Vercel) 
+ 
+Source: Vercel, Citadel Securities, data as of Oct 2026. Figures are for illustrative purposes 
+only. Past performance does not guarantee future returns. 
+The recent stall in total expenditure in Ramp’s monthly spend data provides some further 
+grounds for caution, as it shows essentially no growth in overall enterprise spend in the last two 
+months (Aug and Sept), likely reflecting the interaction of lower token prices with increased 
+volume. The data also implies that 80% of spend on frontier labs is driven by 1% of firms, and 
+that the top 1% spent $9,568 per employee per month in Sept vs the median firm that spent 
+$15.7 per employee per month, illustrating how concentrated spending remains. The recent 
+plateau may prove important as total expenditure determines the revenues available to 
+remunerate the AI investment cycle, and it appears that some combination of lower prices and 
+increased competition from open-source may be causing total spend to flatline. The upcoming 
+ 
+
+ 
+October release will be important as more timely token volume data from October imply a further 
+acceleration of inference demand, but the implications for total spend remain unclear given 
+shifts in token prices and composition of spend. 
+Total AI Spend Growth Has Stalled 
+Ramp: Change Monthly Token Spend, Through Sept-26 
+ 
+Source: Ramp, Citadel Securities, data as of Oct 2026. Figures are for illustrative purposes only. 
+Past performance does not guarantee future returns. 
+Token volumes have risen approximately 5x over the last 6 months and around 50% over the 
+last four weeks, consistent with a substantial demand response as intelligence becomes 
+cheaper. Where that expansion exceeds improvements in computational efficiency, demand for 
+GPU-hours increases, and GPU rental rates suggest that available compute capacity remains 
+scarce: H100 rentals are up approximately 14% over six months and 7% over the last 30 days, 
+while B200 rentals have risen 27.5% over six months, implying robust demand for compute. 
+Continued strength in older H100s is particularly striking against the depreciation one would 
+ordinarily expect from technological obsolescence, implying sellers of scarce compute are well 
+placed to extract rents. 
+GPU Term Rental Rates Continue to Accelerate Higher 
+Silicon Data B200 GPU Term Rental Rate History 
+ 
+
+ 
+ 
+Source: Silicon Data, Citadel Securities, data as of Oct 2026. Figures are for illustrative 
+purposes only. Past performance does not guarantee future returns 
+A firm’s margin on each additional unit of output is the difference between its selling price and 
+marginal cost, so falling output prices and rising input costs squeeze margins unless productivity 
+improves sufficiently to compensate. For the frontier labs, competition from cheaper 
+open-weight models can exert both pressures simultaneously, pushing token prices lower whilst 
+stimulating inference demand that bids up the cost of compute. At unchanged inference 
+efficiency, higher GPU rental rates increase the marginal cost of supplying a token, leaving the 
+frontier receiving less for what it sells whilst paying more to produce it. The question is therefore 
+whether improvements in tokens served per GPU-hour (inference efficiency) can offset both the 
+decline in selling prices and the increase in compute costs in perpetuity. Gross margin can be 
+approximated as follows, assuming compute dominates serving costs and holding workload mix 
+constant: 
+ 
+Using the 27.5% rise in B200 GPU rental rates as an illustrative increase in compute costs, 
+combined with the 50% decline in average token prices requires throughput to increase 
+ 
+
+ 
+2.55-fold, merely to preserve the gross-margin. This is not an unsurmountable issue, as 
+reporting suggests that inference efficiency gains in the last year have been substantial, and 
+compute costs can be locked in via multi year deals. However the marginal economics of 
+inference can still remain a source of pressure, particularly on a forward basis, should open 
+source competition intensify, or should progress on inference efficiency stall. These calculations 
+are illustrative only and intended to highlight the efficiency requirement rather than estimate any 
+individual lab’s margins, since public rental benchmarks differ from contracted compute costs 
+and published token prices differ from realised revenues. 
+GPU Forward Curve Points to Robust Demand For Compute Persisting 
+Silicon Data B200 + H100 GPU Rental Rate Forward Curves 
+ 
+Source: Silicon Data, Citadel Securities, data as of Oct 2026. Figures are for illustrative 
+purposes only. Past performance does not guarantee future returns 
+Hence, a clear focus is whether inference efficiency gains can continue to support margins 
+despite intense competition for both market share and compute, particularly as the easier 
+improvements or low-hanging fruit may, through time, become exhausted. New hardware offers 
+greater throughput but also commands higher prices, absorbing some of the incremental 
+benefit. Moreover, as efficiency improves, those same benefits may apply to open-weight 
+models too, such that another round of price cuts may stimulate further inference and renew the 
+pressure on scarce compute, leaving the frontier obliged to deliver further successive gains 
+simply to defend its existing margins. None of this implies that the fundamentals of the business 
+model are broken; however, markets move on gaps between expectations and reality, and we 
+ 
+
+ 
+question whether expectations for frontier profitability fully accommodate sustained competition 
+that passes efficiency gains through to customers whilst infrastructure suppliers capture the 
+benefits of scarcity in the form of excess rents. 
+Token Volumes are Rising Rapidly as Inference Demand Grows 
+Ramp Token Volume Index 
+ 
+Source: Ramp, Citadel Securities, data as of Oct 2026. Figures are for illustrative purposes only. 
+Past performance does not guarantee future returns 
+We consequently see a more nuanced outlook for the AI ecosystem, with strong inference 
+demand favouring suppliers of scarce compute as competition raises questions around excess 
+returns at the frontier. The economics may resemble those of airlines and airports, with frontier 
+labs as the established airlines, providing an essential service to the economy in a highly 
+competitive market and sees open-weight models as the low-cost carriers, expanding the 
+market through cheaper fares whilst constraining what incumbents can charge. The 
+hyperscalers’ infrastructure businesses resemble the airports, with stickier demand and greater 
+scope for higher, more durable margins from supplying scarce compute, and a commercial 
+architecture that is model agnostic in the long run. A reassessment of profitability at the frontier 
+on margin or commoditisation concerns would nevertheless be challenging for the complex as a 
+whole, given how much infrastructure investment rests on future spending commitments. Within 
+that framing, we see the hyperscalers as potentially the most durable beneficiaries of growing 
+inference demand, with diversified cash flows and strong balance sheets allowing them to fund 
+additional capacity and withstand a reassessment of frontier profitability more comfortably than 
+leveraged neoclouds. 
+ 
+ 
