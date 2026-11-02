@@ -1,0 +1,143 @@
+{
+ "brief": "Deutsche Bank's Binky Chadha downgraded Tech to neutral three weeks ago, just before the sector underperformed the rest of the S&P 500 by more than 16 percentage points, pushing its relative performance to the bottom of a decade-long trend channel. Fifteen trading days later he is flipping back to overweight. Deutsche Bank counts five similar V-shaped Tech recoveries over the past 2.5 years, each averaging a 38% gain, and argues this rotation, while shallower, fits that pattern. Tech positioning has collapsed from elevated levels to the 40th percentile, which the note says implies roughly 10% earnings growth, versus 47% actually delivered in Q3 and consensus of 36% by the end of next year, meaning positioning has fallen faster than fundamentals. Tech revenue growth estimates have also been revised up over the past month. The note adds that earnings strength is broad, not just AI-driven: the median S&P 500 company is growing earnings 14.4%, near two-decade highs outside recession rebounds, and ex-Tech and Energy, growth is still 12%.",
+ "cards": [
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "Deutsche Bank's Binky Chadha has upgraded Tech back to overweight fifteen trading days after downgrading it to neutral.",
+   "anchor": "Fifteen trading days later, he's flipping right back to overweight.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "Mega-cap growth and Tech underperformed the rest of the S&P 500 by more than 16 percentage points over three weeks.",
+   "anchor": "Mega-cap growth and Tech have underperformed the rest of the S&P 500 by more than 16 percentage points in just three weeks",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "The Tech sector has staged five V-shaped recoveries from similar relative-performance levels over the past 2.5 years.",
+   "anchor": "the sector has staged five V-shaped recoveries from similar levels in the past 2\u00bd years",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2.5 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "The last five rotations into Tech saw the sector gain an average of 38%.",
+   "anchor": "The last five rotations into Tech saw the sector gain an average 38%.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "Tech positioning has collapsed from elevated levels to just the 40th percentile.",
+   "anchor": "Tech positioning has collapsed from elevated levels to just the 40th percentile.",
+   "topic": "tech sell-off sector rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "Current Tech positioning implies earnings growth of roughly 10%, versus 47% actually delivered in Q3 and consensus of 36% by the end of next year.",
+   "anchor": "Current positioning implies Tech earnings growth of roughly 10%, versus 47% in Q3 and consensus expectations of 36% by the end of next year.",
+   "topic": "tech sell-off sector rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by end of next year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "Tech top-line revenue growth estimates have been revised up over the past month.",
+   "anchor": "Top line growth estimates have actually also been revised up over the past month.",
+   "topic": "tech sell-off sector rotation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "The median S&P 500 company is growing earnings by 14.4%, near two-decade highs outside recession rebounds.",
+   "anchor": "The median S&P 500 company is growing earnings by 14.4%, near two-decade highs outside recession rebounds.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "monday set up for the binky bounce from sell the rip to buy the dip in just 15 trading days",
+   "claim": "Excluding Tech and Energy entirely, S&P 500 earnings are still growing at 12%.",
+   "anchor": "Strip out Tech and Energy entirely, and earnings are still growing at 12%.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/23759__monday-set-up-for-the-binky-bounce-from-sell-the-rip-to-buy-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
