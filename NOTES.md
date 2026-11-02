@@ -3717,3 +3717,7 @@ A write on the bot's main connection lost the lock after the full 30 seconds (21
 Damage in the two deployments logged: 180 repeat posts in the ingestion feed (156 of note 23172, 24 and counting of 23689), 29 trades not stored, answers not recorded (9 of 22 on 11-02), and no chat messages stored while it lasted. `store_chat_message` swallowed the error with no log. The 20:23 chat recap's first message was 15:31, more than an hour into its window, while the same query now reaches back only to 19:35. The stale table is the likely reason, not proven.
 
 Fix: `db._Connection` rolls back on a lost lock, logs it and pings ops. The feed does not post again when only the cursor failed. Not found: what held the write lock for 30 s in the first place. The new log line gives the victim's statement, not the holder. A write that truly loses the lock is still dropped, as one row now and not hours of them, and that wait still blocks the event loop.
+
+## 2026-11-02: chat recaps read the whole window
+
+The 20:23 question "summarize the chat for the last 6 hours" got three generic bullets. Chat search returned at most 200 of about 1,200 messages across all channels, cut them to 12,000 characters, and kept the oldest of those because the cap walked a list already reversed to oldest-first. `discord_bot/chat_recap.py` now reads the whole window for the channel asked about, with a code-built line saying what was read. The cap in chat search keeps the newest rows now.

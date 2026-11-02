@@ -281,9 +281,10 @@ async def _execute_chat_search(args: dict) -> dict:
     # Total-size cap (2026-06-10): a 200-row time-window result at
     # ~500 chars/row serializes to ~100KB inside ONE tool response —
     # blowing the context window for subsequent rounds. Cap the
-    # serialized total at ~12KB by dropping the OLDEST rows (rows are
-    # newest-first); record how many were dropped so the model can say
-    # "showing the most recent N of M".
+    # serialized total at ~12KB by dropping the OLDEST rows; record how many
+    # were dropped so the model can say "showing the most recent N of M".
+    # A window query is chronological by now, so it walks from the end: it
+    # used to keep the oldest rows and drop the newest (found 2026-11-02).
     _CHAT_RESULT_MAX_CHARS = 12_000
     truncated_from = None
     serialized = sum(len(str(m)) for m in matches)
@@ -291,12 +292,14 @@ async def _execute_chat_search(args: dict) -> dict:
         truncated_from = len(matches)
         running = 0
         kept: list[dict] = []
-        for m in matches:
+        for m in (reversed(matches) if has_window else matches):
             running += len(str(m))
             if running > _CHAT_RESULT_MAX_CHARS:
                 break
             kept.append(m)
-        matches = kept or matches[:1]
+        if has_window:
+            kept.reverse()
+        matches = kept or (matches[-1:] if has_window else matches[:1])
     if has_window:
         log.info(
             f"chat_search tool (window): {start_iso} → {end_iso} "

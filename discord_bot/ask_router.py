@@ -28,6 +28,7 @@ import os
 import re
 from dataclasses import dataclass, field
 
+from discord_bot import chat_recap as _chat_recap
 from discord_bot import follow_up as _follow_up
 from discord_bot import listed_symbols as _listed
 
@@ -92,6 +93,8 @@ T_MARGIN = "margin_math"
 # Prefetch only: discord_bot/event_returns.py, event dates by search and
 # returns from the closes (2026-10-27).
 T_EVENTS = "event_returns"
+# Prefetch only: discord_bot/chat_recap.py reads the whole window (2026-11-02).
+T_RECAP = "chat_recap"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
              T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT,
              T_AUCTION}
@@ -1417,6 +1420,14 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
         r.tickers = coins
         r.prefetch = [(T_PRICE, {"symbols": coins, "crypto": True})]
         return r
+    # "summarize the chat for the last 6 hours": the whole window, in code
+    if not names_member and not strong and not lower_context_tickers(q) and _chat_recap.asks(q):
+        recap_channel = _chat_recap.named_channel(q) or channel_id
+        if recap_channel:
+            r.shape, r.reason = CHAT_HISTORY, "chat recap"
+            r.tickers = []
+            r.prefetch = [(T_RECAP, {"hours": _chat_recap.window_hours(q), "channel_id": recap_channel})]
+            return r
     # a "why" is about reasons even when it also names positions
     if _ROOM_OPINION_RE.search(q) and (re.search(r"\bwhy\b", ql) or not _CROWD_RE.search(q)):
         # WHY the room holds a view is in what it said: chat search, with
@@ -1813,6 +1824,14 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                    "Every figure in the answer comes from here: the equity ratio now, the drop from "
                    "entry that triggers a call at each maintenance level, and the assumption it rests on, "
                    "which the answer states."),
+        T_RECAP: ("CHAT RECAP, read by the system from every stored message in the window. `sections` "
+                  "are notes on consecutive stretches and `messages` is the text itself when it was "
+                  "short. Write 3 to 6 arrows on what the room actually talked about, biggest thing "
+                  "first, covering the whole window and not only its start. Name members and give "
+                  "the tickers and numbers they wrote; `top_tickers` and `top_talkers` are counted "
+                  "in code. Nothing outside this block. The system adds a line saying what was "
+                  "read, so do not write one. status other than ok: say the recap could not be "
+                  "read, and invent nothing."),
         T_EVENTS: ("RETURNS AFTER EVENTS: the dates from a Google search the system ran, the returns "
                    "computed by the system from Yahoo's daily closes. Every date and return comes "
                    "from here. status other than ok: say what is missing, never fill it in."),

@@ -866,7 +866,8 @@ _ASK_PREFETCH_TIMEOUT_S = 8.0  # router prefetch deadline (2026-09-02)
 # measured from the `grounded-shadow` guards is reviewed.
 _FP_GROUNDED_LIVE = False
 # A search then a price history, both in code (discord_bot/event_returns.py).
-_ASK_PREFETCH_TIMEOUT_BY_TOOL = {"event_returns": 14.0}
+# chat_recap: two rounds of its chunk calls, each under chat_recap.CHUNK_TIMEOUT_S
+_ASK_PREFETCH_TIMEOUT_BY_TOOL = {"event_returns": 14.0, "chat_recap": 35.0}
 # Deadline for a tool the model calls itself (2026-10-18 audit A1: five
 # sequential slate calls with no deadline made one answer take 549 s).
 _ASK_TOOL_TIMEOUT_S = 25.0
@@ -5043,6 +5044,7 @@ async def _ask_02_call_model_with_tools(
     # grounding nets count these as sources.
     from discord_bot import ask_router as _ask_router
     from discord_bot import room_rank as _room_rank
+    from discord_bot.chat_recap import _execute_chat_recap
     from discord_bot.event_returns import _execute_event_returns
     _prefetch_exec = {
         _ask_router.T_SLATE: _execute_earnings_slate,
@@ -5061,6 +5063,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_AUCTION: _execute_treasury_auctions,
         _ask_router.T_MARGIN: _execute_margin_math,
         _ask_router.T_EVENTS: _execute_event_returns,
+        _ask_router.T_RECAP: _execute_chat_recap,
     }
     _ask_meta["route_shape"] = _ask_route.shape
     _ask_meta["route_reask"] = _ask_route.reask
@@ -5173,6 +5176,9 @@ async def _ask_02_call_model_with_tools(
             _ask_meta.setdefault("fantasy_estimates", {}).update(_we(_pf_res))
             if _sides(_pf_res):
                 _ask_meta["fantasy_sides"] = _sides(_pf_res)
+        if _pf_tool == _ask_router.T_RECAP and _pf_res.get("status") == "ok":
+            from discord_bot.chat_recap import coverage_line as _recap_line
+            _ask_meta["recap_coverage"] = _recap_line(_pf_res)
         if (_pf_tool in (_ask_router.T_NEWS, _ask_router.T_EVENTS)
                 and _pf_res.get("status") == "ok"):
             # Cited in phase 10 when the answer uses a figure from it.
@@ -7993,6 +7999,9 @@ async def _ask_09_rank_and_regen_guards(
     # Phase 9's stock and fantasy checks add a line built from data or
     # strip a sentence; none asks the model to rewrite (2026-10-30 audit).
     answer = _fresh_print_guard(answer, _ask_meta)
+    if answer and _ask_meta.get("recap_coverage") and "No response came back" not in answer:
+        # what the recap actually read, built in code (discord_bot/chat_recap.py)
+        answer = answer.rstrip() + "\n\n" + _ask_meta["recap_coverage"]
     answer = _business_line_guard(answer, _ask_meta)
     answer = _implied_move_guard(answer, _ask_meta)
     answer = _fantasy_percent_guard(answer, question, _ask_meta)

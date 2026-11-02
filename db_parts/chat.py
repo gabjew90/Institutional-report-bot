@@ -746,6 +746,20 @@ def store_chat_message(
         return False
 
 
+def chat_window(channel_id: int, start_iso: str, end_iso: str, limit: int = 6000) -> list[dict]:
+    """Every stored message in one channel between two UTC times, oldest first,
+    for a chat recap (discord_bot/chat_recap.py). posted_at is T-form with its
+    offset, so a T-form bound compares correctly as text."""
+    rows = _db.get_connection().execute(
+        """SELECT author_id, author_username, author_display, channel_name, content,
+                  image_ocr_text, posted_at
+             FROM chat_messages
+            WHERE channel_id = ? AND posted_at >= ? AND posted_at <= ?
+            ORDER BY posted_at ASC LIMIT ?""",
+        (int(channel_id), start_iso, end_iso, int(limit))).fetchall()
+    return [dict(r) for r in rows]
+
+
 def find_oldest_chat_gap(
     channel_id: int,
     *,

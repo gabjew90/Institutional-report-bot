@@ -1582,6 +1582,7 @@ from db_parts.ask import (  # noqa: E402,F401
     upsert_ticker_primer,
 )
 from db_parts.chat import (  # noqa: E402,F401
+    chat_window,
     PINNED_ALIASES,
     aliases_for,
     build_member_aliases,

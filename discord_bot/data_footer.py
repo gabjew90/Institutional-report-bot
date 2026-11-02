@@ -35,7 +35,7 @@ FEEDS: dict[str, str] = {
 }
 # Tools whose data is the room's own conversation. The reader is in the
 # room, so "Data: room chat" told them nothing (owner, 2026-09-30).
-NOT_CITED = frozenset({"search_chat_messages"})
+NOT_CITED = frozenset({"search_chat_messages", "chat_recap"})
 
 # Statuses that mean the call produced nothing (mirrors bot._FAILED_TOOL_STATUSES).
 _FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout", "not_a_stock", "building",
