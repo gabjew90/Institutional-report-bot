@@ -1,0 +1,275 @@
+ 
+The Hottest Trade On Wall Street Gets A Field 
+Manual: Barclays Maps The AI CDS Market, And 
+How To Trade It 
+ 
+BY TYLER DURDEN 
+SATURDAY, OCT 31, 2026 - 02:15 PM 
+Some sell-side reports break news; others write the field manual for a market that already 
+exploded. 
+Back on August 10, almost three months ago, we tweeted a DTCC chart that had just gone 
+vertical, and a one-line prediction: 
+Two months later, the FT caught up... and now the banks are writing roadmaps. In a hefty 
+"Signature" report published Thursday afternoon, "A roadmap for AI CDS" (available to pro 
+subs), Barclays' credit strategy team led by Jigar Patel opens with a sentence that could have 
+been lifted from any of our posts on the topic since July: 
+"AI has become an increasingly important theme in CDS, with trading activity and risk 
+outstanding rising sharply as spreads have widened." We map the market and compare 
+valuation, curves, basis, and liquidity across AI-related credits. 
+Well, welcome. Regular readers have been tracking this since July, when we first noted that 
+AI-related CDS were soaring(Jul 29), and then that hyperscaler CDS volumes had exploded to 
+an all-time high (Aug 11). And the story goes back further still, to last October, when we warned 
+that AI had quietly become a debt bubble too, surpassing the banks to become the largest 
+sector in the bond market. Once you have the biggest borrowers on the planet, you get the 
+biggest default insurance market on the planet. 
+That said, the Barclays report is the most complete map of that market we have seen from 
+anyone, and its timing was impeccable: within hours of its release, Amazon reported a $33.5 
+billion quarterly cash burn and Intel guided so badly that its stock had its worst day on record. 
+So let's walk through it, name by name, and see what the field manual says about where the 
+next leg goes. 
+ 
+
+ 
+Ten Names, 8% Of The Index... 16% Of The Risk 
+Barclays focuses on the ten AI-related issuers in the on-the-run CDX IG index (Series 47): six 
+hyperscalers, Alphabet (GOOGL), Amazon (AMZN), Meta (META), Microsoft (MSFT), Oracle 
+(ORCL) and SpaceX (SPCX), plus four chipmakers, AMD, Broadcom (AVGO), Intel (INTC) and 
+Nvidia (NVDA). The headline finding is blunt: "AI-related credit risk has repriced materially." All 
+ten have widened over the past six months and trade toward the wide end of their six-month 
+ranges. 
+ 
+Relative to the rest of the index, the move is even starker. The gap between the AI cohort and 
+CDX IG has gone from roughly 10bp six months ago to 76bp now (just 5bp inside the record 
+81bp hit on October 23), and 31bp of that widening came after the September 21 index roll, i.e. 
+in the last five weeks: 
+ 
+
+ 
+ 
+And because the AI names now carry so much of the risk, they are moving the index itself. Here 
+is Barclays: 
+The ten AI-related issuers represent 8% of CDX.IG constituents but currently account for 16% 
+(approximately 10bp) of the index's intrinsic spread. In other words, AI-related issuers now 
+account for a disproportionately large share of the credit risk reflected in the index relative to 
+their constituent count. 
+Translation: if you own the investment grade index, you are already short a big chunk of AI 
+volatility, whether you wanted it or not. Which, as Goldman's Alisha Pasi noted earlier this 
+month, is exactly why "index is becoming a less precise expression of the risk that investors 
+own," and why everyone is piling into single names instead. 
+The Chip Lenders Became Borrowers 
+The aggregate move masks huge differences across credits, and the biggest one is where you'd 
+least expect it. The chipmakers, Broadcom, AMD and Nvidia, were among the tightest names in 
+the cohort six months ago, trading in the low 40bp area. They are now among the widest. 
+ 
+
+ 
+Broadcom's 5Y CDS is up 258% in six months, AMD's 177% and Nvidia's 172%. Microsoft, the 
+cohort's lone AAA, is up just 20%: 
+ 
+Barclays calls these the "chip-financing names," which is a polite way of saying that once the 
+vendors started lending their customers the money to buy their chips (vendor financing, 
+guarantees, SPVs), the credit market started pricing them like lenders with concentrated loan 
+books. We put it slightly less politely on October 19: 
+Since then, things have only gotten worse for Broadcom. On Tuesday, Hock Tan guaranteed the 
+loss to get Anthropic's $63 billion chip deal done after the banks got cold feet, and Bloomberg 
+reported that Broadcom may sell up to about $21 billion of bonds as soon as early next year to 
+help fund it. Which is why Barclays' first trade recommendation is to buy AVGO 5Y CDS 
+protection "as way to hedge the broader AI funding overhang." The trade was barely a day old 
+when Broadcom's CDS rose about 10bp to a record closing high of 175.4bp on Thursday, per 
+ICE Data Services, vs. 168bp in the Barclays tables. Not a bad start. 
+Here is the full scorecard (note Intel at 100% of its six-month range, a day before its stock fell off 
+a cliff... more on that below): 
+ 
+
+ 
+ 
+At the other end, Oracle and SpaceX remain the widest names in the cohort, though Oracle is 
+nearly 50bp inside its six-month wides (more on why in a moment), and Microsoft has widened 
+the least in both absolute and percentage terms. Barclays dryly adds that Microsoft "just 
+announced a new bond deal the morning of October 29." We noticed: as we asked on Thursday, 
+"if the cleanest hyperscaler needs $25 billion in bonds, who doesn't?" 
+The Insurance Now Costs More Than The Bond Pays 
+The second, more technical, finding is maybe the most telling. CDS on AI names has 
+underperformed the index, and it has also underperformed the very bonds it insures. A year 
+ago, the CDS-cash basis (CDS spread minus the spread on a maturity-matched bond) was 
+negative for both AI and non-AI names in CDX IG, as it usually is. Since then the non-AI basis is 
+little changed, while the AI cohort's basis has risen roughly 50bp and is now positive: 
+ 
+
+ 
+ 
+Put differently, buying protection on Nvidia now costs more than the extra yield you collect for 
+owning Nvidia's bonds. That only happens when the demand for protection comes from people 
+who don't own the bonds: equity funds hedging AI portfolios, banks hedging counterparty and 
+construction-loan exposure, and macro tourists. Goldman flagged this as far back as August, 
+when its sales and trading desk told clients that synthetic CDS volumes were trading 20x 
+reference obligations. The basis is the scar tissue from that flow. 
+By name, the chip-financing trio and Oracle have the most positive bases, while Intel is the only 
+name in the cohort still negative (-14bp): 
+ 
+
+ 
+ 
+Which brings us to Oracle, and Barclays' third trade: sell the ORCL 5Y basis (sell the 5.25% 
+bonds of 2032 and sell 5Y or 5.5Y protection) to position for some compression. The logic: 
+Oracle's basis is still among the most positive in the cohort, and its CDS lagged the cash rally 
+on October 28 after the company said it would cap additional capital raises at $20 billion over 
+FY27-FY30 (Barclays' take is in its note "Ripping the band-aid"). Oracle's CDS fell the most in 
+nearly nine months that day, per Bloomberg, though we had a slightly different read of the 
+headline: 
+Two days later, the relief was gone: as of Friday afternoon, Oracle stock had erased all the 
+gains from its "amazing insight into 2030 free cash flows." Still, Oracle is the purest 
+relative-value trade on the board, because it is also the most liquid. Regular readers will recall 
+that a year after we first flagged it, Oracle was indeed the first domino to fall, with its CDS going 
+from 75bp last November to 300bp this month. It now ranks number one among all 340 
+Americas corporate single-name CDS in both trading volume and open interest. 
+$6 Billion A Week 
+Which brings us to the activity numbers, the part of the report that most closely echoes what we 
+have been writing all year. On a rolling four-week basis, average weekly CDS volume reached 
+roughly $6 billion for the six hyperscalers and $3 billion for the four chipmakers as of October 
+23, increases of approximately 740% and 1,900%, respectively, over the past year. Barclays 
+ 
+
+ 
+concedes that part of that reflects low starting points: a year ago Microsoft and Alphabet barely 
+traded, while Meta, Nvidia and SpaceX had no recorded activity at DTCC at all. 
+ 
+Relative to the rest of the market the shift is even bigger: the AI cohort went from less than 5% 
+of Americas corporate single-name CDS volume a year ago to as much as 36% in August, the 
+month we tweeted the "CDS traders" call. It has since cooled to about 20%, which is still four 
+times where it started: 
+ 
+
+ 
+ 
+Year to date, Patel told Bloomberg on Thursday, trading in CDS tied to the 10 largest 
+hyperscalers and chipmakers has risen more than eightfold to $176 billion, with Oracle alone at 
+$46.8 billion, up nearly sixfold. 
+Volume is flighty. Open interest is what sticks around, and it tells the same story. Net notional 
+outstanding on the hyperscalers has quadrupled from about $5 billion a year ago to $20 billion, 
+and on the chipmakers from about $1.9 billion to $8.6 billion, a total of more than $28 billion, up 
+from about $7 billion a year ago: 
+ 
+
+ 
+ 
+That makes the ten AI names nearly 14% of all open interest in Americas corporate single-name 
+CDS, up from 4% a year ago, and the line has barely paused: 
+ 
+
+ 
+ 
+Six of the ten now rank among the ten most actively traded Americas corporate CDS contracts. 
+A few other details from the name-by-name table: Microsoft's volume is up 15,096% (from 
+almost nothing), Amazon's 2,137% and Broadcom's 1,836%. Meta, Nvidia and SpaceX show "-" 
+in the year-over-year column because there was nothing to compare against. Diversification at 
+its finest: 
+ 
+
+ 
+ 
+Amazon's Curve Looked Too Flat... Then Amazon Reported 
+The curve section is where the report gets genuinely useful for anyone trading this. Across most 
+of the cohort, the 3s5s CDS curve (5Y minus 3Y) has steepened in absolute terms, but some 
+curves now look flat relative to their 5Y levels, and others steep: 
+ 
+
+ 
+ 
+The standout is Amazon. Amazon and Alphabet trade at the same 5Y level (80-81bp), but 
+Amazon's 3s5s curve is just 18bp and has steepened only 2bp in six months, so it now looks flat 
+next to Alphabet's. Barclays traces it to the delayed-draw term loan Amazon put in place in 
+June, which matures three years from the draw date and "may have created some technical 
+buying pressure on the 2.5-3.0y CDS maturity points." Hence trade number two: buy AMZN 5Y 
+protection outright, or put on a 3s5s steepener (sell 3Y protection, buy 5Y, DV01-neutral) to 
+position for a normalization of the curve. Barclays' credit analysts, for what it's worth, are 
+Underweight Amazon. 
+ 
+
+ 
+ 
+Barclays released the note Thursday afternoon, roughly an hour before Amazon reported that it 
+had burned $33.5 billion of free cash flow in Q3 alone, more than four times the $7.7 billion 
+consensus, as capex exploded to $77.3 billion, and that it had raised 
+42.4 
+48. 1𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑜𝑓𝑛𝑒𝑤𝑙𝑜𝑛𝑔−𝑡𝑒𝑟𝑚𝑑𝑒𝑏𝑡𝑑𝑢𝑟𝑖𝑛𝑔𝑡ℎ𝑒𝑞𝑢𝑎𝑟𝑡𝑒𝑟𝑡𝑜ℎ𝑒𝑙𝑝𝑝𝑎𝑦𝑓𝑜𝑟𝑖𝑡. 𝑇𝑟𝑎𝑖𝑙𝑖𝑛𝑔𝐹𝐶𝐹𝑖𝑠𝑛𝑜𝑤−
+billion, the stock was down 7.3% premarket Friday, and Amazon gave no 2027 capex number at 
+all. A company raising $48 billion of debt per quarter with a curve priced for a one-off loan? 
+Probably not for long. 
+On the other side of the curve chart sits Intel, whose 3s5s looks steep for its spread level; in 
+percentage terms it is "almost as steep as the much tighter-trading MSFT." Intel was also the 
+only name with a negative CDS-cash basis, and the only one at 100% of its six-month range. 
+On Friday, Intel's stock crashed as much as 29.7%, its steepest intraday decline in Bloomberg 
+data going back to 1982, after guiding Q4 well below consensus and warning it does not expect 
+positive cash flow this year: 
+Intel is in the cohort "for completeness," Barclays notes, since it hasn't taken part in the vendor 
+financing that blew out the other chipmakers. That steep curve and negative basis may not 
+survive the week. 
+ 
+
+ 
+One more structural point for the CDS nerds: ICE clearing data show that for half the cohort 
+(MSFT, GOOGL, META, NVDA, SPCX), 85-90% of cleared risk sits in the 4-5Y area, while for 
+the rest it is spread across the curve. For Amazon, the largest cleared bucket is June 2029; for 
+Intel, December 2029. In other words, the hedges cluster where the debt maturities and loan 
+tenors are. 
+CoreWeave: The Junk Window 
+Finally, the name everyone is really hedging. CoreWeave (CRWV) sits outside the IG cohort, but 
+Barclays notes it is "the only directly AI-related CDS contract in the on-the-run CDX.HY index," 
+which makes it "a distinct window into how investors are pricing data-center and neocloud credit 
+risk." Its 5Y CDS now trades on points upfront rather than spread: 15.5 points, against a 
+six-month range of -2.3 to 20 points: 
+ 
+Activity has followed. Four-week average weekly volume is up to $302 million from $32 million a 
+year ago, while net notional outstanding has risen to $850 million from $65 million, with 67% of 
+cleared risk concentrated in the 4-5Y area: 
+ 
+
+ 
+ 
+Barclays' high yield analysts remain Overweight CoreWeave (see "In the Eye of the AI Storm - 
+Maintain OW"), with its 9.75% 2031s quoted at 82.5 as of Tuesday. Fair enough, though we'd 
+note that a bond at 82.5 with CDS at 15 points upfront is the market telling you something the 
+rating doesn't. We discussed how CoreWeave became "the market's beta barometer" on 
+October 19, when Goldman reported record "tourist" demand for CRWV debt and Oracle CDS, 
+and five days earlier Gartner predicted over 80% of neoclouds will fold. Nothing says 
+"Overweight" like a credit whose default swaps trade points upfront. 
+Field Manual For A Market Still Being Built 
+So what does the roadmap tell us? First, the repricing is broad but very uneven, and the gap 
+between names is where the trades are. Second, the demand for protection is coming from 
+people who don't own the bonds, which is why the basis flipped positive. And third, every new 
+bond, SPV, lease guarantee and vendor loan creates someone who needs a hedge. Barclays 
+sums it up in its own understated way: 
+ 
+
+ 
+The footprint of AI-related credits in the CDS market has expanded substantially over the past 
+year. Trading activity and risk outstanding have increased sharply, while spreads have widened 
+materially both in absolute terms and relative to the broader market. At the same time, CDS has 
+underperformed maturity-matched cash bonds, indicating that the repricing extends beyond 
+weakness in the underlying cash market. 
+The supply keeps coming. In the 48 hours after the note was written, Microsoft launched a 
+10-part, $25 billion-plus bond deal, its first since 2017; Amazon disclosed $48 billion of new debt 
+in a single quarter; and Broadcom lined up as much as $21 billion more for early next year. On 
+Thursday alone, per Bloomberg, Broadcom's CDS hit a record 175.4bp, SpaceX's rose about 
+20bp to 266.5bp, its widest since it started trading, and Alphabet's jumped 5bp to about 84bp, its 
+biggest move since July, after Alphabet's worst day ever. And this morning, Bloomberg reported 
+that protection costs for numerous tech heavyweights hit fresh record highs on supply and profit 
+concerns. As Impax's Tony Trzcinka put it to Bloomberg, "the issuance pipeline remains heavy, 
+and deteriorating free cash flow and still-rising capex guidance" points to more supply ahead. 
+The bulls will say a deeper, more liquid CDS market is a sign of a maturing asset class, and that 
+Meta's $95 billion equity raise and Oracle's $20 billion cap show the hyperscalers are finally 
+getting religion on funding. Maybe. But equity raises happen when the debt window gets 
+expensive, and an AAA issuer tapping the market for $25 billion the morning after its CFO told 
+analysts it hadn't "yet" tapped the debt market is hardly a sign the funding bill is shrinking. We 
+side with credit: the AI funding overhang is measured in hundreds of billions per year, and every 
+dollar of it needs a hedge. The CDS market has front-run the stock market on every leg of this 
+unwind so far, from Oracle to Broadcom to Meta, and with Amazon and Intel joining the 
+cash-burn club this week, we doubt it is done. 
+In August we said the best paying job on Wall Street in 2027 will be that of CDS traders. 
+Barclays just wrote them a field manual. Two months early, even. 
+Much more in the full Barclays "A roadmap for AI CDS" note, available to pro subs. 
+ 
+ 
+ 
+ 
