@@ -1,0 +1,946 @@
+{
+ "brief": "US equities closed the week/month down only modestly despite a sharp Friday selloff, as a bifurcating market saw AI-linked themes (Bitcoin Sensitive, Software, Agentic AI) underperform while Obesity Drugs, Defense, Biotech and Healthcare (XLV at a fresh high) outperformed on a defensive rotation out of TMT weakness. Semis fell ~8% Friday and the NDX posted its worst month since the AI cycle began, driven by mixed hyperscaler-era earnings (Kioxia, INTC guide-down, AMKR) and growing doubt about AI demand linearity beyond CY27, which is pressuring multiples. Hedge funds net bought equities for the first time in four weeks on short covers, but Info Tech and Mag 7 stayed net sold into month-end; Asset Managers finished net sellers. Russell 2000 outperformed on short-covering (open interest -$2.1bn) even as its CTA setup stays constrained by rate sensitivity; the S&P broke its medium-term CTA threshold (7544.2) Friday, and GS's momentum signal is set to flip negative if that holds, capping near-term upside. Ahead of Tuesday's midterms, GS recommends affordability- and policy-linked baskets (ACA beneficiaries long, drug-makers short, power-inflation longs, hyperscaler protection) since the options market is pricing a smaller move than Friday's actual S&P swing.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The S&P 500 closed the week and month down only modestly despite stocks trading notably lower on Friday.",
+   "anchor": "US stocks traded notably lower Friday though the S&P 500 closed the week/month down only modestly",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Obesity Drugs, Defense Spending, and Biotech were among the equity themes that outperformed this week.",
+   "anchor": "Obesity Drugs, Defense Spending, and Biotech were among the themes that outperformed this week",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Bitcoin Sensitive, Software, and Agentic AI were among the equity themes that underperformed this week.",
+   "anchor": "Bitcoin Sensitive, Software, and Agentic AI were among the themes that underperformed.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Hedge funds net bought US equities for the first time in four weeks, driven by short covers in Macro Products.",
+   "anchor": "HFs net bought US equities for the first time in 4 weeks, driven by short covers in Macro Products",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Info Tech was the most net bought sector this week through Thursday but remains heavily net sold in October month-to-date.",
+   "anchor": "While Info Tech was the most net bought sector this week (thru Thursday), it\u2019s still heavily net sold in October MTD",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Mag 7 names were collectively net sold in four of the last five trading sessions.",
+   "anchor": "Mag 7 names collectively were net sold in 4 of the last 5 trading sessions",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Semis demand emerged early in the week, mostly from Long Only investors, before the week ended in an aggressive selloff with very little defense on the moves lower.",
+   "anchor": "signs of demand emerging in Semis (predominately from the Long Only community) ended with an aggressive sell-off with verry little defense",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Asset Managers finished the week as net sellers, reversing early-week tech demand, while hedge fund flows finished balanced.",
+   "anchor": "Asset Mgrs finished net sellers (reversing early week tech demand + some) while HF flows finished balanced.",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "ETFs ended the week at about 31% of tape, the highest full session level since June.",
+   "anchor": "ETFs ending the week at ~31% of tape (highest full session level since June)",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Key S&P levels being watched are the 100-day moving average at 7614 and the CTA medium-term threshold at 7554.",
+   "anchor": "Key Levels we're watching for S&P: 100dma (7614) and CTA med-term threshold (7554).",
+   "topic": "tech sell-off sector rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The Russell 2000 finished the week in positive territory, outperforming both the Nasdaq 100 and S&P 500 despite a tech-led selloff.",
+   "anchor": "Russell 2K finished the week in positive territory, outperforming both the NDX and SPX despite a tech-led selloff.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "CFTC data through October 20 show Russell 2000 net positioning has rebounded from recent lows.",
+   "anchor": "CFTC data through Oct 20th show that Russell 2K net positioning has rebounded from recent lows",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The Russell 2000 positioning rebound was driven mostly by new long length while sizable shorts remain in place.",
+   "anchor": "driven mostly by new length while sizable shorts remain in place",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The Russell 2000's setup remains constrained given heightened rate sensitivity and debt-refinancing headwinds.",
+   "anchor": "The setup for the Russell 2K remains constrained given heightened rate sensitivity and debt-refinancing headwinds.",
+   "topic": "hedge fund leverage positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "If Friday's price action persists, Goldman's systematic momentum thresholds are set to flip negative, halting projected CTA buying and muting near-term upside.",
+   "anchor": "GS systematic momentum thresholds are set to flip negative, halting projected CTA buying and muting potential for near-term upside.",
+   "topic": "hedge fund leverage positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Front-end implied volatility in NDX and SPX fell sharply into Friday, with NDX 1-month fixed-strike vol down almost 4 vol points.",
+   "anchor": "Front-end vols in both NDX and SPX came in significantly with NDX 1m fixed strike vol down almost 4v.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "On Friday alone the volatility decline reversed sharply, with the same NDX tenor up almost 2 vol points.",
+   "anchor": "On Friday alone, we saw this trend reverse sharply with the same tenor up almost 2v.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Gamma has not repriced to the same extent as implied volatility and skew.",
+   "anchor": "Despite the move, gamma hasn\u2019t repriced to the same extent as vol and skew.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The S&P straddle priced through Wednesday's close for the midterm election implied a smaller move (1.51%) than Friday's actual S&P move of -1.82%.",
+   "anchor": "The straddle through Wednesday\u2019s close, covering the midterms, went out less than Friday\u2019s move in S&P alone (1.51% implied priced vs. -1.82% move).",
+   "topic": "Midterm election sector plays",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "On health insurance affordability concerns, Goldman recommends being long ACA-exposed beneficiaries via the GSHLCACA basket.",
+   "anchor": "Health insurance affordability: Long ACA-Exposed Beneficiaries (GSHLCACA).",
+   "topic": "Midterm election sector plays",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "On drug pricing concerns, Goldman recommends shorting drug-makers via the GSHLCBPH basket.",
+   "anchor": "2) Drug pricing: Short Drug-Makers (GSHLCBPH).",
+   "topic": "Midterm election sector plays",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "On power inflation concerns, Goldman recommends being long Renewables, Grid Infrastructure, and Power Up America baskets.",
+   "anchor": "Power inflation: Long Renewables (GSXURNEW), Grid Infrastructure (GSXUGRID), and Power Up America (GSENEPOW).",
+   "topic": "Midterm election sector plays",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Goldman recommends buying protection on the Hyperscalers and Datacenter Equipment baskets as a power-inflation hedge.",
+   "anchor": "Buy protection on Hyperscalers (GSXUHYPR) and Datacenter Equipment (GSTMTDAT).",
+   "topic": "Midterm election sector plays",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "On government spending, Goldman recommends being long government-spending-exposed names ex-defense and drug-makers versus short defense spending beneficiaries.",
+   "anchor": "Government spending: Long Government-Spending Exposed ex-Defense and Drug-Makers (GSXUGOVT) vs. Short Defense Spending Beneficiaries (GSXUDFNS).",
+   "topic": "Midterm election sector plays",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The Nasdaq 100 matched its biggest monthly decline since the start of the AI cycle, down about 7% in October.",
+   "anchor": "The NDX just matched its biggest monthly decline since the start of the AI cycle (down ~7% in October)",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Semiconductors closed down about 8% on Friday, their third largest day of underperformance in more than 15 years.",
+   "anchor": "Semis closed down ~8% on Friday, turning in its 3rd largest day of underperformance in >15 years",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "INTC issued a big guide-down this earnings season, contributing to a choppy week of TMT earnings.",
+   "anchor": "mixed Kioxia guide, INTC big guide down, uneven 2H capex spending at the hyperscalers",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "AMKR saw a smartphone end-market downtick this earnings season.",
+   "anchor": "uneven 2H capex spending at the hyperscalers, AMKR smartphone downtick)",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The market has become much more discerning about the linearity of the AI story beyond CY27, pressuring multiples until visibility improves.",
+   "anchor": "the market has become much more discerning around the linearity of this story beyond CY27, pressuring multiples across the board until visibility improves",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Investors rotated into IBM, AAPL, SPOT, V, MA, EBAY, and LYV as names less susceptible to daily AI disruption volatility, and all traded well on the week and month.",
+   "anchor": "cue names like IBM, AAPL, SPOT, V/MA, EBAY, LYV all trading well on the week/month",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "IBM",
+    "AAPL",
+    "SPOT",
+    "V",
+    "MA",
+    "EBAY",
+    "LYV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "A more cautious view on the economic cycle was reflected in selling of banks and capital markets stocks this week.",
+   "anchor": "A more cautious view on the cycle was manifested in selling banks & capital market stocks",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Insurance remained shorted this week as fundamental specialists continue to lean into soft-cycle fears.",
+   "anchor": "Insurance remained shorted on the week as fundamental specialists continue to lean in on soft cycle fears",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "LPLA was among the most debated earnings this week on NNA growth expectations, competition concerns, and valuation versus catalyst path.",
+   "anchor": "the most debated earnings this week were 1) LPLA (NNA growth expectations.. competition concerns .. Valuation vs catalyst path ahead)",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "LPLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Senior housing REITs were debated this week on technicals versus fundamentals.",
+   "anchor": "2) Senior housing REITs (technicals vs fundamentals)",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "SPGI was debated this week on strategic review implications and valuation.",
+   "anchor": "3) SPGI (strategic review implications & valuation)",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "SPGI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "MA was debated this week on tailwinds to VASS versus expectations.",
+   "anchor": "4) MA (tailwinds to VASS vs expectations?)",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "AMP was debated this week on competition and its growth/margin path.",
+   "anchor": "5) AMP (competition & growth/margin path ahead)",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "AMP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "GPN was particularly topical on Friday after Financial Times reports of potential takeout interest.",
+   "anchor": "GPN was particularly topical on Friday in light of reports from the Financial Times indicating potential takeout interest.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GPN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "APO reports earnings next week with focus on its AI platform exposure.",
+   "anchor": "1) APO in the alts (where the focus is on their AI platform/exposure)",
+   "topic": "week-ahead event calendar",
+   "status": "forecast",
+   "instruments": [
+    "APO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "MET reports earnings next week amid renewed interest in life insurance given a supportive macro backdrop.",
+   "anchor": "MET (in light of renewed interest in life insurance given a supportive macro backdrop",
+   "topic": "week-ahead event calendar",
+   "status": "forecast",
+   "instruments": [
+    "MET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "AFRM has been under pressure from rising rates given implications for consumer health and its own funding costs.",
+   "anchor": "AFRM (which has been under pressure in light of rising rates given implications on consumer health & AFRM\u2019s funding costs).",
+   "topic": "week-ahead event calendar",
+   "status": "released",
+   "instruments": [
+    "AFRM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Industrials were up 210bps on the week, bringing the month-to-date gain above 300bps.",
+   "anchor": "Industrials were up 210bps on the week bringing the month to date above 300bps",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Materials were up similarly on the week but gained less on the month than Industrials.",
+   "anchor": "materials up similarly on the week but less on the month",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Industrials and Materials both outperformed the broader market, which was down 50bps weighed down by tech.",
+   "anchor": "Both outperforming broader markets down 50bps weighed down by tech.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Within Industrials, defense, aerospace and autos led the subsector performance this week.",
+   "anchor": "By subsector defense, aerospace and autos led",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Within Industrials, transports, data center and airlines subsectors lagged this week.",
+   "anchor": "with transports, data center and airlines lower.",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "HAYW rose 27% on better earnings, with the pool end market showing modest signs of improvement.",
+   "anchor": "HAYW +27% with the pool end market showing modest signs of improvement.",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "HAYW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "BAH rose 14%, largely a function of a short squeeze across defense and federal IT rather than the mixed earnings themselves.",
+   "anchor": "BAH up 14% more a function of short squeeze across defense and Fed IT with more mixed earnings",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "BAH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "TXT rose 12% after taking no charge in an expected Q3 earnings report.",
+   "anchor": "TXT +12% with no charge taken with Q3 earnings report that was expected",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "TXT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "IP rose 9% on signs of a company-specific turnaround taking hold.",
+   "anchor": "IP up 9% with signs of the company specific turnaround in place",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "IP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "FTV rose a similar amount on low expectations and a better Q3 report and guidance update.",
+   "anchor": "FTV up similar with low expectations and better Q3/guide update.",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "FTV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "OI fell 22% and DAN fell 15% on worse earnings.",
+   "anchor": "OI down 22%, DAN off 15%",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "OI",
+    "DAN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "TFII, LSTR and CHRW each fell 12-14% among several transports with worse earnings.",
+   "anchor": "several transports \u2013 TFII LSTR CHRW down 12-14%",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "TFII",
+    "LSTR",
+    "CHRW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "BA fell 9% after lowering expectations for the timing of its free cash flow goals.",
+   "anchor": "BA off 9% after lowering expectations for timing of free cash flow goals.",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "BA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Next week brings the US midterms plus fresh data including ISM, class 8 truck orders, and auto sales.",
+   "anchor": "Next week we\u2019ll get the US midterms, a fresh set of data points including the ISM, class 8 truck orders, auto sales",
+   "topic": "week-ahead event calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Healthcare outperformed this week, with the XLV hitting a fresh all-time high on a broader defensive bid.",
+   "anchor": "Healthcare outperformed this week, with the XLV hitting a fresh all-time-high as the sector continues to benefit from a broader defensive bid",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "LLY rose 7% on a strong beat driven by Mounjaro and Zepbound momentum and a guidance raise exceeding an elevated bar.",
+   "anchor": "LLY +7% on strong beat on Mounjaro and Zepbound momentum and guidance raise exceeding an elevated bar",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "LLY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "REGN rose 11% on a strong Eylea franchise and broader commercial momentum.",
+   "anchor": "REGN +11% Strong Eylea Franchise + Broader Commercial Momentum",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "REGN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "GILD rose 3.4% on a strong third quarter with its HIV business ahead of plan.",
+   "anchor": "GILD +3.4% strong 3Q w/ HIV business ahead",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "GILD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "MRK rose 4% on a solid third quarter against noisy expectations.",
+   "anchor": "MRK +4% solid 3Q vs. noisy expectations.",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [
+    "MRK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "INSM, GMAB, IOVA, and ALNY had updates this week that went the right way for specialist biotech positioning, signaling calming positioning pain.",
+   "anchor": "several updates on the week right-way with specialist positioning (INSM, GMAB, IOVA, ALNY)",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [
+    "INSM",
+    "GMAB",
+    "IOVA",
+    "ALNY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "Medtech updates this week still showed a bias toward negative surprises on forward guidance despite subdued expectations.",
+   "anchor": "updates on the week still had a bias towards negative surprises particularly on forward updates.",
+   "topic": "Q3 earnings season recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The S&P broke its medium-term CTA threshold of 7544.2 during Friday's session as flows concentrated in buying downside at the index level and within Semis.",
+   "anchor": "S&P broke its medium-term CTA threshold (7544.2) as flows were concentrated in buying downside at the index level and within the Semis space.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "VVIX surpassed 120, its highest level since the Iran/US conflict began.",
+   "anchor": "Vol of vol (VVIX) surpassed 120, the highest level since Iran/US started.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "As the Russell 2000 rallied, open interest fell by $2.1 billion while 3-month funding cheapened meaningfully.",
+   "anchor": "open interest fell by $2.1 billion while 3m funding cheapened meaningfully",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown - October 30, 2026",
+   "claim": "The Russell 2000 advance was driven by orderly short covering, with recently added length taking profit rather than chasing the move.",
+   "anchor": "the advance was driven by orderly short covering, into which recently added length took profit rather than chasing.",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/23705__gs-lin-us-equities-weekly-rundown-october-30-2026-30-oct-202.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 66,
+  "matched": 66,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
