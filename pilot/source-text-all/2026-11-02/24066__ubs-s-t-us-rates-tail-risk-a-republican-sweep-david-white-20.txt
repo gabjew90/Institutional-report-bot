@@ -1,0 +1,161 @@
+1
+UBS
+For Institutional Investors only. Sales desk
+commentary.
+US Rates Tail Risk: A Republican Sweep
+David White
+02-Nov-2026, 12:05 ET (EST)
+•    The tail risk from the US elections is a Republican sweep that could lead to an increase in government
+spending
+•    Markets are positioned for divided government and fiscal gridlock; a Republican sweep could see a
+long-end selloff
+•    My preferred expression is to explore a 3m USD payer switch, owning 30y payer exposure relative to 5y
+Indicative structure
+• Expiry: 3 months.
+• Exposure: long 30y payers relative to 5y payers.
+• Strike region: around ATM +25bp on each underlying, as a starting point for pricing.
+• Construction: exact strikes, notionals, premium and delta/vega balance to be agreed from the live vol and
+skew surface.
+The view in brief
+The most interesting outcome from a rates market perspective is the tail risk of the Republicans retaining both
+the House of Representatives and Senate. At the moment the odds of a Republican sweep on Polymarket
+stand at just 5%, versus 73% for a Democratic sweep and 25% for a Democratic House and a Republican
+Senate.
+With markets positioned for divided government, a Republican sweep leaves the expected fiscal brake absent
+and creates the risk of a sell-off in the long end. President Trump, for instance, has promised to send $5,000 to
+every US adult in the event of a Republican sweep at an estimated cost of around $1.2 trn.
+My preferred expression is to explore a 3m USD payer switch, owning 30y payer exposure relative to 5y,
+subject to live pricing and the precise risk of the structure.
+The midterms decide control of Congress, not the White House. The fiscal channel runs through both
+chambers; the Senate also matters for confirmations of future Fed appointments. The vote takes place on
+Tuesday, with results arriving overnight into Wednesday morning. A definitive outcome may take longer. This
+is a scenario framework, not an election forecast. The original premise was that a Democratic House and
+some form of gridlock were the more widely anticipated outcome. That premise needs to be tested against
+current probabilities, positioning, and market pricing before implementation.
+The four possible landings
+House / Senate
+Political channel
+Rates bias
+R / R
+Unified government preserved
+Long end underperforms; 5s30s
+steepening
+D / R
+Divided government; fiscal constraint
+Long end relief; 5s30s flattening
+
+2
+House / Senate
+Political channel
+Rates bias
+D / D
+Fiscal constraint plus Senate appointment
+check
+Flattening bias; front end may remain firm
+R / D
+Divided government; mixed political signal
+Less conviction; assess policy and vol
+pricing
+These are conditional relative-value biases. The yield direction and size of any reaction depend on what is
+already priced, the policy interpretation and the wider macro backdrop.
+The transmission I am watching
+Republican sweep → expected gridlock fails to arrive → greater scope for additional fiscal measures →
+potential upward revision to deficit and issuance expectations → higher long-end term premium → 30y
+underperformance versus 5y.
+Unified control creates capacity for policy change; it does not guarantee fiscal expansion. The steepening
+thesis needs the market to infer a more expansionary fiscal path than it had priced.
+Why the 3m payer switch interests me
+Given the low probability around this outcome, I would rather explore the relative payer expression than
+automatically carry a large linear steepener into the result. The aim is to benefit from disproportionate long-end
+weakness while choosing explicitly how much premium and short-leg risk to take.
+Indicative structure
+• Expiry: 3 months.
+• Exposure: long 30y payers relative to 5y payers.
+• Strike region: around ATM +25bp on each underlying, as a starting point for pricing.
+• Construction: exact strikes, notionals, premium and delta/vega balance to be agreed from the live vol and
+skew surface.
+A payer switch is not automatically a limited-loss way to own the tail. If 30y payers are financed by selling 5y
+payers, the short leg can generate material losses, including when the curve thesis disappoints. The risk
+depends on the full package; DV01 matching alone does not balance vega, gamma or convexity.
+Why 3m rather than 1m
+A 1m expiry concentrates more heavily on the immediate election reaction: a Republican sweep result triggers
+a quick sell-off and the payer moves towards or through strike. Three months gives the fiscal thesis more time
+to feed through deficit expectations, Treasury supply, term premium and the curve. That additional time has a
+price, so the expiry choice still needs to justify its premium and relative-vol entry.
+Two potential routes to a positive mark
+After the vote, the possibility of much more government spending on a Republican sweep could push 30y
+rates higher relative to 5y, supporting the long 30y payer exposure. Before or after the vote, favourable
+relative-vol or skew repricing could also create an opportunity to monetise the package before expiry.
+The desk observation was that 5y skew was offered while the 30y side had not repriced to the same extent.
+That is historical colour, not a current quote. For a long-30y / short-5y payer switch, further cheapening of the
+
+3
+short 5y leg relative to the long 30y leg could help the mark, all else equal. But an already cheap 5y leg may
+make the initial financing less attractive. Offered skew alone is not sufficient evidence of a good entry.
+Risks
+A Republican sweep may not happen, or it may produce little change in expected policy. A growth or inflation
+shock could reprice Fed expectations through 5y as strongly as the long end, leaving an outright short-duration
+trade working while the steepener disappoints. Relative skew can move against the package; time decay and
+premium matter; and an ATM +25bp structure may not deliver the desired expiry payoff if the sell-off is too
+small. The political story has to translate into the right curve move and the right option payoff. I would assess
+the package across parallel sell-offs, steepeners, flatteners and relative-vol shocks before choosing the
+weights.
+The four scenarios in detail
+1  Republican House and Republican Senate (5% probability on Polymarket)
+The gridlock unwind. President Trump retains unified government and the expected congressional brake does
+not arrive. The election changes the distribution of future fiscal outcomes rather than today’s deficit or supply.
+If that increases the compensation investors require to own long-duration Treasuries, I would expect 30y to
+underperform 5y.
+Cash: buy 5y UST / sell 30y UST, DV01 weighted. Swaps: receive fixed 5y SOFR / pay fixed 30y SOFR, DV01
+weighted. Both express 5s30s steepening; the thesis envisages a bear steepening, although the position itself
+trades the relative move.
+For a Treasury-specific supply interpretation: sell 30y UST / receive fixed 30y SOFR, DV01 matched. That
+targets Treasury cheapening versus swaps, conventionally a narrowing or more negative swap spread when
+quoted as swap rate minus Treasury yield. It is a distinct basis exposure, with funding and balance-sheet
+drivers as well as fiscal risk.
+Main risk: unified government does not produce enough incremental fiscal change, or the market prices the
+shock predominantly through the belly and Fed expectations. The preferred option expression remains the 3m
+payer switch, subject to its full risk and entry economics.
+2 Democratic House and Republican Senate (23% probability on Polymarket)
+Gridlock arrives. A Democratic House removes unified Republican legislative control. If that reduces the scope
+for additional deficit expansion relative to what was priced, some long-end premium could come out, giving
+30y outperformance versus 5y.
+Cash: sell 5y UST / buy 30y UST, DV01 weighted. Swaps: pay fixed 5y SOFR / receive fixed 30y SOFR, DV01
+weighted. The envisaged reaction is a 5s30s bull flattening.
+I prefer the curve expression to a large outright duration view because gridlock does not solve the existing
+fiscal problem. There may also be two phases: initial relief as fiscal flexibility narrows, followed by renewed
+volatility around budgets, shutdowns or debt-limit negotiations when relevant.
+Main risk: this outcome is already sufficiently discounted that the incremental reaction is small. The framework
+can be right without offering much tradable movement.
+
+4
+3 Democratic House and Democratic Senate (73% probability on Polymarket)
+The stronger congressional brake. Trump remains President, but both chambers constrain the administration.
+Alongside the fiscal channel, a Democratic Senate could make future Fed appointments harder to secure.
+Kevin Warsh’s confirmation as Fed Chair on May 13 this year passed 54–45, illustrating the importance of the
+Senate route.
+If investors see a stronger institutional check as reducing future inflation or Fed-independence risk, that could
+support lower long-end premium. A Fed perceived as more insulated from political pressure could also be
+expected to keep policy restrictive when necessary, leaving the front end relatively firm. Both interpretations
+can favour flattening, without guaranteeing an outright rally.
+Expression: sell 5y / buy 30y UST, or pay 5y / receive 30y SOFR, DV01 weighted. Main risk: congressional
+constraint leaves existing deficits, issuance and inflation pressures largely intact. The appointment channel
+concerns future vacancies and nominations; it does not change the incumbent Chair automatically.
+4 Republican House and Democratic Senate (1% probability on Polymarket)
+The curveball. The House remains aligned with the administration while the Senate constrains legislation and
+future appointments. This is still divided government, so a fiscal brake exists here too. I attach less conviction
+to a distinctive directional trade because the market reaction would depend on the specific policy agenda and
+the surprise embedded in the result.
+The Senate and future Fed-policy channel may become relatively more prominent. Forward-rate or
+policy-sensitive volatility could be worth examining if pricing offers value, but uncertainty by itself does not
+make long vol attractive. I would not force a cash-curve or swap-spread position simply to fill the fourth box.
+Where I land
+I am not trying to call a Republican sweep. I am asking what has to move if the expected shift towards gridlock
+fails to arrive. Under that interpretation, the long end is where I see the clearest potential repricing.
+The 3m USD payer switch is therefore the expression I would price first: own the 30y payer side relative to 5y,
+initially around ATM +25bp, with strikes and weights determined by the live surface. It gives the fiscal thesis
+time to develop and may offer an opportunity to monetise favourable relative-skew moves before expiry.
+Whether it is preferable to the linear steepener depends on premium, carry, the risk of the short leg and the
+scenario payoff. The appeal is the mismatch between the outcome markets expect and the move an
+alternative outcome could require. My focus is where the market has to reprice if the dice land somewhere
+else.
