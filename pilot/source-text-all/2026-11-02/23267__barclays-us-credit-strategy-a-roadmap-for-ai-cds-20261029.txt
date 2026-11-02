@@ -1,0 +1,1657 @@
+This document is intended for institutional investors and is not subject to all of the
+independence and disclosure standards applicable to debt research reports prepared for retail
+investors under U.S. FINRA Rule 2242. Barclays trades the securities covered in this report for its
+own account and on a discretionary basis on behalf of certain clients. Such trading interests
+may be contrary to the recommendations offered in this report.
+Please see analyst certifications and important disclosures beginning on page 13.
+US Credit Strategy
+A roadmap for AI CDS
+AI has become an increasingly important theme in CDS, with
+trading activity and risk outstanding rising sharply as spreads
+have widened. We map the market and compare valuation,
+curves, basis, and liquidity across AI-related credits.
+• AI-related credit risk has repriced materially. All ten members of our AI cohort have
+widened over the past six months and trade toward the wide end of their recent ranges. The
+gap between the cohort and CDX.IG has increased from about 10bp six months ago to 76bp
+currently, while CDS has also underperformed maturity-matched cash bonds.
+• Trading activity and risk outstanding have risen sharply. Four-week average weekly CDS
+volume has reached $6bn for hyperscalers and $3bn for semiconductors, increases of roughly
+740% and 1,900% over the past year. The cohort now represents nearly 14% of Americas
+corporate single-name CDS open interest, up from 4% a year ago.
+• The aggregate move masks considerable differentiation across credits. AVGO, AMD, and
+NVDA have shown particularly pronounced spread widening and currently have among the
+most positive CDS-cash bases. AMZN and ORCL 3s5s curves appear flat versus 5y CDS, while
+INTC 3s5s looks steep. And AMZN and INTC have more cleared risk in shorter-dated maturities
+at ICE than in 5y maturities.
+• CoreWeave provides a distinct window into high yield AI credit risk. CRWV sits outside our
+core IG cohort but is the only directly AI-related CDS contract in the on-the-run CDX.HY index.
+Its 5y CDS has widened sharply over the past six months, and both trading volume and risk
+outstanding have increased substantially.
+• Trade recommendations:
+° Buy AVGO 5y CDS protection
+° Buy AMZN 5y CDS protection outright or put on a 3s5s steepener (sell 3y protection and
+buy 5y protection, DV01-neutral)
+° Sell ORCL 5y basis (sell the 5.25s of 2032 versus selling 5y or 5.5y CDS protection)
+The footprint of AI-related credits in the CDS market has expanded substantially over the past
+year. Trading activity and risk outstanding have increased sharply, while spreads have widened
+materially both in absolute terms and relative to the broader market. At the same time, CDS has
+underperformed maturity-matched cash bonds, indicating that the repricing extends beyond
+weakness in the underlying cash market. 
+FICC Research
+Credit Research
+29 October 2026
+SIGNATURE
+US Credit Strategy
+Jigar Patel
++1 212 412 1161
+jigar.n.patel@barclays.com
+BCI, US
+Dominique Toublan
++1 212 412 3841
+dominique.toublan@barclays.com
+BCI, US
+US Fundamental Credit Research
+Andrew Keches, CFA
++1 212 412 5248
+andrew.keches@barclays.com
+BCI, US
+Priya Ohri-Gupta, CFA
++1 212 412 3759
+priya.ohrigupta@barclays.com
+BCI, US
+Jeff Harlib
++1 212 412 6952
+jeffrey.harlib@barclays.com
+BCI, US
+Remy Neuhaus
++1 212 526 6840
+remy.neuhaus@barclays.com
+BCI, US
+Joseph Mulherin
++ 1 212 526 4024
+joseph.mulherin@barclays.com
+BCI, US
+Teresa Tian
++1 212 526 8973
+teresa.tian@barclays.com
+BCI, US
+ 
+ 
+ 
+
+These aggregate moves, however, mask differences across individual issuers. Liquidity, spread
+performance, curve shape, and relative value vary across the AI-related credit universe. In this
+report, we map the AI CDS market and introduce a framework for comparing valuation, curve
+dynamics, the CDS-cash basis, trading activity, and risk outstanding across individual credits.
+Mapping the AI CDS universe
+We focus primarily on ten AI-related issuers in CDX.IG Series 47, comprising six hyperscalers and
+four semiconductor companies. The hyperscalers are Alphabet (GOOGL), Amazon (AMZN), Meta
+(META), Microsoft (MSFT), Oracle (ORCL), and SpaceX (SPCX), while the semiconductor group
+consists of Advanced Micro Devices (AMD), Broadcom (AVGO), Intel (INTC), and NVIDIA (NVDA).
+We use these ten names as our core AI cohort (Figure 1). Intel is included for completeness as a
+semiconductor constituent of CDX.IG despite not having participated in the vendor-financing
+activity that has been an important theme for other semiconductor issuers.
+Beyond this core cohort, we examine CoreWeave (CRWV), the lone high yield CDS contract
+directly tied to the AI build-out.
+FIGURE 1. AI cohort: ratings, 5y CDS, and index membership
+Ticker
+CDS Reference Entity
+Avg Rating 5y CDS (bp)
+CDX.IG
+Membership
+AMD
+Advanced Micro Devices, Inc.
+A2/A1
+121
+s37-47
+AMZN
+Amazon.com, Inc.
+AA3
+81
+s43-47
+AVGO
+Broadcom Inc.
+A3
+168
+s42-47
+GOOGL
+Alphabet Inc.
+AA2/AA1
+80
+s46-47
+INTC
+Intel Corporation
+BAA2
+104
+s43-47
+META
+Meta Platforms, Inc.
+AA3
+114
+s46-47
+MSFT
+Microsoft Corporation
+AAA
+53
+s46-47
+NVDA
+NVIDIA Corporation
+AA2/AA1
+125
+s47
+ORCL
+Oracle Corporation
+BAA3/BAA2
+271
+s35-47
+SPCX
+Space Exploration Technologies Corp.
+BAA2/BAA1
+244
+s47
+5y CDS as of October 28.
+Source: Bloomberg, Barclays Research
+ 
+AI CDS has repriced materially
+Wider across the board
+All ten members of the AI cohort have widened over the past six months and currently trade
+toward the wide end of their respective six-month ranges (Figure 2). The widening has been
+particularly notable in the chip-financing names, NVDA, AMD, and AVGO, which began the
+period as some of the cohort's tightest-trading credits. 
+There has also been considerable differentiation among the hyperscalers. The two BBB-rated
+issuers, ORCL and SPCX, have widened the most, while MSFT, the cohort's lone AAA credit, has
+been the most resilient. The widening has therefore been broad based but highly uneven in
+magnitude.
+29 October 2026
+2
+Barclays | US Credit Strategy
+
+FIGURE 2. AI cohort: Current 5y CDS versus six-month range
+53
+80
+81
+104
+114
+121
+125
+168
+244
+271
+100
+150
+200
+250
+300
+35
+55
+75
+95
+115
+135
+155
+175
+195
+MSFT
+GOOGL
+AMZN
+INTC
+META
+AMD
+NVDA
+AVGO
+SPCX
+ORCL
+SPCX + ORCL
+6mth Spread Range
+Current Spread
+Tickers are sorted by current 5y CDS in ascending order. Spread history is roll-adjusted. Levels as of October 28.
+Source: Barclays Research
+Underperformance versus CDX.IG has accelerated since the roll
+The widening in AI-related credits has far outpaced that of CDX.IG. The spread differential
+between our AI cohort and CDX.IG has increased from approximately 10bp six months ago to
+76bp currently (5bp tighter than the recent high of 81bp on October 23), with 31bp of the
+widening coming since the September 21 CDS roll (Figure 3). SPCX CDS began trading only on
+June 23 and is included in the cohort average from that date onward.
+This underperformance has also increased the cohort's contribution to the overall index spread.
+The ten AI-related issuers represent 8% of CDX.IG constituents but currently account for 16%
+(approximately 10bp) of the index's intrinsic spread. In other words, AI-related issuers now
+account for a disproportionately large share of the credit risk reflected in the index relative to
+their constituent count. 
+CDS has also underperformed cash
+The relative weakness in AI CDS has not been limited to underperformance versus CDX.IG. To
+compare CDS with the underlying cash market, we calculate a maturity-matched CDS-cash
+basis for each constituent, using a cash bond with a maturity close to five years where possible.
+A year ago, the average CDS-cash basis for both the AI and non-AI cohorts in CDX.IG was
+negative. Since then, the average basis for the non-AI cohort is little changed, while the AI
+cohort's basis has increased by approximately 50bp and is now positive (Figure 4). In other
+words, CDS has materially underperformed maturity-matched cash bonds for the AI cohort. 
+29 October 2026
+3
+Barclays | US Credit Strategy
+
+FIGURE 3. The spread differential between the AI cohort and CDX.IG
+has widened from 10bp six months ago to 74bp currently
+FIGURE 4. The AI cohort's CDS-cash basis is now positive, while the
+non-AI basis remains negative
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+40
+60
+80
+100
+120
+140
+160
+28-Apr
+28-Jun
+28-Aug
+28-Oct
+Basis
+CDS
+Basis (rhs)
+CDX.IG (lhs)
+Avg AI (lhs)
+-70
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+Oct-25
+Dec-25
+Feb-26 Apr-26
+Jun-26 Aug-26
+Oct-26
+AI CDS-Cash Basis
+Non-AI CDS-Cash Basis
+Source: Barclays Research
+Source: Bloomberg, Barclays Research
+Trading activity has increased sharply 
+AI names have become a much larger part of the single-name market 
+The spread widening has coincided with a substantial increase in trading activity. On a rolling
+four-week basis, average weekly CDS trading volume was approximately $6bn for the six
+hyperscalers and $3bn for the four semiconductors as of October 23 (Figure 5). 
+These levels represent increases of approximately 740% and 1,900%, respectively, over the past
+year. The large percentage increases reflect, in part, low starting volumes and the development
+of the CDS market for several issuers. MSFT and GOOGL traded relatively infrequently a year
+ago, while META, NVDA, and SPCX did not yet have any recorded activity at DTCC.
+The increase has also been significant relative to the broader single-name CDS market. The AI
+cohort accounted for less than 5% of Americas corporate single-name CDS volumes a year ago,
+compared with as much as 36% in August (Figure 6). Relative volumes have since declined to
+about 20%.
+29 October 2026
+4
+Barclays | US Credit Strategy
+
+1 The sum of net protection bought in a contract or, equivalently, the sum of net protection sold.
+FIGURE 5. CDS volumes for hyperscalers and semiconductors have
+increased significantly
+FIGURE 6. Volume for the AI cohort accounted for as much as 36% of
+Americas corporate single-name CDS volume in August
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Oct-25
+Jan-26
+Apr-26
+Jul-26
+Oct-26
+$bn
+Hyperscalers
+Semiconductors
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+Oct-25
+Jan-26
+Apr-26
+Jul-26
+Oct-26
+Hyperscalers + Semis as Pct of Americas Corp (4wk Avg)
+Volumes represent four-week rolling averages of weekly volume.
+Percentage represents hyperscaler and semiconductor CDS volume as a share of
+Americas corporate single-name CDS volume, based on four-week average weekly
+volumes.
+Source: DTCC, Barclays Research
+Source: DTCC, Barclays Research
+FIGURE 7. Open interest for the AI cohort has increased from
+approximately $7bn a year ago to more than $28bn currently
+FIGURE 8. The AI cohort now accounts for nearly 14% of open interest
+for Americas corporate single-name CDS, up from 4% a year ago
+0
+5
+10
+15
+20
+25
+30
+35
+Oct-25
+Jan-26
+Apr-26
+Jul-26
+Oct-26
+$bn
+Hyperscalers
+Semis
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+16%
+Oct-25
+Jan-26
+Apr-26
+Jul-26
+Oct-26
+Hyperscalers + Semis as Pct of Americas Corp
+Data as of October 23.
+Data as of October 23.
+Source: DTCC, Barclays Research
+Source: DTCC, Barclays Research
+Open interest has grown substantially
+CDS risk outstanding has also grown substantially. Net notional, which we use as a measure of
+open interest,1  has increased from approximately $5bn a year ago to $20bn currently for the
+hyperscalers, and from approximately $1.9bn to $8.6bn for the semiconductor cohort (Figure 7).
+The increase has also been significant relative to the broader market. Together, the hyperscalers
+and semiconductors now account for nearly 14% of open interest in the Americas corporate
+single-name CDS market, up from 4% a year ago (Figure 8).
+29 October 2026
+5
+Barclays | US Credit Strategy
+
+From the AI cohort to the individual credits
+The aggregate measures illustrate the direction of the market, but they mask substantial
+differences across individual issuers. We compare the cohort across five dimensions: current 5y
+CDS relative to its recent range, changes in the CDS curve, the maturity-matched CDS-cash
+basis, trading volume and net notional at DTCC, and the maturity distribution of cleared
+CDS risk at ICE. 
+Together, these measures help distinguish the cohort-wide repricing from issuer-specific
+differences in performance, curve shape, relative value, liquidity, and positioning.
+Note that for SPCX, all data start from June 23, 2026.
+5y CDS performance: Chip-financing names have
+lagged
+The constituents of our AI cohort are trading toward the wide end of their six-month ranges,
+albeit to differing degrees (Figure 9).
+MSFT has widened the least in both absolute and percentage terms. Note that the company just
+announced a new bond deal the morning of October 29.
+At the other end, AVGO has widened the most in percentage terms. AVGO, AMD, and NVDA were
+among the tightest names in the cohort six months ago, trading in the low 40bp area; they are
+now among the widest. We recommend buying AVGO 5y CDS protection as way to hedge the
+broader AI funding overhang.
+ORCL and SPCX remain the widest names in the cohort, although ORCL is nearly 50bp inside its
+six-month wides.
+FIGURE 9. The constituents of the AI cohort have widened over the past six months, but to varying
+degrees 
+5y CDS (bp)
+Ticker
+Current
+6m Chg
+6m Pct Chg
+6m Range
+Range Position
+MSFT
+53
++9
+20%
+41-60
+64%
+GOOGL
+80
++29
+56%
+50-86
+83%
+AMZN
+81
++25
+44%
+52-86
+85%
+INTC
+104
++40
+63%
+59-104
+100%
+META
+114
++39
+52%
+74-127
+76%
+AMD
+121
++78
+177%
+40-122
+99%
+NVDA
+125
++79
+172%
+43-130
+94%
+AVGO
+168
++121
+258%
+43-172
+97%
+SPCX
+244
++127
+109%
+117-262
+87%
+ORCL
+271
++91
+51%
+159-319
+70%
+As of October 28. Spreads are roll-adjusted.
+Source: Barclays Research
+29 October 2026
+6
+Barclays | US Credit Strategy
+
+FIGURE 10. 3s5s had been steepening across most of the AI cohort
+until recently...
+FIGURE 11. ...with ORCL in particular flattening considerably over the
+past month
++25.0
+Cumulative 3s5s Change — MSFT, AM
+-5
+0
+5
+10
+15
+20
+25
+28-Apr
+28-Jun
+28-Aug
+28-Oct
+MSFT
+AMZN
+GOOGL
+INTC
+META
+Cum. Chg in 3s5s (bp)
+C, META
++60.0
+Cumulative 3s5s 
+-10
+0
+10
+20
+30
+40
+50
+60
+28-Apr
+28-Jun
+28-Aug
+28-Oct
+AMD
+NVDA
+AVGO
+SPCX
+ORCL
+Cum. Chg in 3s5s (bp)
+Source: Barclays Research
+Source: Barclays Research
+3s5s CDS curves: AMZN and ORCL look flat relative to
+5y; INTC looks steep
+3s5s curves have steepened across most of the cohort in absolute terms (Figure 10 and Figure
+11), but the magnitude of the steepening has differed, and some curves now appear flat relative
+to their 5y spread levels while others remain steep (Figure 12 and Figure 13). A few observations:
+• AMZN and GOOGL trade around the same 5y CDS level, 80-81bp, but AMZN's 3s5s curve is
+only 2bp steeper over the past six months and now looks flat relative to GOOGL's. The lack of
+steepening in the AMZN curve coincided with the announcement of a delayed-draw term loan
+(DDTL) that was put in place in June (with a maturity of three years from the draw date).
+which may have created some technical buying pressure on the 2.5-3.0y CDS maturity points.
+We think investors should buy AMZN 5y CDS protection outright or put on a 3s5s steepener
+(sell 3y protection and buy 5y protection, DV01-neutral) to position for a potential
+normalization in the curve.
+• ORCL's 3s5s curve has been flattening recently and appears especially flat versus comps.
+• AVGO's 3s5s curve looks flat relative to its 5y spread, especially in comparison to the AMD and
+NVDA curves.
+• INTC's 3s5s curve looks steep relative to its 5y spread; in percentage terms, it is almost as
+steep as the much tighter-trading MSFT.
+29 October 2026
+7
+Barclays | US Credit Strategy
+
+FIGURE 12. Current 3s5s CDS curves in absolute terms and as a
+percentage of 5y CDS
+FIGURE 13. 3s5s curves versus 5y CDS
+50
+18
+38
+75
+38
+41
+27
+41
+40
+21
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+45%
+0
+10
+20
+30
+40
+50
+60
+70
+80
+3s5s (bp, lhs)
+As pct of 5y (rhs)
+-5.0
+0.0
+4/28
+ORCL
+AMZN
+AVGO
+SPCX
+AMD
+NVDA
+GOOGL
+META
+INTC
+MSFT
+0
+10
+20
+30
+40
+50
+60
+70
+80
+0
+50
+100
+150
+200
+250
+300
+3s5s (bp)
+5y CDS (bp)
+Sorted by percentage of 5y CDS in ascending order.
+Source: Barclays Research
+Source: Barclays Research
+CDS-cash basis: Near zero to positive for most, led by
+chip-financing names
+CDS for the AI cohort has underperformed comparable cash bonds over the past year, with the
+matched CDS-cash basis near zero to positive for most (Figure 14 and Figure 15). There are,
+however, meaningful differences across issuers:
+• ORCL's basis previously reached the most positive level of the cohort, although it has since
+retraced and now stands at the 80th percentile of its one-year range. With the ORCL basis still
+among the most positive in the cohort and CDS lagging the rally in cash on October 28 after
+the company announced more limited funding needs than expected (see Ripping the band-
+aid), we like selling the ORCL 5y basis (selling 5.25s of 2032 and selling 5y or 5.5y CDS
+protection) to position for some compression.
+• INTC's basis has remained negative throughout the past year and is currently the only
+negative basis in the cohort.
+• The chip-financing names, NVDA, AVGO, and AMD, along with ORCL, currently have the most
+positive bases.
+We selected bonds with sufficient price history and maturities close to five years. As a result, the
+matched bonds are not necessarily the most recently issued securities or the most liquid bonds
+currently available near the five-year point.
+29 October 2026
+8
+Barclays | US Credit Strategy
+
+FIGURE 14. The maturity-matched CDS-cash basis is near zero to positive for most of the AI cohort,
+with the chip-financing names and ORCL having the most positive bases
+Basis
+Ticker
+CUSIP
+Coupon
+Maturity
+Matched
+CDS
+Z-spread Current
+1y Min 1y Max
+Range
+Position
+INTC
+458140BU3
+2.000
+8/12/2031
+97
+111
+-14
+-48
+-12
+92%
+SPCX
+84615QAA1
+5.350
+7/15/2031
+227
+226
+1
+-24
+9
+74%
+GOOGL
+02079KBK2
+4.100
+2/15/2031
+68
+67
+2
+-27
+2
+100%
+AMZN
+023135CH7
+3.600
+4/13/2032
+83
+80
+3
+-41
+3
+100%
+MSFT
+594918CS1
+1.350
+9/15/2030
+39
+33
+6
+-27
+10
+91%
+META
+30303M8T2
+4.550
+8/15/2031
+106
+92
+13
+-40
+15
+97%
+NVDA
+67066GAR5
+4.500
+6/15/2031
+113
+98
+15
+-23
+15
+100%
+ORCL
+68389XCZ6
+5.250
+2/3/2032
+273
+249
+24
+-55
+44
+80%
+AVGO
+11135FBY6
+5.150
+11/15/2031
+165
+137
+28
+-59
+28
+100%
+AMD
+007903BF3
+3.924
+6/1/2032
+125
+96
+29
+-36
+29
+100%
+Matched CDS spreads are interpolated using the maturity date of the bond. Levels are indicative and as of October 28. Basis
+ranges start from June 15, 2026, for NVDA and June 23, 2026, for SPCX.
+Source: Bloomberg, Barclays Research
+FIGURE 15. Matched CDS-cash basis: Current and one-year range
+-14
+1
+2
+3
+6
+13
+15
+24
+28
+29
+-80
+-60
+-40
+-20
+0
+20
+40
+60
+INTC
+SPCX
+GOOGL
+AMZN
+MSFT
+META
+NVDA
+ORCL
+AVGO
+AMD
+1y Basis Range
+Current
+Sorted by current CDS-cash basis in ascending order. Basis ranges start from June 15, 2026, for NVDA and June 23, 2026, for
+SPCX.
+Source: Bloomberg, Barclays Research
+Volume and open interest at DTCC: A broad-based
+increase
+The increases in volume and open interest discussed earlier have been significant across the AI
+cohort (Figure 16). Several observations stand out:
+• Six members of the AI cohort rank among the ten most actively traded Americas corporate
+single-name CDS contracts, while three rank among the top ten by net notional outstanding.
+• ORCL ranks number one in both volume and open interest.
+• Absolute volume levels for the AI cohort are lowest for MSFT, INTC, and SPCX, with SPCX CDS
+having traded for only a little over four months.
+• Four of the ten names, GOOGL, META, NVDA, and SPCX, had no recorded volume in the year-
+ago period; three of those four, all except GOOGL, also had no risk outstanding at DTCC.
+• MSFT shows very large year-over-year percentage increases in both volume and open
+interest, although both changes are measured from a very low base.
+29 October 2026
+9
+Barclays | US Credit Strategy
+
+FIGURE 16. Volume and open interest have grown substantially, with six AI-cohort names ranking
+among the ten most actively traded Americas corporate single-name CDS contracts
+4wk Avg Weekly Volume ($mn)
+Open Interest ($bn)
+Ticker
+Current
+y/y Chg
+Rank*
+Current
+y/y Chg
+Rank*
+MSFT
+259
+15096%
+46
+2.2
+2153%
+15
+AMZN
+1,025
+2137%
+5
+4.4
+191%
+3
+GOOGL
+1,147
+-
+3
+3.5
+384%
+9
+INTC
+343
+838%
+29
+1.4
+117%
+25
+META
+834
+-
+8
+2.1
+-
+17
+AMD
+509
+760%
+12
+1.4
+91%
+29
+NVDA
+1,112
+-
+4
+2.8
+-
+12
+AVGO
+1,018
+1836%
+6
+3.0
+488%
+11
+SPCX
+430
+-
+19
+1.3
+-
+30
+ORCL
+2,307
+245%
+1
+6.9
+155%
+1
+* Rank among Americas corporate single-name CDS out of 340 entities with outstanding risk. Data as of October 23.
+Source: DTCC, Barclays Research
+ 
+Open interest at ICE: Cleared risk is concentrated at
+4-5y maturities for half the names and more
+dispersed for the rest
+ICE data capture only cleared positions and therefore provide a less comprehensive view of
+total risk outstanding than DTCC data. They do, however, provide maturity-level detail that is
+not available from DTCC, allowing us to compare how cleared risk is distributed across the curve
+(Figure 17).
+For half of the cohort, 85-90% of cleared risk is concentrated in the 4-5y area: MSFT, GOOGL,
+META, NVDA, and SPCX.
+For the other half, cleared risk is more dispersed across maturities. For AMZN, the largest share
+of cleared risk is in the June 2029 contract, while for INTC it is in the December 2029 contract. In
+our prior curve analysis, we noted that 3s5s appeared flat for AMZN and steep for INTC.
+For AMD, ORCL, and AVGO, the largest positions also fall within the 4-5y area, but cleared risk is
+more broadly distributed across shorter maturities.
+29 October 2026
+10
+Barclays | US Credit Strategy
+
+FIGURE 17. For half of the AI cohort, cleared open interest at ICE is concentrated in 4-5y maturities; for the rest, it is more dispersed
+CDS Maturity Date
+Ticker
+Dec-26
+Jun-27
+Dec-27
+Jun-28
+Dec-28
+Jun-29
+Dec-29
+Jun-30
+Dec-30
+Jun-31
+Dec-31
+Other
+MSFT
+3%
+0%
+0%
+0%
+0%
+0%
+0%
+1%
+11%
+26%
+54%
+5%
+AMZN
+9%
+5%
+2%
+3%
+14%
+18%
+2%
+5%
+7%
+15%
+17%
+2%
+GOOGL
+0%
+0%
+2%
+0%
+1%
+1%
+1%
+3%
+10%
+46%
+31%
+6%
+INTC
+4%
+3%
+1%
+0%
+8%
+10%
+26%
+11%
+10%
+13%
+14%
+1%
+META
+0%
+0%
+0%
+0%
+1%
+2%
+4%
+4%
+12%
+36%
+37%
+3%
+AMD
+6%
+12%
+6%
+4%
+4%
+6%
+8%
+6%
+8%
+13%
+25%
+0%
+NVDA
+0%
+0%
+0%
+0%
+1%
+4%
+3%
+0%
+6%
+27%
+56%
+3%
+AVGO
+0%
+0%
+1%
+5%
+12%
+6%
+7%
+5%
+4%
+24%
+33%
+2%
+SPCX
+0%
+0%
+0%
+0%
+4%
+3%
+5%
+0%
+0%
+27%
+61%
+0%
+ORCL
+5%
+5%
+6%
+3%
+3%
+5%
+3%
+6%
+17%
+23%
+20%
+5%
+Table shows the distribution of open interest at ICE for each ticker by CDS maturity date. Highlighted values are the maturities with the largest share of open interest for each
+ticker. Data as of October 27.
+Source: ICE, Barclays Research
+ 
+CoreWeave (CRWV)
+CoreWeave falls outside our core investment grade AI cohort but plays a unique role in the
+market. CRWV began trading in CDS in September 2025 after joining CDX.HY Series 45 and has
+remained in the on-the-run index since. As the only directly AI-related name in the on-the-run
+high yield index, its CDS provides a distinct window into how investors are pricing data-center
+and neocloud credit risk.
+For our latest views, see In the Eye of the AI Storm - Maintain OW.
+CDS has widened sharply over the past six months, broadly consistent with the performance of
+CRWV's bonds. The curve is now quoted in points upfront rather than in spread terms, reflecting
+the wider level at which the credit trades.
+Several observations stand out:
+• Valuation: 5y CDS is quoted at 15.5pts upfront, versus a six-month range of -2.3 to 20 points
+(Figure 18).
+• Curve: The 3s5s curve is only slightly steeper than it was six months ago (Figure 19).
+• CDS-cash basis: The maturity-matched basis package price has remained within 2pts of par
+over the past six months (Figure 20).
+• Volume and open interest at DTCC: Four-week average weekly volume has increased to
+$302mn, from $32mn a year ago, while net notional has risen to $850mn from $65mn (Figure
+21).
+• Open interest distribution at ICE: 67% of cleared risk is concentrated in the 4-5y
+area (Figure 22).
+29 October 2026
+11
+Barclays | US Credit Strategy
+
+FIGURE 19. CRWV CDS curve
+FIGURE 20. CRWV maturity-matched 2031 basis package ($)
++5.5
++10.2
++13.3
++13.0
++13.5
+-10
+-5
+0
+5
+10
+15
+20
+25
+1y
+2y
+3y
+4y
+5y
+Range
+Current
+6 months ago
+CRWV CDS Curve (pts UF)
+-20
+0
+20
+40
+60
+80
+100
+120
+28-Apr
+28-Jun
+28-Aug
+28-Oct
+Matched CDS (pts UF)
+9.75% of 2031 ($)
+Data labels indicate the change in the curve at each maturity point.
+Basis package price represents the maturity-matched CDS price plus the cash-bond
+price.
+Source: Barclays Research
+Source: Bloomberg, Barclays Research
+FIGURE 21. CRWV CDS volume and open interest at DTCC
+FIGURE 22. CRWV cleared open interest by CDS maturity at ICE
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+0
+50
+100
+150
+200
+250
+300
+350
+Oct-25
+Jan-26
+Apr-26
+Jul-26
+Oct-26
+$bn
+$mn
+Open Interest (rhs)
+Volume (4wk Avg, lhs)
+2%
+4%
+4%
+2%
+4%
+5%
+9%
+2%
+16%
+32%
+20%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+20-Dec-26
+20-Jun-27
+20-Dec-27
+20-Jun-28
+20-Dec-28
+20-Jun-29
+20-Dec-29
+20-Jun-30
+20-Dec-30
+20-Jun-31
+20-Dec-31
+CRWV Open Interest at ICE by Maturity Date
+As of October 23. Volumes are four-week averages of weekly volumes. 
+As of October 27.
+Source: DTCC, Barclays Research
+Source: ICE, Barclays Research
+FIGURE 18. CRWV 5y CDS (points upfront)
+-5
+0
+5
+10
+15
+20
+25
+28-Apr
+28-Jun
+28-Aug
+28-Oct
+CRWV 5y CDS (pts UF)
+Current: 15.5; average: 6.6; range -2.3–20.0
+Source: Barclays Research
+29 October 2026
+12
+Barclays | US Credit Strategy
+
+Analyst(s) Certification(s):
+We, Andrew Keches, CFA, Priya Ohri-Gupta, CFA, Jigar Patel, Jeff Harlib, Joseph Mulherin, Dominique Toublan, Teresa Tian and Remy Neuhaus, hereby
+certify (1) that the views expressed in this research report accurately reflect our personal views about any or all of the subject securities or issuers
+referred to in this research report and (2) no part of our compensation was, is or will be directly or indirectly related to the specific recommendations or
+views expressed in this research report.
+Important Disclosures:
+Barclays Research is produced by the Investment Bank of Barclays Bank PLC and its affiliates (collectively and each individually, "Barclays").
+All authors contributing to this research report are Research Analysts unless otherwise indicated. The publication date at the top of the report reflects
+the local time where the report was produced and may differ from the release date provided in GMT.
+Availability of Disclosures:
+For current important disclosures regarding any issuers that are the subject of this research report, please refer to https://publicresearch.barclays.com
+or alternatively send a written request to: Barclays Compliance Control Room, 745 Seventh Avenue, 28th Floor, New York, NY 10019.
+Barclays Capital Inc. and/or one of its affiliates does and seeks to do business with companies covered in its research reports. As a result, investors
+should be aware that Barclays may have a conflict of interest that could affect the objectivity of this report. Barclays Capital Inc. and/or one of its
+affiliates regularly trades, generally deals as principal and generally provides liquidity (as market maker or otherwise) in the debt securities that are the
+subject of this research report (and related derivatives thereof). Barclays trading desks may have either a long and / or short position in such securities,
+other financial instruments and / or derivatives, which may pose a conflict with the interests of investing customers. Where permitted and subject to
+appropriate information barrier restrictions, Barclays fixed income research analysts regularly interact with its trading desk personnel regarding
+current market conditions and prices. Barclays fixed income research analysts receive compensation based on various factors including, but not
+limited to, the quality of their work, the overall performance of the firm (including the profitability of the Investment Banking Department), the
+profitability and revenues of the Markets business and the potential interest of the firm's investing clients in research with respect to the asset class
+covered by the analyst. To the extent that any historical pricing information was obtained from Barclays trading desks, the firm makes no
+representation that it is accurate or complete. All levels, prices and spreads are historical and do not necessarily represent current market levels, prices
+or spreads, some or all of which may have changed since the publication of this document. Barclays Research Department produces various types of
+research including, but not limited to, fundamental analysis, equity-linked analysis, quantitative analysis, and trade ideas. Recommendations and
+trade ideas contained in one type of Barclays Research may differ from those contained in other types of Barclays Research, whether as a result of
+differing time horizons, methodologies, or otherwise.
+In order to access Barclays Statement regarding Research Dissemination Policies and Procedures, please refer to https://
+publicresearch.barclays.com/S/RD.htm. In order to access Barclays Research Conflict Management Policy Statement, please refer to: https://
+publicresearch.barclays.com/S/CM.htm.
+Disclosure(s) regarding Information Sources
+Bloomberg® is a trademark and service mark of Bloomberg Finance L.P. and its affiliates (collectively “Bloomberg”) and the Bloomberg Indices are
+trademarks of Bloomberg. Bloomberg or Bloomberg’s licensors own all proprietary rights in the Bloomberg Indices. Bloomberg does not approve or
+endorse this material, or guarantee the accuracy or completeness of any information herein, or make any warranty, express or implied, as to the results
+to be obtained therefrom and, to the maximum extent allowed by law, Bloomberg shall have no liability or responsibility for injury or damages arising
+in connection therewith.
+Materially Mentioned Issuers/Bonds
+ADVANCED MICRO DEVICES INC, A/CD/CE/D/E/J/K/L/M/N
+ALPHABET INC, A/CD/CE/D/E/J/K/L/M/N
+AMAZON.COM INC, Underweight, A/CD/CE/D/E/J/K/L/M/N
+Representative Bond: AMZN 3.95 04/13/52 (USD 68.21, 27-Oct-2026)
+Representative Bond: AMZN 4.7 12/01/32 (USD 96.32, 27-Oct-2026)
+BROADCOM INC, Market Weight, CD/CE/D/E/J/K/L/M/N
+Representative Bond: AVGO 4.8 10/15/34 (USD 90.38, 27-Oct-2026)
+COREWEAVE INC, CD/CE/D/FA/J/L
+CRWV 9 3/4 10/01/31, Overweight (USD 82.50, 27-Oct-2026)
+INTEL CORP, Market Weight, A/CD/CE/D/E/J/K/L/M/N
+Representative Bond: INTC 5.15 02/21/34 (USD 95.56, 27-Oct-2026)
+META PLATFORMS INC, Market Weight, CD/CE/J/K/M/N
+Representative Bond: META 5 5/8 11/15/55 (USD 80.54, 27-Oct-2026)
+MICROSOFT CORP, CD/CE/D/J/K/L/M/N
+NVIDIA CORP, CD/CE/J/K/M
+ORACLE CORP, Overweight, CD/CE/J
+Representative Bond: ORCL 5 1/2 08/03/35 (USD 85.77, 27-Oct-2026)
+ORCL 5 1/4 02/03/32 (USD 92.12, 28-Oct-2026)
+SPACE EXPLORATION TECHNOLOGIES CORP, Market Weight, A/CD/CE/D/J/K/L/M/N
+29 October 2026
+13
+Barclays | US Credit Strategy
+
+Representative Bond: SPCX 6.65 07/15/56 (USD 85.58, 27-Oct-2026)
+All pricing information is indicative only. Unless otherwise indicated, prices are sourced from LSEG Data & Analytics and reflect the closing price in the
+relevant trading market, which may not be the last available price at the time of publication.
+Disclosure Legend:
+A: Barclays Bank PLC and/or an affiliate has been lead manager or co-lead manager of a publicly disclosed offer of securities of the issuer in the
+previous 12 months.
+B: An employee or non-executive director of Barclays PLC is a director of this issuer.
+CD: Barclays Bank PLC and/or an affiliate is a market-maker in debt securities issued by this issuer.
+CE: Barclays Bank PLC and/or an affiliate is a market-maker in equity securities issued by this issuer.
+CH: Barclays Bank PLC and/or its group companies makes, or will make, a market in the securities (as defined under paragraph 16.2 (k) of the HK SFC
+Code of Conduct) in respect of this issuer.
+D: Barclays Bank PLC and/or an affiliate has received compensation for investment banking services from this issuer in the past 12 months.
+E: Barclays Bank PLC and/or an affiliate expects to receive or intends to seek compensation for investment banking services from this issuer within the
+next 3 months.
+FA: Barclays Bank PLC and/or an affiliate beneficially owns 1% or more of a class of equity securities of this issuer, as calculated in accordance with US
+regulations.
+FB: Barclays Bank PLC and/or an affiliate beneficially owns a long position of more than 0.5% of a class of equity securities of this issuer, as calculated
+in accordance with EU regulations.
+FC: Barclays Bank PLC and/or an affiliate beneficially owns a short position of more than 0.5% of a class of equity securities of this issuer, as calculated
+in accordance with EU regulations.
+FD: Barclays Bank PLC and/or an affiliate beneficially owns 1% or more of a class of equity securities of this issuer, as calculated in accordance with
+South Korean regulations.
+FE: Barclays Bank PLC and/or its group companies has financial interests in relation to this issuer and such interests aggregate to an amount equal to
+or more than 1% of this issuer’s market capitalization, as calculated in accordance with HK regulations.
+GD: One of the Research Analysts on the fundamental credit coverage team (and/or a member of his or her household) has a long position in the
+common equity securities of this issuer.
+GE: One of the Research Analysts on the fundamental equity coverage team (and/or a member of his or her household) has a long position in the
+common equity securities of this issuer.
+H: This issuer beneficially owns more than 5% of any class of common equity securities of Barclays PLC.
+I: Barclays Bank PLC and/or an affiliate is party to an agreement with this issuer for the provision of financial services to Barclays Bank PLC and/or an
+affiliate.
+J: Barclays Bank PLC and/or an affiliate is a liquidity provider and/or trades regularly in the securities of this issuer and/or in any related derivatives.
+K: Barclays Bank PLC and/or an affiliate has received non-investment banking related compensation (including compensation for brokerage services, if
+applicable) from this issuer within the past 12 months.
+L: This issuer is, or during the past 12 months has been, an investment banking client of Barclays Bank PLC and/or an affiliate.
+M: This issuer is, or during the past 12 months has been, a non-investment banking client (securities related services) of Barclays Bank PLC and/or an
+affiliate.
+N: This issuer is, or during the past 12 months has been, a non-investment banking client (non-securities related services) of Barclays Bank PLC and/or
+an affiliate.
+O: Not in use.
+P: Not in use.
+Q: Barclays Bank PLC and/or an affiliate is a Corporate Broker to this issuer.
+R: Not in use.
+S: This issuer is a Corporate Broker to Barclays PLC.
+T: Barclays Bank PLC and/or an affiliate is providing equity advisor and/or investor engagement services to this issuer.
+Explanation of the Barclays Research Corporate Credit Sector Rating System
+ 
+Overweight (OW):
+For sectors rated against the Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit
+Index or the Bloomberg EM USD Corporate and Quasi-Sovereign Index, the analyst expects the six-month excess return of the sector to exceed the six-
+month excess return of the relevant index.
+For sectors rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index, the Bloomberg Pan-European High Yield 3% Issuer Capped
+Credit Index excluding Financials, the Bloomberg Pan-European High Yield Finance Index or the Bloomberg EM Asia USD High Yield Corporate Credit
+Index, the analyst expects the six-month total return of the sector to exceed the six-month total return of the relevant index.
+ 
+29 October 2026
+14
+Barclays | US Credit Strategy
+
+Market Weight (MW):
+For sectors rated against the Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit
+Index or the Bloomberg EM USD Corporate and Quasi-Sovereign Index, the analyst expects the six-month excess return of the sector to be in line with
+the six-month excess return of the relevant index.
+For sectors rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index, the Bloomberg Pan-European High Yield 3% Issuer Capped
+Credit Index excluding Financials, the Bloomberg Pan-European High Yield Finance Index or the Bloomberg EM Asia USD High Yield Corporate Credit
+Index, the analyst expects the six-month total return of the sector to be in line with the six-month total return of the relevant index.
+ 
+Underweight (UW):
+For sectors rated against the Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit
+Index or the Bloomberg EM USD Corporate and Quasi-Sovereign Index, the analyst expects the six-month excess return of the sector to be less than the
+six-month excess return of the relevant index.
+For sectors rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index, the Bloomberg Pan-European High Yield 3% Issuer Capped
+Credit Index excluding Financials, the Bloomberg Pan-European High Yield Finance Index or the Bloomberg EM Asia USD High Yield Corporate Credit
+Index, the analyst expects the six-month total return of the sector to be less than the six-month total return of the relevant index.
+ 
+Sector definitions:
+Sectors in U.S. High Grade Research are defined using the sector definitions of the Bloomberg U.S. Credit Index and are rated against the Bloomberg
+U.S. Credit Index.
+Sectors in U.S. High Yield Research are defined using the sector definitions of the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index and are
+rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index.
+ 
+Sectors in European High Grade Research are defined using the sector definitions of the Bloomberg Pan-European Credit Index and are rated against
+the Bloomberg Pan-European Credit Index.
+Sectors in Industrials and Utilities in European High Yield Research are defined using the sector definitions of the Bloomberg Pan-European High Yield
+3% Issuer Capped Credit Index excluding Financials and are rated against the Bloomberg Pan-European High Yield 3% Issuer Capped Credit Index
+excluding Financials.
+Sectors in Financials in European High Yield Research are defined using the sector definitions of the Bloomberg Pan-European High Yield Finance Index
+and are rated against the Bloomberg Pan-European High Yield Finance Index.
+ 
+Sectors in Asia High Grade Research are defined on Barclays Live and are rated against the Bloomberg EM Asia USD High Grade Credit Index.
+Sectors in Asia High Yield Research are defined on Barclays Live and are rated against the Bloomberg EM Asia USD High Yield Corporate Credit Index.
+ 
+Sectors in EEMEA and Latin America Research are defined on Barclays Live and are rated against the Bloomberg EM USD Corporate and Quasi
+Sovereign Index. These sectors may contain both High Grade and High Yield issuers.
+ 
+To view sector definitions and monthly sector returns for Asia, EEMEA and Latin America Research, go to https://live.barcap.com/go/research/
+EMSectorReturns on Barclays Live.
+ 
+For important information about Asia, EEMEA and LatAm Credit Sector definitions, go to https://live.barcap.com/go/publications/link?
+contentPubID=FC2786307&restriction=DEBT on Barclays Live.
+ 
+ 
+Explanation of the Barclays Research Corporate Credit Rating System
+ 
+For all High Grade issuers covered in the US, Europe or Asia, and for all issuers in Latin America and EEMEA, the credit rating system is based on the
+analyst's view of the expected excess return over a six-month period of the issuer's index-eligible corporate debt securities* relative to the expected
+excess return of the relevant sector, as specified on the report.
+ 
+Overweight (OW): The analyst expects the six-month excess return of the issuer's index-eligible corporate debt securities to exceed the six-month
+expected excess return of the relevant sector.
+Market Weight (MW): The analyst expects the six-month excess return of the issuer's index-eligible corporate debt securities to be in line with the six-
+month expected excess return of the relevant sector.
+Underweight (UW): The analyst expects the six-month excess return of the issuer's index-eligible corporate debt securities to be less than the six-
+month expected excess return of the relevant sector.
+29 October 2026
+15
+Barclays | US Credit Strategy
+
+Rating Suspended (RS): The rating has been suspended temporarily due to market events that make coverage impracticable or to comply with
+applicable regulations and/or firm policies in certain circumstances including where the Investment Bank of Barclays Bank PLC is acting in an advisory
+capacity in a merger or strategic transaction involving the company.
+Coverage Suspended (CS): Coverage of this issuer has been temporarily suspended.
+Not Covered (NC): Barclays’ fundamental credit research team does not provide formal, continuous coverage of this issuer and has not assigned a
+rating to the issuer or its debt securities. Any analysis, opinion or trade recommendation provided on a Not Covered issuer or its debt securities is valid
+only as of the publication date of this report and there should be no expectation that additional reports relating to the Not Covered issuer or its debt
+securities will be published thereafter.
+ 
+For all High Yield issuers (excluding those covered in EEMEA or Latin America), the credit rating system is based on the analyst's view of the expected
+total returns over a six-month period of the rated debt security relative to the expected total return of the relevant sector, as specified on the report.
+ 
+Overweight (OW): The analyst expects the six-month total return of the debt security subject to this rating to exceed the six-month expected total
+return of the relevant sector.
+Market Weight (MW): The analyst expects the six-month total return of the debt security subject to this rating to be in line with the six-month expected
+total return of the relevant sector.
+Underweight (UW): The analyst expects the six-month total return of the rated debt security subject to this rating to be less than the six-month
+expected total return of the relevant sector.
+Rating Suspended (RS): The rating has been suspended temporarily due to market events that make coverage impracticable or to comply with
+applicable regulations and/or firm policies in certain circumstances including where the Investment Bank of Barclays Bank PLC is acting in an advisory
+capacity in a merger or strategic transaction involving the company.
+Coverage Suspended (CS): Coverage of this issuer has been temporarily suspended.
+Not Covered (NC): Barclays’ fundamental credit research team does not provide formal, continuous coverage of this issuer and has not assigned a
+rating to the issuer or its debt securities. Any analysis, opinion or trade recommendation provided on a Not Covered issuer or its debt securities is valid
+only as of the publication date of this report and there should be no expectation that additional reports relating to the Not Covered issuer or its debt
+securities will be published thereafter.
+ 
+Where a recommendation is made at the issuer level, it does not apply to any sanctioned securities, where trading in such securities would be
+prohibited under applicable law, including sanctions laws and regulations.
+ 
+*In EEMEA and Latin America (and in certain other limited instances in other regions), analysts may occasionally rate issuers that are not part of the
+Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit Index or Bloomberg EM USD
+Corporate and Quasi Sovereign Index. In such cases the rating will reflect the analyst’s view of the expected excess return over a six-month period of
+the issuer’s corporate debt securities relative to the expected excess return of the relevant sector, as specified on the report.
+Distribution of ratings assigned by Barclays Corporate Credit Research at the issuer level:
+27% have been assigned an Overweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Buy rating; 57% of issuers
+with this rating category are investment banking clients of the Firm; 70% of the issuers with this rating have received financial services from the Firm.
+52% have been assigned Market Weight rating which, for purposes of mandatory regulatory disclosures, is classified as a Hold rating; 60% of issuers
+with this rating category are investment banking clients of the Firm; 75% of the issuers with this rating have received financial services from the Firm.
+21% have been assigned an Underweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Sell rating; 59% of issuers
+with this rating category are investment banking clients of the Firm; 74% of the issuers with this rating have received financial services from the Firm.
+Distribution of ratings assigned by Barclays Corporate Credit Research at the bond level:
+27% have been assigned an Overweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Buy rating; 40% of bonds with
+this rating category are investment banking clients of the Firm; 61% of the issuers with this rating have received financial services from the Firm.
+50% have been assigned Market Weight rating which, for purposes of mandatory regulatory disclosures, is classified as a Hold rating; 45% of bonds
+with this rating category are investment banking clients of the Firm; 64% of the issuers with this rating have received financial services from the Firm.
+22% have been assigned an Underweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Sell rating; 41% of bonds
+with this rating category are investment banking clients of the Firm; 52% of the issuers with this rating have received financial services from the Firm.
+Types of investment recommendations produced by Barclays FICC Research:
+In addition to any ratings assigned under Barclays’ formal rating systems, this publication may contain investment recommendations in the form of
+trade ideas, thematic screens, scorecards or portfolio recommendations that have been produced by analysts in FICC Research. Any such investment
+recommendations produced by non-Credit Research teams, including Sustainable Investing shall remain open until they are subsequently amended,
+rebalanced or closed in a future research report. Credit Factor Views remain open until periodically amended or subsequently closed in a future
+research report. Any other investment recommendations produced by the Credit Research teams are valid at current market conditions and may not
+be otherwise relied upon.
+ 
+29 October 2026
+16
+Barclays | US Credit Strategy
+
+Disclosure of other investment recommendations produced by Barclays FICC Research:
+Barclays FICC Research may have published other investment recommendations in respect of the same securities/instruments recommended in this
+research report during the preceding 12 months. To view all investment recommendations published by Barclays FICC Research in the preceding 12
+months please refer to https://live.barcap.com/go/research/Recommendations.
+Barclays does not assign ratings to asset backed securities. Barclays Capital Inc. and/or one of its affiliates may have acted as an underwriter for public
+offerings of any asset backed securities that are otherwise recommended in trade ideas contained within its securitised research reports.
+Legal entities involved in producing Barclays Research:
+Barclays Bank PLC (Barclays, UK)
+Barclays Capital Inc. (BCI, US)
+Barclays Bank Ireland PLC, Frankfurt Branch (BBI, Frankfurt)
+Barclays Bank Ireland PLC, Paris Branch (BBI, Paris)
+Barclays Bank Ireland PLC, Milan Branch (BBI, Milan)
+Barclays Securities Japan Limited (BSJL, Japan)
+Barclays Bank PLC, Hong Kong Branch (Barclays Bank, Hong Kong)
+Barclays Bank Mexico, S.A. (BBMX, Mexico)
+Barclays Capital Casa de Bolsa, S.A. de C.V. (BCCB, Mexico)
+Barclays Securities (India) Private Limited (BSIPL, India)
+Barclays Bank PLC, Singapore Branch (Barclays Bank, Singapore)
+Barclays Bank PLC, DIFC Branch (Barclays Bank, DIFC)
+Disclaimer:
+This publication has been produced by Barclays Research Department in the Investment Bank of Barclays Bank PLC and/or one or more of its affiliates
+(collectively and each individually, "Barclays").
+It has been prepared for institutional investors and not for retail investors. It has been distributed by one or more Barclays affiliated legal entities listed
+below or by an independent and non-affiliated third-party entity (as may be communicated to you by such third-party entity in its communications
+with you). It is provided for information purposes only, and Barclays makes no express or implied warranties, and expressly disclaims all warranties of
+merchantability or fitness for a particular purpose or use with respect to any data included in this publication. Barclays may provide research to certain
+categories of recipients that do not use it for investment purposes, including public and private companies in covered industries, media organisations,
+regulators, and academic institutions that use such research for their own internal informational, news gathering, regulatory or academic purposes. To
+the extent that this publication states on the front page that it is intended for institutional investors and is not subject to all of the independence and
+disclosure standards applicable to debt research reports prepared for retail investors under U.S. FINRA Rule 2242, it is an “institutional debt research
+report” and distribution to retail investors is strictly prohibited. Media organisations are prohibited from re-publishing any opinion or recommendation
+concerning a debt issuer or debt security contained in any Barclays institutional debt research report. Any recipients that do not want to continue
+receiving Barclays institutional debt research reports should contact debtresearch@barclays.com. Unless clients have agreed to receive “institutional
+debt research reports” as required by US FINRA Rule 2242, they will not receive any such reports that may be co-authored by non-debt research
+analysts. Eligible clients may get access to such cross asset reports by contacting debtresearch@barclays.com. Barclays will not treat unauthorized
+recipients of this report as its clients and accepts no liability for use by them of the contents which may not be suitable for their personal use. Prices
+shown are indicative and Barclays is not offering to buy or sell or soliciting offers to buy or sell any financial instrument.
+Without limiting any of the foregoing and to the extent permitted by law, in no event shall Barclays, nor any affiliate, nor any of their respective officers,
+directors, partners, or employees have any liability for (a) any special, punitive, indirect, or consequential damages; or (b) any lost profits, lost revenue,
+loss of anticipated savings or loss of opportunity or other financial loss, even if notified of the possibility of such damages, arising from any use of this
+publication or its contents.
+Other than disclosures relating to Barclays, the information contained in this publication (including third-party data) has been obtained from sources
+that Barclays Research believes to be reliable, but Barclays does not represent or warrant that it is accurate or complete. Third-party data, including
+third-party forecasts and predictions, is provided for information purposes only, has not been adopted or endorsed by Barclays, and does not
+represent the views or opinions of Barclays. Presentations by Third-Party Speakers: Any views or opinions expressed by third-party speakers during a
+Barclays-hosted event are solely those of the speaker and do not represent the views or opinions of Barclays. Barclays is not responsible for, and
+makes no warranties whatsoever as to, the information or opinions contained in any written, electronic, audio or video presentations by any third-
+party speakers, and such presentations have not been adopted or endorsed by Barclays and do not represent the views or opinions of Barclays.
+Content from third-party presentations is provided for information purposes only and has not been independently verified by Barclays for its accuracy
+or completeness.
+The views in this publication are solely and exclusively those of the authoring analyst(s) and are subject to change, and Barclays Research has no
+obligation to update its opinions or the information in this publication. Unless otherwise disclosed herein, the analysts who authored this report have
+not received any compensation from the subject companies in the past 12 months. If this publication contains recommendations, they are general
+recommendations that were prepared independently of any other interests, including those of Barclays and/or its affiliates, and/or the subject
+companies. This publication does not contain personal investment recommendations or investment advice or take into account the individual financial
+circumstances or investment objectives of the clients who receive it. Barclays is not a fiduciary to any recipient of this publication. The securities and
+other investments discussed herein may not be suitable for all investors and may not be available for purchase in all jurisdictions. The United States
+imposed sanctions on certain Chinese companies (https://ofac.treasury.gov/sanctions-programs-and-country-information/chinese-military-
+companies-sanctions), which may restrict U.S. persons from purchasing securities issued by those companies. Investors must independently evaluate
+the merits and risks of the investments discussed herein, including any sanctions restrictions that may apply, consult any independent advisors they
+29 October 2026
+17
+Barclays | US Credit Strategy
+
+believe necessary, and exercise independent judgment with regard to any investment decision. The value of and income from any investment may
+fluctuate from day to day as a result of changes in relevant economic markets (including changes in market liquidity). The information herein is not
+intended to predict actual results, which may differ substantially from those reflected. Past performance is not necessarily indicative of future results.
+The information provided does not constitute a financial benchmark and should not be used as a submission or contribution of input data for the
+purposes of determining a financial benchmark.
+This publication is not investment company sales literature as defined by Section 270.24(b) of the US Investment Company Act of 1940, nor is it
+intended to constitute an offer, promotion or recommendation of, and should not be viewed as marketing (including, without limitation, for the
+purposes of the UK Alternative Investment Fund Managers Regulations 2013 (SI 2013/1773) or AIFMD (Directive 2011/61)) or pre-marketing (including,
+without limitation, for the purposes of Directive (EU) 2019/1160) of the securities, products or issuers that are the subject of this report.
+Third Party Distribution: Any views expressed in this communication are solely those of Barclays and have not been adopted or endorsed by any third
+party distributor.
+United Kingdom: This document is being distributed (1) only by or with the approval of an authorised person (Barclays Bank PLC) or (2) to, and is
+directed at (a) persons in the United Kingdom having professional experience in matters relating to investments and who fall within the definition of
+"investment professionals" in Article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (the "Order"); or (b) high
+net worth companies, unincorporated associations and partnerships and trustees of high value trusts as described in Article 49(2) of the Order; or (c)
+other persons to whom it may otherwise lawfully be communicated (all such persons being "Relevant Persons"). Any investment or investment activity
+to which this communication relates is only available to and will only be engaged in with Relevant Persons. Any other persons who receive this
+communication should not rely on or act upon it. Barclays Bank PLC is authorised by the Prudential Regulation Authority and regulated by the
+Financial Conduct Authority and the Prudential Regulation Authority and is a member of the London Stock Exchange.
+European Economic Area (“EEA”): This material is being distributed to any “Authorised User” located in a Restricted EEA Country by Barclays Bank
+Ireland PLC. The Restricted EEA Countries are Austria, Bulgaria, Estonia, Finland, Hungary, Iceland, Liechtenstein, Lithuania, Luxembourg, Malta,
+Portugal, Romania, Slovakia and Slovenia. For any other “Authorised User” located in a country of the European Economic Area, this material is being
+distributed by Barclays Bank PLC. Barclays Bank Ireland PLC is a bank authorised by the Central Bank of Ireland whose registered office is at 1
+Molesworth Street, Dublin 2, Ireland. Barclays Bank PLC is not registered in France with the Autorité des marchés financiers or the Autorité de contrôle
+prudentiel. Authorised User means each individual associated with the Client who is notified by the Client to Barclays and authorised to use the
+Research Services. The Restricted EEA Countries will be amended if required.
+Finland: Notwithstanding Finland’s status as a Restricted EEA Country, Research Services may also be provided by Barclays Bank PLC where permitted
+by the terms of its cross-border license.
+Americas: The Investment Bank of Barclays Bank PLC undertakes U.S. securities business in the name of its wholly owned subsidiary Barclays Capital
+Inc., a FINRA and SIPC member. Barclays Capital Inc., a U.S. registered broker/dealer, is distributing this material in the United States and, in
+connection therewith accepts responsibility for its contents. Any U.S. person wishing to effect a transaction in any security discussed herein should do
+so only by contacting a representative of Barclays Capital Inc. in the U.S. at 745 Seventh Avenue, New York, New York 10019.
+Non-U.S. persons should contact and execute transactions through a Barclays Bank PLC branch or affiliate in their home jurisdiction unless local
+regulations permit otherwise.
+This material is distributed in Canada by Barclays Capital Canada Inc., a registered investment dealer, a Dealer Member of Canadian Investment
+Regulatory Organization (www.ciro.ca), and a Member of the Canadian Investor Protection Fund (CIPF).
+This material is distributed in Mexico by Barclays Bank Mexico, S.A. and/or Barclays Capital Casa de Bolsa, S.A. de C.V. This material is distributed in the
+Cayman Islands and in the Bahamas by Barclays Capital Inc., which it is not licensed or registered to conduct and does not conduct business in, from or
+within those jurisdictions and has not filed this material with any regulatory body in those jurisdictions.
+Japan: This material is being distributed to institutional investors in Japan by Barclays Securities Japan Limited. Barclays Securities Japan Limited is a
+joint-stock company incorporated in Japan with registered office of 6-10-1 Roppongi, Minato-ku, Tokyo 106-6131, Japan. It is a subsidiary of Barclays
+Bank PLC and a registered financial instruments firm regulated by the Financial Services Agency of Japan. Registered Number: Kanto Zaimukyokucho
+(kinsho) No. 143.
+Asia Pacific (excluding Japan): Barclays Bank PLC, Hong Kong Branch is distributing this material in Hong Kong as an authorised institution regulated
+by the Hong Kong Monetary Authority. Registered Office: 41/F, Cheung Kong Center, 2 Queen's Road Central, Hong Kong.
+All Indian securities-related research and other equity research produced by Barclays’ Investment Bank are distributed in India by Barclays Securities
+(India) Private Limited (BSIPL). BSIPL is a company incorporated under the Companies Act, 1956 having CIN U67120MH2006PTC161063. BSIPL is
+registered and regulated by the Securities and Exchange Board of India (SEBI) as a Research Analyst: INH000001519; Portfolio Manager INP000002585;
+Stock Broker INZ000269539 (member of NSE and BSE); Depository Participant with the National Securities & Depositories Limited (NSDL): DP ID: IN-DP-
+NSDL-478-2020; Investment Adviser: INA000000391. BSIPL is also registered as a Mutual Fund Advisor having AMFI ARN No. 53308. The registered office
+of BSIPL is at Nirlon Knowledge Park, 9th floor, Block B-6, Off. Western Express Highway, Goregaon (East), Mumbai – 400063, India. Telephone No: +91
+22 61754000 Fax number: +91 22 61754099. Any other reports produced by Barclays’ Investment Bank are distributed in India by Barclays Bank PLC,
+India Branch, an associate of BSIPL in India that is registered with Reserve Bank of India (RBI) as a Banking Company under the provisions of The
+Banking Regulation Act, 1949 (Regn No BOM43) and registered with SEBI as Merchant Banker (Regn No INM000002129) and also as Banker to the Issue
+(Regn No INBI00000950). Barclays Investments and Loans (India) Limited, registered with RBI as Non Banking Financial Company (Regn No RBI
+CoR-07-00258), and Barclays Wealth Trustees (India) Private Limited, registered with Registrar of Companies (CIN U93000MH2008PTC188438), are
+associates of BSIPL in India that are not authorised to distribute any reports produced by Barclays’ Investment Bank.
+This material is distributed in Singapore by the Singapore Branch of Barclays Bank PLC, a bank licensed in Singapore by the Monetary Authority of
+Singapore. For matters in connection with this material, recipients in Singapore may contact the Singapore branch of Barclays Bank PLC, whose
+registered address is 10 Marina Boulevard, #23-01 Marina Bay Financial Centre Tower 2, Singapore 018983.
+This material, where distributed to persons in Australia, is produced or provided by Barclays Bank PLC.
+This communication is directed at persons who are a “Wholesale Client” as defined by the Australian Corporations Act 2001.
+29 October 2026
+18
+Barclays | US Credit Strategy
+
+Please note that the Australian Securities and Investments Commission (ASIC) has provided certain exemptions to Barclays Bank PLC (BBPLC) under
+paragraph 911A(2)(l) of the Corporations Act 2001 from the requirement to hold an Australian financial services licence (AFSL) in respect of financial
+services provided to Australian Wholesale Clients, on the basis that BBPLC is authorised by the Prudential Regulation Authority of the United Kingdom
+(PRA) and regulated by the Financial Conduct Authority (FCA) of the United Kingdom and the PRA under United Kingdom laws. The United Kingdom
+has laws which differ from Australian laws. To the extent that this communication involves the provision of financial services by BBPLC to Australian
+Wholesale Clients, BBPLC relies on the relevant exemption from the requirement to hold an AFSL. Accordingly, BBPLC does not hold an AFSL.
+This communication may be distributed to you by either: (i) Barclays Bank PLC directly, (ii) Barrenjoey Markets Pty Limited (ACN 636 976 059,
+“Barrenjoey”), the holder of Australian Financial Services Licence (AFSL) 521800, a non-affiliated third party distributor, where clearly identified to you
+by Barrenjoey. Barrenjoey is not an agent of Barclays Bank PLC or (iii) such other non-affiliated third-party distributor(s) as may be clearly identified to
+you. Such non-affiliated third-party distributor(s) are not agents of Barclays Bank PLC.
+This material, where distributed in New Zealand, is produced or provided by Barclays Bank PLC. Barclays Bank PLC is not registered, filed with or
+approved by any New Zealand regulatory authority. This material is not provided under or in accordance with the Financial Markets Conduct Act of
+2013 (“FMCA”), and is not a disclosure document or “financial advice” under the FMCA. This material is distributed to you by either: (i) Barclays Bank
+PLC directly or (ii) Barrenjoey Markets Pty Limited (“Barrenjoey”), a non-affiliated third party distributor, where clearly identified to you by Barrenjoey.
+Barrenjoey is not an agent of Barclays Bank PLC. This material may only be distributed to “wholesale investors” that meet the “investment business”,
+“investment activity”, “large”, or “government agency” criteria specified in Schedule 1 of the FMCA.
+Middle East: Nothing herein should be considered investment advice as defined in the Israeli Regulation of Investment Advisory, Investment Marketing
+and Portfolio Management Law, 1995 (“Advisory Law”). This document is being made to eligible clients (as defined under the Advisory Law) only.
+Barclays Israeli branch previously held an investment marketing license with the Israel Securities Authority but it cancelled such license on 30/11/2014
+as it solely provides its services to eligible clients pursuant to available exemptions under the Advisory Law, therefore a license with the Israel
+Securities Authority is not required. Accordingly, Barclays does not maintain an insurance coverage pursuant to the Advisory Law.
+This material is distributed in the United Arab Emirates (including the Dubai International Financial Centre) and Qatar by Barclays Bank PLC. Barclays
+Bank PLC in the Dubai International Financial Centre (Registered No. 0060) is regulated by the Dubai Financial Services Authority (DFSA). Principal
+place of business in the Dubai International Financial Centre: The Gate Village, Building 4, Level 4, PO Box 506504, Dubai, United Arab Emirates.
+Barclays Bank PLC-DIFC Branch, may only undertake the financial services activities that fall within the scope of its existing DFSA licence. Related
+financial products or services are only available to Professional Clients, as defined by the Dubai Financial Services Authority. Barclays Bank PLC in the
+UAE is regulated by the Central Bank of the UAE and is licensed to conduct business activities as a branch of a commercial bank incorporated outside
+the UAE in Dubai (Licence No.: 13/1844/2008, Registered Office: Building No. 6, Burj Dubai Business Hub, Sheikh Zayed Road, Dubai City) and Abu Dhabi
+(Licence No.: 13/952/2008, Registered Office: Al Jazira Towers, Hamdan Street, PO Box 2734, Abu Dhabi). This material does not constitute or form part
+of any offer to issue or sell, or any solicitation of any offer to subscribe for or purchase, any securities or investment products in the UAE (including the
+Dubai International Financial Centre) and accordingly should not be construed as such. Furthermore, this information is being made available on the
+basis that the recipient acknowledges and understands that the entities and securities to which it may relate have not been approved, licensed by or
+registered with the UAE Central Bank, the Dubai Financial Services Authority or any other relevant licensing authority or governmental agency in the
+UAE. The content of this report has not been approved by or filed with the UAE Central Bank or Dubai Financial Services Authority. Barclays Bank PLC in
+the Qatar Financial Centre (Registered No. 00018) is authorised by the Qatar Financial Centre Regulatory Authority (QFCRA). Barclays Bank PLC-QFC
+Branch may only undertake the regulated activities that fall within the scope of its existing QFCRA licence. Principal place of business in Qatar: Qatar
+Financial Centre, Office 1002, 10th Floor, QFC Tower, Diplomatic Area, West Bay, PO Box 15891, Doha, Qatar. Related financial products or services are
+only available to Business Customers as defined by the Qatar Financial Centre Regulatory Authority.
+Russia: This material is not intended for investors who are not Qualified Investors according to the laws of the Russian Federation as it might contain
+information about or description of the features of financial instruments not admitted for public offering and/or circulation in the Russian Federation
+and thus not eligible for non-Qualified Investors. If you are not a Qualified Investor according to the laws of the Russian Federation, please dispose of
+any copy of this material in your possession.
+Sustainable Investing Related Research: There is currently no globally accepted framework or definition (legal, regulatory or otherwise) of, nor
+market consensus as to what constitutes a ‘sustainable’, ‘ESG’, ‘green’, ‘climate-friendly’ or an equivalent company, investment, strategy or
+consideration or what precise attributes are required to be eligible to be categorised by such terms. This means there are different ways to evaluate a
+company or an investment and so different values may be placed on certain sustainability credentials as well as adverse ESG-related impacts of
+companies and ESG controversies. The evolving nature of sustainable investing considerations, models and methodologies means it can be
+challenging to definitively and universally classify a company or investment under a sustainable investing label and there may be areas where such
+companies and investments could improve or where adverse ESG-related impacts or ESG controversies exist. The evolving nature of sustainable
+finance related regulations and the development of jurisdiction-specific regulatory criteria also means that there is likely to be a degree of divergence
+as to the interpretation of such terms in the market. We expect industry guidance, market practice, and regulations in this field to continue to evolve.
+Any information, data, image, or other content including from a third party source contained, referred to herein or used for whatsoever purpose by
+Barclays or a third party (“Information”), in relation to any actual or potential ‘ESG’, ‘sustainable' or equivalent objective, issue, factor or consideration
+is not intended to be relied upon for ESG or sustainability classification, regulatory regime or industry initiative purposes (“ESG Regimes”), unless
+otherwise stated. Nothing in these materials, including any images included therein, is intended to convey, suggest or indicate that Barclays considers
+or represents any product, service, person or body mentioned in these materials as meeting or qualifying for any ESG or sustainability classification,
+label or similar standards that may exist under ESG Regimes. Barclays has not conducted any assessment of compliance with ESG Regimes. Parties are
+reminded to make their own assessments for these purposes.
+IRS Circular 230 Prepared Materials Disclaimer: Barclays does not provide tax advice and nothing contained herein should be construed to be tax
+advice. Please be advised that any discussion of U.S. tax matters contained herein (including any attachments) (i) is not intended or written to be used,
+and cannot be used, by you for the purpose of avoiding U.S. tax-related penalties; and (ii) was written to support the promotion or marketing of the
+transactions or other matters addressed herein. Accordingly, you should seek advice based on your particular circumstances from an independent tax
+advisor.
+29 October 2026
+19
+Barclays | US Credit Strategy
+
+© Copyright Barclays Bank PLC (2026). All rights reserved. No part of this publication may be reproduced or redistributed in any manner without the
+prior written permission of Barclays. Barclays Bank PLC is registered in England No. 1026167. Registered office 1 Churchill Place, London, E14 5HP.
+Additional information regarding this publication will be furnished upon request.
+BRCF2242
+29 October 2026
+20
+Barclays | US Credit Strategy
