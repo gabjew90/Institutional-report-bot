@@ -101,6 +101,30 @@ def test_the_live_connection_uses_the_class():
     assert isinstance(db.get_connection(), db._Connection)
 
 
+def test_a_slow_commit_and_statement_are_logged_with_their_thread(pair, caplog):
+    ours, _, _ = pair
+    with patch.object(db, "_SLOW_DB_S", 0.0), caplog.at_level("WARNING", logger=db.log.name):
+        ours.execute("INSERT INTO t VALUES (8)")
+        ours.commit()
+    text = caplog.text
+    assert "INSERT INTO t VALUES" in text and "commit took" in text and "MainThread" in text
+
+
+def test_a_quick_commit_says_nothing(pair, caplog):
+    ours, _, _ = pair
+    with caplog.at_level("WARNING", logger=db.log.name):
+        ours.execute("INSERT INTO t VALUES (8)")
+        ours.commit()
+    assert "took" not in caplog.text
+
+
+def test_the_pause_watch_starts_once_per_process():
+    with patch.object(db, "_pause_watch_started", False), patch.object(db.threading, "Thread") as thread:
+        db._start_pause_watch()
+        db._start_pause_watch()
+    assert thread.call_count == 1 and thread.call_args.kwargs["daemon"] is True
+
+
 # --- the ingestion feed
 
 

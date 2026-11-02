@@ -5,6 +5,7 @@ import logging
 import re
 import sqlite3
 import threading
+import time
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
@@ -62,6 +63,36 @@ def _report_db_lock(sql: str) -> None:
     threading.Thread(target=_ping, daemon=True).start()
 
 
+# What held the write lock for 30 s on 2026-11-02 and 10-29? The batch process went
+# silent for 15 to 56 s between an INSERT and its next statement. PyMuPDF does not
+# pause other threads (measured) and malloc_trim did not run then, which leaves
+# the disk (ext4 with discard on a ZFS volume, and every WAL commit syncs). These
+# two logs settle it at the next stall: a slow commit with no "process paused"
+# line is the disk, and a "process paused" line is Python itself.
+_SLOW_DB_S = 5.0
+_PAUSE_S = 5.0
+_pause_watch_started = False
+
+
+def _start_pause_watch() -> None:
+    """One thread per process that sleeps a second at a time and logs when the
+    sleep overran: nothing in Python could run for that long."""
+    global _pause_watch_started
+    if _pause_watch_started:
+        return
+    _pause_watch_started = True
+
+    def _watch():
+        last = time.monotonic()
+        while True:
+            time.sleep(1.0)
+            now = time.monotonic()
+            if now - last - 1.0 >= _PAUSE_S:
+                log.warning(f"process paused for {now - last - 1.0:.1f}s: no Python thread could run")
+            last = now
+    threading.Thread(target=_watch, name="pause-watch", daemon=True).start()
+
+
 class _Connection(sqlite3.Connection):
     """Ends the transaction a lock failure leaves open (2026-11-02).
 
@@ -88,24 +119,44 @@ class _Connection(sqlite3.Connection):
                 log.warning(f"database lock: rollback failed: {e}")
         _report_db_lock(sql)
 
+    def _timed(self, what: str, started: float) -> None:
+        took = time.monotonic() - started
+        if took >= _SLOW_DB_S:
+            log.warning(f"database: {' '.join(str(what).split())[:60]} took {took:.1f}s "
+                        f"on {threading.current_thread().name}")
+
+    def commit(self):
+        started = time.monotonic()
+        try:
+            return super().commit()
+        finally:
+            self._timed("commit", started)
+
     def execute(self, sql, *args):
+        started = time.monotonic()
         try:
             return super().execute(sql, *args)
         except sqlite3.OperationalError as e:
             self._lost_lock(e, sql)
             raise
+        finally:
+            self._timed(sql, started)
 
     def executemany(self, sql, *args):
+        started = time.monotonic()
         try:
             return super().executemany(sql, *args)
         except sqlite3.OperationalError as e:
             self._lost_lock(e, sql)
             raise
+        finally:
+            self._timed(sql, started)
 
 
 def _open_connection() -> sqlite3.Connection:
     db_path = Path(settings.db_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
+    _start_pause_watch()
     conn = sqlite3.connect(str(db_path), check_same_thread=False,
                            timeout=_BUSY_TIMEOUT_S, factory=_Connection)
     conn.row_factory = sqlite3.Row
