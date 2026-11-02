@@ -1,0 +1,492 @@
+P E R S P E C T I V E S
+Breaking Beta
+October 28, 2026
+Contributors: Kyle Schmidt
+We see something truly extraordinary happening beneath the surface of the equity markets. Over 
+the six months prior to September 30, 2026, 27% of large U.S. stocks had negative realized beta, 
+compared with a long-run average of just 1.3%.[1] The breadth of negative betas has no precedent 
+in our U.S. large-cap record dating back to 1990. The closest historical comparison is the dot-com 
+crash, when the market was declining, but the negative-beta share peaked at only 14% in late 
+2000. Today, we are nearly twice that prior high. This dislocation is extreme in both breadth and 
+duration and has significant implications for portfolio and risk management. In particular, it causes 
+acute stress for low-volatility, minimum-variance and low-beta allocations.
+The percentage of large U.S. stocks with a negative realized beta has never been this high
+
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+1992
+1996
+2000
+2004
+2008
+2012
+2016
+2020
+2024
+2028
+Share of stocks
+Nov 2000: 14%
+27%
+Share of stocks with a negative beta (realized 6-months daily)
+Source: NISA analysis. U.S. large cap = roughly the 600 largest U.S.-listed stocks (Capital IQ by 
+market cap, January 1990–July 2007; MSCI USA constituents thereafter). Beta of each stock’s 
+daily returns to the cap-weighted index of the other names, trailing six months. Average since 
+1990: 1.3%.
+Share of large U.S. stocks with negative six-month realized beta since 1990: 27% today versus a 
+prior peak of 14% in late 2000
+When we look at the largest ETFs in the space, we find U.S. low-volatility strategies are delivering 
+substantially less equity market exposure than their history and mandate would imply. The 
+six-month betas of five widely held ETFs[2] now range from -0.06 to 0.43, versus long-run 
+averages of about 0.7 to 0.8. Two of the largest ETFs have essentially begun to exhibit 
+market-neutral characteristics. The change is driven by a sharp decline in correlation with the 
+market, not a comparable decline in the funds’ volatility relative to it. The result is rapidly 
+increasing tracking errors between this fund family and the indices they are built against.
+U.S. low-volatility ETFs have lost most of their market exposure
+–0.2
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+Beta to MSCI USA, trailing six months
+–0.06
+0.06
+0.30
+0.31
+0.43
+Invesco S&P 500 Low Volatility ETF
+State Street SPDR US Large Cap Low Volatility Index ETF
+iShares MSCI USA Min Vol Factor ETF
+State Street SPDR Russell 1000 Low Volatility Focus ETF
+Fidelity Low Volatility Factor ETF
+
+Sources: NISA analysis; S&P Capital IQ daily total returns. MSCI USA: NISA reconstruction from 
+constituent weights and daily total returns. Beta of daily returns over the trailing 126 trading days, 
+through September 30, 2026.
+Six-month realized betas of five U.S. low-volatility ETFs
+We see the market as clearly splitting along the dimension of AI and most everything else. We 
+measure the ten largest U.S. stocks as accounting for 37% of index weight but 55% of the MSCI 
+USA index risk today.[1] Defensive sectors increasingly trade with negative correlation to the major 
+index drivers. We built a low-volatility proxy portfolio that goes long the 100 lowest-volatility 
+stocks weighted by inverse volatility.[3] In our simple, low-volatility proxy, negative-beta stocks 
+account for 61% of portfolio weight today. Low-volatility funds exhibiting low to negative betas 
+reflect the current state of this AI-driven market.
+Most of a low-volatility portfolio now moves against the market
+A. Low-volatility portfolios are where the negative betas live
+B. What it holds, and the beta of each group
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+2022
+2023
+2024
+2025
+2026
+61%
+26%
+Low-volatility portfolio: weight in negative-beta stocks
+All large U.S. stocks: share with negative beta
+Utilities
+beta -0.12
+Real estate
+beta +0.02
+Insurance
+beta -0.15
+Consumer staples
+beta -0.17
+Other
+beta +0.12
+0
+10
+20
+30
+40
+% of portfolio weight, September 2026
+Sources: NISA analysis; S&P Capital IQ daily total returns; MSCI USA constituents. Low-volatility 
+portfolio: each month, the 100 least volatile of the 500 largest U.S. stocks, weighted by inverse 
+volatility. Betas: six months of daily returns against the cap-weighted index of the other names. B: 
+dark bars have a negative weighted beta.
+Negative-beta holdings in a low-volatility proxy and their sector exposures
+A side effect of this is materially increasing tracking error of these mandates. In our proxy, 
+annualized tracking error as a ratio of index volatility has roughly doubled from its average over 
+the last decade, from ~0.7 to ~1.4. Thus, these strategies have become significant anti-AI 
+allocations. Investors have underwritten these strategies for a myriad of reasons, but outright 
+market hedges with tracking errors that may exceed index volatility itself was likely not part of the 
+mandate.
+Low-volatility tracking error now exceeds the market’s own volatility
+
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1992
+1996
+2000
+2004
+2008
+2012
+2016
+2020
+2024
+2028
+Tracking error ÷ index volatility
+Tracking error equal to the index’s own volatility
+1991–2023 average 0.55
+1991–2023 average 0.55
+1.41
+Sources: NISA analysis; S&P Capital IQ daily total returns. MSCI USA: NISA reconstruction from 
+constituent weights and daily total returns. Proxy: each quarter, the 100 least volatile of the 500 
+largest names in our U.S. large-cap universe (Capital IQ top ~600 by market cap to July 2007, 
+MSCI USA constituents thereafter), weighted by inverse volatility. Tracking error and index 
+volatility: annualized standard deviation of daily returns (differences with MSCI USA, and MSCI 
+USA itself) over the trailing 126 trading days, through September 30, 2026.
+One may attempt to lower the tracking error of these mandates with index overlays. An overlay[4] 
+recovers beta exposure but introduces risks if correlations were to normalize. For example, 
+bringing combined beta to 1 of the ETFs we analyzed would require index exposure of 57% to 
+106% on top of the funds, taking gross long exposure as high as 206%.
+Keeping a low-volatility Allocation at beta 1 now takes up to 200% long
+A. What it takes today
+B. Only 2000–01 came close
+Invesco S&P 500 Low
+Volatility ETF
+206%
+State Street SPDR US Large
+Cap Low Volatility Index
+ETF
+194%
+iShares MSCI USA Min Vol
+Factor ETF
+170%
+State Street SPDR Russell
+1000 Low Volatility Focus
+ETF
+169%
+Fidelity Low Volatility
+Factor ETF
+157%
+0%
+50%
+100%
+150%
+200%
+250%
+Gross long exposure per dollar invested
+The ETF itself
+MSCI USA overlay to reach beta 1
+100%
+120%
+140%
+160%
+180%
+200%
+220%
+1992 1996 2000 2004 2008 2012 2016 2020 2024 2028
+Gross long needed for beta 1
+Low-volatility proxy, 1990–2026
+Invesco S&P 500 Low Volatility ETF
+Sources: NISA analysis; S&P Capital IQ daily total returns. MSCI USA: NISA reconstruction from 
+constituent weights and daily total returns. Overlay = 1 minus the trailing 126-day beta to MSCI 
+USA, as of September 30, 2026. Proxy: each quarter, the 100 least volatile of the 500 largest 
+names in our U.S. large-cap universe (MSCI USA constituents), weighted by inverse volatility (daily 
+
+correlation with Invesco S&P 500 Low Volatility ETF 0.99).
+If fund betas returned to their pre-2024 averages with those overlays lagging as risk model 
+estimates updated, combined betas would rise to 1.4-1.7, significantly overshooting the target. A 
+rebound comparable to early 2020 would lift them to about 1.5 -2.1. Beta 1 is an analytical 
+reference point, not an allocation recommendation, but it highlights the difficulty in managing 
+these exposures in this unprecedented environment.
+The overlay that fixes beta today is a bet that correlation stays low
+A. In a broad selloff, correlation returns
+B. The hedge then doubles your market exposure
+–0.2
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+Feb–Apr 2020
+2022
+Mar–Apr 2025
+Apr–Sep 2026
+Beta to MSCI USA over the window
+Invesco S&P 500 Low Volatility ETF
+State Street SPDR US Large Cap Low Volatility Index ETF
+iShares MSCI USA Min Vol Factor ETF
+State Street SPDR Russell 1000 Low Volatility Focus ETF
+Fidelity Low Volatility Factor ETF
+2.06
+Invesco S&P 500 Low
+Volatility ETF
+1.97
+State Street SPDR US
+Large Cap Low
+Volatility Index ETF
+1.59
+iShares MSCI USA Min
+Vol Factor ETF
+1.69
+State Street SPDR
+Russell 1000 Low
+Volatility Focus ETF
+1.50
+Fidelity Low
+Volatility Factor ETF
+0.0
+0.5
+1.0
+1.5
+2.0
+Beta of ETF plus today’s overlay
+Today, as hedged
+If beta returns to its pre-2024 average
+If beta snaps back as in early 2020
+Sources: NISA analysis; S&P Capital IQ daily total returns. MSCI USA: NISA reconstruction from 
+constituent weights and daily total returns. A: beta of daily returns over each window. B: today’s 
+overlay (1 minus the September 30, 2026 beta) added to the ETF’s beta in each scenario.
+Combined fund and overlay betas under historical-average and early-2020 rebound scenarios
+This hedging exercise is becoming less stable. An overlay must be sized in advance, using 
+observed beta to estimate future market exposure. We tested this approach by setting the overlay 
+at each month-end to one minus the fund’s trailing six-month beta, holding it for the following 
+month and measuring the beta delivered by the combined position.
+An ex-ante hedge gets beta right on average and wrong in any given month
+
+A. Hedged to 1 each month; what was delivered
+B. The miss has roughly doubled
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+Jan 24Apr 24Jul 24Oct 24Jan 25Apr 25 Jul 25 Oct 25Jan 26Apr 26Jul 26Oct 26
+Realized beta of ETF plus overlay, next month
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+2011–2023
+2024–2025
+Apr–Sep 2026
+Month-to-month spread of delivered beta (sd)
+Invesco S&P 500 Low Volatility ETF
+State Street SPDR US Large Cap Low Volatility Index ETF
+iShares MSCI USA Min Vol Factor ETF
+State Street SPDR Russell 1000 Low Volatility Focus ETF
+Fidelity Low Volatility Factor ETF
+Sources: NISA analysis; S&P Capital IQ daily total returns. MSCI USA: NISA reconstruction from 
+constituent weights and daily total returns. Each month-end the overlay is set to 1 minus the trailing 
+126-day beta and held for the following month; delivered beta is the daily regression of ETF plus 
+overlay on MSCI USA over that month.
+Average results have been reasonably close to target. Across the funds, hedged positions 
+delivered an average beta of about 0.85 to 0.95 over the past six months. Monthly outcomes have 
+been less reliable. The month-to-month spread of delivered beta has increased from about 0.1 to 
+0.2 over 2011 to 2023 to about 0.2 to 0.35, with individual monthly betas ranging from about 0.3 to 
+1.35, based on our six monthly observations since April 2026. Measurement noise accounts for 
+part of any single month’s estimate, but not for the increase in dispersion. The overlay has 
+delivered close to its intended exposure on average, while allowing substantial deviations in 
+individual months.
+Without an overlay, the allocation retains very low to negative market exposure. Historical 
+experience offers some guidance on the persistence of low betas, although the number of 
+comparable episodes is limited. Low-beta historical deviations have historically had a half-life of 
+about 12 to 19 months,[5] although only three comparable episodes occur in the 35-year sample, 
+with a fourth currently under way since October 2025.
+Low-beta regimes have been sticky: half-lives of more than a year
+
+A. Low-volatility proxy, 1990–2026 (shaded: beta below 0.4)
+B. Low beta has tended to stay low
+–0.2
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1992
+1996
+2000
+2004
+2008
+2012
+2016
+2020
+2024
+2028
+Beta to MSCI USA, trailing six months
+0.4
+–0.07
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Below 0.4
+0.4–0.55
+0.55–0.7
+Above 0.7
+Average beta
+Beta today
+Six months later
+Twelve months later
+Sources: NISA analysis; S&P Capital IQ daily total returns. MSCI USA: NISA reconstruction from 
+constituent weights and daily total returns. Proxy: each quarter, the 100 least volatile of the 500 
+largest U.S. stocks, weighted by inverse volatility; U.S. large cap = Capital IQ by market cap to July 
+2007, MSCI USA constituents thereafter. B: month-end betas grouped by level, with the average 
+beta six and twelve months later, 1990–2026; the lowest group rests on three episodes.
+Low-volatility betas have been persistent looking forward for 12 months. Across the five funds 
+since launch and our proxy since 1990, roughly 70% to 80% of a deviation from long-run average 
+beta remains six months later, implying a half-life of about 12 to 19 months. When the proxy’s last 
+beta fell below 0.4, its average beta was 0.37 six months later and 0.35 twelve months later.
+The closest precedent is 2000–01. The proxy’s beta fell below 0.4 in April 2000, remained there 
+for 18 months and reached a low of 0.14. Two years after the episode began, beta was still only 
+0.46. The current episode has lasted 12 months, with beta falling further to below zero.
+These estimates are based on only four episodes in 35 years: 1999, 2000–01, mid-2024 to early 
+2025 and the period under way since October 2025. Two are from the AI period, including this 
+current one, leaving a limited historical sample. The persistence of low-volatility beta also needs to 
+be reconciled with the instability of market-wide correlation. The distinction is between the level of 
+correlation, which can change quickly, and the pattern of co-movement among stocks, which has 
+proved more durable. Today, that pattern separates AI leaders from the rest of the market, with 
+low-volatility strategies firmly positioned as hedges to the latter group.
+What the environment means for low volatility mandates today:
+•
+The allocation is contributing limited beta. An allocation sized for a beta of 0.6 to 0.8 delivers
+substantially less equity exposure than planned, and in some cases almost none.
+•
+Benchmark-relative risk has increased. Tracking error is now roughly twice its historical level
+as a ratio to benchmark volatility.
+•
+An overlay exchanges lower current exposure for greater rebound risk. An overlay based on
+current beta delivers the intended market exposure if the regime persists but materially
+overshoots if correlation renormalizes. A partial overlay, sized between the amounts implied
+by current beta and the historical average beta, leaves more of the current exposure shortfall
+
+while reducing the excess exposure following a rebound. In any case, the risk of an ex-post
+beta mismatch is larger than it has historically been.
+•
+Risk model estimates may have overstated market exposure. Risk models based on medium
+(~12-month half-life) and longer horizons have been slow to capture the shift. In our testing
+over the past year, a medium-horizon statistical model consistently overstated U.S. portfolio
+market exposure over the last six months.[6] Realized beta or shorter-horizon risk models
+have been the more reliable guide but would lead you to substantial leverage levels today.[7]
+•
+Portfolio construction is the primary distinction and stabilizer. The five funds have lost
+different amounts of market exposure, ranging from almost all to about half. A purposefully
+designed process with explicit sector and risk controls can produce a more tightly structured
+exposure profile than an unconstrained expression of the signal. Integrating low volatility with
+additional signals can add some resilience to environments like this. Even in low-volatility-only
+portfolios, outcomes are highly sensitive to how the signal is expressed through stock
+selection, weighting and sector, and risk constraints.
+For now, many low-volatility stocks trade with a negative correlation to the index’s dominant 
+exposures rather than serving as a lower-beta version of the index. An existing allocation, 
+therefore, brings less market exposure and more benchmark-relative risk than any time in our 
+history dating to 1990. An index overlay can bring that exposure back towards beta one but also 
+increases sensitivity to a rebound in correlation. Potential solutions for protection in this 
+environment include tracking error-aware mandates or fully integrated quantitative mandates. For 
+existing allocations, overlay exposure and/or allocation sizing are the dominant questions to 
+answer.
+About the data
+[1] MSCI USA: NISA reconstruction of the cap-weighted index from constituent weights and daily 
+total returns. U.S. large cap is Capital IQ by market cap through July 2007 and MSCI USA 
+constituents thereafter. Beta, correlation and share of variance explained (correlation squared) are 
+from daily returns over the trailing 126 trading days; historical comparisons average 
+nonoverlapping six-month windows. Tracking error is the annualized standard deviation of daily 
+return differences from the index.
+[2] ETF returns: daily total returns in U.S. dollars from S&P Capital IQ for each fund’s primary U.S. 
+listing: Invesco S&P 500 Low Volatility ETF (from May 2011), iShares MSCI USA Min Vol Factor ETF 
+(October 2011), State Street SPDR US Large Cap Low Volatility Index ETF (February 2013, with a 
+data gap in 2014), State Street SPDR Russell 1000 Low Volatility Focus ETF (December 2015) and 
+Fidelity Low Volatility Factor ETF (September 2016).
+[3] Low-volatility proxy: each quarter, the 100 least volatile (252-day) of the 500 largest U.S. 
+stocks by benchmark weight, weighted by inverse volatility.
+[4] Overlay: MSCI USA exposure equal to one minus the fund’s trailing beta, set at each 
+month-end and held for the following month; financing and trading costs are ignored.
+[5] Persistence: slope of beta six months ahead on current beta, nonoverlapping; half-life = 
+ln(0.5)/ln(slope) x 6 months. Fund names are used for identification only; this note is not a 
+recommendation to buy or sell any fund. Past performance is not indicative of future results.
+[6] The statistical risk model is a proprietary risk model developed by NISA that uses a 
+medium-term one-year half-life for correlations.
+[7] Short-term risk models were proxied using rolling 6-month realized betas as the estimate for 
+next month’s beta exposure.
+
+This material is provided for informational and discussion purposes only. It does not consider any 
+investor’s particular objectives, circumstances or constraints and should not be the sole basis for 
+an investment decision. Information and views are as of the date indicated and may change 
+without notice. Information is drawn from sources believed to be reliable, but its accuracy and 
+completeness are not guaranteed.
+This analysis is not representative of any NISA product or portfolio.  Historical market relationships 
+may not persist. Historical ETF observations reflect fund data; the model portfolios, reconstructed 
+index, low-volatility proxy and simulated overlays are analytical illustrations, not actual client 
+portfolios or realized client experience. These illustrations are intended to describe investment 
+characteristics, not forecast returns or results achievable by investors. Actual outcomes may differ 
+materially because of implementation, fees, financing and trading costs, and changing market 
+conditions. Scenarios are not predictions and do not encompass all possible outcomes. 
+Tracking-error controls may constrain opportunities for outperformance, dilute low-volatility 
+positioning and retain exposure to benchmark concentrations and market declines; controlling 
+benchmark-relative risk does not necessarily reduce absolute risk. Quantitative models and 
+integrated signals depend on data and estimated relationships that may prove inaccurate or 
+change unexpectedly. Realized beta and tracking error may differ materially from expectations or 
+targets, and combining signals does not ensure diversification or prevent losses. No strategy or 
+risk-control process guarantees investment success or any particular return, market exposure or 
+level of risk.
+
+Disclosure Information
+This material has been prepared by NISA Investment Advisors, LLC (“NISA”). This material is 
+subject to change without notice. This is for information and illustrative purposes only. It is not, 
+and should not be regarded as “investment advice” or as a “recommendation” regarding a course 
+of action, including without limitation as those terms are used in any applicable law or regulation. 
+This information is provided with the understanding that with respect to the material provided 
+herein (i) NISA is not acting in a fiduciary or advisory capacity under any contract with you, or any 
+applicable law or regulation, (ii) that you will make your own independent decision with respect to 
+any course of action in connection herewith, as to whether such course of action is appropriate or 
+proper based on your own judgment and your specific circumstances and objectives, (iii) that you 
+are capable of understanding and assessing the merits of a course of action and evaluating 
+investment risks independently, and (iv) to the extent you are acting with respect to an ERISA plan, 
+you are deemed to represent to NISA that you qualify and shall be treated as an independent 
+fiduciary for purposes of applicable regulation. NISA does not purport to and does not, in any 
+fashion, provide tax, accounting, actuarial, recordkeeping, legal, broker/dealer or any related 
+services. You should consult your advisors with respect to these areas and the material presented 
+herein. You may not rely on the material contained herein. NISA shall not have any liability for any 
+damages of any kind whatsoever relating to this material. No part of this document may be 
+reproduced in any manner, in whole or in part, without the written permission of NISA except for 
+your internal use. This material is being provided to you at no cost and any fees paid by you to 
+NISA are solely for the provision of investment management services pursuant to a written 
+agreement. All of the foregoing statements apply regardless of (i) whether you now currently or 
+may in the future become a client of NISA and (ii) the terms contained in any applicable investment 
+management agreement or similar contract between you and NISA.
