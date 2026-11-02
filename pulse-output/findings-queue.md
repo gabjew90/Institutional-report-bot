@@ -1318,3 +1318,9 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Adversarial verdict file shows zero findings while the driver trail reports 2 soft findings repaired; the file is not the record of what was checked. 
 - **observation** — Light edition again with no_new_research=true over a 96h window while the corpus has 1030 PDFs and live themes (midterms 53 banks, AI capex 44 banks / 145 PDFs). Re-check the no-new-research gate.
 - **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-02
+- **deterministic-fixable** — Light-day TRADE BOARD carries undated calls from 10-29 notes and repeats $RRC verbatim from the 10-30 board. Add a max age and a no-repeat rule for board lines.
+- **observation** — Third consecutive light edition (10-30, 11-02) with no_new_research=true over a 96h window containing 163 PDFs, all published 10-29. Re-check the no-new-research gate against the pulse anchor.
+- **observation** — Board includes results commentary (GEV, VRT, ASM, AVGO) that is not an explicit trade call, and the ASM Buy comes from a sales-desk blurb.
+- **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist. Today's context dump was archived correctly, so earlier archive-keying findings did not recur.
