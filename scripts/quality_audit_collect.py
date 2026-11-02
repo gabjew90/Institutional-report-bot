@@ -150,11 +150,11 @@ def enrich_asks(asks: list[dict]) -> None:
 def collect_profiles(since: datetime) -> list[dict]:
     c = _db()
     rows = c.execute(
-        "select user_id,username,display_name,updated_at,profile_text,personal_ammo,"
-        "trader_rank,trader_rationale,racism_rationale from user_profiles "
+        "select user_id,username,display_name,updated_at,profile_text,"
+        "trader_rationale,racism_rationale from user_profiles "
         "where updated_at>=? order by updated_at", (_sp(since),)).fetchall()
     keys = ("user_id", "username", "display_name", "updated_at", "profile_text",
-            "personal_ammo", "trader_rank", "trader_rationale", "racism_rationale")
+            "trader_rationale", "racism_rationale")
     return [dict(zip(keys, r)) for r in rows]
 
 

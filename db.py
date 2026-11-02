@@ -887,6 +887,9 @@ def _init_schema(conn: sqlite3.Connection) -> None:
     # upsert_user_profile writes NULL; this clears rows written before.
     conn.execute("UPDATE user_profiles SET racial_humor_score = NULL "
                  "WHERE racial_humor_score IS NOT NULL")
+    # Dead since ranks went on-read (get_global_trader_ranks); a stale copy
+    # read as "rank 33 at the top score" in an audit (run 7 M22).
+    conn.execute("UPDATE user_profiles SET trader_rank = NULL WHERE trader_rank IS NOT NULL")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_rank ON user_profiles(trader_rank)")
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).

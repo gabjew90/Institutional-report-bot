@@ -65,6 +65,13 @@ NO_RESEARCH_NOTE = (
     "above and the calendar below are current, and the full edition "
     "returns with the next research."
 )
+# The same morning when the bot cannot read the research folder: research
+# may well exist, so the note does not say none came in (2026-11-02).
+FEED_DOWN_NOTE = (
+    "The research feed is down, so today's bank notes have not reached us. "
+    "The market read above and the calendar below are current, and the full "
+    "edition returns once the feed is back."
+)
 EXIT_LIGHT = 4
 MAX_FETCH_ERRORS = 3
 # 10 minutes: the Omnipulse normally lands by 14:08 UTC and the gate runs

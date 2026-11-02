@@ -218,7 +218,13 @@ _MODEL_SOURCES_RE = re.compile(
 
 # A "Data: ..." line the model wrote itself (2026-10-26 audit A32: a post
 # with two Data footers).
-_MODEL_DATA_RE = re.compile(r"\n+[ \t]*\**Data:\**[ \t]+[^\n]*\s*$")
+_MODEL_DATA_RE = re.compile(r"\n+[ \t]*(?:→[ \t]*)?\**Data:\**[ \t]+[^\n]*\s*$")
+
+
+def strip_model_data(answer: str) -> str:
+    """Drop the model's own trailing Data line: its feeds are named by the
+    system (2026-10-29 audit A20, written as an arrow line)."""
+    return _MODEL_DATA_RE.sub("", answer or "").rstrip()
 
 
 def strip_model_sources(answer: str) -> str:

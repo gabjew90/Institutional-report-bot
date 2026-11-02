@@ -164,7 +164,7 @@ async def _execute_ticker_news(args: dict) -> dict:
         # Unlinked lines count in the long window too: four live ELMT runs
         # on 2026-10-30 returned the stake, the contract and the Q2 results,
         # all correct and all without grounding metadata (see dated_lines).
-        dated = dated_lines(text, days=days)
+        dated = checked_publishers(dated_lines(text, days=days), sources)
         if dated:
             # Links when the API returned them; the in-window dates are what
             # make the lines news rather than memory (see dated_lines).
@@ -242,6 +242,30 @@ def dated_lines(text: str, today=None, days: int = WINDOW_DAYS) -> list[str]:
             continue
         if today - timedelta(days=days) <= d <= today + timedelta(days=1):
             out.append(ln.strip())
+    return out
+
+
+# a name, never a closing figure ("beat consensus ($4.2B)", "(Q3)")
+_PUBLISHER_RE = re.compile(r"\s*\(([A-Z][^()\d]{1,39})\)\s*\.?\s*$")
+
+
+def checked_publishers(lines: list[str], sources: list[dict]) -> list[str]:
+    """Drop a line's closing "(Publisher)" when no link the search returned
+    comes from it. 2026-10-28 audit A18: SLS credited "GlobeNewswire and
+    TipRanks" with the links pointing elsewhere. With no links at all there
+    is nothing to compare against, and the line stands."""
+    domains = [re.sub(r"[^a-z0-9.]", "", (s.get("title") or "").lower()) for s in sources or []]
+    domains = [d for d in domains if d]
+    if not domains:
+        return lines
+    out = []
+    for ln in lines:
+        m = _PUBLISHER_RE.search(ln)
+        if m:
+            name = re.sub(r"[^a-z0-9]", "", m.group(1).lower())
+            if name and not any(name in d or d.split(".")[0] in name for d in domains):
+                ln = ln[:m.start()].rstrip()
+        out.append(ln)
     return out
 
 

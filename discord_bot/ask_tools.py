@@ -1791,6 +1791,9 @@ async def _execute_earnings_slate(args: dict) -> dict:
         out = {**d, "as_of": as_of}
         if d.get("status") == "ok":
             out["note"] = note
+            # the day's lines are rendered in code too (2026-10-27 audit A14)
+            from discord_bot.slate_week import DAY_PER_SESSION, week_outline as _day_outline
+            out["week_outline"] = _day_outline([d], per_session=DAY_PER_SESSION)
         return out
     ok = [d for d in days if d.get("status") == "ok"]
     from discord_bot.slate_week import week_outline

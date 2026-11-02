@@ -3155,6 +3155,9 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
         # first became "€11.0B, €12.0B", the second shipped as an em-dash).
         # (bare "62–65%" and "$861–$881" stay as written, earlier pins)
         s = re.sub(r'(\d[KMBkmbT])\s*[—–‒]\s*(?=[€£$]?\d)', r'\1 to ', s)
+        # "2022–present" is a span, not a clause break (2026-10-28 audit A19)
+        s = re.sub(r"((?:19|20)\d\d)(?:\s*[—–‒]\s*(?=present\b)|[—–‒](?=(?:today|now)\b(?!')))",
+                   r'\1 to ', s, flags=re.I)
         s = re.sub(r'(\d[KMBkmbT%]?)[—–‒](?=[A-Za-z])', r'\1, ', s)
         s = re.sub(
             r'(\d)\s+[—–‒]\s+(?=\$?\d|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|'
@@ -5109,6 +5112,8 @@ async def _ask_02_call_model_with_tools(
     for (_pf_tool, _), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_tool == _ask_router.T_SNAPSHOT and isinstance(_pf_res, dict):
             _fresh = _ask_router.fresh_print(_pf_res)
+            if _pf_res.get("growth"):
+                _ask_meta["snapshot_growth"] = _pf_res["growth"]
     if _fresh:
         _ask_meta["fresh_print"] = _fresh
     # A report whose time has passed but whose figures Yahoo has not filled:
@@ -5148,6 +5153,8 @@ async def _ask_02_call_model_with_tools(
             # Read by the business-line guard in phase 9.
             _ask_meta["primer"] = {"symbol": _pf_res.get("symbol"),
                                    "primer": _pf_res.get("primer") or ""}
+        if _pf_tool == "lookup_research" and isinstance(_pf_res, dict):
+            _ask_meta.setdefault("research_notes", []).extend(_pf_res.get("notes") or [])
         if _pf_tool == _ask_router.T_FANTASY:
             from discord_bot.fantasy_guard import win_estimates as _we, sides as _sides
             _ask_meta.setdefault("fantasy_estimates", {}).update(_we(_pf_res))
@@ -5165,7 +5172,8 @@ async def _ask_02_call_model_with_tools(
         # A list or a calculation the answer posts as written; the model
         # writes the opening (discord_bot/answer_block.py, 2026-10-27).
         _blk = _answer_block.build(_pf_tool, _pf_res, _ab_now.date(),
-                                   morning_reported=(_ab_now.hour, _ab_now.minute) >= (9, 30))
+                                   morning_reported=(_ab_now.hour, _ab_now.minute) >= (9, 30),
+                                   question=_ask_router.asker_text(question))
         if _blk:
             _pf_text += _answer_block.note(_blk)
             _ask_meta.setdefault("answer_blocks", []).append(_blk)
@@ -5510,6 +5518,9 @@ async def _ask_02_call_model_with_tools(
             if (fc.name == "lookup_user_profile"
                     and isinstance(result, dict) and result.get("users")):
                 _ask_meta.setdefault("rank_payloads", []).append(result)
+            # What a desk may be credited with (phase 9, desk_claims).
+            if fc.name == "lookup_research" and isinstance(result, dict):
+                _ask_meta.setdefault("research_notes", []).extend(result.get("notes") or [])
             # The only win chances a fantasy answer may give (phase 9,
             # _fantasy_percent_guard).
             if fc.name == "lookup_fantasy_league":
@@ -7990,6 +8001,25 @@ async def _ask_09_rank_and_regen_guards(
         _ask_meta["guards"].append(
             "answer-block:" + ",".join(b["tool"] for b in _ask_meta["answer_blocks"])
             + ("" if _ab_lead else ":no-lead"))
+    # A conclusion a desk's note does not contain is not credited to the
+    # desk (discord_bot/desk_claims.py, 2026-10-28 audit A4), and a revenue
+    # y/y is checked against the year-ago figure (revenue_yoy.py, A13).
+    try:
+        if answer and _ask_meta.get("research_notes"):
+            from discord_bot import desk_claims as _dc
+            from discord_bot.guard_floor import gutted as _dc_gutted
+            _dc_out, _dc_cut = _dc.strip_unsupported(answer, _ask_meta["research_notes"])
+            if _dc_cut and not _dc_gutted(answer, _dc_out):
+                answer = _dc_out
+                _ask_meta["guards"].append("desk-claim:stripped")
+        if answer and _ask_meta.get("snapshot_growth"):
+            from discord_bot import revenue_yoy as _ry
+            answer, _ry_fixed = _ry.correct(answer, _ask_meta["snapshot_growth"],
+                                            fresh_print=bool(_ask_meta.get("fresh_print")))
+            if _ry_fixed:
+                _ask_meta["guards"].append("revenue-yoy:corrected")
+    except Exception as e:
+        log.warning(f"/ask: desk or revenue check failed (non-fatal): {e}")
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
@@ -8268,6 +8298,9 @@ async def _ask_10_log_and_render(
         # comes after it, so the post showed two (2026-10-18 audit F7).
         from discord_bot.data_footer import strip_model_sources as _sms
         answer = _sms(answer)
+    elif answer:
+        from discord_bot.data_footer import strip_model_data as _smd
+        answer = _smd(answer)
     try:
         from discord_bot import data_footer as _data_footer
         # A banter reply with no figure cites nothing: Google links under a
@@ -8458,6 +8491,27 @@ async def _answer_with_gemini(
         if embed is not None:
             return embed
         # a name nobody is logged under: the model takes it
+
+    # Playoff odds for a stated league format are arithmetic
+    # (discord_bot/fantasy_odds.py, 2026-10-27 audit F1-F3).
+    from discord_bot import fantasy_odds as _fantasy_odds
+    _fo_spec = _fantasy_odds.parse(_cc_asker(question), question)
+    if _fo_spec:
+        _fo_text = _fantasy_odds.answer(_fo_spec)
+        try:
+            await asyncio.to_thread(db.record_ask_query, user_id)
+            await asyncio.to_thread(
+                db.append_ask_interaction,
+                asker_display_name=asker_display_name,
+                asker_username=asker_username,
+                channel_name=channel_name,
+                question=question,
+                answer=_fo_text,
+                interaction_type="short_circuit_fantasy_odds",
+            )
+        except Exception as e:
+            log.warning(f"fantasy-odds logging non-fatal failure: {e}")
+        return discord.Embed(description=_fo_text, color=0x1ABC9C)
 
     client = _get_gemini_ask_client()
     if client is None:

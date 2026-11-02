@@ -200,6 +200,10 @@ def _dump_context_job_inner() -> None:
         ctx["window_cutoff"] = cutoff
         ctx["window_label"] = window_label
         ctx["no_new_research"] = no_new_research
+        # "no new research" must not be said while the bot cannot read the
+        # folder (11-02: polls had failed for four days, uploads had not).
+        from scheduler.jobs import dropbox_polls_failing
+        ctx["research_feed_down"] = no_new_research and dropbox_polls_failing()
         # Market-holiday stamp (2026-07-02: the scheduled pulse fires on
         # market-open days only). The routine's STEP 2 reads this and
         # exits with a skip marker on a full NYSE closure. Name string

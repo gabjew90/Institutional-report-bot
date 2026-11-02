@@ -363,7 +363,8 @@ def _downscale_logo(raw: bytes) -> bytes:
 # company's own site icon instead, fetched each render (only when the
 # name is on the sheet) and never written to the logo cache, so removing
 # an entry restores the Finnhub logo at once.
-LOGO_DOMAIN_OVERRIDES = {"PENG": "penguinsolutions.com"}
+# Finnhub has no logo for HONA, spun out of Honeywell (2026-10-28 audit C2).
+LOGO_DOMAIN_OVERRIDES = {"PENG": "penguinsolutions.com", "HONA": "honeywell.com"}
 _FAVICON_URL = "https://www.google.com/s2/favicons?domain={domain}&sz=128"
 
 
@@ -794,6 +795,26 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
     return out
 
 
+def one_class_per_company(ranked: list[str]) -> list[str]:
+    """Keep the first (largest) share class of each company: GOOGL and GOOG,
+    FOXA and FOX took two of the 15 slots (2026-10-30 audit C1). Companies are
+    matched on the exchange's security name, never guessed from the symbol."""
+    from discord_bot import listed_symbols
+    seen: set[str] = set()
+    out: list[str] = []
+    for sym in ranked:
+        try:
+            name = listed_symbols.name(sym)
+        except Exception:
+            name = ""
+        if name and name in seen:
+            continue
+        if name:
+            seen.add(name)
+        out.append(sym)
+    return out
+
+
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
     from world_context import bond_market_closed, is_us_market_holiday
@@ -905,11 +926,11 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
 
         # A name is a candidate when its session is confirmed OR it is
         # big enough to matter regardless (see MIN_CAP_ALWAYS_SHOW).
-        ranked = sorted(
+        ranked = one_class_per_company(sorted(
             (s for s in syms
              if confirmed.get(s) or _cap(s) >= MIN_CAP_ALWAYS_SHOW),
             key=lambda s: -_cap(s)
-        )
+        ))
         kept = _select_priced(
             ranked, date_iso,
             always_keep={s for s in ranked

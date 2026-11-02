@@ -389,6 +389,10 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None
         found = [(q, m, n) for q, (m, n) in sources.items() if m is not None]
         if "voice" in sec and _DQ_RE.findall(line) and not sources and "://" not in line:
             reason = "a one-word voice line"                         # run 7 M19
+        if (not reason and "voice" in sec and sources and not found and "://" not in line
+                and not any(_norm(q) in verified for q in sources)):
+            # "I could have shot you once..." was in no message (run 7 M12)
+            reason = f"quote in no message: {next(iter(sources))[:50]}"
         if not reason and found and all(_norm(q) in used for q, _, _ in found):
             reason = f"repeats a quote used above: {found[0][0][:50]}"  # run 7 M18
         if not reason and "recent" in sec and found and all(
@@ -443,6 +447,32 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None
 
 _NO_RECEIPTS_RE = re.compile(r"[^.!?\n]*\bno (?:documented )?receipts?\b[^.!?\n]*[.!?]?\s*", re.I)
 _WIN_LINE_RE = re.compile(r"(?:gain|closed|exit)[^\n]{0,40}\+\d", re.I)
+
+
+_NUMBER_WORD_RE = re.compile(
+    r"\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|dozen)[- ](leg|legs|day|week|month"
+    r"|year|figure|figures|bagger|baggers|contract|contracts)\b", re.I)
+
+
+def check_rationale(rationale: str | None, user_id: int, ledger_text: str = "") -> tuple[str, list[str]]:
+    """Drop rationale sentences with a detail neither the member's messages
+    nor their trades carry (run 7 M16: tipdropio's "nine-leg parlay"). Figures
+    are left alone: the rationale's come from the trade ledger. An emptied
+    rationale is '', not None: the upsert keeps the old text over a None."""
+    if not rationale:
+        return rationale or "", []
+    haystack = " \n ".join(m["norm"] for m in member_messages(user_id)) + " " + ledger_text.lower()
+    known = _known_names()
+    keep, dropped = [], []
+    for s in re.split(r"(?<=[.!?])\s+", rationale):
+        phrases = [m.group(0).lower() for m in _NUMBER_WORD_RE.finditer(s)]
+        miss = [p for p in phrases if p.replace("-", " ") not in haystack.replace("-", " ")]
+        miss += unsupported_terms(_NUMBER_RE.sub(" ", s), haystack, known)
+        if miss:
+            dropped.append(f"{', '.join(miss[:3])} | {s[:100]}")
+        else:
+            keep.append(s)
+    return " ".join(keep).strip(), dropped
 
 
 def fix_receipts_claim(rationale: str | None, profile: str) -> str | None:

@@ -35,7 +35,8 @@ _NOT_A_LEAD = ("→ No response came back", "→ Thought myself in circles",
                "→ don't have that one", "→ ⚠️ Couldn't verify")
 
 
-def build(tool: str, result: dict, today: date, morning_reported: bool = False) -> dict | None:
+def build(tool: str, result: dict, today: date, morning_reported: bool = False,
+          question: str = "") -> dict | None:
     """The block for one prefetch result, or None when the tool has no
     code-built body or the result has nothing to render."""
     if not isinstance(result, dict) or result.get("status") != "ok":
@@ -44,7 +45,13 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False) 
     if tool == "lookup_earnings_slate" and result.get("week_outline"):
         from discord_bot import slate_week
         outline = result["week_outline"]
-        lines = slate_week.block_lines(outline, today, morning_reported)
+        # One day: the session asked about, and a small-cap day still lists
+        # its names (2026-10-27 audit A14). A week keeps every session.
+        one_day = "dates" not in result
+        asked = slate_week.session_asked(question)
+        lines = slate_week.block_lines(
+            outline, today, morning_reported and asked != "before_open",
+            only_session=asked if one_day else None, biggest_if_none=one_day)
     elif tool == "margin_math":
         from discord_bot import margin_math
         lines = margin_math.block_lines(result)

@@ -589,7 +589,9 @@ The gate waits up to 10 minutes for today's Omnipulse. It runs before STEP 2.5 s
 - **`DECISION: LIGHT`** — a miss day with `MISS_DAY = "light"` in
   `scripts/omnipulse_body.py`, or a morning with no new bank research
   since the last pulse (detail `no new bank research since the last
-  pulse`; the context's `no_new_research` is true and its research is the
+  pulse`, or `no new bank research: the research feed is down` when the
+  context's `research_feed_down` is true and Dropbox polls are failing;
+  the context's `no_new_research` is true and its research is the
   previous days', so do not present any of it as new): no usable Omnipulse after the wait, so
   `/tmp/omnipulse_body.md` holds a one-paragraph note and
   `/tmp/omnipulse_headline.txt` is empty. Follow every "omnipulse day"

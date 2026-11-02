@@ -15,6 +15,7 @@ import re
 from datetime import date
 
 PER_SESSION = 4
+DAY_PER_SESSION = 12        # one day: "give me a full list of all the large caps"
 # A name below this market cap is not a "big" report; a session with none
 # above it says so rather than listing small caps (FUBO, 2026-10-27).
 CAP_FLOOR_MUSD = 10_000
@@ -88,12 +89,25 @@ def _mentions(answer: str, symbol: str, name: str) -> bool:
     return bool(word) and bool(re.search(r"\b" + re.escape(word) + r"\b", answer, re.I))
 
 
-def block_lines(outline: list[dict], today: date,
-                morning_reported: bool = False) -> list[str]:
+_AFTER_RE = re.compile(r"\b(?:after[- ](?:the[- ])?(?:close|bell|market|hours)|tonight|this evening)\b", re.I)
+_BEFORE_RE = re.compile(r"\b(?:before[- ](?:the[- ])?(?:open|bell|market)|pre-?market|this morning)\b", re.I)
+
+
+def session_asked(text: str) -> str | None:
+    """The one session the asker named, else None."""
+    after, before = bool(_AFTER_RE.search(text or "")), bool(_BEFORE_RE.search(text or ""))
+    if after == before:
+        return None
+    return "after_close" if after else "before_open"
+
+
+def block_lines(outline: list[dict], today: date, morning_reported: bool = False,
+                only_session: str | None = None, biggest_if_none: bool = False) -> list[str]:
     """One line per session from `today` on, in date order: the names at
     or above CAP_FLOOR_MUSD, or a line saying there are none.
     `morning_reported` (after 9:30 ET) skips today's before-open session,
-    which has happened."""
+    which has happened. `biggest_if_none` lists the largest names instead
+    of the none line, for a question about one day."""
     labels = dict(_SESSIONS)
     floor_b = CAP_FLOOR_MUSD // 1000
     lines = []
@@ -102,9 +116,13 @@ def block_lines(outline: list[dict], today: date,
             continue
         if morning_reported and s["date"] == today.isoformat() and s["session"] == "before_open":
             continue
+        if only_session and s["session"] != only_session:
+            continue
         dt = date.fromisoformat(s["date"])
         big = [(n, sym) for n, sym, c in zip(s["names"], s["symbols"], s.get("caps") or [])
                if c >= CAP_FLOOR_MUSD]
+        if not big and biggest_if_none:
+            big = list(zip(s["names"], s["symbols"]))[:PER_SESSION]
         odd = set(s.get("date_unconfirmed") or [])
         body = (", ".join((f"{n} ({sym})" if n != sym else sym)
                           + (" (date not confirmed)" if sym in odd else "") for n, sym in big)

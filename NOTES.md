@@ -3684,3 +3684,18 @@ No research arrived after 2026-10-29. `/Current` had stopped being mounted in th
 `settings.dropbox_shared_folder_id` (default 9196985312, `Current`) makes `_get_client` use a namespace path root, which reads the folder mounted or not with the account's viewer access. That makes the folder's top the root, so `_api_path` strips `/Current` on the way out and `_stored_path` adds it on the way in. Stored paths are unchanged, because `pdf_files` dedups on them and the bank and date are read from them; 4,721 of the 5,672 PDFs in the folder matched a stored path once the prefix was added. Asked through the shared root, Dropbox answers the old cursor with `reset`, so the existing recovery re-lists from the newest note on file.
 
 That recovery had a hole a backlog this size could hit: it listed in Dropbox's order, so a restart partway through could register a newer note first and the next floor would pass over everything older. A re-list now runs oldest first and keeps files sharing the floor's second. A second failed poll in a row now pings ops, once a day, and the feed watchdog no longer says "the bot is polling fine". The access still ends if the owner of the share removes this account; the poll ping is what reports that.
+
+## 2026-11-02: the rest of audit run 7
+
+Owner: finish the list, then decide what the work is for. Closed the remaining rows:
+
+- A4 `discord_bot/desk_claims.py`: a consequence clause the desk's note does not carry is cut. Replayed over 553 logged answers with the whole prompt standing in for the note it fired 0 times, which shows it does not over-cut and says nothing about how often it will catch one.
+- A13 `discord_bot/revenue_yoy.py`: revenue y/y corrected from the snapshot. The real SNDK payload carries the year-ago revenue ($2.308B), so $11.03B reads +378%, not +23%.
+- A14, A15: one-day slates are rendered in code like week slates, so the model no longer picks the names.
+- A18: a news line's closing publisher is dropped when no returned link comes from it.
+- A19, A20: "2022 to present", and the model's own "→ Data:" line is stripped.
+- F1, F2, F3 `discord_bot/fantasy_odds.py`: format odds are computed with no model. The percent guard is unchanged: on a member's own league it is right to remove an invented figure.
+- M12: a Voice quote in no message is dropped. M16: rationale sentences with a detail the member never wrote are dropped. M22: stored `trader_rank` cleared at boot and both dead columns left out of the audit collector. `personal_ammo` data is kept: no reader, but nothing needed it deleted.
+- C1: one share class per company on the sheet. C2: HONA uses Honeywell's site icon.
+- R1: closed by the shared-folder read (f14aa1ddb).
+- Light pulse: says the research feed is down when Dropbox polls are failing, instead of "no new bank research". The 11-02 pulse carried the false line.

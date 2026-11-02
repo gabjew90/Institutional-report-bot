@@ -2870,9 +2870,14 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # (2026-10-30 audit, design note 3).
                         try:
                             from scripts import profile_trades as _pt
-                            profile = _pt.write_recent_trades(profile, _pt.member_trades(uid))
+                            _member_trades = _pt.member_trades(uid)
+                            profile = _pt.write_recent_trades(profile, _member_trades)
                             from scripts import profile_guards as _pg
                             trader_rationale = _pg.fix_receipts_claim(trader_rationale, profile)
+                            trader_rationale, _rd = _pg.check_rationale(
+                                trader_rationale, uid, str(_member_trades))
+                            for _d in _rd:
+                                print(f"  [guards] {meta['username']}: rationale dropped {_d[:140]}")
                         except Exception as _e:
                             print(f"  [trades] Recent trades not written for {uid}: {_e}")
                         db.upsert_user_profile(

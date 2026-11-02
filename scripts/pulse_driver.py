@@ -302,8 +302,13 @@ class Driver:
         except Exception:
             _ctx = {}
         if _ctx.get("no_new_research"):
-            reason = "no new bank research since the last pulse"
-            self._body_path().write_text(o.light_body(o.NO_RESEARCH_NOTE), encoding="utf-8")
+            # Keeps the "no new bank research" prefix: the Omnipulse streak
+            # treats either morning as neutral.
+            feed_down = bool(_ctx.get("research_feed_down"))
+            reason = ("no new bank research: the research feed is down" if feed_down
+                      else "no new bank research since the last pulse")
+            note = o.FEED_DOWN_NOTE if feed_down else o.NO_RESEARCH_NOTE
+            self._body_path().write_text(o.light_body(note), encoding="utf-8")
             self._headline_path().write_text("", encoding="utf-8")
             (self.tmp / "light_reason.txt").write_text(reason, encoding="utf-8")
             mode_file.write_text("light", encoding="utf-8")

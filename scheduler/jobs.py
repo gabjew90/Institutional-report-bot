@@ -738,6 +738,12 @@ POLL_FAILURE_ALERT_AFTER = 2
 _poll_failures = 0
 
 
+def dropbox_polls_failing() -> bool:
+    """Read by the bridge's context build, which runs in the same process as
+    the poll (BATCH_JOB_IDS). A restart clears it until two polls fail again."""
+    return _poll_failures >= POLL_FAILURE_ALERT_AFTER
+
+
 def poll_failure_alert(failures: int, error) -> str:
     """The ops line once polls keep failing, '' before that. One failure can
     be a network blip. From 10-29 to 11-01 every poll failed and only the log
