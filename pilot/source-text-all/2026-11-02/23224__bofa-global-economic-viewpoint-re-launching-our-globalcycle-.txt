@@ -1,0 +1,3570 @@
+ 
+Trading ideas and investment strategies discussed herein may give rise to significant risk and are 
+not suitable for all investors. Investors should have experience in relevant markets and the financial 
+resources to absorb any losses arising from applying these ideas or strategies. 
+BofA Securities does and seeks to do business with issuers covered in its research 
+reports. As a result, investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of this report. Investors should consider this 
+report as only a single factor in making their investment decision. 
+Refer to important disclosures on page 28 to 30.  
+ 
+ 
+ 
+ 
+Global Economic Viewpoint 
+Re-launching our GLOBALcycle: a real-time 
+reading of resilience 
+     
+   
+ 
+ 
+GLOBALcycle points to 3.7% global GDP growth in 3Q 
+We re-launch our GLOBALcycle, a real-time coincident indicator to track the underlying 
+strength of the global economy. Our main takeaway is that our model points to resilient 
+global GDP growth, somewhat stronger than what is implied by aggregating our house 
+country forecasts. Despite higher US rates, the Iran war and other well-documented 
+risks, the model points to global GDP growth of c.3.7% in 3Q26, vs 3.4% implied by our 
+economists' individual forecasts for the countries included in the model. Overall, growth 
+resiliency remains the order of the day. 
+Growth looks broad-based across regions at the moment 
+For developed economies in aggregate, GLOBALcycle points to 3Q growth around 2.2%, 
+broadly in line with the 2.1% implied by BofA economics country forecasts. The model’s 
+signal is weaker than our house forecasts for the US, while it’s more constructive in the 
+Euro area and Japan, though we would discount the magnitude of these divergences. For 
+EM, GLOBALcycle indicates somewhat higher growth at 4.6% vs BofA forecasts at 4.3%, 
+with a generally positive gap across most countries, including China. 
+Tracking the global economy in real time 
+GLOBALcycle combines mixed-frequency data to generate real-time Economic 
+Conditions Indicators (ECI) by country. The ECIs can nowcast current-quarter GDP 
+growth at the country level, which can then be aggregated into a global growth signal. In 
+developed markets, we cover the US, Euro area, Japan, UK, Canada, and Australia. In EM, 
+we track Brazil, India, China, Indonesia, Korea, Poland, Türkiye, South Africa, and Mexico. 
+With this re-launch, we enhance our methodology to reduce forward-looking bias and 
+better reflect the changing composition of global GDP over time. 
+The model tracks global GDP closer than alternatives… 
+Our GLOBALcycle correlates more closely than commonly used alternatives for tracking 
+global GDP growth, such as OECD leading indicators and PMIs. In some cases, our model 
+is about as accurate as the Bloomberg consensus. Yet, unlike the Bloomberg consensus, 
+which is observed in practice only shortly before the GDP release, our approach allows us 
+to track global growth in real time as macro data becomes available. 
+… and can signal shifts in global asset prices 
+By tracking the global economy, GLOBALcycle should also be expected to exhibit 
+statistical relationships with asset prices. We show that a stronger GLOBALcycle 
+indicator is associated with higher global equity returns, higher short-end US rates, a 
+flatter curve, more elevated commodity prices, stronger EM FX, and a weaker dollar. 
+Importantly, these asset price variables are not a model input. We also show that 
+stronger momentum in the GLOBALcycle indicator signals higher equity prices, a weaker 
+dollar, and stronger EM FX. But in rates, momentum signals higher long-end rates and a 
+steeper curve. 
+28 October 2026   
+Economics 
+Global 
+Table of Contents 
+A timely take on the global economy 
+2 
+Global GDP: Resilient amid the turbulence 
+4 
+GLOBALcycle can signal asset price moves 
+4 
+Looking at alternative indicators 
+5 
+The GLOBALcycle methodology 
+7 
+Nowcasting growth using ECIs 
+10 
+GLOBALcycle closely tracks global GDP 
+12 
+GLOBALcycle and asset prices 
+13 
+Limitations and risks 
+16 
+Appendix: Individual ECIs by country 
+17 
+Appendix: Results and fit 
+19 
+Appendix: Post-Covid China 
+23 
+Appendix: Regression for Global ECIs 
+24 
+Appendix: Econometric methodology 
+25 
+Appendix: Variables for constructing ECIs 
+26 
+Antonio Gabriel 
+Global Economist 
+BofAS 
+antonio.gabriel@bofa.com 
+The GLOBALcycle indicator (and ECIs) are intended 
+to be indicative metrics only and may not be used 
+for reference purposes or as a measure of 
+performance for any financial instrument or 
+contract, or otherwise relied upon by third parties 
+for any other purpose, without the prior written 
+consent of BofA Global Research. The 
+GLOBALcycle indicator was not created to act as a 
+benchmark. 
+Accessible version 
+
+ 
+ 
+2 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+ A timely take on the global economy 
+Why do we need another measure of activity? 
+A timely reading of macroeconomic activity in real time based on higher frequency 
+indicators is useful for at least two reasons. First, a bottom-up approach can serve as an 
+additional input in forecasting. Second, once an aggregate measure is constructed, it can 
+act as a sanity check for a given set of forecasts. Does the bottom-up approach coincide 
+with or differ from these forecasts? Moreover, can such an indicator provide a valuable 
+signal about asset prices?  
+In this report, we re-launch our model of coincident indicators to track the global 
+economy in real time. The framework, based on the methodology of Auroba-Diebold-
+Scotti, combines mixed-frequency data, including weekly, monthly, and quarterly 
+releases, to construct country-level Economic Conditions Indicators (ECIs). These 
+indicators are then aggregated to track the global economy. We also enhance our 
+methodology to avoid forward-looking bias and account for the changing composition of 
+global GDP over time. We intend to publish the GLOBALcycle at least quarterly. 
+Filtered, high-frequency data rolled into a common signal 
+Our ECIs are designed to capture a latent economic variable that represents the 
+underlying state of economic activity. While this latent variable is continuous, it is not 
+directly observable. Instead, it is inferred from a broad set of economic indicators 
+released at different frequencies, which are jointly filtered by the model to extract a 
+common signal representing current economic conditions in each country. 
+Nowcasting GDP growth as data becomes available  
+The ECIs are intended to nowcast current-quarter GDP growth at the country level based 
+on the information available at any point in time, and can be aggregated for the global 
+economy using GDP weights. In developed markets, we cover the US, the Euro area, 
+Japan, the UK, Canada, and Australia. In EM, we include Brazil, India, China, Indonesia, 
+Korea, Poland, Türkiye, South Africa, and Mexico. This covers close to 80% of global GDP 
+in PPP (Purchasing Power Parity) terms. 
+Positive/negative values for ECIs suggest growth above/below trend 
+The ECIs should be interpreted as standardized z-scores. By construction, the indicators 
+are centered around zero, with positive values signaling above-trend economic growth 
+and negative values indicating below-trend growth. The evolution of the indicator over 
+time is equally informative: an upward-sloping ECI points to an acceleration in economic 
+activity, while a downward-sloping ECI suggests a deceleration. 
+What our indicators have told us over the past decade 
+Looking at what GLOBALcycle indicators would have signaled over the past decade is 
+informative. For example, they show us the framework could provide useful signals even 
+when uncertainty is high, with previous seemingly overly optimistic signals ultimately proving 
+founded. We walk back through different key events of the past 10 years and conclude that 
+the framework would have been helpful in tracking the cycle and cutting through noise. 
+Stronger DM vs EM growth in Trump 1.0 and in the post-Covid boom 
+Exhibit 1 shows the GLOBALcycle indicator for the global economy, as well as developed 
+(DM) and emerging markets (EM) going back to 2015. The indicator signaled stronger 
+DM vs EM growth during the first Trump administration and the trade war, as well as 
+exiting from the pandemic, when China growth disappointed. Before the pandemic, the 
+model was starting to show below-trend growth globally, but whatever the economic 
+cycle had for us back then was abruptly truncated by the pandemic. 
+Resilient growth has been the norm since 2024 
+More recently, at the global level, GLOBALcycle only indicated below-trend growth after 
+global central banks embarked on aggressive tightening in 2022-2023. Since 2024, 
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+3
+ 
+ 
+Exhibit 1: GLOBALcycle would have signaled stronger DM vs EM GDP growth during the first trade war (Trump 1.0) and post pandemic (amid a weak China 
+outlook) and in recent years has only pointed to weaker global growth at the early stages of monetary tightening in 2022, looking through Trump 2.0 
+GLOBALcycle indicators for the Global, developed, and emerging markets (z-score) 
+Source: BofA Global Research, Haver, Bloomberg. All GLOBALcycle and ECIs values and results shown for periods before that date are hypothetical. They were produced by retroactively 
+applying the indicators' current methodology to historical data, and they do not reflect actual or live results. The indicators did not exist using this methodology during the period shown 
+above. The indicators have inherent limitations. They are prepared with the benefit of hindsight. The methodology may have been designed or adjusted after historical data was 
+reviewed. And the results may not reflect the impact of market, economic, or other factors that could have affected outcomes had the indicator actually been in use. Historical 
+correlations may not persist and are not indicative of, and do not guarantee, future results.  
+BofA GLOBAL RESEARCH 
+ 
+the indicator would have signaled around-trend growth, in line with an overall resilient 
+economy. However, the signal was somewhat weaker earlier this year amid the Iran war. 
+GLOBALcycle looked through Liberation Day uncertainty 
+GLOBALcycle would have looked through the uncertainty shock after Liberation Day. At 
+the time, we were concerned about the framework delivering an overly optimistic signal, 
+but it turned out to be correct. Global growth withstood the shock then, and it remains 
+resilient even with the Iran war and energy shock this year. As a result, we believe the 
+signal from the framework can be informative even when uncertainty is high. 
+From ECIs to GDP nowcasts 
+GLOBALcycle signals GDP growth at the country level. Running a series of regressions of 
+each country’s quarterly GDP growth on the average level of its respective ECI, we can 
+generate fitted values for GDP growth. To estimate GDP growth in real time for the 
+current quarter, we take the average value of the ECI since the beginning of the quarter. 
+From single-country to global 
+Aggregating the ECIs using PPP-GDP weights yields an aggregate ECI for the global 
+economy, or our groups of developed (DM) and emerging market (EM) economies. In 
+turn, we use these aggregate ECIs to nowcast global, DM and EM GDP growth in real 
+time. Interestingly, the aggregate indicators become more precise than for each 
+individual country, which we consider an advantage of using these measures. 
+What belongs in the mix of data? 
+At the weekly frequency, the inputs of the model are typically stock indexes (though not 
+in the US), which we intuitively interpret as capturing the flow of news still not showing 
+in most economic activity data. For monthly variables, we use variables like retail sales, 
+industrial production, employment data, or exports, among others depending on the 
+country. Lastly, at the quarterly frequency we look at GDP releases. 
+Two methodological improvements 
+Relative to our prior methodology (last published in 2022), we make two important 
+enhancements. First, we now run the framework with expanding samples, to minimize 
+forward-looking bias in constructing each country-level ECI. This allows for a more 
+precise tracking of real-time accuracy. Additionally, we also account for the changing 
+composition of Global GDP over time when constructing our global indicators, using 
+rolling weights for PPP-GDP. 
+-2
+-1.5
+-1
+-0.5
+0
+0.5
+1
+1.5
+2
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+DM
+EM
+Global
+
+ 
+ 
+4 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Global GDP: Resilient amid the turbulence 
+As we enter the last quarter of 2026, we argue that hard data generally continues to 
+support growth globally. Our GLOBALcycle indicators point to global growth reaching 
+3.7% in 3Q26, somewhat stronger than the 3.4% rate implied by aggregating our 
+economics team’s forecasts for the countries included in the model. 
+Exhibit 2 shows the 3Q26 growth rates projected by our GLOBALcycle indicators, side by 
+side with our economics team’s BofA forecasts. In turn, the table in the Appendix: Results 
+and fit does the same exercise but also compares the fit of the model in prior quarters. 
+The model is more/less constructive in US/Euro area & Japan vs economics team’s forecast 
+For developed economies in aggregate, GLOBALcycle points to growth around 2.2% in 
+3Q, broadly in line with the 2.1% implied by our economics team’s forecasts. The 
+model’s signal is weaker than our house forecasts for the US, while it is more 
+constructive in the Euro area and Japan. However, we would discount the magnitude of 
+the divergences as the indicator has overestimated growth recently for Japan and the 
+Euro area, and US fundamentals remain strong. 
+And signals somewhat stronger EM growth than we currently pencil in 
+Fore EM, GLOBALcycle signals somewhat higher growth vs our economics team’s forecasts, 
+although the difference is smaller in magnitude. The model generally signals slightly 
+stronger growth across EM, with the big divergences in Türkiye (where our economics 
+team’s forecast is much stronger) and Mexico (where the model is much stronger). 
+Exhibit 2: GLOBALcycle points to resilient global growth, with Global, DM, and EM GDP growth somewhat above BofA economics team’s forecasts 
+GDP growth implied by GLOBALcycle vs BofA forecasts for 3Q26 
+Source: BofA Global Research, Haver, Bloomberg. BofA forecasts as of October 19. Data as of September 21. 
+BofA GLOBAL RESEARCH 
+ 
+GLOBALcycle can signal asset price moves 
+Across asset classes, we run a series of contemporaneous and leading regressions and 
+find statistically significant relationships between our GLOBALcycle indicator and asset 
+prices (Exhibit 3). This link is most significant for global equities, commodities, oil prices, 
+US front-end rates, and EM FX. We also find a weaker but still significant relationship 
+with the DXY and US 2y10y slope. 
+A stronger GLOBALcycle signals the expected moves 
+We also find the expected signs in the regression coefficients. As one could expect when 
+the global economy is growing above trend, the higher our GLOBALcycle turns: (i) global 
+equity returns are stronger; (ii) US rates (especially 2y) sell off, and the curve flattens; 
+(iii) commodities and oil pick up; and (iv) EM FX appreciates, and the dollar weakens. 
+3.7
+2.2
+2.3
+2.0
+2.6
+2.1
+2.2
+2.9
+4.6
+2.2
+8.1
+4.5
+5.5
+4.5
+4.7
+0.5
+2.2
+2.8
+3.4
+2.1
+3.5
+0.8
+0.1
+1.4
+2.1
+2.0
+4.3
+0.6
+7.2
+3.9
+4.1
+2.8
+2.6
+6.7
+1.2
+0.6
+-2
+0
+2
+4
+6
+8
+10
+Global
+DM
+US
+Euro area
+Japan
+UK
+Canada
+Australia
+EM
+Brazil
+India
+China
+Indonesia
+Korea
+Poland
+Turkey
+South Africa
+Mexico
+Implied by Global cycle 3Q26
+BofA forecast 3Q26
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+5
+ 
+ 
+ 
+Exhibit 3: GLOBALcycle correlates well with several asset price variables including equities, rates, FX, commodities  
+IV regression results of asset price variables on GLOBALcycle 
+Global Equities 
+Commodities 
+Brent 
+DXY 
+US 2Y 
+US 10Y 
+US 2s10s 
+EM FX 
+Contemporaneous relationship 
+Global Cycle 
+2.58 
+3.89 
+4.68 
+-0.58 
+9.38 
+5.18 
+-4.20 
+0.97 
+t-statistic 
+5.66 
+5.70 
+4.53 
+-2.45 
+3.52 
+1.83 
+-2.16 
+5.05 
+R-squared 
+0.15 
+0.12 
+0.08 
+0.03 
+0.05 
+0.02 
+0.01 
+0.11 
+Leading relationship 
+Global Cycle (t-1) 
+1.74 
+3.21 
+3.76 
+-0.42 
+8.07 
+3.23 
+-4.84 
+0.67 
+t-statistic 
+3.67 
+4.61 
+3.57 
+-1.74 
+2.99 
+1.13 
+-2.48 
+3.40 
+R-squared 
+0.09 
+0.10 
+0.07 
+0.02 
+0.04 
+0.01 
+0.02 
+0.08 
+Source: BofA Global Research, Haver, Bloomberg. Note: Regressions are run with an expanding sample from 2000-2024 at monthly frequency. 
+BofA GLOBAL RESEARCH 
+With momentum showing signs consistent with accelerating growth  
+We find momentum in the GLOBALcycle to also have statistically significant links with 
+asset prices. Stronger growth momentum signals higher global equities, a weaker US 
+dollar, stronger EM FX, and higher US 10y rates (in this case, with a steeper curve due to 
+the growth pickup). We also find momentum to be correlated with higher oil and 
+commodity prices, but these results are not statistically significant.  
+See GLOBALcycle and asset prices for an extended discussion. 
+Looking at alternative indicators 
+There are several indicators which are frequently used to track economic activity, 
+including both public data as well as other BofA proprietary signals. For instance, the 
+OECD produces a series of leading indicators at the country (and sometimes regional) 
+level which can be aggregated and measured against global GDP growth aggregates.  
+Alternatively, we have other BofA proprietary indicators, which were not specifically 
+designed to track global GDP growth, but which may indirectly be correlated with it 
+given their nature. These include the Global Wave, the Truckload Diffusion Indicator, the 
+Memory indicator, or the Industrial Momentum Indicator. There are also certain macro 
+variables, like Korean and Taiwanese exports, which are broadly considered to be leading 
+indicators of the global cycle. 
+Our framework tracks GDP more closely than others 
+In terms of “nowcasting” or providing an estimate for the upcoming quarterly GDP print, 
+we find our framework tracks GDP more closely than many alternatives. Furthermore, it 
+has the advantage of letting us view the signal in real time (as opposed to e.g. OECD 
+leading indicators, which come with a lag). Exhibit 4 shows the correlations between 
+global GDP growth and several alternative indicators. 
+While positive correlations abound, showing most indicators by themselves contain some 
+signal, we find an overall stronger relationship between global growth and our 
+GLOBALcycle indicator. In fact, as we will show, for some countries our framework has a 
+similar level of accuracy to the Bloomberg consensus estimate. But while we get the 
+Bloomberg consensus shortly before the GDP release, we can update our ECIs in real time. 
+GLOBALcycle works best for global growth aggregates 
+As outlined above, we can use our framework at the individual country level as well as 
+for global aggregates. In relative terms, Exhibit 5 shows that GLOBALcycle is most 
+precise at the aggregate level, for global GDP growth, DM GDP growth, and EM GDP 
+growth (despite EM growth being more volatile). 
+We use the median absolute deviation between observed GDP growth and our nowcasts 
+as measure of fit, because we want to avoid outsized shocks like Covid or the Global 
+Financial Crisis from driving results. Beyond the global aggregates, the model tends to 
+work better at the individual level in developed than emerging economies, but this is 
+expected given the more volatile nature of growth in EMs. 
+ 
+
+ 
+ 
+6 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 4: GLOBALcycle is significantly more correlated with global GDP growth than many alternative candidates 
+Correlation matrix between global GDP growth, GLOBALcycle, and alternative indicators 
+Global growth 
+GLOBALcycle 
+OECD 
+Korean exports 
+Taiwan Exports 
+Global Wave Proxy 
+Global 
+Unemployment 
+Global Consumer 
+Confidence 
+Global Producer 
+Prices 
+Global Capacity 
+Utilization 
+Global Industrial 
+Confidence 
+Global Credit Spreads 
+Global EPS 
+BofA Memory 
+Indicator 
+BofA Truckload 
+Indicator 
+BofA Industrial 
+Momentum Indicator 
+Global growth 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+GLOBALcycle 
+0.66 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+OECD Leading Indicators 
+0.50 
+0.77 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Korean exports 
+0.21 
+0.33 
+0.49 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Taiwan Exports 
+0.14 
+0.19 
+0.39 
+0.82 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Regression with (1)-(5) 
+0.54 
+0.57 
+0.57 
+0.36 
+0.20 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(1) Global Unemployment 
+-0.08 
+-0.28 
+-0.47 
+0.07 
+0.07 
+-0.23 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(2) Global Consumer Confidence 
+0.04 
+0.08 
+0.28 
+0.17 
+0.19 
+0.07 
+-0.20 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(3) Global Producer Prices 
+0.03 
+0.15 
+0.32 
+0.52 
+0.56 
+0.06 
+-0.27 
+0.04 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(4) Global Capacity Utilization 
+0.14 
+0.47 
+0.62 
+0.10 
+0.02 
+0.33 
+-0.81 
+0.22 
+0.47 
+1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+(5) Global Industrial Confidence 
+0.38 
+0.52 
+0.81 
+0.59 
+0.45 
+0.63 
+-0.33 
+0.24 
+0.56 
+0.54 
+1.00 
+ 
+ 
+ 
+ 
+ 
+Global Credit Spreads 
+0.27 
+0.30 
+0.54 
+0.48 
+0.55 
+0.50 
+-0.28 
+0.37 
+0.29 
+0.28 
+0.57 
+1.00 
+ 
+ 
+ 
+ 
+Global EPS 
+-0.35 
+-0.19 
+-0.03 
+-0.37 
+-0.37 
+-0.69 
+-0.14 
+-0.01 
+-0.17 
+0.14 
+-0.19 
+-0.32 
+1.00 
+ 
+ 
+ 
+BofA Memory Indicator 
+0.03 
+0.04 
+0.10 
+0.26 
+0.05 
+0.12 
+0.29 
+0.27 
+0.16 
+-0.05 
+0.29 
+-0.09 
+-0.12 
+1.00 
+ 
+ 
+BofA Truckload Indicator 
+0.34 
+0.43 
+0.61 
+0.64 
+0.53 
+0.47 
+0.01 
+0.47 
+0.29 
+0.30 
+0.63 
+0.46 
+-0.24 
+0.39 
+1.00 
+ 
+BofA Industrial Momentum Indicator 
+0.35 
+0.40 
+0.56 
+0.74 
+0.69 
+0.54 
+0.19 
+0.17 
+0.27 
+0.00 
+0.63 
+0.61 
+-0.42 
+0.22 
+0.71 
+1.00 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Across developed economies, the model worked best in the UK, followed by the Euro 
+area, Canada, and the US, but is less precise in Japan or Australia. Across emerging 
+economies, the methodology was more precise in Indonesia, followed by China, Mexico, 
+South Africa and Korea, while the fit was less accurate in other countries.  
+See GLOBALcycle closely tracks global GDP for a more extensive discussion on the 
+accuracy of the nowcasts. 
+Exhibit 5: GLOBALcycle has the most accuracy for nowcasting global GDP growth, with similar accuracy for DM and EM aggregates 
+Median absolute deviation (%). The fit for global aggregates is more accurate than for individual countries. The EM aggregate is accurate despite more volatile growth. 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ 
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+3.5%
+4.0%
+Global
+DM
+UK
+EM
+Indonesia
+Euro area
+Canada
+US
+China
+Mexico
+Australia
+S.Africa
+Japan
+Korea
+Poland
+Brazil
+India
+Turkey
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+7
+ 
+ 
+The GLOBALcycle methodology 
+To develop our indicators for global growth aggregates, we start by constructing single-
+country ECIs for our set of developed and emerging economies. Across developed 
+economies, we include the US, Euro area, Japan, UK, Canada, and Australia. In turn, for 
+emerging economies we consider Brazil, India, China, Indonesia, Korea, Poland, Türkiye, 
+South Africa, and Mexico. This covers close to 80% of global GDP in PPP terms. 
+At the country level, we maintain employ the same methodology we have used in the past, 
+based on Auroba, Diebold and Scotti (2009). We focus here on a brief intuitive explanation, 
+while we provide the model equations in the Appendix: Econometric methodology. For 
+each country, we use a set of country-specific variables, which are released at the 
+quarterly, monthly, or weekly frequencies depending on the variable in hand. Exhibit 6 and 
+Exhibit 7 show the set of variables used for each country and their frequency. 
+At the weekly frequency, the inputs of the model are typically stock indexes, which we 
+intuitively interpret as capturing the flow of news still not showing in most economic 
+activity data. For monthly variables, we use variables like retail sales, industrial 
+production, employment data, or exports, among others depending on the country. 
+Lastly, at the quarterly frequency we mostly look at (prior) GDP releases. 
+A set of “real time” country-level indicators 
+This set of variables is constantly updated, and new information is added to the sample 
+as they are released. In turn, at each point in time these variables at mixed frequency are 
+“compiled” so that the framework can always make use of the latest data released, 
+regardless of its frequency. In this sense, we have a “real time” methodology. 
+Exhibit 6: GLOBALcycle variables for developed economies 
+GLOBALcycle leverages quarterly, monthly, and weekly data to track economic activity 
+Country Weekly 
+Monthly  
+Quarterly 
+US 
+Unemployment Insurance Initial Claims 
+Industrial Production 
+Real GDP 
+Real Manufacturing & Trade Sales 
+ 
+Total Nonfarm Payrolls 
+ 
+ 
+Real Personal Income Excluding Current Transfers 
+ 
+Euro area 
+STOXX 600 
+Industrial Production excluding Construction 
+Real GDP 
+Retail Sales Volume Index 
+ 
+New Car Registrations 
+ 
+ 
+Economic Sentiment Indicator 
+ 
+UK 
+FTSE All Shares 
+Industrial Production 
+Real GDP 
+Retail Sales Volume Index 
+ 
+Exports of Goods and Services 
+ 
+Japan 
+Nikkei 225 
+Industrial Production excluding Construction 
+Real GDP 
+ 
+Inventory/Sales Ratio: Final Demand Goods 
+ 
+ 
+Overtime Hours Worked 
+ 
+Australia 
+Bank Accepted Bills: 3-month (% per annum) 
+Index of Industrial Value Added 
+Real GDP 
+Dwelling Units Approved 
+ 
+Westpac-Melbourne Institute Consumer Sentiment Index 
+ 
+Canada 
+S&P/TSX Composite Index 
+Industrial Production 
+Real GDP 
+Commodity Price Index 
+Real Retail Sales 
+Business Outlook Survey: Future Sales Growth 
+ 
+Exports of Goods 
+ 
+Source: BofA Global Research, Haver, Bloomberg. Note: Quarterly data from the prior quarter is used to estimate ECIs for the current quarter. 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+ 
+ 
+8 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 7: GLOBALcycle variables for emerging economies 
+GLOBALcycle leverages quarterly, monthly, and weekly data to track economic activity 
+Country 
+Weekly 
+Monthly  
+Quarterly 
+China 
+Shenzhen Stock Exchange Composite Index 
+Index of Industrial Value Added  
+Real GDP 
+ 
+ 
+Electricity Production 
+Total Number of Employees 
+India 
+BSE Sensex 
+Industrial Production 
+Real GDP 
+Real Cash Demand 
+ 
+ 
+Real Credit 
+ 
+Indonesia 
+Jakarta Stock Exchange Composite Index 
+Industrial Production 
+Real GDP 
+ 
+M1 Money Supply 
+ 
+Merchandise Exports 
+ 
+ 
+Tourist Arrivals  
+ 
+Korea 
+KOSPI 
+Industrial Production excluding Construction 
+Real GDP 
+ 
+Employment 
+ 
+Volume Index of Retail Services 
+ 
+ 
+Business Conditions 
+ 
+Poland 
+WIG 
+Real Retail Sales 
+Real GDP 
+ 
+Industrial Production excluding Construction 
+Total Employment 
+ 
+ 
+Consumer Confidence  
+ 
+Türkiye 
+FTSE/JSE All Shares 
+Retail Sales Volume Index 
+Real GDP 
+ 
+ 
+Manufacturing Production Volume 
+Manufacturing Capacity Utilization Rate 
+South Africa 
+FTSE/JSE All Shares 
+Retail Sales Volume Index 
+Real GDP 
+ 
+ 
+Manufacturing Production Volume 
+Manufacturing Capacity Utilization Rate 
+Brazil  
+Bovespa 
+Economic Activity Indicator (IBC-Br) 
+Real GDP 
+Industrial Production 
+ 
+Real Credit  
+ 
+ 
+ 
+Formal Employment 
+ 
+Mexico 
+IPC Stock Price Index 
+Industrial Production 
+Real GDP 
+Permanent Workers Insured by the IMSS 
+ 
+ 
+Economic Activity Indicator (IGAE) 
+ 
+Source: BofA Global Research, Haver, Bloomberg. Note: Quarterly data from the prior quarter is used to estimate ECIs for the current quarter. 
+BofA GLOBAL RESEARCH 
+Interpreting ECIs as a z-score 
+Using this set of data, the framework produces an ECI which is in fact a z-score 
+representing the strength (or weakness) of economic activity for the country in hand 
+relative to its trend growth (ECI=0). Overall, we produce 15 individual-country ECIs. For 
+example, Exhibit 8 through Exhibit 11 show how the ECIs for the US, Euro area, China, 
+and India closely track quarterly GDP growth in the countries. ECI for other countries are 
+shown in Appendix: Individual ECIs by country. 
+Exhibit 8: Our ECI continues to point to slightly above-trend US growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 9: But is showing a marginal deterioration in the Euro area 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-2
+-1
+0
+1
+2
+-4%
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+4%
+5%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-2%
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+9
+ 
+ 
+Exhibit 10: The ECI now signals around-trend growth in China 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 11: But shows stronger but decelerating momentum in India 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Minimizing forward-looking bias 
+While we leverage our previous methodology at the country level, we make some 
+important methodological changes. At the country-level, we make sure to minimize 
+forward-looking bias in the construction of each country-level ECI, which makes any 
+measure of fit a more accurate tracking of real-time accuracy. For this, we estimate our 
+ECIs using an expanding window, such that past values of the ECI are not altered by 
+future information which was not available in real time (except for data revisions). 
+Constructing ECIs for global growth aggregates 
+With the series of individual country-level ECIs in hand, we can then develop aggregate-
+level ECIs for global, DM, and EM growth. Since each country’s ECI is a z-score, they are 
+already normalized. 
+We construct aggregate-level ECI by computing a PPP GDP-weighted average of 
+country-level ECIs included in each aggregator (Global, DM, EM). This is economically 
+intuitive, as it gives the most weight to the largest economies in the group. We use 
+rolling GDP weights to account for the shifting composition of global GDP over time. 
+Exhibit 12: Our GLOBALcycle ECI signals around-trend global growth, with marginally improving momentum 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-2
+-1
+0
+1
+2
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+4%
+5%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+GDP (sa, qoq)
+ECI (right axis)
+
+ 
+ 
+10 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 13: GLOBALcycle points to slightly above-trend growth in DM… 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg  
+BofA GLOBAL RESEARCH 
+Exhibit 14: …and slightly below-trend EM growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg  
+BofA GLOBAL RESEARCH 
+Aggregate ECIs closely track aggregate growth 
+In line with the results for individual countries, we find that our aggregate ECIs for 
+global, DM, and EM growth closely track observed GDP growth over time, as shown in 
+Exhibit 12 through Exhibit 14. 
+Robustness: Can we improve ECIs for global aggregates? 
+One drawback of our approach is that by using GDP weights to construct the global ECI, 
+we are not taking advantage of the potentially different signal-to-noise ratio of different 
+country ECIs or their correlations. However, after exploring an alternative approach to 
+construct aggregate global ECIs using regressions, we find no material improvement in 
+the accuracy of the framework. See Appendix: Regression for Global ECIs for details. 
+Nowcasting growth using ECIs 
+With our country-level indicators in hand, we can now infer the growth rate of the 
+economy. We run a univariate linear regression between quarter-on-quarter GDP growth 
+(seasonally adjusted annual rate) and each country’s average ECI for the quarter. We use 
+an expanding sample, but drop observations during the pandemic period (2020-2021). 
+For 2020-2021, we construct our estimates using the coefficients corresponding to end-
+2019. See Exhibit 15 through Exhibit 18 for the US, Euro area, China, and India. Fitted 
+values vs observed growth for our full sample are in Appendix: Results and fit. 
+Exhibit 15: GLOBALcycle lies below our house US growth forecast 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 16: But signals stronger growth in the Euro area vs forecasts  
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-2
+-1
+0
+1
+2
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-1%
+1%
+3%
+5%
+7%
+9%
+11%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-4%
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+4%
+5%
+6%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual US GDP growth
+Implied by GLOBALcycle
+BofA forecast
+-8%
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual EA GDP growth
+Implied by GLOBALcycle
+BofA forecast
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+11
+ 
+ 
+Exhibit 17: GLOBALcycle signals stronger growth vs our China forecast 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 18: And also points to stronger India growth vs our house view 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Post-Covid China looks different 
+In China, we find that the accuracy of fit of the ECI to nowcast global growth diminished 
+substantially since the pandemic. We believe this is driven by: (i) China’s persistent 
+domestic weakness since the post-Covid reopening, which could signal a structural shift; 
+and (ii) data on the number of employees has not been published since 2022. We use a 
+post-Covid dummy (and interaction term) since 2022. See Appendix: Post-Covid China. 
+Estimating global growth aggregates 
+Our aggregate indicators are also quite correlated with global growth aggregates. In the 
+same fashion as for individual countries, we can estimate the level of global growth, DM 
+growth, or EM growth that is consistent with our aggregate ECIs. For each of the global 
+growth aggregates, DM growth, and EM growth, we find a relatively precise fit between 
+our indicators and observed GDP growth. 
+We compute observed growth aggregates using the same group of countries we use to 
+construct the ECIs, also using rolling PPP GDP weights. Exhibit 19 shows the observed 
+and fitted values for global GDP growth, while Exhibit 20 and Exhibit 21 show DM and 
+EM growth, respectively. For the EM aggregate, we also utilize the post-Covid dummy 
+given the outsized weight of China. 
+Exhibit 19: GLOBALcycle has predicted slightly stronger growth than observed in recent quarters, and points to 3.3% growth in 3Q26 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual China GDP growth
+Implied by GLOBALcycle
+BofA forecast
+-10%
+-5%
+0%
+5%
+10%
+15%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual India GDP growth
+Implied by GLOBALcycle
+BofA forecast
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Global GDP growth
+Implied by GLOBALcycle
+Implied by BofA forecast
+
+ 
+ 
+12 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 20: GLOBALcycle signals DM growth in line with our house view 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 21: And signals somewhat stronger EM growth 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+GLOBALcycle closely tracks global GDP 
+Our ECIs more closely tracked other available indicators both at the country level as well as 
+for global growth aggregates. For each country, whenever available, our framework generally 
+would have outperformed the OECD leading indicators, and a simple prediction using 
+Purchasing Managers Indexes (PMI). Furthermore, our indicators are frequently comparable to 
+the Bloomberg consensus forecasts—evaluated on the same day as the data release. 
+Because we want to avoid weighting periods when economic shock were unusually 
+volatile (for example, the pandemic or the Global Financial Crisis), we choose to use the 
+median absolute deviation (MAD) as a measure of fit. In other words, we compute the 
+median value of the absolute value of the regression residuals over time. 
+Our ECIs appear to track GDP more closely than 
+alternatives… 
+Exhibit 22 through Exhibit 25 show how the MAD for our estimates is smaller than for 
+alternative measures, and is sometimes similar in accuracy to the Bloomberg consensus 
+forecasts. Results for other countries are in the Appendix: Results and fit. For both the 
+OECD indicator and the PMIs, we project GDP growth as the fitted value of a regression 
+of GDP growth on the average level of the indicator during that quarter. For consistency, 
+we do not use any post-Covid dummies when computing the MAD for our ECIs. 
+Exhibit 22: GLOBALcycle is more accurate than OECD or PMIs in the US 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 23: And more accurate than those alternatives in Euro area 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-5%
+-4%
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+4%
+5%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual DM GDP growth
+Implied by GLOBALcycle
+Implied by BofA forecast
+0%
+2%
+4%
+6%
+8%
+10%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual GEM GDP growth
+Implied by GLOBALcycle
+Implied by BofA forecast
+0.6%
+0.8%
+1.0%
+1.2%
+1.4%
+1.6%
+1.8%
+2.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+0.0%
+0.2%
+0.4%
+0.6%
+0.8%
+1.0%
+1.2%
+1.4%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+13
+ 
+ 
+Exhibit 24: China also shows better tracking from GLOBALcycle… 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 25: …and so does India, though PMIs are a closer substitute 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+GLOBALcycle also tracks global GDP more closely 
+Over our testing period, our framework also would have been more accurate than other alternatives 
+in projecting global GDP growth, as expected from the correlations in Exhibit 4 in the first section. 
+Given the accuracy at the individual country level in most cases, this was an expected result. 
+In fact, Exhibit 26 through Exhibit 28 confirm that our projections for GDP growth are 
+significantly more in line with than the estimates we may obtain based on a PPP GDP-
+weighted average of OECD leading indicators across global, DM, or EM GDP growth. 
+We have a good tool to gauge the winds of global growth. But can we also leverage our 
+indicator to learn something about financial markets? 
+Exhibit 26: GLOBALcycle was more accurate 
+than OECD leading indicators… 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg  
+BofA GLOBAL RESEARCH 
+Exhibit 27: …including for developed 
+economies… 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 28: …as well as in emerging 
+economies 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+GLOBALcycle and asset prices 
+We are equipped with a framework that tracks economic fundamentals and economic 
+activity closely. The next question is whether our indicator has valuable information 
+about the direction of financial markets. 
+In this section, we analyze the contemporaneous and leading relationships between our 
+GLOBALcycle indicator and monthly asset returns. In particular, we consider the 
+following assets: MSCI World Index, commodities (GSCI Index Spot), Brent crude, DXY, 
+US rates (2y and 10y), and EM FX (EMFXDBE Index). 
+0.0%
+1.0%
+2.0%
+3.0%
+4.0%
+5.0%
+6.0%
+7.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+2.0%
+2.5%
+3.0%
+3.5%
+4.0%
+4.5%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+PMI
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2009
+2014
+2019
+2024
+GLOBALcycle
+OECD
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2009
+2014
+2019
+2024
+GLOBALcycle
+OECD
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2009
+2014
+2019
+2024
+GLOBALcycle
+OECD
+
+ 
+ 
+14 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Does GLOBALcycle lead asset prices? 
+We infer statistical relationships from a univariate regression between our GLOBALcycle 
+indicator and the monthly return of each asset class. However, we aim to diminish 
+potential concerns about endogeneity by using the first lag of our GLOBALcycle 
+indicator as an instrument. 
+We consider the contemporaneous and leading specifications as follows: 
+ 
+ 
+ 
+ 
+Our regressions run an expanding sample from 2000 to December 2024, except that we 
+exclude observations for the pandemic period 2020-2021. Exhibit 27 reports the 
+regression results. Overall, we find statistically significant relationships between our 
+GLOBALcycle indicator and most asset classes. 
+We find statistically significant relationships… 
+Across asset classes, we find the statistical relationship is most statistically significant 
+for global equities, commodities, oil prices, US 2y rates, and EM FX. We also find a 
+weaker but still significant relationship with the DXY and US 2y10y slope. 
+… and intuitive results across asset classes 
+We also find the expected signs in the regression coefficients. As one could expect when 
+the global economy is growing above trend, the higher our GLOBALcycle turns: (i) global 
+equity returns are stronger; (ii) US rates (especially 2y) sell off, and the curve flattens; 
+(iii) commodities and oil pick up; and (iv) EM FX appreciates, and the dollar weakens. 
+GLOBALcycle is significant both contemporaneously and as leading indicator 
+While the fraction of variation in returns explained by GLOBALcycle is not exceptionally 
+large, the statistical relationships outlined are significant. Interestingly, our findings 
+suggest that GLOBALcycle contains useful information not just as a contemporaneous 
+variable but also in a leading sense. While the proportion of variation explained is lower 
+than the contemporaneous estimates, it remains with a strong statistical significance. 
+In terms of explanatory power, Exhibit 30 and Exhibit 31 show the expanding R-squared 
+and regression coefficients of the contemporaneous specification for each asset class. 
+While we find a decreasing correlation over time, it is important to note that regression 
+coefficients are much more stable. We have in fact a leading indicator that has some 
+explanatory power on asset returns, with stable regression coefficients despite some 
+decrease in explanatory power over time. 
+Exhibit 29: GLOBALcycle correlates well with several asset price variables including equities, rates, FX, commodities 
+IV regression results of asset price variables on GLOBALcycle 
+Global Equities 
+Commodities 
+Brent 
+DXY 
+US 2Y 
+US 10Y 
+US 2s10s 
+EM FX 
+Contemporaneous relationship 
+Global Cycle 
+2.58 
+3.89 
+4.68 
+-0.58 
+9.38 
+5.18 
+-4.20 
+0.97 
+t-statistic 
+5.66 
+5.70 
+4.53 
+-2.45 
+3.52 
+1.83 
+-2.16 
+5.05 
+R-squared 
+0.15 
+0.12 
+0.08 
+0.03 
+0.05 
+0.02 
+0.01 
+0.11 
+Leading relationship 
+Global Cycle (t-1) 
+1.74 
+3.21 
+3.76 
+-0.42 
+8.07 
+3.23 
+-4.84 
+0.67 
+t-statistic 
+3.67 
+4.61 
+3.57 
+-1.74 
+2.99 
+1.13 
+-2.48 
+3.40 
+R-squared 
+0.09 
+0.10 
+0.07 
+0.02 
+0.04 
+0.01 
+0.02 
+0.08 
+Source: BofA Global Research, Haver, Bloomberg. Note: Regressions are run with an expanding sample from 2000-2024 at monthly frequency. 
+BofA GLOBAL RESEARCH 
+ 
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+15
+ 
+ 
+Exhibit 30: Explanatory power tends to decrease over time… 
+R2 for financial variables on GLOBALcycle 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 31: …but regression coefficients are remarkably stable  
+Coefficients of GLOBALcycle for financial variables 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Momentum in the GLOBAL cycle 
+We also look at the relationship between momentum in our indicator and the direction of 
+asset returns. We define momentum as the monthly change of the 3-month moving 
+average of GLOBALcycle. Then we consider the following regressions adding momentum 
+as an additional variable: 
+ 
+ 
+ 
+We use 
+and 
+respectively) as 
+instruments for the specifications above. The sample remains the same, expanding from 
+2000 to December 2024. 
+Statistical relationships are consistent with growth acceleration 
+Our results are shown in Exhibit 32. We find Momentum to be statistically significant, 
+and that stronger momentum signals higher global equities, a weaker US dollar, stronger 
+EM FX, and higher US 10y rates (in this case, with a steeper curve). We also find 
+momentum to be correlated with higher oil and commodity prices, but these results are 
+not statistically significant. 
+Exhibit 32: GLOBALcycle momentum also correlates with several asset price variables across equities, rates, FX, commodities  
+IV regression results of financial variables on GLOBALcycle and Momentum 
+Global Equities 
+US Bonds 
+Commoditie
+s 
+Brent 
+DXY 
+US 2Y 
+US 10Y 
+US 2s10s 
+EM FX 
+Contemporaneous relationship 
+ 
+ 
+Global Cycle 
+2.38 
+-0.33 
+3.73 
+4.47 
+-0.51 
+8.79 
+3.94 
+-4.85 
+0.89 
+t-statistic 
+5.33 
+-1.38 
+5.37 
+4.25 
+-2.09 
+3.22 
+1.37 
+-2.44 
+4.63 
+Momentum 
+6.25 
+-3.31 
+5.05 
+6.49 
+-2.38 
+18.35 
+38.41 
+20.05 
+2.60 
+t-statistic 
+3.39 
+-3.36 
+1.76 
+1.49 
+-2.37 
+1.63 
+3.24 
+2.45 
+3.28 
+R-squared 
+0.23 
+0.05 
+0.15 
+0.10 
+0.05 
+0.06 
+0.05 
+0.03 
+0.17 
+Leading relationship 
+ 
+Global Cycle (t-1) 
+1.51 
+-0.19 
+2.99 
+3.50 
+-0.31 
+7.42 
+2.19 
+-5.23 
+0.57 
+t-statistic 
+3.18 
+-0.78 
+4.21 
+3.26 
+-1.27 
+2.69 
+0.76 
+-2.61 
+2.88 
+Momentum (t-1) 
+6.61 
+-2.56 
+6.17 
+7.18 
+-3.07 
+18.52 
+29.60 
+11.08 
+2.91 
+t-statistic 
+3.40 
+-2.60 
+2.12 
+1.63 
+-3.04 
+1.64 
+2.50 
+1.35 
+3.58 
+R-squared 
+0.15 
+0.06 
+0.13 
+0.08 
+0.05 
+0.06 
+0.05 
+0.03 
+0.13 
+Source: BofA Global Research, Haver, Bloomberg. Note: Regressions are run with an expanding sample from 2000-2024 at monthly frequency. 
+BofA GLOBAL RESEARCH 
+ 
+0.00
+0.10
+0.20
+0.30
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+Global Equities
+Commodities
+Brent
+DXY
+US 2Y
+US 10Y
+US 2s10s
+EM FX
+-8
+-4
+0
+4
+8
+12
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+Global Equities
+Commodities
+Brent
+DXY
+US 2Y
+US 10Y
+US 2s10s
+EM FX
+
+ 
+ 
+16 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 33: Adding Momentum increases explanatory power… 
+R2 for financial variables on GLOBALcycle, Momentum 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 34: …but does not materially change regression coefficients  
+Coefficients of GLOBALcycle for financial variables 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+In our view, these results are consistent with an indicator where momentum signals an 
+acceleration in global growth. This goes one level beyond growing above trend, with the 
+main difference being that an acceleration of the economy signals a steeper yield curve 
+for interest rates. 
+In terms of fit, Exhibit 33 shows the R-squared for each asset class, which can be seen is 
+in some cases considerably higher than in the previous specification (shown in Exhibit 
+30). Interestingly, as show in Exhibit 34, the coefficients for the GLOBALcycle remain 
+quite stable across specifications, even if the magnitudes vary somewhat. 
+Limitations and risks 
+All GLOBALcycle and ECIs values and results shown for periods other than 3Q 2026 are 
+hypothetical. They were produced by retroactively applying the indicators' current 
+methodology to historical data, and they do not reflect actual or live results. The 
+indicators did not exist using this methodology during the period shown above.  
+The indicators have inherent limitations. They were prepared with the benefit of 
+hindsight. The methodology was designed or adjusted after the historical data was 
+reviewed. And the results may not reflect the impact of market, economic, or other 
+factors that could have affected outcomes had the indicator actually been in use.  
+Historical correlations may not persist and are not indicative of, and do not guarantee, 
+future results.  
+ 
+ 
+ 
+ 
+0.00
+0.10
+0.20
+0.30
+0.40
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+Global Equities
+Commodities
+Brent
+DXY
+US 2Y
+US 10Y
+US 2s10s
+EM FX
+-8
+-4
+0
+4
+8
+12
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+Global Equities
+Commodities
+Brent
+DXY
+US 2Y
+US 10Y
+US 2s10s
+EM FX
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+17
+ 
+ 
+Appendix: Individual ECIs by country 
+Exhibit 35: Japan Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 36: UK Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 37: Canada Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq saar) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 38: Australia Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 39: Indonesia Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 40: Korea Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-2
+-1
+0
+1
+2
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+4%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-2%
+-1%
+0%
+1%
+2%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-2%
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-1%
+-1%
+0%
+1%
+1%
+2%
+2%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+
+ 
+ 
+18 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 41: Poland Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 42: Türkiye Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 43: S Africa Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 44: Brazil Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 45: Mexico Economic Conditions Indicator and qoq growth 
+GDP growth (%, qoq) and Economic Conditions Indicator (z-score, rhs) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-2
+-1
+0
+1
+2
+-4%
+-2%
+0%
+2%
+4%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-4%
+-2%
+0%
+2%
+4%
+6%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-2%
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+4%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+-2
+-1
+0
+1
+2
+-3%
+-2%
+-1%
+0%
+1%
+2%
+3%
+2015
+2017
+2019
+2021
+2023
+2025
+GDP (sa, qoq)
+ECI (right axis)
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+19
+ 
+ 
+Appendix: Results and fit 
+Exhibit 46: Japan growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 47: Japan GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 48: UK GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 49: UK GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 50: Canada growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 51: Canada GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar)  
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Japan GDP growth
+Implied by GLOBALcycle
+BofA forecast
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+3.5%
+4.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+-8%
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual UK GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.5%
+0.7%
+0.9%
+1.1%
+1.3%
+1.5%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+-8%
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Canada GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+
+ 
+ 
+20 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 52: Australia growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 53: Australia GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 54: Indonesia growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 55: Indonesia GLOBALcycle vs OECD 
+Median absolute deviation (%, qoq saar)  
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 56: Korea growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 57: Korea GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-8%
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Australia GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.5%
+1.0%
+1.5%
+2.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Indonesia GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+PMI
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Korea GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+21
+ 
+ 
+Exhibit 58: Poland growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 59: Poland GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 60: Türkiye growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 61: Türkiye GLOBALcycle vs OECD 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 62: South Africa growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 63: South Africa GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Poland GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+3.5%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+-10%
+-5%
+0%
+5%
+10%
+15%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Türkiye GDP growth
+Implied by GLOBALycle
+BofA forecast
+2.0%
+3.0%
+4.0%
+5.0%
+6.0%
+7.0%
+8.0%
+9.0%
+10.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+PMI
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual S Africa GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+
+ 
+ 
+22 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Exhibit 64: Brazil growth predicted by GLOBALcycle  
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 65: Brazil GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 66: Mexico growth predicted by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 67: Mexico GLOBALcycle vs OECD vs Bloomberg consensus 
+Median absolute deviation (%, qoq saar) 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 68: GLOBALcycle vs BofA forecasts. Global growth remains resilient despite risks, with GLOBALcycle somewhat stronger than BofA forecasts 
+Quarterly growth (%, qoq saar) implied by GLOBALcycle vs BofA forecasts 
+  
+Implied by Global 
+cycle 3Q26 
+BofA forecast 3Q26 
+Implied by Global 
+cycle 2Q26 
+Actual GDP growth 
+2Q26 
+Implied by Global 
+cycle 1Q26 
+Actual GDP growth 
+1Q26 
+Global 
+3.7 
+3.4 
+3.4 
+2.9 
+4.2 
+4.0 
+DM 
+2.2 
+2.1 
+2.2 
+1.9 
+1.9 
+1.9 
+US 
+2.3 
+3.5 
+2.4 
+2.2 
+2.2 
+2.5 
+Euro area 
+2.0 
+0.8 
+1.7 
+1.1 
+1.3 
+1.1 
+Japan 
+2.6 
+0.1 
+1.1 
+1.4 
+1.9 
+1.9 
+UK 
+2.1 
+1.4 
+2.5 
+2.1 
+1.8 
+2.6 
+Canada 
+2.2 
+2.1 
+4.0 
+3.3 
+2.8 
+0.3 
+Australia 
+2.9 
+2.0 
+3.1 
+1.7 
+3.1 
+1.1 
+EM 
+4.6 
+4.3 
+4.3 
+3.7 
+5.2 
+5.7 
+Brazil 
+2.2 
+0.6 
+2.7 
+1.9 
+3.9 
+4.4 
+India 
+8.1 
+7.2 
+7.6 
+6.8 
+7.6 
+8.1 
+China 
+4.5 
+3.9 
+3.5 
+3.1 
+6.0 
+5.6 
+Indonesia 
+5.5 
+4.1 
+5.9 
+4.4 
+6.3 
+6.0 
+Korea 
+4.5 
+2.8 
+6.2 
+2.6 
+7.2 
+7.5 
+Poland 
+4.7 
+2.6 
+5.4 
+4.1 
+4.9 
+2.4 
+Türkiye 
+0.5 
+6.7 
+3.6 
+-2.8 
+4.4 
+3.3 
+South Africa 
+2.2 
+1.2 
+1.6 
+-1.0 
+2.5 
+1.7 
+Mexico 
+2.8 
+0.6 
+2.1 
+5.8 
+1.6 
+-1.4 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+8%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Brazil GDP growth
+Implied by GLOBALcycle
+BofA forecast
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+3.5%
+4.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALCycle
+OECD
+Bloomberg
+PMI
+-4%
+-2%
+0%
+2%
+4%
+6%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual Mexico GDP growth
+Implied by GLOBALcycle
+BofA forecast
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+2009 2011 2013 2015 2017 2019 2021 2023 2025
+GLOBALcycle
+OECD
+Bloomberg
+PMI
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+23
+ 
+ 
+Appendix: Post-Covid China 
+In China, we find the accuracy of fit of the ECI to nowcast growth diminished materially 
+since the pandemic (Exhibit 69 and Exhibit 70). We believe this is driven by: (i) China’s 
+persistent domestic weakness since the post-Covid reopening, which could signal a 
+structural shift; and (ii) data on the number of employees has not been published since 
+2022. Exhibit 69 shows China growth has been persistently overestimated by the ECI. 
+To tackle this issue, we use a post-Covid dummy since 2022 for our growth regressions. 
+Specifically, instead of doing a univariate regression of quarterly GDP growth on the 
+level of the ECI, we add a variable post-Covid=1 since 2022. In turn, we run a multivariate 
+regression of quarterly GDP growth on the level of the ECI, the dummy, and the 
+interaction term ECI*post-Covid. Exhibit 70 illustrates how, despite being only three 
+years, including the dummy materially improves the fit (which is an expanding measure). 
+Because China has such an outsized weight in the EM aggregate, we take the same 
+approach for EM. In fact, not using the dummy for emerging markets also leads to the 
+framework persistently overestimating post-Covid EM growth (Exhibit 71). And we see a 
+similar improvement in fit when including the post-Covid dummy (Exhibit 72). 
+Exhibit 69: China’s growth may have experienced a structural break 
+Actual and predicted growth rates (%), no post-Covid dummy 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 70: China’s fit improves materially with a post-Covid dummy 
+Mean absolute deviation (%), implied by ECI with and without dummy 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 71: EM growth had also been overestimated by GLOBALcycle 
+Actual and predicted growth rates (%, qoq saar), no post-Covid dummy 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+Exhibit 72: EM’s fit also improves with a post-Covid dummy 
+Mean absolute deviation (%), implied by ECI with and without dummy 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ 
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual China GDP growth
+Implied by GLOBALcycle
+BofA forecast
+1.00%
+1.10%
+1.20%
+1.30%
+1.40%
+1.50%
+2008 2010 2012 2014 2016 2018 2020 2022 2024
+GLOBALcycle
+GLOBALcycle with dummy
+0%
+2%
+4%
+6%
+8%
+10%
+2015
+2017
+2019
+2021
+2023
+2025
+Actual GEM GDP growth
+Implied by GLOBALcycle
+Implied by BofA forecast
+0.50%
+0.60%
+0.70%
+0.80%
+0.90%
+1.00%
+2008 2010 2012 2014 2016 2018 2020 2022 2024
+GLOBALcycle
+GLOBALcycle with dummy
+
+ 
+ 
+24 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Appendix: Regression for Global ECIs 
+The main drawback to our approach to constructing aggregate ECIs is that we are not 
+exploiting the potentially different signal-to-noise ratio of different country indicators, 
+or their correlations. We propose an alternative method as a robustness check, and we 
+conclude that the overall accuracy of the framework does not change materially.  
+The ECI corresponding to a particular country may be better than others in terms of 
+signal-to-noise. Additionally, we (unsurprisingly) find that ECIs are generally positively 
+correlated across countries, as if in line with a global factor. 
+Therefore, we examine a simple regression approach to take advantage of the 
+correlation between and signal-to-noise ratio of each country’s ECI to construct global 
+aggregate indicators, while preserving tractability in terms of interpretation. For each 
+aggregate 
+and every quarter 
+ we first compute the (rolling) z-
+score for aggregate growth,
+. In turn, we construct our aggregate ECIs as the fitted 
+values in the following (expanding) regression 
+ 
+ 
+where 
+ is an index for each country, with all countries included irrespectively of . 
+The fitted values then correspond to the aggregate ECI, and the fitted value for GDP 
+growth can be directly mapped from z-score to GDP growth rate. Interestingly, the 
+accuracy of the fit does not materially improve. Furthermore, the coefficients of the 
+regression can vary significantly over time (and/or have a counterintuitive or negative 
+value). As a result, we prefer to stick to the intuitive methodology of using the PPP GDP-
+weighted average of individual ECIs. 
+ 
+ 
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+25
+ 
+ 
+Appendix: Econometric methodology 
+Based on Auroba, Diebold and Scotti (2009), we assume that the daily state of economic 
+activity 
+follows the autoregressive process: 
+ 
+ 
+ 
+where 
+ is an i.i.d. disturbance.  
+This latent variable 
+ in turn drives the daily dynamic of activity indicators 
+ which 
+can be observed at different frequencies and follow the process: 
+ 
+ 
+ 
+where 
+ is the number of days in each observational period (quarter, month, week) and 
+ is an i.i.d. shock.  
+The observed counterpart of activity indicators 
+ can then be expressed as  
+ 
+ 
+ 
+when 
+ is observed (or NA otherwise) and 
+ is the sum of 
+.  
+We use the cumulator variables 
+ where 
+ is the observational 
+frequency and 
+ is a dummy equal to 0 if
+is the first day of the period and 1 otherwise. 
+Then the overserved variable 
+ can be expressed as  
+ 
+ 
+  
+For each country, we specify the dynamics of the state 
+ and each activity indicator 
+follow autoregressive processes of first order. The framework is estimated via maximum 
+likelihood using the Kalman filter to extract the latent state of the economy.  
+As an example, if we have three activity indicators at the quarterly, monthly, and weekly 
+frequencies, the representation of the framework is: 
+ 
+ 
+ 
+ 
+
+ 
+ 
+26 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+Appendix: Variables for constructing ECIs 
+Exhibit 73: Detailed GLOBALcycle variables for developed markets 
+GLOBALcycle leverages quarterly, monthly, and weekly data to track economic performance 
+Country Ticker 
+Description  
+Frequency  Retrieved from 
+US 
+diffl(GDPH@USECON) 
+Real Gross Domestic Product (SAAR, Chn.2017$) Log Change 
+Quarterly 
+Haver 
+diffl(IP@USECON) 
+Industrial Production Index (SA, 2017=100) Log Change  
+Monthly 
+Haver 
+diffl(TSTH@USECON) 
+Real Manufacturing & Trade Sales: All Industries (SA, Chn.2017$) Log Change  
+Monthly 
+Haver 
+diffl(LANAGRA@LABOR) 
+All Employees: Total Nonfarm (SA, ) Log Change 
+Monthly 
+Haver 
+diffl(YPXTPHM@USNA) 
+Real Personal Income Excluding Current Transfer Receipts (SAAR, 2017.$) Log Change 
+Monthly 
+Haver 
+diffl(LIC@WEEKLY) 
+Unemployment Insurance: Initial Claims, State Programs (SA, ) Log Change 
+Weekly 
+Haver 
+Euro area 
+diffl(S025NGPC@G10) 
+EA 20: Gross Domestic Product (SWDA, Chn.2015.EUR) Log Change 
+Quarterly 
+Haver 
+diffl(S025D@G10) 
+EA 20: IP: Industry excluding Construction (SWDA, 2021=100) Log Change 
+Monthly 
+Haver 
+diffl(S025TRSC@G10) 
+EA 20: Retail Sales Volume Index (SWDA, 2021=100) Log Change 
+Monthly 
+Haver 
+diffl(S025CVRT@EUDATA) 
+Euro Area 20: New Car Registrations (SWDA, Units) Log Change 
+Monthly 
+Haver 
+diffl(E025ES@EUDATA) 
+EA20: Economic Sentiment Indicator (SA, Long-term Average=100) Log Change 
+Monthly 
+Haver 
+diffl(S100TX@INTWKLY) 
+Europe: STOXX 600 Price Index: Based in Euro (AVG, Dec-31-91=100) Log Change 
+Weekly 
+Haver 
+UK 
+diffl(S112NGPC@G10) 
+Gross Domestic Product (SA, Chained.2019.Pounds) Log Change 
+Quarterly 
+Haver 
+diffl(S112D@G10) 
+Industrial Production (SA, 2019=100) Log Change 
+Monthly 
+Haver 
+diffl(S112TRSC@G10) 
+Great Britain: Retail Sales Volume Index (SA, 2019=100) Log Change 
+Monthly 
+Haver 
+diffl(S112IXT@G10)-diffl(H112PHPC@G10) 
+Exports of Goods and Services (SA, Mil.Pounds) 
+Monthly 
+Haver 
+diffl(SPFALL@WEEKLY ) 
+Stock Price Index: UK: London Financial Times All Share (Avg, Apr-10-62=100) Log Change 
+Weekly 
+Haver 
+Japan 
+diffl(S158NGPC@G10) 
+Gross Domestic Product (SA, Chn.2015.Yen) Log Change 
+Quarterly 
+Haver 
+diffl(S158D@G10) 
+ Industrial Production excluding Construction (SA, 2020=100) Log Change 
+Monthly 
+Haver 
+diffl(JPSIIRF@JAPAN) 
+Inventory/Sales Ratio: Final Demand Goods (SA, 2020=100) Log Change  
+Monthly 
+Haver 
+diffl(JPEWIH2@JAPAN) 
+Overtime Hrs Worked [30 or More Empl]: All Surveyed Indus (SA, 2020=100) Log Change 
+Monthly 
+Haver 
+diffl(S158NKA@INTWKLY) 
+ Stock Price Index: Nikkei 225 Average (AVG, May-16-49=176.21) Log Change 
+Weekly 
+Haver 
+Australia 
+diffl(AUSNGDPC@ANZ) 
+ Gross Domestic Product (SA, Chn.FY 2022.A$) Log Change  
+Quarterly 
+Haver 
+diffl(H924D@EMERGEPR) 
+Index of Industrial Value Added (SA, 2005=100) Log Change 
+Monthly 
+Haver 
+diffl(AUSHADHV@ANZ) 
+Dwelling Units Approved: Houses: Private Sector (SA, Units) Log Change  
+Monthly 
+Haver 
+diffl(S193VCC@INTSRVYS) 
+Westpac-Melbourne Institute Consumer Sentiment Index (SA, Index) Log Change 
+Monthly 
+Haver 
+diff(R193G3M@INTWKLY) 
+Bank Accepted Bills: 3-month (% per annum) Change - Period to Period 
+Weekly 
+Haver 
+Canada 
+diffl(S156NGPC@G10) 
+Gross Domestic Product (SA, Chn.2017.C$) Log Change 
+Quarterly 
+Haver 
+N156VBOT@INTSRVYS 
+Business Outlook: Future Sales Growth: Balance of Opinion (%) 
+Quarterly 
+Haver 
+diffl(S156D@G10) 
+Industrial Production: Manufacturing, Mining & Utilities (SA, 2007=100) Log Change 
+Monthly 
+Haver 
+diffl(S156TRSC@G10) 
+ Real Retail Sales (SA, 2017.C$) Log Change 
+Monthly 
+Haver 
+diffl(S156IXD@G10) 
+Exports of Goods (SA, US$) Log Change 
+Monthly 
+Haver 
+diffl(S156TOI@INTWKLY) 
+S&P/TSX Composite Index, Close Price (Index) Log Change  
+Weekly 
+Haver 
+diffl(P156CP@INTWKLY) 
+Commodity Price Index (Jan-72=100) Log Change 
+Weekly 
+Haver 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+27
+ 
+ 
+Exhibit 74: Detailed GLOBALcycle variables for emerging economies 
+GLOBALcycle leverages quarterly, monthly, and weekly data to track economic performance 
+Country 
+Ticker 
+Description  
+Frequency  
+Retrieved from 
+China 
+diffl(H924NGPC@EMERGEPR) 
+ Gross Domestic Product (SA, 2020.Yuan) Log Change 
+Quarterly 
+Haver 
+diffl(sa(cgbb@china)) 
+ No of Employee: Total (Person) 
+Quarterly 
+Haver 
+diffl(H924D@EMERGEPR) 
+Index of Industrial Value Added (SA, 2005=100) Log Change - Period to 
+Period 
+Monthly 
+Haver 
+diffl(sa(N924OVU@EMERGEPR)) 
+IP: Electricity Production (NSA, KWH) 
+Monthly 
+Haver 
+SZCOMP Index 
+Shenzhen Stock Exchange Composite Index 
+Weekly 
+Bloomberg 
+India 
+diffl(H534NGPC@EMERGEPR) 
+GDP at Market Prices (SA, Apr.11-Mar.12.Rupees) Log Change - Period to 
+Period 
+Quarterly 
+Haver 
+diffl(N534D@EMERGEPR) 
+ IP: General Index (NSA, Apr.11-Mar.12=100) Log Change - Period to Period 
+Monthly 
+Haver 
+diffl(sa(M534FMT@INTWKLY))-
+diffl(H534PW@EMERGEPR) 
+Real Cash Demand (log change) 
+Monthly 
+Haver 
+diffl(sa(aggany(F534BYJ@INTWKLY,eop)))-
+diffl(H534PW@EMERGEPR) 
+Real Credit (log change) 
+Monthly 
+Haver 
+diffl(S534SX@INTWKLY) 
+Stock Price Index: BSE: Sensitive [Sensex] (1978-79=100) Log Change - 
+Period to Period 
+Weekly 
+Haver 
+Indonesia 
+diffl(SA(H536NGPC@EMERGEPR)) 
+Indonesia: Gross Domestic Product (SA, 2010.Rupiahs) Log Change 
+Quarterly 
+Haver 
+diffl(sa(n536DM@EMERGEPR)) 
+Indonesia: IP: Manufacturing: Large & Med Enterprise (NSA, 2010=100)Log 
+Change 
+Monthly 
+Haver 
+diffl(H536FM1@EMERGEPR) 
+Indonesia: Money Supply: M1 (EOP, SA, Rupiahs) Log Change  
+Monthly 
+Haver 
+diffl(H536IXD@EMERGEPR) 
+Indonesia: Merchandise Exports (SA, US$) Log Change  
+Monthly 
+Haver 
+IDTOTOT Index 
+Indonesia Tourist Arrivals  
+Monthly 
+Bloomberg 
+JCI Index 
+Jakarta Stock Exchange Composite Index 
+Weekly 
+Bloomberg 
+Korea 
+diffl(S542NGPC@EMERGEPR) 
+Gross Domestic Product (SA, Ch.2020.Won) Log Change 
+Quarterly 
+Haver 
+diffl(S542D@EMERGEPR) 
+IP excluding Construction (SA, 2020=100) Log Change 
+Monthly 
+Haver 
+diffl(S542ELE@EMERGEPR) 
+Employment (SA, ) Log Change 
+Monthly 
+Haver 
+diffl(H542SQRT@EMERGEPR) 
+Volume Index of Services: Retail Trade (SA, 2020=100) Log Change 
+Monthly 
+Haver 
+SKBSICSA Index 
+Business Conditions 
+Monthly 
+Bloomberg 
+KOSPI Index 
+KOSPI Log Change - Period to Period  
+Weekly 
+Bloomberg 
+Poland 
+diffl(S964NGPC@EMERGECW) 
+Gross Domestic Product (SWDA, Chn.2015.Zloty) Log Change 
+Quarterly 
+Haver 
+diffl(H964ELE@EMERGECW) 
+Labor Market: Total Employment (SA, ) Log Change 
+Quarterly 
+Haver 
+diffl(H964TRSC@EMERGECW) 
+Retail Sales in Constant Prices (SA, 2021=100) Log Change 
+Monthly 
+Haver 
+diffl(S964D@EMERGECW) 
+IP excluding Construction (SA, 2021=100) Log Change 
+Monthly 
+Haver 
+POCCWOK Index 
+Consumer Confidence  
+Monthly 
+Bloomberg 
+WIG Index 
+WIG Log Change - Period to Period  
+Weekly 
+Bloomberg 
+Türkiye 
+diffl(h186NGPC@EMERGEMA) 
+Gross Domestic Product (SA, Chn.2009.TL) Log Change 
+Quarterly 
+Haver 
+diffl(sa(N186CEL@EMERGEMA)) 
+Gross Demand of Electricity (NSA, GWh) 
+Monthly 
+Haver 
+YRYR%(S186D@EMERGEMA) 
+Industrial Production (SWDA, 2021=100) % Change - Year to Year 
+Monthly 
+Haver 
+S186DUM2@EMERGEMA 
+Capacity Utilization: Manufacturing Industry (SA, %) 
+Monthly 
+Haver 
+XU100 Index 
+Istanbul SE National 100 
+Weekly 
+Bloomberg 
+S Africa 
+diffl(S199NGPC@EMERGEMA) 
+Gross Domestic Product (SAAR, 2015.Rand) Log Change 
+Quarterly 
+Haver 
+S199DUM@EMERGEMA 
+Manufacturing: Capacity Utilization Rate (SA, %) 
+Quarterly 
+Haver 
+diffl(S199TRO@EMERGEMA) 
+Retail Sales Volume Index (SA, 2019=100) Log Change 
+Monthly 
+Haver 
+diffl(S199DM@EMERGEMA) 
+Manufacturing Production: Volume (SA, 2019=100) Log Change 
+Monthly 
+Haver 
+JALSH Index 
+FTSE/JSE All Shares Log Change - Period to Period  
+Weekly 
+Bloomberg 
+Brazil 
+diffl(S223NGPC@EMERGE) 
+Gross Domestic Product (SA, Chained.1995.Reais) Log Change  
+Quarterly 
+Haver 
+diffl(S223GVI@EMERGELA) 
+Economic Activity Indicator [IBC-Br] (SA, 2002=100) Log Change 
+Monthly 
+Haver 
+diffl(S223D@EMERGELA) 
+Industrial Production (SA, 2022=100) Log Change  
+Monthly 
+Haver 
+diffl(N223FCT@EMERGELA)-diffl(C223PCN@EMERGELA) 
+Real Credit (log change) 
+Monthly 
+Haver 
+diffl(H223ELEF@EMERGELA) 
+Formal Employment (SA, Dec-01=100) Log Change - Period to Period 
+Monthly 
+Haver 
+diffl(S223BOV@INTWKLY) 
+ Equity Index: IBovespa [Total Return]  
+Weekly 
+Haver 
+Mexico 
+diffl(S273NGPC@EMERGELA) 
+Gross Domestic Product, Market Prices (SAAR, 2018.NewPesos) Log 
+Change 
+Quarterly 
+Haver 
+diffl(S273DW@EMERGELA) 
+Mexico: Industrial Production (SA, 2018=100) Log Change 
+Monthly 
+Haver 
+diffl(sa(C273ESWP@EMERGELA)) 
+Mexico: Permanent Workers Insured by the IMSS (NSA, Persons) 
+Monthly 
+Haver 
+diffl(S273GVI@EMERGELA) 
+Economic Activity Indicator (SWDA, 2018=100) Log Change 
+Monthly 
+Haver 
+diffl(S273IPC@INTWKLY) 
+Stock Price Index: IPC (Nov-78=0.78) Log Change - Period to Period 
+Weekly 
+Haver 
+Source: BofA Global Research, Haver, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+     
+
+ 
+ 
+28 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+  Disclosures 
+Important Disclosures 
+ 
+        
+BofA Global Research personnel (including the analyst(s) responsible for this report) receive compensation based upon, among other factors, the overall profitability of Bank of America 
+Corporation, including profits derived from investment banking. The analyst(s) responsible for this report may also receive compensation based upon, among other factors, the overall 
+profitability of the Bank’s sales and trading businesses relating to the class of securities or financial instruments for which such analyst is responsible. 
+BofA Securities fixed income analysts regularly interact with sales and trading desk personnel in connection with their research, including to ascertain pricing and liquidity in the fixed income 
+markets. 
+ 
+ 
+Other Important Disclosures 
+Prices are indicative and for information purposes only. Except as otherwise stated in the report, for any recommendation in relation to an equity security, the price referenced is the publicly 
+traded price of the security as of close of business on the day prior to the date of the report or, if the report is published during intraday trading, the price referenced is indicative of the traded 
+price as of the date and time of the report and in relation to a debt security (including equity preferred and CDS), prices are indicative as of the date and time of the report and are from various 
+sources including BofA Securities trading desks. 
+The date and time of completion of the production of any recommendation in this report shall be the date and time of dissemination of this report as recorded in the report timestamp. 
+ 
+This report may refer to fixed income securities or other financial instruments that may not be offered or sold in one or more states or jurisdictions, or to certain categories of investors, 
+including retail investors. Readers of this report are advised that any discussion, recommendation or other mention of such instruments is not a solicitation or offer to transact in such 
+instruments. Investors should contact their BofA Securities representative or Merrill  Global Wealth Management financial advisor for information relating to such instruments. 
+Rule 144A securities may be offered or sold only to persons in the U.S. who are Qualified Institutional Buyers within the meaning of Rule 144A under the Securities Act of 1933, as amended. 
+SECURITIES OR OTHER FINANCIAL INSTRUMENTS DISCUSSED HEREIN MAY BE RATED BELOW INVESTMENT GRADE AND SHOULD THEREFORE ONLY BE CONSIDERED FOR INCLUSION IN 
+ACCOUNTS QUALIFIED FOR SPECULATIVE INVESTMENT. 
+Recipients who are not institutional investors or market professionals should seek the advice of their independent financial advisor before considering information in this report in connection 
+with any investment decision, or for a necessary explanation of its contents. 
+The securities or other financial instruments discussed in this report may be traded over-the-counter. Retail sales and/or distribution of this report may be made only in states where these 
+instruments are exempt from registration or have been qualified for sale. 
+Officers of BofAS or one or more of its affiliates (other than research analysts) may have a financial interest in securities of the issuer(s) or in related investments. 
+This report, and the securities or other financial instruments discussed herein, may not be eligible for distribution or sale in all countries or to certain categories of investors, including retail 
+investors. 
+Individuals identified as economists do not function as research analysts under U.S. law and reports prepared by them are not research reports under applicable U.S. rules and regulations. 
+Macroeconomic analysis is considered investment research for purposes of distribution in the U.K. under the rules of the Financial Conduct Authority. 
+Refer to BofA Global Research policies relating to conflicts of interest. 
+"BofA Securities" includes BofA Securities, Inc. ("BofAS") and its affiliates. Investors should contact their BofA Securities representative or Merrill Global Wealth Management financial 
+advisor if they have questions concerning this report or concerning the appropriateness of any investment idea described herein for such investor. "BofA Securities" is a global brand 
+for BofA Global Research. 
+Information relating to Non-US affiliates of BofA Securities and Distribution of Affiliate Research Reports: 
+BofAS and/or Merrill Lynch, Pierce, Fenner & Smith Incorporated ("MLPF&S") may in the future distribute, information of the following non-US affiliates in the US (short name: legal name, 
+regulator): Merrill Lynch (South Africa): Merrill Lynch South Africa (Pty) Ltd., regulated by the Financial Sector Conduct Authority; MLI (UK): Merrill Lynch International, regulated by the Financial 
+Conduct Authority (FCA) and the Prudential Regulation Authority (PRA); BofASE (France): BofA Securities Europe SA is authorized by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) 
+and regulated by the ACPR and the Autorité des Marchés Financiers (AMF). BofA Securities Europe SA ("BofASE") with registered address at 51, rue La Boétie, 75008 Paris is registered under no 
+842 602 690 RCS Paris. In accordance with the provisions of French Code Monétaire et Financier (Monetary and Financial Code), BofASE is an établissement de crédit et d'investissement (credit 
+and investment institution) that is authorised and supervised by the European Central Bank and the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and regulated by the ACPR and the 
+Autorité des Marchés Financiers. BofASE's share capital can be found at www.bofaml.com/BofASEdisclaimer; BofA Europe (Milan): Bank of America Europe Designated Activity Company, Milan 
+Branch, regulated by the Bank of Italy, the European Central Bank (ECB) and the Central Bank of Ireland (CBI); BofA Europe (Frankfurt): Bank of America Europe Designated Activity Company, 
+Frankfurt Branch regulated by BaFin, the ECB and the CBI; BofA Europe (Zurich): Bank of America Europe Designated Activity Company, Zurich Branch, regulated by the Swiss Financial Market 
+Supervisory Authority FINMA, the ECB and CBI; BofA Europe (Madrid): Bank of America Europe Designated Activity Company, Sucursal en España, regulated by the Bank of Spain, the ECB and the 
+CBI; Merrill Lynch (Australia): Merrill Lynch Equities (Australia) Limited, regulated by the Australian Securities and Investments Commission; Merrill Lynch (Hong Kong): Merrill Lynch (Asia Pacific) 
+Limited, regulated by the Hong Kong Securities and Futures Commission (HKSFC); Merrill Lynch (Singapore): Merrill Lynch (Singapore) Pte Ltd, regulated by the Monetary Authority of Singapore 
+(MAS); Merrill Lynch (Canada): Merrill Lynch Canada Inc, regulated by the Canadian Investment Regulatory Organization; Merrill Lynch (Mexico): Merrill Lynch Mexico, SA de CV, Casa de Bolsa, 
+regulated by the Comisión Nacional Bancaria y de Valores; BofAS Japan: BofA Securities Japan Co., Ltd., regulated by the Financial Services Agency; Merrill Lynch (Seoul): Merrill Lynch 
+International, LLC Seoul Branch, regulated by the Financial Supervisory Service; Merrill Lynch (Taiwan): Merrill Lynch Securities (Taiwan) Ltd., regulated by the Securities and Futures Bureau; 
+BofAS India: BofA Securities India Limited, regulated by the Securities and Exchange Board of India (SEBI); Merrill Lynch (Israel): Merrill Lynch Israel Limited, regulated by Israel Securities 
+Authority; Merrill Lynch (DIFC): Merrill Lynch International (DIFC Branch), regulated by the Dubai Financial Services Authority (DFSA); Merrill Lynch (Brazil): Merrill Lynch S.A. Corretora de Títulos e 
+Valores Mobiliários, regulated by Comissão de Valores Mobiliários; Merrill Lynch KSA Company: Merrill Lynch Kingdom of Saudi Arabia Company, regulated by the Capital Market Authority. 
+This information: has been approved for publication and is distributed in the United Kingdom (UK) to professional clients and eligible counterparties (as each is defined in the rules of the FCA 
+and the PRA) by MLI (UK), which is authorized by the PRA and regulated by the FCA and the PRA - details about the extent of our regulation by the FCA and PRA are available from us on request; 
+has been approved for publication and is distributed in the European Economic Area (EEA) by BofASE (France), which is authorized by the ACPR and regulated by the ACPR and the AMF; has 
+been considered and distributed in Japan by BofAS Japan, a registered securities dealer under the Financial Instruments and Exchange Act in Japan, or its permitted affiliates; is issued and 
+distributed in Hong Kong by Merrill Lynch (Hong Kong) which is regulated by HKSFC; is issued and distributed in Taiwan by Merrill Lynch (Taiwan); is issued and distributed in India by BofAS 
+India; and is issued and distributed in Singapore to institutional investors and/or accredited investors (each as defined under the Financial Advisers Regulations) by Merrill Lynch (Singapore) 
+(Company Registration No 198602883D). Merrill Lynch (Singapore) is regulated by MAS. Merrill Lynch Equities (Australia) Limited (ABN 65 006 276 795), AFS License 235132 (MLEA) distributes 
+this information in Australia only to 'Wholesale' clients as defined by s.761G of the Corporations Act 2001. With the exception of Bank of America N.A., Australia Branch, neither MLEA nor any of 
+its affiliates involved in preparing this information is an Authorised Deposit-Taking Institution under the Banking Act 1959 nor regulated by the Australian Prudential Regulation Authority. No 
+approval is required for publication or distribution of this information in Brazil and its local distribution is by Merrill Lynch (Brazil) in accordance with applicable regulations. Merrill Lynch (DIFC) is 
+authorized and regulated by the DFSA. Information prepared and issued by Merrill Lynch (DIFC) is done so in accordance with the requirements of the DFSA conduct of business rules. BofA 
+Europe (Frankfurt) distributes this information in Germany and is regulated by BaFin, the ECB and the CBI. BofA Securities entities, including BofA Europe and BofASE (France), may 
+outsource/delegate the marketing and/or provision of certain research services or aspects of research services to other branches or members of the BofA Securities group. You may be contacted 
+by a different BofA Securities entity acting for and on behalf of your service provider where permitted by applicable law. This does not change your service provider. Please refer to the Electronic 
+Communications Disclaimers for further information. 
+This information has been prepared and issued by BofAS and/or one or more of its non-US affiliates. The author(s) of this information may not be licensed to carry on regulated activities in your 
+
+ 
+ 
+ 
+Global Economic Viewpoint | 28 October 2026
+29
+ 
+ 
+jurisdiction and, if not licensed, do not hold themselves out as being able to do so. BofAS and/or MLPF&S is the distributor of this information in the US and accepts full responsibility for 
+information distributed to BofAS and/or MLPF&S clients in the US by its non-US affiliates. Any US person receiving this information and wishing to effect any transaction in any security 
+discussed herein should do so through BofAS and/or MLPF&S and not such foreign affiliates. Hong Kong recipients of this information should contact Merrill Lynch (Asia Pacific) Limited in 
+respect of any matters relating to dealing in securities or provision of specific advice on securities or any other matters arising from, or in connection with, this information. Singapore recipients 
+of this information should contact Merrill Lynch (Singapore) Pte Ltd in respect of any matters arising from, or in connection with, this information. For clients that are not accredited investors, 
+expert investors or institutional investors Merrill Lynch (Singapore) Pte Ltd accepts full responsibility for the contents of this information distributed to such clients in Singapore. 
+General Investment Related Disclosures: 
+Taiwan Readers: Neither the information nor any opinion expressed herein constitutes an offer or a solicitation of an offer to transact in any securities or other financial instrument. No part of 
+this report may be used or reproduced or quoted in any manner whatsoever in Taiwan by the press or any other person without the express written consent of BofA Securities. 
+This document provides general information only, and has been prepared for, and is intended for general distribution to, BofA Securities clients. Neither the information nor any opinion 
+expressed constitutes an offer or an invitation to make an offer, to buy or sell any securities or other financial instrument or any derivative related to such securities or instruments (e.g., options, 
+futures, warrants, and contracts for differences). This document is not intended to provide personal investment advice and it does not take into account the specific investment objectives, 
+financial situation and the particular needs of, and is not directed to, any specific person(s). This document and its content do not constitute, and should not be considered to constitute, 
+investment advice for purposes of ERISA, the US tax code, the Investment Advisers Act or otherwise. Investors should seek financial advice regarding the appropriateness of investing in financial 
+instruments and implementing investment strategies discussed or recommended in this document and should understand that statements regarding future prospects may not be realized. Any 
+decision to purchase or subscribe for securities in any offering must be based solely on existing public information on such security or the information in the prospectus or other offering 
+document issued in connection with such offering, and not on this document. 
+Securities and other financial instruments referred to herein, or recommended, offered or sold by BofA Securities, are not insured by the Federal Deposit Insurance Corporation and are not 
+deposits or other obligations of any insured depository institution (including, Bank of America, N.A.). Investments in general and, derivatives, in particular, involve numerous risks, including, 
+among others, market risk, counterparty default risk and liquidity risk. No security, financial instrument or derivative is suitable for all investors. Digital assets are extremely speculative, volatile 
+and are not regulated in a manner similar to U.S. securities markets. In some cases, securities and other financial instruments may be difficult to value or sell and reliable information about the 
+value or risks related to the security or financial instrument may be difficult to obtain. Investors should note that income from such securities and other financial instruments, if any, may 
+fluctuate and that price or value of such securities and instruments may rise or fall and, in some cases, investors may lose their entire principal investment. Past performance is not necessarily a 
+guide to future performance. Levels and basis for taxation may change. 
+BofA Securities is aware that the implementation of the ideas expressed in this report may depend upon an investor's ability to "short" securities or other financial instruments and that such 
+action may be limited by regulations prohibiting or restricting "shortselling" in many jurisdictions. Investors are urged to seek advice regarding the applicability of such regulations prior to 
+executing any short idea contained in this report. 
+This report may contain a trading idea or recommendation which highlights a specific identified near-term catalyst or event impacting a security, issuer, industry sector or the market generally 
+that presents a transaction opportunity, but does not have any impact on the analyst’s particular “Overweight” or “Underweight” rating (which is based on a three month trade horizon). Trading 
+ideas and recommendations may differ directionally from the analyst’s rating on a security or issuer because they reflect the impact of a near-term catalyst or event. 
+Foreign currency rates of exchange may adversely affect the value, price or income of any security or financial instrument mentioned in this report. Investors in such securities and instruments 
+effectively assume currency risk. 
+BofAS or one of its affiliates is a regular issuer of traded financial instruments linked to securities or digital assets that may have been recommended or discussed in this report. BofAS or one of 
+its affiliates may, at any time, hold a trading position (long or short) in the securities and financial instruments recommended or discussed in this report. 
+BofA Securities, through business units other than BofA Global Research, may have issued and may in the future issue trading ideas or recommendations that are inconsistent with, and reach 
+different conclusions from, the information presented herein. Such ideas or recommendations may reflect different time frames, assumptions, views and analytical methods of the persons who 
+prepared them, and BofA Securities is under no obligation to ensure that such other trading ideas or recommendations are brought to the attention of any recipient of this information. 
+In the event that the recipient received this information pursuant to a contract between the recipient and BofAS for the provision of research services for a separate fee, and in connection 
+therewith BofAS may be deemed to be acting as an investment adviser, such status relates, if at all, solely to the person with whom BofAS has contracted directly and does not extend beyond 
+the delivery of this report (unless otherwise agreed specifically in writing by BofAS). If such recipient uses the services of BofAS in connection with the sale or purchase of a security referred to 
+herein, BofAS may act as principal for its own account or as agent for another person. BofAS is and continues to act solely as a broker-dealer in connection with the execution of any transactions, 
+including transactions in any securities referred to herein. 
+Copyright and General Information:  
+Copyright 2026 Bank of America Corporation. All rights reserved. iQdatabase® is a registered service mark of Bank of America Corporation. This information is prepared for the use of BofA 
+Securities clients and may not be redistributed, retransmitted or disclosed, in whole or in part, or in any form or manner, without the express written consent of BofA Securities. This document 
+and its content is provided solely for informational purposes and cannot be used for training or developing artificial intelligence (AI) models or as an input in any AI application (collectively, an AI 
+tool). Any attempt to utilize this document or any of its content in connection with an AI tool without explicit written permission from BofA Global Research is strictly prohibited. BofA Global 
+Research utilizes AI, including machine learning and other technologies, to enhance the services we provide to our clients. These technologies assist our analysts in various aspects of their work, 
+including but not limited to data analysis, content extraction, content creation, data aggregation and summarization and identifying relevant information from diverse sources. All AI-driven 
+processes are subject to review by BofA Global Research employees. BofA Global Research information is distributed simultaneously to internal and client websites and other portals by BofA 
+Securities and is not publicly-available material. Any unauthorized use or disclosure is prohibited. Receipt and review of this information constitutes your agreement not to redistribute, 
+retransmit, or disclose to others the contents, opinions, conclusion, or information contained herein (including any investment recommendations, estimates or price targets) without first 
+obtaining express permission from an authorized officer of BofA Securities. 
+Materials prepared by BofA Global Research personnel are based on public information. Facts and views presented in this material have not been reviewed by, and may not reflect information 
+known to, professionals in other business areas of BofA Securities, including investment banking personnel. BofA Securities has established information barriers between BofA Global Research 
+and certain business groups. As a result, BofA Securities does not disclose certain client relationships with, or compensation received from, such issuers. To the extent this material discusses 
+any legal proceeding or issues, it has not been prepared as nor is it intended to express any legal conclusion, opinion or advice. Investors should consult their own legal advisers as to issues of 
+law relating to the subject matter of this material. BofA Global Research personnel’s knowledge of legal proceedings in which any BofA Securities entity and/or its directors, officers and 
+employees may be plaintiffs, defendants, co-defendants or co-plaintiffs with or involving issuers mentioned in this material is based on public information. Facts and views presented in this 
+material that relate to any such proceedings have not been reviewed by, discussed with, and may not reflect information known to, professionals in other business areas of BofA Securities in 
+connection with the legal proceedings or matters relevant to such proceedings. 
+This information has been prepared independently of any issuer of securities mentioned herein and not in connection with any proposed offering of securities or as agent of any issuer of any 
+securities. None of BofAS any of its affiliates or their research analysts has any authority whatsoever to make any representation or warranty on behalf of the issuer(s). BofA Global Research 
+policy prohibits research personnel from disclosing a recommendation, investment rating, or investment thesis for review by an issuer prior to the publication of a research report containing 
+such rating, recommendation or investment thesis. 
+Any information relating to sustainability in this material is limited as discussed herein and is not intended to provide a comprehensive view on any sustainability claim with respect to any 
+issuer or security. 
+Any information relating to the tax status of financial instruments discussed herein is not intended to provide tax advice or to be used by anyone to provide tax advice. Investors are urged to 
+seek tax advice based on their particular circumstances from an independent tax professional. 
+The information herein (other than disclosure information relating to BofA Securities and its affiliates) was obtained from various sources and we do not guarantee its accuracy. This information 
+may contain links to third-party websites. BofA Securities is not responsible for the content of any third-party website or any linked content contained in a third-party website. Content 
+contained on such third-party websites is not part of this information and is not incorporated by reference. The inclusion of a link does not imply any endorsement by or any affiliation with BofA 
+Securities. Access to any third-party website is at your own risk, and you should always review the terms and privacy policies at third-party websites before submitting any personal information 
+to them. BofA Securities is not responsible for such terms and privacy policies and expressly disclaims any liability for them. 
+All opinions, projections and estimates constitute the judgment of the author as of the date of publication and are subject to change without notice. Prices also are subject to change without 
+notice. BofA Securities is under no obligation to update this information and BofA Securities ability to publish information on the subject issuer(s) in the future is subject to applicable quiet 
+
+ 
+ 
+30 
+Global Economic Viewpoint | 28 October 2026 
+ 
+ 
+periods. You should therefore assume that BofA Securities will not update any fact, circumstance or opinion contained herein. 
+Certain outstanding reports or investment opinions relating to securities, financial instruments and/or issuers may no longer be current.  Always refer to the most recent research report relating 
+to an issuer prior to making an investment decision. 
+In some cases, an issuer may be classified as Restricted or may be Under Review or Extended Review. In each case, investors should consider any investment opinion relating to such issuer (or 
+its security and/or financial instruments) to be suspended or withdrawn and should not rely on the analyses and investment opinion(s) pertaining to such issuer (or its securities and/or financial 
+instruments) nor should the analyses or opinion(s) be considered a solicitation of any kind. Sales persons and financial advisors affiliated with BofAS or any of its affiliates may not solicit 
+purchases of securities or financial instruments that are Restricted or Under Review and may only solicit securities under Extended Review in accordance with firm policies. 
+Neither BofA Securities nor any officer or employee of BofA Securities accepts any liability whatsoever for any direct, indirect or consequential damages or losses arising from any use of this 
+information. 
+  
