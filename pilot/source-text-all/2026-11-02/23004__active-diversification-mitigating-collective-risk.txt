@@ -1,0 +1,1663 @@
+October 2026 
+ 
+ 
+Invesco Research 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Presented by 
+Invesco Strategy & Insights 
+Active Diversification:  
+Mitigating Collective Risk 
+ 
+ 
+This marketing communication is intended only for Professional Investors in Continental Europe (as specified in the important information), 
+Professional Clients in Dubai, Guernsey, Jersey, Ireland, Isle of Man and the UK; For Qualified Clients/Sophisticated Investors in Israel; for 
+Institutional Investors only in the United States; Accredited/Institutional Investors in Mexico; Institutional & Qualified Investors in Argentina; 
+Qualified Investors in Chile; Institutional Investors in Peru; for Qualified Institutional Investors in Japan; for Professional Investors in Hong 
+Kong; for Institutional/Accredited Investors in Singapore; for Qualified Institutions/Sophisticated Investors only in Taiwan; for Qualified 
+Professional Investors in Korea; for Qualified Institutional Investors and/or certain specific institutional investors in Thailand; for 
+Sophisticated or Professional Investors in Australia; in New Zealand for wholesale investors (as defined in the Financial Markets Conduct 
+Act); for certain specific institutional investors in Malaysia upon request; for certain specific sovereign wealth funds and/or Qualified 
+Domestic Institutional Investors approved by local regulators only in the People’s Republic of China, for certain specific institutional 
+investors in Brunei and Indonesia; for qualified buyers in Philippines. In Canada this document is restricted to investors who are (i) 
+Accredited Investors and (ii) Permitted Clients, as defined under National Instrument 45-106 and National Instrument 31-103, respectively. 
+It is not intended for and should not be distributed to, or relied upon by, the public or retail investors. This document is not for consumer 
+use; please do not redistribute.   
+
+October 2026 
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     1 
+Active Diversification: 
+Mitigating Collective Risks  
+ 
+Abstract 
+The widespread adoption of passive investing has made low-cost, capitalization-
+weighted index strategies the default building blocks of modern portfolios. But as 
+more capital is committed to the same exposures, in the same weights, through the 
+same vehicles, market benchmarks increasingly reflect these investor preferences, 
+contributing to greater concentration, shared exposures, and collective risk—the 
+fragility that arises when many investors own the same assets for the same 
+reasons. These risks have accumulated amid rising uncertainty, precisely when 
+diversification is most valuable. This article introduces active diversification: the 
+intentional use of active strategies to diversify away from market-embedded 
+preferences and collective risks. Drawing on portfolio theory, preference-based 
+asset-pricing models, and empirical evidence, we show that active strategies can 
+enhance both diversification and returns by reducing reliance on the market’s 
+aggregated returns and risks. Even simple equal-weighted departures from market 
+weights can significantly reduce concentration risk, while quantitative and 
+fundamental strategies can improve outcomes further by incorporating forward-
+looking information, market signals, and human judgment. However, collective risk 
+is uneven across markets, which requires investors to consider where risk 
+mitigation and return enhancement efforts are best implemented. As such, we offer 
+three practical principles for implementing active diversification as an intentional 
+complement to passive investing. 
+ 
+Key Findings 
+1. 
+Capitalization-weighted index strategies offer low-cost market access but 
+rising concentration, shared exposures, and reduced effective diversification 
+increasingly tie risk to collective investor behavior rather than security 
+fundamentals.  
+2. 
+Because market weights embed aggregate investor preferences, active 
+diversification can reduce reliance on widely shared exposures, potentially 
+improving portfolio resilience and enhancing returns where information 
+dispersion remains high. 
+3. 
+Active diversification complements passive holdings by diversifying information 
+sources, preferences, and uncertainty, with equal-weighted, quantitative, and 
+fundamental approaches addressing different portfolio risks. 
+ 
+ 
+ 
+  
+ 
+Kenneth Blay  
+Head of Strategic Research, 
+Strategy & Insights 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Acknowledgements 
+The author is grateful to Joel Copp-Barton, 
+Julius Barnes, John Surplice, David Aujla, 
+Georgina Millar, Peter Miller, Benjamin Jones, 
+Jessica Page, John Guerard and Harindra de 
+Silva for their helpful comments, discussions, 
+and guidance. The author also thanks 
+Paraskevi Prousanidou, Santiago Diaz Toliva, 
+Zuqing Wei, Hamza Rasheed, and Aadil 
+Javed for their quantitative contributions to 
+this research. 
+
+ 
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     2 
+Aggregate preferences and collective risks 
+Among the most consequential innovations in finance has been the development of passive market-index strategies, which 
+today provide investors with broad, low-cost diversification across hundreds, if not thousands, of securities. By weighting 
+securities according to market capitalization, these strategies reflect the collective information and judgments embedded in 
+market prices—what is often described as the “wisdom of crowds.” Yet the same dynamics that enable markets to aggregate 
+dispersed information can also produce pronounced mispricing. Market dislocations in 1929, 2000, and 2008 illustrate that 
+collective behavior is not invariably rational, a point documented thoroughly in Charles Mackay’s Extraordinary Popular 
+Delusions and the Madness of Crowds (1841), Charles Kindleberger’s Manias, Panics, and Crashes: A History of Financial 
+Crises (1978), and Robert Shiller’s Irrational Exuberance (2000). 
+Relying exclusively on capitalization-weighted index investments, therefore, means embracing both the strengths and the 
+limitations of the collective preferences and judgments of market participants. This might alternatively be viewed as bearing 
+collective risk – risk that arises when a broad set of investors all do the same thing. However, collective risk today goes 
+beyond simply accepting the risks of irrationality, something that is already a salient feature of financial markets. With the 
+proliferation of passive products, it also means accepting the unintended risks that come from increases in concentration and 
+from a growing share of asset flows into passive investments. 
+There is an expanding body of research that highlights several structural concerns associated with the continued adoption of 
+passive investing. For example, Wurgler (2010) explains how indexing inflates the prices of, and induces excess co-
+movement among, index members relative to non-members.1 More recently, Jiang et al. (2025) document that incremental 
+flows into passive funds exert a disproportionate influence on the prices and idiosyncratic risks of the market’s largest 
+constituents. Complementing this evidence, Brightman and Harvey (2025) find that stocks with high passive ownership exhibit 
+increasing sensitivity to market-wide risk, while securities more widely held by active managers display declining market 
+betas. Sorensen (2025) also argues that capitalization-weighted index exposures can mask significant embedded 
+concentration and diversification risks, underscoring the need for more deliberate portfolio implementations that include 
+allocations to active strategies.  
+Lochstoer and Muir (2026) argue that passive investing has changed not only who owns stocks, but how markets trade. As 
+assets have migrated into index funds, ETFs, and futures, investors increasingly buy and sell the market as a single 
+instrument, concentrating activity in systematic exposures rather than individual securities. They find that index-based trading 
+has coincided with higher market-wide volatility, greater stock comovement, and a larger share of returns driven by common 
+market factors. They estimate that daily market volatility has increased by approximately 127% since the mid-1950s. Green, 
+Krishnan, and Sturm (2026) also consider the impact of passive investing and model how rising passive ownership weakens 
+the market’s self-correcting pricing mechanism: passive funds buy regardless of valuation, while active managers no longer 
+fully offset their flows. The result is greater mispricing of fundamental characteristics, higher concentration, and increased 
+price inelasticity. Their model suggests that if passive ownership rises to roughly 65% (currently at approximately 50%), 
+volatility could increase sharply — a risk they describe as hiding in plain sight. 
+Contrasting these views, Kritzman and Turkington (2026) caution against treating current concentration as inherently 
+alarming. Based on a historical analysis using the effective number of constituents (ENC) measure, they argue that today’s 
+concentration has historical precedent, little predictive power for future returns, and is less concerning because the largest 
+companies are often more diversified entities and less volatile.2 Clarke, de Silva, and Thorley (2026), however, show why the 
+current episode may be different. ENC measures concentration in terms of security weights, but not whether those weights 
+are attached to unusually volatile stocks. Their volatility-weighted ENC analogue finds that the largest constituents now 
+combine high index weights with above-median realized volatility, concentrating risk in fewer names than the capital weights 
+imply — the first sustained episode of such a reversal in a century. This directly challenges the reassurance implied by the 
+historical ENC analysis: today’s concentration is not merely high by weight but is also concentrated in names with high 
+volatility. They further show that this pattern is not limited to U.S. technology stocks but has appeared across major global 
+markets on staggered timelines and in different industries. The implication is that cap-weighted index funds may now carry 
+materially greater volatility than similar vehicles a decade ago. 
+These findings extend the notion of collective risk by showing how passive investing has changed both the ownership and 
+behavior of markets. Price-agnostic flows increasingly bind securities to common vehicles, common factors, and common 
+sources of volatility, while concentration has become more consequential because the largest weights are now attached to 
+more volatile stocks. In this environment, broad market ownership alone may no longer provide the diversification investors 
+expect. Addressing this challenge requires a more intentional approach: active diversification, or the use of active strategies to 
+diversify portfolios using exposures that are substantively different from the market. 
+However, the premise of active diversification rests on the idea that active strategies can be sufficiently different from the 
+market to provide diversification benefits.3  Markowitz (1952) explained that a portfolio of railway securities would not be as 
+well diversified as a portfolio that included railroad, public utility, mining, and various manufacturing securities. The 
+characteristics of the assets held – whether they behave the same or differently at different times – matter for diversification 
+purposes. As such, diversifying collective risk requires being different from the market index. A key differentiator for active 
+strategies is the information used for security selection and portfolio construction. Understanding the information sources used 
+provides important insights into the return characteristics of active strategies and, more importantly, what types of risk they 
+can diversify against. 
+ 
+1 Shleifer (1986) and Harris and Gurel (1986) initially documented how additions to the S&P 500 experienced a price-jump. 
+2 ENC is a commonly used approximation for index concentration that expresses concentration as the number of equally weighted stocks that 
+would provide the same level of concentration as the actual index.  
+3 The dividing line between active and passive strategies is not universally agreed upon. In this article, we draw the line conservatively: any 
+strategy that uses information beyond market capitalizations is treated as active. Rules-based active approaches are referred to as 
+quantitative, while judgment-based approaches are referred to as fundamental. 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     3 
+In this article, we make the case that active strategies are an increasingly important source of diversification for investors that 
+can provide portfolio benefits beyond benchmark-relative returns. We first define collective risk, provide an overview of its 
+relationship with endogenous risk, and discuss why it is a key concern today. Empirical evidence of collective risk in passive 
+investments is also provided to further motivate the need for active diversification. We then explore two forms of diversification 
+offered by active strategies: uninformed and informed. This includes a review of foundational finance theory, which points 
+investors toward active investing more readily than is often assumed, as well as empirical evidence on the persistence of 
+active returns in equity markets around the globe. Finally, we provide guidance on implementing active diversification in 
+practice. 
+Collective risk, uncertainty, and diversification 
+We define collective risk broadly as risk that arises when many investors collectively do the same things. It is closely tied to 
+the concept of endogenous risk in that it is a fragility that emanates from within the financial system as a function of collective 
+investor behavior. Two examples illustrate the implications of endogenous risk. The first is Black Monday in 1987, when the 
+failure of portfolio insurance strategies held by a large share of institutional investors induced a feedback loop of selling that 
+sent the market tumbling 22.6% in one day. The second is the quantitative crisis of 2007, when many quantitative equity 
+market-neutral funds were all running near-identical factor strategies that aggregated into a common risk factor. When one 
+fund began deleveraging, it triggered margin calls and forced selling across the other funds. In neither case was the danger 
+visible in any single portfolio; it emerged from how widely the same positions were shared. 
+Collective risk is distinct from the traditional notion of endogenous risk in both scope and expression. The latter is mechanism-
+specific, as in the examples above: a particular strategy or risk-management rule compels many investors to trade in the 
+same direction, producing a feedback loop that amplifies price movements. It is episodic and requires a trigger. Collective risk 
+requires neither. Rather than being tied to any specific strategy, it is a function of collective ownership and asset flows, and it 
+accumulates continuously, eroding effective diversification whether or not a dislocation occurs. Endogenous risk is what 
+happens when collective positioning unwinds; collective risk is the condition that makes such an unwind possible. 
+Collective risk builds as more investors, and more money, do the same thing. When price-agnostic asset flows, driven by 
+investor demand rather than any assessment of value, dominate price discovery, the securities within a strategy become 
+increasingly tied to the flows into and out of the strategy itself. Risk becomes less about the characteristics of the individual 
+holdings and more about the risk of collective behavior. While capitalization-weighted market index portfolios theoretically 
+have the greatest capacity, capacity is not the same as price neutrality, and new passive flows are not necessarily price 
+neutral.4 Recent research, cited previously, indicates that collective risks are now extending into the realm of even large 
+capitalization passive strategies. 
+Compounding the issue, market-capitalization weighted exposures of all varieties, along the size spectrum and across 
+regions, have become ubiquitous. They are now widely considered the default investment option for implementing asset-
+allocated portfolios and see increasingly regular flows from mechanical, buy-only retirement funding – purchases made 
+regardless of valuation. 
+A simple illustration provides insight on why this matters. Consider a single small capitalization fund with assets under 
+management (AUM) approaching an estimated capacity limit. Liquidity and price impact from trades can be managed based 
+on a fund’s holdings and trade impact estimates. Now consider there are 1,000 funds with identical holdings, weights, and 
+AUM. The risk from the aggregate holdings of all the funds is not considered by any of the individual fund managers. No 
+manager is imprudent, but all are exposed to the collective risk. This is a practical example of what is occurring across the 
+passive investing landscape. 
+Collective risk is therefore not a property of any individual holding, but of the investor base that owns it. When market 
+participants share the same price-agnostic exposures, the same algorithms, the same vehicles, and the same buy-and-hold 
+approach, their behavior ceases to be independent, and diversification depends on independence.  
+If collective risk is a function of shared positioning, its consequences depend on the environment in which those positions are 
+held – and that environment has grown increasingly volatile and markedly less certain. The past three decades have seen the 
+proliferation of a broad range of new technologies across societies and economies. There have been massive increases in 
+both computing power and the data available to extract answers to increasingly complex questions. A global data network 
+infrastructure now allows ideas – both good and bad – to be transmitted virtually instantly to almost any point across the 
+globe. And we are currently in the midst of an artificial intelligence revolution that is expected to have a significant impact on 
+how we live, work, and continue to innovate. In short, this means that new ideas and innovations can be developed quicker, 
+scaled faster, and can have a greater and broader impact in a much shorter time than at any other point in history. All of this 
+produces change at a rate we have never before experienced, and change produces uncertainty. 
+ 
+4 Novy-Mark and Velikov (2016) find that capacity is inversely related to turnover. As such, the capitalization-weighted market portfolio is the 
+limiting case. It is the highest-capacity, lowest-turnover strategy available. 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     4 
+One expression of the resulting uncertainty faced by investors is the set of economic policy uncertainty (EPU) indexes, based 
+on the work of Baker, Bloom, and Davis (2016), that reflect the relative frequency of country-specific newspaper articles 
+containing terms pertaining to the economy, uncertainty, and policy-related matters. Exhibit 1 presents standardized EPU 
+indexes for the world, the United States, Europe, the United Kingdom, and China over the period from 1998 through 2026. 
+The trend is difficult to ignore: across every region shown, uncertainty has moved steadily higher and reached levels well 
+above its long-run average in recent years, with spikes that are both larger and more frequent than those observed previously. 
+Rising uncertainty is precisely the environment in which collective risk is most dangerous, because it widens the range of 
+outcomes for which a portfolio must be prepared at the very moment that shared positioning has narrowed the range of risks 
+that portfolio actually diversifies against. 
+Exhibit 1: Economic Policy Uncertainty Indexes (Normalized): 1/1998–1/2026 
+Global (GDP-Weighted)  
+United States 
+ 
+Europe 
+United Kingdom 
+ 
+China 
+Economic policy uncertainty (EPU) indexes are based on work of Baker, Bloom, and Davis (2016) and reflect the relative frequency of country-specific 
+newspaper articles that contain terms pertaining to the economy, uncertainty and policy-related matters. The global EPU index is a GDP-weighted average 
+of national EPU indices for 18 countries that account for two-thirds of global output (Australia, Brazil, Canada, Chile, China, France, Germany, Greece, 
+India, Ireland, Italy, Japan, Russia, South Korea, Spain, Sweden, the United Kingdom, and the United States). The European EPU index is comprised of 
+indexes for five European economies (Germany, the United Kingdom, France, Italy, and Spain). For a detailed discussion of how country-level EPU 
+indexes are constructed, see https://www.policyuncertainty.com/media/EPU_BBD_Mar2016.pdf.  
+We present indexes in standardized terms (with means set to zero and volatility measured in units of standard deviations) to facilitate comparisons across 
+indexes and to provide a clear sense of magnitude for the changes exhibited over the sample period. The sample period is 1/1/1998 through 1/1/2026.  
+Source:  fred.stlouisfed.org and Invesco.  
+-2.00
+-1.00
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+6.00
+1998
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+Std. Deviations from Mean
+-2.00
+-1.00
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+6.00
+1998
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+Std. Deviations from Mean
+-2.00
+-1.00
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+6.00
+1998
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+Std. Deviations from Mean
+-2.00
+-1.00
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+6.00
+1998
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+Std. Deviations from Mean
+-2.00
+-1.00
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+6.00
+1998
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+Std. Deviations from Mean
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     5 
+Taken together, these dynamics make the case for diversification – and, more specifically, for diversification that is 
+substantively different from the market. If the dominant exposures investors hold are increasingly the same, and if the 
+environment in which they hold them is increasingly uncertain, then the value of holding something different increases 
+accordingly. The remainder of this article argues that active strategies are an increasingly important source of that difference. 
+We begin, in the next section, by examining the clearest empirical evidence of collective risk in practice: the dramatic increase 
+in concentration within passive products themselves. 
+ Passive investing and collective risk 
+Perhaps one of the clearest manifestations of collective risk in passive products is the dramatic and steady increase in 
+concentration in the S&P 500 in recent years. The “Magnificent Seven” stocks made headlines for their notable 
+outperformance relative to the rest of the index.5 At the end of January 2026, these seven stocks represented over 30% of the 
+S&P 500 index. To better understand the implications of this with regard to the diversification offered by the index, we 
+translate this concentration into the ENC metric, a commonly used approximation which expresses portfolio concentration in 
+terms of the equivalent number of equally-weighted stocks that would produce the same risk characteristics.6 
+Exhibit 2 provides a historical perspective on the ENC for the S&P 500 Index. Prior to 2018, the ENC fluctuated from just 
+below 80 stocks in early 2000 to slightly above 145 stocks in 2015 – with an overall sample average of 112 stocks. In recent 
+years, however, the ENC has contracted sharply, falling to roughly 43 constituents. This level is not only well below the low 
+observed during the late‑1990s technology bubble but also represents approximately one‑third of the long‑term historical 
+average. For investors, this decline indicates that the S&P 500 no longer offers the breadth of diversification it once provided.  
+While it would be convenient to believe that these risks are limited to the S&P 500, that is not the case. As noted previously, 
+Clarke, de Silva, and Thorley (2026) show that higher concentration has appeared across major global markets, not just the 
+US. This reflects earlier work by Reinganum and Blay (2024), who examined the evolution of active and passive investing 
+from 1989 through 2021 and found that a substantial portion of global passive index assets under management was 
+concentrated in Morningstar’s US Large Capitalization Blend category, a category commonly proxied by the S&P 500 index. 
+But these stocks do not exist in isolation. US large capitalization stocks also make up a large portion of global indexes. 
+Consequently, collective risks are being driven by both US and global investors. 
+Another notable finding from the study is that passive index investing is generally gaining the greatest ground in core 
+exposures like US Large Cap, US Small Cap, US Mid Cap, and Global Equity, which aligns with the use of passive indexes by 
+investors as building blocks for portfolio construction. In Europe, there is also evidence that core global equity exposures are 
+replacing regional and country-specific exposures that have, up until now, provided investors with useful diversification 
+opportunities. In other words, investors’ ability to diversify away from broad market risk is slowly being diminished by collective 
+investor preferences toward convenient core exposures.  
+As the preceding analysis illustrates, the collective tilt toward capitalization-weighted passive vehicles has amplified 
+concentration risk and diminished the effective diversification once characteristic of broad market benchmarks. Recognizing 
+these structural shifts raises an important question for practitioners: how can investors reintroduce meaningful diversification 
+into portfolios increasingly shaped by shared, index-driven exposures? To begin addressing this challenge, we now turn to the 
+role of active approaches – starting with the simplest, information-minimal alternative, uninformed diversification. 
+ 
+5 The "Magnificent Seven" stocks are: Alphabet (GOOGL), Amazon (AMZN), Apple (AAPL), Meta Platforms (META), Microsoft (MSFT), 
+Nvidia (NVDA), and Tesla (TSLA). 
+6 ENC (effective number of constituents) is calculated as the reciprocal of the Herfindahl-Hirschman index (HHI) measure, which is the sum of 
+the squared weights of the constituents of an index: 𝐸𝐸𝐸𝐸𝐸𝐸= 1 𝐻𝐻𝐻𝐻𝐻𝐻
+ൗ
+ 𝑤𝑤ℎ𝑒𝑒𝑒𝑒𝑒𝑒 𝐻𝐻𝐻𝐻𝐻𝐻= ∑
+𝑤𝑤𝑖𝑖
+2
+𝑁𝑁
+𝑖𝑖=1
+. Intuitively, the ENC answers the question: “This 
+portfolio behaves as if it held how many equally weighted stocks?” The lower the ENC, the more concentrated, and less diversified the 
+portfolio is. An equal-weighted portfolio has an ENC equal to the number of constituents.  
+Exhibit 2: Historical Overview of Effective Number of Constituents for the S&P 500 Index 
+ 
+Source: Bloomberg, S&P Global, Invesco. Analysis extends from 1/1990 through 1/2026. 
+43
+Average ENC: 112
+40
+60
+80
+100
+120
+140
+160
+Effective Number of 
+Constituents
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     6 
+Uninformed diversification 
+In evaluating the spectrum of diversification opportunities available to investors, a natural starting point is an allocation to an 
+equal‑weighted version of the desired market exposure. Equal weighting remains one of the most cost‑effective and 
+straightforward approaches for enhancing diversification, as it requires the least amount of information for portfolio formation – 
+even less information than what is required for implementing a capitalization-weighted index. Conceptually, this approach can 
+be viewed as a form of uninformed diversification: it retains the full constituent set of the underlying market but deliberately 
+avoids embedding the collective preferences reflected in market capitalizations. Each security is held in identical proportions, 
+making the portfolio structurally indifferent to investor preferences. A further distinguishing feature is that the ENC of an 
+equal‑weighted portfolio is equal to its number of holdings; an equal‑weighted portfolio of 100 securities, for example, has an 
+ENC of 100. This makes equal weighting an intuitive and transparent complement to capitalization‑weighted benchmarks, 
+particularly for investors seeking to mitigate concentration risk without introducing additional complexity. 
+Exhibit 3 demonstrates just how effective equal weighting can be at increasing diversification. It begins with a stand-alone 
+S&P 500 index holding as of January 31, 2026, when its ENC was estimated at 43 stocks. Progressively larger allocations to 
+an equal-weighted S&P 500 portfolio, shown on the x-axis, steadily increases the ENC of the combined exposure. An 
+allocation of 43% to the equal-weighted portfolio returns the holding to the historical average ENC of 112 stocks shown in 
+Exhibit 2. 
+Equal weighting offers a simple diversification alternative, but the approach introduces specific biases. In underweighting the 
+largest holdings in the capitalization-weighted index – precisely those most likely to be affected by collective risk – it 
+overweights the smaller holdings, producing a size bias relative to the market index.7  While these biases and other 
+differences are commonly understood and might even be desirable, they are not necessarily intentional. Investors seeking 
+greater control and intentionality in managing their risk exposures and in targeting diversification opportunities will need to 
+employ various types of information and, most importantly, human judgment. This leads us to the idea of informed 
+diversification. 
+Informed diversification8 
+The use of information and human judgment in portfolio management is a surprisingly controversial subject. Many academics 
+will point to passive capitalization-weighted index funds as the only rational way to invest, while at the same time working 
+tirelessly to advance novel portfolio construction methods to produce portfolios that better address some specific risk measure 
+or concern or that are more efficient across some dimension or other. Far from being passive, these efforts effectively 
+espouse new active approaches to investing. Similarly, many market strategists will readily denounce active management as 
+folly, while in the very next breath provide their opinion on how portfolios should be actively re-allocated to capitalize on the 
+latest news, changes in interest rates, or some recent economic report. To be fair, passive investing is a remarkably 
+convenient and structurally low-cost way to invest. There are trivial information costs for security selection and maintaining the 
+capitalization weights of a specific market index requires minimal trading. However, this should not diminish the value of using 
+different types of information to support investment decisions.  
+Informed diversification relies on the use of different types of information along with human judgment or, more concisely, 
+active management. As such, it will be useful to revisit foundational finance theory to understand just how information and 
+judgment are considered in the context of portfolio diversification and how different types of information can be used to 
+address both measurable and unmeasurable uncertainty, which is highly relevant for mitigating collective risk.  
+ 
+ 
+7 In the case of the S&P 500 index, the equal-weighted implementation generally outperforms its capitalization-weighted counterpart except in 
+periods of high index concentration where a small number of securities have an outsized influence on market returns.   
+8 See Blay and Siegel (2025) for a more detailed discussion of concepts presented in this section. 
+Exhibit 3: Diversification Effectiveness of Equal-Weighting for an S&P 500 Holding 
+ 
+Source: FactSet, S&P Global, Invesco.  
+ENC: 112
+40
+60
+80
+100
+120
+140
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+34
+36
+38
+40
+42
+44
+46
+48
+50
+Effective Number
+of Constituents
+% in Equal Weight Portfolio
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     7 
+Portfolio theory, the market portfolio, and informed diversification 
+Markowitz (1952) introduced portfolio theory, which was based on theoretical notions of how investors should face making 
+decisions under uncertainty. It provided a method for converting an investor’s beliefs about the future performance of a set of 
+securities, including estimates of expected returns, risks, and correlations, into “efficient” portfolios. Central to this is the notion 
+of having the “right kind” of diversification for the “right reasons”. He was essentially proposing informed diversification.     
+Arguably, the initial theoretical argument supporting passive indexing stems from the Capital Asset Pricing Model (CAPM) by 
+Sharpe (1964), which asserts that the capitalization-weighted market portfolio is mean-variance efficient and therefore optimal 
+for all investors. This conclusion, however, depends on several simplifying assumptions that are inconsistent with real-world 
+investing. Perhaps the most problematic of these assumptions are that (1) all investors have the same (homogeneous) 
+beliefs, (2) all investors have access to unlimited borrowing at the risk-free rate, and (3) all investors are rational (mean-
+variance) investors or, rather, market risk is the only investor preference that matters.  
+First, investors do not share the same (homogeneous) expectations; instead, they form differing (heterogeneous) views about 
+expected returns, volatilities, and correlations. As Lintner (1969) showed, while markets can aggregate these diverse beliefs 
+into a single set of asset prices, heterogeneous expectations imply that investors will necessarily hold efficient portfolios that 
+differ from the market portfolio. 
+Second, the assumption of unlimited borrowing at the risk-free rate is unrealistic. In practice, no investor has access to 
+unlimited borrowing, much less at the risk-free rate. Theoretical work by Fama (1976) and Markowitz (2005) later confirmed 
+that without unlimited borrowing (or shorting), the market portfolio ceases to be efficient. This further weakens the notion that 
+the market portfolio is universally appropriate; instead, investors must construct portfolios aligned with their own beliefs, 
+constraints, and objectives. 
+Finally, CAPM’s argument that market risk is the only risk that matters is no longer supported by the broader asset-pricing 
+literature. Notably, Ross’s (1976) Arbitrage Pricing Theory (APT) introduced a multi-factor framework in which expected 
+returns are driven by multiple systematic forces. Although APT is derived from arbitrage considerations rather than investor 
+demand, it paved the way for models recognizing that risk and return cannot be captured by a single market factor. 
+Together, these theoretical developments underscore that the market portfolio is neither empirically nor conceptually 
+adequate as a universal benchmark. Investors with differing expectations, constraints, and preferences rationally arrive at 
+different optimal portfolios. Arguably, more than 70 years of academic finance literature has returned us to where Markowitz 
+started – informed diversification.  
+Markets, preferences, and asset pricing 
+Asset pricing theory has evolved since the introduction of the CAPM and is increasingly focused on how investor preferences, 
+beyond traditional risk factors, influence market prices. Ibbotson et al. (1984) introduced the New Equilibrium Theory (NET), 
+arguing that investors view each asset as a bundle of characteristics that include both risk and non-risk elements such as 
+taxes, liquidity, and information costs. Prices therefore reflect collective preferences and aversions for these characteristics. 
+Fama and French (2007) later reinforced the need to move beyond classical assumptions, particularly the idea that all 
+investors share identical beliefs about expected payoffs. They argued that real-world markets reflect both heterogeneous 
+expectations and differing tastes, meaning that investor preferences unrelated to risk can materially affect asset prices. 
+Building on these insights, Ibbotson et al. (2018) introduced the Popularity Asset Pricing Model (PAPM), which incorporates 
+investor tastes into asset pricing under the simplifying assumption that expectations are homogeneous. The PAPM asserts 
+that assets with popular or desirable characteristics tend to trade at a premium, reducing their expected returns, whereas 
+unpopular assets – those with characteristics investors generally dislike – must offer higher expected returns to compensate. 
+Idzorek et al. (2024) then expanded the model further by introducing the more realistic assumption of heterogeneous 
+expectations, making the PAPM one of the most comprehensive frameworks for understanding how both preferences and 
+beliefs influence pricing. Under this framework, popularity is not a single factor; it is multidimensional. It can reflect attributes 
+such as brand, reputation, competitive advantage, liquidity, or behavioral perceptions, all of which become priced regardless 
+of whether they are rational or risk-based. 
+Exhibit 4 presents this framework across different investor scenarios considering both investor preferences for an asset 
+(popularity) and information – whether the investor is informed or misinformed about the future prospects of a security. When 
+assets are popular, they have a lower expected return (−P) because their desirability bids up prices, while unpopular assets 
+have higher expected returns (+P). When we consider information, expected returns then depend on both popularity and 
+whether the investor is informed or misinformed. The lowest returns occur when an investor is misinformed about a popular 
+asset (−P/−I), while the highest returns arise when an informed investor identifies an unpopular asset with strong future 
+prospects (+P/+I). This insight is central to diversifying with active strategies. Passive index strategies tend to overweight 
+popular stocks and underweight unpopular ones, potentially reducing exposure to higher-return opportunities implied by the 
+PAPM framework. This suggests that actively diversifying away from the aggregated preferences of the market can be 
+beneficial. It also makes clear that extracting the greatest benefits from active diversification requires the skill to recognize 
+undervalued, unpopular assets before the market does.  
+ 
+ 
+ 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     8 
+ 
+Preferences in the real world 
+There is an old aphorism that says “In theory, there is no difference between theory and practice. In practice, there is.” As we 
+saw with the CAPM, theory is often based on a highly simplified representation of the real world. While it is true that PAPM 
+theory provides a more intuitive representation of asset pricing, is there any evidence that investor preferences actually affect 
+real-world asset returns? To bolster their PAPM argument, Ibbotson et al. (2018) provided empirical evidence that stocks with 
+the weakest brands, worst reputations, or with the least competitive advantage often outperform stocks of highly admired, 
+strong brands. However, these are simply specific instances of investor preferences. What about the impact of preferences in 
+aggregate?  
+Disentangling the aggregate effect of investor preferences on asset returns is inherently challenging, but a reasonable proxy 
+for a “preference” factor can be constructed. We begin by assuming that the capitalization weights of the market portfolio 
+reflect the aggregate preferences of investors. The next step is to construct a “preference-neutral” market portfolio – one that 
+retains market exposure while neutralizing the influence of any single security or characteristic embedded in market weights. 
+Because capitalization weights embed these preferences, a security’s market beta captures its exposure to them. Portfolio 
+weights can therefore be set so that every security contributes equally to total market exposure, where each contribution is 
+the product of a security’s weight and its market beta. The resulting portfolio retains market exposure while minimizing 
+concentration in the most preferred, or popular, names. Subtracting these preference-neutral weights from market weights 
+isolates the residual – a preference portfolio.10 The market is thus separated into two components: a preference portfolio and 
+a preference-neutral market portfolio. The former serves as our proxy for a preference factor, allowing us to assess the 
+influence of investor preferences on asset returns. 
+Panel A of Exhibit 5 presents annualized returns for portfolios formed on their exposure to the “preference” factor within the 
+S&P 500 constituent universe. Stocks are ranked on their trailing one-year beta to the preference factor and allocated equally 
+across three portfolios – High, Medium, and Low Preference – with holdings equally weighted and rankings updated monthly. 
+Results are shown for two samples: the full period, from 1/1/1970 to 12/31/2024, and a more recent period, from 1/1/2000 to 
+12/31/2024. In both, returns increase as exposure to the preference factor declines from High to Medium to Low, with the 
+Medium and Low Preference portfolios exhibiting above-market returns. 
+Panel B of Exhibit 5 presents the rolling one-year correlations of the preference portfolios with the S&P 500. The best 
+performing portfolio, Low Preference, exhibited an average correlation of 0.84 over the period, compared with 0.93 for the 
+Medium Preference portfolio – evidence that even seemingly modest diversification differences can matter considerably for 
+active diversification. The source of that benefit is visible in the periods of lowest correlation: the internet bubble of the late 
+1990s and the most recent decade, when investors faced a global COVID pandemic, rising interest rates, rising inflation, and 
+heightened geopolitical uncertainty. These episodes reveal what average correlations often obscure – the value of diversifying 
+the information sources used for investment decision making. 
+ 
+ 
+9 The author is grateful for the discussion and guidance provided by Professor Roger Ibbotson in the production of the chart. 
+10 The assumption that the market reflects aggregate investor preferences is not especially controversial, though the term "preferences" can 
+be problematic from a theoretical perspective. A more palatable framing is a one-factor model in which the variability of security returns is 
+explained by sensitivity (beta) to the market and an idiosyncratic component. Equalizing each security's contribution to market beta 
+necessarily assigns lower weights to high-beta stocks and higher weights to low-beta stocks. The resulting preference-neutral portfolio is 
+therefore weighted more heavily toward securities whose returns are less well explained by the market – that is, toward their idiosyncratic 
+characteristics. Viewed this way, the process tilts away from market exposure (preferences) and toward idiosyncratic exposures. 
+Exhibit 4: An Overview of Preferences, Information, and Asset Pricing9 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: Invesco  
+Information 
+Informed (I) 
+Misinformed 
+Preferences 
+Unpopular 
+Popular (P) 
+Highest Expected 
+Returns 
++P / +I 
+Skill finds ignored value 
++P / -I 
+Avoiding the premium 
+helps, judgment hurts 
+-P / +I  
+Pays popularity premium 
+Lowest Expected 
+Returns 
+-P / -I 
+Crowded and wrong 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     9 
+ 
+ 
+Exhibit 5: Investor Preferences and Asset Prices: A Real-World Example using the S&P 500 
+A.  Realized Annual Returns for Portfolios Formed on Exposure to a “Preference” Factor 
+1970 – 2024 
+2000 - 2024 
+B. Rolling 1-Year Correlations of Preference Portfolios and the S&P 500 
+C. Rolling 1-Year Excess Returns for Low Preference Portfolio (Low Pref. minus S&P 500) 
+Returns are shown for the periods 1970–2024 and 2000–2024 for the S&P 500 and for portfolios with High, Medium, and Low exposure to a preference 
+factor. Preference factor portfolios are constructed using S&P 500 constituents and begin with the creation of a preference‑neutral portfolio. This portfolio 
+uses trailing one‑year (252‑day) market beta estimates for each constituent, with portfolio weights chosen so that every stock contributes equally in terms of 
+market beta. The weights of the preference‑neutral portfolio are then subtracted from the capitalization‑weighted market portfolio to derive an aggregate 
+investor preference portfolio, which serves as a proxy for a preference factor. Stocks are then ranked based on their trailing one‑year beta to the preference 
+factor and are equally allocated to one of three portfolios – High, Medium, or Low Preference – based on this ranking. Portfolio holdings are equally‑weighted 
+and are updated monthly to reflect changes in preference rankings across S&P 500 constituents. These hypothetical portfolios are presented for illustrative 
+purposes only and do not reflect transaction costs, which would reduce returns presented. 
+Source: MSCI Inc., Invesco.  
+11.0
+11.1
+13.7
+14.6
+0
+2
+4
+6
+8
+10
+12
+14
+16
+S&P 500
+High
+Preference
+Medium
+Preference
+Low
+Preference
+Annualized Return (%)
+7.7
+6.6
+11.0
+13.6
+0
+2
+4
+6
+8
+10
+12
+14
+16
+S&P 500
+High
+Preference
+Medium
+Preference
+Low
+Preference
+Annualized Return (%)
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+1-Year Correllation
+High Preference (0.96 Avg.)
+Medium Preference (0.93 Avg.)
+Low Preference (0.84 Avg.)
+-40
+-20
+0
+20
+40
+60
+80
+1-Year Excess Return (%)
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     10 
+Panel C of Exhibit 5 presents the excess returns of the Low Preference portfolio relative to the S&P 500. Periods of low 
+correlation generally coincide with high excess returns, but low correlation is not a precondition for them. The period following 
+the Global Financial Crisis illustrates the distinction: correlations were high, yet excess returns were exceptionally strong. 
+Stocks recovered in unison, but not to the same degree – further support for the value of active diversification. 
+The excess returns from diversifying away from aggregate investor preferences are notable, but their relevance extends 
+beyond performance. They provide evidence that investor preferences do influence asset returns, and they support the 
+PAPM’s intuition that market prices – and consequently market efficiency – are a function of those preferences, implying that 
+active investing opportunities can exist even where prices are assumed to be efficient.  
+Uncertainty, Information, and Active Diversification  
+As we have seen, benefiting from active diversification requires investors to be different from the market. In benchmark-
+relative terms, this means diversifying away from the influence of aggregate investor preferences and accepting the 
+uncertainty that comes from holding securities that lack the implicit affirmation of other investors. Most investors would rather 
+bear the market risk that everyone experiences than risk being “wrong and alone,” as Kritzman (1998) explained; if the market 
+performs poorly, at least they are not alone. The common thread among less popular securities is that their characteristics 
+introduce greater uncertainty about future outcomes. This points to perhaps one of the most important investor preferences of 
+all – predictability of returns. Ceteris paribus, investors prefer less uncertainty to more. Addressing that uncertainty requires 
+both information and judgment. 
+In this context, Frank H. Knight’s foundational distinction between risk and uncertainty remains highly relevant for investment 
+practice. Knight (1921) defined risk as measurable uncertainty, where outcomes and their probabilities can be estimated. By 
+contrast, Knightian uncertainty, or unmeasurable risk, arises when neither outcomes nor probabilities are knowable. It is within 
+this domain of true uncertainty that the potential for economic profits emerges. Under this framework, bearing measurable, 
+market‑wide risk earns market beta, while accepting idiosyncratic, unstructured uncertainty creates the conditions for 
+differentiated returns and meaningful diversification. 
+Quantitative investment processes primarily operate in the realm of measurable risk. They are well suited to identifying and 
+exploiting patterns in large, structured datasets and therefore play an important role in active diversification. However, as 
+Friedrich Hayek (1945) emphasized, much of the most valuable information in an economy is decentralized, dispersed, and 
+inherently difficult to quantify. This information is embedded in individual experiences, expectations, and judgments; it is 
+unevenly distributed, costly to acquire, and often absent from formal datasets. As a result, it is not fully reflected in market 
+prices, creating opportunities for active managers who can interpret qualitative information and context. 
+Hayek (1974) further warned that applying the methods of the physical sciences to social systems risks a “pretence of 
+knowledge.” In an investment setting, this cautions against overreliance on purely statistical models when key drivers of future 
+outcomes cannot be precisely measured or averaged. Many variables that influence asset prices—such as corporate culture, 
+regulatory inflection points, or shifts in social behavior—require judgment-based interpretation. It is precisely in these areas, 
+where information is ambiguous and asymmetrically distributed, that fundamental research and human judgment can add the 
+greatest value. 
+Grinold and Kahn’s (2000) Fundamental Law of Active Management provides a useful framework for linking these ideas. The 
+information ratio of an active strategy depends on both the quality of insights (the information coefficient) and the quantity of 
+independent decisions (breadth). In practice, managers can pursue breadth by applying modest insights systematically across 
+many securities or pursue depth by applying high-conviction insights more selectively. Understanding whether a manager’s 
+process relies primarily on scalable quantitative signals, deeper qualitative judgment, or a combination of both is essential for 
+assessing the nature and reliability of the active diversification provided. 
+Taken together, these perspectives highlight that active returns arise from different types of information operating across 
+different types of uncertainty. Quantitative approaches are most effective where risks are measurable and patterns can be 
+reliably extracted, while fundamental investing is most valuable where quantifiable signals end – at the intersection of 
+ambiguity, judgment, and true uncertainty. These ideas are not merely theoretical; they have clear implications for active 
+diversification in the real world. Naturally, this leads to an empirical question: does the use of different types of information – 
+quantitative and judgment‑based – actually translate into effective stock selection in practice? 
+The value of information and judgment 
+The most direct evidence on this question comes from research on quantitative stock-selection models, examined in the 
+sections that follow. Before turning to the models themselves, it is worth noting why they matter for collective risk. Each model 
+incorporates distinct information sources – different lenses through which securities are valued. To the extent that active 
+strategies draw on information not already embedded in the capitalization-weighted consensus, diversity of information is itself 
+a form of diversification. The evidence that follows should therefore be read not simply as a test of whether stock selection 
+“works,” but as a test of whether differentiated information can deliver returns, and diversification, distinct from the market. 
+Recently, Guerard et al. (2024) revisited several long‑standing stock selection models introduced in Guerard and Takano 
+(1992), originally developed with Harry Markowitz, Nobel laureate in economics. The authors evaluate four models with 
+incremental additions to information content. The first is a regression‑weighted composite based on historical fundamentals – 
+earnings, book value, cash flow, and sales – along with their relative measures. The second model replaces historical 
+earnings with forecasted earnings, while keeping the remaining variables unchanged. The third model builds on this 
+framework by adding an equally weighted composite of analyst earnings forecasts, forecast revisions, and breadth measures. 
+The fourth and final model further augments the specification by incorporating momentum as an additional explanatory 
+variable. 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     11 
+Using U.S. equity data from the Wharton Research Data Services (WRDS) database over the period 1980–2020, Guerard et 
+al. estimate information coefficients (ICs) for each model. The IC, defined as the correlation between forecasted and realized 
+returns, is a standard measure of a model’s predictive power. All four models produce positive and statistically significant ICs, 
+indicating that each has the potential to generate excess returns when implemented as part of an active investment strategy. 
+The reported ICs (with t‑statistics in parentheses) increase monotonically across the four model specifications: 0.02 (4.1), 
+0.03 (5.8), 0.04 (7.2), and 0.05 (8.0).11 
+Information and judgment across the world 
+To gain a better understanding of the active diversification opportunities available to investors, we build on the previous 
+findings. In Guerard et al. (2026), we apply three of the four previously discussed stock‑selection models across a range of 
+global market segments, including global equities, developed markets ex‑US, emerging markets, the US overall, US 
+large‑capitalization, and US small‑to mid‑capitalization stocks.12 Panel A of Exhibit 6 summarizes the variables used in the 
+models, which fall into three categories: fundamentals, earnings forecasts, and price momentum. Panel B of Exhibit 6 details 
+the three models employed and clarifies how each incrementally incorporates additional information. Model 1 (REG 8) relies 
+solely on fundamental data; Model 2 (REG 9) adds earnings forecast information; and Model 3 (REG 10) further incorporates 
+a price momentum variable. 
+ 
+11 ICs in the 0.02–0.04 range may appear modest, but forecasting individual stock returns is notoriously difficult, and even a small, persistent 
+edge compounds when applied systematically across many securities. MSCI Barra (2010) notes that many managers regard an IC of 0.05 as 
+"good" and 0.10 as "very good"; Li et al. (2024) similarly find that ICs above 0.05 in absolute terms are viewed as highly favorable. 
+12 The first model based on historical fundamentals was excluded from the analysis; the focus of the work was to assess the benefits of 
+various types of forward-looking information. The models applied are estimated on a monthly basis using a cross-sectional robust regression 
+of current month returns against prior month stock selection factors. We then use the average of the trailing 12 monthly cross-sectional 
+regressions to estimate model coefficients. See Bloch et al. for additional details. 
+Exhibit 6: An Overview of Select Stock Forecasting Models 
+A. Stock Forecasting Model Variable Definitions 
+Variable 
+ 
+Definition 
+Fundamentals 
+TR 
+= 
+Total returns (monthly)  
+ 
+EP 
+= 
+Earnings / Price  
+BP 
+= 
+Book value / Price 
+ 
+CP 
+= 
+Cash flow / Price 
+SP 
+= 
+Sales / Price  
+ 
+REP 
+= 
+Current EP / average of 60 previous months EP 
+ 
+RBP 
+= 
+Current BP / average of 60 previous months BP 
+ 
+RCP 
+= 
+Current CP / average of 60 previous months CP 
+ 
+RSP 
+= 
+Current SP / average of 60 previous months SP 
+ 
+Earnings Forecasts 
+FEP1 
+= 
+One-year-ahead forecast earnings per share / Price per share  
+FEP2 
+= 
+Two-year-ahead forecast earnings per share / Price per share  
+ 
+RV1 
+= 
+One-year-ahead forecast earnings per share monthly revision / Price per share 
+RV2 
+= 
+Two-year-ahead forecast earnings per share monthly revision / Price per share 
+BR1 
+= 
+One-year-ahead forecast earnings per share monthly breadth / Price per share 
+BR2 
+= 
+Two-year-ahead forecast earnings per share monthly breadth / Price per share 
+CTEF 
+= 
+Equal-weight composite of FEP1, FEP2, RV1, RV2, BR1, BR2 
+ 
+PM71 
+= 
+6-month price momentum = Price (t-1) / Price (t-7) 
+B. Stock Forecasting Models 
+Model 
+Model Description 
+Model Variables 
+1 
+REG 8 
+Fundamental 
+TRt+1 = a0 + a1EPt + a 2 BP t + a3CPt + a4SPt + a5REPt + a6RBPt + a7RCPt + a8RSPt  
++ et+1 
+2 
+REG 9 
+Fundamental  
++ Earnings Forecasts 
+TRt+1 = a0 + a1EPt + a 2 BP t + a3CPt + a4SPt + a5REPt + a6RBPt + a7RCPt + a8RSPt  
++ a9CTEFt + et+1 
+3 
+REG 10 
+Fundamental  
++ Earnings Forecasts 
++ Momentum 
+TRt+1 = a0 + a1EPt + a 2 BP t + a3CPt + a4SPt + a5REPt + a6RBPt + a7RCPt + a8RSPt  
++ a9CTEFt + a10PM71t + et+1 
+Source: Invesco. Guerard et al. (2026). 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     12 
+The objective of the analysis is to assess the contribution of different information sources across different markets. To do so, 
+portfolios are constructed using return forecasts generated by each of the three models. Within each market segment, 
+securities are ranked based on their model‑implied return forecasts and then grouped into five equal‑weighted quintile 
+portfolios (Q1 highest to Q5 lowest). Portfolio performance is evaluated over the sample period with monthly rebalancing and 
+forecast updates. 
+Exhibit 7 summarizes the results of the stock‑selection analysis across multiple global market segments. For each segment, 
+the exhibit reports annualized returns for quintile portfolios (Q1 through Q5) generated by each of the three models, along with 
+the corresponding market return over the sample period. Quintile returns are conditionally formatted relative to the market to 
+highlight the strongest and weakest relative performance outcomes. The exhibit also reports spread returns (Q1 minus Q5) for 
+each model and market segment. 
+Overall, the stock selection models demonstrate the value of different types of information for active stock selection. Across all 
+market segments, we observe that quintile 1 portfolios using models 2 and 3 provide the highest returns. There are 
+meaningful improvements in both quintile returns and spreads when moving from Model 1 to Model 2, reflecting the 
+incremental value of incorporating various additional types earnings forecast information. The transition from Model 2 to 
+Model 3 further improves results in most markets, indicating additional benefits from including price momentum, although it 
+detracts from performance in US large‑capitalization stocks. Examining the information ratios of the Q1 portfolios, the most 
+attractive active diversification opportunities globally appear in emerging markets and developed markets ex‑US. Within the 
+US, the strongest opportunities are concentrated in the small‑ and mid‑capitalization segments. This is aligned with the 
+quintile spread results.  
+Two key insights stand out from the analysis. First, the incorporation of analyst forecasts, revisions, and breadth delivers 
+meaningful gains, underscoring how human judgment can materially enhance model predictive strength. The incremental 
+improvement from adding momentum illustrates the benefits of integrating market‑based signals alongside fundamental 
+inputs. These results are aligned with and support those from Guerard et al. (2024). 
+Second, the results reveal that the benefits of these information sets are not evenly distributed across markets. The strongest 
+active return opportunities consistently appear in emerging markets, developed markets ex-US, and US small- and 
+mid-capitalization stocks. These are all segments where information dispersion is higher and collective investor preferences 
+are less dominant. In contrast, gains are more muted in US large-capitalization stocks, where passive ownership and 
+concentration are greatest. This suggests that active diversification within US large-capitalization stocks likely needs to be 
+approached differently.  
+Exhibit 7: Stock Forecasting Models Applied Across Different Market Segments 
+  
+  
+  
+Returns (%) 
+Quintile 1 
+  
+  
+  
+  
+  
+Quintile Portfolios 
+  
+  
+Market 
+Segment 
+Proxy 
+Index 
+Model 
+Spread 
+(Q1 - Q5) 
+Q1 
+Q2 
+Q3 
+Q4 
+Q5 
+Market 
+Sharpe    
+Ratio 
+Info.  
+Ratio 
+Sample 
+Period 
+World 
+MSCI 
+ACWI 
+1 
+2.6 
+8.0 
+6.5 
+6.0 
+5.8 
+5.5 
+8.3 
+0.29 
+0.08 
+12/1/2005 - 
+12/31/2025 
+2 
+8.5 
+11.1 
+7.3 
+6.0 
+5.1 
+2.7 
+0.43 
+0.37 
+3 
+9.8 
+11.4 
+7.6 
+6.4 
+5.2 
+1.5 
+0.46 
+0.42 
+Developed 
+Markets 
+ex US 
+MSCI 
+ACWI 
+ex US 
+1 
+3.7 
+6.3 
+4.5 
+3.3 
+3.2 
+2.7 
+4.7 
+0.21 
+0.35 
+1/1/2007 - 
+12/31/2025 
+2 
+9.0 
+9.0 
+5.1 
+3.7 
+2.2 
+0.3 
+0.33 
+0.69 
+3 
+9.9 
+9.1 
+5.4 
+3.8 
+2.8 
+-
+0.7 
+0.35 
+0.79 
+Emerging 
+Markets 
+MSCI 
+Emerging 
+Markets 
+1 
+6.0 
+8.1 
+4.9 
+3.3 
+2.6 
+2.0 
+5.2 
+0.26 
+0.51 
+1/1/2007 - 
+12/31/2025 
+2 
+12.0 
+10.9 
+6.7 
+2.5 
+2.2 
+-
+0.9 
+0.38 
+0.92 
+3 
+14.0 
+11.4 
+7.1 
+4.0 
+1.7 
+-
+2.7 
+0.41 
+1.08 
+US 
+Russell 
+3000 
+1 
+6.6 
+10.2 
+8.8 
+9.1 
+8.0 
+2.2 
+10.8 
+0.32 
+0.05 
+12/1/2005 - 
+12/31/2025 
+2 
+8.1 
+11.8 
+8.4 
+8.8 
+7.3 
+2.2 
+0.40 
+0.16 
+3 
+9.0 
+12.0 
+8.9 
+8.9 
+7.8 
+1.0 
+0.42 
+0.17 
+US 
+Large 
+Cap 
+Russell 
+1000 
+1 
+2.5 
+10.8 
+9.4 
+9.6 
+10.3 
+8.1 
+11.0 
+0.35 
+0.08 
+12/1/2005 - 
+12/31/2025 
+2 
+4.8 
+12.6 
+9.4 
+9.8 
+9.0 
+7.5 
+0.43 
+0.20 
+3 
+3.9 
+11.5 
+10.0 
+9.5 
+10.1 
+7.2 
+0.40 
+0.12 
+US 
+Small-Mid 
+Cap 
+Russell 
+2500 
+1 
+4.7 
+9.7 
+8.9 
+8.5 
+7.3 
+3.2 
+9.2 
+0.30 
+0.12 
+12/1/2005 - 
+12/31/2025 
+2 
+7.1 
+11.4 
+9.0 
+8.2 
+6.9 
+2.4 
+0.37 
+0.26 
+3 
+8.8 
+12.2 
+8.9 
+8.8 
+7.4 
+0.9 
+0.43 
+0.36 
+   Source: FactSet, FTSE Russell, MSCI, Invesco.  
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     13 
+These findings demonstrate that quantitative and fundamental investing approaches are not substitutes, but complements. 
+Quantitative models provide structure, consistency, and scalability, while fundamental insights – particularly those grounded in 
+informed expectations about future outcomes – add incremental and differentiated information that can provide diversification 
+opportunities. These results not only confirm the effectiveness of systematic stock‑selection models for active stock selection 
+but also highlight the enduring value of human judgment for diversifying collective market risk. 
+Active diversification in practice 
+We have cited recent research and presented empirical evidence of collective risk arising from the broad adoption of passive 
+strategies. As a counter to this risk, we have suggested that active strategies, when incorporated intentionally, offer a way to 
+diversify not just securities, but information sources, preferences, and different types of uncertainty. We then supported the 
+case for active strategies with evidence of attractive active opportunities across global equity markets. 
+Active diversification, however, is not achieved simply by deviating from a benchmark. It requires being different from the 
+market for the right reasons. Drawing on the theoretical foundations of portfolio theory, insights from asset‑pricing models that 
+incorporate investor preferences, and empirical evidence on information dispersion and return predictability, we offer three 
+practical principles for implementing active diversification effectively: 
+1. 
+Allow for Active Diversification Opportunities 
+The first and most fundamental principle is that active diversification requires the flexibility to be different from the market. This 
+is best framed as diversification away from collective investor preferences rather than as a pursuit of benchmark-relative 
+excess returns. Capitalization-weighted indexes embed the market’s aggregated views about popularity, desirability, and 
+perceived safety, systematically overweighting the securities investors most prefer and underweighting those that are less 
+popular. Mechanical flows into passive index-tracking strategies then compound these overweights. 
+Securing that flexibility is more difficult than it may appear. Clarke, de Silva, and Thorley (2026) explain that in an environment 
+characterized by high volatility in the most concentrated securities, benchmark-relative mandates face an additional 
+constraint. Tracking-error budgets limit how far a manager can deviate from the index. However, underweighting a large, 
+volatile constituent consumes far more active risk than an equivalent underweight in a stable one. When the largest weights 
+are also the most volatile, the positions a risk-aware manager would most like to reduce are the ones that exhaust the active 
+risk budget fastest. They estimate that some managers today may have roughly a third less deployable active risk than in the 
+2010s. The opportunity set has not narrowed, but much of it now sits beyond the reach of tightly constrained mandates. This 
+suggests that risk budgets may need to widen if benchmark-relative managers are to retain a realistic capacity to add value. It 
+also points to a more fundamental remedy: expanding the exposures against which active risk is measured. 
+Practical implementation therefore begins with increasing breadth, by moving investment policy away from narrow silos 
+defined by size, region, or style. Such silos impose unnecessary constraints and blur the line between policy and strategy. 
+Broadening exposures addresses the active constraint on two fronts: a wider opportunity set dilutes the influence of any single 
+concentrated position, and it increases the degrees of freedom available for expressing active views. Investment policy should 
+therefore focus on broad and distinct market exposures, extending active management opportunities beyond tightly 
+constrained benchmark-relative mandates. Exhibit 8 provides an example of how investors might move from commonly used 
+policy silos to broad market exposures. 
+ 
+Exhibit 8: Moving from Narrow Silos to Broad Market Exposures 
+ 
+ 
+Source: Invesco.  
+Narrow Silos
+Expanded Opportunity Set
+Greatest Active 
+Diversification
+US Large Capitalization
+US Mid Capitalization
+US Small Capitalization
+Developed Europe
+Developed Asia Pacific ex. Japan
+Japan
+Emerging Markets
+US
+US Non-silo
+World ex-US
+World ex-US Non-silo
+World
+US
+US Non-silo
+World ex-US
+World ex-US Non-silo
+World Non-silo
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     14 
+A first step could be to merge related silos into broader exposures. In this example, the commonly used silos on the left of 
+Exhibit 8 are combined into US and non-US market exposures, shown in the middle portion, with investment performance 
+then measured against these broader exposures. Investors gain substantially more flexibility in implementation: they can over- 
+or underweight any of the underlying silo exposures, and they can expand the opportunity set to include non-silo strategies – 
+factors, specialist strategies, or tactical approaches – that do not fit neatly into narrow definitions. This expanded opportunity 
+set allows investors to pursue diversification or return enhancement opportunities they might otherwise not have the freedom 
+to implement. 
+Alternatively, investors can merge silos into the broadest market exposure, which offers the greatest active diversification 
+opportunities, as shown in the right-most portion of Exhibit 8. Here, the siloed exposures are consolidated into a single global 
+exposure. Investors retain the flexibility to invest across all the underlying silos while also accessing a broader set of non-silo 
+exposures that now includes global strategies. Importantly, weights to implemented strategies can deviate substantially from 
+the capitalization-weighted market. 
+Moving policy away from narrow silos does not mean abandoning benchmarks. Individual strategies should still be measured 
+against representative benchmarks. What changes is the flexibility to add value relative to the broad market policy allocation. 
+This approach aligns with the total portfolio approaches adopted by some of the world’s largest investors, which move away 
+from a focus on policy weights to allow greater flexibility in meeting portfolio objectives.13  
+2. 
+Diversify Information Sources 
+The second principle is that effective active diversification requires diversifying information, not simply holdings. Portfolio 
+theory emphasizes holding assets that behave differently. Assets behave differently because they respond to different 
+information at different times. The stock-selection results presented earlier reinforce that insight: forecast quality improved 
+with each additional layer of information incorporated. 
+In practice, this means avoiding reliance on a single type of information or investment approach. Investors are likely best 
+served by incorporating both quantitative (or systematic) and fundamental strategies alongside their passive holdings to 
+reduce dependence on any single information source or assumption about asset prices. Fundamental data, analyst 
+expectations, and price‑based signals each capture different dimensions of risk, return, and uncertainty and can offer 
+important diversification benefits.  
+Quantitative and fundamental strategies offer more intentional and risk managed approaches to active diversification. 
+Investors pursuing these informed approaches should be sure that the strategies used are sufficiently active to provide a 
+meaningful benefit. Look for managers that are willing to be “wrong and alone” with the understanding that relative 
+performance is likely to have a wider range of outcomes. Benchmark-hugging active strategies will likely only increase costs 
+without providing the intended benefits.  
+Selecting sufficiently active strategies, however, is only half the task; how much is allocated to them matters just as much. As 
+Exhibit 3 showed, restoring a concentrated S&P 500 holding to its historical breadth required roughly a 43% allocation to an 
+equal-weighted complement; token allocations are unlikely to alter a portfolio’s collective risk profile. Active allocations should 
+therefore be sized against an explicit tracking-error budget, with realistic allowance for implementation frictions – fees, 
+capacity constraints, and, perhaps most importantly, the governance discipline needed to hold strategies through inevitable 
+periods of underperformance. Strategies abandoned at the point of greatest discomfort incur the costs of active management 
+without delivering its diversification benefits. 
+Active diversification is basically an argument for informed intentionality. Investors should be explicit about which information 
+sources they are allocating to and why. Capitalization-weighted index strategies provide the aggregated information set 
+available to all investors. Quantitative, or systematic, strategies focus on measurable risks and statistically reliable patterns, 
+making them well suited to diversifying measurable risk and extracting returns in normal markets. Fundamental strategies 
+apply human judgment to unmeasurable uncertainty, which is most valuable where expectations diverge and during market 
+dislocations, when specialized knowledge allows managers to act as informed, opportunistic buyers. 
+This has long-standing support in the literature, and in how that literature has evolved. Waring et al. (2000) argue that 
+manager selection is a portfolio construction problem in which active return is optimized against active risk within an explicit 
+risk budget, producing a natural mix of index, low-risk active, and traditional active strategies determined by how much active 
+risk an investor is willing to bear. Sorensen et al. (2004) extend Grinold and Kahn’s Fundamental Law beyond the skill and 
+breadth of a single information source to the combination of multiple alpha sources, showing that blending quantitative and 
+fundamental forecasts can improve the information ratio beyond what either achieves alone. Their conclusion is that the 
+advantage lies in the diversity of the information used, and that weights across sources should be set with the same discipline 
+applied to a mean-variance problem. Together, the two studies suggest that the value of active allocation depends not only on 
+how much active risk is taken, but on the range of information that risk draws upon. 
+As with many aspects of investing, active diversification is an exercise in both art and science. Investors should inform 
+allocations using quantitative methods along with stress-testing to account for turbulent market conditions. However, these 
+approaches rely on measurable risks. Diversifying against the unmeasurable uncertainty is less precise. Intuition and 
+judgment about the characteristics of different active strategies across market regimes and the roles they are expected to play 
+will likely weigh heavily on final allocations.  
+ 
+ 
+13 See Jones, Blay, and Bessell (2026) for an overview of the Total Portfolio Approach.  
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     15 
+3. 
+Allocate for both Risk Mitigation and Return Enhancement 
+The third principle is that active diversification is about both return and risk. Because collective risk is uneven across markets, 
+active diversification objectives should be aligned with the characteristics of each. The empirical evidence presented earlier 
+shows that the greatest active returns are found in emerging markets, developed markets ex-US, and US small- and 
+mid-capitalization stocks – segments characterized by greater information dispersion and lower passive ownership. 
+Concentrated markets with high passive flows, by contrast, are more exposed to collective risk and make benchmark-relative 
+investing more challenging. 
+Practical implementation should therefore begin by identifying which markets offer the greatest return enhancement 
+opportunities and which are most exposed to collective risk. Investors should be selective in where they deploy active risk and 
+for what objective, sizing active allocations in proportion to the return and risk characteristics of each market or segment 
+rather than spreading them evenly across all. 
+Where return opportunities are greatest, the emphasis should be on return enhancement, with risk mitigation as a secondary 
+objective. Segments with the widest information dispersion warrant a larger share of the informed active budget. Fundamental 
+approaches that draw on expertise, specialization, and human judgment are well suited to benefit from that dispersion, though 
+they generally carry the greatest active risk. Effective active diversification therefore means taking active risk where it is most 
+likely to be rewarded and managing it by pairing fundamental strategies with more risk-controlled quantitative approaches and 
+with market index strategies. 
+Where passive ownership and concentration are greatest, the emphasis should reverse: risk mitigation first (both collective 
+and absolute), return enhancement second. Equal-weighted strategies that systematically rebalance away from the most 
+popular securities offer an effective starting point. Quantitative strategies that provide exposure to specific and measurable 
+risks and to novel datasets are particularly useful as more manageable absolute risk diversification tools, extracting returns 
+from statistically reliable relationships. These can also be paired with fundamental approaches that offer opportunistic benefits 
+during market dislocations. By tying active exposures to specific objectives in different markets, and by balancing return 
+enhancement against risk mitigation across them, investors can align diversification efforts with portfolio objectives – 
+improving return potential while increasing diversification across both favorable and adverse market regimes. 
+These three principles provide a coherent framework for putting active diversification into practice. Allowing for active 
+diversification opportunities creates the necessary flexibility; diversifying information sources ensures that flexibility is used in 
+an informed way; and allocating for both risk management and return enhancement directs active risk to where it is most likely 
+to provide benefits. None of this requires abandoning passive investing or benchmarks. Rather, it asks investors to be 
+intentional about the exposures they hold, the information they rely on, and the objectives they pursue in each market 
+segment.  
+Conclusion 
+The evolution of modern portfolios has been shaped by an extraordinary expansion of passive index investing, which delivers 
+low-cost market exposure and broad access across asset classes. Yet diversification implemented solely through 
+capitalization-weighted benchmarks comes to reflect collective investor preferences rather than independent sources of risk 
+and return. Rising concentration, growing passive ownership, and shared information sets have introduced forms of collective 
+risk that traditional portfolio construction frameworks do not consider. These overlapping exposures have built up against a 
+backdrop of rising volatility and uncertainty – precisely the environment in which diversification is most needed. 
+Active diversification is not about rejecting passive investing; it is about recognizing the risks that its widespread adoption has 
+introduced in an environment now shaped by collective behavior. By diversifying away from market-embedded preferences, 
+drawing on multiple information sources, and deploying active risk selectively across markets, investors can reintroduce 
+meaningful diversification into portfolios dominated by widely held exposures. Equal-weighted strategies demonstrate that 
+even simple, uninformed departures from market weights can materially reduce concentration risk, while informed approaches 
+show how forward-looking expectations and human judgment can improve diversification outcomes further. 
+The theoretical foundations of portfolio theory and modern asset-pricing models reinforce these conclusions. Markets 
+aggregate information efficiently, but they also embed aggregate preferences, beliefs, and behavioral biases. The market 
+portfolio is therefore neither fully efficient nor universally optimal, and investors with differing expectations, preferences, 
+constraints, and objectives must construct portfolios that reflect those differences. Indeed, because market prices – and 
+market efficiency – are themselves a function of investor preferences, active opportunities can exist even where prices are 
+assumed to be efficient. The empirical evidence presented here bears this out: diversifying away from the market’s most 
+popular exposures has historically offered both return and diversification benefits. 
+Translating these insights into practice rests on three principles. First, investment policy should allow for active diversification 
+opportunities by moving away from narrow silos toward broad market exposures. Second, investors should diversify 
+information sources, pairing quantitative strategies suited to measurable risks with fundamental approaches that apply human 
+judgment to unmeasurable uncertainty – and size those allocations meaningfully, since positions too small to shift a portfolio’s 
+overall exposure will not change the risks it actually bears. Third, active risk should be deployed deliberately, emphasizing 
+return enhancement where information dispersion is greatest and risk mitigation where passive ownership and concentration 
+are highest. 
+Ultimately, the role of active strategies extends beyond benchmark-relative performance. Implemented thoughtfully, active 
+diversification helps investors manage a broader set of risks, including those that arise when everyone owns the same assets 
+for the same reasons – making active strategies, whether equal-weighted, quantitative, or fundamental, important 
+complements to passive investing in modern portfolios. In an investment landscape increasingly defined by common holdings 
+and shared preferences, intentional differentiation, grounded in distinct information, can be a source of portfolio resilience. 
+
+ 
+ 
+16 
+REFERENCES    
+Baker, S. R., N. Bloom, and S. J. Davis. 2016. “Measuring Economic Policy Uncertainty.” The Quarterly Journal of Economics 
+131 (4): 1593–1636. 
+Blay, K., and L. Siegel. 2025. “Information, Uncertainty, and Active Investment Management.” The Journal of Portfolio 
+Management 52 (1). 
+Bloch, M., J. B. Guerard Jr., H. M. Markowitz, P. Todd, and G. Xu. 1993. “A Comparison of Some Aspects of the U.S. & 
+Japanese Equity Markets.” Japan & the World Economy 5: 3–26. 
+Brightman, C., and C. Harvey. 2025. “Passive Aggressive: The Risks of Passive Investing Dominance.” Available at SSRN: 
+https://ssrn.com/abstract=5259427.  
+Clarke, R., H. de Silva, and S. Thorley. 2026. “Equity Market Concentration: Implications for Index Risk and Active 
+Management.” Available at SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6986558. 
+Fama, E. F. 1976. Foundations of Finance. New York: Basic Books. 
+Fama, E. F., and K. R. French. 2007. “Disagreement, Tastes, and Asset Prices.” Journal of Financial Economics 83 (3): 667–
+689. 
+Green, M., H. Krishnan, and S. Sturm. 2026. “A Model for Passive That Breaks the Market.” Available at SSRN: 
+https://ssrn.com/abstract=6438678. 
+Grinold, R. C., and R. N. Kahn. 2000. Active Portfolio Management: A Quantitative Approach for Producing Superior Returns 
+and Controlling Risk. 2nd ed. New York: McGraw-Hill. 
+Guerard, J. B., and M. Takano. 1992. “The Development of Mean−Variance Efficient Portfolios in Japan and the U.S.” The 
+Journal of Investing 1: 48–54. 
+Guerard, J. B., D. Thomakos, F. Kyriazi, and B. Beheshti. 2024. “The Development and Evolution of Mean−Variance Efficient 
+Portfolios in the US and Japan: 30 Years after the Markowitz and Ziemba Applications.” Annals of Operations Research.  
+https://link.springer.com/article/10.1007/s10479-024-06138-
+7#:~:text=In%20that%20issue%2C%20Guerard%2C%20Takano%2C%20and%20Yamane,relative%20variables%20outperfor
+med%20their%20respective%20equity%20benchmarks 
+Guerard, J. B., Jr., K. A. Blay, S. Y. K. Mo, H. Hoang, and J. Chen. 2026. “Information, Security Selection, Portfolio 
+Construction, and Active Equity Management.” The Journal of Financial Data Science 8 (3): 77–103. 
+Harris, L., and E. Gurel. 1986. “Price and Volume Effects Associated with Changes in the S&P 500 List: New Evidence for the 
+Existence of Price Pressures.” Journal of Finance 41 (4): 815–829. 
+Hayek, F. 1945. “The Use of Knowledge in Society.” The American Economic Review 35 (3): 519–530. 
+Hayek, F. 1974. “The Pretence of Knowledge.” https://www.nobelprize.org/prizes/economic-sciences/1974/hayek/lecture/. 
+Henderson, D.  R. 2016. “Extending Hayek’s Insights about Local Knowledge.” 
+https://www.econlib.org/library/Columns/y2016/Hendersonlocal.html.     
+Ibbotson, R. G., J. Diermeier, and L. Siegel. 1984. “The Demand for Capital Market Returns: A New Equilibrium Theory.” 
+Financial Analysts Journal 40 (1), 22–33. 
+Ibbotson, R. G., and T. Idzorek. 2014. “Dimensions of Popularity.” The Journal of Portfolio Management 40 (5), Special 40th 
+Anniversary Issue: 68–74. 
+Ibbotson, R. G., T. Idzorek, P. Kaplan, and J. Xiong. 2018. Popularity: A Bridge between Classical and Behavioral Finance. 
+Charlottesville, VA: CFA Institute Research Foundation.  
+Idzorek, T. M., P. Kaplan, and R. Ibbotson. 2024. “The CAPM, APT, and PAPM.” Journal of Investment Management 23 (1): 
+1–17. 
+Jiang, H., D. Vayanos, and L. Zheng. 2025. “Passive Investing and the Rise of Mega-Firms.” The Review of Financial Studies 
+38 (12): 3461–3496. 
+Jones, B., K. Blay, and M. Bessell. 2026. “Understanding the Total Portfolio Approach: A Primer.” Invesco Research.  
+Kindleberger, C. P. 1978. Manias, Panics, and Crashes: A History of Financial Crises. New York: Basic Books. 
+Knight, F. H. 1921. Risk, Uncertainty, and Profit. New York: Houghton Mifflin.  
+Kritzman, M. 1998. “Wrong and Alone.” Economics & Portfolio Strategy. New York: Peter L. Bernstein, Inc. (15 January). 
+Kritzman, M., and D. Turkington. 2026. “The Fallacy of Concentration.” Financial Analysts Journal 82 (2). 
+
+ 
+Invesco Research | Active Diversification: Mitigating Collective Risks     17 
+Lintner, J. 1969. “The Aggregation of Investor’s Diverse Judgements and Preferences in Purely Competitive Security 
+Markets,” Journal of Financial and Quantitative Analysis 4 (4), 347–400. 
+Li, Q., N. Kamaruddin, S. Yuhaniz, and H. Al-Jaifi. 2024. “Forecasting Stock Prices Changes Using Long-Short Term Memory 
+Neural Network with Symbolic Genetic Programming.” National Institutes for Health, 
+https://pubmed.ncbi.nlm.nih.gov/38172568/.  
+Lochstoer, L., and T. Muir. 2026. “Actively Passive: The Rise of Market Volatility.” Working paper, University of California, Los 
+Angeles. 
+Mackay, C. 1841. Extraordinary Popular Delusions and the Madness of Crowds. London: Richard Bentley. 
+Markowitz, H. M. 1952. “Portfolio Selection.” Journal of Finance 7 (1): 77–91. 
+Markowitz, H. M. 2005. “Market Efficiency: A Theoretical Distinction and So What?” Financial Analysts Journal 61 (5): 17–30. 
+MSCI Barra. 2010. “Converting Scores into Alphas.” Product Insights (May), 
+https://app2.msci.com/products/analytics/aegis/PI_Converting_Scores_Into_Alphas.pdf  
+Novy-Marx, R., and M. Velikov. 2016. “A Taxonomy of Anomalies and Their Trading Costs.” The Review of Financial Studies 
+29 (1): 104–147. 
+Reinganum, M. R., and K. Blay. 2024. Beyond Active and Passive Investing: The Customization of Finance. Charlottesville, 
+VA: CFA Institute Research Foundation. 
+Ross, S. A. 1976. “The Arbitrage Theory of Capital Asset Pricing.” Journal of Economic Theory 13 (3): 341–360. 
+Sharpe, W. F. 1964. “Capital Asset Prices: A Theory of Market Equilibrium under Conditions of Risk.” Journal of Finance 19: 
+425–42.  
+Shiller, R. J. 2000. Irrational Exuberance. Princeton, NJ: Princeton University Press. 
+Shleifer, A. 1986. “Do Demand Curves for Stocks Slope Down?” Journal of Finance 41 (3): 579–590. 
+Sorensen, E. 2025. “Return to Active Equity Management.” The Journal of Portfolio Management 51 (10). 
+Sorensen, E. H., E. Qian, R. Schoen, and R. Hua. 2004. “Multiple Alpha Sources and Active Management.” The Journal of 
+Portfolio Management 30 (2): 39–45. 
+Waring, B., D. Whitney, J. Pirone, and C. Castille. 2000. “Optimizing Manager Structure and Budgeting Manager Risk.” The 
+Journal of Portfolio Management 26 (3): 90–104. 
+Wurgler, J. 2010. “On the Economic Consequences of Index-Linked Investing.” Available at SSRN: 
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1667188. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+Investment risks 
+The value of investments and any income will fluctuate (this may partly be the result of exchange rate fluctuations) and investors may not get back the full 
+amount invested. Past performance is not a guide to future returns.  
+Important Information 
+This marketing communication is intended only for Professional Investors in Continental Europe (as specified below), Professional Clients in Dubai, 
+Guernsey, Jersey, Ireland, Isle of Man and the UK; For Qualified Clients/Sophisticated Investors in Israel; for Institutional Investors only in the United 
+States; Accredited/Institutional Investors in Mexico; Institutional & Qualified Investors in Argentina; Qualified Investors in Chile; Institutional Investors in 
+Peru; for Qualified Institutional Investors in Japan; for Professional Investors in Hong Kong; for Institutional/Accredited Investors in Singapore; for 
+Qualified Institutions/Sophisticated Investors only in Taiwan; for Qualified Professional Investors in Korea; for Qualified Institutional Investors and/or 
+certain specific institutional investors in Thailand; for Sophisticated or Professional Investors in Australia; in New Zealand for wholesale investors (as 
+defined in the Financial Markets Conduct Act); for certain specific institutional investors in Malaysia upon request; for certain specific sovereign wealth 
+funds and/or Qualified Domestic Institutional Investors approved by local regulators only in the People’s Republic of China, for certain specific institutional 
+investors in Brunei and Indonesia; for qualified buyers in Philippines. In Canada this document is restricted to investors who are (i) Accredited Investors 
+and (ii) Permitted Clients, as defined under National Instrument 45-106 and National Instrument 31-103, respectively. It is not intended for and should not 
+be distributed to, or relied upon by, the public or retail investors. This document is not for consumer use; please do not redistribute. For the distribution of 
+this document, Continental Europe is defined as Austria, Belgium, Cyprus, Denmark, Finland, France, Germany, Greece, Italy, Liechtenstein, 
+Luxembourg, The Netherlands, Norway, Portugal, Spain, Sweden, and Switzerland. 
+This is marketing material, is for informational purposes only, and is not financial advice. It is not intended as a recommendation to buy or sell any 
+particular asset class, security or strategy. Regulatory requirements that require impartiality of investment/investment strategy recommendations are 
+therefore not applicable nor are any prohibitions to trade before publication. Investors should consult a financial professional before making any 
+investment decisions. This report contains general information only and does not take into account individual objectives, taxation position or financial 
+needs. Nor does this constitute a recommendation of the suitability of any investment strategy or product for a particular investor. It is not an offer to buy 
+or sell or a solicitation of an offer to buy or sell any security or instrument or to participate in any trading strategy to any person in any jurisdiction in which 
+such an offer or solicitation is not authorized or to any person to whom it would be unlawful to market such an offer or solicitation. It does not form part of 
+any prospectus. While great care has been taken to ensure that the information contained herein is accurate, no responsibility can be accepted for any 
+errors, mistakes or omissions or for any action taken in reliance thereon. By accepting this document, you consent to communicate with us in English, 
+unless you inform us otherwise. 
+The opinions expressed are those of the individuals expressing them personally and may differ from the opinions of other Invesco investment 
+professionals. Opinions are based upon current market conditions and are subject to change without notice. As with all investments, there are associated 
+inherent risks. Please obtain and review all financial material carefully before investing. Asset management services are provided by Invesco in 
+accordance with appropriate local legislation and regulations. 
+All material presented is compiled from sources believed to be reliable and current, but accuracy cannot be guaranteed. This is not to be construed as an 
+offer to buy or sell any financial product and should not be relied upon as the sole factor in an investment making decision This does not constitute a 
+recommendation of any investment strategy for a particular investor. Investors should consult a financial professional before making any investment 
+decisions if they are uncertain whether an investment is suitable for them. Please obtain and review all financial material carefully before investing. As 
+with all investments there are associated inherent risks. 
+This material may contain statements that are not purely historical in nature but are “forward-looking statements.” These include, among other things, 
+projections, forecasts, estimates of income, yield or return or future performance targets. These forward-looking statements are based upon certain 
+assumptions, some of which are described herein. Actual events are difficult to predict and may substantially differ from those assumed. All forward-
+looking statements included herein are based on information available on the date hereof and Invesco assumes no duty to update any forward-looking 
+statement. Accordingly, there can be no assurance that estimated returns or projections can be realized, that forward-looking statements will materialize 
+or that actual returns or results will not be materially lower than those presented. All data as of October 1, 2026, unless otherwise stated. All data is USD, 
+unless otherwise stated. 
+Restrictions on distribution 
+Australia: This document has been prepared only for those persons to whom Invesco has provided it. It should not be relied upon by anyone else. 
+Information contained in this document may not have been prepared or tailored for an Australian audience and does not constitute an offer of a financial 
+product in Australia. You may only reproduce, circulate and use this document (or any part of it) with the consent of Invesco. The information in this 
+document has been prepared without taking into account any investor’s investment objectives, financial situation or particular needs. Before acting on the 
+information the investor should consider its appropriateness having regard to their investment objectives, financial situation and needs.  
+You should note that this information: 
+• 
+may contain references to dollar amounts which are not Australian dollars; 
+• 
+may contain financial information which is not prepared in accordance with Australian law or practices;  
+• 
+may not address risks associated with investment in foreign currency denominated investments; and 
+• 
+does not address Australian tax issues. 
+• 
+Issued in Australia by Invesco Australia Limited (ABN 48 001 693 232), Level 26, 333 Collins Street, Melbourne, Victoria, 3000, Australia, which 
+holds an Australian Financial Services Licence number 239916. 
+Canada:  
+• 
+Issued in Canada by Invesco Canada Ltd., 130 King Street West, Suite 1900, Toronto, Ontario M5X 1E3 Canada. 
+Continental Europe, Dubai, Ireland, the Isle of Man, Jersey, Guernsey and the UK: 
+• 
+Issued in Austria, Belgium, Cyprus, Denmark, Finland, France, Germany, Greece, Italy, Liechtenstein, Luxembourg, Netherlands, Norway, Portugal, 
+Spain, and Sweden by Invesco Management S.A., President Building, 37A Avenue JF Kennedy, L-1855 Luxembourg, regulated by the Commission 
+de Surveillance du Secteur Financier, Luxembourg. 
+• 
+Issued in Dubai by Invesco Asset Management Limited, Index Tower Level 6 - Unit 616, P.O. Box 506599, Al Mustaqbal Street, DIFC, Dubai, United 
+Arab Emirates. Regulated by the Dubai Financial Services Authority. 
+• 
+Issued in Liechtenstein and Switzerland by Invesco Asset Management (Schweiz) AG, Talacker 34, 8001 Zurich, Switzerland. 
+
+Invesco.com 
+                                                                 II-ADMCR-26-INSI-1E   10/26                                                                                 GL5917778 
+• 
+Issued in the Isle of Man, Ireland, Jersey, Guernsey and the United Kingdom by Invesco Asset Management Limited which is authorised and 
+regulated by the Financial Conduct Authority. Invesco Asset Management Ltd, Perpetual Park, Perpetual Park Drive, Henley-on-Thames, RG91HH, 
+UK. 
+Hong Kong: This document is provided to professional investors (as defined in the Securities and Futures Ordinance and the Securities and Futures 
+(Professional Investor) Rules) only in Hong Kong. 
+It is not intended for and should not be distributed to or relied upon by the members of the public or the retail investors. 
+• 
+Issued in Hong Kong by Invesco Hong Kong Limited 景順投資管理有限公司 45/F, Jardine House, 1 Connaught Place, Central, Hong Kong 
+Israel: This document may not be reproduced or used for any other purpose, nor be furnished to any other person other than those to whom copies 
+have been sent. Nothing in this document should be considered investment advice or investment marketing as defined in the Regulation of Investment 
+Advice, Investment Marketing and Portfolio Management Law, 1995 ("Investment Advice Law"). Neither Invesco Ltd. nor its subsidiaries are licensed 
+under the Investment Advice Law, nor does it carry the Insurance as required of a licensee thereunder. 
+• 
+Issued by Invesco Asset Management Limited, Perpetual Park, Perpetual Park Drive, Henley-on-Thames, Oxfordshire, RG9 1HH, United Kingdom. 
+Authorised and regulated by the Financial Conduct Authority. 
+Japan: This document is only intended for use with Qualified Institutional Investors in Japan. It is not intended for and should not be distributed to, or 
+relied upon, by members of the public or retail investors. 
+• 
+Issued in Japan by Invesco Asset Management (Japan) Limited, Roppongi Hills Mori Tower 14F, 6-10-1 Roppongi, Minato-ku, Tokyo 106-6114; 
+Registration Number: The Director-General of Kanto Local Finance Bureau (Kin-sho) 306; Member of the Investment Management Association of 
+Japan and the Japan Securities Dealers Association, and/or 2) Invesco Global Real Estate Asia Pacific, Inc., Roppongi Hills Mori Tower 14F, 6-10-1 
+Roppongi, Minato-ku, Tokyo 106-6114; Registration Number: The Director- General of Kanto Local Finance Bureau (Kin-sho) 583; Member of the 
+Investment Management Association of Japan and Type II Financial Instruments Firms Association. 
+New Zealand: This document is issued only to wholesale investors (as defined in the Financial Markets Conduct Act) in New Zealand to whom disclosure 
+is not required under Part 3 of the Financial Markets Conduct Act. This document has been prepared only for those persons to whom it has been provided 
+by Invesco. It should not be relied upon by anyone else and must not be distributed to members of the public in New Zealand. Information contained in 
+this document may not have been prepared or tailored for a New Zealand audience. You may only reproduce, circulate and use this document (or any 
+part of it) with the consent of Invesco. This document does not constitute and should not be construed as an offer of, invitation or proposal to make an 
+offer for, recommendation to apply for, an opinion or guidance on Interests to members of the public in New Zealand. Applications or any requests for 
+information from persons who are members of the public in New Zealand will not be accepted.  
+• 
+Issued in New Zealand by Invesco Australia Limited (ABN 48 001 693 232), Level 26, 333 Collins Street, Melbourne, Victoria, 3000, Australia, which 
+holds an Australian Financial Services Licence number 239916. 
+Singapore: This document may not be circulated or distributed, whether directly or indirectly, to persons in Singapore other than (i) to an institutional 
+investor under Section 304 of the Securities and Futures Act (the “SFA”), (ii) to a relevant person pursuant to Section 305(1), or any person pursuant to 
+Section 305(2), and in accordance with the conditions specified in Section 305 of the SFA, or (iii) otherwise pursuant to, and in accordance with the 
+conditions of, any other applicable provision of the SFA. This document is for the sole use of the recipient on an institutional offer basis and/or accredited 
+investors and cannot be distributed within Singapore by way of a public offer, public advertisement or in any other means of public marketing. 
+• 
+Issued in Singapore by Invesco Asset Management Singapore Ltd, 9 Raffles Place, #18- 01 Republic Plaza, Singapore 048619. 
+Taiwan: This material is distributed to you in your capacity as Qualified Institutions/Sophisticated Investors. It is not intended for and should not be 
+distributed to, or relied upon, by members of the public or retail investors. 
+• 
+Issued in Taiwan by Invesco Taiwan Limited, 22F, No.1, Songzhi Road, Taipei 11047, Taiwan (0800-045-066). Invesco Taiwan Limited is 
+operated and managed independently. 
+United States: 
+• 
+Issued in the US by Invesco Advisers, Inc., 1331 Spring Street NW, Suite 2500, Atlanta, GA 30309. 
+ 
+ 
+  
+ 
