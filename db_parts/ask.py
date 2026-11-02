@@ -5,6 +5,7 @@ function goes through `_db.<name>` so the facade stays the single
 patch point and the thread-local connection model lives in db.py.
 """
 from datetime import datetime, date, timedelta
+import json
 import logging
 
 import db as _db  # noqa: E402
@@ -33,6 +34,7 @@ def record_ask_bot_answer(
     channel_id: int,
     question: str | None,
     answer: str,
+    turn: dict | None = None,
 ) -> None:
     """Persist the bot's /ask reply so the next /ask from this asker in
     this channel can see it via [YOU said earlier (to this asker, cross-
@@ -43,12 +45,13 @@ def record_ask_bot_answer(
     conn = _db.get_connection()
     conn.execute(
         "INSERT INTO ask_bot_answers "
-        "(asker_user_id, channel_id, question, answer) VALUES (?, ?, ?, ?)",
+        "(asker_user_id, channel_id, question, answer, turn_json) VALUES (?, ?, ?, ?, ?)",
         (
             int(asker_user_id),
             int(channel_id),
             (question or "")[:2000] or None,
             str(answer)[:4000],
+            json.dumps(turn) if turn else None,
         ),
     )
     conn.commit()
@@ -172,6 +175,28 @@ def bot_answers_mentioning(terms: list[str], days: int = 7, limit: int = 2) -> l
         (f"-{int(days)} day", *params, int(limit)),
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+def ask_turn_of_answer(channel_id: int, text: str, hours: int = 72) -> dict | None:
+    """What the bot answer whose text is `text` (a reply's parent) was about,
+    or None for an answer not found or older than the record
+    (discord_bot/follow_up.py)."""
+    import re as _re
+    norm = lambda s: _re.sub(r"\s+", " ", (s or "")).strip()
+    probe = norm(text)[:80]
+    if len(probe) < 12:
+        return None
+    rows = _db.get_connection().execute(
+        "SELECT answer, turn_json FROM ask_bot_answers WHERE channel_id = ? "
+        "AND answered_at >= datetime('now', ?) ORDER BY id DESC LIMIT 120",
+        (int(channel_id), f"-{int(hours)} hour")).fetchall()
+    for answer, turn in rows:
+        if probe in norm(answer):
+            try:
+                return json.loads(turn) if turn else None
+            except ValueError:
+                return None
+    return None
 
 
 def asker_of_bot_answer(channel_id: int, text: str, hours: int = 48) -> int | None:

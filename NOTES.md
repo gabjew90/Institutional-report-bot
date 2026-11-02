@@ -3699,3 +3699,11 @@ Owner: finish the list, then decide what the work is for. Closed the remaining r
 - C1: one share class per company on the sheet. C2: HONA uses Honeywell's site icon.
 - R1: closed by the shared-folder read (f14aa1ddb).
 - Light pulse: says the research feed is down when Dropbox polls are failing, instead of "no new bank research". The 11-02 pulse carried the false line.
+
+## 2026-11-02: follow-ups keep their subject
+
+Owner confirmed three goals (research arrives and failures are loud; no false facts about markets or people; a direct question gets an answer, follow-ups included) and picked follow-ups first.
+
+Measured over 30 days: replies are 132 of 308 questions. Answers to them were corrected 12.1% of the time against 4.5% for first questions. Of the 16 corrected follow-up answers, 4 were already fixed (dead tickers, clock), 3 were jokes or noise, 2 could not be answered, 1 was a fantasy game time, and up to 6 lost the subject or got a roast, from three conversations (NBIS forward P/E, the after-close slate, ASTS). Of 24 replies under a one-stock answer, 13 used no stock data.
+
+`discord_bot/follow_up.py` records what each answer was about and sorts the reply: reaction, question or complaint. A first version used the router's tickers as the subject, and a replay of the month's replies showed "TOO", "ACT" and "ORDER", so the subject is now only what a data tool returned. Review found the routing too eager ("whats bitcoin at" under an Apple answer priced Apple), so a question must carry on from the answer, by a word pointing back at it or a word the stock's data can answer, and must not name another market. Cash flow and capex questions are now the one-field lookup, so "AAPL free cash flow, trailing 12 months" no longer gets the stock rundown without the figure. The outcome to watch is the corrected rate on replies in `scripts/ask_outcomes.py`, on a small sample.

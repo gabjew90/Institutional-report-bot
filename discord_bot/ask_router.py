@@ -28,6 +28,7 @@ import os
 import re
 from dataclasses import dataclass, field
 
+from discord_bot import follow_up as _follow_up
 from discord_bot import listed_symbols as _listed
 
 # --------------------------------------------------------------- shapes
@@ -50,6 +51,10 @@ BANTER = "banter"
 # bank research is prefetched so the answer leads with named desks, not
 # with the room's own chatter (2026-09-30).
 TICKER_OPINION = "ticker_opinion"
+# A question under a factual answer about one stock that names no stock and
+# fits no other shape: the stock's data, no outline, answer what was asked
+# (discord_bot/follow_up.py, 2026-11-02).
+FOLLOW_UP = "follow_up"
 UNKNOWN = "unknown"
 
 # A ledger or chat lookup is a data question too: it gets the straight-
@@ -57,7 +62,7 @@ UNKNOWN = "unknown"
 # (2026-09-02 review: both shapes were hard-coded BANTER).
 FACTUAL_SHAPES = {EARNINGS_SLATE, EARNINGS_DATE, PRICE, OPTIONS_CHAIN, ECON_CALENDAR,
                   PRICE_HISTORY, COMPANY_PROFILE, HISTORICAL_STAT, NEWS_EVENT, FANTASY,
-                  MEMBER_LEDGER, CHAT_HISTORY, ROOM_CROWDING}
+                  MEMBER_LEDGER, CHAT_HISTORY, ROOM_CROWDING, FOLLOW_UP}
 
 # Tool names as declared in discord_bot/ask_tools.py
 T_GOOGLE = "google_search"
@@ -121,12 +126,14 @@ TOOL_POLICY: dict[str, set[str]] = {
     NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN} | _STOCK,
     ROOM_CROWDING: {T_ROOM, T_TRADES, T_QUERY, T_PRICE},
     TICKER_OPINION: {T_EDATE, T_PRICE, T_CHAIN} | _STOCK,
+    FOLLOW_UP: {T_EDATE, T_PRICE, T_CHAIN, T_HISTORY} | _STOCK,
     BANTER: ALL_TOOLS - {T_GOOGLE},
     UNKNOWN: ALL_TOOLS - {T_GOOGLE, T_CHAT},
 }
 GOOGLE_POLICY: dict[str, bool] = {
     EARNINGS_SLATE: False, EARNINGS_DATE: True, PRICE: True, OPTIONS_CHAIN: True,
     ECON_CALENDAR: True, PRICE_HISTORY: False, COMPANY_PROFILE: True, TICKER_OPINION: True,
+    FOLLOW_UP: True,
     # Google is allowed on FANTASY: half the questions in that channel are
     # NFL news (injuries, player outlooks) that the league tool cannot
     # answer. League STATE still comes only from the injected payload,
@@ -151,6 +158,14 @@ class Route:
     # A stock question that asks for a fact ("is Amazon on net negative
     # cashflow?", "what is ELMT stock") rather than a view. Set by classify.
     factual: bool = False
+    # A reply to the bot's own answer (discord_bot/follow_up.py): its kind, the
+    # stock it inherited, the question a complaint asks again, and the factual
+    # register a complaint gets whatever the shape.
+    follow_up: str = ""
+    follow_symbol: str = ""
+    follow_asked: str = ""
+    reask: str = ""
+    force_fact: bool = False
 
     @property
     def deterministic(self) -> bool:
@@ -158,12 +173,13 @@ class Route:
 
     @property
     def is_factual(self) -> bool:
-        return self.shape in FACTUAL_SHAPES or (self.shape == TICKER_OPINION and self.factual)
+        return (self.force_fact or self.shape in FACTUAL_SHAPES
+                or (self.shape == TICKER_OPINION and self.factual))
 
     @property
     def needs_web(self) -> bool:
         return GOOGLE_POLICY.get(self.shape, True) and self.shape in (
-            NEWS_EVENT, HISTORICAL_STAT, COMPANY_PROFILE, TICKER_OPINION)
+            NEWS_EVENT, HISTORICAL_STAT, COMPANY_PROFILE, TICKER_OPINION, FOLLOW_UP)
 
     def allowed_tools(self) -> set[str]:
         return set(TOOL_POLICY.get(self.shape, ALL_TOOLS - {T_GOOGLE}))
@@ -901,6 +917,10 @@ _VALUATION = (r"(?:forward\s+)?p\s*/\s*e\b|(?:forward\s+)?pe(?:\s+ratio)?\b|pric
 _SNAPSHOT_FIELD_RE = re.compile(
     r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?"
     r"|short\s+interest|how\s+many\s+shares|fundamentals?"
+    # the snapshot's trailing four quarters: this question got the stock
+    # rundown with no cash flow in it (2026-11-02, "AAPL free cash flow and
+    # operating cash flow, trailing 12 months")
+    r"|(?:free\s+|operating\s+)?cash\s*flows?|fcf|capex|capital\s+(?:spending|expenditures?)"
     # valuation, computed in the snapshot (2026-10-26 audit A12)
     r"|" + _VALUATION + r")", re.I)
 # A fund's positions (2026-10-18 audit A10). The fund word may sit in the
@@ -1232,15 +1252,86 @@ def is_fact_question(q: str, tickers: list[str] | None = None) -> bool:
         or (tickers and _trailing_view(q, tickers)))
 
 
+def _route_asked(text: str, symbol: str, kw: dict) -> Route:
+    """Shape `text` as if it named `symbol`, through the normal shapes. What
+    only the catch-all at the bottom would claim is the follow-up shape: the
+    stock's data with no outline, since a narrow question is not a request for
+    the rundown."""
+    if symbol and symbol not in extract_tickers(text):
+        text = f"{text} ${symbol}"
+    r = _classify(text, **kw)
+    if not symbol:
+        return r
+    if r.shape == TICKER_OPINION and r.reason == "ticker with no other shape":
+        r.shape, r.reason = FOLLOW_UP, "question about the stock the replied-to answer covered"
+    elif r.shape == UNKNOWN and not r.prefetch:
+        # a fund or an index: its price, and the reply is not said to be about it
+        r.tickers = [symbol]
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(symbol)]})]
+        return r
+    r.follow_symbol = symbol
+    return r
+
+
+def _named_in_reply(own: str) -> list[str]:
+    """Stocks a reply really names. A lowercase English word is the extractor's
+    guess ("what's the float" read as FLOAT), and the answer's own stock beats it."""
+    capitals = set(extract_tickers(own, lowercase=False))
+    words = _listed.english_words()
+    return [t for t in extract_tickers(own) if t in capitals or t.lower() not in words]
+
+
+def _follow_up_route(question: str, turn: dict, kw: dict) -> Route | None:
+    """The route for a reply to the bot's own answer, or None to route it as
+    any other message. `turn` is what that answer was about."""
+    own = _last_line(question)
+    data_words = stock_intent(own) and not _shouting(own)
+    kind = _follow_up.kind(own, data_words=data_words)
+    symbol = _follow_up.subject(turn)
+    named = _named_in_reply(own)
+    if kind == _follow_up.COMPLAINT and turn.get("factual"):
+        asked = turn.get("asked") or ""
+        # What the reply names decides, a shape its own words earned stands,
+        # and "weigh in on this" is no question to ask again.
+        r = _classify(question, carry=False, **kw)
+        if not (named or r.shape != UNKNOWN or not asked or turn.get("shape") == FANTASY
+                or _DEFERRAL_RE.match(asked)):
+            r = _route_asked(asked, symbol, kw)
+            r.reask = asked
+        r.follow_up, r.force_fact = kind, True
+        return r
+    if not symbol or kw.get("names_member") or mention_only(question):
+        return None
+    r = _classify(question, carry=False, **kw)
+    guessed = bool(r.tickers) and not named and set(r.tickers) <= set(extract_tickers(own))
+    # A shape the asker's own words earned stands: "what's CPI tomorrow" under
+    # an Apple answer is about CPI, "what about VST" about VST.
+    if not guessed and (r.tickers or r.shape not in (UNKNOWN, NEWS_EVENT)):
+        return None if r.shape == UNKNOWN else r
+    if kind != _follow_up.REACTION and not _follow_up.carries_on(own, data_words):
+        return None
+    if kind == _follow_up.REACTION:
+        r.tickers = [symbol]
+        r.reason = "reaction to an answer about a ticker: price only"
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(symbol)]})]
+    else:
+        r = _route_asked(own, symbol, kw)
+    r.follow_up, r.follow_asked = kind, turn.get("asked") or ""
+    return r
+
+
 def classify(question: str, *, fantasy_enabled: bool = False,
              channel_name: str = "", asker_manager: str = "",
-             channel_id: int | None = None, names_member: bool = False) -> Route:
+             channel_id: int | None = None, names_member: bool = False,
+             turn: dict | None = None) -> Route:
     """Shape a question deterministically. Order matters: the more
     specific shape wins, and the ledger/chat shapes beat the data shapes
     when a member is named ("Abe's win rate on semi calls" is a ledger
     question even though it says 'calls')."""
-    r = _classify(question, fantasy_enabled=fantasy_enabled, channel_name=channel_name,
-                  asker_manager=asker_manager, channel_id=channel_id, names_member=names_member)
+    kw = dict(fantasy_enabled=fantasy_enabled, channel_name=channel_name,
+              asker_manager=asker_manager, channel_id=channel_id, names_member=names_member)
+    # `turn`: the replied-to answer's record, when the reply is to the bot
+    r = (_follow_up_route(question, turn, kw) if turn else None) or _classify(question, **kw)
     # A fact asked about a stock gets the factual register, not banter
     # (2026-10-30 audit A17: "is Amazon on net negative cashflow?" ran as
     # banter).
@@ -1251,7 +1342,8 @@ def classify(question: str, *, fantasy_enabled: bool = False,
 
 def _classify(question: str, *, fantasy_enabled: bool = False,
               channel_name: str = "", asker_manager: str = "",
-              channel_id: int | None = None, names_member: bool = False) -> Route:
+              channel_id: int | None = None, names_member: bool = False,
+              carry: bool = True) -> Route:
     q = _last_line(question)
     ql = q.lower()
     in_channel = fantasy_enabled and in_fantasy_channel(channel_name, channel_id)
@@ -1570,7 +1662,9 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
         r.prefetch = [(T_EDATE, {"symbol": named[0]}), (T_PRICE, {"symbols": [named[0]]})] + \
             _stock_prefetch(named[0], research=False)
         return r
-    if not tickers:
+    # `carry` is off when the answer's own record names its stock: the regex on
+    # its text below is for older answers and for replies to members.
+    if not tickers and carry:
         parent = reply_parent_tickers(question)
         if parent:
             strong, carried = parent[:1], True

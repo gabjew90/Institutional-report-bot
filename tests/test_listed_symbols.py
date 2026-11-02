@@ -105,7 +105,7 @@ def test_fact_questions_about_a_stock_are_factual():
     for q in ("is Amazon on net negative cashflow ?",
               "when are those sandisk guys splitting the stock"):
         r = R.classify(q)
-        assert r.shape == R.TICKER_OPINION and r.is_factual, q
+        assert r.shape in (R.TICKER_OPINION, R.PRICE) and r.is_factual, q
     for q in ("what do you think of MU", "is hood a good short here", "MU?",
               "do you think NVDA rips tomorrow on earnings"):
         r = R.classify(q)

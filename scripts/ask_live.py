@@ -89,6 +89,9 @@ def _install_stubs(db, conn: sqlite3.Connection) -> None:
     def _record_ask_bot_answer(**kw):
         return None
 
+    def _ask_turn_of_answer(*a, **kw):
+        return CAPTURED.get("turn")
+
     def _set_chat_image_ocr(*a, **kw):
         # the lazy image-OCR cache; the chat-search tool reaches it and its
         # call sites are the failure handlers themselves
@@ -98,6 +101,7 @@ def _install_stubs(db, conn: sqlite3.Connection) -> None:
     db.append_ask_interaction = _append_ask_interaction
     db.record_gemini_call = _record_gemini_call
     db.record_ask_bot_answer = _record_ask_bot_answer
+    db.ask_turn_of_answer = _ask_turn_of_answer
     db.set_chat_image_ocr = _set_chat_image_ocr
     # A primer built during a harness run is not stored: the next channel
     # question builds its own.
@@ -190,6 +194,9 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--no-chat", action="store_true", help="omit the recent-chat block")
     ap.add_argument("--db", default="", help="database path (default: settings.db_path)")
     ap.add_argument("--json", default="", help="also write the full trace (prompt, tools, meta, answer) here")
+    ap.add_argument("--reply-to", default="", help="ask as a reply to this bot answer's text")
+    ap.add_argument("--turn", default="", help="that answer's record as JSON: "
+                    '{"tickers": ["AAPL"], "asked": "...", "factual": true}')
     ap.add_argument("--files-dir", default="", help="where to save chart attachments, if any")
     args = ap.parse_args(argv)
 
@@ -222,6 +229,13 @@ def main(argv: list[str]) -> int:
         channel_id = int(row[0]) if row else None
 
     question = args.question
+    if args.turn:
+        CAPTURED["turn"] = json.loads(args.turn)
+        channel_id = channel_id or 1      # the record is looked up by channel
+    if args.reply_to:
+        # the block on_message builds for a reply to the bot
+        question = (f"[MESSAGE BEING REPLIED TO \u2014 from omniwiz \u2014 user_id {bot_uid or 1}]\n"
+                    f'"{args.reply_to}"\n\n[{asker_display or "asker"}\'s message to you]\n{question}')
     # Same pre-processing as the slash command: fetch any URL the question
     # carries, load profiles for the asker, add other members' verbatim.
     async def go():

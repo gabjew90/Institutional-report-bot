@@ -765,6 +765,9 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         # starts from the old cursor (db_parts.pdf.get_ingest_feed_cursor).
         ("last_announced_analysis_id",
          "ALTER TABLE ingest_feed_state ADD COLUMN last_announced_analysis_id INTEGER"),
+        # What an /ask answer was about, read when someone replies to it
+        # (discord_bot/follow_up.py, 2026-11-02). NULL on older answers.
+        ("turn_json", "ALTER TABLE ask_bot_answers ADD COLUMN turn_json TEXT"),
     ]:
         try:
             conn.execute(ddl)
@@ -1510,6 +1513,7 @@ from db_parts.analyst import (  # noqa: E402,F401
     record_bot_book_post,
 )
 from db_parts.ask import (  # noqa: E402,F401
+    ask_turn_of_answer,
     asker_of_bot_answer,
     count_ask_queries_today_for_user,
     get_recent_bot_answers_in_channel,

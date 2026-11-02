@@ -28,6 +28,8 @@ Flags:
 | `--no-chat` | omit the recent-chat block |
 | `--json PATH` | write the full trace: the prompt the model saw, every tool call and payload, meta, raw and final answer. Use `/tmp/x.json` on the worker and `cat` it, or run locally |
 | `--files-dir DIR` | save chart attachments when the answer carries one |
+| `--reply-to TEXT` | ask as a reply to a bot answer with this text |
+| `--turn JSON` | that answer's record, as `ask_bot_answers.turn_json` holds it: `{"tickers": ["AAPL"], "asked": "...", "shape": "price", "factual": true}` |
 
 Locally, `py -3.12 scripts/ask_live.py "..."` runs the same code against the dev
 database in `data/reports.db` with the keys in `.env`. That proves the plumbing,

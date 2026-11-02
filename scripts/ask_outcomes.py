@@ -33,40 +33,18 @@ from __future__ import annotations
 import re
 from datetime import datetime, timedelta
 
-from discord_bot import ask_router
+from discord_bot import ask_router, follow_up
 
 BOT_NAMES = ("omniwiz",)
 REASK_WINDOW = timedelta(minutes=10)
 TARGET_WINDOW = timedelta(hours=6)
 
-_CORRECTION_RE = re.compile(
-    # says it is wrong
-    r"\b(?:wrong|inaccurate|incorrect|not\s+true|that'?s\s+a\s+lie|fake\s+news|nice\s+try)\b"
-    r"|^\s*(?:no|nah|nope)\b"
-    # left something out
-    r"|\b(?:you|your|u)\s+(?:forgot|missed|left\s+out|didn'?t\s+(?:show|include|list|answer|mention))\b"
-    r"|\b(?:forgot|missed)\s+\$?[a-z]{2,6}\b"
-    # answered something else
-    r"|\bi\s+(?:said|meant|mean|asked)\b|\bi'?m\s+asking\b|\bi\s+am\s+asking\b|\bwhy\s+would\s+i\s+care\b"
-    # a fact about the asker
-    r"|\bi\s+(?:don'?t|do\s+not|never)\s+(?:even\s+)?(?:trade|own|hold|play|use)\b|\bnot\s+mine\b"
-    r"|\bi'?m\s+not\s+a\b|\bonly\s+in\s+one\b|\bi\s+don'?t\s+think\s+i'?ve\s+ever\b"
-    # contradicts itself or the tape
-    r"|\byou\s+(?:just\s+)?said\b|\balready\s+(?:live|out|over|happened|reported|printed)\b"
-    r"|\bcheck\s+the\s+(?:stock|chart|price|tape)\b|\bget\s+your\s+\w+\s+right\b"
-    r"|\bseems?\s+(?:low|high|off)\b|\bhow\s+is\s+(?:it|\w+\s+a)\b|\bis\s+owned\s+by\b"
-    r"|\bis\s+playing\s+(?:tonight|today|tomorrow)\b"
-    # did not do the job
-    r"|\btoo\s+long\b|\bbe\s+more\s+specific\b|\banswer\s+the\s+question\b|\btask\s+incomplete\b"
-    r"|\b(?:do|try)\s+(?:it\s+|that\s+|this\s+|analysis\s+)?again\b|\bdo\s+better\b|\bresults\s+only\b"
-    r"|\bcan'?t\s+even\b|\bthis\s+list\s+(?:blows|sucks)\b|\buseless\b",
-    re.I)
 _STOP = {"the", "a", "an", "is", "are", "was", "of", "to", "in", "on", "for", "and", "or",
          "what", "whats", "how", "me", "my", "i", "you", "it", "this", "that", "do", "does"}
 
 
 def is_correction(text: str) -> bool:
-    return bool(_CORRECTION_RE.search(text or ""))
+    return follow_up.is_correction(text)
 
 
 def _words(s: str) -> str:

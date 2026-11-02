@@ -19,6 +19,7 @@ from discord.ext import commands
 
 from config import settings
 from discord_bot import chat_context
+from discord_bot import follow_up as _follow_up
 from discord_bot import pnl_claims as _pnl_claims
 from discord_bot import rank_evidence as _rank_evidence
 from discord_bot.sender import send_embeds
@@ -4364,8 +4365,17 @@ async def _ask_00_setup_tools_and_context(
         if _context_tickers:
             _route_question = "what happened with " + " and ".join(
                 f"${t}" for t in _context_tickers)
+    # A reply to the bot: what that answer was about (discord_bot/follow_up.py)
+    _reply_turn = None
+    if channel_id and "from omniwiz" in question[:200]:
+        try:
+            _reply_turn = await asyncio.to_thread(
+                db.ask_turn_of_answer, channel_id, _ask_router._parent_text(question))
+        except Exception as e:
+            log.info(f"/ask: reply-turn lookup failed (non-fatal): {e}")
     _ask_route = _ask_router.classify(
         _route_question,
+        turn=_reply_turn,
         fantasy_enabled=bool((settings.sleeper_league_id or "").strip()),
         # A question asked in the football channel is a league question
         # unless a stronger shape claims it (2026-09-03, owner).
@@ -4690,8 +4700,10 @@ async def _ask_01_build_prompt(
                  f"{'WEB' if needs_web else 'LOCAL'}/{'FACT' if _route_is_factual else 'BANTER'}")
     else:
         needs_web, _route_is_factual = await _classify_ask_needs_web(
-            client, ask_model, safety_settings, question
+            client, ask_model, safety_settings, _ask_route.reask or question
         )
+        # a complaint about a factual answer gets the factual register
+        _route_is_factual = _route_is_factual or _ask_route.is_factual
     # Deterministic WEB override for quote/lyric completions
     # (2026-07-12): "finish the song lyrics: ..." routed LOCAL and
     # the model invented a bar ("whole team winnin'" — the real line
@@ -5051,6 +5063,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_EVENTS: _execute_event_returns,
     }
     _ask_meta["route_shape"] = _ask_route.shape
+    _ask_meta["route_reask"] = _ask_route.reask
     # Read by the tool loop: a shape without chat search must not reach
     # chat through query_data either (2026-10-08 audit).
     _ask_meta["chat_allowed"] = _ask_router.T_CHAT in _ask_route.allowed_tools()
@@ -5173,7 +5186,7 @@ async def _ask_02_call_model_with_tools(
         # writes the opening (discord_bot/answer_block.py, 2026-10-27).
         _blk = _answer_block.build(_pf_tool, _pf_res, _ab_now.date(),
                                    morning_reported=(_ab_now.hour, _ab_now.minute) >= (9, 30),
-                                   question=_ask_router.asker_text(question))
+                                   question=_ask_route.reask or _ask_router.asker_text(question))
         if _blk:
             _pf_text += _answer_block.note(_blk)
             _ask_meta.setdefault("answer_blocks", []).append(_blk)
@@ -5243,9 +5256,19 @@ async def _ask_02_call_model_with_tools(
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
             text=_ask_router.deferred_note(_ask_route.deferred_author))]))
         _ask_meta["guards"].append("deferred-question")
+    # A reply to the bot's own answer (discord_bot/follow_up.py)
+    _fu_note = ""
+    if _ask_route.follow_up == _follow_up.COMPLAINT:
+        _fu_note = _follow_up.complaint_note(_ask_route.reask)
+    elif _ask_route.follow_symbol:
+        _fu_note = _follow_up.question_note(_ask_route.follow_symbol, _ask_route.follow_asked)
+    if _ask_route.follow_up:
+        _ask_meta["guards"].append(f"follow-up:{_ask_route.follow_up}")
+    if _fu_note:
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=_fu_note)]))
     # Foreign market hours computed in code (2026-10-26 audit A7)
     from discord_bot.world_clock import clock_note as _clock_note
-    _clock = _clock_note(_ask_router.asker_text(question) or question)
+    _clock = _clock_note(_ask_route.reask or _ask_router.asker_text(question) or question)
     if _clock:
         contents.append(types.Content(role="user", parts=[types.Part.from_text(text=_clock)]))
         _ask_meta["guards"].append("world-clock")
@@ -8068,7 +8091,7 @@ def _rewritable_stock_answer(answer, _ask_meta, shapes) -> bool:
 
 
 _FRESH_PRINT_SHAPES = {"ticker_opinion", "options_chain", "news_event", "company_profile",
-                       "earnings_date"}
+                       "earnings_date", "follow_up"}
 
 
 def fresh_print_line(fresh: dict) -> str:
@@ -8706,6 +8729,9 @@ async def _answer_with_gemini(
         _ask_meta["latency_s"] = round(time.monotonic() - _ask_t0, 2)
         if _tally_retry_usage.calls:
             _ask_meta["retry_calls"] = _tally_retry_usage.calls
+        if out_meta is not None:
+            from discord_bot.ask_router import asker_text as _asker_text
+            out_meta["turn"] = _follow_up.record(_asker_text(question), _ask_meta, _ask_tool_trace)
         return await _ask_10_log_and_render(
             _ask_actual_total=_ask_actual_total + _tally_retry_usage.total,
             _ask_est_total=_ask_est_total,
@@ -9847,6 +9873,7 @@ def create_bot() -> commands.Bot:
                         channel_id=int(_ch_id),
                         question=question,
                         answer=_text_embed.description or "",
+                        turn=_ask_out_meta.get("turn"),
                     )
             except Exception as e:
                 log.info(
@@ -10274,6 +10301,7 @@ def create_bot() -> commands.Bot:
                             channel_id=int(_ch_id),
                             question=question,
                             answer=_text_embed.description or "",
+                            turn=_ask_out_meta.get("turn"),
                         )
                 except Exception as e:
                     log.info(
