@@ -738,9 +738,11 @@ def store_chat_message(
         )
         conn.commit()
         return cur.rowcount > 0
-    except Exception:
+    except Exception as e:
         # Schema problems, encoding edge cases, etc. — never raise to the
-        # caller; chat ingestion is best-effort.
+        # caller; chat ingestion is best-effort. It is said out loud: on
+        # 11-02 messages stopped being stored for hours with nothing logged.
+        log.warning(f"chat message {discord_message_id} not stored: {e}")
         return False
 
 

@@ -46,11 +46,68 @@ _schema_ready = False
 _BUSY_TIMEOUT_S = 30
 
 
+def _report_db_lock(sql: str) -> None:
+    """A statement lost to the lock is logged and pinged. The ping runs in its
+    own thread because this can be on the event loop; ops_alert dedupes per hour."""
+    log.warning(f"database lock: statement failed on {threading.current_thread().name}: "
+                f"{' '.join(str(sql).split())[:80]}")
+
+    def _ping():
+        try:
+            from discord_bot.ops_alert import ops_alert_sync
+            ops_alert_sync("Database lock: a statement failed, and a write would be lost. See "
+                           "the worker log for which one.", dedupe_key="db_locked")
+        except Exception as e:
+            log.warning(f"database lock ping failed: {e}")
+    threading.Thread(target=_ping, daemon=True).start()
+
+
+class _Connection(sqlite3.Connection):
+    """Ends the transaction a lock failure leaves open (2026-11-02).
+
+    A write that loses the lock raises, but sqlite3 has already opened the
+    implicit BEGIN and nothing ends it: the helpers raise before their commit.
+    The next read on that connection then pins a snapshot inside that open
+    transaction, and once another process commits, every later write fails at
+    once with "database is locked" (no wait, nobody holds a lock) and every read
+    stays frozen, until the process restarts. On 11-02 the main connection sat
+    like that for hours during the backlog: 180 repeat posts in the ingestion
+    feed, trades and chat messages not stored, and answers not recorded.
+
+    Rolling back loses nothing. A statement only loses the lock when the
+    transaction holds no write lock yet, so it has written nothing."""
+
+    def _lost_lock(self, err: sqlite3.OperationalError, sql) -> None:
+        text = str(err).lower()
+        if "locked" not in text and "busy" not in text:
+            return
+        if self.in_transaction:
+            try:
+                self.rollback()
+            except sqlite3.Error as e:
+                log.warning(f"database lock: rollback failed: {e}")
+        _report_db_lock(sql)
+
+    def execute(self, sql, *args):
+        try:
+            return super().execute(sql, *args)
+        except sqlite3.OperationalError as e:
+            self._lost_lock(e, sql)
+            raise
+
+    def executemany(self, sql, *args):
+        try:
+            return super().executemany(sql, *args)
+        except sqlite3.OperationalError as e:
+            self._lost_lock(e, sql)
+            raise
+
+
 def _open_connection() -> sqlite3.Connection:
     db_path = Path(settings.db_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(db_path), check_same_thread=False,
-                           timeout=_BUSY_TIMEOUT_S)
+                           timeout=_BUSY_TIMEOUT_S, factory=_Connection)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA foreign_keys=ON")

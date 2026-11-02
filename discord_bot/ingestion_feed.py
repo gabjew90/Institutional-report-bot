@@ -149,8 +149,14 @@ def _build_embed(row: dict, temp_link: str) -> discord.Embed:
     return embed
 
 
+# Posted, but the cursor did not save: the next tick saves it without posting
+# again (2026-11-02: 156 copies of one note, one a minute, under a database lock).
+_posted_not_saved: int | None = None
+
+
 async def announce_next_pending(bot) -> None:
     """Post the next queued HIGH/MEDIUM ingestion (one per call). 60s cadence."""
+    global _posted_not_saved
     if not feed_enabled() or bot is None:
         return
     cid = _channel_id()
@@ -165,6 +171,10 @@ async def announce_next_pending(bot) -> None:
 
     pf_id = int(row["pf_id"])
     try:
+        if _posted_not_saved == pf_id:
+            db.set_ingest_feed_cursor(int(row["analysis_id"]), pf_id)
+            _posted_not_saved = None
+            return
         from dropbox_client.watcher import get_temporary_link
         import asyncio
         # Dropbox API call is sync — run in a thread to avoid blocking event loop
@@ -177,10 +187,12 @@ async def announce_next_pending(bot) -> None:
             return
         await channel.send(embed=embed)
         log.info(f"Ingest feed: posted pdf_file_id={pf_id} ({row.get('file_name', '')[:60]})")
+        _posted_not_saved = pf_id
 
         # Mark as announced AFTER successful post so a transient Discord error
         # doesn't permanently skip the entry. If post fails the next tick retries.
         db.set_ingest_feed_cursor(int(row["analysis_id"]), pf_id)
+        _posted_not_saved = None
     except Exception as e:
         log.error(f"Ingest feed: failed to announce pdf_file_id={pf_id}: {e}", exc_info=True)
 

@@ -285,7 +285,7 @@ Key ones set on `worker` service:
 
 SQLite with WAL mode at `/data/reports.db` (persists on Railway volume).
 
-**Connection model (2026-09-01):** the main thread keeps the module-level `db._conn`; every other thread gets its own connection from a `threading.local` (`db.get_connection()` handles both). One shared connection across threads let thread B's `commit()` commit thread A's half-written rows. Every DML helper in `db.py` commits before returning; keep it that way, a cross-thread reader never sees uncommitted rows now. Tests use `db.reset_connections()`; the legacy `db._conn = None` reset still works on the main thread.
+**Connection model (2026-09-01):** the main thread keeps the module-level `db._conn`; every other thread gets its own connection from a `threading.local` (`db.get_connection()` handles both). One shared connection across threads let thread B's `commit()` commit thread A's half-written rows. Every DML helper in `db.py` commits before returning; keep it that way, a cross-thread reader never sees uncommitted rows now. Every connection is a `db._Connection`, which rolls back when a statement loses the lock, logs it and pings ops: without that, one lock failure left the connection on a frozen snapshot where every later write failed instantly until a restart (2026-11-02). If `database is locked` comes back with no wait before it, look for a cursor left open. Tests use `db.reset_connections()`; the legacy `db._conn = None` reset still works on the main thread.
 
 Tables:
 - `dropbox_state` — cursor for delta polling
