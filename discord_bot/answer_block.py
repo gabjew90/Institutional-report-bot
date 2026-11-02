@@ -36,9 +36,10 @@ _NOT_A_LEAD = ("→ No response came back", "→ Thought myself in circles",
 
 
 def build(tool: str, result: dict, today: date, morning_reported: bool = False,
-          question: str = "") -> dict | None:
+          question: str = "", complaint: str = "") -> dict | None:
     """The block for one prefetch result, or None when the tool has no
-    code-built body or the result has nothing to render."""
+    code-built body or the result has nothing to render. `complaint` is the
+    words of a reply complaining about the last answer."""
     if not isinstance(result, dict) or result.get("status") != "ok":
         return None
     outline = None
@@ -48,7 +49,7 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
         # One day: the session asked about, and a small-cap day still lists
         # its names (2026-10-27 audit A14). A week keeps every session.
         one_day = "dates" not in result
-        asked = slate_week.session_asked(question)
+        asked = slate_week.session_wanted(complaint) or slate_week.session_asked(question)
         lines = slate_week.block_lines(
             outline, today, morning_reported and asked != "before_open",
             only_session=asked if one_day else None, biggest_if_none=one_day)

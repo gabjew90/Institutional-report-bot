@@ -31,9 +31,15 @@ COMPLAINT = "complaint"
 _ASKED_MAX = 300
 
 # Written from 316 hand-labelled replies to the bot (2026-09-01 to 10-26). On
-# those it catches 44 of 50 corrections with 3 false alarms. It also drives
-# the outcome measure in scripts/ask_outcomes.py.
-_CORRECTION_RE = re.compile(
+# those it catches 44 of 50 corrections with 3 false alarms. The whole pattern
+# is the outcome measure in scripts/ask_outcomes.py. Routing leaves out what the
+# asker says about themselves: asking the question again does not answer "I
+# never trade that", and "I'm not a [insult]" is an insult (the first live one,
+# 11-02, got a full FSLR answer).
+_ABOUT_ASKER = (
+    r"\bi\s+(?:don'?t|do\s+not|never)\s+(?:even\s+)?(?:trade|own|hold|play|use)\b|\bnot\s+mine\b"
+    r"|\bi'?m\s+not\s+a\b|\bonly\s+in\s+one\b|\bi\s+don'?t\s+think\s+i'?ve\s+ever\b")
+_ABOUT_ANSWER = (
     # says it is wrong
     r"\b(?:wrong|inaccurate|incorrect|not\s+true|that'?s\s+a\s+lie|fake\s+news|nice\s+try)\b"
     r"|^\s*(?:no|nah|nope)\b"
@@ -42,9 +48,6 @@ _CORRECTION_RE = re.compile(
     r"|\b(?:forgot|missed)\s+\$?[a-z]{2,6}\b"
     # answered something else
     r"|\bi\s+(?:said|meant|mean|asked)\b|\bi'?m\s+asking\b|\bi\s+am\s+asking\b|\bwhy\s+would\s+i\s+care\b"
-    # a fact about the asker
-    r"|\bi\s+(?:don'?t|do\s+not|never)\s+(?:even\s+)?(?:trade|own|hold|play|use)\b|\bnot\s+mine\b"
-    r"|\bi'?m\s+not\s+a\b|\bonly\s+in\s+one\b|\bi\s+don'?t\s+think\s+i'?ve\s+ever\b"
     # contradicts itself or the tape
     r"|\byou\s+(?:just\s+)?said\b|\balready\s+(?:live|out|over|happened|reported|printed)\b"
     r"|\bcheck\s+the\s+(?:stock|chart|price|tape)\b|\bget\s+your\s+\w+\s+right\b"
@@ -53,8 +56,9 @@ _CORRECTION_RE = re.compile(
     # did not do the job
     r"|\btoo\s+long\b|\bbe\s+more\s+specific\b|\banswer\s+the\s+question\b|\btask\s+incomplete\b"
     r"|\b(?:do|try)\s+(?:it\s+|that\s+|this\s+|analysis\s+)?again\b|\bdo\s+better\b|\bresults\s+only\b"
-    r"|\bcan'?t\s+even\b|\bthis\s+list\s+(?:blows|sucks)\b|\buseless\b",
-    re.I)
+    r"|\bcan'?t\s+even\b|\bthis\s+list\s+(?:blows|sucks)\b|\buseless\b")
+_CORRECTION_RE = re.compile(_ABOUT_ANSWER + "|" + _ABOUT_ASKER, re.I)
+_COMPLAINT_RE = re.compile(_ABOUT_ANSWER, re.I)
 _MENTION_RE = re.compile(r"<@!?\d+>|@[\w.]+(?:\s+\([\w.]+\))?")
 _REACTION_RE = re.compile(
     r"^(?:thanks?(?:\s+you)?|thx|ty|gracias|lol|lmao|lmfao|nice|cool|ok(?:ay)?|bet|damn|wow|wtf|fr|facts"
@@ -98,9 +102,9 @@ def kind(own: str, data_words: bool = False) -> str:
     if not text or _REACTION_RE.match(text):
         return REACTION
     soft = _SOFT_NO_RE.match(text)
-    if is_correction(text) and not (soft and (
+    if _COMPLAINT_RE.search(text) and not (soft and (
             len(soft.group("rest").split()) < 3 or _SATISFIED_RE.search(soft.group("rest")))
-            and not is_correction(soft.group("rest"))):
+            and not _COMPLAINT_RE.search(soft.group("rest"))):
         return COMPLAINT
     if data_words:
         return QUESTION

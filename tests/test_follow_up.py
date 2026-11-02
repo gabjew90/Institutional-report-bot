@@ -46,6 +46,18 @@ def test_a_complaint(own):
     assert F.kind(own) == F.COMPLAINT
 
 
+@pytest.mark.parametrize("own", ["I'm not a fucking pussy", "im not a loser", "I never trade that", "not mine"])
+def test_what_the_asker_says_about_themselves_is_no_complaint_but_still_measured(own):
+    assert F.kind(own) != F.COMPLAINT
+    assert F.is_correction(own)
+
+
+def test_an_insult_keeps_the_rooms_register():
+    r = R.classify(_reply("I'm not a fucking pussy"), turn=_turn(("FSLR",)))
+    assert r.follow_up == F.REACTION and not r.is_factual and not r.reask
+    assert r.prefetch == [(R.T_PRICE, {"symbols": ["FSLR"]})]
+
+
 def test_an_insult_shaped_like_a_question_asks_nothing():
     assert F.kind("why are you so dumb") == F.REACTION
     # unless it also names something the data answers
@@ -227,6 +239,55 @@ def test_no_record_routes_as_before():
 def test_a_cash_flow_question_is_one_field_not_the_rundown():
     r = R.classify("AAPL free cash flow and operating cash flow, trailing 12 months")
     assert r.shape == R.PRICE and r.tickers == ["AAPL"]
+
+
+# --- a complaint that rejects a session
+
+
+@pytest.mark.parametrize("reply,want", [
+    ("Why would I care about before the bell idiot", "after_close"),
+    ("i dont care about after hours", "before_open"),
+    ("not after the close, before the open", None),
+    ("I said after the close", "after_close"),
+    ("Give me the before the bell names", "before_open"),
+    ("this list sucks", None),
+    ("I care about before the bell", "before_open"),
+    ("why not before the open", "before_open"),
+    ("who cares about before the bell", "after_close"),
+    ("why would I care about earnings before the bell", "after_close"),
+    ("not interested in premarket", "after_close"),
+    ("", None),
+])
+def test_the_session_a_complaint_wants(reply, want):
+    from discord_bot import slate_week
+    assert slate_week.session_wanted(reply) == want
+
+
+def _slate():
+    from datetime import date
+    today = date(2026, 11, 2)
+    row = {"names": ["Big Co"], "symbols": ["BIG"], "caps": [50_000]}
+    return today, {"status": "ok", "date": "2026-11-03", "week_outline": [
+        {"date": "2026-11-03", "session": "before_open", **row},
+        {"date": "2026-11-03", "session": "after_close", **row}]}
+
+
+def test_a_rejected_session_leaves_the_list():
+    from discord_bot import answer_block
+    today, result = _slate()
+    lines = answer_block.build("lookup_earnings_slate", result, today, question="who reports tomorrow",
+                               complaint="Why would I care about before the bell idiot")["lines"]
+    assert len(lines) == 1 and "after the close" in lines[0]
+
+
+def test_a_complaint_naming_no_session_keeps_the_list():
+    from discord_bot import answer_block
+    today, result = _slate()
+    both = answer_block.build("lookup_earnings_slate", result, today, question="who reports tomorrow",
+                              complaint="this list sucks")["lines"]
+    assert len(both) == 2
+    assert answer_block.build("lookup_earnings_slate", result, today,
+                              question="who reports tomorrow")["lines"] == both
 
 
 # --- the notes the model sees

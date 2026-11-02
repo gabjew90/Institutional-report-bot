@@ -101,6 +101,24 @@ def session_asked(text: str) -> str | None:
     return "after_close" if after else "before_open"
 
 
+# "why would I care about before the bell": the session named is the one not wanted
+_REJECTS_RE = re.compile(
+    r"(?:\b(?:would\s+i|who|don'?t|do\s+not|doesn'?t)\s+cares?|\bdon'?t\s+want|(?<!why\s)\bnot"
+    r"|\bisn'?t|\bnever|\bforget|\bskip|\buseless)\b[^.?!\n]{0,40}$", re.I)
+_OTHER_SESSION = {"after_close": "before_open", "before_open": "after_close"}
+
+
+def session_wanted(reply: str) -> str | None:
+    """The session a complaint under a slate wants: the one it names, or the
+    other one when it rejects the one it names. None when it names neither."""
+    text = reply or ""
+    named = session_asked(text)
+    if not named:
+        return None
+    m = (_AFTER_RE if named == "after_close" else _BEFORE_RE).search(text)
+    return _OTHER_SESSION[named] if _REJECTS_RE.search(text[:m.start()]) else named
+
+
 def block_lines(outline: list[dict], today: date, morning_reported: bool = False,
                 only_session: str | None = None, biggest_if_none: bool = False) -> list[str]:
     """One line per session from `today` on, in date order: the names at

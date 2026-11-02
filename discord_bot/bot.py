@@ -5186,7 +5186,9 @@ async def _ask_02_call_model_with_tools(
         # writes the opening (discord_bot/answer_block.py, 2026-10-27).
         _blk = _answer_block.build(_pf_tool, _pf_res, _ab_now.date(),
                                    morning_reported=(_ab_now.hour, _ab_now.minute) >= (9, 30),
-                                   question=_ask_route.reask or _ask_router.asker_text(question))
+                                   question=_ask_route.reask or _ask_router.asker_text(question),
+                                   complaint=(_ask_router.asker_text(question)
+                                              if _ask_route.follow_up == _follow_up.COMPLAINT else ""))
         if _blk:
             _pf_text += _answer_block.note(_blk)
             _ask_meta.setdefault("answer_blocks", []).append(_blk)
