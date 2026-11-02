@@ -1,0 +1,295 @@
+ 
+Flash Forward: Bernstein, Goldman Say 
+"High-Bandwidth Flash" Could Crumble AI's Memory 
+Wall... If Nvidia Ever Shows Up 
+ 
+BY TYLER DURDEN 
+SUNDAY, NOV 01, 2026 - 07:35 PM 
+On Friday the memory trade got a nasty reminder that what goes up 70% a quarter eventually 
+goes up "mid-20%."  
+Kioxia guided its December-quarter operating profit to roughly... flat, after NAND price gains 
+slowed from 70% to the mid-20s in the September quarter, and as we reported in real time, its 
+fab partner Sandisk (SNDK) promptly puked more than 11%, blowout beat and 8-for-1 split 
+notwithstanding. In memory, the only number that matters is the second derivative, and on 
+Friday it turned. 
+ 
+But while traders obsess over the next contract reset, the more interesting question for the 
+memory complex is a structural one: what happens to the "great memory crunch" when the 
+industry figures out how to make NAND flash, the cheap, dense, slow stuff that sits in your SSD, 
+behave like the HBM sitting next to an Nvidia GPU? 
+ 
+
+ 
+That is the question at the heart of a must-read deep dive from Bernstein's memory team led by 
+Mark Newman, titled "Could HBF be the solution to the Memory bottleneck?" (available to pro 
+subs), which examines High-Bandwidth Flash (HBF), the technology Sandisk has been pitching 
+as the answer to AI's "memory wall." The short version: 
+HBF could make large-scale AI inference more memory-efficient and cost-effective. HBF could 
+lower the cost of AI inference by combining HBM-like read bandwidth with 8-16x greater 
+capacity at a meaningfully lower cost per GB... HBF could do for NAND what HBM did for 
+DRAM industry dynamics. HBF has the potential to create a meaningful new source of NAND 
+demand while simultaneously reducing the number of gigabytes produced per wafer. 
+In other words, a product that eats NAND wafers at 6.5x the rate of regular flash, sells at 
+HBM-like prices, and maybe makes AI cheaper at the same time. If that sounds too good to be 
+true, well, Bernstein has a few caveats too, and the biggest one has a name: Jensen. 
+From Compute-Limited To Memory-Limited 
+Regular readers know we have been banging the memory drum since last October, when we 
+noted that chatbots were busy soaking up the world's supply of everything: 
+...and by March, memory had become the new AI bottleneck. Bernstein frames the same shift 
+as a "memory wall": processors have gotten faster far quicker than memory can feed them. 
+Citing Epoch AI, the analysts note that training compute for frontier LLMs has grown roughly 5x 
+per year since 2020, while GPU memory bandwidth has grown about 28% per year since 2008. 
+ 
+
+ 
+ 
+And the problem gets worse as AI moves from training to inference and agents. Training is 
+compute-bound; inference is memory-bound, because during decoding every new token 
+requires the XPU to read nearly the entire parameter set from HBM, "despite performing 
+relatively little computation per byte transferred." Mixture-of-Experts (MoE) models make it 
+worse still: they cut compute per token by activating only a few experts, but the full parameter 
+base still has to be stored and accessible. Kimi K3 has 2.8 trillion total parameters and only ~50 
+billion active ones. Translation: less compute, same (or more) memory. 
+Here is Bernstein's map of which stage of AI hammers which part of the memory and storage 
+stack. Note that agentic AI, where everyone insists the money is going, rates "Extreme" on both 
+conventional DRAM and NAND. 
+ 
+
+ 
+ 
+Then there is the economics of tokens. Fresh tokens must run through the full inference 
+pipeline; cached tokens just retrieve the previously computed "KV cache" from memory. Which 
+is why OpenAI and Google price cached-token reads at ~10% of fresh input tokens, and why 
+there is a large and growing incentive to store context instead of recomputing it. 
+ 
+The problem is where to store it. HBM is fast and costs ~20/𝐺𝐵; 𝑒𝑛𝑡𝑒𝑟𝑝𝑟𝑖𝑠𝑒𝑆𝑆𝐷𝑠𝑎𝑟𝑒𝑐ℎ𝑒𝑎𝑝𝑎𝑡~
+0.30/GB but far too slow to feed a GPU directly. There is a gaping hole in the middle of the 
+pyramid, and that hole is what HBF is meant to fill. 
+ 
+
+ 
+ 
+Enter HBF: 8-16x The Capacity, Similar Price 
+HBF stacks NAND dies on a logic base die, HBM-style, wires them with through-silicon vias 
+(TSVs) and sits the whole thing next to the processor. Sandisk's stated target is HBM-class read 
+bandwidth with 8-16x the capacity of HBM at a similar module cost. 
+ 
+The use case Sandisk pushed hardest at its Investor Day is a tiered design: a smaller HBM pool 
+acts as a fast cache for the hot working set, while HBF stores model weights (including the 
+inactive MoE experts) and warm, reusable KV cache. SK hynix proposed something similar in its 
+"H3" architecture paper in February (IEEE Computer Architecture Letters). 
+ 
+
+ 
+ 
+The pitch to hyperscalers is all about capex. Per Bernstein, Sandisk's simulation of the 960GB 
+Qwen3-480B model showed one HBF-equipped GPU could hold a model that needs at least 
+eight HBM GPUs just to fit, and that four HBF-equipped GPUs generated the same token output 
+as eight HBM GPUs. Hence Sandisk's claims of an 8x improvement in capex efficiency and 2x 
+GPU efficiency. Bernstein, to its credit, notes that "these are internal simulations rather than 
+third-party benchmarks." (Vendor benchmarks, like price targets, tend to be generous.) 
+The storage pivot also explains Jensen Huang's CES keynote in January, when he called 
+context storage "a market that never existed" and "likely the largest storage market in the 
+world," sending Sandisk up as much as 28% in a day, as we reported at the time. Bernstein 
+reproduces the slide: 
+ 
+
+ 
+ 
+Keep that slide in mind. It will come back to haunt the HBF bulls below. 
+Goldman: 30% Cheaper Inference, Hundreds Of Billions In Capex 
+Savings 
+Bernstein is late to this particular party. Back on October 12, Goldman's semis analyst Jim 
+Schneider published "High-performance NAND could help crumble the AI 'memory wall' while 
+driving meaningful CapEx savings" (also available to pro subs), with even bigger numbers: 
+We see a potential TAM of ~$40 - $150B at a GPU adoption rate of 15%-50% by 2030 given the 
+rapid proliferation of read-heavy and memory-intensive AI inference workloads - despite 
+potential challenges to adoption. We believe that HBF memory can meaningfully reduce the 
+overall cost of inference throughput by increasing GPU utilization, resulting a ~30% lower 
+overall cost of inference throughput - translating to as much as several hundreds of billions of 
+hyperscaler CapEx savings. 
+Here is Goldman's 30,000 foot math behind that 30%: the bank pits eight Nvidia B200s running 
+on HBM alone against four B200s each carrying 192GB of HBM plus 4TB of HBF. The hybrid 
+ 
+
+ 
+system costs less ($70,672 vs. $84,000) and pushes out 25% more tokens per second, so cost 
+per unit of throughput falls 32.7%, from $28.00 to $18.85. 
+ 
+Goldman also echoes Bernstein's supply point: in a bull case where HBF ships on 50% of XPUs 
+by late 2028, HBF would be ~4% of global NAND bits but ~9% of NAND wafer capacity, "similar 
+to the HBM/DRAM dynamic," which Goldman says could extend "the duration of the current 
+cycle." Schneider favors Sandisk and SK Hynix on HBF leadership, sees Samsung as well 
+positioned, and Micron as "less of a direct beneficiary." One amusing split: Goldman lists Kioxia 
+among its favored names in the space, while Bernstein rates Kioxia Underperform. After Friday, 
+we know which call is ahead. 
+A 6.5x Wafer Hog With 89% Gross Margins 
+This is where Bernstein's note earns its keep, with a bottom-up attempt at HBF economics that 
+nobody (including Sandisk) has published. 
+Start with the trade ratio, i.e., how much more wafer capacity a bit of HBF consumes vs. a bit of 
+conventional TLC NAND. Bernstein builds it the same way the Street builds the HBM-to-DRAM 
+ratio (2.3x die-area penalty x 1.3x yield penalty = ~3x), and applies three penalties to HBF: 
+●​ 2.9x for running NAND in SLC mode (one bit per cell vs. three for TLC, for faster and 
+more durable access); 
+●​ 1.725x for die area (TSVs, wide I/O and peripheral circuitry, 25% less than HBM's 
+penalty thanks to Sandisk's CBA wafer bonding); 
+●​ 1.3x for yield (stacking, bonding, thinning). 
+ 
+
+ 
+Multiply it out and you get an HBF-to-NAND trade ratio of ~6.5x, more than double HBM's ~3x, 
+with a range of 4.3x to 8.7x depending on how much the CBA architecture saves. 
+ 
+Why does that matter? Because, in Bernstein's words, "even a modest amount of demand may 
+consume a disproportionate number of wafers." The analysts' illustrative sensitivity is 
+eye-popping: if just 10-20% of current TLC-equivalent GB demand migrated to 
+high-performance NAND with a 3-7x trade ratio, total industry wafer requirements would rise by 
+roughly 20-120% for the same usable capacity. That is "not our official demand forecast," 
+Bernstein hastens to add, but it shows how quickly the math gets silly. And since new NAND 
+fabs take years and billions to build, "NAND supply could therefore tighten further before 
+sufficient new capacity becomes available." 
+We have seen this movie before. HBM was ~3% of DRAM wafer starts in 2023; Bernstein 
+expects it to reach nearly 40% by 2028, while accounting for only ~15% of DRAM bits. That gap 
+between bits and wafers is the entire reason DRAM pricing went parabolic, and HBF could do 
+the same to NAND. 
+ 
+
+ 
+ 
+On cost, Bernstein starts with Sandisk's ~
+0.22/GB in the base case, and 
+0. 0485/𝐺𝐵𝑏𝑙𝑒𝑛𝑑𝑒𝑑𝑁𝐴𝑁𝐷𝑐𝑜𝑠𝑡, 𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒𝑠𝑟𝑎𝑤𝐻𝐵𝐹𝑑𝑖𝑒𝑐𝑜𝑠𝑡𝑎𝑡~
+benchmarks the base die (a pricey ~5nm-class logic die, ~$57), packaging and testing against 
+HBM4. Result: a 16-hi, 512GB HBF module costs ~$271 to build, roughly 9.5x the per-GB cost 
+of an enterprise SSD (11.5x for 8-hi). 
+ 
+ 
+
+ 
+Expensive, yes, but here's the kicker: Sandisk says HBF will sell at "similar cost" to HBM per 
+module with 8x the capacity, so Bernstein simply divides HBM4 module prices by eight: at a 
+2027 base-case HBM4 ASP of $38/GB, HBF fetches ~$4.75/GB, or $2,432 for a 512GB module 
+that costs $271 to make. 
+ 
+Which works out to gross margins of 88.9% for 16-hi HBF and 86.5% for 8-hi in the base case, 
+and 88.6%-92.7% in the bull pricing case, all comfortably above Sandisk's already absurd 
+84.6% FQ4 gross margin (85.1% last quarter), which is precisely why the whole thing seems 
+quite improbable as everyone will be gunning for those margins. Anyway, Bernstein's conclusion 
+is that HBF "will [be] hugely accretive to NAND ASP, revenue and profits and gross margin 
+should be highly attractive (though the actual pricing level is too early to know)." 
+ 
+Bernstein rates Sandisk Outperform with a $3,000 price target, vs. a $1,150 close on Oct 30, 
+down more than 50% from its all time high just a few months ago, which is either a screaming 
+buy signal or a reminder that price targets tend to follow price. Note that HBF is excluded from 
+Sandisk's long-term financial model, so in the bull case it is all upside. 
+Who Pockets The Savings? 
+This is where the two banks' numbers start to rub against each other. Goldman's 30% inference 
+cost cut assumes HBM at $15/GB and HBF at $1.75/GB. Bernstein's 89% margins assume 
+HBM4 at $23.50 to $50/GB and HBF priced at module parity, i.e., one-eighth the HBM price per 
+ 
+
+ 
+GB. Both can't be fully right, because every extra dollar of memory margin is a dollar that comes 
+out of the hyperscaler's savings. 
+So we ran the numbers. Holding everything else at Goldman's assumptions (GPU cost, 
+capacities, throughput) and plugging in Bernstein's pricing scenarios, the hybrid's cost 
+advantage shrinks fast: -20% at Bernstein's bear-case $23.50/GB HBM4, just -8% at the 
+$38/GB 2027 base case, and roughly zero at $50/GB. The reason: the hybrid system carries far 
+more total memory value (768GB of HBM plus 16TB of HBF), so it gets hit hardest when 
+memory reprices. It is napkin math, and hyperscalers would surely haggle, but the direction is 
+clear: at the prices memory makers want, most of HBF's savings end up in Sandisk's gross 
+margin. 
+ 
+Bernstein acknowledges as much in its own way, noting that Micron has said HBM margins will 
+stay below conventional DRAM margins in 2027, i.e., suppliers accept lower profitability on HBM 
+for its "strategic" value. "We could see a similar dynamic play out in HBF." Maybe. Though we 
+doubt a company printing 85% gross margins on commodity flash is planning to be charitable. 
+Then there is the Jevons argument, which both banks lean on heavily (as it's the only thing 
+saving an entire industry - for now - when Chinese dumping prices are knocking on the door). If 
+HBF lowers the cost per token, AI gets used more, and aggregate demand for HBM and GPUs 
+ends up rising anyway: 
+HBF could therefore create a Jevons paradox for HBM: greater memory efficiency per workload 
+may ultimately drive greater aggregate HBM consumption. For a fixed model and token volume, 
+HBF could reduce the amount of HBM needed to store the full parameter base. However, if 
+ 
+
+ 
+better token economics stimulate substantially greater AI usage, the resulting growth in token 
+volumes and active working sets could more than offset this efficiency benefit. 
+Perhaps, but the market has a habit of shooting first on efficiency news and invoking Jevons 
+later. Just recall March, when Google's TurboQuant news crashed memory stocks in a day. 
+The Nvidia-Shaped Hole 
+None of this matters, of course, unless someone actually builds a processor that uses HBF. And 
+here Bernstein's enthusiasm runs into a wall of its own. 
+First, physics. NAND reads take microseconds; DRAM reads take nanoseconds. HBF gets its 
+bandwidth through massive parallelism, which works for large, predictable, read-heavy 
+workloads, and much less well for small, scattered or latency-sensitive ones. Bernstein puts 
+HBF's target bandwidth at 0.4-3 TB/s, vs. ~2-3.3 TB/s for HBM4. 
+ 
+Second, endurance. NAND wears out with every program/erase cycle, and since HBF lives 
+inside a CoWoS package, "it is not serviceable": when an HBF stack dies, "the entire 
+accelerator chip needs to be replaced." Swapping a dead SSD is a five-minute job; swapping a 
+dead GPU because its flash gave out is a capex event. That also means HBF only works for 
+inference, while Nvidia's GPUs are routinely used for both training and inference. 
+Third, real estate. CoWoS capacity is scarce and expensive, and "whether to allocate it to HBF 
+over computation dies or HBM becomes debatable." 
+And fourth, the elephant in the clean room. Here is Bernstein: 
+Finally, why no endorsement from heavyweights such as NVIDIA? Or KIOXIA?... We are aware 
+that Google, Tenstorrent, Meta, as well as Sandisk & SK hynix are members of the HBF 
+consortium. However, we are surprised that NVIDIA has not yet officially endorsed HBF. Instead, 
+NVIDIA has been actively promoting CMX (Content Memory Storage) as well as Storage Next 
+and enlisting support from memory and other companies to address the needs of KV cache... 
+NVIDIA announced its future GPUs Rubin, Rubin Ultra & Feynman with Feynman supposedly in 
+volume shipment in 2028, but none of them features HBF. This also suggests the adoption of 
+HBF by NVIDIA, if any, will be a few years out. 
+ 
+
+ 
+Bernstein is also "puzzled" that TSMC hasn't mentioned any HBF preparation, and that Kioxia, 
+Sandisk's own fab partner, has been talking up Nvidia's CMX and Storage Next rather than HBF. 
+Remember Jensen's "market that never existed"? He was talking about context storage on 
+networked SSDs, i.e., his own architecture. 
+Nvidia is clearly feeling the memory pinch too: back in August, it was reportedly weighing less 
+HBM for Rubin Ultra due to the shortage, which we flagged at the time: 
+But "less HBM" and "more Sandisk" are two very different things, and so far Jensen has only 
+committed to the first. 
+Bernstein does give the other side its due. The consortium has grown fast: Sandisk and SK 
+hynix agreed to standardize HBF in August 2025, the HBF Technology Consortium formed 
+under the Open Compute Project in February 2026 with Google and Tenstorrent, and the first 
+spec landed in August, adding Meta. Sandisk has hired David Patterson, Raja Koduri and Jim 
+Keller to its HBF advisory board. And on Thursday's earnings call, management confirmed the 
+first HBF die has taped out, with samples expected next year, while predicting that KV cache will 
+be about a third of the AI data center flash market by the end of the decade. 
+ 
+Samples in 2027, Nvidia "a few years out" at best. Even Bernstein, which plainly loves the 
+technology, concludes that HBF "is more likely to complement than replace HBM." 
+A 2028 Story For A 2026 Market 
+So, is HBF the solution to the memory bottleneck? Probably part of it, eventually, for a narrow 
+set of read-heavy inference workloads, and Bernstein makes a compelling case that the broader 
+shift to high-performance, low-density NAND (HBF, Kioxia's XL-Flash, Samsung's Z-NAND, 
+Nvidia's CMX) will soak up NAND wafers "regardless of which architecture gains the most 
+share": 
+ 
+
+ 
+Overall, we view HBF as both a potentially attractive product opportunity and a meaningful 
+constraint on future NAND supply. If adoption scales, the combination of incremental AI-related 
+demand and an estimated 6.5x wafer-capacity trade ratio could materially improve NAND 
+industry dynamics. 
+Note the "if." HBF is a 2028 story with no Nvidia socket, no TSMC commitment and no price; the 
+NAND market is trading the 2026 story, where Kioxia just told us price gains are fading, China's 
+YMTC already matches Sandisk's market share, and DRAM giant CXMT is piling into flash. Yes, 
+cheap Chinese products are about to do to memory, what they have done to every other 
+industry in the history of Ricardian economics. In the meantime, the supply that everyone said 
+would never come keeps coming, and as we put it back in January: 
+Our take: HBF may well extend this memory cycle into the end of the decade, just as Goldman 
+suggests. But betting on it to rescue NAND pricing over the next few quarters means betting on 
+a product that ships in sample volumes next year, into a processor that doesn't exist yet, from a 
+GPU vendor that is pushing a competing architecture. And if it does take off, the hyperscalers 
+footing the bill will be the first to notice that the "30% savings" have quietly become 8%. 
+Much more in the full Bernstein HBF Deep Dive and Goldman's "High-performance NAND could 
+help crumble the AI 'memory wall'" note, both available to pro subs. 
+ 
+ 
+ 
+ 
