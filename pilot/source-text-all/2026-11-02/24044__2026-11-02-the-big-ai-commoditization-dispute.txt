@@ -1,0 +1,113 @@
+Macro Picture - Chart Story
+THE BIG AI COMMODITIZATION DISPUTE
+Dario Perkins
+02 Nov 2026
+Even if AI is as groundbreaking as people say, there is a dispute about whether it will be profitable
+for the companies leading the buildout. Bears believe the technology will end up commoditized,
+going the same way as the railways, fiber-optics and Dotcom. Those technologies changed the
+world, but they also brought a wave of financial distress and bankruptcies. At its root, this is an
+argument about “tokenomics”, or the unit economics of producing AI tokens. 
+Here is a brief explainer:
+1/8
+Let’s start with some definitions. “Tokens” are chunks of text that AI
+models read and produce. The debate is about whether producing these
+tokens will be a profitable endeavor for the AI industry – particularly the
+companies that will own the data centers and the model developers
+(esp. the frontier US labs - OpenAI and Anthropic) that are creating new
+AI services. For easier analysis, it helps to keep those two groups
+separate, although in reality there is a lot of overlap in what they do.
+
+2/8
+First the datacenter owners. These have large fixed costs. They have
+acquired buildings, purchased gazillions of pricey GPUs, taken on debt,
+and written multi-billion-dollar take-or-pay contracts to fund SPVs
+(where they owe money even if they don’t use the compute). Their
+revenue comes from GPU rentals. Right now, the GPU rental price is
+elevated because compute demand is rising rapidly and GPUs (the ones
+in service…) are scarce. To remain profitable, GPU rentals must cover
+the fixed costs.
+
+3/8
+Now to the model developers. The good news - their costs are falling
+rapidly due to strong efficiency gains. Better software and more
+powerful hardware are driving TOKEN COSTS lower. Token costs =
+rental price of GPUs per hour, divided by the number of tokens produced
+by those GPUs per hour. (The denominator in that ratio is exploding
+higher..) But there is bad news, too – intense competition is also driving
+TOKEN PRICES lower. Chinese open-weight AI is v popular and only 4-7
+months behind. 
+
+4/8
+The bear thesis is that this is a “race to the bottom” for both groups. For
+datacenters, more supply is coming online, with an est. $500bn worth of
+GPUs sitting in stockpiles. Perhaps the resilience in GPU rentals is just
+a bottleneck, and rates will soon plummet. But because the datacenter
+operators have fixed costs, they will be forced to keep operating –
+putting further pressure on prices. Like previous commodity cycles, the
+resultant supply glut will only clear with a wave of bankruptcies. 
+
+5/8
+But the problems don’t stop there – because the model developers are
+also facing serious financial strains. As open-source AI supply takes
+over, the frontier US labs will inevitably lose their “moats”. But training
+costs will keep rising…. Worse, financial problems at the labs and the
+data centers will interact in nasty ways, thanks to all that circular
+financing and cross-equity investment. The virtuous cycle of the last
+three years could very quickly become a doom loop instead.
+
+6/8
+The bull thesis, in contrast, is usually a version of Jevons paradox – the
+idea that falling prices trigger a large increase demand, such that total
+spending rises. If demand is extremely elastic, the increase in output
+swamps the decline in prices – raising revenues. Gavin Baker, from
+Atreides Management, sets out one of the more thoughtful versions of
+this, an optimistic scenario where “everyone makes money” in the AI
+ecosystem – even if open-weight Chinese models eventually dominate.
+
+7/8
+What does the bull scenario need? Two ingredients. First, the plunge in
+token prices causes demand to explode. This keeps GPU rentals high
+and datacenters profitable. Second, even as the competition from open-
+weight AI intensifies, frontier US labs retain their edge. In the Baker
+scenario this is because NVIDIA acts as trainer of last resort. NVIDIA
+wants to keep the boom going, and has the resources to backstop the
+system – by investing in the frontier, subsidizing datacenter funding etc.
+
+8/8
+Which scenario is likely? We lean towards the bears, and the
+commoditization scenario. Semiconductor demand is notoriously
+cyclical, and as more supply comes online, the current bottlenecks
+could eventually turn into a sizeable glut. If that happens, NVIDIA won’t
+be able to provide that backstop for the ecosystem anymore. In the end,
+most of the benefits of this new technology would flow to end users, not
+the companies leading the buildout.
+We will write more about this in the coming weeks.
+
+
+Disclaimer
+This report has been issued by TSL Research Group Limited in conjunction with its subsidiaries Lombard Street Research Limited,
+Lombard Street Research Financial Services Limited, and Trusted Sources UK Limited (together “TSL Research Group”). This report
+is intended to be viewed by clients of the TSL Research Group only. The contents of this report, either in whole or in part, shall not
+be reproduced, stored in a data retrieval system or transmitted in any form or by any means, electronic, mechanical,
+photocopying, recording or otherwise without written permission of TSL Research Group.
+The information and opinions expressed in this report have been compiled from publicly available sources believed to be reliable
+but are not intended to be treated as advice or relied upon as fact. Neither TSL Research Group, nor any of its directors, employees
+or agents accepts liability for and, to the maximum extent permitted by applicable law, shall not be responsible for any loss or
+damage arising from the use of this report including as a result of decisions made or actions taken in reliance upon or in
+connection with the information contained in this report. TSL Research Group does not warrant or represent that this report is
+accurate, complete, or reliable and does not provide any assurance whatsoever in relation to the information contained in this
+report. Any opinions, forecasts or estimates herein constitute a judgement as at the date of this report based on the information
+available.
+There can be no assurance that future results or events will be consistent with any such opinions, forecasts, or estimates. Past
+performance should not be taken as an indication or guarantee of future performance, and no representation or warranty, express
+or implied is made regarding future performance. This information is subject to change without notice, its accuracy is not
+guaranteed, it may be incomplete or condensed and it may not contain all material information concerning the company and its
+subsidiaries. The value of any securities or financial instruments or types of securities or financial instruments mentioned in this
+report can fall as well as rise. Foreign currency denominated securities and financial instruments are subject to fluctuations in
+exchange rates that may have a positive or adverse effect on the value, price or income of such securities or financial
+instruments. This is a generic research report and as such does not have regard to the specific instrument objectives, financial
+situation, and the particular needs of a client. Clients should seek independent financial advice regarding the appropriateness of
+investing in any of the types of financial instrument or investment strategies discussed in this report.
+By reading this report you accept TS Lombard’s terms and conditions.
+Registered Office: John Carpenter House, John Carpenter Street, London, England, EC4Y 0AN. Registered in England No.
+10232483
