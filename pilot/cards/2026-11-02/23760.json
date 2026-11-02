@@ -1,0 +1,158 @@
+{
+ "brief": "The Market Ear argues tech and momentum positioning has unwound hard but has not reached capitulation. JPMorgan states it would not classify the de-risking as capitulatory, flagging two lingering risks: quants could still de-gross further, and US tech flows remain elevated. Deutsche Bank shows tech positioning has fallen only to the 40th percentile, merely neutral rather than outright short. Goldman's sentiment indicator is still slightly positive, leaving room before genuine pessimism. Hedge fund gross leverage sits at the 89th percentile over three years, far from lows, while quant gross leverage remains at the 98th percentile over one year and 95th over five years, meaning quants have barely de-grossed and retain large potential selling power. Thursday's aggressive hedge fund selling looks far less dramatic once four-week flows are considered, and combined 60-day tech flows from hedge funds, retail and ETFs remain near peak levels, still crowded. JPMorgan's US Tactical Positioning Monitor has slipped to the 33rd percentile, lower but not at panic speed. Separately, Nvidia now trades at 17.7x forward earnings, the cheapest of the Magnificent Seven, with Meta also in that low-multiple group.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "not capitulatory enough",
+   "claim": "Tech positioning has collapsed and some momentum exposures are back at multi-year lows.",
+   "anchor": "Tech positioning has collapsed, and some momentum exposures are back at multi-year lows.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "not capitulatory enough",
+   "claim": "JPMorgan would not classify the de-risking seen in markets as capitulatory.",
+   "anchor": "We wouldn\u2019t classify the de-risking we\u2019ve seen as capitulatory per se",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "not capitulatory enough",
+   "claim": "Tech positioning has fallen only to the 40th percentile, which is merely neutral rather than an outright short.",
+   "anchor": "Tech positioning has collapsed, but at the 40th percentile, this is hardly an outright short.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "not capitulatory enough",
+   "claim": "Goldman's sentiment indicator is still slightly positive, leaving room before genuine pessimism is reached.",
+   "anchor": "Goldman's sentiment indicator is still slightly positive. Plenty of room before we get to genuine pessimism.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "not capitulatory enough",
+   "claim": "Global hedge fund gross leverage remains at the 89th percentile over three years, far from lows.",
+   "anchor": "Global gross leverage remains at the 89th percentile over three years.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "three years"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "not capitulatory enough",
+   "claim": "Quant gross leverage remains at the 98th percentile over one year and the 95th percentile over five years, showing quants have barely de-grossed.",
+   "anchor": "Quants have barely de-grossed, with gross leverage still at the 98th percentile over one year and 95th over five years.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "one year to five years"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "not capitulatory enough",
+   "claim": "Thursday's aggressive hedge fund selling looks far less dramatic once four-week flows are considered.",
+   "anchor": "Thursday saw aggressive hedge fund selling. But zoom out to four-week flows and the picture looks considerably less dramatic.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "four weeks"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "not capitulatory enough",
+   "claim": "Combined 60-day flows from hedge funds, retail and ETFs into tech remain near peak levels.",
+   "anchor": "Combined 60-day flows from hedge funds, retail and ETFs remain near peak levels.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "60 days"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "not capitulatory enough",
+   "claim": "JPMorgan's US Tactical Positioning Monitor has slipped to the 33rd percentile.",
+   "anchor": "JPMorgan's US Tactical Positioning Monitor has slipped to the 33rd percentile.",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "not capitulatory enough",
+   "claim": "Nvidia now trades at 17.7x forward earnings, the cheapest of the Magnificent Seven stocks.",
+   "anchor": "Nvidia now trades at just 17.7x forward earnings \u2014 the cheapest of the Magnificent Seven",
+   "topic": "hedge fund leverage positioning",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/23760__not-capitulatory-enough.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
