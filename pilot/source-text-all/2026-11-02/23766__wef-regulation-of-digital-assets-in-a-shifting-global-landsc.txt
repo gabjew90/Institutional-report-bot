@@ -1,0 +1,2547 @@
+In collaboration 
+with The Boston 
+Consulting Group
+Regulation of Digital  
+Assets in a Shifting  
+Global Landscape
+I N S I G H T R E P O R T
+O C T O B E R 2 0 2 6
+
+Images: Adobe Stock
+Contents
+Foreword
+3
+Executive summary
+4
+Introduction
+5
+1	 The changing role of digital assets
+6
+1.1	 Digital assets are shifting – from asset values
+7 
+to financial infrastructure
+1.2	 Digital assets are reshaping monetary policy
+8 
+and financial sovereignty
+1.3	 Regulation of digital assets has accelerated,
+9 
+but is fragmented in its approach
+2	 The challenges regulators face
+11
+2.1	 Regulation is becoming an exercise in financial system design
+12
+2.2	 Nine dimensions of an effective digital asset 
+12 
+regulatory framework
+3	 The regulatory playbook
+18
+3.1	 Let market structure determine regulatory sequence
+19
+3.2	 Calibrate the regulatory approach
+20
+3.3	 Enable institutional market formation
+21
+3.4	 Build cross-border scale through regulatory trust
+22
+3.5	 Account for geopolitics in cross-border market design
+23
+4	 Implications for market players
+24
+4.1	 Regulation reshapes existing businesses
+25 
+as new opportunities open
+4.2	 Trusted financial roles persist as friction-based
+26 
+economics erode
+4.3	 Shared infrastructure changes where firms can differentiate
+27
+5	 Implementation priorities
+28
+5.1	 Translate regulatory requirements into common
+29 
+market standards
+5.2	 Make digital asset rules work coherently with the wider 
+29 
+financial regulatory system
+5.3	 Build the supervisory capability and feedback
+30 
+loops to operate the framework
+Conclusion
+31
+Appendix: Regulatory baseline
+32
+Contributors
+33
+Endnotes
+36
+Disclaimer 
+This document is published by the World Economic Forum as a contribution to a project, 
+insight area or interaction. The findings, interpretations and conclusions expressed herein 
+are a result of a collaborative process facilitated and endorsed by the World Economic 
+Forum but whose results do not necessarily represent the views of the World Economic 
+Forum, nor the entirety of its Members, Partners or other stakeholders.
+Generative AI tools were used to support aspects of drafting after analysis was completed. 
+All outputs were independently reviewed, verified and approved by the authors.
+© 2026 World Economic Forum. All rights reserved. No part of this publication may be 
+reproduced or transmitted in any form or by any means, including photocopying and 
+recording, or by any information storage and retrieval system. 
+Regulation of Digital Assets in a Shifting Global Landscape
+2
+
+Foreword
+Digital assets are entering a new phase. What 
+began largely as the development of a novel asset 
+class is becoming part of the infrastructure through 
+which money, securities and collateral move. This 
+shift is bringing digital assets into the centre of 
+debates about financial stability and the future 
+structure of finance.
+The conversation is unfolding amid geopolitical 
+tension and renewed competition over the 
+architecture of the global economy. The G20 has 
+placed digital assets within broader discussions 
+of financial modernization and cross-border 
+coordination. In the United States, efforts to move 
+forward on the CLARITY Act reflect the need for 
+a statutory framework for digital asset markets 
+and clear responsibilities for financial regulators. 
+Digital asset regulation has become intertwined 
+with monetary sovereignty and control over critical 
+financial infrastructure.
+Regulatory decisions will influence which forms of 
+digital money, tokenized securities, collateral and 
+financial intermediation can develop at scale. They 
+will also affect where liquidity develops and whether 
+new digital networks strengthen or fragment the 
+existing financial system.
+These issues become especially important as digital 
+assets shift from individual products to market 
+infrastructure. Regulatory coverage and technical 
+viability are not sufficient without legal certainty and 
+common standards across institutions.
+This creates a significant challenge for policy-makers. 
+Digital networks operate internationally, while 
+regulation and supervision remain primarily national. 
+Jurisdictions will take different approaches, reflecting 
+their institutional structures and policy priorities. The 
+objective is to establish sufficient consistency and 
+cooperation to support safe cross-border activity 
+while preserving legitimate national choices.
+This report, developed jointly by the World 
+Economic Forum and Boston Consulting Group, 
+examines how jurisdictions can approach that 
+challenge. It draws on an analysis of regulatory 
+developments across 35 jurisdictions and 
+extensive engagement with regulators and market 
+participants. As well as identifying a set of regulatory 
+decisions that jurisdictions will need to address, it 
+recognizes that the appropriate sequencing and 
+institutional response will differ across markets.
+We are grateful to the public- and private-sector 
+leaders whose experience and perspectives shaped 
+this report. We hope it contributes to an informed 
+discussion at a time when decisions on digital 
+assets are influencing the resilience of the global 
+financial system.
+Matteo Coppola
+Global Leader, Risks and 
+Compliance Practice; 
+Managing Director and  
+Senior Partner, Boston 
+Consulting Group
+Drew Propson
+Head, Technology and 
+Innovation in Financial Services, 
+World Economic Forum
+Regulation of Digital Assets  
+in a Shifting Global Landscape 
+October 2026
+Regulation of Digital Assets in a Shifting Global Landscape
+3
+
+Executive summary
+Digital asset regulation is now at the core  
+of financial system design.
+Digital assets are moving from a stand-alone 
+market into the infrastructure of finance. Their 
+significance increasingly lies beyond the value of the 
+asset class itself and is rooted in their potential to 
+change how money, securities and collateral move 
+through the financial system. As this integration 
+advances, regulation also takes on wider strategic 
+significance: digital money and settlement networks 
+can influence currency use, capital flows, sanctions 
+enforcement, market competitiveness and the 
+degree of influence jurisdictions retain over financial 
+activity conducted through global digital networks.
+The report sets out a regulatory playbook for 
+jurisdictions navigating this transition. Its nine 
+dimensions define the conditions required for digital 
+finance to function safely and at institutional scale:
+Core market rules:
+	–
+Regulatory perimeter, classification  
+and accountability
+	–
+Legal certainty and enforceability
+	–
+Custody and client asset protection
+	–
+Infrastructure
+Financial system integration:
+	–
+Digital money and settlement assets
+	–
+Monetary sovereignty and financial stability
+	–
+Prudential, balance sheet and collateral treatment
+Market safeguards:
+	–
+Financial crime and sanctions
+	–
+Market integrity and investor protection
+The framework shifts the regulatory question 
+from whether a product is regulated to whether 
+the surrounding financial system can support 
+institutional use.
+There is no single regulatory sequence for building a 
+credible institutional market. Jurisdictions start from 
+different legal systems, financial structures, policy 
+objectives and supervisory capabilities. Authorities 
+can use this playbook to identify the most material 
+risks and constraints, sequence priorities as adoption 
+develops and determine where existing rules are 
+sufficient and where they need to be adapted. Cross-
+border growth will depend less on identical rules than 
+on sufficient trust in regulatory outcomes, alongside 
+deliberate choices about where international 
+integration creates value and where stronger 
+domestic or regional control remains important.
+Making the regulatory framework usable in 
+practice requires more than rule-making. Common 
+standards are needed to avoid fragmented 
+interpretation, comparable activities should receive 
+similar treatment across regulatory perimeters and 
+supervisory expectations must evolve with evidence 
+from real-world use. Industry and regulators need to 
+work together to make that happen.
+If regulation helps make digital asset markets viable 
+at scale, value creation and competitive advantage 
+will shift across the sector. Firms that benefit from 
+today’s frictions will face pressure even without 
+launching digital asset products. Advantage will 
+increasingly rest on scarce capabilities, such as 
+liquidity, risk bearing, trusted control, distribution 
+and market access. Traditional institutions and 
+digital-native firms will compete more directly  
+across the same parts of the value chain.
+A glossary of terms used in this report  
+can be found by clicking on this link.
+Regulation of Digital Assets in a Shifting Global Landscape
+4
+
+Introduction
+Amid growing geopolitical fragmentation, 
+this report offers jurisdictions a practical 
+playbook for navigating the evolving 
+regulation of digital assets.
+Digital asset regulation has expanded rapidly during a 
+time of financial fragmentation and a more contested 
+post-Bretton Woods order, yet jurisdictions continue 
+to differ in the activities they prioritize, the legal 
+frameworks they use and the extent of regulated 
+institutional participation. The policy challenge 
+increasingly concerns how digital money, tokenized 
+assets, intermediaries and infrastructure fit into the 
+wider financial system and interact across borders.
+Against this backdrop, the World Economic 
+Forum’s Centre for Financial and Monetary 
+Systems, together with Boston Consulting Group, 
+developed this report to help regulators navigate 
+an increasingly complex and interconnected 
+landscape. It builds on the Forum’s previous 
+work, including the Digital Currency Governance 
+Consortium, Pathways to the Regulation of Crypto-
+Assets: A Global Approach and Digital Assets 
+Regulation: Jurisdictional Approaches.
+Scope
+Digital assets span three broad categories: 
+cryptoassets, digital money, including stablecoins, 
+tokenized deposits and central bank digital 
+currencies; tokenized financial instruments, such 
+as securities, funds and other real-world assets. 
+This report focuses on the regulatory questions 
+that arise as these forms of digital finance develop 
+across payments, capital markets and financial 
+infrastructure.
+The report provides a modular playbook that 
+jurisdictions can apply from different starting points, 
+reflecting their market structure, policy objectives, 
+supervisory capacity and exposure to digital asset 
+activity. It also examines how domestic approaches 
+interact across borders and how regulatory choices 
+affect monetary sovereignty, market structure and 
+critical financial infrastructure.
+Research methods
+The report draws on analysis of regulatory 
+developments across 35 jurisdictions, interviews 
+with 50 public- and private-sector experts, 
+multistakeholder workshops and a community of 
+more than 100 participants from the public and 
+private sectors and academia.
+Regulation of Digital Assets in a Shifting Global Landscape
+5
+
+The changing role  
+of digital assets
+Digital assets are moving beyond a 
+stand-alone asset class into financial 
+infrastructure, with growing implications  
+for sovereignty and regulation.
+1
+Regulation of Digital Assets in a Shifting Global Landscape
+6
+
+Market size alone no longer captures  
+the significance of digital assets
+Cryptoassets dominate the digital asset market 
+today, but the more consequential long-term shift 
+may be taking place elsewhere: digital money 
+and tokenization are beginning to change how 
+established financial markets operate. Digital 
+assets span three broad areas – cryptoassets, 
+digital money and tokenized real-world assets – 
+each at a different stage of maturity and adoption. 
+Cryptoassets represent approximately $3 trillion in 
+market capitalization and a revenue pool estimated 
+at $90 billion.1 Stablecoins have reached roughly 
+$300 billion in circulation, while tokenized real-world 
+assets are approximately $30 billion. Yet current 
+size understates the scale of the markets that could 
+ultimately be affected. In progressive scenarios, 
+tokenized real-world assets could represent 
+approximately 16% of global investable assets  
+by 2035, equivalent to around $88 trillion.2
+Market size captures only part of digital assets’ 
+significance. Cryptoassets have created new 
+instruments, markets and intermediaries, while 
+digital money and tokenization increasingly bring 
+digital infrastructure into established financial 
+activity. Tokenization and distributed ledgers can 
+change how securities, funds and collateral are 
+issued and recorded, controlled, traded and settled, 
+mobilized as collateral and serviced throughout their 
+life cycle. The significance of tokenization reaches 
+beyond the creation of another investable asset 
+category; it changes the infrastructure through 
+which existing financial activity takes place.
+1.1	 Digital assets are shifting – from asset 
+values to financial infrastructure
+Digital infrastructure can change how core financial market functions are performed
+TA B L E 1
+Core market function
+Issuance and 
+record-keeping
+Records distributed across institutions
+Shared digital records of issuance 
+and ownership
+Key- and wallet-based control and authorization
+Near real-time or atomic settlement
+Continuous collateral mobility and reuse
+Automated and synchronized servicing
+Safekeeping through account-based 
+custody chains
+Execution and settlement separated 
+in time and systems
+Collateral constrained by cut-offs 
+and system boundaries
+Life-cycle events processed through 
+separate systems
+Custody 
+and control
+Trading and 
+settlement
+Collateral 
+and ﬁnancing
+Asset servicing
+Current operating model
+Operating model on 
+digital infrastructure
+Institutional adoption is emerging where digital 
+formats improve existing market functions
+Early institutional examples show the shift taking 
+shape in investment products, settlement and market 
+infrastructure. The BlackRock US Dollar Institutional 
+Digital Liquidity Fund (BUIDL) reached approximately 
+$2.6 billion as of July 2026, bringing cash and US 
+Treasury exposure into tokenized investment and 
+settlement workflows.3 The Depository Trust and 
+Clearing Corporation (DTCC) has demonstrated 
+how securities held within established market 
+infrastructure can be represented in tokenized form 
+and used in digital market transactions, creating a 
+bridge between conventional securities infrastructure 
+and tokenized markets.4 Hong Kong’s digital green 
+bond issuances have applied tokenization across 
+issuance, settlement and life-cycle management in 
+public capital markets,5 while Euroclear and Banque 
+de France have launched a project to migrate the 
+€310 billion6 Negotiable European Commercial Paper 
+market towards distributed ledger technology (DLT)-
+based infrastructure.7 Together, these developments 
+point beyond isolated token issuance towards 
+the integration of tokenization into established 
+investment, settlement and market infrastructure.
+Regulation of Digital Assets in a Shifting Global Landscape
+7
+
+AI agents are creating a new source of demand for programmable financial infrastructure 
+B O X 1
+Agents can already initiate and execute 
+transactions directly, challenging payment and 
+financial infrastructure designed around human-led 
+interactions. Tokenized assets and programmable 
+digital money offer machine-readable ownership, 
+permissions and settlement, making them well-
+suited to this emerging mode of economic activity. 
+Scale will depend on whether that integration 
+creates tangible economic value. Lower transaction 
+and servicing costs, reduced settlement friction, 
+broader access, greater transparency and more 
+efficient use of collateral can justify migration from 
+established infrastructure that technical feasibility 
+alone cannot. The relevant test is whether digital 
+formats improve outcomes enough to warrant 
+investors, issuers and other market participants 
+changing established market processes.
+Migration is also eroding the boundary between 
+traditional finance and digital asset-native markets. 
+Digital asset firms are entering regulated roles 
+across banking, custody, brokerage and payments, 
+while established financial institutions are bringing 
+tokenized products, digital money and blockchain-
+based settlement into existing businesses. The 
+relationship is increasingly one of interdependence: 
+digital-native firms rely on banking, custody, 
+distribution and institutional access, while traditional 
+institutions draw on digital asset infrastructure, 
+liquidity and specialist capabilities. Rather than 
+developing as parallel financial systems, the 
+digital-native firms and traditional institutions 
+are increasingly becoming part of the same 
+market architecture.
+Infrastructure choices will determine how far 
+digital assets reshape financial markets
+Different infrastructure models embed different 
+assumptions about participation, governance 
+and where financial functions are performed. 
+Permissioned networks restrict participation to 
+approved entities and operate under defined 
+governance arrangements. They can materially 
+improve issuance, settlement, collateral movement 
+and asset servicing while preserving many 
+established institutional roles, resulting in substantial 
+operational change without a fundamental shift 
+in market structure.
+Permissionless networks are open to broader 
+participation and function without a single 
+controlling operator. Widespread adoption could 
+imply a deeper structural shift by allowing assets, 
+liquidity and applications to interact across shared 
+networks rather than keeping functions within 
+controlled institutional environments, potentially 
+redistributing market access, intermediation 
+and control.
+The distinction between permissioned and 
+permissionless networks is not binary. Both 
+architectures can coexist, while regulated access, 
+identity and control layers can develop around 
+open networks. The extent of structural change 
+will depend on how much of today’s institutional 
+model is preserved and modernized, and how 
+much moves into shared infrastructure. These 
+infrastructure choices also carry implications for 
+sovereignty and can influence the degree of control 
+jurisdictions retain over settlement, critical financial 
+infrastructure and financial data as markets become 
+more digitally interconnected.
+As digital assets scale, they affect three core 
+dimensions of sovereign influence: monetary control, 
+infrastructure oversight and financial enforcement.
+Digital money can shift monetary influence
+Control over money is tested when private digital 
+money changes what people hold, use and 
+which currency they settle in. Dollar-denominated 
+stablecoins create a new channel for digital 
+dollarization, allowing users outside the US banking 
+system to hold and transfer dollar-linked value 
+through global wallet and payment networks. 
+In markets characterized by currency volatility, 
+limited payment infrastructure or capital controls, 
+this can accelerate usage away from domestic 
+currencies and reduce authorities’ oversight over 
+monetary flows. Stablecoins, tokenized deposits 
+and tokenized money market funds can also make 
+balances more mobile, changing the behaviour 
+of funding, liquidity and monetary transmission 
+under stress.
+1.2	 Digital assets are reshaping monetary  
+policy and financial sovereignty
+Regulation of Digital Assets in a Shifting Global Landscape
+8
+
+Early regulatory responses to digital assets were 
+largely defensive, reflecting a market that was retail-
+heavy, volatile and predominantly crypto-native. 
+As activity has become more institutionalized, 
+jurisdictions have increasingly moved towards 
+formal regulatory frameworks, licensing regimes and 
+supervisory models.
+Regulatory maturity varies across  
+the digital asset stack
+Analysis conducted for this report across 35 
+jurisdictions and more than 25 common digital 
+asset activities shows that regulatory maturity is use 
+case-specific. A jurisdiction may be advanced in 
+one part of the digital asset stack while remaining 
+less developed in another. Switzerland, for 
+example, has an established legal and regulatory 
+framework for tokenized securities and DLT market 
+infrastructure, while pursuing reforms to its existing 
+regulatory treatment of stablecoins.8 The key 
+concern is less to do which jurisdiction is “leading” 
+overall and more about which parts of the digital 
+asset stack each jurisdiction is ready to support.
+Across the jurisdictions reviewed, more than  
+70% regulate digital asset activity itself rather 
+than relying primarily on the legal form of the 
+asset. This reflects the fact that digital assets can 
+combine functions that traditional frameworks 
+often treat separately, including issuance, custody, 
+transfer, settlement, trading and asset servicing. 
+An activity-based approach enables regulation to 
+follow what market participants do and the risks 
+they create, rather than relying primarily on how 
+a token is labelled.
+Different legal and supervisory routes can still 
+produce credible regulatory outcomes. The 
+effectiveness of a regime depends less on whether 
+rules sit in banking, securities, payments or stand-
+alone cryptoasset law than on whether they are 
+clear, enforceable and usable in practice. Indonesia 
+illustrates how regulatory architecture can evolve 
+over time: cryptoassets were initially supervised 
+by the commodities regulator before responsibility 
+shifted to the financial services regulator, supported 
+by dedicated rules for digital financial assets 
+and cryptoassets.9
+Different regulatory architectures can support 
+institutional participation when they provide clear 
+obligations, identifiable supervisory accountability and 
+sufficient legal certainty for firms to operate at scale.
+1.3	 Regulation of digital assets has accelerated, 
+but is fragmented in its approach
+Control over digital financial infrastructure  
+is becoming strategic
+As financial activity moves onto new digital 
+infrastructure, control over the underlying 
+infrastructure becomes a strategic policy issue. 
+Settlement networks, distributed ledgers, cloud 
+infrastructure, interoperability services and critical 
+data providers can determine how markets operate, 
+who has access and where authorities retain 
+oversight and intervention rights. Greater reliance 
+on infrastructure operated outside a jurisdiction 
+can create dependencies on foreign providers, 
+legal regimes and governance structures. Policy-
+makers need to consider not only the resilience of 
+individual services but which critical infrastructure 
+and dependencies they are prepared to rely on as 
+digital markets scale.
+Digital assets require new financial  
+enforcement points
+Banks, payment companies, brokers and custodians 
+have historically served as key control points for 
+financial crime and sanctions enforcement. With 
+digital assets, these control points are spread across 
+issuers, custodians, exchanges, wallet providers and 
+network infrastructure, changing where authorities 
+can monitor, restrict or freeze activity. Effective 
+enforcement increasingly depends on identifying 
+which actors retain control over assets and 
+transactions, including across borders.
+Together, these shifts make digital asset regulation 
+part of a broader sovereignty agenda, shaping 
+how jurisdictions retain influence over monetary 
+conditions, critical financial infrastructure and the 
+enforcement of financial rules.
+ Analysis 
+conducted for 
+this report across 
+35 jurisdictions 
+and more than 
+25 common 
+digital asset 
+activities shows 
+that regulatory 
+maturity is use 
+case-specific.
+9
+Regulation of Digital Assets in a Shifting Global Landscape
+
+North 
+America
+Europe
+Oceania
+Asia
+Central Asia 
+South 
+America
+Caribbean
+Middle 
+East
+Africa
+DA activity type
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
+1. Token issuance 
+1.1 Stablecoin issuance 
+1.2 Tokenized securities 
+and utilities issuance 
+1.3 Tokenized RWA 
+issuance 
+1.4 Cryptoassets 
+issuance
+1.5 Primary distribution 
+of tokens
+2. Exchange  
+and marketplace 
+activities 
+2.1 Centralized 
+exchange (CEXs) 
+activities 
+2.2 Decentralized 
+exchange (DEXs) 
+activities
+2.3 Marketplace 
+activities
+2.4 Wallet provision 
+3. Institutional investments, trading,  
+custody activities
+3.1 Asset management 
+3.2 Prime brokerages 
+and institutional trading 
+activities
+3.3 Bitcoin treasury 
+activities 
+3.4 Digital asset  
+custody activities 
+	– Digital money 
+(stablecoins, 
+tokenized  
+deposits, CBDCs)
+	– Tokenized securities 
+and financial 
+instruments
+	– Tokenized RWAs
+	– Cryptoassets
+4. Payments
+4.1 On/off ramps  
+and payment rails 
+4.2 Payment processing 
+4.3 Crypto ATM 
+activities 
+4.4 AML/CFT 
+and Travel Rule 
+implementation 
+5. Lending 
+and yield 
+platform 
+activities 
+5.1 Lending platform 
+activities and protocols 
+5.2 Staking protocols 
+6. Infrastructure  
+provider activities 
+6.1 Core blockchain 
+networks (L1/L2) 
+6.2 Tokenization 
+infrastructure provider 
+6.3 Miner activities  
+(proof-of-work) 
+6.4 Validator activities  
+(proof-of-stake)
+6.5 Oracles activities 
+Digital assets activity matrix (as of February 2026) for 35 analysed jurisdictions
+TA B L E 2
+Activity banned
+Not regulated activity
+Partially regulated activity 
+Regulated activity
+Note: AML – anti-money laundering; ATM – automated teller machine; CBDC – central bank digital currency; CFT – counter 
+financing of terrorism; L1 – layer 1; L2 – layer 2; on/off ramp – into and out of the blockchain ecosystem; RWA – real-world asset
+Regulation of Digital Assets in a Shifting Global Landscape
+10
+
+The challenges 
+regulators face
+Digital asset regulation is moving towards 
+establishing legal certainty, ensuring the 
+rules fit within institutional frameworks and 
+guaranteeing they remain safe and resilient.
+2
+Regulation of Digital Assets in a Shifting Global Landscape
+11
+
+Regulators continue to pursue familiar objectives, 
+including financial stability, market integrity, 
+consumer protection, financial crime prevention and 
+resilient infrastructure. Digital assets make the route 
+to those outcomes more consequential, because 
+regulation increasingly shapes the structure through 
+which financial activity is conducted.
+Regulatory choices determine which activities 
+regulated institutions can carry out, which forms 
+of digital money can be used for settlement, 
+which assets can be held or pledged as collateral, 
+what infrastructure firms can rely on and where 
+accountability sits when risk materializes. The 
+regulatory perimeter is also a market boundary, 
+shaping where liquidity, investment and 
+infrastructure develop.
+Different areas of the digital asset landscape 
+raise different regulatory questions. Cryptoassets 
+and crypto-native activities are distinct from the 
+modernization of existing capital markets through 
+tokenized securities, funds and collateral. In the latter 
+case, the underlying economic exposure may remain 
+unchanged while issuance, ownership, transfer 
+and settlement move onto new infrastructure. The 
+regulatory task is to distinguish risks inherent in 
+the asset or activity from those introduced by the 
+infrastructure through which it is delivered.
+This distinction is central to technology neutrality. 
+Financial regulation was built around the institutions, 
+processing cycles and record-keeping structures 
+of the financial system in which it developed, so 
+applying the existing rules can preserve those 
+assumptions even where the rules are formally 
+technology-neutral. The objective is to preserve 
+outcomes such as stability, integrity and investor 
+protection while allowing different technological  
+and market architectures to deliver them.
+The regulatory mandate extends beyond bringing 
+digital asset activity inside the perimeter. It is to 
+create conditions under which digital money, 
+tokenized assets, intermediaries and infrastructure 
+can operate together in a legally reliable, institutionally 
+usable and operationally safe financial system.
+Institutional markets require legal, prudential, 
+infrastructure and market conditions to work 
+together across the full transaction life cycle. 
+Settlement cannot be relied on where legal 
+treatment stays uncertain. Assets cannot be held 
+safely where custody treatment is unclear, and they 
+become uneconomic to hold or pledge under the 
+wrong prudential rules. Liquidity, meanwhile, never 
+forms if infrastructure stays fragmented.
+Regulatory permission is only one condition for 
+adoption. Tokenization must also create sufficient 
+value for investors, issuers and market participants 
+to justify migrating from established infrastructure. 
+Regulation cannot create that utility, but it can 
+determine whether legal, prudential and market 
+structures allow it to be realized.
+The nine dimensions are distinct, but most cannot 
+be solved in isolation, because a gap in one can 
+make progress in another unusable in practice. 
+Supervisors also need enough information across 
+all nine dimensions to observe activity, identify 
+emerging risks and confirm regulatory outcomes are 
+being achieved. Supervisory visibility is a cross-
+cutting requirement rather than a separate pillar.
+2.1	 Regulation is becoming an exercise  
+in financial system design
+2.2	 Nine dimensions of an effective digital 
+asset regulatory framework
+ The objective 
+is to preserve 
+outcomes such as 
+stability, integrity 
+and investor 
+protection while 
+allowing different 
+technological 
+and market 
+architectures to 
+deliver them.
+Regulation of Digital Assets in a Shifting Global Landscape
+12
+
+Nine dimensions of an effective digital asset regulatory framework
+F I G U R E 1
+Core market rules
+1
+Regulatory perimeter,  
+classification and accountability
+Challenge: Digital asset regulation must establish 
+what activity is being performed, which actors are 
+accountable and where supervisory responsibility 
+sits. Classification cannot rely solely on a static label 
+attached to a token, since an asset can perform 
+different economic functions or acquire different 
+characteristics over its life cycle.
+Key considerations: Regulation should follow the 
+economic function and activity being performed. 
+The framework must establish the classification of 
+the asset, the entities accountable for issuance, 
+custody, transfer, settlement or trading, the 
+supervisory authority responsible and the licensing, 
+disclosure, attestation and audit obligations that 
+follow. Tax-reporting obligations for regulated market 
+participants should also be evident. Clear boundaries 
+around roles, regulatory responsibility and applicable 
+obligations enable firms to build compliant operating 
+models into the rules rather than around them.
+Digital asset markets also change where regulatory 
+control points sit. Traditional financial regulation 
+has largely relied on regulated intermediaries as the 
+principal points of accountability. In digital markets, 
+execution and control can be distributed across 
+intermediaries, protocols and shared infrastructure. 
+Regulatory obligations should remain anchored 
+in regulated activities and identifiable points of 
+control, while accountability for protocols, smart 
+contract developers, validators, oracles and other 
+infrastructure participants remains an evolving area 
+of policy. Neutral protocols, open-source software 
+and network participants should not become 
+subject to regulation solely because regulated 
+activity occurs on the infrastructure they support.
+Direct obligations become relevant where an 
+infrastructure provider itself performs a regulated 
+financial function, operates a controlled network 
+or becomes systemically important. Beyond these 
+cases, authorities can define the conditions under 
+which regulated firms may rely on the infrastructure 
+rather than regulate every infrastructure 
+participant directly.
+Scale changes the regulatory question. Issuers, 
+intermediaries or infrastructure that become 
+sufficiently important to market functioning may 
+warrant designation and enhanced requirements 
+reflecting their systemic relevance. Cross-border 
+oversight then depends on cooperation and 
+information sharing among the relevant authorities.
+Regulatory perimeter, 
+classiﬁcation and 
+accountability
+New digital assets, actors and 
+activities need to be classiﬁed 
+and brought within a clear 
+regulatory perimeter to avoid 
+regulatory blind spots.
+1
+5
+8
+9
+6
+7
+2
+3
+4
+Digital money and 
+settlement assets
+New forms of digital money need 
+to be deﬁned, permitted and have 
+requirements agreed (e.g. reserve, 
+redemption, safeguarding, liquidity 
+and governance requirements).
+Financial crime and sanctions
+Compliance frameworks need to extend into the digital assets space, 
+to avoid the establishment of new channels for ﬁnancial crime at scale.
+Market integrity and investor protection
+Conduct and market integrity rules need to be extended to digital 
+asset trading and consider DLT speciﬁcs around conﬁdentiality.
+Monetary sovereignty 
+and ﬁnancial stability
+Central banks need visibility over digital 
+money ﬂows and non-bank participants 
+to preserve monetary policy transmission.
+Prudential, balance sheet 
+and collateral treatment
+Capital, liquidity and collateral 
+treatment for digital assets need 
+to be deﬁned, so institutional risk 
+is priced rather than left implicit.
+Legal certainty 
+and enforceability
+New digital asset concepts 
+(e.g. smart contracts, ledger 
+records) need to be legally 
+recognized and enforceable.
+Custody and client 
+asset protection
+Client asset protections known 
+from traditional ﬁnance 
+(segregation, safekeeping, 
+bankruptcy remoteness) need 
+to be translated to digital assets.
+Infrastructure
+Digital asset infrastructure 
+(networks, bridges, oracles, 
+smart contracts) needs 
+deﬁned resilience and 
+interoperability standards.
+Core market rules
+Financial system integration
+Market safeguards
+Source: World Economic Forum and Boston Consulting Group
+Regulation of Digital Assets in a Shifting Global Landscape
+13
+
+2
+Legal certainty and enforceability
+Challenge: Digital assets can function technically 
+while remaining difficult to rely on legally. Institutional 
+markets require clarity that digital ownership, 
+contractual rights and settlement outcomes are 
+recognized and enforceable under applicable law.
+Key considerations: On-chain execution alone is 
+insufficient for institutional settlement, and technical 
+execution must translate into legally enforceable 
+ownership and settlement outcomes. Legal 
+frameworks should establish the enforceability of 
+smart contracts, the evidentiary or authoritative 
+status of on-chain records and the point at which 
+digital execution constitutes legally final settlement. 
+The same certainty applies to custody arrangements, 
+insolvency treatment, priority of claims and, where 
+relevant, the tax treatment of economically equivalent 
+digital and traditional instruments.
+Digital ledgers can create tension between technical 
+finality and legal remedies. Transactions recorded on 
+DLT are generally designed to be final and resistant 
+to unilateral alteration, which can conflict with legal 
+rights to correct errors, enforce court orders or satisfy 
+data-protection requirements. Frameworks must 
+provide a workable response to fraud, error, court-
+ordered intervention and data-protection obligations, 
+making clear which legal rights prevail and how they 
+can be enforced in practice.
+3
+Custody and client asset protection
+Challenge: Digital asset custody must protect 
+clients both legally and technically. The defining 
+issue is that legal ownership, technical control and 
+the practical ability to move or recover an asset can 
+sit with different parties.
+Key considerations: Client asset protection 
+rests on clear rules for segregation, safekeeping, 
+protection from creditor claims and insolvency 
+treatment, supported by appropriate operational, 
+capital and liquidity safeguards. Digital custody 
+adds specific governance considerations around 
+private keys, transaction authorization, custody and 
+recovery arrangements.
+Legal protection is insufficient if assets cannot be 
+accessed or recovered after key loss, technology 
+failure or failure of a service provider. Legal 
+responsibility and practical control should align so 
+that client assets remain identifiable, protected and 
+recoverable under stress.
+4
+Infrastructure
+Challenge: Digital asset infrastructure must be 
+sufficiently reliable for regulated firms to depend 
+on it and sufficiently interoperable to support 
+functioning markets rather than isolated pools  
+of assets and liquidity.
+Key considerations: Effective regulatory 
+treatment of digital asset infrastructure needs to 
+address resilience, technical interoperability and 
+market interoperability.
+Resilience. Networks, bridges, oracles, smart 
+contracts and other shared components can 
+become critical points of failure. Reliance on these 
+components calls for standards on governance, 
+availability, recovery, cybersecurity, change 
+management and settlement integrity. Pricing, 
+collateral and market integrity mechanisms must 
+also remain effective under stress.
+Technical interoperability. Common standards in 
+messaging, token interfaces, smart contracts, 
+identity, data and connectivity allow assets and 
+information to move between systems without 
+bespoke integration for every connection. 
+Interoperability also extends throughout the asset 
+life cycle, including ownership recognition, life-cycle 
+events and compliance information.
+Market interoperability. Technical connectivity alone 
+does not create a market. Parallel traditional and 
+tokenized markets need consistent ownership 
+records, valuation, market access, execution 
+certainty, collateral treatment and reliable pricing 
+if the same economic asset is to move between 
+traditional and tokenized markets without 
+fragmenting liquidity or settlement outcomes.
+Network architecture affects how these outcomes 
+can be achieved. Permissioned networks generally 
+provide clearer participant identification, governance 
+rights and intervention mechanisms, while more 
+open networks offer broader connectivity and 
+composability while distributing control across a 
+wider set of actors. Hybrid models increasingly 
+combine the characteristics of both. The regulatory 
+test is whether institutions can meet expectations 
+for accountability, privacy, financial crime controls, 
+settlement integrity and resilience under the 
+architecture they use.
+Regulation should remain technology-neutral while 
+defining the minimum outcomes that infrastructure 
+must deliver for regulated institutions to rely on it.
+ Effective 
+regulatory 
+treatment of digital 
+asset infrastructure 
+needs to address 
+resilience, technical 
+interoperability 
+and market 
+interoperability.
+Regulation of Digital Assets in a Shifting Global Landscape
+14
+
+Financial system integration
+5
+Digital money and  
+settlement assets
+Challenge: As stablecoins, tokenized deposits and 
+central bank digital currencies develop in parallel, 
+regulators must determine which instruments can 
+perform which monetary and settlement functions, 
+who may issue them and using which safeguards. 
+Similar payment or settlement functionality does  
+not make these forms of money economically or 
+legally equivalent.
+Key considerations: Stablecoins depend 
+on private issuer, reserve and redemption 
+arrangements; tokenized deposits remain liabilities 
+of regulated banks; and central bank digital 
+currencies provide a direct claim on the central 
+bank. These differences shape credit exposure, 
+redemption certainty, access to liquidity support 
+and the obligations attached to each instrument.
+Regulation also has to anticipate a market in which 
+different forms of digital money coexist and value 
+moves among them according to the function 
+required, whether settlement, liquidity, yield or 
+access to central bank money. Safe convertibility 
+and interoperability can support this movement 
+while preserving the distinct legal and prudential 
+characteristics of each instrument.
+For stablecoins, reserve standards should address 
+the quality and liquidity of reserve assets, at par 
+redemption, portfolio transparency and independent 
+attestation. Yield is particularly consequential 
+because it can alter both the economic function 
+and regulatory perimeter of an instrument. Clear 
+thresholds are important where remuneration, 
+reserve management or associated services begin 
+to resemble deposit taking, investment or lending.
+6
+Monetary sovereignty  
+and financial stability
+Challenge: Digital money and tokenized markets 
+can change the speed and channels through 
+which monetary and financial stress is transmitted. 
+Continuous transferability, real-time redemption 
+and automated treasury processes can compress 
+liquidity and crisis timelines, while new forms of 
+money can affect currency use, bank funding and 
+monetary transmission.
+Key considerations: Authorities require oversight 
+of how digital money circulates among institutions, 
+issuers, asset classes and jurisdictions, including 
+reserve backing, redemption flows and effects on 
+bank funding. Greater transparency can strengthen 
+supervision, but it may also enable depositors and 
+counterparties to observe stress as it develops, 
+potentially accelerating confidence-driven outflows.
+Four transmission channels are particularly relevant:
+Collateral mobility. Tokenized securities and collateral 
+can move across venues and operating hours more 
+continuously, affecting central bank approaches to 
+eligible collateral, custody, settlement finality and 
+liquidity provision.
+Settlement architecture. The form of money used in 
+systemic settlement affects the singleness of money, 
+particularly where private money becomes central to 
+the activity of capital markets.
+Bank funding. Stablecoins, tokenized deposits 
+and tokenized money market funds can make 
+balances more mobile and rate-sensitive. Large-
+scale migration from deposits into fully reserved 
+instruments could also alter bank funding and  
+credit creation.
+Interest rate transmission. If digital money markets 
+reach sufficient scale, policy rates may have to 
+anchor a broader and more continuously operating 
+set of money-like instruments and yields.
+Jurisdictions that rely on capital flow management 
+measures face an additional challenge where 
+digital assets create new routes for cross-border 
+movement or reduce the visibility on which existing 
+controls depend.
+7
+Prudential, balance sheet  
+and collateral treatment
+Challenge: Prudential rules determine whether 
+tokenized assets can enter institutional balance 
+sheets, funding and collateral markets on 
+economically viable terms. Existing frameworks 
+already address capital, liquidity and intraday risk, 
+but tokenization combines continuous settlement, 
+greater collateral mobility and new infrastructure 
+dependencies in ways that existing calibrations may 
+not fully capture.
+Key considerations: Tokenizing a traditional 
+security does not, by itself, alter the underlying 
+economic exposure or legal claim. Recent US 
+regulatory clarification applies this principle 
+explicitly, treating eligible tokenized securities 
+and their non-tokenized equivalents consistently, 
+including for recognition as financial collateral. 
+Incremental technology or infrastructure risks can 
+be captured through the relevant risk management 
+and supervisory requirements.10
+Liquidity frameworks have to accommodate 
+continuous markets. The financial system provides 
+for intraday liquidity management, but existing 
+monitoring tools are largely structured around 
+business days and established payment-system 
+operating windows. Tokenized assets and liabilities 
+can settle, redeem and move collateral beyond 
+those windows. The key question is whether 
+ Tokenizing a 
+traditional security 
+does not, by itself, 
+alter the underlying 
+economic exposure 
+or legal claim.
+Regulation of Digital Assets in a Shifting Global Landscape
+15
+
+existing liquidity metrics capture where liquidity is 
+held, whether it can be mobilized across entities, 
+currencies and networks, and whether replacement 
+funding remains available outside conventional 
+market hours.11
+Settlement design changes the liquidity profile. 
+Near-instant settlement can reduce counterparty 
+exposure, but prefunded models increase the 
+liquidity required. Prudential calibration depends on 
+the actual settlement and funding mechanics rather 
+than on an assumption that faster settlement is 
+inherently less liquidity-intensive.12
+Collateral rules can either enable or constrain 
+market formation. Eligibility, valuation, haircuts, 
+margining and legal enforceability determine 
+whether tokenized assets can participate in repo, 
+securities lending and derivatives markets. Where 
+the underlying rights and liquidity characteristics 
+are equivalent, tokenization alone should not 
+prevent an asset from qualifying as collateral. 
+Greater collateral mobility also makes visibility into 
+encumbrance and layered claims more important 
+where the same economic asset supports multiple 
+financing arrangements.
+Stress-testing has to reflect continuous markets and 
+the interaction between financial and infrastructure 
+risk. Relevant scenarios include rapid off-hours 
+outflows, higher prefunding requirements, loss of 
+netting benefits, collateral becoming inaccessible 
+across networks and replacement funding being 
+unavailable while digital markets remain open. 
+Stress frameworks also have to test whether 
+institutions retain sufficient time and practical ability 
+to mobilize liquidity or collateral as financial and 
+operational pressures interact.
+Prudential calibration can also shape market 
+architecture indirectly. Requirements that make 
+one network or settlement model materially more 
+capital- or liquidity-intensive can influence which 
+infrastructures achieve institutional scale, even 
+where regulation is formally technology-neutral.
+Market safeguards
+8
+Financial crime and sanctions
+Challenge: Digital assets redistribute financial 
+crime and sanctions control points across a wider 
+ecosystem. Value can move through self-hosted 
+wallets and decentralized protocols outside 
+conventional intermediary checkpoints, changing 
+where activity can be monitored and where 
+intervention is possible. The regulatory challenge is 
+to preserve traceability and enforcement capability 
+as those control points become more distributed.
+Key considerations: Financial crime frameworks 
+must identify where meaningful control over 
+transactions or access exists, while recognizing 
+that accountability across protocols, front ends, 
+validators, oracles and infrastructure operators 
+remains an evolving area of policy.
+ Digital assets 
+redistribute 
+financial crime and 
+sanctions control 
+points across a 
+wider ecosystem.
+Regulation of Digital Assets in a Shifting Global Landscape
+16
+
+Public ledger data can allow funds to be 
+traced across multiple transfers and support 
+more continuous, flow-based monitoring. That 
+advantage weakens where identities cannot be 
+reliably linked to wallets or activity moves through 
+obfuscation mechanisms or systems that cannot 
+be observed together.
+The Travel Rule is one mechanism for preserving 
+the link between transactions and identity. An anti-
+money laundering (AML) standard developed by 
+the intergovernmental Financial Action Task Force 
+(FATF) and implemented in many jurisdictions 
+requires institutions to exchange identifying 
+information on the sender and beneficiary of a 
+digital asset transfer. Its effectiveness is more 
+limited where transfers involve self-hosted wallets 
+or jurisdictions without equivalent obligations.
+Risk assessment is also less binary. A wallet may 
+receive assets that passed through a sanctioned 
+or illicit address several transactions earlier, making 
+transaction proximity, attribution and behavioural 
+signals central to decisions on review, restriction, 
+freezing or reporting.
+Intervention rights differ across assets and actors. 
+A stablecoin issuer may be able to freeze a token 
+if that capability is embedded in the asset, while 
+self-custodial assets or assets exchanged into other 
+instruments may move beyond that control point. 
+Effective enforcement depends on whether the 
+relevant actor can identify the activity and has the 
+legal authority and technical ability to intervene.
+Recent European Union (EU) sanction measures 
+have extended restrictions beyond conventional 
+financial institutions to cryptoasset service 
+providers, decentralized trading platforms, specific 
+digital currencies and third-country platforms 
+used for circumvention. This reflects the fact that 
+enforcement increasingly follows the points at which 
+digital assets can be exchanged, transferred or 
+moved beyond effective control.13
+9
+Market integrity and  
+investor protection
+Challenge: Digital asset markets combine familiar 
+conduct risks with market structures in which 
+trading, information and execution are distributed 
+across multiple venues and networks. The regulatory 
+challenge is not simply whether the infrastructure 
+functions but whether markets operating across it 
+remain fair, transparent and resistant to abuse.
+Key considerations: Surveillance must extend 
+beyond individual trading venues. Manipulative 
+activity can move between centralized platforms, 
+derivatives markets, decentralized protocols and 
+on-chain transfers, while digital asset markets 
+operate continuously and across jurisdictions. 
+Effective surveillance increasingly depends on 
+connecting order-book activity, transactions and 
+relevant on-chain data rather than monitoring each 
+venue in isolation.14
+Comparable data is a prerequisite for cross market 
+oversight. Common identifiers and standardized 
+order and transaction records enable firms and 
+supervisors to connect activity involving the same 
+asset across venues and reconstruct trading 
+patterns. Without linkable data, fragmentation 
+across networks and platforms can also disrupt 
+supervisory visibility.
+Market structure can create concentrated conflicts 
+of interest. Digital asset groups may combine venue 
+operation, brokerage, custody, lending, market-
+making and proprietary activity within the same 
+organization. Governance, disclosure, segregation 
+and conflict management arrangements become 
+particularly important where these combinations 
+create incentives to disadvantage clients or 
+distort execution.15
+Programmable execution creates new channels 
+for familiar forms of abuse. Transaction ordering, 
+manipulation of oracle inputs and other protocol 
+mechanics can influence prices or execution 
+outcomes without resembling a conventional 
+manipulative order. The relevant regulatory test 
+is the economic effect: equivalent misconduct 
+should be captured whether it arises through 
+trader behaviour, platform design or control over 
+transaction sequencing.16
+Investor protections should travel with the 
+token. Tokenization changes the format and 
+infrastructure through which an asset is issued, 
+held or traded, but it does not by itself change 
+the underlying economic exposure. Where that 
+exposure is equivalent, investors should retain 
+comparable standards of suitability, disclosure, 
+valuation, liquidity management and recourse. 
+As assets move across platforms and jurisdictions, 
+interoperability and recognition arrangements 
+should preserve those protections rather than  
+allow them to fall away at the point of transfer.
+ The regulatory 
+challenge is not 
+simply whether 
+the infrastructure 
+functions but 
+whether markets 
+operating across 
+it remain fair, 
+transparent and 
+resistant to abuse.
+Regulation of Digital Assets in a Shifting Global Landscape
+17
+
+The regulatory playbook
+There is no universal regulatory pathway. 
+Jurisdictions should regulate what matters  
+locally but align globally.
+3
+Regulation of Digital Assets in a Shifting Global Landscape
+18
+
+Regulated digital asset markets depend on three 
+conditions: effective supervision, institutional 
+scalability and cross-border recognition.
+Digital asset regulation generally progresses from 
+foundation to scaling to cross-border recognition. 
+Jurisdictions require:
+	–
+A framework that brings material activity into 
+scope and gives supervisors practical control
+	–
+Rules that allow regulated institutions to rely 
+on digital assets in production
+	–
+Recognition mechanisms that allow domestic 
+markets to connect with trusted jurisdictions
+This sequence is directionally consistent, but the 
+first move will vary by market. A market may need 
+to focus first on stablecoins, trading platforms, 
+tokenized securities or custody and infrastructure. 
+This focus depends on factors such as level of retail 
+activity, stablecoin exposure, institutional adoption, 
+supervisory capacity, financial centre ambition 
+and existing banking, securities, payments and 
+AML frameworks.
+A four-step approach to using the regulatory playbook
+F I G U R E 2
+The regulatory playbook
+How to use it: Four steps to apply the framework
+Determine which activities, 
+actors and infrastructure 
+are most relevant given 
+the jurisdiction’s market 
+structure, exposures and 
+policy objectives.
+Evaluate where existing 
+treatment is clear, incomplete 
+or inconsistent.
+Focus on the areas that 
+matter most for effective 
+supervision, safe market 
+development and 
+institutional use.
+Apply existing rules where 
+they remain ﬁt for purpose, 
+adapt them where market 
+architecture has changed and 
+use testing where important 
+questions remain unresolved.
+Assess the regulatory 
+framework across the 
+nine playbook dimensions
+Prioritize the issues 
+requiring regulatory 
+response
+Determine the 
+appropriate regulatory 
+response
+Identify the material 
+areas of digital 
+asset activity
+1
+2
+3
+4
+Regulatory priorities should follow both current 
+market exposure and the market a jurisdiction 
+seeks to build. The regulatory agenda differs 
+with the market itself, based on the scale of retail 
+activity, institutional participation, stablecoin use, 
+domestic currency exposure and ambitions for 
+tokenized capital markets. A market with significant 
+retail trading may need to bring platform licensing 
+and client protection forward. One with material 
+use of foreign stablecoins may need to elevate 
+reserve, redemption and monetary safeguards 
+sooner. A financial centre seeking to build tokenized 
+capital markets may need legal certainty, custody, 
+settlement and collateral treatment earlier.
+Credible supervision is central to this prioritization. 
+Authorities need visibility into material activity, a 
+clear line to the actors accountable for it and the 
+data, expertise and enforcement capacity to use 
+their supervisory powers effectively. This matters 
+particularly where cross-border providers serve 
+domestic clients with little incentive to enter the 
+local perimeter. A focused perimeter backed by 
+credible supervision will often be more effective than 
+broad formal coverage an authority cannot enforce.
+Regulatory tools should reflect a jurisdiction’s 
+exposure, market ambition and supervisory capacity 
+rather than replicate another jurisdiction’s sequence.
+3.1	 Let market structure determine  
+regulatory sequence
+Source: World Economic Forum and Boston Consulting Group
+Regulation of Digital Assets in a Shifting Global Landscape
+19
+
+Jurisdictions’ different regulatory routes
+TA B L E 3
+Known risks should be regulated directly, and 
+room created to learn where evidence is limited. 
+Answers to some regulatory questions can be 
+found without having to experiment further. Client 
+assets should be protected, financial crime controls 
+should be effective and accountable activities 
+should be supervised irrespective of the technology 
+involved. Where the underlying risks and desired 
+outcomes are already understood, existing rules 
+can usually be applied or adapted directly.
+Controlled activity lets authorities observe how 
+those risks materialize before permanent rules 
+are fully calibrated. Sandboxes, pilots, targeted 
+relief and transitional arrangements serve different 
+purposes, but are most useful when they permit real 
+activity within defined safeguards and under close 
+supervisory engagement.17
+Experimentation should remain connected to 
+the existing regulatory standards. Viable models 
+should have a credible route towards authorization 
+or broader deployment, while discontinued 
+experiments can still provide evidence about risks, 
+controls or economics. The operating experience 
+can then inform licensing conditions, supervisory 
+expectations, market standards or adjustments to 
+permanent rules.
+3.2	 Calibrate the regulatory approach
+Emerging markets may require a different regulatory sequence
+B O X 2
+In many emerging markets, digital asset adoption 
+is more closely linked to payments, remittances, 
+access to foreign currency and financial inclusion 
+than to institutional market development. This can 
+make the macro-financial effects of digital money 
+more immediate. Foreign currency stablecoins can 
+accelerate currency substitution, increase capital 
+mobility and reduce the effectiveness of existing 
+capital flow management measures. These effects 
+may become material at lower levels of adoption 
+where domestic financial markets are smaller or 
+currencies are more vulnerable.
+As a result, monetary and capital flow risks may 
+require earlier attention, while regulation should 
+also preserve the potential for digital channels to 
+broaden access to payments, savings and cross-
+border transfers. Core standards of consumer 
+protection, market integrity and financial stability 
+should remain unchanged.
+Jurisdiction
+EU
+USA
+United Kingdom
+Singapore
+Broad cryptoasset framework alongside a separate 
+experimental regime for tokenized securities infrastructure
+Comprehensive cryptoasset rules alongside controlled 
+testing of DLT-based trading and settlement
+Activity-speciﬁc development across securities, 
+commodities, banking and payments rather than 
+a single consolidated regime
+Perimeter development in parallel with a live pathway 
+for testing tokenized market infrastructure
+Digital asset activities are addressed through the 
+regulatory framework applicable to the ﬁnancial 
+service performed
+Sectoral frameworks combined with targeted legislation, 
+agency action and regulatory relief
+Broader cryptoasset authorization framework 
+alongside controlled experimentation in digital 
+securities infrastructure
+Activity- and provider-based regulation across payments 
+and capital markets
+Regulatory route chosen
+Considerations for the roadmap
+Hong Kong SAR, 
+China
+An initial regulated trading perimeter followed by 
+progressive extension across additional activities
+Trading-platform licensing followed by expansion 
+into stablecoins and a broader range of digital 
+asset activities
+Regulation of Digital Assets in a Shifting Global Landscape
+20
+
+Institutional scale depends on addressing  
+the binding constraint
+Once an activity has a credible regulatory basis, 
+the real question becomes what prevents 
+institutions from using it at scale. For tokenized 
+securities, that may be legal finality or collateral 
+eligibility. For digital money, that may be reserve, 
+redemption or settlement treatment. For new 
+infrastructures, that may be integration into risk, 
+valuation, reporting and recovery processes.
+Regulatory effort should concentrate on the 
+constraints that are limiting the market in practice. 
+Core safeguards still apply across activities, but 
+institutional adoption may remain peripheral until a 
+specific legal, prudential, settlement or infrastructure 
+dependency is addressed. The binding constraint can 
+also shift as markets mature. Issuance may become 
+legally established but with balance sheet treatment 
+limiting use, and settlement may become available 
+while fragmented infrastructure restricts liquidity and 
+collateral mobility. Some binding constraints also sit 
+in market practice rather than regulation itself.
+3.3	 Enable institutional market formation
+Binding constraints for institutional scale
+F I G U R E 3
+Legal 
+certainty
+The activity functions 
+technically but cannot be 
+integrated consistently 
+into institutional risk, 
+compliance, valuation, 
+reporting, resilience and 
+recovery processes.
+Ownership, contractual 
+rights or settlement 
+outcomes are 
+insufﬁciently reliable 
+for institutional use.
+Participation is permitted, 
+but capital, liquidity, 
+exposure or collateral 
+treatment materially limits 
+economic use.
+Tokenized assets exist, 
+but transactions lack 
+an appropriate digital 
+cash leg or remain 
+dependent on separate 
+settlement processes.
+Assets function within 
+individual platforms but 
+cannot access broader 
+liquidity, collateral, 
+distribution or 
+settlement networks.
+Operating and 
+control integration
+Prudential and 
+collateral treatment
+Settlement 
+asset
+Interoperability 
+and asset mobility
+Removing a specific barrier to institutional use
+B O X 3
+In December 2025, Commodity Futures Trading 
+Commission (CFTC) staff provided conditional 
+no-action relief allowing futures commission 
+merchants to accept certain non-securities 
+digital assets as customer margin collateral and 
+recognize their value for specified regulatory 
+purposes. The relief was reissued with a limited 
+amendment in February 2026. The example 
+shows how targeted action can address a specific 
+constraint to institutional use without waiting for 
+comprehensive reform of the wider market.
+Source: World Economic Forum and Boston Consulting Group
+Regulation of Digital Assets in a Shifting Global Landscape
+21
+
+Cross-border scale rests on comparable 
+outcomes and credible supervision
+Cross-border scale depends on whether institutions 
+can trust regulatory outcomes produced outside 
+their home jurisdiction. This trust must cover 
+the legal, prudential, conduct and supervisory 
+outcomes equally. The objective is sufficient 
+comparability for assets and activities to operate 
+across jurisdictions while allowing domestic legal 
+and supervisory structures to differ.18
+Comparable standards make outcomes easier to 
+assess across jurisdictions. Where another jurisdiction 
+already delivers sufficiently comparable protections 
+for a given activity, recognition or equivalence can 
+cut out duplicative process. Supervisory cooperation 
+provides the information and oversight needed to 
+sustain that reliance over time.19
+Recognition works best when calibrated to the 
+activity involved. A jurisdiction may place confidence 
+in another market’s custody or tokenized securities 
+framework while applying different conditions 
+to stablecoins, settlement assets or critical 
+infrastructure. The real question is what outcomes 
+another authority can credibly deliver and supervise, 
+and where reliance on those outcomes is sufficient 
+to justify market access.
+Recognition also has to preserve the protections 
+attached to the asset as it moves. Legal rights, 
+investor protections, compliance obligations and 
+settlement outcomes should remain effective across 
+platforms and jurisdictions. Technical connectivity 
+creates limited institutional value if those protections 
+become uncertain at the point of transfer.
+The case for coordination strengthens as  
+markets become more interconnected. Activity 
+can migrate towards jurisdictions or entities where 
+standards or enforcement are weaker, allowing 
+vulnerabilities in one part of the system to create 
+exposure elsewhere.20
+3.4	 Build cross-border scale through regulatory trust
+ The case for 
+coordination 
+strengthens 
+as markets 
+become more 
+interconnected.
+Regulation of Digital Assets in a Shifting Global Landscape
+22
+
+Concentration of currency use, liquidity and 
+infrastructure can create dependencies that narrow 
+future policy choices. Foreign currency reliance, 
+weaker enforcement reach or dependence on 
+external infrastructure may then alter regulatory 
+priorities. Where digital money, infrastructure or 
+standards achieve broad cross-border adoption, 
+those effects can extend well beyond the 
+jurisdiction in which they originated.
+Geopolitical sensitivity can make cross-border 
+integration asymmetric. Assets and investment 
+products may circulate across jurisdictions 
+even where settlement money, collateral, critical 
+infrastructure, data or enforcement remain more 
+tightly bounded. Digital asset markets could 
+consequently become globally connected in 
+some functions while retaining national or regional 
+boundaries in others.
+Regulators should assess how major digital asset 
+rules affect monetary sovereignty, capital and 
+liquidity flows, enforcement capability and reliance 
+on critical infrastructure, including where those 
+effects extend across borders. In practice, the 
+trade-off will vary across market functions: cross-
+border integration may be desirable for asset 
+issuance, distribution or market access, while 
+settlement, collateral, critical infrastructure, data or 
+supervisory control may warrant tighter limits on 
+external reliance. These boundaries will shape the 
+eventual architecture of digital asset markets and 
+should be set while jurisdictions retain meaningful 
+policy choice.
+Strategic choices will shape where liquidity, 
+settlement and infrastructure can connect
+Geopolitical priorities increasingly shape how 
+jurisdictions regulate digital assets, especially where 
+the choices affect monetary influence, capital and 
+liquidity, enforcement capability or control of critical 
+infrastructure. Regulation translates those priorities 
+into market structure, influencing which forms of 
+money and infrastructure gain reach, where liquidity 
+and activity concentrate and where strategic 
+dependencies emerge.
+3.5	 Account for geopolitics in  
+cross-border market design
+Regulatory choices shape the geopolitics of digital asset markets
+TA B L E 4
+Strategic priority
+Money and 
+currency inﬂuence
+Capital and liquidity
+Enforcement and 
+economic security
+Infrastructure and 
+strategic autonomy
+Digital money eligibility, 
+reserve standards, 
+settlement rules
+Market access, 
+capital ﬂow measures, 
+collateral eligibility, 
+settlement conditions
+Sanctions, counterparty 
+restrictions, access 
+conditions, intervention 
+rights
+Infrastructure eligibility, 
+governance, standards, 
+data and outsourcing 
+requirements
+Determines reliance 
+on infrastructure and 
+service providers
+Shifts control over 
+critical infrastructure, 
+standards and data
+Interoperability can 
+coexist with limits on 
+reliance on foreign-
+controlled infrastructure
+Determines where 
+traceability, control 
+and intervention can 
+be exercised
+Redistributes enforcement 
+reach across jurisdictions 
+and infrastructures
+Integration may stop 
+where effective 
+enforcement cannot 
+be preserved
+Affects movement 
+and concentration 
+of capital, collateral 
+and liquidity
+Alters where liquidity 
+and usable collateral 
+concentrate across 
+jurisdictions
+Cross-border asset 
+access may outpace 
+integration of funding 
+and collateral markets
+Inﬂuences use and reach 
+of currencies and 
+settlement assets
+Shifts monetary 
+inﬂuence and demand 
+for reserve assets
+Asset markets may 
+integrate more deeply 
+than settlement money
+Regulatory 
+choices
+Market 
+effect
+Geopolitical 
+consequence
+Implication for 
+cross-border 
+integration
+Regulation of Digital Assets in a Shifting Global Landscape
+23
+
+Implications for  
+market players
+Digital asset regulation will weaken friction-
+based business models and increase the value 
+of liquidity, control, distribution and connectivity.
+4
+Regulation of Digital Assets in a Shifting Global Landscape
+24
+
+The impact of regulation extends beyond firms 
+launching new digital asset products. Rules for 
+digital money, collateral and settlement can affect 
+funding, balance sheet use and existing revenue 
+pools, while licensing, capital and AML measures 
+and sanctions requirements can materially alter 
+the economics of digital asset businesses.
+Clearer regulatory pathways are also bringing 
+previously distinct players into overlapping areas 
+of financial activity. Traditional financial institutions 
+are expanding into digital assets, and digital asset-
+native firms are entering regulated financial services. 
+Their starting positions differ across balance sheet, 
+liquidity, technology, distribution and market access.
+The competitive effect 
+of regulation runs through 
+products, roles, capabilities 
+and economics
+Product impact
+Which offerings become possible, more valuable 
+or less defensible? Tokenized funds, digital 
+money, tokenized securities, on-chain collateral, 
+custody and settlement services become 
+commercially relevant when they operate within 
+regulated workflows.
+Role impact
+Which control points in the value chain become 
+more important? Issuance, custody, settlement, 
+liquidity, distribution, compliance data, client access 
+and infrastructure governance become contested 
+points of value capture.
+Capability impact
+What must firms build, partner for or acquire? Digital 
+custody, wallet controls, smart contract governance, 
+transaction monitoring, asset servicing, 24/7 
+operations, interoperability and recovery capabilities 
+become part of the institutional operating model. 
+Scaling also means more than transaction volume and 
+settlement efficiency, extending to safe usability by a 
+much larger and more diverse consumer base, with 
+compliance by design reaching beyond AML controls 
+to product comprehension and risk communication 
+embedded directly in the user experience.
+Economic impact
+Where do revenues, costs and balance sheet 
+advantages move? Digital assets can reduce 
+reconciliation, settlement and servicing costs, 
+but they can also compress fees linked to slow 
+settlement, fragmented records, closed distribution 
+and manual intermediation. As settlement becomes 
+available around the clock, the binding constraint 
+shifts to treasury systems, reconciliation and 
+operating models that still run on batch cycles.
+4.1	 Regulation reshapes existing 
+businesses as new opportunities open
+Regulation of Digital Assets in a Shifting Global Landscape
+25
+
+Impact and opportunity of regulation by market participant
+TA B L E 5
+Banks
+Digital money changes funding and payments 
+economics. Stablecoins may alter deposit composition 
+and funding costs; continuous settlement changes 
+liquidity needs. Prudential and collateral treatment 
+determines whether tokenized assets are economical 
+to hold or ﬁnance.
+Banks can extend their money, liquidity and balance 
+sheet franchise into tokenized markets – for example, 
+through tokenized deposits and by providing 
+settlement and ﬁnancing services.
+Payment providers
+Regulated digital money puts pressure on economics 
+tied to payment friction, especially cross-border. 
+Merchant reach, network access and customer 
+relationships become more important.
+Orchestration across forms of money becomes a larger 
+opportunity, connecting digital and conventional money 
+to merchants and treasury systems.
+Asset managers
+The value of tokenization depends on whether assets 
+can remain usable as they move. Custody, settlement, 
+collateral and distribution rules determine whether 
+tokenized products can function across investment 
+and ﬁnancing markets.
+Greater asset mobility can expand distribution 
+and collateral use, provided investor protections 
+remain effective as products move across platforms 
+and infrastructures.
+Custodians/asset 
+servicers
+The role moves beyond safekeeping towards 
+accountable control of assets in motion.
+Asset mobility creates opportunities in collateral 
+management, cross-network movement and servicing 
+across traditional and tokenized infrastructure.
+FMIs/market 
+infrastructure 
+providers
+Value shifts towards connectivity and governance as 
+markets span multiple infrastructures. Settlement 
+certainty, resilience and interoperability become more 
+important alongside core processing functions.
+Trusted connectivity between traditional and tokenized 
+markets becomes a larger role, linking assets, money 
+and collateral to existing settlement, liquidity and 
+treasury infrastructure.
+Stablecoin 
+issuers/digital 
+money providers
+Reserve, redemption and remuneration rules deﬁne 
+economics and scope, shaping margins, reserve 
+allocation and competition with other forms of money.
+Private digital money is strongest where reach, 
+distribution and composability matter most, particularly 
+payments, cross-border treasury, wallet-based activity 
+and on-chain settlement.
+Digital asset trading 
+platforms and 
+intermediaries
+Higher regulatory standards erode advantages based 
+on regulatory gaps and place greater pressure on 
+integrated platform models.
+A larger regulated institutional market creates 
+opportunities in brokerage, ﬁnancing, market making 
+and distribution, building on existing strengths in 
+liquidity and market access.
+Player
+Impact on existing business
+New opportunities
+As processing frictions fall, value shifts  
+towards liquidity, risk bearing, client access  
+and distribution
+Tokenized infrastructure will reduce some forms of 
+intermediation while increasing the value of others. 
+Activities built around reconciliation, fragmented 
+processing or regulatory gaps are more exposed 
+as transaction chains become more integrated. 
+Liquidity, collateral, risk bearing and trusted market 
+access remain scarce, shifting where intermediaries 
+create value.
+Regulation can also broaden who is able to provide 
+custody, brokerage, payments or financing while 
+placing tighter limits on how those activities are 
+combined within one institution. This matters 
+particularly for integrated digital asset platforms, 
+where capital, safeguarding, segregation and 
+conflict requirements can reshape the economics  
+of offering multiple services under one model.
+4.2	 Trusted financial roles persist as 
+friction-based economics erode
+ Tokenized 
+infrastructure will 
+reduce some forms 
+of intermediation 
+while increasing 
+the value of others.
+Regulation of Digital Assets in a Shifting Global Landscape
+26
+
+Shared infrastructure moves value  
+towards connection, governance 
+and complementary capability
+Public and shared infrastructure initiatives such as 
+Pontes, Appia and Project Agorá are developing 
+common layers for settlement and connectivity.21 
+As parts of this infrastructure become shared rather 
+than proprietary, differentiation may shift away 
+from owning every rail towards how firms connect 
+to, govern and build services on top of them. 
+Where standards, access or control points remain 
+contested, however, shaping the infrastructure itself 
+can remain strategically important.
+The opportunity for individual players will 
+increasingly depend on complementary capabilities 
+elsewhere in the market. Asset managers need 
+usable settlement money and custody; digital 
+money providers need distribution and places 
+where that money can be deployed; banks, 
+custodians and financial market infrastructure (FMI) 
+gain more from digital infrastructure as assets 
+and liquidity move through them. Realizing these 
+opportunities will depend on how effectively public 
+and private actors close the legal, infrastructure and 
+operating gaps that constrain institutional use.
+4.3	 Shared infrastructure changes  
+where firms can differentiate
+Regulation of Digital Assets in a Shifting Global Landscape
+27
+
+Implementation 
+priorities
+Implementation requires common market 
+practices, coherence with the wider 
+financial regulatory system and supervisory 
+models that evolve with markets.
+5
+Regulation of Digital Assets in a Shifting Global Landscape
+28
+
+As rules clarify, regulators and market 
+participants need to build the standards 
+that make them work in practice
+Digital asset rules often leave firms with discretion 
+over implementation; some of these choices 
+determine whether a wallet, counterparty, asset 
+or dataset is acceptable across institutions.
+For example, in financial crime controls, firms may 
+share the same obligation to identify illicit exposure 
+but differ on the depth of transaction history 
+reviewed, the treatment of indirect exposure and 
+the interpretation of blockchain analytics, so the 
+same wallet or transaction may be accepted by 
+one institution and rejected by another. The Travel 
+Rule creates a related operational challenge where 
+firms need compatible methods for identifying 
+counterparties, exchanging required information and 
+assessing transfers involving self-hosted wallets.
+Comparable issues arise wherever institutions rely 
+on one another’s data, controls or valuations to 
+complete a transaction, including the treatment of 
+asset and counterparty data, collateral valuation, 
+transaction messaging and controls applied to 
+shared infrastructure. Where common standards 
+are still immature, firms can reach materially 
+different conclusions on the same risk, whether 
+in sanctions screening, operational resilience or 
+transaction acceptance; once those judgements 
+affect counterparties, assets or infrastructure, the 
+differences can also fragment market activity.
+Firms and infrastructure providers are best placed 
+to develop common thresholds, data formats 
+and control methods, with regulators supporting 
+convergence where inconsistent implementation 
+begins to constrain market scale.
+Friction with wider legacy regulatory 
+frameworks can block viable digital asset 
+models or push activity towards lighter regimes
+Even where market practice converges, institutional 
+adoption can be constrained when digital asset 
+activity meets existing banking, securities, 
+payments, prudential and financial crime rules. One 
+source of friction is that many of these rules assume 
+conventional trading, record-keeping or settlement 
+processes even where new infrastructure does not 
+materially change the underlying economic risk.
+In the EU, the DLT Pilot Regime allows authorities 
+to grant qualifying DLT market infrastructures 
+targeted exemptions from specified trading and 
+settlement requirements, subject to safeguards 
+that preserve the objectives of the existing rules, 
+including investor protection, market integrity 
+and financial stability.22
+Regulatory arbitrage can also emerge across 
+provider types. The same activity may attract 
+different capital, liquidity or control requirements 
+depending on whether it is performed by a bank, 
+payment firm or digital asset-native provider. 
+Some differences reflect genuine balance sheet or 
+business-model risks; where they do not, materially 
+lighter treatment can distort competition and draw 
+activity towards the less demanding regime.
+5.1	 Translate regulatory requirements 
+into common market standards
+5.2	 Make digital asset rules work coherently 
+with the wider financial regulatory system
+Regulation of Digital Assets in a Shifting Global Landscape
+29
+
+Digital asset supervision requires authorities 
+to connect on-chain activity with traditional 
+supervisory data
+With digital asset activity moving into live markets, 
+supervisors need visibility into activity that extends 
+beyond the regulated entity. Firm records capture 
+only part of the risk when transactions involve 
+self-hosted wallets, smart contracts, protocols and 
+multiple blockchains. In financial crime supervision, 
+the FATF identifies four capabilities that are 
+becoming more important: understanding smart 
+contract functionality; tracing activity across chains; 
+using blockchain analytics effectively; and assessing 
+risks from peer-to-peer transactions through self-
+hosted wallets.23
+The supervisory toolkit is starting to adapt. Project 
+Pyxtrial, developed by the Bank for International 
+Settlements (BIS) Innovation Hub and the Bank 
+of England, tested whether supervisors could 
+use integrated data on stablecoin liabilities and 
+backing assets to monitor whether issuers remain 
+fully backed. This points towards a model in which 
+supervisors source and analyse market data directly 
+alongside information reported by firms.24
+Supervisory mandates can fragment the picture 
+further. Custody, trading, payments, settlement 
+and technology infrastructure may sit within the 
+same transaction chain, while different authorities 
+see only parts of it. Effective oversight depends 
+on information and supervisory judgement moving 
+across those boundaries.
+When activity reaches scale, supervisory  
+findings provide evidence that rule-making and 
+pilots cannot fully anticipate. Recurring control 
+failures or unintended effects can be addressed 
+through clearer expectations or targeted 
+changes without repeatedly reopening the 
+wider regulatory framework.
+5.3	 Build the supervisory capability and 
+feedback loops to operate the framework
+Regulation of Digital Assets in a Shifting Global Landscape
+30
+
+Conclusion
+The central regulatory challenge is to preserve 
+the properties that underpin trust in the financial 
+system, including legal certainty, sound settlement, 
+resilient infrastructure, market integrity, consumer 
+and investor protection, and financial stability.
+Regulators will increasingly need to distinguish the 
+objective of a rule from the mechanism historically 
+used to achieve it. Many existing requirements 
+around intermediation, settlement cycles, custody 
+and record-keeping reflect the financial architecture 
+in which those rules were designed. Where new 
+infrastructure can achieve the same regulatory 
+objective through different means, rules should be 
+applied in ways that reflect the new architecture 
+without weakening the safeguards they are 
+intended to provide.
+Greater interconnectedness across markets, 
+infrastructure, data and digital money will also 
+require regulators to make clearer choices about 
+reliance and control. They will need to determine 
+where reliance on foreign regimes and external 
+infrastructure is acceptable and where domestic 
+oversight, capability or control should be retained  
+to protect resilience and sovereignty.
+Regulatory choices made now will determine 
+whether digital assets entrench new fragmentation 
+and dependencies or support a more integrated, 
+trusted and resilient financial system.
+Regulation of Digital Assets in a Shifting Global Landscape
+31
+
+Appendix: 
+Regulatory baseline
+To assess these frameworks, this report draws on an 
+original analysis of 35 leading jurisdictions currently 
+regulating digital assets. The findings inform the 
+regulatory baseline set out in this report and point to 
+several trends shaping the current landscape.
+Regulatory trends shaping the current landscape
+Full market bans remain rare, and regulated 
+participation continues to expand. Only China 
+maintains an explicit ban; other jurisdictions 
+constrain participation through narrower channels, 
+including restrictions on regulated financial 
+institutions or the absence of a comprehensive 
+licensing regime, as in Mexico and Saudi Arabia.
+Regulation is shifting from an asset-based 
+approach to an activity-based one. More than 
+70% of jurisdictions in the sample now regulate 
+based on the activity being performed rather than the 
+form the asset takes, consistent with the activity-
+based principle this report argues should anchor 
+effective supervision more broadly. This reflects 
+the fact that digital assets can combine functions 
+that traditional frameworks often treat separately, 
+including issuance, custody, transfer, settlement, 
+trading and asset servicing. An activity-based 
+approach enables regulation to follow what market 
+participants do and the risks they create, rather than 
+relying primarily on how a token is labelled.
+Regulatory maturity varies across the digital 
+asset stack. A jurisdiction may be advanced in one 
+part of the digital asset stack while still developing 
+rules elsewhere. Switzerland, for example, has an 
+established legal framework for tokenized securities 
+and DLT market infrastructure; its stablecoin 
+framework remains under development.25 The 
+relevant comparison is therefore by activity, not by 
+jurisdiction overall.
+Regulatory maturity does not depend on where 
+the rules sit. Digital assets may fall under existing 
+banking law, a stand-alone regime built specifically 
+for them or some hybrid of the two. What 
+determines effectiveness is not which structure 
+a jurisdiction chooses but whether that structure 
+delivers clarity and credible supervision in practice.
+Several jurisdictions are actively recalibrating 
+their regulatory stance. Türkiye, Nigeria, Ghana 
+and Argentina have moved towards more formal 
+licensing or registration regimes and defined 
+supervisory requirements, while India has tightened 
+AML registration and enforcement for virtual digital 
+asset service providers without yet establishing a 
+comprehensive market framework.
+Regulated digital asset markets are broadening 
+beyond the most established centres. Bahrain, 
+Kazakhstan and South Africa have each developed 
+licensed frameworks for digital asset activity, 
+expanding the group of jurisdictions seeking to 
+attract regulated market development beyond 
+centres such as Singapore; Hong Kong SAR, 
+China; and the United Arab Emirates.
+Core activities, trading, custody and payments 
+are largely brought within the regulatory 
+perimeter. Trading venues, custodians and 
+payment providers are supervised in more than 
+75% of jurisdictions surveyed, typically alongside 
+AML and counterterrorist financing requirements.
+Stablecoin frameworks are formalizing quickly. 
+As stablecoins expand beyond crypto-market 
+settlement into payments and treasury use cases, 
+jurisdictions are introducing clearer requirements 
+for issuance, reserve assets, redemption and 
+operational resilience. Treatment of yield and reward 
+mechanisms remains less consistent, reflecting 
+continuing differences over when a stablecoin 
+begins to resemble a deposit, investment product 
+or other regulated claim.
+The effectiveness of a regime depends less on 
+whether rules sit in banking, securities, payments 
+or stand-alone cryptoasset law than on whether 
+they are clear, enforceable and usable in practice. 
+Indonesia illustrates how regulatory architecture 
+can evolve over time: cryptoassets were initially 
+supervised by the commodities regulator before 
+responsibility shifted principally to the financial 
+services regulator, supported by dedicated rules  
+for digital financial assets and cryptoassets.26
+Regulation of Digital Assets in a Shifting Global Landscape
+32
+
+Contributors
+Acknowledgements
+The project team would like to thank the following 
+additional individuals whose contributions have 
+been instrumental to this initiative: Emina Ajvazoska, 
+Madeleine Hillyer, Polina Kurenkova and Reetika 
+Sharma.
+Steering Committee
+Samara Cohen
+Global Head of Market Development, BlackRock
+Ujjwal Deep Dahal
+Chief Executive Officer, DHI
+Dante Disparte
+Chief Strategy Officer, Circle
+Khalid Humaidan
+Governor, Central Bank of Bahrain
+Jonathan Krane
+Chief Executive Officer, KraneShares
+Andres Murcia Pabon
+Chief Officer for Monetary Operations and 
+International Investments, Banco de la Republica
+Petia Niederlaender
+Director of Payments, Austrian National Bank (OeNB)
+Jamii Quoc
+General Counsel, Animoca Brands
+Darrick Rochili
+Chief Innovation Officer, DANA
+Bilal Bin Saqib
+Minister of State, Prime Minister’s Office, Pakistan
+Faryar Shirzad
+Chief Policy Officer, Coinbase
+German Soto Sanchez
+Chief Strategy Officer, Broadridge Financial 
+Solutions
+Kathleen Wrynn
+Global Head of Digital Assets, Invesco
+Chris Zuehlke
+Global Head of Cumberland, DRW Holdings
+Working Group
+Omair Ansari
+Chief Executive Officer and Co-Founder, Abhi
+Romain Braud
+Head of Digital Assets, Arab Bank (Switzerland)
+World Economic Forum 
+Drew Propson
+Head, Technology and Innovation  
+in Financial Services
+Sandra Waliczek
+Lead, Blockchain and Digital Assets
+Boston Consulting Group
+Matteo Coppola
+Global Leader, Risks and Compliance Practice; 
+Managing Director and Senior Partner
+Assia Gardiner
+Partner and Associate Director, Risk and Regulatory 
+Compliance in FI and Digital Assets
+Bernhard Gehra
+North America Leader, Risks and Compliance 
+Practice; Managing Director and Senior Partner
+Bernhard Kronfellner
+Partner and Associate Director
+Marcin Matyja
+Associate Director
+Christian Schmid
+Head Global Banking and CIB;  
+Managing Director and Senior Partner
+Dominik Stuetz
+Project Leader
+Regulation of Digital Assets in a Shifting Global Landscape
+33
+
+Christopher Buttigieg
+Chief Officer, MFSA
+Jehangir Byramji
+Emerging Technology and Innovation, Lloyds 
+Banking Group
+Stephanie Cabossioras
+Chief Strategy and Global Policy Officer, Société 
+Générale Group
+Nadine Chakar
+Global Head of Digital Assets, DTCC
+Boon-Hiong Chan
+Head Securities Market and Tech Advocacy, 
+Deutsche Bank
+Joseph Cleetus
+Vice-President, Business Transformation, 
+LuLu Financial Holdings
+Ezechial Copic
+Director of Digital Assets Policy, Visa
+Matthew Danzig
+Managing Director, Lazard
+Alisa DiCaprio
+Director, SWIFT
+Rob Downes
+Head of Digital Assets, Absa Corporate 
+and Investment Bank
+Sameh Elshall
+Assistant Sub Governor, Business Technology, 
+Government of Egypt
+Ahmed Faragallah
+Senior Financial Sector Specialist, World Bank
+Stephen Gardner
+Co-President, zerohash
+Jeff Gudiel
+Government Affairs, BlackRock
+Chad Harper
+Head of Coinbase Institute, Coinbase
+Graham Harper
+Global Head of Market Structure, DRW Holdings
+Adam Henkel
+Assistant General Counsel, Invesco
+John Ho
+Head of Legal, Financial Markets, Standard 
+Chartered
+Sandy Kaul
+Head of Digital Assets and Innovation, 
+Franklin Templeton
+Will Killeen
+Corporate Development, TCW
+Odd Kleiva
+Attorney, DNB
+Rajasekhar Kosuri
+Chief Technology Officer, Banking, 
+Financial Services and Insurance, TechMahindra
+Arthur Mak
+Co-Founder, Chairman, Chief Product 
+and Technology Officer, YouTrip
+Farooq Malik
+Co-Founder, Rain
+Carson McLean
+Managing Director, DTCC
+Thammarak Moenjak
+Senior Director, Technology and Innovation Unit, 
+Bank of Thailand 
+John Nahas
+Chief Business Officer, Avalabs
+Anwar Nasr
+Deputy General Manager, Markets,  
+Government of Egypt
+Yannick Oberson
+Head of Government Affairs International, UBS
+Jadesada Palotaitakerng
+Bank of Thailand
+Amaury Peltier
+Head of Venture Studio and Crypto, ADP
+Pablo Portugal
+Senior Public Affairs Director, Euroclear
+Nilmini Rubin
+Chief Policy Officer, Hedera
+Ryan Rugg
+Global Head of Blockchain Strategy and DLT 
+Implementation, Services, Citi
+Mehmet Ali Savaş
+Digital Office Lead, ABB Bank
+Lee A. Schneider
+General Counsel, Avalabs
+Lisa Schroeer
+Managing Director, S&P Global
+Felix Sharief
+Vice-President of Public Policy and Government 
+Relations, DANA
+Regulation of Digital Assets in a Shifting Global Landscape
+34
+
+Michael Shaulov
+Chief Executive Officer, Fireblocks
+Roshan Shetty
+Banking, Financial Services and Insurance and 
+Public Sector Head – Americas, Tech Mahindra
+Erik Soderberg
+Head of US Government and Public Affairs; Global 
+Head of Geopolitical Affairs, Deutsche Bank
+Jirayut “Topp” Srupsrisopa
+Founder, Bitkub Capital Group Holdings
+Aviad Stein
+Head of Global Digital Solutions, Broadridge 
+Financial Solutions
+Joyce Thormann
+Chief Representative, Euroclear Bank
+Edward Woodford
+Chief Executive Officer, zerohash
+Douglas Yang
+Global Head of CBDC and Head of Digital Assets 
+China, Standard Chartered
+Sabrina Zapparoli Gonçalves de Carvalho
+Public Policy, Nu Holdings
+Production
+Laurence Denmark
+Creative Director, Studio Miko
+Rose Chilvers
+Designer, Studio Miko
+Simon Smith 
+Editor, Astra Content
+World Economic Forum 
+Public Engagement
+Maxwell Hall
+Creative Editorial Lead
+Floris Landi
+Design Lead
+Sybile Penhirin 
+Head, Video and Design
+Esther Pennella 
+Communications and Coordination Specialist
+Regulation of Digital Assets in a Shifting Global Landscape
+35
+
+1.	
+Schmid, C., Batra, I., & Choudhury, R. (2026, May 18). The future of digital assets. Boston Consulting Group.  
+  
+2.	
+Ibid.
+3.	
+Asset value from rwa.xyz, accessed in July 2026; Blackrock/BusinessWire. (2024, March 20). BlackRock launches its 
+first tokenized fund, BUIDL, on the Ethereum network.  
+BlackRock-Launches-Its-First-Tokenized-Fund-BUIDL-on-the-Ethereum-Network 
+4.	
+Depository Trust and Clearing Corporation (DTCC). (2026, July 15). DTCC turns tokenization into reality: US trades 
+successfully processed using DTC-tokenized assets.  
+DTCC-Turns-Tokenization-into-Reality-U.S.-Trades-Successfully-Processed-Using-DTC-Tokenized-Assets 
+5.	
+Hong Kong Monetary Authority. (2024, February 7). HKSAR government’s digital green bonds offering [Press release]. 
+  
+6.	
+Banque de France. (2025, October 10). Banque de France and Euroclear to tokenise short term debt in Paris.  
+ 
+7.	
+European Commission. (2025, December 2). Speech by Commissioner Albuquerque at the Blockchain for Europe 7th 
+annual summit.   
+8.	
+Swiss Financial Market Supervisory Authority (FINMA). (2025, March 18). FINMA licenses first DLT trading facility.  
+ ; Swiss Federal Council. (2025, October 22). 
+Federal Council moves forward with stablecoins and crypto: Consultation launched.  
+x4TMWQ1SWofNoFx7XyHhY 
+9.	
+Indonesia Financial Services Authority (OJK). (2025, January 10). Bappebti of Indonesian Ministry of Trade transfers 
+regulation and supervision duties on digital financial assets, including crypto assets and derivatives, to OJK and BI  
+[Press release].  
+Supervision-Duties-on-Digital-Financial-Assets-Crypto-Assets-and-Derivatives-to-OJK-BI.aspx 
+10.	
+Federal Reserve Board, Federal Deposit Insurance Corporation and Office of the Comptroller of the Currency.  
+(2026, March). Capital treatment of tokenized securities: Frequently asked questions.  
+supervisionreg/capital-treatment-of-tokenized-securities-faqs.htm
+11.	
+BIS. (n.d.). The Basel Framework. Retrieved October 12, 2026, from  
+framework/basel-framework.pdf
+12.	
+Bank for International Settlements and Swiss National Bank. (2022, January). Project Helvetia Phase II: Settling tokenised 
+assets in wholesale CBDC.  
+wholesale-cbdc; Committee on Payments and Market Infrastructures. (2020, March 1). On the future of securities 
+settlement.   
+13.	
+European Commission. (2026, April 23). EU adopts 20th package of sanctions against Russia.  
+eu/news/eu-adopts-20th-package-sanctions-against-russia-2026-04-23_en; Council of the European  
+Union. (2026, July 23). 21st package of sanctions: EU hits Russian energy, financial services and crypto hard.  
+ 
+energy-financial-services-and-crypto-hard/ 
+14.	
+European Securities and Markets Authority. Article 92: Prevention and detection of market abuse. Markets in Crypto-
+Assets Regulation; European Securities and Markets Authority. (n. d.). Markets in crypto-assets regulation. Retrieved 
+September 16, 2026, from  
+crypto-assets-regulation-mica; Financial Conduct Authority. (2026, June 30). Overview of our cryptoassets regime policy 
+statements.   
+15.	
+International Organization of Securities Commissions. (2023, November 16). Policy recommendations for crypto and digital 
+asset markets.    
+16.	
+Auer, R., Frost, J., & Pastor, J. M. V. (2022, June 16). Miners as intermediaries: Extractable value and market manipulation 
+in crypto and DeFi. BIS Bulletin, 58, Bank for International Settlements.  
+58-miners-intermediaries-extractable-value-and-market-manipulation-crypto-and-defi; Duley, C., Gambacorta, L., 
+Garratt, R., & Wilkens, P. K. (2023, September 7). The oracle problem and the future of DeFi. BIS Bulletin, 76, Bank for 
+International Settlements.   
+17.	
+Bank of England and Financial Conduct Authority. (2026, June 30). Guidance on the operation of the digital securities 
+sandbox; Financial Conduct Authority. (2026, June 30). Overview of our cryptoassets regime policy statements.  
+ ; Disparte, D. (2024, September 27). Fintech 
+has outgrown sandboxes. Now it needs airports. World Economic Forum.  
+monetary-systems/fintech-regulatory-airport-sandbox/ 
+18.	
+US Department of the Treasury. (2026, September 1). G20 chair’s statement: Para. 16.  
+gov/news/press-releases/sb0620; Financial Stability Board. (2023, July 17). High-level recommendations for the 
+regulation, supervision and oversight of crypto-asset activities and markets.  
+recommendations-for-the-regulation-supervision-and-oversight-of-crypto-asset-activities-and-markets-final-report/ 
+Endnotes
+Regulation of Digital Assets in a Shifting Global Landscape
+36
+
+19.	
+Financial Stability Board. (2023, July 17). High-level recommendations for the regulation, supervision and oversight of 
+crypto-asset activities and markets.  
+supervision-and-oversight-of-crypto-asset-activities-and-markets-final-report/
+20.	
+Schindler, J. (2026, July 28). Multilateralism, utopia, and the Financial Stability Board. Financial Stability Board.  
+  
+21.	
+European Central Bank. (2026, May 27). Tokenisation can improve wholesale cross-border payments: Key findings from 
+Project Agorá.  
+22.	
+European Parliament and Council of the European Union. (2022, May). DLT pilot regime.  
+ 
+23.	
+Financial Action Task Force. (2026, March 3). Targeted report on stablecoins and unhosted wallets – peer-to-peer 
+transactions.  
+wallets.pdf.coredownload.inline.pdf 
+24.	
+BIS Innovation Hub and Bank of England. (2024, July 31). Project Pyxtrial: Monitoring the backing of stablecoins.  
+  
+25.	
+FINMA. (2025, March 18). FINMA licenses first DLT trading facility.  
+mm-dlt-handelssystem/; Swiss Federal Council. (2025, October 22). Federal Council moves forward with stablecoins  
+and crypto: Consultation launched [Press release].   
+26.	
+Indonesia Financial Services Authority (OJK). (2025, January 10). Bappebti of Indonesian Ministry of Trade transfers 
+regulation and supervision duties on digital financial assets, including crypto assets and derivatives, to OJK and BI  
+[Press release].  
+Supervision-Duties-on-Digital-Financial-Assets-Crypto-Assets-and-Derivatives-to-OJK-BI.aspx 
+Regulation of Digital Assets in a Shifting Global Landscape
+37
+
+World Economic Forum
+91–93 route de la Capite
+CH-1223 Cologny/Geneva
+Switzerland 
+Tel.: 	+41 (0) 22 869 1212
+Fax: +41 (0) 22 786 2744
+contact@weforum.org
+www.weforum.org
+The World Economic Forum 
+is the trusted global platform 
+for public-private cooperation, 
+bringing together leaders 
+from business, government, 
+civil society, international 
+organizations, academia and 
+the next generation to turn 
+foresight and dialogue into 
+meaningful action on the world’s 
+most pressing challenges.
