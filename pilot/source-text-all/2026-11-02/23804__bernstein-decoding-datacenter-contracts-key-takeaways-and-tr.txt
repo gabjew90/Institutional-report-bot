@@ -1,0 +1,655 @@
+30 October 2026
+Global Software + US Communications Infrastructure
+Decoding Datacenter Contracts: Key takeaways and transcript
+from our discussion with a legal expert
+Mark L. Moerdler, Ph.D.
++1 917 344 8506
+mark.moerdler@bernsteinsg.com
+Madison Rezaei
++1 917 344 8622
+madison.rezaei@bernsteinsg.com
+Firoz Valliji, CFA
++1 917 344 8316
+firoz.valliji@bernsteinsg.com
+Shelly Tang, CFA
++1 917 344 8342
+shelly.tang@bernsteinsg.com
+Nancy Wu
++1 917 344 8545
+nancy.wu@bernsteinsg.com
+Given the amount of interest from last year’s datacenter contract webinar and the amount
+of scrutiny on these contracts recently, we hosted another discussion with the same legal
+expert one year later to see what has changed and what remains the same (replay link ). Our
+key takeaways include:
+Regulatory change is primarily at local rather than national level. While it’s emerging as a
+bottleneck power remains the biggest near-term constraint for development.
+Power availability and timing remains the key driver of winning a contract: Having
+accessible power within 12mo is a platinum asset whereas >48 months is commercially
+unattractive. A 400MW site can still be highly valuable if 100MW arrives within 12–24
+months with a credible path to the remainder.
+Large deals are highly bespoke. While termination-for-convenience is unacceptable,
+acceptable cancellation rights generally relate to loss of the power pathway or failure to
+meet defined development milestones. Leases may also impose delay remedies such as
+free-rent credits or liquidated damages. Optionalities such as expansion rights, right-of-
+first-refusals, purchase options, and extensions options are all key negotiating points.
+Credit support is critical for neoclouds. Neocloud deals rarely close without credit
+enhancement, which includes upfront cash, letters of credit, guarantees, or support from
+AI/chip companies. However, the market has shifted from 100% guarantees toward limited
+support e.g. covering ~80% of construction debt rather than the full obligation. Since
+guarantees amortize linearly, thus reducing the protection over time, while guarantors
+increasingly seek step-in rights to take over space and power.
+Key contractual “gotchas”: Watch for buried termination-for-convenience clauses,
+inadequate or rapidly amortizing credit support, lease transfers that eliminate credit
+protection, and excessive tenant control over future expansion, contraction, or campus
+development.
+What happens if a neocloud fails? Which could happen in the next 1–3 years due
+to mismatch between a longer data center lease vs. much shorter customer contracts.
+However, strong upfront credit support can protect owners if the tenant fails and the facility
+is recovered promptly, and the capacity can be offered at a very competitive rate.
+Demand remains strong: There is no visible slowdown in deal activity, although
+underwriting is becoming more disciplined. Longer term, demand should broaden from
+remote training campuses toward smaller urban and suburban inference facilities over the
+next 3–5 years.
+See the Disclosure Appendix of this report for required disclosures, analyst certifications and other
+important information. Alternatively, visit our  Global Research Disclosure Website.
+www.bernsteinresearch.com
+First Published: 30 Oct 2026 04:05 UTC  Completion Date: 29 Oct 2026 21:52 UTC
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+BERNSTEIN TICKER TABLE
+29 Oct 2026
+TTM
+Adjusted EPS
+Adjusted P/E (x)
+Closing
+Price
+Rel.
+Ticker
+Rating
+Cur
+Price
+Target
+Perf.
+Cur
+2025A
+2026E
+2027E
+2025A
+2026E
+2027E
+MSFT (Microsoft)
+O
+USD
+530.14
+722.00
+(14.1)%
+USD
+17.28
+20.63
+25.85
+30.7
+25.7
+20.5
+ORCL (Oracle)
+O
+USD
+139.56
+325.00
+(61.3)%
+USD
+7.63
+8.37
+12.19
+18.3
+16.7
+11.5
+EQIX (Equinix)
+O
+USD
+1,036.67
+1,270.00
+17.9%
+USD
+14.96
+18.38
+20.12
+69.3
+56.4
+51.5
+DLR (Digital Realty)
+O
+USD
+182.91
+226.00
+(2.6)%
+USD
+3.87
+3.09
+3.21
+47.2
+59.1
+57.0
+BXDC (Blackstone Digital
+Infra)
+O
+USD
+16.22
+26.00
+NA
+USD
+0.00
+0.32
+(1.00)
+50.8
+(16.2)
+CSQR (Csquare)
+O
+USD
+14.95
+27.00
+NA
+USD
+0.00
+(1.34)
+(1.06)
+(11.1)
+(14.1)
+AMT (American Tower)
+O
+USD
+185.88
+221.00
+(8.2)%
+USD
+5.40
+6.95
+6.90
+34.4
+26.8
+26.9
+CRWV (CoreWeave)
+U
+USD
+60.74
+54.00
+(68.6)%
+USD
+(1.20)
+(5.14)
+(6.60)
+N/M
+253
+32.1
+SPX
+7,720.39
+O - Outperform, M - Market-Perform, U - Underperform, NR - Not Rated, CS - Coverage Suspended
+CRWV valuation is EV/EBIT (x); MSFT, ORCL base year is 2026;
+Source: Bloomberg, Bernstein estimates and analysis.
+INVESTMENT IMPLICATIONS
+Global Software: We are Outperform on Microsoft and Oracle and this discussion was in-line with our thesis.
+U.S. Communications Infrastructure: We are Outperform on AMT, BXDC, CSQR, DLR, and EQIX. We are Underperform on
+CRWV.
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+2
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+DETAILS
+KEY TAKEAWAYS
+We recently held a conversation with Jeffrey Moerdler1,a real estate lawyer specializing in data centers and digital infrastructure,
+to discuss the in’s and out’s in a datacenter contract, and what has changed over the past year. Our key takeaways include:
+• Regulatory change in the US is primarily local rather than national. Power availability remains the most constraining factor
+near term, but community acceptance and changing rules have also become major concerns. Developers must assess
+not only whether a site works under current rules but also whether local requirements may change before the project is
+completed.
+• Power: The value of powered land depends on the timing of power availability and a reliable path to obtaining it. Power
+available <12mo = platinum asset; 12-24mo = gold asset; 24-48 mo = silver; and >48 mo is generally not commercially
+attractive. A site planned for 400MW can still be highly valuable if 100MW will be available within the first 12 to 24 months
+and the remaining capacity has a credible pathway. Responsibility for obtaining power varies by transaction.
+• Lease structure: every large deal (e.g. >100MW) is bespoke, but we discussed several key aspects of these contracts:
+• Hyperscalers typically insist on their own lease forms that are customized and favorable to their own benefit. These
+forms often contain termination-for-convenience rights to start with that are generally used as negotiating leverage for
+other optionality, but termination for convenience should never be accepted and if overlooked can be very risky (even
+though it still occurs). Historically there hasn’t been much termination for convenience included as it should have been
+taken out of the final contract.
+• Optionality could include expansion rights for space and power, rights of first refusal, purchase options, and extension
+options etc. Less sophisticated or financially pressured developers may accept many of these terms because they value
+the tenant's investment-grade credit and recognizable name.
+• Acceptable cancellation rights generally relate to loss of the power pathway or failure to meet defined development
+milestones. Some agreements provide extension and force majeure rights, and some allow termination only if the outside
+completion date is missed rather than for every intermediate milestone. Leases may also impose delay remedies such
+as free-rent credits or liquidated damages. The precise remedies depend on deal size, customer type, and negotiating
+leverage.
+• Neocloud credit enhancement: Credit support is especially important in new neocloud datacenter developments,
+and it’s extremely rare to complete a neocloud deal today without a credit wrapper, which includes an upfront cash
+contribution, a letter of credit, a limited guarantee or support from an AI or chip company.
+• Credit support shifting to <100% guarantees: The market has shifted over the last year from full lease guarantees
+toward limited guarantees, and this is happening across different guarantors including hyperscaler, AI companies and
+chip companies. Nowadays, guarantor may cover 80 percent of a construction loan but not all rent under the lease vs.
+previously 100%. The developer must fund the remaining equity above the construction loan. Guarantees also commonly
+amortize on a straight-line basis over the initial lease term, meaning a guarantee supporting a 10-year lease may have
+little value left by year 7 or 8. This is happening. Guarantors are also seeking stronger step-in rights, allowing them to take
+over the space and power if they must fund obligations under the guarantee. Previously, such rights were often handled
+privately between the guarantor and the customer rather than expressly included in the lease.
+• Potential pitfalls in datacenter contracts: the legal expert identified several potential “gotchas” in the contracts that, if
+not examined closely before signing, could cause serious issues later:
+1  For full disclosure, Jeffrey Moerdler is Bernstein's Global Software analyst Mark Moerdler's brother.
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+3
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+• A buried termination-for-convenience right
+• Credit enhancement that is too limited or amortizes too quickly
+• A tenant's ability to transfer the lease while eliminating the relevant credit support (A transfer may be acceptable to a
+developer if the original credit enhancement remains in place, because the developer is relying primarily on that support
+to make the transaction bankable)
+• Excessive tenant control over expansion, contraction, adjacent development, and other future campus decisions
+• What’s the downside to a neocloud contract? Our expert expects several neoclouds (probably not the largest public
+ones) to fail in the next 1–3 years, due to a mismatch between its 15-year data center lease obligation and its customer
+contracts, which may last only days, weeks, months, or, in the strongest cases 1–3 years. However, with substantial upfront
+credit support, this could turn into an attractive immediately available contract at a lower cost either for the developer or the
+guarantor.
+• As an example, suppose it takes $10M/MW to build capacity and the contract has 30% upfront guarantee, if the neocloud
+later fails, the owner could regain a completed facility with an effective basis of $7M/MW (assuming possession can be
+recovered promptly) which can make the pricing very competitive in the market.
+• No demand slowdown: the expert reports no current slowdown in deal activity. He sees more thoughtful underwriting
+and greater concern about becoming a counterparty to a speculator, but the overall market continues to move upward on a
+“hockey stick.”
+• Future opportunities: the expert expects demand for smaller facilities in urban, suburban, localized areas to grow over the
+next 3-5 years as the market moves beyond the training on remote campuses and develops more local inference nodes.
+TRANSCRIPT
+MM: Jeff, tell me what you do and what your expertise in the space is. Then we'll go into some questions.
+JM: Hi, good morning. Thank you all. I'm Jeff Moerdler. I'm a real estate lawyer by background. I wandered completely by
+accident into the data center space in 1990, when a client of mine called me up and said, “We have a new deal for you. We're
+building a carrier hotel, and you're our real estate lawyer.” I said, “Great, what's a carrier hotel?” “The precursor to data centers”
+they told me. After that, I got into antenna towers, cellular, building wiring, solar, wind, battery storage—anything telecom,
+technology, or energy overlaid on real estate. Up until 4 or 5 years ago, my practice was half general real estate and half data
+center and digital infrastructure. But with the explosion in data centers in the last 5 years, I'm spending 100% of my time, along
+with my team of about 10 lawyers, in the data center space.
+MM: Excellent. Just for a sense, how many data center deals do you end up seeing in a year?
+JM: Hundreds. There's a wide range. Usually, we represent the developer, owner, operator, or the party assembling powered
+land, but we're on all sides of the deals. We're doing 40 powered land assemblages right now. A ton of development deals. I
+just came to our Dallas office for a meeting yesterday with a client on a 3-gigawatt data center campus in Texas. We see a lot of
+deals. We're actively working, at any given time, probably on 30 or 40, probably couldn't juggle more than that at once.
+MM: You see a lot of them. One of the questions we get all the time now is: how has the regulatory environment changed, or has
+it, and how is it impacting the ability to be able to execute and build data centers?
+JM: There are a couple of pieces to that question. In general, the regulatory evolution is a very local thing. There hasn't been
+a ton of national-level change in the United States, but there has been a ton of local change, in part prompted by community
+opposition and lots of allegations, which I'm starting to believe, out there about foreign influencers impacting the community
+opposition. There are a bunch of organizations out there that have provided very one-sided manifestos to communities about
+why and how they should oppose data centers, but they don't give the other side of the story. And there's a lot of misinformation
+and a lot of lack of education or due diligence, and people just join the rah-rah moment and scream and yell in opposition. I say,
+half in jest, that I'd like to stand outside one of these community meetings with a garbage pail and insist that everyone walking
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+4
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+in who opposes data centers deposit their iPhone, Android phone, Apple Watch, Fitbit, connected hearing aids, laptop, iPad—
+everything—in the garbage pail, because they don't understand that things we all now rely on in our day-to-day life need a data
+center to operate. I saw a statistic recently that the average person is connected to between 50 and 75 data centers during the
+course of a day between their phone, their laptop, their desktop, and their other connected devices.
+We're juggling all of that at the same time as we're dealing with a challenge related to power. The power industry in the United
+States existed for 100 years with between 0 and 1% growth in electric demand. Then it experienced 10 years of decline for its
+generation because of energy efficiency and bringing on renewable energy. And then, 4 years ago, it went up the hockey stick.
+And we're now seeing this exponential growth, which has its roots in a lot of events that have occurred over the last 10 years or
+so.
+MM: Great answer. Following up on the energy side, two related questions: How impactful is it on the ability to both get these
+data centers built and even get these data centers papered from a contract perspective? And is that the area of focus you're
+seeing in terms of the main reasons why they shouldn't build data centers?
+JM: It used to be that for data centers, like most real estate, the motto was “location, location, location.” And before the last
+4 years, if you wanted to put up a data center in any major market, you just called up the electric utility, told them how much
+power you wanted, and usually they could deliver it when you wanted. Maybe they'd need 6 months or a year to put in some new
+transformers or wiring or create the driveway from their nearest substation to your building, but they'd deliver, no questions
+asked.
+That all changed with the exponential growth and the inability of the electric utilities to serve the exponential amount of demand.
+In Texas right now, I believe there are applications pending—or maybe there were before Batch Zero got rid of a bunch of them
+—for 4 times the power available in the entire grid in Texas. A ton of that is speculative. The utilities and the regulators—I liken
+what they're doing to college or med school or law school applications. You need some easy way of narrowing the funnel. In
+applications, it's SATs, LSATs, MCATs, GPAs, to reduce the number of applications to a manageable number. In electric power,
+they're doing it now through deposits and requirements for security to try and get rid of the very speculative deals where people
+are saying, “I have a nice piece of land. I'm gonna call it a data center and sell it for a hundred times the agricultural value, and so
+I'll put an application in for a gigawatt of power.” And they have no customer, no expertise, no money, no nothing. And the utilities
+are trying to narrow that funnel and deal with that exponential growth in the applications.
+It makes it more complicated, so it's now “power, power, power.” That's a top issue. I think it's moved off a drop in the last year
+or so, where it was exclusively the top issue: availability and timeline, and ramp, and cost to bring power to a site. Now, the
+community opposition has ratcheted up. Are you in a community that you can work with? And the rules are changing every day,
+so developers of data centers are also concerned: am I in an area where I think everything works today, but the rules change a
+month from now? So there's a myriad of considerations.
+Water is becoming a more important consideration, although most new data centers are low-water-usage. Again,
+misinformation out there in the community about data centers taking away all the water. There was a great statistic—I think it
+was on 60 Minutes—that golf courses in California use twice as much water as data centers.
+MM: A lot there. Of the data center contracts you're seeing, do they include a requirement that the data center vendor assure
+this power? If they don't include it, does it end up being behind the meter? What's the approach?
+JM: Back up a step. Five years ago, a 25-megawatt data center was a large data center, and a 1MW lease was a large lease.
+With the exponential growth in demand prompted by growth in the cloud and by AI, now 100 megawatts to multi-gigawatt is an
+average deal, and under 100 megawatts is a small deal.
+It depends on how the deals are structured, and those larger deals are all bespoke. The structure of every deal is different,
+based on the local community, the customer, whether there's a credit enhancement to the lease, and what those parties'
+requirements are, and every space is built out on a larger one, to some degree bespoke, which creates problems for the industry
+and complexities. But certainly somebody is assuring that the power is available.
+If you're doing a powered land assemblage, for example, the real exponential increase in value of the land occurs when you
+can show you have power or a definitive pathway to the power, which can be in a ramp-up, in installments. If you have power
+currently available or within 12 months, or the first tranche or 25% of the projected power in 12 months, you have a platinum
+asset. If it's 12 to 24 months, it's solid gold. 24 to 48 is silver. More than 48: don't call me; I'll call you. Nobody's seriously—
+occasionally, but generally not—looking that far out, particularly because the industry wants instant gratification. They want to
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+5
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+ramp up, so they want the immediately available power, which is why, if you've got a site, it doesn't have to have all the power.
+If you're projecting a site with 400 megawatts, and you can show you have about 100 coming online in the first 12 or even 24
+months, and you've got a pathway to the additional power that's pretty certain, you've got a great asset. And definitely the power
+is critical, but every deal is different as to who's chasing the power. We signed a contract to sell a 2+ gigawatt Texas Batch Zero
+data center campus for about $2 billion to a public company. And, we’ve processed the paperwork and confirmed that it was
+allocated in batch zero, but the buyer is going to process it from this point forward. We created the pathway; they'll take it from
+here. There are other deals where the buyer or the tenant wants to see the first tranche energized. I did a build-to-suit deal with
+a large financial services firm recently, where they signed a long-term lease, a build-to-suit lease, and it was our obligation to
+get the power. And the rent commencement date for the space was energization of the first tranche of power at the substation
+adjacent to our site. Each deal is bespoke.
+MM: One more quick question, and then I'll hand off to Madison. What's the mix of what you're seeing in deals? Are they mostly
+hyperscalers? Are they neoclouds? Does it change constantly? Are they enterprise?
+JM: It's all over the place.
+MM: and changing?
+JM: The acceleration in the market in the last few years has been hyperscalers, and I use a narrow definition of Hyperscaler:
+Microsoft, Meta, Google, Amazon, plus nowadays, Oracle. Those are the only hyperscalers in my book. Everybody else is a
+wannabe.
+Those are the only ones that are really operating cloud, which I view as outsourced operation of a data center at a high level.
+Then it's the AI companies. And now, the last few years, the new business model of neoclouds, and even more recently, the
+chip manufacturers. And lots of data center developer/ owner/ operators. We're seeing all of them out there. I am seeing a
+shift in the last year or two in that, two years ago, 95% of what hyperscalers did was leasing data center space and power.
+They only occasionally developed it themselves, in part because they didn't have the staffing to deal with that, considering their
+exponential growth path, and they wanted somebody else to take the risk and provide the expertise. They would occasionally
+build a flagship kind of facility, a zero-water-use facility that they might build themselves.
+But in the last year or two, I'd say hyperscalers are doing 20% of the builds themselves. They're acquiring the land and building
+it themselves, as they've built out their real estate departments and realized, long-term, it's more cost-effective, and they have a
+lot of cash in the bank and a lot of sources of debt and equity available to them. The AI companies are not building it themselves,
+nor are the neoclouds. But a lot of the developer-owner-operators are. All those companies are building themselves and either
+creating their own powered land assemblages or acquiring them.
+MM: Perfect. Madison, you had a question.
+MR: I want to go deep on some of the Neocloud contracts in a minute, because I think, especially given the news in the last
+couple of weeks, there's probably a lot of demand, but let's start broader for a second. Talk to us about how tight these leases
+are, particularly the Co-lo leases, and maybe the difference between the Hyperscalers and everyone else.
+JM: As I said, every deal is bespoke, and different developers, owners, operators have different financial pressures on them,
+so they may be more desirous and more flexible in closing a lease deal, and they might be able to do it with a party with weaker
+credit because they need to show their bank or their investors that they signed a lease, even though it may not be as strong a
+lease. Or they may be more flexible on the lease terms, giving a termination for convenience. One of the things I've noticed: every
+single Hyperscale deal I've ever done—there's only one I've done in recent years of any size, a megawatt or larger, that was on
+the landlord's form.
+The hyperscalers insist you use their forms. And every one of those forms contains, buried in it, in at least one or two places,
+termination for convenience. And every single time I put it on the major issues list after I see the form lease and have a
+conversation with the Hyperscaler, and say, “By the way, this termination for convenience—you're leasing 20 or 100 megawatts,
+and we're doing some custom build for you and spending millions of dollars. This termination for convenience is an accident,
+right? The lease would be unsaleable on the facility and unfinanceable. We negotiated pricing on a 10-year deal.” And I am
+convinced that the Hyperscalers give acting lessons to some of their staff, because every single time somebody stands up
+and says with a completely straight face, “Really? That's a problem for you? Everybody else agrees to it.” Neither anybody
+I'm advising nor any other sophisticated data center lawyer would allow a termination for convenience unless they missed it,
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+6
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+because they are buried in the lease documents.
+MR: To be clear, they're always asking for it, and they're usually not getting it.
+JM: They say they get it all the time. That I don't believe. I believe they get it occasionally because some people are either
+too unsophisticated, didn't read the document carefully, or are too desperate, and just say, “I've got a Hyperscaler. Where do
+I sign on the dotted line?” And they'll give them anything they want, which includes extraordinary optionality, expansion of
+space, expansion of power, both space and power, right of first refusal, option of purchase, extension options. Again, their form
+documents essentially give them control, and their theory is, “I'm giving you an investment-grade credit and a name that adds
+huge value to your asset for sale and financing purposes, so I should get anything I want.”
+MR: I often think about different buckets of developers. At the really credible end, we've got Digital Realty, Equinix; they tend to
+be conservative, smaller deals, not doing huge builds in West Texas. Then you have the middle ground, which is a lot of PE-held
+developers, some of whom have really strong track records. And then you go down the spectrum, and you get to some of miner
+converts, no-name—I sometimes call them “dudes with PowerPoints”—who just has a building, and all of a sudden, they're a
+data center developer now. Is it fair to think that that kind of developer credibility also shows up in the leases? So we would see
+maybe the ones towards that long tail are not sophisticated enough to get the convenience termination rights out of the leases.
+JM: Yes. The more sophisticated you are, and the larger a player, or the more unique an asset you have, the more likely you can
+negotiate from strength. If you're negotiating opposite to a Hyperscaler, you're always starting behind the 8-ball, because they
+have huge market power, and they're very sophisticated. And their form documents do an amazing job of giving them complete
+optionality and rights and controlling costs for them and such.
+MR: Got it. Have you ever seen a Hyperscaler terminate for convenience?
+JM: There was a rash of terminations in Europe about a year or two ago. I'm not sure, because I never saw the documents; I
+read about it in the papers. Microsoft and Meta terminated several deals in Europe. I'm not sure if they were terminations for
+convenience, or developer delay, or what the basis was. Personally, my guess is that all of the hyperscalers, and I think the AI
+companies too, have lots of different departments, or teams, or lines of business, and those teams compete with each other.
+I had a deal opposite a Hyperscaler where we were negotiating in an enterprise multi-tenant data center with two different
+groups at the same Hyperscaler, and we said, “Hey guys, why do we have to negotiate two separate leases? Why don't you guys
+partner up? We'll negotiate one lease. You'll both sign it. We can sign it as two separate leases or as one.” They refused to talk
+to each other. They wouldn't work together. I think that the terminations in Europe happened for two reasons. One, because
+whatever that specific team or division was working on, the companies moved away and changed their business plan so they
+no longer were doing whatever that team was doing and didn't need this space. I think part of it was also a reality check for the
+market on the power of the hyperscalers.
+Those are the only ones I'm aware of. And I think in today's world, if you have power, and you have space, and you have permits
+and approvals and a pathway to making the data center happen, even if the Hyperscaler or the AI company or the neocloud
+terminates, you have a hugely marketable asset, especially if you've built it and the power is available, and the customer walks
+or goes under, there'll be a lineup of people for that immediately available facility. You may need to do some work to modify
+it, because all the hyperscalers and the AI companies have their own secret sauce, and they want space built out and power
+delivered in their own particular engineering design. And you may have to unwind or modify some of that, and that's always
+a push and pull in developing these deals. How much do you make it bespoke, and how complicated is it to make it work for
+somebody else if the original customer leaves?
+MM: Maybe follow up on part of that, then I'll hand back to Madison. What are the normal, acceptable, contractual reasons, if
+any are normal, for why these things can be canceled? Is it simply they can't build the data center? Is it long delays? What are
+normally the things that are acceptable to put in a contract?
+JM: Losing that pathway to the power. For example, in Texas, if you didn't get put into batch zero, or you got shifted from batch
+zero to studied load, which may or may not guarantee you power, or got shifted to Batch 1. Losing that certain pathway to power
+is gonna be a problem. Most likely the deal wouldn't even be signed until you had that confirmed pathway to power.
+And then there are delay exit rights. For example, one deal we did has a neocloud as a tenant with a credit wrapper from an AI
+company. In that deal, we have a time period in which to complete and deliver the premises, and we have some milestones. And
+if we don't hit the milestones—we had leverage, because we have the asset and they really want it. Sometimes, if you don't hit a
+milestone, if you don't get a signed ESA, PPA, whatever that utility calls it, by some date, the tenant has a termination right. Or if
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+7
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+you don't build your foundations or the pad for the substation—there are all kinds of timeline milestones. We were able, because
+we had leverage, to bypass the termination right for any of those milestones. So as long as we complete it by the outside date,
+we get as long as we need to catch up, and the only time they can terminate is if we don't hit the outside date for completion.
+And we have some extension rights and force majeure rights built into that.
+Again, unfortunately, there's no rule of thumb. Every deal is bespoke, but generally there will be milestones on a new
+development deal or even a build-out. You have an existing 50-megawatt multi-tenant data center, and you're building out
+5 megawatts for a new customer in the building. If you don't deliver by a certain date, that customer is gonna have—almost
+certainly, if they negotiated well and had some power in the market—some liquidated damages. As a hypothetical example, if
+you're supposed to deliver the space by June 1st, and you don't hit June 1st, that date might get extended for up to 60 days for
+force majeure. But if the delay isn't force majeure, the tenant gets 1 day of extra free rent for every day of delay for, say, 60 days.
+Then, after 60 days, it ratchets up to 2 days for each day of delay. Then, at 120 days, the tenant has a termination option. Again,
+there are rules of thumb that vary based on the size of the deal and the nature of the customer and their market power.
+And the market has shifted in the last year or two to give much more market power to the developer-owner-operator because
+of the scope of the demand in the market. But the Hyperscalers, because of their credit rating, and the chip manufacturers
+also have huge leverage in the market. And we've also seen the beginnings of the chip manufacturers starting to do deals
+themselves. I think they're pulling back and are concerned about neoclouds and startup AI companies. And instead of their
+giving a credit wrapper or some sort of credit enhancement to the neocloud or smaller AI company, they're saying, “I'll lease this
+space or own it. I'll control it, and I'll lease to you, the neocloud, so that I have more control over the deal. And if you're no longer
+buying your chips from me, or if you're not moving fast enough, or your business doesn't meet financial tests, I can get rid of you
+and replace you.” Just starting to see that develop.
+MR: I want to go there, but before we get there, can we just talk about the neocloud leases? My understanding is that the vast
+majority of them have to have a credit wrapper. Is that fair?
+JM: If you're doing a new development, as opposed to an existing building that's already a data center and leasing the space. In
+new development, it is extremely rare to do one without a credit wrapper. Again, it gets back to how sophisticated the developer
+is, how liquid they are, if they have the cash, how willing they are to take risk. But every deal I'm doing involving a neocloud has
+some credit enhancement. It could be structured a lot of different ways.
+MR: Please elaborate.
+Jeffrey Moerdler: For one of the deals, we're getting a combination of a contribution to capital—cash—from the Neocloud to
+help build the space, because they've raised a bunch of money, and they have liquidity, even though they don't have income and
+a track record, in most cases. So we're getting a combination of upfront cash contribution and a credit enhancement from an AI
+company that's backing this neocloud.
+Other deals are a letter of credit, a limited guarantee. The scope of the guarantees, or the credit wrappers, or credit
+enhancements has changed over the last 10 months. That's been a very dynamic space, prompted by one of the hyperscalers,
+which about a year ago changed the market by saying, “We're no longer giving a full guarantee. We're going to give a limited
+guarantee, and that limited guarantee is designed to help the developer get a construction loan.” So they say, “We'll guarantee
+80% of the construction loan, but we're not guaranteeing all the rental under the lease. You, the developer, have to put up your
+40, 50, 60% equity above the construction loan. That's all at risk, and 20% of the construction loan is at risk.” So they're giving
+the bare minimum to help get a construction loan in lieu of the old days where they gave a full guarantee. In addition, those
+guarantees typically amortize on a straight-line basis over the term of the initial lease. So if you have a 10-year lease to the
+Neocloud, by year 7, that guarantee is essentially worthless, because it's amortized down.
+On the other hand, my belief is that if we're going to see problems in the neocloud or the AI startup spaces, we're going to
+see them in 1 to 3 years. And I am convinced we will see some bankruptcies. Not the largest AI companies, but more market-
+specific, smaller AI startups—somebody who's creating an AI specifically for law firms, or specifically for the garment industry
+—won't generate revenue and will crash and burn. And I think you'll have some of that with the neoclouds also, because the
+neoclouds worry me in that they are WeWork 2.0. There is a mismatch between signing a 15-year data center lease expense-
+side obligation and having a customer-facing agreement that could be by the day, the week, the month; in the best case, 1 to 3
+years. I've heard about occasionally 5 years, but not more than that. So what happens when those turn over? WeWork burned for
+that reason.
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+8
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+MR: Preaching to the choir on that one, Jeff. We are long-standing neocloud bears here.
+MM: By the way, your time horizon is not dissimilar from mine, but everyone thinks I'm nuts, but okay.
+MR: Jeff, I think that's really interesting around the partial guarantee and the reset 10 months ago. My understanding would be
+that there actually were a ton of things signed in the market before that, even on construction that's maybe not done yet. Can
+you talk us through what the prior standard was? Also, it's interesting that that's from a hyperscaler. When we think about some
+of the chip manufacturers, are they also moving to partial guarantees?
+JM: Everybody is… Almost every deal that I've done with a credit enhancement from either a Hyperscaler or an AI company or
+a chip manufacturer in the last 10 or 12 months—every single one of them has shifted, maybe not exactly to that formula, but
+yes, has shifted from the prior model of a full lease guarantee to that limited model. And the guarantors are seeking greater
+step-in rights: “If I have to pony up the cash under my guarantee, I want a right to take over the space and power and use it and
+reposition it,” which is not an unreasonable position.
+MR: What was it before?
+JM: Generally, before that, sometimes they had specific step-in rights. More often, those rights were dealt with behind the
+curtain, internally between the guarantor and the customer.
+MR: Got it. And in addition to the credit wrapper—and it would be useful to know the full versus the partial guarantee—are
+the rates on those leases correspondingly higher to offset the credit risk, or does an IG credit wrapper fully offset that for a
+developer?
+JM: Again, very bespoke. Each developer sets their own standards. There isn't really transparency in the market, and each one
+has its own hot-button issues as to what the party giving the credit enhancement is willing to do and what the party receiving it
+is. So every deal is different. Unfortunately, there are no rules of thumb anywhere there.
+MR: Yeah, no problem.
+MM: That's good; you can't be replaced by AI, then.
+JM: Exactly. I'll put it a different way, and I think it applies equally to my industry as to yours. If AI replaces paralegals and junior
+associates, or your junior analysts, how do we train the next generation of law firm partners and senior analysts if they don't have
+a chance to go up through the ranks?
+MR: I don't know.
+MM: That's the conversation. Go on, Madison.
+MR: I don't know how to make money on that in public equities, Jeff, but fair question for later. I think the concept of thinking
+about who has the negotiating leverage in these leases is a really important one and totally makes sense to me in terms of
+credible developers and hyperscalers.
+JM: I'll interrupt and tell you one story to emphasize that negotiating leverage. One of my longtime regular data center
+developer-owner-operator companies—I'd done 10 deals for them opposite hyperscalers. And we had one situation a couple
+of years ago where we had the only game in town that would satisfy the Hyperscaler's requirement: the amount of power in the
+right location, control of the asset, pathway to power, the building already under development, so we could meet that timeline.
+We knew we were the only game in town in the market, so we decided to have some fun, which I had suggested to the client,
+knowing that it would be a one-time situation. But we said to the Hyperscaler, “By the way, if you want this site, we're not gonna
+extort you on the rent. We're gonna charge you a top-of-the-market rent, but you're doing this lease on our form, not on your
+form.” It's the one time I did a deal in the last 7, 8 years on my form lease, not on the Hyperscaler's form lease, for a megawatt
+or more. And it was a really fun situation, but never to be repeated again, because the likelihood of our having that negotiating
+leverage is slim. Sorry, I interrupted you.
+MR: No, it's a good story and a useful point. And again, not for today, but I actually used to negotiate against the Hyperscalers
+in my prior life at Verizon, so I really feel your pain, and they're brutal. But thinking about a situation where you're dealing with a
+neocloud and maybe a long-tail developer, right? Where is the balance of power in that?
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+9
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+JM: Dependent on the credit wrapper. And I've done deals opposite both of them. I won't say which neocloud, but a client
+of ours came to me about a year ago and said, “We've got this data center powered land assemblage. We're gonna build it,”
+which is unusual. Usually the people putting the assemblage together flip it to somebody else, but this client was gonna build
+it. They're a developer, and they said, “And we got this lease from a neocloud. Can you take a look at it? What do you think?” I
+read the lease over a weekend, and I put about 50 comment bubbles in the lease, and I went back to the client, and I said, “This
+is a great form lease if you're a neocloud. It's not if you're a developer. If you don't get them to agree to change 3 quarters of
+those 50 points, I'm telling you not to do this deal.” They read the comments. They sent it to the Neocloud. The Neocloud read
+it and said, “Maybe we'll change 10 or 20% of them,” and our client sucked it up and said, “I'm not doing this deal,” because it
+was too problematic in terms of things like termination rights and control over future nearby developments on the campus, and
+expansion and contraction. Everything under the sun was a thousand percent in favor of the neocloud. And they didn't have the
+credit to justify that. I would have expected to get that from a Hyperscaler, but I didn't think it was reasonable to get that from a
+neocloud without a strong credit enhancement.
+MR: If I look at the capacity coming online, let's say in the next 12 to 18 months, probably most of those contracts were signed
+over a year ago, and I hear you on the ecosystem evolving a ton. Where do you think the “gotchas” are in the leases where we've
+maybe gotten smarter in what we're signing today, but which could be problematic in terms of the construction coming online?
+JM: I think, buried in some of those awesome time bombs, the one that worries me the most is the missed termination for
+convenience. Also, how the credit enhancement is structured, and is there a risk that either the neocloud or smaller AI company
+that's a tenant transfers a lease to someone else and the credit enhancement goes away? A lot of these are—
+MR: Is that possible? Can they transfer these leases?
+JM: Depends on how it was negotiated, but as a general rule, if you maintain the credit enhancement, then you can transfer it.
+Do we care, as a developer, if I have NeoCloud A, B, or C, as long as I have that credit enhancement from a Hyperscaler or chip
+manufacturer? Not so much, because I'm relying on the credit enhancement. That makes the deal bankable.
+MR: Right. Got you. Mark, I have one more, but if you've got any burning, you can go ahead.
+MM: Quick one for you.
+MR: Sure.
+MM: It sounds like, at this moment in time, a credit enhancement for any of your definition of hyperscalers, or any of the major
+semiconductor guys, if it's well-written and the rest, is golden in terms of the value on it. Has that changed in any way, shape, or
+form? We've seen a number of the Hyperscalers go free-cash-flow-negative, starting to build up debt. The concern has been
+how much they're building. Is that having any effect on taking their credit enhancement?
+JM: One of those parties whose credit has been put into question more recently because of the amount of debt—it's becoming
+harder to do a deal with them. I have several deals in process. So far, they are all continuing, but my clients on those deals are
+all sitting there watching the Hyperscaler's credit rating and watching the market signals and thinking about what to do. But so
+far, I haven't seen it kill a deal that was under negotiation. A deal that hadn't been started, where parties are bidding on the deal
+—they're not taking that Hyperscaler's guarantee as seriously, and if they have another option, they'll go to someone else. But I
+haven't seen it kill a deal that was under negotiation yet.
+MM: The point is, if the credit issues continue or get worse, then we could see that having an impact.
+JM: Absolutely. It's most likely on new deals that haven't started negotiation, where there's a bidding contest going on, and
+you have offers from a couple of different neoclouds or Hyperscalers or AI companies with different credit enhancements,
+and you're comparing deals and haven't selected the one to start negotiating with. Absolutely, that becomes a bigger factor.
+There's a moral obligation and a sense of commitment once you sign a letter of intent, even though it usually doesn't create a
+legal obligation, and people are much more reluctant, which is why I say to my clients, “Even if it's a non-binding letter of intent,
+I want a letter of intent for two reasons.” It creates that moral obligation on both parties, and people feel psychologically more
+committed to the deal. It's more tangible, and you have something to look back at and say, “Hey guys, this wasn't in the term
+sheet. Why are you asking for that now?” if somebody tries to add that termination for convenience. And I now put, for example,
+in all my letters of intent, “No termination for convenience.” I want to hit that issue with the sledgehammer.
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+10
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+MR: Seems reasonable. Just a couple broader questions for you, Jeff. If you think back, just in terms of volumes, how many new
+deals are you seeing relative to 6 months ago, relative to 12 months ago?
+JM: We're going up the hockey stick.
+MR: Which is wild, considering we're still planning 3 years out on a good day, right? It may be even longer than that when we
+talk about the power secured. How early do you think you would actually see a slowdown in some of this contracting before we
+would see it in the actual construction numbers?
+JM: I'm not sure I have that good a Ouija board to guess. How that will develop.
+MR: But you're definitely not seeing it today, is the takeaway?
+JM: No, I'm seeing a little more hesitancy, a little more thoughtfulness, but I haven't seen a slowdown in deals. I think the market
+is also becoming more sensitive to the speculators. And it's not just ERCOT with Batch Zero and other utilities that are trying to
+reduce the number of speculators in the market. I think people are becoming much more concerned about being a counterparty
+to a speculator.
+Something you said jogged one other thought in my mind, a slightly different point. And that is, I see a missed opportunity out
+there in the market right now. As I said before, 5 years ago, a 25-megawatt data center was a big deal. Over the last 7 or 8
+years, we've seen a ton of M&A in the data center world, with the public companies, the wannabe public companies, the formally
+public companies gobbling up mid-sized data center operators to move the needle, rather than developing one data center at
+a time. The result has been that the middle-market operator category has shrunk. And the place I see the impact of that: those
+companies that were gobbled up have been refocused on the 100-megawatt to gigawatt projects in general, and the market
+has not focused on smaller, urban, suburban, localized, enterprise multi-tenant data centers.
+Full disclosure, I represent a lot of smaller data center owner-operators. I think that's a missed opportunity in the market. It used
+to be, 5 years ago, if you were looking for 250 kW to, say, 2 megawatts in any of the top 25 or 50 markets in the U.S., you had
+5 to 10 providers competing for that local deal, particularly if it was for an enterprise, a bank, or a law firm or something. Now
+you're lucky if you have 2 or 3 in most markets, because half the providers got gobbled up and refocused on the big deal, and
+some of the remainders are out of power. So the pricing for that local data center capacity has gone up in most markets 50 to
+100% in the last couple of years. And Equinix, CoreSite, and other smaller companies are doing very well as a result of that.
+I think that demand is only gonna grow exponentially over the next 3 to 5 years as we have filled out the first tranche of the AI
+training on remote campuses, and we shift to more local inference nodes. And I'm seeing this. I just did a 2-megawatt lease in
+the New York City area, representing the operator of a multi-tenant facility for an AI inference facility in that city.
+MR: I have just one last question. Jeff, I would like you to do your best Chicken Little impression on this one. It's clear that we've
+all decided we don't love Neoclods on this call, but let's play forward what actually happens in a downside scenario. Whether
+one of these goes under, or one of them, for whatever reason, needs to churn out of some of these data center facilities and
+doesn't grow—and you can debate the timing on that—but what tactically happens?
+JM: My prediction is that it will definitely happen for several neoclouds—not all of them, probably not the larger public ones
+—in the next, I believe, 1 to 3 years. And what I'm counseling my clients is: focus heavily on that credit enhancement and how
+it's structured, because that may be your tenant in 1 to 3 years. And if you’ve got a good credit enhancement from a chip
+manufacturer, or a Hyperscaler, or even an AI company, then you're in pretty good shape.
+On the other hand, it's a little old, the numbers have gone up, but it's easy math, and I'm not a math major. But if you use, as a
+rule of thumb, $10 million a megawatt to build data center capacity, I suggest to my clients that you get 30% up front, be it a
+letter of credit, cash security deposit, prepaid capital contribution, or a guarantee from an investment-grade party. So now you
+build the data center. It costs you $10 million a megawatt. And a year or two later, that neocloud craps out. Now you own a data
+center—assuming you're not in New York, where it takes a year to two years to get possession back, but assuming you can get
+possession in a few months—you now have a completed, fully built-out data center with a basis of $7 million a megawatt, which
+is immediately available as soon as you get possession. You have a very competitive asset there. You're almost better off in that
+scenario, because you can now remarket that, competing very cost-effectively against the guys with the 10-million-and-up
+basis per megawatt.
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+11
+
+Mark L. Moerdler, Ph.D.    +1 917 344 8506  mark.moerdler@bernsteinsg.com
+30 October 2026
+So the key to me is getting that credit enhancement and thinking through the risk of what happens if that neocloud fails. And I
+think the same applies to those smaller AI companies that are market-niche-oriented. So yes, I expect it'll happen, and I think the
+smart players who focused on this kind of a calculation will do fine. It'll make a lot of headline news: “AI is crashing,” or whatever,
+in the Wall Street Journal and the New York Times. But the data center world will survive that too, and might even be better off in
+the long run, if you did a good deal.
+GLOBAL SOFTWARE + US COMMUNICATIONS INFRASTRUCTURE
+12
