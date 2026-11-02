@@ -10,6 +10,10 @@ class Settings(BaseSettings):
     dropbox_app_secret: str = ""
     dropbox_refresh_token: str = ""
     dropbox_folder_path: str = "/Current"
+    # /Current is a folder shared with this account, read by its id (2026-11-01) so
+    # the bot does not depend on it being mounted. Stored paths still start with
+    # dropbox_folder_path. Empty = read that path from the account's own tree.
+    dropbox_shared_folder_id: str = "9196985312"  # Current
 
     # Google Gemini
     google_api_key: str = ""

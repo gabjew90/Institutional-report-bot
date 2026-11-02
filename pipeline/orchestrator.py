@@ -13,7 +13,7 @@ from pathlib import Path
 
 from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep
 from ai_analysis.models import PdfAnalysis
-from dropbox_client.watcher import list_folder_files, download_file, _get_client
+from dropbox_client.watcher import list_folder_files, download_file, _api_path, _get_client
 from pdf_processing.extractor import extract_text_per_page, extract_pdf
 from report.synthesizer import synthesize_daily_pulse
 from report.models import DailyReport
@@ -806,7 +806,7 @@ def seed_dropbox_cursor_to_now() -> str:
     """
     dbx = _get_client()
     result = dbx.files_list_folder_get_latest_cursor(
-        settings.dropbox_folder_path, recursive=True
+        _api_path(settings.dropbox_folder_path), recursive=True
     )
     db.update_dropbox_cursor(result.cursor)
     ts = datetime.utcnow().isoformat()

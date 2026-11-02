@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 import dropbox
+from dropbox.common import PathRoot
 from dropbox.files import FileMetadata
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
@@ -56,11 +57,38 @@ def is_junk_row(row: dict) -> bool:
 
 
 def _get_client() -> dropbox.Dropbox:
-    return dropbox.Dropbox(
+    dbx = dropbox.Dropbox(
         oauth2_refresh_token=settings.dropbox_refresh_token,
         app_key=settings.dropbox_app_key,
         app_secret=settings.dropbox_app_secret,
     )
+    # 2026-10-29: /Current stopped being mounted in this account, every poll
+    # failed with not_found and no research came in for three days, though
+    # the uploader kept filling the folder. Read by id, mounted or not.
+    if settings.dropbox_shared_folder_id:
+        return dbx.with_path_root(PathRoot.namespace_id(settings.dropbox_shared_folder_id))
+    return dbx
+
+
+def _api_path(path: str) -> str:
+    """The path to send Dropbox. Reading the shared folder by id makes its top
+    the root, so /Current/2026/x.pdf is /2026/x.pdf and /Current itself is ''."""
+    root = settings.dropbox_folder_path
+    if not settings.dropbox_shared_folder_id:
+        return path
+    if path.lower() == root.lower():
+        return ""
+    if path.lower().startswith(root.lower() + "/"):
+        return path[len(root):]
+    return path
+
+
+def _stored_path(path: str) -> str:
+    """The path to keep. pdf_files dedups on it and the bank and date are read
+    from it, so it stays /Current/... whichever way the folder is reached."""
+    if not settings.dropbox_shared_folder_id:
+        return path
+    return settings.dropbox_folder_path + path
 
 
 def get_temporary_link(dropbox_path: str) -> str:
@@ -74,7 +102,7 @@ def get_temporary_link(dropbox_path: str) -> str:
         return ""
     try:
         dbx = _get_client()
-        result = dbx.files_get_temporary_link(dropbox_path)
+        result = dbx.files_get_temporary_link(_api_path(dropbox_path))
         return result.link or ""
     except Exception as e:
         log.warning(f"Dropbox temp link failed for {dropbox_path}: {e}")
@@ -93,7 +121,7 @@ def list_new_files(folder_path: str | None = None) -> tuple[list[DropboxFileEntr
     Returns (new_files, updated_cursor).
     """
     dbx = _get_client()
-    folder = folder_path or settings.dropbox_folder_path
+    folder = _api_path(folder_path or settings.dropbox_folder_path)
     cursor = db.get_dropbox_cursor()
 
     entries: list[DropboxFileEntry] = []
@@ -135,10 +163,10 @@ def list_new_files(folder_path: str | None = None) -> tuple[list[DropboxFileEntr
         for entry in result.entries:
             if isinstance(entry, FileMetadata) and entry.name.lower().endswith(".pdf"):
                 modified = entry.server_modified.isoformat()
-                if floor and modified <= floor:
+                if floor and modified < floor:
                     continue
                 entries.append(DropboxFileEntry(
-                    path=entry.path_display,
+                    path=_stored_path(entry.path_display),
                     name=entry.name,
                     rev=entry.rev,
                     size=entry.size,
@@ -147,6 +175,15 @@ def list_new_files(folder_path: str | None = None) -> tuple[list[DropboxFileEntr
         if not result.has_more:
             break
         result = dbx.files_list_folder_continue(result.cursor)
+
+    # The floor is the newest row on file, so a re-list cut short by a restart
+    # must not have registered a newer note ahead of an older one, or the next
+    # floor passes over the older one for good. Oldest first keeps it behind
+    # everything not yet fetched. Files sharing the floor's second stay in the
+    # listing above, since an upload batch shares one, and get_pdf_by_path skips
+    # the ones already on file.
+    if floor:
+        entries.sort(key=lambda e: e.server_modified)
 
     return entries, result.cursor
 
@@ -161,7 +198,7 @@ def download_file(dropbox_path: str, local_dest: Path) -> Path:
     """Download a single file from Dropbox."""
     dbx = _get_client()
     local_dest.parent.mkdir(parents=True, exist_ok=True)
-    dbx.files_download_to_file(str(local_dest), dropbox_path)
+    dbx.files_download_to_file(str(local_dest), _api_path(dropbox_path))
     log.info(f"Downloaded: {dropbox_path} -> {local_dest}")
     return local_dest
 
@@ -181,7 +218,7 @@ def list_folder_files(
     Returns files sorted by most recently modified first.
     """
     dbx = _get_client()
-    folder = folder_path or settings.dropbox_folder_path
+    folder = _api_path(folder_path or settings.dropbox_folder_path)
     entries: list[DropboxFileEntry] = []
 
     result = dbx.files_list_folder(folder, recursive=True)
@@ -193,7 +230,7 @@ def list_folder_files(
                 if until and entry.server_modified > until:
                     continue
                 entries.append(DropboxFileEntry(
-                    path=entry.path_display,
+                    path=_stored_path(entry.path_display),
                     name=entry.name,
                     rev=entry.rev,
                     size=entry.size,

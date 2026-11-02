@@ -151,7 +151,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `config.py` | All settings from env vars via pydantic-settings |
 | `channel_config.py` | Which Discord channel is which, by permanent channel ID first and name as a fallback (2026-10-04, after kloh's alert channel was renamed and the bot silently stopped reading it). Every channel check goes through it: `ingests` (every channel except `chat_ingest_exclude`: test-channel, the four private channels and the eight webhook-feed channels such as equities-ideas and news-flow, owner call; new channels included automatically; posts by bots and webhooks are never stored anywhere), `eager_ocr` (the alert rooms), `caller_for` (by the caller's `channel_id`), `is_command_channel` (admin commands, test-channel). Settings hold IDs with the name in a comment. A daily 9:05 ET job pings ops when a configured channel is gone |
 | `db.py` | SQLite core: connection model, schema, migrations, shared helpers, and the FACADE that re-exports every query helper from `db_parts/` (split by subject 2026-09-01: `pdf`, `chat`, `pulse`, `analyst`, `summaries`, `ask`). Always `import db` and call `db.<name>`; inside `db_parts/` every db call reads `_db.<name>` so facade patches keep working. New helper: put it in the subject module and add it to the facade import list at the bottom of `db.py` |
-| `dropbox_client/watcher.py` | Cursor-based Dropbox polling + download. A downloaded file without the `%PDF-` marker in its first 1024 bytes is stored FAILED with `not a PDF: ...` and a retry count no sweep picks up, and ops gets one ping per poll with the count (2026-10-27: 305 notes arrived as the 17-byte reply `{"success":false}`). Paths are deduplicated, but a new Dropbox revision of a non-PDF row is downloaded again and queued, so re-uploading a broken note is enough. The research-feed watchdog ignores non-PDF rows |
+| `dropbox_client/watcher.py` | Cursor-based Dropbox polling + download. `/Current` is a folder shared with the bot's account and is read by id (`DROPBOX_SHARED_FOLDER_ID`, 2026-11-01, after it stopped being mounted on 10-29), mounted or not: Dropbox sees paths without the `/Current` prefix (`_api_path`), stored paths keep it (`_stored_path`). Two failed polls in a row ping ops. A downloaded file without the `%PDF-` marker in its first 1024 bytes is stored FAILED with `not a PDF: ...` and a retry count no sweep picks up, and ops gets one ping per poll with the count (2026-10-27: 305 notes arrived as the 17-byte reply `{"success":false}`). Paths are deduplicated, but a new Dropbox revision of a non-PDF row is downloaded again and queued, so re-uploading a broken note is enough. The research-feed watchdog ignores non-PDF rows |
 | `pdf_processing/extractor.py` | PyMuPDF text extraction; page-image rendering used only by the multimodal carve-out |
 | `pdf_processing/page_selector.py` | Multi-signal page scoring. LIVE again since 2026-05-07 for the narrow multimodal carve-out (see Key Design Decisions); imported by `ai_analysis/analyzer.py` |
 | `ai_analysis/prompts.py` | Gemini prompt templates (triage, deep analysis, synthesis) |
@@ -296,7 +296,7 @@ Migration on boot: `_migrate_drop_unique_constraints` rebuilds tables without UN
 
 ## Dropbox Structure (Live)
 
-Root: `/Current`
+Root: `/Current` (a shared folder, read by id; see `dropbox_client/watcher.py` in the Module Guide)
 ```
 /Current/2026/April/Apr 15/
   Goldman/     # biggest volume, ~50-80 PDFs/day

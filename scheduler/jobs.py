@@ -734,16 +734,38 @@ async def _profile_refresh_catchup_job(bot=None, slot: str = ""):
     await _user_profile_refresh_job(bot)
 
 
+POLL_FAILURE_ALERT_AFTER = 2
+_poll_failures = 0
+
+
+def poll_failure_alert(failures: int, error) -> str:
+    """The ops line once polls keep failing, '' before that. One failure can
+    be a network blip. From 10-29 to 11-01 every poll failed and only the log
+    knew."""
+    if failures < POLL_FAILURE_ALERT_AFTER:
+        return ""
+    return (f"Dropbox poll has failed {failures} times in a row, so no new research "
+            f"is coming in: {str(error)[:200]}")
+
+
 async def _poll_dropbox_job():
     """Scheduled job: poll Dropbox for new PDFs (blocking I/O in thread)."""
     import asyncio
+    global _poll_failures
     try:
         from dropbox_client.watcher import poll_and_download
         downloaded = await asyncio.to_thread(poll_and_download)
+        _poll_failures = 0
         if downloaded:
             log.info(f"Dropbox poll: {len(downloaded)} new PDFs downloaded")
     except Exception as e:
+        _poll_failures += 1
         log.error(f"Dropbox poll failed: {e}", exc_info=True)
+        text = poll_failure_alert(_poll_failures, e)
+        if text:
+            from datetime import datetime, timezone
+            from discord_bot.ops_alert import ops_alert
+            await ops_alert(text, dedupe_key=f"dropbox-poll-failed-{datetime.now(timezone.utc):%Y-%m-%d}")
 
 
 async def _process_queue_job():
@@ -1479,8 +1501,8 @@ def research_feed_alert(gap_hours: float | None) -> str:
         return ""
     age = "no PDF on record" if gap_hours is None else f"the last one arrived {gap_hours:.0f} hours ago"
     return (f"Research feed: no new PDF in Dropbox for over {RESEARCH_FEED_MAX_GAP_HOURS} "
-            f"hours ({age}). The bot is polling fine; check whatever fills Dropbox "
-            f"/Current. The pulse and Omnipulse run on this research.")
+            f"hours ({age}). Check for failed Dropbox polls in the worker log, then "
+            f"whatever fills /Current. The pulse and Omnipulse run on this research.")
 
 
 async def _backup_pulse_job(bot=None):
