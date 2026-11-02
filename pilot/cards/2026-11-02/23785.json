@@ -1,0 +1,622 @@
+{
+ "brief": "Wilson had argued that clearing two weeks of event risk, hyperscaler earnings then midterms, would allow a year-end rally led by the biggest stocks, and that an AI sentiment pendulum oversold since end-Q2 was creating opportunities again; he calls the past two weeks bruising for that view. He still holds the AI investment cycle as the dominant driver of macro markets. Three things learned this week: hyperscaler cloud growth is accelerating (Alphabet, Azure, AWS revenue and backlog growth), with management citing 85% of global IT spend still on-premises as runway, so the ROI question is being answered; financing fears have eased (Meta's equity raise, Oracle's pulled-forward breakeven and $20bn financing need, stable capex plans, four straight weeks of falling 10-year yields), so the financing gap is less feared than a week ago; and a bull market in cyber risk is emerging after the Binance heist. Separately, the market is trading unprecedented correlation breakdowns and a stalled AI-winners-vs-laggards trade even as the Nasdaq sold off over 3.5% on Intel and software concerns. Wilson argues AI demand isn't slowing, supply is the binding constraint, the 2007/2008 financing analogy is wrong (1997-vs-1999 is the better frame), and capex-demise fears look exaggerated.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman's Wilson argued this week's hyperscaler results and next week's midterms would mark peak event risk for the market.",
+   "anchor": "this week (hyperscaler results) and next (mid-terms) would mark peak event risk for the market",
+   "topic": "equity event risk de-risking",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week and next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman's Wilson argued clearing those two weeks of event risk would likely allow a year-end rally led by the biggest stocks in the index.",
+   "anchor": "clearing these 2 weeks would likely allow for a year-end rally, probably led by the biggest stocks in the index",
+   "topic": "equity event risk de-risking",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman's Wilson argued the AI sentiment pendulum had swung too far since the end of Q2, with substantive opportunities beginning to re-emerge.",
+   "anchor": "the AI sentiment pendulum had swung too far since end-Q2 and that substantive opportunities were beginning to emerge again",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Alphabet's cloud revenue grew 103% year over year, with revenue backlog up 256% YoY to $561bn on $120bn of ARR.",
+   "anchor": "Alphabet cloud revs +103% YoY & revenue backlog +256% YoY (on huge numbers .. $120b ARR and $561b backlog)",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft's Azure growth was only 48% this quarter as supply issues held back activity, with an acceleration expected next quarter as supply improves.",
+   "anchor": "Microsoft Azure growth was only 48% as supply issues held back activity, but next qtr will see an acceleration as supply improves",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "AWS revenue grew 39% year over year this quarter, while its backlog is up 189% YoY to $578bn.",
+   "anchor": "AWS saw 39% growth in the quarter, but the backlog is now +189% yoy (to $578b !)",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman cites Amazon's Jassy saying 85% of global IT spend is still on-premises, leaving an enormous addressable market for cloud growth.",
+   "anchor": "85% of global IT spend is still on premises, and so the runway & addressable markets for this cloud growth is enormous",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Meta completed the first two legs, common equity and convertible, of a three-pronged record equity raise.",
+   "anchor": "META completed the first 2 legs (common & convert) of a 3-pronged record equity raise",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Oracle's financial update brought forward its forecast date for reaching cash flow breakeven.",
+   "anchor": "Oracle\u2019s financial update also brought forward their forecast date to Cash Flow breakeven",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Oracle said it only has $20bn of financing required to deliver its intended capex plans.",
+   "anchor": "they said they only have $20b of financing required to deliver intended capex plans",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "For the first time in some time, 2026 capex plans stayed stable and 2027 expectations remained relatively unchanged.",
+   "anchor": "For the 1st quarter in sometime, 2026 capex plans stayed stable, and 2027 expectations have remained relatively unchanged",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "The financing gap for AI capex is significantly less than feared on a week-on-week basis.",
+   "anchor": "the financing gap is significantly less than feared week-on-week",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "US 10-year Treasury yields have fallen for four consecutive weeks.",
+   "anchor": "US 10yr yields down 4 weeks running now",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "4 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Binance was the victim of the largest crypto heist in history late in the week.",
+   "anchor": "Binance fell victim to the largest heist in history late in the week",
+   "topic": "AI cyber risk bull market",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Amazon's Jassy said 20% or some significant percentage of total token usage over the next year or two may end up being devoted to security.",
+   "anchor": "20% or some significant percentage of it may end up being just security",
+   "topic": "AI cyber risk bull market",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year or two"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "The Nasdaq was down more than 3.5% intraday as the note was being written.",
+   "anchor": "Nasdaq\u2019s down >3.5% on the day as I type",
+   "topic": "equity event risk de-risking",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman cites objectively bad news from Intel as one reason behind the Nasdaq's selloff.",
+   "anchor": "with good reasons, objectively bad news from Intel",
+   "topic": "equity event risk de-risking",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Core business questions are lingering for Alphabet's search business and Amazon's retail business.",
+   "anchor": "core business questions lingering for Alphabet\u2019s search & Amazon\u2019s retail",
+   "topic": "equity event risk de-risking",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman's AI-winners versus AI-at-risk basket pair trade is now down on the year and continues to struggle for direction.",
+   "anchor": "that trade is now down on the year and continues to struggle for direction",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "The largest names in the index, the Mag7/hyperscalers, had meaningfully outperformed the index since the prior trend broke in late June.",
+   "anchor": "the largest names in the index (Mag7/hyperscalers) had meaningfully outperformed the index since that prior trend broke in late June",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since late June"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "The Mag7/hyperscalers' outperformance trend versus the index has been dented this week.",
+   "anchor": "but that trend too has been dented this week",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "S&P equal-weight has only a 60% correlation to the S&P 500 (SPX).",
+   "anchor": "correlated to the Nasdaq, and S&P equal-weight only has a 60% correlation to SPX",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "The S&P ex-AI basket is outperforming the Nasdaq by more than 3% on the week.",
+   "anchor": "The S&P ex-AI is outperforming Nasdaq by >3% on the week",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "on the week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "France's CAC index has outperformed US tech by 5% on the week.",
+   "anchor": "France\u2019s CAC has outperformed US tech by 5% on the week",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "on the week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "The S&P 500 was down 30bps on the day despite 80% of its constituents being up on the day.",
+   "anchor": "the S&P500 was down 30bps on the day yesterday, despite 80% of constituents up on the day",
+   "topic": "AI winners vs laggards rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman sees no sign of AI demand slowing, and says token demand is accelerating.",
+   "anchor": "there is no sign of demand slowing \u2013 token demand is accelerating",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Most supply-side concerns in AI infrastructure center on capacity constraints, not overcapacity.",
+   "anchor": "most supply side concerns centre on capacity constraints not overshoots",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft cited factors limiting its ability to meet excess AI demand on its earnings call this week.",
+   "anchor": "as MSFT referenced on their call this week as they cited factors limiting their ability to meet excess demand",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman says the neocloud credit story led to numerous comparisons with 2007/2008 and fears that poorly quantified credit risk would undo the AI equity story.",
+   "anchor": "led to numerous comparisons with 2007/2008 and fears that poorly quantified credit risk would undo the equity story",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman says the 2007/2008 financial-crisis analogy for AI financing risk is misplaced, while the 1990s debate remains highly relevant.",
+   "anchor": "The 2007/2008 analogy\u2019s misplaced; but the \u201890s debate remains highly relevant.",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman frames the key question for the AI financing debate as whether this resembles 1997 or 1999 within the Fed hiking cycle.",
+   "anchor": "Is this 1997 or is it 1999 is probably the right question",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft's Satya Nadella said Copilot automated tasks have doubled since July.",
+   "anchor": "Copilot automated tasks doubled since July",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft said Copilot daily users are up nearly 50% quarter over quarter.",
+   "anchor": "Daily users are up nearly 50% qoq",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "qoq"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft said Copilot usage-based billing grew more than 7% over the quarter.",
+   "anchor": "Copilot usage based billing grew over 7% over the quarter",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "qoq"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft said accelerating demand led it to add 24 new data centers across five continents this quarter.",
+   "anchor": "accelerating demand led to us adding 24 new data centres across five continents this quarter",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Microsoft said it increased throughput for Copilot workloads by more than 50% quarter over quarter through infrastructure optimization.",
+   "anchor": "we increased throughput for Copilot workloads by over 50 percent qoq",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "qoq"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Amazon's Jassy said revenue commitments for Graviton and Trainium chips have each increased more than 20x year over year.",
+   "anchor": "revenue commitments for Graviton and Trainium have each increased more than 20x yoy",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Amazon's Jassy said AWS can grow more than 40% in each of 2027 and 2028 and become a trillion-dollar revenue business within 5 to 10 years.",
+   "anchor": "AWS can grow north of 40% in each of 2027 and 2028 and be a trillion-dollar revenue business in the next 5 to 10 years",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028, 5-10 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Amazon's Jassy said AWS has very good visibility into 2027, 2028, and some of 2029 regarding customer capacity demand.",
+   "anchor": "We have very good visibility into 2027 & 2028 and some of 2029 too with respect to what customers want in those really big chunks",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman says what's clear this week is that the ROI on hyperscaler spend is revealing itself quite clearly.",
+   "anchor": "what\u2019s clear this week is the ROI on hyperscaler spend is revealing itself quite clearly",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman says the spiraling quarter-on-quarter growth in AI capex may have paused for now, with a notable new focus on efficiency gains.",
+   "anchor": "the spiralling quarter-on-quarter capex growth may have paused for now, with a notable focus on efficiency gains as well",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman says reports of the AI capex demise and funding threat are looking greatly exaggerated.",
+   "anchor": "reports of the AI capex demise & funding threat are looking greatly exaggerated",
+   "topic": "AI hyperscaler capex cycle",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - weekly mash - 30 Oct 2026",
+   "claim": "Goldman's Wilson says the continued de-risking ahead of next week's midterms is understandable.",
+   "anchor": "the continued de-risking ahead of next week is understandable",
+   "topic": "equity event risk de-risking",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/23785__gs-wilson-weekly-mash-30-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 43,
+  "matched": 43,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
