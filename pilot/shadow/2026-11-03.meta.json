@@ -1,0 +1,39 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 50,
+  "cards": 1727,
+  "max_doc_id": 24079
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 116,
+  "brief_citations": 3,
+  "distinct_cards_cited": 115,
+  "card_count": 1727,
+  "quintiles": [
+   16,
+   22,
+   24,
+   32,
+   22
+  ],
+  "edge_quintile_share": 0.328,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Systematic managers slipped 0.7% to end October down 3.7%, their first negative month of 2026, still up 16% year to date [c1318].",
+    "cite": "c1318",
+    "reason": "figures not in cited card(s): ['0.7%']"
+   }
+  ],
+  "word_count": 1922
+ }
+}
