@@ -1,0 +1,216 @@
+{
+ "brief": "UBS Sales & Trading's weekly Quantitative Conviction screen overlays UBS Quant Research and Systematic Advisory signals onto the stocks where UBS Research and Sales already hold the highest fundamental conviction ahead of earnings, to test where quant indicators agree with that fundamental call and where they diverge. For the week of November 2, the note highlights bullish conviction on PLTR and CVS and cautious conviction on WEIR, WAT, and SARO, from a longer list of US and European names reporting that week. The underlying signals combined into the screen are described with their own backtested track records: hedge fund crowding plus earnings nowcasting (pre-earnings drift, up to +4.3% excess return over 60 days), machine-learning EPS growth forecasts (5.6% annualized, 0.55 Sharpe, beating a 1.5%/0.16-Sharpe consensus-based comparison), hedge fund crowding and crowding momentum (5.3%/0.83 and 6.9%/0.60 annualized), a short-interest-enhanced crowding double-sort, hedge fund-vs-retail positioning (12.2% annualized, 1.07 Sharpe), and hedge fund-vs-mutual-fund positioning (+8.3% US / +5.0% Europe annualized). The note reports these signal histories; it does not argue a single directional thesis beyond the per-stock conviction calls.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS Research, Sales and Quant signals show bullish conviction on Palantir Technologies Inc. (PLTR US) ahead of its earnings report in the week of November 2, 2026.",
+   "anchor": "Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "topic": "quant conviction earnings screen",
+   "status": "forecast",
+   "instruments": [
+    "PLTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "week of Nov 2, 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS Research, Sales and Quant signals show bullish conviction on CVS Health Corporation (CVS US) ahead of its earnings report in the week of November 2, 2026.",
+   "anchor": "Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "topic": "quant conviction earnings screen",
+   "status": "forecast",
+   "instruments": [
+    "CVS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "week of Nov 2, 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS Research, Sales and Quant signals show cautious conviction on Weir PLC (WEIR LN) ahead of its earnings report in the week of November 2, 2026.",
+   "anchor": "Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "topic": "quant conviction earnings screen",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "week of Nov 2, 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS Research, Sales and Quant signals show cautious conviction on Waters Corporation (WAT US) ahead of its earnings report in the week of November 2, 2026.",
+   "anchor": "Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "topic": "quant conviction earnings screen",
+   "status": "forecast",
+   "instruments": [
+    "WAT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "week of Nov 2, 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS Research, Sales and Quant signals show cautious conviction on StandardAero, Inc. (SARO US) ahead of its earnings report in the week of November 2, 2026.",
+   "anchor": "Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "topic": "quant conviction earnings screen",
+   "status": "forecast",
+   "instruments": [
+    "SARO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "week of Nov 2, 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's hedge fund crowding and earnings-nowcasting (HF X EN) signal's strongest combinations generated up to 4.3% excess returns in the 60 trading days before earnings.",
+   "anchor": "The strongest signal combinations generate up to +4.3% excess returns in the 60 trading days leading into earnings.",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "60 trading days leading into earnings"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's machine-learning EPS growth forecast signal's long-short portfolio, long the highest-growth third and short the lowest-growth third, generated a 5.6% annualized return with a 0.55 Sharpe ratio.",
+   "anchor": "A long-short portfolio buying the highest-growth third and shorting the lowest-growth third generated a 5.6% annualized return with a Sharpe ratio of 0.55",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "The equivalent consensus-based earnings growth forecast strategy returned 1.5% annualized with a 0.16 Sharpe ratio, underperforming UBS's machine-learning EPS growth forecast signal.",
+   "anchor": "materially outperforming consensus-based forecasts, particularly on the downside (1.5%annualized return and 0.16 Sharpe)",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's hedge fund crowding signal has generated a 5.3% annualized return with a 0.83 Sharpe ratio globally since 2017.",
+   "anchor": "The signal has generated consistent alpha since 2017 with a 5.3% annualized return and a Sharpe ratio of 0.83 globally.",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "since 2017"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's hedge fund crowding momentum signal, which tracks changes in hedge fund positioning over the prior 12 months, has delivered a 6.9% annualised return with a 0.60 Sharpe ratio.",
+   "anchor": "The signal has delivered a 6.9% annualised return with a Sharpe ratio of 0.60.",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "prior 12 months"
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's hedge fund-vs-retail positioning signal, long stocks where institutional conviction is rising while retail sells and short the reverse, delivers a 12.2% annualised return with a 1.07 Sharpe ratio.",
+   "anchor": "The signal delivers strong alpha with a 12.2% annualised return and a Sharpe ratio of 1.07, nearly doubling the Sharpe ratio",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's hedge fund-vs-mutual fund positioning signal, which identifies crowded hedge fund longs that mutual funds remain underweight, delivered an 8.3% annualised return in the US with a 1.18 Information Ratio.",
+   "anchor": "Performance: +8.3% annualised in the US, +5.0% in Europe, with strong risk-adjusted performance (Information Ratios of 1.18 and 0.88, respectively).",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's hedge fund-vs-mutual fund positioning signal delivered a 5.0% annualised return in Europe with a 0.88 Information Ratio.",
+   "anchor": "Performance: +8.3% annualised in the US, +5.0% in Europe, with strong risk-adjusted performance (Information Ratios of 1.18 and 0.88, respectively).",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Quantitative Conviction: Bullish PLTR & CVS; Cautious WEIR, WAT, SARO",
+   "claim": "UBS's short-interest-enhanced hedge fund positioning signal, which double-sorts low days-to-cover against high hedge fund crowding on the long side and the reverse on the short side, generates substantially stronger risk-adjusted returns than either signal alone.",
+   "anchor": "high Days-to-Cover with short crowding on the short side, generate substantially stronger risk-adjusted returns than either signal alone.",
+   "topic": "quant conviction earnings screen",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/24058__ubs-s-t-quantitative-conviction-bullish-pltr-cvs-cautious-we.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
