@@ -1,0 +1,492 @@
+{
+ "brief": "Morgan Stanley's August tally put hyperscaler off-balance-sheet commitments at $3.1 trillion, up from $1.8 trillion in June. After Alphabet, Meta, Microsoft, Amazon and SpaceX filed Q3 10-Qs, a rebuild from primary filings puts disclosed commitments across the hyperscalers, Nvidia, Broadcom and SpaceX at $4.11 trillion, up $992 billion in roughly 90 days. The five Q3 filers alone added $577 billion (23%) quarter over quarter: Meta +$195bn (purchase commitments, data-center leases, residual-value guarantees), Amazon +$131bn, Alphabet +$164bn, Microsoft +$35bn (its purchase-commitment figure is stale, reported only annually), SpaceX +$51bn (+174%, driven by a $40bn GPU lease). Nvidia, Oracle and Broadcom haven't reported Q3 yet, so $4.1 trillion is described as a floor. Goldman's Amanda Lynam separately counts $2.8 trillion across five hyperscalers (an eightfold rise since 2023) and flags inconsistent rating-agency treatment (S&P adjusts for leases, Moody's and Fitch don't) plus companies raising capital preemptively, citing Meta's equity raise. On-balance-sheet debt and leases total only ~$1 trillion, so reported leverage understates the AI complex's obligations more than fourfold. The piece ties this to Alphabet's, and now Amazon's, stock declines and a $1.2 trillion Nasdaq 100 market-cap loss this month.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Disclosed off-balance sheet commitments across the hyperscalers, Nvidia, Broadcom and SpaceX now stand at $4.11 trillion, up $992 billion from Morgan Stanley's $3.12 trillion tally on a filings-only basis.",
+   "anchor": "now stand at $4.11 trillion, up $992 billion from MS's $3.12 trillion tally (on a filings-only basis)",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Alphabet is now the first company with more than $1 trillion in off-balance sheet commitments, at $1,059 billion, up from $890 billion.",
+   "anchor": "Alphabet is now the first company with more than $1 trillion in off-balance sheet commitments: $1,059 billion, up from $890 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Alphabet's long-term purchase commitments alone rose from $707 billion to $802 billion.",
+   "anchor": "Long-term purchase commitments alone rose from $707 billion to $802 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Meta's off-balance sheet commitments stand at $866 billion and are growing faster than Alphabet's.",
+   "anchor": "Meta, at $866 billion, is not far behind, and is growing faster.",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Leases signed but not yet commenced across the tracked companies now total $1.39 trillion, up from $1.12 trillion in August.",
+   "anchor": "now total $1.39 trillion, up from $1.12 trillion in August",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Purchase commitments across the tracked companies are at $2.25 trillion, up from $1.73 trillion.",
+   "anchor": "Purchase commitments are at $2.25 trillion, up from $1.73 trillion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Guarantees and backstops across the tracked companies jumped from $158 billion to $273 billion.",
+   "anchor": "guarantees and backstops have jumped from $158 billion to $273 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "The five hyperscalers that filed Q3 10-Qs saw their combined off-balance sheet commitments rise from $2.48 trillion to $3.05 trillion, a 23% increase in a single quarter.",
+   "anchor": "rose from $2.48 trillion to $3.05 trillion, an increase of $577 billion or 23%, in a single quarter",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Meta's non-cancelable purchase commitments soared from $349 billion to $455 billion in Q3, mostly for third-party cloud capacity in 2027-28 and beyond.",
+   "anchor": "non-cancelable purchase commitments soared from $349 billion to $455 billion, mostly for third-party cloud capacity in 2027-28 and beyond",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Meta's leases not yet commenced rose from $279 billion to $356 billion in Q3, including $68 billion of leases signed in July.",
+   "anchor": "Leases not yet commenced rose from $279 billion to $356 billion, including the $68 billion of leases signed in July",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Meta's residual value guarantees on its Hyperion (Louisiana) and El Paso/Texas data center ventures now stand at $41.5 billion.",
+   "anchor": "the residual value guarantees on its two data center ventures (Hyperion in Louisiana and the El Paso/Texas venture) now stand at $41.5 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Meta's CDS hit a record after earnings, and the company then went to shareholders for a large equity raise.",
+   "anchor": "saw its CDS hit a record after earnings, and then went to shareholders for up to",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Amazon's unconditional purchase obligations nearly doubled in Q3, from $130 billion to $254 billion.",
+   "anchor": "Unconditional purchase obligations nearly doubled from $130 billion to $254 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Amazon's leases not yet commenced climbed from $137 billion to $165 billion in Q3.",
+   "anchor": "leases not yet commenced climbed from $137 billion to $165 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Amazon's $21.3 billion owed to OpenAI was funded in Q3 and moved onto the balance sheet, offsetting some of the increase.",
+   "anchor": "the $21.3 billion still owed to OpenAI was funded in Q3, and so moved onto the balance sheet",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Amazon shares tumbled Friday after a capex shock, which the note frames as the AI reckoning that began with Alphabet's record plunge claiming another megacap.",
+   "anchor": "Amazon tumbled Friday after a capex shock, as the AI reckoning that started with Alphabet's record plunge claims another megacap",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Alphabet's purchase commitments rose by $95 billion in Q3 and leases not yet commenced jumped from $85 billion to $131 billion.",
+   "anchor": "purchase commitments rose by $95 billion, leases not yet commenced jumped from $85 billion to $131 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Alphabet added a new $6.6 billion guarantee to repurchase TPU hardware.",
+   "anchor": "there is a brand new line item: $6.6 billion in guarantees to repurchase TPU hardware",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Microsoft signed roughly $53 billion of new data center leases in Q3, partly offset by $17 billion that commenced and moved on balance sheet.",
+   "anchor": "signed roughly $53 billion of new data center leases in Q3, partly offset by $17 billion that commenced and moved on balance sheet",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Microsoft's leases not yet commenced rose from $329 billion to $365 billion in Q3.",
+   "anchor": "taking leases not yet commenced from $329 billion to $365 billion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Microsoft discloses its purchase and construction commitments only once a year, so its reported $229 billion figure is still as of June and likely understates the current total.",
+   "anchor": "discloses its purchase and construction commitments only once a year, in the 10-K, so its $229 billion of purchase commitments is still as of June",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "SpaceX's off-balance sheet commitments went from $29 billion at June 30 to $80 billion after an October 26 disclosure, a 174% increase.",
+   "anchor": "went from $29 billion at June 30 to $40 billion in its 10-Q, and then to $80 billion after the $40 billion Apollo",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "The $40 billion Apollo GPU arrangement Musk called a debt financing is in fact a lease that will not touch SpaceX's balance sheet until the GPUs show up.",
+   "anchor": "which is in fact a lease that won't touch the balance sheet until the GPUs show up.",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Nvidia reports in late November and Oracle and Broadcom report in December, so the current $4.1 trillion off-balance sheet total is a floor that will rise further.",
+   "anchor": "Nvidia reports in late November, Oracle and Broadcom in December. The $4.1 trillion is the floor.",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "ORCL",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "late November-December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Across five leading hyperscalers, off-balance-sheet leases and purchase commitments now total $2.8 trillion, an eightfold increase since 2023.",
+   "anchor": "these now total $2.8 trillion - an eightfold increase since 2023",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "S&P adjusts hyperscaler leverage for off-balance-sheet leases while Moody's and Fitch do not, an inconsistency worth watching if rating methodology changes.",
+   "anchor": "S&P adjusts leverage for off-balance-sheet leases, while Moody's and Fitch do not",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Hyperscalers remain low-levered and highly rated even as investors grow increasingly focused on off-balance-sheet commitments and inconsistent rating-agency treatment.",
+   "anchor": "Hyperscalers remain low-levered and highly rated, but investors are increasingly focused on these commitments and inconsistent rating-agency treatment",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Some AI companies are explicitly acknowledging the need to secure capital before markets become saturated, a new development Goldman ties to Meta's equity raise.",
+   "anchor": "some companies are explicitly acknowledging the need to secure capital before markets become saturated - a new development that highlights the distinctive nature of the",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Needham",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Needham argued Meta's enterprise value becomes 35% more expensive once its off-balance sheet debt is added.",
+   "anchor": "Needham argued earlier this month that Meta gets 35% more expensive once you add its off-balance sheet debt to its enterprise value",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Across the eight companies tracked, on-balance sheet debt and lease liabilities total only roughly $1.0 trillion, meaning more than four dollars of commitments exist off the balance sheet for every reported dollar.",
+   "anchor": "for every dollar of debt and leases the AI complex actually reports, there are more than four dollars of commitments that don't show up anywhere",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Alphabet suffered a record plunge, Amazon is sliding, and Nasdaq 100 members have lost more than $1.2 trillion in market cap this month.",
+   "anchor": "Alphabet just suffered its record plunge, Amazon is sliding, and Nasdaq 100 members have wiped out more than $1.2 trillion in market cap this month",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Off-Balance Sheet Time Bomb Inside AI Hits $4.1 Trillion: Up $1 Trillion In 90 Days",
+   "claim": "Zero Hedge's own count, which also includes footnoted guarantees and backstops, puts Alphabet, Meta, Microsoft, Amazon and Oracle alone at $3.3 trillion, already above Goldman's $2.8 trillion figure.",
+   "anchor": "Alphabet, Meta, Microsoft, Amazon and Oracle alone are now at $3.3 trillion",
+   "topic": "AI off-balance-sheet debt risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "META",
+    "MSFT",
+    "AMZN",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/24076__the-off-balance-sheet-time-bomb-inside-ai-hits-4-1-trillion-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
