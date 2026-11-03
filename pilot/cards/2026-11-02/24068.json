@@ -1,0 +1,227 @@
+{
+ "brief": "UBS sales-and-trading flash covering two desks. Market internals (Cheong): expects $75-100bn of Risk Control Selling Monday, possibly continuing Tuesday, after which systematic selling should fade and set up a recovery. Despite Friday's sharp Nasdaq drop, excess sell-flow was only $8bn (Nasdaq) and -$24bn (SPX); retail reversed hard into the close, +$72bn of buying from 2:45pm, concentrated in Tech ETFs and Semis/Memory, Friday's worst performers. CTA selling drove 10 sell triggers Friday across ES1/NQ1/RTY1, but exposures have already fallen to the 19th/13th/15th percentile versus 3 years; only NQ1 retains active sell triggers, implying limited further CTA selling. Macro equity (Romano): October's funding-fear spike made it harder for incremental capital to reach Tech, with capex funding deals pulling money into credit instead; within equities this produced a broadening-out rotation, SPX equal-weight beating cap-weighted SPX by 6% in October despite hyperscaler earnings. Healthcare captured the rotation: XLV +23% in H2, half of it (+11%) in October alone, aided by defensive positioning plus AI/longevity growth exposure.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "UBS estimates there will be $75-100 billion of Risk Control Selling on Monday, November 2, with the selling potentially continuing into Tuesday.",
+   "anchor": "there will be $75-$100 bn of Risk Control Selling on Monday, and could follow through on Tuesday",
+   "topic": "hedge fund leverage positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Monday-Tuesday"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "After Tuesday, selling pressure from Systematic Funds should fall, setting the stage for a market recovery.",
+   "anchor": "after that selling pressure from Systematic Funds should fall and sets the stage for a recovery",
+   "topic": "hedge fund leverage positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "after Tuesday"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Despite the significant decline in the Nasdaq on Friday, there was only $8 billion of excess Sell-Flow in Nasdaq and -$24 billion for the SPX.",
+   "anchor": "there was only $8 bn of excess Sell-Flow, and -$24 bn for the SPX",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Late-day Excess Flow on Friday reversed sharply to $72 billion of buying, consistent with aggressive UBS RMM buying from 2:45pm onward.",
+   "anchor": "Late-day Excess Flow reversed sharply to +$72 bn of buying, consistent with aggressive UBS RMM buying from 2:45pm onward",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Retail dip-buying on Friday was concentrated in Tech ETFs and Semis/Memory stocks, among Friday's worst-performing segments.",
+   "anchor": "the strongest activity concentrated in Tech ETFs and Semis/Memory stocks, among Friday\u2019s worst-performing segments",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "CTA selling was an important driver on Friday, with 10 sell triggers across the ES1, NQ1 and RTY1 futures.",
+   "anchor": "CTA selling was an important driver Friday, with 10 sell triggers across ES1, NQ1 and RTY1",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "CTA exposures in ES1, NQ1 and RTY1 have already fallen to the 19th, 13th and 15th percentile versus the past 3 years, respectively.",
+   "anchor": "exposures have already fallen to 19%, 13% and 15%-tile vs 3Y, respectively",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Only NQ1 still retains 3 close sell triggers, while ES1 and RTY1 triggers are farther away and less clustered, suggesting limited additional CTA selling impact from here.",
+   "anchor": "Only NQ1 retains 3 close sell triggers; ES1 and RTY1 triggers are farther away and less clustered, suggesting limited additional CTA impact from here",
+   "topic": "hedge fund leverage positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "As funding fears spiked in October, the incremental investment dollar found it harder to make its way to Tech.",
+   "anchor": "As funding fears spiked in October, the incremental dollar has found it harder to make its way to Tech",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Capex funding deals are offering attractive yields for investors, luring capital into credit markets.",
+   "anchor": "capex funding deals are offering attractive yields for investors, luring capital into credit markets",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Elevated Tech exposures have driven investors to rotate away from Tech, producing a broadening-out trade with SPX equal weight outperforming SPX by 6% in October.",
+   "anchor": "rotating away from Tech, resulting in a broadening-out trade with SPX equal weight outperforming SPX by +6% in October",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Hyperscaler EPS did little to assuage the trend of investors rotating away from Tech.",
+   "anchor": "Hyperscaler EPS did little to assuage this trend",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Healthcare has emerged as the clear winner from the sector rotation, with XLV up 23% in the second half of 2026.",
+   "anchor": "Healthcare has emerged as the clear winner from the rotation within equities, with XLV +23% in H2",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "H2 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Roughly half of XLV's second-half 2026 gain came in October alone, a rise of about 11%.",
+   "anchor": "roughly half of that gain came in October alone (+11%)",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - View From The Knowledge Network - Greg Poole - 2026-11-02",
+   "claim": "Healthcare's defensive characteristics, combined with structural growth opportunities from AI and longevity, make it a compelling destination for capital.",
+   "anchor": "Healthcare\u2019s defensive characteristics, combined with structural growth opportunities from AI and longevity, continue to make it a compelling destination for capital",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/24068__ubs-s-t-view-from-the-knowledge-network-greg-poole-2026-11-0.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 15,
+  "matched": 15,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
