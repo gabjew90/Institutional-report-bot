@@ -1,0 +1,143 @@
+{
+ "brief": "UBS's Systematic Advisory Deleveraging Alert Indicator has triggered for US equity long/short strategies. Hedge funds cut gross exposure by -2.3 standard deviations on Wednesday, -2.1 std on Thursday and -0.4 std on Friday last week, with the de-grossing concentrated in Hyperscaler stocks. Friday's de-grossing was notably modest relative to what the day's price action would have implied. That shortfall in de-grossing, combined with continued pressure in Hyperscaler names and the resulting hit to performance, is what triggered the indicator. Europe faced similar performance pressure last week, but de-grossing there was more moderate, staying under 1 standard deviation in each session, so the Europe indicator has not triggered. Japan's indicator also remains off.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Hedge funds reduced gross exposure by -2.3 standard deviations on Wednesday last week.",
+   "anchor": "Hedge funds reduced gross exposure by -2.3 std on Wednesday, -2.1 std on Thursday and -0.4 std on Friday last week",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Hedge funds reduced gross exposure by -2.1 standard deviations on Thursday last week.",
+   "anchor": "Hedge funds reduced gross exposure by -2.3 std on Wednesday, -2.1 std on Thursday and -0.4 std on Friday last week",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Hedge funds reduced gross exposure by -0.4 standard deviations on Friday last week.",
+   "anchor": "Hedge funds reduced gross exposure by -2.3 std on Wednesday, -2.1 std on Thursday and -0.4 std on Friday last week",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Last week's hedge fund de-grossing was concentrated in Hyperscaler stocks.",
+   "anchor": "last week, with the de-grossing concentrated in Hyperscalers",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Friday's hedge fund de-grossing was relatively modest compared with what the day's price action would have suggested.",
+   "anchor": "Notably, Friday\u2019s de-grossing was relatively modest (-0.4 std) compared with what the price action would have suggested",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Continued pressure in Hyperscaler names and the resulting hit to hedge fund performance, combined with Friday's modest de-grossing, triggered the UBS Systematic Advisory Deleveraging Indicator for US Equity L/S strategies.",
+   "anchor": "this has triggered the UBS Systematic Advisory Deleveraging Indicator for US Equity L/S strategies",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "Europe saw performance pressure last week similar to the US, but de-grossing there was more moderate, staying under 1 standard deviation in each session.",
+   "anchor": "Despite similar performance pressure in Europe, de-grossing was more moderate last week, at <1 std in each session",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "The UBS Europe deleveraging indicator for equity long/short strategies has not triggered.",
+   "anchor": "the Europe indicator has not triggered.",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Deleveraging Alert- Indicator Triggered for US Equity L-S; Quants Close to Trigger - Amandine-Parisa Kara - 2026-11-02",
+   "claim": "The UBS Japan deleveraging indicator also remains off.",
+   "anchor": "As a result, the Europe indicator has not triggered. Japan also remains \u201coff\u201d.",
+   "topic": "hedge fund leverage positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/24049__ubs-s-t-deleveraging-alert-indicator-triggered-for-us-equity.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
