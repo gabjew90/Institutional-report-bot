@@ -1,0 +1,17 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-11-03T14:06:36.410161Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=177; anchors 2667/2788 matched, 0 empty, 5 too_short (rate=0.957)", "at": "2026-11-03T14:06:39.418799Z"},
+  "omnipulse": {"decision": "OMNIPULSE", "detail": "omnipulse: 2026-11-03 ok, 6 themes -> omnipulse pulse", "at": "2026-11-03T14:06:40.521938Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "soft violations only (advisory)", "at": "2026-11-03T14:08:59.096423Z"},
+  "lint": {"decision": "DISPATCH_SCRUB", "detail": "1 hard issue(s)", "at": "2026-11-03T14:09:58.177095Z"},
+  "scrub_relint": {"decision": "CONTINUE", "detail": "0 hard issues after SCRUB", "at": "2026-11-03T14:10:03.800748Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-11-03T14:10:06.869469Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-11-03T14:10:06.976851Z"},
+  "adversarial": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-11-03T14:11:23.421795Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit", "at": "2026-11-03T14:11:27.831531Z"}
+ },
+ "budgets": {},
+ "lint": {"last_hard": 0},
+ "note": "history array condensed for transport; the lint gate hard issue was a source-prefix in WHAT TO WATCH, fixed by a one-line edit instead of a SCRUB sub-agent dispatch"
+}
