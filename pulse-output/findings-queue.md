@@ -1324,3 +1324,9 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Third consecutive light edition (10-30, 11-02) with no_new_research=true over a 96h window containing 163 PDFs, all published 10-29. Re-check the no-new-research gate against the pulse anchor.
 - **observation** — Board includes results commentary (GEV, VRT, ASM, AVGO) that is not an explicit trade call, and the ASM Buy comes from a sales-desk blurb.
 - **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist. Today's context dump was archived correctly, so earlier archive-keying findings did not recur.
+
+## 2026-11-03
+- **deterministic-fixable** — Published "FOMC held at 3.45%-4%"; the context says 3.75%-4.00%. The adversarial pass flagged it (plus `$12.4B` shares / `$28.7B` bonds, and Wilson "7100 to 7300 / 8000") and the pulse shipped anyway with the driver reporting "0 hard findings". Make unsupported-figure findings block publish or force a repair, and record them in the driver trail.
+- **deterministic-fixable** — Omnipulse body figures with no source in the context dump: Alphabet `$12.4B`/`$28.7B` issuance, `7544.2`, "Jason Hunter", Alphabet `$1,059 billion`. Add a figure-provenance check on the Omnipulse body.
+- **deterministic-fixable** — `pulse-context/latest.json` is again a later rebuild (15:33 EST, session-to-date prices) than the dump the pulse ran on, so RECAP prices cannot be checked. Archive the dump keyed by `QC_PULSE_TS` (it was correct on 11-02).
+- **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
