@@ -1,0 +1,282 @@
+{
+ "brief": "Funding fears in October capex deals pulled capital into credit yields and away from elevated Tech equity exposure, broadening the market as SPX equal weight outperformed SPX by about 6%. Hyperscaler earnings did not reverse the rotation: although results reinforced AI demand, mounting capex deployment and pressure on ROI/FCF meant no hyperscaler closed positive after reporting, even erasing ORCL's mid-week +10% rally by Friday; the cumulative misses forced long selling in top SPY/QQQ weights through key technical levels, and UBS expects a retest of Friday's lows Monday with sizable systematic selling. Still, UBS views hyperscalers as the higher-quality AI holding given a capital-constrained backdrop, with the question being when investors re-add given existing length into the prints. Midterms could be a risk circuit breaker this week, but UBS doubts sustained upside without long-only sponsorship. Healthcare (XLV) is the rotation's winner, up 23% in H2 with half the gain in October alone, on defensive and AI/longevity growth appeal. Separately, UBS Economics expects Fed funds pricing to stay subdued (no full hike priced until Jan'27) even as Q3 GDP holds at 3.4% and October payrolls print near 65K.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Funding fears that spiked in October made it harder for the incremental investment dollar to reach Tech equities.",
+   "anchor": "As funding fears spiked in October, the incremental dollar has found it harder to make its way to Tech.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "The broadening-out trade saw SPX equal weight outperform market-cap-weighted SPX by 6% in October.",
+   "anchor": "resulting in a broadening-out trade with SPX equal weight outperforming SPX by 6% in October.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Healthcare (XLV) surged 23% in the second half of the year, with roughly half of that gain, +11%, coming in October alone.",
+   "anchor": "XLV surging 23% in H2; roughly half of that gain came in October alone (+11%).",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Elevated positioning and continued hyperscaler capex deployment placed increasing pressure on ROI and free cash flow, with any signs of weakness aggressively punished.",
+   "anchor": "elevated positioning and continued capex deployment have placed increasing pressure on ROI and FCF, with any signs of weakness/muted progress aggressively punished.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Not one hyperscaler posted a positive return after reporting earnings, and even Oracle's (ORCL) mid-week +10% rally was wiped out by Friday.",
+   "anchor": "not one posted a positive return post EPS; even ORCL\u2019s mid-week +10% rally was wiped clean by Friday.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "The cumulative hyperscaler earnings misses forced long selling in some of the largest SPY and QQQ index weights, pushing SPY and QQQ through important technical levels.",
+   "anchor": "force long selling in some of the largest SPY / QQQ index weights, pushing SPY & QQQ through important technical levels.",
+   "topic": "tech sell-off sector rotation",
+   "status": "released",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "UBS expects the market to retest Friday's lows on Monday, with sizable systematic selling expected.",
+   "anchor": "expect the market to re-test Friday lows Monday, especially with sizable systematic selling expected.",
+   "topic": "tech sell-off sector rotation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Monday"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Despite the hyperscaler miss, UBS views hyperscalers as the higher quality asset to own within the AI complex on a relative basis given a capital-constrained backdrop.",
+   "anchor": "hyperscalers remain the higher quality asset to own within the AI complex on a relative basis",
+   "topic": "tech sell-off sector rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Investors already carry substantial length in hyperscaler stocks heading into the earnings prints, raising the question of when they add more.",
+   "anchor": "Given market length in hyperscalers into the prints, the question is at what point do investors add more.",
+   "topic": "tech sell-off sector rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "UBS sees the midterm elections as a potential circuit breaker for risk this week.",
+   "anchor": "Mid-terms are a potential circuit breaker for risk this week",
+   "topic": "tech sell-off sector rotation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Without long-only investor sponsorship, UBS sees it as difficult for equities to sustain upside.",
+   "anchor": "without long-only sponsorship (potentially aided by Mutual Fund\u2019s year-end on Oct.31), it\u2019s difficult to see sustained upside.",
+   "topic": "tech sell-off sector rotation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Fed funds pricing fell last week after the FOMC held rates at its October meeting despite signaling that the job is not done.",
+   "anchor": "Fed funds pricing came down last week following the FOMC\u2019s inaction at the October meeting, despite signaling that the job is not done.",
+   "topic": "Fed rate path outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "The market is not pricing a full Fed rate hike until January 2027, with a total of two hikes not priced in until the end of the first half of 2027.",
+   "anchor": "The market isn\u2019t pricing a full hike until Jan\u201927, with a total of two hikes not priced until the end of 1H27.",
+   "topic": "Fed rate path outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through 1H27"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Despite a firm tone on inflation, the market's pricing shows increased skepticism that the Fed will follow through on further tightening as equities break down and funding concerns persist.",
+   "anchor": "the market\u2019s pricing suggests increased skepticism of following through on a mid-cycle adjustment as equities break down and funding concerns persist.",
+   "topic": "Fed rate path outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "Q3 real GDP expanded 3.4%, reported last week, confirming growth remains firm.",
+   "anchor": "growth remains firm with Q3 real GDP expanding 3.4% last week",
+   "topic": "Fed rate path outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "UBS Economics expects this week's non-farm payrolls to print a 65K gain, with private employment up 70K and government employment down 5K.",
+   "anchor": "NFP expected to print a 65K gain and private employment up 70K and government employment down 5K.",
+   "topic": "Fed rate path outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "UBS Economics expects average hourly earnings to have climbed 0.31% and the unemployment rate to dip to 4.14% in October, down from 4.175% in September.",
+   "anchor": "Econ expects average hourly earnings climbed 0.31% and the unemployment rate to dip to 4.14% in October (vs 4.175% in Sept).",
+   "topic": "Fed rate path outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "SPX broke out of its three-month trading range, closing below its 100-day moving average.",
+   "anchor": "SPX Breaking Out of It\u2019s 3m Trading Range As It Closes Below The 100d MA",
+   "topic": "tech sell-off sector rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - US Hyperscaler Earnings Not Enough - Michael Romano - 2026-11-01",
+   "claim": "A test of QQQ's 200-day moving average is warranted.",
+   "anchor": "QQQ Test of 200d MA Warranted",
+   "topic": "tech sell-off sector rotation",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-02/24067__ubs-s-t-us-hyperscaler-earnings-not-enough-michael-romano-20.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 19,
+  "matched": 19,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
