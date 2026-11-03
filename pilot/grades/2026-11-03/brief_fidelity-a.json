@@ -1,0 +1,122 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d24",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI-driven NDX weakness after earnings drives a weekend sell-off that bounces off lows into the close \u2192 equities close broadly lower (SPX/NDX/RTY down) with a defensive-sector rotation (6/11 green) \u2192 that equity weakness drives a choppy, steeper-curve rates session (ECI in line; market prices 18bps hikes by YE, 60bps by mid-2027) \u2192 credit widens with equities as an early bounce is undone by poor AI sentiment (TMT/CRWV/VRRM weak, no primary deals) \u2192 Dollar weakens broadly, EUR the lone red G10 currency at a 2025 low, JPY's risk-off bid reaffirms its hedge value \u2192 next week: payrolls, ISM, QRA, midterms.",
+   "brief_chain": "Same chain, essentially a line-by-line compression of the source with the same figures and order of events (risk/equities \u2192 rates \u2192 credit \u2192 FX \u2192 calendar).",
+   "distortions": [
+    {
+     "what": "Source attributes the rates-paying flow to 'FM' (plausibly desk shorthand for Fast Money \u2014 leveraged/tactical accounts); brief renders this as 'real money' (the opposite account type \u2014 sticky, institutional). Searched 'FM', 'real money', 'RM' \u2014 found only the single 'FM' mention, no document-internal definition.",
+     "material": false,
+     "would_the_trade_change": "No named trade or lean rides on this clause \u2014 it is flow color on who paid rates, not a call \u2014 so even if the account type is inverted it doesn't change a stance, instrument, or invalidation."
+    },
+    {
+     "what": "Brief drops the specific defensive-sector list (Energy +1.91%, Staples +1.38%, Utilities +0.64%, Healthcare +0.43%, Real Estate +0.15%, Materials +0.04%) and the 'second-worst YTD' qualifier on NDX's session, keeping only the aggregate reads.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the aggregate facts (6/11 green, worst since June) are preserved; only supporting granularity is compressed."
+    },
+    {
+     "what": "Brief drops the FX breadth detail (NOK's outperformance on oil, AUD/NZD finishing flat) beyond the Dollar/EUR/JPY lines it keeps.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the material FX calls (Dollar weaker, EUR the lone red currency, JPY's hedge value) are all retained."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d11",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI exposures sell off hard (Semis -8% Friday, NDX -7% in October) while non-AI/defensive names outperform \u2192 HFs net buy for the first time in 4 weeks on short covers, but Info Tech stays net sold MTD and Mag7 is net sold in 4 of 5 sessions, so risk appetite hasn't really recovered \u2192 Financials de-gross at the fastest pace in 6+ months \u2192 a dramatic vol crush reverses sharply on Friday as flows catch up to the bear thesis (downside bought in index/semis) and the S&P breaks its own medium-term CTA threshold, while separately the Russell 2000's systematic momentum setup is one further down day from flipping negative and halting CTA buying \u2192 breadth was healthy Thursday (406 SPX names green) but Friday's drop broadened the damage (ex-AI still green, but breadth itself deteriorated vs Thursday) \u2192 ahead of midterms (Kalshi 65% Dem sweep), GS lays out five affordability-linked baskets.",
+   "brief_chain": "Same opening and positioning/de-grossing chain, but merges the S&P's own CTA-threshold break with the Russell 2000-specific systematic-momentum flip-negative warning into one S&P-scoped causal statement, and generalizes breadth as having 'stayed healthy' through the tech-led (Friday) drop without the source's Thursday-vs-Friday distinction.",
+   "distortions": [
+    {
+     "what": "Brief writes 'S&P broke its medium-term CTA momentum threshold, and a further break would flip GS systematic momentum negative, halting CTA buying' as one continuous S&P-scoped claim. The S&P threshold break is real (Derivatives section, 'S&P broke its medium-term CTA threshold (7544.2)'), but the 'flip negative, halting projected CTA buying' warning is explicitly scoped to the Russell 2000's own systematic setup in the Futures section ('the setup for the Russell 2K remains constrained... Furthermore, should Friday's price action persist, GS systematic momentum thresholds are set to flip negative, halting projected CTA buying'). Searched 'systematic momentum', 'CTA threshold', 'flip negative' \u2014 each appears once, in the sections quoted.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader would watch the S&P for a broad CTA-buying halt, when the source scopes that specific risk to the Russell 2000's own setup; this misdirects which index's momentum/CTA risk to monitor, a trade-instrument error."
+    },
+    {
+     "what": "Brief states 'market breadth stayed healthy despite the tech-led drop.' Source explicitly distinguishes Thursday (406 SPX constituents green, one of the best 2026 readings \u2014 'healthy') from Friday ('that differed from Friday's move which dragged index constituents down more broadly'), i.e. breadth itself worsened on the day of the actual tech-led drop, even though SPX ex-AI still closed green that day.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 the source's point is that the Friday down-day broadened beyond a Thursday-style selective pullback; collapsing this into 'breadth stayed healthy' through the drop inverts the day-of-the-decline signal a trader would use to judge whether the AI unwind is contained or spreading."
+    },
+    {
+     "what": "Brief keeps 'Info Tech remains heavily net sold month-to-date' but drops that Info Tech was actually the most net-bought sector that week (thru Thursday); and drops 'second straight week' of Financials de-grossing.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's bottom line ('little recovery in risk appetite,' 'fastest de-grossing in 6+ months') matches the source's own conclusion; only supporting nuance is compressed."
+    }
+   ],
+   "material_count": 2,
+   "non_material_count": 1
+  },
+  {
+   "id": "d16",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "AI trade (semis/memory/neoclouds, NVDA, SPCX) drove Friday's close lower; Monday opens with a partial bounce in Europe/US futures \u2192 a Treasury bid (yields down, curve steepening) reads as a growth-scare signal \u2192 Asia is mixed (Tokyo Electron eases semi-cap sentiment, Kioxia's guide keeps the bar high; KOSPI/China separately higher) \u2192 crude is optically lower partly on a contract roll and partly on Iran-diplomacy delay reports, making Tuesday's midterms the near-term pivot for both the Iran timeline and risk appetite \u2192 week ahead: midterms Tuesday, BoE Thursday, payrolls Friday, among other events \u2192 Friday's European flow was balanced, Banks busiest (demand Spain/Netherlands, supply Italy), Healthcare also in demand, Tech/Telecoms for sale.",
+   "brief_chain": "Matches the source chain closely and in the same order, compressing the Asia (KOSPI/China) and European-flow (Healthcare, Food & Bev, Energy) detail and the crude futures-roll caveat, while keeping every figure and the midterm-pivot framing.",
+   "distortions": [
+    {
+     "what": "Brief drops SPCX's -6.4% move, keeping only NVDA (-4.2%) from the 'big tech was broadly weaker' clause.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the sector-level call (semis/memory/neoclouds/big tech weak) and the one named figure (NVDA) are preserved; the dropped ticker is additional color."
+    },
+    {
+     "what": "Brief's Asia sentence covers only Tokyo Electron and Kioxia, omitting KOSPI's +2% national-pension-driven rally and China's +1.1% move on regulator-support reports.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are separate, unrelated Asia data points; the kept Tokyo Electron/Kioxia pair is the part UBS explicitly ties to the AI-derisking thesis the brief is reporting."
+    },
+    {
+     "what": "Source flags crude's drop as partly mechanical ('optically lower... part of the move reflects the front month rolling from Dec26 to Jan27') alongside the Iran-diplomacy driver; brief attributes the move to the Iran report alone, dropping the roll caveat.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a dropped secondary caveat on magnitude attribution, not a change to the stated direction, instrument, or the midterm-pivot framing that follows."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d38",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "S&P 500 fell despite 80%+ of its stocks rising (first time in ~40 years) as single-stock vol vs. the index spikes and cross-stock correlation collapses \u2192 sector dispersion is highest in Materials/Industrials/Comm Services, calmest in Staples/Utilities \u2192 hedge funds have de-grossed 8% since June (largest on record), net leverage 51% mostly on short covering not conviction buying \u2192 equal-weight outperforms as the Mag7 stumbles, raising a year-end rotation question \u2192 Europe's STOXX 600 is only ~3% off highs but cyclicals trail defensives by 13% and momentum has unwound 14% since June, a rotational bear market MS sees setting up reversal in Semis/Hardware/Banks \u2192 Mike Wilson sees the correction nearing its final stages (Semis could fall another 10-15% before mid-November support), year-end S&P target 8,000 \u2192 separately, prediction markets price 66% odds of a Dem sweep (MS flags specific swing districts) and MS sees top hoteliers outgrowing luxury goods makers on EPS growth (~20% vs ~10% through 2028).",
+   "brief_chain": "Matches the source chain in full, in the same order and with the same figures, dropping only the sector-dispersion breakdown and the named swing districts as supporting detail.",
+   "distortions": [
+    {
+     "what": "Brief omits the entire 'Dispersion gone wild' section (Materials/Industrials/Comm Services highest dispersion, Staples/Utilities calmest).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is supporting color for the single-stock-vol/correlation-collapse claim already stated in the brief's first sentence; dropping it changes no call."
+    },
+    {
+     "what": "Brief drops the named swing districts (NC-03, FL-07, FL-13, VA-05) from the midterm-odds line.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the only figure that matters for a trade read, the 66% Dem-sweep probability, is kept intact."
+    },
+    {
+     "what": "Brief generalizes 'five largest global hoteliers' to 'top global hoteliers' and 'mutual fund year-end' to 'year-end'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both figures (20% vs 10% EPS growth; the rotation question) are unchanged; only the qualifying nouns are loosened."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 2,
+ "non_material_total": 10,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

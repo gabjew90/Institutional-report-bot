@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d24",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI trade sold off hard following earnings therefore NDX posted its worst session since June and equities fell broadly into the weekend (bouncing off intraday lows) therefore equity weakness dragged credit wider and drove a steeper, choppier rates session with FM (fast money) paying rate and buying spreads therefore risk-off carried into FX (Dollar weaker, EUR the lone red currency at its lowest since May '25, JPY gaining as a hedge) heading into next week's payrolls/ISM/QRA/midterms.",
+   "brief_chain": "AI trade sold off hard after earnings therefore NDX had its worst session since June and major indices fell into the weekend (with a late bounce) therefore credit widened alongside equities and real money paying rate drove a steeper, choppier rates session therefore the Dollar weakened broadly (EUR the lone red currency at post-May-'25 lows, JPY gaining as a hedge) ahead of next week's payrolls/ISM/QRA/midterms.",
+   "distortions": [
+    {
+     "what": "Brief attributes the rate-paying flow to 'real money' while the source attributes it to 'FM' \u2014 sell-side rates shorthand for fast money (leveraged/macro accounts), the functional opposite of real money (unlevered institutional accounts).",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 real-money flow reads as sticky and worth following, while fast-money flow reads as momentum-driven and prone to reverse; mislabeling the source of the paying flow changes how durable a reader should treat the rates move."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 0
+  },
+  {
+   "id": "d11",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI-linked exposures (Semis, NDX) sold off sharply into Friday while non-AI/defensive pockets (Healthcare, Biotech, Defense, IBM/AAPL/SPOT/V/MA/EBAY/LYV) held up therefore HFs only modestly net bought equities via short covers while Info Tech/Mag7 and Financials kept de-grossing, so the desk sees no real recovery in risk appetite therefore a vol crush built through the week and reversed sharply Friday as flows caught up to the bear thesis, with S&P breaking its CTA momentum threshold and risking a flip to negative GS systematic momentum that would halt CTA buying therefore ahead of midterms GS flags five affordability-linked basket trades spanning health insurance, drug pricing, power costs, government spending and corporate tax.",
+   "brief_chain": "AI-linked exposures sold off sharply (Semis -8% Friday, NDX -7% in October) while non-AI names and defensives outperformed therefore HFs net bought equities for the first time in four weeks via short covers but Info Tech/Mag7 kept getting sold and Financials de-grossed fastest in 6+ months, so risk appetite showed little real recovery therefore a sharp vol crush reversed Friday as flows caught up to the bear thesis, with S&P breaking its CTA threshold and risking a flip to negative systematic momentum therefore ahead of midterms GS outlines five affordability-linked baskets across ACA subsidies, drug pricing, power-cost allocation, government spending and corporate tax.",
+   "distortions": [
+    {
+     "what": "Brief states market breadth 'stayed healthy despite the tech-led drop' without qualification, while the source distinguishes Thursday's breadth (406 SPX constituents green, one of 2026's best readings) from Friday's, noting Friday's move 'dragged index constituents down more broadly' (though SPX ex-AI still closed green).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the core read (AI-specific weakness vs. broader resilience) is unchanged; this only drops a Thursday/Friday nuance, a compression rather than a reversal of the call."
+    },
+    {
+     "what": "Brief omits that Info Tech was actually the week's most net-bought sector (through Thursday) before noting it remains heavily net sold month-to-date; it states only the MTD figure.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the desk's own conclusion ('little recovery in risk appetite') is preserved; dropping the sub-point doesn't change the stance."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d16",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Friday's close was dragged lower by the AI trade (semis/memory/neoclouds, NVDA -4.2%) therefore Monday brings a partial bounce as futures recover off Friday's lows while a bid to Treasuries raises growth-scare concern therefore Asia is mixed (Tokyo Electron eases the semi-cap complex, Kioxia disappoints) and crude's 3-3.5% drop is only 'optically lower' \u2014 partly a futures-roll effect layered on an Iran-diplomacy-delay headline \u2014 ahead of Tuesday's midterms, which UBS calls the near-term pivot therefore the week ahead (midterms, BoE, payrolls) sets the next catalysts while Friday's European cash flow closed balanced with Banks and Healthcare both busy on demand and Tech/Telecoms for sale.",
+   "brief_chain": "Friday's close was dragged lower by the AI trade (semis/memory/neoclouds, NVDA -4.2%) therefore Monday brings a partial bounce while a bid to Treasuries raises growth-scare concern therefore Asia is mixed (Tokyo Electron eases, Kioxia disappoints) and crude's 3-3.5% drop is read as driven by the Iran-diplomacy-delay headline ahead of Tuesday's midterms, which UBS calls the near-term pivot therefore the week ahead (midterms, BoE, payrolls) sets the next catalysts while Friday's European cash flow closed balanced with Banks busiest on demand and Tech/Telecoms for sale.",
+   "distortions": [
+    {
+     "what": "Brief states crude is down 3-3.5% 'on reports' of the Iran diplomacy delay with no qualification, while the source calls the move 'optically lower' and explicitly attributes part of it to the futures front-month roll from Dec26 to Jan27 (Brent $109.5, WTI $100.5), not purely the news.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 if part of the drop is a mechanical roll artifact rather than a pure repricing of geopolitical risk, a reader should not treat the full -3-3.5% as a signal that Iran risk/risk appetite genuinely eased, changing how much weight to put on the move as a catalyst read."
+    },
+    {
+     "what": "Brief's flow bullet names Banks as busiest with demand and Technology/Telecoms for sale, but omits that Healthcare was nearly as busy (24% of turnover vs. Banks' 25%) and also saw demand.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the balanced-flow, demand-led-by-Banks characterization still holds; dropping a second demand sector thins the picture without reversing it."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  },
+  {
+   "id": "d38",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "The S&P fell despite 80%+ of its stocks rising as single-stock vol approached extreme levels and correlation collapsed therefore hedge funds have de-grossed at a record pace with net leverage rebuilt mostly via short covering, not conviction buying, and equal-weight is beating the Magnificent Seven, raising the rotate-or-keep-defending-winners question therefore Europe's rotational bear market (cyclicals lagging defensives by 13%, momentum down 14% since June) sets up a reversal in Semis/Hardware/Banks that Mike Wilson reads as the correction nearing its final stages (though semis could fall another 10-15%) with his 8,000 S&P year-end target intact therefore midterm odds (66% Dem sweep) and a hotel-vs-luxury EPS growth gap round out the week's charts.",
+   "brief_chain": "The S&P fell despite 80%+ of its stocks rising, the first such divergence in nearly 40 years, as single-stock vol hit extraordinary levels and correlation collapsed therefore hedge funds have de-grossed 8% since June (a record) with net leverage back to 51% mainly on short covering, and equal-weight is beating the Magnificent Seven, raising the rotate-or-defend-winners question therefore Europe's rotational bear market (cyclicals lagging defensives by 13%, momentum down 14% since June) sets up a reversal in Semis/Hardware/Banks that Wilson reads as the correction nearing its final stages (though semis could fall another 10-15%) with his 8,000 target intact therefore a 66% Dem-sweep probability and a hotel-vs-luxury EPS growth gap round out the week's charts.",
+   "distortions": [
+    {
+     "what": "Brief states single-stock volatility relative to the index has 'hit extraordinary levels,' while the source says it is 'approaching extraordinary levels' \u2014 a shift from not-yet-reached to already-reached.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 either phrasing supports the same read (elevated dispersion risk); it changes no stance, level, or invalidation."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 2,
+ "non_material_total": 4,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

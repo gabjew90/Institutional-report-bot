@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-02/24070__1-1-trillion-in-cloud-backlog-vs-peak-earnings-growth-two-go.txt",
+ "source_span": "backlog is revenue, and the market spent this week asking about cash. Alphabet is Exhibit A. the company with the $561 billion backlog burned $9.1 billion of free cash flow (vs. $3.5 billion expected), bought back zero stock in 2026",
+ "source_chain": "Hyperscaler Q3 results (Alphabet +103% cloud growth, $561bn backlog; Amazon AWS +39%, $578bn backlog) looked like it answered the AI-ROI question (Wilson's read), therefore the piece counters that backlog is revenue not cash \u2014 Alphabet burned $9.1bn FCF vs $3.5bn expected, bought back zero stock, sold $12.4bn of new shares and issued $28.7bn of bonds, on top of a $4.1tn and growing off-balance-sheet tab \u2014 therefore the debate has moved from whether AI gets funded to who funds it and at what price; the piece flags revisiting this after the midterm vote and Apple's earnings.",
+ "pulse_chain": "Hyperscaler earnings (Alphabet 103% cloud growth, $561bn backlog; Amazon AWS 39% growth and a miss, $578bn backlog) left the market focused on the AI funding/returns debate rather than resolving it, therefore Alphabet's growth still came with a $9.1bn FCF burn vs $3.5bn expected, no buybacks, $12.4bn of new shares and $28.7bn of bonds, therefore growth was never the question \u2014 who pays for it was; the theme's own invalidation is pinned to technical levels (S&P's 7544.2 trend threshold, Goldman's systematic momentum signal, 7616-7643 support, vol-targeting selling estimates) rather than the midterms/Apple check-in the source flags.",
+ "preserved": true,
+ "why": "The pulse reproduces the note's A-therefore-B-therefore-C argument (strong backlog growth does not settle the ROI debate because Alphabet's cash burn and financing moves show who-pays is still open) with the same figures, same direction, and no misattribution or invented mechanism; swapping the note's soft midterms/Apple check-in for a market-level technical invalidation is a compression of the broader theme's actionable catalyst, not a reversal of this chain's own logic.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

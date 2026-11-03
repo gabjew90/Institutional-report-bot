@@ -1,0 +1,152 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d24",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Equity sell-off (AI trade hit hard after earnings, NDX worst session since June) therefore drove risk-off rates/credit (steeper curve, wider credit, rate-paying flow partly fast-money-driven) therefore a weaker Dollar except EUR, with JPY gaining as a risk-off hedge.",
+   "brief_chain": "Equity sell-off (AI trade hit hard after earnings) therefore drove a choppy, steeper-curve rates session with real-money paying rate and wider credit therefore a weaker Dollar except EUR, with JPY's risk-off gains underscoring its hedge value.",
+   "distortions": [
+    {
+     "what": "Brief attributes the rate-paying flow to 'real money', but the source's shorthand is 'FM' ('We saw better paying of rate from FM'), the standard desk term for fast money (hedge funds/leveraged accounts), the near-opposite of real money (asset managers/pensions).",
+     "material": true,
+     "would_the_trade_change": "Yes - fast-money paying reads as a speculative, flow-driven signal, while real-money paying implies a stickier, higher-conviction institutional view; the two carry different conviction about how durable the rates move is."
+    },
+    {
+     "what": "Drops the source's AI CDS detail ('AI cds closed anywhere from +2-10bps wider') under the TMT-underperformance line.",
+     "material": false,
+     "would_the_trade_change": "No - the directional call (TMT underperformance on hyperscaler/AI weakness) is unchanged; this is a dropped supporting figure."
+    },
+    {
+     "what": "Drops CRWV's exact additional decline ('-1-2pts') from 'CRWV cash drifted another -1-2pts', brief just says 'drifted lower'.",
+     "material": false,
+     "would_the_trade_change": "No - direction (lower) preserved, only magnitude precision lost."
+    },
+    {
+     "what": "Drops EUR's exact magnitude ('-10bps') while keeping the direction ('only currency to close red').",
+     "material": false,
+     "would_the_trade_change": "No - direction and framing (lowest since May '25) preserved."
+    },
+    {
+     "what": "Drops the USDJPY/-10bps/BOJ-hold explanatory detail entirely ('USDJPY's moves (-10bps) were largely in line with the pull back in yields after the pairs muted reaction to the BOJ's widely expected hold').",
+     "material": false,
+     "would_the_trade_change": "No - this is supporting mechanism detail behind the already-stated JPY hedge-value conclusion, not a changed call."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 4
+  },
+  {
+   "id": "d11",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI-exposure selling (Semis -8% Friday, NDX -7% in October) therefore hedge funds covered shorts (first net buy in 4 weeks) while staying net sold on Info Tech MTD therefore a Friday vol-crush reversal and S&P breaking its own CTA threshold pushed flows to catch up with the bear thesis, with Russell 2000's separate momentum threshold at risk of flipping negative if Friday's selloff persists.",
+   "brief_chain": "AI-exposure selling (Semis -8% Friday, NDX -7% in October) therefore hedge funds covered shorts (first net buy in 4 weeks) while staying net sold on Info Tech MTD and de-grossing Financials fastest in 6 months therefore a vol-crush reversal pushed flows to catch the bear thesis as S&P broke its CTA threshold, and a further break would flip GS systematic momentum negative, halting CTA buying.",
+   "distortions": [
+    {
+     "what": "Brief presents 'a further break would flip GS systematic momentum negative, halting CTA buying' as a continuation of the S&P CTA-threshold break just described. The source attaches that forward-looking momentum-flip warning specifically to Russell 2000 ('Should Friday's price action persist, GS systematic momentum thresholds are set to flip negative, halting projected CTA buying'), in the Futures/Russell 2K section, separate from the S&P threshold break reported in the Derivatives section.",
+     "material": true,
+     "would_the_trade_change": "Yes - the instrument at risk of the next systematic-selling trigger is Russell 2000, not the S&P 500; acting on the brief would have a trader watching/sizing the wrong index for that catalyst."
+    },
+    {
+     "what": "Source's 'Obesity Drugs, Defense Spending, and Biotech' outperforming themes become 'defensives (Healthcare, Biotech, Defense Spending)' - Obesity Drugs generalized to Healthcare and all three re-labeled as 'defensives', a framing the source doesn't use for this set.",
+     "material": false,
+     "would_the_trade_change": "No - Obesity Drugs is a healthcare theme, and the direction (these themes outperformed) is unchanged."
+    },
+    {
+     "what": "Drops 'and to a lesser extent Single Stocks' as a secondary driver of the hedge-fund short-covering buy.",
+     "material": false,
+     "would_the_trade_change": "No - the primary driver (Macro Products short covers) is preserved."
+    },
+    {
+     "what": "Source notes breadth was healthy Thursday (406 constituents green) but Friday's move 'dragged index constituents down more broadly' (SPX ex-AI still green); brief smooths this into one blanket 'market breadth stayed healthy despite the tech-led drop.'",
+     "material": false,
+     "would_the_trade_change": "No - the underlying point (ex-AI breadth held up) survives; only the day-by-day nuance is compressed."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 3
+  },
+  {
+   "id": "d16",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Friday's AI-led sell-off (S&P -1.8%, Nasdaq -2.9%, semis/memory/neocloud hit) therefore a Monday bounce with Treasuries bid on growth-scare concern therefore Asia's Tokyo Electron earnings relief is undercut by Kioxia's soft guide, so the AI complex needs more than one positive Tokyo print; crude's optically lower move (partly a futures contract-roll artifact) on Iran-diplomacy reports makes Tuesday's midterms the pivot for both the Iran timeline and risk appetite.",
+   "brief_chain": "Friday's AI-led sell-off (S&P -1.8%, Nasdaq -2.9%, semis/memory/neocloud hit) therefore a Monday bounce with Treasuries bid on growth-scare concern therefore Asia's Tokyo Electron earnings relief is undercut by Kioxia's soft guide, so the AI complex needs more than one positive Tokyo print; crude's 3-3.5% drop on Iran-diplomacy reports makes Tuesday's midterms the pivot for both the Iran timeline and risk appetite.",
+   "distortions": [
+    {
+     "what": "Brief states crude is 'down 3-3.5% on reports Trump will give Iran diplomacy more time' as a plain news-driven move. The source explicitly calls it 'optically lower' and explains 'part of the move reflects the front month rolling from Dec26 to Jan27' - i.e., part of the printed decline is a contract-roll artifact, not a real reaction to the news.",
+     "material": true,
+     "would_the_trade_change": "Yes - a trader reading the brief would overstate how much of crude's move is a genuine reaction to the Iran-diplomacy headline, since part of the figure is mechanical (contract roll) rather than news-driven."
+    },
+    {
+     "what": "Drops EStoxx's '+90bps off Friday's lows' detail, keeping only the '+20bps to start' figure.",
+     "material": false,
+     "would_the_trade_change": "No - direction (bounce) preserved, magnitude detail lost."
+    },
+    {
+     "what": "Drops SPCX's -6.4% decline alongside NVDA's -4.2%.",
+     "material": false,
+     "would_the_trade_change": "No - the semis/big-tech weakness direction is intact via NVDA."
+    },
+    {
+     "what": "Drops the KOSPI/China Asia detail and the 'roughly inline with ADR move' qualifier on Kioxia.",
+     "material": false,
+     "would_the_trade_change": "No - secondary regional color, doesn't change the Tokyo Electron/Kioxia read."
+    },
+    {
+     "what": "Drops the Healthcare demand detail ('Healthcare (24% of turnover) also saw demand... large-cap pharma') from the European flow section.",
+     "material": false,
+     "would_the_trade_change": "No - the stated flow picture (Banks busiest, Tech/Telecoms for sale) is unchanged."
+    },
+    {
+     "what": "Compresses the week-ahead to midterms/BoE/payrolls only, dropping Monday's PMIs/AAPL-PLTR earnings, Wednesday's ADP/ISM services/QRA, and the full >$100bn-cap earnings list.",
+     "material": false,
+     "would_the_trade_change": "No - omitted secondary calendar items, headline catalysts preserved."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 5
+  },
+  {
+   "id": "d38",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "Abnormal dispersion (S&P fell despite 80%+ of stocks rising, correlation collapse) therefore hedge funds de-grossed a record 8% since June with net leverage driven by short-covering, not conviction buying, therefore equal-weight is outperforming the Magnificent Seven, raising a year-end rotation question, while Europe's rotational bear market (cyclicals vs. defensives, momentum unwind) sets up a reversal in Semis/Hardware/Banks that Wilson reads as the correction nearing its final stage (S&P target 8,000), alongside midterm-odds and hotel-vs-luxury growth themes.",
+   "brief_chain": "Abnormal dispersion (S&P fell despite 80%+ of stocks rising, correlation collapse) therefore hedge funds de-grossed a record 8% since June with net leverage driven by short-covering, not conviction buying, therefore equal-weight is outperforming the Magnificent Seven, raising a year-end rotation question, while Europe's rotational bear market (cyclicals vs. defensives, momentum unwind) sets up a reversal in Semis/Hardware/Banks that Wilson reads as the correction nearing its final stage (S&P target 8,000), alongside midterm-odds and hotel-vs-luxury growth themes.",
+   "distortions": [
+    {
+     "what": "Omits the entire 'Dispersion gone wild' sector-breakdown section (Materials/Industrials/Comm Services showing the biggest dispersion, Staples/Utilities calm).",
+     "material": false,
+     "would_the_trade_change": "No - a supporting chart dropped wholesale; the dispersion/de-grossing/rotation calls it would have supported are already stated elsewhere in the brief."
+    },
+    {
+     "what": "Drops the specific swing-district races Morgan Stanley flags (NC-03, FL-07, FL-13, VA-05) under the midterms theme.",
+     "material": false,
+     "would_the_trade_change": "No - the headline probability (66% Dem sweep) is preserved; the named races are illustrative detail."
+    },
+    {
+     "what": "Drops the luxury-hotel stat ('just 2% of global hotel properties but generate 15% of room revenue') behind the hoteliers-vs-luxury growth comparison.",
+     "material": false,
+     "would_the_trade_change": "No - the EPS growth comparison (20% vs 10% through 2028) that drives the call is kept intact."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 3,
+ "non_material_total": 15,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

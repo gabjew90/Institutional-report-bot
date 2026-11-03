@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-02/23705__gs-lin-us-equities-weekly-rundown-october-30-2026-30-oct-202.txt (corroborated by pilot-data/pilot/source-text/2026-11-02/24079__jpm-us-market-intelligence-morning-briefing.txt)",
+ "source_span": "During Friday's session, S&P broke its medium-term CTA threshold (7544.2) as flows were concentrated in buying downside at the index level and within the Semis space. Vol of vol (VVIX) surpassed 120... [JPM/Hunter:] a break below that support area could see selling pressure intensify and take the index down to its next support in the 7200s... Systematic trend-following associated with the market breaking through those signal levels can help drive that dynamic.",
+ "source_chain": "S&P breaks its medium-term CTA/trend-following threshold (7544.2) on Friday, therefore flows shift into buying downside protection and vol-of-vol spikes, therefore a further break of the 7616-7643 support zone triggers intensified systematic/CTA SELLING that drives the index down toward the next support in the 7200s (and potentially 7000); invalidation is holding above that support zone so the forced-selling dynamic doesn't engage.",
+ "pulse_chain": "S&P breaks its medium-term trend-following threshold of 7544.2 on Friday, therefore a further break flips Goldman's systematic momentum signal negative, therefore this STOPS projected trend-follower BUYING; invalidation given as JPMorgan's 7616-7643 support / 7200s shelf.",
+ "preserved": false,
+ "why": "The sources argue that breaking the level triggers active, intensifying systematic SELLING that pushes the index down to the next shelf; the pulse reverses this into a passive claim that a further break merely 'stops projected trend-follower buying,' a materially weaker and different mechanism neither note states, so the pulse's conclusion (sentiment-driven drift) no longer follows from the sources' actual premise (forced supply).",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-02/23993__gs-shea-safety-first-the-monthly-tape-october-26-2-nov-2026.txt",
+ "source_span": "As of the 10/30 close, the SPX was 35 handles above its medium-term CTA threshold (7544). The NDX closed below both its short- and medium-term thresholds. Both tails of systematic supply remain fat -- $164bn to sell in a down tape over 1m",
+ "source_chain": "Friday's session tested the medium-term CTA threshold (7544) intraday with downside flow concentrated at the index and semis level, therefore the close still landed 35 handles above that threshold (not broken), therefore the level remains an intact, forward-looking pivot whose future close below it would unleash the $164bn/month of systematic down-tape supply and extend the move, while a close above keeps the $120bn/month up-tape buying in play as the live invalidation condition.",
+ "pulse_chain": "The S&P broke its medium-term trend-following threshold of 7544.2 on Friday, therefore a further break below that already-broken level flips Goldman's systematic momentum signal negative, therefore trend-follower buying stops and the index is exposed to JPMorgan's 7616-7643 support and the 7200s shelf.",
+ "preserved": false,
+ "why": "The pulse states the 7544.2 CTA threshold was already broken on Friday's close, when the GS source it draws the figure from says the SPX closed 35 handles above that threshold (not breached), turning the note's live, falsifiable future invalidation condition (a close below 7544 triggers the systematic selling cascade) into a claimed fait accompli, which reverses the chain's premise.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,92 @@
+{
+ "metric": 1,
+ "total_cards": 1727,
+ "fragmentation_sets": [
+  {
+   "subject": "Oil's Strait-of-Hormuz/Iran geopolitical risk premium, its price action around the midterms, and the CTA/positioning unwind behind it",
+   "labels": [
+    "post midterm oil risk premium",
+    "oil long positioning unwind",
+    "strait hormuz oil risk premium",
+    "oil risk premium vs european equity rally"
+   ],
+   "cards": 35
+  },
+  {
+   "subject": "The AI capex financing debate (bull case: cloud growth/backlogs/AMZN pick vs bear case: off-balance-sheet debt and Alphabet's cash burn) \u2014 explicitly framed as one debate by GS's own 'who funds AI' quote",
+   "labels": [
+    "ai hyperscaler capex cycle",
+    "ai off balance sheet debt risk"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Friday's tech-led selloff: the index/sector price action and vol moves, plus the hedge fund/asset-manager/CTA flow that drove and may extend it",
+   "labels": [
+    "tech sell off sector rotation",
+    "hedge fund leverage positioning"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "The Oct 30 selloff's P&L hit to long/short hedge fund strategies by category (Fundamental, Asia, TMT, Systematic) \u2014 the smaller label is a near-verbatim subset of the larger one",
+   "labels": [
+    "hedge fund performance update",
+    "l s manager performance"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Tether's growing footprint and reserve-quality stress \u2014 T-bill holdings, gold buying, profit slowdown/audit risk, and the GENIUS Act regulation that the cards themselves describe as the shared 'hinge' for the bill and gold stories",
+   "labels": [
+    "tether t bill treasury bid",
+    "tether gold buying surge",
+    "tether profit slowdown risk",
+    "genius act usat regulation"
+   ],
+   "cards": 39
+  }
+ ],
+ "fragmented_mass_share": 0.08,
+ "mis_merges": [
+  {
+   "label": "latam central bank outlook",
+   "subjects": [
+    "Brazil's election-day 13.9% single-day market crash",
+    "Chile and Colombia central bank policy trajectory debates"
+   ],
+   "would_change_theme_selection": true,
+   "why": "A 13.9% single-day crash is a shock-event story with lead-theme weight; folding it into a routine-sounding monetary-policy roundup makes it easy for an editor scanning labels to miss it as its own brief."
+  },
+  {
+   "label": "oil risk premium vs european equity rally",
+   "subjects": [
+    "oil's Hormuz/midterm risk premium",
+    "European equity indices (SMI) at record highs"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both halves are thin (4 cards, partly duplicated) and already fully represented elsewhere \u2014 the oil fragmentation set and general European-equity coverage \u2014 so the merge doesn't hide or surface a theme."
+  },
+  {
+   "label": "post midterm oil risk premium",
+   "subjects": [
+    "oil's Hormuz/Iran risk premium",
+    "a stray Deutsche Bank card on election-cycle equity positioning vs earnings growth"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Just one misfiled card (equity positioning, not oil) sitting in an otherwise pure oil label; the positioning point it makes is already carried at scale under 'positioning vs earnings growth'."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/1727 cards (0.7%), correctly excluded from fragmented mass per rule. Fragmented share alone (8.0%) would clear the 10% bar, but the Brazil-crash mis-merge fails the gate on its own.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

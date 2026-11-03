@@ -1,0 +1,120 @@
+{
+ "metric": 1,
+ "total_cards": 1727,
+ "fragmentation_sets": [
+  {
+   "subject": "Oct 30 selloff hits hedge-fund long/short strategy performance across styles",
+   "labels": [
+    "hedge fund performance update",
+    "l s manager performance"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Rotation out of AI mega-cap winners into non-AI, uncorrelated, and disruption-resistant trades (the SPXXAI broadening trade)",
+   "labels": [
+    "ai disruption rotation trades",
+    "ai uncorrelated trade ideas",
+    "ai winners vs laggards rotation"
+   ],
+   "cards": 31
+  },
+  {
+   "subject": "Oil's Hormuz/Iran-driven risk premium, volatility, and positioning unwind into the midterms",
+   "labels": [
+    "post midterm oil risk premium",
+    "strait hormuz oil risk premium",
+    "oil long positioning unwind"
+   ],
+   "cards": 31
+  },
+  {
+   "subject": "Tether's expanding and scrutinized balance sheet (Treasury bills, gold, profit quality, regulation)",
+   "labels": [
+    "tether t bill treasury bid",
+    "tether gold buying surge",
+    "tether profit slowdown risk",
+    "genius act usat regulation"
+   ],
+   "cards": 39
+  },
+  {
+   "subject": "Binance hack fuels the cyber-risk bull case and hits bitcoin-sensitive stocks",
+   "labels": [
+    "ai cyber risk bull market",
+    "binance hack bitcoin selloff"
+   ],
+   "cards": 6
+  }
+ ],
+ "fragmented_mass_share": 0.0712,
+ "mis_merges": [
+  {
+   "label": "latam central bank outlook",
+   "subjects": [
+    "Brazil's Lula election win and the resulting 13.9% one-day market crash",
+    "Chile and Colombia central bank rate-path commentary"
+   ],
+   "would_change_theme_selection": true,
+   "why": "A 13.9% one-day crash following a presidential election is major standalone news that could lead its own brief; folding it into routine Chile/Colombia rate commentary risks an editor treating it as a minor regional footnote."
+  },
+  {
+   "label": "equity desk flow positioning",
+   "subjects": [
+    "Goldman's own TMT and franchise client-flow recap for 30 Oct",
+    "UBS's forecast that Risk Control (vol-targeting) funds force $75-100bn of selling Monday"
+   ],
+   "would_change_theme_selection": true,
+   "why": "UBS's forced-selling forecast is a distinct, forward-looking mechanical-flow risk worth its own WHAT TO WATCH callout, but it is buried as a footnote under GS's backward-looking desk color."
+  },
+  {
+   "label": "bank sector rebound",
+   "subjects": [
+    "European Banks rebounding on sovereign-spread relief and Greek-bank catalysts (CMD, MSCI upgrade)",
+    "Japanese Banks rallying on BoJ December hike speculation"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Different region and catalyst trades get flattened into one generic 'banks rebound' theme, losing the Japan/BoJ-hike angle that more naturally belongs with the rate-path story."
+  },
+  {
+   "label": "sovereign bond supply outlook",
+   "subjects": [
+    "US Treasury bill supply/richness dynamics",
+    "EU bond outlook and French rating risk",
+    "UK Budget's effect on gilt supply (duplicates the dedicated UK label)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The UK content is redundant with the fully dedicated 'uk budget boe path' label, so the editor isn't at risk of missing that theme, only of redundant grouping."
+  },
+  {
+   "label": "post midterm oil risk premium",
+   "subjects": [
+    "Oil's Hormuz/Iran-driven risk premium into the midterms",
+    "Deutsche Bank's comparison of today's large-cap positioning-vs-earnings-growth gap to the 2024 election"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The positioning-vs-earnings-growth subject already has its own full label, so the stray card costs the editor nothing beyond internal noise."
+  },
+  {
+   "label": "oil risk premium vs european equity rally",
+   "subjects": [
+    "Oil's midterm risk premium",
+    "European equities (SMI) hitting record highs"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The European-rally content is one thin fact duplicated within the label, not substantial enough to be a theme regardless of placement."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12 of 1727 cards (0.7%), including a gas-price fact duplicated in the dedicated 'european gas price shock' label and a pension month-end flow duplicated in 'month end rebalancing flows'; reported per rule but excluded from fragmentation/mis-merge judgment. Fragmented mass clears the 10% bar, but three mis-merges would change theme selection, so the metric fails.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,151 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/23713__gs-milhous-cas-mark-to-market-for-friday-30-oct-2026.txt",
+   "span": "US equities finished the week lower: SPX -182 bps to 7580, NDX -346 bps to 28384, and RTY -166 bps to 2811",
+   "why": "Verbatim match for the Friday close figures."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/23975__gs-kamshad-gs-tmt-today-11-2-26-2-nov-2026.txt",
+   "span": "The NDX just matched its biggest monthly decline since the start of the AI cycle (down ~7% in October) as Semis closed down ~8% on Friday, turning in its 3rd largest day of underperformance in >15 years",
+   "why": "Verbatim match (same passage also appears in 23707__us-equities-weekly-rundown-10-30-26.txt)."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24059__ubs-s-t-risk-control-selling-likely-early-this-week-before-a.txt",
+   "span": "Risk Control is estimated to sell $75-100 bn on Monday... Risk Control may have more meaningful selling on Tuesday only if SPX drops more than -2%",
+   "why": "Note is by Rebecca Cheong (UBS Sales & Trading). 'Risk Control' is the systematic vol-targeting desk category; figures match exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24020__ms-michael-j-wilson-weekly-warm-up-enter-sandman-20261102.txt",
+   "span": "the S&P 500 to reach our previously identified downside tactical target of 7100-7300 before adding risk more aggressively. Our year-end base case remains 8000",
+   "why": "Verbatim match to Mike Wilson's (Morgan Stanley) note."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24076__the-off-balance-sheet-time-bomb-inside-ai-hits-4-1-trillion-.txt",
+   "span": "Across the eight companies we track, on-balance sheet debt and lease liabilities total roughly $1.0 trillion. That means for every dollar of debt and leases the AI complex actually reports, there are more than four dollars",
+   "why": "Verbatim match for both the $1.0 trillion figure and the 4x multiple."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24076__the-off-balance-sheet-time-bomb-inside-ai-hits-4-1-trillion-.txt",
+   "span": "Across five leading hyperscalers, these now total $2.8 trillion - an eightfold increase since 2023... S&P adjusts leverage for off-balance-sheet leases, while Moody's and Fitch do not",
+   "why": "Correctly attributed to Goldman's chief credit strategist Amanda Lynam per the article's relay of her comments."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24059__ubs-s-t-risk-control-selling-likely-early-this-week-before-a.txt",
+   "span": "Late-day Excess Flow reversed sharply to +$72bn of buying... from 2:45pm onward... concentrated in Tech ETFs and Semis/Memory stocks",
+   "why": "Matches exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24042__the-great-rotation-trap.txt",
+   "span": "The Russell/NDX ratio has surged... Yet the longer-term downtrend remains firmly intact... Chasing small-cap outperformance here may be just as dangerous as chasing tech was at the highs",
+   "why": "Matches the article's framing and closing line almost verbatim."
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24042__the-great-rotation-trap.txt",
+   "span": "Russell loves falling rates. The latest bout of small-cap outperformance has moved in perfect lockstep with declining yields.",
+   "why": "The source says only that falling yields drove the rotation. No document anywhere asserts the forward-looking claim that rising yields would unwind it \u2014 that's an added causal inference not in the source.",
+   "searched": [
+    "unwind rotation / rotation unwind",
+    "rising yields rotation",
+    "reverse rotation",
+    "full text of 24042__the-great-rotation-trap.txt"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24020__ms-michael-j-wilson-weekly-warm-up-enter-sandman-20261102.txt",
+   "span": "Fed Chair Warsh acknowledged the tightening already delivered by financial conditions to some extent, but his comments suggest the bar for a more dovish Fed pivot remains high... he was unwilling to say financial conditions are outright \"tight.\"",
+   "why": "Matches exactly, same Morgan Stanley note as s4."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/23774__mc-fed-10-26.txt",
+   "span": "We do not expect core PCE inflation to ease soon and see it ending the year at around 3%... we therefore maintain our forecast of two further rate hikes: one in December and another in Q1 2027, most likely in March",
+   "why": "Matches exactly; document is Generali Asset Management's commentary."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/23713__gs-milhous-cas-mark-to-market-for-friday-30-oct-2026.txt",
+   "span": "The market is closing the week pricing 18bps of hikes through the end of the year, and ~60bps of hikes through the middle of next year.",
+   "why": "Matches exactly, same Goldman note as s1."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24060__ubs-s-t-tech-valuation-risk-ust-refunding-german-retail-sale.txt",
+   "span": "Wednesday's quarterly refunding is expected to maintain the $125 bn package of $58 bn 3y, $42 bn 10y and $25 bn 30y for November-January",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24075__the-ghosts-of-crises-past-to-haunt-the-midterms-natixis-says.txt",
+   "span": "As for Wednesday's refunding, Natixis sees \"little of note,\" expecting unchanged auction sizes... That puts it at odds with Citi, which expects Bessent to slash 20Y and 30Y auction sizes and maybe kill the 20Y altogether",
+   "why": "A genuine disagreement over the refunding outcome is documented in the source."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-02/24075__the-ghosts-of-crises-past-to-haunt-the-midterms-natixis-says.txt",
+   "span": "That puts it at odds with Citi, which expects Bessent to slash 20Y and 30Y auction sizes and maybe kill the 20Y altogether (Oct 12) because AI is stealing the pension bid.",
+   "why": "The Citi half is sourced verbatim. No document names a JPMorgan view on refunding sizes at all \u2014 JPM's own briefings mention only the refunding date, not an opinion \u2014 let alone the specific claim that cutting long-bond sales would be 'imprudent' because bill demand is 'stalling.' This is an invented counter-view attached to a real bank name.",
+   "searched": [
+    "grep -ril imprudent (0 relevant hits)",
+    "grep -ril 'bill demand'/'stalling' (0 relevant hits)",
+    "grep -ril JPMorgan filtered for refunding/20Y/30Y (only mentions calendar date)",
+    "grep -ril 'pension bid' (only the Natixis/Citi file)"
+   ]
+  }
+ ],
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

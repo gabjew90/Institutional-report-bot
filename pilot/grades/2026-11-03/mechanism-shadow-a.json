@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-02/24070__1-1-trillion-in-cloud-backlog-vs-peak-earnings-growth-two-go.txt",
+ "source_span": "backlog is revenue, and the market spent this week asking about cash... the question has moved on from whether AI gets funded to who funds it and at what price",
+ "source_chain": "Hyperscalers posted record cloud backlogs (Alphabet +256% to $561B, AWS +189% to $578B) therefore one desk read (Wilson) says the ROI question is answered definitively, BUT the backlog arrives with negative free cash flow, zero buybacks, new equity and bond issuance (Alphabet burned $9.1B FCF vs $3.5B expected) therefore the market sided with the cautious read (Pasquariello) that growth has peaked and the real unresolved question is who funds the capex and at what price, therefore no big new risk should be added; invalidation is evidence the financing gap is genuinely closing (buybacks resuming, FCF stabilizing) rather than widening ($4.1T off-balance-sheet tab growing).",
+ "pulse_chain": "Hyperscaler results (Alphabet cloud +103%, backlog +256% to $561B; AWS +39%, backlog to $578B) therefore cloud growth itself is not in doubt, but Alphabet burned $9.1B FCF vs $3.5B expected, bought back no stock, sold $12.4B in shares and issued $28.7B in bonds, and AWS missed, therefore 'growth was never the question, who pays for it was' \u2014 the funding/returns argument stays open rather than resolved, which the pulse extends into bank-vs-bank positioning (DB overweight vs RBC sidelines vs JPM's non-capitulatory leverage data) and a level-based invalidation (7544.2 CTA threshold / 7616-7643 support / 7100-7300 MS target) that decides whether selling or buying resumes; invalidation is the market holding those support levels or MS's sentiment/price confirmation triggering a risk-add.",
+ "preserved": true,
+ "why": "Every load-bearing figure and direction in the pulse's four-step chain (backlog growth vs. cash burn, the DB/RBC/JPM positioning split, and the specific price-level invalidations from GS/JPM/UBS/MS) traces verbatim to its named desk's note, and the pulse's closing line 'growth was never the question, who pays for it was' is a direct, correctly-attributed compression of the source's own resolution of its two-desk debate.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
