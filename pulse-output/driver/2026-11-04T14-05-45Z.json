@@ -1,0 +1,58 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-04T14:05:54.064909Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=478",
+   "at": "2026-11-04T14:05:54.160102Z"
+  },
+  "omnipulse": {
+   "decision": "LIGHT",
+   "detail": "no new bank research since the last pulse",
+   "at": "2026-11-04T14:05:54.335963Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "clean",
+   "at": "2026-11-04T14:07:48.953004Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "5 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-11-04T14:08:48.224012Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-11-04T14:08:51.687234Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-04T14:08:52.124631Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-04T14:08:52.196861Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-04T14:09:22.118895Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-11-04T14:09:22.178417Z"
+  }
+ },
+ "budgets": {},
+ "lint": {
+  "last_hard": 0
+ }
+}
