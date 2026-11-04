@@ -1330,3 +1330,10 @@ Not filing a fresh queue item for the staleness itself, per the
 - **deterministic-fixable** — Omnipulse body figures with no source in the context dump: Alphabet `$12.4B`/`$28.7B` issuance, `7544.2`, "Jason Hunter", Alphabet `$1,059 billion`. Add a figure-provenance check on the Omnipulse body.
 - **deterministic-fixable** — `pulse-context/latest.json` is again a later rebuild (15:33 EST, session-to-date prices) than the dump the pulse ran on, so RECAP prices cannot be checked. Archive the dump keyed by `QC_PULSE_TS` (it was correct on 11-02).
 - **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-04
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild (15:18Z, session OPEN) of a pulse that ran 14:05Z, so RECAP prices (SPY, QQQ, BTC) cannot be checked. Archive the dump keyed by `QC_PULSE_TS` (repeat of 10-28, 10-29, 10-30, 11-03).
+- **deterministic-fixable** — Light-day TRADE BOARD again carries undated calls from 10-31 notes (UBS weekly, GS company notes) and mostly post-earnings price-target reiterations or raises (AMZN, LLY, SHEL, MSFT), not explicit trade calls. Add a max age and a date on each board line (repeat of 10-30, 11-02).
+- **observation** — KYCCF board line ("2Q beat with no production or procurement constraints, same-day delivery model reconfirmed") not fully located in the dump; the GS entry reads "initiate (Buy)". Unverified, not proven wrong.
+- **observation** — Lint reported 5 soft issues and SCRUB was skipped on a light day; the driver trail does not say which.
+- **observation** — No STEP 7 self-review file for 11-04; adversarial verdict gaps for 10-12 and 10-14 persist.
