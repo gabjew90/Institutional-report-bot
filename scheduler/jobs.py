@@ -1424,10 +1424,16 @@ async def _channel_config_watchdog_job(bot=None):
 # is a long gap since the LAST PDF: 2026-09-30 and 10-02 went over a day
 # with none. Checked at 11:00 and 16:00 ET on market days.
 RESEARCH_FEED_MAX_GAP_HOURS = 24
+# The 16:00 check also pages when the market day itself has had no PDF at all
+# (2026-11-05 audit: the 11-03 stall stayed under 24 h at both checks and paged
+# a day late). Measured 2026-08-20..11-05, one market day (09-22) had none by
+# 16:00 ET and then a normal day's research; every other such day was a stall.
+RESEARCH_FEED_EMPTY_DAY_HOUR = 16
 
 
 async def _research_feed_watchdog_job(bot=None):
-    """Ops ping when a market day has almost no new research by 11 AM ET.
+    """Ops ping when the newest PDF is over RESEARCH_FEED_MAX_GAP_HOURS old,
+    or, at the 16:00 ET run, when the market day has had no PDF at all.
 
     2026-09-30 to 10-02 the Dropbox feed delivered 0, 27 and 0 PDFs. The
     bot polled every 15 minutes, found nothing and said nothing, and the
@@ -1459,12 +1465,16 @@ async def _research_feed_watchdog_job(bot=None):
             "(IFNULL(file_size_bytes, ?) < ? OR IFNULL(error_message, '') LIKE ?))",
             (JUNK_MAX_BYTES, JUNK_MAX_BYTES, NOT_PDF_PREFIX + "%")).fetchone()[0]
         gap_h = None
+        last_dt = None
         if last:
             # created_at is SQLite's space format, UTC
             last_dt = datetime.strptime(last[:19].replace("T", " "), "%Y-%m-%d %H:%M:%S") \
                 .replace(tzinfo=_utc)
             gap_h = market_gap_hours(last_dt, datetime.now(_utc), settings.timezone)
         text = research_feed_alert(gap_h)
+        if not text:
+            midnight = local_now.replace(hour=0, minute=0, second=0, microsecond=0)
+            text = empty_day_alert(local_now.hour, last_dt is not None and last_dt >= midnight)
         if not text:
             log.info(f"Research feed watchdog: last PDF {gap_h:.1f} h ago, fine")
             return
@@ -1509,6 +1519,16 @@ def research_feed_alert(gap_hours: float | None) -> str:
     return (f"Research feed: no new PDF in Dropbox for over {RESEARCH_FEED_MAX_GAP_HOURS} "
             f"hours ({age}). Check for failed Dropbox polls in the worker log, then "
             f"whatever fills /Current. The pulse and Omnipulse run on this research.")
+
+
+def empty_day_alert(local_hour: int, any_pdf_today: bool) -> str:
+    """The ops line when it is RESEARCH_FEED_EMPTY_DAY_HOUR or later on a
+    market day and no PDF has arrived since local midnight, '' otherwise."""
+    if any_pdf_today or local_hour < RESEARCH_FEED_EMPTY_DAY_HOUR:
+        return ""
+    return ("Research feed: no new PDF in Dropbox today. Check for failed Dropbox polls "
+            "in the worker log, then whatever fills /Current. The pulse and Omnipulse "
+            "run on this research.")
 
 
 async def _backup_pulse_job(bot=None):

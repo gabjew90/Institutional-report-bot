@@ -61,6 +61,13 @@ def test_research_feed_alert_on_a_long_gap_only():
     assert "no PDF on record" in jobs.research_feed_alert(None)
 
 
+def test_empty_market_day_pages_at_the_afternoon_check():
+    # 2026-11-03: last PDF 11-02 22:52 UTC, a 21.9 h gap at 4 PM ET, nothing that day
+    assert "no new PDF in Dropbox today" in jobs.empty_day_alert(16, False)
+    assert jobs.empty_day_alert(11, False) == ""      # mornings are bursty (09-22)
+    assert jobs.empty_day_alert(16, True) == ""
+
+
 def test_configured_channels_exist_in_the_server_as_of_2026_10_04():
     import channel_config as cc
     live_ids = {str(i) for i in cc.KNOWN}          # IDs read from Discord on 2026-10-04
