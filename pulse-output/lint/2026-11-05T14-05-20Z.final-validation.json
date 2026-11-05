@@ -1,1 +1,16 @@
-{"violations": [{"kind": "unreconciled-release-figure", "severity": "soft", "figure": "4.90", "event": "UNEMPLOYMENT", "message": "false positive: 4.90% is the 10-year Treasury yield, not unemployment"}], "hard_count": 0, "soft_count": 1, "exit_code": 4}
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.90% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.90",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "- **Friday, Nov 6, 8:30 AM ET: jobs report.** Payrolls are expected at +65K against +29K last time, and the unemployment rate at 4.2%. A print well above forecast would add pressure to the 10-year yie"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 1,
+ "exit_code": 4
+}
