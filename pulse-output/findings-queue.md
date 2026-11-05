@@ -1337,3 +1337,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — KYCCF board line ("2Q beat with no production or procurement constraints, same-day delivery model reconfirmed") not fully located in the dump; the GS entry reads "initiate (Buy)". Unverified, not proven wrong.
 - **observation** — Lint reported 5 soft issues and SCRUB was skipped on a light day; the driver trail does not say which.
 - **observation** — No STEP 7 self-review file for 11-04; adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-05
+- **deterministic-fixable** — Light-day TRADE BOARD again carries six undated calls from 11-02 notes (3 days old). The EQIX line repeats the 11-03 board verbatim, and four of six are PT reiterations rather than explicit trade calls. Add a max age, a no-repeat rule and a date per line (repeat of 10-30, 11-02, 11-04).
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild (15:18Z, session OPEN) of a pulse that ran 14:05Z, so RECAP prices (SPY, QQQ, BNO, GLD, VIXY, BTC) cannot be checked. Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03, 11-04).
+- **observation** — Light edition with `no_new_research=true` over a 96h window holding 177 PDFs. Re-check the gate against the pulse anchor (repeat of 11-02).
+- **observation** — RECAP 10Y "4.90%" vs 4.87% in the dump, unverifiable given the post-publish dump.
+- **observation** — Lint reported 4 soft issues and SCRUB was skipped on a light day; the driver trail does not name them.
+- **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
