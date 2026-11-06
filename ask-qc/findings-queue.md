@@ -946,3 +946,11 @@ no findings (0 FAIL). Watch item: Tesla-news answer (13:49) carried an unverifie
 ## 2026-11-04
 
 no findings (0 FAIL). Claude judge, 6 CONCERN entries. Candidate for a prompt session: a stat-after-event answer ("10 out of 19 two weeks after midterms") with no source I could find. Judgment bucket, not queued as a FAIL.
+
+## 2026-11-05
+
+- **judgment (FAIL)** (18:18 UTC, BK, "when was the last limit down circuit breaker in the US"): answer says the S&P fell 7% "right after the open" on 2020-03-18. The halt came mid-day (about 12:56 PM ET); the open-time trips were March 9, 12, 16. Date and "none since" are correct. Not mechanically checkable (a historical-fact detail). The CLI validator was uninformative (missing `aiohttp`).
+- **router note (non-FAIL, CONCERN)** (20:30 UTC, SV, "name everyone that has earnings this evening, dont forget any"): "has" read as ticker HAS, so five HAS tools ran and `lookup_earnings_slate` did not. Candidate regex for a router test: question matches `\b(everyone|everybody|all|who)\b.*\b(has|have|having|reporting)\b.*\bearnings\b` plus a "this evening|tonight|today|after hours" window, with no `$` or capitalised ticker, must classify to `earnings_slate`, not `ticker_opinion`. `listed_symbols`' english-words list should already exclude "has"; check why it passed (the lowercase-symbol rule needs `stock_intent`, and "earnings" may have triggered it).
+- **judgment (CONCERN)** (15:33 UTC, Sam, "Puts monsoon" as a reply to a PLTR trade log): a reply that addresses a member got a full PLTR outline; report date "Nov 2" vs news "Nov 3".
+- **judgment (CONCERN)** (18:27 UTC, kloh): an "indexes" question answered from ^GSPC alone with a `truncated` payload and no disclosure.
+- **tooling note**: the CI validator CLI still lacks `aiohttp` (eleventh day running).

@@ -1345,3 +1345,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — RECAP 10Y "4.90%" vs 4.87% in the dump, unverifiable given the post-publish dump.
 - **observation** — Lint reported 4 soft issues and SCRUB was skipped on a light day; the driver trail does not name them.
 - **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-06
+- **deterministic-fixable** — Published pulse still contains all 4 passages in the adversarial verdict file (Polymarket blockade 71%/64%, "UBS's Keith Parker" 30%/18 GW, payrolls "consensus 63,000 ... out this morning", dispersion 3.8% median decline), while the driver reports 1 hard finding and "0 hard findings" on recheck. Make the verdict file and driver agree, and make unsupported-figure findings force a repair of the Omnipulse body (repeat of 11-03).
+- **deterministic-fixable** — Payrolls brief says consensus 63,000 and "out this morning" with unemployment "expected" at 4.2%, while the RECAP in the same pulse states 165,000 vs 65,000 and 4.1%. Add a check that a released print in the RECAP is not described as pending in a brief.
+- **deterministic-fixable** — draft_validate shipped with hard residuals after the budget was spent and the trail does not name them; lint "5 soft issues" also unnamed. Record names in the driver file.
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild (pdf_count 603 vs 408 published). Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03, 11-04, 11-05).
+- **observation** — The adversarial pass flagged Nomura's 13.2% vs 1.1% dispersion as unsupported, but it is in the dump. Only the 3.8% median decline is unlocated. The judge's false positives need tracking too.
+- **observation** — Texas data-center share: pulse says 27%, Goldman in the dump says roughly 25%. Unverified.
+- **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
