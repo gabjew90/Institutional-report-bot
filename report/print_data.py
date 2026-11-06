@@ -34,6 +34,9 @@ class Release:
     three_m: float | None = None     # core 3-month annualized, CPI and PCE
     payroll_revisions: dict | None = None  # {"months": [{"period", "now", "was"}], "net"}
     prior_revisions: list = field(default_factory=list)  # [{"label", "period", "now", "was"}]
+    # last month's yearly rates as now published, where they differ from
+    # what we posted: [{"label", "display", "period", "now", "was"}] (text)
+    yoy_revisions: list = field(default_factory=list)
     fomc: dict | None = None
     incomplete: bool = False
 
@@ -99,11 +102,35 @@ def prior_revisions(spec: PW.ReleaseSpec, obs: dict, period: str, prev: dict | N
     return [{"label": label, "period": last, "now": now, "was": posted["actual_value"]}]
 
 
+def yoy_revisions(rows: list[dict], period: str, prev: dict | None) -> list[dict]:
+    """Each yearly rate's prior month as the agency now has it, against the
+    figure our ledger posted for that month, when they differ at the
+    published precision. 2026-11-06: hourly pay "down from +3.2%" read as
+    an error beside last month's posted 3.0%."""
+    if not prev:
+        return []
+    last = month_shift(period, -1)
+    posted = {r.get("label"): r for r in prev.get("rows") or [] if r.get("period") == last}
+    out = []
+    for r in rows:
+        if r.get("transform") != "yoy" or r.get("hidden") or r.get("prior_value") is None:
+            continue
+        p = posted.get(r["label"])
+        if not p or p.get("actual_value") is None:
+            continue
+        was = PW._fmt(p["actual_value"], r.get("unit") or "%", "yoy", r["prior"].startswith(("+", "-")))
+        if was != r["prior"]:
+            out.append({"label": r["label"], "display": r["display"], "period": last,
+                        "now": r["prior"], "was": was})
+    return out
+
+
 def data_release(spec: PW.ReleaseSpec, obs: dict, period: str, ff_rows: list[dict],
                  prev: dict | None = None, vintage: list[tuple[str, float]] | None = None,
                  incomplete: bool = False) -> Release:
     rows = PW.build_rows(spec, obs, period, ff_rows)
     rel = Release(key=spec.key, period=period, rows={r["label"]: r for r in rows}, incomplete=incomplete)
+    rel.yoy_revisions = yoy_revisions(rows, period, prev)
     core = CORE_MOM.get(spec.key)
     core_line = next((x for x in spec.lines if x.label == core), None)
     if core_line is not None:

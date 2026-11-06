@@ -156,8 +156,8 @@ def test_job_posts_once_and_records_it():
         content, embed = sent[0]
         assert content == "@everyone Aug CPI: Hotter than expected"
         lines = embed.description.split("\n")
-        assert lines[0].startswith("Core CPI MoM +0.3% vs +0.2% expected (+0.")
-        assert "Headline CPI YoY 3.4% vs 3.4% expected" in lines
+        assert lines[0] == "Core CPI +0.3% on the month vs +0.2% expected"
+        assert "Headline CPI 3.4% over the year vs 3.4% expected" in lines
         assert lines[-1].startswith("Takeaway: Core inflation rose more than expected.")
         assert embed.footer.text == "BLS · forecast: ForexFactory · released 8:30 AM ET"
         ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
@@ -353,7 +353,7 @@ def test_release_ready_ignores_optional_lines_and_build_rows_drops_them_when_abs
     assert PW.release_ready(PW.CPI, obs, "2026-08")
     rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
     assert [r["label"] for r in rows] == ["Core CPI m/m", "Core CPI y/y", "CPI m/m", "CPI y/y"]
-    assert rows[0]["display"] == "Core CPI MoM" and rows[2]["display"] == "Headline CPI MoM"
+    assert rows[0]["display"] == "Core CPI" and rows[2]["display"] == "Headline CPI"
     assert rows[0]["actual_value"] == 0.3 and rows[0]["consensus_value"] == 0.2
 
 

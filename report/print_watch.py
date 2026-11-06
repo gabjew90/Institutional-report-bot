@@ -90,10 +90,10 @@ CPI = ReleaseSpec(
     key="cpi", title="CPI", release_et="08:30", name="CPI",
     ff_arming_events=("CPI m/m", "Core CPI m/m", "CPI y/y"),
     lines=[
-        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI MoM"),
-        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI YoY"),
-        Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m", display="Headline CPI MoM"),
-        Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y", display="Headline CPI YoY"),
+        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI"),
+        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI"),
+        Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m", display="Headline CPI"),
+        Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y", display="Headline CPI"),
         Line("Shelter m/m", "CUSR0000SAH1", "mom", "", display="Shelter", optional=True),
         Line("Food m/m", "CUSR0000SAF1", "mom", "", display="Food", optional=True),
         Line("Energy m/m", "CUSR0000SA0E", "mom", "", display="Energy", optional=True),
@@ -105,8 +105,8 @@ JOBS = ReleaseSpec(
     lines=[
         Line("Non Farm Payrolls", "CES0000000001", "m_change_k", "Non Farm Payrolls", unit="K", display="Nonfarm payrolls"),
         Line("Unemployment Rate", "LNS14000000", "level", "Unemployment Rate", display="Unemployment"),
-        Line("Avg Hourly Earnings m/m", "CES0500000003", "mom", "Average Hourly Earnings m/m", display="Avg hourly earnings MoM"),
-        Line("Avg Hourly Earnings y/y", "CES0500000003", "yoy", "", display="Avg hourly earnings YoY", signed=True),
+        Line("Avg Hourly Earnings m/m", "CES0500000003", "mom", "Average Hourly Earnings m/m", display="Hourly pay"),
+        Line("Avg Hourly Earnings y/y", "CES0500000003", "yoy", "", display="Hourly pay", signed=True),
         Line("Participation Rate", "LNS11300000", "level", "", display="Participation", optional=True),
         Line("Avg Weekly Hours", "CES0500000002", "level", "", unit="", display="Weekly hours", optional=True),
         # the unemployed and the labor force, for the jobless rate before rounding
@@ -136,10 +136,10 @@ PCE = ReleaseSpec(
     key="pce", title="PCE price index", release_et="08:30", name="PCE",
     ff_arming_events=("Core PCE Price Index m/m",),
     lines=[
-        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE MoM"),
-        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE YoY"),
-        Line("PCE m/m", "DPCERG", "mom", "", source="bea", display="Headline PCE MoM"),
-        Line("PCE y/y", "DPCERG", "yoy", "", source="bea", display="Headline PCE YoY"),
+        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE"),
+        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE"),
+        Line("PCE m/m", "DPCERG", "mom", "", source="bea", display="Headline PCE"),
+        Line("PCE y/y", "DPCERG", "yoy", "", source="bea", display="Headline PCE"),
         Line("Real Consumer Spending m/m", "DPCERX", "mom", "", source="bea", table="T20806",
              display="Real consumer spending", optional=True),
         Line("Personal Spending m/m", "DPCERC", "mom", "Personal Spending m/m", source="bea", table="T20600",
@@ -162,11 +162,11 @@ PPI = ReleaseSpec(
     key="ppi", title="PPI", release_et="08:30", name="PPI",
     ff_arming_events=("PPI m/m", "Core PPI m/m"),
     lines=[
-        Line("Core PPI m/m", "WPSFD49104", "mom", "Core PPI m/m", display="Core PPI MoM"),
-        Line("Core PPI y/y", "WPUFD49104", "yoy", "Core PPI y/y", display="Core PPI YoY"),
-        Line("PPI m/m", "WPSFD4", "mom", "PPI m/m", display="Headline PPI MoM"),
-        Line("PPI y/y", "WPUFD4", "yoy", "PPI y/y", display="Headline PPI YoY"),
-        Line("PPI ex trade m/m", "WPSFD49116", "mom", "", display="PPI ex food, energy, trade MoM", optional=True),
+        Line("Core PPI m/m", "WPSFD49104", "mom", "Core PPI m/m", display="Core PPI"),
+        Line("Core PPI y/y", "WPUFD49104", "yoy", "Core PPI y/y", display="Core PPI"),
+        Line("PPI m/m", "WPSFD4", "mom", "PPI m/m", display="Headline PPI"),
+        Line("PPI y/y", "WPUFD4", "yoy", "PPI y/y", display="Headline PPI"),
+        Line("PPI ex trade m/m", "WPSFD49116", "mom", "", display="PPI ex food, energy, trade", optional=True),
     ])
 
 SPECS = (CPI, JOBS, FOMC, PCE, PPI)

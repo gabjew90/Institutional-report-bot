@@ -95,7 +95,7 @@ def test_the_verdict_uses_the_published_precision_not_the_unrounded_figure():
     rel.unrounded["Core CPI m/m"] = 0.34
     a, v = alert(rel)
     assert v.label == "In line with expectations"
-    assert a.lines[0] == "Core CPI MoM +0.3% vs +0.3% expected (+0.34% unrounded)"
+    assert a.lines[0] == "Core CPI +0.3% on the month vs +0.3% expected"
 
 
 def test_core_yoy_decides_when_core_mom_has_no_forecast():
@@ -168,11 +168,11 @@ def test_policy_state_reads_the_last_move(actions, direction):
 
 
 @pytest.mark.parametrize("direction,policy,text", [
-    (PV.HAWKISH, "tightening", "That leans hawkish and adds to the case for another hike, and reports like this tend to lift Treasury yields."),
-    (PV.HAWKISH, "easing", "That leans hawkish and weakens the case for another cut, and reports like this tend to lift Treasury yields."),
-    (PV.DOVISH, "tightening", "That leans dovish and eases pressure on the Fed to hike again, and reports like this tend to pull Treasury yields lower."),
-    (PV.DOVISH, "easing", "That leans dovish and adds to the case for another cut, and reports like this tend to pull Treasury yields lower."),
-    (PV.DOVISH, "neutral", "That leans dovish, and reports like this tend to pull Treasury yields lower."),
+    (PV.HAWKISH, "tightening", "That supports another rate hike, and reports like this tend to push Treasury yields up."),
+    (PV.HAWKISH, "easing", "That makes another rate cut less likely, and reports like this tend to push Treasury yields up."),
+    (PV.DOVISH, "tightening", "That eases pressure on the Fed to hike again, and reports like this tend to pull Treasury yields down."),
+    (PV.DOVISH, "easing", "That supports another rate cut, and reports like this tend to pull Treasury yields down."),
+    (PV.DOVISH, "neutral", "That points toward lower rates, and reports like this tend to pull Treasury yields down."),
     (None, "tightening", "The report gives the Fed no clear new signal."),
 ])
 def test_fed_sentence_follows_the_regime(direction, policy, text):
@@ -216,14 +216,14 @@ def test_golden_sep30_pce(ledger_dir):
     a, v = PW.compose_alert(PW.PCE, rel, "2026-09-30", "08:30")
     assert a.content == "Aug PCE: Cooler than expected"
     assert a.lines == [
-        "Core PCE MoM +0.2% vs +0.3% expected",
-        "Core PCE YoY 3.0%",
-        "Headline PCE MoM +0.3%",
-        "Headline PCE YoY 3.4%",
+        "Core PCE +0.2% on the month vs +0.3% expected",
+        "Core PCE 3.0% over the year",
+        "Headline PCE +0.3% on the month",
+        "Headline PCE 3.4% over the year",
         "",
         "Takeaway: Core PCE, the Fed's preferred inflation gauge, rose less than expected. "
-        "That leans dovish and eases pressure on the Fed to hike again, and reports like this "
-        "tend to pull Treasury yields lower.",
+        "That eases pressure on the Fed to hike again, and reports like this "
+        "tend to pull Treasury yields down.",
     ]
     assert a.footer == "BEA · forecast: ForexFactory · released 8:30 AM ET"
 
@@ -238,20 +238,53 @@ def test_golden_oct2_jobs(ledger_dir):
     assert a.content == "Sep Jobs: Weaker than expected"
     assert a.lines == [
         "Nonfarm payrolls +29K vs +89K expected",
-        "2-month revision -60K",
         "Unemployment 4.2% vs 4.1% expected",
-        "Avg hourly earnings MoM +0.1% vs +0.3% expected",
-        "Avg hourly earnings YoY +3.0%, down from +3.1%",
+        "Hourly pay +0.1% on the month vs +0.3% expected",
+        "Hourly pay +3.0% over the year, down from +3.1%",
         "",
-        "July revised to -10K from +21K",
-        "August revised to +133K from +162K",
+        "July and August revised down 60K in total",
+        "July -10K, was +21K",
+        "August +133K, was +162K",
         "Participation 61.8%, up from 61.6%",
         "",
-        "Takeaway: Payroll growth fell short of expectations, unemployment came in higher than "
-        "expected and wage growth was slower than expected. The two prior months were revised "
-        "down by 60K combined. That leans dovish and eases pressure on the Fed to hike again, "
-        "and reports like this tend to pull Treasury yields lower.",
+        "Takeaway: Hiring, unemployment and pay all came in weaker than expected, and the two "
+        "months before were revised lower. That eases pressure on the Fed to hike again, "
+        "and reports like this tend to pull Treasury yields down.",
     ]
+
+
+def test_golden_nov6_jobs_reads_once_and_names_a_yearly_revision(ledger_dir):
+    # 2026-11-06: the revision total sat in the top block, the monthly lines
+    # and the takeaway, and "down from +3.2%" contradicted the 3.0% we posted
+    # for September a month earlier (owner: confusing)
+    rel = release("jobs", {"Non Farm Payrolls": (165, 65), "Unemployment Rate": (4.1, 4.2),
+                           "Avg Hourly Earnings m/m": (0.4, 0.3), "Avg Hourly Earnings y/y": (3.1, None, 3.2),
+                           "Participation Rate": (61.9, None, 61.8), "Avg Weekly Hours": (34.4, None, 34.4)},
+                  period="2026-10")
+    rel.payroll_revisions = {"months": [{"period": "2026-08", "now": 186, "was": 133},
+                                        {"period": "2026-09", "now": 60, "was": 29}], "net": 84}
+    prev = {"rows": [{"label": "Avg Hourly Earnings y/y", "actual_value": 3.0, "period": "2026-09"}]}
+    rel.yoy_revisions = PD.yoy_revisions(list(rel.rows.values()), rel.period, prev)
+    a, v = PW.compose_alert(PW.JOBS, rel, "2026-11-06", "08:30")
+    assert a.content == "Oct Jobs: Stronger than expected"
+    assert a.lines == [
+        "Nonfarm payrolls +165K vs +65K expected",
+        "Unemployment 4.1% vs 4.2% expected",
+        "Hourly pay +0.4% on the month vs +0.3% expected",
+        "Hourly pay +3.1% over the year, down from +3.2%",
+        "",
+        "August and September revised up 84K in total",
+        "August +186K, was +133K",
+        "September +60K, was +29K",
+        "Sep hourly pay over the year revised to +3.2% from +3.0%",
+        "Participation 61.9%, up from 61.8%",
+        "Weekly hours 34.4, unchanged",
+        "",
+        "Takeaway: Hiring, unemployment and pay all came in stronger than expected, and the two "
+        "months before were revised higher. That supports another rate hike, and reports like "
+        "this tend to push Treasury yields up.",
+    ]
+    assert all(len(ln) <= PR.MAX_DATA_LINE for ln in a.lines if not ln.startswith("Takeaway"))
 
 
 def test_golden_oct14_cpi(ledger_dir):
@@ -261,19 +294,19 @@ def test_golden_oct14_cpi(ledger_dir):
     a, v = PW.compose_alert(PW.CPI, rel, "2026-10-14", "08:30")
     assert a.content == "Sep CPI: Hotter than expected"
     assert a.lines == [
-        "Core CPI MoM +0.3% vs +0.2% expected",
-        "Core CPI YoY 2.6% vs 2.5% expected",
-        "Headline CPI MoM +0.6% vs +0.6% expected",
-        "Headline CPI YoY 3.7% vs 3.6% expected",
+        "Core CPI +0.3% on the month vs +0.2% expected",
+        "Core CPI 2.6% over the year vs 2.5% expected",
+        "Headline CPI +0.6% on the month vs +0.6% expected",
+        "Headline CPI 3.7% over the year vs 3.6% expected",
         "Core CPI, last 3 months annualized: 3.4%",
         "",
-        "Shelter +0.4%",
-        "Food 0.0%",
-        "Energy +5.2%",
+        "Shelter +0.4% on the month",
+        "Food 0.0% on the month",
+        "Energy +5.2% on the month",
         "",
         "Takeaway: Core inflation rose more than expected. Shelter rose 0.4% and energy 5.2% on "
-        "the month. That leans hawkish and adds to the case for another hike, and reports like "
-        "this tend to lift Treasury yields.",
+        "the month. That supports another rate hike, and reports like "
+        "this tend to push Treasury yields up.",
     ]
 
 
@@ -295,7 +328,7 @@ def test_golden_oct28_fomc_hawkish_hold(ledger_dir):
         "Dissent: Cook and Hammack wanted a quarter-point hike",
         "",
         "Takeaway: The Fed held rates at 3.75% to 4.00%, as expected, and two officials voted "
-        "for a hike. Decisions like this tend to lift Treasury yields.",
+        "for a hike. Decisions like this tend to push Treasury yields up.",
     ]
 
 
@@ -409,7 +442,7 @@ def test_no_forecast_states_the_figure_without_a_fed_read():
 def test_ppi_points_at_the_next_pce_date():
     a, _ = alert(release("ppi", _scenarios()["ppi"]["hotter"]), today="2026-11-13")
     assert "PPI matters mostly for what it implies for core PCE, out Wed Nov 25." in takeaway_of(a)
-    assert "PPI ex food, energy, trade MoM +0.3%" in a.lines
+    assert "PPI ex food, energy, trade +0.3% on the month" in a.lines
 
 
 def test_a_large_ppi_revision_replaces_the_pce_pointer():
@@ -426,10 +459,10 @@ def test_a_level_without_a_forecast_is_set_against_the_month_before():
                           "PCE m/m": (0.5,), "PCE y/y": (3.6, None, 3.4)}, three_m=2.9)
     a, _ = alert(rel)
     assert a.lines[:5] == [
-        "Core PCE MoM +0.3% vs +0.3% expected",
-        "Core PCE YoY 3.1%, unchanged",
-        "Headline PCE MoM +0.5%",
-        "Headline PCE YoY 3.6%, up from 3.4%",
+        "Core PCE +0.3% on the month vs +0.3% expected",
+        "Core PCE 3.1% over the year, unchanged",
+        "Headline PCE +0.5% on the month",
+        "Headline PCE 3.6% over the year, up from 3.4%",
         "Core PCE, last 3 months annualized: 2.9%",
     ]
 
@@ -437,7 +470,7 @@ def test_a_level_without_a_forecast_is_set_against_the_month_before():
 def test_pce_secondary_lines_and_spending_sentence():
     a, _ = alert(release("pce", _scenarios()["pce"]["hotter"]))
     assert a.lines[a.lines.index("") + 1:a.lines.index("", a.lines.index("") + 1)] == [
-        "Real consumer spending +0.6%", "Personal income +0.3% vs +0.4% expected", "Saving rate 4.1%, down from 4.4%"]
+        "Real consumer spending +0.6% on the month", "Personal income +0.3% on the month vs +0.4% expected", "Saving rate 4.1%, down from 4.4%"]
     # the 0.4% headline month takes the second sentence on a directional day
     assert takeaway_of(a).split(". ")[1] == "Headline inflation rose 0.4% on the month"
     rel = release("pce", {**_scenarios()["pce"]["hotter"], "PCE m/m": (0.2,)})
@@ -457,15 +490,15 @@ def test_golden_oct29_pce():
     a, v = PW.compose_alert(PW.PCE, rel, "2026-10-29", "08:30")
     assert a.content == "Sep PCE: In line with expectations"
     assert a.lines == [
-        "Core PCE MoM +0.3% vs +0.3% expected (+0.32% unrounded)",
-        "Core PCE YoY 3.1%, up from 3.0%",
-        "Headline PCE MoM +0.5%",
-        "Headline PCE YoY 3.6%, up from 3.4%",
+        "Core PCE +0.3% on the month vs +0.3% expected",
+        "Core PCE 3.1% over the year, up from 3.0%",
+        "Headline PCE +0.5% on the month",
+        "Headline PCE 3.6% over the year, up from 3.4%",
         "Core PCE, last 3 months annualized: 2.9%",
         "",
-        "Real consumer spending 0.0%",
-        "Personal spending +0.5% vs +0.6% expected",
-        "Personal income +0.2% vs +0.3% expected",
+        "Real consumer spending 0.0% on the month",
+        "Personal spending +0.5% on the month vs +0.6% expected",
+        "Personal income +0.2% on the month vs +0.3% expected",
         "Saving rate 3.8%, down from 4.0%",
         "",
         "Takeaway: Core inflation matched expectations. Headline inflation rose 0.5% on the month, "
@@ -510,7 +543,7 @@ def test_jobs_revisions_cancelling_a_beat_are_named():
     assert v.label == "Slightly stronger than expected"
     assert takeaway_of(a).startswith(
         "Payroll growth beat expectations, but downward revisions to the prior two months cancel it out. "
-        "Wage growth was faster than expected.")
+        "Pay growth was faster than expected.")
 
 
 def test_incomplete_data_is_titled_and_says_so():
@@ -526,7 +559,7 @@ def test_unrounded_jobless_rate_from_the_counts():
            "LNS13000000": [("2026-09", 7183.0)], "LNS11000000": [("2026-09", 170520.0)]}
     rel = PD.data_release(PW.JOBS, obs, "2026-09", [{"event": "Unemployment Rate", "estimate": 4.1}])
     a, _ = alert(rel)
-    assert "Unemployment 4.2% vs 4.1% expected (4.21% unrounded)" in a.lines
+    assert "Unemployment 4.2% vs 4.1% expected" in a.lines
     assert not any("Unemployed" in ln or "Labor Force" in ln for ln in a.lines), "inputs never show"
 
 
@@ -595,10 +628,10 @@ def test_the_message_text_is_the_verdict_and_pings_everyone():
             return _Chan()
 
     with patch("config.settings.print_alert_channel_id", "123"):
-        ok = asyncio.run(PW._post(_Bot(), "Sep CPI: Hotter than expected", ["Core CPI MoM +0.4%"], "f"))
+        ok = asyncio.run(PW._post(_Bot(), "Sep CPI: Hotter than expected", ["Core CPI +0.4% on the month"], "f"))
     content, embed, kw = sent[0]
     assert ok and content == "@everyone Sep CPI: Hotter than expected"
-    assert embed.title is None and embed.description == "Core CPI MoM +0.4%"
+    assert embed.title is None and embed.description == "Core CPI +0.4% on the month"
     assert embed.color.value == 0x228B22 and kw["allowed_mentions"].everyone is True
 
 
@@ -690,7 +723,7 @@ def test_golden_sep16_fomc_hike_with_projections(ledger_dir):
         "",
         "Takeaway: The Fed raised rates by a quarter point to 3.75% to 4.00%, as expected. "
         "Officials now see rates at 4.1% at the end of 2027, up from 3.6% in June. "
-        "Decisions like this tend to lift Treasury yields.",
+        "Decisions like this tend to push Treasury yields up.",
     ]
     assert all(len(ln) <= PR.MAX_DATA_LINE for ln in a.lines if not ln.startswith("Takeaway"))
     assert not _voice_clean(a)

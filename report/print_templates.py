@@ -25,15 +25,16 @@ REVISION_SENTENCE_K = 50
 HEADLINE_MOM_PT = 0.4
 HEADLINE_YOY_PT = 0.2
 
+# Plain words, not desk shorthand ("leans hawkish"), owner 2026-11-06.
 _FED = {
-    (HAWKISH, "tightening"): "That leans hawkish and adds to the case for another hike",
-    (HAWKISH, "easing"): "That leans hawkish and weakens the case for another cut",
-    (HAWKISH, "neutral"): "That leans hawkish",
-    (DOVISH, "tightening"): "That leans dovish and eases pressure on the Fed to hike again",
-    (DOVISH, "easing"): "That leans dovish and adds to the case for another cut",
-    (DOVISH, "neutral"): "That leans dovish",
+    (HAWKISH, "tightening"): "That supports another rate hike",
+    (HAWKISH, "easing"): "That makes another rate cut less likely",
+    (HAWKISH, "neutral"): "That points toward higher rates",
+    (DOVISH, "tightening"): "That eases pressure on the Fed to hike again",
+    (DOVISH, "easing"): "That supports another rate cut",
+    (DOVISH, "neutral"): "That points toward lower rates",
 }
-_YIELDS = {HAWKISH: "lift Treasury yields", DOVISH: "pull Treasury yields lower"}
+_YIELDS = {HAWKISH: "push Treasury yields up", DOVISH: "pull Treasury yields down"}
 NO_SIGNAL = "The report gives the Fed no clear new signal."
 INCOMPLETE = "The initial release is incomplete."
 _COUNT = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
@@ -220,8 +221,8 @@ def _jobs(rel: Release, v: Verdict) -> list[str]:
     phrases = {
         ("unemployment", 1): "unemployment came in lower than expected",
         ("unemployment", -1): "unemployment came in higher than expected",
-        ("wages", 1): "wage growth was faster than expected",
-        ("wages", -1): "wage growth was slower than expected",
+        ("wages", 1): "pay growth was faster than expected",
+        ("wages", -1): "pay growth was slower than expected",
         ("payrolls", 1): "payroll growth beat expectations",
         ("payrolls", -1): "payroll growth fell short of expectations",
     }
@@ -244,7 +245,10 @@ def _jobs(rel: Release, v: Verdict) -> list[str]:
         return out
     named = [(k, s.get(k)) for k in ("payrolls", "unemployment", "wages") if s.get(k)]
     if not named:
-        out = ["Hiring, unemployment and wages all matched expectations."]
+        out = ["Hiring, unemployment and pay all matched expectations."]
+    elif len(named) == 3 and len({n[1] for n in named}) == 1:
+        out = [f"Hiring, unemployment and pay all came in {'stronger' if named[0][1] > 0 else 'weaker'} "
+               "than expected."]
     else:
         stronger = [phrases[n] for n in named if n[1] > 0]
         weaker = [phrases[n] for n in named if n[1] < 0]
@@ -253,7 +257,8 @@ def _jobs(rel: Release, v: Verdict) -> list[str]:
             text = f"{text}, but {_join(weaker)}" if text else _join(weaker)
         out = [_cap(text) + "."]
     if net is not None and abs(net) >= REVISION_SENTENCE_K and len(rev.get("months") or []) == 2:
-        out.append(f"The two prior months were revised {'down' if net < 0 else 'up'} by {abs(net):,.0f}K combined.")
+        # the total is in the lines above; the takeaway says only which way
+        out[0] = out[0][:-1] + f", and the two months before were revised {'lower' if net < 0 else 'higher'}."
     else:
         part = rel.rows.get("Participation Rate")
         a, p = (part or {}).get("actual_value"), (part or {}).get("prior_value")

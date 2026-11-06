@@ -41,16 +41,20 @@ class Alert:
     footer: str = ""
 
 
-def _unrounded(label: str, value: float) -> str:
-    return f"{value:.2f}%" if label == "Unemployment Rate" else f"{value:+.2f}%"
+# The span a rate covers, after the figure: "MoM" and "YoY" were desk
+# shorthand the room does not read (owner, 2026-11-06).
+_SPAN = {"mom": " on the month", "yoy": " over the year"}
 
 
-def metric_line(row: dict, unrounded: float | None = None) -> str:
-    """'Core CPI MoM +0.3% vs +0.2% expected (+0.31% unrounded)'. A yearly
-    rate or a level with no forecast is set against the month before
-    instead ('Headline PCE YoY 3.6%, up from 3.4%'), since a bare level
-    does not say which way it moved (owner, 2026-10-29)."""
-    line = f"{row['display']} {row['actual']}"
+def metric_line(row: dict) -> str:
+    """'Core CPI +0.3% on the month vs +0.2% expected'. A yearly rate or a
+    level with no forecast is set against the month before instead
+    ('Headline PCE 3.6% over the year, up from 3.4%'), since a bare level
+    does not say which way it moved (owner, 2026-10-29). The unrounded
+    figure is not shown (owner, 2026-11-06): the verdict is read at the
+    published precision, and the extra decimal only raised the question
+    why it was there."""
+    line = f"{row['display']} {row['actual']}{_SPAN.get(row.get('transform'), '')}"
     if row.get("consensus") is not None:
         line += f" vs {row['consensus']} expected"
     elif row.get("transform") in ("yoy", "level") and row.get("prior") is not None:
@@ -58,8 +62,6 @@ def metric_line(row: dict, unrounded: float | None = None) -> str:
             line += ", unchanged"
         else:
             line += f", {'up' if row['actual_value'] > row['prior_value'] else 'down'} from {row['prior']}"
-    if unrounded is not None:
-        line += f" ({_unrounded(row['label'], unrounded)} unrounded)"
     return line
 
 
@@ -73,12 +75,39 @@ def _rows(rel: Release, labels: list[str]) -> list[str]:
         # is the measure, and the forecast is for the nominal one
         if label == "Personal Spending m/m" and row.get("consensus") is None:
             continue
-        out.append(metric_line(row, rel.unrounded.get(label)))
+        out.append(metric_line(row))
     return out
 
 
 def _revised(month: str, now: str, was: str, what: str = "") -> str:
     return f"{month}{' ' + what if what else ''} revised to {now} from {was}"
+
+
+def _yearly_revised(r: dict) -> str:
+    """'Sep hourly pay over the year revised to +3.2% from +3.0%': last
+    month's yearly rate as the agency now has it, against what this alert
+    posted. Without it, 'down from +3.2%' contradicted last month's 3.0%
+    (2026-11-06 jobs alert)."""
+    d = r["display"]
+    d = d[:1].lower() + d[1:] if d[1:2].islower() else d
+    return f"{_SHORT_MONTH[int(r['period'][5:7]) - 1]} {d} over the year revised to {r['now']} from {r['was']}"
+
+
+def _payroll_revision_lines(rev: dict) -> list[str]:
+    """Shown once, under the headline numbers: the months' total, then each
+    month (owner, 2026-11-06; the total used to sit in the top block as
+    '2-month revision +84K' and the takeaway said it a third time)."""
+    months = rev.get("months") or []
+    if len(months) == 1:
+        m = months[0]
+        return [_revised(month_name(m["period"]), f"{m['now']:+,.0f}K", f"{m['was']:+,.0f}K")]
+    if not months:
+        return []
+    names = " and ".join(month_name(m["period"]) for m in months)
+    net = rev.get("net") or 0
+    head = (f"{names} revised {'up' if net > 0 else 'down'} {abs(net):,.0f}K in total" if net
+            else f"{names} revised, no net change")
+    return [head] + [f"{month_name(m['period'])} {m['now']:+,.0f}K, was {m['was']:+,.0f}K" for m in months]
 
 
 def _clock(release_et: str) -> str:
@@ -149,16 +178,11 @@ def _fomc_blocks(rel: Release, v: Verdict) -> tuple[list[str], list[str]]:
 
 
 def _data_blocks(rel: Release) -> tuple[list[str], list[str]]:
+    yearly = [_yearly_revised(r) for r in rel.yoy_revisions]
     if rel.key == "jobs":
-        rev = rel.payroll_revisions or {}
-        months = rev.get("months") or []
-        primary = _rows(rel, ["Non Farm Payrolls"])
-        if months:
-            label = "2-month revision" if len(months) == 2 else "Prior-month revision"
-            primary.append(f"{label} {rev['net']:+,.0f}K")
-        primary += _rows(rel, ["Unemployment Rate", "Avg Hourly Earnings m/m", "Avg Hourly Earnings y/y"])
-        secondary = [_revised(month_name(m["period"]), f"{m['now']:+,.0f}K", f"{m['was']:+,.0f}K")
-                     for m in months]
+        primary = _rows(rel, ["Non Farm Payrolls", "Unemployment Rate",
+                              "Avg Hourly Earnings m/m", "Avg Hourly Earnings y/y"])
+        secondary = _payroll_revision_lines(rel.payroll_revisions or {}) + yearly
         secondary += _rows(rel, _SECONDARY["jobs"])
         return primary, secondary
     primary = _rows(rel, _PRIMARY[rel.key])
@@ -167,6 +191,7 @@ def _data_blocks(rel: Release) -> tuple[list[str], list[str]]:
     secondary = _rows(rel, _SECONDARY[rel.key])
     secondary += [_revised(month_name(r["period"]), f"{r['now']:+.1f}%", f"{r['was']:+.1f}%", "core")
                   for r in rel.prior_revisions]
+    secondary += yearly
     return primary, secondary
 
 
