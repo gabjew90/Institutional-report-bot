@@ -587,7 +587,10 @@ def render(snap: dict) -> str:
     if fl:
         lines.append("shares: " + ", ".join(fl))
     bs = []
-    for key, label in (("total_cash", "cash"), ("total_debt", "debt")):
+    # Yahoo's totalCash is cash, equivalents AND short-term investments
+    # (2026-11-05 audit: Qualcomm's $8.3B was called "cash and equivalents";
+    # cash alone was $4.53B).
+    for key, label in (("total_cash", "cash and short-term investments"), ("total_debt", "debt")):
         if s.get(key) is not None:
             bs.append(f"{label} {_money(s[key])}")
     if s.get("operating_cashflow_ttm") is not None:

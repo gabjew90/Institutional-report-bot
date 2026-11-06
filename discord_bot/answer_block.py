@@ -73,6 +73,13 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
                                                question=question, fresh=ctx.get("fresh"))
         except Exception:
             return None     # the model's own answer stands
+    elif (tool == "lookup_market_price" and (context or {}).get("shape") == "price"
+          and not (context or {}).get("research")):
+        from discord_bot import price_block
+        try:
+            lines = price_block.block_lines(result, (context or {}).get("snapshot"), question=question)
+        except Exception:
+            return None
     else:
         return None
     if not lines:

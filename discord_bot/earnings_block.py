@@ -91,21 +91,8 @@ def price_line(price: dict | None, symbol: str) -> str:
               if str(q.get("symbol") or "").upper() == symbol and q.get("price") is not None), None)
     if not q:
         return ""
-    p, chg = float(q["price"]), q.get("change_pct")
-    fresh = q.get("data_freshness") or ""
-    if fresh == "live_extended_hours":
-        ext = q.get("extended_hours_change_pct")
-        close = q.get("regular_session_close")
-        if price.get("session") == "PRE-MARKET":
-            return (f"→ **${p:,.2f}** pre-market" + (f", {chg:+.1f}% from the last close" if chg is not None else "")
-                    + ".")
-        if close is not None:
-            day = f" ({chg:+.1f}% on the day)" if chg is not None else ""
-            ah = f", {ext:+.1f}%" if ext is not None else ""
-            return f"→ Closed at **${float(close):,.2f}**{day}, **${p:,.2f}** after hours{ah}."
-    if fresh in ("regular_session_close", "last_print"):
-        return f"→ Last close **${p:,.2f}**" + (f" ({chg:+.1f}% that session)" if chg is not None else "") + "."
-    return f"→ Trading at **${p:,.2f}**" + (f", {chg:+.1f}% today" if chg is not None else "") + "."
+    from discord_bot.price_block import quote_line
+    return quote_line(q, str(price.get("session") or ""), with_symbol=False)
 
 
 def block_lines(edate: dict, snapshot: dict | None = None, price: dict | None = None,
