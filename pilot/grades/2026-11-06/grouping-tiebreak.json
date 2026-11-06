@@ -1,0 +1,52 @@
+{
+ "metric": 1,
+ "total_cards": 912,
+ "fragmentation_sets": [
+  {
+   "subject": "Momentum/quant factor unwind (Nov 4-5): factor dispersion stats and the hedge-fund P&L it produced",
+   "labels": [
+    "us equity positioning",
+    "momentum factor unwind"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Oil collapses on Iran de-escalation",
+   "labels": [
+    "iran de escalation trade",
+    "oil price collapse"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Midterm election outcome and its market/AI-regulatory fallout",
+   "labels": [
+    "post midterm congress outlook",
+    "hyperscaler data center regulation"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Eurozone growth data disappoints (France/Germany prints, same UBS note)",
+   "labels": [
+    "france growth data",
+    "germany growth data"
+   ],
+   "cards": 11
+  }
+ ],
+ "fragmented_mass_share": 0.08,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "Card counts per label were derived by counting claims in the displayed text (sum ~296), well under the stated 912-card total; fragmented_mass_share here uses the identified fragmented cards over the ledger's stated 912, so treat the 0.08 figure as a lower-confidence estimate rather than an exact reconciliation. 'misc' (12 cards of macro/equity color) is correctly excluded as overflow, not a mis-merge. No label mixed two subjects a careful reader would call genuinely distinct pulse themes; candidates considered and rejected include 'global central bank divergence' (bound by an explicit divergence narrative) and 'us equity rotation' (BofA framework + UBS desk color on the same rotation).",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

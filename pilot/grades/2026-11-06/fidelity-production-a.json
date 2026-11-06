@@ -1,0 +1,147 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25086__gs-u-s-equities-color-us-equities-color-risk-off-5-nov-2026.txt",
+   "span": "THEMATICALLY: VIOLENT sell-off with continued pressure in Semiconductors (and AI adjacencies) as the market works to re-calibrate datacenter (GW) build forecasts",
+   "why": "Nov 4 GS color (24675) shows 'Aggressive bid following midterms' with S&P +158bps; Nov 5 GS color (25086) shows S&P -436bps and explicitly 'VIOLENT sell-off' the next session. Matches the day-after framing exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25232__2026-11-04-what-next-for-us-politics-and-equities-en.txt",
+   "span": "AI power plants were a big issue in this election, and three states that are big supporters of building plants (TX, OH, GA) have flipped the governorship to a Democrat.",
+   "why": "TS Lombard confirms TX/OH/GA governorship flips tied to power-plant construction. Democrats winning both chambers is confirmed in 24687 ('Democrats have won the majority in the House and Senate') and 24735 ('Democratic control of both chambers'). Thursday (Nov 5) capacity/spending re-cutting is supported by Barclays US Credit (24949, dated 2026-11-05: 'Permitting delays may push building and power capex out a few quarters... consultants have projected a wide range of capacity additions for 2027') and GS equities color (25086, Nov 5: 'the market works to re-calibrate datacenter (GW) build forecasts and the execution path following Election newsflow this week')."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "Vol Control is a nasty one at ~$61B for sale implied... Leveraged ETF implied EOD rebal to sell -$47.0B / 0%ile (extra $painful bc 86% of the AUM is \"Tech Leadership\" / AI-centric), which would be the 2nd largest in our data history",
+   "why": "Exact figures and framing match: $61B vol-control sell, $47.0B leveraged-ETF sell, 86% AI-centric, second-largest on record."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "Dealer Options \"Negative Gamma\" is -$7B per 1%",
+   "why": "Exact figure match for dealer hedging flow per 1% move."
+  },
+  {
+   "id": "s5",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document contains a 'two desks split' framing tied to any identifiable prior claim; the sentence has no checkable factual content on its own and no bank stance it can be traced to.",
+   "searched": [
+    "two desks",
+    "desks split"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25226__brutal-the-market-is-breaking-and-the-machines-are-selling.txt",
+   "span": "the break below 27,600 could now push CTAs outright short. A clean break below 26,800 would likely see CTA exposure collapse toward Liberation Day lows",
+   "why": "Vanda's thresholds and CTA ('trend-follower') framing match exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25111__us-daily-october-payrolls-preview.txt",
+   "span": "We estimate nonfarm payrolls rose by 75k in October, somewhat above consensus of +65k and the three-month average of +51k, reflecting the low level of layoffs... Job growth has typically rebounded in the following month, October",
+   "why": "GS's 75k/65k/51k figures, low-layoffs rationale, and late-Labor-Day rebound logic all match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "Oxford Economics expects the October jobs report to show... growth of 40k, below the 63k consensus but above its estimated break-even pace, which is trending towards 25k",
+   "why": "Matches the 40,000 figure, below-consensus framing, and ~25,000 break-even/steady-jobless-rate estimate."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "US ADP private payrolls rose by 86K in October, above the 69K expected... Quits were up by 321K (to 3.365mln), the largest rise since May 2023",
+   "why": "Exact match on ADP 86K vs 69K expected and quits +321K to 3.365mln, largest rise since May 2023."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25226__brutal-the-market-is-breaking-and-the-machines-are-selling.txt",
+   "span": "the S&P's best sector YTD by a factor of 2:1 over the next closest space... Energy -10.2% WTD",
+   "why": "Matches 2-to-1 best-sector-YTD margin and -10.2% weekly move exactly (sourced from Nomura via this aggregator)."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25228__gold-they-dumped-20-billion-then-gold-exploded.txt",
+   "span": "Goldman's Privorotsky argues that gold may have become an inverse oil trade. Emerging-market central banks have spent years accumulating gold as a reserve asset, but soaring energy bills may have forced some to sell holdings or at least pause purchases... The theory remains unproven",
+   "why": "Direct match for attribution, mechanism, and the 'unproven' qualifier (also independently in GS source 25084/25085)."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25228__gold-they-dumped-20-billion-then-gold-exploded.txt",
+   "span": "the shiny metal needs to reclaim the 50-day MA ($4,205)",
+   "why": "Exact figure match for the 50-day average level."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25210__up-and-adam.txt",
+   "span": "With the four largest hyperscalers gaining an average of 4.4% yesterday",
+   "why": "Raymond James ('Up and Adam') gives the 4.4% hyperscaler figure; UBS sources (25259: 'Neoclouds -8.4%'; 25257: 'US Power: despite the names falling -6.3% yesterday') give the neocloud and power figures. All three figures confirmed, correctly attributed by bank."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25210__up-and-adam.txt",
+   "span": "If new builds slow, the AI bottleneck would shift from chip supply to access to existing computing capacity. Hyperscalers dominate that capacity",
+   "why": "Direct match for the bottleneck-shift argument, correctly attributed to Raymond James."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-06/24416__investorsoutlook-en.txt",
+   "span": "becoming more selective, rewarding companies that can finance their investments from their own profits... Concerns about debt could recede if large cloud providers fund more of their AI spending from their own cash flows",
+   "why": "This idea belongs to Vontobel, not UBS, and is phrased as a conditional/hope about market behavior, not a 'call.' No UBS source found recommending rebalancing concentrated AI exposure toward self-funding platforms; UBS's actual dated call in the corpus (25257) is 'Buy Semis and Hyperscalers' on different grounds (buybacks, demand, valuation, cloud growth tripling QoQ), not this cash-flow-funding framing. Wrong bank attribution plus a conditional presented as an asserted recommendation.",
+   "searched": [
+    "fund their own investment out of cash flow",
+    "rebalance concentrated AI exposure"
+   ]
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

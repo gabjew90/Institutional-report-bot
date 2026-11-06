@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25023__midday-market-intelligence-post-election.txt",
+   "span": "US stocks are broadly higher on Wednesday, as markets digest the results of the US [midterm election, Democratic House and Senate Majority with Gains Well Above Expectations]",
+   "why": "GS's post-election note confirms stocks rose broadly the day after the clear midterm result (Wed Nov 4); the reversal to violent selling the next day (Thu Nov 5) is confirmed by The Market Ear's 'brutal' note: 'only for the market to reverse violently,' with VVIX surging 45 points."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25232__2026-11-04-what-next-for-us-politics-and-equities-en.txt",
+   "span": "AI power plants were a big issue in this election, and three states that are big supporters of building plants (TX, OH, GA) have flipped the governorship to a Democrat.",
+   "why": "TS Lombard confirms the three states/governorship-flip framing verbatim (TX/OH/GA = Texas/Ohio/Georgia, power plants = power-plant construction). GS's Armbrust 'What Matters Today' note (5 Nov, Thursday) confirms the same-day re-assessment of data-center capex/capacity given the Texas/Georgia/Ohio election outcomes: 'Democratic wins could increase near-term uncertainty around data center development, particularly in Texas and Georgia... The market is definitively pricing peak CapEx growth.'"
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "Vol Control is a nasty one at ~$61B for sale implied... easy-to-calc Leveraged ETF implied EOD rebal to sell -$47.0B / 0%ile (extra $painful bc 86% of the AUM is 'Tech Leadership' / AI-centric), which would be the 2nd largest in our data history",
+   "why": "Exact match on both figures, the 86% AI-centric share, and 'second-largest' framing."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "Dealer Options 'Negative Gamma' is -$7B per 1%",
+   "why": "Exact match; 'dealers have to sell into weakness' is a faithful plain-English rendering of negative dealer gamma."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25111__us-daily-october-payrolls-preview.txt",
+   "span": "We estimate nonfarm payrolls rose by 75k in October, somewhat above consensus of +65k... reflecting the low level of layoffs",
+   "why": "Opinion-shaped transition sentence; supported by a genuine split between GS (75k, above consensus, optimistic read) and Oxford Economics (40k, below consensus, break-even framing) on the same October jobs report \u2014 see s7/s8."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25204__vanda-adam-ginty-retail-has-hit-the-sell-button-the-largest-.txt",
+   "span": "having blown through 27,600, we will likely see CTAs turn outright short. A clean break below 26,800 would likely take CTA exposure down to LibDay lows",
+   "why": "Exact match; 'trend-followers' is faithful shorthand expansion for CTAs, and 'Liberation Day' for 'LibDay'."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25111__us-daily-october-payrolls-preview.txt",
+   "span": "We estimate nonfarm payrolls rose by 75k in October, somewhat above consensus of +65k and the three-month average of +51k, reflecting the low level of layoffs... slowdown in Septembers with late Labor Days... in past Septembers in which the holiday fell that late... payroll [rebound]",
+   "why": "All figures (75k, 65k, 51k) and both stated reasons (low layoffs, late-Labor-Day September rebound effect) match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "Oxford Economics expects the October jobs report to show a labour market that remains balanced between modest job growth of 40k, below the 63k consensus but above its estimated break-even pace, which is trending towards 25k.",
+   "why": "40k figure, under-consensus framing, and the ~25k break-even-for-jobless-rate framing all match; the source's consensus figure (63k) doesn't contradict 'under consensus' since no number is stated in the sentence."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "US ADP private payrolls rose by 86K in October, above the 69K expected... Quits were up by 321K (to 3.365mln), the largest rise since May 2023",
+   "why": "Exact match on all four figures."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "the 'Hiding Place' that has been the Energy sector... the S&P's best sector YTD by a factor of 2:1 over the next closest space... Energy -10.2% WTD",
+   "why": "Exact match on both the 2:1 YTD-best-sector framing and the -10.2% weekly figure."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+   "span": "gold has become an inverse oil trade. Central banks, particularly EM, have spent years accumulating gold... Higher energy bills forced reserve holders to tap that piggy bank or at minimum stop buying. As oil reverses, funding pressure eases and gold catches a bid. Not proven...",
+   "why": "Exact match: inverse-oil theory, EM central banks, energy-bill-driven selling/pausing of gold buying, relief from cheaper crude, and explicitly 'not proven.'"
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25226__brutal-the-market-is-breaking-and-the-machines-are-selling.txt",
+   "span": "the shiny metal needs to reclaim the 50-day MA ($4,205) to establish a more persistent bullish move",
+   "why": "Exact match on the level; 'the level that settles it' faithfully paraphrases 'needs to reclaim... to establish a more persistent bullish move.'"
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25257__ubs-s-t-primeview-lite-risk-on-in-hyperscalers-and-software-.txt",
+   "span": "US Power: despite the names falling -6.3% yesterday... Neoclouds: flows were similarly muted despite the names falling -8.4% yesterday.",
+   "why": "UBS confirms -8.4% neocloud / -6.3% power exactly; Raymond James's 'Up and Adam' (same day) confirms 'the four largest hyperscalers gaining an average of 4.4% yesterday,' matching the Wednesday timeframe ('yesterday' from the Thursday notes)."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25210__up-and-adam.txt",
+   "span": "If new builds slow, the AI bottleneck would shift from chip supply to access to existing computing capacity. Hyperscalers dominate that capacity and could...",
+   "why": "Exact match on the bottleneck-shift argument and source attribution (Raymond James)."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-06/25244__gridlock-and-diplomatic-hopes-lift-us-stocks-english-1669230.txt",
+   "span": "Rebalance concentrated technology exposure... We favor financially strong platforms and high-quality infrastructure providers over businesses that rely more heavily on external funding or the rapid completion of individual projects.",
+   "why": "UBS's call to rebalance concentrated AI/tech exposure toward financially strong, internally-funded platforms (vs. externally-funded ones) faithfully supports 'platforms that fund their own investment out of cash flow.'"
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

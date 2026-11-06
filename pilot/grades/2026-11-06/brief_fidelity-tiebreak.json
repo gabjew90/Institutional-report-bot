@@ -1,0 +1,107 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d14",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Election newsflow forces the market to re-calibrate datacenter GW/capex execution risk -> violent sell-off concentrated in semis and AI adjacencies (SOX multiples -50% from June/July highs) -> asset managers sell semis/AI with no offsetting hyperscaler/defensive-tech bid (unlike the prior day) while HFs stay balanced but toggle shorts aggressively -> tape craters (S&P -4.36%, NDX -6.36% worst since Mar 2020, SOX -12%) and vol explodes (VIX 27.77, Panic Index 9.3/10) -> futures close below the 7,549 CTA threshold, implying ~$7.48bn of forced S&P supply over the coming week -> next debate is whether downside GW/capex risk is now overpriced.",
+   "brief_chain": "Election newsflow -> market re-prices datacenter GW build forecasts and capex execution risk -> violent risk-off concentrated in semis/AI-adjacent names, SOX multiples down ~50% from highs -> tape craters (S&P -4.36% to 7,353, NDX -6.36% to 26,629, SOX -12%, High Beta Momentum -6.2%/51% off highs), VIX to 27.77, Nasdaq VIX biggest move since Covid, Panic Index 9.3 -> asset managers sell semis/AI with no hyperscaler offset (unlike prior day), HFs balanced but toggling shorts -> futures below 7,549 CTA threshold, ~$7.48bn forced S&P supply for the week -> next debate is whether GW/capex downside risk is now overpriced.",
+   "distortions": [
+    {
+     "what": "Brief omits the DERIVS paragraph (hedge monetization flows, NDX/SPX fixed-strike vol bid, skew steepening, VIX call unwinds, the 1.43% implied move through tomorrow / 91bp weekly straddle).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 none of this changes the stance, the named trade, or the invalidation; it's supporting color the desk itself frames as texture, not a call."
+    },
+    {
+     "what": "Brief omits the ETF volume share stat (32% of tape, largest since June) and the note that AI baskets had their biggest down day since ChatGPT's launch.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are magnitude/color data points reinforcing the already-stated 'violent sell-off' framing, not a new direction or level."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "TS Lombard",
+   "source_chain": "Democrats win the House but fall short of the Senate supermajority (56 of 67) needed to override a veto or remove Trump -> Congress constrains rather than controls him, so he keeps reshaping global policy risk -> the centrist, red-district nature of the gains limits the party's extremist wing, enabling narrow bipartisan fights (debt limit/FY27 budget, China export controls, Russia sanctions, AI regulation after power-plant backlash flipped TX/OH/GA, consumer-cost deals) alongside investigations without impeachment -> historically equities rally post-midterm but the election outcome itself doesn't set direction, VIX (~20 vs 16.9 median) is a non-event, and rising negative sector correlations point to a tech-specific correction, not a broad bear market (ex-GOOG/NVDA the S&P rose 0.8% in October) -> at 20.9x forward P/E equities are fairly priced to GDP (5.7%) and the 10Y (4.9%) -> September JOLTS confirms an early-stage recovery, but inflation worsens as the Fed lags.",
+   "brief_chain": "Democrats win the House but lack the Senate votes (56 of 67) to override vetoes or remove Trump -> Congress constrains rather than controls him; he keeps reshaping policy risk globally -> centrist, red-district gains limit the extremist wing, producing fights over the debt limit/FY27 budget, war-powers limits on Iran, bipartisan pushes on China export controls/Russia sanctions/AI regulation (after the TX/OH/GA governorship flips), investigations without impeachment, and possible consumer-cost deals -> equities historically rally post-midterm but 2026's outcome itself doesn't determine direction; VIX (~20 vs 16.9 median) signals no stress; negative sector correlations show a tech-led correction, not a bear market (ex-GOOG/NVDA the S&P rose 0.8% in October) -> at 20.9x forward P/E equities are priced about in line with GDP (5.7%) and the 10Y (4.9%) -> JOLTS confirms early-stage recovery, but inflation worsens as the Fed lags.",
+   "distortions": [
+    {
+     "what": "Brief's 'continued war-powers limits on ending the Iran conflict (per the 2006 Iraq-funding precedent)' reads as an ongoing constraint actually curbing the war, while the source cites the 2006 Iraq funding-bill precedent to show Trump 'has managed workarounds,' Bush vetoed that bill, and full troop withdrawal didn't occur for another 15 years \u2014 i.e. the source's point is historical war-powers efforts have been weak/circumvented, not that a current limit is in force.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a political/geopolitical framing nuance with no stated trade, stance, or invalidation level attached to it."
+    },
+    {
+     "what": "Brief condenses the full mid-term performance table (2002-2026, S&P % change by cycle) and the sector-correlation matrices into the single top-line conclusion.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief preserves the source's own stated conclusion ('other factors determine direction,' 'tech-led correction not a bear market'); the underlying tables are supporting detail, not a differing call."
+    },
+    {
+     "what": "'VIX...signals no stress' paraphrases the source's 'currently priced to a level that is a non-event.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same substantive point (VIX unremarkable vs. history), just a wording swap."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d6",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Post-election bounce fades outside tech, with momentum/semis unwinding as capital rotates to quality/defensive growth -> the open debate is whether the midterm result (Dem Congress + anti-data-center governors) pulls the 2028/29 AI-capacity-peak discussion forward to 2027, which could either front-load hyperscaler capex/power/permits (raising risk of an earlier EPS rollover in semis) or elongate the cycle -> flows favor hyperscalers (NVDA/MSFT/AMZN/META/LRCX) over neoclouds and weaker names (INTC/NOW/CRWV/AMD/SNDK) -> broader macro (oil -10%, yields down) cushions indices while gold above $4,000 looks like a relief rally, not a breakout -> hedge funds cut exposure sharply (3rd-largest cut this year) even with midterms, Q3 earnings and the October Fed behind them -> central-bank calendar: BoE hikes to 4.0% then pauses before one more hike to 4.25% in Feb, BoJ minutes point to a December hike, RBA hikes to 4.85% amid internal tension over the deputy governor's pre-meeting signal -> ARM falls despite an EPS beat on a royalty miss and an unraised AGI CPU revenue target.",
+   "brief_chain": "Post-election bounce unwinds momentum/semis as capital rotates into quality/defensive growth -> midterm result (Dem Congress, anti-data-center governors) pulls the 2028/29 AI-capacity-peak debate to 2027: tighter rules could front-load capex/power/permits (earlier EPS rollover risk in semis) or elongate the cycle -> ~30% of 2028 data-center additions (incl. 18GW in Texas) flagged at risk -> flows favor hyperscalers (NVDA/MSFT/AMZN/META/LRCX) over neoclouds/weaker names (INTC/NOW/CRWV/AMD/SNDK) -> oil -10% on Iran de-escalation hopes cushions indices, pressures gold's rally above $4,000 (relief rally, not breakout) -> HFs cut exposure sharply (3rd-largest cut this year) despite midterms/earnings/Fed behind them -> BoE hike to 4.0% then pause before Feb hike to 4.25%, BoJ points to December hike, RBA hikes to 4.85% amid deputy-governor tension -> ARM falls despite EPS beat, on royalty miss and unraised AGI CPU target.",
+   "distortions": [
+    {
+     "what": "Brief states the midterms 'pull the AI capacity peak debate forward to 2027' as settled, where the source frames it as an open question ('The key debate is whether...').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief immediately preserves the source's two-sided outcome ('could push...or could elongate the cycle'), so the actual read on direction is unchanged."
+    },
+    {
+     "what": "Oil's ~10% decline is attributed to 'Iran de-escalation hopes' in the brief; the UBS tech-rotation note itself states the drop without naming a cause \u2014 the de-escalation driver appears in a different section of the same document (the rates note on gasoline repricing).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the cross-document cause is consistent with the rest of the same source file and doesn't change the oil move, the equity-cushion effect, or the gold call."
+    },
+    {
+     "what": "Brief omits numerous other one-liners in the same note (CTA buy triggers/dealer gamma, Japan equity divergence, USDJPY flows, Malaysia and Banxico rate calls, European Renewables trade idea, South Korea current account).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are separate, unrelated desk items; dropping them doesn't alter the tech-rotation/AI-capex thesis the brief is built around."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d3",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "NDX breaks below range lows and the longer-term trend line, trading well below the 200-day MA and down >5% intraday -> tech vol spikes toward Liberation Day panic extremes, outright and vs. VIX, as VIX itself surges -> positioning cycle: 3 weeks of non-dealer buying end with $5.1bn of selling Oct 20-27, yet net length stays at the 96th percentile (crowded long barely unwound) -> Nasdaq falls 5.6% Oct 27-Nov 2 as futures OI surges $16.3bn (incl. a record $14.3bn on Oct 30) = aggressive new short selling -> Nasdaq rebounds 1.6% Nov 2-4 as OI falls $4.1bn and funding recovers vs. SPX = short covering, not renewed bullish conviction -> conclusion: stay selective within tech; the long-Apple-vs-NVDA anti-AI trade keeps outperforming.",
+   "brief_chain": "NDX breaks below range lows and the trend line, trading well below the 200-day MA and down >5% intraday -> tech vol approaches Liberation Day panic levels outright and vs. a surging VIX -> the crowded AI trade keeps unwinding, with winners emerging outside AI -> GS data: $5.1bn of non-dealer selling Oct 20-27 ends 3 weeks of buying, but net length stays at the 96th percentile (crowded long barely unwound) -> Nasdaq falls 5.6% Oct 27-Nov 2 as OI surges $16.3bn (incl. $14.3bn on Oct 30, 2026's largest) = aggressive new short selling -> Nasdaq rebounds 1.6% Nov 2-4 as OI falls $4.1bn and funding recovers vs. SPX = short covering, not bullish conviction -> separately, the long-Apple-vs-NVDA anti-AI trade keeps outperforming, arguing for selectivity within tech rather than abandoning it.",
+   "distortions": [
+    {
+     "what": "Brief drops the opening framing ('Nasdaq has become the ultimate pain trade. Bulls buy the rebounds, bears chase the breakdowns, and both keep getting punished... makes the preceding short covering even more painful').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is scene-setting color; the substantive positioning narrative and conclusion are carried through intact."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

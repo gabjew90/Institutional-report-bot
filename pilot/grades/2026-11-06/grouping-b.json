@@ -1,0 +1,75 @@
+{
+ "metric": 1,
+ "total_cards": 912,
+ "fragmentation_sets": [
+  {
+   "subject": "The Oct-Nov momentum/quant-factor unwind, its hedge-fund damage and vol-market fallout, and the rotation into value/quality/mega-cap",
+   "labels": [
+    "us equity positioning",
+    "momentum factor unwind",
+    "us equity rotation",
+    "equity volatility spike",
+    "ndx spx volatility divergence",
+    "mega cap tech leadership"
+   ],
+   "cards": 57
+  },
+  {
+   "subject": "AI capex overbuild / monetization-quality debate (chip-supply glut risk vs. recycled-revenue skepticism)",
+   "labels": [
+    "ai semis unwind",
+    "ai capex monetization divergence"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Post-midterm political outlook, equity seasonality, and the AI-regulation read on the result",
+   "labels": [
+    "post midterm congress outlook",
+    "hyperscaler data center regulation",
+    "post midterm equity seasonality"
+   ],
+   "cards": 36
+  },
+  {
+   "subject": "Oil collapses on Iran de-escalation",
+   "labels": [
+    "iran de escalation trade",
+    "oil price collapse"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Eurozone growth divergence: Germany holding up vs. France weakening",
+   "labels": [
+    "france growth data",
+    "germany growth data"
+   ],
+   "cards": 11
+  }
+ ],
+ "fragmented_mass_share": 0.157,
+ "mis_merges": [
+  {
+   "label": "global central bank divergence",
+   "subjects": [
+    "Bank of Japan's accelerating hike path and yen implications",
+    "scattered EM/other-DM central bank actions (Banxico hold, Czech NB hike, PBOC rate-benchmark shift, RBA hike with internal dissent over Hauser)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "BOJ supplies 7 of the label's 12 cards and a genuinely newsy, tradable angle (hike pulled forward to December, 31-year high, yen/GPIF implications) strong enough to be its own brief, but buried in a generic 'divergence' roundup next to four much thinner, unrelated single-country snippets it would never surface as a standalone pick."
+  }
+ ],
+ "pass": false,
+ "notes": "The visible ledger text enumerates roughly 296 cards, well under the stated 912; fragmented_mass_share here is computed against the stated 912 (the conservative denominator) and would be far higher (~48%) against the enumerated total either way it clears the 0.10 bar. misc holds 12 cards (~1.3% of 912) and was correctly excluded as declared overflow. The Eurozone-divergence and BOJ mis-merge calls are lower-confidence than the other three fragmentation sets.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

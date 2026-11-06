@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+ "source_span": "Vol Control is a nasty one at ~$61B for sale implied...Leveraged ETF implied EOD rebal to sell -$47.0B / 0%ile (extra $painful bc 86% of the AUM is \"Tech Leadership\" / AI-centric), which would be the 2nd largest in our data history",
+ "source_chain": "Outlier 1-day move (election-driven AI/datacenter repricing) triggers huge mechanical dollar flows -- Target-Vol funds ~$61B implied for sale, levered ETF EOD rebalance ~$47.0B implied sell (86% AI-centric, 2nd-largest on record), dealer negative gamma ~$7B/1% -- therefore the market faces forced, self-reinforcing supply on top of discretionary selling; invalidation (McElligott's own escalation point) is whether the tape makes its usual 2-3pm low-then-bounce or, given how large the flows now are, fails to bounce and closes at the lows.",
+ "pulse_chain": "Democratic sweep flips power-plant states (TX/OH/GA) and raises regulatory risk to AI capex (TS Lombard, UBS Parker: ~30% of 2028 data-center additions at risk, 18GW in TX) therefore semis/AI names are repriced (SOX -12%, momentum basket -6.2%/51% off highs, GS) therefore the selling turns mechanical -- vol-control ~$61B, levered ETF $47.0B sell (86% AI-centric, 2nd-largest ever), dealer gamma ~$7B/1%, trend-followers triggered below 7,549 (+$7.48B supply, GS) -- therefore desks split on severity (GS Privorotsky: rotation, nets too low to break; Nomura McElligott: 30-year dispersion extreme presaging a further decline) therefore specific levels (27,600 flips CTAs short, 26,800 collapses them to Liberation Day lows, Vanda) decide which desk is right.",
+ "preserved": true,
+ "why": "Every mechanical-flow figure and attribution (the $61B, $47.0B/86%-AI, and $7B/1% numbers) is quoted and sourced to Nomura exactly as McElligott argued it, and the surrounding steps (election-driven capex repricing, the GS-vs-Nomura rotation/liquidation debate, the Vanda CTA levels) are each traceable to the named desk's own argument with no reversal or invented mechanism -- the only loss is McElligott's same-day bounce-vs-close-at-lows framing, which is compressed out in favor of the multi-day Vanda level invalidation, a permitted compression rather than a swapped invalidation.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

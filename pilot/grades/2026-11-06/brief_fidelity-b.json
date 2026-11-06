@@ -1,0 +1,81 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d14",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Election-driven re-pricing of datacenter capex/GW build forecasts forces violent de-risking concentrated in semis/AI-adjacent names (SOX -12%, multiples -50% off June/July highs) therefore extreme systemic stress follows (VIX 27.77, Vol Panic Index 9.3/10, Nasdaq VIX's biggest move since Covid, High Beta Momentum -6.2%/51% off highs) therefore mechanical flow pressure builds (futures below the 7,549 CTA threshold, asset managers selling semis/AI with no offsetting hyperscaler bid unlike the prior day, HFs balanced but aggressively toggling shorts) implying ~$7.48bn more S&P supply over the coming week, with the live investor debate shifting to whether downside GW/capex risk is now overpriced.",
+   "brief_chain": "Same chain: violent risk-off in semis/AI-adjacent names on capex re-pricing, multiples down ~50% from June/July highs, extreme vol stats (VIX 27.77, Vol Panic 9.3/10, SOX -12%, High Beta Momentum -6.2%/51% off highs), asset managers selling with no offsetting hyperscaler bid unlike the prior day, HFs balanced but toggling shorts, futures below the 7,549 CTA threshold implying ~$7.48bn of coming-week S&P supply, with the debate shifting to whether GW/capex downside is overpriced.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "TS Lombard",
+   "source_chain": "Democrats take control of Congress but fall short of the 67 Senate votes needed to override a veto or remove Trump therefore Trump remains largely unconstrained on global policy while the centrist, red-district nature of the gains limits the party's extremist wing, producing a 2027 agenda of debt-limit/budget fights, bipartisan China/Russia/AI-regulation pushes, investigations without impeachment, and possible credit-card/drug-price deals, therefore historically equities rally post-midterm regardless of which party wins, with VIX (~20 vs 16.9 median) signaling no stress and rising negative sector correlations marking a tech-sector correction (ex-GOOG/NVDA the S&P rose 0.8% in October) rather than a broad bear market, with valuations (20.9x P/E, 4.78% earnings yield, 15-yr doubling) roughly in line with GDP (5.7%) and the 10Y (4.9%), therefore the economy is only in year one of recovery (per September JOLTS) even as inflation worsens because the Fed lags.",
+   "brief_chain": "Same chain and same figures throughout (Senate math, centrist/extremist-wing point, the 2027 legislative agenda items, post-midterm rally pattern, VIX ~20 vs 16.9 median, correlation-based tech-correction-not-bear-market read with the ex-GOOG/NVDA 0.8% October figure, 20.9x/4.78%/15-yr valuation vs 5.7% GDP and 4.9% 10Y, JOLTS-confirmed early recovery with inflation worsening as the Fed lags).",
+   "distortions": [
+    {
+     "what": "Brief's 'Democrats won the House but lack the Senate votes (56 of the needed 67)' could be misread as Republicans still holding the Senate, where the source states Democrats control both chambers (confirmed by UBS d6's 'Democratic Party securing control of both houses of Congress') with 56 of 100 Senate seats \u2014 a majority, just short of the 67-vote override/removal threshold.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's substantive claim (Dems can't override a veto or remove Trump) is correct either way; this is an ambiguity in phrasing about chamber control, not a stance, lean, conviction or figure-status error."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d6",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Post-election rotation out of momentum/semis into quality/defensives is driven by an open debate over whether midterm-driven data-center regulation pulls the AI-capacity 'peak in 2028/29' forward to 2027 therefore flows favor scarce, quality hyperscaler compute (Nvidia, Microsoft, Amazon, Meta, Lam Research) over neoclouds/weaker names (Intel, ServiceNow, CoreWeave, AMD, Sandisk) therefore the broader tape is cushioned by oil down ~10% to ~$93/bbl, while separately gold's rally above $4,000 is read as fragile \u2014 a relief rally, not a breakout, where LOWER oil actually SUPPORTS gold (by easing reserve-manager FX pressure) and it is RENEWED oil strength that threatens to reverse the gold move \u2014 alongside a slate of central-bank actions (BoE hike-then-pause, BoJ pointing to a December hike, RBA hiking amid internal tension) and hedge funds' third-largest exposure cut of the year, with ARM falling on a royalty miss despite an EPS beat.",
+   "brief_chain": "Same opening and middle (rotation/debate framed as settled rather than open, same flow preferences, same central-bank and hedge-fund-positioning points, same ARM result) but inverts the oil-gold relationship: states oil's ~10% fall is 'pressuring gold's rally above $4,000,' i.e. that falling oil hurts the gold rally, when the source says falling oil supports/cushions the gold rally and it is a resurgence in oil that would threaten it.",
+   "distortions": [
+    {
+     "what": "Brief states falling oil is 'pressuring gold's rally above $4,000'; source states the opposite causal direction \u2014 'Lower oil can support gold by easing reserve-manager FX pressures, but renewed oil strength could reverse the move' (searched: 'support gold', 'renewed oil strength', 'relief rally' \u2014 all found verbatim in the FX strategist's one-liner, confirming the brief reverses the driver).",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader acting on the brief would expect continued oil weakness to threaten gold's rally and might fade gold on further oil declines, the opposite of UBS's actual call that lower oil is supportive and only a rebound in oil is the risk to the position."
+    },
+    {
+     "what": "Brief states the midterms 'pull the AI capacity peak in 2028/29 debate forward to 2027' as settled fact; source frames this as an open, two-sided question ('The key debate is whether the midterms have pulled... forward to 2027'), and the brief itself preserves the two-sided outcome in the next clause ('could push... or could elongate the cycle').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's own following sentence keeps both scenarios (earlier rollover vs. elongated cycle) live, so no directional call is actually hardened by the opening phrasing."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  },
+  {
+   "id": "d3",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "NDX breaks below range lows/the trend line and trades well under the 200-day MA (down >5% intraday) with tech vol nearing Liberation Day extremes therefore GS positioning data shows a boom-bust cycle \u2014 an Oct 20-27 futures-selling bout barely dented a 96th-percentile crowded long, giving way to aggressive new shorting Oct 27-Nov 2 (OI +$16.3bn, incl. a record $14.3bn single-day jump) therefore a Nov 2-4 rebound (+1.6%) with OI -$4.1bn and funding recovery versus SPX reads as short-covering, not renewed bullish conviction, therefore the note's standing long-Apple (anti-AI) trade, expressed even better as long-Apple-vs-NVDA, continues to outperform, arguing for selectivity within tech rather than abandoning it.",
+   "brief_chain": "Same chain and same figures throughout (technical breakdown stats, the three-stage GS positioning cycle with matching dollar figures and dates, short-covering-not-conviction read, and the Apple-outperformance point), collapsing the source's two related expressions of the trade (long Apple; long-Apple-vs-NVDA as the better-performing variant) into one label, 'long-Apple-versus-NVDA anti-AI trade.'",
+   "distortions": [
+    {
+     "what": "Brief labels the position as 'the note's long-Apple-versus-NVDA anti-AI trade,' while the source frames the core trade as long Apple (anti-AI) with the Apple-vs-NVDA pairing described as one way of expressing it that 'worked even better.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the actionable instrument (long Apple, framed relative to NVDA) and its direction are preserved; this is a compression of two closely related framings into one, not a change of stance, instrument class, or conviction."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 3,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

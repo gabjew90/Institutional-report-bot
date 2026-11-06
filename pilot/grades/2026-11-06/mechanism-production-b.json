@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-06/25085__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+ "source_span": "Vol: Absolutely crushed. VIX -20% to 16.61, VXN -18% to 25.08. ... Remarkable collapse in index vol against the violence underneath. This is rotation, not wholesale liquidation.",
+ "source_chain": "The market bought the election dip (VIX crushed -20% to 16.61, hyperscalers led, 'the first move was more obvious') therefore Privorotsky reads the AI-sector selling as sector rotation, not wholesale liquidation, because nets/hedges were already low going in, therefore nets are too low for the broader market to fall easily -- invalidation: this read holds only 'from here more complicated,' i.e. only as long as it stays contained rotation rather than broad forced selling.",
+ "pulse_chain": "A violent, index-wide one-day crash (NDX worst session since Covid, VIX +67.19% to 27.77, SOX -12%) therefore triggers mechanical/forced-flow selling (vol-target funds, levered ETFs, trend-followers, dealer gamma) therefore Goldman's Privorotsky, assessing THIS crash, calls it rotation rather than wholesale liquidation with net exposure too low for the broad market to fall easily, set against Nomura's McElligott who sees an extreme dispersion signal presaging further decline -- invalidation: a break of 26,800 collapses exposure to Liberation Day lows.",
+ "preserved": false,
+ "why": "The pulse stages Privorotsky's 'rotation, not wholesale liquidation' verdict as Goldman's live counter-read of the violent, VIX+67% crash day, but that verdict comes from a note whose own numbers (VIX crushed -20% to 16.61, 'the market bought the election dip') describe the calmer prior session, published before the crash happened, so the Goldman-vs-Nomura debate the pulse presents compares two desks addressing two different trading days, not the same event.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

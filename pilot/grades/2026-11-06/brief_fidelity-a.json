@@ -1,0 +1,81 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d14",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Election newsflow forces the market to re-price datacenter GW/capex build forecasts, compressing SOX/semi multiples ~50% from June/July highs with no offsetting hyperscaler bid (unlike the prior session) therefore a violent single-day risk-off across the tape (S&P -4.36%, NDX -6.36%, SOX -12%, VIX 27.77, Vol Panic Index 9.3/10) therefore futures closing below the CTA threshold implies further estimated supply (~$7.48bn) next week, with the next debate being whether the GW/capex downside is now overpriced.",
+   "brief_chain": "Same chain: election newsflow -> datacenter GW/capex re-pricing -> compressed SOX multiples and absent hyperscaler offset (vs the prior day) -> violent risk-off with matching index/vol statistics -> futures below CTA threshold and ~$7.48bn estimated supply -> next debate is whether downside is now overpriced.",
+   "distortions": [
+    {
+     "what": "Brief omits the DERIVS section detail (specific hedge flows, SPY put-spread trade, 1.43% implied move through tomorrow) present in the source.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are supporting derivatives-desk color, not the desk's call or any released/forecast figure the brief relies on."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "TS Lombard",
+   "source_chain": "Democrats win the House but lack a Senate veto-override/removal majority (56 of 67 needed) therefore Congress constrains rather than controls Trump, with debt-limit/FY27 budget fights and bipartisan pushes (China export controls, Russia sanctions, AI regulation after TX/OH/GA governorship flips) therefore historically equities rally post-midterm and current pricing (VIX ~20 vs 16.9 median, 20.9x forward P/E in line with 5.7% GDP growth and 4.9% 10Y) shows no stress and a sector-specific (tech) correction rather than a broad bear market therefore the economy is early-cycle (JOLTS) but inflation worsens as the Fed lags.",
+   "brief_chain": "Same chain, same figures and same sequence, compressed into bullet form with no step reordered.",
+   "distortions": [
+    {
+     "what": "Brief's 'VIX ... signals no stress' slightly sharpens the source's more neutral framing ('a non-event', 'a statistical difference with no meaning').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both characterizations point to the same conclusion (no elevated-stress signal from current VIX levels)."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d6",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Post-election bounce outside tech plus a sharp unwind in momentum/semis as investors rotate to quality/defensive growth therefore the open debate is whether midterm-driven data-center restrictions pull the AI capacity peak forward to 2027 (risk of earlier semi EPS rollover, or an elongated cycle) therefore flows favor hyperscalers (NVDA/MSFT/AMZN/META/LRCX) over neoclouds and weaker chip names (INTC/NOW/CRWV/AMD/SNDK) therefore oil's ~10% drop (Iran de-escalation) cushions indices and makes gold's move above $4,000 look like a relief rally, not a breakout, while BoE/BoJ/RBA all lean hawkish and ARM falls on a royalty miss despite an EPS beat.",
+   "brief_chain": "Same chain and same figures/names, with two framing compressions noted below; conclusion (hyperscalers favored over neoclouds/weaker names, hawkish central banks, ARM beat-but-fell on royalty miss) unchanged.",
+   "distortions": [
+    {
+     "what": "Brief states the AI-capacity-peak-pulled-to-2027 idea as settled ('pull... forward to 2027') where the source frames it as an open debate ('whether the midterms have pulled... forward').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the actual positioning call (favor hyperscalers over neoclouds/weaker semis) is unchanged whether the peak-pull-forward is framed as resolved or as a live debate."
+    },
+    {
+     "what": "Brief compresses 'BoJ minutes point to further hikes' plus the October hold 'reinforcing market expectations for a December hike' into 'BoJ minutes point to a December hike,' attributing the December-specific timing to the minutes themselves.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional call (BoJ hiking next, expected in December) is the same either way."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d3",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "NDX breaks key technical levels (range lows, trendline, below 200-day MA, down >5% intraday) while tech vol nears Liberation Day extremes therefore GS positioning data shows a three-stage cycle: crowded longs barely unwound in the first leg (Oct 20-27 futures selling, net length still 96th percentile) therefore aggressive new short-selling in the second leg (Oct 27-Nov 2, OI +$16.3bn incl. the $14.3bn Oct 30 jump) therefore the third leg (Nov 2-4 rebound, OI -$4.1bn, funding recovers vs SPX) is short-covering, not a return of bullish conviction, therefore the note's conclusion is to stay selective within tech (long Apple vs NVDA) rather than abandon it.",
+   "brief_chain": "Identical chain, same dates, same dollar figures and percentages, same three-stage GS positioning read, same closing conclusion on staying selective (long Apple vs NVDA) rather than abandoning tech.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 4,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+ "source_span": "Vol: Absolutely crushed. VIX -20% to 16.61, VXN -18% to 25.08... Remarkable collapse in index vol against the violence underneath. This is rotation, not wholesale liquidation... My gut is that nets are too low for the broader market to go down easily.",
+ "source_chain": "A: Wednesday's close saw the index up with VIX crushed -20% to 16.61 even as single-name selling continued underneath (AI/semis sold, hyperscalers/quality bid) therefore B: Privorotsky reads this as sector rotation, not wholesale liquidation, therefore C: with net exposure already low and a lot of bad news already in picks-and-shovels prices, he expects the broader market won't fall easily from here. Invalidation: this rotation read depends on the hyperscaler/quality bid continuing to offset AI/semi selling and on net exposure staying low; it was published at 3:19am Nov 5, before Thursday's session, about Wednesday's vol-crushed rally.",
+ "pulse_chain": "A: the Nov 5 session turned into a violent broad selloff (S&P -4.36%, Nasdaq 100 -6.36%, VIX +67.19%) therefore B: Goldman's Privorotsky calls this rotation rather than wholesale liquidation, with net exposure too low for the market to fall easily and bad news already priced into AI suppliers, versus C: Nomura's McElligott's dispersion extreme pointing to further decline. Invalidation: Vanda's 27,600/26,800 futures levels deciding whether CTAs turn outright short.",
+ "preserved": false,
+ "why": "The pulse presents Privorotsky's 'rotation, not wholesale liquidation' verdict as his read on the violent Nov 5 crash, but that quote is from a note published pre-market Nov 5 describing the prior day's opposite-direction, vol-crushed rally (VIX -20%), so the source's own 'therefore' runs from a calm up-day to a benign forecast that the next day's violent selloff then contradicted, not from the crash the pulse pairs it with.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

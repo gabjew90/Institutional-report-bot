@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+ "source_span": "Vol: Absolutely crushed. VIX -20% to 16.61, VXN -18% to 25.08. Hyperscalers led, quality bid, defensives and consumer participating. Remarkable collapse in index vol against the violence underneath. This is rotation, not wholesale liquidation.",
+ "source_chain": "Wednesday's post-election rally crushed index vol (VIX -20% to 16.61) while AI/momentum names sold off underneath, therefore Privorotsky reads it as sector rotation out of crowded AI/momentum rather than wholesale liquidation, therefore nets are too low for the broader market to fall easily and much bad news is already priced in picks-and-shovels names -- invalidated if midterm/Middle East uncertainty fails to clear or AI capex gets 'strangled' rather than merely 'rationalized.' Note is timestamped 3:19am ET Thursday 5 Nov, i.e. written pre-market, before that day's cash session.",
+ "pulse_chain": "Thursday's session turns into a violent, market-wide crash (S&P -4.36%, Nasdaq 100 -6.36%, VIX +67% to 27.77), therefore the desks split on what that means, with Privorotsky's rotation-not-liquidation / nets-too-low-to-fall / bad-news-priced-in argument presented as his read on that same Thursday crash, set against Nomura's bearish dispersion call, therefore the question is resolved by Vanda's CTA trigger levels (27,600 / 26,800).",
+ "preserved": false,
+ "why": "Privorotsky's note was written pre-market Thursday about Wednesday's vol-crushing rally (AI/momentum underperforming while the broad market rallied and index vol collapsed), not about the violent, VIX-spiking Thursday crash the pulse attributes his 'rotation, not wholesale liquidation' call to, so the pulse puts his view in response to an event that happened after he wrote it, reversing the chain's premise.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

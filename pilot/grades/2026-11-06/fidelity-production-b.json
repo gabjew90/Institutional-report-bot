@@ -1,0 +1,151 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25226__brutal-the-market-is-breaking-and-the-machines-are-selling.txt",
+   "span": "A brutal day across markets... the mechanical selling machine is kicking into gear, with vol-control deleveraging, CTA selling and negative dealer gamma",
+   "why": "Confirms violent selling on Thu Nov 5, the day after Raymond James's 'Up and Adam' (25210) records Wed Nov 4's 1.6% post-midterm rally ('the second-strongest since 1982'). Both halves of the sentence are corroborated by dated notes."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-06/24828__2026-11-04-what-next-for-us-politics-and-equities-en.txt",
+   "span": "AI power plants were a big issue in this election, and three states that are big supporters of building plants (TX, OH, GA) have flipped the governorship to a Democrat",
+   "why": "TS Lombard names exactly TX/OH/GA as power-plant-backing states whose governorships flipped. 'Both chambers' is confirmed in multiple files (e.g. Oxford Economics 24930: 'control of both chambers'). The Thursday re-cutting of data-center capacity/spending forecasts is corroborated by JPM's 'AI Capex/Data Center' note (25149, note_date 2026-11-05) and GS Armbrust's state-by-state power/utilities note (25049, 5 Nov 2026)."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "Vol Control is a nasty one at ~$61B for sale implied... Leveraged ETF implied EOD rebal to sell -$47.0B / 0%ile (extra $painful bc 86% of the AUM is \"Tech Leadership\" / AI-centric), which would be the 2nd largest in our data history",
+   "why": "Exact match on $61B vol-control sell, $47.0B leveraged-ETF sell, 86% AI-centric share, and second-largest-on-record framing."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "Dealer Options \"Negative Gamma\" is -$7B per 1%",
+   "why": "Exact match; dealer negative gamma selling into weakness at $7B per 1% S&P move."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25085__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+   "span": "This is rotation, not wholesale liquidation... My gut is that nets are too low for the broader market to go down easily. Vol compression, stable rates and lower oil make for a constructive grind higher.",
+   "why": "GS's Privorotsky (5 Nov) reads the extreme mechanical selling as healthy/rotational, while Nomura's McElligott (25172, same day) frames the identical $61B/$47B/-$7B flows as dangerous, record-sized unwind pressure ('the numbers are getting so fricking big'). The two desks genuinely diverge on what the flows mean, supporting the sentence even though no names are given in the sampled line itself.",
+   "searched": [
+    "two desks split",
+    "capitulat",
+    "disagree"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25204__vanda-adam-ginty-retail-has-hit-the-sell-button-the-largest-.txt",
+   "span": "having blown through 27,600, we will likely see CTAs turn outright short. A clean break below 26,800 would likely take CTA exposure down to LibDay lows",
+   "why": "CTA = trend-follower (standard desk shorthand) and LibDay = Liberation Day; figures and logic match exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25111__us-daily-october-payrolls-preview.txt",
+   "span": "We estimate nonfarm payrolls rose by 75k in October, somewhat above consensus of +65k and the three-month average of +51k, reflecting the low level of layoffs... Job growth tends to rebound in October following a slowdown in Septembers with late Labor Days",
+   "why": "Exact match on GS's 75k/65k/51k figures, the low-layoffs rationale, and the late-Labor-Day September rebound logic."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "It forecasts payroll growth of 40k, below the 63k consensus but above its estimated break-even pace, which is trending towards 25k",
+   "why": "Exact match on Oxford Economics' 40k forecast, sub-consensus framing, and ~25k break-even (jobless-rate-steady) pace."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "US ADP private payrolls rose by 86K in October, above the 69K expected... Quits were up by 321K (to 3.365mln), the largest rise since May 2023",
+   "why": "Exact match on both figures."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25172__nomura-mcelligott-front-run-of-the-front-run-mechanical-flow.txt",
+   "span": "the Energy sector... the S&P's best sector YTD by a factor of 2:1 over the next closest space... Energy -10.2% WTD",
+   "why": "Exact match on 2-to-1 YTD best-sector margin and -10.2% weekly move."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25085__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+   "span": "My take is that gold has become an inverse oil trade. Central banks, particularly EM, have spent years accumulating gold... Higher energy bills forced reserve holders to tap that piggy bank or at minimum stop buying. As oil reverses, funding pressure eases and gold catches a bid... Not proven",
+   "why": "Exact match on the inverse-oil theory, EM central-bank energy-bill mechanism, and the 'unproven' caveat, attributed to GS's Privorotsky."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25226__brutal-the-market-is-breaking-and-the-machines-are-selling.txt",
+   "span": "the shiny metal needs to reclaim the 50-day MA ($4,205) to establish a more persistent bullish move",
+   "why": "Exact match on the $4,205 50-day average as the technical level that decides gold's direction."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25210__up-and-adam.txt",
+   "span": "With the four largest hyperscalers gaining an average of 4.4% yesterday",
+   "why": "Matches Raymond James figure exactly; the UBS -6.3% power and -8.4% neocloud figures are confirmed verbatim in pilot-data/pilot/source-text/2026-11-06/25257__ubs-s-t-primeview-lite-risk-on-in-hyperscalers-and-software-.txt ('US Power: despite the names falling -6.3% yesterday... Neoclouds: ...falling -8.4% yesterday')."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25210__up-and-adam.txt",
+   "span": "If new builds slow, the AI bottleneck would shift from chip supply to access to existing computing capacity. Hyperscalers dominate that capacity and could benefit",
+   "why": "Direct match to Raymond James's stated bull case for the winners."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-06/24130__tech-sell-off-highlights-rising-scrutiny-of-ai-spending-engl.txt",
+   "span": "Second, rebalance across sectors and asset classes... we favor financially strong technology platforms and infrastructure providers with pricing power, reasonable valuations, and lower oversupply risk",
+   "why": "UBS does call for rebalancing away from overconcentrated AI exposure, but its stated reasoning is pricing power, valuation and oversupply risk \u2014 not that the preferred platforms 'fund their own investment out of cash flow.' The self-funding/cash-flow framing appears nowhere in this or any other UBS note found (checked 25257's 'Buy Semis and Hyperscalers' call and 25258's tech-rotation note, neither of which mentions cash-flow self-funding); that detail changes the substance of what is attributed to the bank's call.",
+   "searched": [
+    "fund their own investment",
+    "self-funding",
+    "cash flow",
+    "platforms that fund",
+    "rebalance concentrated AI exposure"
+   ]
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

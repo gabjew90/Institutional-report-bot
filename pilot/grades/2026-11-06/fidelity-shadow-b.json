@@ -1,0 +1,145 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+   "span": "Legislative restrictions are difficult to quantify (particularly in out year), but building will become more expensive, complicated and slower.",
+   "why": "Opinion-shaped framing sentence with no standalone checkable figure; the stance that the calculus of the AI buildout has changed is a real bank stance (Privorotsky on cost/complexity of building, Parker on ~30% of 2028 additions at risk) rather than an invented editorial claim."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25258__ubs-s-t-tech-rotation-boe-ahead-japan-rba-oil-aditi-samajpat.txt",
+   "span": "Equity Strategist Keith Parker says Democrats' control of Congress and new governors opposing data centers signal potential regulatory hurdles. With around 30% of 2028 data center additions at risk, including 18 GW in Texas",
+   "why": "Figure, attribution (UBS's Keith Parker) and the Texas gigawatt breakdown all match exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25086__gs-u-s-equities-color-us-equities-color-risk-off-5-nov-2026.txt",
+   "span": "Futures closed below the medium term CTA threshold (7549), expect incremental US supply in tomorrow's estimates ... -$7.48bn in S&P for sale over the next 1 week",
+   "why": "CTA threshold level and dollar supply estimate match; CTA (trend-following systematic funds) is accurately glossed as 'trend-followers,' attributed to Goldman."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25060__gs-chong-gs-daily-us-risk-off-hf-china-industrial-tech-ninte.txt",
+   "span": "while not a lot of clear investor consensus around where we land in 2028+ (re: datacenter builds, capex GWs), the market is working hard to de-risk",
+   "why": "Transition sentence; the premise of desks splitting on interpretation is itself attested (Goldman's own note flags lack of consensus), and is followed by Privorotsky's rotation-not-liquidation view versus the more cautious regulatory framing elsewhere in the same day's notes."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+   "span": "This is rotation, not wholesale liquidation ... My gut is that nets are too low for the broader market to go down easily ... A lot of bad news may already be reflected in prices (of picks and shovels)",
+   "why": "Attribution (Goldman's Privorotsky), direction (rotation not liquidation), and the 'picks and shovels' (AI suppliers) framing all match; low net positioning supporting the market floor also matches."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25197__preview-us-october-jobs-data-is-due-on-6th-november-2026-at-.txt",
+   "span": "US ADP private payrolls rose by 86K in October, above the 69K expected ... Quits were up by 321K (to 3.365mln), the largest rise since May 2023",
+   "why": "Both figures (86k vs 69k expected, and the 321k quits rise to 3.365mln) match exactly in a single source, despite a different DB note citing a 67k consensus elsewhere \u2014 one legitimate source fully supports the sentence as written."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+   "span": "November CFDs and the front three weeks of Dated Brent in contango ... Oil pricing as if the war is over...some arguing fair value below $70",
+   "why": "Contango (nearby cheaper than later-dated barrels) matches 'nearby barrels cost less than later ones'; 'some arguing fair value below $70' matches the attribution to 'some participants.'"
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/24508__ubs-s-t-us-midterms-apple-dovish-rba-hike-pboc-oil.txt",
+   "span": "Global inventories have also fallen sharply, strategic reserve releases are largely complete ... UBS Wealth Management CIO therefore retains a moderately constructive near-term outlook",
+   "why": "Matches inventory drawdown and finished reserve releases supporting a constructive (price-supportive) UBS view; the Iran 'seven points' clause is separately confirmed in a UBS gridlock note."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-06/24522__goldman-hikes-2027-brent-forecast-for-these-two-reasons.txt",
+   "span": "For 2027, he expects Brent to average around $88 (up from $80) ... downside risks to Mideast supply ... a more persistent risk premium",
+   "why": "Figure change ($80 to $88) and Goldman attribution match; ongoing Mideast risk capable of reviving the premium matches the listed upside triggers."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25210__up-and-adam.txt",
+   "span": "With the four largest hyperscalers gaining an average of 4.4% yesterday",
+   "why": "Raymond James ('Up and Adam') gives the 4.4% hyperscaler figure; a same-day UBS note gives neoclouds -8.4% and US Power -6.3%, matching both attributed figures."
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25073__gs-khong-midterms-macro-view-replay-5-nov-2026.txt",
+   "span": "our equity analysts think could negatively impact select US utilities/Independent Power Producers (IPPs), though we expect the data center issue to somewhat fade in importance ahead and any moratoria on data center development to be short-lived",
+   "why": "The Goldman IPP/fade/short-lived clause is fully supported. The UBS clause ('Hyperscaler credit spreads widened as Democratic Senate odds rose') was not found in any searched source: UBS election-day notes discuss Senate seat counts and FX/rates, not hyperscaler credit spreads; the only hyperscaler-CDS-widening note found is a Goldman piece from Nov 3 (pre-election) with no Senate-odds causal link. Attributing this claim to UBS misstates who said it.",
+   "searched": [
+    "Senate.*spread",
+    "hyperscaler credit spread",
+    "CDS widen Senate",
+    "UBS widen hyperscaler"
+   ]
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25260__ubs-s-t-us-equity-rotation-german-factory-orders-france-indu.txt",
+   "span": "BoE pricing now implying a further 67bp by September 2027, versus around 75bp a couple of days ago",
+   "why": "Matches exactly; the December-pause/February-hike-to-4.25% framing is separately confirmed in a same-day UBS note (Anna Titareva), both 'more dovish than' market framing intact."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25260__ubs-s-t-us-equity-rotation-german-factory-orders-france-indu.txt",
+   "span": "a day after the Riksbank raised its policy rate by 25bp to 2% \u2014 its first hike since 2023",
+   "why": "Matches exactly; the RBA 6-3 vote to 4.85% is confirmed in a companion UBS note the same day."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25260__ubs-s-t-us-equity-rotation-german-factory-orders-france-indu.txt",
+   "span": "Germany's final manufacturing PMI came in at 54.2 in October, the second-highest reading in nearly four and a half years ... dropped 2.3% y/y versus an estimate of a 0.2% decline",
+   "why": "Both figures match exactly; 'sentiment' is a fair gloss for the PMI reading."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-06/25245__gridlock-and-diplomatic-hopes-lift-us-stocks-english-1669248.txt",
+   "span": "We continue to expect EURUSD to recover toward 1.16 by year-end",
+   "why": "Matches exactly, attributed to UBS."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

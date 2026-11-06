@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-06/25084__gs-privorotsky-gs-basics-stocks-up-momentum-down-vol-crush-m.txt",
+ "source_span": "VIX -20% to 16.61... Remarkable collapse in index vol against the violence underneath. This is rotation, not wholesale liquidation. ...nets low/hedges in place the first move was more obvious...from here more complicated.",
+ "source_chain": "Markets rallied on the midterm result (VIX crushed -20% to 16.61, hyperscalers/quality/defensives bid) therefore the vol collapse against violent single-stock dispersion reads as rotation, not wholesale liquidation, therefore (with nets already low and hedges in place) the broad market can't fall easily and AI-supplier bad news is largely priced -- a call Privorotsky filed at 3:19am ET, before the session's selloff, with his own invalidation flagged as 'from here more complicated.'",
+ "pulse_chain": "Mechanical, dispersion-driven selling drove the S&P -4.36%/VIX +67.19% crash therefore the desks split on what that selling means: Goldman's Privorotsky calls it rotation not liquidation with nets too low to fall further and AI-supplier bad news priced in, against Nomura's McElligott dispersion signal arguing for further decline, therefore specific futures levels (27,600/26,800) decide which case wins.",
+ "preserved": false,
+ "why": "The pulse presents Privorotsky's 'rotation, not wholesale liquidation' line as his real-time read on the afternoon's mechanically-driven crash (VIX +67% to 27.77), but his note was timestamped 3:19am ET that day and was arguing the opposite thing -- that the morning's VIX crush (-20% to 16.61) after the market 'bought the election dip' was rotation, not liquidation -- so the note never addresses the systematic-flow selloff the 'two desks split' debate stages it against.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

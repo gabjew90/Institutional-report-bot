@@ -1,0 +1,49 @@
+{
+ "metric": 1,
+ "total_cards": 296,
+ "fragmentation_sets": [
+  {
+   "subject": "AI capex sustainability debate driving the chip/tech selloff (price action, regulatory risk, and the China gold-copper hedge are all the same underlying 'is the capex justified' argument)",
+   "labels": [
+    "ai semis unwind",
+    "hyperscaler data center regulation",
+    "ai capex monetization divergence",
+    "china gold copper ai hedge"
+   ],
+   "cards": 40
+  },
+  {
+   "subject": "Post-midterm election equity rally and political read-through",
+   "labels": [
+    "post midterm congress outlook",
+    "post midterm equity seasonality",
+    "china midterm rotation"
+   ],
+   "cards": 25
+  }
+ ],
+ "fragmented_mass_share": 0.22,
+ "mis_merges": [
+  {
+   "label": "us equity rotation",
+   "subjects": [
+    "BofA's value-over-growth/momentum factor-rotation thesis (capex/FCF-driven) \u2014 this is the same subject as the momentum factor unwind label, just told from the winning side",
+    "UBS's post-midterm sector rotation out of tech/momentum into quality and defensives, with a cash-desk buy/sell list \u2014 this is the same subject as the post-midterm rally cluster"
+   ],
+   "would_change_theme_selection": true,
+   "why": "An editor treating this as one standalone 'factor rotation' theme would likely spin up a redundant third brief instead of recognizing that half the cards corroborate the momentum-crash theme and the other half corroborate the post-midterm rally theme, diluting both."
+  }
+ ],
+ "pass": false,
+ "notes": "The ledger header states 912 cards for the day, but the labels and cards actually rendered below it sum to 296; I graded the 296 visible cards and flag the gap rather than guess at unseen content. 'misc' holds 12 cards (4.1% of 296), correctly treated as overflow, not a mis-merge. Even excluding the two borderline inclusions (hyperscaler data center regulation, china gold copper ai hedge) from set 1, fragmented mass would still be 49/296 = 0.166, still failing the 0.10 bar.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
