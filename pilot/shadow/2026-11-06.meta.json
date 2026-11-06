@@ -1,0 +1,39 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 31,
+  "cards": 912,
+  "max_doc_id": 25260
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 112,
+  "brief_citations": 2,
+  "distinct_cards_cited": 112,
+  "card_count": 912,
+  "quintiles": [
+   22,
+   23,
+   19,
+   19,
+   29
+  ],
+  "edge_quintile_share": 0.455,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "The tightening is not only British, with Sweden's Riksbank up 25 basis points to 2%, its first hike since 2023 [c359], and Australia's board voting 6-3 to 4.85% [c345].",
+    "cite": "c359,c345",
+    "reason": "figures not in cited card(s): ['3%']"
+   }
+  ],
+  "word_count": 1710
+ }
+}
