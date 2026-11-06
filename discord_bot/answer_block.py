@@ -23,6 +23,7 @@ be one part of a broader answer, which a code-built body would erase.
 """
 from __future__ import annotations
 
+import re
 from datetime import date
 
 NOTE = ("\n\nPOSTED AS WRITTEN: the system posts the lines below as the body of your reply, "
@@ -102,10 +103,29 @@ def _lead(answer: str) -> str:
     return "" if lead.startswith(_NOT_A_LEAD) else lead
 
 
+# Words that grade a figure (owner: narrate the data, never grade it). The
+# opening has no figure of its own for metric_grades to anchor on, so it is
+# dropped whole (2026-11-05 harness: "massive free cash flow that easily
+# handles the debt load" above Qualcomm's balance-sheet line).
+_GRADING_RE = re.compile(
+    r"\b(?:heavy|hefty|massive|huge|solid|strong|weak|healthy|cheap|expensive|rich|stretched|"
+    r"lofty|juicy|bloated|crowded|easily|comfortably|impressive)\b", re.I)
+
+
+def _plain(text: str) -> str:
+    return re.sub(r"[\s*→_]+", " ", text or "").strip().lower()
+
+
 def _lead_ok(lead: str, blocks: list[dict], body: str, question: str) -> bool:
-    """An opening, not a list line and not a figure of the model's own."""
+    """An opening, not a list line, not a repeat of a line, not a grade and
+    not a figure of the model's own."""
     from discord_bot import slate_week
     from discord_bot.figure_provenance import unsourced_figures
+    # "→ **SPX** at **7,353.73**, -4.4% today." twice (2026-11-05 harness)
+    if _plain(lead) and _plain(lead) in _plain(body):
+        return False
+    if _GRADING_RE.search(lead):
+        return False
     for b in blocks:
         if (b.get("outline")
                 and slate_week.mentions_any(lead, b["outline"], date.fromisoformat(b["today"])) >= 3):

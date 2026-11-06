@@ -72,3 +72,17 @@ def test_answer_block_builds_it_on_the_price_shape_only():
                             "→ **Market cap:** $175.3B."]
     assert answer_block.build("lookup_market_price", price, date(2026, 11, 3),
                               question="qcom market cap", context=dict(ctx, shape="ticker_opinion")) is None
+
+
+def test_an_opening_that_repeats_a_line_or_grades_is_dropped():
+    # 2026-11-05 harness: the SPX line posted twice, and Qualcomm's opening
+    # graded its cash flow
+    price, snap = _qcom()
+    blk = answer_block.build("lookup_market_price", price, date(2026, 11, 3),
+                             question="qcom market cap", context={"shape": "price", "snapshot": snap})
+    answer, kept = answer_block.compose("→ **QCOM** at **$164.31**, +1.4% today.", [blk])
+    assert not kept and answer.count("$164.31") == 1
+    answer, kept = answer_block.compose("Massive cash pile, easily covers the debt.", [blk])
+    assert not kept
+    answer, kept = answer_block.compose("QCOM bounced after the print selloff.", [blk])
+    assert kept
