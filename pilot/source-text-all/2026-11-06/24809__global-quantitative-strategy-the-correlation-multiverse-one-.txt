@@ -1,0 +1,280 @@
+ 
+ 
+ 
+ 
+ 
+GLOBAL QUANTITATIVE RESEARCH
+02 November 2026
+ 
+ 
+ 
+ 
+Global Quantitative Strategy 
+The correlation multiverse – one index, many markets 
+ 
+◼ The S&P 500 arguably looks calm, but the stocks beneath it are not. Earnings surprises, sector 
+rotations and sharp single-name moves are all highly visible events, but index volatility has been 
+subdued. The first indication that something has changed is that the share of stock-return 
+variation explained by the broad market factor has fallen close to the bottom of its post-2016 
+range. At the same time, the S&P 500 has broken into far more return-based clusters. 
+◼ These clusters are not loose collections of unrelated stocks. Correlation between the stocks in 
+each cluster remains strong, as before. What has changed is the links between 
+clusters: correlation here has fallen sharply. The index is quiet not because stock-level risk has 
+disappeared, but because risk is increasingly localised and separate groups are cancelling out one 
+another’s moves. 
+◼ Average correlation hides more than it reveals. It blends pairs that still move together within 
+clusters with pairs across clusters that increasingly do not. That matters because index variance 
+depends on the full weighted pattern of co-movement, not one headline number. 
+◼ The clusters also differ from the labels investors usually rely on. Return-based clusters show 
+limited overlap with macro and fundamental groupings and cut across the sector map. Sectors 
+remain useful descriptions of businesses, but they are a weak guide to which stocks are currently 
+moving together. 
+ 
+The market is splitting into more clusters, with fewer meaningful links between them and greater isolation as a result 
+Source: SG Cross Asset Research/Quant, Bloomberg, SGI 
+Societe Generale (“SG”) does and seeks to do business with companies covered in its research reports. As a result, investors should be aware that SG may 
+have a conflict of interest that could affect the objectivity of this report. Investors should consider this report as only a single factor in making their 
+investment decision. PLEASE SEE APPENDIX AT THE END OF THIS REPORT FOR THE ANALYST(S) CERTIFICATION(S), IMPORTANT DISCLOSURES AND 
+DISCLAIMERS. ALTERNATIVELY, VISIT OUR GLOBAL RESEARCH DISCLOSURE WEBSITE 
+ 
+Puneet Singh 
++65 6326 7835 
+puneet.singh@sgcib.com 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+2 
+02 November 2026 
+ 
+A quiet index, an active market 
+The S&P 500 is calm because the market beneath it is no longer moving as one. Single-stock 
+risk remains active as moves across clusters are increasingly cancelled out at index level. 
+In 1933, Fritz Zwicky found that visible matter could not explain how a galaxy cluster held 
+together. The same broad idea applies here: the index is not wrong, but it hides a change in the 
+structure beneath it. Diversification explains why constituent moves can cancel one another out. 
+It does not explain what has changed to make that cancellation so strong. The more useful 
+question is how the market’s internal structure has shifted. 
+The index whispers, even as the stocks are shouting 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+The previous charts show the outcome. The next two sections separate its two components: more 
+groups and weaker links between them. 
+One market is becoming many 
+The market is becoming less one-factor driven and is breaking into more return-based 
+groups. PC1 now explains close to the lowest share of S&P 500 variation since 2016, while 
+the cluster count under our base specification has risen from roughly 25 to 66. 
+We group stocks using daily returns. Pairwise correlations are estimated over a rolling 252-day 
+window, converted into a distance measure and joined through hierarchical clustering. Stocks 
+that move together sit closer and are more likely to fall into the same cluster. The grouping 
+therefore comes from how stocks move, not from labels set in advance. We use average linkage 
+and a fixed distance threshold. Sensitivity tests using alternative thresholds, windows and 
+linkage rules preserve the broad rise in fragmentation, although the exact cluster count changes. 
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+02 November 2026 
+3
+ 
+PC1 is losing its grip on the S&P 500… 
+ 
+…as the market breaks into more groups 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+ 
+ 
+The clusters still hold. The links between them do not 
+Correlation within clusters remains firm, while correlation between clusters has fallen 
+sharply, leaving the index quieter without a similar fall in stock-level risk. 
+The clusters still hold, the links between them do not 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+A single average correlation hides more than it reveals, blending pairs that still move together 
+within clusters with pairs across clusters that increasingly do not, describing neither group 
+particularly well. To connect the cluster map to the index, we split covariance into two 
+groups: pairs inside the same cluster and pairs across different clusters. The raw total can be 
+distorted by the changing number of pairs as cluster count rises. We therefore focus on average 
+weighted covariance per eligible pair, which gives a cleaner comparison of co-movement inside 
+and between clusters. As we can see in the chart below, the between-cluster covariance has 
+remained relatively stable, while within-cluster covariance has gone up, indicating that risk is 
+increasingly concentrated within clusters rather than transmitted between them. Taken together 
+with what we saw earlier – the correlation between clusters is lower while that within the clusters 
+is strong – we see further evidence that the linkage between clusters is responsible for lower 
+realised index variance. 
+ 
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+4 
+02 November 2026 
+ 
+Within-cluster covariance explains much more risk, while between-cluster covariance has stayed flat 
+ 
+Source: SG Cross Asset Research 
+Groupings matter 
+Return-based clusters are not sector, macro or fundamental groups under another name. 
+They also form tighter groups than these traditional classifications. 
+ARI1, compares different methods of grouping stocks, allowing for overlap that could occur by 
+chance. A value near zero means the overlap is little better than chance; a higher positive value 
+means the two maps place more of the same stock pairs together. Return-based groupings differ 
+materially from fundamental groups and overlap only partly with macro groups. 
+Same stocks, different maps 
+ 
+Source: SG Cross Asset Research 
+ 
+1 Hubert, L. and Arabie, P. (1985), “Comparing Partitions”, Journal of Classification, 2, 193–218, doi:10.1007/BF01908075.  
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+02 November 2026 
+5
+ 
+Stocks are generally closer to their assigned cluster than to the nearest alternative2, while 
+average correlation within return-based clusters is higher than within the macro or fundamental 
+groupings. 
+Return-based clusters form tighter groups 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+ 
+ 
+Are clusters the new sectors? 
+Return-based clusters are not sectors under another name. Sector labels remain 
+economically useful, but they do not capture today’s dependence structure. 
+Comparing clusters and sectors, we see that ARI remains positive but low: knowing a stock’s 
+sector explains only a small part of its return cluster. 
+Clusters and sectors are reading different maps* 
+ 
+Source: SG Cross Asset Research. *Dark red line = clusters; Grey shaded area = sectors 
+The table mapping sectors to clusters makes this intuitive. A sector-like map would show a few 
+dark blocks, with each cluster concentrated in one column. Instead, most clusters cut across 
+sectors; the overlap between C3 and Information Technology is the exception, not the rule. 
+ 
+2 For measuring how closely the stocks sit together, we use the silhouette width. This measures how naturally a stock fits within 
+its assigned cluster. A positive value means the stock is closer to its own cluster than to the nearest alternative; the larger the 
+value, the cleaner the fit. Values near zero indicate uncertainty, while negative values suggest the stock may fit better elsewhere. 
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+6 
+02 November 2026 
+ 
+Clusters cut across the sector map 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+Different, yes. But how useful is it? 
+Sectors remain useful economic labels, but return-based clusters provide a clearer map of 
+current dependence. 
+A sector can contain several groups that move in different ways. Information Technology, for 
+example, contains software, hardware and semiconductor stocks that have responded 
+differently as the AI theme has developed. The conclusion is simple: stocks in the same return 
+cluster move together more consistently than stocks that merely share a sector. 
+Cluster-mates move together more than sector-mates (S&P 500, left and top-50, right) 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+ 
+ 
+The risk match: clusters versus sectors 
+In our in-sample tests, portfolios spread across return clusters carry lower realised 
+volatility than portfolios spread across sectors. Recent dependence therefore contains 
+portfolio information not captured by sector labels. 
+We test whether spreading a portfolio across return clusters reduces realised risk more than 
+spreading it across sectors. We compare the two approaches at the latest snapshot using the 
+same number of equally weighted stocks. Clusters and sectors are fixed on the same date, and 
+both portfolio formation and risk measurement use the same trailing 252-day window, so the 
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+02 November 2026 
+7
+ 
+result is in-sample. We draw at least one stock from every group, repeat the matched sampling 
+10,000 times and compare annualised volatility and fifth-percentile return. We do not control 
+single-stock volatility, so differences in the chosen names feed into the portfolio results. 
+The charts below show the distribution of realised volatility on the left and fifth-percentile returns 
+on the right. Cluster-diversified portfolios show lower realised volatility and a better left-tail 
+outcome than sector-diversified portfolios in this sample. 
+Diversifying across clusters reduces realised risk 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+ 
+ 
+The cluster map therefore adds information beyond sectors, in our portfolio simulations. The 
+diversification benefit depends on the market remaining fragmented. The main risk is therefore 
+a reconnection of the groups that are currently moving separately. 
+Watching gravity return 
+A credible reversal should appear across more than one dimension: common market 
+movement, network structure and volatility intensity. No single signal is likely to be 
+decisive. 
+◼ Commonality: a rise in PC1 and between-cluster correlation 
+◼ Topology: stronger connectivity between clusters accompanied by a collapse in the number of 
+overall clusters 
+◼ Intensity: higher single-name volatility accompanied by higher correlation between clusters. 
+In our view, the current structure can be impacted in several ways:  
+A credible reversal would be visible across more than one dimension. 
+
+ 
+Global Quantitative Strategy
+ 
+ 
+ 
+8 
+02 November 2026 
+ 
+What would tell us the market is reconnecting? 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+ 
