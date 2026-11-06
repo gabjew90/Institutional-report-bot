@@ -1,0 +1,243 @@
+{
+ "brief": "UBS's European morning note recaps Wednesday's US session and sets up Thursday's European open. Democrats' sweeping midterm win fuelled optimism the Iran War could end soon, sending oil lower: Brent plunged 10% below $100/bbl and the S&P 500 Energy Index fell 4.8%, its worst session since April 2025, while the S&P rose 1.6% and the VIX sat near 17. Separately, investors bet a Democratic-controlled Congress will force AI spending cuts companies have wanted, lifting Amazon and Microsoft over 6% each and the Magnificent Seven 2.2%, even as broad-based de-grossing hit the APAC AI supply chain (Kospi -6%, TAIEX -3%) after Qualcomm guided below consensus on rising costs, a read negative for handset OEMs MediaTek and AAC. China is framed as the post-midterm rotation beneficiary (HSTECH +5%, KWEB +4.5%). London's ETD desk reports broad European buying yesterday (CAC, OMX, EM futures) and a later rotation into Euro Banks funded by selling VGZ6. The day ahead: BoE decision at 12:00 (4.0% expected) and US jobless claims at 13:30 (196K expected).",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "VGZ6 traded up 0.4% in early trading.",
+   "anchor": "VGZ6 +0.4% in early trading.",
+   "topic": "European cash equity flows",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Democrats' sweeping midterm election victory fuelled optimism that the Iran War could end soon.",
+   "anchor": "Democrats\u2019 sweeping victory in midterm elections fuelled optimism the Iran War could end soon",
+   "topic": "Iran de-escalation trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "The S&P 500 rose 1.6% while the VIX hovered around 17.",
+   "anchor": "S&P +1.6%, VIX hovered around 17.",
+   "topic": "Iran de-escalation trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Amazon and Microsoft each rallied more than 6%, leading the Magnificent Seven 2.2% higher.",
+   "anchor": "Amazon.com Inc. and Microsoft Corp. rallied more than 6% apiece, leading a basket of the so-called Magnificent Seven 2.2% higher",
+   "topic": "AI semis unwind",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Investors bet a Democratic-controlled Congress will force companies to make the AI spending cuts they have been calling for.",
+   "anchor": "investors bet a Democratic-controlled Congress will force companies to carry out AI spending cuts that they\u2019ve been calling for",
+   "topic": "AI semis unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "The S&P 500 Energy Index sank 4.8%, its worst session since April 2025, tracking oil prices lower.",
+   "anchor": "the S&P 500 Energy Index sank 4.8%, tracking oil prices lower",
+   "topic": "Iran de-escalation trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Brent oil futures plunged 10% to trade below $100 a barrel.",
+   "anchor": "Brent oil futures plunged 10% to trade below $100 a barrel.",
+   "topic": "Iran de-escalation trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Kospi fell 6% and TAIEX fell 3% amid broad-based de-grossing across the APAC AI supply chain.",
+   "anchor": "Kospi -6%, TAIEX -3%, with clear evidence of broad-based de-grossing across the APAC AI supply chain",
+   "topic": "AI semis unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Nasdaq futures fell 1.4% and S&P futures fell 0.3%, pressured by Qualcomm falling 7.2% after-hours.",
+   "anchor": "Nasdaq futures -1.4% (S&P -0.3%), not helped by Qualcomm (-7.2% aft-hrs)",
+   "topic": "AI semis unwind",
+   "status": "level",
+   "instruments": [
+    "QCOM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Qualcomm guided December-quarter EPS below consensus on a broad-based rise in costs, a read seen as negative for handset OEMs MediaTek and AAC.",
+   "anchor": "after guiding Dec quarter EPS below cons on a broad-based rise in costs, reads negative for handset OEMs (MediaTek, AAC)",
+   "topic": "AI semis unwind",
+   "status": "released",
+   "instruments": [
+    "QCOM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "China was framed as the beneficiary of post-midterm rotation, with HSTECH up 5%, H shares up 3%, and KWEB up 4.5% in the US session.",
+   "anchor": "China remains the beneficiary of rotation post-midterms \u2013 HSTECH +5% and H shares +3% following KWEB +4.5% in the US session.",
+   "topic": "China midterm rotation",
+   "status": "level",
+   "instruments": [
+    "KWEB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "UBS's London ETD sales desk saw a barrage of buying from the European open yesterday, with buyers across Europe in good size, notably in the CAC and OMX.",
+   "anchor": "London ETD sales desk saw a barrage of buying from the European open. Buyers across Europe in good size, notably CAC and OMX.",
+   "topic": "European cash equity flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "The desk saw continued buying of the MES emerging-markets futures contract.",
+   "anchor": "Continued buyers of MES (EM). Later in the day buyers of Euro Banks",
+   "topic": "European cash equity flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "Later in the day the desk saw buyers of Euro Banks (SX7E) funded by selling VGZ6.",
+   "anchor": "Later in the day buyers of Euro Banks (SX7E) to sell VGZ6.",
+   "topic": "European cash equity flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "The Bank of England's rate decision is due at 12:00, with a rate of 4.0% expected.",
+   "anchor": "12:00 BoE Rate (4.0%).",
+   "topic": "BoE rate hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BOE",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - European Morning Note - William Day - 2026-11-05",
+   "claim": "US Initial Jobless Claims are due at 13:30, with consensus expecting 196K.",
+   "anchor": "13:30 US Initial Jobless Claims 196K.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-06/25255__ubs-s-t-european-morning-note-william-day-2026-11-05.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 16,
+  "matched": 16,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
