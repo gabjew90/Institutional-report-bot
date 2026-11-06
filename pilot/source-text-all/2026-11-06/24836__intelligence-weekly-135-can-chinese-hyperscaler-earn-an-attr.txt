@@ -1,0 +1,1943 @@
+Report Completion Date
+4 November 2026, 19:34 UTC
+Chief Investment Office GWM
+Investment Research
+Intelligence weekly #135: Can Chinese 
+hyperscaler earn an attractive return on AI 
+capex?
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+ 
+Authors: Arafat Alafate, CIO Equity Strategist, UBS AG Hong Kong Branch; Delwin Kurnia Limas, CFA, CIO Equity Strategist, UBS AG Singapore 
+Branch; Kevin Dennean, CFA, CIO Equity Strategist, US Technology & Telecom, UBS Financial Services Inc. (UBS FS); Achille Monnet, CIO Equity Analyst, 
+UBS Switzerland AG; Allen Pu, CFA, CIO Equity Strategist, UBS AG Hong Kong Branch; Nikolaos Fostieris, Global Equity Strategist, UBS Switzerland 
+AG; Xueqiong Huang, Equity Strategist, UBS AG Singapore Branch
+• China AI infrastructure can still generate attractive 
+returns despite its hardware-cost disadvantage. Our base 
+case suggests roughly 12-20% ROIC, with cash payback 
+of around 2.5-3 years, although returns remain below 
+the US largely because comparable computing hardware 
+costs more in China.
+• Monetization matters more than simply owning 
+more compute. Owned GPU rental generates around 
+12% ROIC, while owned model services can reach 
+roughly 19-20%, as inference allows providers to 
+monetize model quality, serving efficiency and customer 
+integration rather than just renting computing capacity.
+• The key upside is better utilization of every unit 
+of compute. A rising inference mix, higher token 
+throughput, stable revenue per unit of compute, and 
+lower server costs can materially lift returns. In our 
+view, China does not need to match US ROIC to create 
+shareholder value, but it does need AI capacity to 
+increasingly support paying inference demand rather 
+than non-revenue training workloads.
+Source: Shutterstock
+ 
+Amid the recent US earning season, the market is no 
+longer asking whether AI demand is real. It is asking (again) 
+whether the companies funding the infrastructure will earn 
+an acceptable return.
+In terms of ROIC, the investment debate is more difficult in 
+China. Chinese cloud providers face a higher effective cost 
+for advanced computing hardware, while AI monetization 
+is still at an earlier stage. We use the US as a reference 
+point because it shows what the economics can look like 
+when hardware is cheaper, inference adoption is deeper, 
+and model pricing is stronger.
+AI selection list
+*Potential trading restrictions. This is a copy of the Equity Selection List 
+(ESL) "AI." As selections may change, we recommend visiting the UBS WM 
+CIO portal (which also lists the analysts responsible for the selections and 
+This report has been prepared by UBS AG Hong Kong Branch, UBS AG Singapore Branch, UBS Financial Services Inc. (UBS 
+FS), UBS Switzerland AG. Please see important disclaimers and disclosures at the end of the document.
+Page 1 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+the thematic benchmark), or contacting your client advisor for the latest 
+update of this ESL.
+Our conclusion is constructive, but not unconditional. We 
+believe China can earn a low- to high-teens return on 
+invested capital from AI infrastructure. We assume this 
+because the same server can be monetized in more than one 
+way: It can be rented as computing capacity, used to sell 
+model access, or used to support applications. The return 
+improves as utilization rises and more computing shifts from 
+model training, which does not generate direct revenue, to 
+inference, which does.
+China starts with a cost disadvantage, but it does not need 
+to match US returns to create value. A 13-20% ROIC with 
+a two- to three-year cash payback would still be attractive if 
+demand is durable and the equipment remains economically 
+useful.
+Table 1: This table show high-level summary of our 
+findings
+Source: Company data, UBS as of 2026
+Business model #1: owned GPU rental
+The simplest business is to buy a server and rent its 
+computing capacity to customers. We assume the provider 
+earns revenue either through a long-term rental contract or 
+through hourly usage. We believe this is the easiest return 
+stream for investors to understand because the key variables 
+are visible: price, utilization, and hardware cost.
+For China, we assume server capex of CNY 10 million and 
+monthly rental revenue of about CNY 310,000. After server 
+and data center depreciation, electricity, maintenance, and 
+labor, our base case produces a 44% operating margin, a 
+12% ROIC, and a 3.2-year cash payback.
+The ROIC for the same business model is normally over 30%, 
+and the key difference is that Chinese firms pay materially 
+more for the server. Higher server cost hurts twice: It raises 
+annual depreciation and increases the amount of invested 
+capital used in the ROIC denominator. Lower electricity and 
+data center costs help, but do not fully offset the hardware 
+gap.
+We would become more positive if server costs decline in 
+China, rental pricing remains stable, and advanced clusters 
+stay highly utilized. We would become more cautious if 
+utilization is supported mainly by internal training rather 
+than paying external customers.
+Business model #2: owned model services
+Model-as-a-Service can generate a higher return because 
+the provider is no longer selling only computing time. The 
+provider is selling access to a model. We assume this allows 
+the owner to capture value from model quality, software 
+optimization, and customer integration, not just from the 
+physical server.
+The economics depend on four components: First, how 
+many tokens each GPU can produce. Second, how much 
+computing is allocated to inference rather than training. 
+Third, the realized price per token. Fourth, the cost of the 
+underlying server.
+In our base case for China, we assume 4,200 tokens per 
+second per GPU, a 50% inference mix, and blended pricing 
+of CNY 9 per million tokens. We assume the remaining 
+computing capacity is used for training and other non-
+revenue workloads. On these assumptions, MaaS reaches a 
+76% gross margin, a 53% operating margin, about 19% 
+ROIC, and a 2.6-year payback.
+We do not assume token pricing stays high simply because a 
+model is more intelligent. A larger model may charge more 
+per token, but it may also produce fewer tokens per GPU 
+and cost more to serve. We therefore focus on revenue 
+per unit of computing capacity. A lower-priced but efficient 
+model can earn a better return than an expensive model that 
+uses too much compute.
+Business model #3: rent the servers, the asset-light 
+alternative
+A cloud or model provider does not need to own every 
+server. It can rent capacity from a neocloud or another third 
+party, then resell the capacity or use it to provide model 
+access. We assume a customer price of CNY 250,000 per 
+month and a compute rental cost of CNY 200,000 per 
+month. This produces an operating margin of about 20%.
+The margin is lower because the infrastructure owner 
+keeps part of the economics. However, the provider avoids 
+the upfront server investment and begins generating cash 
+immediately. We believe this model is attractive when 
+demand visibility is uncertain or technology is changing 
+quickly. Owning capacity offers more upside when demand 
+is durable; renting capacity protects the balance sheet when 
+it is not.
+We would expect a rational provider to own the core 
+capacity needed for strategic customers and steady demand, 
+while renting incremental capacity for peak demand or 
+uncertain workloads. The right comparison is therefore not 
+simply higher versus lower margin, it is return potential 
+versus flexibility and obsolescence risk.
+Why the US earns more
+Page 2 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+The comparison shows that China is not necessarily weaker 
+on every operating variable. The larger difference is the cost 
+of obtaining the hardware and the maturity of monetization.
+Table 2: Why the US earns more
+The comparison shows that China is not necessarily weaker on every 
+operating variable. The larger difference is the cost of obtaining the 
+hardware and the maturity of monetization
+Source: Company data, UBS as of 2026
+China can narrow the operating-profit gap through better 
+model efficiency, but it cannot fully close the ROIC 
+gap unless hardware cost also falls. Better software 
+improves the numerator. Cheaper hardware improves 
+both the numerator, through lower depreciation, and the 
+denominator, through lower invested capital.
+Conclusion
+We believe China's AI capex can earn an attractive return, 
+but the route is narrower than for companies in the US. 
+Our base case supports roughly 12% ROIC for owned GPU 
+rental and about 19-20% for owned model services, with 
+cash payback of around two-and-a-half to three years. These 
+returns are lower than in the US because Chinese firms 
+pay more for computing hardware and currently allocate 
+less capacity to revenue-generating inference. The upside is 
+that China's AI sector has more room to improve. Lower 
+hardware cost, better model-serving efficiency, and a higher 
+inference mix can all raise returns.
+We would stay constructive as long as three conditions hold: 
+Advanced capacity remains highly utilized, paid inference 
+becomes a larger share of usage, and revenue per unit of 
+compute remains stable or improves. If these conditions are 
+met, we believe China's AI sector does not need to match US 
+ROIC for AI capex to create meaningful shareholder value.
+Table 3: Appendix: assumptions retained in the 
+framework
+Source: Company data, UBS as of 2026
+Page 3 of 15
+
+12-month CIO selection changes history
+Release date
+Company name
+Equity Selection List
+Current selection
+Previous selection
+Apr 27 2026
+ARM Holdings Plc
+AI
+Most Preferred
+Not Listed
+Dec 24 2025
+ARM Holdings Plc
+AI
+Not Listed
+Most Preferred
+Dec 24 2025
+ASE Technology Holding Co., Ltd.
+AI
+Most Preferred
+-
+Jan 13 2026
+ASE Technology Holding Co., Ltd.
+Asia New Economy Leaders
+Most Preferred
+-
+Jan 14 2026
+ASE Technology Holding Co., Ltd.
+Asia ex-Japan Focus 20
+Most Preferred
+Not Listed
+Jun 18 2026
+ASE Technology Holding Co., Ltd.
+Sustainable investing, global leaders
+Most Preferred
+-
+Jul 24 2026
+ASE Technology Holding Co., Ltd.
+Taiwan
+Most Preferred
+Not Listed
+Feb 12 2026
+ASM Pacific Technology
+AI
+Most Preferred
+-
+Oct 01 2026
+ASM Pacific Technology
+China AI Enablers
+Most Preferred
+-
+Oct 01 2026
+ASM Pacific Technology
+China Tech
+Not Listed
+Most Preferred
+Nov 06 2025
+ASM Pacific Technology
+China Tech
+Most Preferred
+Not Listed
+May 25 2026
+ASM Pacific Technology
+Greater Bay Area: Launching a world-class metropolis
+Most Preferred
+-
+Nov 26 2025
+ASM Pacific Technology
+Greater China Alpha Opportunities
+Not Listed
+Most Preferred
+Apr 28 2026
+ASM Pacific Technology
+Hong Kong
+Most Preferred
+Not Listed
+Sep 28 2026
+ASML
+30 for '30
+Not Listed
+Most Preferred
+May 12 2026
+ASML
+30 for '30
+Most Preferred
+Not Listed
+Dec 17 2025
+ASML
+30 for '30
+Not Listed
+Most Preferred
+Jan 26 2026
+ASML
+Greentech goes global
+Most Preferred
+Not Listed
+Apr 22 2026
+Accton Technology Corp.*
+AI
+Most Preferred
+Not Listed
+Mar 12 2026
+Accton Technology Corp.*
+AI
+Not Listed
+Most Preferred
+Dec 24 2025
+Accton Technology Corp.*
+AI
+Most Preferred
+-
+Jan 13 2026
+Accton Technology Corp.*
+Asia New Economy Leaders
+Most Preferred
+-
+Oct 12 2026
+Accton Technology Corp.*
+Taiwan
+Not Listed
+Most Preferred
+Jul 24 2026
+Accton Technology Corp.*
+Taiwan
+Most Preferred
+-
+Sep 25 2026
+Advanced Micro Devices
+Asia’s new mobility
+Most Preferred
+Not Listed
+Oct 27 2026
+Advanced Micro Devices
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Aug 04 2026
+Advanced Micro Devices
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jul 07 2026
+Advanced Micro Devices
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jun 09 2026
+Advanced Micro Devices
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Apr 15 2026
+Advanced Micro Devices
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Sep 28 2026
+Alibaba
+30 for '30
+Not Listed
+Most Preferred
+Jul 08 2026
+Alibaba
+AI
+Most Preferred
+Not Listed
+May 06 2026
+Alibaba
+AI
+Not Listed
+Most Preferred
+Oct 01 2026
+Alibaba
+China AI Platforms
+Most Preferred
+-
+Sep 28 2026
+Alphabet Inc
+30 for '30
+Not Listed
+Most Preferred
+Oct 12 2026
+Alphabet Inc
+Beyond AI: The Power of Humanoids and Automation
+Most Preferred
+-
+Feb 24 2026
+Alphabet Inc
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+Alphabet Inc
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Nov 11 2025
+Alphabet Inc
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Sep 28 2026
+Amazon.com
+30 for '30
+Not Listed
+Most Preferred
+Feb 09 2026
+Amazon.com
+30 for '30
+Most Preferred
+Not Listed
+Mar 25 2026
+Amazon.com
+Beyond AI: The Power of Humanoids and Automation
+Most Preferred
+-
+Oct 01 2026
+Amazon.com
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Aug 04 2026
+Amazon.com
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Feb 24 2026
+Amazon.com
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jan 21 2026
+Amazon.com
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Oct 31 2026
+Amazon.com
+US Consumer Discretionary
+Most Preferred
+Not Listed
+Oct 30 2026
+Amazon.com
+US Consumer Discretionary
+Not Listed
+Most Preferred
+Dec 24 2025
+AppLovin Corp
+AI
+Most Preferred
+-
+Feb 24 2026
+AppLovin Corp
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+AppLovin Corp
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Sep 01 2026
+Apple Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jun 09 2026
+Apple Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+Apple Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jun 09 2026
+Applied Materials Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Nov 11 2025
+Applied Materials Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Oct 31 2026
+Applied Materials Inc.
+US Information technology
+Most Preferred
+Not Listed
+Oct 30 2026
+Applied Materials Inc.
+US Information technology
+Not Listed
+Most Preferred
+Jan 13 2026
+Applied Materials Inc.
+US Information technology
+Most Preferred
+-
+Oct 01 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Page 4 of 15
+
+12-month CIO selection changes history
+Release date
+Company name
+Equity Selection List
+Current selection
+Previous selection
+Sep 01 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Aug 04 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jul 07 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jun 09 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Feb 24 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jan 21 2026
+Broadcom Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+May 18 2026
+CME Group Inc.
+AI
+Most Preferred
+-
+Aug 04 2026
+CME Group Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jul 07 2026
+CME Group Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jun 09 2026
+CME Group Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Oct 31 2026
+CME Group Inc.
+US Financials
+Most Preferred
+Not Listed
+Oct 30 2026
+CME Group Inc.
+US Financials
+Not Listed
+Most Preferred
+Feb 24 2026
+CME Group Inc.
+US Financials
+Most Preferred
+-
+Jun 03 2026
+Cadence Design
+AI
+Most Preferred
+Not Listed
+Aug 04 2026
+Coherent Corp.
+AI
+Most Preferred
+Not Listed
+Jul 28 2026
+Coherent Corp.
+AI
+Not Listed
+Most Preferred
+Dec 24 2025
+Coherent Corp.
+AI
+Most Preferred
+-
+May 04 2026
+Corning Inc.
+AI
+Most Preferred
+-
+Oct 01 2026
+Corning Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Sep 01 2026
+Corning Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Dec 24 2025
+Daifuku
+AI
+Most Preferred
+-
+Feb 24 2026
+Daifuku
+Asia New Economy Leaders
+Most Preferred
+-
+Oct 05 2026
+Daifuku
+Beneficiaries of Japan’s inflation
+Not Listed
+Most Preferred
+Nov 06 2025
+Daifuku
+Beneficiaries of Japan’s inflation
+Most Preferred
+-
+Jul 20 2026
+Daifuku
+Beyond AI: The Power of Humanoids and Automation
+Most Preferred
+-
+May 18 2026
+Datadog Inc
+AI
+Most Preferred
+Not Listed
+Jun 09 2026
+Datadog Inc
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Nov 02 2026
+Datadog Inc
+US Information technology
+Most Preferred
+-
+Jun 25 2026
+Digital Realty Trust Inc.
+AI
+Most Preferred
+Not Listed
+Apr 27 2026
+Digital Realty Trust Inc.
+AI
+Not Listed
+Most Preferred
+Feb 12 2026
+Digital Realty Trust Inc.
+AI
+Most Preferred
+-
+Jan 30 2026
+Digital Realty Trust Inc.
+Buy real estate with exposure to technology
+Most Preferred
+Not Listed
+Nov 17 2025
+Digital Realty Trust Inc.
+Buy real estate with exposure to technology
+Not Listed
+Most Preferred
+Oct 31 2026
+Digital Realty Trust Inc.
+US Real Estate
+Most Preferred
+Not Listed
+Oct 30 2026
+Digital Realty Trust Inc.
+US Real Estate
+Not Listed
+Most Preferred
+Jun 16 2026
+Equinix
+AI
+Most Preferred
+-
+Feb 13 2026
+Equinix
+Buy real estate with exposure to technology
+Most Preferred
+Not Listed
+Mar 12 2026
+Equinix
+Real Estate
+Most Preferred
+Not Listed
+Oct 31 2026
+Equinix
+US Real Estate
+Most Preferred
+Not Listed
+Oct 30 2026
+Equinix
+US Real Estate
+Not Listed
+Most Preferred
+Jul 09 2026
+Equinix
+US Real Estate
+Most Preferred
+Not Listed
+Feb 12 2026
+Infineon Technologies AG
+AI
+Most Preferred
+Not Listed
+Aug 13 2026
+Infineon Technologies AG
+European Leaders
+Most Preferred
+Not Listed
+Jun 11 2026
+Infineon Technologies AG
+European Leaders
+Not Listed
+Most Preferred
+Nov 19 2025
+Infineon Technologies AG
+European Leaders
+Most Preferred
+Not Listed
+Mar 09 2026
+Infineon Technologies AG
+Greentech goes global
+Not Listed
+Most Preferred
+Nov 11 2025
+Infineon Technologies AG
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Apr 27 2026
+Intel Corp.
+AI
+Most Preferred
+Not Listed
+Nov 20 2025
+Intel Corp.
+AI
+Not Listed
+Most Preferred
+Oct 27 2026
+Intel Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Sep 01 2026
+Intel Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Aug 04 2026
+Intel Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jul 07 2026
+Intel Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Nov 24 2025
+Intel Corp.
+US Information technology
+Not Listed
+Most Preferred
+Aug 13 2026
+LAM Research Corporation
+AI
+Most Preferred
+Not Listed
+Aug 28 2026
+LAM Research Corporation
+Asia’s new mobility
+Most Preferred
+-
+Oct 31 2026
+LAM Research Corporation
+US Information technology
+Most Preferred
+Not Listed
+Oct 30 2026
+LAM Research Corporation
+US Information technology
+Not Listed
+Most Preferred
+Jun 16 2026
+LAM Research Corporation
+US Information technology
+Most Preferred
+-
+May 06 2026
+Lumentum Hldngs Rg
+AI
+Most Preferred
+-
+Oct 27 2026
+Lumentum Hldngs Rg
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Jan 07 2026
+Marvell Technology Group Ltd.
+Asia’s new mobility
+Most Preferred
+Not Listed
+Oct 27 2026
+Marvell Technology Group Ltd.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Nov 11 2025
+Marvell Technology Group Ltd.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jun 25 2026
+MasterCard
+AI
+Most Preferred
+Not Listed
+Page 5 of 15
+
+12-month CIO selection changes history
+Release date
+Company name
+Equity Selection List
+Current selection
+Previous selection
+Mar 26 2026
+MasterCard
+AI
+Not Listed
+Most Preferred
+Sep 01 2026
+MasterCard
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Aug 04 2026
+MasterCard
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jul 07 2026
+MasterCard
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Mar 27 2026
+MasterCard
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+MasterCard
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Oct 31 2026
+MasterCard
+US Financials
+Most Preferred
+Not Listed
+Oct 30 2026
+MasterCard
+US Financials
+Not Listed
+Most Preferred
+Oct 07 2026
+MasterCard
+US Financials
+Most Preferred
+Not Listed
+May 18 2026
+MediaTek Inc.
+AI
+Most Preferred
+Not Listed
+Jun 17 2026
+MediaTek Inc.
+Asia New Economy Leaders
+Most Preferred
+Not Listed
+Jun 19 2026
+MediaTek Inc.
+Asia ex-Japan Focus 20
+Most Preferred
+Not Listed
+Jan 14 2026
+MediaTek Inc.
+Asia ex-Japan Focus 20
+Not Listed
+Most Preferred
+Jul 24 2026
+MediaTek Inc.
+Taiwan
+Most Preferred
+Not Listed
+Jun 12 2026
+Meta Platforms
+30 for '30
+Not Listed
+Most Preferred
+Jan 27 2026
+Meta Platforms
+Beyond AI: The Power of Humanoids and Automation
+Most Preferred
+-
+Sep 01 2026
+Meta Platforms
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Aug 04 2026
+Meta Platforms
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jul 07 2026
+Meta Platforms
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+Meta Platforms
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Oct 31 2026
+Meta Platforms
+US Communication Services
+Most Preferred
+Not Listed
+Oct 30 2026
+Meta Platforms
+US Communication Services
+Not Listed
+Most Preferred
+Oct 31 2026
+Micron Technology Inc
+US Information technology
+Most Preferred
+Not Listed
+Jan 13 2026
+Micron Technology Inc
+US Information technology
+Not Listed
+Most Preferred
+Jan 13 2026
+Micron Technology Inc
+USA
+Not Listed
+Most Preferred
+Sep 28 2026
+Microsoft Corp.
+30 for '30
+Not Listed
+Most Preferred
+Oct 12 2026
+Microsoft Corp.
+Beyond AI: The Power of Humanoids and Automation
+Most Preferred
+-
+Oct 27 2026
+Microsoft Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jun 09 2026
+Microsoft Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Feb 24 2026
+Microsoft Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jan 21 2026
+Microsoft Corp.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+May 19 2026
+Microsoft Corp.
+Sustainable investing, global leaders
+Most Preferred
+-
+Oct 31 2026
+Microsoft Corp.
+US Information technology
+Most Preferred
+Not Listed
+Oct 30 2026
+Microsoft Corp.
+US Information technology
+Not Listed
+Most Preferred
+Jun 03 2026
+Monolithic Power Systems
+AI
+Most Preferred
+-
+Dec 24 2025
+NAURA Technology Group
+AI
+Most Preferred
+-
+Jun 17 2026
+NAURA Technology Group
+Asia New Economy Leaders
+Most Preferred
+Not Listed
+Jun 19 2026
+NAURA Technology Group
+Asia ex-Japan Focus 20
+Most Preferred
+-
+Jun 18 2026
+NAURA Technology Group
+China
+Most Preferred
+-
+Oct 01 2026
+NAURA Technology Group
+China AI Enablers
+Most Preferred
+-
+Oct 01 2026
+NAURA Technology Group
+China Onshore Tech
+Not Listed
+Most Preferred
+Oct 01 2026
+NAURA Technology Group
+China Tech
+Not Listed
+Most Preferred
+Jul 02 2026
+NAURA Technology Group
+China Tech
+Most Preferred
+-
+Oct 12 2026
+NVIDIA Corporation
+Beyond AI: The Power of Humanoids and Automation
+Most Preferred
+-
+Oct 01 2026
+NVIDIA Corporation
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Apr 15 2026
+NVIDIA Corporation
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+NVIDIA Corporation
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Nov 11 2025
+NVIDIA Corporation
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Oct 31 2026
+NVIDIA Corporation
+US Information technology
+Most Preferred
+Not Listed
+Oct 30 2026
+NVIDIA Corporation
+US Information technology
+Not Listed
+Most Preferred
+Jul 28 2026
+Nutanix Inc
+AI
+Most Preferred
+-
+Oct 27 2026
+Nutanix Inc
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Oct 01 2026
+Nutanix Inc
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Oct 30 2026
+Nutanix Inc
+US Information technology
+Not Listed
+Most Preferred
+Mar 18 2026
+SK Hynix
+Asia New Economy Leaders
+Most Preferred
+-
+Jul 01 2026
+STMicroelectronics
+30 for '30
+Not Listed
+Most Preferred
+May 11 2026
+STMicroelectronics
+30 for '30
+Most Preferred
+-
+Apr 08 2026
+STMicroelectronics
+AI
+Most Preferred
+-
+Oct 16 2026
+STMicroelectronics
+European Leaders
+Not Listed
+Most Preferred
+May 07 2026
+STMicroelectronics
+European Leaders
+Most Preferred
+Not Listed
+Oct 27 2026
+STMicroelectronics
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Oct 01 2026
+STMicroelectronics
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Aug 04 2026
+STMicroelectronics
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jul 07 2026
+STMicroelectronics
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Oct 22 2026
+Samsung Electronics
+Asia’s new mobility
+Not Listed
+Most Preferred
+Page 6 of 15
+
+12-month CIO selection changes history
+Release date
+Company name
+Equity Selection List
+Current selection
+Previous selection
+Aug 28 2026
+Samsung Electronics
+Asia’s new mobility
+Most Preferred
+Not Listed
+Aug 04 2026
+Samsung Electronics
+Asia’s new mobility
+Not Listed
+Most Preferred
+Jan 12 2026
+Samsung Electronics
+Asia’s new mobility
+Most Preferred
+Not Listed
+Dec 15 2025
+Samsung Electronics
+Global top list
+Most Preferred
+Not Listed
+May 04 2026
+Seagate Technology
+AI
+Most Preferred
+-
+Oct 27 2026
+Seagate Technology
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Sep 01 2026
+Seagate Technology
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Aug 04 2026
+Seagate Technology
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jul 07 2026
+Seagate Technology
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jun 09 2026
+Seagate Technology
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Jun 25 2026
+Singapore Telecom
+AI
+Most Preferred
+-
+Jun 18 2026
+Singapore Telecom
+Sustainable investing, global leaders
+Not Listed
+Most Preferred
+Jul 28 2026
+Sony
+AI
+Most Preferred
+Not Listed
+Jul 29 2026
+Sony
+Asia New Economy Leaders
+Most Preferred
+Not Listed
+Oct 22 2026
+Sony
+Asia’s new mobility
+Most Preferred
+-
+Oct 05 2026
+Sony
+Beneficiaries of Japan’s inflation
+Not Listed
+Most Preferred
+Jul 29 2026
+Sony
+Beneficiaries of Japan’s inflation
+Most Preferred
+Not Listed
+Jun 16 2026
+Sony
+Beneficiaries of Japan’s inflation
+Not Listed
+Most Preferred
+May 19 2026
+Sony
+Beneficiaries of Japan’s inflation
+Most Preferred
+-
+Jul 29 2026
+Sony
+Japan
+Most Preferred
+Not Listed
+Jun 16 2026
+Sony
+Japan
+Not Listed
+Most Preferred
+May 19 2026
+Sony
+Japan
+Most Preferred
+Not Listed
+Jun 19 2026
+Sony
+Luxury & Lifestyles
+Not Listed
+Most Preferred
+Apr 23 2026
+Sony
+Luxury & Lifestyles
+Most Preferred
+-
+Sep 28 2026
+Taiwan Semiconductor Manufacturing
+30 for '30
+Not Listed
+Most Preferred
+Nov 07 2025
+Taiwan Semiconductor Manufacturing
+30 for '30
+Most Preferred
+Not Listed
+Oct 23 2026
+Taiwan Semiconductor Manufacturing
+Greater China Alpha Opportunities
+Most Preferred
+Not Listed
+Jul 24 2026
+Taiwan Semiconductor Manufacturing
+Taiwan
+Most Preferred
+Not Listed
+Jul 08 2026
+Tencent Holdings
+AI
+Most Preferred
+Not Listed
+May 06 2026
+Tencent Holdings
+AI
+Not Listed
+Most Preferred
+Oct 01 2026
+Tencent Holdings
+China AI Platforms
+Most Preferred
+-
+Oct 01 2026
+Tencent Holdings
+China Tech
+Not Listed
+Most Preferred
+Jun 10 2026
+Tencent Holdings
+Global top list
+Most Preferred
+Not Listed
+Aug 13 2026
+Tencent Holdings
+Greater Bay Area: Launching a world-class metropolis
+Not Listed
+Most Preferred
+Apr 08 2026
+Teradyne Inc.
+AI
+Most Preferred
+Not Listed
+Oct 01 2026
+Teradyne Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Aug 04 2026
+Teradyne Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jul 07 2026
+Teradyne Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Apr 15 2026
+Teradyne Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+-
+Jul 23 2026
+Tokyo Electron
+AI
+Most Preferred
+Not Listed
+May 18 2026
+Tokyo Electron
+AI
+Not Listed
+Most Preferred
+Jul 21 2026
+Tokyo Electron
+Asia New Economy Leaders
+Most Preferred
+Not Listed
+Oct 05 2026
+Tokyo Electron
+Beneficiaries of Japan’s inflation
+Not Listed
+Most Preferred
+Mar 25 2026
+Tokyo Electron
+Beneficiaries of Japan’s inflation
+Most Preferred
+-
+May 18 2026
+Tokyo Electron
+Greentech goes global
+Most Preferred
+Not Listed
+Mar 25 2026
+Tokyo Electron
+Japan
+Most Preferred
+Not Listed
+Aug 13 2026
+UMC
+AI
+Most Preferred
+Not Listed
+Jul 24 2026
+UMC
+Taiwan
+Most Preferred
+Not Listed
+May 18 2026
+Visa Inc.
+AI
+Most Preferred
+Not Listed
+Apr 16 2026
+Visa Inc.
+AI
+Not Listed
+Most Preferred
+Oct 01 2026
+Visa Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Sep 01 2026
+Visa Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Aug 04 2026
+Visa Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Jun 09 2026
+Visa Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Not Listed
+Most Preferred
+Jan 21 2026
+Visa Inc.
+SPL - Equity Reverse Convertibles Tactical Opportunity List
+Most Preferred
+Not Listed
+Oct 31 2026
+Visa Inc.
+US Financials
+Most Preferred
+Not Listed
+Oct 07 2026
+Visa Inc.
+US Financials
+Not Listed
+Most Preferred
+Page 7 of 15
+
+Risk table 
+Company Name
+Risk Statement
+Accton Technology
+Risks include slower-than-expected network switch spec migration and slow capex deployment from key 
+customers.
+Advanced Micro Devices
+Risks include slower-than-expected technology migration and a potential increase in competition.
+Alibaba
+Key risks to our view include macroeconomic headwinds in China and intensified competition.
+Alphabet Inc
+Key risks to our view include an economic slowdown, regulations, competition, and operating expense 
+control.
+Amazon.com
+Risks include slowing cloud spend, wage pressure, regulatory/anti-trust actions, and tariffs.
+Apple Inc.
+The key risk is supply chain disruptions.
+Applied Materials Inc.
+Risks to our views include economic growth, SCE demand, end-market health, and US-China tensions.
+AppLovin Corp
+Risks remain around execution in e-commerce onboarding and attribution, potential take-rate pressure from 
+larger DSPs, and data-policy scrutiny, but in our view these are manageable.
+ARM Holdings
+Key risks include muted royalty growth due to limited uptake of ARM Holdings in data centers and 
+continuous investments driving slower-than-expected margin expansion.
+ASE Technology Holding
+Risks to this outlook include failure to gain market share in advanced packaging and industry oversupply due 
+to aggressive capacity expansion.
+ASM Pacific Technology
+Key risks include weaker-than-expected global semiconductor investment, a slower auto recovery than 
+anticipated, and US-China tensions.
+ASML
+Risks include a structural decline in lithography spending and significant execution issues across major 
+customers resulting in delay in capital spending plans. In the near term, a lack of recovery in consumer 
+semiconductor end-markets could also limit wafer demand. ASML will need to scale capacity significantly 
+over time, the complexity of which creates execution risk, which may lead to disappointing financial results in 
+any given quarter. Adverse FX risks could also impact operating performance.
+Broadcom Inc.
+Key risks include a macroeconomic downturn that hurts demand for semiconductors, tighter-than-expected 
+competition, and execution delays.
+Cadence Design Systems
+Key risks include valuation, competition, semiconductor design cyclicality, export-control exposure, and 
+execution risk around enterprise adoption of autonomous design agents.
+CME Group Inc. Class A
+The key risk is earnings downside if volatility declines and calmer markets prevail.
+Coherent Corp
+Key risks include pricing pressure as technologies mature and vertical integration by optical system suppliers.
+Corning Inc
+Key risks include exposure to cyclical auto and LCD display markets where market declines could negatively 
+impact earnings.
+Daifuku
+Risks include weak capital investment appetite in e-commerce, semiconductors, and the automotive industry, 
+as well as rising costs due to inflation.
+Datadog, Inc. Class A
+Key risks include a greater-than-expected lag in observability spend recovering relative to an expected 
+reacceleration in public cloud spend/workload activity.
+Digital Realty Trust
+Risks include fluctuating interest and currency rates, construction delays, speculative capacity additions, and 
+increased regulatory barriers.
+Equinix Inc
+Risks include rising interest rates, slower bookings, customer churn, and capital spending changes.
+Infineon Technologies
+Risks include geopolitical tensions and increasing competition from Chinese semiconductor manufacturers. 
+The Chinese government continues to support the development of domestic semiconductor capabilities, 
+including in automotive and industrial chips. This is particularly relevant in the low- and mid-range power 
+semiconductor segments. In addition, adverse foreign exchange movements could negatively affect operating 
+performance.
+Intel Corp.
+Key risks include slower IT spending as Intel derives most of its sales from the PC and server segments.
+Lam Research Corp 
+Key risks include weaker-than-expected recovery in the memory segment and geopolitical friction.
+Lumentum Holdings
+Risks to Lumentum include 1) macro weakness affecting service provider spending levels; 2) product delays 
+and failure to accurately navigate technology transformations; 3) customer concentration and long lead times 
+in the Consumer segment.
+Marvell Technology
+Key risks include margin pressure in the form of aggressive price competition from its peers and an inability to 
+shift production quickly.
+MasterCard
+Key risks include ongoing legal and regulatory challenges, such as the merchant lawsuit in the US and 
+regulatory pressures in Europe and Latin America. Additionally, the potential passage of the Credit Card 
+Competition Act (CCCA) in Congress and the emergence of stablecoins add further uncertainty.
+Meta Platforms
+Key risks include execution, regulation, and competition.
+MediaTek
+Risks include tighter-than-expected competition with its peers, a slower-than-expected ramp-up in AI ASIC 
+adoption, and setbacks in chip design execution.
+Micron Technology Inc
+Key risks include memory chip market supply and demand and company execution.
+Page 8 of 15
+
+Risk table 
+Company Name
+Risk Statement
+Microsoft Corp.
+Key risks to our view include PC demand, the company's ability to drive continued margin expansion, tough 
+comparisons,  and potential for large M&A.
+Monolithic Power Systems, Inc.
+Key downside risks include valuation compression, AI infrastructure order slowdown, hyperscaler capex 
+digestion, platform ramp delays, customer concentration, pricing pressure from other analog and power 
+semiconductor peers, and execution or cost risk from capacity expansion. 
+NAURA Technology Group
+Key risks include slower-than-expected domestic semi growth due to US sanctions and weaker capex if 
+macro conditions deteriorate further.
+Nutanix Inc
+Risks to our view include economic growth, IT spending, competition, execution, and operating loss or cash 
+burn. 
+NVIDIA Corporation
+Key risks to our view are potentially increased competition from emerging companies and excess inventories.
+Samsung Electronics
+Key risks include potential demand destruction in the broader smartphone industry and longer-than-expected 
+approval delay in HBM shipment to its key customers.
+Seagate Technology Holidings
+Key risks to our outlook include: (1) HDD supply dynamics; (2) the competitive trend between SSD and HDD 
+pricing; and (3) hyperscaler capital expenditure and overall storage demand.
+Singapore Telecom
+The key risk to our view is a potential decline in its dividend payout ratio should the company opt to conserve 
+capital.
+SK Hynix
+Risks include potential US tariffs and manufacturing exposure in China, more-intense-than-expected pricing 
+competition, and execution issues.
+Sony
+Key risks to our view include potential loss of market share in the finished set business, a decline in 
+smartphone CMOS sensor demand, and disruptive pricing by rivals in semiconductors and games.
+STMicroelectronics
+This risk may be exacerbated by tariff-related macroeconomic pressures, as any deterioration in end-market 
+demand would slow the cyclical recovery for STM. Over the longer term, STM faces some risk from growing 
+Chinese semiconductor capacity and geopolitical risks, as the Chinese government is seeking to support its 
+domestic semiconductor industry, including automotive and industrial semiconductors. Adverse FX risks could 
+also impact operating performance.
+Tencent Holding
+Key risks to our view include a faster-than-expected slowdown in PC game revenues, aggressive spending on 
+subsidy and marketing, and any potentially disruptive products and/or business models from competitors.
+Teradyne Inc
+Key downside risks include: 1) delays or failure in getting merchant GPU tester design wins and 2) significant 
+quarterly volatility due to the lumpy nature of large AI infrastructure projects.
+Tokyo Electron
+Risks include lower-than-expected capex demand from mainland China, competition from other 
+semiconductor equipment manufacturers, and potential execution challenges in its coater and developer 
+tools segment.
+TSMC
+Risks to this outlook include lower-than-expected outsourcing from key clients as they enhance in-house 
+capabilities, a weak macroeconomic environment that could dampen end-market demand, and intensifying 
+competition.
+UMC
+Key risks include weaker-than-expected demand in mature nodes, lower-than-expected supply reduction by 
+key advanced foundries, and tighter competition with other mature foundries.
+Visa Inc
+ Key risks include noise from stablecoin, legal and regulatory risks. While we don’t expect the CCCA or 
+stablecoins to affect V's results in the near term, headline risks could still weigh on the stock.
+Page 9 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Appendix
+Required Disclosures
+Company/Country Disclosures   (5 November 2026)
+Within the past 12 months UBS AG, its affiliates or subsidiaries may have received or provided investment services and 
+activities or ancillary services as per MiFID II which may have given rise to a payment or promise of a payment in relation to 
+these services from or to each company mentioned in the publication.
+ARM Holdings Plc 2, 3, ASE Technology Holding Co., Ltd. 2, 3, ASM Pacific Technology 3, ASML 2, 3, Accton Technology 
+Corp.* 3, Advanced Micro Devices 2, 3, 11, 12, 13, Alibaba 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, Alphabet Inc 1, 2, 3, 6, 14, 19, 
+Amazon.com 2, 3, 6, 14, AppLovin Corp 2, 3, 13, Apple Inc. 2, 3, 6, 10, 11, Applied Materials Inc. 1, 2, 3, 11, 12, Broadcom 
+Inc. 1, 2, 3, CME Group Inc. 2, 3, 4, 10, 11, 16, 17, Cadence Design 2, 3, Coherent Corp. 2, 3, Corning Inc. 2, 3, 11, 12, 
+Daifuku 3, Datadog Inc 2, 3, 16, Digital Realty Trust Inc. 2, 3, 4, 5, 7, 8, 18, Equinix 2, 3, Infineon Technologies AG 3, Intel 
+Corp. 2, 3, 10, 11, 14, LAM Research Corporation 1, 2, 3, Lumentum Hldngs Rg 2, 3, 4, 7, 13, Marvell Technology Group 
+Ltd. 2, 3, MasterCard 2, 3, MediaTek Inc. 3, Meta Platforms 2, 3, 6, 14, Micron Technology Inc 2, 3, 6, 11, 12, Microsoft 
+Corp. 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 17, 19, Monolithic Power Systems 2, 3, NVIDIA Corporation 1, 2, 3, Nutanix Inc 2, 3, 11, 
+12, SK Hynix 1, 2, 3, STMicroelectronics 2, 8, 20; Samsung Electronics 1, 3, 4, 5, Seagate Technology 2, 3, 13, Singapore 
+Telecom 3, 4, 7, Sony 2, 3, Taiwan Semiconductor Manufacturing 2, 3, 6, Tencent Holdings 3, 4, 6, 7, 8, 9, Teradyne Inc. 
+2, 3, Tokyo Electron 3, UMC 2, 3, Visa Inc. 2, 3, 11,
+1. The equity analyst covering this company, a member of his or her team, or one of their household members has a long 
+common stock position in this company.
+2. UBS Securities LLC makes a market in the securities and/or ADRs of this company.
+3. UBS holds a long position of 0.5% or more of the listed shares of this company.
+4. This company/entity is, or within the past 12 months has been, a client of UBS Securities LLC and/or its affiliates, and 
+investment banking services are being, or have been, provided.
+5. UBS has acted as manager/co-manager in the underwriting or placement of securities of this company/entity or one of 
+its affiliates within the past 12 months.
+6. The UBS Wealth Management strategist, a member of his or her team, or one of their household members has a long 
+common stock position in this company.
+7. Within the past 12 months, UBS has received compensation for investment banking services from this company/entity 
+or one of its affiliates.
+8. UBS expects to receive or intend to seek compensation for investment banking services from this company/entity within 
+the next three months.
+9. UBS Securities Hong Kong Limited is a market maker in the Hong Kong-listed securities of this company.
+10. This company/entity is, or within the past 12 months has been, a client of UBS Securities LLC, and non-investment 
+banking securities-related services are being, or have been, provided.
+11. Within the past 12 months, UBS has received compensation for products and services other than investment banking 
+services from this company/entity.
+12. This company/entity is, or within the past 12 months has been, a client of UBS Financial Services Inc, and non-investment 
+banking securities-related services are being, or have been, provided.
+13. Because this security exhibits higher-than-average volatility, the FSR has been set at 15% above the MRA for a Buy rating, 
+and at -15% below the MRA for a Sell rating (compared with 6/-6% under the normal rating system).
+14. The fixed income analyst covering this company, a member of his or her team, or one of their household members has 
+a long common stock position in this company.
+15. UBS is acting as joint financial advisor to Paragon Shine Limited in respect of the Share Offer and Option Offer to Sun 
+Art Retail Group Ltd.
+16. An employee of UBS is an officer, director, or advisory board member of this company.
+17. This company/entity is, or within the past 12 months has been, a client of UBS Securities LLC, and non-securities services 
+are being, or have been, provided.
+18. UBS Securities LLC is acting as manager/co-manager, underwriter, placement or sales agent in regard to an offering of 
+securities of this company/entity or one of its affiliates.
+19. UBS beneficially owned 1% or more of a class of this company's common equity securities as of last month's end (or 
+the prior month's end if this report is dated less than 10 days after the most recent month's end).
+20. UBS holds a short position of 0.5% or more of the listed shares of this company.
+Contact
+Page 10 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+If you require information on UBS Chief Investment Office GWM, its research publications, ratings histories and UBS 
+disclosures with regard to financial instruments and/or issuers, please contact the mailbox ubs-cio-wm@ubs.com (note that 
+e-mail communication is unsecured) or contact your client advisor for assistance.
+Producers, disseminators and their competent authorities
+This publication has been produced and/or disseminated to you by the UBS Group entity, you have a banking relationship 
+with. The full name of the producing and/or disseminating entity and its competent authority can be found below.
+UBS AG Australia Branch is supervised by the Australian Prudential Regulation Authority. UBS SuMi TRUST Wealth 
+Management Co., Ltd. is regulated by the Financial Services Agency (FSA). UBS AG Singapore Branch is regulated 
+by the Monetary Authority of Singapore (MAS). UBS Securities Co. Limited is licensed to conduct securities investment 
+consultancy businesses by the China Securities Regulatory Commission. UBS AG Hong Kong Branch is regulated by the 
+Securities and Futures Commission (Hong Kong) and the Hong Kong Monetary Authority (HKMA). UBS AG Taipei Branch is 
+authorized and regulated by the Financial Supervisory Commission (FSC) of the Republic of China (Taiwan). UBS Switzerland 
+AG is regulated by the Swiss Financial Market Supervisory Authority (FINMA). UBS Europe SE, Germany, is duly authorized 
+by the European Central Bank (ECB), and supervised by the ECB, the German Central Bank (Deutsche Bundesbank) and 
+the German Federal Financial Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht). UBS Europe 
+SE, Luxembourg Branch (UBS LUX) is a branch of UBS Europe SE, a credit institution constituted under German law, duly 
+authorized by the German Federal Financial Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht 
+– “BaFin”) and subject to the joint prudential supervision of BaFin, the German Central Bank (Deutsche Bundesbank) 
+and the European Central Bank (ECB). UBS LUX is furthermore supervised by the Luxembourg prudential supervisory 
+authority (Commission de Surveillance du Secteur Financier), in its role as host member state authority. UBS Europe SE, 
+Succursale Italia is subject to the joint supervision of the European Central Bank (ECB), the German Central Bank (Deutsche 
+Bundesbank), the German Federal Financial Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht), 
+as well as of the Bank of Italy (Banca d’Italia) and the Italian Financial Markets Supervisory Authority (Commissione Nazionale 
+per le Società e la Borsa – CONSOB). UBS AG Sucursal en España is authorized by the Banco de España. UBS Europe 
+SE, Sucursal em Portugal (UBS Portugal) is a branch of UBS Europe SE, a credit institution constituted under German 
+law, duly authorized by the German Federal Financial Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht 
+– "BaFin") and subject to the joint prudential supervision of BaFin, the central bank of Germany (Deutsche Bundesbank) 
+and the European Central Bank (ECB). UBS Portugal is furthermore supervised by the Portuguese banking and financial 
+authorities as the “Banco de Portugal” and the “Comissão do Mercado dos Valores Mobiliários" in their role as host 
+member state authority. UBS Europe SE, Denmark Branch, filial af UBS Europe SE is subject to the joint supervision 
+of the European Central Bank (ECB), the German Central Bank (Deutsche Bundesbank), the German Federal Financial 
+Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht), as well as of the Danish Financial Supervisory 
+Authority (Finanstilsynet). UBS Europe SE, Sweden Bankfilial is subject to the joint supervision of the European Central 
+Bank (ECB), the German Central bank (Deutsche Bundesbank), the German Federal Financial Services Supervisory Authority 
+(Bundesanstalt für Finanzdienstleistungsaufsicht), as well as of the Swedish supervisory authority (Finansinspektionen).
+UBS Europe SE Succursale de France is subject to the joint supervision of the European Central Bank, the German 
+Central Bank (Deutsche Bundesbank), the German Federal Financial Services Supervisory Authority (Bundesanstalt für 
+Finanzdienstleistungsaufsicht), as well as of the French "Autorité de contrôle prudentiel et de résolution" and "Autorité 
+des marchés financiers". UBS (Monaco) S.A. operates under a banking license granted by the “Autorité de Contrôle 
+Prudentiel et de Résolution” (ACPR) and the Monegasque government and is also licensed by the “Commission de Contrôle 
+des Activités Financières” (CCAF) to provide investment services in Monaco. UBS AG London Branch is regulated by the 
+Prudential Regulatory Authority (PRA) and the Financial Conduct Authority (FCA). UBS AG Jersey Branch is regulated and 
+authorized by the Jersey Financial Services Commission for the conduct of banking, funds and investment business. In Israel, 
+UBS Switzerland AG is registered as Foreign Dealer in cooperation with UBS Wealth Management Israel Ltd., a wholly owned 
+UBS subsidiary. UBS Wealth Management Israel Ltd. is an Investment Marketing licensee which engages in Investment 
+Marketing and is regulated by the Israel Securities Authority. UBS AG Bahrain Branch is authorized and regulated by the 
+Central Bank of Bahrain. UBS AG Dubai Branch is licensed in the Dubai International Financial Centre (DIFC) by the Dubai 
+Financial Services Authority (DFSA) as an authorised firm. UBS AG Abu Dhabi Branch is licensed and regulated by the 
+Financial Services Regulatory Authority (“FSRA”) of the Abu Dhabi Global Market. UBS Qatar LLC is authorized by the Qatar 
+Financial Centre Regulatory Authority. UBS Saudi Arabia is authorised and regulated by the Capital Market Authority to 
+conduct securities business under licence number 08113-37. UBS BB Corretora de Câmbio, Títulos e Valores Mobiliários 
+S.A. is regulated by Comissão de Valores Mobiliários. UBS Asesores México, S.A. de C.V. is regulated by Comisión Nacional 
+Bancaria y de Valores (CNBV). UBS Financial Services Inc. is registered as a broker-dealer with the Securities and Exchange 
+Commission (SEC), a futures commission merchant with the Commodity Futures Trading Commission (CFTC) and the National 
+Futures Association and is a member of various exchanges and the Financial Industry Regulatory Authority (FINRA).
+Frequency of updates
+Equity recommendation lists can be updated on a daily basis without notice, and are refreshed whenever there is a 
+material change.
+Page 11 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Equity selection system
+Appendix: Important Information and Disclosures About our EquityResearch Reports
+Global Dissemination
+UBS Chief Investment Office's ("CIO") investment views are prepared and published by the Global Wealth Management 
+business of UBS Switzerland AG (regulated by FINMA in Switzerland) or its affiliates ("UBS"), part of UBS Group AG 
+("UBS Group"). The investment views have been prepared in accordance with legal requirements designed to promote the 
+independence of investment research.
+This publication has been produced and/or disseminated to you by the UBS Group entity, its subsidiaries, affiliates, and 
+branches, you have a banking relationship with. The full name of the producing and/or disseminating entity and its competent 
+authority can be found in the section “Producers, disseminators and their competent authorities.”
+Equities Investment Risk
+Stock market returns are difficult to forecast because of fluctuations in the economy, investor psychology, geopolitical 
+conditions and other important variables. UBS does and seeks to do business with companies included in its research reports. 
+Investors should therefore be aware that the firm may have a conflict of interest that could affect the objectivity of this 
+report. Investors should consider this report as only a single factor in making their investment decision.
+CIO Equity Research Approach
+Effective 1 November 2026, CIO does not rate or rank equity securities in the Most Preferred, Bellwether (in the US), 
+and Least Preferred framework or publish “top picks” or similar ratings. Instead, CIO seeks to synthesize UBS Investment 
+Bank (IB) Global Research issued by our affiliate and evaluate its implications from the perspective of Wealth Management 
+investors highlighting relevant stock opportunities from the broad universe covered by IB Global Research as CIO Selected, 
+while placing greater emphasis on portfolio-level analysis through CIO Equity Portfolios. For more information, see
+Equity methodology, published on 28 October 2026. The description of “CIO Selected” as a designation rather than a 
+rating does not affect the application of any legal or regulatory requirement governing investment research, investment 
+recommendations or information recommending or suggesting an investment strategy where that requirement otherwise 
+applies.
+CIO Selected Designation and CIO Selection Lists
+CIO Selected stocks are intended to support the UBS House View (see global asset class preferences definitions) and are 
+chosen based on their overall risk-return profiles and other relevant considerations. The starting universe for the CIO Selected 
+designation generally consists of securities covered by IB Global Research and rated Buy or Neutral. From that universe, CIO 
+Equities applies its own investment judgment, considering a variety of factors such as the fundamental outlook, expected 
+performance relative to an identified benchmark, market, sector and industry trends, risk and return characteristics, downside 
+considerations, diversification benefits, and other relevant factors. No single factor is necessarily determinative. Rather, CIO 
+considers these factors collectively and holistically in determining which securities warrant inclusion in a CIO Equity Selection 
+List.
+In certain circumstances, CIO may designate a security that is not covered by IB Global Research as CIO Selected where 
+CIO determines that the security presents a relevant investment opportunity and applicable eligibility, reasonable-basis and 
+approval requirements for such selections have been satisfied. A security will no longer be eligible for inclusion in any CIO 
+Selection List if IB Global Research changes its rating to Sell. In such cases, CIO Equities will remove it from applicable 
+Selection Lists within a reasonable timeframe.
+• The CIO Selected designation is not a rating.
+• Inclusion reflects CIO Equities' current preference within the defined universe and objective of the applicable Selected List.
+• It does not create a separate Buy, Neutral, or Sell rating, does not establish a CIO Equities price target, and does not 
+supersede or modify the underlying IB Global Research rating or price target.
+• Exclusion or removal of a security for any reason other than a change in IB Global Research rating to “Sell” does not 
+indicate a negative investment view or constitute a recommendation to sell.
+• Inclusion of a security on a selection list does not constitute initiation of coverage or imply continuous coverage. Likewise, 
+removal from a selection list does not constitute termination of coverage.
+• Recipients should not assume that a security remains CIO Selected after the date of this publication. The current status 
+of a security should be verified using the most recent CIO publication.
+A CIO Selected designation reflects CIO Equities’ current, dynamic view within the applicable list’s opportunity set. It is not a 
+view on the security’s expected standalone absolute performance. The Selection Lists reflect CIO Equities’ views at a specific 
+point in time and are subject to change without notice. CIO strategists will review and update the selections as market 
+conditions, investment opportunities, and their assessment of relevant factors evolve.
+CIO Equity Portfolios
+Page 12 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+CIO Equity Portfolios are published research model portfolio comprising stocks with specified weights that reflect each 
+security’s allocation within the portfolio and, in aggregate, total 100%. These weights represent portfolio allocations and 
+are not active weights or measures of overweight or underweight relative to the benchmark. Portfolios may focus on 
+sectors, countries, regions, investment themes, or another stated objective. Each portfolio is constructed relative to an 
+identified benchmark, which is used to define the relevant opportunity set, but the portfolio is not designed to replicate the 
+benchmark exactly. The CIO view applies to the portfolio in aggregate, including how the holdings work together, rather than 
+each individual holding. It is a research model, not a client-specific portfolio, managed investment strategy, or guaranteed 
+outcome. CIO Portfolios do not represent actual accounts, trading or investments and performance will not be published.
+Portfolio weights are not security-level ratings or rankings and do not express the relative or absolute investment merit, 
+expected performance, or degree of conviction associated with any security or issuer. A higher weight should not be 
+interpreted as reflecting a more favorable view, greater conviction, or higher expected return.
+A security’s inclusion in or removal from the portfolio, or the size or adjustment of its portfolio weight, does not establish, 
+modify, or imply a research rating or CIO Selected designation; constitute a rating action; indicate a change in the standalone 
+investment view of the security; establish or imply continuous research coverage; or constitute the initiation of research 
+coverage. Such additions, removals, and weight changes reflect portfolio construction decisions only.
+Research Restrictions: Issuing of research on a company by CIO GWM can be restricted due to legal, regulatory, contractual 
+or best business practice obligations which are normally caused by UBS IB’s involvement in an investment banking transaction 
+in regard to the concerned company.
+Global asset class preferences
+This report may include references to CIO’s asset class views. The asset class preferences provide high-level guidance to 
+make investment decisions. The preferences reflect the collective judgement of the members of the House View meeting, 
+primarily based on assessments of expected total returns on liquid and commonly known indices, House View scenarios, and 
+strategist convictions over the next 12 months. Note that the positioning of our different investment strategies may differ 
+from these views owing to such factors as portfolio construction, concentration, and borrowing constraints.
+Attractive: CIO considers opportunities in this asset class.
+Neutral: CIO does not expect outsized returns or losses. Hold longer-term exposure.
+Unattractive: CIO considers alternative opportunities than this asset class.
+Note: For equities, we have a five-tier system with two additional preferences
+Most Attractive: CIO considers that investors should seek opportunities to add exposure in this asset class.
+Least Attractive: CIO considers seeking more favorable alternatives opportunities than this asset class.
+When equities are included with the other asset classes in the three-tier rating system, we collapse “Most Attractive” with 
+“Attractive” and “Least Attractive” with “Unattractive.”
+Current CIO GWM Americas global rating distribution
+% of companies under coverage with this rating*
+% for which IB services have been provided**
+Rating*
+Most Preferred
+48.16%
+17.80%
+Bellwether
+51.84%
+24.41%
+Least Preferred
+0.00%
+0.00%
+Note: Rating history is included for historical purposes only and does not reflect our current equities methodology, as CIO no 
+longer provides ratings for equity securities. Some companies in rating history may have been different or not available for 
+investors of UBS Financial Services Inc.
+ 
+Current UBS CIO global rating distribution (as of last month-end)
+CIO Selected
+100%
+. .
+.
+.
+Important Information About UBS, Use and Limitations of Research Reports and Other Matters
+UBS Research: At UBS, research is produced by two separate business divisions: UBS CIO GWM Research is produced by 
+UBS Global Wealth Management and UBS Global Research is produced by UBS Investment Bank. Both sources of research 
+operate independently of one another and the views expressed in such reports may reflect the different assumptions, 
+views and analytical methods of the analysts or strategists who prepared them. Except for certain economic forecasts (for 
+which UBS CIO and UBS Global Research may collaborate), investment recommendations, views, ratings, price targets, and 
+valuations provided by each of the separate research organizations may be different, or inconsistent. Please refer to each 
+Page 13 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+relevant research product for the details as to their methodologies. Not all clients may have access to all products from every 
+organization. Each research product is subject to the policies and procedures of the organization that produces it.
+For information on the ways in which UBS Securities LLC manages conflicts and maintains independence of its UBS 
+Global Research product; historical performance information; certain additional disclosures concerning UBS Global Research 
+recommendations; and terms and conditions for certain third party data used in research report, please visit https://
+www.ubs.com/disclosures.
+No Solicitation: This publication is for your information only and is not intended as an offer, or a solicitation of an offer, to buy 
+or sell any investment or other specific product. The analysis contained herein does not constitute a personal recommendation 
+or take into account the particular investment objectives, investment strategies, financial situation and needs of any specific 
+recipient. It is based on numerous assumptions. Different assumptions could result in materially different results. Certain 
+services and products are subject to legal restrictions and cannot be offered worldwide on an unrestricted basis and/or may 
+not be eligible for sale to all investors. Research reports do not consider the potential tax treatment of the securities covered. 
+UBS does not provide legal or tax advice and makes no representations as to the tax treatment of assets or the investment 
+returns thereon both in general or with reference to specific client's circumstances and needs.
+Sources, Opinions and Forecasts: All information and opinions expressed in this document were obtained from sources 
+believed to be reliable and in good faith, but no representation or warranty, express or implied, is made as to its accuracy or 
+completeness (other than disclosures relating to UBS). All information and opinions as well as any forecasts, estimates and 
+market prices indicated are current as of the date of this report, and are subject to change without notice. This publication 
+is not intended to be a complete statement or summary of the securities, markets or developments referred to in the report. 
+Opinions expressed herein may differ or be contrary to those expressed by other business areas or divisions of UBS as a result 
+of using different assumptions and/or criteria. UBS may utilize artificial intelligence tools (“AI Tools”) in the preparation of 
+this document. Notwithstanding any such use of AI Tools, this document has undergone human review.
+Restricted Use: In no circumstances may this document or any of the information (including any forecast, value, index or 
+other calculated amount ("Values")) be used for any of the following purposes (i) valuation or accounting purposes; (ii) to 
+determine the amounts due or payable, the price or the value of any financial instrument or financial contract; or (iii) to 
+measure the performance of any financial instrument including, without limitation, for the purpose of tracking the return 
+or performance of any Value or of defining the asset allocation of portfolio or of computing performance fees. By receiving 
+this document and the information you will be deemed to represent and warrant to UBS that you will not use this document 
+or otherwise rely on any of the information for any of the above purposes.
+This Material May Not Be Reproduced or Copies Circulated Without Prior Authority of UBS. Unless otherwise agreed 
+in writing UBS expressly prohibits the distribution and transfer of this material to third parties for any reason. In case this 
+research or publication is provided to an External Asset Manager or an External Financial Consultant, UBS expressly prohibits 
+that it is redistributed by the External Asset Manager or the External Financial Consultant and is made available to their 
+clients and/or third parties. UBS accepts no liability whatsoever for any claims or lawsuits from any third parties arising from 
+the use or distribution of this material. This report is for distribution only under such circumstances as may be permitted by 
+applicable law. For information on the ways in which CIO manages conflicts and maintains independence of its investment 
+views and publication offering, and research and rating methodologies, please visit www.ubs.com/research-methodology. 
+Additional information on the relevant authors of this publication and other CIO publication(s) referenced in this report; and 
+copies of any past reports on this topic; are available upon request from your client advisor.
+Proprietary Positions and Transactions: UBS and any of its directors or employees may be entitled at any time to hold 
+long or short positions in investment instruments referred to herein, carry out transactions involving relevant investment 
+instruments in the capacity of principal or agent, or provide any other services or have officers, who serve as directors, either 
+to/for the issuer, the investment instrument itself or to/for any company commercially or financially affiliated to such issuers. 
+At any time, investment decisions (including whether to buy, sell or hold securities) made by UBS and its employees may 
+differ from or be contrary to the opinions expressed in UBS research publications. UBS relies on information barriers to control 
+the flow of information contained in one or more areas within UBS, into other areas, units, divisions or affiliates of UBS. 
+Additional information will be made available upon request.
+Equity Strategist Compensation: The compensation of the Equity Strategist(s) who prepared this report is determined 
+exclusively by research management and CIO Research senior management (not including investment banking). Equity 
+Strategist compensation is not based on investment banking, sales and trading or principal trading revenues, however, 
+compensation may relate to the revenues of UBS Group as a whole, of which investment banking, sales and trading and 
+principal trading are a part.
+Instrument/Issuer-specific Risk information: Some investments may not be readily realizable since the market in the 
+securities is illiquid and therefore valuing the investment and identifying the risk to which you are exposed may be difficult 
+to quantify.
+Futures and options trading is not suitable for every investor as there is a substantial risk of loss, and losses in excess of an 
+initial investment may occur.
+Past performance of an investment is no guarantee for its future performance.
+Page 14 of 15
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Some investments may be subject to sudden and large falls in value and on realization you may receive back less than you 
+invested or may be required to pay more. Changes in foreign exchange rates may have an adverse effect on the price, value 
+or income of an investment.
+Options and futures are not suitable for all investors, and trading in these instruments is considered risky and may be 
+appropriate only for sophisticated investors. Prior to buying or selling an option, and for the complete risks relating to options, 
+you must receive a copy of "Characteristics and Risks of Standardized Options". You may read the document at https://
+www.theocc.com/about/publications/character-risks.jsp or ask your financial advisor for a copy.
+Investing in structured investments involves significant risks. For a detailed discussion of the risks involved in investing in any 
+particular structured investment, you must read the relevant offering materials for that investment. Structured investments 
+are unsecured obligations of a particular issuer with returns linked to the performance of an underlying asset. Depending on 
+the terms of the investment, investors could lose all or a substantial portion of their investment based on the performance 
+of the underlying asset. Investors could also lose their entire investment if the issuer becomes insolvent. UBS does not 
+guarantee in any way the obligations or the financial condition of any issuer or the accuracy of any financial information 
+provided by any issuer. Structured investments are not traditional investments and investing in a structured investment is not 
+equivalent to investing directly in the underlying asset. Structured investments may have limited or no liquidity, and investors 
+should be prepared to hold their investment to maturity. The return of structured investments may be limited by a maximum 
+gain, participation rate or other feature. Structured investments may include call features and, if a structured investment is 
+called early, investors would not earn any further return and may not be able to reinvest in similar investments with similar 
+terms. Structured investments include costs and fees which are generally embedded in the price of the investment. The tax 
+treatment of a structured investment may be complex and may differ from a direct investment in the underlying asset. UBS 
+and its employees do not provide tax advice. Investors should consult their own tax advisor about their own tax situation 
+before investing in any securities.
+Important Information About Sustainable Investing Strategies: This terminology refers to definitions in the UBS 
+Sustainable Investing Framework and does not refer or relate to any product-specific regulatory labelling regime or naming 
+conventions.Sustainable investing strategies aim to consider and incorporate environmental, social and governance (ESG) 
+factors into investment process and portfolio construction. Strategies across geographies approach ESG analysis and 
+incorporate the findings in a variety of ways. Incorporating ESG factors or sustainable investing considerations may inhibit 
+UBS’s ability to participate in or to advise on certain investment opportunities that otherwise would be consistent with the 
+Client’s investment objectives. The returns on a portfolio incorporating ESG factors or sustainable investing considerations 
+may be lower or higher than portfolios where ESG factors, exclusions, or other sustainability issues are not considered by 
+UBS, and the investment opportunities available to such portfolios may differ.
+USA: This document is not intended for distribution into the US and / or to US persons.
+For country information, please visit ubs.com/cio-country-disclaimer-sr or ask your advisor for the full disclaimer.
+Version F/2026.
+© UBS 2026. The key symbol and UBS are among the registered and unregistered trademarks of UBS. All rights reserved.
+Page 15 of 15
