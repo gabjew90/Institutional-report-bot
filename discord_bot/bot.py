@@ -5152,6 +5152,10 @@ async def _ask_02_call_model_with_tools(
     from discord_bot import answer_block as _answer_block
     import pytz as _ab_tz
     _ab_now = datetime.now(_ab_tz.timezone(settings.timezone))
+    _ab_ctx = {"shape": _ask_route.shape, "snapshot": _snap_res, "fresh": _fresh,
+               "research": any(_t == _ask_router.T_RESEARCH for _t, _ in _pf_plan),
+               "price": next((_r for (_t, _), _r in zip(_pf_plan, _pf_results)
+                              if _t == _ask_router.T_PRICE and isinstance(_r, dict)), None)}
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
@@ -5194,7 +5198,8 @@ async def _ask_02_call_model_with_tools(
                                    morning_reported=(_ab_now.hour, _ab_now.minute) >= (9, 30),
                                    question=_ask_route.reask or _ask_router.asker_text(question),
                                    complaint=(_ask_router.asker_text(question)
-                                              if _ask_route.follow_up == _follow_up.COMPLAINT else ""))
+                                              if _ask_route.follow_up == _follow_up.COMPLAINT else ""),
+                                   context=_ab_ctx)
         if _blk:
             _pf_text += _answer_block.note(_blk)
             _ask_meta.setdefault("answer_blocks", []).append(_blk)

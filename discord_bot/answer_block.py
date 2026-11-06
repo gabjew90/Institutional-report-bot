@@ -36,10 +36,12 @@ _NOT_A_LEAD = ("→ No response came back", "→ Thought myself in circles",
 
 
 def build(tool: str, result: dict, today: date, morning_reported: bool = False,
-          question: str = "", complaint: str = "") -> dict | None:
+          question: str = "", complaint: str = "", context: dict | None = None) -> dict | None:
     """The block for one prefetch result, or None when the tool has no
     code-built body or the result has nothing to render. `complaint` is the
-    words of a reply complaining about the last answer."""
+    words of a reply complaining about the last answer. `context` carries
+    the route's shape and the other prefetch results a block reads beside
+    its own: {shape, snapshot, price, fresh, research}."""
     if not isinstance(result, dict) or result.get("status") != "ok":
         return None
     outline = None
@@ -59,6 +61,18 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
     elif tool == "event_returns":
         from discord_bot import event_returns
         lines = event_returns.block_lines(result)
+    elif (tool == "lookup_earnings_date" and (context or {}).get("shape") == "earnings_date"
+          and not (context or {}).get("research")):
+        # Only on the date shape, and not when the router fetched bank
+        # research ("AMD earnings after the bell" reads as a view): those
+        # answers carry what these lines do not.
+        from discord_bot import earnings_block
+        ctx = context or {}
+        try:
+            lines = earnings_block.block_lines(result, ctx.get("snapshot"), ctx.get("price"),
+                                               question=question, fresh=ctx.get("fresh"))
+        except Exception:
+            return None     # the model's own answer stands
     else:
         return None
     if not lines:
