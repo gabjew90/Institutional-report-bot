@@ -1,0 +1,1796 @@
+ 
+ 
+ 
+ 
+SUSTAINABILITY RESEARCH
+26 October 2026
+ 
+ 
+ 
+ 
+ 
+ 
+AI meets the neighbours 
+Are markets pricing AI's social licence to compute?  
+AI infrastructure investment remains structurally strong. Major US hyperscaler capex is 
+expected to approach $1tn in 2027, up from around $800bn in 2026e. This should feed into 
+opportunities across semiconductors, servers, cloud, connectivity, data centre infrastructure, 
+power and cooling. Yet, large and resource-intensive data centre campuses are putting increasing 
+pressure on electricity grids, water supplies and local infrastructure, fuelling community 
+opposition and political scrutiny. At least 75 US data centre projects, worth around $130bn, 
+were reportedly blocked or delayed in Q1 2026 alone. With data centres in the political spotlight 
+ahead of the November 2026 US midterm elections, social acceptance is becoming a key 
+determinant of where, when and at what cost capacity can be built. 
+We believe the financial risk to data centres’ social licence to operate remains largely 
+overlooked. Our review of the Sustainalytics universe has identified 25 data-centre-related 
+controversies involving 20 companies in 2025-26. Most of these are linked to water, energy, 
+noise and other local impacts, yet all were classified as low impact. This contrasts with more 
+severe Social & Community controversies, where the operational disruption contributed to 
+prolonged share-price underperformance. A low controversy score does not mean low 
+financial risk: community opposition can lengthen permitting, force project redesign, raise costs 
+and, in severe cases, delay or prevent development. 
+The risk may be overlooked, but it is no longer entirely invisible to markets. We screen 85 AI 
+and data centre beneficiaries across eight segments: AI Compute Hardware; AI Servers & System 
+OEMs; Data Centre Construction & Engineering; Hyperscale Cloud Providers; Infrastructure & 
+Platforms, Optical Fiber & Connectivity; Power, Cooling & Electrical Infrastructure; and 
+REITs/Colocation Providers. Within this group, we identify 35 companies that have a lower 
+water and energy footprint relative to peers. YTD, this resource-efficient subset returned 
+70.5%, versus 47.8% for resource-intensive peers and 24.0% for the Nasdaq 100. Since 
+end-May, when scrutiny of data centre water use intensified, the resource-efficient 
+companies have gained +15.8% versus -3.7% for the resource-intensive peers and +4.2% for 
+the Nasdaq 100, outperforming the intensive peers in 15 of 20 weeks. While it is too early to 
+establish causality, the performance dispersion suggests resource efficiency may be emerging 
+as a factor in investment decisions. 
+Stock selection alone will not be enough to manage this risk. Investors will also likely have 
+to strengthen stewardship on local social impacts, including community consultation, 
+infrastructure cost sharing, resource efficiency, site selection, and facility-level disclosure. To 
+help investors in supporting this engagement, we review practices already being 
+deployed across the AI and data centre value chain, from cleaner electricity, energy-efficient 
+computing and closed-loop cooling to circular hardware, lower-carbon back-up systems and 
+community cost sharing. These measures can help companies reduce local impacts, secure 
+their social licence to operate and sustain AI infrastructure growth as resource and community 
+constraints tighten. 
+ 
+Societe Generale (“SG”) does and seeks to do business with companies covered in its research reports.  As a result, investors should be aware that SG may 
+have a conflict of interest that could affect the objectivity of this report.  Investors should consider this report as only a single factor in making their 
+investment decision.  PLEASE SEE APPENDIX AT THE END OF THIS REPORT FOR THE ANALYST(S) CERTIFICATION(S), IMPORTANT DISCLOSURES AND 
+DISCLAIMERS. ALTERNATIVELY, VISIT OUR GLOBAL RESEARCH DISCLOSURE WEBSITE 
+ 
+ 
+Senior Sustainability Strategist 
+ 
+Nimit Agarwal 
++91 80 6731 2894 
+nimit.agarwal@sgcib.com 
+ 
+ 
+X-Asset Sustainability Strategist 
+Virgile Haddad, CFA 
++33 1 42 13 48 83 
+virgile.haddad@sgcib.com 
+ 
+ 
+Sustainability Strategist 
+ 
+Smita Kar 
++91 80 6731 3068 
+smita.kar@sgcib.com 
+ 
+ 
+Head of Sustainability Research 
+ 
+Yannick Ouaknine 
++33 1 58 98 23 50 
+yannick.ouaknine@sgcib.com 
+ 
+ 
+Head of Equity Strategy 
+Charles de Boissezon 
++33 1 42 13 58 41 
+charles.de-boissezon@sgcib.com 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+2 
+26 October 2026 
+ 
+Contents 
+AI capex is growing unabated .............................................................................. 3 
+When the AI boom meets social resistance ............................................................ 5 
+From local resistance to social licence risk .......................................................... 10 
+Data centres emerge as hot topic in midterms ..................................................... 12 
+Data centre footprint controversies: an unpriced financial risk, but for how long? ... 14 
+Computing the outperformers: an ESG lens on data centres .................................. 16 
+Company response & remediations .................................................................... 20 
+ 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+3
+ 
+AI capex is growing unabated 
+Investment in AI infrastructure continues to accelerate. Capital expenditure for the major US 
+hyperscalers is expected to approach $1tn in 2027, up from approximately $800bn in 2026e, 
+which was a near-doubling of the 2025 level. The global pipeline of announced data centre 
+capacity for 2025-30 exceeds 100GW, broadly equivalent to today’s installed global capacity. 
+This expansion reflects the rapid growth of AI computing requirements alongside continued 
+demand for cloud infrastructure. Annual data centre capacity additions are already running at 
+several gigawatts, according to the IEA, which expects these to accelerate towards 2030 (see chart 
+below right). At the same time, projects are becoming materially larger: new AI campuses 
+increasingly require hundreds of megawatts, while several announced developments exceed 1GW. 
+Data centre hyperscalers’ capex in the US alone is expected to 
+approach $1tn next year (2017-27e) 
+ 
+Global data centre capacity additions (2025-30GW) is expected 
+to exceed 100GW 
+ 
+ 
+Includes capital expenditures of Microsoft, Amazon’s AWS, Alphabet, Meta, Oracle and 
+CoreWeave. 
+AWS’ capital expenditure for AWS. 
+Moody’s 
+Ratings 
+for forecasts. 
+Source: Fortune.com, Moody's Ratings (May 2026) – research report, US hyperscaler capital 
+expenditure and AI infrastructure spending, Company filings 
+ 
+Source: IEA 
+The data centre buildout is entering gigawatt territory 
+Major technology companies and infrastructure developers are responding with unprecedented 
+investment commitments. OpenAI’s Stargate initiative has already secured more than 10GW of 
+planned US AI infrastructure capacity, surpassing its original 10GW target for 2029 (link), while 
+Meta, Google, Amazon Web Services, and Microsoft continue to commit substantial capital to 
+AI-enabled infrastructure. The projects highlighted below illustrate both the scale and 
+geographical reach of the current buildout. 
+Selection of large data centres currently being built 
+Project 
+Region 
+Expected completion Planned power (GW) 
+Meta Hyperion 
+Louisiana, USA 
+2032 
+5GW 
+SoftBank Group 
+Hauts-de-France (3 sites) 
+2031 
+3.1GW 
+Stargate Doña Ana County 
+New Mexico, USA 
+2028 
+2.2GW 
+Envision Ulanqab 
+Ulanqab, Inner Mongolia 
+2030 
+>2GW 
+xAI Colossus Expansion (Colossus 2) 
+Tennessee/Mississippi, USA 
+2026-27 
+~2GW 
+Elea Rio AI City 
+Rio de Janeiro, Brazil 
+Phase 1 2026; full later 
+1.5GW 
+Google–AdaniConneX Visakhapatnam Visakhapatnam, India 
+2028 
+~1GW 
+Source: SG Cross Asset Research/Sustainability, company data 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+4 
+26 October 2026 
+ 
+Scale is increasing, but so is execution risk 
+By count, there are 12,000+ data centres across 179 countries worldwide (link). North America 
+has the largest share, with the US alone accounting for more than one third of the global total. 
+Europe accounts for slightly less than one third. Aside from the US, 17 countries each contribute 
+between 1% and 5%, led by the UK and Germany with shares of 4.6% and 4.3%, respectively. 
+Globally, there are more than 1,300 hyperscale data centres, with Amazon Web Services, Google, 
+and Microsoft owning more than half of this capacity. (link). 
+Share of data centre count by region 
+Source: SG Cross Asset Research/Sustainability, Datacentremap.com 
+Yet, the ability to deploy capital is no longer determined by financing and computing demand 
+alone. As data centre campuses approach the scale of major industrial infrastructure, their 
+development increasingly depends on access to power, grid connections, water, and land, as well 
+as needing to secure community acceptance. The AI capex boom is therefore raising a further 
+investment question: not only how much capacity will be announced, but where, when and the 
+level of cost required to make it operational. 
+ 
+North 
+America, 42%
+Europe, 31%
+Asia Pacific, 
+18%
+MEA, 5%
+Latin America, 
+4%
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+5
+ 
+When the AI boom meets social resistance 
+AI meets the neighbours 
+Data centres have moved firmly into the public spotlight as the rapid expansion of AI 
+infrastructure collides with growing concerns about electricity demand, water use, and local 
+impacts. Record investment commitments continue to generate strong commercial interest. 
+However, project delays, community protests and tighter permitting show that the buildout is no 
+longer viewed solely as a technology and investment story, but is increasingly becoming a social, 
+environmental, and infrastructure challenge. 
+Opposition manifests itself in different ways across markets. In the US, it has centred on 
+electricity prices, water use, noise, land requirements and the limited number of permanent jobs 
+created relative to project size. In Europe, similar concerns have more frequently translated into 
+planning restrictions and tighter permitting, while grid-connection constraints have further 
+slowed project developments. Several Asian markets remain comparatively supportive of data 
+centre investment, although pressure on power systems and local resources could increasingly 
+constrain development. 
+Like power generation, transmission infrastructure, and other large industrial developments, 
+hyperscale data centres combine broad economic benefits with highly localised costs. 
+Communities are increasingly questioning who should pay for new grid infrastructure, whether 
+households and businesses will face higher utility bills, and whether the local economic benefits 
+justify the project’s demands on power, water and land. 
+Across markets, the concerns tend to converge around five issues: 
+• 
+pressure on electricity supply, grid capacity and consumer prices 
+• 
+water demand, particularly in already stressed regions 
+• 
+noise and emissions from cooling equipment and backup generation 
+• 
+land use and effects on surrounding communities 
+• 
+limited permanent employment relative to the projects’ capital and resource intensity 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+6 
+26 October 2026 
+ 
+Hey AI, can we talk about our power bill? 
+The electricity requirements of AI infrastructure are increasingly turning data centre 
+development into a question of local cost-sharing. New AI campuses can require hundreds of 
+megawatts and, in some cases, more than 1GW of power. Meeting this demand may require new 
+generation, transmission and grid connections. This leads to what is becoming an increasingly 
+thorny question: who should bear the cost? 
+Data centres consumed approximately 415TWh of electricity in 2024, equivalent to 1.5% of global 
+demand (link). The International Energy Agency (IEA) expects consumption to more than double 
+to around 945TWh by 2030, or approximately 3% of global demand, mainly driven by AI. The 
+impact is likely to be considerably more concentrated in major data centre markets, where rapid 
+load growth could intensify grid congestion and place upward pressure on electricity costs. 
+Global data centre electricity consumption by sensitivity case 
+(2020-2035) 
+ 
+Energy consumption by region (2024-30) 
+ 
+ 
+ 
+Source: IEA - Energy and AI report 
+ 
+Source: IEA, Cargoson, based on IEA data and forecasts 
+This prospect raises the issue of rising electricity costs, with residential consumers tending to be 
+disproportionately affected. Studies indicate growing data centre and crypto demand could 
+increase US electricity costs by 6–29% by 2030, while residential electricity prices rose by around 
+25% between 2020–24. Policy is therefore becoming more selective: Finland, for example, removed 
+the preferential electricity-tax rate for data centres from July 2026 and has tightened the 
+environmental scrutiny of new projects (link). 
+Electricity prices for residential users (2020-24, US) 
+ 
+ 
+Source: Karin Kirk, Yale Climate Connections 
+Region
+2024 (TWh)
+2030 (TWh)
+Growth
+United States
+183
+426
+133%
+China
+65
+175
+169%
+Europe
+64
+109
+70%
+Japan
+19
+34
+79%
+Rest of World
+84
+201
+139%
+Global total
+415
+945
+128%
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+7
+ 
+Hey AI, are you drawing from the same well? 
+AI is raising the cooling requirements of data centres at the same time as rapid capacity growth 
+increases data centres’ exposure to local water constraints. The higher chip and rack densities 
+required by AI generate more heat, accelerating the shift from conventional air cooling towards 
+direct-to-chip liquid cooling and immersion systems. These technologies can improve energy 
+efficiency and reduce water intensity when combined with closed-loop or dry heat-rejection 
+systems. However, lower water intensity per unit of computing does not necessarily translate into 
+lower total water consumption when capacity is expanding rapidly. 
+The local impact also depends on how and where water is consumed. Data centres use water 
+directly for cooling and indirectly through electricity generation. A medium-sized facility can 
+consume around 400 million litres annually, while hyperscale campuses may require several 
+billion litres. Even where water use is modest at the national level, withdrawals can become 
+socially contentious when concentrated in water-stressed watersheds or when data centres 
+compete with households, agriculture and other industries for limited local supplies. 
+Cooling technology matters, but it does not tell the whole story 
+Not all liquid-cooling systems have the same water profile. Direct liquid cooling transfers heat 
+more efficiently than conventional air cooling, but the ultimate water requirement depends on 
+how that heat is rejected. Systems using evaporative cooling may remain water-intensive, 
+whereas closed-loop systems combined with dry coolers can substantially reduce operational 
+water consumption. Investors should therefore look beyond cooling labels and consider the 
+entire cooling architecture, local climate, and watershed exposure. 
+Advanced cooling methods are becoming water efficient 
+Source: SG Cross Asset Research/Sustainability, Vertiv  
+ 
+ 
+ 
+Rack Density
+Typical Cooling 
+Technology
+Cooling Efficiency
+Water Consumption
+3-15 kW
+CRAC / AHU
+Moderate
+Low
+15-50 kW
+Row cooling / 
+containment
+High
+Depends on heat rejection
+20-100 kW
+Rear-door heat 
+exchanger
+High
+Depends on heat rejection
+30-200+ kW
+Direct liquid 
+cooling
+Very high
+Can be low in closed-loop 
+systems
+200+ kW
+Advanced liquid / 
+immersion
+Highest
+Often lowest water 
+intensity
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+8 
+26 October 2026 
+ 
+Location could outweigh efficiency gains 
+The geographic mismatch between data centre development and water availability is becoming 
+increasingly material. S&P Global notes that more than half of India’s data centres are located in 
+water-stressed areas, while it estimates that 45% of its sample of more than 9,000 data centres 
+could face high water-stress exposure by 2050. The sustainability of future capacity growth will 
+therefore depend not only on cooling efficiency, but also on whether new facilities are located in 
+watersheds capable of supporting them. 
+Water stress in the top 12 data centre markets by installed capacity 
+ 
+Source: S&P Global. Footnote: average water stress index under SSP3-7.0 scenario (as of August 2025). SSP3-7.0 refers to the Intergovernmental 
+Panel on Climate Change’s shared socioeconomic pathways (SSPs). SSP3-7.0 is a medium-to-high emissions scenario. 
+ 
+Water constraints are already influencing project design. Opposition to Google’s proposed data 
+centre in Chile prompted the company to redesign the facility around a lower-water cooling 
+system (link). Technology companies have also made water-replenishment commitments, 
+such as AWS replenishing 9.4bn litres of water in 2025, equating to 75% of its 2030 goal (link). That 
+said, projects outside the affected watershed may do little to alleviate pressure on the 
+communities directly exposed to withdrawals. 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+9
+ 
+Public scrutiny is rising 
+Water scarcity emerged as a prominent issue this year amid heatwaves and droughts worldwide, 
+with data centres among the businesses directly affected. Since late May, media coverage linking 
+data centres and water has surged: the number of related news stories globally has increased 5 
+times over the past year and 2.5 times since the end of May. This rise highlights growing 
+community awareness and mounting opposition to new data centre development. 
+Count of news articles on “data centre” and “water” in the last 12 months  
+ 
+Source: Bloomberg  
+Hey AI, what about the rest? 
+Beyond electricity and water, the expansion of data centres also has a local impact in other areas. 
+Large AI campuses require land, grid infrastructure, cooling equipment, and backup generation, 
+while construction can generate traffic, noise and pressure on local services. Once operational, 
+cooling systems and generators may continue to affect surrounding communities, and rapid 
+equipment replacement raises additional questions around materials and electronic waste. 
+These impacts matter because the local economic benefits are not always perceived as 
+commensurate with the resources required. Data centres can generate tax revenues, 
+construction activity and infrastructure investment, but highly automated facilities may create 
+relatively few permanent jobs. Understandably, communities may consequently view the 
+economic upside as being widely distributed, while the environmental and infrastructure costs 
+remain concentrated locally. 
+ 
+ 
+ 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+10 
+26 October 2026 
+ 
+From local resistance to social licence risk 
+We see data centres as the next major test of companies’ social licence to operate. As projects 
+become larger and more resource-intensive, regulatory approval alone may no longer be 
+sufficient: developers must also maintain acceptance among the communities affected by their 
+demands on power, water and land.  
+Global headlines in media over pushback on data centres 
+ 
+Source: SG Cross Asset Research/Sustainability, media link (1, 2, 3, 4, 5, 6, 7, 8, 9, 10) 
+Ongoing community pushback is putting data centres’ social licence to operate under pressure, 
+increasingly affecting how, where and under what conditions projects can proceed:  
+Data centres’ social licence to operate is under pressure 
+ 
+Source: SG Cross Asset Research/Sustainability 
+In the US, the rapid buildout of AI and data centre infrastructure is increasingly facing local 
+resistance as communities question the cost, resource intensity, and approval processes 
+behind these projects. Data Centre Watch reported that at least 75 data centre projects worth 
+about $130bn were blocked or delayed in the US in Q1 2026, the highest quarterly level since 
+tracking began in 2023 (link). This is around an 18% share if we compare with only the top four 
+AI hyperscalers’ capex for 2026 at $725bn ($410bn in 2025) (link). The AI investment spend by 
+major US hyperscalers is expected to cross $1tn in 2027 (link). Pushback has centred on rising 
+electricity costs, water usage, land-use impacts, noise, grid strain, and lawsuits alleging 
+procedural violations in project approvals. The cases below show how these concerns are 
+already translating into heightened scrutiny, project redesign, development restrictions and, 
+in some instances, cancellation. 
+ 
+Increasing scrutiny of
+project approvals
+Lengthening
+permission 
+timelines
+Triggering legal 
+and planning 
+challenges
+Leading to project 
+restrictions, 
+delays or 
+cancellation
+Driving political 
+and regulatory 
+intervention
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+11
+ 
+Illustrative instances of data centre pushback in recent years 
+Year 
+Location 
+Project 
+/ 
+Company 
+Community Concerns 
+Outcome 
+Source 
+2021 
+onward 
+Dublin, Ireland 
+Hyperscale 
+developers 
+Grid capacity, power demand, 
+energy security concerns 
+Grid connections restricted or 
+scrutinised; became benchmark for 
+data centre grid constraints. 
+link 
+2022 
+Zeewolde, 
+Netherlands 
+Meta 
+Land conversion, energy use, 
+limited local benefits 
+Dutch government blocked project; 
+land sale cancelled after opposition. 
+link 
+2022 
+Santiago, Chile 
+Google Data 
+Centre 
+Groundwater use, drought risk, 
+water security concerns 
+Court required reconsideration; Google 
+redesigned cooling system and 
+proceeded. 
+link 
+2022-
+2024 
+Loudoun 
+County, VA 
+Hyperscalers & 
+Developers 
+Noise, transmission, residential, 
+land-use impacts 
+Opposition increased zoning scrutiny 
+and tightened siting discussions. 
+link 
+2023- 
+2025 
+Amsterdam, 
+Netherlands 
+Multiple 
+developers 
+Grid constraints, limited land, 
+power capacity shortages 
+New data centres and expansions 
+largely prohibited after moratorium. 
+link 
+2024 
+Uruguay 
+Google 
+(Project Teros) 
+Water consumption, drought 
+risk, potable-water concerns 
+Google switched to air cooling; revised 
+project approved. 
+link 
+2026 
+Prince William, 
+VA 
+QTS & 
+Compass 
+Historic-site proximity, scale, 
+land-use, legal disputes 
+Digital Gateway project abandoned 
+after developer withdrawals and 
+appeals. 
+link 
+2026 
+Ohio, USA 
+Multiple 
+developers 
+Grid strain, electricity costs, tax 
+incentive scrutiny 
+State paused new tax exemptions 
+pending sector review. 
+link 
+2026 
+Utah, USA 
+Stratos 
+(Wonder 
+Valley) 
+Water, air quality, wildlife, land-
+use concerns 
+Governor imposed stricter statewide 
+data centre development framework. 
+link 
+2026 
+Memphis/ 
+Southaven, 
+USA 
+xAI Colossus 
+Air pollution, turbines, noise, 
+community opposition 
+Lawsuits and opposition continued 
+amid community outreach efforts. 
+link 
+2026 
+New York State 
+Hyperscale / AI 
+DCs 
+Grid strain, water use, utility cost 
+concerns 
+Environmental permits paused for 
+large hyperscale projects. 
+link 
+2026 
+Rural Texas 
+Multiple 
+developers 
+Land use, water, grid, 
+infrastructure concerns 
+Governor proposed stricter 
+requirements and limits on siting. 
+link 
+2026 
+Saline 
+Township, MI 
+Related Digital 
+/ Stargate 
+Farmland loss, water use, traffic, 
+local control 
+Rezoning dispute settled; construction 
+moved forward. 
+link 
+2026 
+Denmark 
+Large-load 
+applicants 
+Grid capacity, power availability, 
+user prioritization 
+Energinet paused new grid connections 
+for large-load projects. 
+link 
+2026 
+Georgia, USA 
+Hyperscale 
+developers 
+Water, power demand, noise, 
+land-use concerns 
+Numerous local moratoriums, 
+ordinances, and restrictive regulations 
+adopted. 
+link 
+Source: SG Cross Asset Research/Sustainability 
+ 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+12 
+26 October 2026 
+ 
+Data centres emerge as hot topic in midterms 
+Data centre development is moving beyond local planning disputes and into mainstream 
+political debate. As projects multiply and become more resource-intensive, concerns over 
+electricity prices, water availability, land use and infrastructure costs are increasingly shaping 
+voter attitudes and electoral campaigns. 
+Data centres have unexpectedly become a significant issue in the November 2026 US midterms. 
+The backlash has moved into federal and state election campaigns. As per the poll by PBS news, 
+NPR and Marist, voters oppose data centres – 58% presume that the construction of new data 
+centres will have a negative effect on the country. 65% of respondents oppose data centre 
+construction in their communities. Another survey shows even higher opposition, 70-75% of 
+Americans oppose an AI data centre being built in their local area (link; Gallup, Heatmap).  
+Survey showing increasing negative sentiment to data centre construction near residences 
+Source: Heatmap 
+These results expose a growing tension between national and local priorities. At the national 
+level, AI infrastructure is increasingly viewed as strategically important for technological 
+leadership, economic competitiveness and national security. At the local level, however, voters 
+are more focused on who will pay for additional power generation and grid infrastructure, 
+whether data centre demand will increase utility bills, how projects will affect water and land 
+availability, and whether the resulting employment and tax benefits will justify the facilities’ 
+local footprint. 
+Data centres are therefore becoming part of a broader debate over how the costs and benefits of 
+the AI buildout should be distributed. Political support for AI infrastructure remains strong, but 
+support for individual projects may weaken when communities perceive that electricity, water or 
+infrastructure costs are being transferred to households and local businesses. 
+Political pressure is also beginning to influence policy. Across major data centre markets, 
+authorities are tightening requirements around grid connections, infrastructure cost sharing, 
+energy efficiency, water use, renewable electricity, and environmental disclosure. Approaches differ 
+across jurisdictions, but the direction is increasingly towards requiring large data centres to bear a 
+greater share of the costs created by their power, water and infrastructure requirements. 
+The measures summarised below illustrate how this shift is taking shape, from tighter connection 
+and permitting rules to dedicated tariffs, resource-use restrictions, and greater cost sharing. 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+13
+ 
+Data centre regulation is tightening globally and moving towards the “cost-causer pays” principle 
+Source: SG Cross Asset Research/Sustainability 
+The debate is therefore no longer simply about whether data centre capacity should expand, but 
+about where the facilities should be built, who should bear the incremental costs and which 
+companies are best positioned to grow within tighter social and resource constraints. 
+ 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+14 
+26 October 2026 
+ 
+Data centre footprint controversies: an unpriced 
+financial risk, but for how long? 
+Current controversy profile. Data centre controversies are a relatively new phenomenon and 
+are generally classified as low severity. Our review of approximately 20,000 companies in the 
+Sustainalytics universe during 2025–26 identified 25 data centre-related controversies involving 
+20 companies. Most concerned community protests or opposition arising from water use, energy 
+consumption, noise and other local impacts; the remainder involved broader issues such as 
+emissions and effluents, and occupational health and safety. All were classified as Category 1 or 
+2 on a five-point scale, suggesting that ESG investors relying on provider controversy screens may 
+not yet be fully capturing the issue. 
+Forward-looking implication. If data centre disputes escalate from protests to operational 
+disruption, controversy ratings are likely to become more severe and more relevant to investor 
+screening and company selection. To illustrate how these risks could evolve, we examined past 
+water-related controversies with higher severity ratings. 
+ 
+Data centre-related controversies (2025-26) 
+ 
+Split by category level 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Sustainability, Sustainalytics 
+ 
+Source: SG Cross Asset Research/Sustainability, Sustainalytics 
+Water-related comparison. We screened Category 3/4/5 water-related controversies and found 
+no incidents directly linked to data centres. Of the 68 controversies identified, 49 were moderate 
+(Category 3), 16 were high (Category 4) and 3 were significant (Category 5). Exposure was 
+concentrated in oil and gas, metals and mining, food, forestry and utilities, with incidents mainly 
+involving water pollution, community relations, biodiversity impacts, and water withdrawals. 
+0
+5
+10
+15
+20
+25
+30
+35
+2025-26
+No. of controversies
+Community pushback
+Others
+0
+5
+10
+15
+20
+25
+Category 1
+Category 2
+No. of controversies
+Community pushback
+Others
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+15
+ 
+Water-related controversies by category 
+ 
+Water-related controversies by issue 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Sustainability, Sustainalytics 
+ 
+Source: SG Cross Asset Research/Sustainability, Sustainalytics 
+We examined the financial impact of controversies in our publication The financial impact of 
+ESG controversies. We found that stocks can underperform for a longer period in the case of 
+severe issue categorisation. The chart below breaks down ESG controversies into subcategories. 
+Social & Community is the closest proxy for data centre-related issues and shows that affected 
+stocks can underperform their benchmark for an extended period. Current data centre pushback 
+mainly centres on Social & Community concerns, including energy and water use, land 
+requirements, noise and other local impacts. 
+Impact of serious controversies on stock price performance by type of controversy 
+ 
+Source: SG Cross Asset Research/Sustainability 
+ 
+0
+2
+4
+6
+8
+10
+12
+14
+16
+No. of controversies
+Category 3
+Category 4
+Category 5
+0
+2
+4
+6
+8
+10
+12
+14
+16
+No. of controversies
+Emissions, effluents and waste
+Community relations
+Land use and biodiversity
+Water use/Quality & safety
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+16 
+26 October 2026 
+ 
+Computing the outperformers: an ESG lens on 
+data centres 
+Mapping the value chain 
+A data centre is made up of several components, chiefly: servers, cooling equipment, storage 
+systems, networking equipment, and power storage: 
+• 
+Servers are computers equipped with CPUs and GPUs that process and store 
+data. They account for almost 60% of electricity use in a typical data centre.  
+• 
+Cooling equipment: The next biggest category for electricity use is cooling, 
+accounting for up to 30% of power consumption. 
+• 
+Storage systems are used for data storage and backup (~5% electricity use). 
+• 
+Networking equipment includes switches, routers and load balancers. (~5% 
+electricity use). 
+• 
+UPS battery/power generators: Uninterruptible power supply (UPS) batteries 
+and generators provide power during outages. 
+ 
+The expansion of data centres and AI infrastructure creates a broad opportunity set across eight 
+beneficiary segments: AI Compute Hardware; AI Servers and System OEMs; Data Centre 
+Construction and Engineering; Hyperscale Cloud Providers; Infrastructure and Platforms; Optical 
+Fibre and Connectivity; Power, Cooling and Electrical Infrastructure; Reits / Colocation Providers. 
+The exhibit below highlights these segments and selected representative companies. 
+Data centre growth beneficiaries 
+Source: SG Cross Asset Research/Sustainability 
+ 
+Data centre components 
+Source: IEA 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+17
+ 
+Adding a sustainability screen 
+Methodology 
+Screen. To capture the AI-led expansion of data centres while accounting for community 
+concerns, we identify 35 Data Centre & AI stocks with a lower water and energy footprint. These 
+stocks are selected from a broader universe of 85 companies with market capitalisation of at least 
+USD1bn and an estimated minimum double-digit revenue exposure to the eight beneficiary 
+segments: AI Compute Hardware (12 companies), AI Servers & System OEMs (14), Data Centre 
+Construction & Engineering (2), Hyperscale Cloud Providers (9), Infrastructure & Platforms (16), 
+Optical Fiber & Connectivity (4), Power, Cooling & Electrical Infrastructure (15), and 
+REITs/Colocation Providers (13). This 85-company coverage includes the 40 companies 
+highlighted in the SG Global Data Centre basket (link). 
+We screen the universe of 85 data centre growth beneficiary companies on energy and water 
+intensity – the two issues most closely linked to community opposition. Grid strain can raise 
+electricity costs, while water withdrawals can reduce local availability and increase prices. On 
+this basis, 35 companies screen favourably, reflecting lower energy and water intensity. 
+Suggested data centre & AI theme-exposed stocks that have a favourable sustainability footprint 
+ 
+Source: SG Cross Asset Research/Sustainability, Bloomberg, Eikon, MSCI. Note: Revenue exposure to Data Centre & AI theme: H = High (>50%), M = Medium (30-50%), Low (10-30%) 
+Theme exposure
+Company
+Ticker
+Country
+GICS Industry
+Water 
+intensity / $ 
+Sales (sector 
+rel. rank)
+Energy 
+intensity / $ 
+Sales (sector 
+rel. rank)
+Water 
+intensity / $ 
+Sales adjusted 
+score
+Energy 
+intensity / $ 
+Sales adjusted 
+score
+Average 
+energy/ water 
+adjustment 
+factor
+Revenue 
+Exposure
+Advanced Micro Devices
+AMD US Equity
+United States Semiconductors & Semiconductor Equipment
+6%
+8%
+0.56
+0.58
+0.57
+M
+ASML Holding
+ASML NA Equity
+Netherlands
+Semiconductors & Semiconductor Equipment
+13%
+21%
+0.63
+0.71
+0.67
+M
+KLA Corp
+KLAC US Equity
+United States Semiconductors & Semiconductor Equipment
+20%
+27%
+0.70
+0.77
+0.74
+M
+Lam Research
+LRCX US Equity
+United States Semiconductors & Semiconductor Equipment
+32%
+25%
+0.82
+0.75
+0.78
+M
+NVIDIA Corp
+NVDA US Equity
+United States Semiconductors & Semiconductor Equipment
+3%
+3%
+0.53
+0.53
+0.53
+H
+Tokyo Electron
+8035 JT Equity
+Japan
+Semiconductors & Semiconductor Equipment
+33%
+38%
+0.83
+0.88
+0.85
+M
+Asustek Computer
+2357 TT Equity
+Taiwan
+Technology Hardware & Equipment
+3%
+2%
+0.53
+0.52
+0.52
+L
+Dell Technologies
+DELL US Equity
+United States Technology Hardware & Equipment
+6%
+10%
+0.56
+0.60
+0.58
+L
+Foxconn Industrial Internet
+601138 CH Equity China
+Technology Hardware & Equipment
+46%
+44%
+0.96
+0.94
+0.95
+H
+Gigabyte Technology
+2376 TT Equity
+Taiwan
+Technology Hardware & Equipment
+12%
+3%
+0.62
+0.53
+0.58
+L-M
+HP Enterprise
+HPE US Equity
+United States Technology Hardware & Equipment
+17%
+30%
+0.67
+0.80
+0.73
+H
+Inventec Corp
+2356 TT Equity
+Taiwan
+Technology Hardware & Equipment
+26%
+18%
+0.76
+0.68
+0.72
+L-M
+Lenovo Group
+992 HK Equity
+China
+Technology Hardware & Equipment
+7%
+4%
+0.57
+0.54
+0.56
+L
+MiTAC Holdings (Tyan)
+3706 TT Equity
+Taiwan
+Technology Hardware & Equipment
+32%
+21%
+0.82
+0.71
+0.77
+L-M
+Quanta Computer
+2382 TT Equity
+Taiwan
+Technology Hardware & Equipment
+30%
+23%
+0.80
+0.73
+0.77
+M
+Supermicro Computer
+SMCI US Equity
+United States Technology Hardware & Equipment
+NA
+14%
+NA
+0.64
+0.82
+H
+Wistron Corp
+3231 TT Equity
+Taiwan
+Technology Hardware & Equipment
+18%
+7%
+0.68
+0.57
+0.63
+L-M
+Wiwynn Corporation
+6669 TT Equity
+Taiwan
+Technology Hardware & Equipment
+5%
+6%
+0.55
+0.56
+0.55
+H
+Arista Networks
+ANET US Equity
+United States Technology Hardware & Equipment
+1%
+16%
+0.51
+0.66
+0.59
+H
+Broadcom
+AVGO US Equity
+United States Semiconductors & Semiconductor Equipment
+16%
+17%
+0.66
+0.67
+0.67
+H
+Celestica
+CLS US Equity
+Canada
+Technology Hardware & Equipment
+36%
+37%
+0.86
+0.87
+0.86
+H
+Ciena Corp
+CIEN US Equity
+United States Technology Hardware & Equipment
+8%
+19%
+0.58
+0.69
+0.64
+M
+F5 Inc
+FFIV US Equity
+United States Technology Hardware & Equipment
+NA
+13%
+NA
+0.63
+0.81
+L-M
+IBM Corp
+IBM US Equity
+United States Software & Services
+4%
+75%
+0.54
+1.25
+0.89
+L
+Marvell Technology
+MRVL US Equity
+United States Semiconductors & Semiconductor Equipment
+11%
+19%
+0.61
+0.69
+0.65
+H
+Netapp
+NTAP US Equity
+United States Technology Hardware & Equipment
+11%
+29%
+0.61
+0.79
+0.70
+M
+Bloom Energy
+BE US Equity
+United States Capital Goods
+NA
+5%
+NA
+0.55
+0.77
+L
+Eaton Corp
+ETN US Equity
+Ireland
+Capital Goods
+32%
+53%
+0.82
+1.03
+0.93
+L
+Legrand
+LR FP Equity
+France
+Capital Goods
+21%
+25%
+0.71
+0.75
+0.73
+L
+Munters Group Ab 
+MTRS SS Equity
+Sweden
+Capital Goods
+NA
+33%
+NA
+0.83
+0.91
+M
+Nvent Electric
+NVT US Equity
+United States Capital Goods
+20%
+67%
+0.70
+1.17
+0.93
+L
+Schneider Electric
+SU FP Equity
+France
+Capital Goods
+10%
+15%
+0.60
+0.65
+0.63
+L
+Shenzhen Envicool Technology 002837 C2 Equity China
+Capital Goods
+60%
+19%
+1.10
+0.69
+0.90
+H
+Goodman Group
+GMG AU Equity
+Australia
+Equity Real Estate Investment Trusts (REITs)
+NA
+21%
+NA
+0.71
+0.85
+L
+Iron Mountain
+IRM US Equity
+United States Equity Real Estate Investment Trusts (REITs)
+12%
+74%
+0.62
+1.24
+0.93
+L
+Power, Cooling & Electrical 
+Infrastructure
+REITS  /  Colocation 
+Providers
+>>> lower the better >>>
+AI Compute Hardware
+AI Servers & System OEMs
+Infrastructure & Platforms
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+18 
+26 October 2026 
+ 
+From a theme perspective, companies that have higher exposure to energy and water issues are 
+likely to face higher scrutiny from the community, regulators and investors. We screen companies 
+based on water and energy intensity per USD million of sales relative to their GICS sector peers in 
+the MSCI ACWI universe. Each metric is converted into an adjustment score of 0.5-1.5 based on 
+the company’s sector percentile rank, where 0.5 indicates the lowest intensity and 1.5 the 
+highest. The average of the water and energy scores forms the combined adjustment factor; 
+where data is missing, we assign the sector median score of 1.0. This factor is used to select 35 
+companies from a universe of 85, with scores below 1.0 indicating lower combined water and 
+energy intensity than the sector median. 
+Performance 
+We split the Data Centre & AI beneficiaries into two: the 35 companies screening better on water 
+and energy intensity (“Resource efficient”) and the remaining 50 (“Resource intensive”). We 
+compare their performance with the Nasdaq 100, a useful benchmark given its strong technology 
+exposure. YTD up to 7 October, both screens outperformed the Nasdaq 100, with the Resource 
+efficient stocks returning 70.5%, versus 47.8% for the Resource intensive stocks and 24.0% for the 
+Nasdaq 100. More importantly, since end-May, when concerns around data centres’ water use 
+began gaining momentum, performance has diverged materially: the Resource efficient stocks 
+returned 15.8%, compared with -3.7% for the Resource intensive stocks and 4.2% for the Nasdaq 
+100. This suggests that companies with less intensive use of water and energy delivered stronger 
+relative performance when sustainability concerns around data centres intensified. 
+Performance of Data centre & AI exposed companies, YTD… 
+ 
+…and since the end of May 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Sustainability, Bloomberg, Eikon, MSCI. Past performance is 
+not indicative of future results. 
+ 
+Source: SG Cross Asset Research/Sustainability, Bloomberg, Eikon, MSCI. Past performance is 
+not indicative of future results. 
+ 
+ 
+80
+90
+100
+110
+120
+130
+140
+150
+160
+170
+180
+12/31/2025
+1/31/2026
+2/28/2026
+3/31/2026
+4/30/2026
+5/31/2026
+6/30/2026
+7/31/2026
+8/31/2026
+9/30/2026
+Absolute performance (Total returns USD)
+Resource efficient
+Resource intensive
+Nasdaq 100
+80
+85
+90
+95
+100
+105
+110
+115
+120
+5/27/2026
+6/27/2026
+7/27/2026
+8/27/2026
+9/27/2026
+Absolute performance (Total Returns USD)
+Resource efficient
+Resource intensive
+Nasdaq 100
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+19
+ 
+The 35 Resource efficient stocks have outperformed the 50 Resource intensive stocks in 15 out of 
+the 20 weeks since 27 May this year, and outperformed the Nasdaq in 10 of those 20 weeks. 
+Resource efficient stocks outperformed Resource intensive stocks 75% of the time (27 May – 7 October this year) 
+ 
+Source: SG Cross Asset Research/Sustainability, Bloomberg, Eikon, MSCI. Past performance is not indicative of future results. 
+ 
+ 
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+27/05
+03/06
+10/06
+17/06
+24/06
+01/07
+08/07
+15/07
+22/07
+29/07
+05/08
+12/08
+19/08
+26/08
+02/09
+09/09
+16/09
+23/09
+30/09
+07/10
+Weekly absolute returns USD (%)
+Resource efficient
+Resource intensive
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+20 
+26 October 2026 
+ 
+Company response & remediations 
+Company actions to reduce community pushback related to data centres 
+Theme 
+Company 
+Initiative 
+Cleaner electricity 
+Google 
+Operates on carbon-free energy across its grids; signed 240+ agreements for nearly 35GW of new clean 
+energy (2010–2025). 
+Microsoft 
+Contracted 34GW of renewable energy across 24 countries and uses lower-carbon construction 
+measures. 
+Equinix 
+Maintained 96% renewable-energy coverage across retail IBX data centres in 2025—its eighth year 
+above 90%. 
+Energy efficiency 
+NVIDIA 
+DSX MaxLPS optimizes power allocation, enabling up to 40% more GPU capacity and higher 
+throughput per watt. 
+AMD 
+Improved energy efficiency by 28.3× since 2020 using Instinct MI300X accelerators and EPYC 9575F 
+CPUs (2024). 
+AWS 
+Achieved global data centre PUE of 1.14 in 2025; redesigned cooling cuts mechanical-cooling energy by 
+up to 50%. 
+Google 
+Pools computing, memory and storage centrally, reducing unnecessary server purchases. 
+Liquid cooling and water 
+efficiency 
+AWS 
+Uses liquid cooling for high-density AI and air cooling elsewhere; expanding recycled water to 120+ US 
+sites to save 530M+ gallons annually. 
+Vertiv 
+Scaling direct-to-chip cooling, coolant-distribution units and high-density systems, with modular 
+design and waste-heat reuse. 
+Alibaba Cloud 
+Uses immersion cooling at Hangzhou and Zhangbei, combined with heat pumps and renewable-energy 
+storage. 
+QTS Data Centres 
+Added closed-loop cooling to all new 2025 greenfield sites, cutting portfolio WUE 46% YoY to 0.44. 
+Digital Realty 
+Ran 75% of sites without evaporative cooling in 2025; non-potable water reached 45% and portfolio 
+WUE improved 15.7%. 
+NTT Data 
+Combines AI cooling controls, filtration and closed-loop water management; a UK reverse-osmosis 
+project saves about 35,000m³ annually. 
+Circular economy 
+Meta 
+Uses recycled plastics and metals in IT hardware; diverted 91% of owned data centre construction 
+waste from landfill in 2024. 
+Microsoft 
+Circular Centres reuse and recycle retired hardware, supporting a zero-waste-by-2030 goal. 
+AWS 
+Hardware reuse and resale avoided about 0.25M tonnes CO₂e since 2020; piloting heat sinks with 50% 
+recycled aluminium. 
+Backup systems 
+Digital Realty 
+Used lower-carbon HVO fuel for backup generation at 18% of data centres by 2025. 
+NTT DATA 
+Reducing generator tests, evaluating lower-carbon fuels, batteries and lower-GWP refrigerants to cut 
+fossil-backup dependence. 
+Eaton 
+Offers battery-backed, grid-interactive UPS systems as alternatives to rarely used backup assets. 
+Rehlko 
+HVO-compatible generators use waste-derived renewable diesel, claiming up to 90% lower lifecycle 
+carbon than conventional diesel. 
+Community consultation 
+and cost sharing 
+Meta 
+Manages over 50% of its operational campus footprint to support native habitats and biodiversity. 
+Digital Realty 
+Combines community investment, heat reuse and non-potable water; 10+ projects increased district 
+heat supplied by 46% from 2023 to 2025. 
+Google 
+Will pay for all electricity consumed and growth-driven infrastructure through separate rate 
+structures. Expanded US skilled-trades funding to $50m in 2026, targeting 300K+ workers; STAR trains 
+people near data centres. 
+Meta 
+Funded 40+ water-restoration projects since 2017, restoring over 1.6bn gallons in stressed regions in 
+2024. 
+Amazon, Google, Meta, 
+Microsoft, OpenAI, 
+Oracle and xAI 
+Seven firms pledged in March 2026 to supply needed power, fund delivery infrastructure, use 
+separate rates and pay for committed capacity. 
+ 
+Source: SG Cross Asset Research/Sustainability, company data 
+
+ 
+AI meets the neighbours
+ 
+ 
+ 
+26 October 2026 
+21
+ 
+Appendix 
+Broader universe of 85 companies exposed to Data Centre & AI theme 
+Source: SG Cross Asset Research/Sustainability 
+ 
+ 
+Company
+Country
+AI Compute Hardware
+AI Servers & System 
+OEMs
+Data Center 
+Construction & 
+Engineering
+Hyperscale Cloud 
+Providers
+Infrastructure & 
+Platforms
+Optical Fiber & 
+connectivity
+Power, Cooling & 
+Electrical 
+Infrastructure
+REITS  /  Colocation 
+Providers
+Advanced Micro Devices
+United States
+✓
+ASE Technology
+Taiwan
+✓
+ASML Holding
+Netherlands
+✓
+FormFactor
+United States
+✓
+Intel Corp
+United States
+✓
+KLA Corp
+United States
+✓
+Lam Research
+United States
+✓
+Micron Technology
+United States
+✓
+NVIDIA Corp
+United States
+✓
+Samsung Electronics
+South Korea
+✓
+Tokyo Electron
+Japan
+✓
+TSMC
+Taiwan
+✓
+Asustek Computer
+Taiwan
+✓
+Dell Technologies
+United States
+✓
+Foxconn Industrial Internet
+China
+✓
+Fujitsu
+Japan
+✓
+Gigabyte Technology
+Taiwan
+✓
+Hon Hai Precision
+Taiwan
+✓
+HP Enterprise
+United States
+✓
+Inventec Corp
+Taiwan
+✓
+Lenovo Group
+China
+✓
+MiTAC Holdings (Tyan)
+Taiwan
+✓
+Quanta Computer
+Taiwan
+✓
+Supermicro Computer
+United States
+✓
+Wistron Corp
+Taiwan
+✓
+Wiwynn Corporation
+Taiwan
+✓
+IES Holdings
+United States
+✓
+Shanghai Athub Co Ltd-A 
+China
+✓
+Alibaba Group
+Hong Kong
+✓
+Alphabet
+United States
+✓
+Amazon (AWS)
+United States
+✓
+Applied Digital
+United States
+✓
+Baidu
+China
+✓
+Meta Platforms
+United States
+✓
+Microsoft Corp
+United States
+✓
+Oracle Corp
+United States
+✓
+Tencent Holdings
+China
+✓
+Arista Networks
+United States
+✓
+Astera Labs
+United States
+✓
+Broadcom
+United States
+✓
+Celestica
+Canada
+✓
+Ciena Corp
+United States
+✓
+CoreWeave
+United States
+✓
+Extreme Networks
+United States
+✓
+F5 Inc
+United States
+✓
+IBM Corp
+United States
+✓
+Marvell Technology
+United States
+✓
+Netapp
+United States
+✓
+Nutanix
+United States
+✓
+Seagate Technology
+United States
+✓
+Venture Corp
+Singapore
+✓
+Vertiv Holdings
+United States
+✓
+Western Digital
+United States
+✓
+Coherent Corp
+United States
+✓
+Lumentum Holdings
+United States
+✓
+Vistance Networks
+United States
+✓
+Yangtze Optical
+China
+✓
+AES Corp 
+United States
+✓
+Bloom Energy
+United States
+✓
+Dominion Energy
+United States
+✓
+Duke Energy
+United States
+✓
+Eaton Corp
+Ireland
+✓
+Engie
+France
+✓
+Kehua Data Co Ltd -A 
+China
+✓
+Legrand
+France
+✓
+Modine Manufacturing Co 
+United States
+✓
+Munters Group Ab 
+Sweden
+✓
+Nextera Energy
+United States
+✓
+Nvent Electric
+United States
+✓
+Schneider Electric
+France
+✓
+Shenzhen Envicool Technology Co Ltd China
+✓
+SK Hynix
+South Korea
+✓
+Brookefield Infrastructure Partners
+United States
+✓
+Digital Realty Trust
+United States
+✓
+DigitalBridge Group Inc 
+United States
+✓
+Equinix
+United States
+✓
+GDS Holdings
+China
+✓
+Goodman Group
+Australia
+✓
+Iron Mountain
+United States
+✓
+Keppel DC REIT
+Singapore
+✓
+Mapletree Industrial Trust
+Singapore
+✓
+NEXTDC
+Australia
+✓
+NTT DC REIT
+Singapore
+✓
+Vnet Group Inc-ADR 
+China
+✓
+WHA Corp
+Thailand
+✓
