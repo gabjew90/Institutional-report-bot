@@ -1,0 +1,130 @@
+{
+ "brief": "A Goldman prime brokerage note tracks hedge fund strategy performance across Nov 4 and intraday Nov 5. On Nov 4, broader markets rose, but a rotation from semiconductor stocks into software stocks drove a sharp sell-off in the US momentum factor. Despite that, systematic long/short funds ended slightly up as gains in EM Asia offset US losses, global fundamental (discretionary) strategies rose on the broad market rally, and multi-strategy funds were only modestly lower. The picture reverses intraday on Nov 5 (~10:30 EST): US markets are selling off and the global momentum factor is down. Fundamental strategies are down, with US-focused funds hit harder than others, and TMT exposure is severely down. Systematic strategies, however, are positive, while multi-strategy funds are down significantly, driven by their equity exposure. The note reports observed performance across strategy types rather than arguing a single forward-looking thesis.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "A rotation from semiconductor stocks into software stocks drove a sharp sell-off in the US momentum factor on Nov 4, even as broader markets rose.",
+   "anchor": "Broader markets rose, but a semis-to-software rotation drove a sharp US momentum sell-off.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "Systematic long/short hedge funds ended slightly up on Nov 4 as gains in EM Asia offset losses in the US.",
+   "anchor": "Systematic L/S ended slightly up as EM Asia gains offset U.S. losses.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "Global fundamental (discretionary) hedge fund strategies rose on Nov 4 on a broad market rally, while multi-strategy funds were only modestly lower.",
+   "anchor": "Global fundamentals rose on broad market rally.\nMulti-strategy funds were modestly lower.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "US markets sold off and the global momentum factor was down intraday on Nov 5 (around 10:30 EST).",
+   "anchor": "Today (Nov 5 ~10:30 EST): U.S. markets sell-off and global momentum down.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "Global fundamental hedge fund strategies were down intraday on Nov 5, with US-focused funds hit harder than others.",
+   "anchor": "Fundamentals down with US-focused\nfunds hit harder.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "TMT exposure among hedge fund strategies was severely down intraday on Nov 5.",
+   "anchor": "funds hit harder. TMT severely down. Systematics are positive, and multi-strategy funds",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "Systematic hedge fund strategies were positive intraday on Nov 5, even as fundamental and multi-strategy funds fell.",
+   "anchor": "TMT severely down. Systematics are positive, and multi-strategy funds down significanlty on their",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Prime HFs Update - Yesterday and Intraday Today (Nov 4th/5th)",
+   "claim": "Multi-strategy hedge funds were down significantly intraday on Nov 5, driven by their equity exposure.",
+   "anchor": "Systematics are positive, and multi-strategy funds down significanlty on their\nequity exposure.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-06/25075__gs-laicini-prime-hfs-update-yesterday-and-intraday-today-nov.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
