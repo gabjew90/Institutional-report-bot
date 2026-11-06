@@ -1,0 +1,16 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-11-06T14:06:05.208145Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=408; anchors 1822/1886 matched, 0 empty, 1 too_short (rate=0.966)", "at": "2026-11-06T14:06:05.258208Z"},
+  "omnipulse": {"decision": "OMNIPULSE", "detail": "omnipulse: 2026-11-06 ok, 6 themes -> omnipulse pulse", "at": "2026-11-06T14:06:05.883647Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "hard residuals after 2 re-rolls -- shipping with residuals recorded (budget spent)", "at": "2026-11-06T14:08:44.067147Z"},
+  "lint": {"decision": "SKIP_SCRUB", "detail": "5 soft issue(s) only", "at": "2026-11-06T14:09:47.233352Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-11-06T14:09:51.189329Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-11-06T14:09:51.249273Z"},
+  "adversarial": {"decision": "DISPATCH_REPAIR", "detail": "1 hard finding(s); repair 1/2", "at": "2026-11-06T14:11:16.800865Z"},
+  "adversarial_recheck": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-11-06T14:13:40.386823Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit", "at": "2026-11-06T14:13:43.931790Z"}
+ },
+ "budgets": {"draft_rerolls": 2, "adversarial_repairs": 2},
+ "note": "abridged copy of /tmp/driver_state.json (full history omitted when pushing by hand)"
+}
