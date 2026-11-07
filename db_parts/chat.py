@@ -64,6 +64,7 @@ def upsert_user_profile(
     trader_examples: str | None = None,
     personal_ammo: str | None = None,
     last_full_rebuild_at: str | None = None,
+    profile_sources: str | None = None,
 ) -> None:
     """Insert or replace a user profile. updated_at is auto-stamped.
     last_full_rebuild_at is stamped only on cold-start builds (None
@@ -90,8 +91,8 @@ def upsert_user_profile(
               slur_count, racial_humor_score,
               trader_score, trader_rationale, racism_rationale,
               slur_examples, trader_examples, personal_ammo,
-              last_full_rebuild_at, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+              last_full_rebuild_at, profile_sources, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
@@ -107,6 +108,7 @@ def upsert_user_profile(
              trader_examples = COALESCE(excluded.trader_examples, user_profiles.trader_examples),
              personal_ammo = COALESCE(excluded.personal_ammo, user_profiles.personal_ammo),
              last_full_rebuild_at = COALESCE(excluded.last_full_rebuild_at, user_profiles.last_full_rebuild_at),
+             profile_sources = COALESCE(excluded.profile_sources, user_profiles.profile_sources),
              updated_at = datetime('now')""",
         (
             int(user_id), username, display_name, profile_text,
@@ -114,7 +116,7 @@ def upsert_user_profile(
             int(slur_count), None,
             trader_score, trader_rationale, racism_rationale,
             slur_examples, trader_examples, personal_ammo,
-            last_full_rebuild_at,
+            last_full_rebuild_at, profile_sources,
         ),
     )
     conn.commit()
@@ -880,7 +882,7 @@ def load_chat_messages_for_profiles(
             f"""SELECT author_id, author_username, author_display,
                        channel_name, content, posted_at,
                        attachment_urls, embed_texts, image_ocr_text,
-                       discord_message_id, reply_parent_id
+                       discord_message_id, reply_parent_id, id
                 FROM chat_messages
                 WHERE channel_name IN ({placeholders})
                   AND posted_at >= ?
@@ -892,7 +894,7 @@ def load_chat_messages_for_profiles(
             """SELECT author_id, author_username, author_display,
                       channel_name, content, posted_at,
                       attachment_urls, embed_texts, image_ocr_text,
-                       discord_message_id, reply_parent_id
+                       discord_message_id, reply_parent_id, id
                FROM chat_messages
                WHERE posted_at >= ?
                ORDER BY posted_at ASC""",

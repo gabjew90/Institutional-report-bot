@@ -1216,6 +1216,15 @@ async def _user_profile_refresh_job(bot=None, force: bool = False):
                 f"profiles: "
                 f"{[p.get('display_name') or p.get('username') for p in pruned[:10]]}"
             )
+        # Profiles nobody rewrote tonight get the current checks too
+        # (2026-11-06: 104 stored bullets failed checks written after them).
+        try:
+            import asyncio
+            from scripts import profile_guards
+            swept = await asyncio.to_thread(profile_guards.sweep_stored)
+            log.info(f"User-profile refresh: guard sweep {swept}")
+        except Exception as e:
+            log.warning(f"User-profile refresh: guard sweep failed: {e}")
 
         # Publish a markdown snapshot to GitHub (pulse-data branch) so
         # users can read the current dossier set without shell access.

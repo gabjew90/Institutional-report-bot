@@ -279,7 +279,7 @@ Anti-patterns:
 
 **Lead with the behavior, follow with the evidence.** Write "buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play." Not "trades small caps." Write "size scales with frustration, every time." Not "tilts after losses." Specific behavior, every line.
 
-**ANCHOR RECEIPTS — every bullet carries its quote (binding).** Each bullet in Retarded takes and Recent personal life MUST embed at least one "verbatim quoted phrase" from THIS user's own messages — the receipt that sourced the bullet. No receipt = no bullet; drop it and find a different angle. This one mechanism is also why two claim families are banned outright:
+**ANCHOR RECEIPTS — every bullet carries its quote and its message id (binding).** Each bullet in Voice, Retarded takes and Recent personal life MUST embed at least one "verbatim quoted phrase" from THIS user's own messages, and END with the id of each message the quote comes from, as the MESSAGES block shows it: `{{m4812345}}`, or `{{m4812345 m4812350}}` for a quote across two messages. A prior bullet you keep keeps its ids. Code checks every bullet against the cited messages and deletes it when no message by this user carries its quote, when a Recent bullet's message is over 60 days old, or when the message answers someone about another person. A job, place, possession or relative is this user's only when the message says so in the first person ("my job", "I work"), and keeps the message's own subject: "my pops collection" is his father's collection. No receipt = no bullet; drop it and find a different angle. This one mechanism is also why two claim families are banned outright:
 - **ROOM-REACTION claims** ("the room mocks/asks/fact-checks/speculates", "endless speculation", "running joke"): your input is {display_name}'s messages ONLY — other members' reactions are not in your input, so these beats can never carry a receipt. The user's OWN report of a reaction is fine when HE said it.
 - **Unreceipted IDENTITY claims** (job, role, location, family): discussing a topic is not being the person — a user correcting nurse-anesthesiologist trivia is not clinical staff. Identity facts live only in receipted bullets; Personality prose describes behavior, never unreceipted biography. Inference softens to "reads as," never asserted flat.
 
@@ -588,9 +588,10 @@ except ImportError:
     )
 
 
-def _strip_source_tags(profile_text: str) -> str:
+def _prior_with_citations(existing_profile: dict) -> str:
     from scripts import profile_guards
-    return "\n".join(profile_guards.strip_tag(l) for l in profile_text.split("\n"))
+    return profile_guards.with_citations(existing_profile.get("profile_text") or "",
+                                         existing_profile.get("profile_sources"))
 
 
 def _verify_profile_claims(
@@ -1218,6 +1219,7 @@ def _load_user_data_from_store(
         ocr_text = (r.get("image_ocr_text") or "").strip()
         channel_name = r.get("channel_name") or ""
         by_user[uid].append({
+            "msg_id": r.get("id"),
             "timestamp": r.get("posted_at") or "",
             "channel_name": channel_name,
             "content": content,
@@ -1389,6 +1391,9 @@ def _format_messages_block(messages: list[dict]) -> str:
         prefix = f"{ts}"
         if ch:
             prefix = f"{prefix} #{ch}"
+        # the id the writer cites on each bullet (scripts/profile_guards.py)
+        if m.get("msg_id"):
+            prefix = f"{{m{m['msg_id']}}} {prefix}"
         if parts:
             text = _resolve_mentions(" | ".join(parts))
             to = m.get("reply_to")
@@ -1524,10 +1529,10 @@ async def _generate_profile(
         ts = existing_profile.get("trader_score")
         prior_profile_block = PRIOR_PROFILE_TEMPLATE.format(
             last_seen=last_seen or "(unknown)",
-            # without the code-written "(said Oct 12)" tails: they are
-            # re-derived from the source messages before save
-            prior_profile_text=_strip_source_tags(
-                existing_profile.get("profile_text") or "") or "(no prior text)",
+            # without the code-written "(said Oct 12)" tails, which are
+            # re-derived before save, and with each kept bullet's message
+            # ids, so the writer keeps citing them
+            prior_profile_text=_prior_with_citations(existing_profile) or "(no prior text)",
             prior_trader_score=ts if ts is not None else "n/a",
             prior_trader_rationale=existing_profile.get("trader_rationale") or "(none)",
         )
@@ -2857,14 +2862,19 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # Copypasta, invented framing, invented single-quoted
                         # anchors and room-reaction claims (2026-10-18 audit
                         # M1/M2/M5/M8): the bullet goes, nothing is rewritten.
+                        _sources: dict = {}
                         try:
                             from scripts import profile_guards as _pg
                             profile, _pgd = _pg.apply(
-                                profile, uid, claim_check.get("verified_quotes") or [])
+                                profile, uid, claim_check.get("verified_quotes") or [],
+                                sources_out=_sources)
                             for _d in _pgd:
                                 print(f"  [guards] {meta['username']}: dropped {_d[:140]}")
                         except Exception as _e:
                             print(f"  [guards] skipped for {uid}: {_e}")
+                        # the {m<id>} citations never reach the saved text
+                        from scripts import profile_guards as _pg
+                        profile = _pg.strip_citations(profile)
                         # Recent trades is written from the trade log in
                         # code; the writer's version is discarded
                         # (2026-10-30 audit, design note 3).
@@ -2896,6 +2906,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             last_full_rebuild_at=(
                                 _rebuild_stamp if _is_cold else None
                             ),
+                            profile_sources=json.dumps(_sources),
                         )
                         n_success += 1
                         n_imgs = len(images_by_user.get(uid, []))

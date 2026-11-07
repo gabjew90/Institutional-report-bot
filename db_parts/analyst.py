@@ -167,6 +167,19 @@ def record_analyst_trade(
     import json as _json
     conn = _db.get_connection()
 
+    # Every row passes one check before it is stored as a trade
+    # (analyst_log/trade_gate.py, 2026-11-06); a rejected row is kept as a
+    # non-trade with the reason, so the message is not read again.
+    if is_trade:
+        from analyst_log import trade_gate
+        why = trade_gate.reject_reason(
+            ticker=ticker, contract_type=contract_type, action=action,
+            text=caption, from_image=bool(image_url or (discord_attachment_id or 0) > 0))
+        if why:
+            log.info(f"analyst_trades: {author} {ticker} not stored as a trade: {why}")
+            is_trade = False
+            gemini_json = {**(gemini_json or {}), "rejected_by_gate": why}
+
     # Expiry-fill from prior open: when a close screenshot doesn't show
     # the expiry (Robinhood close-confirmation cards sometimes show only
     # ticker + gain%, with Gemini noting "expiry not visible"), look for
@@ -268,6 +281,11 @@ def record_analyst_trade(
     tm = (tracking_mode or "").strip().lower()
     if tm not in ("caller", "member"):
         tm = "caller"
+    if is_trade and action == "close" and gain_pct is not None:
+        from analyst_log import trade_gate
+        gain_pct = trade_gate.gain_or_none(
+            gain_pct, contract_type, has_open=inferred_status != "close_without_open"
+            and expiry is not None)
     verb = "INSERT OR REPLACE" if replace else "INSERT OR IGNORE"
     conn.execute(
         f"""{verb} INTO analyst_trades
@@ -355,6 +373,26 @@ def insert_text_extracted_trade_if_not_dup(
     ).fetchone()
     if existing_by_msg_id:
         return False
+
+    # The same check every writer uses (analyst_log/trade_gate.py).
+    from analyst_log import trade_gate
+    _src = conn.execute("SELECT content FROM chat_messages WHERE discord_message_id = ? LIMIT 1",
+                        (int(discord_message_id),)).fetchone()
+    why = trade_gate.reject_reason(
+        ticker=ticker, contract_type=contract_type, action=action,
+        text=(_src[0] if _src else "") or "",
+        from_image=(extracted.get("extraction_source") or "text") != "text")
+    if why:
+        log.info(f"analyst_trades: {author_username} {ticker} not stored as a trade: {why}")
+        return False
+    if action == "close" and extracted.get("gain_pct") is not None:
+        _open = conn.execute(
+            "SELECT 1 FROM analyst_trades WHERE author_id = ? AND is_trade = 1 AND UPPER(ticker) = ? "
+            "AND COALESCE(strike, -1) = COALESCE(?, -1) AND action IN ('open', 'add') "
+            "AND posted_at < ? AND posted_at > datetime(?, '-45 days') LIMIT 1",
+            (int(author_id), ticker, strike, posted_at, posted_at)).fetchone()
+        extracted = {**extracted, "gain_pct": trade_gate.gain_or_none(
+            extracted.get("gain_pct"), contract_type, has_open=bool(_open))}
 
     # Parse posted_at for Tier 2 window bounds.
     try:

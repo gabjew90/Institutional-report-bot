@@ -852,6 +852,10 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         # job can cycle every profile through a 90-day from-scratch pass
         # (ZHawk's 46 fitness messages never survived the valve).
         ("last_full_rebuild_at", "ALTER TABLE user_profiles ADD COLUMN last_full_rebuild_at TEXT"),
+        # The member's messages each kept profile bullet rests on, as JSON
+        # {normalised line: [chat_messages.id]}, shown to the writer again
+        # on the next refresh (scripts/profile_guards.py, 2026-11-06).
+        ("profile_sources", "ALTER TABLE user_profiles ADD COLUMN profile_sources TEXT"),
         # analyst_trades migration: add price + caller columns on existing deploys.
         ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
         ("caller", "ALTER TABLE analyst_trades ADD COLUMN caller TEXT"),
