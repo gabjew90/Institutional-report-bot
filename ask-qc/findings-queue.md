@@ -954,3 +954,9 @@ no findings (0 FAIL). Claude judge, 6 CONCERN entries. Candidate for a prompt se
 - **judgment (CONCERN)** (15:33 UTC, Sam, "Puts monsoon" as a reply to a PLTR trade log): a reply that addresses a member got a full PLTR outline; report date "Nov 2" vs news "Nov 3".
 - **judgment (CONCERN)** (18:27 UTC, kloh): an "indexes" question answered from ^GSPC alone with a `truncated` payload and no disclosure.
 - **tooling note**: the CI validator CLI still lacks `aiohttp` (eleventh day running).
+
+## 2026-11-06
+no findings (no FAIL entries). Notes:
+- **infra (urgent)** (17:59 UTC, G, reply asking for Oracle revenue by year): `402 RESOURCE_EXHAUSTED, Your prepayment credits are depleted`. AI Studio prepay credits ran out. Owner billing action needed, or every Gemini call fails.
+- **judgment (CONCERN)** (17:51 UTC, Ry, default % for CRWV/ORCL/NBIS): the CRWV "64%" default probability and CDS ranges come from grounding only, and the NBIS line gives no default figure and does not say so.
+- **judgment (CONCERN)** (17:58 UTC, G, Oracle revenue sources): "$34 billion FY2026 cloud revenue" came from grounding only (tradingview.com, spocket.co); not verified.
