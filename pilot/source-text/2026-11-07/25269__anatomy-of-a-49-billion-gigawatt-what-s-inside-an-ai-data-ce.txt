@@ -1,0 +1,361 @@
+ 
+Anatomy Of A $49 Billion Gigawatt: What's Inside An 
+AI Data Center, Who Builds It, And Why The Price 
+Keeps Going Up 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, NOV 04, 2026 - 02:35 AM 
+Everyone has an opinion on how many data centers are being built. Far fewer people could tell 
+you what is actually inside one. 
+That's a problem, because the answer to the second question is quickly becoming the answer to 
+the first. Over the past year the market obsessed over Power (can you get electricity?) and 
+Planning (will the town let you build?). Now, according to Morgan Stanley, the next debate is 
+Price: what it costs to build the thing in the first place. And on that front the numbers are, well, 
+moving in only one direction: the all-in cost of an average US data center is now $49 billion per 
+gigawatt, according to BofA's latest annual "Who Makes the Data Center" primer, up $20 billion 
+from just three years ago. 
+Since we have spent much of the past year on the financing side of the AI supercycle (how the 
+money gets borrowed, from whom, and at what spread), this time we go back to basics with a 
+primer for readers who may not know their chillers from their switchgear: what goes into a data 
+center, who makes each piece, how much capacity is coming, and where the price tag may go 
+from here. We lean on four reports: BofA's 2026 "Who Makes the Data Center" primer(available 
+to pro subs), Morgan Stanley's "Global Data Centers: New constraints (inflation, financing), but 
+capacity growth still compelling", MS's companion "Data Center Capacity Model: ~20% CAGR 
+to Over 300 GW by 2030E", and Bernstein's "U.S. Data Center Capacity: Your seat is skewing 
+your numbers"(all available to pro subs). 
+Let's start with the picture that is worth roughly a thousand words and $49 billion. 
+ 
+
+ 
+ 
+Lesson One: A Data Center Is A Very Expensive Box Of 
+Computers 
+Strip away the jargon and a data center is a warehouse that does three things: it holds 
+computers, it feeds them electricity, and it removes the heat they make. The industry calls the 
+room where the computers live the "white space" and everything that keeps them powered and 
+cooled the "gray space." Nearly every component in the BofA graphic above falls into one of 
+those two buckets. 
+A quick glossary for the rest of this piece 
+●​ MW / GW: data centers are sized by electricity, not square feet. 1 gigawatt (GW) = 1,000 
+megawatts (MW), or very roughly the output of one large nuclear reactor. 
+●​ IT GW vs. utility GW: "IT" capacity is the power that reaches the computers; "utility" or 
+"facility" capacity is everything pulled from the grid, including cooling and losses. The 
+ratio (PUE) runs about 1.25-1.3x, which is one reason everyone's numbers disagree. 
+●​ UPS: uninterruptible power supply, a giant battery bank that bridges the 15-30 minutes 
+until the diesel generators kick in. 
+ 
+
+ 
+●​ Switchgear / transformers: the breakers and voltage step-down gear between the grid 
+and the building. 
+●​ Chillers, CDUs, cooling towers: the plumbing that moves heat from chips to the outside 
+air. 
+●​ Hyperscalers: Amazon, Microsoft, Google, Meta, Oracle. Neoclouds: GPU-renters like 
+CoreWeave and Nebius. Colocation: landlords like Equinix and Digital Realty that rent 
+space and power to others. 
+So where does the $49 billion per GW (or $49 million per MW) actually go? The answer 
+surprises most people who picture concrete and steel: about 78% of the bill is the IT equipment 
+itself, i.e., servers, networking and storage. Servers alone are $31.4 million per MW, or 64% of 
+the total. All the electrical gear is 5%, the cooling gear 3%, and the building plus engineering, 
+installation and contractor profit is about 11%. 
+ 
+Here is BofA's full line-item breakdown, which also shows that an AI-focused facility costs even 
+more, about $57 billion per GW. As BofA's Andrew Obin and team note, "higher IT equipment 
+costs drive $7mn of the $8mn increase," partly offset by the fact that an AI building needs 
+roughly 35% less floor space because the racks are so much denser. 
+ 
+
+ 
+ 
+Morgan Stanley slices it slightly differently, splitting a build into "passive" infrastructure (land, 
+shell, electrics, cooling) and "active" spend (GPUs, CPUs, memory, networking). Same 
+conclusion: the chips are the elephant in the room, and Nvidia is the elephant's landlord. 
+ 
+And for those who prefer a picture with dollar signs on it, here is the Stanford/Cushman & 
+Wakefield breakdown MS uses for a 1GW, gas-powered US AI campus: $60 billion all-in, of 
+which $41 billion is IT hardware ($30 billion for GPUs alone) and $19 billion infrastructure. Note 
+ 
+
+ 
+the irony flagged in the graphic itself: power is ~5% of the cost, and yet it is "the bottleneck for 
+getting projects up and running." 
+ 
+Translation: when someone says a gigawatt costs $50-60 billion, roughly two-thirds to 
+three-quarters of that is chips and servers that will need replacing in a few years, a point worth 
+keeping in mind next time a hyperscaler extends the useful life of its servers (something we 
+discussed in "Is The AI Spending Boom Creating A Depreciation Time Bomb?" this past June. 
+Lesson Two: Who Makes What 
+BofA sizes the market and estimates vendor shares for 13 separate categories. We condensed 
+it into one table, which doubles as a decent shopping list for anyone looking for AI 
+picks-and-shovels exposure that isn't called Nvidia. 
+ 
+
+ 
+ 
+A few things stand out: 
+●​ Servers are a $415 billion market, and most of it doesn't go through a brand-name 
+vendor. "ODM direct" (Taiwanese contract manufacturers building to the hyperscalers' 
+own designs) takes 52%. Dell, the largest OEM, has just 7%. 
+●​ The power business is an oligopoly. In the $30 billion electrical market, BofA estimates 
+Schneider leads with 24%, followed by Eaton (17%) and Vertiv (12%); the six largest 
+vendors control nearly 80%. 
+●​ Cooling is more fragmented. In the $18 billion thermal market Vertiv leads with 17%, 
+then Johnson Controls (15%), and "others" still hold 37%. Liquid cooling, at $4-5 billion 
+in 2025, "is likely to more than double in 2026," with BofA counting 30 vendors offering 
+over 100 different coolant distribution units. Something tells us not all 30 will survive. 
+●​ Caterpillar owns backup power, with 42% of a $12-16 billion generator market. 
+●​ Construction is a $60-80 billion market with ~4% operating margins, which tells you who 
+holds the pricing power in this chain (hint: not the guys pouring concrete). 
+ 
+
+ 
+ 
+Morgan Stanley's AlphaWise survey of operators across the US, China, UK, France and Spain 
+largely confirms the pecking order in electrical systems: Schneider is used by 51% of operators, 
+ahead of Siemens (37%) and ABB (32%). The one name to watch, according to the survey, is 
+Beijing Sifang Automation, which operators expect to grow its share in the UK and US over the 
+next two years. China, as usual, is coming. 
+The vendors know they are sitting on a gold mine, and they are buying up the smaller fish: BofA 
+lists over $40 billion of acquisitions in data center infrastructure since 2024, including Eaton's 
+$9.5 billion purchase of Boyd Thermal, Ecolab's $4.75 billion deal for CoolIT, and Flex's $4.4 
+billion purchase of EPC Power. The logic is what Jensen Huang calls "extreme codesign": 
+Nvidia now redesigns its rack every two chip generations on a "one-year rhythm," so suppliers 
+who can deliver power and cooling as a single integrated system get invited into the room, and 
+those who can't, well, get left out of it. 
+ 
+
+ 
+Lesson Three: The Plumbing Is Changing (And That's Not Cheap) 
+If you're wondering why a data center built in 2026 costs more than one built in 2024, part of the 
+answer is that it's a different machine. Nvidia's Rubin Ultra "Kyber" rack is expected to draw 
+over 1,000 kilowatts per rack, the kind of load that used to run an entire small data center. 
+Pushing that much power through traditional wiring doesn't work, so the industry is moving from 
+480-volt alternating current to 800-volt direct current, something we first previewed in "Nvidia's 
+Transition To 800 Volts: A Look Inside The Next AI CapEx Surge" last December. BofA expects 
+the first "power sidecars" to ship in 2027, followed eventually by solid-state transformers. 
+ 
+On paper the total electrical content per MW barely changes (from $2.54 million to $2.66-2.82 
+million), but BofA warns its content-per-MW estimate is "likely conservative," and gives an 
+example of why: a traditional AC hot-swap controller costs $2-3, while an 800-volt version 
+requiring silicon carbide costs over $20, or 5-10x the comparable lower-voltage part. Solid-state 
+circuit breakers? Also "directionally" 5-10x. And the last time the industry tried a DC rollout 
+(ABB's Validus DC in 2011), "the initial cost to deploy was much higher." In other words, the new 
+plumbing will cost more than the spreadsheet says, which is pretty much how every new 
+plumbing project works. 
+ 
+
+ 
+ 
+Cooling is going through a similar upheaval. Direct-to-chip liquid cooling went from 5-10% of 
+energized IT load in 2024 to 15-20% in 2025 and could exceed 30% in 2026. And no, Jensen's 
+CES comment that Vera Rubin won't need water chillers (thanks to 45°C supply water) doesn't 
+mean the end of the chiller business: BofA says investors "often overinterpret" it, since 
+networking gear, power electronics and storage still need to be air-cooled. Useful math for the 
+uninitiated: every 1 MW of data center needs about 285 tons of cooling, the same as a 115,000 
+square foot office building. 
+How Much Is Being Built? Depends Who You Ask (Literally) 
+Now multiply all of the above by an awful lot of megawatts. BofA estimates global data center 
+spending grew from about $278 billion in 2022 to nearly $1 trillion in 2026, and forecasts $2.1 
+trillion in 2028 and $2.9 trillion by 2030, a 37% annual growth rate. Its 2028 forecast is 122% 
+higher than what it published just a year ago. And since data centers take 18-24 months to 
+build, BofA notes that "much of this spending is already financed, permitted, and contracted." 
+ 
+ 
+
+ 
+The single biggest driver: US cloud capex, which BofA forecasts to top $1.2 trillion in 2028, a 
+number we first penciled back in September, when we pointed out that funding the hyperscalers' 
+capex would require them to issue more duration than the US Treasury: 
+ 
+Who owns all this capacity? Colocation landlords are still the largest category globally, but the 
+new kids on the block are growing fastest: BofA expects neoclouds to own 6% of energized 
+global capacity in 2026, up from less than 0.3% in 2023. 
+ 
+Morgan Stanley, which counts IT capacity including more of China, sees the global installed 
+base at about 136 GW by the end of 2026, growing 23% a year to 316 GW by 2030. That's 
++180 GW in four years, of which the US adds 88 GW and China 49 GW, while Europe (+12 GW) 
+ 
+
+ 
+does what Europe does best: regulates. The bull case is 377 GW; the bear case, "with 
+restrictions across all Five Ps," is 240 GW. 
+ 
+MS's capacity model team (Cameron McVeigh, Stephen Byrd) also shows who will own it: 
+Alphabet goes from 6.9 GW of owned IT capacity this year to 33.9 GW by 2030, with SpaceX's 
+terrestrial data centers growing 72% a year (yes, really). 
+ 
+
+ 
+ 
+But how much is the US really building? Bernstein's Madison Rezaei says it is "by far the most 
+frequent question that hits our collective inboxes", and the honest answer is that nobody knows. 
+A survey of 63 forecasts from 40 sources yields a spread of 59 GW to 186 GW for 2030. Even 
+the starting point is disputed: credible estimates for capacity at the end of 2025 range from 30 to 
+80 GW, "a number that was theoretically known ten months ago." And forecasters keep chasing 
+the number higher: McKinsey bumped its 2030 forecast by 258% in a year, BCG by 155%, EPRI 
+by 99%. Bernstein, to its credit, admits its own numbers have "ballooned" too. 
+ 
+ 
+
+ 
+Bernstein's punchline is in the title: your seat skews your numbers. Infrastructure and REIT 
+analysts count physical sites and skew conservative; industrial analysts see equipment orders 
+early and skew high; tech analysts back into GWs from hyperscaler capex, which requires 
+"some broad assumptions that are hard to validate." After running all five methods, Bernstein 
+lands on 149 IT-GW in the US by 2030, adding 19 IT-GW in 2027 and 25 IT-GW in 2028. 
+Curiously, MS gets to almost exactly the same place (152 GW) from a much higher starting 
+point (49 GW vs. Bernstein's 34 GW), which means Bernstein implicitly expects much faster 
+growth. 
+ 
+One more thing from Bernstein worth keeping in mind: only about 35% of the announced 
+pipeline is "credible", which is consistent with what we reported in August, when we noted that 
+more than two-thirds of the power sought for US data centers will never materialize. 
+Where The Price Goes From Here: The "Price" P 
+Which brings us to the most important question for anyone paying for all this. Morgan Stanley's 
+Emmet Kelly argues that after Power and Planning, the third of the bank's "Five Ps" (Power, 
+Planning, Price, People, Priority) is about to take center stage: 
+Indeed, the cost of building DCs has been increasing at a very steady, but recently-accelerating 
+rate - from $30bn/GW (in 2022/23) to a projected $50-60bn/GW, by the end of the decade... 
+Thus, this raises an important question to DC decision-makers: do DC builders scale back their 
+capacity projects, or face higher capex costs? 
+ 
+
+ 
+The data from MS's AlphaWise survey is not encouraging. Operators say total data center costs 
+rose an average of 12% over the past year (from +10% in Spain to +15% in China), and they 
+expect +15% a year over the next two years, with the US (+17%) and China (+18%) the worst. 
+Builders and suppliers tell the same story: +11% last year, +15% a year ahead. Practically 
+nobody (1%) expects costs to fall. 
+ 
+And what's notable is how broad-based it is. As MS puts it, "some 12 factors had a response 
+rate of 20% or more." Electrical systems top the list at 36%, followed by building materials 
+(34%), cooling (31%) and grid connection (29%). In the US specifically, the top two drivers are 
+land purchase (46%) and electrical systems (44%). 
+ 
+
+ 
+ 
+
+ 
+ 
+Here is MS's line-by-line inflation tally, which reads like a list of everything we have been writing 
+about for the past year: 
+●​ Powered land: 5-year inflation of more than 40% in the US and more than 70% in 
+Europe. A parcel with existing power "can be worth multiples times the value of other 
+land." 
+●​ Transformers: up 40-75% in the US over six years; switchgear inflation running above 
+12% a year since 2021; cooling equipment up more than 30% cumulatively in five years. 
+(Regular readers will recall that power transformer lead times hit record highs back in 
+June.) 
+●​ Gas power plants: $3 billion per GW, "almost triple where they were just a few years 
+ago," which is what happens when GE Vernova is "Now Taking Reservations For 2031 
+Delivery". 
+ 
+
+ 
+●​ Labor: technical wages are up 30% from a few years ago, and skilled trades were one of 
+the "Three Key Constraints That Could Derail The Data Center Buildout Story" we 
+flagged back in February. 
+●​ Sustainability: a liquid-cooled facility carries a roughly 10% capex premium over an 
+air-cooled one. 
+And then there's memory, which MS calls "unquestionably the newest driver of inflation." For six 
+decades the price of a gigabyte of DRAM fell about 90% every five years, "the purest 
+expression of Moore's Law in the cost data." That era is over: memory prices have risen more 
+than six-fold in a year, and TrendForce sees the memory market going from ~
+890 billion in 2026. The incremental ~$600 billion "is larger than the entire 
+220𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑖𝑛2025𝑡𝑜~
+standalone TAM for smartphones, PCs or servers." 
+ 
+We have been tracking the "Great Memory Crunch" since January and its spillover into the 
+broader economy in "The Shocking Impact Of Memory 'Chipflation'" in June. The Fed has 
+noticed too: 
+So what does all this mean for the price of a gigawatt? MS's warning is about the "compounding 
+effect": if build inflation merely averages 8% a year through 2030 (which assumes it slows from 
+12% now to 5% by 2030), the total build cost rises 50% in just five years. We ran the numbers 
+off BofA's $49 billion per GW starting point under three scenarios. Even the gentle one gets you 
+to $60 billion by 2030; if operators are right about +15% for the next two years, it's closer to $76 
+billion. 
+ 
+
+ 
+ 
+(Some caveats: BofA's $49 million per MW excludes land and grid hookups, the MS/Stanford 
+$60 billion includes an on-site gas plant, and much of the IT bill is chips whose price per unit of 
+compute can fall even as the price per rack rises. These are illustrative paths, not forecasts. But 
+the direction is not in doubt.) 
+Some quick napkin math shows why this matters: MS expects about 180 GW of new global 
+capacity between 2026 and 2030. At $49-60 billion per GW, that's roughly $9-11 trillion, which 
+lines up nicely with BofA's cumulative 2026-2030 spending forecast of $10.1 trillion. At $76 
+billion per GW, the same 180 GW costs $13.7 trillion. Either someone finds another $3-4 trillion, 
+or someone builds fewer gigawatts. 
+Where It Gets Built: Cheap Power, Cheap Land, Or Both 
+Cost isn't uniform around the world. MS estimates the passive infrastructure (powered land, 
+shell, electrical, cooling, before any GPUs) costs about $16 million per MW in the US and 
+Japan, vs. roughly $3 million in China, with India around $7 million. Energy is a separate story: 
+Europe and Japan pay about $145/MWh for industrial power, the US about $90, and Saudi 
+Arabia about $60. As an illustration, in Western Europe a customer paying €175 per kW per 
+month for AI capacity would pay roughly another €150 just for the electricity. 
+ 
+
+ 
+ 
+And then there's the binding constraint. MS projects a 70 GW US power shortfall through 2028 
+before "time to power" fixes (fuel cells, gas turbines, recip engines, bitcoin miners' powered 
+shells), shrinking to 43 GW after them, and to 38 GW once some spillover to Asia is counted. 
+Globally, MS's capacity team sees a 49 GW shortfall by 2028. 
+ 
+This, for what it's worth, is the same shortfall math we first highlighted a year ago, back when a 
+gigawatt was "only" $60 billion in grid funding... not including the building: 
+Hence the scramble to "bring your own power." BofA tracks 158 GW of planned on-site gas 
+generation projects, of which only 2 GW are operating and 24 GW under construction; the rest 
+ranges from "probable" to "speculative." The reason is simple: power projects that went live in 
+2025 waited a median of 5.1 years to connect to the grid. Goldman, which now sees 
+ 
+
+ 
+behind-the-meter power supplying 25% of all data centers by 2030 (Sep 27), has finally come 
+around to what we said last Christmas Eve: 
+ 
+Who Pays The Bill When The Bill Keeps Growing? 
+Which brings us right back to financing, where this whole story began for us. MS counts $471 
+billion of AI-related debt issuance across global credit markets this year (through Oct 20), 2.2x 
+the $216 billion issued in all of 2025, while its AI CDS basket now trades more than 60bp wider 
+than CDX IG. As MS's Kelly notes, funding needs keep growing "partly driven by rising 
+construction costs," and "credit markets are becoming more selective": the AA-rated 
+hyperscalers can keep borrowing, while lower-rated hyperscalers and neoclouds "may 
+increasingly need to rely more on secured, asset-level financing." 
+ 
+
+ 
+ 
+None of this will surprise regular readers: we have been warning since last October that AI is 
+now a debt bubble too, and just last week we asked whether MS's AI debt "lull" was a "Pause Or 
+Wall?" Rising build costs make that question more urgent: every 10% of inflation on a $10 trillion 
+buildout is another trillion dollars someone has to borrow. 
+Bull Case, Bear Case, And The Case For The Landlord 
+So who wins? The sell-side is unanimous on one thing: whoever already owns powered 
+capacity. Bernstein says "ownership of, or exposure to, energized capacity remains particularly 
+valuable, as new supply is often absorbed shortly after delivery." MS's survey shows US 
+contract pricing for capacity signed in the last three months is ~12% higher than a year ago, and 
+the bank just named Equinix (EQIX) its Top Pick because supply constraints "should further 
+strengthen pricing power" for incumbents. The suppliers in our table above (Schneider, Eaton, 
+Vertiv, Caterpillar, JCI and friends) are, for now, charging whatever the market will bear. The 
+loser is whoever has to build a new gigawatt at 2028 prices with 2028 interest rates. 
+MS frames the dilemma as a choice between scaling back capacity or eating higher capex. In 
+theory the answer is "both," and in practice we suspect the answer will be picked by the bond 
+market. With the price of a gigawatt compounding at double digits, memory up six-fold, 
+transformers sold out and credit getting pickier by the week, we think the 240 GW bear case is a 
+lot more likely than the 377 GW bull case, and that "delay" is about to become the most popular 
+word in data center press releases (if it isn't already). 
+ 
+
+ 
+Or, as MS put it with typical sell-side understatement, Price is "almost certainly going to become 
+a sharply-increased focal point for the industry." We'd say it already has. 
+Much more in the full BofA "Who Makes the Data Center 2026" primer, the Morgan Stanley 
+"Global Data Centers" and "Data Center Capacity Model" notes, and Bernstein's "Your seat is 
+skewing your numbers", all available to pro subs. 
+ 
+ 
+ 
+ 
