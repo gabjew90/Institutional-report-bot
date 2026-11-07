@@ -402,6 +402,7 @@ def export_user_profiles_markdown() -> str:
 
 PINNED_ALIASES: dict[str, int] = {
     "kyle": 423994649317736448,   # bankerkyle (BK), owner 2026-09-24
+    "wiz": 1217874012659519580,   # Wizard of Alt, owner 2026-11-06 (run 8 M11)
 }
 ALIAS_MIN_MSGS = 50
 ALIAS_MIN_SHARE = 0.02

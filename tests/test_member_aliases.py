@@ -41,6 +41,11 @@ def test_kyle_is_bankerkyle_by_owner_pin():
     assert AMAP["bearishkyle"] == BK
 
 
+def test_wiz_is_wizard_of_alt_by_owner_pin():
+    """Owner 2026-11-06: "Doubling down with Wiz here" was stored as WIZ shares."""
+    assert C.PINNED_ALIASES["wiz"] == 1217874012659519580
+
+
 def test_prank_renames_do_not_count():
     """Yeezy's 10 messages as "Banker Kyle" must not make "banker kyle"
     his, and Aunt Jemima's 7 as "Monsoon" must not make "monsoon" hers."""
