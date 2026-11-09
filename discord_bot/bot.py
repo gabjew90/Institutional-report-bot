@@ -8285,6 +8285,14 @@ def _fantasy_percent_guard(answer, question, _ask_meta):
     est = _ask_meta.get("fantasy_estimates") or {}
     if not _fg.stray_percents(answer, est, question):
         return answer
+    # First put the right number in: a stray win % in a sentence about one
+    # side becomes that side's estimate (owner, 2026-11-09). What code
+    # cannot place goes to the strip below.
+    answer, _n_fixed, _ = _fg.correct_stray(answer, est, question)
+    if _n_fixed:
+        _ask_meta["guards"].append(f"fantasy-percent:corrected:{_n_fixed}")
+    if not _fg.stray_percents(answer, est, question):
+        return answer
     # The shared floor (guard_floor): on 2026-10-18 this strip cut a
     # 25-word reply to "He's cooked" down to 3 words over an 11% the bot
     # had itself posted one message earlier. That cause was fixed on

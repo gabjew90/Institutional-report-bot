@@ -8,8 +8,11 @@ sending the question to the league data: the model reaches for the nearest
 percentage in the chat. Sleeper's own Win% is not in any Sleeper API, so
 the only win chances the bot has are its own estimates in the payload
 (report/sleeper_data.win_chance). A fantasy answer whose win percentage is
-not one of those loses the sentence that carries it (`strip_stray`);
-the rewrite that ran first until 2026-10-30 is gone (audit design note 2).
+not one of those first gets the right number from the payload when code
+can tell which side its sentence is about (`correct_stray`, owner
+2026-11-09); otherwise it loses the sentence that carries it
+(`strip_stray`). The model rewrite that ran until 2026-10-30 is gone
+(audit design note 2).
 """
 from __future__ import annotations
 
@@ -76,6 +79,72 @@ def stray_percents(answer: str, estimates: dict[str, int], question: str = "") -
         out += [m.group(0) for m in _PCT_RE.finditer(sentence)
                 if float(m.group(1)) not in allowed]
     return out
+
+
+# Label words that are not a manager's name: "(you)", "(opponent)",
+# "Sleeper <username>" and "(not on discord)" come from the payload's labels.
+_LABEL_NOISE = frozenset({"you", "opponent", "sleeper", "not", "on", "discord"})
+# A sentence about an earlier moment ("going into the game he had 23%")
+# cannot take the current estimate.
+_EARLIER_RE = re.compile(
+    r"\b(?:before|going\s+into|went\s+into|heading\s+into|started|kick-?off|pre-?game|"
+    r"was|were|had)\b", re.I)
+# A sentence that refers to the other side without naming it ("his
+# opponent has a 90% chance") cannot be placed by the one name it carries.
+_OTHER_SIDE_RE = re.compile(
+    r"\b(?:opponents?|opp|against|vs\.?|versus|facing|underdog|favou?rite)\b", re.I)
+
+
+def _label_names(label: str) -> list[str]:
+    """'BK (bankerkyle) · Sleeper bankerkyle + Jamal' -> ['BK', 'bankerkyle', 'Jamal']."""
+    words = re.findall(r"[A-Za-z0-9_.]{2,}", label or "")
+    return [w for w in words if w.lower() not in _LABEL_NOISE]
+
+
+def _side_of(sentence: str, estimates: dict[str, int]) -> str | None:
+    """The one estimate label a sentence is about, else None. A sentence
+    names a side by a manager's name; one addressed to "you" is about the
+    "(you)" side of a situation payload, unless it also names a manager."""
+    named = {lbl for lbl in estimates
+             if any(re.search(r"(?<![A-Za-z0-9_])" + re.escape(w) + r"(?![A-Za-z0-9_])",
+                              sentence, re.I) for w in _label_names(lbl))}
+    if _YOU_RE.search(sentence):
+        # "Tulch is at 55 against your 32, a 62% chance": the chance may be
+        # either side's, so a sentence to "you" resolves only to the
+        # "(you)" side and only when it names no other manager
+        mine = {lbl for lbl in estimates if lbl.endswith("(you)")}
+        if not mine or named - mine:
+            return None
+        named = mine
+    return next(iter(named)) if len(named) == 1 else None
+
+
+def correct_stray(answer: str, estimates: dict[str, int],
+                  question: str = "") -> tuple[str, int, int]:
+    """(answer, corrected, unresolved). A stray win percentage is replaced
+    by the estimate of the side its sentence is about (2026-11-09, owner:
+    fix the number rather than strip or keep the sentence). A sentence is
+    left alone, and counted unresolved, when it carries more than one
+    stray, names no side or two, or speaks of an earlier moment."""
+    fixed = unresolved = 0
+    out_lines = []
+    for line in (answer or "").split("\n"):
+        new_line = line
+        for sent in _SENTENCE_SPLIT_RE.split(line):
+            strays = stray_percents(sent, estimates, question)
+            if not strays:
+                continue
+            side = _side_of(sent, estimates) if len(strays) == 1 else None
+            if side is None or _EARLIER_RE.search(sent) or _OTHER_SIDE_RE.search(sent):
+                unresolved += 1
+                continue
+            num = _PCT_RE.match(strays[0]).group(1)
+            new_sent = re.sub(r"(?<![\d.])" + re.escape(num) + r"(?=\s?%)",
+                              str(estimates[side]), sent, count=1)
+            new_line = new_line.replace(sent, new_sent, 1)
+            fixed += 1
+        out_lines.append(new_line)
+    return "\n".join(out_lines), fixed, unresolved
 
 
 NO_ESTIMATE_LINE = ("→ I don't have a win chance for that one: Sleeper doesn't publish its "
