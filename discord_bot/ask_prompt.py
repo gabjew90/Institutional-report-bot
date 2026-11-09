@@ -81,6 +81,9 @@ commit-history search key; the rule is what matters now):
               MSTR story (its premium had compressed
               to parity) moved out of the body:
               adds 146, removes 188, net -42         -> ticker_liveness.py, subject memory (code)
+  2026-11-09  (code) check_unforced_price, _market_data
+              and _time_series deleted: 11 fires in 60
+              days, none caught a wrong figure        -> figure_provenance checks the figure
 
 (The 2026-07-27 entry above continues: planets sarcasm; ZHawk feedback
 clapback -> price backstop-fetch, FACT jab strip, router feedback

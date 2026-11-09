@@ -31,7 +31,7 @@ prints with its text for review rather than being auto-classified away.
 USAGE
 =====
     python scripts/validator_sweep.py            # every class
-    python scripts/validator_sweep.py --rule unforced-price
+    python scripts/validator_sweep.py --rule macro-unsourced
     exit 0 -> no false positives.  1 -> review needed.
 """
 from __future__ import annotations
@@ -56,19 +56,8 @@ from scripts.ask_response_validate import _CHECKS  # noqa: E402
 # An entry here is a claim that a human looked. Never add one to silence
 # a flag you have not read.
 REVIEWED_TRUE_POSITIVES = {
-    ("11c-no-self-technical-analysis", "unforced-price"):
-        "'$NVDA is currently trading at $126.46' with no "
-        "lookup_market_price call. Real unforced price; 11c only asserts "
-        "the no-self-TA rule, so its own fixture passes.",
-    ("07a-no-time-series-claims", "unforced-market-data"):
-        "'Call open interest down -10.7%' with no lookup_options_chain "
-        "call. Real class-4 violation.",
-    ("07a-no-time-series-claims", "unforced-time-series"):
-        "'over the past **5 days**' from snapshot tools. A real class-5 "
-        "violation that 07a's own assertion MISSED because the pattern "
-        "was markdown-blind. The assertion is now fixed, but the corpus "
-        "records the verdict as it stood when the answer was captured, "
-        "so history cannot be relabelled -- hence this entry.",
+    # The three entries here were for unforced-price, unforced-market-data
+    # and unforced-time-series, retired 2026-11-09.
 }
 
 

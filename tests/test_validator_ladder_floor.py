@@ -46,16 +46,15 @@ def test_an_ungrounded_unsourced_print_still_gets_the_refusal():
     assert how == "replaced" and out == V.SAFE_REFUSAL
 
 
-def test_an_eps_estimate_and_an_all_time_high_are_not_live_prices_2026_10_26():
-    """Audit A2/A10: SPCX's "$0.14" EPS estimate and FVRR's all-time high
-    were cut as unsourced prices."""
-    a = "→ **SPCX** reports after the close today; consensus EPS sits at **$0.14**."
-    assert V.check_unforced_price(a, tool_calls=[]) == []
-    b = "→ **FVRR** hit an all-time high of **$336.00** in February 2021."
-    assert V.check_unforced_price(b, tool_calls=[]) == []
-    c = "$NVDA trading at $181.20"
-    assert V.check_unforced_price(c, tool_calls=[])        # a live quote still needs the tool
-    assert V.check_unforced_price(c, tool_calls=["lookup_ticker_snapshot"]) == []
+def test_the_tool_gated_figure_checks_are_retired_2026_11_09():
+    """The price, chain-statistic and trend checks keyed on which tool ran,
+    not on the figure, and none of their 11 fires in 60 days caught a wrong
+    figure (it cut FVRR's all-time high as an unsourced price). The
+    figure-provenance check covers an unsourced figure."""
+    for rule in ("unforced-price", "unforced-market-data", "unforced-time-series"):
+        assert rule not in V._CHECKS
+    a = "→ **FVRR** hit an all-time high of **$336.00** in February 2021."
+    assert V.validate(a, tool_calls=[]) == []
 
 
 def test_a_strip_that_empties_a_short_answer_ships_the_original():

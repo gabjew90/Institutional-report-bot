@@ -2043,6 +2043,29 @@ def _trace_has_source(tool_trace) -> bool:
     return False
 
 
+def _draft_on_own_data(answer: str, evidence: str) -> bool:
+    """True when the draft carries figures and every one is in `evidence`
+    (the caller passes what code supplied: tool payloads, code-built
+    blocks, code output and the bot's own message being replied to).
+
+    The grounding re-run exists to source figures nothing supplied. A
+    draft built from the turn's own data has none, and in the 2026-11-09
+    replay re-running such drafts on Google made them worse: CRWD's
+    fundamentals were swapped for last quarter's results, a COST implied
+    move off the chain was muddled, Abe's SMCI close turned into an
+    answer about the Strait of Hormuz. Chat stays out because a market
+    figure a member once pasted still needs a source (the market-shape
+    net's rule since 2026-08-19), and so do the asker's own figures."""
+    if not answer:
+        return False
+    try:
+        from discord_bot import figure_provenance as _fp
+        figs, missing = _fp.unsourced_figures(answer, evidence or "")
+    except Exception:
+        return False
+    return bool(figs) and not missing
+
+
 def _tool_sourced(answer: str, tool_trace, evidence: str) -> bool:
     """True when a data tool returned something this turn and every
     figure in the answer is in what the turn saw (the figure-provenance
@@ -4828,14 +4851,17 @@ def _evidence_context(user_content) -> str:
     return "" if uc.startswith("WHO'S TALKING") else uc
 
 
-def _ask_evidence_text(contents, response, question, user_content) -> str:
+def _ask_evidence_text(contents, response, question, user_content,
+                       chat: bool = True) -> str:
     """Everything the turn saw or produced with a tool, as one string,
     for the figure-provenance check: injected blocks and function
     responses in `contents`, code-execution output in the final
     response, the question, and the chat context and prior answers in
-    user_content. Module-level and total so a test can run it on real
-    Part objects; a part it cannot read contributes nothing."""
-    chunks: list[str] = [question or "", _evidence_context(user_content)]
+    user_content. `chat=False` leaves out the chat context and prior
+    answers, for a check that wants the turn's own data only.
+    Module-level and total so a test can run it on real Part objects; a
+    part it cannot read contributes nothing."""
+    chunks: list[str] = [question or "", _evidence_context(user_content) if chat else ""]
     for c in contents or []:
         # Model turns are the model's own words, not evidence; only their
         # sandbox output counts. The prompt turn is admitted through
@@ -6487,8 +6513,11 @@ async def _ask_06_roast_subject_guards(
             )
     # Verbatim-span repeat (2026-09-19). Not gated on clapback shape:
     # the answers that repeated were RANKINGS, which carry no clapback
-    # shape. The sentence carrying the span is stripped when enough of
-    # the answer is left (never reworded since 2026-10-30).
+    # shape. Recorded only since 2026-11-09: in a 60-day replay none of
+    # its changes helped and three hurt (the AMD line cut from "give me
+    # amd, qcom, arm earnings expectations", a 217-word answer cut to 25).
+    # A figure or a schedule the room heard before is often still the
+    # right answer, and the check cannot tell that from a recycled joke.
     _span_pool = (_prior_bot_answer_texts
                   if (answer and not _route_is_factual
                       and not _analysis_extra) else [])
@@ -6499,14 +6528,6 @@ async def _ask_06_roast_subject_guards(
             _ask_meta["guards"].append("repeat-span")
             log.warning(
                 f"/ask: answer repeats a span the room already heard ({_span[:70]!r})")
-            # the span is normalised words, so the sentences are too
-            _sp_head = " ".join(_span.split()[:_REPEATED_JOKE_MIN_WORDS])
-            _sp_bad = [s for s in _split_sentences(answer)
-                       if _sp_head in " ".join(re.findall(r"[a-z0-9$%']+", s.lower()))]
-            _sp_answer = _strip_sentences(answer, _sp_bad)
-            if _sp_bad and _sp_answer.strip() and not _gutted(answer, _sp_answer):
-                answer = _sp_answer
-                _ask_meta["guards"].append("repeat-span:stripped")
 
     return (answer,)
 
@@ -6604,16 +6625,6 @@ async def _ask_07_validation_ladder(
         answer, grounding_metadata, needs_web,
         is_opinion=_is_opinion_request(question),
     )
-    # A draft whose every figure is in a tool payload the turn saw is
-    # sourced: the web net must not throw it away for a Google-only retry
-    # (2026-10-05: BK's earnings slate was rebuilt from Google in 80 s, a
-    # CRWD snapshot answer was discarded). The same check used to run only
-    # after the retry.
-    if _ground_trigger_web and _tool_sourced(
-            answer, _ask_tool_trace,
-            _ask_evidence_text(contents, response, question, user_content)):
-        _ground_trigger_web = False
-        _ask_meta["guards"].append("grounding:tool-sourced")
     # Calendar-slate questions trigger on question shape, not answer
     # shape — a ticker-and-times slate carries no factual-specific
     # markers the other two nets can see (2026-07-20 terlin). Any
@@ -6624,6 +6635,23 @@ async def _ask_07_validation_ladder(
         and not _grounding_has_sources(grounding_metadata)
         and not _trace_has_source(_ask_tool_trace)
     )
+    # One rule for all three nets (2026-11-09): a draft whose every figure
+    # is in the turn's own data is not re-run. The turn's own data is what
+    # code supplied: tool payloads, injected blocks, sandbox output and the
+    # bot's own message the asker replied to. Never the asker's words or a
+    # quoted member: "is it true TSLA delivered 500,000?" answered "yes,
+    # 500,000" would otherwise skip the search (code review). The web net's
+    # exemption of 2026-10-05 (a tool returned data and every figure is in
+    # the full evidence, prior answers included) still holds alongside.
+    from discord_bot.fantasy_guard import _bot_parent
+    if ((_ground_trigger_web or _ground_trigger_shape or _ground_trigger_calendar)
+            and (_draft_on_own_data(answer, _ask_evidence_text(
+                    contents, response, _bot_parent(question), user_content, chat=False))
+                 or (_ground_trigger_web and _tool_sourced(
+                     answer, _ask_tool_trace,
+                     _ask_evidence_text(contents, response, question, user_content))))):
+        _ground_trigger_web = _ground_trigger_shape = _ground_trigger_calendar = False
+        _ask_meta["guards"].append("grounding:tool-sourced")
     # Only when the clock is the whole question: "is KRX open and why is
     # Samsung down" still needs the search for its second half (code review
     # 2026-10-26).
@@ -8257,8 +8285,18 @@ def _fantasy_percent_guard(answer, question, _ask_meta):
     est = _ask_meta.get("fantasy_estimates") or {}
     if not _fg.stray_percents(answer, est, question):
         return answer
+    # The shared floor (guard_floor): on 2026-10-18 this strip cut a
+    # 25-word reply to "He's cooked" down to 3 words over an 11% the bot
+    # had itself posted one message earlier. That cause was fixed on
+    # 10-26; the floor is for the next misread.
+    from discord_bot.guard_floor import gutted as _gutted
+    _trim = _fg.strip_stray(answer, est, question)
+    # the canned no-estimate line stands in for an answer stripped to nothing
+    if _gutted(answer, "" if _trim == _fg.NO_ESTIMATE_LINE else _trim):
+        _ask_meta["guards"].append("fantasy-percent:kept")
+        return answer
     _ask_meta["guards"].append("fantasy-percent:stripped")
-    return _fg.strip_stray(answer, est, question)
+    return _trim
 
 
 # The shapes that wait for the primer (ask_router._stock_prefetch with

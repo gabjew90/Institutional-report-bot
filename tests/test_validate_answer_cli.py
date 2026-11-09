@@ -33,14 +33,14 @@ def test_clean_answer_is_empty():
 
 
 def test_tool_call_exempts_tool_gated_class():
-    """unforced-price is clean when the price tool fired — the CLI must
-    pass tools through or every tool-grounded answer looks unforced."""
-    text = "$NVDA is currently trading at $126.46"
-    with_tool = _run(text, tools="lookup_market_price")
+    """macro-unsourced is clean when the calendar tool fired — the CLI must
+    pass tools through or every tool-grounded answer looks unsourced."""
+    text = "-> payrolls printed 172K against 160K expected."
+    with_tool = _run(text, tools="lookup_economic_calendar")
     without = _run(text)
-    assert not any(v["rule"] == "unforced-price"
+    assert not any(v["rule"] == "macro-unsourced"
                    for v in with_tool["violations"])
-    assert any(v["rule"] == "unforced-price"
+    assert any(v["rule"] == "macro-unsourced"
                for v in without["violations"])
 
 

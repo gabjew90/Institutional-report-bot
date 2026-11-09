@@ -221,16 +221,33 @@ def unsourced_figures(answer: str, evidence: str) -> tuple[list[Figure], list[Fi
     return figs, missing
 
 
+def _compounded(base: float, pcts: list[float]) -> float:
+    out = base
+    for p in pcts:
+        out *= 1.0 + p / 100.0
+    return out
+
+
 def _derived_in_line(line: str, missing_tokens: set) -> set:
-    """Unsourced tokens in `line` that are the difference of two sourced
-    figures on the same line (2026-09-27: "Tulch leading by 3.3 points
-    (119.88 to 116.56)" was hedged as unverified because the 3.3 the
-    model subtracted appears in no payload, and every line of the
-    fantasy matchups answer carried one). Both operands must be written
-    in the line and sourced, so the reader can check the subtraction; a
-    difference against a number from elsewhere does not qualify."""
+    """Unsourced tokens in `line` that are arithmetic on sourced figures
+    written in the same line, so the reader can check the sum:
+
+    - the difference of two figures (2026-09-27: "Tulch leading by 3.3
+      points (119.88 to 116.56)");
+    - a percentage that is the move from one level to another
+      (2026-11-09 replay: "a ~17.2% rise from 7,680 to 9,000" and a
+      position's "-14.9%" from its $3.01 entry and $2.56 last price were
+      both removed);
+    - a stake compounded through every percentage on the line (the same
+      replay: $1,000 through four logged returns, $3,510,715.26).
+
+    Every operand must be written in the line and sourced. A result
+    against a number from elsewhere does not qualify."""
     figs = extract_figures(line)
-    ok = [f.value for f in figs if f.token not in missing_tokens]
+    sourced = [f for f in figs if f.token not in missing_tokens]
+    ok = [f.value for f in sourced]
+    levels = [_norm(f) for f in sourced if f.unit != "%"]
+    pcts = [f.value for f in sourced if f.unit == "%"]
     out = set()
     for f in figs:
         if f.token not in missing_tokens:
@@ -238,6 +255,17 @@ def _derived_in_line(line: str, missing_tokens: set) -> set:
         hu = _half_unit(f.token)
         if any(_close(abs(x - y), f.value, hu)
                for i, x in enumerate(ok) for y in ok[i + 1:]):
+            out.add(f.token)
+        # neighbouring levels only ("from 7,680 to 9,000", "entry $3.01,
+        # last $2.56"): every pair on a dense line would let a recalled
+        # percentage match some unrelated two (code review 2026-11-09)
+        elif f.unit == "%" and any(
+                x and _close(abs(y - x) / abs(x) * 100.0, f.value, hu)
+                for a, b in zip(levels, levels[1:]) for x, y in ((a, b), (b, a))):
+            out.add(f.token)
+        elif f.unit != "%" and pcts and any(
+                _close(_compounded(b, pcts), _norm(f), hu * _SCALE.get(f.unit, 1.0))
+                for b in levels):
             out.add(f.token)
     return out
 

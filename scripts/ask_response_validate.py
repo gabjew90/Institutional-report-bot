@@ -502,178 +502,16 @@ def check_repetition(answer: str, tool_calls=None, **_) -> list[Violation]:
 
 
 
-# ------------------------------------- class 3: unforced price levels
-# An absolute price level for a ticker, index or crypto must come from a
-# lookup_market_price call in the SAME turn. Not memory, not the chat
-# block, not a Google snippet -- snippets return wrong-symbol index
-# numbers, which is how an NDX question once volunteered "near its
-# 52-week highs around $30,500", a level no index called NDX trades at.
-#
-# Keyed on the tool-call log because that is a fact about the turn.
-# Whether a number is "from memory" is not checkable; whether the tool
-# fired is.
-_PRICE_TOOL = "lookup_market_price"
-
-# A ticker-ish token: $CASHTAG, or a bare 2-5 letter symbol, or one of
-# the index/crypto names the room actually uses.
-_TICKERISH = re.compile(
-    r"\$[A-Za-z]{1,5}\b"
-    r"|\b(?:SPX|SPY|NDX|QQQ|DJI|RUT|VIX|ES|NQ|BTC|ETH|SOL|SUI|PEPE|"
-    r"DXY|GLD|SLV|USO|TLT|IWM)\b"
-    r"|\b(?:bitcoin|ethereum|solana|nasdaq|the dow|s&p|russell)\b",
-    re.I,
-)
-
-# An ABSOLUTE level, not a change. "$244.10", "244.10", "5,900", "$4.5k".
-# Percentages are deliberately excluded: "up 1.8%" is a change, and the
-# rule is about levels. Small bare integers are excluded too -- strike
-# counts, contract counts and "8 planets" are not price levels.
-_PRICE_LEVEL = re.compile(
-    r"\$\s?\d{1,3}(?:,\d{3})+(?:\.\d+)?"
-    r"|\$\s?\d+(?:\.\d+)?\s?[kK]?"
-    r"|\b\d{1,3}(?:,\d{3})+(?:\.\d+)?\b"
-    r"|\b\d{3,}\.\d+\b"
-)
-
-# Shapes that are NOT a spot level even though they look numeric.
-# Every entry here came from a FALSE POSITIVE found by scanning 548
-# recorded answers: the first cut flagged "$3 courthouse parking
-# receipts", a company's $490M revenue, an 840,000 employee-ish figure,
-# and 1,200,000 of OPEN INTEREST -- which is class 4's job, not this
-# one. A price validator that strips a revenue sentence is deleting
-# correct content, and the suite pass rate hides it.
-_NOT_A_LEVEL = re.compile(
-    r"\b\d{1,5}\s*[cp]\b"                       # 450c / 190p strikes
-    r"|\bstrike\b|\bexpir|\b\d{1,2}/\d{1,2}\b"
-    r"|\b(?:FDIC|insured|covers?)\b"             # the $250k explainer
-    r"|\bmarket cap\b|\bvaluation\b|\bAUM\b"
-    r"|\brevenue\b|\bannual\b|\bgenerat|\bprofit|\bearnings\b"
-    r"|\bemployees?\b|\bheadcount\b|\bstaff\b|\busers?\b"
-    r"|\bopen interest\b|\bOI\b|\bvolume\b|\bcontracts?\b"
-    r"|\bimplied vol|\bIV\b|\bput-?call\b"
-    r"|\bpayrolls?\b|\bCPI\b|\bPCE\b|\bGDP\b|\bclaims\b"
-    r"|\breceipts?\b|\bparking\b|\bstipend\b|\bjury\b"
-    r"|\bIPO\b|\braised\b|\bfunding\b|\bfloat\b|\bunlock"
-    r"|\bfollowers?\b|\bmessages?\b|\bmsgs?\b"
-    # An estimate or a historical level is not a live quote (2026-10-26
-    # audit: SPCX's "$0.14" EPS estimate and FVRR's all-time high were cut
-    # as unsourced prices, A2/A10).
-    r"|\bEPS\b|\bestimates?\b|\bconsensus\b|\bper share\b|\bguid(?:e|ance|ed)\b"
-    # Not "52-week": "holding near its 52-week highs around $30,500" is a
-    # live level, and a snapshot-sourced range is exempt already (above).
-    r"|\ball[- ]time high\b|\bATH\b|\bpeak(?:ed)?\b|\brecord high\b",
-    re.I,
-)
-
-# A price CLAIM needs price language, not just a number near a ticker.
-# Without this, any figure in a sentence that happens to mention a
-# ticker was treated as a quote.
-_PRICE_CUE = re.compile(
-    r"\b(?:at|around|near|sits?|sitting|trading|trades?|traded|price[ds]?|"
-    r"level|spot|close[ds]?|closing|open(?:ed|ing)?|high|low|print(?:ed|s)?|"
-    r"quote[ds]?|last|bid|ask|hit|touch(?:ed|es)?|holding|above|below|"
-    r"support|resistance|handle)\b",
-    re.I,
-)
-
-# A number immediately followed by a unit is a QUANTITY, not a level:
-# "accumulating 840,000 BTC" is a holdings count. Found by scanning
-# recorded answers -- it was four of the five surviving false positives.
-_QUANTITY_UNIT = re.compile(
-    r"^[\s*_,)\]+~-]*(?:BTC|ETH|SOL|SUI|coins?|shares?|units?|tokens?|"
-    r"contracts?|"
-    r"bitcoin|ether)\b", re.I)
-
-_PRICE_WINDOW = 70
-
-
-def check_unforced_price(answer: str, tool_calls=None,
-                         **_) -> list[Violation]:
-    """Flag an absolute price level stated without the price tool firing.
-
-    The prompt carried this rule in 719 chars, in bold, with the incident
-    quoted. It is a tool-call assertion, so it is checkable, so per
-    CLAUDE.md rule 1 it belongs here instead.
-    """
-    # The snapshot and the earnings tool carry the price too (2026-10-26:
-    # SPCX's answer drew on both and was still flagged).
-    if {_PRICE_TOOL, "lookup_ticker_snapshot", "lookup_earnings_date"} & set(tool_calls or []):
-        return []
-    text = answer or ""
-    for m in _PRICE_LEVEL.finditer(text):
-        lo = max(0, m.start() - _PRICE_WINDOW)
-        hi = min(len(text), m.end() + _PRICE_WINDOW)
-        window = text[lo:hi]
-        if not _TICKERISH.search(window):
-            continue
-        sentence = _line_at(text, m.start())
-        # Strikes, expirations, market caps, macro prints and the FDIC
-        # explainer are all numbers near a ticker that are NOT spot.
-        if _NOT_A_LEVEL.search(sentence):
-            continue
-        # A number beside a ticker is not automatically a quote.
-        if not _PRICE_CUE.search(sentence):
-            continue
-        if _QUANTITY_UNIT.match(text[m.end():m.end() + 20]):
-            continue
-        return [Violation(
-            "unforced-price", m.group(0).strip(), m.span(), sentence,
-            f"absolute price level with no {_PRICE_TOOL} call this turn")]
-    return []
-
-
-
-# ------------------------------- class 4: unforced market-data stats
-# Open interest, options volume, implied volatility and put-call ratios
-# come from lookup_options_chain. Stated without it, they are pattern
-# matched from a Google snippet or memory -- the 2026-06-06 shape, where
-# "SPY June OI 248,553 / IV 10.3% / put-call 1.28" shipped with no live
-# source behind any number.
+# ----------------- classes 3, 4 and 5: retired 2026-11-09
+# check_unforced_price, check_unforced_market_data and
+# check_unforced_time_series were deleted after a replay of every /ask
+# answer they fired on over 60 days (Sep 10 - Nov 7, 11 fires): none
+# caught a wrong figure. They keyed on which tool ran, not on whether the
+# figure was sourced, so they stripped the answer to "what was fivrr ath",
+# sent a canned "pull it from your broker" for a missing SPCX row, and
+# regenerated sourced race-board and chat counts. A figure nothing
+# supplied is figure_provenance's job, which checks the figure itself.
 _CHAIN_TOOL = "lookup_options_chain"
-
-_CHAIN_STAT = re.compile(
-    r"\b(?:open interest|OI)\b"
-    r"|\bput[-/ ]?call(?:\s+ratio)?\b"
-    r"|\bimplied vol(?:atility)?\b|\bIV\b"
-    r"|\boptions?\s+volume\b|\bcall\s+volume\b|\bput\s+volume\b"
-    r"|\bgamma exposure\b|\bGEX\b|\bdealer positioning\b",
-    re.I,
-)
-
-# A NUMBER attached to that stat. Without one it is commentary, not an
-# assertion: "IV is elevated" states nothing checkable, "IV at 12.1%"
-# does.
-_CHAIN_FIGURE = re.compile(
-    r"\d+(?:\.\d+)?\s?%"
-    r"|\b\d{1,3}(?:,\d{3})+\b"
-    r"|\b\d+(?:\.\d+)?\s?[KkMm]\b"
-    r"|\b\d+\.\d+\b"
-)
-
-_CHAIN_WINDOW = 90
-
-
-def check_unforced_market_data(answer: str, tool_calls=None,
-                               **_) -> list[Violation]:
-    """Flag a chain statistic with a figure, absent the chain tool."""
-    if _CHAIN_TOOL in (tool_calls or []):
-        return []
-    text = answer or ""
-    for m in _CHAIN_STAT.finditer(text):
-        lo = max(0, m.start() - _CHAIN_WINDOW)
-        hi = min(len(text), m.end() + _CHAIN_WINDOW)
-        if not _CHAIN_FIGURE.search(text[lo:hi]):
-            continue
-        sentence = _line_at(text, m.start())
-        # Saying you DON'T have it is the prescribed answer, not a claim.
-        if re.search(r"(?i)\b(?:don'?t|do not|no|not)\s+have\b"
-                     r"|\bno (?:live )?(?:feed|data|source)\b"
-                     r"|\bbroker\b", sentence):
-            continue
-        return [Violation(
-            "unforced-market-data", m.group(0), m.span(), sentence,
-            f"chain statistic with a figure and no {_CHAIN_TOOL} call")]
-    return []
 
 
 # ---------------------------------- class 4b: unsourced flow claims
@@ -735,59 +573,6 @@ _FLOW_GOOD = [
     ("The $25.4 billion backlog is the bull case.", []),
     ("I don't have flow data for CBRS today.", []),
 ]
-
-
-# --------------------------------- class 5: unforced time-series claims
-# lookup_market_price and lookup_options_chain both return a SNAPSHOT --
-# one moment. A trend, a delta, a multi-day change or a "highest since"
-# cannot be derived from one number. The 2026-06-07 shape: a correct SPY
-# OI snapshot dressed with a "~2% over 5 days" trend no source returned.
-_SNAPSHOT_TOOLS = ("lookup_market_price", "lookup_options_chain")
-_HISTORY_TOOL = "lookup_price_history"
-
-_TREND_CLAIM = re.compile(
-    # `\**` throughout: answers arrive with markdown bold, and
-    # "over the past **5 days**" must match the same as the plain form.
-    r"\b(?:over|in|during)\s+the\s+(?:last|past)\s+\**\s*\d+\s*\**\s*"
-    r"(?:d|day|days|w|week|weeks|month|months|session|sessions)\b"
-    r"|\b(?:week|month|day)[- ]over[- ](?:week|month|day)\b"
-    r"|\bhighest\s+(?:since|in)\b|\blowest\s+(?:since|in)\b"
-    r"|\bhas\s+been\s+(?:climbing|rising|falling|trending|building|"
-    r"bleeding|grinding)\b"
-    r"|\btrend(?:ing|ed)?\s+(?:up|down|higher|lower)\b"
-    r"|\b\d+(?:\.\d+)?\s?%\s+(?:over|across)\s+\d+\b"
-    r"|\b(?:up|down)\s+[-+]?\d+(?:\.\d+)?\s?%\s+(?:this|over the)\s+"
-    r"(?:week|month)\b",
-    re.I,
-)
-
-
-def check_unforced_time_series(answer: str, tool_calls=None,
-                               **_) -> list[Violation]:
-    """Flag a trend claim built on snapshot-only tools.
-
-    Clean when lookup_price_history fired -- that tool DOES return a
-    series, so a trend from it is sourced.
-    """
-    calls = tool_calls or []
-    if _HISTORY_TOOL in calls:
-        return []
-    text = answer or ""
-    m = _TREND_CLAIM.search(text)
-    if not m:
-        return []
-    sentence = _line_at(text, m.start())
-    # The prescribed refusal names the absence; it is not a claim.
-    if re.search(r"(?i)\bno\s+(?:historical|multi-?day|history)\b"
-                 r"|\bonly\s+(?:have\s+)?the\s+current\b"
-                 r"|\bsnapshot\s+only\b|\bdon'?t\s+have\b"
-                 r"|\bcan'?t\s+derive\b|\bbroker\b", sentence):
-        return []
-    return [Violation(
-        "unforced-time-series", m.group(0), m.span(), sentence,
-        "trend or change-over-time claim from snapshot-only tools "
-        f"(calls: {calls or 'none'})")]
-
 
 
 # --------------- class 6: NOT SHIPPED. Kept as the evidence trail.
@@ -1312,10 +1097,7 @@ _CHECKS = {
     "macro-unsourced": check_macro_unsourced,
     "unfetchable-link-claim": check_unfetchable_link_claim,
     "repetition-glitch": check_repetition,
-    "unforced-price": check_unforced_price,
-    "unforced-market-data": check_unforced_market_data,
     "unsourced-flow": check_unsourced_flow,
-    "unforced-time-series": check_unforced_time_series,
     "self-generated-ta": check_self_generated_ta,
     "dollar-pnl": check_dollar_pnl,
     "failed-tool-confidence": check_failed_tool_confidence,
@@ -1518,70 +1300,6 @@ _MACRO_GOOD = [
 ]
 
 
-_PRICE_BAD = [
-    ("-> $ORCL at $244.10, up 1.8% on the session.", []),
-    ("-> NDX is holding near its 52-week highs around $30,500.", []),
-    ("-> bitcoin is sitting at 94,300 right now.", []),
-    ("-> SPX around 5,912 into the close.", ["search_chat_messages"]),
-]
-_PRICE_GOOD = [
-    # the tool fired
-    ("-> $ORCL at $244.10, up 1.8% on the session.",
-     ["lookup_market_price"]),
-    # changes are not levels
-    ("-> $NVDA down 1.1% on the session.", []),
-    # strikes are not spot
-    ("-> he opened AVGO 450C at 4.5 with no exit posted.", []),
-    # the FDIC explainer, a standing false-positive risk
-    ("-> FDIC covers 250k per depositor, per insured bank.", []),
-    # market cap is class 4 territory, not a price level
-    ("-> $GEO market cap sits near $4.0B on the latest count.", []),
-    # macro prints belong to class 2
-    ("-> payrolls printed 172K against 160K expected.",
-     ["lookup_economic_calendar"]),
-    # no ticker anywhere near the number
-    ("-> 200 messages in the window, mostly chop complaints.", []),
-]
-
-
-_CHAIN_BAD = [
-    ("-> SPY June OI 248,553, IV 10.3%, put-call 1.28.", []),
-    ("-> call open interest sits at 1.2M against 1.5M puts.", []),
-    ("-> ATM implied volatility is 12.1% for that expiry.",
-     ["lookup_market_price"]),
-]
-_CHAIN_GOOD = [
-    ("-> SPY June OI 248,553, IV 10.3%, put-call 1.28.",
-     ["lookup_options_chain"]),
-    # the prescribed refusal
-    ("-> I don't have a live feed for gamma exposure — pull it from "
-     "your broker.", []),
-    # commentary with no figure asserts nothing checkable
-    ("-> IV is elevated into the print.", []),
-    # other numbers, no chain stat
-    ("-> $ORCL at $244.10, up 1.8%.", ["lookup_market_price"]),
-]
-
-_SERIES_BAD = [
-    ("-> open interest has been trending up 2% over the last 5 days.",
-     ["lookup_options_chain"]),
-    ("-> $NVDA has been climbing all week.", ["lookup_market_price"]),
-    ("-> volume is the highest since March.", ["lookup_options_chain"]),
-]
-_SERIES_GOOD = [
-    # the history tool DOES return a series
-    ("-> $NVDA has been climbing all week.", ["lookup_price_history"]),
-    # the prescribed refusal
-    ("-> I only have the current snapshot — no historical log to derive "
-     "a 5-day trend.", ["lookup_options_chain"]),
-    ("-> snapshot only: call OI 1.2M. no multi-day history available.",
-     ["lookup_options_chain"]),
-    # a same-session move is not a multi-day trend
-    ("-> $ORCL at $244.10, up 1.8% on the session.",
-     ["lookup_market_price"]),
-]
-
-
 def _self_test() -> int:
     print("=== ask_response_validate self-test ===\n")
     fails = 0
@@ -1602,12 +1320,8 @@ def _self_test() -> int:
         if vs:
             print(f"            -> {vs[0]}")
     for label, bad, good, fn in (
-            ("CLASS 4 (chain stat, no chain tool)",
-             _CHAIN_BAD, _CHAIN_GOOD, check_unforced_market_data),
             ("CLASS 4b (flow claim, no chain tool or grounding)",
-             _FLOW_BAD, _FLOW_GOOD, check_unsourced_flow),
-            ("CLASS 5 (trend from snapshot tools)",
-             _SERIES_BAD, _SERIES_GOOD, check_unforced_time_series)):
+             _FLOW_BAD, _FLOW_GOOD, check_unsourced_flow),):
         print(f"\n{label} — MUST FLAG:")
         for a, tc in bad:
             vs = fn(a, tc)
@@ -1622,21 +1336,6 @@ def _self_test() -> int:
             print(f"  {'clean  ' if ok else 'FALSE+ '} {a[:62]!r}")
             if vs:
                 print(f"            -> {vs[0]}")
-
-    print("\nCLASS 3 — MUST FLAG (price level, no price tool):")
-    for a, tc in _PRICE_BAD:
-        vs = check_unforced_price(a, tc)
-        ok = bool(vs)
-        fails += 0 if ok else 1
-        print(f"  {'caught ' if ok else 'MISSED '} {a[:64]!r}")
-    print("\nCLASS 3 — MUST NOT FLAG:")
-    for a, tc in _PRICE_GOOD:
-        vs = check_unforced_price(a, tc)
-        ok = not vs
-        fails += 0 if ok else 1
-        print(f"  {'clean  ' if ok else 'FALSE+ '} {a[:64]!r}")
-        if vs:
-            print(f"            -> {vs[0]}")
 
     print("\nCLASS 2 — MUST FLAG (macro figure, no calendar tool):")
     for a, tc in _MACRO_BAD:
