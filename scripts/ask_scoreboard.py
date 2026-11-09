@@ -83,8 +83,16 @@ def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s or "").strip()
 
 
+# A source label the outline hands the model ("[live prices]", "[Goldman
+# Sachs]") and code strips from the answer. Removing one is not a check
+# changing the words (2026-11-08 replay review: 13 of 107 "changed" turns
+# were only this).
+_SOURCE_TAG_RE = re.compile(r"\[[^\]\n]{2,60}\](?!\()")
+
+
 def _words(s: str) -> str:
-    return re.sub(r"[\W_]+", " ", (s or "").lower()).strip()
+    s = _SOURCE_TAG_RE.sub(" ", s or "")
+    return re.sub(r"[\W_]+", " ", s.lower()).strip()
 
 
 def parse_entry(ts: str, block: str) -> dict:
@@ -105,7 +113,10 @@ def parse_entry(ts: str, block: str) -> dict:
     g_m = re.search(r"guards: (.*)$", route_line)
     guards = []
     if g_m and g_m.group(1).strip() not in ("", "—"):
-        guards = [g.strip() for g in g_m.group(1).split(",") if g.strip()]
+        # Check names are lowercase. A capitalised piece is the rest of the
+        # previous check's trigger list ("name-check:Stats, Last, Play").
+        guards = [g.strip() for g in g_m.group(1).split(",")
+                  if g.strip()[:1].islower()]
 
     answer = (a_m.group(1) if a_m else "").strip()
     raw = (raw_m.group(1) if raw_m else "").strip()

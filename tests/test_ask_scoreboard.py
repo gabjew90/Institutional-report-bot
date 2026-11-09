@@ -126,3 +126,25 @@ def test_check_names_drop_counts_and_trigger_words():
 def test_render_has_both_tables(tmp_path):
     out = S.render(S.summarize(_entries(tmp_path)))
     assert "## By shape" in out and "## By check" in out and "| business-line | 1 |" in out
+
+
+def _block(hms: str) -> str:
+    """One logged entry's text, the way load() hands it to parse_entry."""
+    return LOG.split(f"## 2026-10-27 {hms} UTC", 1)[1].split("\n---\n", 1)[0]
+
+
+def test_a_name_check_trigger_list_is_not_read_as_check_names():
+    """name-check logs its trigger words with commas ("name-check:Stats,
+    Last, Play"), which the split read as checks named Last and Play."""
+    block = _block("15:00:00").replace("name-check:Wth", "name-check:Stats, Last, Play")
+    e = S.parse_entry("2026-10-27 15:00:00", block)
+    assert e["checks"] == ["business-line", "name-check:Stats", "figure-provenance:stripped:1"]
+
+
+def test_a_stripped_source_tag_is_not_a_word_change():
+    """The outline hands the model "[live prices]" style tags and code
+    strips them. That is not a check changing the answer."""
+    block = _block("14:00:00").replace("```text\n- LULU 105C 10-30 @1.07",
+                          "```text\n- LULU 105C 10-30 @1.07 [live prices]")
+    e = S.parse_entry("2026-10-27 14:00:00", block)
+    assert not e["answer_changed"]
