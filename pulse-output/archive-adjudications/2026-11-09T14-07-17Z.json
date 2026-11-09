@@ -1,0 +1,55 @@
+{
+  "pulse_date": "2026-11-09",
+  "window_label": "since-last-daily (2026-11-06T14:15)",
+  "themes": [
+    {
+      "theme": "gold fair value recovery",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "The only direct view on gold is supportive: after Friday's 3.7% drop put gold below its estimated fair value, the author expects that gap to give prices a base to recover from, and no source argues the opposite.",
+      "facts_agreed": [
+        {
+          "claim": "Bloomberg's view is that gold's drop below fair value should give prices a durable base to recover from.",
+          "banks_for": [
+            "Bloomberg , republished"
+          ],
+          "evidence_quotes": [
+            "should soon provide a durable base for prices to recover"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "texas data center permit freeze",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "The evidence points toward slower data center buildout, with Texas's permit freeze and new state rules likely to push some power capacity from 2027 to 2028, though only ZeroHedge is quoted on it here.",
+      "facts_agreed": [
+        {
+          "claim": "ZeroHedge describes regulation and election outcomes as a brake on data center buildout, including a Texas permit freeze that could delay capacity by a year.",
+          "banks_for": [
+            "ZeroHedge"
+          ],
+          "evidence_quotes": [
+            "forced moderation of US Datacenter buildout",
+            "pushing gigawatts that are supposed to come online in 2027 to 2028",
+            "a story about regulators and data center rules, not party control"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
