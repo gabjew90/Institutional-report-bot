@@ -1,0 +1,10 @@
+{
+ "violations": [
+  {"kind": "numeric-scope-drift", "severity": "soft", "figure": "2.75%", "note": "live snapshot QQQ session move; false positive"},
+  {"kind": "numeric-scope-drift", "severity": "soft", "figure": "0.3%", "note": "calendar CPI m/m estimate; false positive"},
+  {"kind": "numeric-scope-drift", "severity": "soft", "figure": "1.29%", "note": "live snapshot GLD session move; false positive"}
+ ],
+ "hard_count": 0,
+ "soft_count": 3,
+ "exit_code": 4
+}

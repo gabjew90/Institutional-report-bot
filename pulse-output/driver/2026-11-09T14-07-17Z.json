@@ -1,0 +1,18 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-11-09T14:07:24.056147Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=8", "at": "2026-11-09T15:37:43.384129Z"},
+  "omnipulse": {"decision": "CLASSIC", "detail": "omnipulse: none for 2026-11-09 (not published after 600s) -> classic pulse", "at": "2026-11-09T15:48:02.479532Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "soft violations only (advisory)", "at": "2026-11-09T15:51:28.102757Z"},
+  "lint": {"decision": "SKIP_SCRUB", "detail": "1 soft issue(s) only (jargon/coverage warnings)", "at": "2026-11-09T15:56:36.598325Z"},
+  "scrub_relint": {"decision": "CONTINUE", "detail": "0 hard issues after SCRUB", "at": "2026-11-09T15:54:31.147674Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-11-09T15:56:36.681711Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-11-09T15:54:36.035069Z"},
+  "adversarial": {"decision": "DISPATCH_REPAIR", "detail": "2 hard finding(s); repair 1/2", "at": "2026-11-09T15:55:26.534732Z"},
+  "adversarial_recheck": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-11-09T15:56:36.504437Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit", "at": "2026-11-09T15:56:36.722721Z"}
+ },
+ "budgets": {"adversarial_repairs": 1},
+ "lint": {"last_hard": 0},
+ "note": "condensed by the routine for MCP transport; history array omitted"
+}
