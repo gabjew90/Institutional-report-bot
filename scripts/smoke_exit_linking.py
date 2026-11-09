@@ -126,7 +126,7 @@ def test_backfill_repairs_history():
     assert orphan["strike"] is None
     _trade(5, "AMD", "open", strike=180.0, expiry="2026-07-25",
            ct="call", posted_at="2026-07-09 09:00:00")
-    n = db.backfill_orphan_exit_links()
+    n = db.backfill_orphan_exit_links(days=36500)  # fixtures are dated July 2026
     assert n >= 1, f"backfill should link at least the AMD orphan: {n}"
     row = db.get_connection().execute(
         "SELECT strike, expiry FROM analyst_trades "
@@ -134,7 +134,7 @@ def test_backfill_repairs_history():
     ).fetchone()
     assert row["strike"] == 180.0 and row["expiry"] == "2026-07-25", dict(row)
     # idempotent: second run links nothing new for AMD
-    n2 = db.backfill_orphan_exit_links()
+    n2 = db.backfill_orphan_exit_links(days=36500)  # fixtures are dated July 2026
     assert n2 == 0 or n2 < n, f"backfill must be idempotent: {n2}"
     _ok("boot backfill links historical orphans; idempotent")
 
