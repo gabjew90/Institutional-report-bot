@@ -1354,3 +1354,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — The adversarial pass flagged Nomura's 13.2% vs 1.1% dispersion as unsupported, but it is in the dump. Only the 3.8% median decline is unlocated. The judge's false positives need tracking too.
 - **observation** — Texas data-center share: pulse says 27%, Goldman in the dump says roughly 25%. Unverified.
 - **observation** — No STEP 7 self-review since 10-22; adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-09
+- **deterministic-fixable** — The adversarial repair replaced named McElligott attributions with "one desk-note author" in the MAIN EVENT, a corpus meta-narration the voice contract bans. Add "desk-note author", "the author" and similar to the lint patterns, and make the repair keep the named desk or drop the claim.
+- **deterministic-fixable** — The adversarial verdict file holds only the post-repair state (`{"findings": []}`) while the driver reports 2 hard findings pre-repair. The kinds of the original two are not in the archive. Keep the first verdict as `<ts>.pre-repair.json` (repeat of 11-03 and 11-06, where the verdict file and driver disagreed).
+- **deterministic-fixable** — The driver trail does not name the lint soft issue, and `lint` is timestamped after `scrub_relint`. Record issue names and fix the stamp order (repeat of 11-04, 11-05, 11-06).
+- **prompt-session** — Single-bank HIGH-CONVICTION lead (hedge unwind) was never adjudicated and bank counting treats two ZeroHedge variants as 2 banks. Count independent houses, not source strings (repeat of the 11-06 selection concern).
+- **observation** — Unverified: "30-year yields highest since 2002 in early October" and "Goldman does not expect trims through 2028" are not located in the dump.
+- **observation** — Adversarial verdict gaps for 10-12 and 10-14 persist. No finding on today's STEP 7 beyond the divergence on the Nov 4 staleness claim, which is unverified.
