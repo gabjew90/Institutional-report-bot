@@ -1,0 +1,44 @@
+{
+ "unread_source_files_at_edit": 11,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 21,
+  "cards": 633,
+  "max_doc_id": 25739
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 113,
+  "brief_citations": 2,
+  "distinct_cards_cited": 113,
+  "card_count": 633,
+  "quintiles": [
+   25,
+   18,
+   30,
+   31,
+   9
+  ],
+  "edge_quintile_share": 0.301,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Goldman's own desks sit on opposite sides.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Morgan Stanley reads the report as keeping the Fed on track for a December hike [c596], while flagging that jobless claims, job openings, hiring plans and ADP have all run softer [c500] and that produ",
+    "cite": "c596,c500,c501",
+    "reason": "figures not in cited card(s): ['0.2%']"
+   }
+  ],
+  "word_count": 1970
+ }
+}
