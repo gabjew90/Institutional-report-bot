@@ -1,0 +1,313 @@
+{
+ "brief": "GS's ETF flow desk reports on Thursday November 5's session, when the Nasdaq-100 fell 5.5%, its worst day since March 2020 and a multi-sigma event, with elevated volumes continuing into Friday morning. US-listed ETF notional volume hit $580 billion, the third-largest day on record and 33% of total market volume versus a 28% average; several products set records, including QQQ ($86bn), combined SOXL/SOXS ($37bn+) and MAGS ($890mm), while XLV traded its busiest session in over a year. Within the levered/inverse ETF complex, net inflows totaled $1.1 billion as levered funds gained $3.3 billion and inverse funds lost $2.2 billion, the widest dispersion on record; the note cites a historical pattern of levered-ETF inflows peaking on down days and troughing on up days. Despite that inflow, complex-wide AUM and gross exposure have fallen $55 billion and $135 billion respectively over the trailing 20 days. Numerous names (NDX, semis, Korea, growth, momentum) hit six-month lows, while defensive proxies (utilities, min-vol, staples, retail, healthcare) extended multi-week outperformance and inflow streaks.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "The Nasdaq-100 posted its worst daily move since March 2020, falling 5.5% in a multi-sigma event on November 5.",
+   "anchor": "NDX posted its worst daily move since March 2020 (-5.5% // a multi-sigma event)",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "US-listed ETFs had their third largest day of notional volume on record on November 5, printing $580 billion and accounting for 33% of the broader market's volume versus a 28% average.",
+   "anchor": "experienced their third largest day of notional volume in our dataset, printing $580 billion worth of volume and accounted for 33% of the broader tape",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "On the morning of November 6, outsized ETF volumes continued, representing 36% of the tape with dollar volumes running 65% above the 20-day average.",
+   "anchor": "we\u2019re observing a continuation of outsized volumes within the complex, representing 36% of the tape and $volumes running +65% vs the 20d average",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "QQQ broke its notional volume record on November 5 with $86 billion traded.",
+   "anchor": "QQQ broke notional volume records; $86 billion",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Levered semiconductor ETFs SOXL and SOXS collectively printed over $37 billion in volume on November 5, both breaking their prior notional volume records.",
+   "anchor": "collectively witnessed over $37 billion print to the tape (both breaking prior notional volume records)",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "SOXL",
+    "SOXS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Taiwan ETF EWT saw $2.2 billion of trading activity on November 5.",
+   "anchor": "EWT (Taiwan) echoed the same with $2.2 billion of activity",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "The Mag7 ETF MAGS set a new turnover record of $890 million on November 5.",
+   "anchor": "MAGS (Mag7) experienced $890 million worth turnover (a new record)",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "MAGS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "XLV had its busiest trading session in over a year on November 5, with $4.6 billion of volume.",
+   "anchor": "XLV faced its busiest session in over a year ($4.6 billion worth of volume)",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Net flows across the levered/inverse ETF complex totaled +$1.1 billion on November 5.",
+   "anchor": "Net flows across the levered/inverse ETF complex totaled to +$1.1 billion yesterday",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "The dispersion between levered ETF inflows and inverse ETF outflows reached the widest level on record on November 5, with levered ETFs gaining +$3.3 billion and inverse ETFs losing -$2.2 billion, two records in one day.",
+   "anchor": "delivering two records in one day: levered ETFs garnered +$3.3 billion worth of inflows, while inverse ETFs languished -$2.2 billion in outflows",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Flows within the levered ETF complex have historically been strongest on days when the broader market faces challenging price action, defined as -2 sigma events.",
+   "anchor": "flows within the levered ETF complex have historically been strongest on days when the broader market has faced challenging price action (-2\u03c3 events)",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Flows within the levered ETF complex have historically been weakest during the market's best days of performance, defined as +2 sigma events.",
+   "anchor": "weakest during the market\u2019s best days of performance (+2\u03c3)",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Levered/inverse ETF AUM is now just shy of $140 billion, down $55 billion over the trailing 20 days.",
+   "anchor": "Levered/inverse ETF AUM now represents just shy of $140 billion, falling $55 billion over the trailing 20 days",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Gross exposure in the levered/inverse ETF complex has dropped $135 billion over the trailing 20 days.",
+   "anchor": "Gross exposure, which is the product of AUM and the absolute leverage ratio of the complex, has dropped $135 billion over the same stretch",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Numerous ETFs and indices hit six-month lows on November 5, many posting their worst session since 2020, including NDX, SMH/SOXX (semis), EWY (Korea), IWF (growth), and MTUM (momentum).",
+   "anchor": "Numerous six-month lows were established yesterday, many of which experienced their worst session since 2020: NDX, SMH/SOXX (Semis), EWY (Korea), IWF (Growth), MTUM (Momentum)",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [
+    "SMH",
+    "SOXX",
+    "EWY",
+    "IWF",
+    "MTUM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "XLU is on track to outperform the S&P 500 for six consecutive weeks, the longest streak since 2022.",
+   "anchor": "XLU (utilities) is on track to outperform SPX for six consecutive weeks (longest since 2022)",
+   "topic": "Defensive sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "USMV is tracking the same six-week outperformance streak against the S&P 500 as XLU.",
+   "anchor": "USMV (min vol) vs. SPX is tracking for the same",
+   "topic": "Defensive sector rotation",
+   "status": "released",
+   "instruments": [
+    "USMV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "Over $1.5 billion has flowed into XLV over the past two weeks, the largest 9-day haul since 2022.",
+   "anchor": "Over $1.5 billion has flowed into XLV over the past two weeks\u2026 the largest 9-day haul since 2022",
+   "topic": "Defensive sector rotation",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "XRT had its best week of inflows since May, at +$200 million, after eclipsing an all-time high earlier in the week.",
+   "anchor": "XRT has had its best week of inflows since May (+$200mm) after eclipsing an ATH earlier in the week",
+   "topic": "Defensive sector rotation",
+   "status": "released",
+   "instruments": [
+    "XRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lucas - GS ETF Color - charts & bullets... 6 Nov 2026",
+   "claim": "XLP is sitting just shy of all-time highs.",
+   "anchor": "XLP (staples) sits just shy of all-time highs",
+   "topic": "Defensive sector rotation",
+   "status": "level",
+   "instruments": [
+    "XLP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/25636__gs-lucas-gs-etf-color-charts-bullets-6-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 20,
+  "matched": 20,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
