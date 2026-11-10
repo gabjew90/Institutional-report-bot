@@ -1,0 +1,104 @@
+{
+ "brief": "Goldman Sachs Morning note (Adam Crook, FX & Macro Sales) is structured as five sections: Connecting you to GS, Data Centre Forecasts, NZD Update, Latest FX Trader, and Week Ahead Previews. Only the first section's text was extracted; the other four are listed by title only with no body text captured. The extracted section relays GS Chief US Political Economist Alec Phillips's take on the US midterms' effect on the AI data-centre buildout: the biggest surprise was at the state level, not the federal level. Federally, Phillips expects data-centre-focused policy but nothing extreme, ratepayer protections and possibly removing some existing tax incentives. At the state level, gubernatorial wins in Texas, Georgia and Ohio put, in theory, up to around 40% of planned data-centre capacity at risk from permitting moratoria, and Phillips expects a temporary moratorium lasting several months until new rules are set. Pre-election, markets priced about a 65% chance Texas Governor Abbott would win re-election.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS MORNING 1) Connecting you to GS, 2) Data Centre Forecasts, 3) NZD Update, 4) Latest FX Trader and 5) Week Ahead Previews",
+   "claim": "Goldman Sachs' Alec Phillips said the midterms' biggest surprise for the data centre and AI buildout came at the state level, not the federal level.",
+   "anchor": "The big surprise out of election night for the data centre and AI issue was not really at the federal level",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS MORNING 1) Connecting you to GS, 2) Data Centre Forecasts, 3) NZD Update, 4) Latest FX Trader and 5) Week Ahead Previews",
+   "claim": "Pre-election, markets priced about a 65% chance Texas Governor Abbott would win re-election.",
+   "anchor": "something like a 65% chance going into the election that Governor Abbott was going to win re-election",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS MORNING 1) Connecting you to GS, 2) Data Centre Forecasts, 3) NZD Update, 4) Latest FX Trader and 5) Week Ahead Previews",
+   "claim": "Goldman Sachs' Alec Phillips said federal-level policy on data centres after the midterms will include ratepayer protections but nothing too extreme.",
+   "anchor": "but nothing too extreme\u2026 ratepayer protections, and maybe removing some existing tax incentives",
+   "topic": "Midterm data center policy risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS MORNING 1) Connecting you to GS, 2) Data Centre Forecasts, 3) NZD Update, 4) Latest FX Trader and 5) Week Ahead Previews",
+   "claim": "Goldman Sachs' Alec Phillips said federal policymakers may remove some existing tax incentives for data centres after the midterms.",
+   "anchor": "but nothing too extreme\u2026 ratepayer protections, and maybe removing some existing tax incentives",
+   "topic": "Midterm data center policy risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS MORNING 1) Connecting you to GS, 2) Data Centre Forecasts, 3) NZD Update, 4) Latest FX Trader and 5) Week Ahead Previews",
+   "claim": "Gubernatorial wins in Texas, Georgia and Ohio put in theory up to around 40% of planned US data centre capacity at risk from permitting moratoria.",
+   "anchor": "with gubernatorial wins in Texas, Georgia and Ohio, in theory up to around 40% of planned capacity is impacted",
+   "topic": "Midterm data center policy risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS MORNING 1) Connecting you to GS, 2) Data Centre Forecasts, 3) NZD Update, 4) Latest FX Trader and 5) Week Ahead Previews",
+   "claim": "Goldman Sachs' Alec Phillips expects a temporary moratorium on data centre permitting in the affected states that could last several months until new rules are set.",
+   "anchor": "I think we could end up with a temporary moratorium that lasts several months until new rules can be put in place",
+   "topic": "Midterm data center policy risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "several months"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/25836__gs-crook-gs-morning-connecting-you-to-gs-data-centre-forecas.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 6,
+  "matched": 6,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
