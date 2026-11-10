@@ -1,0 +1,988 @@
+{
+ "brief": "UBS says politics has overtaken macro as the near-term equity driver after a Democratic sweep shifts debate toward AI/data-center regulation and permitting rather than purely Fed/inflation risk, even as UBS Economics still expects the Fed biased toward 25bp hikes in December and January unless labour deteriorates. 2027 AI demand visibility stays strong (cloud growth accelerating to 97% in 2027, DC vacancy below 2%), but top-13 hyperscaler capex of $1.77tn against $1.47tn operating cash flow implies a ~$300bn funding gap, making the opportunity more selective. Tighter DC regulation could raise electrical/cooling content per MW, favoring AI Industrials suppliers. Thursday's selloff (SPX -4.7%, NDX -6.4%, SOXX -12.2%, VIX +12pts) marked rotation becoming correlated index-level de-risking, but UBS says Q3 EPS growth of +31.6% and an 8,100 year-end SPX target argue this is a correction inside an uptrend, not a recession signal. UBS flags 2027 earnings inflections across Rivian, Amgen, Vertex, StandardAero, Packaging Corp and Kontoor as underpriced, while crowded positioning reversed sharply: hedge funds entered the midterms bearish USD only for a safe-haven rally to hit them, and China Tech short-covering turned it into a relative winner.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "The Democratic sweep has shifted the US market debate from purely Fed and inflation risk toward policy risk around AI and data centres.",
+   "anchor": "The Democratic sweep shifts the US debate from purely Fed/inflation risk toward policy risk around AI and Data Centres",
+   "topic": "Blue Wave midterm market impact",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS Economics still expects the Fed to be biased toward 25 basis point rate hikes in December and January unless labour markets deteriorate materially.",
+   "anchor": "UBS Economics still sees the Fed biased toward 25bp hikes in December and January unless labour markets deteriorate materially",
+   "topic": "Blue Wave midterm market impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Around 50% of PCE inflation components are running above 3%.",
+   "anchor": "around 50% of PCE components running above 3%",
+   "topic": "Blue Wave midterm market impact",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "AI investment has contributed roughly 1 percentage point to recent US GDP growth.",
+   "anchor": "AI investment has contributed roughly 1ppt to recent GDP growth",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Cumulative AI buildout plans have been estimated at $10.3 trillion through 2032.",
+   "anchor": "cumulative AI buildout plans have been estimated at $10.3tn through 2032",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2032"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Cloud growth is expected to accelerate from 64% in 2026 to 97% in 2027.",
+   "anchor": "cloud growth is expected to accelerate from 64% in 2026 to 97% in 2027",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Cloud backlog is running at about 3.5 times forward 12-month sales.",
+   "anchor": "cloud backlog is ~3.5x forward 12-month sales",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "US data center vacancy is below 2%.",
+   "anchor": "US DC vacancy is below 2%",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Top-13 hyperscaler capex is forecast at $1.77 trillion versus $1.47 trillion of operating cash flow, implying a roughly $300 billion funding gap.",
+   "anchor": "top-13 hyperscaler capex is forecast at $1.77tn vs $1.47tn operating cash flow, implying a ~$300bn funding gap",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Palantir grew revenue 96% and US Commercial revenue 148%.",
+   "anchor": "Palantir (Buy, PT $250) grew revenue 96% and US Commercial 148%",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [
+    "PLTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS rates Palantir Buy with a $250 price target.",
+   "anchor": "Palantir (Buy, PT $250) grew revenue 96% and US",
+   "topic": "AI capex buildout outlook",
+   "status": "target",
+   "instruments": [
+    "PLTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "After a more than 35% de-rating, AI Industrials trade around 16 times 2028 estimated EPS versus more than 20 times through-cycle.",
+   "anchor": "After a 35%+ de-rating, AI Industrials trade around 16x 2028E EPS vs 20x+ through-cycle",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS names Johnson Controls as its preferred AI Industrials exposure with a $190 price target.",
+   "anchor": "Johnson Controls (Buy, PT $190) the preferred exposure",
+   "topic": "AI capex buildout outlook",
+   "status": "target",
+   "instruments": [
+    "JCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Eaton, nVent, Vertiv, INNIO and Modine are also among UBS's preferred AI Industrials names.",
+   "anchor": "Eaton, nVent, Vertiv, INNIO and Modine are also among preferred names",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [
+    "ETN",
+    "NVT",
+    "VRT",
+    "MOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Tighter data center regulation could increase electrical and cooling equipment content per megawatt of IT load.",
+   "anchor": "tighter DC regulation could actually increase electrical and cooling content per MW",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "The political debate is over whether policymakers stop AI and data-center development or instead require hyperscalers to fund their own power, grid connections and water infrastructure.",
+   "anchor": "stop development or instead require hyperscalers to fund their own power, grid connections and water infrastructure",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "85% of S&P 500 constituents declined on Thursday.",
+   "anchor": "85% of S&P 500 constituents declined",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "SPX fell 4.7%, the Nasdaq 100 fell 6.4% and the Philadelphia Semiconductor Index fell 12.2% on Thursday.",
+   "anchor": "SPX fell 4.7%, NDX 6.4% and SOXX 12.2%",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "VIX jumped almost 12 points toward 29 on Thursday.",
+   "anchor": "VIX jumped almost 12 points toward 29",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "The 3x-long SOXL fund fell 39% and is now about 75% below early-October levels.",
+   "anchor": "39% and is now ~75% below early-October levels",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "SOXL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Q3 S&P 500 EPS growth is running at +31.6%.",
+   "anchor": "Q3 SPX EPS is running +31.6%",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS's referenced 8,100 year-end S&P 500 target implies more than 10% upside.",
+   "anchor": "referenced 8,100 year-end target implies >10% upside",
+   "topic": "Thursday equity vol spike",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS Technical Strategy sees lower oil and yields and stabilising rate-sensitive assets as more consistent with a correction inside a broader equity uptrend than a recession.",
+   "anchor": "lower oil/yields and stabilising rate-sensitive assets more consistent with a correction inside a broader equity uptrend than recession",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS upgraded Rivian to Buy from Neutral with a $17 price target.",
+   "anchor": "Rivian (Buy from Neutral, PT $17) has several catalysts aligning",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "target",
+   "instruments": [
+    "RIVN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Rivian's R2 demo drive requests exceeded 103,000 in Q3, versus more than 57,000 in Q2.",
+   "anchor": "R2 demo drives exceeded 103k in Q3 vs >57k in Q2",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "RIVN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS assumes Rivian will deliver about 82,000 R2 vehicles in 2027.",
+   "anchor": "UBS assumes ~82k R2 deliveries in 2027",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "forecast",
+   "instruments": [
+    "RIVN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Rivian's automotive gross margins could turn positive in Q1 2027 and approach 9% by Q4.",
+   "anchor": "automotive gross margins could become positive in Q1'27 and approach 9% by Q4",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "forecast",
+   "instruments": [
+    "RIVN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Rivian's liquidity of about $7.1 billion could potentially rise to about $13 billion including targeted future capital.",
+   "anchor": "Liquidity of ~$7.1bn, potentially rising to ~$13bn including targeted future capital",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "RIVN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Amgen delivered $10.4 billion in revenue versus $10.1 billion consensus, and EPS of $6.45 versus $5.79 consensus.",
+   "anchor": "Amgen (Buy, PT $530 from $470) delivered $10.4bn revenue vs $10.1bn consensus and EPS of $6.45 vs $5.79",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "AMGN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS raised its Amgen price target to $530 from $470.",
+   "anchor": "Amgen (Buy, PT $530 from $470) delivered $10.4bn revenue",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "target",
+   "instruments": [
+    "AMGN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Amgen's Repatha grew 37%, Evenity grew 39% and Imdelltra grew 128%.",
+   "anchor": "Repatha grew 37%, Evenity 39% and Imdelltra 128%",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "AMGN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Vertex has its Povetacicept regulatory decision on 30 November.",
+   "anchor": "Vertex (Buy, PT $640 from $615) has its Povetacicept decision on 30 November",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "forecast",
+   "instruments": [
+    "VRTX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 November"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS raised its Vertex price target to $640 from $615.",
+   "anchor": "Vertex (Buy, PT $640 from $615) has its Povetacicept decision on 30 November",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "target",
+   "instruments": [
+    "VRTX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS estimates Vertex's early-2027 Inaxaplin data carries a 65-70% probability of success and potentially 10-20% share upside.",
+   "anchor": "early-2027 Inaxaplin data carrying an estimated 65-70% probability of success and potentially 10-20% share upside",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "forecast",
+   "instruments": [
+    "VRTX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "early-2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "StandardAero's 2027 capacity is essentially sold out and Q3 EBITDA grew 15%, with margins expanding 130 basis points to 14.4%.",
+   "anchor": "2027 capacity is essentially sold out, Q3 EBITDA grew 15%, margins expanded 130bp to 14.4%",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "SARO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS raised its StandardAero price target to $34 from $32.",
+   "anchor": "StandardAero (Buy, PT $34 from $32) offers the more visible analogue",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "target",
+   "instruments": [
+    "SARO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Packaging Corp of America's Greif synergies are already running at $40-50 million annualised versus a $60 million target.",
+   "anchor": "Greif synergies are already $40-50m annualised vs a $60m target",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "PKG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS expects approximately 30% EPS growth for Packaging Corp of America in 2027.",
+   "anchor": "UBS expects approximately 30% EPS growth in 2027",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "forecast",
+   "instruments": [
+    "PKG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Kontoor Brands has a path toward more than $7 FY27 EPS.",
+   "anchor": "Kontoor Brands (Buy, PT $125 from $136) has a path toward $7+ FY27 EPS",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "forecast",
+   "instruments": [
+    "KTB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Kontoor Brands shares trade around 12 times FY27 estimated earnings against roughly 19% expected five-year EPS CAGR.",
+   "anchor": "the shares trade around 12x FY27E earnings against ~19% expected five-year EPS CAGR",
+   "topic": "2027 earnings inflection stock picks",
+   "status": "released",
+   "instruments": [
+    "KTB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Hedge funds and asset managers entered the midterms significantly bearish the US dollar, only for equity weakness and stronger payrolls to trigger a safe-haven dollar rally.",
+   "anchor": "Hedge funds and asset managers entered the midterms significantly bearish USD, only for equity weakness and stronger payrolls to trigger a safe-haven USD rally",
+   "topic": "Valuation and positioning reset",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "China Tech became a relative winner as policy support coincided with short-covering from the crowded long-memory/short-China trade.",
+   "anchor": "China Tech meanwhile became a relative winner as policy support coincided with short-covering from the crowded long-memory/short-China trade",
+   "topic": "Valuation and positioning reset",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "FICO's FY27 EPS estimate falls to $45.50 from $51.25, and buybacks are paused.",
+   "anchor": "FY27 EPS falls to $45.50 from $51.25, while buybacks are paused",
+   "topic": "Valuation and positioning reset",
+   "status": "forecast",
+   "instruments": [
+    "FICO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "FICO's Q4 results beat expectations, but FY27 guidance was withheld.",
+   "anchor": "Q4 beat, but FY27 guidance was withheld as mortgage pricing shifts toward bespoke contracts",
+   "topic": "Valuation and positioning reset",
+   "status": "released",
+   "instruments": [
+    "FICO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS raised its Apple price target to $340 from $296 while keeping a Neutral rating.",
+   "anchor": "Apple: Neutral, PT $340 from $296",
+   "topic": "Valuation and positioning reset",
+   "status": "target",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Apple and Starbucks retain credible franchises but offer less asymmetry at current valuations.",
+   "anchor": "Apple and Starbucks retain credible franchises but offer less asymmetry at current valuations",
+   "topic": "Valuation and positioning reset",
+   "status": "released",
+   "instruments": [
+    "AAPL",
+    "SBUX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Protagonist Therapeutics' Mimrylo royalties are forecast at $55 million in 2027, versus $28 million consensus.",
+   "anchor": "Mimrylo royalties forecast at $55m in 2027 vs $28m consensus",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "PTGX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS rates Protagonist Therapeutics Buy with a $184 price target.",
+   "anchor": "Protagonist Therapeutics (Buy, PT $184) provides another differentiated setup",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "PTGX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "GRAIL's repeat patients have increased to about 36% from about 30%.",
+   "anchor": "repeat patients have increased to ~36% from ~30%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GRAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "GRAIL's Q1 2027 FDA decision and subsequent CMS reimbursement are the more important catalysts than Galleri volumes.",
+   "anchor": "the Q1'27 FDA decision and subsequent CMS reimbursement remain the more important catalysts",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GRAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1 2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Veracyte faces a genuine growth reset.",
+   "anchor": "Veracyte faces a genuine growth reset",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "VCYT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Caris delivered a healthier quarter but appears closer to fair value.",
+   "anchor": "Caris delivered a healthier quarter but appears closer to fair value",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Merck's Sac-TMT could become a more than $10 billion franchise.",
+   "anchor": "Merck's Sac-TMT could become a $10bn+ franchise",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "MRK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "US nominal retail growth could slow toward about 3.5% annually through 2045.",
+   "anchor": "nominal retail growth could slow toward ~3.5% annually through 2045",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "through 2045"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Dutch Bros' Q3 system comps reached 4.4%, with about 250 new shops planned for 2027 versus about 215 consensus.",
+   "anchor": "Q3 system comps reached 4.4%, traffic remained positive and ~250 shops are planned for 2027 vs ~215 consensus",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BROS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "Starbucks' turnaround could achieve about 4% comps and 13.5-14.0% FY27 margins, but the stock already trades at about 33 times FY27 estimated EPS.",
+   "anchor": "~4% comps and 13.5-14.0% FY27 margins achievable, but ~33x FY27E EPS already discounts significant recovery",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "SBUX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS's preferred tactical Softlines beneficiaries of a Middle East geopolitical normalisation are Gap, Under Armour, Carter's, G-III Apparel and PVH.",
+   "anchor": "preferred beneficiaries are Gap (Buy, PT $42), Under Armour (Buy, PT $8), Carter's (Neutral, PT $33), G-III Apparel (Neutral, PT $27) and PVH",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GAP",
+    "UAA",
+    "CRI",
+    "GIII",
+    "PVH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1-3 months"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "AutoZone's mega hubs can reduce delivery times from about 3 hours to as little as 45 minutes.",
+   "anchor": "AutoZone's mega hubs can reduce delivery times from ~3 hours to as little as 45 minutes",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AZO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS rates AutoZone Buy with a $4,230 price target, among its preferred US Auto Aftermarket exposures.",
+   "anchor": "favours AutoZone (Buy, PT $4,230) and O'Reilly Automotive",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "AZO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS rates O'Reilly Automotive Buy with a $122 price target, among its preferred US Auto Aftermarket exposures.",
+   "anchor": "O'Reilly Automotive (Buy, PT $122), UBS's preferred Auto Aftermarket exposures",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ORLY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "3M settled about 99% of current PFAS personal-injury claims for a $5.8 billion present-value cost versus about $10 billion of investor expectations.",
+   "anchor": "3M (Buy, PT $230) settled ~99% of current PFAS personal-injury claims for a $5.8bn present-value cost vs ~$10bn investor expectations",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MMM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "3M authorised a simultaneous $6 billion buyback and UBS forecasts 2027 EPS of $10.47 versus $9.92 consensus.",
+   "anchor": "The simultaneous $6bn buyback authorisation adds EPS support, while UBS forecasts 2027 EPS of $10.47 vs $9.92 consensus",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "MMM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "The global silver economy could reach about $8 trillion annually by 2030.",
+   "anchor": "The global silver economy could reach ~$8tn annually by 2030",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "US population growth has slowed from 1.3% in 1993 to 0.5% in 2025.",
+   "anchor": "population growth has slowed from 1.3% in 1993 to 0.5% in 2025",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "About 74% of the projected 9.1 million increase in US households over the next decade comes from households headed by someone aged 65 or over.",
+   "anchor": "74% of the projected 9.1m increase in households over the next decade comes from households headed by someone aged 65+",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next decade"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS initiated coverage of Ferrari Group with a Buy rating and a \u20ac9.90 price target.",
+   "anchor": "Ferrari Group: Initiate Buy, PT \u20ac9.90",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS US Equity Weekly",
+   "claim": "UBS rates Walmart and Costco Buy, structurally favoured by the demographic work, with price targets of $130 and $1,275 respectively.",
+   "anchor": "favours Walmart (Buy, PT $130) and Costco (Buy, PT $1,275)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "WMT",
+    "COST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/26057__ubs-us-equity-weekly.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 67,
+  "matched": 67,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 21,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
