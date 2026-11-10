@@ -5,6 +5,13 @@ Home Depot in 2025) and BECN (bought by QXO in 2025), from memory. The
 room caught GMS; BECN went unflagged. Every stock ticker the answer names
 that the asker did not is priced once; a symbol with no quote anywhere is
 not a live listing, and the lines that name it are dropped.
+
+Only where the answer puts the name forward to trade (2026-11-10): the
+asker asked for names ("give me tickers", "gun and ammo public stocks"),
+or the symbol's own line makes a trade call ("Short Beacon Roofing
+(BECN)"). Of the check's six fires to that date, the one right one (VSTO,
+2026-11-04) was a request for names; the five wrong ones were terms inside
+an explanation (ASI, WFE, TTM twice, CRAH) on questions that asked for none.
 """
 from __future__ import annotations
 
@@ -21,6 +28,23 @@ _GONE_WORDS_RE = re.compile(
     r"\b(?:acquired|bought|merged|delisted|taken\s+private|went\s+private)\b", re.I)
 
 
+# The asker asked for names to trade or look at.
+_NAMES_ASKED_RE = re.compile(
+    r"\b(?:tickers?|stocks?|names|plays?|picks?|ideas?|shorts?|shorting|longs|buy|sell"
+    r"|calls|puts|companies|equities|etfs?)\b", re.I)
+# A line that puts a symbol forward as a trade. "sell-off", "sell-side",
+# "long-term", "short-term" and "short interest" describe, they do not call.
+_TRADE_LINE_RE = re.compile(
+    r"\b(?:short(?:s|ing)?(?![-\s](?:term|interest|squeeze))|buy(?:ing)?"
+    r"|sell(?!-?(?:off|side))|long(?![-\s]term)|calls|puts)\b", re.I)
+
+
+def _line_of(text: str, m: re.Match) -> str:
+    start = text.rfind("\n", 0, m.start()) + 1
+    end = text.find("\n", m.end())
+    return text[start:end if end != -1 else len(text)]
+
+
 _MARKET_WORDS_RE = re.compile(
     r"\$|%|\b(?:short|long|buy|sell|calls?|puts?|stock|shares?|price|trade[sd]?|trading"
     r"|position|ticker|earnings|bullish|bearish|target|upside|downside)\b", re.I)
@@ -35,8 +59,7 @@ def _defines_acronym(answer: str, m: re.Match, acr: str) -> bool:
     a definition (one initial of four), and a trading line is always
     checked."""
     start = answer.rfind("\n", 0, m.start()) + 1
-    end = answer.find("\n", m.end())
-    line = answer[start:end if end != -1 else len(answer)]
+    line = _line_of(answer, m)
     words = re.findall(r"[A-Za-z][A-Za-z\-]*", answer[start:m.start()])[-(len(acr) + 2):]
     # a name that carries the symbol itself is a company and its ticker
     # ("GMS Supply (GMS)"), never a definition
@@ -67,13 +90,17 @@ def _defines_acronym(answer: str, m: re.Match, acr: str) -> bool:
 
 
 def introduced_tickers(answer: str, question: str) -> list[str]:
-    """Stock tickers in the answer that the question did not name."""
+    """Stock tickers in the answer that the question did not name, where
+    the answer puts them forward to trade (module docstring)."""
     from discord_bot import ask_router as R
     asked = {t.upper() for t in R.extract_tickers(question or "", all_tiers=True)}
+    names_asked = bool(_NAMES_ASKED_RE.search(R.asker_text(question or "")))
     out = []
     for m in _MARKED_RE.finditer(answer or ""):
         t = (m.group(1) or m.group(2) or m.group(3)).upper()
         if t in asked or t in out or not R.is_stock(t) or R.not_a_ticker(t):
+            continue
+        if not names_asked and not _TRADE_LINE_RE.search(_line_of(answer, m)):
             continue
         if m.group(3) and _defines_acronym(answer, m, t):
             continue
