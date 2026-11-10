@@ -1,0 +1,235 @@
+ 
+"We Understand The Optics": Goldman Hikes Data 
+Center Spending Forecasts Days After Voters 
+"Froze" The Buildout 
+ 
+BY TYLER DURDEN 
+SATURDAY, NOV 07, 2026 - 06:25 PM 
+It has been a rough week to be a data center. 
+Since Tuesday night, when the blue tsunami handed governors' mansions in states holding 
+roughly 45% of planned US capacity to candidates promising to pause new builds, the AI 
+infrastructure trade has gone from crowded to radioactive. Nasdaq futures puked the moment 
+the Texas race swung: 
+And it only got worse from there: Georgia, Ohio and Michigan lined up as Texas copycats, 
+Barclays published what it called the scariest chart for the AI buildout, we mapped out the AI 
+junk bonds set to crater, tech hedge funds round-tripped their entire 2026 gain as the Nasdaq 
+suffered its worst day since Covid, and Thursday turned into the biggest put day in Cboe history. 
+Meanwhile, the data center CDS did this: 
+And just a few hours ago, Microsoft pulled the plug on its Oracle AI rental, which earned Oracle 
+the newest (red) row on our ever-growing casualty list: 
+ 
+
+ 
+ 
+In short, it's hard to find anyone left who still wants to own the buildout. Which, if you have been 
+doing this long enough, is usually the moment to at least hear out the other side. 
+Enter Goldman, which overnight published not one but two notes making the optimistic case, or 
+as the bank's US-into-Europe sales lead Giulio Esposito put it in his FLAG Series email 
+(available to pro subs), "strong visibility on US data centre construction growth through 2028," 
+backed by 86GW already under construction and a ~$900 billion high-confidence pipeline. The 
+punchline from both analysts: post-midterm restrictions and project slippage "shift activity right 
+rather than reduce the TAM." 
+We touched on both notes, and our doubts about them, earlier in "Microsoft Pulls The Plug On 
+Oracle AI Rental." But with sentiment where it is, the bull case deserves a full hearing, so here it 
+is, in Goldman's own numbers. 
+ 
+
+ 
+86 Gigawatts Already In The Dirt 
+Start with the cycle itself, which was accelerating right into the election. In "How much runway is 
+left in the data center construction cycle?" (available to pro subs), Goldman's E&C analyst Adam 
+Bubes notes that US data center construction spending growth accelerated from 55% YoY in 
+June to 90% YoY in September, with third-quarter starts "up meaningfully." Here is the Census 
+Bureau series, now running at a SAAR of nearly $100 billion: 
+ 
+... and the growth rate, which just hooked back up to its post-ChatGPT highs: 
+ 
+
+ 
+ 
+That's the rearview mirror. What matters is what's already in the pipe, and here Bubes slices 
+Aterio's project-level tracker (as of end-October) into three buckets: projects already under 
+construction, "high probability" announcements that haven't broken ground, and everything else. 
+Then he prices each bucket at ~$3.5 billion per GW (construction cost only, so no servers, 
+racks, GPUs or networking). 
+"The total data center construction pipeline is multiples of current spending activity. At our 
+baseline benchmark of ~$3.5 bn construction spending per GW... the ~86 GW currently under 
+construction represents ~
+50 bn). 
+300𝑏𝑛𝑖𝑛𝑡𝑜𝑡𝑎𝑙𝑐𝑜𝑛𝑠𝑡𝑟𝑢𝑐𝑡𝑖𝑜𝑛𝑠𝑝𝑒𝑛𝑑(~6𝑥2025𝑈𝑆𝑑𝑎𝑡𝑎𝑐𝑒𝑛𝑡𝑒𝑟𝑐𝑜𝑛𝑠𝑡𝑟𝑢𝑐𝑡𝑖𝑜𝑛𝑠𝑝𝑒𝑛𝑑𝑖𝑛𝑔𝑜𝑓~
+Layering in high-probability announcements expands the pipeline TAM to ~$900 bn." 
+Add the remaining ~293GW of medium and low probability projects and the theoretical 
+opportunity swells to ~$1.9 trillion. Goldman is careful to call that "a measure of total pipeline 
+value rather than an estimate of what will ultimately be spent," and since a good chunk of those 
+projects are PowerPoint with a zoning application attached, we would be careful too. Still, here 
+is the scale of it: 
+ 
+
+ 
+ 
+Put differently, even if not a single new data center were announced from here on, the projects 
+already under construction represent about six years of 2025-level spending, of which Goldman 
+estimates more than $200 billion has yet to be deployed. And since construction is already 
+underway, these are precisely the projects a moratorium is least likely to touch (more on that 
+below). 
+The Hardware Guy Gets To The Same Place 
+Goldman's IT hardware analyst Michael Ng came at the same question from the capacity side in 
+"US Data Center Capacity update: Framing risks to our data center forecasts", and reached a 
+very similar conclusion. 
+The US has 57GW-gross of active data center capacity today, with another 9GW-gross under 
+construction that should bring it to 65GW by the end of 2026. Beyond that, Aterio tracks 
+78GW-gross of under-construction projects, adding a net 33/37/8/0GW-gross in 2027/28/29/30. 
+Even if you count only what is already being built, US capacity more than doubles to 143GW by 
+2030: 
+ 
+
+ 
+ 
+Ng's key point is that this "low-risk" capacity alone already covers his own forecasts. Converted 
+to IT load at a 1.5 PUE, under-construction projects imply 22/24/5 GW-IT of net additions in 
+2027/28/29, versus Goldman's forecasts of 20/24/23 GW-IT: 
+"...gives us confidence in our recently revised forecasts. We believe our forecasts have been 
+appropriately conservative and recognize that they have likely been below consensus 
+expectations." 
+Translation: Goldman's 2027 and 2028 capacity numbers are already in the ground; the bank 
+only needs announced projects to show up for 2029 and beyond. And there are plenty of those: 
+Aterio counts another 137GW-gross of "high-likelihood" capacity (permitting, financing and 
+power secured) slated for 2027-30, on top of a mountain of lower-probability announcements: 
+ 
+
+ 
+ 
+One caveat that Ng, to his credit, flags himself: Aterio's definition of "under construction" 
+includes site work such as land clearing, grading and utility trenching, which developers often do 
+before signing a tenant. A moratorium could still catch projects that have moved dirt but lack an 
+electricity services agreement or air permit. So "under construction" is maybe a little less 
+bulletproof than it sounds... but it's a lot more bulletproof than a press release. 
+"Moratoriums Are Not Bans Or Cancellations" 
+Which brings us to the elephant in the room: Texas. 
+The five states with hostile campaigns (Texas, Ohio, Nevada, Georgia and Michigan) account 
+for about 42% of under-construction and high-likelihood capacity, and Texas alone is 26% of 
+cumulative 2026-30 net additions: 
+ 
+
+ 
+ 
+Counting only under-construction projects, Texas is 20% of 2027 and 27% of 2028 net 
+additions, and Governor-elect Gina Hinojosa has called for an immediate moratorium. That 
+sounds terrible, until you read what a moratorium actually does. Here's Ng: 
+"We note that moratoriums are not bans or cancellations, and believe the risks to data center 
+operators would be related to delays to ready-for-service (which in some cases could lead to 
+contract cancellations), increased financing costs due to longer construction times, increased 
+taxes due to reduced tax breaks, and higher capex on infrastructure investments..." 
+Bubes goes further, and makes what is probably the most underappreciated point of the week: 
+the pipeline was already too aggressive before anyone voted. Current timelines imply ~55GW of 
+capacity energizing in 2028 alone, "well above the pace at which capacity has historically come 
+online." Goldman expected those projects to slip to the right anyway; Hinojosa just gave them a 
+reason. In other words, a chunk of the delay the market is now pricing as a political shock was 
+already baked into the physics. 
+ 
+
+ 
+Goldman's economists also expect the state pauses to be conditional and short-lived ("in part 
+because data centers ranked relatively low among voter priorities"), while at the federal level 
+any new data center legislation would still need bipartisan Senate support and to overcome a 
+veto. Bubes' bottom line: 
+"Midterms introduce timing risk, but we do not see a change in underlying data center demand... 
+We see a potential outcome as smoothing spending and extending the duration of the cycle, 
+rather than impacting the TAM." 
+There is a timing cushion for the builders too. For Goldman's construction coverage (FIX, EME 
+and LGN), bookings typically follow project starts by about six months, which provides a buffer 
+while state legislatures do their thing. The Texas legislature's regular session runs from January 
+12 to May 31, 2027, which Wells Fargo's Jerry Revich (in "Texas Policy Reset Adds Timing Risk 
+to 20-30% of the Data Center Power Pipeline") thinks is how long the Texas pause likely lasts. 
+The next datapoint is the Texas data center audit, due December 10. 
+As for stocks, Ng names names: IREN has the highest Texas exposure in his coverage 
+(73%/87% of its data center capacity sits in the state), while Celestica (CLS) and Arista (ANET) 
+would feel any delays through servers and data center switches. Digital Realty (DLR) and 
+Equinix (EQIX), with their tier 1 and tier 2 metro footprints, have minimal exposure to the 
+development-heavy markets. 
+Raising Into The Storm 
+And then Bubes did something you don't see often in the week of a 6% Nasdaq crash: he raised 
+his numbers. Goldman now expects US data center construction spending of $80 billion in 2026 
+and $100 billion in 2027, up from $67 billion and $87 billion, and introduced a $125 billion 
+forecast for 2028: 
+ 
+
+ 
+ 
+He even pre-empted the obvious heckle: 
+"We understand the optics of raising our data center forecasts following the midterms, which 
+introduced the prospect of delays, but the impulses driving our higher forecasts were set in 
+motion over the last few months." 
+Notably, the new numbers include "no speculative or even medium probability announcements," 
+only projects under construction plus what Bubes calls a conservative slice of high-probability 
+projects. Under-construction projects alone carry double-digit spending growth through 2027 (to 
+~
+105𝑏𝑖𝑙𝑙𝑖𝑜𝑛)𝑎𝑛𝑑𝑢𝑛𝑑𝑒𝑟𝑝𝑖𝑛𝑗𝑢𝑠𝑡𝑎𝑏𝑜𝑣𝑒ℎ𝑎𝑙𝑓𝑜𝑓𝑡ℎ𝑒2028𝑓𝑜𝑟𝑒𝑐𝑎𝑠𝑡. 𝐿𝑎𝑦𝑒𝑟𝑖𝑛𝑡ℎ𝑒ℎ𝑖𝑔ℎ−𝑝𝑟𝑜𝑏𝑎𝑏𝑖𝑙𝑖𝑡𝑦𝑎𝑛𝑛𝑜𝑢𝑛𝑐𝑒𝑚𝑒𝑛𝑡𝑠𝑎𝑡𝐴𝑡
+155 billion in 2027 and peaks at ~$185 billion in 2028, while 2030 spending still comes in above 
+2026 levels: 
+ 
+
+ 
+ 
+Note the light grey bars: that's the medium and low probability pipeline, which Goldman 
+excludes from its forecast and calls "an unrealistic scenario" if taken at face value. Fair enough. 
+But the same grey bars are also why Bubes thinks that delays "push spending further to the 
+right," and why spending on the current announced pipeline could, on current timelines, 
+continue "for well more than a decade." 
+So what would make Goldman more confident that growth runs through 2029-30? Three things: 
+continued momentum in new project announcements (projects pending construction are already 
+up 55% YoY), evidence that medium and low probability capacity is graduating to high 
+probability and breaking ground, or (a little perversely) evidence that 2027-28 timelines are 
+slipping without cancellations, which pushes dollars into 2029-30 without shrinking the total. 
+Somebody Forgot To Tell The Hyperscalers 
+And then there's the demand side, which, as far as we can tell, has not read the exit polls. 
+Goldman notes that hyperscaler capex is on track for ~
+ 
+
+ 
+1.3 trillion in 2027, and the three largest public cloud 
+800𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑖𝑛2026, 𝐹𝑎𝑐𝑡𝑆𝑒𝑡𝑐𝑜𝑛𝑠𝑒𝑛𝑠𝑢𝑠𝑠𝑒𝑒𝑠~
+providers are sitting on a combined revenue backlog of more than $1.7 trillion. And Morgan 
+Stanley's power math keeps getting more insane every year: 
+Even Wells Fargo's Revich, whose note is mostly about what Texas does to power equipment 
+backlogs, concedes that "token economics remain attractive; the debate is which projects move 
+forward," citing H100 rental rates up 26% YoY and GB200 rental pricing up 50% YTD (and 12% 
+in the past month). Somebody, somewhere, is still paying up for compute. 
+And if a project can't get built in Texas, it'll probably get built somewhere else. Case in point, 
+from this afternoon: 
+Which is also where our long-running "behind the meter" hobby horse comes in. Revich points 
+out that Abbott's September directive already caught projects with on-site generation, so for now 
+the Texas freeze does not spare self-powered campuses. Then again, a campus that brings its 
+own power and doesn't touch residential rates is about the easiest thing a governor can wave 
+through once "real protections" are written into law... which is exactly why we have been arguing 
+since last November that behind-the-meter power should be mandatory. 
+Who Pays For The Wait? 
+So where does that leave us? Goldman's own summary is about as measured as sell-side 
+optimism gets: 
+"We are tracking a robust pipeline that could support continued growth, but we don't have the 
+visibility to underwrite the trajectory today." 
+We'll take a side. On the narrow question of whether the US data center construction cycle 
+survives the blue wave, we think the optimists have the better of the argument: 86GW is already 
+in the dirt, the 2028 calendar was already fiction before Tuesday, hyperscaler balance sheets 
+haven't gone anywhere, and sentiment just printed a record put day, a record data center CDS 
+and AI momentum's 5th worst crash in history. When everyone agrees the buildout is dead, it's 
+usually worth checking whether anyone told the cement trucks (as we noted all the way back in 
+October 2025, when a leading construction indicator first flagged the data center tsunami, and 
+again in February, when data center construction overtook office construction for the first time). 
+The catch is Ng's own fine print: delays mean higher financing costs, lost tax breaks, more 
+capex and, in some cases, cancelled contracts. "Timing risk" is a rounding error for a 
+hyperscaler with a $1.7 trillion backlog, and an existential one for a levered developer paying 
+12.5% on a bond due in 2028, which is why we have been warning since last October that the 
+ 
+
+ 
+real fault line in the AI buildout runs through its debt. The TAM may well survive the moratoria. 
+Some of the people who borrowed against it probably won't. 
+Which, for the builders at least, is a good problem to have: the concrete gets poured either way. 
+It just might be poured for a new owner. 
+Much more in the full Goldman "How much runway is left in the data center construction 
+cycle?"and "US Data Center Capacity update: Framing risks to our data center forecasts" notes, 
+and Wells Fargo's "Texas Policy Reset Adds Timing Risk to 20-30% of the Data Center Power 
+Pipeline", all available to pro subs. 
+ 
+ 
