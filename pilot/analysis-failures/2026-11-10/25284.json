@@ -1,9 +1,13 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "history": [
   {
    "at": "2026-11-10T14:00:29+00:00",
    "reason": "{\"duration_api_ms\":7571,\"stop_reason\":\"end_turn\",\"session_id\":\"6ba289c6-9b3d-436c-ae51-fe41eb5879d8\",\"total_cost_usd\":0."
+  },
+  {
+   "at": "2026-11-10T14:30:29+00:00",
+   "reason": "{\"duration_api_ms\":3307,\"stop_reason\":\"end_turn\",\"session_id\":\"ebda5bbc-afe0-4dd8-9029-435b91a1ab5e\",\"total_cost_usd\":0."
   }
  ]
 }
