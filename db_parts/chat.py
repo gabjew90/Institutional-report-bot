@@ -6,6 +6,7 @@ patch point and the thread-local connection model lives in db.py.
 """
 from datetime import datetime, date, timedelta
 import logging
+import re
 
 import db as _db  # noqa: E402
 
@@ -383,9 +384,10 @@ def export_user_profiles_markdown() -> str:
 # What the room calls a member (2026-09-24). On 9/22 the bot told the
 # room "kyle" was "blowing accounts on weekly lottos" while his log
 # carried 17 wins to 3 losses. Nobody types "bankerkyle" or "BK"; they
-# type "kyle". The name matcher above keys on the CURRENT display name
-# and username, so "kyle" resolved to nobody, his record never reached
-# the writer, and the ledger check could not tie the claim to him.
+# type "kyle". The name matcher of the time keyed on the CURRENT display
+# name and username, so "kyle" resolved to nobody, his record never
+# reached the writer, and the ledger check could not tie the claim to
+# him. Since 2026-11-09 this map is the only name matcher.
 #
 # Source: every display name a member has actually posted under, from
 # chat_messages.author_display (the name at the time of each message).
@@ -425,28 +427,70 @@ ALIAS_STOPWORDS = frozenset({
 _alias_cache: dict = {"map": None}
 
 
+# Two-letter words a display name's first word must not turn into an
+# alias ("Al Capone" may keep "al"; "ok whatever" may not keep "ok").
+_SHORT_STOP = frozenset({
+    "ah", "ai", "am", "an", "as", "at", "be", "bc", "by", "dm", "do", "ex", "fr", "gg",
+    "go", "ha", "he", "hi", "if", "im", "in", "is", "it", "lo", "me", "mf", "mr", "ms",
+    "my", "no", "np", "of", "oh", "ok", "on", "or", "pc", "pm", "rn", "so", "tf", "to",
+    "tv", "ty", "uh", "um", "up", "ur", "us", "we", "ya", "ye", "yo",
+})
+
+
+def _short_ok(word: str) -> bool:
+    """A two-letter name the room types for a member: "SV", "BK", "Ry"."""
+    return len(word) == 2 and word.isalpha() and word.lower() not in _SHORT_STOP
+
+
 def _alias_surfaces(display: str) -> list[str]:
-    """The whole display name plus its word tokens, lowercased."""
-    import re
+    """The whole display name, its words and its adjacent words run
+    together ("Deep Fried" -> "deepfried"), lowercased. A two-letter
+    name counts when it is the whole name or its first word ("SV",
+    "Ry_bry" -> "ry"; 2026-11-09, SV had 12,181 messages and no alias).
+    A one-letter name ("G") is kept as the capital and matched only as a
+    standalone capital."""
     disp = (display or "").strip()
     if not disp:
         return []
+    if len(disp) == 1 and disp.isalpha() and disp.isupper() and disp not in ("A", "I"):
+        return [disp]
     out = []
     # commas too: the header lists aliases comma-separated
     whole = re.sub(r"\s+", " ", re.sub(r"[()\[\]<>,;]", " ", disp)).strip().lower()
-    if len(whole) >= ALIAS_MIN_LEN and whole not in ALIAS_STOPWORDS:
+    if whole not in ALIAS_STOPWORDS and (len(whole) >= ALIAS_MIN_LEN or _short_ok(whole)):
         out.append(whole)
-    for tok in re.findall(r"[A-Za-z][A-Za-z0-9_]*", disp):
+    toks = re.findall(r"[A-Za-z][A-Za-z0-9_]*", disp)
+    for i, tok in enumerate(toks):
         t = tok.lower()
-        if len(t) >= ALIAS_MIN_LEN and t not in ALIAS_STOPWORDS and t not in out:
+        if t in ALIAS_STOPWORDS or t in out:
+            continue
+        if len(t) >= ALIAS_MIN_LEN or (i == 0 and _short_ok(t)):
             out.append(t)
+    # a two-letter first piece of a handle: "Ry_bry" is Ry. Only that
+    # piece: "Soaring_Nopal" must not make "soaring" a member.
+    first = re.match(r"([A-Za-z]{2})_", disp)
+    if first and _short_ok(first.group(1)) and first.group(1).lower() not in out:
+        out.append(first.group(1).lower())
+    # space-separated words of two letters or more, run together: not
+    # "Ry_bry" (already one word) and not "A Bullish" (Abe's "abullish")
+    spaced = [re.sub(r"[^A-Za-z0-9]", "", w) for w in disp.split()]
+    for a, b in zip(spaced, spaced[1:]):
+        j = (a + b).lower()
+        if (len(a) >= 2 and len(b) >= 2 and len(j) >= 5 and j not in out
+                and j not in ALIAS_STOPWORDS
+                and not {a.lower(), b.lower()} & {"the", "of", "and", "mf"}):
+            out.append(j)
     return out
 
 
-def build_member_aliases(rows) -> dict[str, int]:
-    """surface -> author_id from (author_id, author_display, n) rows.
+def build_member_aliases(rows, profiles=()) -> dict[str, int]:
+    """surface -> author_id from (author_id, author_display, n) rows and
+    (user_id, username, display_name) profile rows.
 
-    Pure, so the thresholds are testable against the measured rows."""
+    Display names count only past the prank thresholds. A profile adds
+    its username (a stable handle: "sleep04025", "reportufirst"), never
+    its current display name, which may be a prank rename. Pure, so the
+    thresholds are testable against the measured rows."""
     totals: dict[int, int] = {}
     for aid, _disp, n in rows:
         totals[aid] = totals.get(aid, 0) + int(n or 0)
@@ -457,25 +501,34 @@ def build_member_aliases(rows) -> dict[str, int]:
             continue
         for s in _alias_surfaces(disp):
             claims.setdefault(s, set()).add(aid)
+    for uid, username, *_ in profiles or ():
+        u = (username or "").strip().lower()
+        if len(u) >= ALIAS_MIN_LEN and u not in ALIAS_STOPWORDS:
+            claims.setdefault(u, set()).add(int(uid))
     out = {s: next(iter(ids)) for s, ids in claims.items() if len(ids) == 1}
     out.update(PINNED_ALIASES)
     return out
 
 
 def refresh_member_aliases() -> int:
-    """Rebuild the alias map from chat history. Returns the surface count,
-    or -1 on failure, in which case the previous map stays in place.
+    """Rebuild the alias map from chat history and profile usernames.
+    Returns the surface count, or -1 on failure, in which case the
+    previous map stays in place.
 
     Runs from the scheduler (at boot and hourly), never inside an /ask:
     it is a GROUP BY over the whole chat_messages table (2026-09-24
     review). A failed read keeps the last good map instead of replacing
     it with the pinned-only fallback."""
     try:
-        rows = _db.get_connection().execute(
+        conn = _db.get_connection()
+        rows = conn.execute(
             "SELECT author_id, author_display, COUNT(*) FROM chat_messages "
             "WHERE author_display IS NOT NULL GROUP BY author_id, author_display"
         ).fetchall()
-        amap = build_member_aliases([(r[0], r[1], r[2]) for r in rows])
+        profiles = conn.execute(
+            "SELECT user_id, username, display_name FROM user_profiles").fetchall()
+        amap = build_member_aliases([(r[0], r[1], r[2]) for r in rows],
+                                    [(p[0], p[1], p[2]) for p in profiles])
     except Exception as e:
         log.warning(f"member_aliases: refresh failed, keeping previous map: {e}")
         return -1
@@ -490,19 +543,63 @@ def member_aliases() -> dict[str, int]:
     return amap if amap is not None else dict(PINNED_ALIASES)
 
 
+_NAME_SUFFIX = r"(s|es|ing|ed|in)"
+# "my G" is slang and a quoted "G" is the letter (2026-11-09 labels)
+_SLANG_CAPITAL_RE = re.compile(r"(?:\bmy|\blil|[\"'“‘])\s*$", re.I)
+_QUOTES = "\"'”’"
+
+
 def members_named_in_text(text: str, aliases: dict[str, int] | None = None
                           ) -> dict[int, list[str]]:
-    """{user_id: [surfaces found]} for members named in `text` by any
-    alias, whole-word, case-insensitive."""
-    import re
-    low = (text or "").lower()
+    """{user_id: [surfaces found]} for members named in `text`. The one
+    name matcher (2026-11-09: a second one over the profile table had no
+    stopwords and loaded The Oracle for "oracle").
+
+    - a surface whole-word, case-insensitive ("kyle", "abe's")
+    - a one-letter name as a standalone capital ("G", never "5G", "g",
+      "my G" or a quoted "G")
+    - a nickname of 3-5 letters with an ending that makes no English word
+      ("wocking", "abes", "kyles", never "marks" for Mark), never a slur
+
+    The profile matcher's prefix pass ("zach" for Zachary) is gone: on the
+    820 labelled questions since 9/1 it found no member and matched
+    "report", "bullish" and "bearish" to members whose names start so.
+    """
+    raw = text or ""
+    low = raw.lower()
     if not low:
         return {}
+    from discord_bot.listed_symbols import english_words
+    words = english_words()
     amap = aliases if aliases is not None else member_aliases()
     out: dict[int, list[str]] = {}
+
+    def add(uid: int, surface: str) -> None:
+        if surface not in out.setdefault(uid, []):
+            out[uid].append(surface)
+
     for surface, uid in amap.items():
+        if len(surface) == 1:
+            for m in re.finditer(r"(?<![A-Za-z0-9_])" + re.escape(surface)
+                                 + r"(?![A-Za-z0-9_])", raw):
+                after = raw[m.end():m.end() + 3]
+                quoted = after[:1] in _QUOTES and not re.match(r"['’]s\b", after)
+                if not _SLANG_CAPITAL_RE.search(raw[:m.start()]) and not quoted:
+                    add(uid, surface)
+                    break
+            continue
         if re.search(r"(?<![a-z0-9_])" + re.escape(surface) + r"(?![a-z0-9_])", low):
-            out.setdefault(uid, []).append(surface)
+            add(uid, surface)
+            continue
+        if 3 <= len(surface) <= 5 and surface.isalpha():
+            for m in re.finditer(r"(?<![a-z0-9_])" + re.escape(surface) + _NAME_SUFFIX
+                                 + r"(?![a-z0-9_])", low):
+                w = surface + m.group(1)
+                if w not in words and not _is_slur(w):
+                    # the word as written: chat_count compares surfaces
+                    # with the word it counts ("how often did abe say wocking")
+                    add(uid, w)
+                    break
     return out
 
 
@@ -514,142 +611,16 @@ def aliases_for(user_id: int, aliases: dict[str, int] | None = None) -> list[str
 
 
 def find_users_mentioned_in_text(text: str) -> list[int]:
-    """Return user_ids of profiled users mentioned in `text`. Catches:
-      - Discord @-mentions: `<@123>`, `<@!123>`
-      - Substring/word-boundary matches against username + display_name
-        for any user with a profile in the table.
-
-    Names shorter than 3 chars are ignored to avoid spurious matches
-    (someone named "Al" shouldn't get pulled in by every mention of
-    "all" or "also"). Returns deduplicated list.
-    """
-    import re
-    if not text:
-        return []
-    matches: set[int] = set()
-    # Discord-encoded @-mentions
-    for m in re.finditer(r"<@!?(\d+)>", text):
-        try:
-            matches.add(int(m.group(1)))
-        except ValueError:
-            continue
-    # Name-based fuzzy match (word boundaries)
-    rows = _db.get_connection().execute(
-        "SELECT user_id, username, display_name FROM user_profiles"
-    ).fetchall()
-    text_lower = text.lower()
-    # Build the needle set per user: full username, full display_name,
-    # AND individual tokens from each (whitespace-split + punctuation-strip).
-    # The token expansion is what catches first-name-only references like
-    # "Zach" matching a display_name of "Zach M." or "Zachary T." — the
-    # previous full-needle-only match missed those entirely and produced
-    # unloaded-subject answers (hallucination risk per the audit).
-    def _split_tokens(s: str) -> list[str]:
-        """Split into alphanumeric tokens, preserving case (for the
-        short-distinctive uppercase pass). Caller lowercases when needed."""
-        cleaned = re.sub(r"[^a-zA-Z0-9_]+", " ", s)
-        return [t for t in cleaned.split() if t]
-
-    # Tokenize the INPUT TEXT once. Used for two passes:
-    #   1) Prefix matching ("zach" in input vs "zachary" in profile)
-    #   2) Implicit — the standard word-boundary scan still operates on the
-    #      raw text_lower, so input tokens aren't consulted there.
-    input_tokens_lower: set[str] = set()
-    for m in re.finditer(r"[A-Za-z0-9_]+", text):
-        tok = m.group(0).lower()
-        if len(tok) >= 4:
-            input_tokens_lower.add(tok)
-
-    # Drop very-generic tokens that would false-positive in normal prose.
-    # (Adjust if a real username collides with a stop word.)
-    STOP = {
-        "the", "and", "you", "for", "with", "this", "that",
-        "are", "was", "but", "not", "all", "any", "did", "has",
-        "her", "his", "him", "she", "out", "now", "ask",
-        "give", "what", "why", "how", "who", "post", "posts",
-        "feel", "feels", "think", "thought", "thinks", "have",
-        "from", "they", "them", "their", "been", "were", "would",
-        "could", "should", "about", "into", "than", "then", "when",
-        "where", "which", "while", "your", "our", "ours", "mine",
-        "just", "like", "want", "need", "make", "made", "take", "took",
-        "good", "bad", "great", "yeah", "nah", "lol", "lmao",
-    }
-
-    for r in rows:
-        user_id = r["user_id"]
-        # Build needles in three buckets:
-        #   - lowercase tokens (≥3 chars) for the word-boundary scan
-        #   - lowercase tokens (≥5 chars) eligible as prefix-match TARGETS
-        #     of input tokens (≥4 chars), so "zach" finds "zachary"
-        #   - short distinctive uppercase ALL-CAPS names (2-3 chars) like
-        #     "BK", "RJ" — these get a case-sensitive scan against the
-        #     ORIGINAL text so "bike" doesn't false-match "BK"
-        profile_tokens_lower: set[str] = set()
-        short_distinctive: set[str] = set()
-        for raw in (r["username"], r["display_name"]):
-            if not raw:
-                continue
-            raw_l = raw.lower()
-            if len(raw_l) >= 3:
-                profile_tokens_lower.add(raw_l)
-            if 2 <= len(raw) <= 3 and raw.isalpha() and raw.isupper():
-                short_distinctive.add(raw)
-            # A display name that is one capital letter ("G") is matched
-            # the same way, as a standalone capital (2026-10-10 audit: "what
-            # G and wock we're talking about" loaded wock and never G, and
-            # the answer put BK in G's place). Only the whole display name,
-            # never a token of a longer one, and never "A" or "I".
-            if (raw == r["display_name"] and len(raw) == 1 and raw.isalpha()
-                    and raw.isupper() and raw not in ("A", "I")):
-                short_distinctive.add(raw)
-            for tok in _split_tokens(raw):
-                if len(tok) >= 3:
-                    profile_tokens_lower.add(tok.lower())
-                if 2 <= len(tok) <= 3 and tok.isalpha() and tok.isupper():
-                    short_distinctive.add(tok)
-        profile_tokens_lower -= STOP
-
-        matched = False
-        # Pass 1: standard word-boundary match against text_lower. A name
-        # used as a verb counts too: "I'm done wocking" is about Wock
-        # (2026-10-18 audit A21: the bot defined it as cough syrup).
-        for needle in profile_tokens_lower:
-            if re.search(rf"\b{re.escape(needle)}\b", text_lower) or (
-                    len(needle) >= 4 and needle.isalpha() and not _is_slur(needle)
-                    and re.search(rf"\b{re.escape(needle)}(?:ing|ed|in|s)\b", text_lower)):
-                matches.add(user_id)
-                matched = True
-                break
-        if matched:
-            continue
-
-        # Pass 2: prefix match — an input token (≥4 chars, e.g. "zach")
-        # is the prefix of a profile token (≥5 chars, e.g. "zachary").
-        # Constrained to ≥4/≥5 to avoid "any" matching "anything".
-        # Targets are letter-only name words: "report" matched the username
-        # reportfirst1112 and a slur matched a member's display name, each
-        # loading two dozen unrelated messages (2026-10-08 audit).
-        for inp in input_tokens_lower:
-            if inp in STOP or _is_slur(inp):
-                continue
-            for prof in profile_tokens_lower:
-                if (len(prof) >= 5 and prof.isalpha() and prof.startswith(inp)
-                        and prof != inp):
-                    matches.add(user_id)
-                    matched = True
-                    break
-            if matched:
-                break
-        if matched:
-            continue
-
-        # Pass 3: short distinctive ALL-CAPS names (case-sensitive against
-        # the original text). Catches "BK" without firing on "bike".
-        for needle in short_distinctive:
-            if re.search(rf"\b{re.escape(needle)}\b", text):
-                matches.add(user_id)
-                break
-    return list(matches)
+    """User_ids of members `text` names: Discord @-mentions (`<@123>`,
+    `<@!123>`) first, then every name members_named_in_text finds."""
+    ids: list[int] = []
+    for m in re.finditer(r"<@!?(\d+)>", text or ""):
+        if int(m.group(1)) not in ids:
+            ids.append(int(m.group(1)))
+    for uid in members_named_in_text(text or ""):
+        if uid not in ids:
+            ids.append(uid)
+    return ids
 
 
 def get_promoted_protected_ids() -> set[int]:

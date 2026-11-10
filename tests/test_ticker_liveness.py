@@ -69,3 +69,18 @@ def test_an_exact_acronym_is_a_definition_even_on_a_trading_line():
     assert _defines_acronym(a, m, "WFE")
     b = "→ Beacon Roofing (BECN) shares fell 4%"
     assert not _defines_acronym(b, re.search(r"\(BECN\)", b), "BECN")
+
+
+# 2026-11-09: the check reads the router's one not-a-ticker list.
+# "Operating Cash Flow (TTM)" lost its line on a QCOM answer because the
+# check read only the router's common words.
+
+def test_reporting_shorthand_in_parentheses_is_not_priced():
+    a = ("→ **Operating Cash Flow (TTM):** **$12.4B** against capital spending of "
+         "**$2.0B**, leaving free cash flow (OCF minus capex) at **$10.4B**")
+    assert L.introduced_tickers(a, "qcom net cash flow 12 months basis and debts") == []
+
+
+def test_a_company_and_its_ticker_is_still_checked():
+    a = "→ **GMS Inc. (GMS):** specialty distributor of wallboard, short it"
+    assert L.introduced_tickers(a, "what are we shorting") == ["GMS"]

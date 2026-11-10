@@ -218,6 +218,13 @@ _NOT_TICKERS = {
     # and ARR are (the room trades DRAM), so they stay tickers.
     "PRICE", "NEWS", "RESULT", "UPCOMING", "DRIVER", "DESK", "OPTIONS", "POSITIONING",
     "GPU", "GPUS", "CPU", "CPUS", "TPU", "NPU",
+    # Reporting and business shorthand that no US exchange lists
+    # (2026-11-09, the dead-ticker check dropped "Operating Cash Flow
+    # (TTM)"). Listed ones (EBIT, ROE, NIM, ARR, HBM, DRAM) quote, so the
+    # dead-ticker check never drops them and they stay tickers.
+    "TTM", "NTM", "OCF", "CAGR", "ROA", "TAM", "SOM", "MRR", "ARPU", "GAAP", "WFE",
+    "ASI", "NAV", "AUM", "BPS", "CAPEX", "COGS", "DCF", "FY", "CY", "DPS", "FFO",
+    "AFFO", "NOI", "GMV", "ASP", "LTV", "KPI", "SKU", "NAND", "FPGA", "SAAS", "ERP",
 }
 _CRYPTO = {"BTC", "ETH", "SOL"}
 # Index names the price tool quotes in Yahoo's caret form. They stay
@@ -288,6 +295,15 @@ def listed(t: str) -> bool:
         return True
     ok = _listed.is_listed(t)
     return ok is None or ok
+
+
+def not_a_ticker(tok: str) -> bool:
+    """An acronym or ordinary word the router never reads as a symbol,
+    whatever its case. The one list for the router and the dead-ticker
+    check (2026-11-09: the check read only _COMMON_WORDS and dropped a
+    line over "(TTM)")."""
+    t = (tok or "").upper()
+    return (t in _NOT_TICKERS and t not in _KEEP) or t.lower() in _COMMON_WORDS
 
 
 def _is_word(tok: str) -> bool:

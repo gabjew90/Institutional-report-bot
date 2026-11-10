@@ -73,7 +73,7 @@ def introduced_tickers(answer: str, question: str) -> list[str]:
     out = []
     for m in _MARKED_RE.finditer(answer or ""):
         t = (m.group(1) or m.group(2) or m.group(3)).upper()
-        if t in asked or t in out or not R.is_stock(t) or t.lower() in R._COMMON_WORDS:
+        if t in asked or t in out or not R.is_stock(t) or R.not_a_ticker(t):
             continue
         if m.group(3) and _defines_acronym(answer, m, t):
             continue
