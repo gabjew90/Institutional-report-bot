@@ -1,0 +1,449 @@
+{
+ "brief": "BTIG's technical strategy note argues last week's correlated selling pushed SPX near its 200 DMA and produced the first 80% NYSE downside volume day in nearly a year, but these are necessary, not sufficient, conditions for a bottom. After such a setup historically, forward 20-50 day returns are close to a coin toss (11 of 15 prior cases since 1996 saw another 80% day within 30 days; SPX was higher only 53% of the time 20 days out, averaging +0.31%). A real 'fat pitch' needs SPX closer to 7,000-7,100 with a deeper breadth washout: only 58% of SPX names are above their 200 DMA now versus under 30% at a durable bottom, and put/call ratios remain well below March/July lows. SOX broke its 200 DMA for the first time since May 2025, which BTIG reads as another coin toss near-term but ultimately needing a retrace to the April breakout zone (8,000-8,300). Separately, BTIG flags a longer-term quality-factor reversion (quality bottoming vs. a six-year bear market low) even as near-term quality names look vulnerable to unwind. Tactically, BTIG calls XLV's record extension above its 200 DMA a compelling short, AAPL vulnerable both to further risk-off and to any semis/AI bounce, and notes GDX strength diverging from a weak spot gold price.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "SPX is nearing its 200-day moving average after last week's correlated selling.",
+   "anchor": "the SPX is nearing its 200 DMA",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "The SOXX semiconductor ETF is roughly 40% off its highs.",
+   "anchor": "the SOXX is ~40% off its highs",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "The NYSE saw an 80% downside volume day for the first time in nearly a year.",
+   "anchor": "we saw the elusive 80% NYSE downside volume day for the first time in nearly a year",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "The longest streak without an 80% NYSE downside volume day in at least 30 years has ended.",
+   "anchor": "The longest streak in at least 30 years is over as we finally saw an 80% downside volume day on the NYSE",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "After the first 80% NYSE downside day and a SOX close below its 200 DMA in at least three months, 20-50 day forward returns are basically a coin toss.",
+   "anchor": "it's basically a coin-toss for 20-50 day forward returns",
+   "topic": "Thursday equity vol spike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "20-50 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "The odds of another 80% NYSE downside volume day in the next 30 days are about 73%, based on the last 30 years of data.",
+   "anchor": "the odds of another 80% NYSE downside volume day in the next 30 days are now ~73% based on the last 30 years of data",
+   "topic": "Thursday equity vol spike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "30 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "SPX will likely need to move closer to 7,000-7,100 with a bigger breadth washout to set up a genuine buying opportunity.",
+   "anchor": "it will likely take a move closer to 7,000-7,100 on SPX with a bigger breadth washout to set up a 'fat pitch'",
+   "topic": "Thursday equity vol spike",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Only about 58% of SPX names are still above their 200-day moving average.",
+   "anchor": "Still ~58% of SPX names above their 200 DMA",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "A more durable market bottom typically sees less than 30% of names above their 200-day moving average.",
+   "anchor": "A more durable bottom typically sees less than 30% of names above 200 DMA",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "20-day put/call ratios remain well below the levels seen in March and July at SPX lows, despite recent carnage below the surface.",
+   "anchor": "Despite the recent carnage below the surface, 20-day put/call ratios remain well below what we saw in March and July at SPX lows",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Since 1996, 11 of 15 prior first-time occurrences of an 80% NYSE downside volume day saw at least one more such day within the next 30 trading days.",
+   "anchor": "Of those 15 times, 11 of them saw at least one more 80% downside volume day in the next 30 trading days",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "30 trading days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "One-third of the time, there were five or more 80% NYSE downside volume days in the following 30 days.",
+   "anchor": "One-third of the time there was at least five or more 80% days in the next 30 days",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "30 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Average and median SPX returns are negative 5 to 10 trading days after a first-time 80% NYSE downside volume day.",
+   "anchor": "Average and median returns are negative 5-10 days out",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "5-10 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "SPX was higher only 53% of the time 20 days after a first-time 80% NYSE downside volume day, for a paltry average return of +0.31%.",
+   "anchor": "SPX was only higher 53% of the time 20 days later for a paltry +0.31% average return",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "20 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "SOX closed below its 200-day moving average for the first time since May 2025.",
+   "anchor": "SOX closed below its 200 DMA for the first time since May 2025",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Similar prior breaks below SOX's 200 DMA saw strong bounces, but 50-day forward returns are actually negative, making it essentially a coin toss.",
+   "anchor": "Similar initial cracks did see some strong bounces, but it\u2019s essentially a coin-toss and 50-day returns are actually negative",
+   "topic": "Thursday equity vol spike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "50 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "BTIG ultimately thinks SOX needs to move back to the April breakout point of 8,000-8,300 to completely retrace its parabolic advance.",
+   "anchor": "we ultimately think a move back to the April breakout point (8k-8300) is necessary as that would completely retrace the parabolic advance",
+   "topic": "Thursday equity vol spike",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "SOX purchases made from May through October are now firmly underwater.",
+   "anchor": "any purchases from May-October are now firmly underwater",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "QQQ has broken below its 200-day moving average and its July lows.",
+   "anchor": "QQQ has definitively broken under its 200 DMA and July lows",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "QQQ is closer to its next support level near $635, based on its late 2025 and early 2026 highs.",
+   "anchor": "closer to next support from the late \u201925 and early \u201926 highs around $635",
+   "topic": "Thursday equity vol spike",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Longer-term, the high versus low quality factor ratio looks to be bottoming precisely at its 2000 lows after a six-year bear market.",
+   "anchor": "high vs. low quality looks to be bottoming precisely at the 2000 lows after a six-year bear market",
+   "topic": "Quality factor reversion",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "longer-term"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Near-term, quality names that have held up well are vulnerable to an unwind, running counter to BTIG's tactical view.",
+   "anchor": "many of these \u2018quality\u2019 names have held up well and thus are vulnerable to a \u2018near-term\u2019 unwind",
+   "topic": "Quality factor reversion",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "The Morgan Stanley Quality Short Basket is rolling over, trading below its 200-day moving average and below support.",
+   "anchor": "The MS Quality Short Basket is rolling over below the 200 DMA and below support",
+   "topic": "Quality factor reversion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "BTIG's Quality Long index is holding support and could see another flush toward its 200-day moving average, though the longer-term trend still looks favorable.",
+   "anchor": "Quality Long index holding support. Wouldn\u2019t be surprised to see another flush towards the 200 DMA, but longer-term trend looks favorable",
+   "topic": "Quality factor reversion",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "XLV hit an all-time high on Thursday and at one point was nearly 20% above its 200-day moving average, the widest spread on record.",
+   "anchor": "XLV hit an all-time high on Thursday and at one point was nearly 20% above its 200 DMA. This is the widest spread on record",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Tactical downside on XLV is compelling, since its extension above the 200 DMA suggests the overall market is far from a washout.",
+   "anchor": "Not only does this suggest that the overall market is far from a washout, but tactical downside on XLV is compelling",
+   "topic": "Thursday equity vol spike",
+   "status": "target",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "AAPL is vulnerable because it was a clear beneficiary and hideout during the recent semiconductor and AI unwind.",
+   "anchor": "it was a clear beneficiary and hideout during the semi/AI unwind",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "AAPL is poised to fall either in a further risk-off scenario, or if semis and AI stocks bounce, in which case AAPL should unwind lower.",
+   "anchor": "it\u2019s now poised to fall in either a further risk-off scenario, or if semis/AI see a bounce it should unwind lower",
+   "topic": "Thursday equity vol spike",
+   "status": "target",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Gold miner strength is notable, and gold mining stocks sometimes lead the price of gold itself.",
+   "anchor": "GDX strength is worth paying attention to as sometimes it can lead the metal itself",
+   "topic": "Gold miners strength",
+   "status": "released",
+   "instruments": [
+    "GDX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Despite spot gold trading near its year-to-date lows, gold miner stocks (GDX) are acting better.",
+   "anchor": "notable that gold miners (GDX) are actually acting better despite spot gold near YTD lows",
+   "topic": "Gold miners strength",
+   "status": "released",
+   "instruments": [
+    "GDX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "What's the Most You've Ever Lost on a Coin-Toss",
+   "claim": "Royal Gold (RGLD) held up much better than GDX and gold itself over the last few months and is now working back toward recent highs.",
+   "anchor": "It held up much better than GDX and gold itself the last few months, and now working back towards recent highs",
+   "topic": "Gold miners strength",
+   "status": "released",
+   "instruments": [
+    "RGLD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/25707__what-s-the-most-you-ve-ever-lost-on-a-coin-toss.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
