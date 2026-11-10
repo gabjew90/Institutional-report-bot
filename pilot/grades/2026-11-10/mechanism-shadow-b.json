@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-10/25705__fireworks-day-stocks-fawke-d-ai-tech-wrecked-on-massive-reta.txt",
+ "source_span": "Continued semis pressure as a result of the view that by 2028 we won't have enough Data Center shells (land, power, shell)...and...therefore, we will likely have too many semiconductors and not enough 'datacenter shells' for them to go into.",
+ "source_chain": "A: by 2028 the buildout won't have enough data-center shells (land/power/permitting-constrained) therefore B: too many semiconductors will be chasing too few shells to go into therefore C: semis get sold as a 'source of funds' into the hyperscaler rotation (who already hold working compute). Invalidation (implicit): the shell/land/power bottleneck has to actually bind out to 2028 for the chip-oversupply read to hold.",
+ "pulse_chain": "A: state pauses on new data-center approvals cut future capacity therefore B: owners of existing capacity can charge more and need to spend less to add more therefore C: the 72 suppliers sell off while the 5 hyperscalers rally. Invalidation: the Dec 10 Texas audit and the Jan 12-May 31, 2027 legislative session decide it \u2014 approvals restarting on schedule closes the sellers' discount, a pause outlasting the session raises developers' financing costs.",
+ "preserved": false,
+ "why": "The pulse attributes the pricing-power/reduced-capex mechanism to [d5], but that document argues a different mechanism entirely (a 2028 land/power/shell bottleneck causing a chip glut); the scarcity-raises-price/spend-less two-step logic the pulse states is Goldman desk reasoning from a different, uncited Nov 5 Zero Hedge piece (25583, 'Hyperscalers Rip, Semis Rot'), so the pulse presents its own theory as d5's argument.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

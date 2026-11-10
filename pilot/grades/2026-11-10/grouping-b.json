@@ -1,0 +1,28 @@
+{
+ "metric": 1,
+ "total_cards": 881,
+ "fragmentation_sets": [
+  {
+   "subject": "Thursday's equity vol spike vs resilient credit spreads, and Goldman's trade betting credit catches down to equity (short GSIG30AS / long ESZ6)",
+   "labels": [
+    "thursday equity vol spike",
+    "ai credit equity divergence"
+   ],
+   "cards": 25
+  }
+ ],
+ "fragmented_mass_share": 0.0284,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "The GSIG30AS/ESZ6 trade (identical $500mm/~143-contract sizing) and the 'credit underperforms equity in risk-off' thesis are restated nearly verbatim under both labels; a pulse brief would carry them as one item. Separately, the GSXUHYPR Jan 110/120 call spread trade is duplicated as a single card across 'hedge fund long short deleveraging' and 'semis led equity rebound', but those two labels otherwise cover distinct subjects (leverage data vs Friday's price action), so it's a stray duplicate card, not label fragmentation. misc holds 12 of 881 cards (1.4%), correctly excluded from fragmented mass.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

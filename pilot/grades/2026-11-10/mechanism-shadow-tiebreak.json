@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-10/25583__hyperscalers-rip-semis-rot-in-one-of-the-widest-splits-in-a-.txt",
+ "source_span": "If compute is more scarce because you cannot build more capacity, you can sell it for at a higher price. ... If you cannot build more capacity, you are spending less, which in turn may lead to buying back stock again.",
+ "source_chain": "A Democrat sweep threatens to freeze up to 45% of planned data-center capacity, therefore existing compute gets scarcer and its owners (hyperscalers) can charge more for it while needing to spend less to add more, therefore money rotates out of chip/equipment suppliers (whose multiple rests on next year's capacity orders) into hyperscalers; invalidated if the moratorium doesn't actually bind \u2014 projects just move to Louisiana/Oklahoma 'eventually' and capex doesn't get capped, in which case hyperscalers keep spending, the buyback story stays a story, and the cheap semis discount was unwarranted.",
+ "pulse_chain": "State pauses on new approvals cut future data-center capacity, therefore owners of existing capacity (hyperscalers) can charge more and spend less to add more, therefore the trade splits (equipment/services sellers -13.3% vs. hyperscalers +1.7%) even as sellers trade at a multi-year relative low; invalidated by whether the pause actually sticks through its stated timeline (Texas audit Dec 10, legislative session to May 31 2027) \u2014 if approvals restart on schedule the sellers' discount closes, if the pause outlives the session the delay compounds into higher financing costs and lost tax breaks for developers.",
+ "preserved": true,
+ "why": "The pulse reproduces the note's two-step scarcity-pricing-power/lower-capex mechanism and keeps the same underlying invalidation axis (does the moratorium actually bind long enough to matter, or does it get worked around), just substituting the vaguer 'eventually move to Louisiana' hedge for concrete dates pulled from other desks' notes on the same pause.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

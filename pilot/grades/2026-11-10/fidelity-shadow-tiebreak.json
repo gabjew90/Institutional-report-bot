@@ -1,0 +1,148 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25584__the-texas-copycats-georgia-ohio-michigan-line-up-for-data-ce.txt",
+   "span": "Goldman sees Democratic wins at the state level leading to moratoria that could affect about 45% of planned US data center capacity, with Texas alone accounting for roughly a quarter",
+   "why": "45% figure and Texas share match exactly; the same file's state-by-state section (Georgia's Bottoms win, Ohio's Acton win, Michigan undercard) supports Georgia/Ohio/Michigan lining up behind Texas."
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source ties the day's selling to anything beyond or separate from earnings reactions in this framing; this is a plausible transitional sentence with no backing document.",
+   "searched": [
+    "selling went further than the earnings",
+    "earnings alone",
+    "beyond the earnings",
+    "not just earnings"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "Goldman credit strategist Amanda Lynam... sees near-term risks \"firmly tilted toward spread widening.\" Those two views can't both be comfortable",
+   "why": "Source explicitly frames two Goldman desks (Wilson's credit-supply-easing read vs. Lynam's spread-widening read) as being in tension, directly supporting the 'opposite sides' framing used ahead of the Miller/Lynam contrast in s4/s5."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25739__we-understand-the-optics-goldman-hikes-data-center-spending-.txt",
+   "span": "Goldman now expects US data center construction spending of $80 billion in 2026 and $100 billion in 2027, up from $67 billion and $87 billion, and introduced a $125 billion forecast for 2028",
+   "why": "Bubes figures match exactly; same file quotes his 'smoothing spending... rather than impacting the TAM' rationale. The GSXUHYPR Jan 110/120 call spread at 1.8% and the custom baskets desk identity are confirmed in 25632 (gs-miller-global-reflections) and corroborated as the 'custom baskets desk' by 25738/25734."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "Miller's desk sizes it as selling $500 million of GSIG30AS against buying roughly 143 ESZ6 contracts",
+   "why": "The $296bn issuance, nearly $50bn beyond forecast, and spread-widening view are genuinely Lynam's (confirmed in 25348__global-credit-trader). But the $500mm GSIG30AS vs. 143 ESZ6-contract trade is explicitly Louis Miller's custom baskets desk / 'credit structuring team' recommendation (25632, 25640, 25738), not Lynam's. The sentence wrongly attributes Miller's trade to 'the desk' following Lynam's name, misattributing who called it.",
+   "searched": [
+    "Lynam recommends",
+    "Lynam's desk sells",
+    "143 contracts Lynam"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25717__gs-garrett-weekend-prep-8-nov-2026.txt",
+   "span": "the high touch desk has sold -$30bn of tech (tmt + comm services) since this decline started, surpassing the supply seen in July (-$21bn)",
+   "why": "Figures match exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25717__gs-garrett-weekend-prep-8-nov-2026.txt",
+   "span": "systematic/cta signals are now negative in ~60% of global equity markets as gs calculates $28bn of spx futures to sell in a week, and $45bn to sell in a month",
+   "why": "CTA/systematic signals are trend-following strategies; $28bn/week and $45bn/month match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25385__gs-wilson-weekly-mash-6-nov-2026.txt",
+   "span": "over half of stocks are passively owned, a significant proportion of daily traded volume is enacted by non-fundamental... trading activity",
+   "why": "Mark Wilson (Goldman FICC & Equities, correctly distinguished from Morgan Stanley's Mike Wilson used in s12/s13) attributes the move to market-structure/ownership mechanics, matching the leveraged/similarly-modelled-fast-money framing."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25636__gs-lucas-gs-etf-color-charts-bullets-6-nov-2026.txt",
+   "span": "levered ETFs garnered +$3.3 billion worth of inflows, while inverse ETFs languished -$2.2 billion in outflows... net flows... totaled to +$1.1 billion",
+   "why": "All figures and 'widest level in our dataset' (widest gap on record) match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "Payrolls rose 165k in October, well above our 60k estimate and consensus 70k. Prior months were revised up a net 84k.",
+   "why": "Exact match."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "Private payrolls, +159k... accelerate from averages of 126k over 3 months and 82k over six months... a 70k rise in professional and business services payrolls",
+   "why": "Exact match."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25731__ms-us-equity-strategy-weekly-warm-up-enter-sandman-20261102.txt",
+   "span": "We think the correction that began months ago is in its final phase, with the S&P 500 catching down as breadth improves",
+   "why": "Same file elsewhere specifies the correction 'began in June,' matching 'mid-year.'"
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25731__ms-us-equity-strategy-weekly-warm-up-enter-sandman-20261102.txt",
+   "span": "downside tactical target of 7100-7300 before adding risk more aggressively. Our year-end base case remains 8000... Market Sentiment Indicator (MSI) not yet at levels",
+   "why": "Exact match on both targets and the sentiment-gauge condition."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25732__ms-us-public-policy-midterm-election-results-decisive-for-de.txt",
+   "span": "By far, the most important election result, from the perspective of data center development, was the Texas gubernatorial election... Interconnection requests had reached approximately 474 GW, more than 5x ERCOT's record peak electricity demand",
+   "why": "Exact match including the 90% new-power-request figure."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25648__us-weekly-kickstart-the-equity-index-impact-of-spacex-inclus.txt",
+   "span": "current index rules point to potential inclusion in H2 2027... the profitability condition would be met once Q2 2027 results are reported",
+   "why": "Exact match (SpaceX S&P 500 eligibility)."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

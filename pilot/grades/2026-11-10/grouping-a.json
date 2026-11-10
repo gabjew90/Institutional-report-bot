@@ -1,0 +1,36 @@
+{
+ "metric": 1,
+ "total_cards": 881,
+ "fragmentation_sets": [
+  {
+   "subject": "Thursday's AI-led equity crash and the credit-equity divergence trade",
+   "labels": [
+    "thursday equity vol spike",
+    "ai credit equity divergence"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex growth deceleration risk to S&P earnings growth and the AI trade's multiple",
+   "labels": [
+    "ai capex buildout outlook",
+    "s p earnings growth deceleration"
+   ],
+   "cards": 19
+  }
+ ],
+ "fragmented_mass_share": 0.0488,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "Set 1 is high-confidence: both labels carry the identical generic 30yr IG spread stat (2.2bps vs ~8bp implied) and the identical Miller-desk trade (short $500mm GSIG30AS vs long ~143 ESZ6), just framed once as market-mechanics and once as AI-credit narrative. Set 2 is lower-confidence (different stated emphasis \u2014 capex-complex risk vs aggregate EPS trajectory \u2014 but both carry the same 'convexity' framing and GS's explicit 'earnings forecast is very sensitive to AI capex' bridge line). misc holds 12/881 cards (~1.4%), including a third near-duplicate of the Pasquariello credit-vs-equity line already counted in set 1; not scored per the misc rule. No bundling found that would have changed which themes an editor leads with \u2014 candidates considered and rejected as mis-merges (defensive sector rotation's staples-short vs. flow evidence; data-center-policy-risk's TX/OH examples; the week-ahead calendar's mixed events) all read as one coherent subject or a conventional calendar roundup, not two unrelated theses forced together.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

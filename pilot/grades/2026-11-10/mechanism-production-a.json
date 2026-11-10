@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-10/25697__1998-or-2000-goldman-s-delta-one-head-bets-on-ltcm-not-pets-.txt",
+ "source_span": "Our view: 1998 is the right destination, but 2000 may be the route, or at least a few more weeks of it, until someone other than the dip-buying retail crowd shows up.",
+ "source_chain": "A: Thursday's crash was mechanically driven (leveraged ETF rebalancing + negative dealer gamma + $47B levered-ETF/$61B vol-control supply created a self-reinforcing liquidation), therefore B: this looks more like 1998 (liquidity accident, eventual buying opportunity) than 2000 (structural unwind), because today's AI leaders have real revenues/cash flows/balance sheets \u2014 therefore C (invalidation): that 1998 outcome needs what 1998 had, Fed easing and returning long-only demand, and 'none of that had arrived' as of the note (markets pricing ~65% odds of a December hike, cash desk flagging 'absence of underlying demand' as the real problem), so for now '2000 may be the route' until long-only buyers return.",
+ "pulse_chain": "A: Thursday's crash was forced selling by leveraged ETFs and vol-control funds, not an opinion on AI, therefore B: the damage to the AI buildout case is smaller than the 12% semis fall implies; Goldman's Privorotsky calls it a 1998-style liquidity accident (real cash flows) rather than 2000 \u2014 therefore invalidation: Nvidia's Nov 17 earnings report is the first hard read on whether chip demand held.",
+ "preserved": false,
+ "why": "The pulse keeps the plumbing-drove-the-drop premise and the 1998-not-2000 label but drops the note's own stated and unmet invalidation (no Fed put, absent long-only demand, 'none of that had arrived') and substitutes an unargued one (Nvidia's Nov 17 print), turning Privorotsky's hedged 'our view... 2000 may be the route for now' into an unqualified bullish verdict.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

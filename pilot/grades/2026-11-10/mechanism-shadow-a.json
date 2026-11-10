@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-10/25583__hyperscalers-rip-semis-rot-in-one-of-the-widest-splits-in-a-.txt",
+ "source_span": "\"If compute is more scarce because you cannot build more capacity, you can sell it for at a higher price.\" \"If you cannot build more capacity, you are spending less...\" ...the Texas pause probably runs at least through the end of the legislative session on May 31, 2027, per Wells Fargo",
+ "source_chain": "A moratorium freezes new data-center capacity (up to 45% of the planned US pipeline), therefore existing capacity becomes scarcer and can be rented out at a higher price (the toll-road logic Goldman's equity and credit desks both gave), therefore hyperscalers who already own that capacity need to spend less to add more (freeing cash for buybacks) while chipmakers tied to the cancelled future builds get de-rated; invalidation is the moratorium's duration, pegged to the Texas legislative session through May 31, 2027 per Wells Fargo \u2014 if it resolves faster the rotation unwinds, if it runs the full session the de-rating on the sellers has further to go.",
+ "pulse_chain": "State pauses on new approvals cut future capacity, therefore it raises what owners of existing capacity can charge, therefore it lowers what they have to spend to add more; invalidation is the same Texas timeline (Dec 10 audit, Wells Fargo's legislative-session estimate) \u2014 if approvals restart on that timeline the discount on the equipment/services sellers closes, if the pause outlives the session the delay starts imposing real costs (financing, tax breaks, cancelled contracts) on developers.",
+ "preserved": true,
+ "why": "The pulse keeps the same two-step scarcity-raises-pricing-power/lowers-capex logic and the same Wells Fargo legislative-session invalidation as the source, compressed and reworded but not reversed, dropped of a step, or reassigned to a different source.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,87 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Market structure (over half passive ownership, non-fundamental volume, correlated fast-money risk models) shrinks the pool of price-sensitive capital, so Thursday's 4.9-sigma Nasdaq 100 crash and heavy fundamental-TMT losses occur; Goldman Prime shows nine days of heavy selling and net leverage at an 18-month low, which Wilson reads as clean positioning for a bounce, but the structural fragility behind the crash is unfixed, so another 4.9-sigma day is only a matter of time; the house call is a fast, crowded bounce complicated by a hot payrolls print reviving December hike risk.",
+   "brief_chain": "Same causal chain: shrinking price-sensitive capital plus correlated fast money produces the 4.9-sigma crash and the ETF/vol-control flow sizing and TMT losses; nine straight days of de-grossing leave positioning washed out, which Wilson reads as bullish for a bounce even though the underlying fragility is unfixed, so the house view is a fast, crowded bounce complicated by a hot payrolls print.",
+   "distortions": [
+    {
+     "what": "Brief states 'nine straight days of de-grossing.' Source's own bullet is 'De-grossing in eight of the last nine sessions, and four straight sessions globally' (searched: 'de-grossing', 'eight of the last nine', 'nine days'); the 'nine days' figure in the source (line 104, 'selling them for nine days') is Durden's looser paraphrase of overall selling, not a de-grossing-specific streak.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the bounce call and its rationale (washed-out positioning, unfixed structural fragility) are unaffected by whether de-grossing ran eight-of-nine or nine straight sessions."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "The Democratic midterm sweep raised AI-regulation fears; rotation and hedge/vol unwinds let stocks close higher the next session, but the following cash open brought a sharper, retail-led selloff (confirmed by UBS and Vanda) that broke NDX's election-night lows and 200DMA and hit semis/AI/NeoClouds hard; UBS expects continued retail and over $100bn of systematic Risk Control selling with a possible Monday low; Treasuries rallied on a reduced-Treasury-supply/political-gridlock thesis reinforced by BofA, and oil rebounded on Hormuz-normalization bets even as Brent flipped into contango; analysts are split on further downside (Wedbush bearish, Fundstrat bullish).",
+   "brief_chain": "Same sequence and figures (UBS/Vanda retail-selling confirmation, NDX breaks, SOX/AI-basket/NeoCloud declines, UBS's >$100bn Friday Risk Control estimate and possible Monday low, Treasury rally on the fiscal/gridlock thesis plus BofA's auction-size call, oil rebound/Brent contango, the Ives/Lee split), framed with the sweep dated to Nov 4 and an 'early slide' on the day stocks closed higher.",
+   "distortions": [
+    {
+     "what": "Brief dates the Democratic sweep itself to 'Nov 4.' The source never states the election date directly; its only explicit dates (Nov 4 = the day that closed higher via rotation, Nov 5 = the crash day, per the embedded Prime Brokerage quote) describe market sessions after the vote, not the vote itself (searched: 'Nov 4', 'Tuesday', 'election').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 nothing about the retail-selling/systematic-flow narrative or the cross-asset calls depends on the exact calendar date of the vote versus the market reaction to it."
+    },
+    {
+     "what": "Brief says rotation/hedge unwinds let indices close higher 'despite an early slide' on that day; the source's parallel passage describes 'yesterday' as simply rescued/awesome, with the fading futures and liquidation flagged for the following session's open, not an intraday slide within the up day itself (searched: 'early slide', 'overnight', 'yesterday').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's a compressed characterization of the relief-rally day, not a change to any stance, trade, or figure."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Despite drawdowns in cyclicals/momentum that look end-of-cycle, healthy cycle indicators and positively sloped global yield curves argue it's a clearing event instead, so MS keeps its 6-12 month growth forecast above 2% in the US and 1% in Europe; the midterm Blue Wave raises, but is not MS's base case for, tighter AI-buildout regulation (semis already down 30% pre-vote, even the high-constraints bear case keeps +17% CAGR capacity growth to 2030), and for fixed income the result could ease both the data-center-borrowing and energy-price concerns, given lower Iran re-escalation risk and oil already 17% below its end-October level.",
+   "brief_chain": "Matches the source chain point for point, closing with the week-ahead global data calendar.",
+   "distortions": [
+    {
+     "what": "Brief labels the healthy jobs report as 'the October jobs report.' The source says only 'Friday's US jobs report' with no month stated (searched: 'October', 'jobs report', 'payrolls').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the month label doesn't affect MS's cycle-health argument or growth forecast; it's a plausible but unstated specification."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d9",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "The Blue Wave's state AI-moratoria risk splits the AI trade: the 72 S&P builder names fell 13.3% in two days despite rising estimates and cheapening valuations, while the 5 hyperscaler owners rose 1.7%, because a moratorium acts like a moat that raises the owners' pricing power and cuts their capex (illustrated by Microsoft ending Oracle capacity and the baskets desk's hyperscaler call spread); separately, IG credit barely moved on Thursday's 4.4% equity selloff because the equity hit fell on the capex recipients (the builders) rather than the capex-spending bond issuers (the hyperscalers), but Goldman's own credit desk still expects spreads to widen given hyperscaler issuance already $296bn YTD above assumptions, a larger 2027 pipeline, and junk AI debt that has already cracked; Zero Hedge sides with that caution, calling the calm complacency rather than strength.",
+   "brief_chain": "Same chain, but the credit-calm explanation is rendered as the selloff hitting 'capex spenders rather than bond-issuing recipients' \u2014 the reverse pairing of who-is-hit versus who-issues-bonds relative to the source's framing, though the brief's own earlier sentence (builders -13.3%, hyperscalers +1.7%) and later sentence (hyperscaler issuance driving the credit desk's widening call) both state the underlying facts correctly.",
+   "distortions": [
+    {
+     "what": "The clause 'the selloff hitting capex spenders rather than bond-issuing recipients' inverts the source's terms: the source's 'AI spenders' (who reach into credit/bond funding) are the hyperscalers, and the 'spending recipients' hit by Thursday's selloff are the 72 builder names \u2014 the opposite pairing from what the brief's wording implies (searched: 'spending recipients', 'AI spenders', 'capex').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief states the correct builders-down/owners-up split and the correct hyperscaler-issuance basis for the credit desk's widen-call elsewhere, so a reader acting on the brief as a whole still arrives at Goldman's actual trade reasoning; this one garbled clause doesn't by itself redirect the call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

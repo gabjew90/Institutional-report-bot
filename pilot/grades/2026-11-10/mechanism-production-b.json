@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-10/25394__gs-privorotsky-gs-basics-liquidation-1998-or-2000-vvix-6-nov.txt",
+ "source_span": "Leveraged ETF rebalancing likely compounded the decline in semis and NDX, with mechanical selling into the close. Combine that with negative dealer gamma and you have a self reinforcing liquidation.",
+ "source_chain": "Leveraged-ETF rebalancing plus negative dealer gamma compounded Thursday's decline into a self-reinforcing liquidation, THEREFORE some of the fall is mechanical rather than fundamental -- BUT 'fundamental uncertainties justify the de-rating,' with only the 'last leg' overextended by forced de-risking, THEREFORE the move is a mix of deserved repricing and forced excess, not a verdict call either way; invalidated if demand, utilization and returns fail to hold (which would make it the 2000 scenario rather than 1998).",
+ "pulse_chain": "Thursday's crash was forced selling by leveraged ETFs and vol-control funds unwinding mechanically, THEREFORE most of the 12% semiconductor fall reflects fund-rule liquidation rather than opinion about AI, THEREFORE the damage to the AI buildout case is smaller than the fall implies -- a 1998-style liquidity accident, not a 2000 unwind, because AI leaders have real cash flows; tested by Nvidia's Nov 17 report.",
+ "preserved": false,
+ "why": "The note explicitly says fundamental uncertainties already justify the de-rating and blames forced selling only for the 'last leg' overextension, plus keeps the 2000 structural-unwind scenario live as an open, uncomfortable possibility; the pulse drops that hedge and the fundamentals-justify-de-rating step, turning a split, uncertain read into a confident 'it was plumbing, so the damage is smaller than it looks' conclusion the note doesn't reach.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
