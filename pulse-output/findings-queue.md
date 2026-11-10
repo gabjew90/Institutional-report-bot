@@ -1362,3 +1362,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — Single-bank HIGH-CONVICTION lead (hedge unwind) was never adjudicated and bank counting treats two ZeroHedge variants as 2 banks. Count independent houses, not source strings (repeat of the 11-06 selection concern).
 - **observation** — Unverified: "30-year yields highest since 2002 in early October" and "Goldman does not expect trims through 2028" are not located in the dump.
 - **observation** — Adversarial verdict gaps for 10-12 and 10-14 persist. No finding on today's STEP 7 beyond the divergence on the Nov 4 staleness claim, which is unverified.
+
+## 2026-11-10
+- **deterministic-fixable** — The adversarial verdict file holds only the post-repair `{"findings": []}` while the driver reports 2 hard findings (Goldman dip-buy call, Natixis range). Keep the first verdict as `<ts>.pre-repair.json` (repeat of 11-03, 11-06, 11-09).
+- **deterministic-fixable** — Lint reported 5 hard findings before SCRUB and the archived lint file lists only 3 soft `slot-stat-overlap` items. The driver file is "abridged for transport". Record hard issue names and the final relint in the archive.
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild (pdf_count 331 vs 288 published, stamped 16:06 EST). Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-06).
+- **observation** — "Texas holds 26.7% of planned capacity (Goldman)" does not match the dump (26% of 2026-30 net additions, 25% of risk). This repeats the 11-06 Texas share mismatch (27% vs 25%). "$125B in 2028" is not located.
+- **observation** — "Many desks flag the deal headlines" in WHAT TO WATCH is mild corpus meta-narration.
+- **observation** — No STEP 7 self-review for today (none since 10-22). Adversarial verdict gaps for 10-12 and 10-14 persist.

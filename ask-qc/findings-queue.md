@@ -964,3 +964,10 @@ no findings (no FAIL entries). Notes:
 ## 2026-11-07
 
 no findings
+
+## 2026-11-09
+
+no FAILs (4 CONCERN, 6 clean). Notes for a session:
+- **regex-able (CONCERN)** (17:28 UTC, BK, JCI "explain this one too"): `dead-ticker:CRAH` stripped the bullet that carried the answer. CRAH is a parenthesised industry acronym, not a trade candidate. Candidate fixture: question "explain this one too" replying to "Also JCI (Johnson Controls)", raw answer containing "air handlers (CRAH)". Assertion: final answer still matches `(?i)chillers?|YORK|CDU` and `dead-ticker` does not fire when the paren token follows a common noun and no price/trade verb is nearby.
+- **regex-able (CONCERN)** (17:27 UTC, BK, Eaton and Amphenol): stray markdown stars in a ticker wrapper, `\(\*\*`\*\*[A-Z]{1,5}\*\*`\*\*\)`, shipped in the final answer. Assertion: no `` `\*\* `` or `\*\*` inside a backtick span in the final text.
+- **judgment (CONCERN)** (22:45 to 22:46 UTC, BK, richest-people chain): rank and net-worth figures from a single low-authority source (beinsure.com) or one Wikipedia page, stated flat, no "as of" date. "lower-middle tier" is a grade. The top-1000 answer's second bullet says nothing. A live-ranking question should name its source and date or decline to give a rank band.
