@@ -1,0 +1,245 @@
+{
+ "brief": "Hedge funds cut risk sharply this week as AI, semiconductor and other high-growth names sold off hard. GS Prime data shows net deleveraging milder than during the Iran-war selloff, while gross leverage ratios rose as fund equity fell faster than exposure. Info Tech was the most net-sold global sector, AI-stock selling by hedge funds hit a five-year extreme on a trailing 20-day basis, and hedge fund exposure to semis fell to single digits, while Mag7 net length still sits near cycle-high percentiles. The Nasdaq 100's forward P/E dropped to 18.4x, its lowest since 2020. Thursday brought one of Mag7's biggest down moves in years, and dealers pulled back, draining E-mini liquidity. S&P buyback demand is running near $5bn a day with 90% of corporates in their open window, and order volumes accelerated into the back half of the week on post-election momentum and earnings. Bloomberg reports unverified allegations against Jensen Huang. The note says it does not know what happened. If true, the market would ask what else he could have misled people about. Nvidia is barely up year-to-date with RSI at Liberation Day lows, though Berkshire has outperformed Nvidia by about 15 percentage points over the past year.",
+ "cards": [
+  {
+   "bank": "GS Prime Brokerage",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Hedge funds have been cutting risk aggressively, but net deleveraging remains less severe than during the Iran-war selloff.",
+   "anchor": "net deleveraging remains less severe than during the Iran-war selloff",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS Prime Brokerage",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Hedge fund gross leverage ratios have risen because fund equity has fallen faster than gross exposure.",
+   "anchor": "gross leverage ratios have actually risen as fund equity has fallen faster than gross exposure",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS Prime Brokerage",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Info Tech was the most dollar-net-sold sector globally and in the US this week, with percentage selling in global Tech stocks on par with the largest net-selling weeks on record since 2016.",
+   "anchor": "Info Tech was by far the most $ net sold global (and US) sector",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS Prime",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "On a trailing 20-day basis, the recent pace of hedge fund selling of global AI stocks is the largest in more than five years, at -3.0 standard deviations versus the 5-year average.",
+   "anchor": "the recent pace of selling of global AI stocks by HFs is the largest in more than five years",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS Prime",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Hedge fund exposure to the semiconductor sector has fallen to single digits.",
+   "anchor": "Single digit hedge fund exposure to semis now",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Hedge fund net length in the Magnificent Seven stocks is still at the 87th percentile over one year and the 93rd percentile over three years.",
+   "anchor": "Nets are still 87th %ile 1y and 93rd %ile 3yrs",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "The Magnificent Seven stocks had one of their biggest moves lower on Thursday in the past few years.",
+   "anchor": "The group had one of the biggest moves lower Thursday in the past few years",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "FactSet",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "The Nasdaq 100's forward P/E has fallen to 18.4x, below its five- and ten-year averages and its lowest level since 2020.",
+   "anchor": "The Nasdaq 100's forward P/E has fallen to 18.4x, below both its five- and ten-year averages",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS trading desk",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Top-of-book E-mini liquidity evaporated as dealers pulled back.",
+   "anchor": "Just when you needed it, Top of Book Liquidity evaporated as dealers pulled back",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS buyback desk",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "S&P 500 buyback demand is running at roughly $5bn a day, with 90% of corporates in their open window as of Monday.",
+   "anchor": "S&P buyback demand is running at ~$5bn a day and 90% of corporates are in the open window",
+   "topic": "S&P buyback demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS buyback desk",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Corporate buyback order volumes picked up significantly into the back half of the week, driven by post-election momentum and the active corporate earnings calendar.",
+   "anchor": "Volumes have picked up significantly into the back half of this week",
+   "topic": "S&P buyback demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS program trading desk",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Corporate buyback order activity this week is running at about 1.4x versus 2025 year-to-date average daily trading volume, up from 0.6x the prior week.",
+   "anchor": "The week is currently ~1.4x vs 2025 YTD ADTV vs last week was 0.6x",
+   "topic": "S&P buyback demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "NVDA is now barely up year-to-date, with RSI levels hitting lows last seen during Liberation Day.",
+   "anchor": "The most important stock in the universe is now barely up YTD, and RSI levels are hitting levels last",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "The document states it does not know whether the allegations against Jensen Huang are true, noting that intelligence assessments are not proof and that mainstream media has gotten sensational accusations wrong before.",
+   "anchor": "Intelligence assessments are not proof, and the mainstream media has certainly got sensational accusations wrong before",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "If the allegations against Jensen Huang turn out to be true, the market will ask what else he could have lied about or misled people about.",
+   "anchor": "If Jensen can lie to his wife of 41 years, what else could he lie about or mislead people about",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Liar Liar Leather Jacket On Fire",
+   "claim": "Berkshire Hathaway has outperformed Nvidia by roughly 15 percentage points over the past year.",
+   "anchor": "Berkshire has outperformed Nvidia by roughly 15 percentage points over the past year",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "BRK.B",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/25735__liar-liar-leather-jacket-on-fire.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 16,
+  "matched": 16,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
