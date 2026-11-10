@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: ],\"macro_key\":\"DXY\",\"direction\":\"bearish\",\"conviction\":\"low\",\"timeframe\":\"\"}, {\"bank\":\"Zero Hedge\",\"document\":\"Blue-nami",
+ "last_reason": "reader: funds fell more than -4% and are now roughly flat to slightly positive YTD, down from about +24% before the June/July AI",
  "history": [
   {
    "at": "2026-11-10T13:27Z",
    "run_id": "42812018518",
    "reason": "reader: ],\"macro_key\":\"DXY\",\"direction\":\"bearish\",\"conviction\":\"low\",\"timeframe\":\"\"}, {\"bank\":\"Zero Hedge\",\"document\":\"Blue-nami"
+  },
+  {
+   "at": "2026-11-10T14:12Z",
+   "run_id": "42820523641",
+   "reason": "reader: funds fell more than -4% and are now roughly flat to slightly positive YTD, down from about +24% before the June/July AI"
   }
  ]
 }
