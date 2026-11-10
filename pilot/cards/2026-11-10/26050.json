@@ -1,0 +1,434 @@
+{
+ "brief": "UBS sales commentary argues a sector-rotation story is turning into a correlation story: indices themselves, not just crowded sectors, have started falling. The author parks fundamentals (Memory down 16% in a day but still up 78% YTD) because positioning now matters more than valuation. Unlike July, long-only accounts have not stepped in to buy; hedge fund flow dominates while LO axes remain pre-existing tickets, so there is no clear buyer and no capitulation signal despite sub-July volume. Rising correlation is making popular hedges (semis vs software, semis vs hyperscalers, AAPL as an anti-AI trade) dangerous, since investors can only sell what they own; the author would buy semis against those hedges rather than call an index low. The move is framed as US-specific, not global, since Hong Kong, China and Europe are higher while the S&P falls, reflecting a reassessment of the US multiple premium amid a potential political/geopolitical shift (the \"Trump put\" helps rest-of-world via lower oil more than it helps US tech). Oil near $100 and a broken equity/bond hedge (correlation now positive) remain the key cross-asset risks.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The S&P 500 fell 4.36% to 7,353, with 376 decliners against 127 advancers.",
+   "anchor": "The 4.36% S&P fall took the index to 7,353, with 376 decliners against 127 advancers.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The S&P 500 had its worst day of the current episode, similar in magnitude to late February 2020.",
+   "anchor": "The S&P 500 had its worst day of the episode and similar in magnitude to late February 2020.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The SOX semiconductor index is now well below its 200-day moving average.",
+   "anchor": "The SOX is now well below its 200 DMA.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The Nasdaq 100 is down 14.7% over 22 trading days, exceeding its entire 10.9% July drawdown in roughly half the time.",
+   "anchor": "The Nasdaq 100 is down 14.7% over the same 22-day period, more than its entire 10.9% July drawdown in roughly half the time.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "22 trading days"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Over two weeks, 26 S&P 500 constituents are down more than 20% and 72 are down more than 10%.",
+   "anchor": "Over two weeks, 26 S&P 500 constituents are down more than 20% and 72 are down more than 10%.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Caterpillar is now the most oversold stock in the S&P 500, with an RSI of 19.5.",
+   "anchor": "Caterpillar is now the most oversold stock in the S&P 500, with an RSI of 19.5.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "CAT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "ServiceNow is down 35% over the two-week drawdown.",
+   "anchor": "with ServiceNow down 35% and Datadog 32%, close behind Marvell at -40% and Intel at -39%.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Datadog is down 32% over the two-week drawdown.",
+   "anchor": "with ServiceNow down 35% and Datadog 32%, close behind Marvell at -40% and Intel at -39%.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Marvell is down 40% over the two-week drawdown.",
+   "anchor": "with ServiceNow down 35% and Datadog 32%, close behind Marvell at -40% and Intel at -39%.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Intel is down 39% over the two-week drawdown.",
+   "anchor": "with ServiceNow down 35% and Datadog 32%, close behind Marvell at -40% and Intel at -39%.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Intel trading volume is 45% above its July level, alongside the largest drawdown in the semiconductor basket.",
+   "anchor": "Intel is the exception, with volume 45% above July alongside the largest drawdown in the basket.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Nvidia is trading 9% below its July volume level.",
+   "anchor": "Nvidia is trading 9% below its July volume, Micron 38% below and Samsung 50% below.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Micron is trading 38% below its July volume level.",
+   "anchor": "Nvidia is trading 9% below its July volume, Micron 38% below and Samsung 50% below.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The author would nibble on semiconductors versus defensive tech.",
+   "anchor": "I would probably nibble here vs defensive tech.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The author would start buying semiconductors while selling the recent hedging beneficiaries against that position.",
+   "anchor": "I would be starting to buy some semis but selling the recent \u201chedging\u201d beneficiaries against it.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The inverse correlations of semis versus software and semis versus hyperscalers are approaching irrational territory.",
+   "anchor": "particularly semis versus software and semis versus hyperscalers, are approaching irrational territory in my view.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Apple is acting as an anti-AI trade, materially dislocating through outperformance versus the Nasdaq 100.",
+   "anchor": "The likes of AAPL acting as an \u201canti AI\u201d trade is an example, where it is now materially dislocating through outperformance vs the NDX.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Hedge fund trading activity in this sell-off is much higher than long-only activity, and long-only accounts have not yet reacted meaningfully to the price moves.",
+   "anchor": "Hedge fund activity is much higher than long only. Long-only accounts have not yet reacted meaningfully to the price moves",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Trading volume remains below July levels across most key semiconductor names, looking more like persistent distribution than forced liquidation.",
+   "anchor": "Volume remains below July levels across most of the key names. This looks more like persistent distribution than forced liquidation.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The VIX is already at levels comparable with the period immediately before the COVID volatility spike.",
+   "anchor": "the VIX is already at levels comparable with the period immediately before the COVID volatility spike.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The S&P 500 to 10-year Treasury yield correlation has moved from -0.34 in July to +0.23 now, weakening the equity/bond hedge.",
+   "anchor": "The equity/bond hedge has weakened materially, with the S&P 500/10-year correlation moving from -0.34 in July to +0.23.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Brent crude remains close to $100 and is a direct macro headwind rather than a shock absorber.",
+   "anchor": "Brent remains close to $100 and is therefore a direct macro headwind rather than a shock absorber.",
+   "topic": "Brent oil war premium unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "A potentially falling oil price would benefit rest-of-world equity markets.",
+   "anchor": "The potentially falling Oil price clearly benefits RoW as well.",
+   "topic": "Brent oil war premium unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Over two weeks the HSCEI is up 8.8%, Hang Seng up 8.2%, CSI 300 up 2.0% and Euro Stoxx 50 up 2.5%, while the S&P 500 is down 4.0%.",
+   "anchor": "Over two weeks, the HSCEI is up 8.8%, Hang Seng 8.2%, CSI 300 2.0% and Euro Stoxx 50 2.5%, while",
+   "topic": "Blue Wave midterm market impact",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "The \"Trump put\" is more of a tailwind for rest-of-world markets through potentially lower oil than it is for broader US Tech.",
+   "anchor": "The \u201cTrump put\u201d is actually more of a tailwind and support for RoW through potentially lower oil than it is for broader Tech",
+   "topic": "Blue Wave midterm market impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Memory chip stocks were down 16% in a single day but remain up 78% on the year.",
+   "anchor": "Yes, Memory was down 16% yesterday, but it is still up 78% on the year.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Clients generally have cash available but have been slow to deploy it.",
+   "anchor": "Clients generally have cash, but they have been slow to deploy it.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Hedge funds have been noticeably more willing to add risk than long-only managers, who have largely remained on the sidelines.",
+   "anchor": "HFs were noticeably more willing to add risk, while LO managers have largely remained on the sidelines",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Clients continue to emphasise oil and the geopolitical risk premium as more important catalysts than the US political headlines themselves.",
+   "anchor": "Clients also continue to emphasise oil and the geopolitical risk premium there as more important catalysts than the US political headlines themselves.",
+   "topic": "Brent oil war premium unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Global Equities: A US Rotation Story Becomes A Correlation Story",
+   "claim": "Clients' selective opportunity areas are defence and aerospace, European banks and Asian tech, with considerably more scepticism around the renewables rally.",
+   "anchor": "The interesting opportunities clients identify are similarly selective: defence and aerospace, European banks and Asian tech, while there is considerably more scepticism around the renewables rally.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/26050__global-equities-a-us-rotation-story-becomes-a-correlation-st.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
