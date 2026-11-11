@@ -1,0 +1,1137 @@
+May Lose Value
+Not FDIC Insured
+No Bank Guarantee
+Grow up & Glow Up
+How Allocators Should Approach Digital 
+Assets at the Dawn of Their Institutional Era
+Franklin Templeton Investment Solutions  
+Franklin Templeton Digital Assets                 
+November 2026
+For Institutional/Professional Investor Use Only. Not for Distribution to Retail Investors.
+
+Executive 
+Summary
+In March 2025, we argued that investors who want digital assets should put them 
+in the benchmark, size them by risk contribution rather than by notional weight 
+and keep allocations below 20% of total portfolio risk. We also wrote that 
+contribution to risk would vary over time as the asset class evolved. Eighteen 
+months later, we now return to the data to ask how much it has evolved and what 
+that means for allocators. This time, we include a greater focus on institutional 
+portfolios that also incorporate illiquid private and liquid alternative asset classes.
+Key Findings
+•	 Bitcoin’s return distribution has compressed. Annualized daily volatility has fallen from ~84% in 
+2017–2019 to ~46% since mid-2024, and the average loss on the worst 5% of days has halved, from 
+-9.9% to -5.0%. This is consistent with the institutionalization we anticipated: deeper derivatives and 
+exchange-traded fund (ETF) infrastructure and a larger base of long-horizon holders. That said, 
+bitcoin remains volatile and prone to large drawdowns; the current era still includes a 53% peak-to-
+trough decline.
+•	 Correlations with traditional assets have retreated from their 2022–2024 highs, but they are 
+regime-dependent. Bitcoin’s correlation to global equities is highest when equities are in a negative 
+regime (roughly 0.4–0.5 since 2020) and lowest when equities are strong (0.1–0.3). For prudent 
+dynamic allocators this implies that funding for digital assets should continue to come from other 
+high-risk assets but also points to their increasingly diversifying quality.
+•	 The same 20% risk ceiling now accommodates a 7.5% allocation. In a diversified institutional 
+portfolio (45% global equity, 25% US bonds, 12% private equity, 10% real estate, 8% hedge funds), a 7.5% 
+bitcoin allocation funded pro rata contributes 20% of total portfolio risk. In our 2025 paper, 3% in a 
+60/40 portfolio contributed 11.4%; today, with volatility bands continuing to shrink, 3% in the same 
+60/40 portfolio contributes just 6.5%. 
+•	 Across 12 macro and crypto-specific shocks since 2020, bitcoin’s first-week behavior has been 
+mixed and its two-month recovery has been consistently stronger than equities. In the one true 
+liquidity shock in our sample (COVID-19), bitcoin fell twice as far as equities in the first week and its 
+equity correlation doubled. During the 2023 banking crisis, the 2025 tariff shock and the 2026 US-Iran 
+conflict, bitcoin outperformed equities in the first week as well as over a 60-day period. The direction 
+of each correlation change is explainable by the nature of the event, which implies that allocators can 
+make informed Dynamic Asset Allocation (DAA) decisions for crypto assets based on their macro 
+forecasts.
+•	 Risk budgets should be actively monitored. While peak risk contributions have fallen in each 
+successive cycle, the asset class remains prone to volatility spikes. We recommend risk-contribution 
+ceilings as rebalancing triggers, reviewed at least quarterly. The same discipline applies to private and 
+alternative allocations whose risk is understated by smoothed valuations.
+How This Paper Is Organized
+We follow the logic of an allocator approaching a new asset class. Section 1 asks what bitcoin represents 
+in a portfolio, because sizing depends on the role you expect it to play. Section 2 shows how the asset’s 
+statistical character has evolved, because those figures are the core inputs into allocation formulas. 
+Section 3 applies our risk-contribution framework to a diversified institutional portfolio and reconciles the 
+result with our 2025 paper. Section 4 tests the framework against real shocks. Section 5 covers monitoring 
+and rebalancing. A sidebar outlines further ideas for the digital asset sleeve itself. The Notes and Index 
+Definitions section at the end covers the data points mentioned throughout this paper.
+
+ftinstitutional.com
+Grow up & Glow Up
+3
+1. What Is Bitcoin’s Role in a Portfolio?
+Allocators tend to frame bitcoin in one of three ways: a 
+leveraged equity proxy, a store of value (“digital gold”) or a 
+high-volatility speculative position. As with many stereotypes, 
+these carry some truth yet fail to be validated with data. The 
+nuanced reality is that bitcoin’s relationship with traditional 
+assets has been evolving and has clear regime dependency, 
+further modified by the nature of the shock.
+Exhibit 1 summarizes rolling 36-month correlations of bitcoin 
+with major asset classes across two periods. Correlations rose 
+broadly after 2020 and peaked in 2023-2024, when bitcoin 
+traded as a liquidity-sensitive risk asset alongside equities 
+and high yield. Over 2025-2026 that linkage has loosened: 
+Equity correlation has fallen toward 0.3, high-yield toward 0.1–
+0.2, aggregate bonds toward zero, and commodities have 
+turned modestly negative. The precious metals relationship 
+has never been persistent in either direction, which argues 
+against a simple “digital gold” framing.
+The same picture holds against private and alternative assets. 
+On the recent-weighted covariance, we use for portfolio 
+construction (Section 3), bitcoin’s correlation is 0.32 with 
+global equities, -0.01 with aggregate bonds, 0.28 with private 
+equity, 0.22 with real estate and 0.18 with hedge funds. By 
+comparison, private equity and hedge funds correlate 0.72 
+and 0.84 with global equities. Thus, from that perspective, 
+bitcoin is more diversifying and liquid than the alternatives 
+with which it is often compared. Section 4 sharpens the 
+picture by regime and by event. 
+To answer this section’s question, we consider bitcoin a long-
+duration, high-volatility asset with moderate and time-varying 
+equity beta, whose idiosyncratic drivers (adoption, regulation, 
+and market structure) are large enough that it does not neatly 
+reduce to any one traditional analogue. That is why we size it 
+by its risk contribution rather than by analogy and consider 
+cryptocurrencies to be a fundamentally new asset class.
+Exhibit 1: Bitcoin Rolling 36-Month Correlations by Period
+Asset class
+2020–2022
+2023–2026
+Observation
+Global equity (MSCI ACWI)
+≈0.1–0.4, rising into 2022
+≈0.5–0.6 initially, falling to ≈0.3
+More equity-sensitive post-2020; 
+declining recently
+US high-yield
+≈0.1–0.5, rising
+≈0.45–0.55 through 2023–24, 
+now ≈0.1–0.2
+Risk-on linkage followed by 
+recent decoupling
+US aggregate bonds
+≈0.1–0.3
+≈0.2–0.3, declining toward zero/
+slightly negative
+Bond relationship has 
+weakened considerably
+Commodities
+≈0.1–0.2
+≈0.1–0.3, then falling 
+to ≈ -0.2
+Clearest recent 
+diversification shift
+Gold
+≈0.05–0.25
+Rose to ≈0.3–0.35, 
+fell back toward zero
+No persistent bitcoin–
+gold relationship
+Source: Bloomberg. Calculations by Franklin Templeton. Monthly returns, rolling 36-month windows, data through August 2026. Bitcoin represented by XBTUSD; global equities by MSCI ACWI Net Total 
+Return USD Index; US high-yield by Bloomberg US Corporate High Yield Index; US bonds by Bloomberg US Aggregate Bond Index; commodities by Bloomberg Commodity Index; gold by Bloomberg Gold 
+Subindex. Ranges are approximate readings from rolling series.
+
+4
+Grow up & Glow Up
+ftinstitutional.com
+2. How Has This New Asset Class Changed?
+In 2025 we noted that contribution to risk “will vary over time 
+due to the evolving volatility of financial assets.” For bitcoin, 
+the evolution has been directional. We divide the history since 
+2017 into four eras defined by who held the asset and how it 
+could be accessed (Exhibit 2 and Exhibit 3). Each era adds 
+infrastructure that widens the holder base and lengthens its 
+horizon: regulated futures and options; institutional custody 
+and corporate treasury buying; the 2022 deleveraging and 
+the transition to spot ETFs; and, since mid-2024, broad access 
+through ETFs, ETF options and wealth platforms.
+Three points stand out. First, annualized daily volatility has 
+reduced by roughly 40% from 90% to 50%. This is an apples-
+to-apples comparison; the decline is in the data, not in how 
+we measure it and supported by the aforementioned growth 
+in institutional infrastructure.
+Second, the tails have shrunk in severity. The average loss on 
+the worst 5% of days has moved from –10.3% to -5.3%, and the 
+upside tail has moderated in step (the average gain on the 
+best 5% of days fell from 11.9% to 6.2%). Relative tail heaviness 
+has not declined uniformly: excess kurtosis rose from 2.56 to 
+4.42 across the first two eras; peaking in the 2019Q3–2021Q4 
+institutional adoption before falling to 2.68 in the current era. 
+Skewness has stayed near zero throughout but has slightly 
+shown positive value of 2.68 in the more recent era of spot 
+ETFs and board institutional access. The maturation story is 
+about compression of the whole distribution, not a change in 
+its asymmetry.
+Third, drawdowns remain large. A 53% peak-to-trough decline 
+in the “mature” era is still several times what a diversified 
+portfolio experiences, and the 2022 episode, driven by 
+crypto-native leverage rather than macro, produced a 7% 
+deeper drawdown than the era before it. Lower day-to-day 
+volatility and persistent cyclical drawdowns both matter for 
+sizing—the former sets the steady-state risk contribution and 
+the benchmark allocation; the latter sets the dynamic 
+rebalancing discipline (Section 5).
+Why has volatility fallen? Our view, which we articulated in 
+2025 and in client conversations before that, is that 
+institutional participation centralizes holdings in “diamond 
+hands” (long-term investors who tend to hold their assets 
+through periods of market volatility rather than actively trading 
+or selling) that trade less. Spot ETFs, corporate treasuries and 
+staked or long-term holdings reduce the share of supply that 
+turns over on any given day. We cannot attribute the 
+improvement exclusively to adoption, and the same forces 
+may compress returns as well as risk. This paper makes no 
+return projection; all return figures shown are historical.
+Exhibit 2: Bitcoin Daily Return Distribution by Market-Structure Era
+Distribution of BTC Returns by Period (Excluding Saturdays)
+Probability per 0.1% Return Interval
+0
+0.02
+2017Q1-2019Q2 (N=780)
+2019Q3-2021Q4 (N=785)
+2022Q1-2024Q2 (N=781)
+2024Q3-2026Q3 (N=705)
+-4
+VaR: -7.7% | 
+CVaR: -10.3%
+VaR: 8.0% |
+CVaR: 11.9%
+-8
+-6
+2
+-2
+0
+BTC Return (%)
+4
+10
+6
+8
+0.015
+0.01
+0.005
+VaR: -5.8% | 
+CVaR: -9.1%
+VaR: 6.9% |
+CVaR: 9.5%
+VaR: -4.8% |
+CVaR: -6.9%
+VaR: 5.1% |
+CVaR: 7.1%
+VaR: -3.9% | 
+CVaR: -5.3%t
+VaR: 4.4% |
+CVaR: 6.2%
+Source: Bloomberg (XBTUSD Curncy); Franklin Templeton analysis. Daily Bitcoin returns and distribution-based risk metrics are calculated using Bloomberg historical price data, excluding Saturdays.
+
+ftinstitutional.com
+Grow up & Glow Up
+5
+3. How Should Bitcoin Be Sized?
+The same framework, with updated inputs
+Our approach has three steps. Put digital assets in the 
+benchmark, so that its risk is managed as policy rather than 
+as an off-benchmark position that swamps the active risk 
+budget (in 2025 we showed a 4% off-benchmark position 
+accounting for 103% of a 60/40 portfolio’s active risk). Size 
+the benchmark weight by its contribution to total portfolio 
+risk, with a guideline that no single position should contribute 
+more than about 20%, and a range of roughly 5%–20% 
+depending on the portfolio’s overall risk profile. Then refine 
+the funding source and offsetting tilts.
+A diversified institutional portfolio
+Our 2025 examples used a 60/40 portfolio and a 100% equity 
+portfolio. Here we extend the analysis to a portfolio that 
+reflects the growing weight of private and alternative assets in 
+institutional allocations: 45% global equities, 25% US 
+aggregate bonds, 12% private equity, 10% real estate and 8% 
+hedge funds. This is not a like-for-like update of the 2025 
+exhibits: We have less granularity within public equities and 
+fixed income, and more breadth across asset classes. 
+Our methodology: We fund the bitcoin allocation pro rata 
+from all five asset classes. We do this for simplicity and for 
+conservatism. Funding pro rata, rather than from the highest-
+risk and fattest-tailed sleeves, overstates bitcoin’s incremental 
+risk contribution relative to a more refined funding program, 
+which is what allocators should continue to do in practice. 
+Volatility, tracking error and risk contributions use a covariance 
+matrix estimated on the most recent 45 months (October 
+2022–June 2026) with a 24-month half-life exponential 
+weighting, because the purpose of those statistics is to 
+describe the near-term risk structure, and because bitcoin’s 
+volatility has fallen enough that a long equal-weighted history 
+would misstate it. Historical returns, ratios and tail metrics use 
+120 months of monthly returns, because 45 observations are 
+too few to estimate a 95% tail. For private equity we use a 
+de-smoothed return series, so that its risk contribution is not 
+artificially understated by appraisal-based valuations; real 
+estate and hedge fund series are used as reported and 
+should be read as conservative on risk.
+Exhibit 3: Bitcoin Daily Return Distribution by Market-Structure Era
+Era
+Daily vol 
+(ann.)
+Skew
+Excess 
+kurtosis
+Max 
+drawdown
+95% VaR 
+(daily)
+95% CVaR 
+(daily)
+Monthly vol 
+(ann.)
+2017Q1–2019Q2: retail-led market, 
+derivatives emerge
+90.3%
+0.09
+2.56
+-83.4%
+-7.7%
+-10.3%
+105.7%
+2019Q3–2021Q4: institutional 
+infrastructure and adoption
+77.2%
+-0.19
+4.42
+-60.5%
+-5.8%
+-9.1%
+77.8%
+2022Q1–2024Q2: deleveraging 
+and spot-ETF transition
+57.5%
+-0.14
+3.47
+-67.4%
+-4.8%
+-6.9%
+63.8%
+2024Q3–10 Sep 2026: spot ETFs 
+and broad institutional access
+49.7%
+0.22
+2.68
+-53.2%
+-4.0%
+-5.3%
+47.6%
+Source: Bloomberg. Calculations by Franklin Templeton on daily XBTUSD returns (801–915 observations per era) and monthly returns; data through September 10, 2026. Drawdown expressed as a negative 
+number. Monthly volatility exceeding annualized daily volatility in early eras reflects positive autocorrelation in returns (trending) rather than an inconsistency.
+Skewness: Measures the asymmetry of the return distribution. Positive skewness indicates a relatively longer or heavier right tail (larger positive returns), while negative skewness indicates a relatively 
+longer or heavier left tail (larger negative returns).
+Excess Kurtosis: Measures the kurtosis of the return distribution relative to a normal distribution (which has excess kurtosis of zero). Positive excess kurtosis indicates greater tail extremity relative to 
+a normal distribution, while negative values indicate less tail extremity.
+
+6
+Grow up & Glow Up
+ftinstitutional.com
+Exhibit 4: Bitcoin Allocation and Risk Contribution in a Diversified Institutional Portfolio 
+(bitcoin funded pro rata)
+0% BTC
+2% BTC
+4% BTC
+6% BTC
+8% BTC
+10% BTC
+Global equities (MSCI ACWI)
+45.0%
+44.1%
+43.2%
+42.3%
+41.4%
+40.5%
+US aggregate bonds
+25.0%
+24.5%
+24.0%
+23.5%
+23.0%
+22.5%
+US private equity (de-smoothed)
+12.0%
+11.8%
+11.5%
+11.3%
+11.0%
+10.8%
+US private real estate
+10.0%
+9.8%
+9.6%
+9.4%
+9.2%
+9.0%
+Hedge funds
+8.0%
+7.8%
+7.7%
+7.5%
+7.4%
+7.2%
+Portfolio volatility (ex-ante)
+10.0%
+10.1%
+10.4%
+10.7%
+11.1%
+11.5%
+Tracking error vs. 0% portfolio
+—
+0.9%
+1.9%
+2.8%
+3.7%
+4.7%
+Bitcoin % of total risk
+—
+3.8%
+9.0%
+15.0%
+21.6%
+28.4%
+Equities % of total risk
+—
+53.1%
+50.3%
+47.1%
+43.5%
+39.8%
+Private equity % of total risk
+—
+20.9%
+19.8%
+18.5%
+17.1%
+15.7%
+Historical annualized return (10 yrs)
+9.1%
+10.5%
+11.8%
+13.2%
+14.6%
+15.9%
+Sharpe ratio (10 yrs)
+0.62
+0.72
+0.80
+0.86
+0.90
+0.94
+Sortino ratio (10 yrs)
+0.93
+1.10
+1.26
+1.40
+1.53
+1.64
+95% monthly VaR (10 yrs)
+-4.7%
+-4.7%
+-4.7%
+-4.6%
+-4.6%
+-4.6%
+95% monthly CVaR (10 yrs)
+-6.6%
+-6.8%
+-7.1%
+-7.3%
+-7.5%
+-7.7%
+Maximum drawdown (10 yrs)
+-19.3%
+-20.1%
+-20.9%
+-21.7%
+-22.8%
+-24.0%
+Months below risk-free rate (of 120)
+41
+41
+43
+44
+45
+47
+Sources: Bloomberg NDUEACWF for Global Equity, LBUSTRUU for US Bonds, NCREIF US Real Estate, XBTUSD for BTC, Single Factor Bayesian De-smoothed MSCI Private Equity for PE, HFRX global HF Index 
+Flagship for Hedge Funds. Calculations by Franklin Templeton. Weights may not sum due to rounding. Volatility, tracking error and risk contributions use a 45-month (October 2022–June 2026) covariance 
+matrix with 24-month half-life exponential weighting. Historical return, Sharpe (risk-free rate: 3-month T-bills), Sortino, VaR, CVaR, maximum drawdown and downside months are computed empirically on 
+120 months of monthly returns (July 2016 – June 2026).  Private equity: MSCI US Private Equity, de-smoothed (single-factor Bayesian de-smoothing). Real estate: NCREIF US Real Estate. Hedge funds: 
+HFRX Global Hedge Fund Index. Past performance is not an indicator or a guarantee of future performance. 
+Three features of Exhibit 4 drive our conclusion. Bitcoin’s 
+share of total risk rises supra-linearly: 2% of capital is 4% of 
+portfolio risk, 3% is 7.5% risk, 6% is 15%, and 10% is more than a 
+quarter. The diversification of the rest of the portfolio absorbs 
+the first increments almost entirely; volatility rises 0.1 
+percentage points at 2% and 0.7 points at 6%, while the 
+10-year maximum drawdown widens by 2.4 points and the 
+number of months below the risk-free rate rises from 41 to 44. 
+Over the past decade in this study risk-adjusted returns 
+improved at every allocation shown, but we should be mindful 
+that past performance doesn’t forecast future returns.
+Applying our 20% guideline, the implied allocation for 
+this portfolio today is 7.5%. The result is not sensitive to the 
+covariance window—on a 120-month exponentially weighted 
+covariance, which gives earlier and more volatile years some 
+weight, 6% contributes 17.9% of risk and 8% contributes 25.2%. 
+Allocators with a benchmark that has riskier assets to use 
+as funding sources may reasonably lift the ceiling. Our 
+guideline is that single position risk concentration should be 
+under a fifth of the total, thus the benchmark’s other asset 
+classes will affect the final prudent weight for digital assets 
+in the portfolio.
+
+ftinstitutional.com
+Grow up & Glow Up
+7
+Reconciling With 60/40 and 2025
+In our 2025 paper, a 3% bitcoin allocation in a 60/40 portfolio 
+contributed 11.4% of total risk, and 6% in an all-equity portfolio 
+contributed 16.4% (February 2015–February 2025). Re-running 
+the same 60/40 portfolio today, with bitcoin funded from 
+equities as before, 4% contributes 9.6% of risk and 6% 
+contributes 16.6% (Exhibit 5). In other words, an allocation 
+one-third larger than our 2025 example now carries less risk 
+than that example did. The rule has not changed; the inputs 
+have. As we expected, further adoption and centralization of 
+digital assets have lowered their risk contribution per unit of 
+capital even as the asset class remains volatile and subject to 
+large, sudden drawdowns. This is precisely why allocators 
+cannot take a set-it-and-forget-it approach but should instead 
+take a risk-forward stance that allocates based on current 
+realities and revisits them as the asset evolves. That is not a 
+crypto-specific point; it applies equally to private and 
+alternative assets whose smoothed valuations understate their 
+true contribution to risk.
+Refining the Allocation
+Our 2025 guidance still applies: Fund digital assets from the 
+sleeves with the highest volatility or fattest tails, such as 
+emerging market equities and high-yield credit, and consider 
+offsetting part of the added risk with safe-haven exposure 
+such as US Treasuries. Funding from public equities alone, the 
+other construction we tested, produces near-identical risk 
+shares (15.3% at 6%) in this portfolio, because equities 
+dominate its risk to begin with. Allocators should also decide 
+explicitly whether bitcoin sits inside the alternatives budget or 
+alongside public equities, because that decision determines 
+which sleeve is trimmed and therefore the net risk effect.
+Exhibit 5: Same Rule, Different Inputs—Our 2025 Paper vs. Today
+Portfolio
+Covariance window
+BTC weight
+BTC % of total risk
+Funding
+60% global equity/40% US bonds (2025 paper)
+Feb 2015–Feb 2025
+3%
+11.4%
+From equities
+100% global equity (2025 paper)
+Feb 2015–Feb 2025
+6%
+16.4%
+From equities
+60% global equity/40% US bonds (today)
+Oct 2022–Jun 2026
+4%
+9.6%
+From equities
+60% global equity/40% US bonds (today)
+Oct 2022–Jun 2026
+6%
+16.6%
+From equities
+Diversified institutional 45/25/12/10/8 (today)
+Oct 2022–Jun 2026
+6%
+15.0%
+Pro rata
+Diversified institutional 45/25/12/10/8 (today)
+Oct 2022–Jun 2026
+8%
+21.6%
+Pro rata
+Source: Franklin Templeton: “Back to benchmarks.” (March 2025). Both periods use a 24-month half-life exponentially weighted covariance on monthly returns. Data Source for Indices: Bloomberg 
+NDUEACWF for Global Equity, LBUSTRUU for US Bonds, NCREIF US Real Estate, XBTUSD for BTC, Single Factor Bayesian De-smoothed MSCI Private Equity for PE, HFRX global HF Index Flagship for 
+Hedge Funds.
+
+8
+Grow up & Glow Up
+ftinstitutional.com
+4. How Does Bitcoin Behave in a Shock?
+Averages hide the behavior allocators care about. We examine 
+12 events since 2020: six macro and geopolitical shocks, and 
+six crypto-specific milestones. For each, we compare the 200 
+trading days before and after the event—bitcoin and equity 
+volatility, and bitcoin–equity correlation. We also show returns 
+over the first week and the first 60 days after the event. 
+Correlations are computed on traditional-market trading days, 
+with bitcoin’s weekend returns rolled into the next trading day 
+so that non-trading days do not bias the estimates; bitcoin 
+volatility uses the full seven-day series and is annualized on 
+365 days, equity volatility on 252.
+Two patterns stand out, and they pull in different directions, 
+which is why we show both. First, bitcoin’s first-week behavior 
+is not uniformly worse than equities’ as some investors have 
+feared. It was only the case in the one true liquidity shock in 
+the sample, COVID-19, when bitcoin fell twice as far as 
+equities in seven days and its equity correlation doubled. But 
+in the 2023 banking crisis, the 2025 tariff shock and the 2026 
+US–Iran conflict, bitcoin outperformed equities in the first 
+week, and in the latter two its volatility fell after the event 
+while equity volatility rose. Second, bitcoin’s 60-day recovery 
+has been stronger than equities’ in all six episodes. The 
+direction of the correlation change tracks the nature of the 
+shock: Correlation rose when the shock was about liquidity 
+and rates (COVID-19, Russia–Ukraine war), fell when the shock 
+implicated the banking system itself or when bitcoin-specific 
+drivers dominated, and was unchanged in the tariff episode. 
+Correlations with the full portfolio excluding crypto move the 
+same way: 0.27 to 0.51 around COVID-19, 0.41 to 0.64 around 
+the Russia–Ukraine war, 0.57 to 0.16 around the banking crisis, 
+0.43 to 0.49 around tariffs.
+Exhibit 6: Macro and Geopolitical Shocks—Bitcoin vs. Global Equities
+Event 
+(trigger date)
+BTC vol, 
+200d pre → 
+post
+Equity vol, 
+200d pre 
+→ post
+BTC–equity 
+corr., pre 
+→ post
+7-day return: 
+BTC / 
+equities
+60-day 
+return: BTC / 
+equities
+What drove the change
+COVID outbreak 
+(Mar 11, 2020)
+59.6% → 
+74.4%
+16.2% → 
+32.0%
+0.23 →
+ 0.49
+-32.1% / 
+-14.9%
++10.3% / 
++3.9%
+Liquidity shock: Bitcoin fell twice as far as 
+equities in week one, then recovered faster; 
+correlation with everything risk-sensitive doubled
+US election day 
+challenges 
+(Nov 3, 2020)
+50.3% → 
+85.4%
+17.3% → 
+11.5%
+0.35 →
+ 0.23
++12.0% / 
++5.8%
++130.7% / 
++13.4%
+Bitcoin-specific bull market (liquidity, corporate 
+treasury buying) dominated; correlation fell 
+despite the rally
+Russia–Ukraine 
+invasion (Feb 
+24, 2022)
+63.2% → 
+71.7%
+12.3% → 
+19.9%
+0.41 → 
+0.64
++9.6% / +1.3%
++4.6% / -1.6%
+Resilient at first; the geopolitical shock became 
+an inflation and rates shock, then a crypto 
+deleveraging (Terra/LUNA, Celsius, Three 
+Arrows); correlation reached its highest post-
+event level in the sample
+US regional 
+banking crisis 
+(Mar 9, 2023)
+53.0% → 
+43.3%
+17.6% → 
+10.3%
+0.54 →
+ 0.12
++22.4% / 
+-0.7%
++36.3% / 
++5.2%
+Failures of SVB, Signature and Silvergate raised 
+doubts about bank deposits; bitcoin decoupled 
+and rallied while its volatility fell
+Global tariff 
+announcement 
+(Apr 2, 2025)
+51.4% → 
+37.7%
+10.9% → 
+15.5%
+0.43 → 
+0.43
+-2.9% / -6.1%
++22.6% / 
++6.0%
+Bitcoin fell less than equities in week one 
+and recovered faster; no structural change 
+in correlation
+US–Iran conflict 
+(Feb 27, 2026)*
+48.0% → 
+39.1%
+9.2% → 12.9%
+0.57 → 
+0.39
++4.2% / -3.7%
++16.7% / 
++1.5%
+Energy-price channel hit traditional assets; 
+bitcoin, already down 25% in the prior 60 days, 
+held and recovered
+Source: Bloomberg. Calculations by Franklin Templeton on daily data. Pre = T-200 to T-1 trading days; post = T+1 to T+200. 7- and 60-day returns are cumulative from the trigger date. *The US–Iran strikes 
+occurred on Saturday February 28, 2026; the prior trading day is used as the base. Data end September 10, 2026, so the post-event window for this event is approximately 135 trading days rather than 200. 
+Past performance is not an indicator or a guarantee of future performance.
+
+ftinstitutional.com
+Grow up & Glow Up
+9
+Exhibit 7: Crypto-Specific Milestones—Bitcoin vs. Global Equities
+Event (trigger 
+date)
+BTC vol, 
+200d pre → 
+post
+Equity vol, 
+200d pre → 
+post
+BTC–equity 
+corr., pre → 
+post
+7-day return: 
+BTC / 
+equities
+60-day 
+return: BTC / 
+equities
+Observation
+BlackRock 
+files for spot 
+bitcoin ETF 
+(Jun 15, 2023)
+47.8% → 
+37.6%
+12.3% → 
+10.1%
+0.24 → 0.08
++18.0% / 
+-1.3%
++14.9% / 
++0.2%
+Idiosyncratic repricing; near-zero correlation 
+afterward
+Grayscale wins 
+SEC court case 
+(Aug 29, 2023)
+45.8% → 
+44.2%
+10.6% → 
+9.9%
+0.13 → 0.09
+-6.8% / 0.0%
++23.8% / 
+-7.0%
+Bitcoin rallied into an equity drawdown
+SEC approves 
+US spot bitcoin 
+ETFs 
+(Jan 10, 2024)
+38.1% → 
+50.4%
+10.2% → 
+9.0%
+0.16 → 0.21
+-7.2% / -1.5%
++51.1% / 
++6.6%
+“Sell the news” in week one, then volatility rose 
+with inflows; correlation stayed low
+Fourth bitcoin 
+halving 
+(Apr 19, 2024)
+49.7% → 
+47.3%
+9.7% → 11.2%
+0.12 → 0.48
+-0.2% / +2.6%
++1.3% / +8.6%
+Little price effect; correlation rose as macro 
+drivers reasserted
+US spot ether 
+ETFs begin 
+trading 
+(Jul 23, 2024)
+51.0% → 
+50.5%
+8.7% → 11.9%
+0.23 → 0.48
++0.5% / -1.8%
+-4.1% / +3.2%
+Non-event for bitcoin; correlation rose into the 
+August 2024 volatility episode
+US Strategic 
+Bitcoin Reserve 
+established 
+(Mar 6, 2025)
+51.0% → 
+38.4%
+10.1% → 16.1%
+0.39 → 0.46
+-10.6% / 
+-3.3%
++4.9% / -0.1%
+Market bought on the rumor, sold on the news; 
+volatility then fell sharply as the tariff 
+shock followed
+Source: Bloomberg. Calculations by Franklin Templeton on daily data. Methodology as in Exhibit 6. Past performance is not an indicator or a guarantee of future performance.
+Crypto-specific events show the complementary behavior: 
+Regulatory and market-structure milestones moved bitcoin 
+without moving equities, and correlations in the following 
+months were typically low. Several milestones were followed 
+by a short-term reversal (the ETF approval, the Strategic 
+Bitcoin Reserve), which is a reminder that anticipated catalysts 
+are priced before they arrive. Where correlation rose after a 
+crypto milestone (the 2024 halving and ether ETF launches), 
+the post-event window coincided with macro episodes that 
+dominated both markets. The two tables together describe an 
+asset whose diversification value is real but conditional, and 
+whose conditionality is legible.
+This is an important finding because it implies that bitcoin has 
+consistent loadings to macro and idiosyncratic factors, rather 
+than being an erratic speculative asset, and thus dynamic 
+investors can make informed predictions about its path, same 
+as with traditional asset classes.
+Regime View
+To generalize beyond individual events, we classify global 
+equity markets into positive, neutral and negative regimes 
+using five trend and momentum indicators, which yields about 
+18 regime changes per year and a transition matrix with 91%–
+95% persistence along the diagonal. Before 2020, bitcoin–
+equity correlation was near zero in all three regimes. Since 
+2020 it has been highest in negative equity regimes (0.3–0.5, 
+most recently 0.43) and lowest in positive regimes (0.1–0.3, 
+most recently 0.29). The gap has narrowed somewhat but 
+remains. The practical reading is the same as the event 
+studies: Expect bitcoin to behave more like equity when risk 
+assets sell off, and stress test your portfolios for that scenario.
+
+10
+Grow up & Glow Up
+ftinstitutional.com
+Exhibit 8: Bitcoin–Equity Correlation by Equity Regime
+Four-Year Rolling Regime Based Correlation BTC-Equity, (Daily Returns)
+2015–2026
+Rolling Correlation 
+-0.2
+0.6
+5/10/2016
+9/22/2017
+2/4/2019
+6/18/2020
+10/31/2021
+3/15/2023
+7/27/2024
+12/9/2025
+4/23/2027
+Date
+0.4
+0.5
+0.2
+0.3
+0.0
+0.1
+-0.1
+● Positive Regime      ● Neutral Regime      ● Negative Regime
+Source: Equity regimes are based on five momentum-based factors for equity: 1) Price relative to its 200-D MA, 2) 63-D momentum jump, 3) Change in 50-D MA over 2-D, 4) Kaufman Efficiency Ratio, 5) 
+60-D positive return frequency. Each factor being scores in the range {-1, 0, 1} based on their recent values and certain pre-decided thresholds. The final regimes are then based on the thresholds on the 
+final sum of five factor scores.
+The regimes are defined as follows:
+• Positive: Composite score ≥ +3, indicating broadly favorable equity market trends and momentum.
+• Neutral: Composite score between 0 and +2, indicating mixed or relatively balanced market conditions.
+• Negative: Composite score ≤ −1, indicating weakening or unfavorable equity market trends and momentum.
+We classify global equity markets into three regimes using five trend and momentum indicators:
+1. Price relative to its 200-day moving average
+2. 63-day price momentum
+3. Slope of the 50-day moving average over 20 days
+4. Kaufman Efficiency Ratio (trend strength and direction)
+5. Frequency of positive daily returns over the preceding 60 days
+Each indicator is assigned a score of +1, 0, or −1 based on predefined thresholds. The five scores are then summed to obtain a composite regime score ranging from −5 to +5.
+
+ftinstitutional.com
+Grow up & Glow Up
+11
+Source: Bloomberg (XBTUSD for Bitcoin, NDUEACWF Index for Global Equities, LBUSTRUU Index for US Bonds); NCREIF US Real Estate Index; MSCI Private Equity Index (single-factor Bayesian 
+de-smoothed); HFRX Global Hedge Fund Index (Weekly). Franklin Templeton analysis.
+5. How Should the Allocation be Governed?
+Risk contribution is not a constant to be set in stone. Exhibit 9 
+tracks bitcoin’s share of total portfolio risk through time for 
+allocations of 2% to 10% in the institutional portfolio, using 
+weekly returns, a rolling 24-week window and a 12-week half-
+life so that the estimate reflects prevailing conditions rather 
+than a long-run average.
+Four observations follow. The relationship between weight and 
+risk share is non-linear and time-varying, because the 
+denominator, total portfolio variance, changes as bitcoin’s own 
+variance and covariances change. There are distinct high-risk 
+regimes: A 10% allocation contributed as much as 90%–95% of 
+total portfolio risk in 2017–2018, and even a 4% allocation has 
+reached roughly 40%–50% in the worst episodes. Peak 
+contributions have fallen in each successive cycle, from 
+roughly 90% in 2017–2018 to 75%–80% in 2021 and 40%–45% 
+in 2024–2025 for the 10% allocation, which at the end of the 
+series (June 2026) contributes about 25%. And at small 
+weights the contribution can briefly turn negative, meaning 
+bitcoin’s covariance with the rest of the portfolio was negative 
+enough to reduce total risk at the margin.
+The shrinking envelope is the quantitative version of our 
+central message: Lower volatility has made a given risk budget 
+go further. The width of the envelope within any era is the 
+warning that accompanies it. We therefore recommend:
+•	 Risk-contribution ceilings as rebalancing triggers. 
+Define the maximum share of total risk the digital asset 
+sleeve may represent (we use 20%, but each client should 
+make this an explicit policy in line with their objectives and 
+horizon), estimate it on a rolling basis and trim when it is 
+breached rather than waiting for a calendar date. While 
+quarterly reviews should be the minimum, as we 
+recommended in 2025; the rolling analysis suggests the 
+binding events may arrive faster.
+•	 Symmetry. A ceiling implies a floor. When bitcoin’s risk 
+share falls well below target in a quiet period, the same 
+discipline argues for adding back toward the policy weight, 
+which is how a risk-forward allocation harvests the volatility 
+it tolerates.
+•	 The same discipline for alternatives. Once private 
+equity returns are de-smoothed, that sleeve carries 
+roughly a fifth of this portfolio’s ex-ante risk at a 12% 
+weight, more than the 10% bitcoin allocation does. Real 
+estate and hedge fund series in Exhibit 4 are as reported 
+and almost certainly understate risk for the same reason. 
+Allocators who adopt rolling risk governance for digital 
+assets should apply it to their desmoothed private sleeves 
+as well; the 2022 experience, in which public and private 
+marks diverged for several quarters, is the cautionary case.
+Exhibit 9: Rolling Bitcoin Contribution to Portfolio Risk, 2% to 10% Allocations
+BTC Contribution to Total Risk Based on Rolling 24-Week Covariance Matrix (EWMA with Half Life 12 Weeks)
+2017–June 2026
+-0.2
+1.0
+10% BTC
+8% BTC
+6% BTC
+4% BTC
+2% BTC
+Jun 21 
+2018
+Jun 21 
+2016
+Jun 21 
+2017
+Jun 21 
+2021
+Jun 21 
+2019
+Jun 21 
+2020
+Jun 21 
+2022
+Jun 21 
+2025
+Jun 21 
+2026
+Jun 21 
+2023
+Jun 21 
+2024
+0.6
+0.4
+0.2
+0.8
+0
+
+12
+Grow up & Glow Up
+ftinstitutional.com
+Conclusion
+Our framework continues to hold up: Put digital assets in the 
+benchmark, size them by their contribution to total risk, keep 
+any single position below about a fifth of that risk, and fund 
+them thoughtfully. What has changed are the inputs: Bitcoin’s 
+volatility has roughly halved as the asset has institutionalized, 
+and its correlation with traditional assets has retreated from 
+the 2022–2024 highs. The result is that the same risk budget 
+now accommodates roughly 6% in a diversified institutional 
+portfolio, and 4% in a 60/40 portfolio carries less risk today 
+than 3% did when we last wrote.
+Notes and Index Definitions
+Data as of: rolling correlations (Exhibit 1) and bitcoin distribution through September 2026; bitcoin distribution (Exhibit 3) and 
+event study (Exhibits 6–7) through September 10, 2026; covariance matrix, portfolio construction (Exhibits 4–5) and rolling risk 
+contribution (Exhibit 9) through June 2026, the latest common date for the private-asset series.
+Bitcoin: XBTUSD Curncy (Bloomberg). Global equities: MSCI ACWI Net Total Return USD Index (NDUEACWF). US fixed income: 
+Bloomberg US Aggregate Bond Index, total return, unhedged USD (LBUSTRUU). US high-yield: Bloomberg US Corporate High 
+Yield Total Return Index. Commodities: Bloomberg Commodity Total Return Index. Gold: Bloomberg Gold Subindex. Private 
+equity: MSCI US Private Equity, de-smoothed using a single-factor Bayesian method. Real estate: NCREIF US Real Estate. 
+Hedge funds: HFRX Global Hedge Fund Index (monthly, for portfolio construction) and HFRX Global Hedge Fund Index daily 
+series (event study only). Risk-free rate: 3-month US Treasury bills.
+Glossary and risk-contribution definitions follow the 2025 paper: Active risk/tracking error is the standard deviation of active 
+returns; contribution to risk is a position’s weight multiplied by its marginal contribution to portfolio variance, expressed as a 
+share of total variance; VaR and CVaR are empirical 95% monthly (Exhibit 3) or daily (Exhibit 2) quantiles; and maximum 
+drawdown is the largest peak-to-trough decline in cumulative value.
+This does not mean that “bitcoin is safer now.” Bitcoin is still a 
+high-beta asset in a true liquidity shock, its drawdowns are 
+still measured in halves, and its risk contribution still swings 
+by a factor of several within a cycle. The right response to an 
+asset that is changing is a process that changes with it: rolling 
+measurement of risk contribution, explicit ceilings that trigger 
+action and a willingness to revisit the policy weight as the 
+data move. That is a risk-forward stance, and it is good 
+practice well beyond digital assets.
+
+ftinstitutional.com
+Grow up & Glow Up
+13
+Proprietary Pilot
+This paper treats the digital asset allocation as a single spot-bitcoin position because 
+bitcoin has the longest history and the deepest institutional market. Several 
+extensions are available to allocators who want more from the sleeve.
+Diversification within digital assets. Our 2025 institutional guide described three 
+complementary approaches to capital market assumptions for digital assets: statistical 
+models (broadest application), cash-flow-based valuation for fee-generating 
+platforms, and network-based valuation for ecosystems whose value tracks usage. 
+The same taxonomy can shape a multi-token sleeve with targeted exposures across 
+cryptocurrencies, smart-contract platforms, decentralized finance, consumer and 
+utility tokens, sized to a client’s risk budget using the framework above.
+Systematic strategies as a partial complement to spot. Franklin Templeton 
+Digital Assets runs a systematic trend-following strategy on ether that combines 
+a daily trend signal with a regime-aware machine-learning overlay. Over its live history 
+since October 2022, its monthly return correlation has been 0.61 with spot bitcoin, 
+0.18 with global equities and -0.03 with US aggregate bonds, compared with 0.32 and 
+-0.01 for spot bitcoin against equities and bonds. Replacing a fifth of a spot-bitcoin
+sleeve with such a strategy reduces the sleeve’s dependence on bitcoin-specific
+directional risk. We have excluded it from the core analysis because 45 months of
+history is too short to support tail-risk estimates with confidence.
+Dynamic risk-based scaling. The rolling risk-contribution analysis in Section 5 
+implies a natural extension: a sleeve that scales exposure down as ex-ante volatility 
+and correlation with the rest of the portfolio rise, and back up as they fall. We expect 
+to publish on this separately. 
+Contributors
+Max Gokhman, CFA 
+Head of AI & Digital Asset 
+Solutions, Franklin Templeton 
+Investment Solutions
+Lisa Wang, CFA 
+Head of EMEA Investment 
+Strategy, Franklin Templeton 
+Investment Solutions
+Seth Ginns 
+Chief Investment Officer, 
+Franklin Crypto
+Soumil Jain, CFA, FRM, CAIA 
+Senior Quantitative Research Analyst, 
+Franklin Crypto 
+Inside the Digital Asset Sleeve
+
+14
+Grow up & Glow Up
+ftinstitutional.com
+WHAT ARE THE RISKS?
+All investments involve risks, including possible loss of principal.
+Equity securities are subject to price fluctuation and possible loss of principal.
+Fixed income securities involve interest rate, credit, inflation and reinvestment risks, and possible loss of principal. As interest 
+rates rise, the value of fixed income securities falls.
+ETFs trade like stocks, fluctuate in market value and may trade at prices above or below their net asset value. Brokerage 
+commissions and ETF expenses will reduce returns. ETF may not readily trade in all market conditions and may trade at 
+significant discounts in periods of market stress.
+Blockchain and cryptocurrency investments are subject to various risks, including inability to develop digital asset 
+applications or to capitalize on those applications, theft, loss, or destruction of cryptographic keys, the possibility that digital 
+asset technologies may never be fully implemented, cybersecurity risk, conflicting intellectual property claims, and inconsistent 
+and changing regulations. Speculative trading in bitcoins and other forms of cryptocurrencies, many of which have exhibited 
+extreme price volatility, carries significant risk; an investor can lose the entire amount of their investment. Blockchain technology 
+is a new and relatively untested technology and may never be implemented to a scale that provides identifiable benefits. If 
+a cryptocurrency is deemed a security, it may be deemed to violate federal securities laws. There may be a limited or no 
+secondary market for cryptocurrencies.
+Commodity-related investments are subject to additional risks such as commodity index volatility, investor speculation, 
+interest rates, weather, tax and regulatory developments.
+Digital assets are subject to risks relating to immature and rapidly developing technology, security vulnerabilities of this 
+technology, (such as theft, loss, or destruction of cryptographic keys), conflicting intellectual property claims, credit risk of 
+digital asset exchanges, regulatory uncertainty, high volatility in their value/price, unclear acceptance by users and global 
+marketplaces, and manipulation or fraud. Portfolio managers, service providers to the portfolios and other market participants 
+increasingly depend on complex information technology and communications systems to conduct business functions. These 
+systems are subject to a number of different threats or risks that could adversely affect the portfolio and their investors, despite 
+the efforts of the portfolio managers and service providers to adopt technologies, processes and practices intended to mitigate 
+these risks and protect the security of their computer systems, software, networks and other technology assets, as well as the 
+confidentiality, integrity and availability of information belonging to the portfolios and their investors.
+Investment strategies involving private markets (such as private credit, private equity and real estate) are complex and 
+speculative, entail significant risk and should not be considered a complete investment program. Such investments viewed as 
+illiquid and may require a long-term commitment with no certainty of return. Depending on the product invested in, such 
+investments and strategies may provide for only limited liquidity and are suitable only for persons who can afford to lose the 
+entire amount of their investment. Private investments present certain challenges and involve incremental risks as opposed to 
+investments in public companies, such as dealing with the lack of available information about these companies as well as their 
+general lack of liquidity. There also can be no assurance that companies will list their securities on a securities exchange, as 
+such, the lack of an established, liquid secondary market for some investments may have an adverse effect on the market value 
+of those investments and on an investor’s ability to dispose of them at a favorable time or price. 
+
+US-GTM-13650558- 
+
+FTIS-DIGBT-1126
+© 2026 Franklin Templeton. All rights reserved.
+IMPORTANT LEGAL INFORMATION
+This material is provided for general informational purposes only and should not be considered individualized investment 
+advice, a recommendation or a solicitation to adopt any investment strategy. It does not constitute legal or tax advice. Franklin 
+Templeton accepts no liability for losses arising from use of this material.
+The views expressed are those of the investment manager as of the publication date and may change without notice. These 
+opinions and analyses are based on certain assumptions, including market conditions that may change. They may differ from 
+those of other portfolio managers or from the firm as a whole.
+This material is not intended to provide a complete analysis of all material facts regarding any country, region or market. No 
+assurance can be given that any forecast, projection or prediction regarding economies or financial markets will be realized. 
+References to specific securities are for illustrative purposes only and should not be interpreted as recommendations or 
+a solicitation to buy, sell, or hold any security.
+Any research or analysis in this material has been prepared by Franklin Templeton for its own purposes and is provided 
+incidentally. While the information included is believed to be reliable, its accuracy and completeness cannot be guaranteed, 
+and it is subject to change without notice.
+Past performance does not guarantee future results, or any profit or gain. All investments involve risks, including 
+possible loss of principal. 
+Franklin Templeton offers environmental, social and governance (ESG) capabilities, though not all strategies or products 
+incorporate ESG as part of the investment process.
+Investment strategies and services may not be available in all jurisdictions. Please consult your financial professional or Franklin 
+Templeton contact for further information.
+Brazil: Issued by Franklin Templeton Brasil Ltda. Canada: Issued by Franklin Templeton Investments Corp. Offshore Americas: 
+In the United States, this publication is made available by Franklin Templeton. United States: Issued by Franklin Templeton. 
+Investments are not FDIC insured; may lose value; and are not bank guaranteed.
+Europe: Issued by Franklin Templeton International Services S.à r.l., 8A, rue Albert Borschette, L1246 Luxembourg. Saudi Arabia: 
+Issued by Franklin Templeton Financial Company, KAFD, Building 3.09, Office No. 8018, Level 8, Saudi Arabia. Regulated by 
+CMA. License no. 23265-22. South Africa: Issued by Franklin Templeton Investments SA (PTY) Limited, which is authorised by 
+the FSCA as a Financial Service Provider (No.44475). Switzerland: Issued by Franklin Templeton Switzerland Ltd, Talstrasse 41, 
+CH-8001 Zurich. Middle East & Africa (ex South Africa): Issued by Franklin Templeton Investments (ME) Limited, which is 
+regulated by the Dubai Financial Services Authority. Address: Franklin Templeton, The Gate, East Wing, Level 2, Dubai 
+International Financial Centre, P.O. Box 506613, Dubai, U.A.E. Tel: +971(04) 428 4100. United Kingdom: Issued by Franklin 
+Templeton Investment Management Limited (FTIML), registered office: Cannon Place, 78 Cannon Street, London EC4N 6HL.
+Australia: Issued by Franklin Templeton Australia Limited (ABN 76 004 835 849) (Australian  Financial Services License Holder 
+No. 240827), Level 47, 120 Collins Street, Melbourne, Victoria 3000. Hong Kong: Issued by Franklin Templeton Investments 
+(Asia) Limited. Japan: Issued by Franklin Templeton Japan Co., Ltd. South Korea: Issued by Franklin Templeton 
+InvestmentAdvisors Korea Co., Ltd. Malaysia: Issued by Franklin Templeton Asset Management (Malaysia) Sdn. Bhd. & Franklin 
+Templeton GSC Asset Management Sdn. Bhd. Singapore: Issued by Templeton Asset Management Ltd. (UEN) 199205211E.
+Access your local website at https://www.franklintempleto n.com/corporate/all-sites.
