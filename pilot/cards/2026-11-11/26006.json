@@ -1,0 +1,270 @@
+{
+ "brief": "The AI selloff has crushed US AI hardware names while Chinese AI-compute competitors held up, a divergence TS Lombard reads as the start of China becoming the world's low-cost compute supplier, comparable to its past dominance of solar and batteries. Evidence: China's semiconductor ETF (3191 HK) has outperformed the SOX over the past month; Nvidia's share of Chinese data-center AI accelerator shipments fell to 34% in H1 2026 as Huawei rose to 28%, with US export restrictions accelerating China's domestic substitution rather than blocking it. China's edge compounds through power: it added roughly 10x US generating capacity in 2025, and Inner Mongolia data centers pay about half the US industrial electricity rate, so compute demand could migrate to the cheapest power as Chinese competitors scale. Because open-weight models (72% of OpenRouter tokens, 27% of spending, 69% from Chinese labs) make compute increasingly interchangeable, value shifts to distribution and cheap supply, pressuring Nvidia's roughly 75% gross margin the way Chinese scale cut solar and battery prices 95% and 90%. The thesis: not weaker Western AI demand, but structurally lower margins. The note floats low-delta upside calls on SMHC, down roughly half from its summer highs, to express it.",
+ "cards": [
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "TS Lombard argues the next big AI disruption could come from China becoming the world's low-cost supplier of compute.",
+   "anchor": "the next big AI disruption could come from China becoming the world's low-cost supplier of compute",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "China's semiconductor ETF (3191 HK) outperformed the SOX over the past month, with nearly all the relative strength coming in the past few sessions.",
+   "anchor": "China's semiconductor ETF (3191 HK) has outperformed the SOX over the past month, with virtually all the relative strength coming in",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "Nvidia's share of Chinese data-center AI accelerator shipments fell to 34% in H1 2026, with Huawei closing the gap at 28%.",
+   "anchor": "Nvidia's share of Chinese data-center AI accelerator shipments fell to 34% in H1 2026, with Huawei closing the gap at 28%.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "The unintended consequence of US restrictions on China's access to Nvidia's technology may be the creation of Nvidia's next major competitor.",
+   "anchor": "the unintended consequence of restricting China\u2019s access to Nvidia\u2019s technology may be the creation of Nvidia\u2019s next major competitor",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "China added roughly ten times as much power-generating capacity as the US in 2025.",
+   "anchor": "China added roughly ten times as much generating capacity as the US in 2025.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "Amid growing US political resistance to data-center expansion, compute demand could increasingly migrate toward the cheapest available power.",
+   "anchor": "growing political resistance to data-center expansion, TS Lombard argues that compute demand could increasingly migrate toward the cheapest available power.",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "Data-center hubs in Inner Mongolia pay around 4.7 cents per kWh, roughly half the US industrial average.",
+   "anchor": "Data-center hubs in Inner Mongolia pay around 4.7 cents per kWh, roughly half the US industrial average.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "As compute becomes increasingly commoditized, electricity costs could become a critical competitive differentiator.",
+   "anchor": "As compute becomes increasingly commoditized, electricity costs could become a critical competitive differentiator.",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "Open-weight models now account for 72% of tokens on OpenRouter but capture just 27% of spending.",
+   "anchor": "Open-weight models now account for 72% of tokens on OpenRouter, but capture just 27% of spending.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "Chinese labs alone account for 69% of tokens served on OpenRouter.",
+   "anchor": "Chinese labs alone account for 69% of tokens.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "As models become increasingly interchangeable, value shifts toward distribution and cheap compute.",
+   "anchor": "as models become increasingly interchangeable, value shifts toward distribution and cheap compute.",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "The winners in AI usage may not be the winners in AI profits.",
+   "anchor": "The winners in AI usage may not be the winners in AI profits.",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "With Nvidia's gross margins around 75%, Chinese competitors have an enormous margin pool to attack.",
+   "anchor": "With Nvidia's gross margins around 75%, Chinese competitors have an enormous margin pool to attack.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "The combination of cheaper power, domestic scale and improving hardware could put increasing pressure on Western AI economics.",
+   "anchor": "the combination of cheaper power, domestic scale and improving hardware could put increasing pressure on Western AI economics.",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "Solar module prices have fallen 95% and battery pack prices are down 90% as Chinese manufacturers came to dominate both industries.",
+   "anchor": "Solar module prices have fallen 95%, while battery pack prices are down 90% as Chinese manufacturers came to dominate both industries.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "The risk for Western tech is not necessarily weaker demand, but structurally lower margins.",
+   "anchor": "The risk for Western tech is not necessarily weaker demand, but structurally lower margins.",
+   "topic": "Nvidia China margin threat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "The SMHC ETF has only existed since June and has already halved from its summer highs.",
+   "anchor": "The SMHC ETF has only been around since June, yet it has already halved from its summer highs.",
+   "topic": "Nvidia China margin threat",
+   "status": "released",
+   "instruments": [
+    "SMHC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Nvidia's 75% problem: The next China shock is coming",
+   "claim": "One way to express the China low-cost-compute thesis is through low-delta upside options in SMHC.",
+   "anchor": "one way to express the thesis above is through low-delta upside options in SMHC.",
+   "topic": "Nvidia China margin threat",
+   "status": "target",
+   "instruments": [
+    "SMHC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-11/26006__nvidia-s-75-problem-the-next-china-shock-is-coming.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 18,
+  "matched": 18,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
