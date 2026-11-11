@@ -1,0 +1,2606 @@
+10 November 2026
+US Industrials & Tech
+Data Center Pipeline Probabilities: Gigawatts versus Bragawatts -
+what's really getting built (Oct '26)
+Madison Rezaei
++1 917 344 8622
+madison.rezaei@bernsteinsg.com
+Chad Dillard
++1 917 344 8469
+chad.dillard@bernsteinsg.com
+Nancy Wu
++1 917 344 8545
+nancy.wu@bernsteinsg.com
+Alexander Feitler
++1 917 344 8317
+alexander.feitler@bernsteinsg.com
+Dennis Zhuo
++1 212 845 7834
+dennis.zhuo@bernsteinsg.com
+We published our first version of this analysis on June data, attempting to pull apart the
+~600GW of U.S. data center pipeline and estimate what was likely to be built. We updated
+the analysis for August, and are now refreshing for October. Excel version here.
+In some ways, the data center landscape is evolving rapidly - we’ve had neocloud credit
+shocks, election surprises, various lab commitments, and plenty of individual provider
+moves. But in other ways, the landscape can’t move that fast. It takes 2-3 years to build a
+data center - more in extremely tight markets - and plans aren’t changed on a whim. While
+our absolute number of credible GWs continues to tick up with a growing project
+pipeline, our completion rate continues to hover around 33-35%.
+Our normal, full pipeline dataset casts a deliberately wide net across the North American
+market: operating facilities, canceled projects, land banks, announcements, and projects
+already under construction. But for this credibility analysis, we probability-weight the
+remaining projects - we’re not giving full credit for press releases and PowerPoints. Our
+project probability score reflects four things for each build: stage of development, tenant
+quality, developer credibility, and state-level regulatory risk. Construction progress
+carries the most weight—a facility with concrete poured is simply more credible than an
+announced megabuild—while pre-leasing to an IG hyperscaler, a demonstrated ability to
+secure power and capital, and a track record of actually delivering capacity all improve the
+odds of completion and up our weighting.
+Of the 586 facility GW of capacity currently in our October data, we anticipate that 34% of
+the builds are credible (199GW). This is in line with our 33% June number and our 35% for
+August. At an individual level, projects are (slowly) marching through the pipeline, raising
+their credibility, while the top of the funnel (often at lower credibility) is also continuing to fill.
+Major scoring changes to our last update include: upgrades to Crusoe’s capital score (4→5)
+and TeraWulf’s power score (3→4), alongside downgrades to Nscale’s offtake score (5→4)
+and Fermi America’s (3→2). On tenants, we reduced Oracle’s multiplier from 0.80 to 0.75
+and the Oracle/OpenAI combination from 0.85 to 0.80, while raising another large buyer
+from 0.60 to 0.65.
+Notably, we haven’t made massive changes to our state-level scoring. More on that in our
+election note. We were already discounting likelihoods in high-risk states (including TX)
+and view most of the credible data center capacity as very likely to be built. While the cost
+of an individual project may increase as additional grid upgrades or community concessions
+are required, we do not believe construction will be canceled.
+Our top stock picks in this space continue to include the most credible developers around:
+EQIX ($1,270) and DLR (OP, $226), both of whom have strong footprints in major metros
+and robust, diversified pipelines. In US Machinery & Electricals, our top picks are PWR (OP,
+$804), ETN (OP, $534), HUBB (OP, $560), FPS (OP, $48), LGN (OP, $103), all of whom
+we believe are well positioned to benefit from the short and long-term tailwinds.
+See the Disclosure Appendix of this report for required disclosures, analyst certifications and other
+important information. Alternatively, visit our  Global Research Disclosure Website.
+www.bernsteinresearch.com
+First Published: 10 Nov 2026 15:07 UTC  Completion Date: 10 Nov 2026 15:07 UTC
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+BERNSTEIN TICKER TABLE
+9 Nov 2026
+TTM
+Adjusted EPS
+Adjusted P/E (x)
+Closing
+Price
+Rel.
+Ticker
+Rating
+Cur
+Price
+Target
+Perf.
+Cur
+2025A
+2026E
+2027E
+2025A
+2026E
+2027E
+CRWV (CoreWeave)
+U
+USD
+48.98
+54.00
+(65.8)%
+USD
+(1.20)
+(5.14)
+(6.60)
+N/M
+233
+29.5
+EQIX (Equinix)
+O
+USD
+1,054.50
+1,270.00
+15.1%
+USD
+14.96
+18.38
+20.12
+70.5
+57.4
+52.4
+DLR (Digital Realty)
+O
+USD
+180.10
+226.00
+(5.8)%
+USD
+3.87
+3.09
+3.21
+46.5
+58.2
+56.1
+BXDC (Blackstone Digital
+Infra)
+O
+USD
+16.70
+26.00
+NA
+USD
+0.00
+0.32
+(1.00)
+52.3
+(16.7)
+CAT (Caterpillar)
+M
+USD
+598.88
+664.00
+(7.3)%
+USD
+19.08
+27.29
+31.60
+31.4
+21.9
+19.0
+CMI (Cummins)
+M
+USD
+466.47
+462.00
+(15.9)%
+USD
+20.51
+28.78
+32.99
+22.7
+16.2
+14.1
+ETN (Eaton)
+O
+USD
+359.30
+534.00
+(17.5)%
+USD
+12.07
+13.77
+16.30
+29.8
+26.1
+22.0
+HUBB (Hubbell)
+O
+USD
+441.57
+560.00
+(16.7)%
+USD
+18.33
+20.55
+23.03
+24.1
+21.5
+19.2
+FPS (Forgent)
+O
+USD
+22.60
+48.00
+NA
+USD
+0.68
+1.41
+2.43
+33.2
+16.1
+9.3
+PWR (Quanta Services)
+O
+USD
+591.48
+804.00
+19.1%
+USD
+10.75
+18.23
+21.37
+55.0
+32.5
+27.7
+LGN (Legence)
+O
+USD
+32.16
+103.00
+(24.3)%
+USD
+298.82
+575.39
+627.40
+15.9
+8.3
+7.6
+SPX
+7,549.94
+O - Outperform, M - Market-Perform, U - Underperform, NR - Not Rated, CS - Coverage Suspended
+LGN estimate is EBITDA (M); CRWV valuation is EV/EBIT (x); LGN valuation is EV/EBITDA (x); FPS base year is 2026;
+Source: Bloomberg, Bernstein estimates and analysis.
+INVESTMENT IMPLICATIONS
+US Communications Infrastructure: We rate DLR ($226) and EQIX ($1,270) Outperform. We rate CRWV ($54) Underperform.
+US Machinery & Electricals: We rate PWR ($804), ETN ($534), HUBB ($560), FPS ($48), LGN ($103) Outperform. We rate
+CAT ($664) and CMI ($462) Market-Perform.
+US INDUSTRIALS & TECH
+2
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+DETAILS
+In June, we published a detailed analysis trying to separate "credible developers from dudes with powerpoints" that implied
+~1/3 of the pipeline capacity (from announced to construction) would actually be built. Our normal, full pipeline dataset
+casts a deliberately wide net across the North American market: operating facilities, canceled projects, land banks,
+announcements, and projects already under construction, capturing project-level details including provider, location,
+construction status, estimated power, disclosed tenant, and other available development factors, with status validated monthly
+through satellite imagery. But for the credibility analysis, we strip out what is already active and what is knowingly
+dead, then probability-weight the remaining projects rather than treating every press release as a future build. The
+probability score is project-specific and reflects four things: stage of development, tenant quality, developer credibility, and
+state-level regulatory risk. Construction progress carries the most weight—a facility with concrete poured is simply more
+credible than an announced megabuild—while pre-leasing to an IG hyperscaler, a demonstrated ability to secure power and
+capital, and a track record of actually delivering capacity all improve the odds. For the full methodology, please see the bottom
+of the note (Exhibit 32-Exhibit 36).
+Of the 586GW of capacity currently in our October dataset, we anticipate that 34% of the builds are credible based on today's
+data. Project Stage remains the most meaningful haircut—we consider physical construction progress to be a major indicator of
+credibility. The tenant haircut is the next most pronounced: for a high-quality, IG tenant, certainty goes up; whereas for some of
+the miners or longtail neoclouds, credibility is lower. The sponsor haircut is also meaningful, though less so than the prior two—
+this is a fast-moving space, and we do not want to overpenalize new entrants who are showing clear signs of development and
+tenant signing. Finally, we layer in a haircut for the location of the build. This was a relatively small cut in June; it is no longer. With
+the November 3 elections, three of the largest data center states (TX, GA, OH) elected governors who campaigned on moratoria,
+and we now haircut announced and land-banked capacity in eight states versus six in July. Our view is still not that most of those
+projects will be canceled—they are more likely to be delayed.
+Since August, our data center pipeline capacity estimates have been updated to reflect changes in tenant credit quality,
+developer and project execution profiles, and state legislation.
+On the tenant side, credit is bifurcating. Well funded sovereign and enterprise payers moved higher, including HUMAIN
+following Aramco’s closing of its 49% stake, Lambda on a $1B IG rated term loan, and Cohere on a Series E with Canadian
+government participation. Conversely, OpenAI was trimmed after cutting its funding round target to $20B from roughly $30B,
+Oracle was reduced again following the Project Jupiter force majeure notice and Moody’s maintained negative outlook, and
+TensorWave was cut after its Fermi lease missed closing. We also added ten tenants newly appearing in the project data, notably
+Jane Street and Bloomberg as terminal enterprise payers.
+On the company side, capital is getting easier, while offtake is getting harder. Crusoe, Sabey, and Serverfarm were
+upgraded on new financing, TeraWulf and xAI on power milestones, and Alpha Compute on binding compute contracts. Nscale
+was downgraded after Microsoft walked from its Loughton site and its Norway flagship slipped, Fermi America after the
+TensorWave lease failed to close, and PNK Group after Union County, PA halted its substation build.
+The hyperscalers remain at the top of the scale despite Amazon’s withdrawal from a 427 acre Ashburn project, S&P’s
+negative outlook on Meta, and Microsoft’s Loughton exit. These single site decisions do not alter hyperscaler credit.
+On the regulatory side, we had already incorporated governor actions in TX, PA, and NY, while this update reflects the
+election. TX and PA move to our 0.70 floor, reflecting Abbott’s ERCOT and TCEQ pauses and Hinojosa’s pledged statewide
+moratorium in TX, and Shapiro’s EO 2026 05 making grid commitments binding in PA. GA sees the largest single move,
+driven by Keisha Lance Bottoms’ moratorium platform and Democratic control of the PSC, followed by OH on municipal bans
+passing in 14 of 18 localities and Amy Acton’s conditional moratorium pledge, OR on Governor Kotek’s DEQ permit pause
+through mid 2027, and IN as local restrictions now cover more than half of counties. MD and LA enter the haircut table for the
+first time.
+The key open question coming out of the update is whether Texas, already at our 0.70 floor, now warrants a tier below it.
+US INDUSTRIALS & TECH
+3
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+DETAILS
+PM SUMMARY
+Of the 586GW of capacity currently in our dataset, we anticipate 34% (199GW) are credible builds. There are a series of
+haircuts in progress here, the most meaningful of which is the stage (~198GW of the ~387GW total haircut) - we consider
+physical construction progress to be a major indicator of credibility, whereas shiny press releases only go so far. The tenant
+haircut is the next most pronounced (~112GW) - for a high-quality, IG tenant, certainty goes up; whereas for some of the miners
+or longtail neoclouds, credibility is lower. The sponsor haircut is also meaningful (~48GW), though less so than the prior two -
+this is a fast-moving space and we didn't want to overpenalize new entrants who are showing clear signs of development and
+tenant signing. And finally, while there is lots of talk of NIMBYism and legislative hurdles, it is still the smallest cut for DC builds
+today (~28GW) - in fairness, we are grandfathering in builds that are already in progress, and the post-election downgrades to
+Texas, Georgia and Ohio only hit announced and land-banked capacity.
+EXHIBIT 1: Data Center Pipeline Impact by Credibility Haircut (GW, North America)
+696
+199
+58
+53
+198
+113
+48
+28
+Database Total
+Operating today
+Cancelled
+Stage haircut
+Tenant haircut
+Developer /
+Company haircut
+State haircut
+Forward credible
+pipeline
+Pipeline Impact by Haircut — October
+Source: Aterio, Bernstein Research and Analysis
+PROJECTS BY DEVELOPER CREDIBILITY
+The top 10 developers in our database represent ~57% of all credible capacity. Amazon, Google, Microsoft, and Meta alone
+account for ~39% of all credible MW (78GW). We give 16 developers a perfect credibility score of 5.0...those hyperscalers (plus
+Apple), plus the blue-chip colos (DLR, EQIX, CoreSite, QTS, EdgeConneX, Compass, Aligned, NTT, Brookfield). O'Leary Ventures
+is our lowest score at 0.35, with Vermaland and Synapse Data Center next at 0.4.
+US INDUSTRIALS & TECH
+4
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 2: In Dataset & Credible Capacity Top 10 Developers (GW, %)
+46
+25
+18
+12
+11
+8
+10
+5
+6
+7
+33
+20
+15
+10
+9
+6
+7
+4
+4
+3
+72%
+83%
+86%
+85%
+77%
+77%
+67%
+76%
+61%
+45%
+-50%
+-30%
+-10%
+10%
+30%
+50%
+70%
+90%
+ -
+ 5.0
+ 10.0
+ 15.0
+ 20.0
+ 25.0
+ 30.0
+ 35.0
+ 40.0
+ 45.0
+ 50.0
+Amazon
+Google
+Meta
+Microsoft
+QTS
+Vantage
+Stack
+Infra.
+Digital
+Realty
+Prologis
+Crusoe
+In Dataset & Credible Capacity Top 10 Developers
+(GW, %)
+In Database GW
+Credible GW
+Completion Rate
+Average Completion
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein Analysis and Estimates
+EXHIBIT 3: In Dataset & Credible Capacity by Developer Type (GW, %)
+108
+111
+35
+24
+308
+67
+84
+8
+7
+33
+62%
+75%
+24%
+29%
+11%
+34%
+-100%
+-80%
+-60%
+-40%
+-20%
+0%
+20%
+40%
+60%
+80%
+100%
+ -
+ 50.0
+ 100.0
+ 150.0
+ 200.0
+ 250.0
+ 300.0
+ 350.0
+ 400.0
+ 450.0
+ 500.0
+Colocation
+Hyperscaler (Self)
+Miner Pivot
+Neoclouds
+Others
+In Dataset & Credible Capacity by Developer Type
+(GW, %)
+In Database GW
+Credible GW
+Completion Rate
+Average Completion
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis and estimates
+US INDUSTRIALS & TECH
+5
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 4: In Dataset & Credible Capacity Change (GW)
+411
+488
+586
+136
+170
+199
+Jul-26
+Aug-26
+Oct-26
+In Dataset & Credible Capacity Change
+(GW)
+Dataset GW
+Credible GW
+33%
+35%
+34%
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+PROJECTS BY STAGE
+The most aggressive cut in our model: announced projects are the biggest on paper (85% of dataset) and by far the least likely
+to happen - we're estimating ~25%. Under construction is a much smaller portion of the total (15% of dataset), but ~3.5x as
+credible (86%) and ends up as 38% of the credible pipeline. Land bank is pretty small (~2GW), but falls somewhere in the
+middle (~43%) as most of the land bank developers are more established than the average announcer.
+EXHIBIT 5: Total In Dataset vs. Credible Capacity Overview
+87
+497
+2
+586
+75
+123
+1
+199
+86%
+25%
+43%
+34%
+-50%
+-30%
+-10%
+10%
+30%
+50%
+70%
+90%
+ -
+ 100
+ 200
+ 300
+ 400
+ 500
+ 600
+ 700
+Under Construction
+Announced
+Land Bank
+ Forward total
+Stage Credible Capacity
+(GW)
+In Database GW
+Credible GW
+Weighted P(build)
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein Analysis and Estimates
+US INDUSTRIALS & TECH
+6
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 6: In Dataset & Credible Capacity Low 10 Developers (GW, %)
+15
+12
+11
+10
+7
+6
+4
+5
+4
+0
+0
+1
+1
+2
+0
+1
+0
+1
+1
+0
+3%
+9%
+13%
+16%
+7%
+13%
+8%
+19%
+23%
+8%
+-50%
+-30%
+-10%
+10%
+30%
+50%
+70%
+90%
+ -
+ 5.0
+ 10.0
+ 15.0
+ 20.0
+ 25.0
+ 30.0
+O'Leary
+Ventures
+Joule
+Capital
+Partners
+Fermi
+America
+Nscale
+Beacon
+Data
+Centers
+Galaxy
+Prometheus
+Hyperscale
+Cipher
+Mining
+Nexus Data
+Centers
+DCIP Group
+In Dataset & Credible Capacity Low 10 Developers
+(GW, %)
+In Database GW
+Credible GW
+Completion Rate
+Average Completion
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Bottom Developers Since 0.9MW of Calculated Credible Total Capacity
+Source: Aterio, Bernstein Analysis and Estimates
+PROJECTS BY TENANT CREDIBILITY
+Hyperscale self-build is the quiet giant here, representing ~41% of the credible builds (82GW). Of those remaining, only ~530
+projects have a named third-party tenant (though this is likely the weakest area of the dataset - contracts are not always
+announced); they carry 32GW of credible capacity, while the ~4,000 projects with no disclosed tenant still make up ~43%
+of the credible pipeline on the strength of stage and colo-operator assumptions. Oracle + OpenAI is the largest combination
+tenancy (3.7GW credible), and once OpenAI's standalone and Microsoft-paired leases are added, OpenAI-linked demand
+(5.8GW) is the #2 named counterparty behind only AWS (9.2GW)...we count four different developers currently building for the
+Oracle + OpenAI combination (Vantage ~1.9GW, Related Digital ~1.0GW, BorderPlex ~620MW, and Crusoe ~210MW credible
+development, all under construction, plus ~0.9GW live at Crusoe's Abilene campus).
+EXHIBIT 7: In Dataset & Credible Capacity by Top Anchor Tenant and Project Count (GW, Units)
+105
+16
+5
+6
+4
+6
+28
+83
+9
+4
+4
+2
+4
+9
+1,192
+226
+21
+44
+31
+48
+158
+-5,000
+-4,000
+-3,000
+-2,000
+-1,000
+0
+1,000
+2,000
+ -
+ 20.0
+ 40.0
+ 60.0
+ 80.0
+ 100.0
+ 120.0
+ 140.0
+ 160.0
+ 180.0
+ 200.0
+Self Build
+AWS
+Oracle, OpenAI
+Google
+Microsoft
+Facebook
+Other named
+tenants
+In Dataset & Credible Capacity by Top Anchor Tenant and Project Count
+(GW, Units)
+In Database GW
+Credible GW
+# of Projects
+Only Shows Projects with Tenant Disclosed
+US INDUSTRIALS & TECH
+7
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein Analysis and Estimates
+PROJECTS BY STATE
+~68% of forward credible pipeline capacity sits in the 13 states we've flagged as risky (~63% in the original ten). Texas is now
+the single most penalized state, a ~12GW impact: it is the largest state in the pipeline by a wide margin (150GW database,
+43GW credible, 22% of the credible total), and we cut the announced/land-bank multiplier to 0.70 after Abbott's grid-
+interconnection and permit pauses and Governor-elect Hinojosa's pledge of a statewide moratorium until the 2027 session.
+We would stress this is delay risk more than cancellation risk - the tax incentives are still on the books, 21GW is already under
+construction and grandfathered, and the incoming administration has said it is not against data centers as a rule - but the "most
+data center-friendly state" framing no longer holds. Virginia is second, a ~6GW impact. New York carries the same multiplier (a
+30% haircut just for zip code), but has much less active development to be impacted (~1GW credible). Pennsylvania (~3GW) is
+third, and Georgia and Ohio each took a ~2GW hit after their new governors also campaigned on moratoria.
+EXHIBIT 8: Disclosed & Expected Credible Capacity by State (GW, %)
+150
+53
+30
+27
+33
+16
+15
+16
+15
+8
+222
+44
+23
+13
+14
+9
+10
+8
+6
+5
+5
+64
+29%
+43%
+43%
+50%
+27%
+61%
+49%
+39%
+31%
+59%
+29%
+-50%
+-30%
+-10%
+10%
+30%
+50%
+70%
+90%
+ -
+ 50.0
+ 100.0
+ 150.0
+ 200.0
+ 250.0
+ 300.0
+In Dataset & Credible Capacity by State
+(GW, %)
+In Database GW
+Credible GW
+Completion Rate
+Average Completion
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein Analysis and Estimates
+US INDUSTRIALS & TECH
+8
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 9: In Dataset & Credible Capacity by Company Scores (GW, %)
+210
+112
+82
+41
+142
+586
+142
+32
+14
+5
+7
+199
+68%
+29%
+17%
+11%
+5%
+34%
+-50%
+-30%
+-10%
+10%
+30%
+50%
+70%
+90%
+ -
+ 100.0
+ 200.0
+ 300.0
+ 400.0
+ 500.0
+ 600.0
+4-5 (Top Developers)
+3-4
+2-3
+1-2
+0-1 (Bottom
+Developers)
+Total
+In Dataset & Credible Capacity by Company Scores
+(GW, %)
+In Database GW
+Credible GW
+Completion Rate
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein Analysis and Estimates
+EXHIBIT 10: In Dataset & Credible Capacity MoM Overview (GW)
+Stage
+In Dataset GW
+Credible GW
+Weighted 
+P(build)
+In Dataset GW
+Credible GW
+Weighted 
+P(build)
+Under Construction
+73
+63
+87%
+87
+75
+86%
+Announced
+413
+106
+26%
+497
+123
+25%
+Land Bank
+2
+1
+43%
+2
+1
+43%
+Total
+488
+170
+35%
+586
+199
+34%
+Aug-26
+Oct-26
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein Analysis
+EXHIBIT 11: Top 10 Developers - In Dataset & Credible Capacity MoM Overview (GW)
+42
+32
+46
+33
+17
+15
+25
+20
+16
+14
+18
+15
+11
+9
+12
+10
+10
+8
+11
+8
+5
+4
+8
+6
+8
+5
+10
+7
+5
+4
+5
+3
+5
+3
+6
+4
+8
+3
+7
+3
+Aug-26
+Dataset
+Aug-26
+Credible
+Oct-26
+Dataset
+Oct-26
+Credible
+Top 10 Developers - In Dataset & Credible Capacity MoM Overview 
+(GW)
+Amazon
+Google
+Meta
+Microsoft
+QTS
+Vantage
+Stack Infra.
+Digital Realty
+Prologis
+Crusoe
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+US INDUSTRIALS & TECH
+9
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 12: Company scores - In Dataset & Credible Capacity MoM Overview (GW)
+Company Scores
+In Dataset GW
+Credible GW
+Completion 
+Rate
+In Dataset GW
+Credible GW
+Completion 
+Rate
+4-5 (Top Developers)
+                   180                    121 
+67%
+                   210                    144 
+69%
+3-4
+                     86                      27 
+31%
+                   112                      32 
+29%
+2-3
+                     63                      11 
+18%
+                     82                      14 
+17%
+1-2
+                     39                        5 
+13%
+                     41                        5 
+11%
+0-1 (Bottom Developers)
+                   120                        6 
+5%
+                   142                        7 
+5%
+Oct-26
+Aug-26
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+EXHIBIT 13: Company Scores - In Dataset & Credible Capacity MoM Overview (GW)
+180
+121
+210
+142
+86
+27
+112
+32
+63
+11
+82
+14
+39
+5
+41
+5
+120
+6
+142
+7
+Aug-26
+Dataset
+Aug-26
+Credible
+Oct-26
+Dataset
+Oct-26
+Credible
+Company Scores - In Dataset & Credible Capacity MoM Overview 
+(GW)
+4-5 (Top Developers)
+3-4
+2-3
+1-2
+0-1 (Bottom Developers)
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+EXHIBIT 14: Developer Type - In Dataset & Credible Capacity MoM Overview (GW)
+Developer Type
+In Dataset GW
+Credible GW
+Completion 
+Rate
+In Dataset GW
+Credible GW
+Completion 
+Rate
+Colocation
+                     81                      55 
+67%
+                   108                      67 
+62%
+Hyperscaler (Self)
+                     93                      73 
+79%
+                   111                      84 
+75%
+Miner Pivot
+                     26                        6 
+23%
+                     35                        8 
+24%
+Neoclouds
+                     20                        6 
+30%
+                     24                        7 
+29%
+Others
+                   268                      30 
+11%
+                   308                      33 
+11%
+Aug-26
+Oct-26
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis and estimates
+US INDUSTRIALS & TECH
+10
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 15: Developer Type - In Dataset & Credible Capacity MoM Overview (GW)
+81 
+55 
+108 
+67 
+93 
+73 
+111 
+84 
+26 
+6 
+35 
+8 
+20 
+6 
+24 
+7 
+268 
+30 
+308 
+33 
+In Dataset GW
+Credible GW
+In Dataset GW
+Credible GW
+Aug-26
+Oct-26
+Developer Type - In Dataset & Credible Capacity MoM Overview 
+(GW)
+Colocation
+Hyperscaler (Self)
+Miner Pivot
+Neoclouds
+Others
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+EXHIBIT 16: By State - In Dataset & Credible Capacity MoM Overview (GW)
+State
+In Dataset GW
+Credible GW
+Completion 
+Rate
+In Dataset GW
+Credible GW
+Completion 
+Rate
+Texas
+129
+                   
+36
+                     
+28%
+150
+                   
+44
+                     
+29%
+Virginia
+48
+                     
+20
+                     
+41%
+53
+                     
+23
+                     
+43%
+Georgia
+30
+                     
+14
+                     
+47%
+30
+                     
+13
+                     
+43%
+Ohio
+24
+                     
+11
+                     
+46%
+27
+                     
+14
+                     
+50%
+Pennsylvania
+27
+                     
+9
+                       
+34%
+33
+                     
+9
+                       
+27%
+Indiana
+11
+                     
+8
+                       
+69%
+16
+                     
+10
+                     
+61%
+Louisiana
+7
+                       
+6
+                       
+89%
+15
+                     
+8
+                       
+49%
+Illinois
+15
+                     
+6
+                       
+40%
+16
+                     
+6
+                       
+39%
+Arizona
+12
+                     
+4
+                       
+36%
+15
+                     
+5
+                       
+31%
+Missouri
+6
+                       
+4
+                       
+70%
+8
+                       
+5
+                       
+59%
+Others
+177
+                   
+51
+                     
+29%
+222
+                   
+64
+                     
+29%
+Total
+488
+                   
+170
+                   
+35%
+586
+                   
+199
+                   
+34%
+Aug-26
+Oct-26
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+EXHIBIT 17: By State - In Dataset & Credible Capacity MoM Overview (GW)
+129
+36
+150
+44
+48
+20
+53
+23
+30
+14
+30
+13
+24
+11
+27
+14
+27
+9
+33
+9
+11
+8
+16
+10
+7
+6
+15
+8
+15
+6
+16
+6
+12
+4
+15
+5
+6
+4
+8
+5
+177
+51
+222
+64
+Aug-26 In Dataset GW
+Aug-26 Credible GW
+Oct-26 In Dataset GW
+Oct-26 Credible GW
+By State - In Dataset & Credible Capacity MoM Overview 
+(GW)
+Texas
+Virginia
+Georgia
+Ohio
+Pennsylvania
+Indiana
+Louisiana
+Illinois
+Arizona
+Missouri
+Others
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+US INDUSTRIALS & TECH
+11
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 18: Anchor Tenant - In Dataset & Credible Capacity MoM Overview (GW)
+Anchor Tenant
+In Dataset GW
+Credible GW
+# of Projects
+In Dataset GW
+Credible GW
+# of Projects
+Self Build
+89
+                     
+72
+                     
+1,096
+                
+105
+                   
+82
+                     
+1,192
+                
+AWS
+14
+                     
+8
+                       
+198
+                   
+16
+                     
+9
+                       
+226
+                   
+Oracle, OpenAI
+5
+                       
+4
+                       
+28
+                     
+5
+                       
+4
+                       
+21
+                     
+Google
+6
+                       
+4
+                       
+42
+                     
+6
+                       
+4
+                       
+44
+                     
+Microsoft
+4
+                       
+2
+                       
+28
+                     
+4
+                       
+2
+                       
+31
+                     
+Facebook
+4
+                       
+3
+                       
+31
+                     
+6
+                       
+4
+                       
+48
+                     
+Others
+27
+                     
+8
+                       
+161
+                   
+28
+                     
+9
+                       
+158
+                   
+Oct-26
+Aug-26
+Source: Aterio, Bernstein analysis
+EXHIBIT 19: Anchor Tenant - In Dataset & Credible Capacity MoM Overview (GW)
+89
+72
+105
+82
+14
+8
+16
+9
+5
+4
+5
+4
+6
+4
+6
+4
+4
+2
+4
+2
+4
+3
+6
+4
+27
+8
+28
+9
+Aug-26 In Dataset GW
+Aug-26 Credible GW
+Oct-26 In Dataset GW
+Oct-26 Credible GW
+Anchor Tenant - In Dataset & Credible Capacity MoM Overview 
+(GW)
+Self Build
+AWS
+Oracle, OpenAI
+Google
+Microsoft
+Facebook
+Others
+Only Shows Projects with Tenant Disclosed
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+TRACKING THE RISE IN BEHIND-THE-METER (BTM) POWER
+Behind-the-meter growth continues. BTM projects added 22.5 GW to the pipeline in October (+11% M/M), taking the BTM
+pipeline to 231 GW, up from 185 GW in August. A 9.6 GW nuclear-powered announcement in Utah (Valar Atomics' Project
+Beehive) was the most notable contributor, followed by a 2.9 GW campus in Cameron Parish, Louisiana that we attribute to
+xAI (permits were filed by Venture Global; the developer is unconfirmed). BTM projects accounted for 48% of the additions to
+October's pipeline, above the 44% YTD average. Credible capacity has not kept pace, though: credible BTM rose only ~5 GW
+to 47 GW since August, so the credible share of the BTM pipeline slipped from 23% to about a fifth (Exhibit 20). The 15.1 GW
+of BTM capacity under construction remained essentially flat M/M (only ~0.2 GW broke ground in October). BTM projects also
+remain an elevated proportion of stranded capacity (28% of cancelled, withdrawn and delayed capacity, up from 16% in May).
+October's largest cancellation, the 4.0 GW DCIP De Soto campus in Florida, was a BTM project.
+US INDUSTRIALS & TECH
+12
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 20: BTM Dataset and Credible Capacity by Developer Type (GW, %)
+24
+21
+4
+15
+167
+13
+15
+1
+3
+16
+55%
+73%
+13%
+21%
+10%
+21%
+-100%
+-80%
+-60%
+-40%
+-20%
+0%
+20%
+40%
+60%
+80%
+100%
+ -
+ 20.0
+ 40.0
+ 60.0
+ 80.0
+ 100.0
+ 120.0
+ 140.0
+ 160.0
+ 180.0
+ 200.0
+Colocation
+Hyperscaler (Self)
+Miner Pivot
+Neoclouds
+Others
+BTM Dataset & Credible Capacity by Developer Type
+(GW, %)
+Dataset GW
+Credible GW
+Completion Rate
+Average Completion
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis and estimates
+By developer type, neoclouds are now the most reliant on BTM, with 62% of their pipeline planned as BTM, followed by
+developers (54%). Colos (22%), hyperscaler self-build (19%) and miner pivots (12%) are far less exposed. However, the types
+leaning hardest on BTM are also the least likely to build it (Exhibit 21). Only 21% of neocloud BTM capacity screens as credible,
+versus 73% for hyperscaler self-build and 55% for colos, against a 21% average. Currently, only 4% of operating data center
+capacity is powered by BTM, though 17% of the capacity under construction will use BTM, and 43% of announced capacity
+(39% of the full forward pipeline) will use BTM.
+EXHIBIT 21: BTM Dataset & Credible Capacity Change (GW)
+185
+231
+42
+47
+Aug-26
+Oct-26
+BTM Dataset & Credible Capacity 
+(GW)
+Dataset GW
+Credible GW
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+US INDUSTRIALS & TECH
+13
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+A DEEP DIVE INTO THE TOP U.S. MARKETS
+The three market archetypes are essentially based on how developers and customers trade off latency vs. power availability
+vs. cost—with urban markets optimizing for proximity, rural markets optimizing for scale and power, and secondary markets
+sitting in between as an equilibrium zone. We see a clear gradient across data center market tiers: Major Metros are optimized
+for latency-sensitive inference and enterprise colocation, with the highest pricing ($120–150/kW hyperscale, $160–230
+colo), highest build costs ($12–15B per GW), tightest cap rates (≈4.5–6.5%), and the longest power delays (4–7 years), while
+Minor Metros sit in the middle with slightly lower pricing, costs, and delays but higher yields; in contrast, Rural markets are
+primarily focused on large-scale AI training, offering the lowest costs ($7–9B per GW), fastest power availability (1–3 years),
+and cheapest hyperscale pricing ($70–120/kW), but also the highest cap rates (≈6.5–9%+) and minimal colocation presence—
+leading to a broader industry shift where growth and new capacity increasingly migrate from constrained urban hubs to lower-
+cost, power-rich rural regions.
+EXHIBIT 22: US Combined Pipeline by Market Tier (GW)
+97
+65
+189
+209
+38
+26
+67
+65
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging)
+Tier 4 (Rural)
+US Combined Pipeline by Market Tier (GW)
+Total GW
+Credible GW
+Capacity shown only includes Under Construction, Announced and Land Bank. Excludes Active and Cancelled
+Source: Aterio, Bernstein analysis
+US INDUSTRIALS & TECH
+14
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 23: Modeled Build Probability by Market Tier
+39%
+40%
+35%
+31%
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging)
+Tier 4 (Rural)
+Modeled Build Probability by Market Tier
+Modeled Build Probability
+Source: Aterio, Bernstein analysis
+EXHIBIT 24: US Pipeline Stage Mix by Tier- Total GW Share
+17%
+23%
+14%
+13%
+82%
+75%
+86%
+87%
+0%
+2%
+0%
+0%
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging)
+Tier 4 (Rural)
+US Pipeline Stage Mix by Tier — Total GW Share
+Under Construction
+Announced
+Land Bank
+Source: Aterio, Bernstein analysis
+US INDUSTRIALS & TECH
+15
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 25: Share of US Total vs Credible Pipeline
+17%
+12%
+34%
+37%
+19%
+13%
+34%
+33%
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging)
+Tier 4 (Rural)
+Share of US Total vs Credible Pipeline
+Total Pipeline Share
+Credible Pipeline Share
+Source: Aterio, Bernstein analysis
+METRO TIERING:
+• Tier 1 (Major Metro): Northern Virginia, Dallas–Fort Worth, Silicon Valley, Phoenix, Chicago, Atlanta, New York / Northern
+New Jersey
+• Tier 2 (Minor Metro): Columbus, Hillsboro/Portland, Reno/Sparks, Las Vegas, Salt Lake City, Austin, San Antonio, Houston,
+Charlotte, Raleigh/RTP, Denver, Minneapolis, Seattle, Miami, Boston, Philadelphia, Los Angeles / Inland Empire, San Diego,
+Sacramento, Detroit, St. Louis, Kansas City, Nashville, Richmond, Washington DC / Maryland, Baltimore, Toronto, Montréal,
+Vancouver, Calgary, Edmonton
+• Tier 3 (Emerging): West Texas (Abilene, San Angelo, Permian, Panhandle, El Paso, Rio Grande Valley), Central & Southern
+Utah (Delta, Howell), Eastern & Central Oregon (Boardman, Prineville), Central Louisiana and Baton Rouge, Mississippi,
+Indiana (New Carlisle, Indianapolis), Iowa (Des Moines, Council Bluffs), Omaha, SE New Mexico (Lea/Permian), Augusta and
+outer GA, Pennsylvania (Scranton/NEPA, Lehigh Valley, Harrisburg, Pittsburgh), Southside VA, Hampton Roads, upstate NY,
+Ohio secondary (Cleveland, Cincinnati, Dayton), Tucson, Northern Nevada, Wyoming (Cheyenne, Casper), NC/SC/FL/TN/
+AL/KY/WI/OK/AR secondary metros, Central Washington (Quincy, Wenatchee), Boise, Williston Basin/Billings, Fargo, Sioux
+Falls, New England secondary, Delaware, California non-metro
+• Tier 4 (Rural): Single-site rural builds across the US - rural Minnesota, Kansas, Maine, and other tertiary US sites outside any
+recognized data center cluster
+STATE-LEVEL DETAIL
+TEXAS
+Texas changed governors but not much else, at least on data centers. Abbott already had us in a pause. His August audit and the
+TCEQ permit hold were in place well before the vote. Permits kept trickling out until TCEQ shut down its automatic filing system,
+which is partly why plenty of investors figured a re-elected Abbott would quietly ease off. Nobody expects that from Hinojosa.
+She has promised a formal moratorium on approvals until the Legislature passes new protections. With a Democratic House
+and a Republican Senate, "until the Legislature acts" could mean a while. Both candidates also wanted the sales-tax exemption
+gone, so a repeal has supporters on both sides of the aisle. The honest read is that the pause just got longer and maybe deeper.
+US INDUSTRIALS & TECH
+16
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+But look at what the pause actually reaches. Texas has ~150GW of forward nameplate capacity today, we consider 43GW
+of that likely to be built. 21GW total (16GW credible) are already under construction and grandfathered. Of the remaining
+announced capacity where construction has not yet started, 11GW total (0.3GW credible) are targeted for 2027 (were probably
+already delayed if they haven’t started yet), 18GW total/5GW credible in 2028 (the most at risk here), 39GW total (8GW
+credible) in 2029 (also some risk). 110GW total (22GW credible) are slated for beyond 2029, at which point, anything can
+happen.
+EXHIBIT 26: Total Texas Pipeline by Player (MW)
+0
+2,000
+4,000
+6,000
+8,000
+10,000
+12,000
+Total Texas Pipeline by Player (MW)
+Operating Capacity
+Capacity Under Construction
+Announced Capacity
+Source: Aterio, Bernstein analysis and estimates
+EXHIBIT 27: Credible Texas Pipeline by Player (MW)
+0
+1,000
+2,000
+3,000
+4,000
+5,000
+6,000
+7,000
+Credible Texas Pipeline by Player (MW)
+Operating Capacity
+Capacity Under Construction
+Announced Capacity
+Source: Aterio, Bernstein analysis and estimates
+GEORGIA
+Georgia was the quietest result on the night and the biggest regulatory change in the country. It matters as Atlanta has become
+an extremely popular market with big investment from a range of credible developers, including both DLR and EQIX.
+US INDUSTRIALS & TECH
+17
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+Bottoms won as expected, but the real story was the Public Service Commission flipping 3-2 Democratic. Back in February,
+the commissioners who now hold the majority lost a 3-2 vote to reconsider the ~10 GW certification. Now they have the third
+vote. That said, the big approvals are done. The certification is in place, and OpenAI's 3.2 GW contract cleared in August with
+up to 1 GW of flexible demand built in. What the new majority can reach is the future: Georgia Power's next capacity request
+(for 2032-33, filed mid-2027) and the 2028 rate case. That makes it a pricing lever on 2030s load, not a stop sign on today's
+construction.
+The exposure is concentrated in a handful of campuses: OpenAI's Camellia (3.2 GW nameplate), DLR's Project Bunkhouse (2.0
+GW), QTS in Blakely (1.4 GW) and Google's White Oak and Rumble sites (2.7 GW combined). Most of it is back-end loaded, with
+87% of Georgia's pre-construction credible capacity dated 2029 or later. The equipment sales-tax exemption runs through
+2031, and repealing it still needs a Republican Senate. Bottom line: Georgia didn't really get riskier this year, but it did get more
+expensive later.
+EXHIBIT 28: Total Georgia Pipeline by Player (MW)
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+3,500
+Total Georgia Pipeline by Player (MW)
+Operating Capacity
+Capacity Under Construction
+Announced Capacity
+Source: Aterio, Bernstein analysis and estimates
+EXHIBIT 29: Credible Georgia Pipeline by Player (MW)
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+Credible Georgia Pipeline by Player (MW)
+Operating Capacity
+Capacity Under Construction
+Announced Capacity
+Source: Aterio, Bernstein analysis and estimates
+US INDUSTRIALS & TECH
+18
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+OHIO
+Ohio's governor race was a non-event for data centers, since both candidates were anti. AEP Ohio's large-load tariff had already
+cleared out the speculative queue last year. The action was local. Bans passed in at least ten towns, and on a quick read it looks
+like ~3 GW of credible capacity got zoned out. Look closer at city limits and parcels, though, and the bans bind on a lot less:
+• Piqua's charter amendment hits Meta's 1.1 GW campus, but Meta already has agreements in hand, so a legal fight is likely
+• In Trenton, Prologis is caught. AWS's 1.5 GW campus sits outside city limits and hinges on a November 10 township hearing.
+• Wilmington's vote hit other parcels, and EdgeConneX in Ashville is already zoned and building
+All in, bans actually bind on ~1.1 GW of Ohio credible capacity.
+But important note as we monitor the evolving situations: local bans bite faster than anything a governor or legislature can do.
+They also leak, because the projects tend to move to the next town rather than leave the state. AWS has ~2.8 GW of nameplate
+elsewhere in Ohio (Licking, Fayette and Union counties), roughly ten times what it lost in Sunbury. Meta has ~0.5 GW in Licking
+and Wood, about half of Piqua. Prologis has nowhere obvious to go, which makes Trenton the closest thing to a true loss in the
+state. The thing to watch is November 10. If St. Clair Township adopts its ban, AWS Trenton (~1 GW credible) moves into the
+binding column and Ohio becomes a much more interesting story.
+EXHIBIT 30: Total Ohio Pipeline by Player (MW)
+0
+1,000
+2,000
+3,000
+4,000
+5,000
+6,000
+7,000
+8,000
+9,000
+Total Ohio Pipeline by Player (MW)
+Operating Capacity
+Capacity Under Construction
+Announced Capacity
+Source: Aterio, Bernstein analysis and estimates
+US INDUSTRIALS & TECH
+19
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 31: Credible Ohio Pipeline by Player (MW)
+0
+1,000
+2,000
+3,000
+4,000
+5,000
+6,000
+7,000
+8,000
+Credible Ohio Pipeline by Player (MW)
+Operating Capacity
+Capacity Under Construction
+Announced Capacity
+Source: Aterio, Bernstein analysis and estimates
+OUR METHODOLOGY
+We start with our Data Center Pipeline Tracker, underpinned by data from Aterio. This includes 8,858 data center projects
+across North America, each with a provider, location, status (validated monthly via satellite imagery), power estimates, tenant if
+disclosed, and a host of other project factors (imperfect).
+We first remove any of the operational facilities - those are functional today and not relevant for a pipeline analysis. We also
+remove anything knowingly canceled or withdrawn, assuming no zombie projects. We're then left with builds somewhere
+between land banked, announced, and under construction (we treat "delayed" as "announced"). This is the group we probability-
+weight - a total of 5,697 projects.
+We begin with a base probability for the construction stage. "Under construction" projects are much higher probability than
+"land-banked" projects, where a developer buys land semi-speculatively. This is split by builder - for hyperscalers self-building
+and for established retail or wholesale colocation providers, their probabilities are much higher. We assume they are more
+practiced and more conservative about announcements and updates - they have more to lose by being wrong and less to gain
+by grabbing headlines.
+EXHIBIT 32: Base Probability Assumptions Overview
+Project Stage
+Built by Third-
+party Developer
+Built by 
+Hyperscaler Itself
+Built by 
+Enterprise/Wholes
+ale Colo, no 
+named tenant
+Developer Track 
+Record Weight at 
+This Stage
+Under Construction (Concrete 
+Poured)
+90%
+98%
+95%
+10%
+Announced Only (Press release, 
+Nothing built)
+50%
+85%
+90%
+90%
+Land banked (Owns the dirt, no 
+project yet)
+25%
+50%
+50%
+90%
+Base Probability
+The “Developers Track Record” number controls how much a weak developer drags their initial probability down at that stage
+Source: Bernstein Analysis and Estimates
+US INDUSTRIALS & TECH
+20
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+Next, if the facility is knowingly pre-leased, we assess the tenant quality - if the tenant is an IG hyperscaler, regardless of stage,
+we feel good about the probability. If the tenant is an unknown upstart with no data center capacity today...haircut.
+EXHIBIT 33: Tenant Multiplier Assumptions Overview
+Tenant
+Tenant 
+Multiplier
+Tenant
+Tenant 
+Multiplier
+Google
+1.00
+Viridien
+0.50
+Amazon AWS
+1.00
+Groq
+0.50
+Microsoft
+1.00
+OpenAI
+0.50
+Facebook
+1.00
+CoreWeave
+0.45
+NVIDIA
+1.00
+Nebius
+0.45
+AMD
+0.95
+Lambda
+0.45
+HUMAIN
+0.85
+Core Scientific
+0.40
+Core42
+0.80
+Galaxy
+0.40
+Jane Street
+0.80
+Nscale
+0.40
+Bloomberg
+0.80
+Fluidstack
+0.40
+Oracle
+0.75
+Cohere
+0.40
+McMaster University
+0.75
+Vultr
+0.35
+DataBank
+0.65
+TensorWave
+0.30
+xAI
+0.60
+Yotta Data Services Private Limited
+0.30
+Flexential
+0.60
+BUZZ HPC
+0.25
+Crusoe
+0.55
+Consensus Core
+0.20
+Cerebras
+0.55
+Carrier Connect Data Solutions Inc
+0.20
+BluSky AI
+0.15
+Microsoft, OpenAI
+0.95
+ChronoScale, Microsoft
+0.65
+Nebius, Microsoft
+0.85
+Core42, Cerebras
+0.55
+Nscale, Microsoft
+0.80
+CoreWeave, Cerebras
+0.40
+OpenAI, Oracle
+0.80
+Crusoe, Vultr
+0.30
+Oracle, OpenAI
+0.80
+BUZZ HPC, Cohere
+0.20
+Combination tenants (multiple names on one lease)
+Source: Aterio, Bernstein Analysis and Estimates
+Thirdly, we look at the developer (company) quality. We do not apply this evenly across the board- it is more important the earlier
+a project is in the build pipeline. So builders that don’t have a ton of history but are actively building still get credit, as do early-
+pipeline projects from the most credible builders. What we’re aggressively haircutting is announced-only builds from not-yet-
+credible developers. (Most notorious example = 15GW from O’Leary Ventures. Sorry, Kevin.)
+US INDUSTRIALS & TECH
+21
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 34: Estimated Company Scores Distribution
+Factor
+Weight
+Power Path
+35%
+Capital
+30%
+Offtake
+25%
+Sponsor Execution
+10%
+Sum of weights
+100%
+Source: Bernstein Analysis and Estimates
+EXHIBIT 35: Top and Bottom 10 Company Scores
+Company
+Overall Score
+Amazon AWS
+5.00
+Google
+5.00
+Facebook
+5.00
+Microsoft
+5.00
+QTS Data Centers
+5.00
+Digital Realty
+5.00
+Aligned Data Centers
+5.00
+EdgeConnex
+5.00
+Brookfield
+5.00
+Luck Stone
+1.00
+PNK Group USA
+1.00
+Beltline Energy, LLC
+0.95
+Bilateral Energy
+0.85
+DCPC - Data Center Power Company
+0.85
+Wright Brothers Construction Company, Inc.
+0.85
+Gotspace Data Partners
+0.75
+Synapse Data Center
+0.40
+Vermaland
+0.40
+O'Leary Ventures
+0.35
+Top 10 Company Scores
+Bottom 10 Company Scores
+Source: Aterio, Bernstein Analysis and Estimates
+Finally, we don’t have perfect information about upcoming legislation, but it’s obvious that some states are increasingly
+becoming less data center friendly. We take a project-specific probability haircut for the states that have either enacted or
+proposed legislation. Any projects under construction are assumed to be grandfathered in, but announcement-only or land
+banked projects will be impacted.
+EXHIBIT 36: Estimated State-Level Haircuts
+State
+Multiplier
+Virginia
+70%
+New York
+70%
+Texas
+70%
+Pennsylvania
+70%
+Ohio
+80%
+Arizona
+85%
+Illinois
+85%
+Oregon
+75%
+Indiana
+85%
+Georgia
+80%
+Washington
+95%
+Maryland
+90%
+Louisiana
+95%
+All other states (no state-level risk)
+100%
+Source: Bernstein Analysis and Estimates
+DEVELOPER PROFILES
+We’re all familiar with the biggest names on the tracker - the hyperscalers and public data center companies. A smattering of
+other private providers also contribute big numbers:
+• QTS Data Centers — 11.5 GW credible (the colo heavyweight). QTS is the largest non-hyperscaler in the credible
+pipeline, carrying 11.5 GW of credible capacity against 14.3 GW data set — an 80% survival rate across a sprawling 219-
+project footprint anchored in Georgia and Texas. It earns a perfect 5.0 credibility score, and rightly so: 4.2 GW is already
+under construction and 3.0 GW is operating, so roughly 60% of its credible book is either live or in the ground. The one
+US INDUSTRIALS & TECH
+22
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+asterisk is demand-side — many of its facilities do not have listed tenants in our data (Meta at ~1 GW and a Microsoft/
+OpenAI site are the only named anchors). Given the Blackstone ownership, we highly doubt there is any speculative building;
+likely all pre-leased with some portion allocated to enterprise colo. Important to note...it's also the only top-3 name carrying
+meaningful cancellations (1.6 GW), a reminder that even the blue-chips prune (this was the Prince William Digital Gateway
+campus outside Manassas, formally dead after QTS dropped its Virginia Supreme Court appeal in July).
+• STACK Infrastructure — 7.7 GW credible (the hyperscale-adjacent challenger). STACK has moved into the #2 slot at
+7.7 GW credible on 11.1 GW data set (69% survival), and it's the purest wholesale-to-hyperscaler play of the group — its
+single largest credible tenant is AWS (3.4 GW credible, concentrated in Virginia and Louisiana), a rare announced, signed
+hyperscale anchor for a private developer. The book skews earlier-stage than QTS or Vantage: 2.2 GW under construction
+and only 0.8 GW operating against a hefty 7.8 GW still in the announced column, yet the model still credits it heavily thanks
+to a 4.9 credibility score. STACK is the case study in institutional backing translating to model trust — even its paper pipeline
+gets the benefit of the doubt because it's built a reputation for delivering hyperscale-grade capacity on schedule. The flip
+side is geography: Virginia is its center of gravity (4.5 GW credible), so it absorbs more of the state haircut than its peers.
+• Vantage Data Centers — 7.2 GW credible (the execution story). Vantage rounds out the top three at 7.2 GW credible on
+9.0 GW data set (80% survival), and it's the most execution-forward of the group: 3.6 GW is under construction — ~40% of
+its book, the highest share among the large private developers, versus ~30% at QTS and ~20% at STACK — with Wisconsin
+(the Port Washington campus) and Texas as its centers of gravity. It scores a near-perfect 4.9 on credibility and is the only
+top-3 name with a marquee signed anchor outside the hyperscalers, the Oracle + OpenAI (Stargate) tenancy, which alone
+accounts for 1.9 GW of credible capacity. Vantage is the clearest embodiment of the "dirt-in-motion beats paper" thesis: less
+operating base than its peers, but the largest share of its pipeline genuinely under construction among the top-three private
+developers.
+There is a longtail of smaller providers who are keen to make big announcements, but three we'd consider particularly high-
+risk:
+• O'Leary Ventures — 15 GW announced, 3% survives. No developer better captures the announcement-fiction gap than
+Kevin O'Leary's venture: 15.0 GW of data set— larger than QTS's entire book — of which the model credits just 489 MW, a
+3.3% survival rate and the lowest credibility score in the entire database at 0.35 out of 5. Every single one of its 110 projects
+is "announced only," nothing is under construction, and the portfolio is split evenly between Wonder Valley in Alberta (7.5 GW,
+outside the core US demand corridors) and a second 7.5 GW "Stratos" concept in Box Elder County, Utah unveiled in April.
+This is the model working exactly as designed: celebrity capital and a press-release pipeline get filtered down to a rounding
+error, and O'Leary Ventures is the single largest source of "vaporware gigawatts" in the dataset.
+• Joule Capital Partners — 11.7 GW announced, 9% survives. After O'Leary, Joule carries the largest low-credibility book
+in the entire database: 11.7 GW of data set across 50 projects at a single Utah campus, all of it "announced" or "delayed"
+— and the model credits just 1.1 GW, a 9% survival rate against a 2.05 credibility score. It's the archetypal capital-partner-
+branded pipeline: a headline gigawatt figure impressive enough to anchor a fundraising deck, backed by a $60M Series
+B, no visible construction progress in satellite imagery, no signed anchor tenants, and a credibility profile that discounts
+roughly nine of every ten announced megawatts. Where the top three earn the model's trust through steel in the ground and
+hyperscale leases, Joule earns its discount the same way most of the pipeline does — by being an announcement in search of
+a project.
+• Vermaland — 2.2 GW announced, 0% survives (withdrawn). Vermaland is the case study in why the model discounts
+a press release so heavily - and the one we can now mark to market. It isn't actually a data-center developer, it's one of
+Arizona's largest land bankers — 25,000+ acres accumulated since the mid-2000s and monetized by selling or leasing dirt
+to others, the same playbook it ran with 16 solar sites where it never built a panel. Its entire 2.2 GW "pipeline" was a single
+speculative Arizona concept — the $33B La Osa megasite near Eloy — where the plan was to sell or lease parcels and let
+buyers build. With no construction authorization and every public comment opposed, Vermaland first cut the project 80%
+- from 59 buildings and 3GW down to 11 buildings and 1GW - and on August 26 the Pinal County Board of Supervisors
+rejected the rezoning outright, 4-1. All 11 projects now sit in our cancelled/withdrawn bucket, the credibility score is 0.40,
+and the capacity drops out of the pipeline entirely - roughly what our prior 4% survival rate implied.
+US INDUSTRIALS & TECH
+23
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+EXHIBIT 37: State Data Center Legislative Status Overview
+State
+Virginia
+New York
+Texas
+Pennsylvania
+Ohio
+Arizona
+Illinois
+Oregon
+Indiana
+Georgia
+Washington
+Maryland
+Louisiana
+All other states (default — 
+no state-level risk)
+BILLS FAILED — SB 408 / 410 tax exemption repeal failed; HB 1012 moratorium failed. Tax exemption 
+intact through 2032. Eight local jurisdictions have bans.
+MODEST — SB 6231 signed (repeals refurbishment sales-tax exemption only); HB 2515 broader rate / 
+environmental rules died in session.
+SIGNED — Sep 23, 2026: Gov. Moore EO 01.01.2026.16 requires 25 MW+ projects to meet a state Data 
+Center Framework before state permits, approvals or incentives.
+EXECUTIVE — Oct 29, 2026: participation is now invitation-only with ratepayer and community 
+conditions.
+States not listed above are assumed to have no active anti-data-center legislation as of November 4, 
+2026.
+COMMITTEE — SB 374 would halve 100% sales-tax exemption ($1.6B annually). Data-center 
+bans/restrictions passed in at least 14 of 18 municipalities.
+SIGNED — HB 2756 grid cost allocation and HB 4168 three-year moratorium on new data-center tax 
+credits (existing exempt) signed June 2026.
+SIGNED — Gov. Pritzker EO paused Data Center Investment Program July 1, 2026; framework requires 
+DCs to pay full energy cost and accept interruptible service.
+SIGNED — HB 4084 imposes one-year moratorium on Enterprise Zone property tax breaks for new data 
+centers; existing agreements grandfathered.
+SIGNED — HB 1210 requires 1% cost-of-savings payment for tax break eligibility; HB 1245 / 1333 died. 
+32 county moratoria, 14 regulatory ordinances.
+Legislative status as of November 4, 2026 (post-election)
+SIGNED — 15 data-center bills enacted 2026, incl. HB 1393 cost-shift to 25 MW+ users, HB 153 site 
+assessments, $0.011/kWh budget tax.
+SIGNED — Gov. Hochul executive order July 14, 2026 pausing 50 MW+ hyperscale permits statewide. 
+Gov. Hochul re-elected; moratorium bill signing now more likely.
+SIGNED — SB 6 gives ERCOT authority to disconnect large loads during grid emergencies; 
+interconnection cost-share and financial assurance required.
+SIGNED — Aug 18, 2026: Gov. Shapiro EO 2026-05 makes GRID commitments binding for permitting; 
+DEP reviews only after developer commits and has local approval.
+Source: Bernstein Analysis and Estimates
+US INDUSTRIALS & TECH
+24
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+DISCLOSURE APPENDIX
+I. REQUIRED DISCLOSURES
+References to "Bernstein" or the “Firm” in these disclosures relate to the following entities: Bernstein Institutional Services LLC
+(April 1, 2024 onwards), Sanford C. Bernstein & Co., LLC (pre April 1, 2024), Bernstein Autonomous LLP, BSG France S.A. (April 1,
+2024 onwards), Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司, Sanford C. Bernstein (Canada) Limited, Sanford
+C. Bernstein (India) Private Limited (SEBI registration no. INH000006378), Sanford C. Bernstein (Singapore) Private Limited,
+Sanford C. Bernstein Japan KK (サンフォード・C・バーンスタイン株式会社) and analysts employed by Société Générale
+Africa Technologies & Services to produce Bernstein research under a Global Services Agreement in place between Bernstein
+and Société Générale.
+Bernstein is part of a joint venture between Société Générale (SG) and AllianceBernstein, L.P. (AB). Unless specifically noted
+otherwise, for purposes of these disclosures, references to Bernstein’s “affiliates” relate to both SG and AB and their respective
+affiliates.
+VALUATION METHODOLOGY
+This research publication covers six or more companies. For valuation methodology and other company disclosures:
+Please visit: https://bernstein-autonomous.bluematrix.com/sellside/Disclosures.action.
+Or, you can also write to the Director of Compliance, Bernstein Institutional Services LLC, 245 Park Avenue, New York, NY 10167.
+RISKS
+This research publication covers six or more companies. For risks and other company disclosures:
+Please visit: https://bernstein-autonomous.bluematrix.com/sellside/Disclosures.action.
+Or, you can also write to the Director of Compliance, Bernstein Institutional Services LLC, 245 Park Avenue, New York, NY 10167.
+RATINGS DEFINITIONS, BENCHMARKS AND DISTRIBUTION
+EQUITY RATINGS DEFINITIONS
+Bernstein brand
+The Bernstein brand rates stocks based on forecasts of relative performance for the next 12 months versus the S&P 500 for
+stocks listed on the U.S. and Canadian exchanges, versus the Bloomberg Europe Developed Markets Large and Mid Cap Price
+Return Index EUR (EDME) for stocks listed on the European exchanges and emerging markets exchanges outside of the Asia
+Pacific region, versus the Bloomberg Japan Large and Mid Cap Price Return Index USD (JPL) for stocks listed on the Japanese
+exchanges, and versus the Bloomberg Asia ex-Japan Large and Mid Cap Price Return Index (ASIAX) for stocks listed on the Asian
+(ex-Japan) exchanges -unless otherwise specified.
+The Bernstein brand has three categories of ratings:
+• Outperform: Stock will outpace the market index by more than 15 pp
+• Market-Perform: Stock will perform in line with the market index to within +/-15 pp
+• Underperform: Stock will trail the performance of the market index by more than 15 pp
+Coverage Suspended: Coverage of a company under the Bernstein research brand has been suspended. Ratings and price targets
+are suspended temporarily, are no longer current, and should therefore not be relied upon.
+Not Rated: A rating assigned when the stock cannot be accurately valued, or the performance of the company accurately
+predicted, at the present time. The covering analyst may continue to publish research reports on the company to update investors
+on events and developments.
+Not Covered (NC) denotes companies that are not under coverage.
+Bernstein brand stock ratings are based on a 12-month time horizon.
+Autonomous brand – common stocks
+US INDUSTRIALS & TECH
+25
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+The Autonomous brand rates common stocks as indicated below. As our benchmarks we use the Bloomberg Europe 600
+Financials Price Return Index (E600BK) and Bloomberg Europe Dev Mkt Financials Large and Mid Cap Price Ret Index EUR
+(EDMFI) index for developed European banks and Payments, the Bloomberg Europe 600 Insurance Price Return Index (E600IN)
+for European insurers, the S&P 500 and S&P Financials for US banks and Payments coverage, S5LIFE for US Insurance, the S&P
+Insurance Select Industry (SPSIINS) for US Non-Life Insurers coverage, the Bloomberg Emerging Markets Financials Large, Mid
+and Small Cap Price Return Index (EMLSF) for emerging market banks and insurers and Payments, and the Bloomberg Japan
+Financials Large & Mid Cap Price Return Index (JPFILM) for Japanese Financials. Ratings are stated relative to the sector (not the
+market).
+The Autonomous brand has three categories of common stock ratings:
+• Outperform (OP): Stock will outpace the relevant index by more than 10 pp
+• Neutral (N): Stock will perform in line with the market index to within +/-10 pp
+• Underperform (UP): Stock will trail the performance of the relevant index by more than 10 pp
+Coverage Suspended: Coverage of a company under the Autonomous research brand has been suspended. Ratings and price
+targets are suspended temporarily, are no longer current, and should therefore not be relied upon.
+Not Rated: A rating assigned when the stock cannot be accurately valued, or the performance of the company accurately
+predicted, at the present time. The covering analyst may continue to publish research reports on the company to update investors
+on events and developments.
+Those denoted as ‘Feature’ (e.g., Feature Outperform FOP, Feature Under Outperform FUP) are our core ideas.
+Not Covered (NC) denotes companies that are not under coverage.
+Autonomous brand common stock ratings are based on a 12-month time horizon.
+Autonomous brand – preferred stocks
+The Autonomous brand has three categories of preferred stock ratings:
+• Outperform (OP): The total return of the preferred instrument is expected to outperform preferred securities of other issuers
+operating in similar sectors or rating categories over the next six months.
+• Neutral (N): The total return of the preferred instrument is expected to perform in line with preferred securities of other issuers
+operating in similar sectors or rating categories over the next six months.
+• Underperform (UP): The total return of the preferred instrument is expected to underperform preferred securities of other
+issuers operating in similar sectors or rating categories over the next six months.
+Autonomous preferred stock ratings are based on a 6-month time horizon.
+AUTONOMOUS CREDIT RESEARCH
+Where this report contains investment recommendations for credit instruments, as defined in article 3(1)(35) of the Market Abuse
+Regulation, the information below is presented to comply with its disclosure requirements.
+The report may also include reference(s) to published opinions by other Autonomous or Bernstein analysts covering the equity
+securities of the issuer(s) referenced herein. Please note an investment recommendation for credit instruments published by the
+author(s) of this report may differ from the published view of the analyst covering equity securities for the issuer(s) contained in
+this report and vice versa.
+CREDIT RATINGS DEFINITIONS
+The Autonomous brand has three categories of credit ratings:
+• Credit Outperform (C-OP): The total return of the Reference Credit Instrument is expected to outperform the credit spread of
+bonds of other issuers operating in similar sectors or rating categories over the next six months.
+US INDUSTRIALS & TECH
+26
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+• Credit Neutral (C-N): The total return of the Reference Credit Instrument is expected to perform in line with the credit spread
+of bonds of other issuers operating in similar sectors or rating categories over the next six months.
+• Credit Underperform (C-UP): The total return of the Reference Credit Instrument is expected to underperform the credit spread
+of bonds of other issuers operating in similar sectors or rating categories over the next six months.
+Autonomous credit ratings are based on a 6-month time horizon.
+A list of all investment recommendations produced by the author(s) of this report alongside credit ratings history are available
+upon request.
+It is at the sole discretion of the Firm as to when to initiate, update and cease research coverage. The Firm has established,
+maintains and relies on information barriers to control the flow of information contained in one or more areas (i.e. the private side)
+within the Firm, and into other areas, units, groups or affiliates (i.e. public side) of the Firm
+DISTRIBUTION OF EQUITY RATINGS/INVESTMENT BANKING SERVICES
+Equity Rating
+Market Abuse
+Regulation (MAR) and
+FINRA Rating Category
+Global Rating
+Distribution
+Investment Banking
+Relationships*
+Outperform
+BUY
+52.3%
+14.2%
+Market-Perform (Bernstein Brand)
+Neutral (Autonomous Brand)
+HOLD
+35.6%
+16.1%
+Underperform
+SELL
+12.1%
+13.6%
+* These figures represent the percentage of companies within each equity rating category for which affiliates of Bernstein have
+provided investment banking services within the previous 12 months.
+As of September 30, 2026. All figures are updated quarterly.
+Prior to April 1, 2024, Sanford C. Bernstein & Co., LLC. issued the ratings and price target information in the graph(s) below for
+the following companies: Caterpillar Inc, Cummins Inc and Quanta Services Inc.
+PRICE CHARTS/ RATINGS AND PRICE TARGET HISTORY
+This research publication covers six or more companies. For price chart and other company disclosures, please visit https://
+bernstein-autonomous.bluematrix.com/sellside/Disclosures.action or you can write to the Director of Compliance, Bernstein
+Institutional Services LLC, 245 Park Avenue, New York, NY 10167.
+CONFLICTS OF INTEREST
+SG and/or its affiliates beneficially own 0.5% or more of [the total issued share capital/any class of common equity securities]
+with a net [long/short] position of: CoreWeave, Inc. and Forgent Power Solutions.
+Bernstein Autonomous LLP or BSG France SA, beneficially, has either a net long or short position of 0.5% or more of the total
+issued share capital of a class of common equity securities of the following MiFID eligible securities: Digital Realty Trust, Inc., Eaton
+Corp PLC and Quanta Services Inc.
+AB and/or its affiliates beneficially own 1% or more of a class of common equity securities of the following companies: Blackstone
+Digital Infrastructure Trust Inc. and Eaton Corp PLC.
+Bernstein and/or affiliates have received compensation for investment banking services in the past twelve months from
+CoreWeave, Inc., Blackstone Digital Infrastructure Trust Inc., Caterpillar Inc and Legence Corp..
+An affiliate of Bernstein has received compensation for non-investment banking securities-related products or services in the
+previous twelve months from the following clients: CoreWeave, Inc., Equinix, Inc. and Caterpillar Inc.
+US INDUSTRIALS & TECH
+27
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+Bernstein and/or affiliates have received compensation for non-investment banking securities-related products or services in the
+previous twelve months from the following clients: CoreWeave, Inc., Equinix, Inc., Caterpillar Inc, Cummins Inc and Legence Corp..
+Bernstein and/or affiliates expect to receive or intend to seek compensation for investment banking services in the next three
+months from CoreWeave, Inc., Caterpillar Inc and Legence Corp..
+Bernstein and/or affiliates had an investment banking client relationship during the past twelve months with CoreWeave, Inc.,
+Blackstone Digital Infrastructure Trust Inc., Caterpillar Inc and Legence Corp..
+Affiliates of Bernstein managed or co-managed in the past twelve months a public offering of securities of CoreWeave, Inc.,
+Blackstone Digital Infrastructure Trust Inc., Caterpillar Inc and Legence Corp..
+Certain affiliates of Bernstein act as market maker or liquidity provider in the debt securities of: Equinix, Inc., Digital Realty Trust,
+Inc., Caterpillar Inc, Cummins Inc and Eaton Corp PLC.
+Certain affiliates of Bernstein act as market maker or liquidity provider in the equities securities of: Caterpillar Inc, Cummins Inc,
+Eaton Corp PLC, Hubbell Incorporated, Quanta Services Inc and Legence Corp..
+OTHER MATTERS
+The legal entity(ies) employing the analyst(s) listed in this report, and their location, can be determined by the country code of their
+phone number, as follows:
++1 Bernstein Institutional Services LLC; New York, New York, USA
++44 Bernstein Autonomous LLP; London UK
++212 Société Générale Global Solution Center Morocco, Casablanca, Morocco
++33 BSG France S.A.; Paris, France
++34 BSG France S.A.; Madrid, Spain
++41 Bernstein Autonomous LLP; Geneva, Switzerland
++49 BSG France S.A.; Frankfurt, Germany
++91 Sanford C. Bernstein (India) Private Limited; Mumbai, India
++852 Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司; Hong Kong, China
++65 Sanford C. Bernstein (Singapore) Private Limited; Singapore
++81 Sanford C. Bernstein Japan KK; Tokyo, Japan
+Where this report has been prepared by research analyst(s) employed by a non-US affiliate, such analyst(s), is/are (unless
+otherwise expressly noted below) not registered as associated persons of Bernstein Institutional Services LLC or any other SEC-
+registered broker-dealer and are not licensed or qualified as research analysts with FINRA. Accordingly, such analyst(s) may not
+be subject to FINRA’s restrictions regarding (among other things) communications by research analysts with a subject company,
+interactions between research analysts and investment banking personnel, participation by research analysts in solicitation and
+marketing activities relating to investment banking transactions, public appearances by research analysts, and trading securities
+held by a research analyst account.
+Where this report has been prepared by research analyst(s) employed by Société Générale Africa Technologies & Services (part
+of the Société Générale group of companies), it has been prepared on behalf of a Bernstein company under a Global Services
+Agreement in place between Bernstein and Société Générale.
+CERTIFICATION
+Each research analyst listed in this report, who is primarily responsible for the preparation of the content of this report, certifies
+that all of the views expressed in this publication accurately reflect that analyst's personal views about any and all of the subject
+securities or issuers and that no part of that analyst's compensation was, is, or will be, directly or indirectly, related to the specific
+US INDUSTRIALS & TECH
+28
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+recommendations or views in this publication.
+II. ADDITIONAL GLOBAL CONFLICT DISCLOSURES
+It is at the sole discretion of the Firm as to when to initiate, update and cease research coverage. The Firm has established,
+maintains and relies on information barriers to control the flow of information contained in one or more areas (i.e., the private side)
+within the Firm, and into other areas, units, groups or affiliates (i.e., public side) of the Firm.
+III. OTHER IMPORTANT INFORMATION AND DISCLOSURES
+Separate branding is maintained for “Bernstein” and “Autonomous” research products.
+• Bernstein produces a number of different types of research products including, among others, fundamental analysis and
+quantitative analysis under both the “Autonomous” and “Bernstein” brands. Recommendations contained within one type of
+research product may differ from recommendations contained within other types of research products, whether as a result of
+differing time horizons, methodologies or otherwise. Furthermore, views or recommendations within a research product issued
+under one brand may differ from views or recommendations under the same type of research product issued under the other
+brand. The Research Ratings System for the two brands and other information related to those Rating Systems are included
+in the previous section.
+• Autonomous operates as a separate business unit within the following entities: Bernstein Institutional Services LLC,
+Bernstein Autonomous LLP, Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司 and Sanford C. Bernstein (India)
+Private Limited. For information relating to “Autonomous” branded products (including certain Sales materials) please visit:
+www.autonomous.com. For information relating to Bernstein branded products please visit: www.bernsteinresearch.com.
+Analysts are compensated based on aggregate contributions to the research franchise as measured by account penetration,
+productivity and proactivity of investment ideas. No analysts are compensated based on performance in, or contributions to,
+generating investment banking revenues.
+This report has been produced by an independent analyst as defined in Article 3 (1)(34)(i) of EU 596/2014 Market Abuse
+Regulation (“MAR”) and the same article of MAR as it forms part of United Kingdom domestic law by virtue of the European Union
+(Withdrawal) Act 2018.
+To our readers in the United States: Bernstein Institutional Services LLC, a broker-dealer registered with the U.S. Securities
+and Exchange Commission (“SEC”) and a member of the U.S. Financial Industry Regulatory Authority, Inc. (“FINRA”) is distributing
+this publication in the United States and accepts responsibility for its contents. Where this material contains an analysis of debt
+product(s), such material is intended only for institutional investors and is not subject to the US independence and disclosure
+standards applicable to debt research prepared for retail investors.
+Bernstein Institutional Services LLC may act as principal for its own account or as agent for another person (including an affiliate)
+in sales or purchases of any security which is a subject of this report. This report does not purport to meet the objectives or needs
+of any specific individuals, entities or accounts.
+To our readers in Canada: If this publication pertains to a Canadian domiciled company, it is being distributed in Canada by
+Sanford C. Bernstein (Canada) Limited, which is licensed and regulated by the Canadian Investment Regulatory Organization. If the
+publication pertains to a non-Canadian domiciled company, it is being distributed by Bernstein Institutional Services LLC, which
+is licensed and regulated by both the SEC and FINRA, into Canada under the International Dealers Exemption.
+This document may not be passed onto any person in Canada unless that person qualifies as "permitted client" as defined in
+Section 1.1 of NI 31-103.
+To our readers in Brazil: This report has been prepared by Bernstein Institutional Services LLC, and Banco BTG Pactual S.A.
+("BTG") is responsible for the distribution of this report in Brazil.
+To readers in the United Kingdom: This publication has been issued or approved for issue in the United Kingdom by Bernstein
+Autonomous LLP, authorised and regulated by the Financial Conduct Authority and located at 60 London Wall, London EC2M 5SH,
++44 (0)20-7170-5000. Registered in England & Wales No OC343985.
+This document is for distribution only to persons who (i) have professional experience in matters relating to investments falling
+within Article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Financial
+Promotion Order”), (ii) are persons falling within Article 49(2)(a) to (d) (“high net worth companies, unincorporated associations,
+etc.”) of the Financial Promotion Order, (iii) are outside the United Kingdom, or (iv) are persons to whom an invitation or inducement
+US INDUSTRIALS & TECH
+29
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+to engage in investment activity (within the meaning of section 21 of the FSMA) in connection with the issue or sale of any securities
+may otherwise lawfully be communicated or caused to be communicated (all such persons together being referred to as “relevant
+persons”). This document is directed only at relevant persons and must not be acted on or relied on by persons who are not relevant
+persons. Any investment or investment activity to which this document relates is available only to relevant persons and will be
+engaged in only with relevant persons.
+To our readers in the member states of the EEA: This publication is being distributed by BSG France SA, which is authorised
+and regulated by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and Autorité des Marchés Financiers (AMF).
+To our readers in Hong Kong: This publication is being distributed in Hong Kong by Sanford C. Bernstein (Hong Kong) Limited
+盛博香港有限公司, which is licensed and regulated by the Hong Kong Securities and Futures Commission (Central Entity No.
+AXC846) to carry out Type 4 (Advising on Securities) regulated activities and subject to the licensing conditions mentioned in
+the SFC Public Register (https://www.sfc.hk/publicregWeb/corp/AXC846/details)). This publication is solely for professional
+investors, as defined in the Securities and Futures Ordinance (Cap. 571). The purpose of this report is solely to provide an analysis
+of the issuers referred to in this report and is not intended for any purpose contrary to the laws of Hong Kong.
+To our readers in Singapore: This publication is being distributed in Singapore by Sanford C. Bernstein (Singapore) Private
+Limited, only to accredited investors or institutional investors, as defined in the Securities and Futures Act 2001 of Singapore
+("SFA"). Recipients in Singapore should contact Sanford C. Bernstein (Singapore) Private Limited in respect of matters arising from,
+or in connection with, this publication. Sanford C. Bernstein (Singapore) Private Limited is regulated by the Monetary Authority of
+Singapore and licensed under the SFA as a capital markets services licence holder for dealing in capital markets products that are
+securities and collective investment schemes and an exempt financial adviser for advising on, issuing and promulgating analyses
+and reports on securities. Sanford C. Bernstein (Singapore) Private Limited is registered in Singapore with Company Registration
+No. 20213710W and located at 8 Marina Boulevard, #12-01, Marina Bay Financial Centre, Singapore 018981, +65-6326-7000.
+To our readers in the People’s Republic of China: The securities referred to in this document are not being offered or sold and
+may not be offered or sold, directly or indirectly, in the People's Republic of China (for such purposes, not including the Hong Kong
+and Macau Special Administrative Regions or Taiwan, the “PRC”) in contravention of any applicable laws of the PRC.
+This document does not constitute an offer to sell or the solicitation of an offer to buy any securities in the PRC to any person to
+whom it is unlawful to make the offer or solicitation in the PRC.
+We do not represent that this document may be lawfully distributed, or that any securities may be lawfully offered, in compliance
+with any applicable registration or other requirements in the PRC, or pursuant to an exemption available thereunder, or assume
+any responsibility for facilitating any such distribution or offering. In particular, no action has been taken by us which would permit
+a public offering of any securities or distribution of this document in the PRC. Accordingly, the securities are not being offered
+or sold within the PRC by means of this document or any other document. Neither this document nor any advertisement or other
+offering material may be distributed or published in the PRC, except under circumstances that will result in compliance with any
+applicable laws and regulations.
+To our readers in Japan: This publication is being distributed in Japan by Sanford C. Bernstein Japan KK (サンフォード・
+C・バーンスタイン株式会社), which is registered in Japan as a Financial Instruments Business Operator with the Kanto Local
+Finance Bureau (registration number: The Director-General of Kanto Local Finance Bureau (FIBO) No.3387) and regulated by
+the Financial Services Agency. It is also a member of Investment Management Association of Japan. This publication is solely
+for qualified institutional investors in Japan only, as defined in Article 2, paragraph (3), items (i) of the Financial Instruments and
+Exchange Act.
+For the institutional client readers in Japan who have been granted access to the Bernstein website by Daiwa Securities Group Inc.
+(“Daiwa”), your access to this document should not be construed as meaning that Bernstein is providing you with investment advice
+for any purposes. Whilst Bernstein has prepared this document, your relationship is, and will remain with, Daiwa, and Bernstein
+has neither any contractual relationship with you nor any obligations towards you.
+To our readers in Australia: Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司 is responsible for distributing research
+in Australia. It is regulated by the Securities and Exchange Commission under U.S. laws, by the Financial Conduct Authority under
+U.K. laws, which differs from Australian laws. Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司 is exempt from the
+requirement to hold an Australian financial services license under the Corporations Act 2001 in respect of the provision of the
+following financial services to wholesale clients:
+• providing financial product advice;
+• dealing in a financial product;
+US INDUSTRIALS & TECH
+30
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+• making a market for a financial product; and
+• providing a custodial or depository service.
+To our readers in India: This publication is being distributed in India by Sanford C. Bernstein (India) Private Limited (SCB India)
+which is licensed and regulated by Securities and Exchange Board of India ("SEBI") as a research analyst entity under the SEBI
+(Research Analyst) Regulations, 2014, having registration no. INH000006378 and as a stock broker having registration no.
+INZ000213537. SCB India is currently engaged in the business of providing research and stock broking services. Please refer to
+www.bernsteinresearch.in for more information.
+• SCB India is a Private limited company incorporated under the Companies Act, 2013, on April 12, 2017 bearing corporate
+identification number U65999MH2017FTC293762, and registered office at Level 3A, 4th Floor, First International Financial
+Centre, Plot Nos C-54 and C-55, G Block, Near CBI Office, Bandra Kurla Complex, Bandra (East), Mumbai 400098,
+Maharashtra, India (Phone No: +91-22-68421401).
+• For details of Associates (i.e., affiliates/group companies) of SCB India, kindly email MUM-BERNSTEIN-
+InCompliance@bernsteinsg.com / scbincompliance@bernsteinsg.com.
+• SCB India does not have any disciplinary history as on the date of this report.
+• Except as noted above, SCB India and/or its Associates (i.e., affiliates/group companies), the Research Analysts authoring this
+report, and their relatives
+• do not have any financial interest in the subject company
+• do not have actual/beneficial ownership of one percent or more in securities of the subject company;
+• is not engaged in any investment banking activities for Indian companies, as such;
+• have not managed or co-managed a public offering in the past twelve months for any Indian companies;
+• have not received any compensation for investment banking services or merchant banking services from the subject
+company in the past 12 months;
+• have not received compensation for brokerage services from the subject company in the past twelve months;
+• have not received any compensation or other benefits from the subject company or third party related to the specific
+recommendations or views in this report; and
+• do not currently, but may in the future, act as a market maker in the financial instruments of the companies covered in the
+report.
+• do not have any conflict of interest in the subject company as of the date of this report.
+• Except as noted above, the subject company has not been a client of SCB India during twelve months preceding the date
+of distribution of this research report. Neither SCB India nor its Associates (i.e., affiliates/group companies) have received
+compensation for products or services other than investment banking, merchant banking or brokerage services from the
+subject company in the past twelve months.
+• The principal research analyst(s) who prepared this report, members of the analysts' team, and members of their households
+are not an officer, director, employee or advisory board member of the companies covered in the report.
+• Our 
+Compliance 
+officer 
+/ 
+Grievance 
+officer 
+is 
+Ms. 
+Rupal 
+Talati, 
+who 
+can 
+be 
+reached 
+at
++91-22-68421451, or MUM-BERNSTEIN-InCompliance@bernsteinsg.com / Scbin-investorgrievance@bernsteinsg.com /
+scbincompliance@bernsteinsg.com.
+• Kindly refer to the Research investor charter and Research Most Important Terms & Conditions (MITC) available at (https://
+bernsteinresearch.in/)
+US INDUSTRIALS & TECH
+31
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+• Disclaimer: Registration granted by SEBI, and certification from NISM, is in no way a guarantee of performance of the
+intermediary or provide any assurance of returns to investors. Investments in securities market are subject to market risks. Read
+all the related documents carefully before investing.
+To our readers in Switzerland: This document is provided in Switzerland by or through Bernstein Autonomous LLP, and is
+provided only to qualified investors as defined in article 10 of the Swiss Collective Investment Scheme Act (“CISA”) and related
+provisions of the Collective Investment Scheme Ordinance and in strict compliance with applicable Swiss law and regulations.
+The products mentioned in this document may not be suitable for all types of investors. This document is based on the Directives
+on the Independence of Financial Research issued by the Swiss Bankers Association (SBA) in January 2008.
+To our readers in the Middle East: Bernstein Autonomous LLP, DIFC branch has its principal office at Gate Village 06, DIFC,
+Dubai, UAE. Bernstein Autonomous LLP, DIFC branch is regulated by the Dubai Financial Services Authority (DFSA) with the
+registration number CL10040 and is provisioned for Arranging Deals in Investments and Advising on Financial Products. All
+communications and services are directed at Professional Clients and Market Counterparties only (as defined in the DFSA
+rulebook). Persons other than Professional Clients and Market Counterparties, such as Retail Clients, are not the intended
+recipients of our communications or services.
+LEGAL
+All research publications are disseminated to our clients through posting on the firm's password protected websites,
+bernsteinresearch.com and autonomous.com. Certain, but not all, research publications are also made available to clients through
+third-party vendors or redistributed to clients through alternate electronic means as a convenience.
+This publication has been published and distributed in accordance with the Firm's policy for management of conflicts of interest
+in investment research, a copy of which is available from Bernstein Institutional Services LLC, Director of Compliance, 245 Park
+Avenue, New York, NY 10167. Additional disclosures and information regarding Bernstein's business are available on our website
+www.bernsteinresearch.com.
+The securities described herein may not be eligible for sale in all jurisdictions or to certain categories of investors where that
+permission profile is not consistent with the licenses held by the entities noted herein. This document is for distribution only as may
+be permitted by law. This publication is not directed to, or intended for distribution to or use by, any person or entity who is a citizen
+or resident of, or located in any locality, state, country or other jurisdiction where such distribution, publication, availability or use
+would be contrary to law or regulation or which would subject any of the entities referenced herein or any of their subsidiaries
+or affiliates to any registration or licensing requirement within such jurisdiction. This publication is based upon public sources
+we believe to be reliable, but no representation is made by us that the publication is accurate or complete. We do not undertake
+to advise you of any change in the reported information or in the opinions herein. This publication was prepared and issued by
+entity referred to herein for distribution to eligible counterparties or professional clients. This publication is not an offer to buy
+or sell any security, and it does not constitute investment, legal or tax advice. The investments referred to herein may not be
+suitable for you. Investors must make their own investment decisions in consultation with their professional advisors in light of
+their specific circumstances. The value of investments may fluctuate, and investments that are denominated in foreign currencies
+may fluctuate in value as a result of exposure to exchange rate movements. Information about past performance of an investment
+is not necessarily a guide to, indicator of, or assurance of, future performance.
+This report is directed to and intended only for our clients who are “eligible counterparties”, “professional clients”, “institutional
+investors” and/or “professional investors” as defined by the aforementioned regulators, and must not be redistributed to retail
+clients as defined by the aforementioned regulators. Retail clients who receive this report should note that the services of the
+entities noted herein are not available to them and should not rely on the material herein to make an investment decision. The result
+of such act will not hold the entities noted herein liable for any loss thus incurred as the entities noted herein are not registered/
+authorised/ licensed to deal with retail clients and will not enter into any contractual agreement/arrangement with retail clients.
+This report is provided subject to the terms and conditions of any agreement that the clients may have entered into with the entities
+noted herein. All research reports are disseminated on a simultaneous basis to eligible clients through electronic publication to
+our client portal.
+The information in this report was prepared by Bernstein solely for the internal business use of our clients. Clients may store,
+display, analyze, reformat and print the information in this report for this limited use only. Clients may not copy, alter, create
+derivative works, resell, reverse engineer, commercially exploit, share or distribute any part of the information contained herein
+for any purpose without Bernstein’s express written consent. These restrictions include extracting data or using the content to
+develop indices or other products. Further, you may not use this report, or any portion of this report, to train or finetune any third-
+party machine learning or artificial intelligence system, or as a prompt or input into any such system. You also may not, without
+Bernstein’s express written consent, do any of the foregoing in connection with your own internal machine learning or artificial
+intelligence system.
+US INDUSTRIALS & TECH
+32
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+10 November 2026
+Bernstein may use artificial intelligence tools in the preparation of its materials. Any such materials are reviewed by Bernstein’s
+research analysts prior to publication.
+This report has been prepared for information purposes only and is based on current public information that we consider reliable,
+but the entities noted herein do not warrant or represent (express or implied) as to the sources of information or data contained
+herein are accurate, complete, not misleading or as to its fitness for the purpose intended even though the entities noted herein
+rely on reputable or trustworthy data providers, it should not be relied upon as such. Opinions expressed are the author(s)’ current
+opinions as of the date appearing on the material only and we do not undertake to advise you of any change in the reported
+information or in the opinions herein.
+Any references to Societe Generale herein are purely factual, based upon publicly available information, and included for
+comparative purposes only. They do not constitute an opinion or recommendation with respect to the securities of Societe
+Generale.
+This publication was prepared and issued by the entity referred to herein for distribution to eligible counterparties or professional
+clients. The information in this report is intended for general circulation and does not constitute an offer to buy or sell any security,
+investment, legal or tax advice nor a personal recommendation, as defined by any of the aforementioned regulators. It does not
+take into account the particular investment objectives, financial situations, or needs of individual investors. The report has not been
+reviewed by any of the aforementioned regulators and does not represent any official recommendation from the aforementioned
+regulators. The investments referred to herein may not be suitable for you. Investors must make their own investment decisions in
+consultation with advice sought from a financial adviser regarding the suitability of the investment product, taking into account the
+specific investment objectives, financial situation or particular needs of any recipient of the recommendation, before the recipient
+makes a commitment to purchase the investment product.
+The analysis contained herein is based on numerous assumptions. Different assumptions could result in materially different
+results. The information in this report does not constitute, or form part of, any offer to sell or issue, or any offer to purchase or
+subscribe for shares, or to induce engagement in any other investment activity. The value of any securities or financial instruments
+mentioned in this report may fluctuate subject to market conditions. Information about past performance of an investment is
+not necessarily a guide to, indicative of, or assurance of future performance. Estimates of future performance mentioned by
+the research analyst in this report are based on assumptions that may not be realized due to unforeseen factors like market
+volatility/fluctuation. In relation to securities or financial instruments denominated in a foreign currency other than the clients’
+home currency, movements in exchange rates will have an effect on the value, either favorable or unfavorable. Before acting on any
+recommendations in this report, recipients should consider the appropriateness of investing in the subject securities or financial
+instruments mentioned in this report and, if necessary, seek independent professional advice.
+The securities described herein may not be eligible for sale in all jurisdictions or to certain categories of investors where that
+permission profile is not consistent with the licenses held by the entities noted herein. This document is for distribution only as may
+be permitted by law. It is not directed to, or intended for distribution to or use by, any person or entity who is a citizen or resident of or
+located in any locality, state, country or other jurisdiction where such distribution, publication, availability or use would be contrary
+to law or regulation or would subject the entities noted herein to any regulation or licensing requirement within such jurisdiction.
+Source: Bloomberg Index Services Limited. BLOOMBERG® is a trademark and service mark of Bloomberg Finance L.P. and its
+affiliates (collectively “Bloomberg”). Bloomberg or Bloomberg’s licensors own all proprietary rights in the Bloomberg Indices.
+Neither Bloomberg nor Bloomberg’s licensors approves or endorses this material, or guarantees the accuracy or completeness of
+any information herein, or makes any warranty, express or implied, as to the results to be obtained therefrom and, to the maximum
+extent allowed by law, neither shall have any liability or responsibility for injury or damages arising in connection therewith.
+No part of this material may be reproduced, distributed or transmitted or otherwise made available without prior consent of the
+entities noted herein. Copyright Bernstein Institutional Services LLC Bernstein Autonomous LLP, BSG France S.A., Sanford C.
+Bernstein (Hong Kong) Limited 盛博香港有限公司, Sanford C. Bernstein (Canada) Limited, Sanford C. Bernstein (India) Private
+Limited (SEBI registration no. INH000006378), Sanford C. Bernstein (Singapore) Private Limited and Sanford C. Bernstein Japan
+KK (サンフォード・C・バーンスタイン株式会社). All rights reserved. The trademarks and service marks contained herein are
+the property of their respective owners. Any unauthorized use or disclosure is strictly prohibited. The entities noted herein may
+pursue legal action if the unauthorized use results in any defamation and/or reputational risk to the entities noted herein and
+research published under the Bernstein and Autonomous brands.
+US INDUSTRIALS & TECH
+33
