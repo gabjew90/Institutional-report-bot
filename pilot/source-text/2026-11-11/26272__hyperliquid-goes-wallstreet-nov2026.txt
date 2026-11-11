@@ -1,0 +1,905 @@
+DIGITAL ASSETS
+NOVEMBER 2026
+Hyperliquid Goes Wall Street
+What ICE’s regulated perpetuals venue could mean 
+for Hyperliquid’s economics
+Martin Leinweber, CFA
+Director Digital Asset Research & 
+Strategy 
+
+ 
+MarketVector IndexesTM 
+Page 1 
+ 
+ 
+ 
+Contents 
+Key Takeaways ............................................................................................................................................. 2 
+1. Hyperliquid in brief .................................................................................................................................. 4 
+2. Who is trade[XYZ], and what does it do on Hyperliquid? ............................................................... 5 
+3. What was announced .............................................................................................................................. 7 
+4. Why ICE chose to build on Hyperliquid ..............................................................................................8 
+5. Traction: trade[XYZ] and Hyperliquid in numbers .......................................................................... 10 
+6. What could the US venue add to Hyperliquid’s revenue? ............................................................. 11 
+7. Putting the scenarios in context .......................................................................................................... 15 
+8. Competitive landscape ......................................................................................................................... 16 
+9. Risks and open questions ..................................................................................................................... 17 
+10. What to watch ....................................................................................................................................... 18 
+11. Conclusion .............................................................................................................................................. 19 
+12. Sources and methodology .................................................................................................................. 19 
+Contact ............................................................................................................................................................ 20 
+About the Author ........................................................................................................................................... 20 
+IMPORTANT DEFINITIONS AND DISCLOSURES ............................................................................. 21 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 2 
+ 
+Hyperliquid Goes Wall Street 
+ICE, the owner of the New York Stock Exchange, will run a regulated US perpetual futures 
+venue for trade[XYZ] on Hyperliquid. What the deal is, what it could mean for Hyperliquid’s 
+economics, and the approvals it still needs. 
+Martin Leinweber, CFA  ·  Head of Digital Asset Research & Strategy  ·  November  2026 
+ 
+ 
+Key Takeaways 
+ 
+• The deal. On October 29, Intercontinental Exchange (ICE) signed a definitive agreement to 
+be the exclusive operator of trade[XYZ]’s US-regulated perpetual futures markets, which will 
+be built on Hyperliquid. ICE is also taking an undisclosed minority stake. The venue still 
+needs CFTC approval and has no launch date. 
+• The market reaction. MVHYPE rose 16.0% on the day to 93.99, 2.6% below its September 
+22 high. It is up 267% year to date. 
+• Who trade[XYZ] is. trade[XYZ] is the largest third-party market deployer on Hyperliquid. It 
+designs and lists perpetuals on stocks, indexes, commodities and FX, while Hyperliquid’s 
+engine does the matching, margining and settlement. It accounted for about 97% of all HIP-3 
+volume in September. 
+• The economics are mostly undisclosed. The fee schedule, the revenue split, leverage 
+limits, the product list and which brokers will join have not been announced. Using 
+Hyperliquid’s actual revenue and trade[XYZ]’s actual volumes, we estimate the US venue 
+would add $9m (bear), $68m (base) or $274m (bull) of Hyperliquid revenue a year at a 50% 
+protocol fee share. That is 1% to 32% of the current run-rate. With four parties sharing fees 
+onshore, the protocol’s share could be closer to 25%, which halves every figure. 
+• Putting the scenarios in context. At a constant revenue multiple, the scenarios correspond 
+to roughly 1%, 8% and 32% of current circulating market value at a 50% fee share, or half that 
+at 25%. The October 29 move was larger than the base case. This is an illustrative sensitivity, 
+not a price target. 
+
+ 
+MarketVector IndexesTM 
+Page 3 
+ 
+• The hurdles are regulatory and practical. Single-stock perpetuals need SEC sign-off as 
+well as CFTC approval. The CFTC blocked CME’s 24/7 oil contract this summer. Leverage 
+for US retail traders is unresolved. A permissioned US order book will start without offshore 
+liquidity, and the clearing structure has to reconcile ICE’s emergency powers with 
+Hyperliquid’s validators. 
+• Our read. For Hyperliquid, the question has moved from whether it can be regulated to on 
+what terms. The validation is real. The near-term revenue impact in our base case is modest 
+and depends on approvals, so we see the deal mainly as option value on regulatory 
+outcomes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 4 
+ 
+1. Hyperliquid in brief 
+ 
+Hyperliquid is a purpose-built layer-1 blockchain whose core application is a fully on-chain 
+perpetual futures exchange. Every order, cancel and liquidation is recorded on-chain, and 
+trading carries no gas fees. In less than two years it went from a little-known project to the 
+dominant decentralized derivatives venue. It overtook dYdX in monthly volume in August 2024, 
+and since mid-2025 its monthly perpetual volume has averaged about $250bn, above $200bn in 
+all but two months. In October 2026 it processed $228bn of notional volume, about $7.9bn a 
+day. 
+ 
+How it won 
+Hyperliquid won through product quality and token design rather than incumbency. Its trading 
+experience is comparable to a centralized exchange: a median finality of about 0.2 seconds, 
+one-click trading through session keys, and deep books from day one. The books were seeded 
+by HLP, a community-owned vault that makes markets and absorbs liquidations. Meanwhile, 
+the leading incumbent, dYdX, was migrating to a new chain and gave token holders little 
+economic link to fee revenue. The November 2024 HYPE airdrop reserved 31% of supply for the 
+community and gave nothing to venture investors. Roughly 97–99% of trading fees flow to the 
+Assistance Fund, which buys back HYPE. That creates a direct link between activity and token 
+demand, although holders have no contractual claim on cash flows. 
+ 
+Architecture 
+• HyperCore runs the order books, margining, funding and settlement under HyperBFT, a 
+custom Byzantine-fault-tolerant consensus that stays final as long as more than two-thirds of 
+validator stake is honest. 
+• HyperEVM shares the same consensus and state. It lets standard Ethereum smart contracts 
+read HyperCore positions and prices, and submit orders, so DeFi applications can be built 
+directly on the exchange’s liquidity. 
+• Builder codes let third-party front ends, including Phantom and MetaMask, route orders to 
+Hyperliquid and earn a fee. That spreads distribution without fragmenting liquidity. In the US 
+structure, FCMs that join ICE’s venue would play a similar role. 
+• HIP-3 (live since October 2025) lets anyone who stakes 500,000 HYPE deploy their own 
+perpetual markets on HyperCore. The deployer can receive up to 50% of the fees. 
+trade[XYZ] is by far the largest HIP-3 deployer. HIP-3* adds optional allowlists so a 
+regulated operator can restrict trading to KYC-verified accounts. It is on testnet today. 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 5 
+ 
+The trade-offs 
+Hyperliquid’s speed comes partly from deliberate centralization. The node software is closed-
+source. Stake is concentrated, including stake delegated to Hyper Foundation validators. Many 
+users rely on Hyperliquid-operated APIs. The protocol has handled stress well: during the 
+October 10, 2025 liquidation cascade, it processed roughly half of the market’s liquidations with 
+no downtime and no bad debt. But the March 2025 JELLY episode required validators to step in 
+and override a market price. For a US-regulated clearing structure that will settle on HyperCore, 
+these governance and resilience questions are central to the regulatory review. 
+ 
+ 
+ 
+ 
+ 
+2. Who is trade[XYZ], and what does it do on Hyperliquid? 
+ 
+trade[XYZ] (trade.xyz) is a market operator, not a separate blockchain or a broker. Under HIP-3 
+it runs its own set of markets on Hyperliquid, called the xyz deployment. Every contract it lists 
+carries an “xyz:” prefix, so its Tesla perpetual is xyz:TSLA. Its first market, the XYZ100 index of 
+100 large US-listed non-financial companies, began trading on October 13, 2025. By early 
+October 2026 it listed about 110 markets: 76 single stocks plus ETFs, equity indexes (including 
+an S&P 500 perpetual licensed from S&P Dow Jones Indices), commodities, FX and pre-IPO 
+contracts. 
+Table 1: How the work is divided on an xyz market 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 6 
+ 
+Its scale is what makes it valuable to ICE. In September its markets traded $59.4bn, about 97% 
+of all HIP-3 volume and 24% of all perpetual volume on Hyperliquid. On a typical weekday the 
+share rose to about 25%. Single stocks and ETFs made up 53% of that volume, and 
+commodities, led by WTI crude oil, another 27%. 
+ 
+Figure 1: trade [XYZ] volume by asset class, September 2026 
+ 
+ 
+ 
+Source: 0xArchive (Hyperliquid on-chain data), trade.xyz documentation, MarketVector Indexes. 
+ 
+Its edge is price discovery when traditional markets are closed. While the underlying 
+exchange is open, trade[XYZ]’s reference price tracks it. When the exchange closes, the 
+reference price switches to trade[XYZ]’s own order book, and “discovery bounds” cap how far 
+the price can drift before the real market reopens. That is why traders use its markets to price 
+stocks and oil over the weekend. Weekend days still averaged about $0.54bn of volume in 
+September. 
+Its fees are shared with Hyperliquid. Standard HIP-3 markets charge twice Hyperliquid’s own 
+fees, and the deployer can receive up to half. Most xyz markets currently run in “Growth 
+Mode”, which cuts those fees by 90%. 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 7 
+ 
+3. What was announced 
+ 
+Under the agreement, ICE will be the exclusive operator of trade[XYZ]’s regulated markets. It 
+plans to set up a new, dedicated retail exchange and clearing structure that is legally separate 
+from its institutional futures and clearing business, so ICE’s commercial hedgers carry no 
+exposure to retail counterparty risk. KYC/AML-verified customers would access the markets 
+through futures commission merchants (FCMs) that become members of the platform. 
+Distribution is also planned through ICE’s joint venture with OKX, which is awaiting its own 
+FCM and broker-dealer approvals. ICE says more than 99% of its current participation is 
+institutional, so retail is a new business line for the group. It describes the stake as not material 
+to its 2026 results. Stan Druckenmiller has disclosed an investment in trade[XYZ] alongside ICE. 
+The roles split cleanly. trade[XYZ] designs the contracts. ICE runs the regulated exchange and 
+clearing. Hyperliquid’s HyperCore matches and settles trades. The press release leaves out the 
+variables that determine value for HYPE holders: fees, revenue sharing, leverage and launch 
+timing. It also gives the HYPE token no direct role as collateral or payment. 
+ 
+Figure 2: How the planned US venue is organized 
+ 
+ 
+Source: ICE press release (Oct 29, 2026), Hyperliquid documentation, MarketVector Indexes. HIP-3* = HIP-3 with optional permissioning/allowlists. 
+Three practical questions: liquidity, collateral and emergency powers 
+Separate order books. Under HIP-3, each deployment runs its own order books, and HIP-3* 
+adds allowlists on top. A venue for KYC-verified US customers would therefore most likely 
+trade on its own permissioned books, not on trade[XYZ]’s existing offshore markets ($59.4bn of 
+volume in September). US orders could not simply match against offshore liquidity, or against 
+HLP. To avoid wide spreads at launch, market makers would need to quote on both the US and 
+offshore books and arbitrage the gap. Sharing an engine and price references makes that easier, 
+but a regulated venue that opens with thin books is a real risk. 
+
+ 
+MarketVector IndexesTM 
+Page 8 
+ 
+Where customer collateral sits. HyperCore holds margin and settles in USDC on-chain, while 
+ICE plans a legally separate clearing house. CFTC customer-protection rules require customer 
+funds to be segregated by the FCM and the clearing house. Regulators will have to decide 
+whether US customer margin can sit on-chain as USDC, or must stay in traditional segregated 
+accounts with only a representation on HyperCore. The answer affects operational risk, and 
+also whether Hyperliquid earns reserve income on US deposits, which is part of its revenue 
+today. 
+Who can stop the market. A US clearing house must be able to halt trading and manage a 
+member default on its own authority. On Hyperliquid, comparable interventions have so far 
+been carried out by validators, as in the JELLY episode. How ICE’s authority fits with 
+Hyperliquid’s validator governance is likely to be a central question in the approval. 
+ 
+4. Why ICE chose to build on Hyperliquid 
+ 
+Two US exchange groups have now chosen different routes to 24/7 markets. CME built on its 
+own systems. Its crypto futures and options have traded around the clock since May 29, but 
+trades done on weekends and holidays are given the next business day’s trade date for clearing 
+and settlement. When CME tried to extend 24/7 trading to a 10-barrel WTI contract, the CFTC 
+stayed the self-certified listing on July 9, one day before launch. CME withdrew the filing on 
+October 2, citing concerns from commercial participants. 
+ICE partnered for the engine. Building on HyperCore gives ICE matching and settlement that 
+already run 24/7, a live product set with a year of offshore price history, and a partner whose 
+markets are already used as a reference for weekend prices. In return, ICE shares the 
+economics and depends on a protocol it does not control. The deal follows a series of moves by 
+ICE into retail and crypto: an investment of up to $2bn in Polymarket (announced October 
+2025), a stake in OKX at a $25bn valuation (March 2026), and CEO Jeffrey Sprecher’s 
+confirmation in May that ICE had held several meetings with Hyperliquid. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 9 
+ 
+Figure 3: The race to bring perpetuals onshore in the US 
+ 
+Source: CFTC, CME Group, ICE, Coinbase, Payward, Hyperliquid, Crypto.com announcements and press coverage; MarketVector Indexes. Dates are 
+announcement dates. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 10 
+ 
+5. Traction: trade[XYZ] and Hyperliquid in numbers 
+ 
+trade[XYZ] launched on Hyperliquid in October 2025 and grew quickly. Monthly notional 
+volume rose from $4.1bn in November 2025 to a record $114bn in July 2026. October to date 
+shows $71.0bn over 29 days, or about $2.4bn a day, with open interest at a record $2.02bn. 
+Second-quarter volume was $202.7bn, and trade[XYZ] says its cumulative volume has passed 
+$650bn. 
+ 
+Figure 4: trade{XYZ]: monthly notional volume and open interest 
+ 
+ 
+Source: Token Terminal, MarketVector Indexes. October 2025 covers 19 days; October 2026 covers Oct 1–29. 
+Its fees are low. October fees of $7.45m work out to about 1.05 basis points of notional, largely 
+because Growth Mode cuts fees by 90% on most xyz markets. Token Terminal shows 
+trade[XYZ] keeping $2.52m (34%) of those fees as revenue, below the nominal 50% deployer 
+share, so the realized split differs from the headline terms. Hyperliquid itself earned $69.0m of 
+protocol revenue in the first 29 days of October, or $868m annualized. Its revenue over the 
+past twelve months is about $679m. At a circulating market cap of $21.3bn, HYPE trades at 
+24.3x annualized revenue, or about 97x on a fully diluted basis ($84.6bn). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 11 
+ 
+Figure 5. Hyperliquid protocol revenue, normalized to a 30-day month ($m) 
+ 
+Source: Token Terminal, MarketVector Indexes. Revenue = fees retained by the protocol after builder-code and HIP-3 deployer pass-throughs, 
+including USDC reserve income. October 2026 = Oct 1–29, scaled to 30.4 days. 
+ 
+6. What could the US venue add to Hyperliquid’s revenue? 
+ 
+None of the economic terms have been disclosed, so we frame the question as a sensitivity 
+analysis rather than a forecast. We estimate incremental annual protocol revenue as: US venue 
+average daily volume × 365 × all-in fee rate × Hyperliquid’s share of fees. Offshore, 
+trade[XYZ] currently charges about 1 basis point under Growth Mode discounts. A regulated US 
+venue is likely to charge more because exchange, clearing and broker costs are higher; 
+Coinbase’s US perpetual-style futures start at 2 basis points for takers. 
+ 
+Table 2: Scenario assumptions and results 
+ 
+Scenario 
+What has to happen 
+US venue 
+ADV 
+All-in fee 
+Revenue / yr at 
+50% share 
+Revenue / yr at 25% share 
+Bear 
+Only crypto and broad indexes approved; 
+few FCMs join; OKX JV delayed; low retail 
+leverage 
+$0.5bn 
+1.0 bp 
+$9m (1% of run-
+rate) 
+$5m (0.5% of run-rate) 
+Base 
+Product set similar to offshore; several large 
+retail FCMs join; activity matches 
+trade[XYZ]’s offshore business today 
+$2.5bn 
+1.5 bp 
+$68m (8% of run-
+rate) 
+$34m (4% of run-rate) 
+Bull 
+Single-stock perpetuals approved; major 
+brokers and OKX JV live; US venue volume 
+equals all of Hyperliquid’s volume today 
+$7.5bn 
+2.0 bp 
+$274m (32% of 
+run-rate) 
+$137m (16% of run-rate) 
+ 
+Source: MarketVector Indexes estimates. All-in fee = the trading fee charged at the exchange/protocol level, before any FCM commissions or broker 
+mark-ups. Run-rate = Hyperliquid revenue Oct 1–29, 2026 annualized ($868m, Token Terminal). 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 12 
+ 
+Why a 50% fee share may be too generous 
+Our starting assumption, a 50% protocol share, mirrors the standard HIP-3 terms. Offshore, fees 
+are split between two parties: the deployer and the protocol. Onshore there are four. FCMs 
+(and the ICE–OKX JV) handle distribution, ICE runs the exchange and clearing house, 
+trade[XYZ] designs the products and HyperCore matches and settles. FCMs normally charge 
+their own commissions on top, but ICE will expect a cut of the exchange fee. Either the all-in 
+fee rises above the 1–2 basis points in our scenarios, or less of it reaches Hyperliquid. Even 
+offshore, the split is not clean. From August to October, trade[XYZ] kept 35% of the fees on its 
+markets, and the remaining 65% (about 0.7 basis points of volume) covers builder-code and 
+referral payments as well as the protocol’s share. We therefore also show every scenario at a 
+25% protocol share. 
+At 25%, revenue halves: about $5m, $34m and $137m a year, or 0.5%, 4% and 16% of the run-
+rate. To get back to the base case’s $68m at a 25% share, the venue would need either $5bn a 
+day at 1.5 basis points or $2.5bn a day at 3 basis points. 
+ 
+Figure 6. Where a dollar of trading fees goes: offshore today and on the planned US venue 
+ 
+ 
+Source: Token Terminal (trade[XYZ] fees and revenue, Aug–Oct 2026), Hyperliquid and trade.xyz documentation, ICE, MarketVector Indexes. Dashed 
+boxes = shares not yet disclosed. The Assistance Fund share refers to protocol trading fees as reported in secondary sources (97–99%). 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 13 
+ 
+How we set the volume assumptions 
+The volume figures are anchored assumptions, not a bottom-up forecast. No fee schedule, 
+product list or broker line-up exists yet to build one from. Each scenario is pegged to a volume 
+we can observe today, then cross-checked against the size of US-regulated derivatives markets 
+that retail traders already use. 
+Table 3. Where the volume assumptions come from 
+Scenario 
+ADV 
+Anchor 
+Cross-check 
+Bear 
+$0.5bn 
+About 20% of trade[XYZ]’s offshore volume today; close 
+to its weekend run-rate ($0.54bn a day) 
+Slow start, like Kalshi’s BTC perpetual (about $0.14bn a 
+day in its first week) 
+Base 
+$2.5bn 
+Equal to trade[XYZ]’s offshore volume today ($2.4bn a 
+day) 
+About 1/3 of CME’s crypto complex; about 1.3% of CME 
+micro equity-index futures notional 
+Bull 
+$7.5bn 
+Equal to all of Hyperliquid’s volume today ($7.9bn a day) 
+About CME’s crypto complex; about 4% of CME micro 
+equity-index notional 
+Source: Token Terminal, 0xArchive, CME Group (Q3 2026 ADV), Kalshi, MarketVector Indexes. 
+ 
+ 
+Figure 7. Scenario volumes compared with existing venues (average daily notional, $bn, log 
+scale) 
+ 
+Source: Token Terminal, 0xArchive, CME Group, Coinbase, Kalshi, MarketVector Indexes. Scope of each benchmark: Kalshi = BTC perpetual only, 
+launch week, based on the company’s “$1bn+ in the first week” statement; trade[XYZ] weekend days = all xyz markets (stocks, commodities, indexes, 
+FX), September 2026 average; Coinbase Derivatives = all products on its US futures exchange, single day (Oct 30, 2026); trade[XYZ] offshore = all xyz 
+markets, Oct 1–29 average; CME crypto = all crypto futures and options, Q3 2026 average; Hyperliquid = all markets incl. HIP-3, Oct 1–29 average 
+(taker fills only); CME micro = CME micro equity-index futures only, our notional estimate from Q3 2026 ADV. The benchmarks differ in asset class, 
+product type, period and counting method, so the chart is an order-of-magnitude check, not a like-for-like comparison. 
+Two points stand out. First, even the bull case would make the US venue small next to the micro 
+equity-index futures that US retail traders already use at CME, so the scenarios do not assume 
+demand that does not exist. Second, these benchmarks show the market is already crowded. 
+The volume will have to be won from CME, Coinbase, Kalshi and others, not just captured. 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 14 
+ 
+Figure 8. Scenario results at a 50% and 25% protocol share (left) and sensitivity of annual 
+revenue ($m) to volume and fee rate at 50% (right) 
+ 
+Source: MarketVector Indexes estimates. Bold cells in the heat map mark the three scenarios. At a 25% share, halve every value. 
+How to read the numbers. At a 50% share, the base case adds roughly one month of 
+Hyperliquid’s current revenue each year, and the bull case about a third. At 25%, both halve. 
+Volume, fee rate and fee share matter about equally, and every value scales directly with each 
+of them. 
+What we do not model. Possible second-order effects include more HYPE staked by HIP-3* 
+deployers, more USDC reserve income as deposits grow, and higher offshore volume as 
+Hyperliquid gains legitimacy. Possible offsets include US volume that would otherwise have 
+reached Hyperliquid through offshore routes, and competing US venues pushing fees down. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 15 
+ 
+7. Putting the scenarios in context 
+ 
+To put the revenue scenarios in context, we compare them with HYPE’s current circulating 
+market value at a constant revenue multiple. Token Terminal puts HYPE at 24.3x annualized 
+revenue on a circulating basis ($21.3bn market cap). At that multiple, the base case corresponds 
+to roughly 8% of current circulating market value and the bull case to roughly 32% at a 50% fee 
+share. At a 25% share, the figures are about 4% and 16%. 
+Figure 9 and Table 4. Scenarios as a share of circulating market value at a constant revenue 
+multiple, compared with the October 29 move 
+ 
+ 
+Scenario 
+At 50% fee share 
+At 25% fee share 
+Bear 
+$0.2bn (1%) 
+$0.1bn (0.5%) 
+Base 
+$1.7bn (8%) 
+$0.8bn (4%) 
+Bull 
+$6.7bn (32%) 
+$3.4bn (16%) 
+ 
+Source: Token Terminal, MarketVector Indexes estimates. Circulating market value of $21.3bn and 24.3x annualized revenue as of Oct 29, 2026. 
+Illustrative sensitivity only, not a price target or forecast. 
+ 
+Compared with the October 29 move. The 16% rise in MVHYPE on October 29 added about 
+$2.9bn of circulating market value. At a constant revenue multiple, the base case corresponds 
+to roughly 8% of current circulating market value at a 50% fee share, or 4% at 25%; the October 
+29 move was larger than this. 
+Timing reduces the value further. A launch is probably at least 18 months away. Discounting at 
+30% a year, a rate meant to reflect early-stage regulatory risk, the present value of the base 
+case falls by about a third: to roughly $1.1bn (5% of circulating value) at a 50% share, or $0.57bn 
+(2.7%) at 25%. This still does not account for the chance that approval never comes. 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 16 
+ 
+8. Competitive landscape 
+ 
+ICE will not have the US market to itself. At least six other routes to US perpetuals are live or 
+pending. The most important difference is distribution. Payward’s design runs through a single 
+FCM that it owns. ICE’s design is open to any FCM that joins. But several of the largest retail 
+platforms, including Coinbase, Robinhood and Crypto.com, are building perpetual products of 
+their own, which could reduce their incentive to route customers to ICE. 
+ 
+Table 5. Routes to US-regulated perpetual futures 
+ 
+Route 
+Structure 
+Status (Oct 30, 2026) 
+ICE / trade[XYZ] 
+ICE-run exchange and separate clearing; HyperCore 
+engine via HIP-3*; many FCMs plus the ICE–OKX JV 
+Agreement signed Oct 29; approvals pending; no launch 
+date 
+Payward (Kraken) / 
+Bitnomial 
+Bitnomial as CFTC-regulated HIP-3* deployer and 
+clearing house; NinjaTrader Clearing as the only FCM 
+Announced Sep 16; Hyperliquid expects it to be the first 
+regulated HIP-3* deployer; pending 
+Coinbase Derivatives 
+Own exchange and FCM; nano BTC/ETH perpetual-
+style futures 
+Live since Jul 2025; single-stock perpetuals filed; SEC 
+Form 1-N filed Sep 1 
+Kalshi 
+Own exchange (DCM) 
+BTC perpetual approved May 29 ($1bn+ volume in its first 
+week); stock-index, copper and single-stock perpetuals 
+filed 
+Crypto.com / OG.com 
+CFTC-regulated structure 
+Crypto perpetuals live for US traders since Oct 28; single-
+stock perpetuals request pending 
+Robinhood 
+Broker / app distribution 
+Crypto perpetuals announced Sep 29 for “the coming 
+months” 
+CME Group 
+Own exchange and clearing 
+Crypto futures trade 24/7 (next-day clearing); 24/7 WTI 
+withdrawn Oct 2 
+Source: Company announcements, CFTC, press coverage; MarketVector Indexes. Not exhaustive. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 17 
+ 
+9. Risks and open questions 
+ 
+Risk 
+Why it matters 
+What to watch 
+Securities jurisdiction 
+Perpetuals on single stocks and narrow-based indexes are security 
+futures, so they need SEC as well as CFTC approval. Single stocks and 
+ETFs were 53% of trade[XYZ]’s September volume. 
+Outcomes of the Kalshi, Coinbase and 
+OG.com filings; SEC staff expect some to 
+begin trading this quarter 
+24/7 commodities 
+The CFTC stayed CME’s 24/7 WTI listing over weekend liquidity and 
+benchmark concerns. trade[XYZ] and the Hyperliquid Policy Center 
+asked in August for energy perpetuals. 
+CFTC response to the energy request 
+Leverage 
+ICE says it will seek “approvals needed to support leveraged trading.” 
+Offshore, trade[XYZ] offers up to 20x on some indexes. Lower US limits 
+would mean less volume. 
+Margin rules in the approval order 
+Liquidity 
+fragmentation 
+Permissioned US books cannot match against offshore xyz markets 
+($59.4bn in September) or HLP, so the venue may open with thin books 
+and wide spreads. 
+Market-maker commitments; spreads at 
+launch 
+Clearing and 
+governance 
+A regulated clearing house needs its own authority to halt trading and 
+manage defaults, while past interventions on Hyperliquid were made by 
+validators. Rules on where customer USDC collateral sits are untested. 
+HIP-3* is still on testnet. 
+HIP-3* mainnet launch; CFTC conditions on 
+validator governance and collateral custody 
+Fee-layer 
+compression 
+With FCMs, ICE, trade[XYZ] and HyperCore all taking part, the 
+protocol’s net share could fall well below 50%. 
+Disclosure of the fee schedule and net 
+protocol take 
+Distribution 
+FCMs have to choose to join as members. Several large retail platforms 
+are building competing products. 
+First FCM member announcements; 
+approvals for the ICE–OKX JV 
+Token economics 
+HYPE has no direct role in the venue. Fully diluted value ($84.6bn) is 4x 
+circulating value ($21.3bn), and unlocks during a long approval process 
+could outpace buybacks. 
+Circulating supply growth vs. buybacks; 
+unlocks and OTC distributions 
+Timing 
+No launch date. Approvals could take several quarters, and the 
+economics may change before launch. 
+Regulatory filings by ICE 
+Source: ICE, CFTC, SEC, Eversheds Sutherland, company announcements; MarketVector Indexes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 18 
+ 
+10. What to watch 
+ 
+• Nov 2: Kalshi’s SEC rule filing for single-stock perpetuals is set to take effect, subject to 
+CFTC approval. 
+• Nov 8: OG.com’s single-stock perpetual contracts will be deemed approved if the CFTC 
+takes no action. This is a first test of how the CFTC handles equity perpetuals. 
+• HIP-3* on mainnet, and the Payward/Bitnomial launch as the first live, CFTC-regulated 
+deployment on Hyperliquid. 
+• The first FCMs to join ICE’s retail venue, and the ICE–OKX joint venture’s FCM and 
+broker-dealer approvals. 
+• Disclosure of the fee schedule and revenue split, the single largest input to our scenarios. 
+ 
+Figure 10. MarketVector™ Hyperliquid Index (MVHYPE) 
+ 
+ 
+ 
+Source: MarketVector Indexes. Daily closing values, Jan 23, 2025 to Oct 29, 2026. Past performance is not a guarantee of future results. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 19 
+ 
+11. Conclusion 
+ 
+The ICE–trade[XYZ] agreement is a turning point for how traditional finance views Hyperliquid. 
+The operator of the NYSE decided it was better to build on HyperCore than to copy it, and it is 
+willing to share the economics to do so. That supports the case that Hyperliquid is market 
+infrastructure, not just an exchange. 
+The value to HYPE, however, depends on decisions still to come. The SEC has to rule on equity 
+perpetuals, the CFTC on 24/7 commodities, leverage and clearing governance, FCMs have to 
+decide whether to join, and the fee terms have to be disclosed. Our base case adds roughly 8% 
+to Hyperliquid’s current revenue run-rate at a 50% fee share and 4% at 25%. The bull case adds 
+a third at most, and only if most of those decisions go Hyperliquid’s way. The October 29 move 
+was larger than the base case at a constant revenue multiple. We will update this framework as 
+those details become public. 
+ 
+12. Sources and methodology 
+ 
+Data. Hyperliquid and trade[XYZ] fees, revenue, notional volume, open interest, market 
+capitalization and P/S ratios: Token Terminal, retrieved October 30, 2026. Figures are rounded, 
+and partial months are flagged. trade[XYZ] market structure and asset-class mix: 0xArchive and 
+trade.xyz documentation. MVHYPE index levels: MarketVector Indexes. Scenario and valuation 
+sensitivities: MarketVector Indexes, using the assumptions stated in Sections 6 and 7. 
+Primary documents and coverage. 
+• ICE: “Intercontinental Exchange and Trade[XYZ] to Bring Hyperliquid-Based Perpetual Markets Onshore,” Oct 29, 2026 (ir.theice.com) 
+• CFTC: “CFTC to Stay Self-Certified Contract on 24/7 Trading for Crude Oil Futures,” Release 9265-26 (cftc.gov) 
+• CME Group: 24/7 cryptocurrency futures and options announcement, Feb 19, 2026; WTI filing withdrawal, Oct 2, 2026; “CME Group 
+Reports Record Average Daily Volume for September and Q3,” Oct 2, 2026 
+• Payward: Hyperliquid on-chain perpetual futures press release, Sep 16, 2026 (payward.com); The Block, Oct 26, 2026 
+• CoinDesk, “U.S. CFTC opens crypto ‘perp’ door with first approval at regulated firm,” May 28, 2026; Decrypt on Kalshi BTCPERP 
+• Eversheds Sutherland, “CFTC-registered exchanges seek approval to list single stock perpetual futures,” 2026; Crowdfund Insider on 
+Kalshi and OG.com filings, Sep 2026 
+• Decrypt, “Hyperliquid’s HYPE Jumps 13% as NYSE Owner ICE Moves to Bring Its Perpetual Futures to the US,” Oct 29, 2026 
+• crypto.news, “NYSE owner ICE partners with trade[XYZ] for US perpetual futures,” Oct 29, 2026 
+• Crypto Briefing and AMBCrypto on the 3.75M HYPE OTC distribution, Oct 2026; Crypto Briefing on the HIP-3* announcement 
+• Hyperliquid documentation: HIP-3 builder-deployed perpetuals (hyperliquid.gitbook.io); trade.xyz documentation (docs.trade.xyz) 
+• 0xArchive, “TradeXYZ explained: how trade.xyz puts stocks, oil and indices on Hyperliquid,” Oct 4, 2026 
+• VanEck, “Exploring Hyperliquid,” May 2026, and Crypto Briefing on Assistance Fund buybacks (97–99% of trading fees) 
+• Trailing P/E ratios: stockrow, Macrotrends, Upfront Investment, companiesmarketcap (Oct 21–28, 2026); Coinbase derivatives market 
+data (Oct 30, 2026) 
+• Coverage of Coinbase US perpetual-style futures (Jul 2025), Robinhood HOOD Summit (Sep 29, 2026), Crypto.com US perps (Oct 28, 
+2026) 
+ 
+ 
+ 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 20 
+ 
+Contact 
+info@marketvector.com 
+About the Author 
+Martin Leinweber, CFA 
+Head of Digital Asset Research & Strategy, MarketVector Indexes 
+mleinweber@marketvector.com 
+Martin Leinweber leads digital asset research and strategy at MarketVector Indexes, where he 
+develops index products, publishes institutional research, and serves as the firm’s primary voice 
+on crypto markets to a global client base. His work sits at the intersection of systematic investing 
+and an emerging asset class, translating rigorous quantitative frameworks into actionable insight 
+for institutional investors. 
+Before joining MarketVector, Martin spent nearly two decades as a Portfolio Manager across 
+equities, fixed income, and alternative investments. At Quoniam Asset Management, one of 
+Germany’s foremost quantitative houses, he managed active funds for institutional clients 
+including insurance companies, pension funds, and sovereign wealth funds. Earlier in his career 
+at MEAG, the asset manager of Munich Re and ERGO, he contributed to the firm’s international 
+expansion, including the establishment of a joint venture with PICC, China’s largest insurance 
+company, with operations in Shanghai and Beijing. 
+Martin is co-author of two Wiley publications: Asset-Allokation mit Kryptoassets: Das Handbuch 
+(2021), the first institutional handbook on integrating digital assets into traditional portfolios, and 
+Mastering Crypto Assets: Investing in Bitcoin, Ethereum, and Beyond (2024). He holds a Master 
+of Economics from the University of Hohenheim and is a CFA Charterholder. 
+ 
+
+ 
+MarketVector IndexesTM 
+Page 21 
+ 
+IMPORTANT DEFINITIONS AND DISCLOSURES 
+For informational and advertising purposes only. 
+Copyright © 2026 by MarketVector Indexes GmbH (“MarketVector”). All rights reserved. MarketVectorTM is a registered trademark of Van Eck 
+Associates Corporation that has been licensed to MarketVector Indexes GmbH. MarketVectorTM and MarketVector IndexesTM are pending trademarks 
+of Van Eck Associates Corporation. BlueStar® and BlueStar® Indexes are registered trademarks of MarketVector Indexes GmbH. Redistribution, 
+reproduction and/or photocopying in whole or in part are prohibited without written permission. All information provided by MarketVector IndexesTM 
+is impersonal and not tailored to the needs of any person, entity or group of persons. MarketVector IndexesTM receives compensation in connection 
+with licensing its indexes to third parties. You require a license from MarketVector IndexesTM to launch any product that is linked to a MarketVectorTM 
+Index to use the index data for any business purpose and for all use of the MarketVectorTM name or name of the MarketVectorTM Index. Past 
+performance of an index is not a guarantee of future results. 
+It is not possible to invest directly in an index. Exposure to an asset class represented by an index is available through investable instruments based on 
+that index. MarketVector IndexesTM does not sponsor, endorse, sell, promote or manage any investment fund or other investment vehicle that is offered 
+by third parties and that seeks to provide an investment return based on the performance of any index. MarketVector IndexesTM makes no assurance 
+that investment products based on the index will accurately track index performance or provide positive investment returns. MarketVector IndexesTM 
+is not an investment advisor, and it makes no representation regarding the advisability of investing in any such investment fund or other investment 
+vehicle. A decision to invest in any such investment fund or other investment vehicle should not be made in reliance on any of the statements set forth 
+in this document. 
+Investments into crypto currencies and/or digital assets are subject to material and high risk including the risk of total loss. The calculated prices may 
+not be achieved by investors as the calculated price is based on prices from different trading platforms. Furthermore, an investment into crypto currencies 
+and/or digital assets may become illiquid depending on the trading platform or investment product used for the specific investment. Investors should 
+carefully review all risk factors disclosed by the relevant trading platform or in the product documents of relevant investment products. 
+Prospective investors are advised to make an investment in any such fund or other vehicle only after carefully considering the risks associated with 
+investing in such funds, as detailed in an offering memorandum or similar document that is prepared by or on behalf of the issuer of the investment fund 
+or other vehicle. Inclusion of a security within an index is not a recommendation by MarketVector IndexesTM to buy, sell, or hold such security, nor is it 
+considered to be investment advice. 
+All information shown prior to the index launch date is simulated performance data created from backtesting ("Simulated past performance”). Simulated 
+past performance is not actual but hypothetical performance based on the same or fundamentally the same methodology that was in effect when the 
+index was launched. Simulated past performance may materially differ from the actual performance. Actual or simulated past performance is no 
+guarantee for future results. 
+These materials have been prepared solely for informational purposes based upon information generally available to the public from sources believed to 
+be reliable. No content contained in these materials (including index data, ratings, credit-related analyses and data, model, software or other application 
+or output therefrom) or any part thereof (Content) may be modified, reverse-engineered, reproduced or distributed in any form by any means, or stored 
+in a database or retrieval system, without the prior written permission of MarketVector IndexesTM. The Content shall not be used for any unlawful or 
+unauthorized purposes. MarketVector IndexesTM and its third-party data providers and licensors (collectively “MarketVectorTM Indexes Parties”) do 
+not guarantee the accuracy, completeness, timeliness or availability of the Content. MarketVectorTM Indexes Parties are not responsible for any errors 
+or omissions, regardless of the cause, for the results obtained from the use of the Content. THE CONTENT IS PROVIDED ON AN “AS IS” BASIS. 
+MarketVector IndexesTM PARTIES DISCLAIM ANY AND ALL EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, ANY 
+WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE, FREEDOM FROM BUGS, SOFTWARE ERRORS OR 
+DEFECTS, THAT THE CONTENT’S FUNCTIONING WILL BE UNINTERRUPTED OR THAT THE CONTENT WILL OPERATE WITH ANY SOFTWARE OR 
+HARDWARE CONFIGURATION. In no event shall MarketVectorTM Indexes Parties be liable to any party for any direct, indirect, incidental, exemplary, 
+compensatory, punitive, special or consequential damages, costs, expenses, legal fees, or losses (including, without limitation, lost income or lost profits 
+and opportunity costs) in connection with any use of the Content even if advised of the possibility of such damages. 
+ 
+Important disclosures. This document is provided for informational purposes only and is intended for institutional and professional audiences. It does not 
+constitute investment, legal or tax advice, nor an offer or solicitation to buy or sell any security, index linked product or digital asset. Index and backtest 
+performance shown is hypothetical and simulated, does not reflect an investable product, and does not account for fees, transaction costs or taxes; 
+past performance, whether actual or simulated, is not indicative of future results. All views expressed are our own and do not necessarily represent the 
+views of MarketVector Indexes GmbH. Bitcoin and other digital assets are highly volatile and involve risks including but not limited to loss of principal, 
+regulatory uncertainty and custody risk. MarketVector Indexes GmbH is a separate entity from VanEck and does not manage assets or provide 
+investment advice; any index linked products referencing MarketVector indexes are managed independently by third party product issuers. 
+ 
