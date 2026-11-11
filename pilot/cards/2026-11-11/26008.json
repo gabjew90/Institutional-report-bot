@@ -1,0 +1,387 @@
+{
+ "brief": "The Market Ear's bearish NVDA trade (NVDA puts versus AAPL calls, called September 23 when NVDA traded near the top of its range with implied volatility at pre-COVID lows) has \"exploded,\" and weekend allegations against Jensen Huang have added fuel to an already brutal unwind, so the firm is booking profits and closing the trade. NVDA has broken below its 200-day moving average, is approaching a roughly $170 support/trendline cluster, sits at one of its most oversold readings since it was a much smaller stock, and saw realised 5-day volatility hit 100 last week, before the Huang allegations even landed. Credit has caught up: NVDA now underperforms the stress signaled by its own CDS, though CDS spreads themselves stayed calm through November. The stock is down about 26% from its October highs, with multiple compression (now roughly 12-13x FY28E earnings) doing most of the damage rather than any confirmed deterioration in fundamentals; the de-rating reflects AI-capex cyclicality, customer-concentration and financing-cost concerns, which the Huang headlines compound. That cheapened multiple, against an extraordinary growth profile, is why the firm's contrarian instinct is waking up even as it closes its short: the next earnings report is the test, and if demand holds and financing fears ease, it sees significant potential for a violent mean-reversion bounce.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "Weekend revelations about Jensen Huang added fuel to an already brutal NVDA selloff.",
+   "anchor": "with the weekend Huang revelations adding fuel to an already brutal unwind",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "The Market Ear is booking profits on its bearish NVDA trade and its contrarian instinct is starting to wake up on the stock.",
+   "anchor": "We are booking profits on our bearish trade, but the contrarian in us is starting to wake up.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA positioning has turned ugly as its technical levels break amid the broader unwind.",
+   "anchor": "technical levels are breaking and positioning has turned ugly.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA continued falling in premarket trading following the weekend Huang news.",
+   "anchor": "NVDA continues to puke in premarket trading following the weekend Huang news.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA is trading well below its 200-day moving average.",
+   "anchor": "The stock is now well below its 200-day MA",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA is rapidly approaching the critical $170 support area.",
+   "anchor": "and rapidly approaching the critical $170 support area.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA's longer-term trendline comes in just below $170.",
+   "anchor": "Note the longer-term trendline coming in just below $170.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA is quickly approaching major must-hold technical levels.",
+   "anchor": "NVDA is quickly approaching some major must-hold levels.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA is trading at one of its most oversold levels since it was a much smaller stock.",
+   "anchor": "NVDA is trading at one of the most oversold levels since it was a teeny stock.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA's realised 5-day volatility hit 100 last week, before the weekend Huang spy allegations.",
+   "anchor": "NVDA\u2019s realised 5-day vol hit 100 last week. And that was before the spy allegations.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA has caught down to the stress level signaled by its own CDS and is now underperforming credit.",
+   "anchor": "NVDA has finally caught down to the stress signaled by its CDS, with the stock now actually underperforming credit.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA's CDS spreads have stayed relatively calm throughout November despite the equity selloff.",
+   "anchor": "CDS spreads have remained relatively calm throughout November despite the equity carnage.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "November"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "The Market Ear favored AAPL calls as the long leg of a relative-value trade against NVDA puts.",
+   "anchor": "We also favored AAPL calls versus NVDA puts as a relative trade.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "The Market Ear favored NVDA puts as the short leg of a relative-value trade against AAPL calls.",
+   "anchor": "We also favored AAPL calls versus NVDA puts as a relative trade.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "The Market Ear's AAPL-calls-versus-NVDA-puts relative trade has since exploded in its favor, so the firm is booking profits and closing it.",
+   "anchor": "The trade has since exploded. Time to book profits and move on.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "AAPL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA is down approximately 26% from its October highs.",
+   "anchor": "NVDA is down around 26% from its October highs",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "Multiple compression, not an earnings decline, is responsible for most of NVDA's drawdown from its October highs.",
+   "anchor": "with multiple compression doing most of the damage",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA trades at approximately 12-13x FY28E earnings.",
+   "anchor": "At ~12\u201313x FY28E earnings, the stock is starting to look increasingly interesting",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY28E"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA's valuation is starting to look increasingly interesting given its extraordinary growth profile.",
+   "anchor": "the stock is starting to look increasingly interesting, particularly given its extraordinary growth profile.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA's de-rating reflects concerns over AI-capex cyclicality, customer concentration and infrastructure financing rather than a confirmed collapse in fundamentals.",
+   "anchor": "The de-rating reflects concerns over AI-capex cyclicality, customer concentration and infrastructure financing rather than any confirmed collapse in fundamentals.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "Weekend headlines surrounding Jensen Huang have added another layer of uncertainty to NVDA's valuation picture.",
+   "anchor": "Weekend headlines surrounding Huang have added another layer of uncertainty.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "NVDA's next earnings report is a critical test of whether demand holds up and financing fears ease.",
+   "anchor": "The next earnings report is a critical test.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next earnings report"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "If NVDA demand holds up and financing fears ease, the potential for a violent mean-reversion bounce in the stock is significant.",
+   "anchor": "If demand holds up and financing fears ease, the potential for a violent mean-reversion bounce is significant.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "next earnings report"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The nvidia massacre is getting interesting",
+   "claim": "On September 23, The Market Ear flagged NVDA trading near the top of its range with implied volatility at pre-COVID lows, making puts attractive.",
+   "anchor": "making puts attractive. We also favored AAPL calls versus NVDA puts as a relative trade.",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-11/26008__the-nvidia-massacre-is-getting-interesting.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 24,
+  "matched": 24,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
