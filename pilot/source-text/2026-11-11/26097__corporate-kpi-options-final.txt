@@ -1,0 +1,358 @@
+ 
+ 
+Mandy Xu, Head of Derivatives Market Intelligence 
+mxu@cboe.com 
+Volatility Insights 
+November 10, 2026 
+© 2026 Cboe Exchange, Inc. All Rights Reserved. 
+ 
+Corporate KPI Binary Options: A New Way to Trade Earnings   
+Prediction Markets Expand Beyond Retail 
+ 
+Prediction markets have surged in popularity in recent years. What started as primarily a way to wager on elections 
+has now broadened to cover almost anything with a measurable outcome: sports, economic data, cultural events, 
+and more recently, performance metrics of public companies. Total monthly volume has grown almost 15x in the 
+past year to a high of over $126B in October (see Exhibit 1). Retail traders dominate this market, with Kalshi and 
+Polymarket the two most popular platforms in this space. In terms of categories, sports is by far the most popular, 
+making up 82% of the volume on Kalshi, followed by crypto (13%). See Exhibit 2.   
+ 
+Exhibit 1: Prediction Market Volume Up 15x in Past Year 
+Exhibit 2: Most Popular Categories on Kalshi  
+ 
+ 
+Source : Cboe 
+Source : Cboe, Kalshi 
+Corporate event contracts, on the other hand, are a more nascent category within the prediction markets. These are 
+primarily split into two types: earnings-mention contracts (i.e. will a word be said on an earnings call?) and corporate 
+KPI contracts (i.e. will a reported Key Performance Indicator clear a threshold?). While earnings-mention contracts 
+initially dominated in popularity, corporate KPIs have become the fastest growing segment in this space in recent 
+months. On Kalshi, for example, corporate KPI contracts have gone from making up less than 10% of all corporate 
+event contracts traded in January to over half by July. The shift has happened as Kalshi has substantially expanded its 
+corporate KPI offering from 16 active KPI series in January to 248 in August. See Exhibit 3 for a list of the most 
+popular series.  
+The customer base behind this volume has so far been almost entirely retail. Kalshi’s KPI order count grew 22-fold 
+from January through August 2026 versus the same period in 2025, while the median order shrank from roughly $15-
+20 of premium to about $5. More people are trading, each in smaller amounts, which is typical of new retail traders 
+entering this space. Nine in ten KPI orders on Kalshi are $100 or less in premium. Retail traders also seem to favor 
+0
+20
+40
+60
+80
+100
+120
+140
+Billions
+Total Prediction Market Monthly Volume
+Kalshi
+Polymarket
+Others
+
+ 
+ 
+Mandy Xu, Head of Derivatives Market Intelligence 
+mxu@cboe.com 
+Volatility Insights 
+November 10, 2026 
+© 2026 Cboe Exchange, Inc. All Rights Reserved. 
+ 
+longshots: 37% of KPI contracts traded at 10 cents or less (with a $1 notional, that’s a potential payoff of 10x or 
+more). About two-thirds of Kalshi’s KPI volume occurred on weekends or outside US regular market hours (often 
+around after-the-close earnings releases).  
+ 
+Exhibit 3: Top 10 Most Traded KPI Series on Kalshi (Jan-Aug 2026) 
+ 
+Source: Cboe, Kalshi 
+ 
+Cboe’s New Corporate KPI Binary Options: 
+Cboe is listing cash-settled, European-style binary call and put options on specific company KPIs – such as Earnings 
+Per Share, Revenue, and other disclosed financial or operating metrics. Each contract pays $1 if the reported KPI 
+metric meets the stated condition at expiration, or $0 if it does not.   
+At launch, these binary options will be available on 112 KPIs across 23 actively traded US companies, spanning 
+metrics including EPS, Revenue, Segment Revenues, Operating Margins, and company-specific operational statistics. 
+See chart below and full product listing details here. More information can also be found on the Cboe pre-launch 
+resource hub. 
+Unlike the existing KPI contracts on Kalshi, which are CFTC-regulated event contracts, Cboe’s corporate KPI binary 
+options are structured as securities options and regulated by the SEC. That brings the full listed-options framework, 
+including FINRA oversight and surveillance, a standardized options disclosure document (CARBO), broker suitability 
+and options-approval requirements. The contracts will trade on Cboe Options Exchange (C1) and clear through Cboe 
+Clear US (CCUS), rather than the OCC.  
+1.76 M
+1.56 M
+1.25 M
+1.18 M
+0.90 M
+0.77 M
+0.64 M
+0.57 M
+0.52 M
+0.51 M
+0.0
+0.5
+1.0
+1.5
+2.0
+Tesla quarterly vehicle deliveries
+Cava restaurant count
+Tesla vehicle production
+Robinhood Gold subscribers
+Meta headcount
+Uber trips
+Philip Morris ZYN pouch shipments
+Coinbase monthly users
+Coinbase trading volume
+Lyft rides
+Contracts traded, Jan-Aug 2026 
+Millions
+
+ 
+ 
+Mandy Xu, Head of Derivatives Market Intelligence 
+mxu@cboe.com 
+Volatility Insights 
+November 10, 2026 
+© 2026 Cboe Exchange, Inc. All Rights Reserved. 
+ 
+ 
+Exhibit 4: Cboe’s Proposed KPI Listings 
+ 
+Source: Cboe 
+ 
+A securities options structure also puts the product in a regime that risk systems, compliance teams, and investment 
+mandates already know how to approve, paving the way for easier institutional adoption. While today the corporate 
+KPI market is dominated by retail traders, we see several institutional use cases – from hedging earnings risk to 
+relative value spread trades – that could bring larger orders and two-way flow. That would deepen liquidity for every 
+participant.    
+ 
+ 
+
+ 
+ 
+Mandy Xu, Head of Derivatives Market Intelligence 
+mxu@cboe.com 
+Volatility Insights 
+November 10, 2026 
+© 2026 Cboe Exchange, Inc. All Rights Reserved. 
+ 
+Exhibit 5: Institutional Use Cases for Corporate KPI Binary Options  
+Use Case 
+Who 
+How It Works 
+Example KPI Contracts 
+Isolating 
+fundamental risk 
+from price risk 
+L/S hedge funds, 
+equity PMs, equity 
+research analysts 
+A stock’s reaction to earnings is a function of not 
+just the results themselves (beat/miss) but also 
+positioning, forward guidance, multiple re-rating, 
+as well as the macro tape. This is why a stock can 
+often beat earnings but still sell off, or vice versa. 
+KPI binary options give investors a clean way to get 
+targeted exposure to just the fundamental metric, 
+without all the other factors that can impact the 
+stock price reaction. For example, a hedge fund 
+long AAPL into earnings can buy an EPS put to 
+protect against a miss without paying the 
+vega/gamma embedded in the volatility premium 
+of a standard equity option, which is pricing the 
+stock’s whole reaction function. 
+AAPL EPS (KAAPL) 
+AAPL revenue (KBAPL) 
+Surgical, thesis-
+specific 
+positioning 
+Fundamental 
+equity desks & 
+PMs, equity 
+research analysts  
+Beyond EPS and revenue, investors will also be able 
+to express views on certain segments of a 
+company’s business using KPI options. A desk with 
+a specific thesis – “AWS reaccelerates but overall 
+AMZN revenue disappoints on weaker consumer 
+spending” – can express that view directly, 
+something no listed equity option lets you isolate 
+today. 
+AMZN AWS revenue 
+(KCAMZ)  
+AAPL iPhone net sales 
+(KCAPL) 
+Robinhood Gold 
+subscribers (KEHOD) 
+Peer and relative-
+value spread 
+trades 
+Relative value and 
+quant desks, equity 
+PMs 
+Buying a call on one company’s KPI and a put on a 
+competitor’s lets an investor express “X takes share 
+from Y” views cleanly, separate from either stock’s 
+price performance.  
+AMD vs. NVDA data center 
+revenue (KCAMD, KCNVD) 
+META ad revenue vs. 
+GOOGL YouTube ad 
+revenue (KDMET, KCGOG) 
+MSFT vs. AMZN cloud 
+revenue (KDMSF, KCAMZ) 
+Market-implied 
+earnings 
+probabilities as a 
+research and 
+trading signal 
+Research and 
+quant teams, 
+equity vol desks, 
+relative value 
+desks  
+The price of a KPI binary option gives the market’s 
+odds that a KPI clears a given level. E.g. a contract 
+trading at 30 cents implies roughly a 30% chance of 
+the event happening. That makes the price of KPI 
+options a real-time market-derived complement to 
+sell-side consensus estimates that a research or 
+Any KPI option, paired 
+with the same company’s 
+equity options 
+
+ 
+ 
+Mandy Xu, Head of Derivatives Market Intelligence 
+mxu@cboe.com 
+Volatility Insights 
+November 10, 2026 
+© 2026 Cboe Exchange, Inc. All Rights Reserved. 
+ 
+quant team could use to build earnings forecasts. 
+Equity vol desks can also compare those odds with 
+the implied volatility and skew of equity options on 
+the same name, and flag potential mispricings. For 
+example, KPI options might imply a high probability 
+that EPS falls short of consensus while equity skew 
+stays flat, suggesting downside protection is 
+underpriced relative to the fundamental risk.  
+Hedge 
+concentrated AI 
+exposure 
+Tech funds, equity 
+or multi-asset 
+funds with 
+outsized exposure 
+to AI, thematic 
+investors 
+Investors with outsized exposure to AI can hedge 
+the fundamentals directly using KPI options rather 
+than relying on stock puts, which also price 
+multiple compression and sentiment. Metric-
+specific contracts let investors isolate the layer of 
+the AI stack where their exposure sits (chips, cloud, 
+or software) or where they see elevated risk. For 
+example, an investor concerned with the capex 
+cycle could buy puts on NVDA and AMD data 
+center revenue, which tracks how much 
+hyperscalers are spending on AI chips. Investors 
+worried about the monetization of the AI spending 
+can buy puts on MSFT, AMZN, or GOOGL cloud 
+revenue, or META’s operating margin. 
+Chips: NVDA and AMD 
+data center (KCNVD, 
+KCAMD), INTC data center 
+and AI (KDINT) 
+Servers: SMCI gross margin 
+(KCSMC) 
+Cloud: MSFT, AMZN, and 
+GOOGL cloud (KDMSF, 
+KCAMZ, KDGOG) 
+Monetization: META 
+operating margin (KEMET) 
+Hedge credit cycle 
+and economic 
+downturn risk 
+Macro, credit, 
+equity, and multi-
+asset managers 
+Hedge potential turns in the economy with a 
+basket of cyclical indicators. Bank credit loss 
+provisions (JPM, C, BAC) are an early sign of rising 
+defaults. TGT’s apparel sales vs. food and beverage 
+sales offer a read on whether consumers are 
+trading down from discretionary to staples 
+spending. Advertising revenue (GOOGL, META) is 
+often among the first corporate budgets cut in a 
+slowdown, and Ford Blue sales reflect demand for 
+big-ticket, financed purchases (i.e. cars). Each 
+indicator is imperfect on its own, but a weak 
+reading across several can be a stronger signal of 
+an impending economic downturn.  
+Credit loss provisions at 
+JPM, C, and BAC (KDJPM, 
+KDCIT, KDBAC) 
+TGT apparel (KDTGT) vs. 
+food and beverage 
+(KCTGT) 
+META and GOOGL 
+YouTube ad revenue 
+(KDMET, KCGOG) 
+Ford Blue (KEFOR) 
+ 
+To learn more about Cboe’s upcoming launch of corporate KPI binary options, please visit our resource hub here, 
+where you can find a list of Day 1 product listings and example contract specifications.  Cboe’s Options Institute is 
+also hosting a two-part series on corporate KPI contracts (see here and here).  
+
+ 
+ 
+Mandy Xu, Head of Derivatives Market Intelligence 
+mxu@cboe.com 
+Volatility Insights 
+November 10, 2026 
+© 2026 Cboe Exchange, Inc. All Rights Reserved. 
+ 
+Cboe Derivatives Market Intelligence 
+ 
+ 
+Mandy Xu 
+VP, Head of Derivatives Market Intelligence 
++1 646 856 8799 
+mxu@cboe.com  
+Ed Tom 
+Sr. Dir, Derivatives Market Intelligence 
++1 212 378 4517 
+etom@cboe.com  
+ 
+Henry Schwartz 
+VP, Derivatives Market Intelligence 
++1 646 856 8766 
+hschwartz@cboe.com  
+ 
+Wei Liao 
+Dir, Derivatives Market Intelligence 
++852 2632 9572 
+wliao@cboe.com  
+ 
+Disclaimers: 
+There are important risks associated with transacting in any of the Cboe Company products discussed here.  Before 
+engaging in any transactions in those products, it is important for market participants to carefully review the 
+disclosures and disclaimers contained at: 
+Disclosures and Disclaimers Related to Cboe Options and Futures Products  
+These products are complex and are suitable only for sophisticated market participants. In certain jurisdictions, Cboe 
+Company products are only permitted for investment professionals, certified sophisticated investors, or high net 
+worth corporations and associations. These products involve the risk of loss, which can be substantial and, depending 
+on the type of product, can exceed the amount of money deposited in establishing the position. Market participants 
+should put at risk only funds that they can afford to lose without affecting their lifestyle.  
+The information provided is for general education and information purposes only. No statement provided should be 
+construed as a recommendation to buy or sell a security, future, financial instrument, investment fund, or other 
+investment product (collectively, a “financial product”), or to provide investment advice.   
+In particular, the inclusion of a security or other instrument within an index is not a recommendation to buy, sell, or 
+hold that security or any other instrument, nor should it be considered investment advice. Past performance of an 
+index or financial product is not indicative of future results. Brokerage firms may require customers to post higher 
+margins than any minimum margins specified.  
+Hypothetical scenarios and case studies are provided for illustrative purposes only.  The actual performance of 
+financial products can differ significantly from the performance of a hypothetical scenario due to execution timing, 
+market disruptions, lack of liquidity, brokerage expenses, transaction costs, tax consequences and other 
+considerations that may not be applicable to the hypothetical scenario.  
+© 2026 Cboe Exchange, Inc. All Rights Reserved
+ 
