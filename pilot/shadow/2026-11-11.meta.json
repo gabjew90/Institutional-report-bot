@@ -1,0 +1,64 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 72,
+  "cards": 2570,
+  "max_doc_id": 26078
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 92,
+  "brief_citations": 9,
+  "distinct_cards_cited": 92,
+  "card_count": 2570,
+  "quintiles": [
+   22,
+   12,
+   13,
+   18,
+   27
+  ],
+  "edge_quintile_share": 0.533,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Goldman is buying the rebound.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "UBS will not follow.",
+    "cite": "",
+    "reason": "bank named (['ubs']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "UBS's technical work agrees on timing, with the semiconductor index hitting both its daily and weekly downside exhaustion targets at Thursday's low and 63.3% of its members at or near buy signals [c56",
+    "cite": "c561,c562",
+    "reason": "figures not in cited card(s): ['63.3%']"
+   },
+   {
+    "sentence": "Average hourly earnings growth slowed to 3.1% over the year from 3.9% twelve months earlier, and production-worker hours fell 0.2% on the month (Morgan Stanley) [c2134][c2133] [d70].",
+    "cite": "c2134,c2133",
+    "reason": "figures not in cited card(s): ['0.2%']"
+   },
+   {
+    "sentence": "The base case assumes a hawkish shift and a December increase contain hedging demand, measured through call-option buying, with net GLD call open interest near 1.9 million contracts assumed to fall ba",
+    "cite": "c2224,c2223",
+    "reason": "figures not in cited card(s): ['1000000', '1900000', '5%']"
+   },
+   {
+    "sentence": "Goldman's own traders are less convinced.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   }
+  ],
+  "word_count": 1576
+ }
+}
