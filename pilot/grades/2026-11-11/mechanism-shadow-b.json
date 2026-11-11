@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+ "source_span": "This suggests discretionary HFs were not the main driver of yesterday's market price action, in our view. US-listed ETF shorts rose 7% on Thursday, the third-largest one-day jump in five years, while single-stock de-grossing was 'relatively modest.'",
+ "source_chain": "Mechanical/systematic sellers (CTAs, levered ETFs, vol-control funds, ETF shorts) drove Thursday's crash, not discretionary single-stock selling, therefore the post-crash bounce is a price-insensitive tug-of-war between continuing CTA supply and the ~$5bn/day corporate buyback bid rather than a conviction bid, therefore the outcome hinges on Tuesday's CPI: a hot print flips Goldman's CTA model to its down-tape scenario (~$49bn of S&P supply over a month) that buybacks can't scale to match, a cool print lets buybacks keep outbidding the machines in a flat tape. Invalidation: a hot CPI confirming a December hike.",
+ "pulse_chain": "Thursday's crash was mechanical (ETF short interest +7%, third-largest jump in 5 years; single-stock selling only a 0.5 SD move), with Goldman reading discretionary managers as not the driver, therefore Monday's snapback came fast because leveraged/net positioning had already been emptied out, therefore Goldman's Miller desk buys the rebound on washout-level positioning via a hyperscaler call spread while UBS declines, citing the absent long-only bid and warning a rebound resting only on fading forced selling may not hold, therefore Tuesday's CPI decides: a hot print pushes Goldman's trend-follower model to the falling-market case (~$49bn of S&P selling over a month) and puts a December hike back in play, a cool print lets ~$5bn/day of buybacks keep outbidding the machines.",
+ "preserved": true,
+ "why": "The lead theme keeps the note's core premise (mechanical, not discretionary, selling), the buyback-vs-CTA tug-of-war, correct bank attribution on both sides of the rebound debate (Goldman's Miller buying washout levels, UBS declining on absent long-only demand), and the identical CPI invalidation carrying the note's own $49bn/$5bn figures, compressing Friday's lack-of-conviction framing into Monday's washout-driven snapback without reversing any step or swapping the invalidation.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

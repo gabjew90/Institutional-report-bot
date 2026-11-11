@@ -1,0 +1,91 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d48",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "NDX's worst day since Covid plus a 5-sigma payrolls beat reviving a December hike make the week 'metamorphic'; Pasquariello's three variables (decelerating earnings, a hedge-fund/household/corporate buyers' strike building toward 2027's biggest net supply since 2000, and rising AI-capex risk) are all worsening on the margin; therefore he expects one last push higher, then a weaker, more volatile 2027, against Privorotsky's bullish 1998 counter.",
+   "brief_chain": "Thursday's NDX crash and Friday's hawkish payrolls beat set a 'metamorphic' backdrop; Pasquariello's three worsening variables (decelerating earnings, a capital-flow buyers' strike building toward 2027's biggest net supply since 2000, and rising AI-capex risk) point to one last push higher then a weaker 2027, against Privorotsky's bullish 1998 counter.",
+   "distortions": [
+    {
+     "what": "Brief says hedge funds, households and corporates 'have all turned sellers since mid-August'; source dates only the hedge-fund inflection to mid-August \u2014 households 'faded toward the end of the summer' and only turned net seller 'this week', corporates have no stated date.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the broadened timing doesn't change the buyers'-strike call or any trade/invalidation level, just compresses three staggered timelines into one."
+    },
+    {
+     "what": "Brief classifies corporates as having 'turned sellers'; source describes corporates as constrained buyback buyers ('buybacks constrained... large financings have cleared the market'), not as active equity sellers.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 whether corporates are literally selling or merely not buying, the net effect on the flow-of-capital variable (worsening on the margin) is the same and the piece's directional call is unaffected."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d15",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Thursday's AI-led crash was driven by CTAs, levered ETFs and index/ETF hedging rather than discretionary panic (single-stock de-grossing modest, ETF shorts up 7%, gross leverage rose on mark-to-market despite de-grossing); therefore the tug-of-war into Tuesday's CPI is machine supply (~$28bn/week CTA in a flat tape) versus the ~$5bn/day corporate buyback bid, and a hot CPI tips the CTA model into its larger down-tape supply scenario and adds a December hike, so every bounce should be sold until a non-mechanical buyer appears.",
+   "brief_chain": "Goldman's Prime Services team frames the selloff as machine-driven (ETF shorts up, de-grossing modest, CTAs modeled to keep selling in a flat tape, record levered-ETF inflows the day before the crash, leverage rising on losses) against a ~$5bn/day buyback bid that roughly matches or beats CTA supply; the balance holds only if CPI stays cool, so every bounce is a sell-the-rip until non-mechanical buyers appear.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d18",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "The circuit breakers UBS had flagged as needed for fresh highs instead fired as negatives (rates into funding stress, oil up, hyperscaler earnings short, Democratic sweep), so AI repriced violently lower and flows rotated into credit; Thursday's record systematic sell flow is largely exhausted, leaving long-only sponsorship as the deciding factor, so UBS expects an early-week retest of the 200dma and tells clients that if that retest clears without credit/rates/FX deteriorating, add risk rather than protection, with CPI and NVDA earnings on the 17th as the next catalysts.",
+   "brief_chain": "The circuit breakers UBS flagged as catalysts to fresh highs instead fired as risk-offs, driving a violent AI repricing and a rotation into credit; Thursday's record systematic selling is now largely behind the market, so the deciding factor from here is long-only sponsorship, against a backdrop of hyperscaler-to-semis rotation, vulnerable quality/defensive sectors, and a capitulatory VIX score, with CPI and NVDA earnings on the 17th as the next catalysts.",
+   "distortions": [
+    {
+     "what": "Brief omits UBS's specific tactical instruction: expect an early-week test of the 200-day moving average, and if that retest clears without a corresponding deterioration in credit, rates or FX, 'look to add risk rather than protection.' This is the note's one concrete, falsifiable trigger for flipping from caution to adding exposure, and it is not represented anywhere in the brief, which reads as uniformly cautious.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader of the brief would stay defensive on the long-only-sponsorship question with no actionable level, while the source gives an explicit buy-the-dip trigger (clean 200dma retest without credit/rates/FX deterioration) that would prompt adding risk."
+    },
+    {
+     "what": "Brief drops UBS's specific October CPI forecast ('+0.23% core/+0.26% headline, helped by gasoline and used vehicles') behind the generic 'next catalysts are CPI and NVDA earnings' line.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief still flags CPI as the key catalyst and the ~1% priced move; losing the point forecast is a loss of supporting detail, not a changed stance."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  },
+  {
+   "id": "d44",
+   "tier": "rest",
+   "bank": "Fidelity",
+   "source_chain": "A Democratic sweep raised data-centre regulatory/permitting risk, amplified by crowded positioning and hedging, triggering a technically driven (not thesis-breaking) AI selloff that bites harder because this capex cycle runs on financing; therefore near-term volatility stays elevated while oversold conditions create entry opportunities, Fidelity keeps AI/tech positions smaller and rotated toward higher-quality, easier-financed adopters, and the broader rotation into defensives (some now overbought) leaves overall risk stance neutral, cut from overweight in September.",
+   "brief_chain": "A sweeping Democratic midterm win raised data-centre regulatory/permitting risk, amplified by crowded leveraged positioning, triggering a technical (not thesis-breaking) AI selloff that bites harder because the capex cycle runs on financing; near-term volatility stays elevated but oversold conditions create entry opportunities, so Fidelity keeps AI/tech positions smaller and rotated toward adopters and higher-quality, easier-financed names, while the rotation into now-overbought defensives leaves overall risk stance neutral, cut from overweight in September.",
+   "distortions": [
+    {
+     "what": "Brief generalizes 'European minimum volatility indices... up more than 12 percent' to 'minimum-volatility... stocks have rallied... up more than 12%', dropping the European qualifier.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the point (a rotation into defensives, not a broad equity exit) holds regardless of the regional scope of the statistic."
+    },
+    {
+     "what": "Brief's 'a technical sell-off bites harder' strengthens the source's more measured 'a technically driven sell-off can have an impact.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same directional point (financing-dependent capex cycle makes technical selling more consequential), just more vivid phrasing."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

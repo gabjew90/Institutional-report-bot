@@ -1,0 +1,108 @@
+{
+ "metric": 1,
+ "total_cards": 468,
+ "fragmentation_sets": [
+  {
+   "subject": "The Nov 5 AI-driven vol shock and the credit-equity divergence trade it exposed",
+   "labels": [
+    "thursday equity vol spike",
+    "ai credit equity divergence"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Positioning washout and the Goldman call to buy the Nov 6 semis/hyperscaler rebound",
+   "labels": [
+    "hedge fund long short deleveraging",
+    "semis led equity rebound",
+    "hyperscaler vs semis rotation"
+   ],
+   "cards": 31
+  },
+  {
+   "subject": "The Market Ear's long-Apple / short-Nvidia anti-AI trade",
+   "labels": [
+    "apple anti ai trade",
+    "nvda aapl pairs trade"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Post-midterm risk-off safe-haven bid across the dollar, yen and JGBs",
+   "labels": [
+    "dollar g10 fx flows",
+    "safe haven flight quality"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Goldman's short-Staples trade and the broader defensive-sector valuation rotation",
+   "labels": [
+    "defensive sector rotation",
+    "consumer staples vs semis short"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Whether the S&P 500 correction is over: RBC's tier-pullback framework vs Morgan Stanley's breadth-catch-down thesis",
+   "labels": [
+    "us equity tiers fear framework",
+    "s p 500 correction catch down"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "JPM's Asian tech valuation-vs-earnings divergence thesis",
+   "labels": [
+    "asian tech valuation reset",
+    "ai selloff earnings divergence"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Gold's price outlook and drivers (target cut, inverse-oil dynamic, miner strength)",
+   "labels": [
+    "goldman gold target cut",
+    "gold as inverse oil hedge",
+    "gold miners strength"
+   ],
+   "cards": 18
+  }
+ ],
+ "fragmented_mass_share": 0.35,
+ "mis_merges": [
+  {
+   "label": "valuation positioning reset",
+   "subjects": [
+    "constructive valuation/breadth view (buybacks, cheap S&P P/E, improving breadth)",
+    "FICO's earnings miss, buyback pause and withheld FY27 guidance",
+    "Apple's price-target raise and franchise commentary",
+    "USD positioning reversal (duplicates the dollar-flows theme)",
+    "China tech's relative-winner status (duplicates the china-domestic-ai-rebound theme)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "FICO's guidance withdrawal and the duplicated dollar/China-tech points sit under a generic label an editor would not scan for single-name or cross-asset news, so FICO would likely be missed as its own brief and the dollar/China-tech briefs would be built on an incomplete source set."
+  },
+  {
+   "label": "ai selloff earnings divergence",
+   "subjects": [
+    "Asian tech valuation-vs-earnings divergence (JPM/TME)",
+    "AI infrastructure demand and capex growth case (JPM capex and token-demand stats)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The bullish capex/demand evidence is the natural counterweight to the bearish 'ai capex buildout outlook' label; filed under an Asian-tech title instead, an editor assembling the AI capex debate brief would likely miss it and run a one-sided bearish version."
+  }
+ ],
+ "pass": false,
+ "notes": "`misc` holds 12/468 cards (2.6%), counted into fragmented mass per the frozen rule but not a mis-merge. The day header states 2570 total cards for 2026-11-11; only 468 cards appear under the reader topic labels shown here, so total_cards and the fragmentation share are computed over that visible, gradable set.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26043__caution-warranted-absent-sponsorship-systematic-selling-larg.txt",
+ "source_span": "systematic selling triggered over 365bn of excess sell flow on Thursday, the largest on record... the bigger issue for the market is absence of long-only demand. This is the focal point for flows from here.",
+ "source_chain": "Thursday's crash was driven by record systematic (mechanical) selling, $365bn of excess sell-flow, not by long-only investors leaving -- therefore most of that forced selling is now behind the market -- therefore the open question for any follow-through rally is whether long-only demand shows up, with risk-add only justified if a technical retest holds without credit/rates/FX deterioration (no quantified CPI-contingent selling estimate is given).",
+ "pulse_chain": "Thursday's crash was mechanical, not discretionary (GS 0.5sd single-stock reading; UBS's $365bn split into risk-control $95-125bn, levered ETFs $50-55bn, trend-followers $25-30bn) -- therefore Monday's rebound was possible because positioning was already purged, with Goldman buying it and UBS refusing because the rebound lacks long-only sponsorship and 'may not carry' -- therefore Tuesday's CPI print is decisive because a hot number flips Goldman's trend-follower model from a 'flat-market case' to a 'falling-market case,' implying $49bn of S&P futures selling over a month and reviving a December hike.",
+ "preserved": false,
+ "why": "The pulse invents the resolving mechanism: no sourced note states a $365bn breakdown of risk-control/levered-ETF/trend-follower shares (the only matching UBS figures, $95-105bn/$50-55bn, are forward-looking Risk-Control-only scenarios for a future -2%/+2% move, not a backward split of the realized $365bn across three fund types), and no note -- including Goldman's own CTA/flow desk notes -- states a 'flat-market case to falling-market case' framework or a $49bn CPI-contingent selling figure, so the pulse presents its own invented quantified mechanism as Goldman's argument.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

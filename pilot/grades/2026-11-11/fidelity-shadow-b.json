@@ -1,0 +1,150 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25634__gs-sharkey-extremes-ii-7-nov-2026.txt",
+   "span": "S&P buyback demand is running at ~$5bn a day and 90% of corporates are in the open window Monday.",
+   "why": "Figures match exactly; corroborated in companion Goldman desk notes 25735/26077, which frame buyback desks against systematic/trend-follower selling, supporting the 'outbidding the machines' framing."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25835__gs-morning-1-connecting-you-to-gs-2-data-centre-forecasts-3-.txt",
+   "span": "with gubernatorial wins in Texas, Georgia and Ohio, in theory up to around 40% of planned capacity is impacted",
+   "why": "Goldman frames the number as a share of planned capacity at risk, not a cancellation; corroborated by GS note 25739 ('moratoriums are not bans or cancellations') and Allianz note 25594 ('Not every delay is a cancellation')."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/26075__houston-do-we-have-a-problem.txt",
+   "span": "around 45 GW across 350 projects in Texas, Ohio, Pennsylvania and Georgia at risk between 2026-30, including 24 GW in Texas alone",
+   "why": "Exact match, authored by Citadel Securities' head of macro strategy per the article byline."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25835__gs-morning-1-connecting-you-to-gs-2-data-centre-forecasts-3-.txt; pilot-data/pilot/source-text/2026-11-10/26026__just-the-faqs.txt",
+   "span": "I think we could end up with a temporary moratorium that lasts several months until new rules can be put in place. [...] Texas Governor-elect Gina Hinojosa has explicitly stated that all currently permitted data centers in Texas will be allowed to complete construction [...] she has limited ability to impose a data center moratorium.",
+   "why": "The Phillips clause matches Goldman's weekend macro call; the Hinojosa clause matches UBS's 'Just the FAQs' note, consistent with the sentence's own (UBS) attribution."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "the generic 30y spread widening only 2.2bps on day while SPX sold off 4.4% (8.2bp expected from regression)",
+   "why": "Matches 2.2bp spread widening, 4.4% equity drop, and ~8bp (8.2 rounds to 8) implied move, attributed to Goldman."
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "but Thursday's selloff hit the spending recipients",
+   "why": "Source says the selloff hit the 'spending recipients' (picks-and-shovels sellers: chipmakers/power/networking/cooling), while the 'AI spenders' who issue the bonds (hyperscalers) actually rose. The sentence inverts this, implying the bond-issuing spenders were hit rather than spared, and never names the group that was actually hit.",
+   "searched": [
+    "issuing bonds",
+    "data center spend"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25716__gs-callahan-us-tmt-what-a-week-8-nov-2026.txt; pilot-data/pilot/source-text/2026-11-11/26073__metamorphic-goldman-s-pasquariello-sees-one-last-push-higher.txt",
+   "span": "the consumer staples index now trades ~2x the 24month forward multiple of the semicondutors index / The Nasdaq 100's forward P/E is now 18.4x, the lowest since 2020",
+   "why": "Both figures matched verbatim in separate Goldman desk notes."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25789__americas-technology-semiconductors-at-the-center-of-tensions.txt",
+   "span": "stocks are now clearly in oversold territory ... We favor NVDA and AVGO, which imply no growth from 2027 ... prefer AMAT & LRCX ... Samsung/SK Hynix now below total book",
+   "why": "All named tickers, sector buckets, and the tangible-book framing match this Goldman GIR semiconductors note."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25736__long-and-wrong-hedge-funds-puke-6-6-billion-in-brent-as-the-.txt",
+   "span": "On Oct 30, January Brent tagged $118 as the market braced for a post-midterm Gulf escalation... Brent closed the week just under $98 after its steepest weekly drop since the COVID crash of April 2020 - and ... its biggest in dollar terms on LSEG data going back to 1988.",
+   "why": "Every figure and both historical comparisons match the source exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25736__long-and-wrong-hedge-funds-puke-6-6-billion-in-brent-as-the-.txt",
+   "span": "UBS's Dominic Ellis warned on Thursday that \"Fundamentals Still Provide A Floor,\" arguing that the near-700 million barrel drawdown in global inventories won't refill itself just because Congress changed hands.",
+   "why": "Name, bank, figure and the Congress-changed-hands causal claim all match verbatim."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "At 3.1% y/y they've decelerated from 3.9% 12 months earlier... Perhaps the only softness was in hours worked: production worker hours worked fell 0.2%m/m",
+   "why": "MS's own note frames a hot payrolls report alongside decelerating wage growth and softer hours, directly supporting 'wages did not confirm the heat.'"
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "At 3.1% y/y they've decelerated from 3.9% 12 months earlier... production worker hours worked fell 0.2%m/m to begin the quarter.",
+   "why": "Exact match on both figures, correctly attributed to Morgan Stanley."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26078__long-term-constructive-just-not-today-goldman-cuts-gold-targ.txt",
+   "span": "The weak link in Goldman's downgrade is the Fed",
+   "why": "Source states the price-target cut's rationale is the Fed outlook, not a reassessment of gold's own investment case, matching the sentence's framing."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26078__long-term-constructive-just-not-today-goldman-cuts-gold-targ.txt",
+   "span": "Rich Privorotsky argued that \"gold has become an inverse oil trade\", making long gold \"potentially a more defensible de-escalation trade than short oil,\" while the commodities desk's Adam Gillard noted that Goldman's CTA model is \"close to max short\" with the \"pain trade likely higher.\"",
+   "why": "Both attributions, the inverse-oil-trade framing, the de-escalation comparison, and the max-short/pain-trade-higher claim all match verbatim; CTA model is a faithful expansion to 'trend-follower model.'"
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-11/25913__america-s-blue-wave-spells-trouble-for-the-us-china-truce.txt",
+   "span": "Democrats can make holding it back costly, through hearings, legislation tightening chip exports, and conditions written into defence and budget bills",
+   "why": "The day's sources support restrictions likely tightening via a political/congressional mechanism, but none use or support an 'intelligence angle' as the driver.",
+   "searched": [
+    "intelligence angle",
+    "restrictions persist",
+    "restrictions ease",
+    "national security",
+    "AI capability gap"
+   ]
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

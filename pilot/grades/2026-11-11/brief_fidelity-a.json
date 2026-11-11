@@ -1,0 +1,97 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d48",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Thursday's NDX crash plus a 5-sigma payrolls beat prompt Pasquariello to reassess three variables (earnings deceleration, a capital-flow buyers' strike, a worsening AI narrative), all worsening on the margin, therefore despite 'fair' valuation he expects one last push higher then a weaker, more volatile 2027, and flags that credit markets may be proven right first that stocks are too complacent.",
+   "brief_chain": "Thursday's NDX crash plus the payrolls beat frame a three-variable outlook (earnings, flow of capital, AI narrative) all worsening, therefore one last push higher then a weaker 2027, with Privorotsky dissenting bullish.",
+   "distortions": [
+    {
+     "what": "Brief says hedge funds, households and corporates 'have all turned sellers since mid-August'; source ties mid-August only to hedge funds, 'end of summer' to households, and gives no date to corporates.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 smoothing three actors' turn-dates into one doesn't change the stance, the trade lean or any invalidation condition."
+    },
+    {
+     "what": "Brief omits the article's closing argument that credit markets are already pricing a financing problem and that the author expects credit to 'turn out to be right first' ahead of Pasquariello's equity call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is the author's (not Pasquariello's) supplementary caution layered on top of a call the brief already reports faithfully (one last push, then weaker 2027); dropping it doesn't flip the reported call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d15",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Machine flows (CTA flat-tape selling, ETF-short spikes, record levered-ETF inflows the day before the crash) drove Thursday's AI rout while single-stock de-grossing stayed modest; HF leverage rose on mark-to-market despite de-grossing and Tech selling hit $6bn/week, far exceeding July's unwind; against that, ~$5bn/day buybacks with 90% of the S&P in its open window roughly offset flat-tape CTA supply, therefore the balance holds only if Tuesday's CPI stays cool \u2014 a hot print flips CTAs to their down-tape scenario and adds a December hike, so every bounce should be sold until buyers beyond CFOs and models appear.",
+   "brief_chain": "ETF shorts, CTA flat-tape modeling and record pre-crash levered-ETF inflows evidence a machine-driven (not discretionary) selloff; HF leverage rose despite de-grossing, Tech selling was heavy and wiped out TMT's 2026 gains; buybacks roughly match/beat CTA supply, so the balance holds only if CPI stays cool \u2014 a hot print flips to the down-tape scenario plus a December hike, hence sell every bounce until buyers beyond CFOs/models show up.",
+   "distortions": [
+    {
+     "what": "Brief omits the semis-vs-Mag7 cohort split (semis positioning nearly fully reset; Mag7 still crowded at 87th/93rd percentile nets) and the demotion of retail to 'a smaller factor than headlines suggest'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are supporting breadth/positioning details inside the same machine-vs-CFO framing the brief already conveys; omitting them doesn't change the stance or the sell-the-rip conclusion."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d18",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Previously flagged positive catalysts failed to show and the opposite occurred (rate pressures, oil, weak hyperscaler earnings, the Democratic sweep), so AI repriced violently lower and flows rotated out of Tech/equities into credit; Thursday's record systematic sell flow got no Friday reversal sponsorship, and while most of that selling is now behind the market, the absence of long-only demand is the focal issue \u2014 UBS's explicit instruction is that if a renewed support test holds without credit/rates/FX deterioration, add risk rather than protection; separately, quality rotation (hyperscalers, min-vol/staples) now looks overextended and due to catch down/rotate into semis, with CPI and NVDA earnings on the 17th the next catalysts.",
+   "brief_chain": "Flagged catalysts failed to show, AI repriced violently lower and flows rotated into credit; record systematic selling Thursday had no Friday reversal; most selling is done but absent long-only demand is the focal issue; hyperscaler-over-semis rotation looks overextended and healthcare/staples are now vulnerable as the quality trade fades; next catalysts are CPI and NVDA earnings on the 17th.",
+   "distortions": [
+    {
+     "what": "Brief drops UBS's explicit conditional instruction: 'If that clearing event [a retest of the 200-day] comes without a corresponding deterioration in credit, rates or FX, look to add risk rather than protection' \u2014 the note's single clearest actionable trigger.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader of the brief alone would not know UBS is telling clients to buy a clean technical retest rather than hedge it, and could instead stay defensively positioned exactly when UBS's own trigger says to add risk."
+    },
+    {
+     "what": "Brief omits the specific October CPI forecast (+0.23% core / +0.26% headline, helped by gasoline and used vehicles).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a supporting forecast figure, not a stance, lean or invalidation condition."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  },
+  {
+   "id": "d44",
+   "tier": "rest",
+   "bank": "Fidelity",
+   "source_chain": "The Democratic sweep (TX/OH/GA) raises AI data-center regulatory risk, producing a technical, leverage/positioning-amplified selloff rather than a thesis break; because the capex cycle runs on financing, the technical selling bites harder and a slowdown could weigh on GDP and lift bonds; despite near-term volatility, oversold conditions are historically buyable and the two-year earnings outlook stays healthy with valuations now more attractive, so Fidelity trimmed/rotated AI exposure toward quality and adopters while holding its risk stance neutral (cut from overweight in September); broader markets show a rotation into defensives (European min-vol, staples), not a broad exit, partly hedge-fund-liquidation-driven, with some defensives now overbought.",
+   "brief_chain": "Democratic sweep raises data-center regulatory risk, producing a technical (not thesis-breaking) selloff amplified by positioning/leverage/hedging; because the capex cycle is financing-dependent, the sell-off bites harder and could weigh on GDP and lift bonds; oversold conditions are historically buyable and the two-year earnings outlook stays healthy with valuations now attractive, so Fidelity trimmed/rotated AI exposure toward quality/adopters and holds a neutral stance (cut from overweight in September); min-vol/staples have rallied against falling broad indices \u2014 a rotation, not an exit, partly HF-liquidation-driven, with some defensives now overbought.",
+   "distortions": [
+    {
+     "what": "Brief generalizes 'European minimum volatility indices' and 'broad global indices' to unqualified 'minimum-volatility' and 'broad indices', dropping the regional/global scope.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the rotation-not-exit conclusion and the figures (12%, 20%, 2%) are preserved; dropping the geographic qualifier doesn't change the call."
+    },
+    {
+     "what": "Brief omits the gold/diversifiers paragraph (gold has held up; a slowing AI cycle could reverse its downtrend) and the note that Europe may face additional headwinds in 2027.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 supporting color on a different asset and a forward regional caveat, not part of the AI-rout call itself."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

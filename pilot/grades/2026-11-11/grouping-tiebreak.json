@@ -1,0 +1,78 @@
+{
+ "metric": 1,
+ "total_cards": 2570,
+ "fragmentation_sets": [
+  {
+   "subject": "JPM/Market Ear thesis: Asian tech valuations have already reset below what the earnings data (capex, cloud revenue, token demand) justifies",
+   "labels": [
+    "ai selloff earnings divergence",
+    "asian tech valuation reset"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Defensives have run too far and Goldman's trade is to short consumer staples",
+   "labels": [
+    "defensive sector rotation",
+    "consumer staples vs semis short"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Post-selloff safe-haven bid into the dollar, CHF/JPY and JGBs/EM FX",
+   "labels": [
+    "dollar g10 fx flows",
+    "safe haven flight quality"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "The Market Ear's running long-Apple/short-Nvidia (anti-AI) trade",
+   "labels": [
+    "apple anti ai trade",
+    "nvda aapl pairs trade"
+   ],
+   "cards": 14
+  }
+ ],
+ "fragmented_mass_share": 0.0237,
+ "mis_merges": [
+  {
+   "label": "valuation positioning reset",
+   "subjects": [
+    "UBS: post-midterm dollar safe-haven rally (duplicates dollar g10 fx flows / safe haven flight quality)",
+    "UBS: China tech short-covering off the crowded memory-long pair trade (duplicates china domestic ai rebound)",
+    "GS: S&P Q3 EPS growth tracking at 35% (duplicates s p earnings growth deceleration)",
+    "GS: generic constructive factors \u2014 breadth, cheap P/E, corporate buybacks",
+    "UBS: FICO standalone earnings miss/guidance withdrawal/buyback pause",
+    "UBS: Apple and Starbucks valuation view (PT raise, 'less asymmetry')",
+    "Pictet: AI/momentum stocks' Friday rebound on stretched positioning"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The label is a dumping ground for at least five unrelated single-source items, several of which are plain duplicates already properly homed elsewhere; the only novel content (FICO's guidance pull, Apple's PT raise) is minor single-name news that would not have beaten this day's dominant AI-selloff macro themes for a slot regardless of labeling."
+  },
+  {
+   "label": "2027 earnings inflection stock picks",
+   "subjects": [
+    "UBS: Rivian R2 ramp and margin inflection",
+    "UBS: Amgen Q3 beat and biosimilar/drug growth",
+    "UBS: Vertex's binary regulatory catalyst (Povetacicept decision)",
+    "UBS: StandardAero capacity/margin story"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Four unconnected single-name UBS calls are bundled under one vague label with no shared causal thread, but each is a minor idiosyncratic stock story that would not have displaced this day's dominant macro/AI-selloff coverage even if correctly split out."
+  }
+ ],
+ "pass": true,
+ "notes": "Labels show only a capped sample of cards each (roughly 2-12 shown per label, summing to ~471 against the stated 2570-card total), so fragmented_mass_share is a lower bound computed on visible cards only. 'misc' (12 cards shown) correctly excluded as declared overflow, not a mis-merge.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

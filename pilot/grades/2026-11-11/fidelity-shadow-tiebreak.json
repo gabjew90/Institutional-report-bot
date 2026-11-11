@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25634__gs-sharkey-extremes-ii-7-nov-2026.txt",
+   "span": "S&P buyback demand is running at ~$5bn a day and 90% of corporates are in the open window Monday.",
+   "why": "Figure and share match exactly (also found verbatim in 25735__liar-liar-leather-jacket-on-fire.txt); 'outbidding the machines' is framing, not a checkable figure."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25739__we-understand-the-optics-goldman-hikes-data-center-spending-.txt",
+   "span": "We note that moratoriums are not bans or cancellations, and believe the risks to data center operators would be related to delays to ready-for-service",
+   "why": "Goldman (Ng) explicitly frames the at-risk GW figure as capacity exposure, not a cancellation; matches the companion 45GW figure in s3's source (26075) which also says 'at risk' rather than cancelled."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/26075__houston-do-we-have-a-problem.txt",
+   "span": "around 45 GW across 350 projects in Texas, Ohio, Pennsylvania and Georgia at risk between 2026\u201330, including 24 GW in Texas alone",
+   "why": "Figures, states, and attribution (Citadel Securities, Frank Flight) all match."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25836__gs-crook-gs-morning-connecting-you-to-gs-data-centre-forecas.txt; pilot-data/pilot/source-text/2026-11-10/26026__just-the-faqs.txt",
+   "span": "I think we could end up with a temporary moratorium that lasts several months until new rules can be put in place. / Texas Governor-elect Gina Hinojosa has explicitly stated that all currently permitted data centers in Texas will be allowed to complete construction. Moreover, as she acknowledged ... she has limited ability to impose a data center moratorium.",
+   "why": "Both halves fully supported; the UBS attribution on the second half is correct (26026, source: UBS)."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "the generic 30y spread widening only 2.2bps on day while SPX sold off 4.4% (8.2bp expected from regression)",
+   "why": "Figures match (8.2 rounds to 'the 8'); source is a Goldman Sachs note (Reid Zhou/GIR), consistent with 'per Goldman'."
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "Thursday's selloff hit the spending recipients [the 72 S&P companies selling picks-and-shovels into the AI buildout]... the hyperscalers [buyers/spenders]... is up",
+   "why": "The source says the equity selloff hit the suppliers/sellers into data centers (semis, power, cooling \u2014 the 'spending recipients'), while the hyperscalers who are actually spending on data centers (and are the credit/bond issuers) were UP and whose credit stayed calm. The sentence inverts this: it claims the selloff hit 'the companies spending on data centers' rather than 'the ones issuing bonds' \u2014 but the spenders and the bond issuers are the same group (hyperscalers) and they were the ones unaffected, not the ones hit.",
+   "searched": [
+    "companies spending on data centers",
+    "issuing bonds"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25716__gs-callahan-us-tmt-what-a-week-8-nov-2026.txt; pilot-data/pilot/source-text/2026-11-10/25634__gs-sharkey-extremes-ii-7-nov-2026.txt",
+   "span": "the consumer staples index now trades ~2x the 24month forward multiple of the semicondutors index / Forward P/E now trades at 18.4x, well below the 5 & 10yr avg and its lowest level since 2020",
+   "why": "Both figures match exactly; both from Goldman Sachs sources."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25857__gs-u-s-equities-color-us-equities-color-everything-rally-9-n.txt",
+   "span": "GIR note calling the sector \"clearly oversold\" ... 1) AI Compute - favor AVGO and NVDA which at current valuations imply no growth past 2027; 2) Semicap Equipment - favor AMAT and LRCX ...; 3) Memory - favor SK Hynix and Samsung as they are trading below total tangible book.",
+   "why": "Exact match to Goldman's GIR (research) note as relayed in GS Equities Color."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25736__long-and-wrong-hedge-funds-puke-6-6-billion-in-brent-as-the-.txt",
+   "span": "On Oct 30, January Brent tagged $118 ... Brent closed the week just under $98 after its steepest weekly drop since the COVID crash of April 2020 - and, according to Reuters, its biggest in dollar terms on LSEG data going back to 1988.",
+   "why": "All figures and dates match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25736__long-and-wrong-hedge-funds-puke-6-6-billion-in-brent-as-the-.txt",
+   "span": "UBS's Dominic Ellis warned on Thursday that \"Fundamentals Still Provide A Floor,\" arguing that the near-700 million barrel drawdown in global inventories won't refill itself just because Congress changed hands.",
+   "why": "Near word-for-word match including attribution."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "Why is wage growth decelerating so much?",
+   "why": "Reasonable compressed framing of Morgan Stanley's own section, which treats wage deceleration as the soft spot against an otherwise hot payrolls report."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "At 3.1% y/y they've decelerated from 3.9% 12 months earlier. ... production worker hours worked fell 0.2%m/m to begin the quarter.",
+   "why": "Both figures match exactly; source is Morgan Stanley."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26078__long-term-constructive-just-not-today-goldman-cuts-gold-targ.txt",
+   "span": "blaming the Fed's hawkish shift in recent months ... Plot twist: the one thing Goldman did not cut is its view on the buyer that matters most.",
+   "why": "Goldman's gold-target cut is explicitly attributed to the Fed's hawkish rate path rather than to a reassessment of gold's own fundamentals (central-bank buying view unchanged)."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25586__gold-has-become-an-inverse-oil-trade-goldman-explains-why-bu.txt",
+   "span": "Long gold potentially a more defensible de-escalation trade than short oil ... Our CTA model is close to max short \u2013 pain trade likely higher.",
+   "why": "Both named desk views (Privorotsky, Gillard) match verbatim in substance."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26014__ai-quick-pulse-nvda-investigation-implications.txt",
+   "span": "we believe the current restrictions on shipments to China will likely continue rather than be relaxed",
+   "why": "Matches exactly; UBS note ties this to the Huang foreign-intelligence-targeting investigation ('the intelligence angle')."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

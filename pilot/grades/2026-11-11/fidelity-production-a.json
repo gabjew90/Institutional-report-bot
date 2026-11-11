@@ -1,0 +1,186 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25374__gs-abbas-gs-us-daily-download-6-nov-2026.txt",
+   "span": "NDX ( -6.36%, worst day since March 9, 2020 (NDX -6.83%) in peak Covid drawdown.",
+   "why": "GS confirms NDX -6.36%, worst since the Covid crash; a second Goldman piece (26077) gives the S&P ex-AI weekly figure.",
+   "searched": []
+  },
+  {
+   "id": "s1b-support",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+   "span": "At the bottom of the list sits the S&P ex-AI, down 0.3%.",
+   "why": "Confirms the second clause of s1 (S&P 500 ex-AI down 0.3% on the week).",
+   "searched": []
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25719__gs-pasi-what-s-trending-across-credit-8-nov-2026.txt",
+   "span": "Weekend Prep (Brian Garrett): a positioning reset, not (yet) a systemic event... With US fundamental L/S net exposure at the 1st percentile (1y), he likes December upside call spreads",
+   "why": "Goldman's own framing is that positioning had already been emptied (1st-percentile net exposure), which is why a strategist is willing to bet on a fast reset/bounce; corroborated by 25735's 'single digit hedge fund exposure to semis now.'",
+   "searched": [
+    "snap back",
+    "emptied",
+    "positioning reset"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25863__us-daily-october-cpi-preview.txt",
+   "span": "We expect a 0.16% increase in October core CPI (vs. +0.2% consensus).",
+   "why": "Goldman's own CPI preview gives exactly 0.16% vs 0.2% consensus; Citi's two notes (25709, 25767) separately give 0.19%.",
+   "searched": []
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+   "span": "The catch is that the CTA number only holds if the market goes nowhere. Goldman's down-2.5-sigma scenario has $49 billion of S&P supply over a month, and a hot CPI is exactly the kind of catalyst that delivers one.",
+   "why": "Matches the flat-tape (~$45bn/month) vs down-scenario ($49bn/month) CTA framing, with a hot CPI as the trigger; the same note separately has Sharkey saying a hot CPI 'likely confirms a hike,' supporting the December-hike clause.",
+   "searched": []
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+   "span": "S&P buyback demand is running at ~$5bn a day and 90% of corporates are in the open window Monday... the flat-tape CTA supply drops to roughly $2 billion a day, which the corporates comfortably outbid.",
+   "why": "Matches the $5bn/day buyback figure, 90% window-open figure, and buybacks outbidding CTA supply in the flat/cool scenario.",
+   "searched": []
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25836__gs-crook-gs-morning-connecting-you-to-gs-data-centre-forecas.txt",
+   "span": "Alec Phillips (Chief US Political Economist)... I think we could end up with a temporary moratorium that lasts several months until new rules can be put in place.",
+   "why": "Matches the Goldman clause exactly; the UBS clause is separately confirmed.",
+   "searched": []
+  },
+  {
+   "id": "s6b-support",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/26026__just-the-faqs.txt",
+   "span": "Texas Governor-elect Gina Hinojosa has explicitly stated that all currently permitted data centers in Texas will be allowed to complete construction. Moreover, as she acknowledged in a New York Times interview this weekend she has limited ability to impose a data center moratorium.",
+   "why": "Confirms the Hinojosa clause, correctly tagged (UBS) in the pulse.",
+   "searched": []
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25632__gs-miller-global-reflections-6-nov-2026.txt",
+   "span": "The generic 30y spread widened 2.2bps on the day compared with an 8bp widening implied by the 4.4% move lower in SPX.",
+   "why": "Matches figures (2.2bp vs 8bp implied, 4.4% equity drop) and bank (Goldman) exactly; GSIG30AS confirms IG.",
+   "searched": []
+  },
+  {
+   "id": "s8",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-10/25718__gs-mccarthy-ig-credit-week-in-review-8-nov-2026.txt",
+   "span": "$76bn issued last week, the 4th largest week of issuance in 2026 and the largest week in November ever",
+   "why": "Two separate Goldman notes (25718 and 25719) both say the $76bn week was only the 4th-largest week of IG issuance in 2026 ('a record November opening' / 'the largest week in November ever') \u2014 not an unqualified record. The pulse drops that qualifier and states it as a flat record, overstating the superlative. The $67bn hyperscaler and $296bn YTD figures are accurate.",
+   "searched": [
+    "record $76bn",
+    "76bn of investment-grade supply",
+    "76bn IG supply record"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "Credit has been under pressure for months as the AI spenders \"reached deeper into credit funding to facilitate their capex plans\", but Thursday's selloff hit the spending recipients.",
+   "why": "Goldman's (Wilson's) explanation is that the equity selloff hit the recipients of data-center spending (e.g. chip/equipment suppliers), while the spenders (hyperscalers) are themselves the bond issuers whose credit stayed calm. The pulse inverts this into a split between 'companies spending on data centers' and 'the ones issuing bonds' as if they were different groups and as if the spenders were hit \u2014 but per the source the spenders are the issuers, and it was the recipients, not the spenders, whose stocks got hit.",
+   "searched": [
+    "selloff hit the companies spending",
+    "companies spending on data centers",
+    "ones issuing bonds"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25716__gs-callahan-us-tmt-what-a-week-8-nov-2026.txt",
+   "span": "Semis are now down ~28% over the last 1-month, one of the largest rolling, 1-mo drawdowns in history... AI/Semis in a rolling bear-market since this Summer - now ~40% off the highs",
+   "why": "Matches 28% over 22 days (SOX), 'one of the largest...drawdowns in history', and ~40% off summer highs for AI/semis exactly.",
+   "searched": []
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25634__gs-sharkey-extremes-ii-7-nov-2026.txt",
+   "span": "NDX valuation bear market. Forward P/E now trades at 18.4x, well below the 5 & 10yr avg and its lowest level since 2020.",
+   "why": "A fair compressed paraphrase of a genuinely reported valuation anomaly (lowest NDX multiple since 2020, and Goldman's research note pricing 'no growth' scenarios as still 'compelling' for AI-compute names); opinion-shaped but reflects banks' own framing, not an invented stance.",
+   "searched": []
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25794__americas-technology-semiconductors-at-the-center-of-tensions.txt",
+   "span": "we believe stocks are now clearly in oversold territory... AI Compute: We favor NVDA and AVGO, which imply no growth from 2027... Semi Cap Equipment... we prefer AMAT & LRCX... Several global memory names (Samsung, SK Hynix...) with Samsung/SK Hynix now below total book.",
+   "why": "Every element matches exactly: Goldman equity research (not a trading desk), oversold call, NVDA/AVGO with no growth past 2027, AMAT/LRCX preferred in equipment, SK Hynix/Samsung below (tangible/total) book.",
+   "searched": []
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/26026__just-the-faqs.txt",
+   "span": "August and September payrolls were revised higher, lifting the 3m average payroll growth to 137k, up from 51k prior to the data release.",
+   "why": "Exact figures (137k from 51k) and bank (UBS) match.",
+   "searched": []
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "This report keeps the Fed on track for a Dec hike.",
+   "why": "Morgan Stanley clause confirmed verbatim; UBS's 25bp December-and-March hike call is separately confirmed in 26026 ('We expect another 25bps rate hike in December, and again in March').",
+   "searched": []
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-10/25916__october-payrolls-labor-market-gains-steam.txt",
+   "span": "neither weak enough to justify cuts nor strong enough to justify hikes... the Fed is already on track to hike in December due to inflation concerns.",
+   "why": "Matches NISA's framing exactly: labor market justifies neither cuts nor hikes, December hike driven by inflation, not jobs.",
+   "searched": []
+  }
+ ],
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.765,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": true,
+ "problems": [
+  "counts do not match the sentence list"
+ ]
+}

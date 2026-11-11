@@ -1,0 +1,186 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25387__gs-johnstone-gs-tmt-spec-sales-more-pain-in-semis-amadeus-so.txt; pilot/source-text/2026-11-10/25634__gs-sharkey-extremes-ii-7-nov-2026.txt",
+   "span": "STATISTICS: NDX ( -6.36%, worst day since March 9, 2020 (NDX -6.83%) in peak Covid drawdown. | S&P ex AI (-.3%) continues to outperform vs many prominent AI baskets down 10% or more on the week.",
+   "why": "NDX -6.36% confirmed as worst day since the March 2020 Covid drawdown day (multiple GS notes); S&P-ex-AI -0.3% on the week confirmed directly in Goldman's Sharkey 'Extremes II' note.",
+   "searched": [
+    "6.36",
+    "worst day since",
+    "ex AI",
+    "0.3%"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "Opinion-shaped sentence with no checkable figure. No source attributes to any bank the specific causal claim that violent snapbacks happen because positioning was already emptied/de-grossed beforehand. Closest hit is an unattributed Zero Hedge-style wrap's own editorializing, not a bank's stance.",
+   "searched": [
+    "snap back",
+    "emptied",
+    "cleaned-out",
+    "washed out",
+    "mean reversion"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25863__us-daily-october-cpi-preview.txt; pilot/source-text/2026-11-11/25767__europe-open-hitting-refresh.txt",
+   "span": "We expect a 0.16% increase in October core CPI (vs. +0.2% consensus). | US CPI ... with our economists expecting a below-consensus core print of 0.19% MoM",
+   "why": "Goldman's own CPI preview gives 0.16% vs 0.2% consensus; Citi's Europe Open note independently gives Citi's 0.19% forecast.",
+   "searched": [
+    "0.16",
+    "0.19",
+    "consensus"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+   "span": "Goldman's down-2.5-sigma scenario has $49 billion of S&P supply over a month ... A hot CPI turns the CTA flat-tape scenario into the down-tape one, adds a December hike...",
+   "why": "Matches every element: Goldman flow desk, hot-number trigger, flat-to-falling scenario shift, December rate increase, $49bn/month figure.",
+   "searched": [
+    "49bn",
+    "49 billion",
+    "flat-tape",
+    "down-tape",
+    "December hike"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+   "span": "S&P buyback demand is running at ~$5bn a day and 90% of corporates are in the open window ... which the corporates comfortably outbid.",
+   "why": "Exact $5bn/day and 90%-open-window figures; cool-tape CTA supply explicitly outbid by buybacks.",
+   "searched": [
+    "5bn a day",
+    "90% of corporates",
+    "outbid"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25836__gs-crook-gs-morning-connecting-you-to-gs-data-centre-forecas.txt; pilot/source-text/2026-11-10/26026__just-the-faqs.txt",
+   "span": "Alec Phillips: '...a temporary moratorium that lasts several months until new rules can be put in place.' / 'Texas Governor-elect Gina Hinojosa has explicitly stated that all currently permitted data centers in Texas will be allowed to complete construction... she has limited ability to impose a data center moratorium.'",
+   "why": "Splices Goldman's Alec Phillips (pause estimate) with UBS's note (Hinojosa quote); trailing (UBS) tag correctly scopes to the Hinojosa clause only.",
+   "searched": [
+    "Alec Phillips",
+    "Hinojosa",
+    "limited ability to impose"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25632__gs-miller-global-reflections-6-nov-2026.txt",
+   "span": "The generic 30y spread widened 2.2bps on the day compared with an 8bp widening implied by the 4.4% move lower in SPX.",
+   "why": "Goldman note gives the exact 2.2bp vs 8bp-implied figures against the 4.4% SPX drop on Thursday.",
+   "searched": [
+    "2.2bp",
+    "8bp widening",
+    "4.4%"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25719__gs-pasi-what-s-trending-across-credit-8-nov-2026.txt",
+   "span": "~$76bn of IG issuance priced last week ... $67bn raised across five transactions ... bringing global hyperscaler issuance to $296bn YTD.",
+   "why": "Goldman note gives all three figures exactly: $76bn IG supply, $67bn hyperscaler, $296bn YTD.",
+   "searched": [
+    "$76",
+    "296bn",
+    "67bn"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25738__stocks-panicked-credit-yawned-who-s-right.txt",
+   "span": "Thursday's selloff hit the spending recipients... [hyperscalers, who both spend the capex and issue the bonds] rose +1.7%",
+   "why": "Source says the selloff hit the AI vendors (picks-and-shovels sellers), not the hyperscalers \u2014 who are simultaneously the spenders AND the bond issuers, and who actually rose. The sentence invents a spender/issuer split that doesn't exist in the source and names the wrong group as hit.",
+   "searched": [
+    "data cent",
+    "hyperscaler",
+    "spending recipients"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25716__gs-callahan-us-tmt-what-a-week-8-nov-2026.txt",
+   "span": "Semis are now down ~28% over the last 1-month, one of the largest rolling, 1-mo drawdowns in history ... SOX -28% over last 22-days ... AI/Semis ... now ~40% off the highs"
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-11/26008__the-nvidia-massacre-is-getting-interesting.txt",
+   "span": "The valuation disconnect ... at ~12-13x FY28E earnings, the stock is starting to look increasingly interesting, particularly given its extraordinary growth profile.",
+   "why": "Matches a desk's 'valuation acting strangely' stance (also echoed by Goldman Wilson's note on AI-beneficiary P/E discount widening even as earnings estimates rose)."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25857__gs-u-s-equities-color-us-equities-color-everything-rally-9-n.txt",
+   "span": "GIR note calling the sector \"clearly oversold\" ... favor AVGO and NVDA which ... imply no growth past 2027; ... favor AMAT and LRCX ...; favor SK Hynix and Samsung as they are trading below total tangible book."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25560__stronger-october-jobs-data-still-gradual-hikes-english-16693.txt",
+   "span": "On a three-month moving-average basis, payroll growth now stands at roughly 137k, up from the previously reported 51k pace",
+   "why": "UBS's own note gives the exact 51k-to-137k three-month-average figures."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25725__ms-employment-review-payrolls-surge-with-ue-rate-edging-down.txt",
+   "span": "This report keeps the Fed on track for a December hike. | We continue to expect 25bps hikes in December and March (UBS)."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-10/25916__october-payrolls-labor-market-gains-steam.txt",
+   "span": "remains within the Goldilocks zone for monetary policy, neither weak enough to justify cuts nor strong enough to justify hikes ... the Fed is already on track to hike in December due to inflation concerns",
+   "why": "NISA's note makes exactly this nuanced point, correctly attributed."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

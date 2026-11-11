@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26077__who-wins-when-the-robots-sell-and-the-cfos-buy.txt",
+ "source_span": "US-listed ETF shorts rose 7% on Thursday, the third-largest one-day jump in five years, while single-stock de-grossing was \"relatively modest\" (-0.5 SDs)... this was a crash run by the index, the ETF complex and the models.",
+ "source_chain": "Single-stock de-grossing was mild (-0.5 SDs) while ETF shorts jumped 7% (3rd-largest in 5yrs), therefore discretionary funds weren't the main driver of Thursday's crash and mechanical/systematic sellers (CTAs, levered ETFs $47bn, vol-control $61bn) were, therefore the ~$5bn/day buyback bid (90% of S&P open) can only absorb that supply if the tape stays flat, invalidation: a hot CPI pushes CTAs into their down-tape scenario ($49bn of supply over a month) that overwhelms the buybacks, so Goldman's own flow desk treats every bounce as a sell-the-rip until real (non-mechanical) demand shows up.",
+ "pulse_chain": "ETF shorts jumped 7% while single-stock selling was a mild 0.5-SD move, therefore mechanical/systematic sellers (CTAs, levered ETFs $47bn, vol-control $61bn, UBS's $365bn total) drove Thursday's crash, not discretionary funds, therefore Monday's rally reflects positioning that was emptied first, staged as a Goldman-bull (Miller desk call spread) vs. UBS-bear (no long-only sponsorship) debate, invalidation: Tuesday's CPI decides, with a hot print moving Goldman's trend-follower estimate to the falling-market case ($49bn of supply over a month) and a cool print leaving buybacks (~$5bn/day) outbidding the machines.",
+ "preserved": true,
+ "why": "The pulse keeps the note's full sequence intact, including the exact invalidation condition and figures ($49bn CTA supply vs. $5bn/day buybacks turning on the CPI print), and attributes the mechanical-selling claim to Goldman and the no-sponsorship caution to UBS exactly as each bank argued it, even though it stages the debate using a different Goldman desk's bullish trade idea rather than the cautious house view of the note that supplied the mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

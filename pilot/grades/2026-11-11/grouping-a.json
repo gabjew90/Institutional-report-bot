@@ -1,0 +1,67 @@
+{
+ "metric": 1,
+ "total_cards": 468,
+ "fragmentation_sets": [
+  {
+   "subject": "Nov 5-6 equity crash vs. resilient credit spreads, plus Goldman's short-IG-30yr/long-ESZ6 hedge trade",
+   "labels": [
+    "thursday equity vol spike",
+    "ai credit equity divergence"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Defensive/Staples sector rotation and Goldman's short-Staples (vs. Semis) trade",
+   "labels": [
+    "defensive sector rotation",
+    "consumer staples vs semis short"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "How deep the equity correction goes / downside targets (RBC tier framework vs. MS catch-down-to-breadth thesis)",
+   "labels": [
+    "us equity tiers fear framework",
+    "s p 500 correction catch down"
+   ],
+   "cards": 19
+  }
+ ],
+ "fragmented_mass_share": 0.126,
+ "mis_merges": [
+  {
+   "label": "2027 earnings inflection stock picks",
+   "subjects": [
+    "Rivian R2 ramp and UBS upgrade",
+    "Amgen earnings beat and pipeline growth (Repatha/Evenity/Imdelltra)",
+    "Vertex drug-catalyst re-rating (Povetacicept/Inaxaplin)",
+    "StandardAero margin execution, sold-out 2027 capacity"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Each is a standalone single-name story in a different sector with no shared thesis; an editor skimming a label titled 'stock picks' would likely skip it and miss a pulse-worthy name like Rivian's upgrade."
+  },
+  {
+   "label": "valuation positioning reset",
+   "subjects": [
+    "Market valuation/breadth constructive view (S&P cheap, breadth improving, buybacks)",
+    "Pre-midterm USD-bearish positioning and the China-tech short-covering unwind (also duplicated in 'dollar g10 fx flows' and 'china domestic ai rebound')",
+    "FICO single-name earnings/guidance cut",
+    "Apple/Starbucks valuation commentary"
+   ],
+   "would_change_theme_selection": true,
+   "why": "A single-name guidance cut (FICO) and FX-positioning evidence that belongs with already-distinct themes are buried in a generic-sounding label an editor would treat as low-priority color and skip."
+  }
+ ],
+ "pass": false,
+ "notes": "misc is 12/468 (2.6%) of cards, correctly excluded from fragmented mass; the header's stated 2570-card total does not reconcile with the 468 cards enumerable here, so the share uses the enumerable total. Borderline, not counted: the QRA/TGA liquidity overlap and the GSXUHYPR Hyperscaler call-spread trade split across two labels.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
