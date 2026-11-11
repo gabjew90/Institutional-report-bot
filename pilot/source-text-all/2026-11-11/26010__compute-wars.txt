@@ -1,0 +1,491 @@
+ 
+ 
+9 November 2026 
+◼ Models are commoditising: value moves to distribution and cheap compute 
+◼ China can't own Western distribution, but can be compute's low-cost producer 
+◼ A blue wave in Washington and Nvidia's curbs push compute East 
+A few news items landed at the start of the week that set the shape of one story: Democrats took 
+Congress partly on a backlash against data centres, Nvidia told customers to keep Chinese firms 
+to a minority of their compute, and Revolut moved its engineers onto a Chinese model at a tenth 
+of the cost. As models become commodities, AI's lasting value goes to whoever owns distribution 
+and whoever supplies compute most cheaply. China can't own Western distribution, but it can be 
+the cheapest supplier of compute, as it was for solar and batteries. The West is currently taking 
+action to hurry it along. The opportunity is the PRC’s tenacious prowess in value chain integration. 
+Markets have noticed: in the AI sell-off most Chinese AI baskets rose while their US peers 
+plummeted 
+Compute is the hottest commodity and it is getting pushed into China 
+Washington shuts the door. Democrats took both chambers, and data centres were on the ballot: 
+governors-elect in Texas and Georgia, two of the biggest build-outs, campaigned partly on 
+moratoria. Expect slower permitting and hyperscalers footing the bill for grid upgrades. But a 
+slower US build does not reduce demand for compute, it reallocates it, and the cheapest marginal 
+supplier with spare power is China (Chart 2). 
+China Watch 
+COMPUTE WARS! 
+ 
+Robert Taylor
+Chart 1: A sea of red emerged from the blue wave: Red wins 
+ 
+Sources: Yahoo Finance, GlobalData.TS Lombard. 
+
+ 
+ 
+ 
+ 
+  
+China Watch | 9 November 2026 
+ 
+2 
+Nvidia is closing the side door. It has told data-centre customers worldwide that at least 51% of 
+their services must go to non-Chinese firms, narrowing the route Chinese labs used to rent its 
+chips in Southeast Asia. The aim is to keep the US stack out of Chinese hands, and these are the 
+pressures under which China thrives. The effect is to push China's biggest buyers onto Huawei, 
+Cambricon and T-Head sooner. Each door Nvidia closes makes the domestic market bigger, and 
+in solar and batteries it was scale that brought the PRC's costs down. 
+Beijing is closing the front door. State-funded data centres must use domestic chips, and 
+customs blocked Nvidia's H200 for two months this year. Nvidia's share of China's accelerator 
+shipments fell to 34% in H1 2026, with Huawei now close behind at 28% (Chart 3). 
+ 
+Buyers will start to shop on cost 
+It’s pretty much consensus that models are inherently un-moatable. Open-weight models 
+match the frontier within months, and the ‘three-month’ lead is more myth than material in 
+practice. Every layer the labs build is copied and open-sourced, and switching models is a setting 
+Chart 3: Chinese accelerators (Red) vs. Nvidia 
+ 
+Sources: IDC, GlobalData Lombard. 
+Chart 2: China builds power ten times faster 
+ 
+Sources: NEA, EIA, GlobalData Lombard. 
+Chart 5: More unit-output with less value capture 
+ 
+Sources: OpenRouter, GlobalData.TS Lombard. 
+Chart 4: The cost of intelligence is coming down 
+ 
+Sources: Artificial Analysis, OpenRouter, GlobalData.TS Lombard. 
+
+ 
+ 
+ 
+ 
+  
+China Watch | 9 November 2026 
+ 
+3 
+change rather than migration. Much of what has appeared like a leap in capability is the harness 
+doing substantial heavy-lifting, which the labs sell as a parsimonious package. So the labs, and 
+many in tech, now see distribution as the moat, and in the West the incumbents already own the 
+existing channels. 
+Everything else becomes a market for compute, decided on cost. The price of a given level of 
+intelligence keeps falling (Chart 4). On OpenRouter, open-weight models carry 72% of tokens 
+and Chinese labs alone 69%, yet closed models take 73% of spend (Chart 5). All the volume has 
+moved to the cheap end and in classic China style, the money has not followed.  
+Revolut‘s actions are another marker of the trend. It has moved its 2,000 engineers' default 
+coding model from Claude Code and Codex to China's GLM, cutting the bill to about a tenth and 
+keeping frontier models for the hardest work. A regulated bank has decided the frontier premium 
+is not worth paying for most of its engineering. I use GLM and DeepSeek for personal and 
+development work: the gap to the frontier is hard to notice, and the gap in the bill isn't. 
+ 
+Compute is now a commodity, and China is the low-cost producer 
+Defining the commodity: By compute we mean the raw ability to provision fast, capable compute 
+at a low price. It already trades like one: H100 rental prices have more than halved since late 
+2023, and CME now lists GPU rental futures. Once compute is priced as a raw resource, it is a 
+market China can rapidly come to supply, with a regional software layer of open models running 
+on Chinese hardware. 
+The node gap is real but narrowing in importance. Taiwan has 2nm in volume; China has been 
+stuck at 7nm-class since 2023, and its headline breakthroughs rarely materialise (Chart 6). But as 
+gates approach atomic scale, packaging, chip-interconnect and power matter more than the 
+reticle, and China can innovate around the lithography it lacks. ASML's EUV tools are golden 
+spokes on a bicycle and is less binding to progress than it was (at least less binding for high-
+throughput GPUs than it is Node devices/CPUs). China can compete on brawn: Huawei's 
+CloudMatrix 384 beats Nvidia's GB200 NVL72 by 1.7x on compute and 3.6x on memory, albeit 
+currently at roughly four times the power (Chart 7). That is bad economics where power is 
+expensive, but a nothingburger for the PRC. 
+Chart 7: Brawn not brains 
+ 
+Sources: SemiAnalysis, Nvidia, GlobalData.TS Lombard. 
+Chart 6: China at the back of class of frontier nodes 
+ 
+Sources: Company reports, TechInsights, GlobalData.TS Lombard. 
+
+ 
+ 
+ 
+ 
+  
+China Watch | 9 November 2026 
+ 
+4 
+The first win: Running costs. Data-centre hubs in Inner Mongolia pay about 4.7 US cents per 
+kWh, around half the US industrial average, and China added ten times as much generating 
+capacity as the US last year. On price per TFLOP, Chinese chips now match Nvidia (Charts 8 and 
+9). 
+The second win: Accelerator costs. A Chinese chip only has to undercut Nvidia's ~75% gross 
+margin, not its manufacturing cost (Chart 10). China has done this before: solar module prices fell 
+95% and battery packs 90% as it took more than 80% of manufacturing in both (Chart 11). 
+The pathway is already here. Chinese open models are the default in price-sensitive channels 
+and increasingly built for Chinese chips: DeepSeek V4 launched with day-zero support on 
+Huawei's Ascend, and GLM-5 was reportedly trained on it. 
+Chart 9: China's data centres run on cheap power 
+ 
+Sources: Sources: Yicai, FT, China Briefing, EIA, Eurostat, BDEW, KEPCO, 
+Taipower, GlobalData.TS Lombard. 
+Chart 8: China rentals converge on Price/TFLOP 
+ 
+Sources: Company filings, broker research, dots are observations, lines 
+rerpesent the lowest-price frontier. GlobalData.TS Lombard. 
+Chart 11: Compete on price = market share 
+ 
+Sources: IRENA, BloombergNEF, GlobalData.TS Lombard. 
+Chart 10: Nvidia's margin is China's opportunity 
+ 
+Sources: Nvidia, GlobalData.TS Lombard. 
+
+ 
+ 
+ 
+ 
+  
+China Watch | 9 November 2026 
+ 
+5 
+Addressing security concerns: China could buy the West's trust with trustless infrastructure. 
+The broad concern with Chinese compute is privacy, and that is largely a solved engineering 
+problem. The tools are confidential computing and remote attestation. Data and model weights 
+are decrypted only inside a hardware-isolated enclave on the processor and, since Nvidia's H100, 
+on the GPU too, with the traffic between them encrypted. Before sending anything, the customer 
+checks a signed hardware report that proves what code is running, then releases keys it holds 
+itself. The operator cannot see even if it wished to. 
+Alibaba is a leader in confidential compute and both sides already sell it. Azure has rented 
+confidential H100s since 2024, Google has followed, and specialists such as Tinfoil and Phala run 
+whole inference services this way. China has the same plumbing: Alibaba Cloud uses Nvidia 
+GPUs inside Intel TDX enclaves, with a guide to secure DeepSeek inference, and Hygon and 
+Huawei have built home-grown equivalents. So the PRC doesn't need Western customers to trust 
+Alibaba or Huawei more than AWS or Microsoft, which have to answer to the US CLOUD Act. It 
+can offer cheap compute where trust isn't needed by design. Our audit of providers is in the 
+appendix.s 
+ 
+What it means for investors 
+It is not a winner-takes-all market. Microsoft owns the workflow layer, Amazon much of the 
+development layer, Meta is betting on personal use, and the labs chase the panacea. Up the 
+supply chain, compute is still up for grabs. A likely outcome: National owners of distribution, 
+Various models in the middle (We believe open and closed source/weight models are likely to co-
+exist, with volumes scaling on the open-source/weight side), and compute supplied from China. 
+Risk falls on the margins of the western hardware names as well as Taiwan and Korea. 
+This is part of the China Tech Shock, a topic TSL began talking about a few years ago. The 
+“shock” is just getting started, we think the PRC is unbeatable in manufacturing and highly 
+competitive in software. The macro fallout? Shrinking profits for Western tech and a structurally 
+stronger RMB.   
+ 
+Appendix: who is harvesting your data? 
+The following table below covers firms that provide access to AI models, compute infrastructure, 
+or both, through an API, managed platform or direct compute rental. Each is assessed on its 
+most secure, 'locked-down' configuration and ranked in rough descending order of privacy, with 
+some approaching a near 'zero-knowledge' design. 
+ 
+
+ 
+ 
+ 
+ 
+  
+China Watch | 9 November 2026 
+ 
+6 
+Firm 
+Operator access 
+Confidential compute 
+Customer-held 
+keys 
+Trust model 
+Principal limitation 
+iExec, 
+Distributed 
+Designed not to 
+TEE-based with attestation 
+Yes 
+Cryptographic 
+TEE roots and smaller 
+ecosystem 
+Phala 
+Network 
+Designed not to 
+TEE-based with attestation 
+Yes 
+Cryptographic 
+Hardware roots and protocol 
+complexity 
+Tinfoil, US 
+Designed not to 
+Attested GPU enclaves (Nvidia, AMD, 
+Intel); open-source, verifiable code 
+Yes 
+Cryptographic 
+Hardware and attestation roots; 
+smaller provider, open-model 
+catalogue 
+Microsoft 
+Azure, US 
+No in supported confidential 
+instances 
+Strong CPU + confidential GPU support 
+with attestation 
+Yes 
+Hardware-
+enforced 
+Hardware, firmware and control-
+plane roots remain 
+Google Cloud, 
+US 
+No in supported confidential 
+configurations 
+Strong CPU confidential compute and 
+supported GPU attestation 
+Yes 
+Hardware-
+enforced 
+Hardware, firmware and control 
+plane remain trusted 
+Alibaba Cloud, 
+China 
+No in supported confidential 
+configurations 
+TDX / confidential GPU / attestation 
+capabilities 
+Yes 
+Hardware-
+enforced 
+Control plane, firmware and 
+attestation roots 
+AWS, US 
+Strongly constrained 
+Nitro, enclaves and attestation; GPU 
+confidentiality varies by configuration 
+Yes 
+Hardware-
+enforced 
+‘Nitro’/hardware roots and GPU-
+path variability 
+Venice, US 
+Mode-dependent 
+Strong in supported TEE / E2EE modes 
+with attestation 
+Partial 
+Cryptographic + 
+policy 
+Hardware and attestation roots 
+remain trusted 
+Oracle Cloud, 
+US 
+Configuration-dependent 
+Confidential VM support; GPU capability 
+more limited 
+Yes 
+Hardware-
+enforced 
+SKU coverage 
+OVHcloud, 
+France 
+Configuration-dependent 
+Confidential-compute support on 
+selected products 
+Yes 
+Mixed 
+Sovereignty is not equivalent to 
+data-in-use privacy 
+Tencent, 
+China 
+Configuration-dependent 
+Confidential-compute capabilities, 
+product-dependent 
+Possible 
+Mixed 
+Less transparent end-to-end GPU 
+proposition 
+Huawei, China 
+Configuration-dependent 
+Trusted/confidential-compute 
+capabilities 
+Possible 
+Mixed 
+Hardware, firmware and control-
+plane concentration 
+Crusoe, US 
+Potentially 
+Dedicated infrastructure; confidential 
+features product-dependent 
+Possible 
+Infrastructure trust 
+Dedicated hardware does not 
+itself remove operator trust 
+CoreWeave, 
+US 
+Potentially 
+Strong isolation; confidential capability 
+not universal 
+Possible 
+Infrastructure trust 
+Operator/host layer remains 
+material 
+Nebius, EU 
+Potentially 
+Strong tenant isolation; confidential 
+capability product-dependent 
+Possible 
+Infrastructure trust 
+Provider remains trusted outside 
+confidential modes 
+Infomaniak, 
+Switzerland 
+Potentially 
+Conventional isolation unless 
+confidential compute is explicitly 
+supported 
+Yes 
+Jurisdiction + 
+policy 
+Strong legal positioning, weaker 
+cryptographic exclusion 
+Hetzner, 
+Germany 
+Potentially 
+Conventional VM / bare-metal isolation 
+Yes 
+Operator trust 
+Host access to ordinary 
+workloads 
+Lambda, US 
+Potentially 
+Primarily conventional tenant isolation 
+Possible 
+Infrastructure trust 
+Admin/host access 
+RunPod, US / 
+global 
+Potentially 
+Highly host- and product-dependent 
+Possible 
+Infrastructure trust 
+Heterogeneous host architecture 
+Palantir, US 
+Yes, subject to controls 
+Strong isolation, but not generally end-
+to-end confidential execution 
+Possible 
+Zero-trust / policy 
+Large application and 
+orchestration surface 
+Snowflake, US 
+Architecture-dependent 
+Strong encryption/isolation; weaker 
+customer-verifiable data-in-use privacy 
+Partial 
+Layered 
+Managed data and control planes 
+Databricks, 
+US 
+Architecture-dependent 
+Can inherit underlying cloud confidential-
+compute features 
+Possible 
+Layered 
+Platform and hyperscaler both 
+enter trust boundary 
+Mistral, 
+France / EU 
+Yes 
+Deployment-dependent 
+Limited 
+Policy / 
+contractual 
+Hosted API still requires operator 
+trust 
+Google 
+Gemini, US 
+Yes 
+Strong underlying cloud capabilities, but 
+not equivalent to attested Gemini 
+inference 
+Limited 
+Policy + 
+infrastructure 
+Model service itself remains 
+trusted 
+Anthropic, US 
+Yes 
+No general customer-verifiable 
+confidential inference 
+Limited 
+Policy / 
+contractual 
+Provider access and underlying 
+cloud stack 
+DeepSeek, 
+China 
+Yes 
+No broad customer-verifiable 
+confidential API proposition 
+Limited 
+Policy / 
+contractual 
+Provider and jurisdictional 
+exposure 
+OpenAI, US 
+Yes 
+No general customer-verifiable 
+confidential inference 
+Limited 
+Policy / 
+contractual 
+Provider and underlying 
+infrastructure remain inside trust 
+boundary 
+OpenRouter, 
+US 
+Potentially 
+Determined by downstream route; no 
+universal end-to-end guarantee 
+Limited 
+Policy + routing 
+Privacy bounded by weakest 
+downstream provider 
+Source: GlobalData.TS Lombard assessment of provider documentation, November 2026. 
+
+ 
+ 
+ 
+ 
+  
+China Watch | 9 November 2026 
+ 
+7 
+Disclaimer 
+This report has been issued by TSL Research Group Limited in conjunction with its subsidiaries Lombard 
+Street Research Limited, Lombard Street Research Financial Services Limited, and Trusted Sources UK 
+Limited (together “TSL Research Group”).  This report is intended to be viewed by clients of the TSL 
+Research Group only. The contents of this report, either in whole or in part, shall not be reproduced, stored in 
+a data retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, 
+recording or otherwise without written permission of TSL Research Group. 
+The information and opinions expressed in this report have been compiled from publicly available sources 
+believed to be reliable but are not intended to be treated as advice or relied upon as fact. Neither TSL 
+Research Group, nor any of its directors, employees or agents accepts liability for and, to the maximum 
+extent permitted by applicable law, shall not be responsible for any loss or damage arising from the use of 
+this report including as a result of decisions made or actions taken in reliance upon or in connection with the 
+information contained in this report. TSL Research Group does not warrant or represent that this report is 
+accurate, complete, or reliable and does not provide any assurance whatsoever in relation to the information 
+contained in this report. Any opinions, forecasts or estimates herein constitute a judgement as at the date of 
+this report based on the information available. 
+There can be no assurance that future results or events will be consistent with any such opinions, forecasts, 
+or estimates. Past performance should not be taken as an indication or guarantee of future performance, 
+and no representation or warranty, express or implied is made regarding future performance. This 
+information is subject to change without notice, its accuracy is not guaranteed, it may be incomplete or 
+condensed and it may not contain all material information concerning the company and its subsidiaries. The 
+value of any securities or financial instruments or types of securities or financial instruments mentioned in 
+this report can fall as well as rise. Foreign currency denominated securities and financial instruments are 
+subject to fluctuations in exchange rates that may have a positive or adverse effect on the value, price or 
+income of such securities or financial instruments. This is a generic research report and as such does not 
+have regard to the specific instrument objectives, financial situation, and the particular needs of a client. 
+Clients should seek independent financial advice regarding the appropriateness of investing in any of the 
+types of financial instrument or investment strategies discussed in this report. 
+By reading this report you accept TS Lombard’s terms and conditions. 
+Registered Office: John Carpenter House, John Carpenter Street, London, England, EC4Y 0AN. Registered in 
+England No. 10232483 
+ 
