@@ -1,0 +1,133 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-11T14:07:40.292686Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=202; anchors 792/819 matched, 0 empty, 3 too_short (rate=0.967)",
+   "at": "2026-11-11T14:07:40.378548Z"
+  },
+  "omnipulse": {
+   "decision": "OMNIPULSE",
+   "detail": "omnipulse: 2026-11-11 ok, 6 themes -> omnipulse pulse",
+   "at": "2026-11-11T14:07:57.167391Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-11-11T14:15:44.745493Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "3 hard issue(s)",
+   "at": "2026-11-11T14:21:04.700612Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-11-11T14:22:40.691413Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-11T14:22:55.008429Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-11T14:22:55.658160Z"
+  },
+  "adversarial": {
+   "decision": "DISPATCH_REPAIR",
+   "detail": "2 hard finding(s); repair 1/2; items at adversarial_repair_items.json; after the repair agent, RE-DISPATCH the checker fresh, then run: gate adversarial --recheck",
+   "at": "2026-11-11T14:32:50.000113Z"
+  },
+  "adversarial_recheck": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-11T14:41:24.091243Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-11-11T14:41:47.050540Z"
+  }
+ },
+ "budgets": {
+  "omnipulse_body_cuts": 1,
+  "adversarial_repairs": 1
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:07:40.292686Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:07:40.378548Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "OMNIPULSE",
+   "at": "2026-11-11T14:07:57.167391Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:15:44.745493Z"
+  },
+  {
+   "record": "omnipulse_body_voice",
+   "detail": "'Citi sees' -> 'in Citi's view,'; 'Goldman sees' -> 'In Goldman's view,'; 'Morgan Stanley says' -> 'In Morgan Stanley's view,'",
+   "at": "2026-11-11T14:21:04.634811Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-11-11T14:21:04.700612Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:22:40.691413Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:22:55.008429Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:22:55.658160Z"
+  },
+  {
+   "record": "omnipulse_body_cut",
+   "detail": "Its Miller desk likes owning hyperscalers through a January 110/120 call spread costing 1.8%, on the view that positioning is near washout levels.",
+   "at": "2026-11-11T14:32:49.996716Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-11-11T14:32:50.000113Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-11T14:41:24.091243Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-11T14:41:47.050540Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
