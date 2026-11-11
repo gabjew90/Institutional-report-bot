@@ -1,0 +1,300 @@
+{
+ "brief": "A violent equity selloff and vol spike reversed hard this week. NDX dipped below a major trendline then recovered above it, forming one of its biggest upside candles in a while, even though the 200-day MA still sits above spot, so the squeeze is running against an unresolved downtrend. Hedge fund long/short gross leverage posted its largest weekly drop since Covid to 207.5% (26th percentile) with net leverage at five-year lows. Goldman's new Multiple Surprise Ratio shows SPX's move this week was the largest volatility-adjusted surprise in 19 years, meaning options materially underpriced the swings. Tech positioning now implies outright negative earnings growth and large estimate cuts, semis allocations fell back to year lows, and SOX trades at a single-digit two-year forward P/E. The Market Ear's September 23 NVDA-puts/AAPL-calls relative trade has since exploded and is being closed for profit. TS Lombard argues Nvidia's China AI-chip share fell to 34% (Huawei to 28%) as US export curbs accelerate a domestic rival, leaving Nvidia's 75% gross margin exposed to cheaper Chinese compute. JPM shows Asian tech ex-memory valuations reset to long-term mean P/E despite earnings upgrades; the note says the reset is real but questions whether an earnings reset follows.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "NDX futures briefly dipped below a major trendline before recovering back above it.",
+   "anchor": "NDX futures briefly dipped below the massive trendline, but we are back above it.",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "NDX is forming one of its biggest upside candles in a long time today.",
+   "anchor": "One of the biggest upside candles in a long time is taking shape today.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "NDX's 200-day moving average still sits above current levels even as the sell-low, chase-high reversal plays out in full force.",
+   "anchor": "The 200-day MA remains higher, but the sell low, chase high agony is playing out in full force.",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Sell Low, Buy High",
+   "claim": "US fundamental long/short gross leverage posted its largest weekly decline since Covid, falling to 207.5%, the 26th percentile over the past year.",
+   "anchor": "US fundamental L/S gross leverage saw its largest weekly decline since Covid, falling to 207.5% (26th percentile over the past year).",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Sell Low, Buy High",
+   "claim": "Net leverage among US fundamental long/short hedge funds is now at five-year lows.",
+   "anchor": "Net leverage is now at five-year lows.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Sell Low, Buy High",
+   "claim": "Goldman's new Multiple Surprise Ratio shows SPX recorded its largest volatility-adjusted surprise in 19 years this week.",
+   "anchor": "SPX recorded its largest volatility-adjusted surprise in 19 years this week",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Sell Low, Buy High",
+   "claim": "By Goldman's Multiple Surprise Ratio, NDX ranked among the top two and Russell 2000 among the top five in volatility-adjusted moves this week.",
+   "anchor": "NDX ranked among the top two and Russell 2000 among the top five",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Sell Low, Buy High",
+   "claim": "The options market massively underestimated this week's move sizes, one of the biggest volatility pricing failures in more than two decades.",
+   "anchor": "One of the biggest volatility pricing failures in more than two decades.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "Sell Low, Buy High",
+   "claim": "Current Tech positioning is consistent with not just a sharp deceleration but outright negative growth and large estimate cuts.",
+   "anchor": "Tech positioning is in line with not only a sharp deceleration but also outright negative growth and large estimate cuts.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Sell Low, Buy High",
+   "claim": "The positioning puke in semis has pushed sector allocations back toward their year lows.",
+   "anchor": "The positioning puke in semis has pushed allocations back toward year lows.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "MS Alpha",
+   "document": "Sell Low, Buy High",
+   "claim": "SOX now trades on a single-digit two-year forward P/E.",
+   "anchor": "SOX now trades on a single-digit two-year forward P/E.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "two-year forward"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "On September 23, NVDA was trading near the top of its range with implied volatility at pre-COVID lows, making its puts attractive.",
+   "anchor": "NVDA trading near the top of its range with implied volatility at pre-COVID lows, making puts attractive.",
+   "topic": "NVDA-AAPL pairs trade",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "The Market Ear favored AAPL calls versus NVDA puts as a relative-value options trade.",
+   "anchor": "We also favored AAPL calls versus NVDA puts as a relative trade.",
+   "topic": "NVDA-AAPL pairs trade",
+   "status": "target",
+   "instruments": [
+    "NVDA",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "The AAPL-calls-versus-NVDA-puts trade has since exploded in its favor and The Market Ear is booking profits and moving on.",
+   "anchor": "The trade has since exploded. Time to book profits and move on.",
+   "topic": "NVDA-AAPL pairs trade",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Sell Low, Buy High",
+   "claim": "Nvidia's share of Chinese data-center AI accelerator shipments fell to 34% in H1 2026, while Huawei's share rose to 28%.",
+   "anchor": "Nvidia's share of Chinese data-center AI accelerator shipments fell to 34% in H1 2026, with Huawei closing the gap at 28%.",
+   "topic": "China Domestic AI rebound",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "H1 2026"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Sell Low, Buy High",
+   "claim": "TS Lombard argues the unintended consequence of US export restrictions keeping China out of Nvidia's technology may be creating Nvidia's next major competitor.",
+   "anchor": "The unintended consequence of keeping China out of Nvidia's technology may be creating Nvidia's next major competitor.",
+   "topic": "China Domestic AI rebound",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Sell Low, Buy High",
+   "claim": "With Nvidia's gross margins around 75%, Chinese competitors have an enormous margin pool to attack by undercutting on price.",
+   "anchor": "With Nvidia's gross margins around 75%, Chinese competitors have an enormous margin pool to attack.",
+   "topic": "China Domestic AI rebound",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Sell Low, Buy High",
+   "claim": "TS Lombard argues the combination of cheaper power, domestic scale and improving hardware could increasingly pressure Western AI economics.",
+   "anchor": "the combination of cheaper power, domestic scale and improving hardware could put increasing pressure on Western AI economics.",
+   "topic": "China Domestic AI rebound",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "Sell Low, Buy High",
+   "claim": "JPM shows forward P/E multiples for Asian tech excluding memory back near their long-term mean, while price-to-book valuations have compressed even as ROE stays elevated.",
+   "anchor": "JPM shows forward P/E multiples for Asian tech excluding memory back near their long-term mean, while price-to-book valuations have compressed even as ROE remains elevated.",
+   "topic": "Asian tech valuation reset",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell Low, Buy High",
+   "claim": "The valuation reset in Asian tech is real, but it remains an open question whether an earnings reset follows.",
+   "anchor": "The valuation reset is real. The question is whether the earnings reset ever arrives.",
+   "topic": "Asian tech valuation reset",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-11/26007__sell-low-buy-high.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 20,
+  "matched": 20,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
