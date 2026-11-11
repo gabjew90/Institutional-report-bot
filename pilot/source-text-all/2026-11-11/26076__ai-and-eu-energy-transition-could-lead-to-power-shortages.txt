@@ -1,0 +1,246 @@
+ 
+Lights Out Math: AI Data Centers And EVs Push 
+Europe Toward A Power Shortfall From 2027 
+ 
+BY TYLER DURDEN 
+SUNDAY, NOV 08, 2026 - 01:30 PM 
+For sixteen years, Europe's power grid had one thing going for it: nobody wanted more 
+electricity.  
+That is about to change, and according to a new deep dive from China's Huatai Securities, the 
+continent is nowhere near ready for it. In "AI and EU Energy Transition Could Lead to Power 
+Shortages" (available to pro subs), Huatai's power generation team builds supply-demand 
+balance tables for the EU, the UK and Germany and reaches a conclusion that should make 
+anyone running a data center in Frankfurt (or a heat pump in Hamburg) a little nervous: 
+Building the EU power system supply-demand balance table on this basis, we estimate the 
+system to fall into power shortage from 2027... we find that, excluding new-type energy storage, 
+the EU power system's reserve margin falls below 25% from 2027 and declines from 20% from 
+2027 to 2035, while the supply-demand ratio exceeds 80% from 2027 and rises from 83% to 
+94%. In other words, the EU power system faces a power shortfall from 2027, and this shortfall 
+could keep widening. 
+In other words, Europe's grid has about a year left before its peaking capacity falls below what 
+Huatai considers safe, and by 2035 the cushion between available firm power and peak 
+demand shrinks to just 6%. And that is the base case. 
+ 
+
+ 
+ 
+Regular readers know we have spent much of the past two years on the American version of 
+this problem, most recently in "The 70 Gigawatt Hole" on Sunday, where Morgan Stanley's net 
+US shortfall more than tripled in a year. Europe, it turns out, has the same disease with different 
+symptoms: less AI demand, but a grid that has spent a decade retiring exactly the kind of power 
+plants you need when the wind stops blowing on a January evening. 
+Twice The Power Plants, Same Electricity 
+Start with the history, because it explains everything that follows. Huatai calls 2008 "a watershed 
+for the EU power system." From 1991 to 2008 EU end-use consumption grew at a 1.6% CAGR 
+to a peak of 2,622TWh. Then it stopped. By 2024 it was down to 2,457.7TWh, and industrial 
+demand alone fell from 1,003TWh to 825TWh, a drop equal to 108% of the entire decline (yes, 
+more than all of it: households and transport grew a little). 
+Who stopped using power? Steel (128TWh to 88TWh), chemicals (180TWh to 149TWh) and 
+non-ferrous metals (68TWh to 39TWh), which together account for 56% of the industrial decline. 
+Huatai blames the post-GFC slowdown, efficiency gains and "the relocation of energy-intensive 
+production out of the EU," with industrial power prices compounding at 4.8% a year since 2008. 
+Probably not a coincidence. 
+Meanwhile, the supply side went in the opposite direction. EU installed capacity more than 
+doubled, from 506.6GW in 1990 to 1,150GW in 2024, while generation rose just 25%, from 
+2,275TWh to 2,839TWh. As a result, average system utilization collapsed 55%, from 4,471 
+ 
+
+ 
+hours to 2,490 hours a year. Wind and solar now make up 46.8% of installed capacity but just 
+28% of generation; solar alone is 26.6% of capacity and a whopping 10.7% of output. Put 
+differently, Europe more than doubled its power plants to produce a quarter more electricity. 
+ 
+None of this mattered much while demand was falling. As Huatai puts it, "stagnant demand 
+eased the pressure of traditional exits and wind-solar entry happening at the same time." 
+Thermal and nuclear output fell by 897.5TWh from 2009 to 2024; wind and solar added 
+673.3TWh; and the 164.7TWh drop in consumption quietly filled the gap. Europe's green 
+transition was subsidized, in large part, by its deindustrialization. Good news for the emissions 
+targets. Steelworkers in the Ruhr might see it differently. 
+Then Came The Data Centers... And The Cars 
+That cushion is now gone. Huatai sees EU demand returning to growth from 2026, driven by 
+two sources that have one thing in common: they are rigid and they show up at peak. 
+The first is AI. Using the European Commission's own plan to triple data center capacity, Huatai 
+has EU AI data center capacity rising from 12GW to 36GW by 2035, with power use climbing 
+from 75TWh to 185TWh (a 9.5% CAGR), or 15% of all incremental demand. And unlike your 
+dishwasher, an AI cluster does not run at off-peak hours: "AIDC electricity consumption is rigid 
+demand for the power system and affects peak load more directly than other load types." 
+ 
+
+ 
+ 
+If anything, the Huatai figure looks conservative. Goldman's European utilities team led by 
+Alberto Gandolfi wrote last month, in "Powering Up Europe: Datacenter Economics and the Rise 
+of DC Infrastructure Services" (also available to pro subs), that it projects c.60-80GW of data 
+centers installed in Europe by 2035, roughly double Huatai's EU-only number even allowing for 
+the UK and Norway. Goldman also warned that to keep up, utilities would need to pour 
+€100-150 billion into new dedicated renewables: 
+This would ensure security of supply, and avoid price spikes. Failure to accelerate RES 
+investments could lead to rising power prices, which would boost returns on legacy assets. 
+Translation: if Europe doesn't build fast enough, the owners of the old power plants get paid. 
+Which is precisely what Huatai's model ends up implying (more on that below). And Goldman 
+thinks the demand risk skews higher still: back in March it estimated that every 10% increase in 
+agentic AI queries vs baseline could boost data center needs by c.25% in both the US and 
+Europe. 
+Of course, wanting data centers and getting them are two different things. Morgan Stanley's 
+latest global forecast, which we covered in "Splash Zone" over the weekend, has global capacity 
+growing by 180GW from 2026 to 2030, with the US adding 88GW, China 49GW and Europe... 
+12GW. Which is something we noted back in January: 
+The reason Europe lags is the grid itself. Per Ember data cited by Huatai, data centers wait on 
+average 7 years for a grid connection in Germany, 9 in the UK and 10 in Ireland and the 
+ 
+
+ 
+Netherlands (where there are "effective bans"). ENTSO-E's own data center report from May 
+found that 76% of operators cite electricity access as their biggest challenge, and in Denmark 
+connection requests topped 60GW against a national peak of 7.3GW. Copenhagen's answer, 
+according to Goldman's October 8 utilities note: an emergency law that moves large data 
+centers to the back of the grid queue. 
+ 
+Which is why Huatai expects the new buildout to drift north. Nordic power prices were about 
+51% of the EU average in 2Q25, and by Huatai's math electricity in Stockholm, Oslo and 
+Helsinki is 52%, 59% and 63% cheaper than the FLAP-D average (Frankfurt, London, 
+Amsterdam, Paris, Dublin). Since training workloads don't care where they sit, Huatai sees 
+Nordic AI capacity rising from 2.19GW to 10.7GW by 2035, a 17.2% CAGR vs 11.6% for the 
+EU. 
+ 
+ 
+
+ 
+The second, and much bigger, source of new demand is transport. Huatai projects EU transport 
+power use rising from 85TWh to 492TWh by 2035, a 19.2% CAGR that accounts for 55.4% of 
+all EU consumption growth over the decade, as the zero-emission passenger car fleet goes 
+from 7.61 million to 92.44 million. That is, of course, assuming Brussels doesn't keep softening 
+the combustion engine ban, which France and Germany were lobbying to do as recently as last 
+month. Even so, EVs plug in when people get home from work, which is right around when the 
+evening peak hits. 
+ 
+The Coal Exit Nobody Will Actually Finish 
+On the supply side, the plan is simple: more wind and solar, a lot more. Per ENTSO-E's ERAA, 
+combined wind and solar capacity rises from 591GW in 2025 to 1,442GW in 2035, taking their 
+share of the fleet from 48.7% to 70.9%. Hydro and nuclear stay broadly flat (Germany's nuclear 
+row in Huatai's table is a neat line of zeros through 2035), and coal goes away. 
+Or at least, that's the plan. The consensus has EU coal capacity falling from 107GW to 15GW 
+by 2035, a 16.2% annual decline. Huatai doesn't buy it, and this is where the report gets 
+interesting: 
+The market expects the structural transition within the EU's thermal power fleet to proceed 
+quickly from 2026 to 2035, but we see it as difficult to complete.... we think that the exit of 
+coal-fired power units in the EU could be slower than the forecast of the European Network of 
+ 
+
+ 
+Transmission System Operators for Electricity (ENTSO-E), with EU coal-fired power units falling 
+from 107GW to 30GW from 2025 to 2035, at an average annual rate of -10.8%. 
+In other words, Huatai sees the coal exit running at about two-thirds of the consensus pace, 
+because Poland and Czechia lean conservative on security of supply (Poland's and Czechia's 
+2035 coal fleets could be 7.7GW and 3.7GW above ERAA's forecast) and Italy already pushed 
+its full exit from 2028 to 2038. Germany, which has written its coal exit into law, takes its fleet 
+from 40GW to around 5GW. Huatai also has EU gas capacity rising from 189GW to 232GW 
+instead of peaking in 2030 as the market expects, and roughly 17GW of hydrogen-fired units 
+arriving by 2035 (good luck with that: last year we noted that Germany's Hydrogen Dream 
+Became A $9 Billion Yearly Black Hole). 
+ 
+And still, total thermal capacity shrinks 1.8% a year through 2035. The plants that can be 
+switched on at 6pm in a windless January are going away faster than anything that can replace 
+them, and we already got a preview of what a grid heavy on inverters and light on spinning 
+mass looks like: 
+ 
+
+ 
+Short From 2027 
+Put the two sides together and you get the core of the report. Huatai has EU peak load rising 
+from about 424GW in 2026 to 559GW in 2035, a 3.1% CAGR, as new rigid loads pile on top of 
+the old ones. 
+ 
+Against that, it sets two reliability tests: a reserve margin of at least 25% for the EU (20% for 
+individual countries) and a supply-demand ratio below 80%. Huatai borrowed its reliability 
+coefficients from the Chinese grid (whose planners, it should be noted, have a habit of building 
+power plants before they need them), and raised the EU threshold from 20% to 25% because, 
+as the team points out, "a 20% reserve margin for the EU as a whole does not necessarily mean 
+every member state can maintain 20%." 
+Excluding new battery storage, the EU fails both tests from 2027. In the base case, the reserve 
+margin slides from 20% in 2027 to 6% in 2035 and the supply-demand ratio climbs from 83% to 
+94%. In Huatai's "bullish" case (bullish for demand, that is: it lifts the 2025-2035 demand 
+increment by 50%), peak load hits 638GW, the reserve margin goes negative after 2030 and 
+ends at -8%, and the supply-demand ratio hits 108%. For those keeping score at home, a 
+supply-demand ratio above 100% means peak demand exceeds firm supply. 
+ 
+
+ 
+ 
+Even the bearish case, which cuts the transport and manufacturing demand increments to 90% 
+of the original forecast, has the EU short from 2027, with the reserve margin at 13% in 2035. 
+Here is how 2035 looks across all three scenarios and all three grids: 
+ 
+The UK is the worst of the bunch. Using NESO's demand forecast, which has UK consumption 
+rising from 278TWh to 382TWh by 2035, Huatai sees peak demand climbing from 44GW to 
+ 
+
+ 
+74GW. Excluding new storage, Britain is already short in 2026, its reserve margin turns negative 
+in 2033 and reaches -12% by 2035, while the supply-demand ratio hits 113%. Even in the bear 
+case it ends the decade at -1%. 
+ 
+Germany looks better on paper, mostly because it starts with more slack: the reserve margin 
+falls from 23% in 2026 to 12% in 2035 as peak demand rises from 74GW to 116GW and the 
+coal fleet heads to 6GW. In the bull case, it falls to 0%. Not bad for the country that switched off 
+its last nuclear reactor in 2023. 
+ 
+Batteries Included (143 Gigawatts Of Them) 
+So how does Huatai close the gap? Batteries, lots of them. To keep the EU reserve margin at 
+25% and the supply-demand ratio at 80%, and assuming average storage duration rises from 
+two to three hours, the EU needs to add 143GW / 467GWh of electrochemical storage from 
+2026 to 2035, 56GW more than ERAA projects. That takes the EU fleet from 39GW in 2025 to 
+181GW, more than 4.5x in a decade. The bull case needs 323GW; the bear case 91GW. The 
+UK needs to go from 7GW to 39GW and Germany from 16GW to 56GW. 
+ 
+
+ 
+ 
+Huatai's poster child for the buildout is RWE, which had 1.7GW of batteries in operation at 
+end-2025, 2.4GW under construction, and a 6GW target for 2030. RWE's real edge, per Huatai, 
+is something Europe has plenty of: retired coal plants with grid connections attached (it is 
+building 0.6GW/1.2GWh of storage on the site of the Westfalen coal plant). Goldman made the 
+same point about the sector as a whole in its October report: European utilities own c.25GW of 
+grid connection points, which it values at c.€20 billion, and an integrated "land, grid access and 
+energy" offering could create €1-1.5 billion of value per GW of data center. 
+Put differently, in a grid where the bottleneck is the connection, the connection is the asset. 
+Well, that... and the gas plants Huatai thinks Europe will be forced to keep building. 
+There is one small problem with the battery fix: a two- or three-hour battery smooths the evening 
+peak, but it doesn't do much during a week-long Dunkelflaute, when the wind is still, the sun is 
+gone by 4pm and the batteries need something to charge from. Which is why, buried in the risk 
+section, Huatai lists the one variable that could make all of this much worse: "a further 
+escalation of the US-Iran war — pardon, an escalation of the US-Iran conflict." We appreciate 
+the candor. 
+Winter Is Coming (And So Is 2027) 
+The timing of this report could hardly be better. Last week, Europe's benchmark TTF gas 
+contract crossed the 100-euro "psychological mark" and closed at €104/MWh for the first time 
+since the 2022 energy crisis, and this week we reported that Germany missed its November 
+storage target, entering the heating season just 61.2% full vs a 70% requirement and a 15-year 
+average of around 91%. European gas now trades at roughly 11 times the US price. So the fuel 
+ 
+
+ 
+for the gas plants Huatai expects Europe to keep building is getting more expensive, and the 
+fuel for the batteries depends on the weather. Meanwhile, back in June, the European 
+Commission was already asking households to cut their electricity use during peak hours to 
+make room for AI data centers. Nothing says "energy security" quite like asking grandma to skip 
+the kettle so a GPU cluster in Frankfurt can keep training. 
+Huatai's conclusion is that the gap can be closed with enough batteries, a slower coal exit and 
+more gas units. Maybe. But that requires Brussels to admit coal is staying longer, Berlin to make 
+peace with gas at €100, and grid operators to connect 143GW of storage in a system where 
+data centers already wait a decade for a plug. Our bet is that the shortfall arrives on schedule 
+(or earlier, if Goldman's much higher 60-80GW data center number is closer to the truth), and 
+that the real fix is the one we have been pounding the table on in the US: if hyperscalers want to 
+plug a city's worth of load into a strained grid, make them bring their own power plant, behind 
+the meter, and ideally one with a microreactor in it. 
+Until then, Europe will keep doing what it has done for 16 years: balancing the grid by making 
+sure nobody uses more electricity. It worked fine while Germany's factories were leaving, put out 
+of business by cheap Chinese imports. It will work a lot less well once the data centers and the 
+EVs arrive. 
+Much more in the full Huatai "AI and EU Energy Transition Could Lead to Power Shortages" 
+note and Goldman's "Powering Up Europe: Datacenter Economics and the Rise of DC 
+Infrastructure Services" note, both available to pro subs. 
+ 
+ 
+ 
+ 
