@@ -1,0 +1,1989 @@
+Market tensions relative to datacenter buildouts have spiked post election results 
+As we have written previously, we believe the market has been contending with 
+competing tensions relative to Semiconductors: (1) How does the funding gap 
+between current CapEx and free cash flows for hyperscalers and AI model labs levels 
+get closed? (2) Is there sufficient land/power/shell coming on line to match current 
+Street estimates for Semis?  Following the US elections on Nov. 3, the second of these 
+tensions came into greater focus with greater uncertainty around the pace of 
+datacenter builds in states such as Texas.  This has resulted in a significant selloff in 
+the sector (SOX down 13% in the past week and 31% since Oct. 1) - and we believe 
+stocks are now clearly in oversold territory.  In this note, we mark to market for the 
+current situation and sensitize relative valuations to downside scenarios relative to 
+our current estimates across large-cap AI compute, Memory, and Semi Cap stocks.  
+Although we recognize there may be few catalysts for stocks to move higher before 
+year end, we think risk/reward is compelling for select names at current levels. 
+AI Compute: We favor NVDA and AVGO, which imply no growth from 2027 
+Given the relatively low risk of 35 GW in datacenter additions we see for 2027, we 
+believe our 2027 estimates represent a solid base from which to assess future 
+growth potential.  Even in a “no growth” scenario for 2028 (which we see as relatively 
+unlikely), NVDA/AVGO are trading 12X/13X this baseline - which we believe 
+valuations are compelling at current levels.  We find AMD to be very attractive given 
+the growth we believe it can achieve, alebit at less compelling valuation. 
+Semi Cap Equipment: We see 2027 WFE as a baseline and prefer AMAT & LRCX 
+For Semi Cap Equipment, we believe the capacity which comes online between now 
+and 2028 is simply “catching up” to reach past demand levels.  Even if there is no 
+increase in CapEx beyond 2027 - which we view as highly unlikely - we believe that 
+AMAT and LRCX - currently trading 15X/16X 2027E EPS - are compelling today. 
+Memory: Approaching oversold levels as we begin to move toward tangible book 
+Global memory stocks have historically found a bottom around their tangible book 
+values.  Several global memory names (Samsung, SK Hynix, covered by Giuni Lee) are 
+beginning to approach these levels, with Samsung/SK Hynix now below total book.  
+We also believe risk/reward is becoming more attractive for Neutral-rated Micron in 
+James Schneider, Ph.D. 
++1(212)357-2929 | 
+jim.schneider@gs.com 
+Goldman Sachs & Co. LLC 
+Michael Ng, CFA 
++1(212)902-8618 | michael.ng@gs.com 
+Goldman Sachs & Co. LLC 
+Allen Chang 
++852-2978-2930 | 
+allen.k.chang@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Giuni Lee 
++65-6889-1025 | giuni.lee@gs.com 
+Goldman Sachs (Singapore) Pte 
+Shuhei Nakamura 
++81(3)4587-9932 | 
+shuhei.nakamura@gs.com 
+Goldman Sachs Japan Co., Ltd. 
+Anmol Makkar 
++1(212)357-1366 | 
+anmol.makkar@gs.com 
+Goldman Sachs & Co. LLC 
+Luya You 
++1(212)902-5297 | luya.you@gs.com 
+Goldman Sachs & Co. LLC 
+Khalil Fenina 
++1(212)357-6392 | khalil.fenina@gs.com 
+Goldman Sachs & Co. LLC 
+Liana Wadhwani 
++1(212)357-3204 | 
+liana.wadhwani@gs.com 
+Goldman Sachs & Co. LLC 
+Marshall Wong 
++1(646)446-0222 | 
+marshall.wong@gs.com 
+Goldman Sachs & Co. LLC
+9 November 2026 | 5:46AM EST
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+AMERICAS TECHNOLOGY: SEMICONDUCTORS 
+At the center of tensions around the AI datacenter build: Searching for 
+value following the sector-wide pullback
+ 
+ 
+
+light of strong FCF in the coming quarters.
+9 November 2026
+  2
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+The Heart of the Matter - Datacenter Bid/Ask & Sector Drawdown 
+ 
+ 
+Scoping the differences between Semis estimates and Datacenter build 
+reality 
+We present our implied estimates for AI infrastructure capex and associated 
+datacenter deployments, based on semiconductor company guidance and our own 
+forecasts.  We estimate AI infrastructure capex of approximately $1.3 trillion in 
+2027 (up 60% YoY) and $2.0 trillion in 2028 (up 42% YoY). In power terms, our 
+analysis implies roughly 20 GW / 35 GW / 57 GW of AI datacenter deployments in 
+2026/27/28. Importantly, these figures represent AI-specific infrastructure investment 
+and extend beyond traditional hyperscaler capex to include AI labs (including the capex 
+beyond what is contemplated as part of hyperscaler spending), sovereign AI enterprises, 
+and corporate/enterprise customers. 
+We summarize these high-level datapoints below: 
+Broadcom (AVGO) has provided guidance for 10GW and 20GW of AI-related 
+n
+deployments among its customers in FY27 and FY28, respectively, and has indicated 
+its total compute/networking revenue opportunity in the datacenter stands at 
+$20-30 billion per GW. 
+Nvidia (NVDA) has stated that Blackwell systems (between compute and 
+n
+networking) represent roughly $25 billion of revenue per GW, and this figure is set to 
+increase to ~$40 billion per GW for Rubin. We also assume an additional $5 billion 
+per GW will be needed for the Feynman transition, which implies ~$45 billion of 
+revenue per GW. 
+Advanced Micro Devices (AMD) has outlined a $15 billion to $20 billion revenue 
+n
+opportunity per GW, and we use the midpoint of this range to estimate AMD-related 
+AI datacenter deployments. 
+For Marvell (MRVL) and MediaTek (2454.TW, covered by Allen Chang), we apply a 
+n
+similar framework, using our assumptions for revenue per GW alongside our 
+datacenter revenue forecasts to derive implied deployment levels. 
+9 November 2026
+  3
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+Exhibit 1: Our bottom-up AI Infrastructure Capex build implies $1.3tn/$2tn in annual AI 
+infrastructure spending on compute/networking in 2027/28 
+2026
+2027
+2028
+Nvidia
+Total Blackwell GW Deployments
+12
+                         
+3
+                           
+-
+                        
+Total Rubin GW Deployments
+2
+                           
+15
+                         
+19
+                         
+Total Feynman GW Deployments
+3
+                           
+Total GW deployments
+14
+                         
+18
+                         
+22
+                         
+CapEx per GW ($bn)
+50
+                         
+50
+                         
+50
+                         
+Total CapEx with Nvidia products ($bn)
+682
+                       
+879
+                       
+1,091
+                   
+Broadcom
+Custom XPU revenue ($mn)
+39,373
+                 
+86,176
+                 
+168,126
+               
+AI Connectivity revenue ($mn)
+18,465
+                 
+39,300
+                 
+72,180
+                 
+Total AI Revenue ($mn)
+57,838
+                 
+125,477
+               
+240,306
+               
+Total GW deployments
+5
+10
+                         
+20
+                         
+CapEx per GW ($bn)
+25
+                         
+25
+                         
+25
+                         
+Total CapEx with Broadcom products ($bn)
+126
+                       
+250
+                       
+500
+                       
+AMD
+Datacenter GPU revenue ($mn)
+15,662
+                 
+42,317
+                 
+56,017
+                 
+Revenue per GW ($mn)
+17,500
+                 
+17,500
+                 
+17,500
+                 
+Total GW Deployments
+1
+                           
+2
+                           
+3
+                           
+CapEx per GW ($bn)
+35
+                         
+35
+                         
+35
+                         
+Total CapEx with AMD products ($bn)
+31
+                         
+85
+                         
+112
+                       
+MediaTek
+Datacenter ASIC revenue ($mn)
+2,200
+                   
+20,250
+                 
+52,500
+                 
+Revenue per GW ($mn)
+5,000
+                   
+5,000
+                   
+5,000
+                   
+Total GW Deployments
+0.4
+                        
+4
+                           
+11
+                         
+CapEx per GW ($bn)
+25
+                         
+25
+                         
+25
+                         
+Total CapEx with MediaTek products ($bn)
+11
+                         
+101
+                       
+263
+                       
+Marvell
+Datacenter ASIC revenue ($mn)
+2,283
+                   
+4,662
+                   
+8,435
+                   
+Revenue per GW ($mn)
+5,000
+                   
+5,000
+                   
+5,000
+                   
+Total GW Deployments
+0.5
+                        
+0.9
+                        
+2
+                           
+CapEx per GW ($bn)
+25
+                         
+25
+                         
+25
+                         
+Total CapEx with Marvell products ($bn)
+11
+                         
+23
+                         
+42
+                         
+Consolidated Summary
+Total GW Deployments
+20
+35
+                         
+57
+                         
+Total AI CapEx ($bn)
+861
+                       
+1,338
+                   
+2,008
+                   
+Implied CapEx/GW ($bn)
+42
+                         
+38
+                         
+35
+                         
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+9 November 2026
+  4
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+Reconciling with a bottom-up view of datacenter builds 
+Bottom line: For 2027, we see ~35 GW of datacenter builds in 2027 as relatively low 
+risk.  For 2028, we see a “floor” or another 35 GW relatively low-risk global 
+additions, up to 55-60 GW if construction projects proceed.  Looking only at under 
+construction data centers, which we view as lower-risk, we see US data center net 
+additions of 22/24/5 GW-IT for 2027/28/29 (assuming a 1.5 PUE, using Aterio data) 
+compares to our US data center net addition forecasts of 20/24/23 GW-IT and gives us 
+confidence in our forecasts. We believe our forecasts have been appropriately 
+conservative and recognize that they have likely been below consensus expectations.  
+Based only on under construction data centers, Texas represents 20% of 2027E net 
+additions and 27% of 2028E net additions. We focus on Texas as a market given that the 
+Governor elect has called for an immediate moratorium on data centers. We note that 
+moratoria are not bans or cancellations, and believe the key risks to data center 
+operators are related to delays to ready-for-service and higher costs. Specifically, we 
+analyze US data center data from Aterio to segment capacity net additions from 
+2027-28E by under construction (low-risk) and announced, but not under construction 
+(higher-risk). If implemented, data center moratoriums are likely to apply to new data 
+centers (see Texas Governor-elect Gina Hinojosa’s statements on data centers), rather 
+than those under construction. 
+ 
+ 
+Exhibit 2: Based only on capacity under construction, US 
+data center capacity should increase from 65GW-gross in 
+2026 to 143GW-gross by 2030 which includes net 
+additions of 33/37/8/0GW-gross in 2027/28/29/30 ... 
+US data center capacity (MW-gross), active and under 
+construction only 
+ 
+Exhibit 3: ... including announced capacity (tagged high 
+likelihood by Aterio) would add an additional 
+3/35/61/38GW-gross to 2027/28/29/30 
+US data center capacity (MW-gross), active, under construction, 
+and announced capacity (high likelihood) 
+0
+20,000
+40,000
+60,000
+80,000
+100,000
+120,000
+140,000
+160,000
+2025
+2026
+2027
+2028
+2029
+2030
+US data center capacity (MW-gross)
+Active
+Assumed completed construction
+Net add - under construction
+0
+50,000
+100,000
+150,000
+200,000
+250,000
+2025
+2026
+2027
+2028
+2029
+2030
+US data center capacity (MW-gross)
+High likelihood - Announced, but not active/under construction
+Net add - under construction
+Assumed completed construction
+Active
+ 
+ 
+Source: Aterio, Data compiled by Goldman Sachs Global Investment Research
+ 
+ 
+Source: Aterio, Data compiled by Goldman Sachs Global Investment Research
+9 November 2026
+  5
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+The stock reaction: Looking at the current drawdown in historical 
+context 
+Bottom line: We believe the current drawdown in Semis is likely overdone, and see 
+compelling opportunities in select names at current levels.  Based on the past ten 
+years of historical trading data, we have now reached a record level of drawdown for the 
+SOX (as a proxy for Semis) relative to the S&P 500.  In only two occasions, the relative 
+drawdown has exceeded 20 points - and the current level of drawdown is now 
+approaching 30 points and is in excess of prior drawdowns.  Given historical drawdowns 
+of this nature have typically been followed by periods of outperformance, we believe 
+current levels represent a good entry point at the index level.  However, we fully 
+recognize that it may take some time for this to resolve itself, particularly given the 
+significant levels of de-grossing that are occurring in the broader market, particularly 
+around year end.  
+ 
+Exhibit 4: Under construction data centers provide 
+visibility into net additions through 2028, with higher-risk 
+announced but not under construction capacity the key 
+driver for 2028 upside and 2029-30 
+Net additions: US data center capacity (MW-gross), active, under 
+construction, and announced capacity (low, medium, and high 
+likelihood) 
+ 
+Exhibit 5: Texas alone makes up 26% of 2026-30 
+cumulative data center capacity net additions 
+2026-2030 cumulative data center capacity net additions 
+(GW-gross) by state and as a percentage of total 
+0
+20,000
+40,000
+60,000
+80,000
+100,000
+120,000
+140,000
+160,000
+2026
+2027
+2028
+2029
+2030
+US data center net additions (MW-gross)
+Net additions - Low/medium likelihood - Announced, but not active/under construction
+Net additions - High likelihood - Announced, but not active/under construction
+Net additions - under construction
+Texas
+57,041
+26%
+Ohio
+15,009
+7%
+Nevada
+7,171
+3%
+Georgia
+12,204
+5%
+Michigan
+2,451
+1%
+Other
+129,206
+58%
+ 
+ 
+Source: Aterio, Data compiled by Goldman Sachs Global Investment Research
+ 
+ 
+Source: Aterio, Data compiled by Goldman Sachs Global Investment Research
+9 November 2026
+  6
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+ 
+Exhibit 6: SOX index performance relative to the S&P500 
+ 
+ 
+Source: Bloomberg, compiled by Goldman Sachs trading.
+ 
+Exhibit 7: SOX index multiples relative to the S&P500 
+ 
+ 
+Source: Bloomberg, compiled by Goldman Sachs trading.
+9 November 2026
+  7
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+Consider risk/reward in AI Compute, SemiCap, and memory stocks 
+ 
+ 
+AI Compute 
+We mark to market the current setup across our Compute coverage, assessing what is 
+priced in at current levels and the resulting risk/reward for Nvidia, Broadcom and AMD, 
+given their significant exposure to the AI infrastructure buildout.  As outlined in our prior 
+work (here), our power-based analysis implies roughly 20 GW / 35 GW / 57 GW of AI 
+datacenter deployments in 2026/27/28. We believe the 35 GW of 2027 deployments 
+are already largely in progress and therefore carry relatively low execution risk. For 
+2028, we view another 35 GW of deployments as a relatively low-risk “floor,” forming 
+our Bear Case #2. Our Bear Case #1 assumes 45 GW, roughly midway between this floor 
+and our 57 GW base case, while our bull case assumes 65 GW, representing modest 
+upside to our base expectations.  We then flex our company estimates proportionally to 
+the reduction in GW deployments under each scenario. Based on this analysis, Nvidia 
+and Broadcom screen as particularly attractive at current valuation levels across a range 
+of downside scenarios (Exhibit 8). 
+ 
+Semi Cap Equipment 
+For Semi Cap Equipment stocks, we frame our analysis across three valuation scenarios 
+reflecting varying assumptions for 2028 WFE growth. Scenario #1 applies our current 
+2028 EPS estimates which ssume ~30% WFE growth in 2028, giving full credit to the 
+earnings power implied by our longer-term WFE outlook. Scenario #2 assumes ~15% 
+WFE growth, reflecting continued WFE momentum into 2028 while providing a more 
+balanced framework that accounts for execution, timing, and cycle risk.  Scenario #3 
+applies our 2027 EPS estimates and assumes flat WFE in 2028, representing a downside 
+scenario that reflects a meaningful slowdown in WFE spending following the current 
+upcycle. 
+ 
+Exhibit 8: We believe NVDA and AVGO currently stand at very attractive entry points 
+0.0x
+10.0x
+20.0x
+30.0x
+40.0x
+50.0x
+60.0x
+70.0x
+80.0x
+90.0x
+100.0x
+Jan-10
+Jan-11
+Jan-12
+Jan-13
+Jan-14
+Jan-15
+Jan-16
+Jan-17
+Jan-18
+Jan-19
+Jan-20
+Jan-21
+Jan-22
+Jan-23
+Jan-24
+Jan-25
+Jan-26
+Price to NTM Earnings, Select Compute Names
+January 2010 - Present
+Monthly, as reported by FactSet
+NVDA
+AVGO
+AMD
+ 
+ 
+Source: FactSet, Data compiled by Goldman Sachs Global Investment Research
+9 November 2026
+  8
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+Across these scenarios, Applied Materials, Lam Research, and Tokyo Electron screen as 
+particularly attractive at current levels, with compelling risk/reward even under more 
+conservative earnings assumptions (Exhibit 9). 
+ 
+Memory 
+Global memory stocks have historically found a bottom around their tangible book 
+values.  Several global memory names (Samsung, SK Hynix, covered by Giuni Lee) are 
+beginning to approach these levels, and Samsung and Hynix are already below their total 
+book values. We also believe risk/reward is becoming more attractive for Neutral-rated 
+Micron in light of the high probability of strong FCF in the coming quarters. 
+ 
+Exhibit 9: We believe AMAT and LRCX are particularly compelling at current levels 
+P/E valuation based on calendar 2028 estimates under different scenarios 
+0.0x
+5.0x
+10.0x
+15.0x
+20.0x
+25.0x
+30.0x
+35.0x
+40.0x
+45.0x
+50.0x
+Jan-10
+Jan-11
+Jan-12
+Jan-13
+Jan-14
+Jan-15
+Jan-16
+Jan-17
+Jan-18
+Jan-19
+Jan-20
+Jan-21
+Jan-22
+Jan-23
+Jan-24
+Jan-25
+Jan-26
+Price to NTM Earnings, Select Semicap Equipment
+January 2010 - Present
+Monthly, as reported by FactSet
+AMAT
+LRCX
+KLA
+TER
+ 
+ 
+Source: FactSet, Data compiled by Goldman Sachs Global Investment Research
+9 November 2026
+  9
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+ 
+Exhibit 10: Global memory stocks histrorically demonstrate good risk/reward below tangible book value  
+0.0x
+2.0x
+4.0x
+6.0x
+8.0x
+10.0x
+12.0x
+14.0x
+16.0x
+18.0x
+20.0x
+Price to Tangible Book Value, Memory Makers
+January 2000 - Present
+Monthly, calculated (higher frequency)
+Micron
+Samsung
+SK Hynix
+SK Hynix ~ 3.1x
+Samsung ~ 1.8x
+Micron ~ 5.4x
+ 
+ 
+Source: FactSet, Data compiled by Goldman Sachs Global Investment Research
+ 
+Exhibit 11: Micron is currently approaching tangible book value, and could be significantly below over the upcoming 
+quarters given our currently projected FCF estimates 
+$0
+$200
+$400
+$600
+$800
+$1,000
+$1,200
+$1,400
+Jan-15
+Jan-16
+Jan-17
+Jan-18
+Jan-19
+Jan-20
+Jan-21
+Jan-22
+Jan-23
+Jan-24
+Jan-25
+Jan-26
+Jan-27
+Jan-28
+Micron Share Price and Tangible Book Value per Share
+January 2015 - Present
+Price
+TBV/Share
+ 
+ 
+Source: FactSet, Goldman Sachs Global Investment Research
+9 November 2026
+  10
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+Price targets and risks 
+ 
+ 
+AMD (Buy): Our 12-month target price of $675 is based on a 30X P/E multiple applied 
+to our normalized EPS estimate of $22.50. Key downside risks include: (1) 
+slower-than-expected adoption of agentic AI; (2) slower-than-anticipated deployment 
+of AMD GPUs related to the Meta deal; (3) share erosion of x86 architecture in 
+enterprise AI and (4) lack of operating leverage. 
+AMAT (Buy, on CL): Our 12-month price target of $670 is based on a 32X P/E multiple 
+applied to our normalized EPS estimate of $21.00. Key downside risks include: (1) 
+incremental export restrictions; (2) local China-based supplier share gains. 
+AVGO (Buy): Our 12-month target price of $540 is based on 30X our normalized EPS 
+estimate of $18.00. Key downside risks include: (1) slowdown in AI infrastructure 
+spending, (2) share loss in custom compute franchise, (3) persistent inventory digestion 
+in non-AI; (4) increased competition in VMware. 
+KLAC (Neutral): Our price target of $195 is based on a 30X P/E multiple applied to our 
+normalized EPS of $6.50. Key upside/downside risks: (1) sharp increase in Foundry/Logic 
+spending; (2) uncertainty related to export restrictions were to be removed; (3) sharp 
+rebound in Memory WFE spending (vis-a-vis Foundry/Logic); (4) incremental US export 
+restrictions. 
+LRCX (Buy): Our price target is $380, which is based on a 35X multiple applied to our 
+normalized EPS forecast of $10.75. Key downside risks: (1) softer DRAM/HBM demand; 
+(2) delays in planned clean room and fab expansions; (3) lower-than-expected content 
+gains from advanced packaging and 3D architectures. 
+MRVL (Not Rated): We are Not Rated on Marvell. 
+MU (Neutral): Our price target of $1,250 is based on a 18X multiple applied to our 
+normalized EPS estimate of $70.00. Key upside/downside risks include: (1) continued 
+execution on the company’s HBM roadmap and share gain, (2) sizable step-up (above 
+current expectations) in HBM content for AI accelerators, (3) continued signs of CXMT 
+gaining DRAM market share, negatively impacting pricing dynamics.  
+NVDA (Buy): Our 12-month price target of $300 is based on a 30X P/E multiple applied 
+to our normalized EPS estimate of $10.00. Key downside risks include: (1) slowdown in AI 
+infrastructure spending, (2) share erosion due to increased competitive intensity, (3) 
+margin erosion due to increased competition; (4) supply constraints. 
+2454.TW (MediaTek, Buy, covered by Allen Chang): Our 12m TP of NT$7,100 is based 
+on a target P/E multiple of 25x (1.8 stdv above its 5-year trading average) applied to our 
+2H27E-1H28E EPS. Key risks to our views: (1) Weaker-than-expected end demand 
+especially with smartphones, (2) Higher foundry cost impacting its margin outlook, (3) 
+Intensifying competition that would result in reduced profitability, and (4) Slower ramp 
+in ASIC would result in changes in operating leverage. 
+005930.KS (Samsung Electronics, Buy, on CL, covered by Giuni Lee): Our 12m 
+2026E-2027E EV/EBITDA-based SOTP target price for the common share is W500,000. 
+Our 12-month target price for the preference share (005935.KS) is W380,000, applying 
+our target preferred-to-common discount of 24%, derived from averaging: 1) the pref 
+9 November 2026
+  11
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+discount of the 2-factor model, and 2) the 1-year historical average discount to common 
+shares. We are Buy rated on both the common and preference shares. Key downside 
+risks: 1) major deterioration in memory supply/demand, 2) sharp contraction in 
+smartphone margins, and 3) mobile OLED market share loss. 
+000660.KS (SK Hynix Inc., Buy, covered by Giuni Lee): Our 2026E/27E avg. P/E-based 
+12m TP is W3,500,000, applying a target P/E multiple of 7.0X. Key risks include 1) major 
+deterioration in memory supply/demand and delay in technology migration, 2) weaker 
+demand for smartphones/PCs/servers which would impact overall conventional memory 
+demand, 3) Samsung’s positive HBM business progress which would impact HBM 
+revenue and profit, 4) lower AI-related capex which would impact overall HBM demand, 
+and thus HBM revenue/profit for the company. 
+TER (Buy): Our 12-month price target of $440 is based on a 35X P/E multiple applied to 
+our normalized EPS forecast of $12.50. Key downside risks: (1) delays in the revenue 
+ramp with a merchant GPU customer, (2) significant quarterly volatility due to the lumpy 
+nature of large AI-related infrastructure projects, (3) slower-than-expected recovery in 
+Mobile. 
+8035.T (Tokyo Electron, Buy, covered by Shuhei Nakamura): Our 12-month target 
+price of ¥19,000 is based on our FY3/28E EBITDA estimate and the global SPE sector 
+average EV/EBITDA multiple of 18X, to which we then apply a sector-relative premium 
+of 30% (implying FY3/28E P/E of 31X and P/B of 15X).  Key downside risks: A prolonged 
+inventory adjustment phase in the semiconductor industry, further strengthening of 
+export restrictions, and a depressed valuation multiple amid upward pressure on 
+interest rates and other factors.
+9 November 2026
+  12
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, James Schneider, Ph.D., Michael Ng, CFA, Allen Chang, Giuni Lee, Shuhei Nakamura, Anmol Makkar, Luya You, Khalil Fenina, Liana Wadhwani and 
+Marshall Wong, hereby certify that all of the views expressed in this report accurately reflect our personal views about the subject company or 
+companies and its or their securities. We also certify that no part of our compensation was, is or will be, directly or indirectly, related to the specific 
+recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: James Schneider, Ph.D. Goldman Sachs & Co. LLC, Michael Ng, CFA Goldman Sachs & Co. LLC, Allen Chang Goldman Sachs (Asia) 
+L.L.C., Giuni Lee Goldman Sachs (Singapore) Pte, Shuhei Nakamura Goldman Sachs Japan Co., Ltd., Anmol Makkar Goldman Sachs & Co. LLC, Luya You 
+Goldman Sachs & Co. LLC, Khalil Fenina Goldman Sachs & Co. LLC, Liana Wadhwani Goldman Sachs & Co. LLC, Marshall Wong Goldman Sachs & Co. LLC. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+Rating and pricing information 
+Advanced Micro Devices Inc. (Buy, $449.04), Applied Materials Inc. (Buy, $332.72), Broadcom Inc. (Buy, $293.69), KLA Corp. (Neutral, $138.49), Lam 
+Research Corp. (Buy, $200.44), Marvell Technology Inc. (Not Rated, $141.20), MediaTek (Buy, NT$3,390.00), Micron Technology Inc. (Neutral, $690.00), 
+Nvidia Corp. (Buy, $186.64), SK Hynix Inc. (Buy, W1,132,000), Samsung Electronics (Buy, W188,700), Samsung Electronics (Pref) (Buy, W150,300), 
+Teradyne Inc. (Buy, $218.22) and Tokyo Electron (Buy, ¥8,263) 
+Financial advisory disclosure 
+Goldman Sachs and/or one of its affiliates is acting as a financial advisor in connection with an announced strategic matter involving the following 
+company or one of its affiliates: MARVELL TECHNOLOGY, INC. 
+The rating(s) for SK Hynix Inc., Samsung Electronics and Samsung Electronics (Pref) is/are relative to the other companies in its/their coverage 
+universe: Hansol Chemical, LG Display, LG Electronics, LG Innotek Co., SK Hynix Inc., SKC, Samsung Electro-Mechanics, Samsung Electronics, Samsung 
+Electronics (Pref)  
+The rating(s) for Tokyo Electron is/are relative to the other companies in its/their coverage universe: Advantest, DISCO, Ebara, HOYA, JEOL, Kioxia 
+Holdings, Kokusai Electric, Lasertec, SCREEN Holdings, Tokyo Electron, Tokyo Seimitsu, Ulvac  
+The rating(s) for Advanced Micro Devices Inc., Applied Materials Inc., Broadcom Inc., KLA Corp., Lam Research Corp., Micron Technology Inc., 
+Nvidia Corp. and Teradyne Inc. is/are relative to the other companies in its/their coverage universe: ARM Holdings, Accenture Plc, Advanced Micro 
+Devices Inc., Amkor Technology Inc., Analog Devices Inc., Applied Materials Inc., Broadcom Inc., Cadence Design Systems Inc., Camtek, Cognizant 
+Technology Solutions, Credo Technology Group, EPAM Systems Inc., Entegris Inc., GlobalFoundries Inc., Globant SA, Intel Corp., International Business 
+Machines Corp., KLA Corp., Lam Research Corp., MKS Instruments Inc., Microchip Technology Inc., Micron Technology Inc., NXP Semiconductors NV, 
+Nvidia Corp., ON Semiconductor Corp., Onto Innovation, Qnity, Qualcomm Inc., SanDisk Corp., Seagate Technology, SiTime Corp., Skyworks Solutions 
+Inc., Synopsys Inc., TaskUs Inc., Teradyne Inc., Texas Instruments Inc., Western Digital Corp.  
+The rating(s) for MediaTek is/are relative to the other companies in its/their coverage universe: AAC, ACM Research, AMEC, ASMPT, AccoTest, All 
+Ring Tech Co., Anji Micro, Aspeed, BOE, BYDE, Biren, CR Micro, CXMT, Cambricon, China Mobile (HK), China Telecom, China Tower Corp., China Unicom, 
+Chinasoft Intl, Desay SV, E-Town Semis, EHang, Empyrean, Eoptolink, FOCI, Foxconn Industrial Internet, Gigadevice, Glodon Co., Grand Plastic 
+Technology Corp., Hikvision, Hon Hai, Hon Precision, Horizon Robotics, Hua Hong, Huace Navigation, Huaqin Co.(A), Huaqin Co.(H), Hwatsing, Iluvatar, 
+9 November 2026
+  13
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+InnoScience, Innolight (A), Innolight (H), Inspur, Insta360, JCET, Kematek, King Slide, Kingdee, Kingsoft Office, LandMark, Largan, Lenovo, Lingyi, 
+Luxshare (A), Luxshare (H), MPI Corp., Maxscend, MediaTek, Meitu, MetaX, Mitac, Montage (A), Montage (H), NAURA, NSIG, Nexchip, OmniVision, Pony 
+AI Inc. (ADR), Pony AI Inc. (H), RoboTechnik, Ruijie Networks, SG Micro, SICC, SMIC (A), SMIC (H), SZS, Sangfor, SenseTime, StarPower, Sunny Optical, TFC 
+Optical, TSMC, TSMC (ADR), Thundersoft, Tongyu Communication, Transsion, UMT, UNIS, VPEC, Vanchip, VeriSilicon, WeRide, Winway Technology Co., 
+Wistron, Wiwynn, YJ Semitech, YOFC, Yonyou, ZTE (A), ZTE (H), iFlytek  
+Company-specific regulatory disclosures 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+ 
+As of October 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,094 equity securities. Goldman Sachs assigns stocks as 
+Buys and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Target price history table(s) 
+ 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+58%
+43%
+KLA Corp. (KLAC)
+Samsung Electronics (Pref) (005935.KS)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (W)
+Closing price (W)
+28-Oct-26
+195.00
+158.77
+08-Oct-26
+380,000
+194,000
+29-Jul-26
+210.00
+170.19
+31-May-26
+360,000
+202,500
+05-Jul-26
+230.00
+235.55
+30-Apr-26
+245,000
+158,300
+29-Apr-26
+1,550.00
+181.62
+07-Apr-26
+220,000
+130,900
+13-Mar-26
+1,505.00
+141.86
+11-Mar-26
+200,000
+138,900
+30-Jan-26
+1,450.00
+142.79
+29-Jan-26
+159,000
+115,600
+29-Oct-25
+1,280.00
+123.53
+08-Jan-26
+142,000
+101,900
+08-Oct-25
+1,120.00
+106.26
+16-Dec-25
+110,000
+79,800
+10-Jul-25
+980.00
+92.86
+30-Oct-25
+99,000
+82,500
+31-Jan-25
+864.00
+73.82
+14-Oct-25
+89,000
+72,300
+10-Jan-25
+759.00
+68.31
+22-Sep-25
+78,000
+66,700
+31-Oct-24
+850.00
+66.62
+31-Jul-25
+69,000
+57,600
+02-Oct-24
+825.00
+77.74
+01-May-25
+61,000
+46,850
+25-Jul-24
+838.00
+76.28
+01-Apr-25
+64,000
+47,700
+26-Apr-24
+735.00
+70.63
+02-Feb-25
+59,000
+43,000
+26-Jan-24
+640.00
+59.94
+08-Jan-25
+60,000
+46,800
+16-Dec-24
+63,000
+46,550
+31-Oct-24
+68,000
+47,950
+08-Oct-24
+71,000
+49,900
+23-Sep-24
+78,000
+52,400
+31-Jul-24
+88,000
+64,900
+05-Jul-24
+87,000
+68,000
+05-Apr-24
+85,000
+69,000
+21-Mar-24
+81,000
+65,800
+17-Dec-23
+77,000
+59,300
+Advanced Micro Devices Inc. (AMD)
+Tokyo Electron (8035.T)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (¥)
+Closing price (¥)
+04-Nov-26
+675.00
+488.78
+30-Oct-26
+19,000
+9,514
+05-Oct-26
+700.00
+631.75
+23-Aug-26
+90,000
+10,858
+05-Jul-26
+640.00
+517.82
+30-Jul-26
+86,000
+10,448
+06-May-26
+450.00
+421.39
+30-Jun-26
+83,000
+15,430
+24-Feb-26
+240.00
+213.84
+31-May-26
+62,000
+10,484
+07-Oct-25
+210.00
+211.51
+04-May-26
+57,000
+9,490
+06-Aug-25
+150.00
+163.12
+30-Apr-26
+55,000
+8,878
+9 November 2026
+  14
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+ 
+Advanced Micro Devices Inc. (AMD)
+Tokyo Electron (8035.T)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (¥)
+Closing price (¥)
+10-Jul-25
+140.00
+144.16
+09-Mar-26
+52,000
+7,784
+05-Feb-25
+125.00
+112.01
+21-Feb-26
+50,000
+8,792
+10-Jan-25
+129.00
+116.04
+06-Feb-26
+44,000
+8,206
+01-May-24
+175.00
+144.27
+06-Jan-26
+43,000
+7,470
+31-Jan-24
+180.00
+167.69
+15-Dec-25
+38,000
+6,228
+18-Dec-23
+157.00
+138.90
+31-Oct-25
+36,000
+6,836
+07-Dec-23
+137.00
+128.37
+08-Oct-25
+32,500
+5,851
+31-Jul-25
+30,000
+5,466
+30-Jun-25
+33,000
+5,536
+07-Apr-25
+30,000
+3,412
+24-Mar-25
+32,500
+4,438
+10-Jan-25
+35,000
+5,405
+02-Oct-24
+38,500
+5,016
+02-May-24
+43,000
+7,002
+21-Mar-24
+41,000
+7,868
+13-Mar-24
+40,000
+7,478
+09-Feb-24
+33,000
+5,951
+04-Jan-24
+30,000
+4,801
+25-Nov-23
+27,000
+4,801
+Applied Materials Inc. (AMAT)
+Samsung Electronics (005930.KS)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (W)
+Closing price (W)
+13-Aug-26
+670.00
+534.54
+08-Oct-26
+500,000
+262,000
+05-Jul-26
+645.00
+603.04
+30-Jul-26
+490,000
+207,000
+15-May-26
+520.00
+436.62
+31-May-26
+480,000
+317,000
+13-Feb-26
+390.00
+354.91
+30-Apr-26
+320,000
+220,500
+09-Jan-26
+310.00
+301.18
+07-Apr-26
+285,000
+196,500
+08-Oct-25
+250.00
+217.51
+11-Mar-26
+260,000
+190,000
+15-Aug-25
+215.00
+161.76
+29-Jan-26
+205,000
+160,700
+10-Jul-25
+225.00
+198.03
+08-Jan-26
+180,000
+138,800
+10-Jan-25
+202.00
+171.65
+16-Dec-25
+140,000
+102,800
+15-Nov-24
+230.00
+168.88
+30-Oct-25
+123,000
+104,100
+02-Oct-24
+228.00
+201.15
+14-Oct-25
+109,000
+91,600
+17-May-24
+240.00
+212.08
+22-Sep-25
+96,000
+83,500
+16-Feb-24
+220.00
+199.57
+31-Jul-25
+84,000
+71,400
+17-Nov-23
+156.00
+148.59
+01-May-25
+74,000
+55,500
+01-Apr-25
+77,000
+58,800
+02-Feb-25
+72,000
+52,400
+08-Jan-25
+73,000
+57,300
+16-Dec-24
+75,000
+55,600
+31-Oct-24
+82,000
+59,200
+08-Oct-24
+86,000
+60,300
+23-Sep-24
+95,000
+62,600
+31-Jul-24
+110,000
+83,900
+05-Jul-24
+108,000
+87,100
+01-Jul-24
+105,000
+81,800
+30-Apr-24
+103,000
+77,500
+05-Apr-24
+102,000
+84,500
+21-Mar-24
+97,000
+79,300
+17-Dec-23
+95,000
+73,300
+Lam Research Corp. (LRCX)
+Micron Technology Inc. (MU)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+05-Jul-26
+380.00
+351.41
+01-Oct-26
+1,250.00
+1,097.39
+23-Apr-26
+290.00
+258.56
+25-Jun-26
+1,100.00
+1,213.56
+29-Jan-26
+262.00
+248.17
+08-Jun-26
+900.00
+949.28
+09-Jan-26
+180.00
+218.36
+19-Mar-26
+400.00
+444.27
+08-Oct-25
+160.00
+142.54
+02-Mar-26
+360.00
+412.67
+9 November 2026
+  15
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+ 
+ 
+Lam Research Corp. (LRCX)
+Micron Technology Inc. (MU)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+10-Jul-25
+115.00
+101.06
+18-Dec-25
+235.00
+248.55
+30-Jan-25
+90.00
+80.73
+03-Dec-25
+205.00
+234.16
+10-Jan-25
+85.00
+74.65
+08-Oct-25
+180.00
+196.54
+24-Oct-24
+96.00
+76.57
+23-Sep-25
+145.00
+166.41
+02-Oct-24
+1,025.00
+81.41
+10-Jul-25
+130.00
+123.11
+01-Aug-24
+1,050.00
+83.03
+19-Dec-24
+128.00
+87.09
+25-Apr-24
+960.00
+90.15
+26-Sep-24
+145.00
+109.88
+25-Jan-24
+912.00
+86.56
+27-Jun-24
+158.00
+132.23
+04-Jun-24
+138.00
+126.64
+21-Mar-24
+122.00
+109.85
+07-Mar-24
+112.00
+98.98
+26-Feb-24
+103.00
+89.46
+21-Dec-23
+97.00
+85.48
+Nvidia Corp. (NVDA)
+Marvell Technology Inc. (MRVL)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+27-Aug-26
+300.00
+227.98
+07-Oct-26
+270.00
+284.68
+21-May-26
+285.00
+219.51
+27-Aug-26
+220.00
+241.45
+20-Nov-25
+250.00
+180.64
+12-Aug-26
+195.00
+217.08
+31-Oct-25
+240.00
+202.49
+28-May-26
+180.00
+204.83
+06-Oct-25
+210.00
+185.54
+13-May-26
+125.00
+177.95
+07-Aug-25
+200.00
+180.77
+06-Mar-26
+100.00
+89.57
+10-Jul-25
+185.00
+164.10
+03-Dec-25
+90.00
+100.20
+21-Nov-24
+165.00
+146.67
+17-Nov-25
+80.00
+83.45
+11-Oct-24
+150.00
+134.80
+29-Aug-25
+72.00
+62.87
+11-Jun-24
+135.00
+120.91
+10-Jul-25
+75.00
+73.36
+23-May-24
+1,200.00
+103.80
+10-Jan-25
+131.00
+114.32
+07-May-24
+1,100.00
+90.55
+04-Dec-24
+115.00
+118.15
+19-Mar-24
+1,000.00
+89.40
+30-Aug-24
+87.00
+76.24
+22-Feb-24
+875.00
+78.54
+03-Jun-24
+77.00
+68.21
+05-Feb-24
+800.00
+69.33
+08-Mar-24
+84.00
+75.42
+22-Nov-23
+625.00
+48.72
+12-Jan-24
+74.00
+65.68
+MediaTek (2454.TW)
+Teradyne Inc. (TER)
+Date of report
+Target price (NT$)
+Closing price (NT$)
+Date of report
+Target price ($)
+Closing price ($)
+30-Oct-26
+7,100.00
+3,915.00
+28-Oct-26
+440.00
+313.24
+31-Jul-26
+7,000.00
+3,555.00
+05-Jul-26
+465.00
+369.09
+01-Jul-26
+6,800.00
+4,335.00
+30-Apr-26
+350.00
+343.47
+30-Apr-26
+5,000.00
+2,610.00
+03-Feb-26
+300.00
+282.98
+16-Apr-26
+2,454.00
+1,895.00
+15-Dec-25
+230.00
+194.70
+04-Feb-26
+2,200.00
+1,800.00
+29-Oct-25
+148.00
+173.94
+31-Oct-25
+1,400.00
+1,310.00
+08-Oct-25
+130.00
+144.60
+30-Jul-25
+1,620.00
+1,380.00
+30-Jul-25
+85.00
+107.65
+30-Apr-25
+1,800.00
+1,350.00
+10-Jul-25
+80.00
+98.62
+10-Mar-25
+1,780.00
+1,395.00
+30-Jan-25
+140.00
+115.08
+07-Feb-25
+1,700.00
+1,525.00
+26-Jul-24
+151.00
+126.46
+30-Oct-24
+1,490.00
+1,290.00
+20-May-24
+161.00
+139.51
+24-Sep-24
+1,480.00
+1,195.00
+26-Apr-24
+118.00
+114.13
+31-Jul-24
+1,460.00
+1,220.00
+01-Feb-24
+107.00
+95.14
+26-Apr-24
+1,300.00
+1,005.00
+21-Mar-24
+1,350.00
+1,140.00
+31-Jan-24
+1,115.00
+966.00
+Broadcom Inc. (AVGO)
+SK Hynix Inc. (000660.KS)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (W)
+Closing price (W)
+03-Sep-26
+540.00
+357.16
+31-May-26
+3,500,000
+2,333,000
+04-Jun-26
+525.00
+418.91
+23-Apr-26
+1,800,000
+1,225,000
+19-May-26
+500.00
+411.07
+11-Mar-26
+1,350,000
+955,000
+9 November 2026
+  16
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+ 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+Broadcom Inc. (AVGO)
+SK Hynix Inc. (000660.KS)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (W)
+Closing price (W)
+05-Mar-26
+480.00
+332.77
+28-Jan-26
+1,200,000
+841,000
+12-Dec-25
+450.00
+359.93
+29-Oct-25
+700,000
+558,000
+25-Nov-25
+435.00
+385.03
+24-Jul-25
+300,000
+269,500
+13-Oct-25
+380.00
+356.70
+16-Jul-25
+310,000
+296,000
+05-Sep-25
+360.00
+334.89
+24-Apr-25
+290,000
+178,300
+13-Aug-25
+340.00
+309.09
+01-Apr-25
+300,000
+197,000
+10-Jul-25
+315.00
+275.40
+23-Jan-25
+290,000
+219,500
+10-Jan-25
+255.00
+224.31
+15-Jan-25
+285,000
+198,200
+16-Dec-24
+240.00
+250.00
+24-Oct-24
+280,000
+198,200
+06-Sep-24
+190.00
+137.00
+23-Sep-24
+255,000
+162,000
+13-Jun-24
+1,850.00
+167.90
+01-Jul-24
+290,000
+235,500
+08-Mar-24
+1,550.00
+130.87
+27-May-24
+255,000
+201,500
+19-Jan-24
+1,325.00
+121.12
+25-Apr-24
+225,000
+170,600
+21-Mar-24
+210,000
+170,000
+25-Jan-24
+185,000
+137,400
+17-Jan-24
+180,000
+131,000
+9 November 2026
+  17
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+9 November 2026
+  18
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
+
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use. You 
+may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+You may not use, extract, download or retrieve this information, in whole or in part, to train, finetune, adjust, influence the weights or behavior of, or 
+otherwise develop or improve a machine learning or artificial intelligence model or system, or provide or reproduce this information, in whole or in part, 
+as a prompt or input to any such system without the express written consent of Goldman Sachs. Furthermore, you may not bulk download this 
+information, or employ any robot, spider, crawler, scraper, automated agent, or other electronic means to scrape, harvest, extract, or retrieve this 
+information, without the express written consent of Goldman Sachs. A breach of the above terms may result in termination of your right to access this 
+service. 
+9 November 2026
+  19
+Goldman Sachs
+Americas Technology: Semiconductors
+ 
+ 
