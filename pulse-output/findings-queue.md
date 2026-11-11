@@ -1370,3 +1370,13 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — "Texas holds 26.7% of planned capacity (Goldman)" does not match the dump (26% of 2026-30 net additions, 25% of risk). This repeats the 11-06 Texas share mismatch (27% vs 25%). "$125B in 2028" is not located.
 - **observation** — "Many desks flag the deal headlines" in WHAT TO WATCH is mild corpus meta-narration.
 - **observation** — No STEP 7 self-review for today (none since 10-22). Adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-11
+- **deterministic-fixable** — Stale framing in a locked Omnipulse body: MAIN EVENT presents Tuesday's CPI as pending while the RECAP reports it. Add a gate that checks the locked body for forecasts of releases the calendar marks PRINTED (or run it before the post).
+- **deterministic-fixable** — The archived adversarial verdict has about 27 findings while the driver says 2 hard and the recheck 0, and the published text still carries most quoted passages. Record the hard/soft class per finding and what the repair changed, so the trail reconciles.
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild (pdf_count 490 vs 202 published, stamped 15:21Z). Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-10).
+- **observation** — Adversarial false positives: Nomura $47bn/$61bn, UBS $95-125B split, Goldman 2.2bp and $296B, Citadel 350 projects, Quinn/Ellis and Lynam are all in the dump. Track checker precision, since it likely read a narrower context.
+- **observation** — Likely real errors: "0.5 standard deviation" single-stock selling (dump's 0.5 SD is the pace of de-grossing, adversarial cites -2.1 SD for single stocks), "423 names" (dump says 420+), Monday semis +6.8% and prior unemployment rate 4.18% (neither located).
+- **observation** — Unconfirmed Morgan Stanley attribution on the payroll figures and December call (figures are in the dump under other banks). Goldman core CPI 0.16% not located as Goldman's.
+- **observation** — Selection: CPI gets no brief and the 5.00% 10-year/fiscal angle has no theme. The semis SPLIT shows only the bull side.
+- **observation** — Verdict gaps for 10-12 and 10-14 persist.

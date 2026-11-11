@@ -971,3 +971,12 @@ no FAILs (4 CONCERN, 6 clean). Notes for a session:
 - **regex-able (CONCERN)** (17:28 UTC, BK, JCI "explain this one too"): `dead-ticker:CRAH` stripped the bullet that carried the answer. CRAH is a parenthesised industry acronym, not a trade candidate. Candidate fixture: question "explain this one too" replying to "Also JCI (Johnson Controls)", raw answer containing "air handlers (CRAH)". Assertion: final answer still matches `(?i)chillers?|YORK|CDU` and `dead-ticker` does not fire when the paren token follows a common noun and no price/trade verb is nearby.
 - **regex-able (CONCERN)** (17:27 UTC, BK, Eaton and Amphenol): stray markdown stars in a ticker wrapper, `\(\*\*`\*\*[A-Z]{1,5}\*\*`\*\*\)`, shipped in the final answer. Assertion: no `` `\*\* `` or `\*\*` inside a backtick span in the final text.
 - **judgment (CONCERN)** (22:45 to 22:46 UTC, BK, richest-people chain): rank and net-worth figures from a single low-authority source (beinsure.com) or one Wikipedia page, stated flat, no "as of" date. "lower-middle tier" is a grade. The top-1000 answer's second bullet says nothing. A live-ranking question should name its source and date or decline to give a rank band.
+
+## 2026-11-10
+
+- **regex-able (FAIL)** (14:01 UTC, Arxfic, fantasy playoff odds, shape: fantasy): the answer listed per-team playoff odds (91%, 82%, 48-66%, 22.5%, 2%, 0%) with only a `topic=situation` call and no odds field in the payload. The playoff format was never stated, so `fantasy_odds` did not run, and `fantasy-percent` kept the figures. Candidate fixture:
+  - question: `What are the current odds of each team to make the playoffs?` (reply to a standings answer)
+  - tools: `lookup_fantasy_league` with `topic=situation` only, payload has no `playoff_odds` or equivalent key
+  - bad answer (verbatim): `→ **Arxfic** and **dizzydean6** lead the pack at **6-3**, holding clear pole position with roughly **91%** and **82%** implied odds to lock up a top-6 playoff spot heading into week 10.`
+  - assertion: on a question matching `(?i)\b(odds|chance|probabilit\w*)\b.*\bplayoffs?\b` with no `fantasy_odds` result and no payload key containing `playoff`, the answer must not match `\*\*\d{1,3}(\.\d)?%\*\*` next to a manager name. A good answer says the league format is needed (or computes from a stated format) and gives only record and points from the payload.
+- Not queued (CONCERN only): BTC 2021 ATH figure inconsistent with the stated day high (15:45); CEO pay with no fiscal year (17:43).
