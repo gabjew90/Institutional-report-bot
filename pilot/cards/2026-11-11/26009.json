@@ -1,0 +1,117 @@
+{
+ "brief": "Chart pack framed around a semiconductor positioning washout. SOX's five-day performance through Thursday's close was the worst since Covid, and GS data show fund allocations to semis pushed back to year lows. BofA's Hartnett flagged SOX trading 17% below its 200-day moving average on Friday, noting that since 1996 readings of 20-25% below have historically marked attractive entry points. The note says SOX has since rallied, calling Hartnett's signal almost to perfection for timing the low. MS Alpha data put SOX on a single-digit two-year forward P/E, and GS charts compare that to consumer staples' forward P/E as a valuation reference. The pack's own framing: SOX is bouncing and reclaiming its trendline, and one day does not make a bull market, but the positioning unwind has been extreme, so a further squeeze would force the underpositioned to chase the move higher.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "SOX is bouncing hard and reclaiming its prior trendline.",
+   "anchor": "SOX is bouncing hard, reclaiming the trendline.",
+   "topic": "Semis-led equity rebound",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "If the semiconductor sector squeezes further, underpositioned investors will be forced to chase the rally.",
+   "anchor": "Should this space squeeze further, people will be forced to chase.",
+   "topic": "Semis-led equity rebound",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "SOX's five-day performance through Thursday's close was the worst since Covid.",
+   "anchor": "five-day performance through Thursday's close\nwas the worst since Covid.",
+   "topic": "Semis-led equity rebound",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "The positioning unwind in semiconductors has pushed fund allocations back toward year lows.",
+   "anchor": "The positioning puke in semis has pushed allocations back toward year lows.",
+   "topic": "Semis-led equity rebound",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "MS Alpha",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "SOX now trades on a single-digit two-year forward P/E.",
+   "anchor": "SOX now trades on a single-digit two-year forward P/E.",
+   "topic": "Semis-led equity rebound",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "On Friday, BofA's Hartnett flagged that SOX was trading 17% below its 200-day moving average.",
+   "anchor": "On Friday, BofA's Hartnett flagged SOX trading 17% below its 200-day MA",
+   "topic": "Semis-led equity rebound",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "wall street puked semis now comes the chase",
+   "claim": "Hartnett may have called another low in SOX almost to perfection.",
+   "anchor": "Hartnett may have called another low almost to perfection.",
+   "topic": "Semis-led equity rebound",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-11/26009__wall-street-puked-semis-now-comes-the-chase.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 7,
+  "failed": 1,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 1,
+  "needs_reask": false
+ }
+}
