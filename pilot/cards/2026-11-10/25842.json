@@ -1,0 +1,838 @@
+{
+ "brief": "Goldman's TMT desk note recaps a violent post-midterm week and frames Monday's open. Futures rebounded (Nasdaq +50bps, S&P +60bps, Russell +125bps) on hopes of Iran de-escalation (oil -3.5%) and despite NVDA's board launching an investigation after a CEO-affair headline (NVDA -5% premarket); hyperscalers (AMZN, META, GOOGL, MSFT) bid up while levered-datacenter plays (CRWV, IREN, NBIS) stayed pressured. The core thread: the Nov 3 election raised uncertainty over datacenter build pace in states like Texas, driving a semiconductor selloff (SOX -13% on the week, -31% since Oct 1, -28% over 22 sessions) that Goldman now calls oversold with compelling risk/reward, while its NVDA 3Q preview stays Buy-rated on power/funding/demand debates. Underneath, Prime flows show the deleveraging: Info Tech was the most net-sold global sector (matching 2016-era extremes), US Info Tech allocation fell to a 14.4% multi-year low, and systematic/CTA signals turned negative, with $28bn-$45bn of forecast SPX futures selling. Thursday's vol reversal was historic: the panic index hit 9.57, the 3rd-largest jump ever, after clients stripped hedges into Wednesday's rally, and ETFs printed their 3rd-largest notional volume day ever.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "US equity futures were bid up across the board Monday morning, with the Nasdaq up about 50bps, the S&P 500 up about 60bps, and the Russell 2000 up about 125bps.",
+   "anchor": "Futures bid up across the board (Nasd +50bps, S&P +60bps, Russell +125bps) as the dust",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "By the macro recap, US futures were stabilizing with the S&P up 60bps, Nasdaq up 40bps, and Russell up 1.4%.",
+   "anchor": "US futures stabilizing (SPX +60bps // NDX +40bps // RTY +1.4% // UST10yr -1bps @ 4.85%",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oil fell 3.5% on hopes for further Iran de-escalation after Trump said extensive strikes on Iran are highly unlikely, conditional on Iran signing a strong agreement.",
+   "anchor": "Trump said it is \u201chighly unlikely\u201d he will order extensive strikes on Iran although its conditional on Iran signing \u201ca very strong agreement\u201d (Oil -3.5%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "NVDA fell about 5% pre-market after its board launched an independent investigation following CEO Jensen Huang headlines over the weekend.",
+   "anchor": "the board launching an independent investigation after the CEO Jensen Haung headlines (bbg).",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Bloomberg reported that Nvidia shares dropped after CEO Jensen Huang's affair triggered a board investigation.",
+   "anchor": "Nvidia Shares Drop After CEO Huang\u2019s Affair Triggers Board Probe \u2013 Bloomberg",
+   "topic": "Jensen Huang NVDA allegations",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Hyperscalers were bid up again Monday, with Amazon up 3%, Meta up 3%, Alphabet up 2%, and Microsoft up 2%.",
+   "anchor": "Hyperscalers are bid up again (AMZN +3%, META +3%, GOOGL +2%, MSFT +2%)",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "META",
+    "GOOGL",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Levered-datacenter plays including CoreWeave, Iris Energy, and Nebius fell about 2% to 5% as the market re-postured following last week's election.",
+   "anchor": "levered-datacenter plays are under pressure (CRWV, IREN, NBIS etc -2 to -5%) as the market continues to re-posture following the Election last week.",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [
+    "CRWV",
+    "IREN",
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Info Tech was the most dollar net-sold global and US sector in hedge fund flows last week.",
+   "anchor": "Info Tech was by far the most $ net sold global (and US) sector",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "This week's percentage selling in global Info Tech stocks was roughly on par with the largest net-selling weeks on Goldman's record going back to 2016.",
+   "anchor": "this week\u2019s % selling in global Info Tech stocks was ~on par with the largest net selling weeks on our record (since 2016)",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "US Info Tech net allocation, as a percentage of total US net market value, now stands at 14.4%.",
+   "anchor": "US Info Tech net allocation (as % of total US net MV) now stands at 14.4%",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "US Info Tech net allocation is approaching multi-year lows, in the 1st, 1st, and 3rd percentiles on 1-year, 3-year, and 5-year lookbacks respectively.",
+   "anchor": "approaching multi-year lows in the 1st/1st/3rd percentiles on a 1-year/3-year/5-year lookback.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The Nasdaq 100 closed down about 5% last week, its fourth straight weekly decline, as the SOX semiconductor index posted one of its biggest rolling one-month drawdowns in history.",
+   "anchor": "NDX closed down ~5% last week, now on a 4-week losing streak as the SOX just turned in one of its biggest rolling 1-mo drawdowns",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman has been assessing how the funding gap between current capex and free cash flow for hyperscalers and AI model labs gets closed.",
+   "anchor": "How does the funding gap between current CapEx and free cash flows for hyperscalers and AI model labs levels get closed?",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "A second tension is whether there is sufficient land, power, and shell capacity coming online to match current Street estimates for semiconductor companies.",
+   "anchor": "Is there sufficient land/power/shell coming on line to match current Street estimates for Semis?",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The semiconductor index (SOX) fell 13% in the past week and 31% since October 1 amid the datacenter-build policy selloff.",
+   "anchor": "SOX down 13% in the past week and 31% since Oct. 1",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman believes semiconductor stocks are now clearly in oversold territory after the sector-wide pullback.",
+   "anchor": "we believe stocks are now clearly in oversold territory",
+   "topic": "Midterm data center policy risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman sees few catalysts for semiconductor stocks to move higher before year end but believes risk/reward is compelling for select names at current levels.",
+   "anchor": "we think risk/reward is compelling for select names at current levels",
+   "topic": "Midterm data center policy risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Following the November 3 US elections, uncertainty increased around the pace of AI datacenter builds in states such as Texas, driving the semiconductor sector selloff.",
+   "anchor": "Following the US elections on Nov. 3, the second of these tensions came into greater focus with greater uncertainty around the pace of datacenter builds",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman expects NVDA's 3Q results and guidance to be strong, reiterates its Buy rating, and values the stock at about 11x its CY27 EPS estimate of $16.70.",
+   "anchor": "With the stock trading at ~11X our CY27 EPS estimate of $16.70, we view risk/reward as attractive and reiterate our Buy rating",
+   "topic": "AI capex buildout outlook",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman expects NVDA investor focus to center on three debates: visibility into datacenter power and shell capacity through 2028, and the sustainability of AI infrastructure funding.",
+   "anchor": "We expect investor focus to center on three key debates: (1) management\u2019s visibility into datacenter power/shell capacity visibility through 2028; (2) the sustainability of funding",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman sees a favorable setup for NVDA following the recent sector-wide selloff and expects its near-term fundamentals to outpace Street estimates.",
+   "anchor": "we see a favorable setup following the recent sector-wide selloff and expect Nvidia\u2019s near-term fundamentals to outpace Street estimates.",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman's vol panic index surged to 9.57 out of 10 on Thursday, back in the panic zone above 9.5.",
+   "anchor": "Our vol panic index surged to 9.57 out of 10 (back in the panic zone of 9.5+).",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Thursday's vol panic index jump was the 3rd largest daily jump ever, following Wednesday's 4th largest daily drop.",
+   "anchor": "This move registered as the 3rd largest daily jump ever, which followed Wednesday\u2019s huge decline (4th largest drop).",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The combined two-day swing in Goldman's vol panic index from Wednesday's drop to Thursday's jump was the largest on record.",
+   "anchor": "The combined two-day swing was the largest on record, which shows how quickly the market went",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Clients had aggressively removed hedging protection into Wednesday's post-midterm relief rally, leaving the market underhedged heading into Thursday's reversal.",
+   "anchor": "Clients had aggressively taken off protection into Wednesday\u2019s post-midterm relief rally, leaving the market underhedged heading into Thursday\u2019s reversal.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "US-listed ETFs had their third largest day of notional volume on record on Thursday, printing $580 billion and 33% of the broader tape.",
+   "anchor": "experienced their third largest day of notional volume in our dataset, printing $580 billion worth of volume",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "As of Friday morning, ETF trading continued to run elevated, representing 36% of the tape and dollar volumes running 65% above the 20-day average.",
+   "anchor": "representing 36% of the tape and $ volumes running +65% vs the 20d average.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Systematic/CTA trend signals are now negative in around 60% of global equity markets at the short and medium-term horizons, including the S&P.",
+   "anchor": "Systematic/CTA signals are now negative in around 60% of global equity markets at the short and medium-term trend horizons",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman expects the Systematic/CTA community to sell $28 billion of S&P 500 futures over the next week and $45 billion over the next month in the baseline scenario, taking CTA positioning net short.",
+   "anchor": "We expect the Systematic/CTA community to sell $28bn of SPX futures in the upcoming 1 week, and $45bn in the upcoming 1 month",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 week and 1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman estimates the relevant S&P 500 short-term and medium-term trend levels for CTA signals are around 7685 and 7550.",
+   "anchor": "The relevant S&P short and medium-term levels are around 7685 and 7550 currently, and the flow estimates will update",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The S&P 500 fell 2.7% over the week amid a volatile post-midterms environment driven by concerns that opposition to datacenter development could widen the supply chain's supply-demand gap.",
+   "anchor": "The S&P 500 fell -2.7% on the week, as investors have been navigating a volatile post-Midterms environment triggered by concerns that opposition to data center",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldminers, ACA beneficiaries, and homebuilders outperformed this week, while Memory, Optical Networks, and Oil logged the largest losses.",
+   "anchor": "Goldminers, ACA Beneficiaries, and Homebuilders outperformed this week, while Memory, Optical Networks, and Oil were among the themes that logged the largest losses.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "US equities were modestly net sold this week, driven by the largest single-stock net selling in four months, partially offset by buying in macro products.",
+   "anchor": "US equities were modestly net sold this week, driven by the largest single stock net selling in 4 months partially offset by buying in Macro Products.",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Hedge funds unloaded US Industrials stocks this week at the fastest pace since April 2020.",
+   "anchor": "HFs also unloaded US Industrials stocks this week at the fastest pace since Covid (Apr \u201920).",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The market bounced Friday with semiconductors up about 3.5%, which felt healthy and not just a short-covering squeeze.",
+   "anchor": "Market bounced Friday with Semis up ~3.5% which felt \u2018healthy\u2019 and not just a beta squeeze.",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Long-only investors finished the week as moderate net sellers of tech amid a steady drumbeat of semis supply, while hedge funds finished the week as net buyers.",
+   "anchor": "LOs finished moderate net sellers (steady drumbeat of semis supply) while HFs finished net buyers",
+   "topic": "Hedge fund long/short deleveraging",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The S&P 500's implied move through Friday is 2.29%.",
+   "anchor": "S&P implied move through Friday is 2.29%.",
+   "topic": "Thursday equity vol spike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts October Core CPI to rise 0.16 percentage points month-over-month, due Tuesday alongside a slew of Fed speakers.",
+   "anchor": "Macro focus for the week will be CPI on Tuesday (GIR at +16bps for Core MoM)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman likes shorting its Diversified Staples Basket (GSXUSTAP) because the basket's earnings and dividend yields are unattractive relative to fixed income and there is not enough growth to justify its valuations.",
+   "anchor": "We like shorting our Diversified Staples Basket (GSXUSTAP). Earnings yield and dividend yield of the basket is unattractive relative to fixed income",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman's Diversified Staples Basket has outperformed the S&P 500 by nearly 20% in the last month and is now up 1% more than the S&P 500 over the last year.",
+   "anchor": "GSXUSTAP has outperformed SPX by nearly 20% in the last month and is now up 1% more than SPX over the last year.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Staples have historically lagged the market in the three months following similar events, with the exception of late 2021/early 2022.",
+   "anchor": "Historically, Staples have lagged in the 3m following similar events with the exception of late 2021/early 2022.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oracle has certainty on exactly how much each type of customer contracting model contributes to its backlog and has already stress-tested downside scenarios.",
+   "anchor": "Oracle has certainty on exactly how much each type of customer contracting model contributes to its backlog (vendor financing, customer prepayment, BYOH); and has already",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oracle stated that no more capital will be needed this cycle, following the completion of its $20 billion debt and equity raise last week.",
+   "anchor": "stating that no more capital will be needed this cycle (given the completion of its $20bn debt/equity raise last week).",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oracle has been planning for a more challenging datacenter build environment for over a year and said the election does not represent a binary change in future scaling.",
+   "anchor": "Oracle has been planning for a more challenging data center build environment for over a year; the election does not represent a binary change in",
+   "topic": "Midterm data center policy risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oracle sees minimal risk to the 7GW of datacenter capacity it plans to bring online through May 2028 because it is all for projects that are contracted and under construction.",
+   "anchor": "Oracle sees minimal risk to the 7GW it plans to bring online through May 2028 as it is all for projects that are contracted and",
+   "topic": "AI capex buildout outlook",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oracle noted potential for much greater enterprise AI diffusion, with its Office of the CFO software and new domains like robotics becoming more important.",
+   "anchor": "its role in last-mile domain-specific software may become more important, including in its existing domain for Office of the CFO (where new agentic releases like Fusion Claw",
+   "topic": "AI capex buildout outlook",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts aggregate China internet net profits to increase 9% year-over-year for the September quarter, versus -10% and -32% in the June and March quarters.",
+   "anchor": "We forecast aggregate China internet net profits to increase +9% yoy for the Sep quarter (vs. -10%/-32% for the Jun/Mar quarters)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts Alibaba's September-quarter net profit to grow 165% year-over-year on lower food delivery investments and higher cloud profits.",
+   "anchor": "Alibaba (+165% yoy on lower food delivery investments and higher cloud profits)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts Meituan's September-quarter net profit to grow 114% year-over-year on improving food delivery unit economics.",
+   "anchor": "Meituan (+114% yoy on improving food delivery UE)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts JD's September-quarter net profit to grow 39% year-over-year on lower food delivery investments.",
+   "anchor": "JD (+39% yoy on lower food delivery investments)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "JD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts Tencent's September-quarter net profit to decline 3% year-over-year on a step-up in AI-related investments.",
+   "anchor": "Tencent (-3% yoy on step-up of AI-related investments)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Goldman forecasts PDD's September-quarter net profit to decline 21% year-over-year on higher Temu costs tied to European de-minimis charges and Xinpinmu investments.",
+   "anchor": "PDD (-21% yoy on Temu increased costs related to Europe de-minimis charges/Xinpinmu investments)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "PDD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Rothschild & Co upgraded Airbnb (ABNB) to Neutral.",
+   "anchor": "Upgrades: ABNB (Neutral, Rothschild & Co), AMD (Outperform, Oppenheimer)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ABNB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Oppenheimer upgraded AMD to Outperform.",
+   "anchor": "ABNB (Neutral, Rothschild & Co), AMD (Outperform, Oppenheimer), TRIP (Hold, Jefferies)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Jefferies upgraded TripAdvisor (TRIP) to Hold.",
+   "anchor": "ABNB (Neutral, Rothschild & Co), AMD (Outperform, Oppenheimer), TRIP (Hold, Jefferies)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TRIP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Apple's new CEO is pressing software chief Craig Federighi to take a more ambitious approach to AI as the company looks to transform Siri into an autonomous agent.",
+   "anchor": "Apple\u2019s new CEO is pressing software chief Craig Federighi to take a more ambitious approach to AI as the company looks to transform Siri into",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "Apple's CEO held a closed-door meeting pushing Craig Federighi, who became Apple's AI czar after last year's dismissal of its former AI leader, to accelerate the company's AI roadmap.",
+   "anchor": "Ternus held a closed-door meeting with Craig Federighi, who became Apple\u2019s AI czar following last year\u2019s dismissal of its former AI leader.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "The 10-year Treasury yield was little changed, down 1bp to 4.85% Monday morning.",
+   "anchor": "UST10yr -1bps @ 4.85% // WTI -2.75%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 11.9.26",
+   "claim": "WTI crude fell 2.75% to $88.30 per barrel Monday morning.",
+   "anchor": "4.85% // WTI -2.75% @ $88.30).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-10/25842__gs-tmt-today-11-9-26.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 59,
+  "matched": 59,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 19,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
