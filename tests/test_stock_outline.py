@@ -45,12 +45,9 @@ def test_a_fresh_print_outline_leads_with_price_then_the_result_with_its_true_so
     # an analyst's action after the report, from the news, sits with the desks
     assert lines[3] == ("4. ANALYST ACTION: Morgan Stanley raised its target to $1,200, 2026-10-01 "
                         "(Barron's) [news search]")
-    # desks: a high-conviction call written before the report is kept and tagged
-    assert lines[4].startswith("5. DESK: JPMorgan (2026-09-29, written before the report: what it expected): "
-                               "positive catalyst watch: Guide above Street on HBM4 demand [JPMorgan; this view only]")
-    # 2026-11-12: a preview with no target, rating action or figure is not
-    # news once the result is out, and there is no POSITIONING slot then
-    assert len(lines) == 5 and "Syz Group" not in text and "Goldman" not in text
+    # 2026-11-12 (owner): a note written before the report gets no slot once
+    # the result is out, and there is no POSITIONING slot then
+    assert len(lines) == 4 and "DESK:" not in text
     assert "POSITIONING:" not in text
     assert "a figure from the news or the company report is never a bank's" in text
 
@@ -131,18 +128,29 @@ def test_a_note_that_only_lists_the_report_date_gets_no_desk_slot():
     assert any(s.startswith("POSITIONING:") for s in before), "positioning stays when no print is out"
 
 
-def test_a_preview_with_a_target_or_a_figure_keeps_its_slot_after_the_print():
+def test_after_a_print_only_a_note_written_after_it_gets_a_desk_slot():
     notes = [{"source": "Bernstein", "published": "2026-11-10",
               "calls": [{"action": "reiterate", "rating": "Outperform", "price_target": "$520",
-                         "rationale": "WFE share gains", "conviction": "medium"}]},
-             {"source": "UBS", "published": "2026-11-10", "insights": ["UBS models fiscal Q1 revenue of $11.3B, "
+                         "rationale": "WFE share gains", "conviction": "high"}]},
+             {"source": "UBS", "published": "2026-11-12", "insights": ["UBS models fiscal Q1 revenue of $11.3B, "
                                                                         "3% above the Street."]},
-             {"source": "Citi", "published": "2026-11-10", "insights": ["Citi expects a constructive tone."]}]
-    text = O.build_outline(_amat(**{R.T_RESEARCH: {"status": "ok", "notes": notes}}), "ticker_opinion",
-                           "AMAT", fresh=AMAT_FRESH)
-    assert "DESK: Bernstein (2026-11-10, written before the report" in text
-    assert "DESK: UBS (2026-11-10, written before the report" in text
-    assert "Citi" not in text
+             {"source": "Citi", "published": "2026-11-13",
+              "calls": [{"action": "price_target_change", "rating": "Buy", "price_target": "$450",
+                         "rationale": "Guide above the Street on foundry orders", "conviction": "medium"}]}]
+    results = _amat(**{R.T_RESEARCH: {"status": "ok", "notes": notes}})
+    text = O.build_outline(results, "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    # Bernstein wrote two days before, UBS the morning of an after-the-close report
+    assert "Bernstein" not in text and "UBS" not in text
+    assert "DESK: Citi (2026-11-13): price target change, Buy, price target $450" in text
+    # with no print out, all three are views
+    assert O.build_outline(results, "ticker_opinion", "AMAT").count("DESK:") == O.MAX_DESKS
+    # a question about the desks still gets what they expected, tagged
+    for q in ("what did bernstein expect from amat", "what were analysts saying into amat earnings",
+              "amat price targets?"):
+        asked = O.build_outline(results, "ticker_opinion", "AMAT", fresh=AMAT_FRESH, asked=q)
+        assert "DESK: Bernstein (2026-11-10, written before the report: what it expected)" in asked, q
+    for q in ("did amat earnings drop", "thoughts on amat", "amat?"):
+        assert "Bernstein" not in O.build_outline(results, "ticker_opinion", "AMAT", fresh=AMAT_FRESH, asked=q), q
 
 
 def test_news_lines_are_sorted_by_what_they_are_about():

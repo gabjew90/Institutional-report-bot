@@ -5244,7 +5244,8 @@ async def _ask_02_call_model_with_tools(
         from discord_bot import stock_outline as _so
         _pf_by_tool = {t: r for (t, _), r in zip(_pf_plan, _pf_results) if isinstance(r, dict)}
         _outline = _so.build_outline(_pf_by_tool, _ask_route.shape,
-                                     _so.outline_symbol(_pf_plan), fresh=_fresh)
+                                     _so.outline_symbol(_pf_plan), fresh=_fresh,
+                                     asked=_ask_router.asker_text(question))
         if _outline:
             contents.append(types.Content(role="user",
                                           parts=[types.Part.from_text(text=_outline)]))

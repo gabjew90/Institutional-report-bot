@@ -27,9 +27,11 @@ briefing calendar"). A positioning arrow answered nothing asked, and the
 news line's "shares moving lower" sat beside a live quote of +0.6% after
 hours. Now: a desk gets a slot only when its note carries a view
 (`_has_view`). A note that only lists the company among the week's reports
-never does. A note written before a print that is now out needs more: a
-price target, a rating action, a high-conviction call or a figure of its
-own, something to hold against the result. With a print in the last days
+never does, and a note written before a print that is now out gets none
+(owner, same day: what a desk expected is not the answer once the result
+is in; a note written after the report still gets its slot, and so does a
+preview when the asker asks about the desks, `_asks_about_desks`). With a
+print in the last days
 the news lines are split into RESULT, GUIDANCE and ANALYST ACTION slots, the
 news's own account of the stock's move is cut when a live quote is in the
 outline, and there is no POSITIONING slot.
@@ -249,14 +251,13 @@ def _is_schedule_only(pieces: list[str]) -> bool:
         for x in sentences)
 
 
-def _has_view(note: dict, pieces: list[str], stale_preview: bool = False) -> bool:
+def _has_view(note: dict, pieces: list[str]) -> bool:
     """Whether a note says something about the name worth its own arrow.
     Always: a price target, a rating action, a call the desk holds with
     high conviction, or a figure of its own. Otherwise a note that only
     lists the company among the week's reports ("AMAT and CSCO report
     earnings 11/12", "Neutral: reporting after the close on Thursday") has
-    none, and a note written before a print that is now out has none
-    either: what it expected in words is no longer news."""
+    none."""
     for c in (note.get("calls") or [])[:1]:          # the call `_desk_text` shows
         pt = str(c.get("price_target") or "")
         if pt and pt.upper() != "N/A":
@@ -267,13 +268,34 @@ def _has_view(note: dict, pieces: list[str], stale_preview: bool = False) -> boo
             return True
     if any(_FIGURE_RE.search(p or "") for p in pieces):
         return True
-    return not stale_preview and not _is_schedule_only(pieces)
+    return not _is_schedule_only(pieces)
 
 
-def _desk_slots(research: dict | None, fresh: dict | None) -> list[str]:
+_DESK_WORDS_RE = re.compile(
+    r"\b(?:desks?|analysts?|banks?|brokers?|street|sell[- ]?side|expect\w*|previews?|"
+    r"price targets?|targets?|pts?|ratings?|rated|upgrad\w*|downgrad\w*|gs|jpm|bofa)\b", re.I)
+
+
+def _asks_about_desks(asked: str, research: dict | None) -> bool:
+    """The asker's own words ask what the desks said or expected, or name
+    one of the banks in the research ("what did goldman expect")."""
+    text = (asked or "").lower()
+    if not text:
+        return False
+    if _DESK_WORDS_RE.search(text):
+        return True
+    for n in (research or {}).get("notes") or []:
+        first = str(n.get("source") or "").lower().split(" ")[0]
+        if len(first) >= 3 and first != "the" and re.search(rf"\b{re.escape(first)}\b", text):
+            return True
+    return False
+
+
+def _desk_slots(research: dict | None, fresh: dict | None, asked: str = "") -> list[str]:
     if (research or {}).get("status") != "ok":
         return []
     from discord_bot.ask_router import _is_preview
+    keep_previews = bool(fresh) and _asks_about_desks(asked, research)
     # Calls first (a rating or target is a view), high conviction first,
     # newest first; one note per bank.
     notes = sorted(research.get("notes") or [], key=lambda n: str(n.get("published") or ""),
@@ -288,7 +310,9 @@ def _desk_slots(research: dict | None, fresh: dict | None) -> list[str]:
             continue
         text = _desk_text(n)
         preview = bool(fresh) and _is_preview(n, fresh)
-        if not text or not _has_view(n, _desk_pieces(n), stale_preview=preview):
+        if preview and not keep_previews:
+            continue                      # the result is out: what it expected is not the answer
+        if not text or not _has_view(n, _desk_pieces(n)):
             continue                      # the bank's next note may have one
         tag = ", written before the report: what it expected" if preview else ""
         out.append(f"DESK: {bank} ({n.get('published')}{tag}): {text} [{bank}; this view only]")
@@ -352,10 +376,12 @@ def _today_news_slot(news: dict | None, today=None) -> str | None:
             "[news search]")
 
 
-def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = None) -> str:
+def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = None,
+                  asked: str = "") -> str:
     """The outline block for a stock answer, or '' when the shape is not a
     single-stock view or there is nothing to outline. `results` maps a
-    prefetched tool name to its result."""
+    prefetched tool name to its result. `asked` is the asker's own words
+    (ask_router.asker_text), read only to tell a question about the desks."""
     from discord_bot import ask_router as R
     if shape not in _STOCK_SHAPES or not symbol:
         return ""
@@ -369,7 +395,7 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
         _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
         _driver_slot(results.get(R.T_PRIMER)),
         analyst,
-        *_desk_slots(results.get(R.T_RESEARCH), fresh),
+        *_desk_slots(results.get(R.T_RESEARCH), fresh, asked),
         _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
         # for the days after a print the answer is about the result
         None if fresh else _risk_slot(results.get(R.T_SNAPSHOT)),

@@ -3756,5 +3756,5 @@ Owner: the AMAT answers were too long. "did amat earnings droo", asked 19 minute
 
 Fix, all in `discord_bot/stock_outline.py`: a desk slot needs a view (`_has_view`); after a print the news lines become RESULT, GUIDANCE and ANALYST ACTION slots, the news's account of the stock's move is cut when the outline has a live quote, and POSITIONING is left out. The same payloads now give five slots: price, result, guidance, driver, the HSBC rating.
 
-What this costs: a preview that expected something in words only ("GS expects upside to consensus") no longer gets an arrow once the result is out. Before a print such a note still gets one. The $739.67 52-week high in that answer was checked against Yahoo's daily bars and is right (June 30).
+Second pass the same day (owner): once the result is out, no note written before it gets a desk slot, whatever it carries. The first version kept a preview with a target or a figure, and the live sample still had a Goldman arrow ("compelling at 15X 2027 estimated EPS"). A note written after the report keeps its slot, before a print nothing changes, and a question about the desks themselves ("what did goldman expect", "amat price targets?") still gets the previews, tagged as written before the report. The $739.67 52-week high in that answer was checked against Yahoo's daily bars and is right (June 30).
 
