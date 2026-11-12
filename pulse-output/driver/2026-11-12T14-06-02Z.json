@@ -1,0 +1,127 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-12T14:06:03.539330Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=287; anchors 1282/1320 matched, 0 empty, 3 too_short (rate=0.971)",
+   "at": "2026-11-12T14:06:12.063494Z"
+  },
+  "omnipulse": {
+   "decision": "OMNIPULSE",
+   "detail": "omnipulse: 2026-11-12 ok, 6 themes -> omnipulse pulse",
+   "at": "2026-11-12T14:06:13.460525Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-11-12T14:08:44.340502Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "1 hard issue(s)",
+   "at": "2026-11-12T14:10:27.941666Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-11-12T14:10:59.298724Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-12T14:10:59.468743Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-12T14:11:05.166434Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-12T14:12:06.699880Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-11-12T14:12:06.738925Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 2
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:06:03.539330Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:06:12.063494Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "OMNIPULSE",
+   "at": "2026-11-12T14:06:13.460525Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-11-12T14:07:43.463178Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-11-12T14:08:38.688464Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:08:44.340502Z"
+  },
+  {
+   "record": "omnipulse_body_voice",
+   "detail": "'UBS says' -> 'In UBS's view,'; 'Goldman says' -> 'in Goldman's view,'",
+   "at": "2026-11-12T14:10:27.870051Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-11-12T14:10:27.941666Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:10:59.298724Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:10:59.468743Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:11:05.166434Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-11-12T14:12:06.699880Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-12T14:12:06.738925Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
