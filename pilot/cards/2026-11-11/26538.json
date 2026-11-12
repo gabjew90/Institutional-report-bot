@@ -1,0 +1,25 @@
+{
+ "brief": "This document is a one-page cover/metadata screen for a UBS Sales and Trading video commentary titled \"View From The Knowledge Network with Mark Paski, Antonya Allen,\" dated 09-Nov-2026. The extracted text contains only the title, author names, publication timestamp, and UBS's marketing description: that US equity trader Mark Paski gives his take on a tumultuous week for markets and looks ahead to this week. No transcript, body text, figures, levels, calls, or argument is present in the extracted source; the underlying spoken commentary was not captured as text. There is nothing in this extraction to compress into a causal chain, and no claim, number, or stance to verify against the source, since none appears.",
+ "cards": [],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-11/26538__ubs-s-t-view-from-the-knowledge-network-with-mark-paski-anto.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 0,
+  "matched": 0,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 0,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
