@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "Dealer / Market-Maker -books which had become suddenly short (Customer -bot) Puts and OTM Puts ... Thursday ended up as the biggest put day in CBOE history. Dealers who sold all those puts hedged by shorting futures ... Dealers had to buy back a BRICK of Short $Delta / Futures",
+   "why": "Nomura's McElligott note (relayed via Zero Hedge) describes dealers becoming short puts after Thursday's record put-buying day, hedging by shorting futures, then being forced to buy those futures back as vol collapsed and prices rose \u2014 matching the sentence's causal chain exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "424 S&P 500 members closed higher against just 79 decliners ... Even the Dow, the S&P and the Russell erased their post-election losses... The VIX went from 28 to 20 in roughly two and a half sessions",
+   "why": "All three figures (VIX 28->20 in ~2.5 sessions, 424 of 503 S&P members higher, Dow/S&P/Russell erasing post-election losses) are stated directly in this source."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "October CPI printed 0.4% MoM vs 0.3% expected, and core rose 0.3% vs 0.2% expected, a print that only 1 of 70 analysts saw coming ... as the Vol meltdown has stalled-out, so too has the Stock rally",
+   "why": "CPI print figures, the 1-of-70 forecast detail, and the vol-meltdown-stopping-the-rally framing are all directly supported."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26544__is-the-ai-puke-finally-over-jpmorgan-says-capitulation-is-fa.txt",
+   "span": "Is The AI Puke Finally Over? JPMorgan Says Capitulation Is Fa[st approaching]",
+   "why": "Framing sentence for a genuine bank debate present in the sources: JPMorgan arguing capitulation/selling is largely done versus BTIG's skeptical counter (s5)."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26542__73-odds-of-another-puke-btig-says-today-s-bounce-is-a-coin-t.txt",
+   "span": "the washout has started, but history says it rarely finishes in one day ... Since 1996, Krinsky counts 15 prior occasions ... a coin-toss",
+   "why": "BTIG's Krinsky explicitly argues from a historical base-rate study (since 1996) against declaring the selloff over, matching \"takes the other side with history.\""
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26360__chip-cds-flips-wider-than-hyperscalers-as-goldman-warns-the-.txt",
+   "span": "On Thursday the Nasdaq 100 crashed 6.4% and the S&P 4.4%, the worst day for tech since Covid. CDX IG widened 3.5 basis points.",
+   "why": "All three figures (CDX IG +3.5bp, Nasdaq -6.4%, S&P -4.4%, all Thursday) match exactly; chart sourced to Goldman FICC & Equities."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "Some $76 billion of IG priced last week, nearly double expectations ... Since October 29th alone, there have been five separate bond deals across the hyperscaler universe totaling $67 billion, pushing ... year-to-date global debt issuance to $296 billion. Goldman's forecast for all of 2026 was $250 billion.",
+   "why": "Every figure ($76bn, nearly double, five deals, $67bn, Oct 29, $296bn, $250bn forecast) is directly supported, split across two related Goldman-sourced pieces."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "Goldman's economists still see short-term moratoria potentially touching about 45% of planned US capacity.",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26543__can-you-build-a-2-trillion-capex-cycle-without-a-permit-jpmo.txt",
+   "span": "Dec 10: ERCOT's audit filing on the Texas interconnection queue (JPM flags next month's ERCOT outcome as an input for modeling the forward AI capex curve)",
+   "why": "Matches \"ERCOT interconnection-queue audit due in December\" exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26544__is-the-ai-puke-finally-over-jpmorgan-says-capitulation-is-fa.txt",
+   "span": "The 61 \"upstream\" stocks, worth $12.5 trillion, went from 24.3x to 12.0x forward earnings in under six months ... optical networking from 49.6x to 16.4x (down 67%) ... and memory from 8.0x to 3.2x.",
+   "why": "All figures match exactly, attributed to a JPMorgan note."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26003__the-week-in-seven-charts.txt",
+   "span": "Share prices are sliding even though profit forecasts keep rising ... expected earnings per share (EPS) ... have climbed 32% for memory makers, 31% for AI infrastructure ... forward P/E ratios ... dropped 50%, 36% and 35%",
+   "why": "Syz's own chart narrates the same valuation/earnings divergence as s10's JPMorgan multiple-compression figures, but framed from the earnings side \u2014 a faithful editorial connector, not an invented claim."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26528__ubs-s-t-fed-s-waller-backs-50bp-hike-us-cpi-ahead-nvidia-chi.txt",
+   "span": "Tim calculates that current prices imply roughly 30% and 35% cuts to Street calendar-year 2027 and calendar-year 2028 EPS estimates ... the market is effectively pricing roughly 55GW of calendar-year 2028 shipments, versus an original expectation of about 70GW",
+   "why": "Exact match to UBS's Timothy Arcuri's figures."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26013__the-ai-crash-has-a-problem-earnings-aren-t-crashing.txt",
+   "span": "JPM highlights that the classic warning signs of a semiconductor cycle peak remain largely absent: rising inventories, shortening lead times and collapsing compute prices.",
+   "why": "Near-verbatim match to a stated JPMorgan stance."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26014__ai-quick-pulse-nvda-investigation-implications.txt",
+   "span": "On 8 November, NVIDIA's board of directors announced an independent investigation ... The company concurrently issued a press release in which CEO Huang admitted to an extramarital affair ... the board expressed confidence in Mr. Huang and the management team.",
+   "why": "Matches exactly, including the same-day timing (\"concurrently issued\")."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26528__ubs-s-t-fed-s-waller-backs-50bp-hike-us-cpi-ahead-nvidia-chi.txt",
+   "span": "Nvidia was down 5.5% on Monday, but held",
+   "why": "Directly stated in a UBS desk note (also corroborated by Goldman and Citi notes), not merely a live-feed price with no source."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

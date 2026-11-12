@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+ "source_span": "a big chunk of Monday's rally was dealers being forced to buy. And as of this morning, with the vol meltdown stalled, so is the rally",
+ "source_chain": "Dealers came into the week massively short puts/OTM puts after Thursday's record CBOE put-buying day, therefore the VIX collapse from 28 to 20 over ~2.5 sessions stripped those puts of delta twice (spot up, vol down) and forced dealers to buy back futures hedges in a vanna feedback loop, therefore Monday's 424-of-503-member breadth rally was mechanical dealer covering, not real demand (McElligott: the rally was 'the sideshow', the vol crush was 'the actual story'); invalidated when the vol meltdown stalls, which happened Tuesday on the hot October CPI (core 0.3% vs 0.2% expected), so the mechanical buyer disappeared and the rally stalled too.",
+ "pulse_chain": "Dealers came into the week short puts after Thursday's record single-day put buying in Cboe history, therefore as prices rose and the cost of protection collapsed those positions lost value fast enough that dealers had to buy back the futures they'd sold as a hedge, producing the VIX's fall from 28 to 20 over ~2.5 sessions and the 424-of-503 breadth rally that McElligott reads as the sideshow with the vol collapse as the real story; invalidated when that engine stalls, which happened Tuesday as hot October CPI (core 0.3% vs 0.2% expected) stopped the volatility meltdown and took the rally with it.",
+ "preserved": true,
+ "why": "The pulse reproduces McElligott's exact dealer-short-put/vanna mechanism with matching figures (VIX 28\u219220, 424/503 breadth, Thursday's record put day), attributes it correctly to Nomura/McElligott, and keeps the same invalidation \u2014 a stalled vol collapse triggered by the hot CPI print \u2014 that ends the mechanical rally.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

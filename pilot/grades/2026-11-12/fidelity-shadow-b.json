@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "a big chunk of Monday's rally was dealers being forced to buy. And as of this morning, with the vol meltdown stalled, so is the rally.",
+   "why": "McElligott's note frames the rally as mechanical dealer hedging, not organic demand; this is his bank's stance, stated in the source."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "Dealers who sold all those puts hedged by shorting futures... Dealers had to buy back a BRICK of Short $Delta / Futures",
+   "why": "Matches the mechanism exactly: short puts hedged with short futures, unwound as vol/delta collapsed, forcing futures buybacks."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "the Nomura cross-asset guru says the breadth was the sideshow... the far and away standout story... was the absolutely epic Vol Crush",
+   "why": "Direct paraphrase of McElligott's own framing of breadth as sideshow and the vol collapse as the real story."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26544__is-the-ai-puke-finally-over-jpmorgan-says-capitulation-is-fa.txt",
+   "span": "the same strategist now writes that \"the capitulation process is far along\"... and keeps his S&P 500 target at 8,000",
+   "why": "Lakos-Bujas's capitulation call and unchanged 8,000 target match; target's year-end framing is consistent with the companion JPM note's forward-looking (2027) context and not contradicted anywhere."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26545__buy-the-rumor-sell-the-news-wilson-says-the-correction-needs.txt",
+   "span": "a marginal new low, on less selling pressure than last Thursday, somewhere between 7,100 and 7,300... a classic re-test",
+   "why": "Exact match for Wilson's stated 7,100-7,300 retest range and rationale."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "the past two weeks were the most active ever for AI CDS, with $8-10 billion trading every week, roughly seven times the run-rate of a year ago",
+   "why": "Verbatim figures for weekly AI CDS turnover and the multiple versus a year ago."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "on a day when the NDX fell 6.4% and the S&P 4.4%, CDX IG widened just 3.5bps",
+   "why": "Figures match exactly; attribution to Goldman's credit desk (McCarthy/Pasi) is correct, and 'Nasdaq' is standard shorthand for the Nasdaq-100 figure quoted."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "for AI deals specifically, November's monthly average is north of 18bps",
+   "why": "Directly supports 'ran above 18 basis points in November.'"
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26543__can-you-build-a-2-trillion-capex-cycle-without-a-permit-jpmo.txt",
+   "span": "at $1.7 trillion in 2027, against a $1.3 trillion consensus... no less than about $1.5 trillion... $1.5 trillion next year adds 4-5% to 2027 index earnings",
+   "why": "All four figures (capex, consensus, floor, EPS sensitivity, earnings impact) match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26543__can-you-build-a-2-trillion-capex-cycle-without-a-permit-jpmo.txt",
+   "span": "banks shelved the junk bond sale for Anthropic's $15 billion Texas data center (Oct 29)",
+   "why": "Exact match for company, amount, location, and date."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26545__buy-the-rumor-sell-the-news-wilson-says-the-correction-needs.txt",
+   "span": "tracking the path of our silver stock analog... they also say the first bounce gets sold",
+   "why": "Matches Wilson's silver-miner analog for semis and its implication that the first rally should be sold."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25980__weekly-hf-highlights-us-l-s-net-lev-declines-8-wow-hf-de-gro.txt",
+   "span": "AI themes...still makes up ~32% of total US net exposure...reduction from peaks back in June (47%) with HFs now tracking ~2% underweight",
+   "why": "All three figures (32%, 47% June peak, ~2% underweight) match exactly."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26078__long-term-constructive-just-not-today-goldman-cuts-gold-targ.txt",
+   "span": "assuming 60 tonnes a month of official buying through 2026-27, compared with a seasonally adjusted three-month average of 85 tonnes a month... drives most of the 15% price upside we forecast by end-2027",
+   "why": "All figures (60 tonnes assumed, 85 tonnes current pace, 15% upside, end-2027) match exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot-source-text-all/2026-11-11/26010__compute-wars.txt",
+   "span": "the cheapest marginal supplier with spare power is China... China builds power ten times faster",
+   "why": "TS Lombard's own argument ties cheap/abundant Chinese power directly to China's (Huawei's) ability to keep closing the compute-share gap on Nvidia."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot-source-text-all/2026-11-11/26010__compute-wars.txt",
+   "span": "This is part of the China Tech Shock... Risk falls on the margins of the western hardware names... Shrinking profits for Western tech",
+   "why": "Matches TS Lombard's thesis that China becomes the low-cost compute supplier and the risk to Western tech is margin compression, not weaker demand."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

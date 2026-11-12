@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+ "source_span": "As Spot began to move higher in the morning and Vol got completely scorched (as all those Puts lost beaucoup Delta), Dealers had to buy back a BRICK of Short $Delta / Futures into this now virtuous feedback loop as Vol gapped lower.",
+ "source_chain": "Dealers came into Monday short puts/OTM puts after Thursday's record CBOE put-buying day, hedged by shorting futures, therefore as spot rose and implied vol collapsed those puts lost delta twice (once from the spot move, once from the vol collapse) forcing dealers to buy back futures/delta in a self-reinforcing loop, therefore Monday's 84%-green rally was mechanical dealer covering rather than real demand. Invalidation: 'as of this morning, with the vol meltdown stalled, so is the rally' \u2014 once the vol decline stops, the forced buyer disappears and the rally has nothing left under it, a point reinforced (not caused) by October CPI printing hot and fully pricing a December hike.",
+ "pulse_chain": "Dealers came into the week short puts after Thursday's record CBOE put-buying day, therefore as prices rose and the cost of protection collapsed those short-put positions lost value fast enough that dealers had to buy back the futures sold as a hedge, therefore the VIX fell 28->20 in ~2.5 sessions and 424/503 S&P names closed higher \u2014 McElligott reads the breadth as the sideshow and the vol collapse as the real story. Invalidation: that engine stalled Tuesday when October CPI printed hot (0.4% headline, 0.3% core vs 0.2% expected), and the volatility meltdown stopped, taking the rally with it.",
+ "preserved": true,
+ "why": "The pulse keeps McElligott's exact mechanism (short puts -> vanna-driven futures buyback -> mechanical, not organic, rally) and his exact invalidation (the rally dies once the vol-crush stalls), correctly attributed to Nomura, with only a defensible compression of the CPI print's role from 'reinforcing confirmation' to 'the trigger' rather than inventing or reversing a step.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

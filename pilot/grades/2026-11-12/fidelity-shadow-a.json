@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "a big chunk of Monday's rally was dealers being forced to buy. And as of this morning, with the vol meltdown stalled, so is the rally.",
+   "why": "Opinion-shaped sentence restating McElligott's stance that the rally was mechanical (dealer hedging), not conviction buying; the stance is a bank's stance in a source."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "Thursday ended up as the biggest put day in CBOE history. Dealers who sold all those puts hedged by shorting futures... Dealers had to buy back a BRICK of Short $Delta / Futures into this now virtuous feedback loop as Vol gapped lower",
+   "why": "Supports the put-buying record, dealers being short puts, and the forced futures buy-back as prices rose and protection costs fell."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "the Nomura cross-asset guru says the breadth was the sideshow... the far and away standout -story about yesterday was the absolutely epic Vol Crush",
+   "why": "Directly supports McElligott framing breadth as the sideshow and the vol collapse as the real story."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25887__global-equity-strategy-market-update-anatomy-of-momentum-cra.txt",
+   "span": "capitulation process is far along... we maintain our S&P 500 price target of 8,000",
+   "why": "JPM note confirms 'far along' capitulation language and the 8,000 target; a JPM briefing elsewhere labels it 'his YE26 SPX price target of 8,000', confirming it is the year-end target."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26545__buy-the-rumor-sell-the-news-wilson-says-the-correction-needs.txt",
+   "span": "Translation: a marginal new low, on less selling pressure than last Thursday, somewhere between 7,100 and 7,300, a zone where Morgan Stanley sees valuation, trendline and...",
+   "why": "Directly supports Wilson's call for a marginal new low into the 7,100-7,300 zone to complete the retest."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "$8-10 billion trading every week, roughly seven times the run-rate of a year ago.",
+   "why": "Matches the AI CDS weekly volume figure and the 7x multiple versus a year ago exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "on a day when the NDX fell 6.4% and the S&P 4.4%, CDX IG widened just 3.5bps",
+   "why": "Matches Goldman's CDX IG 3.5bp widening alongside the Nasdaq/S&P Thursday moves exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26361__credit-crunch-imminent-hyperscalers-blow-past-full-year-debt.txt",
+   "span": "in November so far the average AI concession is running around 18bp, versus under 7bp for everyone else, and well above the roughly 8bp average for AI deals since the start of 2025",
+   "why": "Source reports November AI concessions running 'around 18bp' (an approximation centered on 18bp), not 'above 18 basis points.' The pulse sentence turns an approximate figure into a floor/minimum, overstating the number.",
+   "searched": [
+    "concession",
+    "18bp"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26543__can-you-build-a-2-trillion-capex-cycle-without-a-permit-jpmo.txt",
+   "span": "$1.7 trillion in 2027, against a $1.3 trillion consensus, and says the number should come in at no less than about $1.5 trillion... every $100 billion of capex is worth about $9 of S&P 500 EPS... $1.5 trillion next year adds 4-5% to 2027 index earnings",
+   "why": "Matches every figure: $1.7tn JPM estimate, $1.3tn consensus, $1.5tn floor, $9 EPS per $100bn capex, and 4-5% added to 2027 earnings."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26543__can-you-build-a-2-trillion-capex-cycle-without-a-permit-jpmo.txt",
+   "span": "banks shelved the junk bond sale for Anthropic's $15 billion Texas data center (Oct 29)",
+   "why": "Matches the shelved junk bond sale, Anthropic, $15 billion, Texas site, and October 29 date exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26545__buy-the-rumor-sell-the-news-wilson-says-the-correction-needs.txt",
+   "span": "silver miners say the chips are close to done going down (they also say the first bounce gets sold, which is worth remembering",
+   "why": "Matches the silver-stock analog and the 'first bounce gets sold' call; the broader note's stance (wanting a retest, not accepting the rally) supports 'not buying the bounce.'"
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/25896__weekly-hf-highlights-us-l-s-net-lev-declines-8-wow-hf-de-gro.txt",
+   "span": "peaks back in June (47%) with HFs now tracking ~2% underweight the names relative to their market cap weight",
+   "why": "Matches 32% current exposure (from 26366), 47% June peak, and ~2% underweight versus market-cap weight exactly."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26078__long-term-constructive-just-not-today-goldman-cuts-gold-targ.txt",
+   "span": "assuming 60 tonnes a month of official buying through 2026-27, compared with a seasonally adjusted three-month average of 85 tonnes a month right now... drives most of the 15% price upside we forecast by end-2027",
+   "why": "Matches the 60-tonne assumption, the current 85-tonne pace, and the 15% upside to end-2027 exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26006__nvidia-s-75-problem-the-next-china-shock-is-coming.txt",
+   "span": "China has a massive structural advantage. China added roughly ten times as much generating capacity as the US in 2025... TS Lombard argues that compute demand could increasingly migrate toward the cheapest available power.",
+   "why": "Matches TS Lombard's thesis that China's power advantage is what lets Huawei/domestic chips keep closing the market-share gap on Nvidia (28% vs 34% in H1 2026)."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26006__nvidia-s-75-problem-the-next-china-shock-is-coming.txt",
+   "span": "TS Lombard argues that the next big AI disruption could come from China becoming the world's low-cost supplier of compute... The risk for Western tech is not necessarily weaker demand, but structurally lower margins.",
+   "why": "Matches TS Lombard's argument verbatim in substance: China as low-cost compute supplier, risk being structurally lower margins rather than weaker demand."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

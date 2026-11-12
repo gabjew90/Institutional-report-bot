@@ -1,0 +1,81 @@
+{
+ "metric": 1,
+ "total_cards": 1739,
+ "fragmentation_sets": [
+  {
+   "subject": "The Market Ear's Apple-vs-NVDA anti-AI pairs trade",
+   "labels": [
+    "apple anti ai trade",
+    "nvda aapl pairs trade"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "China emerging as a low-cost AI-compute threat to Nvidia (TS Lombard thesis, duplicate Nvidia-34%/Huawei-28% stat in both labels)",
+   "labels": [
+    "nvidia china margin threat",
+    "china domestic ai rebound"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "JPM's Asian-tech valuation-reset-vs-earnings-divergence thesis (duplicate forward P/E and price-to-book stats in both labels)",
+   "labels": [
+    "ai selloff earnings divergence",
+    "asian tech valuation reset"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Systematic/CTA positioning washout as a market-bottom signal (duplicate '-5%, 5th percentile CTA exposure' and 'real-money support' stats in both labels)",
+   "labels": [
+    "systematic positioning washout",
+    "cta trend following fund performance"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "Midterm Democratic sweep triggers the Thursday AI/tech selloff on data-center-policy fears (duplicate '56% of voters named AI/data centers crucial' stat across labels; same Thursday event described from stats, cause, and Texas-policy angles)",
+   "labels": [
+    "thursday equity vol spike",
+    "blue wave midterm market impact",
+    "midterm data center policy risk"
+   ],
+   "cards": 36
+  }
+ ],
+ "fragmented_mass_share": 0.0632,
+ "mis_merges": [
+  {
+   "label": "ai capex buildout outlook",
+   "subjects": [
+    "Anthropic's Q3 revenue/profitability and IPO valuation repricing",
+    "AI hardware/cloud supply-chain commitments (Samsung HBM agreements, Microsoft-Oracle cloud deal wind-down)",
+    "AI-driven tech-debt credit-spread widening (duplicates evidence belonging to the separately labelled 'ai credit equity divergence' theme)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Anthropic's IPO valuation being cut from roughly $2T to $1.5-1.6T, with a roadshow starting next week, is a distinct headline-worthy story that a careful editor would likely run as its own brief; burying it beside Samsung's memory-supply deals and a Microsoft-Oracle wind-down risks it being read as generic 'AI capex color' and never surfaced as a theme, and the stranded Abramowicz credit-spread card is really the same subject as the credit-stress theme filed elsewhere."
+  },
+  {
+   "label": "us economic cycle outlook",
+   "subjects": [
+    "TS Lombard's 2026-27 US growth/inflation/profit-broadening outlook",
+    "BofA's weekly cross-asset scoreboard and Hartnett's named risk-off trigger framework (10-year yield below 4.5%, oil below $80, hikes ending)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Hartnett's risk-off framework with specific numeric triggers is a distinctive, quotable call that interacts directly with the day's oil and Treasury-yield stories; folding it into a generic TS Lombard growth narrative under an unrelated label risks an editor never recognizing it as its own theme candidate."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12 cards (0.7% of the ledger), correctly excluded from mis-merge scoring but added to fragmented mass. Weaker overlaps not scored as fragmentation: Goldman's gold-target note vs its separate 'inverse oil hedge' trader quote; the hyperscaler-buyback-to-issuance stat shared by 's p buyback demand' and 'ai credit equity divergence' (two different downstream effects, not one subject); and a duplicated UBS October CPI forecast figure in 'week ahead global data calendar' and 'october cpi forecast' (a calendar roundup correctly previewing an item detailed elsewhere).",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

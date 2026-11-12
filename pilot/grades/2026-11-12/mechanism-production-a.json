@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26542__73-odds-of-another-puke-btig-says-today-s-bounce-is-a-coin-t.txt",
+ "source_span": "it's basically a coin-toss for 20-50 day forward returns... SPX was only higher 53% of the time 20 days later for a paltry +0.31% average return. As Krinsky puts it, a coin-toss.",
+ "source_chain": "Last Thursday's correlated selloff plus an 80%-downside-volume day therefore (per 15 prior such first-occurrences since 1996) a 73% chance of another 80%-down day within 30 sessions, with 20-day forward SPX returns a near coin-toss (53% up, average +0.31%) therefore Krinsky stays unconvinced the bottom is in and wants 7,000-7,100 before buying; invalidation is a breadth washout near that level.",
+ "pulse_chain": "Monday's vol crush forced dealer short-covering therefore stocks rallied mechanically therefore (per the pulse's attributed BTIG stat) across eight prior episodes of a 10% collapse and 5% rebound, seven lost about 10% over the next 30 days and none marked the bottom, therefore Krinsky wants 7,000-7,100 before buying, with 73% odds of another 80%-down-volume day as the invalidation.",
+ "preserved": false,
+ "why": "The pulse attributes to BTIG's Krinsky a historical stat ('eight prior episodes... seven lost about 10% over 30 days') that does not appear in the source note and inverts its actual finding, which the note itself calls 'a coin-toss' with a slightly positive 20-day average return (+0.31%, 53% higher) \u2014 a mechanism the note does not argue, even though the correctly-cited 73% figure and the mechanical vol-crush/dealer-hedging chain from the Nomura McElligott note elsewhere in the same theme are preserved accurately.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

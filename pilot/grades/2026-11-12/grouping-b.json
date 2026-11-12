@@ -1,0 +1,97 @@
+{
+ "metric": 1,
+ "total_cards": 1739,
+ "fragmentation_sets": [
+  {
+   "subject": "Nvidia's China compute-competitor threat (Huawei share gains, cheap power, margin pressure)",
+   "labels": [
+    "nvidia china margin threat",
+    "china domestic ai rebound"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "The Market Ear's long-Apple/short-Nvidia (anti-AI) trade",
+   "labels": [
+    "apple anti ai trade",
+    "nvda aapl pairs trade"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "CTA/systematic positioning washout and its market implications",
+   "labels": [
+    "systematic positioning washout",
+    "cta trend following fund performance"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "Semis/SOX bottoming and the rotation back from hyperscalers into semis",
+   "labels": [
+    "semis led equity rebound",
+    "hyperscaler vs semis rotation"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Asian tech valuation reset vs. earnings (JPM's P/E, price-to-book, ROE read)",
+   "labels": [
+    "asian tech valuation reset",
+    "ai selloff earnings divergence"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Goldman's gold view (target cut and gold-as-hedge trade framing)",
+   "labels": [
+    "goldman gold target cut",
+    "gold as inverse oil hedge"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Midterm sweep driving AI-infrastructure/data-center policy risk-off",
+   "labels": [
+    "blue wave midterm market impact",
+    "midterm data center policy risk"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.0713,
+ "mis_merges": [
+  {
+   "label": "ai capex buildout outlook",
+   "subjects": [
+    "Microsoft unwinding its Oracle cloud-capacity deal",
+    "Anthropic's Q3 revenue/IPO-valuation debate",
+    "Samsung's HBM supply lockup",
+    "Widening tech-debt credit spreads"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Anthropic's 1,127% revenue growth and IPO repricing is a standalone, headline-worthy subject; burying it alongside the Microsoft-Oracle and Samsung HBM items under a generic capex label would let an editor scanning labels miss or under-weight it as its own theme."
+  },
+  {
+   "label": "us economic cycle outlook",
+   "subjects": [
+    "TS Lombard's US growth/profit-broadening narrative",
+    "BofA/Hartnett's weekly scoreboard and explicit risk-off thresholds (10yr<4.5%, oil<$80)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Hartnett's specific, actionable 'stay risk-off until X/Y/Z' framework is a distinct, quotable call that reads as its own brief; merging it into a generic growth-outlook label risks it being passed over for theme selection."
+  }
+ ],
+ "pass": false,
+ "notes": "misc overflow is 12/1739 (0.7%) and does not count toward fragmentation. Fragmented mass (7.1%) is under the 10% ceiling, but two mis-merges bury a theme-worthy subject (Anthropic's IPO story; Hartnett's risk-off thresholds) inside broader grab-bag labels, so the day fails on mis-merge alone.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

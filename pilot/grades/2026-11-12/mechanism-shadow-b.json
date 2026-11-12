@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+ "source_span": "Dealers had to buy back a BRICK of Short $Delta / Futures into this now virtuous feedback loop as Vol gapped lower...and then separately as we rallied further, Calls... eliciting incremental $Delta to buy from there, and just leaving vapor trails.",
+ "source_chain": "Dealers were short puts/OTM puts after Thursday's record CBOE put-buying and hedged by shorting futures, therefore as spot rose and vol collapsed (VIX 28->20) those puts lost delta twice over, forcing dealers to buy back shorted futures in a self-reinforcing loop, therefore Monday's 84%-green rally was dealer-hedging mechanics, not real demand ('breadth was the sideshow'); invalidation: the engine runs only while vol keeps falling, and by Tuesday morning the vol meltdown had stalled, compounded by a hot CPI print (core 0.3% vs 0.2% expected) that Goldman had flagged as the line that 'would challenge the rally,' so the forced buyer left and the rally died with it.",
+ "pulse_chain": "Dealers came into the week short puts after Thursday's record CBOE put-buying day, therefore as prices rose and the cost of protection collapsed those positions lost value fast enough that dealers had to buy back their short futures hedges, producing a mechanical rally (McElligott: breadth was the sideshow, the vol collapse was the story); therefore the engine stalled on Tuesday when October CPI printed hot (0.4% headline, 0.3% core vs 0.2% expected) and the volatility meltdown stopped, taking the rally with it; invalidation: a December hike is now fully priced (14% odds of 50bp) after Waller flagged 50bp as on the table if core ran hot.",
+ "preserved": true,
+ "why": "The pulse keeps Nomura/McElligott's attribution, direction, and invalidation intact (dealer vanna-driven short-covering, not real demand, that stalls once vol stops falling and the hot CPI print confirms it), compressing the note's own two-stage walkthrough into one sentence without reversing or inventing a step; the one inaccuracy (dating Waller's speech to Monday instead of Tuesday morning) is a date slip, not a mechanism or invalidation swap.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

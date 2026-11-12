@@ -1,0 +1,81 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d39",
+   "tier": "rest",
+   "bank": "Nomura",
+   "source_chain": "Thursday's record put-buying left dealers short puts/OTM puts, so Monday's spot rally plus the vol collapse (VIX 28->20) forced dealers to buy back hedges twice (vanna), driving the 84%-breadth rally mechanically rather than from real demand, therefore Tuesday's stall in the vol crush stalled the rally too, just as a hot October CPI (0.4% m/m, core 0.3% vs 0.2% expected) printed hours after Waller's same-morning speech floating a 50bp December hike, pushing 50bp odds to 14%, and against a backdrop of record options volume, falling vol-control allocation and record VVIX realized vol, McElligott expects a wider outcome distribution and a structurally higher VIX floor driven by AI-capex doubts flowing into nominal GDP, vol, skew, correlation, rates and credit.",
+   "brief_chain": "Same causal chain (Thursday short-puts setup -> Monday vanna-driven forced buying -> Tuesday stall -> hot CPI -> 14% 50bp odds -> powder-keg structural flows -> wider distribution/higher VIX floor from AI-capex doubts), but places Waller's rate-hike speech on Monday instead of Tuesday morning (the source has it the same morning as, hours before, the CPI print).",
+   "distortions": [
+    {
+     "what": "Brief says Waller 'had floated that condition in a Monday speech'; source places the speech 'this morning' on Tuesday, hours before the CPI print (confirmed independently by the Wilson brief's source: 'Early on Tuesday, Fed Governor Chris Waller said...').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 McElligott's call (wider outcome distribution, structurally higher VIX floor) doesn't depend on which day the speech happened; the stance, conviction and invalidation are unaffected."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d25",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Wilson's June negative semis call (extreme earnings-revisions breadth) plus the breadth gap closing to 2% after Thursday's 4.4% plunge mean the correction is in its final phase, needing one more marginal low into 7,100-7,300 (a classic retest) to set up a year-end rally into 2027, so he recommends adding quality cyclicals and Industrials; the main risk is a Fed that stays hawkish after the midterms (2018 analog), and that risk showed up a day later when Waller floated a 25bp hike with 50bp on the table, core CPI then ran hot, and December odds moved to 14% for 50bp, so the article judges Wilson's hawkish-Fed risk case (a bleed into December) now more likely than his base case, citing CPI, Waller's hawkishness, the locked-in hike and CTAs programmed to sell into strength.",
+   "brief_chain": "Same chain and conclusion, but when stating the article's reasoning for favoring the risk case over the base case, isolates 'CTAs are modeled as sellers in every scenario this week' without repeating the CPI/Waller/locked-in-hike reasons already stated earlier in the brief.",
+   "distortions": [
+    {
+     "what": "Brief attributes the article's 'risk case more likely' conclusion solely to CTAs being modeled as sellers; source gives four co-equal reasons (hot core CPI, a Fed governor discussing 50bps, a hike locked for December, and CTAs selling into strength) \u2014 though the brief had already stated the first three earlier in its own sentence, so no reason is actually dropped, just not re-listed at the conclusion.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the conclusion (risk case more likely than base case) is unchanged, and all underlying facts are present in the brief."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "UBS expected a Monday low but was wrong because the last systematic seller (Risk Control) was overwhelmed by buying, so very little systematic selling should remain; Risk Control exposure at 55% (1st percentile vs 1Y, lowest since the tariff shock) and negative CTA exposure (-5%) are bottoming signals when real money isn't selling, removing the downside feedback loop (discretionary selling can still happen but won't be amplified), with retail/foreign/buyback support keeping selloffs shallow; intraday heavy buying in S&P/Nasdaq/leveraged ETFs plus CTAs still holding buy triggers above market support a grind of at least +10% over three months.",
+   "brief_chain": "Same chain and conclusion (+10% over 3 months), stated slightly more conclusively as the washout being 'complete' rather than the source's hedged 'should be really very little systematic selling left, if any,' and omitting the source's same-day Risk Control sell estimate (-$5bn today given SPX +2.4%) and the NQ1 buy-trigger detail.",
+   "distortions": [
+    {
+     "what": "Brief states the systematic-selling washout 'is complete'; source hedges with 'there should be really very little systematic selling left, if any.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both support the same bullish call; the hedge doesn't change the direction or conviction of the recommendation."
+    },
+    {
+     "what": "Brief omits the source's quantified same-day Risk Control sell estimate (-$5bn at SPX +2.4%, 'suggesting limited selling pressure') and the NQ1 no-close-buy-trigger detail.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are supporting granularity for the same already-stated conclusion that selling pressure is minimal."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d23",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Three capitulation signals (record -$365bn Excess Flow, UBS RMM retail buying the dip at the 68th percentile after the largest selling since Covid, and VIX Cross-Asset Rank at 96%) together imply forced selling and oversold conditions, pointing to a Monday low as systematic/hedge-fund unwind pressure fades; three systematic strategies sold $170-210bn that day (Risk Control, Leveraged ETFs, CTA breakdown given), with another $200-270bn of Risk Control selling expected over two days before both flows shrink sharply after Monday; low PB net leverage (18th percentile) and long/short ratio (8th percentile) imply elevated short-squeeze risk; client conversations show more buy-the-dip interest than panic; a fourth test (VIX/SPX intraday high-low ratio) was not met since SPX was only -5.9% from peak versus the ~-9.5% usually required.",
+   "brief_chain": "Same chain, same figures, same fourth-test caveat \u2014 no divergence found.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 4,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

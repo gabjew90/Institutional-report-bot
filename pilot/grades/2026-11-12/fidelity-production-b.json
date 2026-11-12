@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "Dealer / Market-Maker -books which had become suddenly short ... Puts and OTM Puts ... Thursday ended up as the biggest put day in CBOE history. Dealers who sold all those puts hedged by shorting futures ... Dealers had to buy back a BRICK of Short $Delta / Futures",
+   "why": "Matches the dealer short-put positioning, the Cboe-record put-buying day, and the forced futures buyback exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "The VIX went from 28 to 20 in roughly two and a half sessions ... 424 S&P 500 members closed higher against just 79 decliners ... Even the Dow, the S&P and the Russell erased their post-election losses",
+   "why": "VIX move, 424 (of 424+79=503) advancers, and the three indices erasing post-election losses all match exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26546__leaving-vapor-trails-nomura-s-mcelligott-says-monday-s-melt-.txt",
+   "span": "October CPI printed 0.4% MoM vs 0.3% expected, and core rose 0.3% vs 0.2% expected, a print that only 1 of 70 analysts saw coming ... as the Vol meltdown has stalled-out, so too has the Stock rally",
+   "why": "CPI print, core figure, the 1-of-70 forecast stat, and the vol/rally stall are all directly supported."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26544__is-the-ai-puke-finally-over-jpmorgan-says-capitulation-is-fa.txt",
+   "span": "Is The AI Puke Finally Over? JPMorgan Says Capitulation Is 'Far Along'",
+   "why": "Transition sentence framing an actual cross-desk debate (JPM, Goldman's Privorotsky, BTIG's Krinsky, Wilson) over whether the selloff is done; opinion-shaped but reflects real bank stances."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26542__73-odds-of-another-puke-btig-says-today-s-bounce-is-a-coin-t.txt",
+   "span": "Since 1996, Krinsky counts 15 prior occasions ... it's basically a coin-toss for 20-50 day forward returns",
+   "why": "BTIG's Krinsky explicitly argues against an easy bottom using 30 years of historical analog data, i.e. taking the skeptical side using history."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26360__chip-cds-flips-wider-than-hyperscalers-as-goldman-warns-the-.txt",
+   "span": "On Thursday the Nasdaq 100 crashed 6.4% and the S&P 4.4%, the worst day for tech since Covid. CDX IG widened 3.5 basis points.",
+   "why": "Exact match; document is sourced to Goldman Sachs per its meta.json, confirming the attribution."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26547__risk-is-migrating-chip-cds-blows-out-wider-than-hyperscalers.txt",
+   "span": "Some $76 billion of IG priced last week, nearly double expectations ... since Oct 29th alone, there have been five separate bond deals among the hyperscaler universe, totaling $67 billion ... $296 billion YTD, already well through the bank's $250 billion full-year forecast",
+   "why": "Every figure ($76B, nearly double, five deals/$67B since Oct 29, $296B YTD, $250B forecast) matches exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26361__credit-crunch-imminent-hyperscalers-blow-past-full-year-debt.txt",
+   "span": "Goldman's economists think ... Democratic wins at the state and local level are likely to bring short-term data center moratoria, potentially affecting about 45% of planned US data center capacity",
+   "why": "Direct match on attribution (Goldman's economists), the short-term framing, and the 45% figure."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26543__can-you-build-a-2-trillion-capex-cycle-without-a-permit-jpmo.txt",
+   "span": "Dec 10: ERCOT's audit filing on the Texas interconnection queue (JPM flags next month's ERCOT outcome as an input for modeling the forward AI capex curve)",
+   "why": "Matches the December ERCOT interconnection-queue audit date exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26544__is-the-ai-puke-finally-over-jpmorgan-says-capitulation-is-fa.txt",
+   "span": "The 61 \"upstream\" stocks, worth $12.5 trillion, went from 24.3x to 12.0x forward earnings in under six months ... optical networking from 49.6x to 16.4x (down 67%) ... and memory from 8.0x to 3.2x",
+   "why": "Every figure matches exactly, attributed correctly to JPMorgan."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26003__the-week-in-seven-charts.txt",
+   "span": "The faster analysts lifted their forecasts, the more valuations shrank ... expected earnings per share (EPS) ... have climbed 32% for memory makers, 31% for AI infrastructure companies and 30% for semiconductors overall",
+   "why": "Syz's chart measures the same price/earnings valuation-compression gap JPM described, from the earnings side rather than the multiple side."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26339__ubs-s-t-spx-upside-us-cpi-ahead-nvidia-japan-households-chin.txt",
+   "span": "Tim calculates that current prices imply roughly 30% and 35% cuts to Street calendar-year 2027 and calendar-year 2028 EPS estimates ... the market is effectively pricing roughly 55GW of calendar-year 2028 shipments, versus an original expectation of about 70GW",
+   "why": "All figures (30%/35% EPS cuts, 55GW vs 70GW) match exactly, attributed to UBS's Arcuri."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26013__the-ai-crash-has-a-problem-earnings-aren-t-crashing.txt",
+   "span": "JPM highlights that the classic warning signs of a semiconductor cycle peak remain largely absent: rising inventories, shortening lead times and collapsing compute prices",
+   "why": "Direct match (sentence cites two of the three listed warning signs, a faithful subset)."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26014__ai-quick-pulse-nvda-investigation-implications.txt",
+   "span": "The company concurrently issued a press release in which CEO Huang admitted to an extramarital affair ... the board expressed confidence in Mr. Huang and the management team",
+   "why": "Direct match, including the same-day ('concurrently') timing of the release."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-11/26528__ubs-s-t-fed-s-waller-backs-50bp-hike-us-cpi-ahead-nvidia-chi.txt",
+   "span": "Nvidia was down 5.5% on Monday, but held up relatively well against challenging news",
+   "why": "Matches exactly; corroborated independently in GS notes 26461/26464/26458 and Reuters wire 26397, all giving Nvidia -5.5%."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}
