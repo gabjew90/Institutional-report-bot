@@ -1380,3 +1380,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Unconfirmed Morgan Stanley attribution on the payroll figures and December call (figures are in the dump under other banks). Goldman core CPI 0.16% not located as Goldman's.
 - **observation** — Selection: CPI gets no brief and the 5.00% 10-year/fiscal angle has no theme. The semis SPLIT shows only the bull side.
 - **observation** — Verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-12
+- **deterministic-fixable** — Stale framing in the locked Omnipulse body, second day running: headline and MAIN EVENT treat Tuesday's CPI reaction as current while the RECAP reports Wednesday's rally (SPY +1.32%, VIXY -6.77%), and the Nvidia brief says the board "stated confidence" under a RECAP lead that the board is preparing to fire the CEO. Add a gate that compares the locked body's market claims and entity states with the RECAP/live block (repeat of 11-11).
+- **pilot-territory** — Selection: no CPI/Fed-hike brief (second day), no 10-year-at-5% duration brief on a 30-year auction day, and CoreWeave/Nebius results (flagged due in yesterday's WATCH) absent although the coverage block surfaced them four times. The Omnipulse editor does not appear to read the coverage block.
+- **observation** — Not located in the dump: Goldman thresholds 7,685 and 7,550 (7550 is Wednesday's close in another note), $5B/day buybacks, $76B IG supply, CDX IG +3.5bp Thursday, JPMorgan $1.7T capex vs $1.3T consensus, hedge-fund net leverage "5% to 42%, fifth largest since 2010" (dump says about 4%). 14 of 19 traced claims verified.
+- **observation** — ERCOT audit timing conflicts in the dump (one note says December, another Q1/27). The pulse states December without a source.
+- **observation** — WATCH consensus lines (HD, NVDA, TGT, WMT) carry numbers from earlier pulses that differ slightly from the dump's calendar. The dump is a later rebuild, so unverified.
+- **deterministic-fixable** — `pulse-context/latest.json` market snapshot is a post-publish rebuild (stamped 16:30 EST after-hours, dumped 21:30Z) even though `pdf_count` matches. RECAP prices cannot be audited. Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-11).
+- **observation** — Driver trail still does not name the lint hard issue that triggered SCRUB. Adversarial verdict gaps for 10-12 and 10-14 persist.
