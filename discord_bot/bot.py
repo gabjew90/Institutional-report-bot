@@ -3206,6 +3206,13 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     if collapsed != cleaned:
         hit_kinds.append("adjacent_dupe")
         cleaned = collapsed
+    # Sentence-opening transitions and the named AI filler words, removed
+    # in code (owner's voice contract, 2026-11-12; discord_bot/mannerisms.py).
+    from discord_bot import mannerisms as _mannerisms
+    plain = _prose_only(cleaned, _mannerisms.strip)
+    if plain != cleaned:
+        hit_kinds.append("mannerism")
+        cleaned = plain
     return cleaned, hit_kinds
 
 
@@ -5916,6 +5923,8 @@ async def _ask_04_clean_answer(
     hit_kinds: list[str] = []
     if answer:
         answer, hit_kinds = _clean_voice_violations(answer)
+        if "mannerism" in hit_kinds:
+            _ask_meta["guards"].append("mannerism:stripped")
         if hit_kinds:
             log.info(
                 f"/ask: voice-cleanup hits ({len(hit_kinds)}): "

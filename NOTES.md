@@ -3758,3 +3758,12 @@ Fix, all in `discord_bot/stock_outline.py`: a desk slot needs a view (`_has_view
 
 Second pass the same day (owner): once the result is out, no note written before it gets a desk slot, whatever it carries. The first version kept a preview with a target or a figure, and the live sample still had a Goldman arrow ("compelling at 15X 2027 estimated EPS"). A note written after the report keeps its slot, before a print nothing changes, and a question about the desks themselves ("what did goldman expect", "amat price targets?") still gets the previews, tagged as written before the report. The $739.67 52-week high in that answer was checked against Yahoo's daily bars and is right (June 30).
 
+## 2026-11-12: the owner's voice contract for /ask
+
+The owner sent the voice rules /ask must follow: direct plain English, lead with the answer, no repetition or filler, decisive, precise terms without buzzwords or decoration, no AI mannerisms, depth matched to the question. The trigger was a stock answer that said guidance "came in hot".
+
+Prompt: a Register block at the top of Type 1 (factual answers) states the contract. It was paid for by deleting text it makes redundant: the "default down" paragraph, the closer list in the Format rule (now "the first arrow is the answer and the last arrow is the conclusion"), the duplicate length tiers in LENGTH, the "don't repeat yourself" bullet, and two trailing clauses. The worked example lost its dash and its desk idiom, and the macro print template now leads with the actual print, then the consensus. Prompt size 48,253 to 48,238 characters.
+
+Code: `discord_bot/mannerisms.py` drops a transition that opens a sentence ("Furthermore,", "Additionally,", "In conclusion,", "Overall,", "It's worth noting that") and replaces "crucial", "pivotal" and "delve" with the plain word, outside double quotes and code. The lists come from `ai_analysis/voice_rules.py`, which /ask's cleaner already used to detect them without changing anything. The opening line of a code-built answer (slates, earnings dates, prices) is now asked for in plain English, not the room's voice.
+
+Scope: banter and roasts (Type 2 and 3) keep the room's register, an earlier owner decision. The contract binds factual answers.

@@ -28,7 +28,7 @@ from datetime import date
 
 NOTE = ("\n\nPOSTED AS WRITTEN: the system posts the lines below as the body of your reply, "
         "exactly as they are. Write only the opening, one or two sentences on what stands out, "
-        "in the room's voice, with no figure the lines do not carry. Do not list, repeat or "
+        "in plain English, with no figure the lines do not carry. Do not list, repeat or "
         "recompute them.\n")
 
 # The bot's own no-answer and refusal lines: never an opening.
