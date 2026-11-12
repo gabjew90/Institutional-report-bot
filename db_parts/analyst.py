@@ -691,23 +691,34 @@ def compute_caller_win_loss_summary(
     caller: str | None = None,
     tracking_mode: str | None = "caller",
 ) -> dict:
-    """Compute a caller's W/L tally over the last N days under the rule:
-    expirations-without-close count as losses.
+    """A caller's W/L tally over the last N days, from positions
+    (analyst_log/positions.py):
 
-    - Win  = action='close' AND gain_pct > 0
-    - Loss = action='close' AND gain_pct < 0
-             OR open/add row with inferred_status='expired_unknown'
-             (he opened but never posted a close — silent expiry, treat as L)
-    - Flat = action='close' AND gain_pct == 0 (rare)
+    - Win  = a close with gain_pct > 0
+    - Loss = a close with gain_pct < 0, or a position that expired with
+             no exit posted (he opened and never posted a close: treated
+             as a loss, outcome unknown)
+    - Flat = a close with no gain or a gain of 0
 
-    When `caller` is set, restricts to that caller's rows only — used by
-    the per-caller /ask context blocks for hard separation. None = all
+    Until 2026-11-11 the silent losses were every open row the daily sweep
+    had marked `expired_unknown`, and the sweep marked every row past its
+    expiry. A trade opened, closed for a win and then past its expiry was
+    a win and a loss: Abe's 13 winning closes and 6 unclosed opens were
+    reported to the room as 13W / 11L.
+
+    When `caller` is set, restricts to that caller's rows only. None = all
     callers (legacy behavior for single-caller deployments).
 
-    Returns a dict with counts, win rate, avg win, avg loss + the win
-    trades and silent-expiry trades.
+    Returns counts, win rate, avg win, avg loss, and the winning closes
+    and silent expiries as lists. Each listed trade carries the logged
+    entry price and, for a win, what one contract made, so a dollar
+    question is answered from the log and not from an assumed price.
     """
+    from analyst_log import positions as P
     cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    # positions are built from rows older than the window, so a close inside
+    # it finds its open; only events inside the window are counted
+    build_from = (datetime.utcnow() - timedelta(days=days + PURGE_MIN_AGE_DAYS)).isoformat()
     conn = _db.get_connection()
     caller_clause = ""
     extra_params: tuple = ()
@@ -720,69 +731,81 @@ def compute_caller_win_loss_summary(
             (tracking_mode or "").strip().lower() or "caller",
         )
 
-    closed_rows = conn.execute(
-        f"""SELECT gain_pct FROM analyst_trades
-           WHERE is_trade = 1
-             AND action = 'close'
-             AND posted_at > ?
-             {caller_clause}""",
-        (cutoff, *extra_params),
-    ).fetchall()
-    win_gains = [r["gain_pct"] for r in closed_rows if (r["gain_pct"] or 0) > 0]
-    doc_loss_gains = [r["gain_pct"] for r in closed_rows if (r["gain_pct"] or 0) < 0]
-    flat_count = sum(
-        1 for r in closed_rows if (r["gain_pct"] is None or r["gain_pct"] == 0)
-    )
-
-    silent_loss_rows = conn.execute(
-        f"""SELECT ticker, contract_type, strike, expiry, posted_at
+    rows = conn.execute(
+        f"""SELECT id, ticker, contract_type, strike, expiry, action,
+                  gain_pct, price, posted_at
            FROM analyst_trades
            WHERE is_trade = 1
-             AND action IN ('open', 'add')
-             AND inferred_status = 'expired_unknown'
+             AND action IN ('open', 'add', 'trim', 'close')
              AND posted_at > ?
              {caller_clause}
-           ORDER BY expiry DESC""",
-        (cutoff, *extra_params),
+           ORDER BY posted_at ASC""",
+        (build_from, *extra_params),
     ).fetchall()
-    silent_loss_count = len(silent_loss_rows)
+    positions = P.build([dict(r) for r in rows])
 
-    # Specific winning closes — so the bot doesn't have to recompute from
-    # the trades list when asked for a breakdown.
-    win_rows = conn.execute(
-        f"""SELECT ticker, contract_type, strike, expiry, gain_pct, posted_at
-           FROM analyst_trades
-           WHERE is_trade = 1
-             AND action = 'close'
-             AND gain_pct > 0
-             AND posted_at > ?
-             {caller_clause}
-           ORDER BY posted_at DESC""",
-        (cutoff, *extra_params),
-    ).fetchall()
+    def _in_window(r: dict) -> bool:
+        return (r.get("posted_at") or "") > cutoff
 
-    total_wins = len(win_gains)
-    total_losses = len(doc_loss_gains) + silent_loss_count
+    closes = [(p, e) for p in positions for e in p["exits"]
+              if (e.get("action") or "").lower() == "close" and _in_window(e)]
+    wins = [(p, e) for p, e in closes if (e.get("gain_pct") or 0) > 0]
+    doc_losses = [(p, e) for p, e in closes if (e.get("gain_pct") or 0) < 0]
+    flat_count = len(closes) - len(wins) - len(doc_losses)
+    silent = [p for p in positions
+              if p["status"] == "expired_no_exit" and _in_window(p["entry"])]
+
+    def _trade(p: dict, e: dict | None) -> dict:
+        ref = e or p["entry"]
+        out = {
+            "ticker": p["ticker"] or None,
+            "contract_type": p["contract_type"],
+            "strike": p["strike"],
+            "expiry": p["expiry"],
+            "posted_at": ref.get("posted_at"),
+            "entry_price": P.entry_price(p),
+        }
+        if e is not None:
+            out["gain_pct"] = e.get("gain_pct")
+            out["exit_price"] = e.get("price") or None
+            out["usd_per_contract"] = P.dollars_per_contract(p, e, e.get("gain_pct"))
+        return out
+
+    win_gains = [e["gain_pct"] for _, e in wins]
+    loss_gains = [e["gain_pct"] for _, e in doc_losses]
+    total_wins = len(wins)
+    total_losses = len(doc_losses) + len(silent)
     decided = total_wins + total_losses
     win_rate = (total_wins / decided * 100) if decided > 0 else 0.0
 
     return {
         "days": days,
         "wins": total_wins,
-        "losses_documented": len(doc_loss_gains),
-        "losses_silent_expiry": silent_loss_count,
+        "losses_documented": len(doc_losses),
+        "losses_silent_expiry": len(silent),
         "total_losses": total_losses,
         "flat": flat_count,
         "decided": decided,
         "win_rate_pct": round(win_rate, 1),
         "avg_win_pct": round(sum(win_gains) / total_wins, 1) if total_wins else None,
         "avg_loss_pct": (
-            round(sum(doc_loss_gains) / len(doc_loss_gains), 1)
-            if doc_loss_gains else None
+            round(sum(loss_gains) / len(loss_gains), 1) if loss_gains else None
         ),
-        "win_trades": [dict(r) for r in win_rows],
-        "silent_expiry_trades": [dict(r) for r in silent_loss_rows],
+        "win_trades": sorted((_trade(p, e) for p, e in wins),
+                             key=lambda t: t["posted_at"] or "", reverse=True),
+        "loss_trades": sorted((_trade(p, e) for p, e in doc_losses),
+                              key=lambda t: t["posted_at"] or "", reverse=True),
+        "silent_expiry_trades": sorted((_trade(p, None) for p in silent),
+                                       key=lambda t: t["expiry"] or "", reverse=True),
     }
+
+
+# The purge never deletes a row a reader can still count: the tally looks
+# back 30 days and an orphan close inherits its contract from an open up
+# to 45 days old. Before 2026-11-11 an unclosed open was deleted 14 days
+# after its expiry, inside the tally's window, so a caller's losses left
+# the record sooner than his wins.
+PURGE_MIN_AGE_DAYS = 45
 
 
 def purge_old_expired_analyst_trades(days_after_expiry: int = 14) -> list[dict]:
@@ -806,7 +829,8 @@ def purge_old_expired_analyst_trades(days_after_expiry: int = 14) -> list[dict]:
             FROM analyst_trades
             WHERE expiry IS NOT NULL
               AND inferred_status = 'expired_unknown'
-              AND date(expiry, '+{int(days_after_expiry)} days') < date('now')"""
+              AND date(expiry, '+{int(days_after_expiry)} days') < date('now')
+              AND date(posted_at) < date('now', '-{PURGE_MIN_AGE_DAYS} days')"""
     ).fetchall()
     if not targets:
         return []
@@ -1049,6 +1073,30 @@ def plausible_gain(gain, contract_type=None) -> float | None:
     return g
 
 
+def _closed_gain_rows(author_id: int, days: int,
+                      contract_type: str | None = None) -> list[dict]:
+    """A member's closes and trims that carry a gain: rows stored as
+    trades only, and one post read twice counted once.
+
+    2026-11-11 audit: Sam's record line read "avg +14520% on closes" from
+    a row the 11-06 cleanup had already marked as not a trade (ticker
+    "UNCL", +71,900%), and TipDrop's +1,497% MCD close was averaged twice
+    because the message carried two screenshots of it."""
+    from analyst_log import positions as P
+    sql = ("SELECT id, ticker, contract_type, strike, action, gain_pct, price, posted_at "
+           "FROM analyst_trades "
+           "WHERE author_id = ? AND is_trade = 1 "
+           "  AND gain_pct IS NOT NULL AND gain_pct != 0 "
+           "  AND LOWER(action) IN ('close', 'trim') "
+           "  AND posted_at >= datetime('now', ?)")
+    params: list = [int(author_id), f"-{int(days)} day"]
+    if contract_type:
+        sql += " AND LOWER(contract_type) = ?"
+        params.append(contract_type.lower())
+    rows = [dict(r) for r in _db.get_connection().execute(sql, params).fetchall()]
+    return P.distinct_trades(rows)
+
+
 def member_ledger_summary(author_id: int, days: int = 21,
                           points: dict | None = None) -> dict:
     """{wins, losses, tickers, avg_gain_pct} for one member's logged trades.
@@ -1063,14 +1111,9 @@ def member_ledger_summary(author_id: int, days: int = 21,
     """
     pts = points if points is not None else (
         compute_member_points(int(author_id), days=days) or {})
-    rows = _db.get_connection().execute(
-        "SELECT gain_pct, contract_type FROM analyst_trades "
-        "WHERE author_id = ? AND gain_pct IS NOT NULL AND gain_pct != 0 "
-        "  AND LOWER(action) IN ('close', 'trim') "
-        "  AND posted_at >= datetime('now', ?)",
-        (int(author_id), f"-{int(days)} day"),
-    ).fetchall()
-    gains = [g for g in (plausible_gain(r[0], r[1]) for r in rows) if g is not None]
+    rows = _closed_gain_rows(int(author_id), int(days))
+    gains = [g for g in (plausible_gain(r["gain_pct"], r["contract_type"]) for r in rows)
+             if g is not None]
     avg = sum(gains) / len(gains) if gains else None
     return {
         "wins": int(pts.get("entries_won") or 0)
@@ -1464,33 +1507,65 @@ def get_member_trade_events(
     return [dict(r) for r in rows]
 
 
+SWEEP_LOOKBACK_DAYS = 120
+
+
 def mark_expired_analyst_positions() -> list[dict]:
-    """Daily cron entrypoint. Mark any trade rows whose expiry has passed
-    AND have no inferred_status yet as 'expired_unknown'. Returns the rows
-    that were newly marked, so the cron can announce them.
+    """Daily cron entrypoint. `inferred_status = 'expired_unknown'` means
+    one thing: this open (or add) belongs to a position whose expiry passed
+    with no trim or close posted. Returns the rows newly marked.
+
+    Until 2026-11-11 every row past its expiry was marked, closes included,
+    and opens whose close was logged. Each run now also clears the mark
+    from rows that should not carry it, so the rows written under the old
+    rule are repaired the first time it runs.
     """
+    from analyst_log import positions as P
     conn = _db.get_connection()
-    # Collect what's about to change so we can return it for the announce
-    targets = conn.execute(
-        """SELECT id, ticker, contract_type, strike, expiry, action,
-                  gain_pct, posted_at
+    rows = [dict(r) for r in conn.execute(
+        f"""SELECT id, ticker, contract_type, strike, expiry, action,
+                  gain_pct, price, posted_at, inferred_status,
+                  tracking_mode, caller, author_id
            FROM analyst_trades
-           WHERE expiry IS NOT NULL
-             AND date(expiry) < date('now')
-             AND inferred_status IS NULL
-             AND is_trade = 1"""
-    ).fetchall()
-    if not targets:
+           WHERE is_trade = 1
+             AND action IN ('open', 'add', 'trim', 'close')
+             AND posted_at > datetime('now', '-{SWEEP_LOOKBACK_DAYS} days')"""
+    ).fetchall()]
+    # one trader's rows at a time: a caller by name, a member by author_id
+    scopes: dict[tuple, list[dict]] = {}
+    for r in rows:
+        tm = (r.get("tracking_mode") or "caller").strip().lower()
+        who = (r.get("caller") or "").strip().lower() if tm == "caller" else r.get("author_id")
+        scopes.setdefault((tm, who), []).append(r)
+    want: set[int] = set()
+    for scope_rows in scopes.values():
+        want |= P.should_be_marked_expired(scope_rows)
+    newly = [r for r in rows if r["id"] in want and r.get("inferred_status") is None]
+    stale = [r["id"] for r in rows
+             if r.get("inferred_status") == "expired_unknown" and r["id"] not in want]
+    if not newly and not stale:
         return []
-    ids = [r["id"] for r in targets]
-    placeholders = ",".join("?" * len(ids))
-    conn.execute(
-        f"UPDATE analyst_trades SET inferred_status = 'expired_unknown' "
-        f"WHERE id IN ({placeholders})",
-        ids,
-    )
+
+    def _set(ids: list[int], value) -> None:
+        for i in range(0, len(ids), 500):
+            chunk = ids[i:i + 500]
+            conn.execute(
+                "UPDATE analyst_trades SET inferred_status = ? "
+                f"WHERE id IN ({','.join('?' * len(chunk))})",
+                (value, *chunk),
+            )
+
+    _set([r["id"] for r in newly], "expired_unknown")
+    _set(stale, None)
     conn.commit()
-    return [dict(r) for r in targets]
+    if stale:
+        import logging
+        logging.getLogger(__name__).info(
+            "expire sweep: cleared expired_unknown from %d rows that have an "
+            "exit or are one", len(stale))
+    keep = ("id", "ticker", "contract_type", "strike", "expiry", "action",
+            "gain_pct", "posted_at")
+    return [{k: r.get(k) for k in keep} for r in newly]
 
 
 def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) -> dict:
@@ -1710,15 +1785,9 @@ def member_close_stats(author_id: int, days: int = 30,
     2026-10-26 audit A6: "what's my win rate on calls" was answered from a
     raw query that included a 50,900% row on ticker "unclear", and printed
     "46 wins, 100% win rate, +1,919.7% avg"."""
-    sql = ("SELECT gain_pct, contract_type FROM analyst_trades "
-           "WHERE author_id = ? AND gain_pct IS NOT NULL AND gain_pct != 0 "
-           "  AND LOWER(action) IN ('close', 'trim') AND posted_at >= datetime('now', ?)")
-    params: list = [int(author_id), f"-{int(days)} day"]
-    if contract_type:
-        sql += " AND LOWER(contract_type) = ?"
-        params.append(contract_type.lower())
-    rows = _db.get_connection().execute(sql, params).fetchall()
-    gains = [g for g in (plausible_gain(r[0], r[1]) for r in rows) if g is not None]
+    rows = _closed_gain_rows(int(author_id), int(days), contract_type)
+    gains = [g for g in (plausible_gain(r["gain_pct"], r["contract_type"]) for r in rows)
+             if g is not None]
     wins = sum(1 for g in gains if g > 0)
     losses = sum(1 for g in gains if g < 0)
     return {

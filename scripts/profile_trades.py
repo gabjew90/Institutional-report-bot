@@ -65,16 +65,9 @@ def shown_gain(gain, contract_type=None) -> float | None:
 
 
 def _key(r: dict) -> tuple:
-    strike = r.get("strike")
-    try:
-        strike = float(strike) if strike is not None else None
-    except (TypeError, ValueError):
-        strike = None
-    # calls and puts by their letter; shares under whatever type the
-    # extractor gave them ("stock", "unclear", blank) are one position
-    # (run 8 M13: Monsoon's FSLR printed twice)
-    ct = (r.get("contract_type") or "").lower()
-    return ((r.get("ticker") or "").upper(), strike, ct[:1] if ct in ("call", "put") else "")
+    """The contract a row belongs to (analyst_log/positions.py)."""
+    from analyst_log.positions import contract_key
+    return contract_key(r)
 
 
 def _strike_str(strike) -> str:
@@ -174,40 +167,26 @@ def _contract(r: dict, today: date | None = None) -> str:
 
 
 def _distinct(events: list[dict]) -> list[dict]:
-    """The events without repeats: the same action on the same day with
-    the same gain is one post read twice, as text and as a screenshot
-    (run 8 M13: SV's two identical NDXP lines)."""
-    seen, out = set(), []
-    for e in events:
-        k = ((e.get("action") or "").lower(), (e.get("posted_at") or "")[:10],
-             e.get("gain_pct"), e.get("price"))
-        if k in seen:
-            continue
-        seen.add(k)
-        out.append(e)
-    return out
+    """The events without repeats (analyst_log/positions.py)."""
+    from analyst_log.positions import distinct
+    return distinct(events)
 
 
 def section_lines(rows: list[dict], today: date | None = None,
                   limit: int = SECTION_LINES) -> list[str]:
-    """One line per contract from the log: what was opened and when, and
+    """One line per position from the log: what was opened and when, and
     the logged exit with its gain, or that no exit was posted. Closes come
     first, newest first, so a logged win is never left out for a run of
-    opens (2026-10-30 audit M20)."""
+    opens (2026-10-30 audit M20). The positions are the shared reading in
+    analyst_log/positions.py (2026-11-11): trims and the close of one
+    contract are one trade, and a post read twice is one event."""
+    from analyst_log import positions as P
     today = today or date.today()
-    by_key: dict[tuple, list[dict]] = {}
-    for r in sorted(rows, key=lambda x: x.get("posted_at") or ""):
-        if (r.get("ticker") or "").upper() in _NOT_TICKERS:
-            continue
-        by_key.setdefault(_key(r), []).append(r)
+    rows = [r for r in rows if (r.get("ticker") or "").upper() not in _NOT_TICKERS]
     closed, other = [], []
-    for events in by_key.values():
-        entry = None                    # the first open since the last exit
-        exits: list[dict] = []          # the exits since that open, in order
-
-        def flush():
-            """One line for the open and every exit after it: trims and the
-            close are one trade (run 8 M13: three NDXP 28325C exit lines)."""
+    for p in P.build(rows, today):
+        entry, exits = p["entry"], p["exits"]
+        if exits:
             last = exits[-1]
             g = shown_gain(last.get("gain_pct"), last.get("contract_type"))
             if entry is None:
@@ -225,31 +204,10 @@ def section_lines(rows: list[dict], today: date | None = None,
             else:
                 text = f"{_contract(last, today)}: exit posted {day}, {result}, no entry logged"
             closed.append((last.get("posted_at") or "", text))
-
-        for e in _distinct(events):
-            act = (e.get("action") or "").lower()
-            if act in _EXITS:
-                exits.append(e)
-            elif act in _OPENS:
-                if exits:
-                    flush()
-                    entry, exits = None, []
-                if entry is None:
-                    entry = e
-        if exits:
-            flush()
-            continue
-        if entry is None:
             continue
         price = entry.get("price")
         at = f" at {price:g}" if isinstance(price, (int, float)) and price else ""
-        expiry = entry.get("expiry") or ""
-        expired = (entry.get("inferred_status") or "").lower() == "expired_unknown"
-        if len(expiry) >= 10:
-            try:
-                expired = expired or date.fromisoformat(expiry[:10]) < today
-            except ValueError:
-                pass
+        expired = p["expired"] or (entry.get("inferred_status") or "").lower() == "expired_unknown"
         tail = "expiry passed with no exit posted, outcome unknown" if expired else "no exit posted"
         other.append((entry.get("posted_at") or "",
                       f"{_contract(entry, today)}: opened {_day(entry.get('posted_at'))}{at}, {tail}"))

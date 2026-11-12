@@ -79,6 +79,12 @@ def format_analyst_trades_for_context(
                 f"auto-logged from his alerts channel — for context only, "
                 f"don't quote captions; he didn't share them with you):"
             )
+            # Whether an open was ever exited is read from the positions
+            # (analyst_log/positions.py), never from the row's own mark: on
+            # 2026-11-11 this block printed "[expired, no close alert]" on
+            # an open directly above its logged close.
+            from analyst_log import positions as _P
+            _pos_of = _P.position_of(_P.build(rows))
             # Newest first per get_recent_analyst_trades; reverse so the trader
             # reads them chronologically.
             for r in reversed(rows):
@@ -117,12 +123,11 @@ def format_analyst_trades_for_context(
                 # holdings or fabricate entries that aren't in the log.
                 status_tag = ""
                 status = r.get("inferred_status")
-                if status == "expired_unknown":
-                    if action in ("open", "add"):
+                _p = _pos_of.get(int(r["id"])) if r.get("id") is not None else None
+                if action in ("open", "add"):
+                    if _p is not None and _p["status"] == "expired_no_exit":
                         status_tag = " [expired — no close alert]"
-                    else:
-                        status_tag = " [expired]"
-                elif status == "close_without_open":
+                elif status == "close_without_open" and (_p is None or _p["entry"] is None):
                     status_tag = " [exit only — no logged entry]"
 
                 out_lines.append(
@@ -214,18 +219,43 @@ def format_analyst_trades_for_context(
                 exp_short = expiry[5:] if len(expiry) >= 10 else expiry
                 return f"{tk} {strike_str}{ct_suffix} {exp_short}"
 
+            def _money(t: dict) -> str:
+                """The logged entry and exit and what one contract made.
+                A dollar question is answered from these, never from an
+                assumed price (2026-11-11: "2 contracts of every trade"
+                was priced at an invented $3.25 average entry)."""
+                ep, xp, usd = t.get("entry_price"), t.get("exit_price"), t.get("usd_per_contract")
+                if not ep:
+                    return ", entry price not logged"
+                bits = f", entry {ep:.2f}"
+                if xp:
+                    bits += f", exit {xp:.2f}"
+                if usd is not None:
+                    bits += f", {'+' if usd >= 0 else '-'}${abs(usd):,.0f} per contract"
+                return bits
+
             if wl.get("win_trades"):
                 out_lines.append("- Winning closes (specific contracts):")
                 for w in wl["win_trades"][:25]:
                     gain = w.get("gain_pct")
                     gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
-                    out_lines.append(f"  · {_fmt_contract(w)}{gain_str}")
+                    out_lines.append(f"  · {_fmt_contract(w)}{gain_str}{_money(w)}")
+            if wl.get("loss_trades"):
+                out_lines.append("- Losing closes (specific contracts):")
+                for w in wl["loss_trades"][:25]:
+                    gain = w.get("gain_pct")
+                    gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
+                    out_lines.append(f"  · {_fmt_contract(w)}{gain_str}{_money(w)}")
             if wl.get("silent_expiry_trades"):
                 out_lines.append(
-                    "- Silent-expiry losses (opens with no close, expired):"
+                    "- Silent-expiry losses (opened, expired, no trim or close "
+                    "ever posted; outcome unknown, counted as L):"
                 )
                 for s in wl["silent_expiry_trades"][:25]:
-                    out_lines.append(f"  · {_fmt_contract(s)}")
+                    ep = s.get("entry_price")
+                    cost = (f", entry {ep:.2f} (${ep * 100:,.0f} per contract at risk)"
+                            if ep else ", entry price not logged")
+                    out_lines.append(f"  · {_fmt_contract(s)}{cost}")
 
     return "\n".join(out_lines)
 
