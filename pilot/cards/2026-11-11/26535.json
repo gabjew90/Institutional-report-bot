@@ -1,0 +1,132 @@
+{
+ "brief": "Weekly UBS sales and trading note listing five derivatives trade themes, not a single connected argument. Re-correlation across assets is cited as driving some of this week's sharpest equity moves, but VIX has already dropped back below 20 and contagion has stayed limited so far. UBS Research's 'AI Disappoints' downside scenario flags Gold, Rates and SPX as potential hedges. The desk favors owning European volatility, hedging downside through SX5E put-spreads; a formal MAR disclosure confirms a live 'Shorter Delta' (short) Eurostoxx 50 recommendation, up to six months, dated 10-Nov-2026. Preferred equity longs are NDX, KOSPI2 and Global Industrials, funded by selling XLY calls; a matching disclosure shows a live 'Longer Delta' (long) DJ Stoxx 600 Industrial Goods & Services recommendation, up to three months, same date. Separately, the desk favors long Yen versus short CHF to play a rebound, with NKY/JPY hybrids and AUD/CHF dual digitals as alternatives; a disclosure also shows a live 'Shorter Delta' (short) USDCHF recommendation, up to six months, same date.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "Re-correlation across assets has helped drive some of the most significant equity moves of the week, but VIX has already dropped back below 20 and contagion has so far been limited.",
+   "anchor": "Re-correlation helping to drive some historic equity moves this week, but VIX is now back <20v, and\ncontagion so far is limited.",
+   "topic": "Thursday equity vol spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS Research's 'AI Disappoints' downside scenario identifies Gold, Rates and SPX as potential hedges.",
+   "anchor": "UBS Research \u201cAI Disappoints\u201d downside scenario points to potential hedges via Gold, Rates and SPX.",
+   "topic": "AI downside hedge scenario",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS Research favors owning European volatility, hedging downside exposure via SX5E put-spreads.",
+   "anchor": "UBS Research favour owning European vol \u2013 hedge downside via SX5E put-spreads.",
+   "topic": "European equity downside hedge",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS has a live 'Shorter Delta Derivative' (short) recommendation on the Eurostoxx 50 with a horizon of up to six months, dated 10:49 on 10 November 2026.",
+   "anchor": "EUROSTOXX 50\nShorter Delta Derivative\nUp to 6 Months\n10:49 10-Nov-2026",
+   "topic": "European equity downside hedge",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Up to 6 Months"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS Research's preferred equity longs are NDX, KOSPI2 and Global Industrials, funded by selling XLY calls.",
+   "anchor": "UBS Research preferred Equity longs are NDX, KOSPI2 and Global Industrials, consider funding via\nselling XLY calls.",
+   "topic": "UBS preferred equity longs",
+   "status": "forecast",
+   "instruments": [
+    "XLY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS has a live 'Longer Delta Derivative' (long) recommendation on the DJ Stoxx 600 Industrial Goods & Services sector with a horizon of up to three months, dated 10:49 on 10 November 2026.",
+   "anchor": "DJ STOXX 600 INDUSTRIAL\nGOODS SERVICES\nLonger Delta Derivative\nUp to 3 Months\n10:49 10-Nov-2026",
+   "topic": "UBS preferred equity longs",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Up to 3 Months"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS Research favors going long Yen versus short CHF, with NKY/JPY hybrids and AUD/CHF dual digitals as alternative trades to play a rebound.",
+   "anchor": "UBS Research favour long Yen vs short CHF, alternative trades include NKY/JPY Hybrids and AUD/CHF\nDual Digis to play rebound.",
+   "topic": "Yen vs CHF rebound trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Recorrelation drives vols higher -- AI cross-asset hedges -- SX5E vol -- Equity longs -- Yen vs CHF - Shane Carroll - 2026-11-10",
+   "claim": "UBS has a live 'Shorter Delta Derivative' (short) recommendation on USDCHF with a horizon of up to six months, dated 10:49 on 10 November 2026.",
+   "anchor": "USDCHF\nShorter Delta Derivative\nUp to 6 Months\n10:49 10-Nov-2026",
+   "topic": "Yen vs CHF rebound trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Up to 6 Months"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-11/26535__ubs-s-t-recorrelation-drives-vols-higher-ai-cross-asset-hedg.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
