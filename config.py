@@ -1,5 +1,7 @@
 """Central configuration loaded from environment variables."""
 
+import runtime_env  # noqa: F401  thread limits, before anything imports numpy
+
 from pydantic_settings import BaseSettings
 from pydantic import Field
 

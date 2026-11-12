@@ -63,12 +63,14 @@ def _report_db_lock(sql: str) -> None:
     threading.Thread(target=_ping, daemon=True).start()
 
 
-# What held the write lock for 30 s on 2026-11-02 and 10-29? The batch process went
-# silent for 15 to 56 s between an INSERT and its next statement. PyMuPDF does not
-# pause other threads (measured) and malloc_trim did not run then, which leaves
-# the disk (ext4 with discard on a ZFS volume, and every WAL commit syncs). These
-# two logs settle it at the next stall: a slow commit with no "process paused"
-# line is the disk, and a "process paused" line is Python itself.
+# What held the write lock for 30 s on 2026-10-29, 11-02 and 11-11: the batch
+# process was frozen between an INSERT and its commit. Answered 2026-11-12 by the
+# two logs below ("process paused" in every episode, so not the disk) and the
+# container's own counters: the kernel was throttling the container because
+# numpy's OpenBLAS ran 48 threads against a quota of 8 CPUs. The limit is set in
+# runtime_env.py, which has the measurements. The logs stay for the next stall:
+# a slow commit with no "process paused" line is the disk, and a "process
+# paused" line is the whole process not running.
 _SLOW_DB_S = 5.0
 _PAUSE_S = 5.0
 _pause_watch_started = False

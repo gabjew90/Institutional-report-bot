@@ -5,6 +5,8 @@ the scheduler with only the batch jobs. No Discord client of its own; the
 profile refresh opens its own gateway session, as it always has, and ops
 pings go through the REST helper.
 """
+import runtime_env  # noqa: F401  first: thread limits must be set before numpy loads
+
 import asyncio
 import logging
 import os

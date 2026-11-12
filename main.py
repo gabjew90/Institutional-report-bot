@@ -1,5 +1,7 @@
 """Entry point: starts the Discord bot, scheduler, and processing pipeline."""
 
+import runtime_env  # noqa: F401  first: thread limits must be set before numpy loads
+
 import asyncio
 import logging
 import signal
