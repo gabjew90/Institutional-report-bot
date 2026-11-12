@@ -2,12 +2,12 @@
  "runs": [
   {
    "run_id": "43131361083",
-   "finished_utc": "01:22",
-   "total": 2,
-   "failed": 0,
+   "finished_utc": "01:39",
+   "total": 4,
+   "failed": 1,
    "in_pulse_window": false
   }
  ],
- "reader_failure_rate": 0.0,
+ "reader_failure_rate": 0.25,
  "collided_with_pulse_window": false
 }
