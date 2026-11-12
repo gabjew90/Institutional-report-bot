@@ -3749,3 +3749,12 @@ Not fixed here: "Cutting PLTR at -50%" from a caller is stored as not a trade, s
 The stall. On 11-11 at 23:21 UTC and 11-12 at 01:01 UTC the batch process logged "process paused ... no Python thread could run" for 5 to 58 seconds at a time, 373 seconds in all, minutes after a late bulk arrival of research. The bot's writes failed after the 30-second wait: three chat messages, a tagger run and a feed post. The container's counters gave the cause: `cpu.max` is 8 CPUs, `nproc` is 48, `cpu.stat` showed 4,813 throttled periods and `cpu.pressure` 352 seconds of full stall since boot, and each process carried about 48 OpenBLAS threads (the batch process's 81 threads had each used at least 11.9 CPU-seconds). The theme clusterer's loop of small matrix products left 48 threads spinning between calls, which spent the quota and got every thread in the container frozen, the bot included. The clusterer moved to numpy on 10-27, and the first write-lock freeze was 10-29. `runtime_env.py` caps BLAS at 2 threads before numpy loads.
 
 Also seen, not changed: the `pilot-analysis` "failed at startup" email of 11-11 20:39 UTC was one run GitHub never started (the runs before and after it passed). The `pilot-editor` failure of 11-09 was the editor refusing to write with no reader cards, on a morning with no research.
+
+## 2026-11-12: shorter stock answers after a print
+
+Owner: the AMAT answers were too long. "did amat earnings droo", asked 19 minutes after the report, got 150 words in six arrows against a 14-day median of 80 words and three arrows for the shape. The result arrow was one 73-word sentence (results, guidance and an HSBC rating). Two desk arrows came from notes that only listed AMAT among Thursday's reports. A positioning arrow (short interest, distance from the high) answered nothing asked. The news line's "shares moving lower" sat beside a live quote of +0.6% after hours.
+
+Fix, all in `discord_bot/stock_outline.py`: a desk slot needs a view (`_has_view`); after a print the news lines become RESULT, GUIDANCE and ANALYST ACTION slots, the news's account of the stock's move is cut when the outline has a live quote, and POSITIONING is left out. The same payloads now give five slots: price, result, guidance, driver, the HSBC rating.
+
+What this costs: a preview that expected something in words only ("GS expects upside to consensus") no longer gets an arrow once the result is out. Before a print such a note still gets one. The $739.67 52-week high in that answer was checked against Yahoo's daily bars and is right (June 30).
+

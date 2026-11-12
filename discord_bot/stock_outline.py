@@ -17,10 +17,28 @@ as backstops and should rarely fire.
 
 Pure: build_outline reads the prefetch results the router already
 fetched and returns text. No network, no model.
+
+Shorter after a print (2026-11-12, owner: "did amat earnings droo" was
+answered in 150 words and six arrows, 19 minutes after the report). The
+result arrow was one 73-word sentence holding the results, the guidance and
+an unrelated rating. Two desk arrows came from notes that said only that the
+company reports on Thursday ("JPMorgan flagged the print on its afternoon
+briefing calendar"). A positioning arrow answered nothing asked, and the
+news line's "shares moving lower" sat beside a live quote of +0.6% after
+hours. Now: a desk gets a slot only when its note carries a view
+(`_has_view`). A note that only lists the company among the week's reports
+never does. A note written before a print that is now out needs more: a
+price target, a rating action, a high-conviction call or a figure of its
+own, something to hold against the result. With a print in the last days
+the news lines are split into RESULT, GUIDANCE and ANALYST ACTION slots, the
+news's own account of the stock's move is cut when a live quote is in the
+outline, and there is no POSITIONING slot.
 """
 from __future__ import annotations
 
 import re
+
+from discord_bot.news_tool import _DATED_RE, _PUBLISHER_RE
 
 MAX_DESKS = 2
 MAX_NEWS_LINES = 2
@@ -47,24 +65,90 @@ def _eps(v) -> str:
     return f"${v:,.2f}"
 
 
-def _result_slot(fresh: dict | None, snapshot: dict | None, news: dict | None) -> str | None:
-    """The print if one came out in the last few days, else the next
-    report with what the consensus expects."""
+# What a clause of a news line is about. An analyst's action is checked
+# first: "raised its target and expects stronger demand" is the analyst's.
+_ANALYST_RE = re.compile(
+    r"\b(?:rating|price target|upgrad\w+|downgrad\w+|initiat\w+ coverage|"
+    r"(?:rais|cut|lower|lift|set|hik|trim|boost|slash)\w*\s+(?:(?:its|the|their)\s+)?(?:price\s+)?target)\b", re.I)
+_GUIDE_RE = re.compile(r"\b(?:guid(?:ed|es|ing|ance)|outlook|forecast(?:s|ed|ing)?)\b", re.I)
+_REPORTED_RE = re.compile(r"\b(?:reported|posted|delivered)\b", re.I)
+# Where a line turns from the results to the guidance.
+_CLAUSE_SPLIT_RE = re.compile(
+    r";|,\s+(?:and\s+|while\s+)?(?=(?:the company\s+|it\s+|management\s+)?"
+    r"(?:guided|guides|guiding|issued guidance|forecast)\b)", re.I)
+# The news's own account of the stock's move, at the end of a clause
+# ("..., with shares moving lower following the release"). The live quote
+# is the move: the two disagreed in the AMAT answer.
+_MOVE_TAIL_RE = re.compile(
+    r"(?:^\s*|,\s*(?:(?:with|and|as|while|though|although|but)\s+)?|"
+    r"\s+(?:with|and|as|while|though|although|but)\s+)(?:the\s+|its\s+)?(?:shares?|stock)\s+"
+    r"(?:(?:is|are|was|were|has|have|had)\s+)?"
+    r"(?:mov|fell|fall|ris|rose|dropp|drop|slid|slip|jump|gain|climb|declin|sank|sink|tumbl|surg|"
+    r"trad|dipp|dip|down|up\b|lower|higher|plung|soar|rall|pop|tick|edg)[^;|]*$", re.I)
+
+
+def _split_news(lines: list[str], cut_moves: bool, since: str = "") -> dict[str, list[str]]:
+    """News lines as clauses sorted by subject: the results, the guidance,
+    an analyst's action. A line is split at its semicolons, and each clause
+    keeps the publisher the line ended with. An analyst line dated before
+    `since` (the report date) is left out: it is not a reaction to it."""
+    out: dict[str, list[str]] = {"result": [], "guidance": [], "analyst": []}
+    for raw in lines:
+        m = _DATED_RE.match(raw)
+        date = m.group(1) if m else ""
+        body = (raw[m.end():] if m else raw).strip().lstrip(")*:\u2013-\u2022 ")
+        pub = ""
+        pm = _PUBLISHER_RE.search(body)
+        if pm:
+            pub, body = f" ({pm.group(1)})", body[:pm.start()]
+        if _ANALYST_RE.search(body) and not _GUIDE_RE.search(body) and not _REPORTED_RE.search(body):
+            if since and date and date < since[:10]:
+                continue
+            # a line about a rating stays whole, with its date
+            out["analyst"].append(f"{body.strip().rstrip('.')}, {date}{pub}" if date
+                                  else f"{body.strip().rstrip('.')}{pub}")
+            continue
+        for clause in _CLAUSE_SPLIT_RE.split(body):
+            if cut_moves:
+                clause = _MOVE_TAIL_RE.sub("", clause)
+            clause = clause.strip().rstrip(".,")
+            if len(clause.split()) < 3:
+                continue
+            kind = ("analyst" if _ANALYST_RE.search(clause) and not _REPORTED_RE.search(clause) else
+                    "guidance" if _GUIDE_RE.search(clause) else "result")
+            out[kind].append(f"{clause}{pub}")
+    return out
+
+
+def _result_slots(fresh: dict | None, snapshot: dict | None, news: dict | None,
+                  have_price: bool = False) -> tuple[list[str], str | None]:
+    """The print if one came out in the last few days (the results, then
+    the guidance, each its own slot), else the next report with what the
+    consensus expects. Second value: an analyst's action from the news
+    after a print, which the outline places with the desks."""
     g = (snapshot or {}).get("growth") or {}
     news_lines = []
     if (news or {}).get("status") == "ok":
         news_lines = [ln for ln in (news.get("digest") or "").splitlines() if ln.strip()][:MAX_NEWS_LINES]
     if fresh:
         when = f"{fresh['date']} {fresh.get('session') or ''}".strip()
+        parts = _split_news(news_lines, cut_moves=have_price, since=str(fresh.get("date") or ""))
         if fresh.get("actual") is not None and fresh.get("estimate") is not None:
             sp = fresh.get("surprise_pct")
             head = (f"RESULT: reported {when}: EPS {_eps(fresh['actual'])} vs {_eps(fresh['estimate'])} "
                     f"expected" + (f" ({sp:+.1f}%)" if sp is not None else "") + " [company report]")
         else:
             head = f"RESULT: reported {when}; the figures are in the news lines [news search]"
-        if news_lines:
-            head += ". From the news, name the publisher each line ends with: " + " | ".join(news_lines)
-        return head
+        if parts["result"]:
+            named = any(_PUBLISHER_RE.search(p) for p in parts["result"])
+            head += (". From the news" + (", name the publisher each line ends with" if named else "")
+                     + ": " + " | ".join(parts["result"]))
+        slots = [head]
+        if parts["guidance"]:
+            slots.append("GUIDANCE: " + " | ".join(parts["guidance"]) + " [news search]")
+        analyst = ("ANALYST ACTION: " + " | ".join(parts["analyst"]) + " [news search]"
+                   if parts["analyst"] else None)
+        return slots, analyst
     nq, nr = g.get("next_quarter") or {}, g.get("next_report") or {}
     bits = []
     if nr.get("date"):
@@ -82,7 +166,7 @@ def _result_slot(fresh: dict | None, snapshot: dict | None, news: dict | None) -
     if news_lines:
         news_part = "NEWS: " + " | ".join(news_lines) + " [the publisher each line ends with]"
         out = f"{out}\n{news_part}" if out else news_part
-    return out
+    return ([out] if out else []), None
 
 
 def _driver_slot(primer: dict | None) -> str | None:
@@ -99,6 +183,18 @@ def _driver_slot(primer: dict | None) -> str | None:
     if watched:
         slot += f" What it is judged on: {watched}"
     return slot + " [company background; say it in one short clause tied to the result or the setup, no list of segments]"
+
+
+def _desk_pieces(note: dict) -> list[str]:
+    """The note's own sentences that `_desk_text` shows."""
+    first_earnings = (note.get("earnings") or [""])[0]
+    calls = note.get("calls") or []
+    if calls:
+        return [x for x in (calls[0].get("rationale") or "", first_earnings) if x]
+    for key in ("earnings", "insights"):
+        if note.get(key):
+            return [note[key][0]]
+    return []
 
 
 def _desk_text(note: dict) -> str:
@@ -124,6 +220,56 @@ def _desk_text(note: dict) -> str:
     return ""
 
 
+_RATING_ACTIONS = {"upgrade", "downgrade", "initiate", "price_target_change"}
+# A figure of the desk's own: money, a percentage, a multiple, basis points.
+# A date ("11/12"), a year or a quarter ("4Q") is not one.
+_FIGURE_RE = re.compile(
+    r"\$\s?\d|\d\s?(?:%|percent\b)|\b\d+(?:\.\d+)?\s?x\b|"
+    r"\b\d+(?:\.\d+)?\s?(?:bps?|basis points?|billion|million|bn|mn)\b|\b\d+(?:\.\d+)?[BM]\b", re.I)
+
+
+# A sentence that only puts the company on the calendar.
+_SCHEDULE_RE = re.compile(
+    r"\breport(?:s|ing)?\s+(?:earnings|results|on\b|after\b|before\b|this\b|next\b|tonight|today|"
+    r"tomorrow|mon|tue|wed|thu|fri|\d|(?:fiscal\s+)?(?:Q\d|\dQ|first|second|third|fourth))|"
+    r"\b(?:due|set|scheduled|slated) to report\b|"
+    r"\bearnings\s+(?:on|due|after|before|this|next|tonight|today|tomorrow)\b|"
+    r"\bon (?:the|its) (?:earnings )?calendar\b", re.I)
+_VIEW_WORD_RE = re.compile(
+    r"\b(?:expect|sees?\b|prefer|upside|downside|above|below|beat|miss|ahead of|strong|weak|risk|"
+    r"bull|bear|favou?r|likes?\b|cautious|constructive|rais|cut|guid|margin|demand|growth|"
+    r"share gain|pricing|estimate|consensus|street)", re.I)
+
+
+def _is_schedule_only(pieces: list[str]) -> bool:
+    """Every sentence only says when the company reports."""
+    sentences = [x for p in pieces for x in re.split(r"(?<=[.!?])\s+", p or "") if len(x.split()) >= 2]
+    return bool(sentences) and all(
+        _SCHEDULE_RE.search(x) and not _VIEW_WORD_RE.search(x) and not _FIGURE_RE.search(x)
+        for x in sentences)
+
+
+def _has_view(note: dict, pieces: list[str], stale_preview: bool = False) -> bool:
+    """Whether a note says something about the name worth its own arrow.
+    Always: a price target, a rating action, a call the desk holds with
+    high conviction, or a figure of its own. Otherwise a note that only
+    lists the company among the week's reports ("AMAT and CSCO report
+    earnings 11/12", "Neutral: reporting after the close on Thursday") has
+    none, and a note written before a print that is now out has none
+    either: what it expected in words is no longer news."""
+    for c in (note.get("calls") or [])[:1]:          # the call `_desk_text` shows
+        pt = str(c.get("price_target") or "")
+        if pt and pt.upper() != "N/A":
+            return True
+        if (c.get("action") or "").lower() in _RATING_ACTIONS:
+            return True
+        if (c.get("conviction") or "").lower() == "high" and (c.get("rationale") or "").strip():
+            return True
+    if any(_FIGURE_RE.search(p or "") for p in pieces):
+        return True
+    return not stale_preview and not _is_schedule_only(pieces)
+
+
 def _desk_slots(research: dict | None, fresh: dict | None) -> list[str]:
     if (research or {}).get("status") != "ok":
         return []
@@ -141,9 +287,10 @@ def _desk_slots(research: dict | None, fresh: dict | None) -> list[str]:
         if not bank or bank in banks:
             continue
         text = _desk_text(n)
-        if not text:
-            continue
-        tag = ", written before the report: what it expected" if fresh and _is_preview(n, fresh) else ""
+        preview = bool(fresh) and _is_preview(n, fresh)
+        if not text or not _has_view(n, _desk_pieces(n), stale_preview=preview):
+            continue                      # the bank's next note may have one
+        tag = ", written before the report: what it expected" if preview else ""
         out.append(f"DESK: {bank} ({n.get('published')}{tag}): {text} [{bank}; this view only]")
         banks.add(bank)
         if len(out) >= MAX_DESKS:
@@ -213,27 +360,33 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
     if shape not in _STOCK_SHAPES or not symbol:
         return ""
     symbol = symbol.upper()
+    price = _price_slot(results.get(R.T_PRICE), symbol, results.get(R.T_SNAPSHOT))
+    lead, analyst = _result_slots(fresh, results.get(R.T_SNAPSHOT), results.get(R.T_NEWS),
+                                  have_price=bool(price and "today" in price))
     slots = [
-        _price_slot(results.get(R.T_PRICE), symbol, results.get(R.T_SNAPSHOT)),
-        _result_slot(fresh, results.get(R.T_SNAPSHOT), results.get(R.T_NEWS)),
+        price,
+        *lead,
         _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
         _driver_slot(results.get(R.T_PRIMER)),
+        analyst,
         *_desk_slots(results.get(R.T_RESEARCH), fresh),
         _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
-        _risk_slot(results.get(R.T_SNAPSHOT)),
+        # for the days after a print the answer is about the result
+        None if fresh else _risk_slot(results.get(R.T_SNAPSHOT)),
     ]
     slots = [s for s in slots if s]
     if len(slots) < 2:
         return ""
     body = "\n".join(f"{i}. {s}" for i, s in enumerate(slots, 1))
+    last = ("into it. The stock's move comes from the PRICE slot only. " if fresh else
+            "into it, and drop the POSITIONING slot if it does not bear on the question. ")
     return ("[ANSWER OUTLINE, built by the system from the blocks above. Write one arrow per "
             "numbered slot, in this order. Use the facts in that slot, and name only the source "
             "in its brackets, in words, never the bracket itself: a figure from the news or the "
             "company report is never a bank's. "
             "Say each in plain words, growth first where there is growth. The RESULT or "
             "UPCOMING slot keeps its own arrow and its own source; you may fold the PRICE slot "
-            "into it, and drop the POSITIONING slot if it does not bear on the question. Add no "
-            "facts that are not in the blocks above.]\n" + body)
+            + last + "Add no facts that are not in the blocks above.]\n" + body)
 
 
 # The source tags the outline puts in brackets. The model copied them into

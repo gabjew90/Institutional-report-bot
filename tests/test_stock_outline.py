@@ -40,14 +40,130 @@ def test_a_fresh_print_outline_leads_with_price_then_the_result_with_its_true_so
     assert lines[1].startswith("2. RESULT: reported 2026-09-30 after the close: EPS $33.42 vs $31.82 "
                                "expected (+5.0%) [company report]")
     assert "(GlobeNewswire)" in lines[1], "news lines carry their publisher"
+    assert "name the publisher each line ends with" in lines[1]
     assert lines[2].startswith("3. DRIVER: Cloud Memory drives growth")
-    # desks: calls and high conviction first, one note per bank, previews tagged
-    assert lines[3].startswith("4. DESK: JPMorgan (2026-09-29, written before the report: what it expected): "
+    # an analyst's action after the report, from the news, sits with the desks
+    assert lines[3] == ("4. ANALYST ACTION: Morgan Stanley raised its target to $1,200, 2026-10-01 "
+                        "(Barron's) [news search]")
+    # desks: a high-conviction call written before the report is kept and tagged
+    assert lines[4].startswith("5. DESK: JPMorgan (2026-09-29, written before the report: what it expected): "
                                "positive catalyst watch: Guide above Street on HBM4 demand [JPMorgan; this view only]")
-    assert lines[4].startswith("5. DESK: Syz Group (2026-09-29, written before the report")
-    assert lines[5] == ("6. POSITIONING: short interest 2.5% of float as of 2026-09-15, 16.7% below its "
-                        "52-week high [exchange and filing data]")
+    # 2026-11-12: a preview with no target, rating action or figure is not
+    # news once the result is out, and there is no POSITIONING slot then
+    assert len(lines) == 5 and "Syz Group" not in text and "Goldman" not in text
+    assert "POSITIONING:" not in text
     assert "a figure from the news or the company report is never a bank's" in text
+
+
+# The 2026-11-12 "did amat earnings droo" payloads, 19 minutes after the report.
+AMAT_PRICE = {"status": "ok", "quotes": [{"symbol": "AMAT", "price": 383.14, "change_pct": -3.5765,
+                                          "extended_hours_change_pct": 0.5749}]}
+AMAT_SNAP = {"status": "ok", "symbol": "AMAT", "short_pct_float": 1.8, "short_interest_as_of": "2026-10-30",
+             "pct_below_52w_high": 48.5, "offering_filings_12m": [], "growth": {}}
+AMAT_NEWS = {"status": "ok", "digest": (
+    "- 2026-11-12: Applied Materials reported fourth-quarter fiscal 2026 revenue of $10.41 billion (up 53% "
+    "year-over-year) beating the $10.30 billion estimate, and non-GAAP EPS of $4.16 (up 92% year-over-year) "
+    "beating the $4.06 estimate; guided fiscal first-quarter revenue to $11.10 billion (plus or minus $500 "
+    "million) and non-GAAP EPS to $4.35 (plus or minus $0.20) against estimates, with shares moving lower "
+    "following the release\n"
+    "- 2026-11-12: HSBC maintained a Buy rating on Applied Materials and set a price target of $641\n"
+    "- 2026-11-09: B. Riley Securities maintained a Buy rating on Applied Materials and cut the price target "
+    "from $700 to $475")}
+AMAT_PRIMER = {"status": "ok", "primer": "SELLS: chip-making equipment\nDRIVERS: Semiconductor Systems drives "
+                                         "revenue growth on AI chip manufacturing demand\nWATCHED: gross margin"}
+AMAT_RESEARCH = {"status": "ok", "notes": [
+    {"source": "Goldman Sachs", "published": "2026-11-12", "calls": [], "earnings": [], "insights": []},
+    {"source": "Goldman Sachs", "published": "2026-11-11", "calls": [], "earnings": [],
+     "insights": ["(reported) GS Research prefers AMAT for semi cap equipment, using 2027 WFE as a baseline."]},
+    {"source": "Goldman Sachs", "published": "2026-11-11", "earnings": ["Applied Materials (AMAT) and Cisco "
+                                                                         "(CSCO) report earnings 11/12."],
+     "calls": [{"action": "positive_catalyst_watch", "rating": "Neutral", "price_target": "N/A",
+                "rationale": "Reporting earnings after the close on Thursday.", "conviction": "low"}]},
+    {"source": "JPMorgan", "published": "2026-11-11", "calls": [], "insights": [],
+     "earnings": ["AMAT reports earnings Thursday after the close."]}]}
+AMAT_FRESH = {"date": "2026-11-12", "session": "after the close", "actual": None, "estimate": None,
+              "symbol": "AMAT"}
+
+
+def _amat(**extra):
+    base = {R.T_PRICE: AMAT_PRICE, R.T_SNAPSHOT: AMAT_SNAP, R.T_NEWS: AMAT_NEWS, R.T_PRIMER: AMAT_PRIMER,
+            R.T_RESEARCH: AMAT_RESEARCH}
+    base.update(extra)
+    return base
+
+
+def _slots(text):
+    return [ln.split(". ", 1)[1] for ln in text.splitlines() if ln[:2].rstrip(".").isdigit()]
+
+
+def test_after_a_print_the_outline_is_the_result_the_guidance_the_driver_and_the_analyst():
+    slots = _slots(O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH))
+    assert [s.split(":")[0] for s in slots] == ["PRICE", "RESULT", "GUIDANCE", "DRIVER", "ANALYST ACTION"]
+    result, guidance, analyst = slots[1], slots[2], slots[4]
+    assert "$10.41 billion" in result and "$4.16" in result and "guided" not in result and "HSBC" not in result
+    assert guidance == ("GUIDANCE: guided fiscal first-quarter revenue to $11.10 billion (plus or minus $500 "
+                        "million) and non-GAAP EPS to $4.35 (plus or minus $0.20) against estimates [news search]")
+    assert analyst == ("ANALYST ACTION: HSBC maintained a Buy rating on Applied Materials and set a price "
+                       "target of $641, 2026-11-12 [news search]")
+    # no publisher on the line, so the model is not asked to name one
+    assert "name the publisher" not in result
+
+
+def test_the_stocks_move_comes_from_the_live_quote_not_the_news_line():
+    text = O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    assert "shares moving lower" not in text and "+0.6% after the regular close" in text
+    # with no live quote the news line's account is all there is
+    no_quote = O.build_outline(_amat(**{R.T_PRICE: {"status": "error"}}), "ticker_opinion", "AMAT",
+                               fresh=AMAT_FRESH)
+    assert "shares moving lower" in no_quote
+
+
+def test_a_note_that_only_lists_the_report_date_gets_no_desk_slot():
+    # after the print: neither bank's notes say anything about the result
+    after = O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    assert "DESK:" not in after
+    # before it: the calendar lines still get no slot, and Goldman's slot is
+    # its note with a view, not the newer one that only says when AMAT reports
+    before = _slots(O.build_outline(_amat(), "ticker_opinion", "AMAT"))
+    desks = [s for s in before if s.startswith("DESK:")]
+    assert len(desks) == 1 and "prefers AMAT for semi cap equipment" in desks[0]
+    assert "JPMorgan" not in " ".join(before)
+    assert any(s.startswith("POSITIONING:") for s in before), "positioning stays when no print is out"
+
+
+def test_a_preview_with_a_target_or_a_figure_keeps_its_slot_after_the_print():
+    notes = [{"source": "Bernstein", "published": "2026-11-10",
+              "calls": [{"action": "reiterate", "rating": "Outperform", "price_target": "$520",
+                         "rationale": "WFE share gains", "conviction": "medium"}]},
+             {"source": "UBS", "published": "2026-11-10", "insights": ["UBS models fiscal Q1 revenue of $11.3B, "
+                                                                        "3% above the Street."]},
+             {"source": "Citi", "published": "2026-11-10", "insights": ["Citi expects a constructive tone."]}]
+    text = O.build_outline(_amat(**{R.T_RESEARCH: {"status": "ok", "notes": notes}}), "ticker_opinion",
+                           "AMAT", fresh=AMAT_FRESH)
+    assert "DESK: Bernstein (2026-11-10, written before the report" in text
+    assert "DESK: UBS (2026-11-10, written before the report" in text
+    assert "Citi" not in text
+
+
+def test_news_lines_are_sorted_by_what_they_are_about():
+    parts = O._split_news([
+        "- 2026-11-12: Revenue rose 53% to $10.41 billion; the company guided next-quarter revenue to "
+        "$11.10 billion, and the stock fell 4% after hours (Reuters)",
+        "- 2026-11-13: Morgan Stanley raised its target to $450 and expects stronger foundry orders (Barron's)",
+        "- 2026-11-09: B. Riley cut its price target to $475 (TipRanks)"], cut_moves=True, since="2026-11-12")
+    assert parts["result"] == ["Revenue rose 53% to $10.41 billion (Reuters)"]
+    assert parts["guidance"] == ["the company guided next-quarter revenue to $11.10 billion (Reuters)"]
+    # the analyst's own expectation stays with the analyst, and a rating
+    # dated before the report is not a reaction to it
+    assert parts["analyst"] == ["Morgan Stanley raised its target to $450 and expects stronger foundry "
+                                "orders, 2026-11-13 (Barron's)"]
+
+
+def test_what_counts_as_a_desks_figure():
+    for yes in ("target $641", "up 12%", "15x 2027E EPS", "25 bps of margin", "revenue of 11.3B"):
+        assert O._FIGURE_RE.search(yes), yes
+    for no in ("report earnings 11/12", "4Q preview", "using 2027 WFE as a baseline"):
+        assert not O._FIGURE_RE.search(no), no
 
 
 def test_without_a_print_the_outline_gives_the_upcoming_report_and_consensus_growth():
@@ -123,3 +239,29 @@ def test_an_outline_label_in_parentheses_is_dropped_and_a_publisher_kept():
                               "→ A $36M contract (GlobeNewswire), short interest 27.8% (Yahoo)", set())
     assert out == ("→ Makes components for semiconductor industries\n"
                    "→ A $36M contract (GlobeNewswire), short interest 27.8% (Yahoo)")
+
+
+def test_a_share_count_is_not_the_stocks_move_and_a_view_is_not_a_calendar_line():
+    parts = O._split_news(["- 2026-11-12: The company reported revenue of $10.41 billion and will buy back "
+                           "shares up to $10 billion, and guided revenue to $11.10 billion, though the stock "
+                           "slipped 2% (Reuters)"], cut_moves=True)
+    assert parts["result"] == ["The company reported revenue of $10.41 billion and will buy back shares up "
+                               "to $10 billion (Reuters)"]
+    assert parts["guidance"] == ["guided revenue to $11.10 billion (Reuters)"]
+    # a results line that also names an analyst stays a result
+    both = O._split_news(["- 2026-11-12: Applied reported revenue of $10.41 billion and HSBC raised its price "
+                          "target to $641"], cut_moves=True)
+    assert both["analyst"] == [] and len(both["result"]) == 1
+    assert O._is_schedule_only(["Reporting earnings after the close on Thursday.",
+                                "Applied Materials (AMAT) and Cisco (CSCO) report earnings 11/12."])
+    assert O._is_schedule_only(["AMAT is due to report tonight."])
+    assert not O._is_schedule_only(["Per the report, AMAT is the desk's top pick in semi cap equipment."])
+    assert not O._is_schedule_only(["AMAT reports Thursday and the desk expects a guide above the Street."])
+
+
+def test_the_header_names_the_positioning_slot_only_when_there_is_one():
+    after = O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    before = O.build_outline(_amat(), "ticker_opinion", "AMAT")
+    assert "POSITIONING" not in after and "The stock's move comes from the PRICE slot only." in after
+    assert "drop the POSITIONING slot if it does not bear on the question" in before
+
