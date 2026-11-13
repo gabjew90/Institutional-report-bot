@@ -1389,3 +1389,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — WATCH consensus lines (HD, NVDA, TGT, WMT) carry numbers from earlier pulses that differ slightly from the dump's calendar. The dump is a later rebuild, so unverified.
 - **deterministic-fixable** — `pulse-context/latest.json` market snapshot is a post-publish rebuild (stamped 16:30 EST after-hours, dumped 21:30Z) even though `pdf_count` matches. RECAP prices cannot be audited. Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-11).
 - **observation** — Driver trail still does not name the lint hard issue that triggered SCRUB. Adversarial verdict gaps for 10-12 and 10-14 persist.
+
+## 2026-11-13 (headless QC)
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild again (10:20 EST, SPY -1.08% vs published +0.15%). RECAP prices cannot be audited. Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-12).
+- **deterministic-fixable** — RECAP claim "$CSCO ... AI infrastructure revenue will double this fiscal year" has no source in the news snapshot or analyses. Extend the fact-provenance check so an unsourced company-result claim in the RECAP is a hard issue (adversarial gave 0 findings).
+- **deterministic-fixable** — On a LIGHT day the TRADE BOARD draws on a week-wide window (calls from notes published 11-10) beneath "No new bank research came in". Restrict the board to the since-last-pulse window on a light day, or label it.
+- **observation** — Dropped thread: Nvidia governance story (Lutnick testimony, 6 banks) absent from the NVDA WATCH line after yesterday's lead. 30-year auction result not closed out. Gold LONG read absent third day.
+- **observation** — Soft PPI with higher yields: no cause given for the bond selloff.
+- **observation** — Clusterer window is about a week on a no-research day; 90 promoted topics vs 30 yesterday. BoE hike cluster (21 banks) suppressed as "covered" by a Fed theme at 0.7571.
