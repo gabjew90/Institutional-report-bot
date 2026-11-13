@@ -110,6 +110,9 @@ def _split_news(lines: list[str], cut_moves: bool, since: str = "") -> dict[str,
             out["analyst"].append(f"{body.strip().rstrip('.')}, {date}{pub}" if date
                                   else f"{body.strip().rstrip('.')}{pub}")
             continue
+        # written as the sign, so the model copies it and does not convert it
+        # ("plus or minus $0.20" came back as "±$20¢", 2026-11-12)
+        body = re.sub(r"plus or minus\s+(?=\$?\d)", "±", body, flags=re.I)
         for clause in _CLAUSE_SPLIT_RE.split(body):
             if cut_moves:
                 clause = _MOVE_TAIL_RE.sub("", clause)
@@ -456,7 +459,10 @@ def strip_source_tags(answer: str, banks: set[str] | None = None) -> str:
     text = _PAREN_LABEL_RE.sub("", text)
     # Several tags in one bracket at the end of a line ("[live prices, ticker
     # snapshot]", "[Goldman Sachs, exchange data]"), 2026-10-18 live harness.
-    return _TAG_LIST_RE.sub("", text)
+    text = _TAG_LIST_RE.sub("", text)
+    # The outline's own labels joined in one bracket anywhere in a line
+    # ("[company report and news search]", 2026-11-12 live harness).
+    return _LABEL_JOIN_RE.sub("", text)
 
 
 _TAG_LIST_RE = re.compile(
@@ -466,6 +472,9 @@ _TAG_LIST_RE = re.compile(
 _LABELS = ("live prices", "company report", "consensus data", "exchange and filing data",
            "options chain", "news search", "company and trading data")
 _GENERIC_TAGS = {*_LABELS, *_FEED_TAGS}
+_ANY_LABEL = "(?:" + "|".join(re.escape(t) for t in (*_LABELS, "company background", *_FEED_TAGS)) + ")"
+_LABEL_JOIN_RE = re.compile(
+    r"[ \t]*\[" + _ANY_LABEL + r"(?:\s*(?:,|and|&|/|\+)\s*" + _ANY_LABEL + r")+\](?!\()", re.I)
 # The outline's labels copied in parentheses ("... semiconductor industries
 # (Company Background)", 2026-10-31 harness). Only the labels: a publisher
 # in parentheses, "(GlobeNewswire)" or "(Yahoo)", is a real attribution.

@@ -8210,6 +8210,22 @@ def _fresh_print_guard(answer, _ask_meta):
         return fresh_print_line(fresh) + "\n\n" + answer
     if _has(answer, fresh["estimate"]):
         return answer
+    # The line with the actual already gives an estimate from another
+    # source a cent or two away ("EPS of $4.16 beating estimates of $4.06"
+    # against Yahoo's $4.05, 2026-11-12): a second estimate beneath it
+    # repeats the point and shows two figures for one thing.
+    est, act = abs(fresh["estimate"]), abs(fresh["actual"])
+    tol = max(0.02, 0.01 * est)
+    for ln in answer.split("\n"):
+        if not _has(ln, fresh["actual"]):
+            continue
+        for core in _df.numeric_cores(ln):
+            try:
+                v = float(core)
+            except ValueError:
+                continue
+            if abs(v - est) <= tol and abs(v - act) > 1e-9:
+                return answer
     # The printed EPS without the figure it beat (2026-10-31: "MSTR ...
     # diluted EPS printed $44.75, beating expectations" never gave the
     # $22.89). The estimate goes in its own line under the one that has

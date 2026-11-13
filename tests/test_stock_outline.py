@@ -98,8 +98,8 @@ def test_after_a_print_the_outline_is_the_result_the_guidance_the_driver_and_the
     assert [s.split(":")[0] for s in slots] == ["PRICE", "RESULT", "GUIDANCE", "DRIVER", "ANALYST ACTION"]
     result, guidance, analyst = slots[1], slots[2], slots[4]
     assert "$10.41 billion" in result and "$4.16" in result and "guided" not in result and "HSBC" not in result
-    assert guidance == ("GUIDANCE: guided fiscal first-quarter revenue to $11.10 billion (plus or minus $500 "
-                        "million) and non-GAAP EPS to $4.35 (plus or minus $0.20) against estimates [news search]")
+    assert guidance == ("GUIDANCE: guided fiscal first-quarter revenue to $11.10 billion (±$500 "
+                        "million) and non-GAAP EPS to $4.35 (±$0.20) against estimates [news search]")
     assert analyst == ("ANALYST ACTION: HSBC maintained a Buy rating on Applied Materials and set a price "
                        "target of $641, 2026-11-12 [news search]")
     # no publisher on the line, so the model is not asked to name one
@@ -272,6 +272,16 @@ def test_the_header_names_the_positioning_slot_only_when_there_is_one():
     before = O.build_outline(_amat(), "ticker_opinion", "AMAT")
     assert "POSITIONING" not in after and "The stock's move comes from the PRICE slot only." in after
     assert "drop the POSITIONING slot if it does not bear on the question" in before
+
+
+def test_joined_labels_and_plus_or_minus_2026_11_12():
+    # two of the outline's labels in one bracket, mid-answer
+    ans = "→ EPS of **$4.16** beating estimates of **$4.06** [company report and news search]\n\n→ next"
+    assert O.strip_source_tags(ans) == "→ EPS of **$4.16** beating estimates of **$4.06**\n\n→ next"
+    # the guidance range reaches the model as the sign it should print
+    slots = _slots(O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH))
+    assert "$11.10 billion (±$500 million)" in slots[2] and "(±$0.20)" in slots[2]
+    assert "plus or minus" not in slots[2]
 
 
 def test_after_a_print_the_driver_slot_is_the_driver_only():

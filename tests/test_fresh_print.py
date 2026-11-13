@@ -78,6 +78,16 @@ def test_the_printed_eps_without_its_estimate_gets_the_estimate_beneath_it_2026_
     assert _run(last)[0] == last + "\n\n→ Analysts expected EPS of **$31.82**, so the result came in **5.0%** above it."
 
 
+def test_an_estimate_a_cent_away_from_another_source_counts_as_stated_2026_11_12():
+    """'EPS of $33.42 beating estimates of $31.80' against Yahoo's $31.82
+    got a second estimate line beneath it."""
+    near = "→ **$MU** EPS of **$33.42** beating estimates of **$31.80**\n\n→ Revenue **$54.2B**"
+    assert _run(near) == (near, [])
+    # a figure that is not near the estimate is not one
+    far = "→ **$MU** EPS of **$33.42** on revenue of **$54.2B**"
+    assert _run(far)[1] == ["fresh-print:estimate"]
+
+
 def test_a_loss_already_stated_gets_no_line():
     from discord_bot import bot
     meta = {"guards": [], "route_shape": "ticker_opinion", "route_prefetch": [],
