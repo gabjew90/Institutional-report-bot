@@ -564,7 +564,7 @@ _PRICE_RE = re.compile(
     r"|^\s*\$?\w{2,5}\s+(?:price|quote|level)\s*\??\s*$|quote\s+(?:on\s+|for\s+|me\s+)?\$?[a-z]{1,5}\b)", re.I)
 _CHAIN_RE = re.compile(
     r"\b(?:options?\s+chain|open\s+interest|\bOI\b|put[/ -]call|implied\s+(?:vol|move)|expected\s+move|\bIV\b"
-    r"|straddle|strangle|max\s+pain|gamma|\d{2,5}\s?[cp]\b|(?:calls?|puts?)\s+(?:on|for)\s+\S+"
+    r"|straddle|strangle|max\s+pain|gamma|\d{2,5}\s?[cp]\b|(?:calls?|puts?)\s+(?:on|for|into|through|before|ahead\s+of)\s+\S+"
     r"|\b\d+(?:\.\d+)?\s?(?:c|p|calls?|puts?)\s+(?:exp|expir))", re.I)
 _ECON_RE = re.compile(
     r"\b(?:CPI|PCE|PPI|GDP|NFP|non-?farm|payrolls|jobs\s+(?:report|number)|ISM|FOMC|Fed\s+(?:meeting|decision|rate)"
@@ -1552,7 +1552,10 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
         r.shape, r.reason = EARNINGS_DATE, "single-ticker earnings shape"
         # A result question ("did PLTR beat") needs the news; a date
         # lookup ("when does NVDA report") does not pay for a search.
-        r.prefetch = [(T_EDATE, {"symbol": tickers[0]})] + _stock_prefetch(
+        # The price too (2026-11-13): the other earnings routes fetch it, and
+        # without it the answer's price line had no move beside it.
+        r.prefetch = [(T_EDATE, {"symbol": tickers[0]}),
+                      (T_PRICE, {"symbols": [price_symbol(tickers[0])]})] + _stock_prefetch(
             tickers[0], research=False, news=bool(_RESULT_Q_RE.search(q)))
         return r
     # In the football channel a win-chance question is about the league

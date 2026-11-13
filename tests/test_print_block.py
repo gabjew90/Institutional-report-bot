@@ -168,7 +168,7 @@ def test_compose_posts_the_lines_first_and_drops_an_arrow_that_restates_them():
     answer = ("→ **$AMAT** closed at **$384.16**, down 3.6%\n\n"
               "→ EPS of **$4.16** beat estimates\n\n" + driver + "\n\n" + hsbc)
     out, dropped = B.compose(answer, block)
-    assert out == "\n\n".join(block["lines"] + [driver, hsbc]) and dropped == 2
+    assert out == "\n\n".join(block["lines"] + [driver + ".", hsbc + "."]) and dropped == 2
     # the bot's own no-answer line is not an arrow to keep
     assert B.compose("→ No response came back (reason: MAX_TOKENS). Try again or rephrase.", block) == (
         "\n\n".join(block["lines"]), 0)

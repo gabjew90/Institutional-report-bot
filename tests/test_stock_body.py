@@ -89,6 +89,19 @@ def test_a_print_is_posted_on_the_date_route_too():
         "→ Trading at **$503.61**, -0.2% today."]
 
 
+def test_after_a_print_only_a_when_question_gets_the_next_date():
+    """2026-11-13 harness: "did amat beat" the day after the report was
+    answered with the February date and its consensus under the result."""
+    nxt = dict(EDATE, next={"date": "2027-02-02", "when": "in 92 days (Tue Feb 2), time not announced",
+                            "eps_estimate": 2.3, "date_status": "projected, not confirmed"})
+    did = B.build("earnings_date", "AMD", _results(**{R.T_EDATE: nxt}), fresh=FRESH,
+                  asked="did amd beat", today=TODAY)
+    assert "upcoming" not in did["kinds"] and did["lines"][-1].startswith("→ Trading at")
+    when = B.build("earnings_date", "AMD", _results(**{R.T_EDATE: nxt}), fresh=FRESH,
+                   asked="when does amd report next", today=TODAY)
+    assert any(ln.startswith("→ Expected to report in 92 days") for ln in when["lines"])
+
+
 def test_a_view_leads_with_the_price_and_gives_the_next_report_in_one_line():
     results = {R.T_SNAPSHOT: SNAP, R.T_PRICE: PRICE, R.T_PRIMER: PRIMER, R.T_RESEARCH: RESEARCH,
                R.T_NEWS: NEWS}
@@ -223,15 +236,16 @@ def test_the_snapshots_price_stands_in_when_the_route_fetched_no_quote():
 
 def test_compose_drops_an_arrow_that_only_restates_the_lines():
     body = B.build("ticker_opinion", "AMD", {R.T_SNAPSHOT: SNAP, R.T_PRICE: PRICE}, fresh=FRESH, today=TODAY)
-    driver = "→ Data Center carried the quarter on demand for AI accelerators"
-    target = "→ JPMorgan raised its target to **$600** from **$540**"
+    driver = "→ Data Center carried the quarter on demand for AI accelerators."
+    target = "→ JPMorgan raised its target to **$600** from **$540** (Barron's)"
     margin = "→ EPS of **$2.10** came with gross margin of **54.5%**"
     answer = ("→ **$AMD** is at **$503.61**, down 0.2%\n\n→ EPS of **$2.10** beat estimates\n\n"
               "→ Revenue of **$13.40B** was up from last year\n\n"
               + driver + "\n\n" + target + "\n\n" + margin)
     out, dropped = B.compose(answer, body)
     # the margin arrow repeats the EPS but carries a figure of its own: kept
-    assert out == "\n\n".join(body["lines"] + [driver, target, margin]) and dropped == 3
+    # and each kept arrow ends with a full stop, as the posted lines do
+    assert out == "\n\n".join(body["lines"] + [driver, target + ".", margin + "."]) and dropped == 3
     # the bot's own no-answer line is not an arrow to keep
     assert B.compose("→ No response came back (reason: MAX_TOKENS). Try again or rephrase.", body) == (
         "\n\n".join(body["lines"]), 0)

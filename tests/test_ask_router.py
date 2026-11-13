@@ -21,9 +21,9 @@ CASES = [
     ("what on the economic calendar for this week ? Who's reporting earnings", R.EARNINGS_SLATE, [R.T_SLATE]),
     ("which big companies has earnings next week?", R.EARNINGS_SLATE, [R.T_SLATE]),
     # single-ticker earnings
-    ("when does NVDA report", R.EARNINGS_DATE, [R.T_EDATE, R.T_SNAPSHOT, R.T_PRIMER]),
-    ("did PLTR beat last quarter", R.EARNINGS_DATE, [R.T_EDATE, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER]),
-    ("what's expected for AVGO earnings", R.EARNINGS_DATE, [R.T_EDATE, R.T_SNAPSHOT, R.T_PRIMER]),
+    ("when does NVDA report", R.EARNINGS_DATE, [R.T_EDATE, R.T_PRICE, R.T_SNAPSHOT, R.T_PRIMER]),
+    ("did PLTR beat last quarter", R.EARNINGS_DATE, [R.T_EDATE, R.T_PRICE, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER]),
+    ("what's expected for AVGO earnings", R.EARNINGS_DATE, [R.T_EDATE, R.T_PRICE, R.T_SNAPSHOT, R.T_PRIMER]),
     # news / odds
     ("odds HPE beats earnings", R.NEWS_EVENT, [R.T_PRICE, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER, R.T_EDATE]),
     ("why is mrvl down off avgo earnings", R.NEWS_EVENT, [R.T_PRICE]),
@@ -83,6 +83,9 @@ CASES = [
     ("what do you think of gold", R.UNKNOWN, []),      # a word, not Barrick
     # 2026-09-30: an options question on a stock is a view with a chain attached
     ("should i slam calls on ACN earnings", R.OPTIONS_CHAIN,
+     [R.T_CHAIN, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER, R.T_EDATE]),
+    # 2026-11-13 harness: "calls into earnings" was read as a view, with no chain
+    ("nvda calls into earnings?", R.OPTIONS_CHAIN,
      [R.T_CHAIN, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER, R.T_EDATE]),
     ("what's the OI on SPY 600c", R.OPTIONS_CHAIN, [R.T_CHAIN]),     # a fund: no snapshot
     # a bare ticker is a view question; a word or a member is not

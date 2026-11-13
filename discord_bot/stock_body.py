@@ -52,6 +52,11 @@ SHAPES = frozenset({"ticker_opinion", "options_chain", "news_event", "company_pr
 _REPLY_DATE_RE = re.compile(
     r"\b(?:when|what\s+(?:time|day|date))\b.{0,40}\b(?:report\w*|earnings|print\w*)\b"
     r"|\bearnings\s+date\b|\bnext\s+(?:earnings|report|print)\b", re.I)
+# A date question that asks when, as against how the report went. After a
+# print only this one gets the next report's date: "did AMAT beat" the day
+# after the report was answered with the February date and its consensus
+# under the result (2026-11-13 harness).
+_WHEN_RE = re.compile(r"\b(?:when|what\s+(?:time|day|date))\b|\bnext\s+(?:earnings|report|print|quarter)\b", re.I)
 _REPLY_RESULT_RE = re.compile(
     r"\b(?:beat|beats|miss|missed|results?|earnings|eps|revenue|guid(?:e|ed|ance)|numbers|print(?:ed)?"
     r"|last\s+quarter)\b", re.I)
@@ -219,7 +224,8 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
             add("guidance", pb.guidance_lines(news_lines, since=str(printed.get("date") or "")))
     # The next report: always on a date question, on a view of a stock with
     # no print out, and on a reply only when its words ask when.
-    want_upcoming = (date_q or (not narrow and state == "none")
+    want_upcoming = ((date_q and (state != "print" or bool(_WHEN_RE.search(asked))))
+                     or (not narrow and state == "none")
                      or (narrow and state == "none" and bool(_REPLY_DATE_RE.search(asked))))
     if want_upcoming and state != "pending":
         up = upcoming_lines(symbol, results.get(R.T_EDATE), snap, today)
@@ -283,5 +289,9 @@ def compose(answer: str, body: dict) -> tuple[str, int]:
         if _restates(part, body, text) or adds_nothing(part, text, ""):
             dropped += 1
             continue
+        # the posted lines end with a full stop, and the model's arrows
+        # often do not ("... (Investing.com, MarketBeat)")
+        if part[-1].isalnum() or part[-1] in ")*%":
+            part += "."
         kept.append(part)
     return "\n\n".join([text, *kept]), dropped
