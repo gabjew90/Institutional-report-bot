@@ -136,11 +136,22 @@ jobs:
           # own: the readers did not run, and editing anyway writes
           # today's pulse from an earlier day's cards, which is exactly
           # what happened on 2026-09-03. Fail LOUD and publish nothing.
+          # It exits 3 when there are no cards because no research
+          # arrived since the last edition (nothing unread, nothing
+          # given up in the window). That is a quiet day, not a failed
+          # run: publish nothing and end green (2026-11-13, the owner
+          # was mailed a failure on every morning without an upload).
           set +e
           python scripts/pilot_editor_pack.py "pilot-data/$PILOT_ROOT/cards" \
-            --date "$DATE" --days "$DAYS" $STALE --out /tmp/ed/pack
+            --date "$DATE" --days "$DAYS" $STALE --out /tmp/ed/pack \
+            --unread /tmp/ed/unread.json --given-up /tmp/ed/given_up.json
           PACK_RC=$?
           set -e
+          if [ "$PACK_RC" -eq 3 ]; then
+            echo "cards=0" >> "$GITHUB_OUTPUT"
+            echo "::notice::No research arrived for $DATE since the last edition ($UNREAD unread). No shadow pulse published."
+            exit 0
+          fi
           if [ "$PACK_RC" -eq 2 ]; then
             echo "cards=0" >> "$GITHUB_OUTPUT"
             echo "::error::No reader cards for $DATE: the readers did not run or produced nothing ($UNREAD unread). Refusing to edit from an earlier day's cards; no shadow pulse published."

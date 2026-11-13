@@ -97,6 +97,40 @@ def has_fresh_cards(cards_root: str, day_iso: str, days: int) -> bool:
     return prev is not None and any(i > prev for i in doc_ids(cards_root, day_iso, days))
 
 
+EXIT_STALLED = 2     # research is waiting and the readers did not card it
+EXIT_QUIET = 3       # nothing new arrived since the last edition
+
+
+def nothing_new(cards_root: str, day_iso: str, days: int,
+                unread: list[dict], given_up: list[dict]) -> bool:
+    """No research arrived since the last edition: nothing is waiting for a
+    reader and no document in the window used up its read attempts. The
+    feed delivers in batches on some days and nothing on others (no upload
+    between 2026-11-11 and 11-13), and a morning with nothing to read is
+    not a failed run. A given-up document the last edition already passed
+    is old news and does not count."""
+    if unread:
+        return False
+    d0 = date.fromisoformat(day_iso)
+    window = {(d0 - timedelta(days=i)).isoformat() for i in range(days + 1)}
+    prev = last_edition_max_id(cards_root, day_iso)
+    for g in given_up:
+        if g.get("date") not in window:
+            continue
+        doc = str(g.get("id") or "")
+        if prev is not None and doc.isdigit() and int(doc) <= prev:
+            continue
+        return False
+    return True
+
+
+def _load_list(path: str | None) -> list[dict] | None:
+    if not path:
+        return None
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
 def _doc_key(c: dict) -> str:
     return c.get("_file") or f"{c.get('bank')}::{c.get('document')}"
 
@@ -310,13 +344,24 @@ def main() -> int:
     ap.add_argument("--allow-stale", action="store_true",
                     help="pack even when the edit date has no cards of its own "
                          "(backfill only; a scheduled run must never pass this)")
+    ap.add_argument("--unread", default=None,
+                    help="pilot_list_unread.py --out file; with --given-up, a date "
+                         "with no cards and nothing waiting exits 3 instead of 2")
+    ap.add_argument("--given-up", default=None,
+                    help="pilot_list_unread.py --given-up-out file")
     a = ap.parse_args()
     if not a.allow_stale and not has_fresh_cards(a.cards_root, a.date, a.days):
+        unread, gave_up = _load_list(a.unread), _load_list(a.given_up)
+        if unread is not None and gave_up is not None and nothing_new(
+                a.cards_root, a.date, a.days, unread, gave_up):
+            print(f"QUIET: no research arrived for {a.date} since the last edition. "
+                  f"Nothing to edit.", file=sys.stderr)
+            return EXIT_QUIET
         print(f"REFUSING: no reader cards for {a.date} in {a.cards_root}. "
               f"The readers did not run or produced nothing; editing now would "
               f"write today's pulse from an earlier day's cards (2026-09-03).",
               file=sys.stderr)
-        return 2
+        return EXIT_STALLED
     cards = load_window(a.cards_root, a.date, a.days)
     briefs = load_briefs(a.cards_root, a.date, a.days)
     md, meta = build_pack(cards, briefs)

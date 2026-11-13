@@ -280,3 +280,56 @@ def test_research_that_arrived_after_the_last_edition_counts_as_fresh():
     assert has_fresh_cards(cards, "2026-10-08", 1) is False   # already in the Oct 7 edition
     card(101)
     assert has_fresh_cards(cards, "2026-10-08", 1) is True    # arrived after it
+
+
+def test_a_morning_with_no_new_research_is_quiet_not_a_failure_2026_11_13():
+    """No upload between 11-11 and 11-13: the editor exited 1 each morning
+    and GitHub mailed the owner a failed run. Nothing waiting for a reader
+    and nothing given up in the window is exit 3; research the readers
+    left unread, or gave up on since the last edition, stays exit 2."""
+    import json as _json
+    import os
+    import subprocess
+    import sys as _sys
+    import tempfile
+    from scripts.pilot_editor_pack import nothing_new
+
+    base = tempfile.mkdtemp()
+    cards, shadow = os.path.join(base, "cards"), os.path.join(base, "shadow")
+    os.makedirs(os.path.join(cards, "2026-11-11"))
+    os.makedirs(shadow)
+    with open(os.path.join(cards, "2026-11-11", "100.json"), "w", encoding="utf-8") as fh:
+        _json.dump({"cards": [CARDS[0]]}, fh)
+    with open(os.path.join(shadow, "2026-11-12.meta.json"), "w", encoding="utf-8") as fh:
+        _json.dump({"pack": {"max_doc_id": 100}}, fh)
+
+    assert nothing_new(cards, "2026-11-13", 1, [], []) is True
+    assert nothing_new(cards, "2026-11-13", 1, [{"id": "101"}], []) is False
+    old = [{"id": "90", "date": "2026-11-12"}, {"id": "7", "date": "2026-09-05"}]
+    assert nothing_new(cards, "2026-11-13", 1, [], old) is True, "the last edition passed these"
+    assert nothing_new(cards, "2026-11-13", 1, [], [{"id": "101", "date": "2026-11-13"}]) is False
+    assert nothing_new(cards, "2026-11-13", 1, [], [{"id": "101", "date": "2026-11-12"}]) is False
+
+    def run(unread, gave_up):
+        u, g = os.path.join(base, "u.json"), os.path.join(base, "g.json")
+        for path, rows in ((u, unread), (g, gave_up)):
+            with open(path, "w", encoding="utf-8") as fh:
+                _json.dump(rows, fh)
+        return subprocess.run(
+            [_sys.executable, "scripts/pilot_editor_pack.py", cards, "--date", "2026-11-13",
+             "--days", "1", "--out", os.path.join(base, "pack"), "--unread", u, "--given-up", g],
+            capture_output=True, text=True)
+
+    quiet = run([], old)
+    assert quiet.returncode == 3 and "QUIET" in quiet.stderr, quiet.stderr
+    stalled = run([{"id": "101"}], [])
+    assert stalled.returncode == 2 and "REFUSING" in stalled.stderr
+    assert not os.path.exists(os.path.join(base, "pack.md"))
+
+
+def test_the_editor_workflow_ends_green_on_a_quiet_day():
+    with open(".github/workflows/pilot-editor.yml", encoding="utf-8") as fh:
+        wf = fh.read()
+    assert "--unread /tmp/ed/unread.json --given-up /tmp/ed/given_up.json" in wf
+    quiet = wf.split('if [ "$PACK_RC" -eq 3 ]; then')[1].split("fi")[0]
+    assert 'echo "cards=0"' in quiet and "exit 0" in quiet and "::error::" not in quiet
