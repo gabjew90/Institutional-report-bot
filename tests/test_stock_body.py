@@ -210,10 +210,25 @@ def test_a_reply_is_a_narrow_question():
     assert when["lines"] == ["→ **AMD** reports Tue Nov 3, after the close. Consensus: EPS **$1.96** "
                              "(+63.3% y/y) on revenue **$13.09B** (+41.6% y/y)."]
     did = B.build("follow_up", "AMD", results, asked="did they beat last quarter", today=TODAY)
-    assert did["state"] == "last" and did["lines"][0] == QUOTE and "EPS **$1.05** beat" in did["lines"][1]
-    # after a print the result is posted, as the print guard used to add it
+    assert did["state"] == "last" and [ln[:22] for ln in did["lines"]] == ["→ **AMD** reported Aug", "→ Revenue **$10.10B**,"]
+    # After a print the answer replied to already gave the result
+    # (2026-11-13 harness: "did they raise guidance?" got the price, the EPS
+    # and the revenue again above one new arrow). The EPS line alone, as the
+    # print guard used to add it, unless the reply asks for more.
     after = B.build("follow_up", "AMD", results, fresh=FRESH, asked="is it a buy now", today=TODAY)
-    assert after["state"] == "print" and after["lines"][0] == QUOTE and "EPS **$2.10** beat" in after["lines"][1]
+    assert after["state"] == "print" and len(after["lines"]) == 1 and "EPS **$2.10** beat" in after["lines"][0]
+    figures = B.build("follow_up", "AMD", results, fresh=FRESH, asked="what were the numbers", today=TODAY)
+    assert figures["kinds"] == ["eps", "revenue"]
+    news = {"status": "ok", "digest": "- 2026-11-02: AMD posted record data center revenue of $6.2 billion, "
+                                      "and next-quarter revenue was guided to about $14 billion, above the "
+                                      "consensus of $13.6 billion (Reuters)"}
+    guide = B.build("follow_up", "AMD", dict(results, **{R.T_NEWS: news}), fresh=FRESH,
+                    asked="did they raise guidance?", today=TODAY)
+    assert guide["lines"] == ["→ Next-quarter revenue was guided to about **$14 billion**, above the consensus "
+                              "of **$13.6 billion** (Reuters)."]
+    # no guidance in the news: the EPS line, and the model answers from the blocks
+    assert B.build("follow_up", "AMD", results, fresh=FRESH, asked="did they raise guidance?",
+                   today=TODAY)["kinds"] == ["eps"]
     # and the outline asks for no rundown
     text = O.build_outline(results, "follow_up", "AMD", fresh=FRESH, asked="is it a buy now", posted=after)
     assert _slots(text) == [] and "DESK:" not in text

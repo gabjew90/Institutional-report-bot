@@ -57,9 +57,10 @@ _REPLY_DATE_RE = re.compile(
 # after the report was answered with the February date and its consensus
 # under the result (2026-11-13 harness).
 _WHEN_RE = re.compile(r"\b(?:when|what\s+(?:time|day|date))\b|\bnext\s+(?:earnings|report|print|quarter)\b", re.I)
-_REPLY_RESULT_RE = re.compile(
-    r"\b(?:beat|beats|miss|missed|results?|earnings|eps|revenue|guid(?:e|ed|ance)|numbers|print(?:ed)?"
-    r"|last\s+quarter)\b", re.I)
+_REPLY_FIGURES_RE = re.compile(
+    r"\b(?:beat|beats|miss|missed|results?|earnings|eps|revenue|numbers|print(?:ed)?|last\s+quarter)\b", re.I)
+_REPLY_GUIDANCE_RE = re.compile(r"\b(?:guid\w*|outlook)\b", re.I)
+_REPLY_RESULT_RE = re.compile(_REPLY_FIGURES_RE.pattern + "|" + _REPLY_GUIDANCE_RE.pattern, re.I)
 
 
 def _ok(result) -> dict | None:
@@ -213,10 +214,28 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
     def add(kind: str, lines) -> None:
         sections.extend((kind, ln) for ln in lines if ln)
 
-    lead_with_price = bool(quote) and not date_q
-    if lead_with_price and not (narrow and not printed):
+    if quote and not date_q and not narrow:
         add("price", [quote])
-    if printed:
+    if printed and narrow:
+        # A reply follows an answer that, after a print, already gave the
+        # result. Posting the price, the EPS and the revenue again above the
+        # reply's own answer made "did they raise guidance?" five arrows of
+        # which one was new (2026-11-13 harness). So: the guidance lines
+        # when that is what it asks, the result lines when it asks for the
+        # figures, and otherwise the EPS line alone, which keeps a reply
+        # from being answered out of notes written before the report.
+        guide = (pb.guidance_lines(news_lines, since=str(printed.get("date") or ""))
+                 if state == "print" else [])
+        figures = bool(_REPLY_FIGURES_RE.search(asked))
+        if guide and not figures and _REPLY_GUIDANCE_RE.search(asked):
+            add("guidance", guide)
+        else:
+            add("eps", [pb.eps_line(printed, symbol)])
+            if figures:
+                if printed.get("revenue"):
+                    add("revenue", [pb.revenue_line(printed, news_lines)])
+                add("guidance", guide)
+    elif printed:
         add("eps", [pb.eps_line(printed, "" if sections else symbol)])
         if printed.get("revenue"):
             add("revenue", [pb.revenue_line(printed, news_lines)])

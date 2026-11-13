@@ -64,7 +64,11 @@ _REPORTED_RE = re.compile(r"\b(?:reported|posted|delivered)\b", re.I)
 # Where a line turns from the results to the guidance.
 _CLAUSE_SPLIT_RE = re.compile(
     r";|,\s+(?:and\s+|while\s+)?(?=(?:the company\s+|it\s+|management\s+)?"
-    r"(?:guided|guides|guiding|issued guidance|forecast)\b)", re.I)
+    r"(?:guided|guides|guiding|issued guidance|forecast)\b)"
+    # ", and next-quarter revenue was guided to ...", ", and issued fiscal
+    # first-quarter revenue guidance of ..." (2026-11-13 harness: a line that
+    # ran the year's results into the guidance was posted whole as guidance)
+    r"|,\s+(?:and\s+|while\s+)?(?=[^,;]{0,70}?\bguid(?:ed|ance)\b)", re.I)
 # The news's own account of the stock's move, at the end of a clause
 # ("..., with shares moving lower following the release"). The live quote
 # is the move: the two disagreed in the AMAT answer.
