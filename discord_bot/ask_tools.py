@@ -1665,7 +1665,7 @@ def _build_earnings_date_tool():
                     "  symbol: ticker, e.g. 'GEO', 'NVDA', 'BRK.B'.\n\n"
                     "Response shape: {status, symbol, next: {date, "
                     "timing, eps_estimate, revenue_estimate} | null, "
-                    "last: {date, eps_actual, eps_estimate} | null, "
+                    "last: {date, eps_actual, eps_estimate, revenue_actual} | null, "
                     "as_of}. `next` null = no confirmed upcoming date "
                     "on the calendar yet (common >6 weeks out — fall "
                     "back to Google Search for the company's announced "

@@ -5250,9 +5250,21 @@ async def _ask_02_call_model_with_tools(
     try:
         from discord_bot import stock_outline as _so
         _pf_by_tool = {t: r for (t, _), r in zip(_pf_plan, _pf_results) if isinstance(r, dict)}
+        # After a print the result lines are rendered in code and posted
+        # as written; the outline then asks the model only for the rest
+        # (discord_bot/print_block.py, 2026-11-13).
+        _posted = None
+        if _fresh and _ask_route.shape in _so._STOCK_SHAPES:
+            from discord_bot import print_block as _pb
+            _posted = _pb.build(_so.outline_symbol(_pf_plan), _fresh,
+                                _pf_by_tool.get(_ask_router.T_SNAPSHOT),
+                                _pf_by_tool.get(_ask_router.T_PRICE),
+                                _pf_by_tool.get(_ask_router.T_NEWS))
         _outline = _so.build_outline(_pf_by_tool, _ask_route.shape,
                                      _so.outline_symbol(_pf_plan), fresh=_fresh,
-                                     asked=_ask_router.asker_text(question))
+                                     asked=_ask_router.asker_text(question), posted=_posted)
+        if _outline and _posted:
+            _ask_meta["print_block"] = _posted
         if _outline:
             contents.append(types.Content(role="user",
                                           parts=[types.Part.from_text(text=_outline)]))
@@ -8097,6 +8109,13 @@ async def _ask_09_rank_and_regen_guards(
                 _ask_meta["guards"].append("revenue-yoy:corrected")
     except Exception as e:
         log.warning(f"/ask: desk or revenue check failed (non-fatal): {e}")
+    # The result of a print is posted as code rendered it, above the model's
+    # arrows (discord_bot/print_block.py, 2026-11-13). After the checks
+    # above: they read the model's words, and these lines are not its.
+    if _ask_meta.get("print_block") and answer:
+        from discord_bot import print_block as _pb
+        answer, _pb_dropped = _pb.compose(answer, _ask_meta["print_block"])
+        _ask_meta["guards"].append("print-block" + (f":dropped-{_pb_dropped}" if _pb_dropped else ""))
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
@@ -8199,6 +8218,8 @@ def _fresh_print_guard(answer, _ask_meta):
         forms = {f"{v:.2f}"} | ({f"{v:.1f}"} if round(v, 1) == round(v, 2) else set())
         return bool(forms & _df.numeric_cores(text))
     if (not fresh or fresh.get("actual") is None or fresh.get("estimate") is None
+            # the result lines are posted by code in this turn (print_block)
+            or _ask_meta.get("print_block")
             or not _rewritable_stock_answer(answer, _ask_meta, _FRESH_PRINT_SHAPES)
             # a next-date lookup ("when does MU report") is not about the
             # print; the router sends news only to a result question

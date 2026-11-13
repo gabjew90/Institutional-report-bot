@@ -384,11 +384,15 @@ def _today_news_slot(news: dict | None, today=None) -> str | None:
 
 
 def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = None,
-                  asked: str = "") -> str:
+                  asked: str = "", posted: dict | None = None) -> str:
     """The outline block for a stock answer, or '' when the shape is not a
     single-stock view or there is nothing to outline. `results` maps a
     prefetched tool name to its result. `asked` is the asker's own words
-    (ask_router.asker_text), read only to tell a question about the desks."""
+    (ask_router.asker_text), read only to tell a question about the desks.
+    `posted` is the result of a print rendered in code
+    (discord_bot/print_block.py): its lines open the reply as written, so
+    the outline carries no RESULT or GUIDANCE slot and the model writes
+    arrows only for what is left."""
     from discord_bot import ask_router as R
     if shape not in _STOCK_SHAPES or not symbol:
         return ""
@@ -396,6 +400,14 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
     price = _price_slot(results.get(R.T_PRICE), symbol, results.get(R.T_SNAPSHOT))
     lead, analyst = _result_slots(fresh, results.get(R.T_SNAPSHOT), results.get(R.T_NEWS),
                                   have_price=bool(price and "today" in price))
+    if posted and posted.get("lines"):
+        return _outline_after_posted(posted, [
+            None if posted.get("has_price") else price,
+            _driver_slot(results.get(R.T_PRIMER), fresh),
+            analyst,
+            *_desk_slots(results.get(R.T_RESEARCH), fresh, asked),
+            _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
+        ])
     slots = [
         price,
         *lead,
@@ -420,6 +432,25 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
             "Say each in plain words, growth first where there is growth. The RESULT or "
             "UPCOMING slot keeps its own arrow and its own source; you may fold the PRICE slot "
             + last + "Add no facts that are not in the blocks above.]\n" + body)
+
+
+def _outline_after_posted(posted: dict, slots: list) -> str:
+    """The outline when code posts the result lines itself. The lines are
+    shown so the model does not write them again."""
+    slots = [s for s in slots if s]
+    head = ("[ANSWER OUTLINE, built by the system from the blocks above. The system posts the "
+            "lines below first, exactly as written, as the start of your reply:\n"
+            + "\n".join(posted["lines"])
+            + "\nDo not write them, and do not repeat, recompute or restate a figure they carry. ")
+    if not slots:
+        return (head + "Write one arrow: the part of the business that drove the result, from the "
+                "blocks above, in plain words. Add no facts that are not in the blocks above.]")
+    body = "\n".join(f"{i}. {s}" for i, s in enumerate(slots, 1))
+    return (head + "Write one arrow per numbered slot, in this order, and nothing else. Use the "
+            "facts in that slot, and name only the source in its brackets, in words, never the "
+            "bracket itself: a figure from the news or the company report is never a bank's. "
+            "Say each in plain words. The stock's move comes from the posted lines only. "
+            "Add no facts that are not in the blocks above.]\n" + body)
 
 
 # The source tags the outline puts in brackets. The model copied them into

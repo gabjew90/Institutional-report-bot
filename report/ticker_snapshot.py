@@ -227,8 +227,91 @@ def _session(ts) -> str:
     return "before the open" if mins < 570 else "after the close" if mins >= 960 else "during the session"
 
 
+REPORT_LAG_DAYS = 95     # a quarter is reported within this many days of its end
+
+
+def _days_before(report_iso: str, other_iso: str) -> int | None:
+    try:
+        return (date.fromisoformat(str(report_iso)[:10]) - date.fromisoformat(str(other_iso)[:10])).days
+    except ValueError:
+        return None
+
+
+def year_ago_eps(eps_history: list[dict], report_iso: str,
+                 basis_check: float | None = None) -> float | None:
+    """The EPS reported for the same quarter a year before `report_iso`:
+    the report 10 to 14 months earlier in Yahoo's earnings dates.
+
+    `basis_check` is the year-ago EPS Yahoo's estimate table gives for its
+    current quarter, which is on today's share count. It must match one of
+    the older reports in the earnings dates. When it matches none, the
+    dates carry pre-split figures (a 10-for-1 split would read as EPS
+    falling 90%) and no year-ago figure is returned."""
+    found = None
+    older = []
+    for h in eps_history or []:
+        gap = _days_before(report_iso, h.get("date"))
+        act = _num(h.get("epsActual"))
+        if gap is None or act is None:
+            continue
+        if 200 <= gap <= 430:
+            older.append(act)
+        if found is None and 300 <= gap <= 430:
+            found = act
+    if found is not None and basis_check and older and not any(
+            abs(a - basis_check) <= max(0.01, 0.03 * abs(basis_check)) for a in older):
+        return None
+    return found
+
+
+def print_revenue(report_iso: str, revs: list[tuple[str, float]],
+                  feed_revenue: float | None = None) -> dict:
+    """Revenue of the quarter a report covered, and of the same quarter a
+    year before: {revenue, revenue_source, revenue_year_ago}, or {}.
+
+    `revs` is Yahoo's quarterly revenue, newest first. Yahoo adds a quarter
+    a day or more after its report (AMAT reported 2026-11-12 and the list
+    still ended at July the next morning), so the reported figure may come
+    from the calendar feed instead (`feed_revenue`, Finnhub's
+    revenueActual). A quarter is the report's own when it ended within
+    REPORT_LAG_DAYS before the report, and the year-ago quarter is the one
+    that ended a year before that window. The feed's figure is dropped
+    when it is not within a factor of three of Yahoo's latest quarter: a
+    different currency or unit, not a growth rate."""
+    own = year_ago = None
+    for q, v in revs or []:
+        gap = _days_before(report_iso, q)
+        if gap is None or not v:
+            continue
+        if own is None and 0 < gap <= REPORT_LAG_DAYS:
+            own = (q, v)
+        if year_ago is None and 365 < gap <= 365 + REPORT_LAG_DAYS:
+            year_ago = (q, v)
+    out: dict = {}
+    if own:
+        out = {"revenue": own[1], "revenue_source": "yahoo"}
+    elif feed_revenue and feed_revenue > 0:
+        # Yahoo's newest quarter must be the one before the report's own.
+        # Further back, the list is stale or the report came late, and the
+        # "year-ago" quarter picked above would belong to another quarter.
+        latest = next(((q, v) for q, v in revs or [] if v), None)
+        if latest:
+            gap = _days_before(report_iso, latest[0])
+            if gap is None or gap > 2 * REPORT_LAG_DAYS:
+                return {}
+            if not (latest[1] / 3 <= feed_revenue <= latest[1] * 3):
+                return {}
+        out = {"revenue": float(feed_revenue), "revenue_source": "calendar"}
+    else:
+        return {}
+    if year_ago and year_ago[1] > 0:
+        out["revenue_year_ago"] = year_ago[1]
+    return out
+
+
 def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
-                 quarterly_revenue: list[tuple[str, float]], today: date | None = None) -> dict:
+                 quarterly_revenue: list[tuple[str, float]], today: date | None = None,
+                 feed_revenue: float | None = None) -> dict:
     """Growth, the way a trader reads a print (owner, 2026-10-01: "instead
     of absolute dollars ... better to also show YoY growth"). Computed here,
     not by the model.
@@ -239,8 +322,17 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
     eps_history: [{date, session, epsActual, epsEstimate, surprisePercent}],
     one row per report (date = report date, session = 'before the open' /
     'after the close'); a row without epsActual is a scheduled report.
-    quarterly_revenue: [(quarter_end_iso, revenue)], any order."""
+    quarterly_revenue: [(quarter_end_iso, revenue)], any order.
+    feed_revenue: the calendar feed's reported revenue for the newest
+    report, used while Yahoo's quarterly list does not carry that quarter.
+
+    `last_report` is the newest report with what a result line needs
+    (discord_bot/print_block.py, 2026-11-13): the EPS of the same quarter a
+    year before, the quarter's revenue and its year-ago revenue, and the
+    revenue consensus while Yahoo still lists the reported quarter."""
     out: dict = {}
+    revs = sorted(((str(q)[:10], _num(v)) for q, v in (quarterly_revenue or []) if _num(v)),
+                  reverse=True)
     # "+1y" is next fiscal year, which a forward P/E is usually quoted on
     # (2026-10-26 audit A12: no forward P/E existed, the bot invented one)
     for period, key in (("0q", "next_quarter"), ("0y", "fiscal_year"), ("+1y", "next_fiscal_year")):
@@ -274,9 +366,15 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
         out["next_report"] = {k: nxt[k] for k in ("date", "session", "estimate") if nxt.get(k)}
     if reports:
         out["eps_reports"] = reports
-        out["last_report"] = reports[0]
-        nq = out.get("next_quarter") or {}
         newest = reports[0]
+        last = dict(newest)
+        ago = year_ago_eps(eps_history, newest["date"],
+                           basis_check=_num(((eps_est or {}).get("0q") or {}).get("yearAgoEps")))
+        if ago is not None:
+            last["eps_year_ago"] = ago
+        last.update(print_revenue(newest["date"], revs, feed_revenue))
+        out["last_report"] = last
+        nq = out.get("next_quarter") or {}
         # Hours after a print Yahoo can still list the reported quarter as
         # "0q". Its consensus then matches the newest report's estimate;
         # calling it the quarter "to be reported next" previews a print
@@ -284,9 +382,13 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
         if (nq.get("eps") is not None and newest.get("estimate")
                 and abs(nq["eps"] - newest["estimate"]) <= 0.01 * abs(newest["estimate"])
                 and _recent(newest["date"], today, days=10)):
-            out.pop("next_quarter", None)
-    revs = sorted(((str(q)[:10], _num(v)) for q, v in (quarterly_revenue or []) if _num(v)),
-                  reverse=True)
+            stale = out.pop("next_quarter", None) or {}
+            # that row is the reported quarter's consensus: the one place
+            # its revenue estimate and year-ago revenue come from one source
+            if stale.get("revenue") is not None:
+                last["revenue_estimate"] = stale["revenue"]
+                if stale.get("revenue_year_ago") and "revenue_year_ago" not in last:
+                    last["revenue_year_ago"] = stale["revenue_year_ago"]
     rev_reports = []
     for i, (q, v) in enumerate(revs[:2]):
         if i + 4 < len(revs) and revs[i + 4][1]:
@@ -355,7 +457,41 @@ def earnings_rows(symbol: str, limit: int = 8) -> list[dict]:
     return _earnings_history(yf.Ticker((symbol or "").strip().upper()), limit)
 
 
-def _fetch_growth(t, sym: str) -> dict:
+FEED_TIMEOUT_S = 3.0     # the one calendar-feed read, inside the executor's 12 s
+FEED_START_BY_S = 8.0    # not started later than this into the fetch
+
+
+def _feed_print_revenue(sym: str, history: list[dict], qrev: list[tuple[str, float]],
+                        info: dict, started: float | None = None) -> float | None:
+    """The calendar feed's reported revenue for a report of the last few
+    days, when Yahoo's quarterly list does not carry that quarter yet. One
+    Finnhub call, made only then and only with time left. Dollar reporters
+    only: the feed and Yahoo do not agree on the currency of a foreign
+    filer's figures."""
+    if started is not None and time.monotonic() - started > FEED_START_BY_S:
+        return None
+    done = sorted((h for h in history or [] if _num(h.get("epsActual")) is not None),
+                  key=lambda h: str(h.get("date")), reverse=True)
+    if not done or not _recent(done[0]["date"], days=5):
+        return None
+    if (info.get("financialCurrency") or "USD").upper() != "USD":
+        return None
+    report = str(done[0]["date"])[:10]
+    if any(0 < (_days_before(report, q) or 0) <= REPORT_LAG_DAYS for q, v in qrev if _num(v)):
+        return None
+    try:
+        from report.news_data import fetch_earnings_date_for_symbol
+        row = (fetch_earnings_date_for_symbol(sym, timeout=FEED_TIMEOUT_S) or {}).get("last") or {}
+    except Exception as e:
+        log.info(f"snapshot {sym}: calendar revenue failed ({e})")
+        return None
+    gap = _days_before(report, row.get("date") or "")
+    if gap is None or abs(gap) > 1:
+        return None
+    return _num(row.get("revenue_actual"))
+
+
+def _fetch_growth(t, sym: str, info: dict | None = None, started: float | None = None) -> dict:
     """The four Yahoo reads behind growth_block; any one may fail alone."""
     rev_est = eps_est = {}
     history: list[dict] = []
@@ -378,7 +514,8 @@ def _fetch_growth(t, sym: str) -> dict:
             qrev = [(str(c)[:10], v) for c, v in qis.loc["Total Revenue"].items()]
     except Exception as e:
         log.info(f"snapshot {sym}: quarterly revenue failed ({e})")
-    return growth_block(rev_est, eps_est, history, qrev)
+    return growth_block(rev_est, eps_est, history, qrev,
+                        feed_revenue=_feed_print_revenue(sym, history, qrev, info or {}, started))
 
 
 def _table(df) -> dict:
@@ -398,7 +535,7 @@ def fetch(symbol: str) -> dict:
     if hit and time.monotonic() - hit[0] < CACHE_TTL_S:
         return hit[1]
     import yfinance as yf
-    t0 = time.monotonic()
+    t0 = started = time.monotonic()
     t = yf.Ticker(sym)
     try:
         info = t.info or {}
@@ -436,7 +573,10 @@ def fetch(symbol: str) -> dict:
     # executor gives the whole fetch 12 s, and a slow estimate table must
     # cost the growth lines, not the business, float and filings above.
     if snap.get("status") == "ok" and time.monotonic() - t0 < GROWTH_BUDGET_S:
-        snap["growth"] = _fetch_growth(t, sym)
+        snap["growth"] = _fetch_growth(t, sym, info, started)
+        if (snap["growth"].get("last_report") or {}).get("revenue_source") == "calendar":
+            # the Data footer names the feed a figure came from
+            snap["feed"] = "company and trading data (Yahoo), reported revenue (Finnhub)"
     if snap.get("status") == "ok":
         val = valuation(snap.get("price"), snap.get("market_cap"),
                         _num(info.get("trailingEps")), snap.get("growth") or {})

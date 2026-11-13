@@ -252,7 +252,7 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
     return "\n".join(out)
 
 
-def fetch_earnings_date_for_symbol(symbol: str) -> dict | None:
+def fetch_earnings_date_for_symbol(symbol: str, timeout: float = 8.0) -> dict | None:
     """Earnings dates for ONE symbol via Finnhub's earnings calendar.
 
     Added 2026-06-10 for the /ask `lookup_earnings_date` tool — the
@@ -281,7 +281,7 @@ def fetch_earnings_date_for_symbol(symbol: str) -> dict | None:
         f"&symbol={urllib.parse.quote(sym)}"
         f"&token={urllib.parse.quote(key)}"
     )
-    data = _fetch_json(url)
+    data = _fetch_json(url, timeout=timeout)
     if not data or not isinstance(data, dict):
         return None
     items = [e for e in (data.get("earningsCalendar") or [])
@@ -312,6 +312,9 @@ def fetch_earnings_date_for_symbol(symbol: str) -> dict | None:
             "date": e.get("date"),
             "eps_actual": e.get("epsActual"),
             "eps_estimate": e.get("epsEstimate"),
+            # read by the snapshot for a report Yahoo has not posted the
+            # revenue of yet (report/ticker_snapshot.py, 2026-11-13)
+            "revenue_actual": e.get("revenueActual"),
         }
 
     return {
