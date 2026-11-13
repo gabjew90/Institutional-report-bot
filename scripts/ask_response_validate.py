@@ -1096,7 +1096,10 @@ _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
     "unfetchable-link-claim": check_unfetchable_link_claim,
-    "repetition-glitch": check_repetition,
+    # "repetition-glitch": check_repetition is out of the ladder while the
+    # repetition check is record-only (owner, 2026-11-13; bot.py phase 3
+    # keeps the label). In the ladder it would regenerate and strip on the
+    # same detector, which is what record-only turns off.
     "unsourced-flow": check_unsourced_flow,
     "self-generated-ta": check_self_generated_ta,
     "dollar-pnl": check_dollar_pnl,

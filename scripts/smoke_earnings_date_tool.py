@@ -254,12 +254,12 @@ def test_tool_registered_in_both_arrays():
     import discord_bot.bot as bot_mod
     src = bot_mod._ask_pipeline_source()
     n = src.count("_build_earnings_date_tool()")
-    # Declared once in _tools_all; the repetition retry derives from the
-    # routed config (model_copy) since 2026-09-09.
+    # Declared once in _tools_all. The repetition retry that carried its own
+    # tool list is gone (the check is record-only since 2026-11-13).
     assert n == 1, (
         f"_build_earnings_date_tool() must be declared exactly once, got {n}"
     )
-    assert "retry_config = config.model_copy(" in src
+    assert "retry_config = config.model_copy(" not in src, "the repetition retry was removed 2026-11-13"
     _ok("_build_earnings_date_tool() declared once; retries derive from config")
 
 

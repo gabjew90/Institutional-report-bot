@@ -307,7 +307,7 @@ def test_tool_registered_in_both_arrays():
     assert n == 1, (
         f"_build_economic_calendar_tool() must be declared exactly once, got {n}"
     )
-    assert "retry_config = config.model_copy(" in src
+    assert "retry_config = config.model_copy(" not in src, "the repetition retry was removed 2026-11-13"
     _ok("_build_economic_calendar_tool() declared once; retries derive from config")
 
 

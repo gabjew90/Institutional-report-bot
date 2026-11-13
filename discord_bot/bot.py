@@ -5288,27 +5288,22 @@ async def _ask_02_call_model_with_tools(
         # so a rung without the data answered from web snippets
         # (2026-10-26 audit A28)
         _ask_meta.setdefault("data_blocks", []).append(_pf_text)
-    # A single-stock view gets its answer outline built in code: slots in
-    # order, each fact with its true source (discord_bot/stock_outline.py,
-    # 2026-10-01). Last block before the model writes.
+    # A turn about one stock: the lines the feeds carry are rendered in
+    # code and posted as written (discord_bot/stock_body.py, 2026-11-13),
+    # and the outline lists what is left for the model, each fact with its
+    # true source (discord_bot/stock_outline.py, 2026-10-01). Last block
+    # before the model writes.
     try:
+        from discord_bot import stock_body as _sb
         from discord_bot import stock_outline as _so
         _pf_by_tool = {t: r for (t, _), r in zip(_pf_plan, _pf_results) if isinstance(r, dict)}
-        # After a print the result lines are rendered in code and posted
-        # as written; the outline then asks the model only for the rest
-        # (discord_bot/print_block.py, 2026-11-13).
-        _posted = None
-        if _fresh and _ask_route.shape in _so._STOCK_SHAPES:
-            from discord_bot import print_block as _pb
-            _posted = _pb.build(_so.outline_symbol(_pf_plan), _fresh,
-                                _pf_by_tool.get(_ask_router.T_SNAPSHOT),
-                                _pf_by_tool.get(_ask_router.T_PRICE),
-                                _pf_by_tool.get(_ask_router.T_NEWS))
-        _outline = _so.build_outline(_pf_by_tool, _ask_route.shape,
-                                     _so.outline_symbol(_pf_plan), fresh=_fresh,
-                                     asked=_ask_router.asker_text(question), posted=_posted)
-        if _outline and _posted:
-            _ask_meta["print_block"] = _posted
+        _so_symbol = _so.outline_symbol(_pf_plan)
+        _so_asked = _ask_router.asker_text(question)
+        _body = _sb.build(_ask_route.shape, _so_symbol, _pf_by_tool, fresh=_fresh, asked=_so_asked)
+        _outline = _so.build_outline(_pf_by_tool, _ask_route.shape, _so_symbol, fresh=_fresh,
+                                     asked=_so_asked, posted=_body)
+        if _outline and _body:
+            _ask_meta["stock_body"] = _body
         if _outline:
             contents.append(types.Content(role="user",
                                           parts=[types.Part.from_text(text=_outline)]))
@@ -5765,75 +5760,18 @@ async def _ask_03_assemble_response(
     if _code_images:
         _ask_meta["guards"].append(f"code-charts:{len(_code_images)}")
 
-    # Repetition-glitch detection + one-shot retry. Gemini Flash Lite
-    # occasionally produces token-loop artifacts at the end of an
-    # answer ("compounding risk and volatility decay risks of
-    # volatility decay and volatility" — 9 hits across 2026-05-30
-    # logs). Single retry with bumped temperature usually breaks the
-    # loop. If retry still glitches, ship the original — the user
-    # gets SOMETHING rather than blank.
+    # Repetition check: record only (owner, 2026-11-13). It used to retry
+    # the turn and then strip the sentences that tripped it. Every firing
+    # whose text could still be read was a false alarm (lists, two target
+    # cuts, a name beside its cashtag), each cost a model call, and six
+    # answers since 9-19 lost a correct sentence to the strip. The label
+    # stays and the ask log's raw answer is the text it fired on, so the
+    # firings can be read after two weeks to see whether real token loops
+    # still occur on this model. `_collapse_adjacent_dupes` still removes
+    # doubled words in the cleaner.
     if answer and _has_repetition_glitch(answer):
         _ask_meta["guards"].append("repetition")
-        # The retry and the strip replace this text, so the ask log
-        # keeps it: without it a firing cannot be judged afterwards.
-        _ask_meta["repetition_original"] = answer
-        log.warning(
-            f"/ask: repetition glitch in answer (q={question[:80]!r}); "
-            f"retrying once at higher temp"
-        )
-        try:
-            # The routed config, warmer. A hand-listed tool set here
-            # re-exposed Google and chat search on turns the router had
-            # withheld them from, and dropped code_execution (2026-09-09).
-            retry_config = config.model_copy(update={
-                "system_instruction": _build_runtime_system_instruction(_prompt_extra),
-                "temperature": 0.7,  # bumped from 0.3 to break the loop
-            })
-            retry_resp = await client.aio.models.generate_content(
-                model=ask_model,
-                contents=contents,
-                config=retry_config,
-            )
-            _tally_retry_usage(retry_resp)
-            try:
-                retry_answer = (retry_resp.text or "").strip()
-            except Exception:
-                retry_answer = ""
-            if retry_answer and not _has_repetition_glitch(retry_answer):
-                answer = retry_answer
-                response = retry_resp
-                log.info("/ask: repetition retry succeeded")
-            else:
-                log.warning(
-                    "/ask: repetition retry didn't fix glitch — "
-                    "falling back to sentence strip"
-                )
-        except Exception as e:
-            log.warning(f"/ask: repetition retry call failed: {e}")
-        # Strip fallback (2026-07-22 terlin calendar answer: the
-        # retry re-glitched and the old failure path shipped the
-        # loop to Discord untouched). The glitch is end-of-
-        # generation junk confined to its sentence/bullet — excise
-        # exactly those and keep the clean remainder. If the WHOLE
-        # answer is glitch, ship the original: something beats
-        # blank, and the ask-log marker makes it visible to QC
-        # either way.
-        if answer and _has_repetition_glitch(answer):
-            _glitch_sents = _repetition_glitch_sentences(answer)
-            _stripped = _strip_sentences(answer, _glitch_sents)
-            if _stripped and not _has_repetition_glitch(_stripped):
-                answer = _stripped
-                _ask_meta["guards"].append("repetition-strip")
-                log.warning(
-                    f"/ask: hard-stripped {len(_glitch_sents)} "
-                    f"glitching sentence(s) after failed retry"
-                )
-            else:
-                _ask_meta["guards"].append("repetition-shipped")
-                log.warning(
-                    "/ask: glitch survived strip fallback — "
-                    "shipping original answer"
-                )
+        log.warning(f"/ask: repetition check fired, recorded only (q={question[:80]!r})")
 
     # Meta-plumbing guard (2026-08-26). The NEVER META-NARRATE prose
     # was deleted from the prompt in the same change that added
@@ -6008,7 +5946,8 @@ async def _ask_04_clean_answer(
     from discord_bot.stock_outline import _STOCK_SHAPES as _OUTLINE_SHAPES
     _jargon = (_plain.find(answer)
                if (answer and _route_is_factual
-                   and _ask_meta.get("route_shape") not in _OUTLINE_SHAPES)
+                   and _ask_meta.get("route_shape") not in _OUTLINE_SHAPES
+                   and not _ask_meta.get("stock_body"))
                else {})
     if _jargon:
         hit_kinds.append("jargon")
@@ -8100,11 +8039,13 @@ async def _ask_09_rank_and_regen_guards(
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
     # Phase 9's stock and fantasy checks add a line built from data or
     # strip a sentence; none asks the model to rewrite (2026-10-30 audit).
+    # The print and implied-move guards stand down when the stock body
+    # posted their lines (2026-11-13). They are the net for a turn where
+    # the body failed to build, and go once the body has run live.
     answer = _fresh_print_guard(answer, _ask_meta)
     if answer and _ask_meta.get("recap_coverage") and "No response came back" not in answer:
         # what the recap actually read, built in code (discord_bot/chat_recap.py)
         answer = answer.rstrip() + "\n\n" + _ask_meta["recap_coverage"]
-    answer = _business_line_guard(answer, _ask_meta)
     answer = _implied_move_guard(answer, _ask_meta)
     answer = _fantasy_percent_guard(answer, question, _ask_meta)
     # no reminder, timer or ping tool exists: never claim one (2026-10-08)
@@ -8156,13 +8097,16 @@ async def _ask_09_rank_and_regen_guards(
                 _ask_meta["guards"].append("revenue-yoy:corrected")
     except Exception as e:
         log.warning(f"/ask: desk or revenue check failed (non-fatal): {e}")
-    # The result of a print is posted as code rendered it, above the model's
-    # arrows (discord_bot/print_block.py, 2026-11-13). After the checks
+    # The stock's lines are posted as code rendered them, above the model's
+    # arrows (discord_bot/stock_body.py, 2026-11-13). After the checks
     # above: they read the model's words, and these lines are not its.
-    if _ask_meta.get("print_block") and answer:
-        from discord_bot import print_block as _pb
-        answer, _pb_dropped = _pb.compose(answer, _ask_meta["print_block"])
-        _ask_meta["guards"].append("print-block" + (f":dropped-{_pb_dropped}" if _pb_dropped else ""))
+    if _ask_meta.get("stock_body") and answer:
+        from discord_bot import stock_body as _sb
+        answer, _sb_dropped = _sb.compose(answer, _ask_meta["stock_body"])
+        _ask_meta["guards"].append("stock-body:" + _ask_meta["stock_body"]["state"]
+                                   + (f":dropped-{_sb_dropped}" if _sb_dropped else ""))
+    # After the lines are in: the label reads the answer the room sees.
+    answer = _business_line_guard(answer, _ask_meta)
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
@@ -8265,8 +8209,8 @@ def _fresh_print_guard(answer, _ask_meta):
         forms = {f"{v:.2f}"} | ({f"{v:.1f}"} if round(v, 1) == round(v, 2) else set())
         return bool(forms & _df.numeric_cores(text))
     if (not fresh or fresh.get("actual") is None or fresh.get("estimate") is None
-            # the result lines are posted by code in this turn (print_block)
-            or _ask_meta.get("print_block")
+            # the result lines are posted by code in this turn (stock_body)
+            or _ask_meta.get("stock_body")
             or not _rewritable_stock_answer(answer, _ask_meta, _FRESH_PRINT_SHAPES)
             # a next-date lookup ("when does MU report") is not about the
             # print; the router sends news only to a result question
@@ -8335,7 +8279,8 @@ def _implied_move_guard(answer, _ask_meta):
     (owner, 2026-10-01: the ACN calls answer dropped it, the one figure an
     options question turns on). The line is written here from the chain."""
     move = _ask_meta.get("chain_move") or {}
-    if (not _rewritable_stock_answer(answer, _ask_meta, {"options_chain"})
+    if (_ask_meta.get("stock_body")     # the move is a posted line in this turn
+            or not _rewritable_stock_answer(answer, _ask_meta, {"options_chain"})
             # a bet on the print; an open-interest or put/call question
             # did not ask what the straddle prices
             or "lookup_earnings_date" not in (_ask_meta.get("route_prefetch") or [])

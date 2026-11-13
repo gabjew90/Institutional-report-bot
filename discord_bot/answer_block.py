@@ -62,18 +62,8 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
     elif tool == "event_returns":
         from discord_bot import event_returns
         lines = event_returns.block_lines(result)
-    elif (tool == "lookup_earnings_date" and (context or {}).get("shape") == "earnings_date"
-          and not (context or {}).get("research")):
-        # Only on the date shape, and not when the router fetched bank
-        # research ("AMD earnings after the bell" reads as a view): those
-        # answers carry what these lines do not.
-        from discord_bot import earnings_block
-        ctx = context or {}
-        try:
-            lines = earnings_block.block_lines(result, ctx.get("snapshot"), ctx.get("price"),
-                                               question=question, fresh=ctx.get("fresh"))
-        except Exception:
-            return None     # the model's own answer stands
+    # A company's report date is no longer here: every turn about one stock
+    # gets its lines from discord_bot/stock_body.py (2026-11-13).
     elif (tool == "lookup_market_price" and (context or {}).get("shape") == "price"
           and not (context or {}).get("research")):
         from discord_bot import price_block

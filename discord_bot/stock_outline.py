@@ -35,6 +35,13 @@ print in the last days
 the news lines are split into RESULT, GUIDANCE and ANALYST ACTION slots, the
 news's own account of the stock's move is cut when a live quote is in the
 outline, and there is no POSITIONING slot.
+
+Figures out of the outline (2026-11-13, owner: option 1). The PRICE, RESULT,
+UPCOMING, OPTIONS and POSITIONING slots handed the model figures a feed
+carries and asked it to word them. Those lines are now rendered and posted
+by code for every turn about one stock (discord_bot/stock_body.py), and the
+outline lists only what no feed carries: the news, the business line, an
+analyst's action, a desk's view. One header for every state.
 """
 from __future__ import annotations
 
@@ -45,26 +52,6 @@ from discord_bot.news_tool import _DATED_RE, _PUBLISHER_RE
 MAX_DESKS = 2
 MAX_NEWS_LINES = 2
 _STOCK_SHAPES = {"ticker_opinion", "options_chain", "news_event", "company_profile"}
-
-
-def _price_slot(price: dict | None, symbol: str, snapshot: dict | None = None) -> str | None:
-    for q in (price or {}).get("quotes") or []:
-        if str(q.get("symbol") or "").upper() != symbol or q.get("price") is None:
-            continue
-        line = f"{symbol} ${q['price']:,.2f}"
-        if q.get("change_pct") is not None:
-            line += f", {q['change_pct']:+.1f}% today"
-        if q.get("extended_hours_change_pct") is not None:
-            line += f" ({q['extended_hours_change_pct']:+.1f}% after the regular close)"
-        return f"PRICE: {line} [live prices]"
-    # the options shape does not prefetch prices; the snapshot has one
-    if (snapshot or {}).get("price") is not None:
-        return f"PRICE: {symbol} ${snapshot['price']:,.2f} [company and trading data]"
-    return None
-
-
-def _eps(v) -> str:
-    return f"${v:,.2f}"
 
 
 # What a clause of a news line is about. An analyst's action is checked
@@ -127,53 +114,49 @@ def _split_news(lines: list[str], cut_moves: bool, since: str = "") -> dict[str,
     return out
 
 
-def _result_slots(fresh: dict | None, snapshot: dict | None, news: dict | None,
-                  have_price: bool = False) -> tuple[list[str], str | None]:
-    """The print if one came out in the last few days (the results, then
-    the guidance, each its own slot), else the next report with what the
-    consensus expects. Second value: an analyst's action from the news
-    after a print, which the outline places with the desks."""
-    g = (snapshot or {}).get("growth") or {}
-    news_lines = []
+def _news_slots(state: str, fresh: dict | None, news: dict | None, have_price: bool = False,
+                revenue_posted: bool = False) -> tuple[list[str], str | None]:
+    """What the news lines add to the lines code posts (stock_body). Second
+    value: an analyst's action after a print, which the outline places
+    with the desks.
+
+    - print: the result and the guidance are posted. When no feed carried
+      the revenue, the result clauses of the news get a slot for it.
+    - pending (the report is out, Yahoo has not filled the figures): the
+      result and the guidance are only in the news, each its own slot.
+    - otherwise the dated lines themselves."""
+    lines = []
     if (news or {}).get("status") == "ok":
-        news_lines = [ln for ln in (news.get("digest") or "").splitlines() if ln.strip()][:MAX_NEWS_LINES]
-    if fresh:
-        when = f"{fresh['date']} {fresh.get('session') or ''}".strip()
-        parts = _split_news(news_lines, cut_moves=have_price, since=str(fresh.get("date") or ""))
-        if fresh.get("actual") is not None and fresh.get("estimate") is not None:
-            sp = fresh.get("surprise_pct")
-            head = (f"RESULT: reported {when}: EPS {_eps(fresh['actual'])} vs {_eps(fresh['estimate'])} "
-                    f"expected" + (f" ({sp:+.1f}%)" if sp is not None else "") + " [company report]")
-        else:
-            head = f"RESULT: reported {when}; the figures are in the news lines [news search]"
-        if parts["result"]:
-            named = any(_PUBLISHER_RE.search(p) for p in parts["result"])
-            head += (". From the news" + (", name the publisher each line ends with" if named else "")
-                     + ": " + " | ".join(parts["result"]))
-        slots = [head]
-        if parts["guidance"]:
-            slots.append("GUIDANCE: " + " | ".join(parts["guidance"]) + " [news search]")
-        analyst = ("ANALYST ACTION: " + " | ".join(parts["analyst"]) + " [news search]"
-                   if parts["analyst"] else None)
-        return slots, analyst
-    nq, nr = g.get("next_quarter") or {}, g.get("next_report") or {}
-    bits = []
-    if nr.get("date"):
-        bits.append(f"next report {nr['date']} {nr.get('session') or ''}".strip())
-    if nq.get("revenue_growth_pct") is not None:
-        bits.append(f"consensus revenue {nq['revenue_growth_pct']:+.1f}% y/y")
-    if nq.get("eps_growth_pct") is not None:
-        bits.append(f"consensus EPS {nq['eps_growth_pct']:+.1f}% y/y ({_eps(nq['eps'])})")
-    reports = g.get("eps_reports") or []
-    if reports and reports[0].get("surprise_pct") is not None:
-        r = reports[0]
-        bits.append(f"last report {r['date']} beat by {r['surprise_pct']:+.1f}%"
-                    if r["surprise_pct"] >= 0 else f"last report {r['date']} missed by {r['surprise_pct']:.1f}%")
-    out = ("UPCOMING: " + ", ".join(bits) + " [consensus data]") if bits else None
-    if news_lines:
-        news_part = "NEWS: " + " | ".join(news_lines) + " [the publisher each line ends with]"
-        out = f"{out}\n{news_part}" if out else news_part
-    return ([out] if out else []), None
+        lines = [ln for ln in (news.get("digest") or "").splitlines() if ln.strip()]
+    if state not in ("print", "pending") or not fresh:
+        if not lines:
+            return [], None
+        return ["NEWS: " + " | ".join(lines[:MAX_NEWS_LINES]) + " [the publisher each line ends with]"], None
+    since = str(fresh.get("date") or "")
+    parts = _split_news(lines[:MAX_NEWS_LINES], cut_moves=have_price, since=since)
+    analyst = ("ANALYST ACTION: " + " | ".join(parts["analyst"]) + " [news search]"
+               if parts["analyst"] else None)
+    if state == "print":
+        if revenue_posted:
+            return [], analyst
+        # every line: the results line is not always among the first two
+        result = _split_news(lines, cut_moves=have_price, since=since)["result"][:MAX_NEWS_LINES]
+        if not result:
+            return [], analyst
+        named = any(_PUBLISHER_RE.search(p) for p in result)
+        return [("RESULT DETAIL: the EPS line is posted. From the news, the revenue and what else "
+                 "the posted lines do not carry" + (", naming the publisher each line ends with" if named else "")
+                 + ": " + " | ".join(result) + " [news search]")], analyst
+    when = f"{fresh['date']} {fresh.get('session') or ''}".strip()
+    head = f"RESULT: reported {when}; the figures are in the news lines [news search]"
+    if parts["result"]:
+        named = any(_PUBLISHER_RE.search(p) for p in parts["result"])
+        head += (". From the news" + (", name the publisher each line ends with" if named else "")
+                 + ": " + " | ".join(parts["result"]))
+    slots = [head]
+    if parts["guidance"]:
+        slots.append("GUIDANCE: " + " | ".join(parts["guidance"]) + " [news search]")
+    return slots, analyst
 
 
 def _driver_slot(primer: dict | None, fresh: dict | None = None) -> str | None:
@@ -331,40 +314,12 @@ def _desk_slots(research: dict | None, fresh: dict | None, asked: str = "") -> l
     return out
 
 
-def _options_slot(chain: dict | None) -> str | None:
-    if not chain:
-        return None
-    if chain.get("status") != "ok":
+def _chain_error_slot(chain: dict | None) -> str | None:
+    """The straddle's move is a posted line (stock_body.options_line). A
+    chain that could not be read has no line, so the model says so."""
+    if chain and chain.get("status") != "ok":
         return "OPTIONS: the options chain could not be read [options chain]"
-    s = chain.get("summary") or {}
-    note = chain.get("quotes_note") or ""
-    if s.get("implied_move_pct") is not None:
-        line = (f"OPTIONS: the at-the-money straddle prices about {s['implied_move_pct']:.1f}% "
-                f"(${s.get('implied_move_dollars') or 0:,.2f}) either way by {s.get('expiration_iso')}")
-        if not s.get("live_quotes", True) or "last live" in note:
-            line += f" (last live quotes, {chain.get('as_of')})"
-        return line + " [options chain]"
-    if note:
-        return "OPTIONS: options are not quoting right now, so no implied move [options chain]"
     return None
-
-
-def _risk_slot(snapshot: dict | None) -> str | None:
-    s = snapshot or {}
-    if s.get("status") != "ok":
-        return None
-    bits = []
-    if s.get("short_pct_float") is not None:
-        bit = f"short interest {s['short_pct_float']}% of float"
-        if s.get("short_interest_as_of"):
-            bit += f" as of {s['short_interest_as_of']}"
-        bits.append(bit)
-    if s.get("pct_below_52w_high") is not None:
-        bits.append(f"{s['pct_below_52w_high']}% below its 52-week high")
-    offs = s.get("offering_filings_12m") or []
-    if offs:
-        bits.append(f"filed {offs[0]['form']} (share registration) on {offs[0]['date']}")
-    return ("POSITIONING: " + ", ".join(bits) + " [exchange and filing data]") if bits else None
 
 
 def _today_news_slot(news: dict | None, today=None) -> str | None:
@@ -385,74 +340,63 @@ def _today_news_slot(news: dict | None, today=None) -> str | None:
             "[news search]")
 
 
+_HEAD = "[ANSWER OUTLINE, built by the system from the blocks above. "
+_SLOT_RULES = ("Write one arrow per numbered slot, in this order. Use the facts in that slot, and name "
+               "only the source in its brackets, in words, never the bracket itself: a figure from the "
+               "news or the company report is never a bank's. Say each in plain words. ")
+_NO_NEW_FACTS = "Add no facts that are not in the blocks above.]"
+
+
 def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = None,
                   asked: str = "", posted: dict | None = None) -> str:
-    """The outline block for a stock answer, or '' when the shape is not a
-    single-stock view or there is nothing to outline. `results` maps a
+    """The outline block for a stock answer, or '' when the turn is not
+    about one stock or there is nothing to outline. `results` maps a
     prefetched tool name to its result. `asked` is the asker's own words
     (ask_router.asker_text), read only to tell a question about the desks.
-    `posted` is the result of a print rendered in code
-    (discord_bot/print_block.py): its lines open the reply as written, so
-    the outline carries no RESULT or GUIDANCE slot and the model writes
-    arrows only for what is left."""
+    `posted` is the body code renders for the turn (discord_bot/stock_body.py):
+    its lines open the reply as written, and the slots here are only what
+    those lines do not carry."""
     from discord_bot import ask_router as R
-    if shape not in _STOCK_SHAPES or not symbol:
+    from discord_bot import stock_body as B
+    if not symbol or (shape not in B.SHAPES) or (not posted and shape not in _STOCK_SHAPES):
         return ""
-    symbol = symbol.upper()
-    price = _price_slot(results.get(R.T_PRICE), symbol, results.get(R.T_SNAPSHOT))
-    lead, analyst = _result_slots(fresh, results.get(R.T_SNAPSHOT), results.get(R.T_NEWS),
-                                  have_price=bool(price and "today" in price))
-    if posted and posted.get("lines"):
-        return _outline_after_posted(posted, [
-            None if posted.get("has_price") else price,
+    lines = (posted or {}).get("lines") or []
+    kinds = set((posted or {}).get("kinds") or [])
+    state = (posted or {}).get("state") or (
+        "none" if not fresh else "print" if fresh.get("actual") is not None else "pending")
+    research = results.get(R.T_RESEARCH)
+    # A reply to an earlier answer is a narrow question, and a plain date
+    # lookup is answered by its lines: neither gets the rundown.
+    lookup = shape == "earnings_date" and state == "none" and not research
+    slots: list = []
+    if shape != "follow_up" and not lookup:
+        news_slots, analyst = _news_slots(state, fresh, results.get(R.T_NEWS),
+                                          have_price="price" in kinds,
+                                          revenue_posted="revenue" in kinds)
+        slots = [
+            *news_slots,
+            _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
             _driver_slot(results.get(R.T_PRIMER), fresh),
             analyst,
-            *_desk_slots(results.get(R.T_RESEARCH), fresh, asked),
-            _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
-        ])
-    slots = [
-        price,
-        *lead,
-        _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
-        _driver_slot(results.get(R.T_PRIMER), fresh),
-        analyst,
-        *_desk_slots(results.get(R.T_RESEARCH), fresh, asked),
-        _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
-        # for the days after a print the answer is about the result
-        None if fresh else _risk_slot(results.get(R.T_SNAPSHOT)),
-    ]
+            *_desk_slots(research, fresh, asked),
+            _chain_error_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
+        ]
     slots = [s for s in slots if s]
-    if len(slots) < 2:
-        return ""
     body = "\n".join(f"{i}. {s}" for i, s in enumerate(slots, 1))
-    last = ("into it. The stock's move comes from the PRICE slot only. " if fresh else
-            "into it, and drop the POSITIONING slot if it does not bear on the question. ")
-    return ("[ANSWER OUTLINE, built by the system from the blocks above. Write one arrow per "
-            "numbered slot, in this order. Use the facts in that slot, and name only the source "
-            "in its brackets, in words, never the bracket itself: a figure from the news or the "
-            "company report is never a bank's. "
-            "Say each in plain words, growth first where there is growth. The RESULT or "
-            "UPCOMING slot keeps its own arrow and its own source; you may fold the PRICE slot "
-            + last + "Add no facts that are not in the blocks above.]\n" + body)
-
-
-def _outline_after_posted(posted: dict, slots: list) -> str:
-    """The outline when code posts the result lines itself. The lines are
-    shown so the model does not write them again."""
-    slots = [s for s in slots if s]
-    head = ("[ANSWER OUTLINE, built by the system from the blocks above. The system posts the "
-            "lines below first, exactly as written, as the start of your reply:\n"
-            + "\n".join(posted["lines"])
+    if not lines:
+        if len(slots) < 2:
+            return ""
+        return _HEAD + _SLOT_RULES + _NO_NEW_FACTS + "\n" + body
+    head = (_HEAD + "The system posts the lines below first, exactly as written, as the start of "
+            "your reply:\n" + "\n".join(lines)
             + "\nDo not write them, and do not repeat, recompute or restate a figure they carry. ")
     if not slots:
-        return (head + "Write one arrow: the part of the business that drove the result, from the "
-                "blocks above, in plain words. Add no facts that are not in the blocks above.]")
-    body = "\n".join(f"{i}. {s}" for i, s in enumerate(slots, 1))
-    return (head + "Write one arrow per numbered slot, in this order, and nothing else. Use the "
-            "facts in that slot, and name only the source in its brackets, in words, never the "
-            "bracket itself: a figure from the news or the company report is never a bank's. "
-            "Say each in plain words. The stock's move comes from the posted lines only. "
-            "Add no facts that are not in the blocks above.]\n" + body)
+        return (head + "If the question asks for something the lines do not answer, answer it in one "
+                "or two arrows from the blocks above. Otherwise write one short arrow on what stands "
+                "out in them. " + _NO_NEW_FACTS)
+    return (head + _SLOT_RULES + "The stock's move comes from the posted lines only. If the question "
+            "asks for something neither the posted lines nor the slots answer, answer it in one more "
+            "arrow from the blocks above. " + _NO_NEW_FACTS + "\n" + body)
 
 
 # The source tags the outline puts in brackets. The model copied them into

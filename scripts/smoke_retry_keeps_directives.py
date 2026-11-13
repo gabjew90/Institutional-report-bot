@@ -60,17 +60,16 @@ def test_retries_pass_prompt_extra():
 
 
 def test_repetition_retry_specifically():
-    """The retry that caused the incident, checked by name."""
+    """The retry that caused the incident no longer exists: the repetition
+    check is record-only since 2026-11-13 (owner), so there is no warm
+    second call to lose the directives."""
     import discord_bot.bot as bot
     src = bot._ask_pipeline_source()
-    seg = src.split("retry_config = config.model_copy(", 1)
-    assert len(seg) == 2, "repetition retry_config not found"
-    window = seg[1][:400]
-    assert "_prompt_extra" in window, (
-        "the repetition retry must keep the analysis/FACT directive — "
-        "without it, temperature 0.7 turns an analysis into a roast"
-    )
-    _ok("repetition retry keeps the per-request directive")
+    assert "retry_config = config.model_copy(" not in src
+    i = src.index("_has_repetition_glitch(answer):")
+    window = src[i:i + 300]
+    assert '_ask_meta["guards"].append("repetition")' in window and "generate_content" not in window
+    _ok("the repetition check records and makes no second call")
 
 
 if __name__ == "__main__":

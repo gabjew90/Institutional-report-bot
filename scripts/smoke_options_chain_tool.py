@@ -275,8 +275,7 @@ def test_tool_registered_in_both_tool_arrays():
         f"lookup_options_chain must be declared exactly once (in _tools_all); "
         f"got {n_registrations}"
     )
-    assert "retry_config = config.model_copy(" in src, (
-        "the repetition retry must derive from the routed config")
+    assert "retry_config = config.model_copy(" not in src, "the repetition retry was removed 2026-11-13"
     _ok("_build_options_chain_tool declared once; retries derive from config")
 
 

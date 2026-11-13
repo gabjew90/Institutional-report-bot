@@ -1,5 +1,6 @@
-"""The code-built body for "when does X report" (discord_bot/earnings_block.py),
-from the 2026-11-05 audit's figure sample."""
+"""The code-built lines for "when does X report" (discord_bot/earnings_block.py),
+from the 2026-11-05 audit's figure sample. Where they are posted is
+discord_bot/stock_body.py (tests/test_stock_body.py)."""
 from datetime import date
 
 from discord_bot import answer_block, earnings_block as eb
@@ -25,7 +26,7 @@ def test_consensus_and_its_growth_come_from_one_source():
     # 2026-11-02: "$13.22B (+41.6% y/y)" put the calendar's revenue beside
     # the growth of Yahoo's $13.09B
     edate, snap, price = _amd()
-    lines = eb.block_lines(edate, snap, price, question="when does amd report")
+    lines = eb.block_lines(edate, snap, price)
     assert lines[0] == "→ **AMD** reports tomorrow (Tue Nov 3), after market close."
     assert "revenue **$13.09B** (+41.6% y/y)" in lines[1]
     assert "EPS **$1.96** (+63.3% y/y)" in lines[1]
@@ -37,7 +38,7 @@ def test_consensus_and_its_growth_come_from_one_source():
 def test_a_different_yahoo_quarter_leaves_the_calendar_figures_without_growth():
     edate, snap, _ = _amd()
     snap["growth"]["next_report"]["date"] = "2027-02-03"
-    lines = eb.block_lines(edate, snap, None, question="when does amd report")
+    lines = eb.block_lines(edate, snap, None)
     assert lines[1] == "→ Consensus: EPS **$1.97** on revenue **$13.22B**."
 
 
@@ -46,7 +47,7 @@ def test_the_weekday_is_the_computed_one():
     edate = {"status": "ok", "symbol": "MAIN", "next": {
         "date": "2026-11-05", "when": "in 2 days (Thu Nov 5), after market close",
         "eps_estimate": 0.92}}
-    lines = eb.block_lines(edate, None, None, question="when is main earnings")
+    lines = eb.block_lines(edate, None, None)
     assert lines[0] == "→ **MAIN** reports in 2 days (Thu Nov 5), after market close."
     assert lines[1] == "→ Consensus: EPS **$0.92**."
 
@@ -54,20 +55,16 @@ def test_the_weekday_is_the_computed_one():
 def test_a_projected_date_says_so():
     edate, snap, _ = _amd()
     edate["next"]["date_status"] = "projected, not confirmed: say the date is expected, not set"
-    assert "is expected to report" in eb.block_lines(edate, snap, None, "when does amd report")[0]
+    assert "is expected to report" in eb.block_lines(edate, snap, None)[0]
 
 
-def test_questions_these_lines_cannot_answer_get_no_block():
+def test_a_report_already_out_or_not_listed_gives_no_lines():
     edate, snap, price = _amd()
-    assert eb.block_lines(edate, snap, price, question="did amd beat") == []
-    assert eb.block_lines(edate, snap, price, question="amd earnings, what's the implied move") == []
-    assert eb.block_lines(edate, snap, price, "when does amd report", fresh={"symbol": "AMD"}) == []
     out = dict(edate, next=dict(edate["next"], when="today (Tue Nov 3), after market close "
                                                     "(already released: the results are out)"))
-    assert eb.block_lines(out, snap, price, "when does amd report") == []
-    assert eb.block_lines(edate, snap, price, "when does amd report and how much has it run") == []
-    # the earnings call is not an options question
-    assert eb.block_lines(edate, snap, price, "what time is the amd earnings call")
+    assert eb.block_lines(out, snap, price) == []
+    assert eb.block_lines(dict(edate, next=None), snap, price) == []
+    assert eb.block_lines(edate, snap, price)
 
 
 def test_after_hours_and_stale_quotes_are_labelled():
@@ -80,24 +77,10 @@ def test_after_hours_and_stale_quotes_are_labelled():
     assert eb.price_line(stale, "AMD") == "→ Last close **$500.00** (+1.2% that session)."
 
 
-def test_answer_block_builds_it_on_the_date_shape_only():
+def test_the_date_lines_are_no_longer_an_answer_block():
+    """They are posted by the stock body on every date question; the
+    opening-above-lines block stays for lists and calculations."""
     edate, snap, price = _amd()
     ctx = {"shape": "earnings_date", "snapshot": snap, "price": price}
-    blk = answer_block.build("lookup_earnings_date", edate, date(2026, 11, 2),
-                             question="when does amd report", context=ctx)
-    assert blk and blk["lines"][0].startswith("→ **AMD** reports")
     assert answer_block.build("lookup_earnings_date", edate, date(2026, 11, 2),
-                              question="when does amd report",
-                              context=dict(ctx, shape="options_chain")) is None
-    assert answer_block.build("lookup_earnings_date", edate, date(2026, 11, 2),
-                              question="amd earnings after the bell",
-                              context=dict(ctx, research=True)) is None
-    # an opening that says something the lines do not is kept above them
-    lead = "Data center demand is the swing factor, and the stock has run into the report."
-    answer, kept = answer_block.compose(lead + "\n\n→ junk", [blk])
-    assert kept and answer.startswith(lead + "\n\n→ **AMD** reports")
-    # one that only repeats the first line is not (owner's voice contract, 2026-11-12)
-    answer, kept = answer_block.compose("AMD prints tomorrow night.\n\n→ junk", [blk])
-    assert not kept and answer.startswith("→ **AMD** reports")
-    answer, kept = answer_block.compose("AMD is set up for $14B.", [blk])
-    assert not kept and answer.startswith("→ **AMD** reports")
+                              question="when does amd report", context=ctx) is None

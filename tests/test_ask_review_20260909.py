@@ -124,16 +124,21 @@ def test_plumbing_regen_replaces_the_response_too():
     assert "response = _plumb_resp" in src[i:i + 400]
 
 
-# --- finding 8: the repetition retry derives from the routed config ----
+# --- finding 8: the repetition retry derived from the routed config ----
+# The retry is gone: the check is record-only since 2026-11-13 (owner).
 
-def test_repetition_retry_uses_the_routed_config():
+def test_the_repetition_check_records_and_changes_nothing():
     import inspect
     src = inspect.getsource(B._ask_03_assemble_response)
-    assert "config" in inspect.signature(B._ask_03_assemble_response).parameters
     i = src.index("_has_repetition_glitch(answer):")
-    block = src[i:i + 1200]
-    assert "config.model_copy(" in block
-    assert "_build_chat_search_tool()" not in block, "hand-listed tools ignore TOOL_POLICY"
+    block = src[i:src.index("# Meta-plumbing guard", i)]
+    assert '_ask_meta["guards"].append("repetition")' in block
+    assert "generate_content" not in block and "_strip_sentences" not in block
+    # and the validator ladder does not act on the same detector
+    from scripts import ask_response_validate as V
+    assert "repetition-glitch" not in V._CHECKS
+    loop = "the tape is pinned. dealers have to buy shares dealers have to buy shares dealers have to buy shares"
+    assert B._has_repetition_glitch(loop) and V.validate(loop) == []
 
 
 # --- finding 9: the transient retry carries out_meta -------------------

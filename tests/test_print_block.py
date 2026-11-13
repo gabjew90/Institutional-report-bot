@@ -4,6 +4,7 @@ dates and quarterly revenue, the calendar feed's reported revenue."""
 from datetime import date
 
 from discord_bot import print_block as P
+from discord_bot import stock_body as B
 from discord_bot import stock_outline as O
 from discord_bot import ask_router as R
 from report import ticker_snapshot as S
@@ -32,6 +33,16 @@ PRICE = {"status": "ok", "session": "REGULAR", "quotes": [
 def _fresh(feed=10.409e9, qrev=QREV, rev_est=None, eps_est=None):
     g = S.growth_block(rev_est or {}, eps_est or {}, HIST, qrev, today=TODAY, feed_revenue=feed)
     return R.fresh_print({"symbol": "AMAT", "growth": g}, today=TODAY), g
+
+
+def _block(fresh, g, price=None, news=None):
+    """The posted body for a view of AMAT, as phase 2 builds it."""
+    results = {R.T_SNAPSHOT: {"status": "ok", "symbol": "AMAT", "growth": g}}
+    if price:
+        results[R.T_PRICE] = price
+    if news:
+        results[R.T_NEWS] = news
+    return B.build("ticker_opinion", "AMAT", results, fresh=fresh, today=TODAY)
 
 
 def test_the_last_report_carries_the_year_ago_eps_and_the_quarter_revenue():
@@ -69,7 +80,7 @@ def test_the_reported_quarters_consensus_is_kept_while_yahoo_still_lists_it():
 
 def test_the_lines_are_the_price_the_eps_the_revenue_and_the_guidance():
     fresh, g = _fresh()
-    block = P.build("AMAT", fresh, {"status": "ok", "growth": g}, PRICE, NEWS)
+    block = _block(fresh, g, PRICE, NEWS)
     assert block["lines"] == [
         "→ **AMAT** at **$384.16**, -3.6% today.",
         "→ Reported Nov 12 after the close: EPS **$4.16** beat the **$4.05** estimate by **2.6%** "
@@ -84,7 +95,7 @@ def test_the_lines_are_the_price_the_eps_the_revenue_and_the_guidance():
 
 def test_without_a_quote_the_eps_line_names_the_stock_and_without_news_revenue_stands_alone():
     fresh, g = _fresh()
-    block = P.build("AMAT", fresh, {"status": "ok", "growth": g})
+    block = _block(fresh, g)
     assert block["lines"] == [
         "→ **AMAT** reported Nov 12 after the close: EPS **$4.16** beat the **$4.05** estimate by "
         "**2.6%** and rose **91.7%** from a year earlier.",
@@ -92,11 +103,15 @@ def test_without_a_quote_the_eps_line_names_the_stock_and_without_news_revenue_s
     assert not block["has_price"]
 
 
-def test_no_block_without_the_printed_eps_or_the_revenue():
+def test_without_the_revenue_the_eps_line_is_still_posted_and_without_the_eps_nothing_is():
     fresh, g = _fresh(feed=None)
-    assert P.build("AMAT", fresh, {"growth": g}, PRICE, NEWS) is None
-    assert P.build("AMAT", {"date": "2026-11-12", "actual": None, "estimate": 4.05, "revenue": 1e9}) is None
-    assert P.build("AMAT", None) is None
+    block = _block(fresh, g, PRICE, NEWS)
+    assert [ln.split(":")[0] for ln in block["lines"][:2]] == ["→ **AMAT** at **$384.16**, -3.6% today.",
+                                                               "→ Reported Nov 12 after the close"]
+    assert "revenue" not in block["kinds"] and "guidance" in block["kinds"]
+    pending = {"date": "2026-11-12", "session": "after the close", "actual": None, "estimate": 4.05,
+               "symbol": "AMAT"}
+    assert _block(pending, g, PRICE, NEWS)["lines"] == ["→ **AMAT** at **$384.16**, -3.6% today."]
 
 
 def test_a_miss_a_match_and_a_loss_read_as_what_they_are():
@@ -133,29 +148,29 @@ def test_the_outline_asks_only_for_what_the_lines_do_not_carry():
                R.T_NEWS: NEWS,
                R.T_PRIMER: {"status": "ok", "primer": "DRIVERS: Semiconductor Systems drives revenue growth "
                                                       "on AI chip demand\nWATCHED: gross margin"}}
-    block = P.build("AMAT", fresh, results[R.T_SNAPSHOT], PRICE, NEWS)
+    block = _block(fresh, g, PRICE, NEWS)
     text = O.build_outline(results, "ticker_opinion", "AMAT", fresh=fresh, posted=block)
     assert all(ln in text for ln in block["lines"])
     slots = [ln.split(". ", 1)[1].split(":")[0] for ln in text.splitlines() if ln[:2].rstrip(".").isdigit()]
     assert slots == ["DRIVER", "ANALYST ACTION"]
-    assert "RESULT:" not in text and "GUIDANCE:" not in text and "PRICE:" not in text
-    # nothing left to outline: still one arrow asked for, and the lines shown
+    assert "RESULT" not in text and "GUIDANCE:" not in text and "PRICE:" not in text
+    # nothing left to outline: the lines are shown and one arrow is asked for
     bare = O.build_outline({R.T_SNAPSHOT: results[R.T_SNAPSHOT]}, "ticker_opinion", "AMAT",
                            fresh=fresh, posted=block)
-    assert "Write one arrow: the part of the business" in bare and block["lines"][1] in bare
+    assert "Otherwise write one short arrow on what stands out in them." in bare and block["lines"][1] in bare
 
 
 def test_compose_posts_the_lines_first_and_drops_an_arrow_that_restates_them():
     fresh, g = _fresh()
-    block = P.build("AMAT", fresh, {"status": "ok", "growth": g}, PRICE, NEWS)
+    block = _block(fresh, g, PRICE, NEWS)
     driver = "→ Semiconductor Systems drove the growth on demand for AI chip equipment"
     hsbc = "→ HSBC kept its Buy rating with a **$641** target"
     answer = ("→ **$AMAT** closed at **$384.16**, down 3.6%\n\n"
               "→ EPS of **$4.16** beat estimates\n\n" + driver + "\n\n" + hsbc)
-    out, dropped = P.compose(answer, block)
+    out, dropped = B.compose(answer, block)
     assert out == "\n\n".join(block["lines"] + [driver, hsbc]) and dropped == 2
     # the bot's own no-answer line is not an arrow to keep
-    assert P.compose("→ No response came back (reason: MAX_TOKENS). Try again or rephrase.", block) == (
+    assert B.compose("→ No response came back (reason: MAX_TOKENS). Try again or rephrase.", block) == (
         "\n\n".join(block["lines"]), 0)
 
 
@@ -163,17 +178,6 @@ def test_a_figure_that_shares_digits_with_the_eps_is_not_the_eps():
     assert P._has_figure("EPS of **$1.40**.", 1.40) and P._has_figure("earned $1.4 a share", 1.40)
     assert not P._has_figure("AI orders reached $1.4B, up 1.4%", 1.40)
     assert not P._has_figure("a $14.05 target", 4.05) and P._has_figure("at $1,065.11 today", 1065.11)
-
-
-def test_the_print_guard_stands_down_when_the_lines_are_posted():
-    from discord_bot import bot
-    fresh, _ = _fresh()
-    meta = {"guards": [], "route_shape": "ticker_opinion", "route_prefetch": [], "fresh_print": fresh,
-            "print_block": {"lines": ["x"]}}
-    ans = "→ Semiconductor Systems drove **$7.6B** of it"
-    assert bot._fresh_print_guard(ans, meta) == ans and meta["guards"] == []
-    meta.pop("print_block")
-    assert bot._fresh_print_guard(ans, meta) != ans
 
 
 def test_a_year_ago_eps_on_another_share_count_is_not_used():
@@ -232,7 +236,7 @@ NEWS_1113 = {"status": "ok", "digest": (
 
 def test_the_results_line_is_read_wherever_it_sits_in_the_news():
     fresh, g = _fresh()
-    block = P.build("AMAT", fresh, {"status": "ok", "growth": g}, PRICE, NEWS_1113)
+    block = _block(fresh, g, PRICE, NEWS_1113)
     assert block["lines"][2:] == [
         "→ Revenue **$10.41B** beat the **$10.30B** estimate cited by MarketWatch / Investing.com "
         "and rose **53.1%** from a year earlier.",

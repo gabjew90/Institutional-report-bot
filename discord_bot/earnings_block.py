@@ -24,9 +24,9 @@ the opening (discord_bot/answer_block.py):
 3. the last report against its estimate;
 4. the price.
 
-A result question ("did PLTR beat"), a report already out, or an options
-question gets no block: those answers need the print or the chain, which
-these lines do not carry.
+Since 2026-11-13 the lines are placed by discord_bot/stock_body.py, which posts
+them on every date question: a result question gets the report's own lines
+above these, and an options or second ask gets the model's arrows below them.
 """
 from __future__ import annotations
 
@@ -35,8 +35,6 @@ import re
 # A second ask after the date ("when does NVDA report and how much has it
 # run") needs figures these lines do not carry.
 _SECOND_ASK_RE = re.compile(r"\b(?:and|also|plus)\b.{0,60}?\b(?:how|what|why|should|is|are|will|would|can)\b", re.I)
-# "call" alone is the earnings call; the plural is the contract.
-_OPTIONS_RE = re.compile(r"\b(?:options?|calls|puts|iv|implied|straddle|premium|move)\b", re.I)
 
 
 def _money(v: float) -> str:
@@ -95,14 +93,9 @@ def price_line(price: dict | None, symbol: str) -> str:
     return quote_line(q, str(price.get("session") or ""), with_symbol=False)
 
 
-def block_lines(edate: dict, snapshot: dict | None = None, price: dict | None = None,
-                question: str = "", fresh: dict | None = None) -> list[str]:
-    """The lines for one company's next report, [] when this question or
-    this data should be answered by the model instead."""
-    from discord_bot.ask_router import _RESULT_Q_RE
-    q = question or ""
-    if fresh or _RESULT_Q_RE.search(q) or _OPTIONS_RE.search(q) or _SECOND_ASK_RE.search(q):
-        return []
+def block_lines(edate: dict, snapshot: dict | None = None, price: dict | None = None) -> list[str]:
+    """The lines for one company's next report, [] when the feed has no
+    coming report to give (none listed, or one already released)."""
     nxt = (edate or {}).get("next")
     when = str((nxt or {}).get("when") or "").replace(", timing TBD", ", time not announced")
     if not isinstance(nxt, dict) or not nxt.get("date") or not when:

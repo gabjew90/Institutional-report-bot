@@ -7,8 +7,7 @@ it, "beating consensus estimates" with no figure, "±$20¢", two source
 tags joined, and slang. Each got a patch. The figures are in the feeds,
 so the lines are rendered here, posted as written, and the model writes
 arrows only for what the feeds do not carry: the business line, an
-analyst's action, a desk's view, the options (stock_outline.build_outline
-`posted`).
+analyst's action, a desk's view (stock_outline.build_outline `posted`).
 
 Lines, in order:
 
@@ -24,8 +23,8 @@ Lines, in order:
    and names the figure as the estimate;
 4. the guidance clauses of the news lines, as the search wrote them.
 
-No block without the printed EPS, its estimate and the revenue: the
-outline's RESULT slot and the print guard handle that turn as before.
+Which of these lines a turn gets, and in what order, is decided in
+discord_bot/stock_body.py, which also posts them above the model's arrows.
 """
 from __future__ import annotations
 
@@ -176,35 +175,6 @@ def guidance_lines(news_lines: list[str], since: str = "") -> list[str]:
     return out[:MAX_GUIDANCE_LINES]
 
 
-def build(symbol: str, fresh: dict | None, snapshot: dict | None = None,
-          price: dict | None = None, news: dict | None = None) -> dict | None:
-    """{lines, has_price, eps, price} for a print the feeds carry in full,
-    else None. Plain data: the ask log serializes _ask_meta."""
-    symbol = (symbol or "").upper()
-    f = fresh or {}
-    if not symbol or f.get("actual") is None or f.get("estimate") is None or not f.get("revenue"):
-        return None
-    # Every line of the digest, not the outline's first two: the morning
-    # after a report the search led with two price-target cuts and the
-    # results line came third (AMAT, 2026-11-13).
-    news_lines = []
-    if (news or {}).get("status") == "ok":
-        news_lines = [ln for ln in (news.get("digest") or "").splitlines() if ln.strip()]
-    lines, quoted = [], None
-    for q in (price or {}).get("quotes") or []:
-        if str(q.get("symbol") or "").upper() == symbol and q.get("price") is not None:
-            from discord_bot.price_block import quote_line
-            lines.append(quote_line(q, str((price or {}).get("session") or "")))
-            quoted = float(q["price"])
-            break
-    lines.append(eps_line(f, "" if lines else symbol))
-    lines.append(revenue_line(f, news_lines))
-    lines.extend(guidance_lines(news_lines, since=str(f.get("date") or "")))
-    return {"lines": [ln for ln in lines if ln], "has_price": quoted is not None,
-            "eps": float(f["actual"]), "price": quoted, "symbol": symbol,
-            "revenue_source": f.get("revenue_source") or ""}
-
-
 def _has_figure(text: str, v: float) -> bool:
     """`v` as a dollar amount to the cent ('$4.16'; '$1.4' for $1.40), not
     a rounded '$4' and not another quantity with the same digits ('$1.4B',
@@ -215,26 +185,3 @@ def _has_figure(text: str, v: float) -> bool:
         forms |= {f"{v:,.1f}", f"{v:.1f}"}
     return any(re.search(r"\$\s?" + re.escape(f) + r"(?!\d)(?!\.\d)"
                          r"(?!\s?(?:trillion|billion|million|bn|mn|[TBMK]\b|%))", text) for f in forms)
-
-
-def compose(answer: str, block: dict) -> tuple[str, int]:
-    """(the posted lines followed by the model's arrows, how many of its
-    arrows were dropped). An arrow is dropped when it restates the lines:
-    it carries the printed EPS or the quoted price, or says nothing the
-    lines do not."""
-    from discord_bot.answer_block import _NOT_A_LEAD, adds_nothing
-    from discord_bot.data_footer import strip_model_sources
-    from discord_bot.figure_provenance import _lines
-    body = "\n\n".join(block["lines"])
-    kept, dropped = [], 0
-    for part in _lines(strip_model_sources(answer or "").strip()):
-        part = part.strip()
-        if not part or part.startswith(_NOT_A_LEAD):
-            continue
-        if (_has_figure(part, block["eps"])
-                or (block.get("price") is not None and _has_figure(part, block["price"]))
-                or adds_nothing(part, body, "")):
-            dropped += 1
-            continue
-        kept.append(part)
-    return "\n\n".join([body, *kept]), dropped

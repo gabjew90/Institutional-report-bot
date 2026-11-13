@@ -1,6 +1,11 @@
 """The /ask stock outline (2026-10-01): slots in order, each fact with its
-true source, built in code from the prefetch results."""
+true source, built in code from the prefetch results. Since 2026-11-13 the
+figures a feed carries are posted lines (tests/test_stock_body.py) and the
+outline holds only what is left for the model."""
+from datetime import date
+
 from discord_bot import ask_router as R
+from discord_bot import stock_body as B
 from discord_bot import stock_outline as O
 
 PRICE = {"status": "ok", "quotes": [{"symbol": "MU", "price": 1045.73, "change_pct": -1.8}]}
@@ -33,22 +38,30 @@ def _results(**extra):
     return base
 
 
-def test_a_fresh_print_outline_leads_with_price_then_the_result_with_its_true_source():
-    text = O.build_outline(_results(), "ticker_opinion", "mu", fresh=FRESH)
-    lines = [ln for ln in text.splitlines() if ln[:2].rstrip(".").isdigit()]
-    assert lines[0] == "1. PRICE: MU $1,045.73, -1.8% today [live prices]"
-    assert lines[1].startswith("2. RESULT: reported 2026-09-30 after the close: EPS $33.42 vs $31.82 "
-                               "expected (+5.0%) [company report]")
-    assert "(GlobeNewswire)" in lines[1], "news lines carry their publisher"
-    assert "name the publisher each line ends with" in lines[1]
-    assert lines[2].startswith("3. DRIVER: Cloud Memory drives growth")
+def _outline(results, shape, symbol, fresh=None, asked=""):
+    """As phase 2 builds it: the posted body, then the outline of what is left."""
+    body = B.build(shape, symbol, results, fresh=fresh, asked=asked, today=date(2026, 9, 30))
+    return O.build_outline(results, shape, symbol, fresh=fresh, asked=asked, posted=body), body
+
+
+def test_after_a_print_code_posts_the_result_and_the_outline_asks_for_the_rest():
+    text, body = _outline(_results(), "ticker_opinion", "mu", fresh=FRESH)
+    assert body["state"] == "print" and body["lines"] == [
+        "→ **MU** at **$1,045.73**, -1.8% today.",
+        "→ Reported Sep 30 after the close: EPS **$33.42** beat the **$31.82** estimate by **5.0%**."]
+    assert all(ln in text for ln in body["lines"]) and "Do not write them" in text
+    slots = _slots(text)
+    assert [s.split(":")[0] for s in slots] == ["RESULT DETAIL", "DRIVER", "ANALYST ACTION"]
+    # no feed carried the revenue, so the news line's is the model's to give
+    assert "(GlobeNewswire)" in slots[0], "news lines carry their publisher"
+    assert "naming the publisher each line ends with" in slots[0]
+    assert slots[1].startswith("DRIVER: Cloud Memory drives growth")
     # an analyst's action after the report, from the news, sits with the desks
-    assert lines[3] == ("4. ANALYST ACTION: Morgan Stanley raised its target to $1,200, 2026-10-01 "
+    assert slots[2] == ("ANALYST ACTION: Morgan Stanley raised its target to $1,200, 2026-10-01 "
                         "(Barron's) [news search]")
     # 2026-11-12 (owner): a note written before the report gets no slot once
-    # the result is out, and there is no POSITIONING slot then
-    assert len(lines) == 4 and "DESK:" not in text
-    assert "POSITIONING:" not in text
+    # the result is out
+    assert "DESK:" not in text and "PRICE:" not in text and "POSITIONING" not in text
     assert "a figure from the news or the company report is never a bank's" in text
 
 
@@ -93,10 +106,12 @@ def _slots(text):
     return [ln.split(". ", 1)[1] for ln in text.splitlines() if ln[:2].rstrip(".").isdigit()]
 
 
-def test_after_a_print_the_outline_is_the_result_the_guidance_the_driver_and_the_analyst():
-    slots = _slots(O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH))
-    assert [s.split(":")[0] for s in slots] == ["PRICE", "RESULT", "GUIDANCE", "DRIVER", "ANALYST ACTION"]
-    result, guidance, analyst = slots[1], slots[2], slots[4]
+def test_a_print_not_in_the_feeds_yet_is_the_result_the_guidance_the_driver_and_the_analyst():
+    text, body = _outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    assert body["state"] == "pending" and body["lines"] == ["→ **AMAT** at **$383.14**, -3.6% today."]
+    slots = _slots(text)
+    assert [s.split(":")[0] for s in slots] == ["RESULT", "GUIDANCE", "DRIVER", "ANALYST ACTION"]
+    result, guidance, analyst = slots[0], slots[1], slots[3]
     assert "$10.41 billion" in result and "$4.16" in result and "guided" not in result and "HSBC" not in result
     assert guidance == ("GUIDANCE: guided fiscal first-quarter revenue to $11.10 billion (±$500 "
                         "million) and non-GAAP EPS to $4.35 (±$0.20) against estimates [news search]")
@@ -107,12 +122,13 @@ def test_after_a_print_the_outline_is_the_result_the_guidance_the_driver_and_the
 
 
 def test_the_stocks_move_comes_from_the_live_quote_not_the_news_line():
-    text = O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
-    assert "shares moving lower" not in text and "+0.6% after the regular close" in text
+    text, body = _outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    assert "shares moving lower" not in text and body["has_price"]
+    assert "The stock's move comes from the posted lines only." in text
     # with no live quote the news line's account is all there is
-    no_quote = O.build_outline(_amat(**{R.T_PRICE: {"status": "error"}}), "ticker_opinion", "AMAT",
-                               fresh=AMAT_FRESH)
-    assert "shares moving lower" in no_quote
+    no_quote, none = _outline(_amat(**{R.T_PRICE: {"status": "error"}}), "ticker_opinion", "AMAT",
+                              fresh=AMAT_FRESH)
+    assert none is None and "shares moving lower" in no_quote
 
 
 def test_a_note_that_only_lists_the_report_date_gets_no_desk_slot():
@@ -121,11 +137,11 @@ def test_a_note_that_only_lists_the_report_date_gets_no_desk_slot():
     assert "DESK:" not in after
     # before it: the calendar lines still get no slot, and Goldman's slot is
     # its note with a view, not the newer one that only says when AMAT reports
-    before = _slots(O.build_outline(_amat(), "ticker_opinion", "AMAT"))
+    before = _slots(_outline(_amat(), "ticker_opinion", "AMAT")[0])
     desks = [s for s in before if s.startswith("DESK:")]
     assert len(desks) == 1 and "prefers AMAT for semi cap equipment" in desks[0]
     assert "JPMorgan" not in " ".join(before)
-    assert any(s.startswith("POSITIONING:") for s in before), "positioning stays when no print is out"
+    assert not any(s.startswith("POSITIONING") for s in before), "positioning is posted only when asked"
 
 
 def test_after_a_print_only_a_note_written_after_it_gets_a_desk_slot():
@@ -174,39 +190,32 @@ def test_what_counts_as_a_desks_figure():
         assert not O._FIGURE_RE.search(no), no
 
 
-def test_without_a_print_the_outline_gives_the_upcoming_report_and_consensus_growth():
+def test_without_a_print_the_next_report_and_the_straddle_are_posted_lines():
     snap = {**SNAP, "growth": {"next_report": {"date": "2026-10-01", "session": "before the open"},
-                               "next_quarter": {"revenue_growth_pct": 2.5, "eps_growth_pct": 5.1, "eps": 3.18},
+                               "next_quarter": {"eps": 3.18, "eps_year_ago": 3.0, "revenue": 17.5e9,
+                                                "revenue_year_ago": 17.0e9},
                                "eps_reports": [{"date": "2026-06-18", "surprise_pct": 2.5}]}}
     chain = {"status": "ok", "summary": {"implied_move_pct": 7.1, "implied_move_dollars": 13.1,
                                          "expiration_iso": "2026-10-02", "live_quotes": True}}
-    text = O.build_outline(_results(**{R.T_SNAPSHOT: snap, R.T_CHAIN: chain, R.T_NEWS: {"status": "no_data"}}),
-                           "options_chain", "ACN")
-    assert ("UPCOMING: next report 2026-10-01 before the open, consensus revenue +2.5% y/y, consensus EPS "
-            "+5.1% y/y ($3.18), last report 2026-06-18 beat by +2.5% [consensus data]") in text
-    assert "OPTIONS: the at-the-money straddle prices about 7.1% ($13.10) either way by 2026-10-02 [options chain]" in text
+    acn = {"status": "ok", "quotes": [{"symbol": "ACN", "price": 245.1, "change_pct": 0.4}]}
+    text, body = _outline(_results(**{R.T_SNAPSHOT: snap, R.T_CHAIN: chain, R.T_PRICE: acn,
+                                      R.T_NEWS: {"status": "no_data"}}), "options_chain", "ACN")
+    assert body["lines"] == [
+        "→ **ACN** at **$245.10**, +0.4% today.",
+        "→ Reports Thu Oct 1, before the open. Consensus: EPS **$3.18** (+6.0% y/y) on revenue "
+        "**$17.50B** (+2.9% y/y).",
+        "→ Options are pricing a move of about **7.1%** (**$13.10**) either way by the Oct 2 expiration, "
+        "from the at-the-money straddle."]
+    assert "UPCOMING" not in text and "OPTIONS:" not in text
     assert "written before the report" not in text
 
 
-def test_a_desk_call_carries_the_desks_figures_and_options_answers_get_a_price():
+def test_a_desk_call_carries_the_desks_figures():
     note = {"source": "JPMorgan", "published": "2026-09-29",
             "calls": [{"action": "positive_catalyst_watch", "rationale": "Guide above Street"}],
             "earnings": ["F1Q27 Street $56.3B revenue / $35.71 EPS; JPM expects a raise"]}
     assert O._desk_text(note) == ("positive catalyst watch: Guide above Street. Its figures: "
                                   "F1Q27 Street $56.3B revenue / $35.71 EPS; JPM expects a raise")
-    text = O.build_outline({R.T_SNAPSHOT: {**SNAP, "price": 217.95}, R.T_RESEARCH: RESEARCH},
-                           "options_chain", "MU", fresh=FRESH)
-    assert "1. PRICE: MU $217.95 [company and trading data]" in text
-    assert "The RESULT or UPCOMING slot keeps its own arrow" in text
-
-
-def test_options_not_quoting_and_last_live_quotes_are_said_so():
-    closed = {"status": "ok", "summary": {"live_quotes": False}, "quotes_note": "Options are not quoting"}
-    assert "options are not quoting right now" in O._options_slot(closed)
-    last = {"status": "ok", "as_of": "2026-09-30 19:55 UTC", "quotes_note": "These are the last live quotes",
-            "summary": {"implied_move_pct": 7.1, "implied_move_dollars": 13.1, "expiration_iso": "2026-10-02",
-                        "live_quotes": True}}
-    assert "(last live quotes, 2026-09-30 19:55 UTC)" in O._options_slot(last)
 
 
 def test_the_source_tags_never_reach_the_reader():
@@ -267,11 +276,16 @@ def test_a_share_count_is_not_the_stocks_move_and_a_view_is_not_a_calendar_line(
     assert not O._is_schedule_only(["AMAT reports Thursday and the desk expects a guide above the Street."])
 
 
-def test_the_header_names_the_positioning_slot_only_when_there_is_one():
-    after = O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
-    before = O.build_outline(_amat(), "ticker_opinion", "AMAT")
-    assert "POSITIONING" not in after and "The stock's move comes from the PRICE slot only." in after
-    assert "drop the POSITIONING slot if it does not bear on the question" in before
+def test_one_header_for_every_state_and_slots_alone_when_nothing_is_posted():
+    after, _ = _outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    before, _ = _outline(_amat(), "ticker_opinion", "AMAT")
+    for text in (after, before):
+        assert "The system posts the lines below first, exactly as written" in text
+        assert "POSITIONING" not in text and "PRICE slot" not in text
+    # nothing to post (no quote, no report date): the slots stand alone
+    bare = O.build_outline(_amat(**{R.T_PRICE: {"status": "error"}}), "ticker_opinion", "AMAT")
+    assert bare.startswith("[ANSWER OUTLINE, built by the system from the blocks above. Write one arrow per")
+    assert "posts the lines" not in bare
 
 
 def test_joined_labels_and_plus_or_minus_2026_11_12():
@@ -280,8 +294,8 @@ def test_joined_labels_and_plus_or_minus_2026_11_12():
     assert O.strip_source_tags(ans) == "→ EPS of **$4.16** beating estimates of **$4.06**\n\n→ next"
     # the guidance range reaches the model as the sign it should print
     slots = _slots(O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH))
-    assert "$11.10 billion (±$500 million)" in slots[2] and "(±$0.20)" in slots[2]
-    assert "plus or minus" not in slots[2]
+    assert "$11.10 billion (±$500 million)" in slots[1] and "(±$0.20)" in slots[1]
+    assert "plus or minus" not in slots[1]
 
 
 def test_after_a_print_the_driver_slot_is_the_driver_only():
