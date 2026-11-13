@@ -156,10 +156,18 @@ def revenue_line(fresh: dict, news_lines: list[str] | None = None) -> str:
 
 def guidance_lines(news_lines: list[str], since: str = "") -> list[str]:
     """The guidance clauses of the news lines, as written: capitalised,
-    dollar figures bold, the publisher kept."""
+    dollar figures bold, the publisher kept. A line dated before the
+    report (`since`) is the previous quarter's guidance and is left out."""
+    from discord_bot.news_tool import _DATED_RE
     from discord_bot.stock_outline import _split_news
+    current = []
+    for ln in news_lines or []:
+        m = _DATED_RE.match(ln)
+        if since and m and m.group(1) < since[:10]:
+            continue
+        current.append(ln)
     out = []
-    for clause in _split_news(news_lines or [], cut_moves=True, since=since)["guidance"]:
+    for clause in _split_news(current, cut_moves=True, since=since)["guidance"]:
         clause = clause.strip()
         if not clause:
             continue
@@ -176,10 +184,12 @@ def build(symbol: str, fresh: dict | None, snapshot: dict | None = None,
     f = fresh or {}
     if not symbol or f.get("actual") is None or f.get("estimate") is None or not f.get("revenue"):
         return None
-    from discord_bot.stock_outline import MAX_NEWS_LINES
+    # Every line of the digest, not the outline's first two: the morning
+    # after a report the search led with two price-target cuts and the
+    # results line came third (AMAT, 2026-11-13).
     news_lines = []
     if (news or {}).get("status") == "ok":
-        news_lines = [ln for ln in (news.get("digest") or "").splitlines() if ln.strip()][:MAX_NEWS_LINES]
+        news_lines = [ln for ln in (news.get("digest") or "").splitlines() if ln.strip()]
     lines, quoted = [], None
     for q in (price or {}).get("quotes") or []:
         if str(q.get("symbol") or "").upper() == symbol and q.get("price") is not None:

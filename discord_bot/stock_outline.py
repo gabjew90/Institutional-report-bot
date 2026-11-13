@@ -99,6 +99,8 @@ def _split_news(lines: list[str], cut_moves: bool, since: str = "") -> dict[str,
         m = _DATED_RE.match(raw)
         date = m.group(1) if m else ""
         body = (raw[m.end():] if m else raw).strip().lstrip(")*:\u2013-\u2022 ")
+        # the search sometimes writes the date twice ("2026-11-13 (2026-11-13) ...")
+        body = re.sub(r"^\(?20\d\d-\d\d-\d\d\)?[:,]?\s*", "", body)
         pub = ""
         pm = _PUBLISHER_RE.search(body)
         if pm:

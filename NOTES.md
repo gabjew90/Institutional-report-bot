@@ -3784,6 +3784,8 @@ The lines, in order: the price in the session's terms, EPS against its estimate 
 
 The outline (`stock_outline.build_outline`, `posted`) then shows the model those lines and asks for arrows only for the rest: the driver, an analyst's action, a desk, the options. Phase 9 posts the lines first and drops a model arrow that restates them (it carries the printed EPS or the quoted price, or adds fewer than three content words). The print guard stands down in that turn. A print the feeds do not carry in full (no actual from Yahoo yet, or no revenue) takes the old path: the RESULT slot and the guard.
 
+The first live run showed one gap, fixed the same day: the search returned two price-target cuts ahead of the results line, and the block read only the first two lines (the outline's cap), so the guidance line and the revenue estimate were missing. The block reads every line of the digest, leaves out guidance dated before the report, and a date the search wrote twice is removed from the clause. Seen in the same run and not changed: the repetition check read an arrow listing two target cuts ("target to $520 from $650 ... target to $475 from $700") as a token loop and spent a retry on it.
+
 Not covered: a result question on the earnings-date shape ("did AMAT beat") and a reply to an earlier answer. Both still go through the model with the print guard.
 
 ## 2026-11-13: a morning with no research is not a failed run

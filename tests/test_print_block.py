@@ -215,3 +215,37 @@ def test_a_stale_quarterly_list_gives_no_feed_revenue():
     the year-ago quarter chosen by date belongs to a different quarter."""
     assert S.print_revenue("2026-11-12", QREV[1:], 10.409e9) == {}
     assert S.print_revenue("2026-11-12", QREV, 10.409e9)["revenue_year_ago"] == 6.800e9
+
+
+# The digest of the 2026-11-13 harness run: two price-target cuts first,
+# the results line third, each date written twice.
+NEWS_1113 = {"status": "ok", "digest": (
+    "2026-11-13 (2026-11-13) Bank of America lowered its price target on Applied Materials to $520.00 from "
+    "$650.00 with a Buy rating\n"
+    "2026-11-13 (2026-11-13) B. Riley lowered its price target on Applied Materials to $475.00 from $700.00\n"
+    "2026-11-12 (2026-11-12) Applied Materials reported fourth-quarter fiscal 2026 revenue of $10.41 billion "
+    "(up 53% year-over-year) beating estimates of $10.30 billion, and non-GAAP EPS of $4.16 beating estimates "
+    "of $4.05; fiscal Q1 2027 revenue guidance came in at approximately $11.1 billion ahead of consensus, and "
+    "the stock moved down 3.58% following multiple compression concerns across the chip equipment sector "
+    "(MarketWatch / Investing.com)")}
+
+
+def test_the_results_line_is_read_wherever_it_sits_in_the_news():
+    fresh, g = _fresh()
+    block = P.build("AMAT", fresh, {"status": "ok", "growth": g}, PRICE, NEWS_1113)
+    assert block["lines"][2:] == [
+        "→ Revenue **$10.41B** beat the **$10.30B** estimate cited by MarketWatch / Investing.com "
+        "and rose **53.1%** from a year earlier.",
+        "→ Fiscal Q1 2027 revenue guidance came in at approximately **$11.1 billion** ahead of consensus "
+        "(MarketWatch / Investing.com)."]
+    # the outline's analyst slot does not carry the doubled date either
+    text = O.build_outline({R.T_PRICE: PRICE, R.T_SNAPSHOT: {"status": "ok", "growth": g}, R.T_NEWS: NEWS_1113},
+                           "ticker_opinion", "AMAT", fresh=fresh, posted=block)
+    assert "ANALYST ACTION: Bank of America lowered its price target" in text and "(2026-11-13)" not in text
+
+
+def test_guidance_dated_before_the_report_is_not_this_quarters():
+    old = ["2026-10-30: Applied guided fourth-quarter revenue to $10.2 billion (Reuters)",
+           "2026-11-12: guided first-quarter revenue to $11.1 billion (Reuters)"]
+    assert P.guidance_lines(old, since="2026-11-12") == [
+        "→ Guided first-quarter revenue to **$11.1 billion** (Reuters)."]
