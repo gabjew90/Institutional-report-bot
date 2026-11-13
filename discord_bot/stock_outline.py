@@ -171,7 +171,7 @@ def _result_slots(fresh: dict | None, snapshot: dict | None, news: dict | None,
     return ([out] if out else []), None
 
 
-def _driver_slot(primer: dict | None) -> str | None:
+def _driver_slot(primer: dict | None, fresh: dict | None = None) -> str | None:
     if (primer or {}).get("status") != "ok":
         return None
     text = primer.get("primer") or ""
@@ -182,7 +182,11 @@ def _driver_slot(primer: dict | None) -> str | None:
     if not drivers:
         return None
     slot = f"DRIVER: {drivers}"
-    if watched:
+    # After a print the result slots carry the figures. The list of what
+    # the company is judged on then has nothing to attach to, and the
+    # model padded the arrow with it ("with gross margin and core tool
+    # orders setting the pace for operational profitability", 2026-11-12).
+    if watched and not fresh:
         slot += f" What it is judged on: {watched}"
     return slot + " [company background; say it in one short clause tied to the result or the setup, no list of segments]"
 
@@ -393,7 +397,7 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
         price,
         *lead,
         _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
-        _driver_slot(results.get(R.T_PRIMER)),
+        _driver_slot(results.get(R.T_PRIMER), fresh),
         analyst,
         *_desk_slots(results.get(R.T_RESEARCH), fresh, asked),
         _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,

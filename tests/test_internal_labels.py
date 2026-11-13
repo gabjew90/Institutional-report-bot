@@ -66,3 +66,12 @@ def test_latex_is_plain_2026_10_26():
     assert L.strip(r"→ **60,000 shares** $\times$ **$169.43** = **$10.2M**") == \
         "→ **60,000 shares** x **$169.43** = **$10.2M**"
     assert L.strip(r"up 5\% on $NVDA") == "up 5% on $NVDA"
+
+
+def test_a_payload_field_value_used_as_a_tag_is_removed_2026_11_12():
+    from discord_bot import internal_labels as IL
+    assert IL.strip("up **+0.9%** after hours [yahoo_extended_hours]") == "up **+0.9%** after hours"
+    keep = "see [the_filing](https://sec.gov/x) and [Reuters]"
+    assert IL.strip(keep) == keep
+    code = "the lookup is rows[row_idx]\n```python\nx = [row_idx]\n```"
+    assert IL.strip(code) == code

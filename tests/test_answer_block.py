@@ -63,3 +63,13 @@ def test_phase_9_composes_and_phase_2_shows_the_model_the_lines():
     src = inspect.getsource(bot._ask_02_call_model_with_tools)
     assert "_pf_text += _answer_block.note(_blk)" in src
     assert "_ask_router.T_EVENTS: _execute_event_returns" in src
+
+
+def test_an_opening_that_only_repeats_the_lines_is_dropped_2026_11_12():
+    from discord_bot import answer_block as AB
+    body = ("\u2192 **NVDA** reports in 5 days (Tue Nov 17), after market close.\n\n"
+            "\u2192 Consensus: EPS **$2.48** (+90.4% y/y) on revenue **$109.0B** (+91.3% y/y).\n\n"
+            "\u2192 Last report (Aug 26): EPS **$2.22**, beat the **$2.09** estimate.")
+    q = "when is nvda earnings"
+    assert AB.adds_nothing("\u2192 **NVDA** reports earnings on **November 17, 2026** after market close", body, q)
+    assert not AB.adds_nothing("Revenue is expected to nearly double, and the last four reports all beat.", body, q)

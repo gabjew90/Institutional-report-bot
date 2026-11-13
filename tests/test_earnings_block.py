@@ -92,8 +92,12 @@ def test_answer_block_builds_it_on_the_date_shape_only():
     assert answer_block.build("lookup_earnings_date", edate, date(2026, 11, 2),
                               question="amd earnings after the bell",
                               context=dict(ctx, research=True)) is None
-    # the model's opening is kept above the lines; one carrying its own figure is not
+    # an opening that says something the lines do not is kept above them
+    lead = "Data center demand is the swing factor, and the stock has run into the report."
+    answer, kept = answer_block.compose(lead + "\n\n→ junk", [blk])
+    assert kept and answer.startswith(lead + "\n\n→ **AMD** reports")
+    # one that only repeats the first line is not (owner's voice contract, 2026-11-12)
     answer, kept = answer_block.compose("AMD prints tomorrow night.\n\n→ junk", [blk])
-    assert kept and answer.startswith("AMD prints tomorrow night.\n\n→ **AMD** reports")
+    assert not kept and answer.startswith("→ **AMD** reports")
     answer, kept = answer_block.compose("AMD is set up for $14B.", [blk])
     assert not kept and answer.startswith("→ **AMD** reports")

@@ -116,6 +116,33 @@ def _plain(text: str) -> str:
     return re.sub(r"[\s*→_]+", " ", text or "").strip().lower()
 
 
+_STOP = frozenset(
+    "the a an and or of on in at to for with by from is are was were be it its this that as into "
+    "than then so but not no after before over under up down out about will has have had".split())
+MIN_NEW_WORDS = 3
+
+
+def _words(text: str) -> list[str]:
+    return [w for w in re.findall(r"[a-z0-9$%.]+", _plain(text)) if w.strip(".") and w not in _STOP]
+
+
+def adds_nothing(lead: str, body: str, question: str) -> bool:
+    """The opening says only what the lines below it (or the question)
+    already say: fewer than MIN_NEW_WORDS content words of its own. A
+    word counts as known when the lines carry it or a short form of it
+    ("november" and "nov"). Owner's voice contract, 2026-11-12: every
+    sentence adds new information ("NVDA reports earnings on November 17,
+    2026 after market close" above "NVDA reports in 5 days (Tue Nov 17),
+    after market close")."""
+    known = set(_words(body + " " + (question or "")))
+
+    def _known(w: str) -> bool:
+        w = w.strip(".")
+        return w in known or any(len(k) >= 3 and (w.startswith(k) or k.startswith(w)) for k in known
+                                 if len(w) >= 3)
+    return sum(1 for w in set(_words(lead)) if not _known(w)) < MIN_NEW_WORDS
+
+
 def _lead_ok(lead: str, blocks: list[dict], body: str, question: str) -> bool:
     """An opening, not a list line, not a repeat of a line, not a grade and
     not a figure of the model's own."""
@@ -125,6 +152,8 @@ def _lead_ok(lead: str, blocks: list[dict], body: str, question: str) -> bool:
     if _plain(lead) and _plain(lead) in _plain(body):
         return False
     if _GRADING_RE.search(lead):
+        return False
+    if adds_nothing(lead, body, question):
         return False
     for b in blocks:
         if (b.get("outline")

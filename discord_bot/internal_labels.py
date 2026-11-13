@@ -36,8 +36,21 @@ _LATEX = ((re.compile(r"\$?\\times\$?"), "x"), (re.compile(r"\$?\\approx\$?"), "
           (re.compile(r"\\%"), "%"))
 
 
+# A payload field value copied as a source tag: "+0.9% after hours
+# [yahoo_extended_hours]" (2026-11-12 harness). No reader text is a
+# bracketed snake_case token; a markdown link is left alone.
+_FIELD_TAG_RE = re.compile(r"(?:^|[ \t]+)\[[a-z][a-z0-9]*(?:_[a-z0-9]+)+\](?!\()", re.M)
+
+
+def _outside_code(text: str, fn) -> str:
+    """`fn` applied outside fenced code: `x = [row_idx]` is not a tag."""
+    parts = text.split("```")
+    return "```".join(fn(p) if i % 2 == 0 else p for i, p in enumerate(parts))
+
+
 def strip(answer: str) -> str:
     text = _LABEL_RE.sub("", answer or "")
+    text = _outside_code(text, lambda t: _FIELD_TAG_RE.sub("", t))
     for pat, plain in _LATEX:
         text = pat.sub(plain, text)
     text = _STATUS_RE.sub("", text)

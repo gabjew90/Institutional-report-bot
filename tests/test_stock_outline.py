@@ -273,3 +273,9 @@ def test_the_header_names_the_positioning_slot_only_when_there_is_one():
     assert "POSITIONING" not in after and "The stock's move comes from the PRICE slot only." in after
     assert "drop the POSITIONING slot if it does not bear on the question" in before
 
+
+def test_after_a_print_the_driver_slot_is_the_driver_only():
+    after = O.build_outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
+    before = O.build_outline(_amat(), "ticker_opinion", "AMAT")
+    assert "DRIVER: Semiconductor Systems drives" in after and "What it is judged on" not in after
+    assert "What it is judged on: gross margin" in before
