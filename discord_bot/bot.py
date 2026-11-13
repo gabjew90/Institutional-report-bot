@@ -1865,13 +1865,58 @@ def _has_repetition_glitch(text: str) -> bool:
     return False
 
 
+_REP_FIGURE_RE = re.compile(r"\d+(?:[.,]\d+)*")
+
+
+def _rep_figures(text: str, matches: list) -> list[tuple]:
+    """The figures written around each word token: entry i holds the
+    numbers between token i-1 and token i, and the last entry what
+    follows the final token."""
+    edges = [0]
+    for m in matches:
+        edges += (m.start(), m.end())
+    edges.append(len(text))
+    return [
+        tuple(_REP_FIGURE_RE.findall(text[edges[2 * i]:edges[2 * i + 1]]))
+        for i in range(len(matches) + 1)
+    ]
+
+
+def _rep_same_twice(occurrences: list[tuple]) -> bool:
+    """True when two occurrences of one bigram are the same text.
+
+    Each occurrence is the figures directly before, inside and after
+    the bigram. The tokens are letters only, so "its price target to
+    $520 from $650 ... its target to $475 from $700" reads "target to
+    from ... target to from", and the loose gate counted ("target",
+    "to") twice. That arrow (2026-11-13, "did amat earnings drop", two
+    analysts' target cuts) was a correct answer: it cost a retry, the
+    retry tripped the same way, and the strip found nothing to remove
+    because the sentence splitter cut it at "B. Riley".
+
+    A loop repeats the same text, figures included. A parallel
+    statement changes the figure. So two occurrences are different only
+    when both carry a figure in the same position and the figures
+    differ. A figure beside one occurrence and none beside the other
+    still counts as a repeat, and bigrams with no figures are counted
+    exactly as before.
+    """
+    for i, first in enumerate(occurrences):
+        for second in occurrences[i + 1:]:
+            if not any(p and q and p != q for p, q in zip(first, second)):
+                return True
+    return False
+
+
 def _repetition_gates(text: str) -> bool:
     """The token-level glitch gates, over ONE continuous run of prose."""
     if not text:
         return False
-    tokens = [m.group(0).lower() for m in _REP_TOKEN_RE.finditer(text)]
+    matches = list(_REP_TOKEN_RE.finditer(text))
+    tokens = [m.group(0).lower() for m in matches]
     if len(tokens) < 6:
         return False
+    figures = _rep_figures(text, matches)
 
     # Gate 0: immediate exact duplicate of any alpha token ("is is",
     # "the the", "turned turned"). The other gates skip these — Gate 1
@@ -1879,8 +1924,11 @@ def _repetition_gates(text: str) -> bool:
     # bigram, so a doubled stopword slips entirely. Immediate verbatim
     # token repetition is glitch-characteristic; the mechanical
     # collapser fixes it, this gate just makes the retry + QC log fire.
+    # A figure between the two ("keep to 1 to 2", "16GB/256GB") means
+    # they were never adjacent in the text.
     for i in range(len(tokens) - 1):
-        if tokens[i] == tokens[i + 1] and len(tokens[i]) >= 2:
+        if (tokens[i] == tokens[i + 1] and len(tokens[i]) >= 2
+                and not figures[i + 1]):
             return True
 
     # Gate 1: tail frequency. Any content-word repeating 3+ times in
@@ -1897,17 +1945,15 @@ def _repetition_gates(text: str) -> bool:
     # Gate 2: tail bigram. Any content-word bigram (both non-stopword,
     # >=4 chars) appearing 2+ times in the last 25% of the answer.
     tail_start = max(0, int(len(tokens) * 0.75))
-    tail_tokens = tokens[tail_start:]
-    bigram_counts: dict[tuple[str, str], int] = {}
-    for i in range(len(tail_tokens) - 1):
-        a, b = tail_tokens[i], tail_tokens[i + 1]
+    bigram_seen: dict[tuple[str, str], list[tuple]] = {}
+    for i in range(tail_start, len(tokens) - 1):
+        a, b = tokens[i], tokens[i + 1]
         if a in _REP_STOPWORDS or b in _REP_STOPWORDS:
             continue
         if len(a) < 4 or len(b) < 4:
             continue
-        bg = (a, b)
-        bigram_counts[bg] = bigram_counts.get(bg, 0) + 1
-    if any(c >= 2 for c in bigram_counts.values()):
+        bigram_seen.setdefault((a, b), []).append(tuple(figures[i:i + 3]))
+    if any(_rep_same_twice(v) for v in bigram_seen.values()):
         return True
 
     # Gate 3: loose tail bigram. Catches glitches that Gates 1+2 miss
@@ -1927,19 +1973,17 @@ def _repetition_gates(text: str) -> bool:
     # require at least one bigram token to be a content word (>=4
     # chars, not in stopword list). This catches the patterns above
     # while filtering out pure-stopword filler like ("of", "the").
-    loose_tail = tokens[-25:]
-    loose_counts: dict[tuple[str, str], int] = {}
-    for i in range(len(loose_tail) - 1):
-        a, b = loose_tail[i], loose_tail[i + 1]
+    loose_seen: dict[tuple[str, str], list[tuple]] = {}
+    for i in range(max(0, len(tokens) - 25), len(tokens) - 1):
+        a, b = tokens[i], tokens[i + 1]
         # At least one side must be a "content" token (>=4 chars
         # AND not in the stopword list). The other side is anything.
         a_content = len(a) >= 4 and a not in _REP_STOPWORDS
         b_content = len(b) >= 4 and b not in _REP_STOPWORDS
         if not (a_content or b_content):
             continue
-        bg = (a, b)
-        loose_counts[bg] = loose_counts.get(bg, 0) + 1
-    return any(c >= 2 for c in loose_counts.values())
+        loose_seen.setdefault((a, b), []).append(tuple(figures[i:i + 3]))
+    return any(_rep_same_twice(v) for v in loose_seen.values())
 
 
 def _repetition_glitch_sentences(text: str) -> list[str]:
@@ -5730,6 +5774,9 @@ async def _ask_03_assemble_response(
     # gets SOMETHING rather than blank.
     if answer and _has_repetition_glitch(answer):
         _ask_meta["guards"].append("repetition")
+        # The retry and the strip replace this text, so the ask log
+        # keeps it: without it a firing cannot be judged afterwards.
+        _ask_meta["repetition_original"] = answer
         log.warning(
             f"/ask: repetition glitch in answer (q={question[:80]!r}); "
             f"retrying once at higher temp"

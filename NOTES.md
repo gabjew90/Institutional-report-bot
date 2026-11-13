@@ -3795,3 +3795,25 @@ Owner: "still getting github fails". Every `pilot-editor` failure since 10-16 wa
 `scripts/pilot_editor_pack.py` now tells the two cases apart. With nothing unread and no document in the window given up since the last edition, it exits 3 and the workflow ends green with a notice and publishes nothing. When research is waiting and the readers did not card it, it still exits 2 and the run fails. Checked against a copy of the day's pilot-data: exit 3.
 
 The cause is unchanged and is the owner's: research reaches `/Current` in batches on some days and not at all on others.
+
+## 2026-11-13: two target cuts are not a token loop
+
+The repetition check fired on a correct answer to "did amat earnings drop". The last arrow listed two analysts' target cuts ("its price target to $520 from $650 ... its target to $475 from $700"). The detector's tokens are letters only, so the arrow read "target to from ... target to from" and Gate 3 counted ("target", "to") twice. The turn spent a retry, the retry tripped the same way, the strip removed nothing because `_split_sentences` cut the arrow at "B. Riley", and the original was posted as `repetition-shipped`.
+
+Measured first, from the ask logs on `pulse-data` (2,115 answers, 2026-05-18 to 11-13):
+
+| window | answers | fires | retry accepted | sentence stripped | posted as it was |
+|---|---|---|---|---|---|
+| all | 2,115 | 61 | 38 | 14 | 9 |
+| since the list fix (9-19) | 633 | 18 | 12 | 6 | 0 |
+| last 14 days | 136 | 7 | 4 | 3 | 0 |
+
+The log's raw snapshot is taken after the retry and the strip, so the text a firing was about survives only for the 9 posted as they were. Seven of those are readable and none is a loop: five are lists (fixed 9-19), one is a line that carried `[LOOKUP_EARNINGS_DATE]` twice, one is an unmarked earnings list repeating "August". For the other 52 firings the logs cannot say what the check saw or whether the retry was better. Median latency since 9-19 is 13.1 s on the 18 turns where it fired against 6.0 s on the rest (the turns differ in other ways too).
+
+Fix (`discord_bot/bot.py`): the bigram gates (2 and 3) compare the figures written directly before, inside and after each occurrence of a bigram (`_rep_figures`, `_rep_same_twice`). Two occurrences are different text only when both carry a figure in the same position and the figures differ. A figure beside one occurrence and none beside the other is still a repeat, and a bigram with no figures is counted as before. Gate 0 (a doubled word) has the same blind spot and the same rule: "keep to 1 to 2" read as "to to", "16GB/256GB" as "gb gb". Replayed over every logged answer and raw output (3,027 texts) and every distinct sentence in them (8,855): nothing new fires, 4 texts and 44 sentences stop firing, and all 44 were read and are correct statements (results against estimates, two contracts, two dates, share counts). The AVGO, HPE and TMO loops in the Gate 3 comment still fire, as does a loop that repeats its own figure. Tests: `tests/test_repetition_parallel_figures.py`.
+
+The ask log now keeps the answer the check fired on, in its own block ("Answer the repetition check fired on"), whenever the retry or the strip changed it. This is the missing input for the question below.
+
+Accepted trade-offs from the code review: a two-cycle loop whose repeats sit beside different list numbers or citation markers no longer trips Gates 2 and 3 (Gate 1 still catches three repeats), and a doubled word with a number between is no longer flagged.
+
+For the owner, not changed here. This is the fourth exception to this detector (tail scoping, lists on 9-19, code blocks on 9-24, figures now). After this fix, 42 of the 1,935 distinct sentences the model wrote since 9-19 still trip it when read alone, which is how it reads a final arrow and how the strip reads every sentence. One of the 42 is a real glitch ("momentum momentum plays"). The rest are correct, in three shapes: a company name followed by its cashtag ("Uber ($UBER)" reads "uber uber", 10 sentences), a desk named in the sentence and again in its source tag ("Morgan Stanley ... [Morgan Stanley]"), and a noun phrase used twice with its figures a few words away ("free cash flow ... operating cash flow"). The measurement cannot show that the retry almost never helps, because the logs did not keep the original. What it shows: every firing that can be read was a false alarm, a false alarm costs one model call, and when the retry trips too the strip deletes a correct sentence (6 answers since 9-19, for example "any treasury buybacks today" on 10-01 was posted as one arrow). Proposal: make the check record-only (no retry, no strip, the label and the logged original stay), keep `_collapse_adjacent_dupes` for doubled words, and read the logged originals after two weeks to see whether real loops still occur on gemini-3.5-flash-lite. Also open: `_split_sentences` cuts at initials ("B. Riley", "U.S."), which affects every check that strips by sentence.

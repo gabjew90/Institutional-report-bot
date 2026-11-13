@@ -499,6 +499,24 @@ def append_ask_interaction(
                 "</details>\n\n"
             )
 
+        # What the repetition check fired on. The retry and the strip
+        # replace it before the raw snapshot above is taken, so until
+        # 2026-11-13 the log could not show whether a firing was a loop
+        # or a correct answer. Left out when that text was posted as it
+        # was (`repetition-shipped`): the raw block already is it.
+        rep_section = ""
+        rep_original = ((meta or {}).get("repetition_original") or "").strip()
+        if rep_original and rep_original != (raw_answer or "").strip():
+            rep_section = (
+                "<details>\n"
+                "<summary>Answer the repetition check fired on</summary>\n\n"
+                # four backticks: the answer may carry a ``` block itself
+                "````text\n"
+                f"{_clip(rep_original, 8000)}\n"
+                "````\n"
+                "</details>\n\n"
+            )
+
         entry = (
             (f"# /ask interactions — {date_str}\n\n" if is_new else "")
             + f"## {ts_str}\n\n"
@@ -510,6 +528,7 @@ def append_ask_interaction(
             f"{_clip(answer)}\n\n"
             f"{tools_section}"
             f"{raw_section}"
+            f"{rep_section}"
             f"{prompt_section}"
             "---\n\n"
         )
