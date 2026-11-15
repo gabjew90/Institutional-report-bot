@@ -469,6 +469,24 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             built_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S', 'now'))
         );
 
+        -- The consensus for a report, recorded before it
+        -- (report/report_consensus.py, 2026-11-14). Yahoo drops the reported
+        -- quarter's estimates within hours of the report, so a revenue beat
+        -- or miss could only be read off a news line. next_* is the quarter
+        -- after, which guidance is set against.
+        CREATE TABLE IF NOT EXISTS report_consensus (
+            symbol TEXT NOT NULL,
+            report_date TEXT NOT NULL,
+            eps REAL,
+            eps_year_ago REAL,
+            revenue REAL,
+            revenue_year_ago REAL,
+            next_eps REAL,
+            next_revenue REAL,
+            captured_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S', 'now')),
+            PRIMARY KEY (symbol, report_date)
+        );
+
         -- Books the bot published, so a caller's correction can be
         -- attributed (2026-08-26). BK's book listed MU 980C and AVGO
         -- 450C as open; he replied "No AVGO" / "No MU anymore". Both
@@ -1633,9 +1651,11 @@ from db_parts.ask import (  # noqa: E402,F401
     get_recent_bot_answers_in_channel,
     bot_answers_mentioning,
     get_recent_bot_answers_to_asker,
+    get_report_consensus,
     get_ticker_primer,
     record_ask_bot_answer,
     record_ask_query,
+    upsert_report_consensus,
     upsert_ticker_primer,
 )
 from db_parts.chat import (  # noqa: E402,F401

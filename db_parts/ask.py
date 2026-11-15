@@ -156,6 +156,40 @@ def upsert_ticker_primer(symbol: str, primer: str, sources: list[dict]) -> None:
     conn.commit()
 
 
+# ------------------------------- consensus recorded before a report (2026-11-14)
+
+_CONSENSUS_FIELDS = ("eps", "eps_year_ago", "revenue", "revenue_year_ago", "next_eps", "next_revenue")
+
+
+def upsert_report_consensus(symbol: str, report_date: str, **figures) -> None:
+    """Store the estimates for the report `symbol` makes on `report_date`.
+    The latest record before the report wins, field by field: a later
+    record without a figure keeps the one already stored."""
+    vals = [figures.get(f) for f in _CONSENSUS_FIELDS]
+    conn = _db.get_connection()
+    conn.execute(
+        "INSERT INTO report_consensus (symbol, report_date, " + ", ".join(_CONSENSUS_FIELDS)
+        + ", captured_at) VALUES (?, ?, " + ", ".join("?" for _ in _CONSENSUS_FIELDS)
+        + ", strftime('%Y-%m-%dT%H:%M:%S', 'now')) ON CONFLICT(symbol, report_date) DO UPDATE SET "
+        + ", ".join(f"{f} = COALESCE(excluded.{f}, {f})" for f in _CONSENSUS_FIELDS)
+        + ", captured_at = excluded.captured_at",
+        ((symbol or "").upper(), str(report_date)[:10], *vals))
+    conn.commit()
+
+
+def get_report_consensus(symbol: str, report_date: str, tolerance_days: int = 2) -> dict | None:
+    """The estimates recorded for the report nearest `report_date`, within
+    `tolerance_days`: the calendar feed and Yahoo can list one report a
+    day apart."""
+    day = str(report_date)[:10]
+    row = _db.get_connection().execute(
+        "SELECT * FROM report_consensus WHERE symbol = ? "
+        "AND ABS(julianday(report_date) - julianday(?)) <= ? "
+        "ORDER BY ABS(julianday(report_date) - julianday(?)), captured_at DESC LIMIT 1",
+        ((symbol or "").upper(), day, tolerance_days, day)).fetchone()
+    return dict(row) if row else None
+
+
 def bot_answers_mentioning(terms: list[str], days: int = 7, limit: int = 2) -> list[dict]:
     """The bot's own recent answers, any channel, whose question or answer
     names one of `terms`, newest first. What the room was already told

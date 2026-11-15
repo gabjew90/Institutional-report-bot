@@ -49,6 +49,7 @@ BATCH_JOB_IDS = frozenset({
     "bridge_watchdog_timeout",
     "bridge_fallback_sweeper",
     "user_profile_refresh",
+    "report_consensus_capture",
 })
 # Per-process housekeeping both processes run.
 SHARED_JOB_IDS = frozenset({"malloc_trim"})

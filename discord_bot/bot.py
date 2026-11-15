@@ -4962,6 +4962,21 @@ def _ask_prefetch_plan(route, executors):
     return plan, missing
 
 
+# Writes an answer does not wait for. The set keeps each task referenced
+# until it is done: the event loop holds only a weak reference.
+_BACKGROUND_WRITES: set = set()
+
+
+async def _record_report_consensus(row: dict) -> None:
+    """Store the coming report's consensus (report/report_consensus.py)
+    off the answer's path. A failure costs one record, which the daily job
+    or the next question about the stock makes again."""
+    try:
+        await asyncio.to_thread(db.upsert_report_consensus, **row)
+    except Exception as e:
+        log.warning(f"/ask: report consensus record failed (non-fatal): {e}")
+
+
 async def _ask_02_call_model_with_tools(
     _ask_route,
     _ask_meta,
@@ -5197,7 +5212,28 @@ async def _ask_02_call_model_with_tools(
     _pf_plan, _pf_missing = _ask_prefetch_plan(_ask_route, _prefetch_exec)
     for _pf_tool in _pf_missing:
         log.error(f"/ask: router prefetch {_pf_tool} has no executor; skipped")
-    _pf_results = await asyncio.gather(*[_run_prefetch(t, a) for t, a in _pf_plan])
+    _pf_results = list(await asyncio.gather(*[_run_prefetch(t, a) for t, a in _pf_plan]))
+    # The consensus for a report is recorded while Yahoo still lists it and
+    # read back once the report is out, when no feed carries it any more
+    # (report/report_consensus.py, 2026-11-14).
+    try:
+        from report import report_consensus as _rc
+        for _i, ((_pf_tool, _), _pf_res) in enumerate(zip(_pf_plan, _pf_results)):
+            if _pf_tool != _ask_router.T_SNAPSHOT or not isinstance(_pf_res, dict):
+                continue
+            _rc_want = _rc.needs(_pf_res)
+            if _rc_want:
+                _pf_results[_i] = _rc.apply(
+                    _pf_res, await asyncio.to_thread(db.get_report_consensus, *_rc_want))
+            _rc_row = _rc.from_growth(_pf_res.get("symbol"), _pf_res.get("growth"))
+            if _rc_row and _rc.due(_rc_row):
+                # not awaited: a write that waits on the database lock must
+                # not hold the answer
+                _rc_task = asyncio.create_task(_record_report_consensus(_rc_row))
+                _BACKGROUND_WRITES.add(_rc_task)
+                _rc_task.add_done_callback(_BACKGROUND_WRITES.discard)
+    except Exception as e:
+        log.warning(f"/ask: report consensus read or record failed (non-fatal): {e}")
     # A print in the last few days, from the snapshot's report dates:
     # labels the bank notes written before it and arms the print guard in
     # phase 9 (2026-10-01).

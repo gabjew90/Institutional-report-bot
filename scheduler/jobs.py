@@ -497,6 +497,20 @@ def setup_scheduler(bot=None, role: str = "all") -> AsyncIOScheduler:
             f"05:30 {settings.timezone}"
         )
 
+    # The consensus for each coming report, recorded before Yahoo moves on
+    # to the next quarter (report/report_consensus.py, 2026-11-14). 3:10 PM
+    # ET: after-the-close names are still ahead, and the run reaches three
+    # days out, so Friday's covers Monday. Batch process: a Yahoo read per
+    # company, no Discord.
+    scheduler.add_job(
+        _report_consensus_job,
+        trigger=CronTrigger(day_of_week="mon-fri", hour=15, minute=10, timezone=tz),
+        id="report_consensus_capture",
+        name="Earnings: record the consensus before each report",
+        max_instances=1,
+        coalesce=True,
+        misfire_grace_time=3600,
+    )
     # Daily Omnibeta calendar graphic. Posts at 3:00 PM ET Mon-Fri for
     # the NEXT trading day (owner call 2026-09-02; was 4:20 PM, before
     # that 00:00 UTC). An hour before the close so the BEFORE OPEN
@@ -1810,6 +1824,36 @@ def _keep_calendar_png(date_iso: str, png: bytes) -> None:
                 os.remove(path)
     except Exception as e:
         log.warning(f"Calendar {date_iso}: could not keep the posted PNG: {e}")
+
+
+async def _report_consensus_job():
+    """Record Yahoo's estimates for the companies about to report. A run
+    that stores nothing while the calendar lists names, or cannot read the
+    calendar at all, pings ops: the result lines would fall back to an
+    estimate read off a news line."""
+    import asyncio as _asyncio
+    from report import report_consensus
+    try:
+        out = await _asyncio.to_thread(report_consensus.capture)
+    except Exception as e:
+        log.error(f"report consensus capture failed: {e}", exc_info=True)
+        out = {"error": str(e)}
+    log.info(f"report consensus capture: {out}")
+    problem = ""
+    if out.get("error"):
+        problem = f"failed ({out['error'][:120]})"
+    elif out.get("feed_down") and not out.get("dates"):
+        problem = "could not read the earnings calendar"
+    elif out.get("names") and not out.get("stored"):
+        problem = f"stored nothing for {out['names']} companies (Yahoo gave no estimates)"
+    if problem:
+        try:
+            from discord_bot.ops_alert import ops_alert
+            await ops_alert(f"Report consensus capture {problem}. Revenue beat or miss lines "
+                            "for the coming reports will use a news line or show growth only.",
+                            dedupe_key="report-consensus-capture")
+        except Exception as e:
+            log.warning(f"report consensus: ops alert failed ({e})")
 
 
 async def _daily_calendar_job(bot=None):

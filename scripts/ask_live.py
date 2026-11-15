@@ -106,6 +106,9 @@ def _install_stubs(db, conn: sqlite3.Connection) -> None:
     # A primer built during a harness run is not stored: the next channel
     # question builds its own.
     db.upsert_ticker_primer = lambda *a, **k: None
+    # Nor is a consensus recorded from a harness run (report/report_consensus.py):
+    # the channel's next question about the stock, or the daily job, records it.
+    db.upsert_report_consensus = lambda *a, **k: None
 
 
 def _chat_block(conn: sqlite3.Connection, channel_name: str, bot_user_id: int | None,
