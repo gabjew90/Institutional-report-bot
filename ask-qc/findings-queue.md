@@ -1001,3 +1001,7 @@ no findings (0 FAIL, 5 CONCERN, 4 clean). Notes for a session:
 - **regex-able (CONCERN)** (03:53 UTC, BK, every team's lineup): `**null**` rendered as a projection for two players. Assertion: final text must not match `\*\*null\*\*`.
 - **judgment (CONCERN)** (00:37, 03:49, 03:52 UTC, fantasy): "projected final" totals (124.6, 125.6) and win probabilities (47%, 50%) are not reproducible from the roster rows (DeepFried's starters sum to 132.6, 2Pale's to 109.3 or 122.5 with Skattebo's actual). Check that they come from the matchups feed, not from the model.
 - **judgment (CONCERN)** (03:52 UTC): "live pulse at 0-9" is filler phrasing for a record.
+
+## 2026-11-14
+
+no findings (1 CONCERN: unsupported "months of support above the 200DMA" claim on BTC; judgment, not a FAIL)
