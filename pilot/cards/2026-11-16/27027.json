@@ -1,0 +1,590 @@
+{
+ "brief": "GS's Fins & REITs daily opens with a market recap: financials underperformed (S&P Financial Index -0.72%), Treasury yields rose across the curve, VIX and the MOVE index rose, Bitcoin fell, and IG/HY CDX tightened. Robinhood's October metrics were mixed: net deposits rose to about $15bn, a 46% annualized growth rate that beat the company's 20% net-new-asset guidance (boosted by Trump Accounts), and new accounts and margin balances also rose. Against that, crypto volumes fell sharply month over month and year over year, securities lending revenue stayed negative for a third straight quarter, and platform assets fell 3%. GS's investment banks team calls the non-M&A advisory outlook, especially restructuring, constructive, says M&A stays mid-cycle, and prefers EVR, LCLN, PIPR, PJT for continued non-M&A growth. STAG and Weyerhaeuser gave operating updates on leasing pace/rent growth and lumber/OSB pricing. The macro section (GIR's 2027 outlook) argues the headline forecast, stable growth, falling inflation, peaking policy rates, is friendly, but flags late-cycle strain: higher real rates, wider credit spreads, rising volatility, and an AI impulse that has supported markets this year now poised to peak.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood's net deposits rose about $9bn sequentially to about $15bn in October, a 46% annualized growth rate versus September 2026 assets, ahead of the company's 20% annual net new asset guidance.",
+   "anchor": "net deposits rose ~$9bn sequentially to ~$15bn (incl. ~$6.5bn from Trump Accounts), representing a 46% ann. growth rate vs. September 2026 assets",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood added about 200k new accounts in October, implying 8% annualized growth and bringing total funded accounts to 28.9 million.",
+   "anchor": "~200k new accounts imply 8% annualized growth, reaching 28.9mn total funded accounts",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood's margin balances rose 4% month over month to $22.9bn in October.",
+   "anchor": "margin balances of $22.9bn rose 4% MoM",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood's event contract (prediction market) volume rose 5% month over month to 5.9bn contracts in October.",
+   "anchor": "event contract (prediction markets) contracts rose 5% MoM to 5.9bn",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood's crypto trading volumes fell 21% month over month and 48% year over year in October, with Robinhood App volumes down 24%/51% and Bitstamp volumes down 18%/46% on the same basis.",
+   "anchor": "crypto volumes inflected negatively, falling 21%/48% MoM/YoY (with Robinhood App volumes 24%/51% lower, and Bitstamp volumes 18%/46% lower)",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood's net securities lending revenue stayed negative for a third consecutive quarter at -$12mn.",
+   "anchor": "net securities lending revenue remaining negative for a third consecutive quarter at -$12mn",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Robinhood's platform assets fell 3% month over month to $383.2bn in October.",
+   "anchor": "platform assets fell 3% MoM to $383.2bn",
+   "topic": "Robinhood October operating metrics",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "A Wall Street Journal article reports that Bank of America and Citigroup cards are among those being used by AI purchasing agents, while JPMorgan has been blocking agents when consumers share card information.",
+   "anchor": "Notes that BAC, CF, C are among the cards from banks that are being used by agents while JPM has been blocking agents when consumers give the bots their card information",
+   "topic": "Agentic payments bank card risk",
+   "status": "released",
+   "instruments": [
+    "BAC",
+    "C",
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Chime (CHYM) management views Chime Prime as still early innings and likely to remain a driving force in the business into 2027.",
+   "anchor": "Chime Prime still early innings and likely to remain a\ndriving force in the business into 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CHYM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Chime (CHYM) is focused on closing its Stride Bank acquisition, following roadshow meetings.",
+   "anchor": "Focused on closing Stride Bank acquisition",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CHYM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "President Trump nominated a bipartisan slate of CFTC and SEC commissioners, which GS's financials desk flags as relevant for exchanges and traditional market structure incumbents.",
+   "anchor": "Trump nominated bipartisan slate of CFTC, SEC Commissioners .. Relevant for exchanges & traditional market structure incumbents",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "GS's investment banks team view the non-M&A advisory outlook as constructive, notably in restructuring, through the balance of 2026.",
+   "anchor": "the non-M&A advisory outlook remains constructive, notably in restructuring",
+   "topic": "Investment bank M&A and advisory outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "balance of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "GS's investment banks team characterizes M&A as mid-cycle, with growth driven by strategic and large-cap deals while sponsor and mid-cap M&A growth stays more muted.",
+   "anchor": "M&A remains mid-cycle with growth continuing to be driven by strategic/large-cap M&A, while sponsor/mid-cap M&A growth is more muted",
+   "topic": "Investment bank M&A and advisory outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "balance of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "GS's investment banks team prefers EVR, LCLN, PIPR and PJT for their benefit from continued non-M&A advisory growth.",
+   "anchor": "benefit from continued non-M&A growth, specifically EVR, LCLN, PIPR, PJT.",
+   "topic": "Investment bank M&A and advisory outlook",
+   "status": "forecast",
+   "instruments": [
+    "EVR",
+    "LCLN",
+    "PIPR",
+    "PJT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "balance of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "GS's financials desk views pricing as a key tailwind to revenue growth for Info Services companies following 3Q earnings.",
+   "anchor": "Pricing remains a key tailwind to revenue growth",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "STAG Industrial completed 3.1 million square feet of total leasing quarter to date as of November 6, with 0.9 million new and 2.2 million renewal, versus 3.6 million total in 3Q26.",
+   "anchor": "have done 3.1mn of total sqft leasing w/ 0.9mn new and 2.2mn renewals (vs 3.6mn total in 3Q26)",
+   "topic": "REIT and timber operating updates",
+   "status": "released",
+   "instruments": [
+    "STAG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "STAG Industrial's cash rent change was +20% quarter to date, down from 23.8% in 3Q26 and 21% year to date, while straight-line rent change was +37.3%, up from +35.7% last quarter and 36.5% year to date.",
+   "anchor": "Cash rent +20% (vs 23.8% in 3Q & 21% YTD) & straight line rent change +37.3% (+35.7% last qtr and +36.5% YTD)",
+   "topic": "REIT and timber operating updates",
+   "status": "released",
+   "instruments": [
+    "STAG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "STAG Industrial has addressed 42.8% of its expected 2027 new and renewal leasing (7.3 million square feet) at a 12.2% cash rent change as of November 6, 2026, and expects full-year 2027 cash rent change of 15%.",
+   "anchor": "42.8% of expected 2027 new and renewal leasing has been addressed, consisting of 7.3 million square feet, achieving Cash Rent Change of 12.2% as of November 6, 2026 (saying they expect FY27 cash rent change of 15%)",
+   "topic": "REIT and timber operating updates",
+   "status": "forecast",
+   "instruments": [
+    "STAG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Weyerhaeuser's average delivered lumber sales realizations were $55 per thousand board feet lower than the 3Q average quarter to date, and currently $65 per thousand board feet lower, as of October 23.",
+   "anchor": "Lumber 4QTD -$55/MBF lower than 3Q avg, currently -$65/MBF lower",
+   "topic": "REIT and timber operating updates",
+   "status": "released",
+   "instruments": [
+    "WY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Weyerhaeuser's average delivered OSB sales realizations were higher than the 3Q average quarter to date by $15 per thousand square feet, and currently $20 higher, as of October 23.",
+   "anchor": "OSB 4QTD +$15/MSF higher than 3Q avg, currently +$20/MBF higher",
+   "topic": "REIT and timber operating updates",
+   "status": "released",
+   "instruments": [
+    "WY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Piper Sandler",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Piper Sandler raised COLD (Americold Realty Trust) to Overweight.",
+   "anchor": "COLD: Raised to Overweight at Piper Sandler",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "COLD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Piper Sandler",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Piper Sandler cut HWC (Hancock Whitney) to Neutral with a $71.50 price target.",
+   "anchor": "HWC: Cut to Neutral at Piper Sandler; PT $71.50",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "HWC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "GS FINS & REITs Daily",
+   "claim": "BofA cut ARE (Alexandria Real Estate Equities) to Underperform with a $45 price target.",
+   "anchor": "ARE: Cut to Underperform at BofA; PT $45",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ARE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "GS FINS & REITs Daily",
+   "claim": "BofA cut NHI (National Health Investors) to Underperform with a $67 price target.",
+   "anchor": "NHI: Cut to Underperform at BofA; PT $67",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "NHI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Hovde Group",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Hovde Group reinstated coverage of BPOP (Popular Inc.) at Market Perform with a $171 price target.",
+   "anchor": "BPOP: Reinstated Market Perform at Hovde Group; PT $171",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "BPOP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "US equity futures were up small overnight, with SPX futures +25bps, NDX futures +15bps, and RTY futures +25bps.",
+   "anchor": "US futures are up small (SPX +25bps // NDX +15bps // RTY +25bps)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Microsoft fell 1.5% pre-market amid a global Microsoft 365 outage.",
+   "anchor": "global\nMSFT 365 outage (MSFT -1.5% pre-mkt)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Nvidia was recovering, up 2% pre-market.",
+   "anchor": "NVDA is recovering (+2% pre-mkt)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Applied Materials rose 60bps pre-market after solid earnings reported overnight.",
+   "anchor": "AMAT (+60bps pre-mkt), CBRS\n(+17%), CSCO (-2.75%) all had solid earnings last night",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "CBRS rose 17% after solid earnings reported overnight.",
+   "anchor": "AMAT (+60bps pre-mkt), CBRS\n(+17%), CSCO (-2.75%) all had solid earnings last night",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Cisco fell 2.75% pre-market despite solid earnings reported overnight.",
+   "anchor": "AMAT (+60bps pre-mkt), CBRS\n(+17%), CSCO (-2.75%) all had solid earnings last night",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "The S&P Financial Index closed -0.72% in the prior session, finishing 8.0% above its 200-day moving average with a 14-day RSI of 59.",
+   "anchor": "the S&P Financial Index closing -0.72%, +8.0% above its 200DMA and\nwith a 14dRSI of 59",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "US Treasury yields rose across the curve in the prior session, with the 2-year finishing +14bps at 4.88%, the 10-year +13bps at 5.12%, and the 30-year +9bps at 5.45%.",
+   "anchor": "2yr yield\nfinished +14bps @ 4.88%, 10yr yield +13bps @ 5.12%, 30yr yield +9bps @ 5.45%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "VIX rose 7% to 19 and the MOVE index rose 8% to 92 in the prior session.",
+   "anchor": "VIX +7% @ 19, MOVE +8% @ 92",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Bitcoin fell 4% to $71.4k in the prior session.",
+   "anchor": "Bitcoin -4% @ 71.4k",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Investment grade CDX fell 1% to 59 and high yield CDX fell 1% to 348 in the prior session.",
+   "anchor": "IG CDX -1% @ 59, HY CDX -1% @ 348",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs (GIR)",
+   "document": "GS FINS & REITs Daily",
+   "claim": "GIR's headline macro forecasts for 2027 are friendly: stable growth, declining inflation, and peaking policy rates.",
+   "anchor": "GIR\u2019s headline macro forecasts for 2027 are quite friendly: stable\ngrowth, declining inflation and peaking policy rates",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs (GIR)",
+   "document": "GS FINS & REITs Daily",
+   "claim": "Despite the friendly 2027 macro forecast, GIR flags that real rates are higher, credit spreads are wider, and volatility is picking up, especially under the surface, as late-cycle headwinds build.",
+   "anchor": "Real rates are higher, credit spreads are wider and volatility is picking up, especially under\nthe surface",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs (GIR)",
+   "document": "GS FINS & REITs Daily",
+   "claim": "GIR expects the AI impulse, which has been a key support to markets through this year's shocks, to peak in the coming year.",
+   "anchor": "the AI impulse, which has been a key support to markets through the shocks this year,\nlooks poised to peak in the coming year",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/27027__gs-fins-reits-daily-13-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 39,
+  "matched": 39,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 20,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
