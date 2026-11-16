@@ -1,0 +1,226 @@
+{
+ "brief": "TME's September 23 call argued Nvidia didn't need to lose existing orders for the AAPL/NVDA relative narrative to shift, reasoning that AI inference moving onto devices and local machines could cap Nvidia's share of incremental AI demand. At the time Goldman had flagged NVDA implied volatility at its lowest since before COVID while the stock traded near range highs, so TME's preferred trade was long AAPL calls versus long NVDA puts, on the view that an inference-narrative shift could hit NVDA before earnings estimates moved. That trade delivered as the AAPL/NVDA gap exploded, accelerated by recent Huang news, and TME now says to close it. Separately, at today's lows NVDA was down nearly 40% from its early-October highs and nearly 30% below its 200-day moving average, matching extremes from the earlier Liberation Day drawdown, which exceeded 40% but unfolded more slowly. Goldman's Jim Schneider parallels this to Apple's 2011 multiple compression after Steve Jobs' departure (forward P/E 17x to 12x, bottoming near 9x in 2013, then recovering), expecting similar uncertainty for Nvidia until leadership and momentum clarify, but sees attractive risk/reward given Goldman's roughly 80% EPS growth forecast.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "Nvidia does not need to lose existing orders for the AAPL/NVDA relative narrative to shift, as AI inference increasingly moves onto devices and local machines, capping Nvidia's share of incremental AI demand.",
+   "anchor": "Nvidia didn't need to lose existing orders for the relative narrative to shift",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "The performance gap between AAPL and NVDA has widened sharply since September 23, with recent news about Nvidia CEO Jensen Huang accelerating the divergence.",
+   "anchor": "The gap between AAPL and NVDA has exploded since then, with the latest Huang news accelerating",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "On September 23, Goldman flagged NVDA implied volatility at its lowest levels since before COVID while the stock traded near range highs.",
+   "anchor": "Goldman flagged NVDA implied volatility at its lowest levels since before COVID",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "TME argued that a shift in the AI inference narrative could hit NVDA stock before earnings estimates moved, supporting an attractive put setup.",
+   "anchor": "a shift in the AI inference narrative could hit the stock before earnings estimates",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "before earnings"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "TME's preferred relative trade was long AAPL calls versus long NVDA puts.",
+   "anchor": "Our preferred relative trade was AAPL calls versus NVDA puts",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "AAPL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "The AAPL calls versus NVDA puts trade has performed extremely well, and TME says anyone still holding it should close it and move on.",
+   "anchor": "The trade has performed extremely well. If you're still holding it, time to close and move on",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "AAPL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "At today's lows, NVDA was down nearly 40% from its early October all-time highs, approaching the drawdown seen during the Liberation Day collapse earlier this year.",
+   "anchor": "NVDA was down nearly 40% from its early October ATHs, approaching the drawdown seen during the Liberation Day collapse",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "The Liberation Day collapse earlier this year saw a drawdown exceeding 40%, but it unfolded at a much slower pace than the current NVDA selloff.",
+   "anchor": "That move exceeded 40%, but unfolded at a much slower pace",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "NVDA traded nearly 30% below its 200-day moving average at today's lows, matching the extreme undershoot seen during the Liberation Day panic.",
+   "anchor": "NVDA traded nearly 30% below its 200-day MA at today's lows, matching the extreme undershoot",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "Goldman's Jim Schneider draws a parallel between Nvidia today and Apple during Steve Jobs' departure in 2011.",
+   "anchor": "Jim Schneider draws an interesting parallel between Nvidia today and Apple during Steve Jobs' departure in 2011",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "Apple's forward P/E compressed from 17x to 12x after Steve Jobs' 2011 departure, eventually bottoming near 9x in 2013 before recovering as investors gained confidence in management's ability to execute without Jobs.",
+   "anchor": "Apple saw its forward P/E compress from 17x to 12x, eventually bottoming near 9x in 2013",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "Schneider expects a similar period of valuation multiple uncertainty for Nvidia until its leadership and business momentum become clearer.",
+   "anchor": "Schneider sees a similar period of multiple uncertainty for Nvidia until leadership and business momentum become clearer",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia's Steve Jobs Moment: The Next Big Test For The AI King",
+   "claim": "Goldman forecasts roughly 80% EPS growth for Nvidia, and Schneider sees attractive risk/reward for the stock at current levels.",
+   "anchor": "with Goldman forecasting roughly 80% EPS growth, he sees attractive risk/reward at current levels",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/26845__nvidias-steve-jobs-moment-the-next-big-test-for-the-ai-king.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 13,
+  "matched": 13,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
