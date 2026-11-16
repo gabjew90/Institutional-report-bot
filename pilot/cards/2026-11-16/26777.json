@@ -1,0 +1,517 @@
+{
+ "brief": "William Blair downgrades NVDA to Market Perform after the Wall Street Journal reported Nvidia's board is preparing to remove CEO Jensen Huang. Huang acknowledged infidelity after the Financial Times reported a U.S. intelligence memo alleging a relationship with Alice Huang, a Megaspeed executive U.S. intelligence believes China's Ministry of State Security recruited. The New York Times reported Megaspeed bought over $4.8B of Nvidia chips over two years, and a Commerce Department probe into suspected chip diversion to China moved to the Department of Justice after Nvidia's counsel contacted investigators. William Blair expects this to raise the odds of tighter export licensing and country caps, and names CFO Colette Kress, Ian Buck, and Jonathan Ross as internal succession candidates. Separately, the firm argues Nvidia's moat is narrowing: Google's TPU and AMD's Helios racks are winning share, and CUDA's porting-cost edge is eroding as frameworks and coding agents cut rewrite time, citing Anthropic's claim of porting to AMD's MI355X in three days. NVDA fell 9% after hours, 7% this week, and 27% off its October highs, now near a record-low 10x 2027 EPS. The firm still sees Nvidia's AI leadership intact but expects rotation toward AI names with less governance risk.",
+ "cards": [
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Nvidia's board is reportedly preparing to remove CEO Jensen Huang, according to the Wall Street Journal.",
+   "anchor": "Nvidia\u2019s board is reportedly preparing to remove him, according to the Wall Street Journal",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair expects Huang's likely departure and heightened scrutiny of Nvidia to be a significant near-term overhang on NVDA shares.",
+   "anchor": "Huang\u2019s likely departure and heightened scrutiny of the company will be a significant overhang on NVDA shares in the near term",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair downgrades NVDA to Market Perform and will wait for the dust to settle before reassessing.",
+   "anchor": "we are downgrading NVDA to Market Perform and will wait for the dust to settle before reassessing",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Jensen Huang acknowledged infidelity after the Financial Times reported a U.S. intelligence memo alleging a romantic relationship between him and a Megaspeed executive, Alice Huang, whom U.S. intelligence believes China's Ministry of State Security recruited.",
+   "anchor": "Jensen Huang acknowledged infidelity after the Financial Times reported that a U.S. intelligence memo alleged a romantic relationship",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Megaspeed, a Singapore-based cloud provider spun out of a Chinese gaming company in 2023, has a Malaysian subsidiary at the center of U.S. and Singaporean investigations into suspected diversion of Nvidia chips to China.",
+   "anchor": "Megaspeed is a Singapore-based cloud provider, spun out of a Chinese gaming company in 2023",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "The New York Times reported that Megaspeed bought more than $4.8 billion of Nvidia chips over two years.",
+   "anchor": "Megaspeed bought more than $4.8B of Nvidia chips over two years",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "A Commerce Department probe of Megaspeed was moved to the Department of Justice after Nvidia's general counsel contacted Commerce investigators about the case.",
+   "anchor": "a Commerce Department probe of the company was moved to the Department of Justice after Nvidia\u2019s general counsel contacted Commerce investigators about the case",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Nvidia maintains its dealings with Megaspeed were proper, and its board has opened an independent investigation.",
+   "anchor": "Nvidia maintains that its dealings were proper, and its board has opened an independent investigation",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair sees potential for tighter licensing on Southeast Asian and sovereign buyers, a revival of diffusion-style country caps, or broader entity listings that would weigh on Nvidia's top line.",
+   "anchor": "tighter licensing for Southeast Asian and sovereign buyers, a revival of diffusion-style country caps, or broader entity listings",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair views CFO Colette Kress and VP of Hyperscale and HPC Ian Buck, credited as CUDA's creator, as credible candidates to succeed Huang.",
+   "anchor": "CFO Colette Kress, Vice President of Hyperscale and HPC Ian Buck (widely credited as CUDA\u2019s creator)",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair also views Jonathan Ross, the Groq founder and TPU architect who joined Nvidia in December 2025, as a credible successor candidate.",
+   "anchor": "Jonathan Ross, the Groq founder and TPU architect who joined Nvidia in December 2025",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Huang drove Nvidia's creative financing deals with customers, including a $30 billion equity stake in OpenAI, investments in Anthropic and xAI, and capacity backstops for neoclouds such as CoreWeave.",
+   "anchor": "including a $30B equity stake in OpenAI, investments in Anthropic and xAI, and capacity backstops for neoclouds such as CoreWeave",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Huang secured leading allocations of memory, wafers, and optics through prepayments, multiyear purchase agreements, and equity stakes in suppliers such as Lumentum, Coherent, and Corning.",
+   "anchor": "securing leading allocations of memory, wafers, and optics through prepayments, multiyear purchase agreements, and equity stakes in suppliers such as Lumentum",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "LITE",
+    "COHR",
+    "GLW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair believes that with Huang gone, Nvidia could face more significant competition from vendors like Broadcom and AMD.",
+   "anchor": "we believe Nvidia could open itself to more significant competition from vendors like Broadcom",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AVGO",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Anthropic alone could deploy roughly 5GW of Google's TPU v8i in 2027.",
+   "anchor": "Anthropic alone could to deploy roughly 5GW of TPU v8i in 2027",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "SemiAnalysis argued that Google's Ironwood chip (TPUv7) is competitive with or ahead of Nvidia's Blackwell systems in tokens per dollar for agentic inference.",
+   "anchor": "being competitive with or ahead of Nvidia\u2019s Blackwell systems in tokens per dollar",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "AMD's Helios racks now carry gigawatt-scale commitments from OpenAI, Meta, and Anthropic, even as its interconnect and software stack still lag Nvidia's.",
+   "anchor": "AMD has also made significant progress with its Helios racks, which now carry gigawatt-scale commitments from OpenAI",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AMD",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "CUDA's lock-in is weakening as frontier workloads increasingly run through framework layers such as PyTorch, JAX, and vLLM, with coding agents taking over porting work.",
+   "anchor": "frontier workloads now run through framework layers such as PyTorch, JAX and vLLM, and coding agents increasingly do porting work",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Anthropic said in its IPO roadshow that bringing up a new accelerator historically took 6 to 12 months.",
+   "anchor": "It said bringing up a new accelerator historically took 6\u201312 months",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "Anthropic's Claude Mythos Preview brought up prompt processing for one model on AMD's MI355X chip in roughly three days, porting or writing almost all the kernels itself.",
+   "anchor": "Claude Mythos Preview brought up prompt processing for one model on AMD\u2019s MI355X in roughly three days",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "CUDA's 6 million developers still create real stickiness for Nvidia.",
+   "anchor": "CUDA\u2019s 6 million developers still create real stickiness",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair believes CUDA's stickiness could lessen over time as inference becomes a larger share of workloads and competing software stacks improve.",
+   "anchor": "we believe CUDA could see its stickiness lessen over time",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "NVDA shares fell nearly 9% in after-hours trading following reports that Huang was likely to be ousted.",
+   "anchor": "NVDA shares have fallen nearly 9% in the after-hours market",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "NVDA declined about 7% over the course of the week.",
+   "anchor": "a 7% decline so far this week",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "NVDA has fallen 27% from its October highs.",
+   "anchor": "a 27% fall from its highs in October",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "At roughly $160 per share, NVDA trades at a record-low price-to-earnings multiple of 10 times 2027 and 7 times 2028 consensus EPS.",
+   "anchor": "NVDA trades at a record low price-to-earnings multiple of only 10 times 2027 and 7 times 2028 consensus expectations",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair believes the AI supply chain continues to signal that demand far exceeds supply.",
+   "anchor": "the AI supply chain continues to signal that demand far exceeds supply",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair expects investors to gravitate toward AI infrastructure names with less governance risk than Nvidia.",
+   "anchor": "we expect investors to gravitate toward AI infrastructure names with less governance risk",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair believes heightened scrutiny, government oversight, and reputational damage are likely to make Nvidia's path forward more challenging.",
+   "anchor": "heightened scrutiny, government oversight, and reputational damage are likely to make Nvidia\u2019s path forward more challenging",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair expects uncertainty around Nvidia to cap its share performance over the coming quarters.",
+   "anchor": "uncertainty around the company is likely to cap share performance over the coming quarters",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "coming quarters"
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair believes it is entirely possible that NVDA stock may not have much further to fall from current levels.",
+   "anchor": "it is entirely possible that the stock may not have much further to fall from current levels",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "Heavy Is the Head That Wears the Crown; Downgrading to Market Perform",
+   "claim": "William Blair continues to believe Nvidia holds a leadership role in the AI buildout.",
+   "anchor": "We continue to believe Nvidia holds a leadership role in the AI buildout",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
