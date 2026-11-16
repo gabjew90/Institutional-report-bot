@@ -1,0 +1,235 @@
+ 
+The "Volatility Of Protection" Hits A Record: 
+Goldman's Vol Desk On The Biggest Put Day Ever... 
+And An Nvidia Collar That Aged Badly 
+ 
+BY TYLER DURDEN 
+THURSDAY, NOV 12, 2026 - 08:05 PM 
+Last Thursday, investors bought more puts than on any day in history. By Monday, they were 
+dumping protection at one of the fastest paces ever recorded. 
+That whiplash is the subject of the latest Vol Views note from Goldman vol trader Robbie 
+Stankard and the bank's derivatives desk (available to pro subs), which lands one week after 
+the midterms blew up the AI trade and catalogs just how strange things have become in what 
+Goldman calls the "volatility of protection". The desk sums up the state of play in one sentence: 
+Investor positioning is light (US net leverage at 5yr lows per GS PB), the vol complex is jittery 
+(Panic Index at 6.5/10), and options volumes have ballooned (last Thursday was the largest put 
+volume session ever). 
+In other words, nobody owns much, everybody is hedged, and the hedges themselves have 
+become the most volatile thing in the portfolio. 
+Regular readers will hardly be surprised. It was last Thursday morning, a few hours before the 
+Nasdaq's worst day since Covid, that we relayed the same desk's advice to own the tails while 
+nobody was paying for them: 
+The tails got paid for, and then some. What follows is the bill. 
+55.8 Million Puts 
+Start with the volume. We already knew that Thursday was the biggest put day in Cboe history, 
+with more than 11.2 million puts changing hands on that exchange alone. Goldman's chart 
+shows the full picture across all US venues: 55.8 million put contracts in a single session, the 
+most on record and roughly 3.4x the 10-year daily average of 16.4 million (chart source GS 
+FICC and Equities). 
+ 
+
+ 
+ 
+Volumes have since cooled to about 30.8 million, which is still nearly double the decade 
+average. Call it the new normal: a market where a quiet day in puts would have been a record 
+day in 2021. 
+The other two numbers in the overview are just as telling. Goldman's Panic Index sits at 6.5 out 
+of 10, well off the extremes that Goldman derivatives guru Brian Garrett compared to Covid, the 
+GFC and Liberation Day in his latest Weekend Prep, but still what the desk politely describes as 
+jittery. And US net leverage on the bank's Prime book is at a 5-year low: as of Monday, US 
+fundamental long/short funds were running just 43.3% net after the biggest weekly degross 
+since March 2020. That's well below the "Liberation Day lows" we wrote about last month, which 
+now look like the good old days. 
+The calendar offers little relief. A slew of Fed speakers and PPI come first, then all eyes turn to 
+Nvidia earnings next week (more on that shortly, because a lot happened to Nvidia after this 
+note went out). As of Wednesday morning the options market was pricing a 1.10% move in the 
+S&P through Friday, a straddle that, as we noted in our McElligott post earlier today, the index 
+had already covered by lunch. 
+The Hedge That Needs A Hedge 
+Now the strangest chart in the note. In the space of four sessions, Vol of Vol (the VVIX, or how 
+violently the VIX itself is expected to move) posted its 2nd largest one-day increase on record 
+last Thursday, followed by a top-10 one-day decline on Monday. 
+ 
+
+ 
+The result: 1-month realized volatility of the VVIX has surged to 208, the highest in Goldman's 
+10-year chart, above Volmageddon, Covid and Liberation Day, and about 2.6x its average of 81 
+(chart source GS FICC and Equities). 
+ 
+Translation: the price of insurance is now moving around more than the thing being insured. 
+Anyone who bought VIX calls on Wednesday was a genius on Thursday and, well, probably a 
+seller on Monday. 
+Nomura's Charlie McElligott flagged the same record yesterday in "Leaving Vapor Trails", and 
+today concluded that the VIX floor has moved up to 18 even though the fuel for another 
+squeeze has been purged. Goldman agrees on the first part. On the second, the desk has a 
+slightly different read. 
+Short Vol On The Way Down, Long Vol On The Way Up 
+McElligott's point was about the VIX complex: leveraged ETN holders have cashed out and VIX 
+options dealers are long gamma, so there is nobody left to chase vol higher. Goldman is looking 
+at the S&P's own options, and there it sees the street positioned exactly the wrong way around. 
+Here is the desk's reasoning: 
+the desk likes owning downside skew here given the street remains structurally short vol on the 
+way down and long vol on the way up, which should continue to create an asymmetric bid for 
+protection on any meaningful selloff. 
+ 
+
+ 
+Put differently, dealers get shorter options as the index falls and longer as it rises, so a real 
+selloff leaves them scrambling to buy back optionality just as clients want more of it. That's the 
+mechanism behind last Thursday, and Goldman thinks it's still loaded. 
+Hence the first macro trade: SPX Dec 18 7300/7850 risk reversals for $29 (-41 delta, with 
+December futures at 7600). The buyer owns a put struck 3.9% below the futures, financed 
+mostly by selling a call 3.3% above. It is a bet that downside skew stays bid, and a fairly blunt 
+statement that the desk would rather be short the next 3% up than unhedged for the next 4% 
+down. 
+So which is it: no juice to squeeze, or an asymmetric bid for protection? Probably both. The VIX 
+may well not spike the way it did last week, while S&P puts stay expensive relative to calls for a 
+long time. A market that grinds lower with fat skew and a sleepy VIX would prove both banks 
+right and still leave everyone miserable. And as we showed tonight in "Forget The VIX: Is Tokyo 
+Where The AI Unwind Breaks Something?", the VIX may not even be the right place to look. 
+AI Data Centers Are Realizing 80 Vol 
+On to the micro, where the real carnage is. 
+Goldman notes that the average Nasdaq 100 stock now carries 1-month at-the-money implied 
+vol of about 44. That sounds high until you see what the AI infrastructure names are actually 
+doing: the bank's AI Data Center basket (GSTMTDAT) has realized roughly 80 vol over the past 
+month, eclipsing even its Liberation Day high and running at 2.6x its five-year average of 31 
+(chart source GS FICC and Equities). 
+ 
+ 
+
+ 
+For context, 80 vol means the basket is moving about 5% a day, every day, for a month. That's a 
+diversified basket of the stocks that were supposed to be the picks and shovels of the safest 
+trade on Wall Street, swinging like a single-name biotech into an FDA decision. 
+It also puts a number on the split BofA's derivatives team described yesterday in "Markets May 
+Not Wait". BofA's complaint was that hyperscaler implied vols have barely budged even as their 
+credit spreads blew out to five-year wides. Goldman's chart shows where the equity pain went 
+instead: straight into the builders, lessors and neoclouds at the levered end of the chain, the 
+same names we have been warning about since last October, when AI quietly became the 
+largest debt sector in the market. 
+A 10% Cushion, Meet The Wall Street Journal 
+Which brings us to the general. 
+As of Wednesday morning, Nvidia (NVDA) had dropped nearly 30% since early October, 
+erasing more than $1.75 trillion in market cap and leaving the stock at roughly 24x earnings, a 
+multiple last seen in 2019 (clearly it's worse now that the company lost its CEO and finds itself in 
+a succession crisis). We ran the same math a day earlier:  
+With both vol and skew elevated, Goldman's desk saw a way to get long without paying for it. 
+Here is the pitch as it went out Wednesday morning: 
+NVDA has dropped nearly 30% since early October, erasing over $1.75tn in market cap and 
+trading at valuations not seen since 2019 (~24x P/E). With vol and skew elevated, we think long 
+delta + short vol with a 10% cushion to the downside is an interesting way to add length. 
+- Trade idea -- NVDA 18Dec26 150/180/210 call spread collar for costless (ref 166.50) 
+The structure is a Dec 18 150/180/210 call spread collar at zero cost, struck off a $166.50 
+reference (certainly cheaper today). The buyer sells the 150 put (9.9% below the reference) and 
+uses the premium to buy a 180/210 call spread. Nothing happens between $150 and $180. 
+Above $180 the trade makes up to $30 a share, and below $150 the buyer owns Nvidia with 
+every dollar lower on his account. Long delta, short vol, and a cushion of about 10%. 
+For about seven hours, it looked great. Nvidia closed Wednesday at $173.73, up 2.9% on the 
+day and comfortably above the reference, as the neocloud surge erased the Nasdaq's 
+post-election losses. 
+Then the close came. 
+As we detailed in "Nvidia Preparing To Fire Huang After 2nd Affair Bombshell", a New York 
+Times report and then the Journal's scoop that the board is preparing to remove its founder sent 
+ 
+
+ 
+the stock down 8.6% after hours to $158.78, after trading as low as $156.20. That's below any 
+Nvidia close since July 2025. 
+Napkin math on the collar: from the $166.50 reference to $158.78 is $7.72, or 47% of the 
+cushion, gone before the first regular-session trade. At the after-hours low, the stock was 4% 
+from the short put strike. Mercifully it has staged a modest rebound today, but that's all due to 
+the Anthropic underwriters doing everything in their power to prevent a market rout (just wait a 
+few hours until ANT breaks for trading next week for all hell to break loose). 
+ 
+To be fair to the desk, this is what the cushion is for. The structure has no loss at expiry unless 
+Nvidia is below $150 on Dec 18, and anyone who simply bought the stock at $166.50 on the 
+same thesis is down almost 5%. Selling a 10%-out-of-the-money put on a company that has 
+already lost 30% is a defensible way to get long. 
+Then again, the trade is short volatility, by design, into what are now two separate events: a 
+board that may be about to fire the face of the AI trade, and an earnings report next week that 
+somebody other than Jensen Huang may have to present. A 24x multiple "not seen since 2019" 
+was the selling point at 9am. By 6pm it was a reminder that the multiple of 2019 came with the 
+CEO of 2019. 
+Vol was elevated for a reason. It usually is. 
+Where Vol Is Actually Cheap 
+If index skew is rich and AI vol is extreme, is anything on sale? 
+ 
+
+ 
+According to Goldman, yes: small caps. The desk points out that positioning in the Russell is 
+thin heading into what is historically an extremely strong seasonal stretch, and that small-cap 
+vol has reset to near multi-year lows. Relative to the S&P it looks even cheaper. The spread 
+between IWM and SPY 2-month implied vol has collapsed to 3.4 vol points, against an average 
+of 6.4 since late 2020 and a high of nearly 12, near the tightest since Covid (chart from GS 
+FICC and Equities). 
+ 
+Think about what that chart says. For most of the past five years the market demanded a hefty 
+premium to insure small caps over large caps, for the obvious reason that small caps are riskier. 
+Today that premium has all but vanished, because the risk has migrated to the top of the index, 
+where a handful of trillion-dollar companies now trade like... small caps. 
+Goldman offers two ways to play it: 
+●​ Plain vanilla: IWM Dec 31 295 calls for $2.33 (21 delta, ref $280.58). The strike is 5.1% 
+out of the money and breakeven is $297.33, or 6% higher. 
+●​ Light exotic: the same IWM 295 call, but it only pays if SPY never touches 800 before 
+expiry (a continuous knock-out). That costs $0.98, which Goldman pegs at a 53% 
+discount, and lets the buyer own IWM vega against SPY vega in equal amounts, a direct 
+bet that the vol gap in the chart above reopens. 
+The exotic is the cleverer of the two. A Russell breakout to 295 while the S&P fails to add 
+another 5% or so is pretty much the definition of the broadening trade that every strategist has 
+promised since 2023, and which has so far broadened mostly their list of excuses. 
+ 
+
+ 
+We would add one caveat. Small caps are also the most rate-sensitive corner of the equity 
+market, and the rates backdrop is going the wrong way: Tuesday's hot CPI sent hike odds 
+soaring, Goldman now expects a third rate hike in March 2027, and Treasury futures on 
+Wednesday implied a 10Y back above 5%. Maybe small-cap vol is cheap. Maybe it's cheap the 
+way Nvidia was cheap at 9am. 
+The other pocket of interest is biopharma, which Goldman says has drawn buyers since the 
+midterms on secular tailwinds, a revived M&A appetite and its status as a broadening 
+beneficiary. The striking stat from the desk: for the second quarter in a row, almost every 
+large-cap biopharma company beat on revenue, and most raised guidance. A sector with rising 
+estimates, takeover bids and no data center exposure. No wonder they found it. 
+For Those Who Think Bonds Stopped Being A Hedge 
+Finally, the desk's rates-meets-equities ideas, which are probably the most interesting part of 
+the note for anyone who watched stocks and bonds sell off together on Tuesday. With macro 
+data and Fedspeak putting rates back in the driver's seat, Goldman pitches two "dual binaries" 
+expiring Feb 19, 2027, each paying out only if both legs hit: 
+●​ Equities down, rates up: NDX below 95% of spot and 2Y SOFR more than 25bps above 
+its forward. Cost: 8.5%. 
+●​ Equities up, rates down: NDX above 110% and 2Y SOFR more than 25bps below its 
+forward. Cost: 7.75%. 
+Napkin math again: those prices imply payouts of roughly 11.8 to 1 and 12.9 to 1. Goldman 
+gives the standalone odds of each leg as 26%/36% for the first and 25%/34% for the second. If 
+the legs were independent, the pairs would cost about 9.4% and 8.5%, so both hybrids trade at 
+a discount to a coin-flip world. 
+Why the discount? Because the correlation market still assumes that when stocks fall, yields fall 
+with them, just as they did for most of the past 25 years. A Nasdaq down 5% with front-end 
+rates higher is priced as the unlikely combination. 
+Readers who lived through 2022, or for that matter through this Tuesday, may see it differently. 
+With the Fed hiking into an AI unwind, "stocks down, rates up" is arguably the base case, and at 
+11.8 to 1 it's the one line in this note where the options market seems to be pricing the last 
+regime instead of this one. 
+ 
+
+ 
+Hedged For Everything Except The Headline 
+Put the whole list together and the desk's message is fairly clear: own downside skew in the 
+index, where the street is caught short; sell rich vol in the one mega-cap that has already been 
+cut by nearly a third; and buy cheap calls in the corners of the market that had nothing to do 
+with the AI trade. 
+Two of those three still look right to us. The asymmetric bid for protection is real, last Thursday 
+proved it, and nothing about positioning at 5-year lows changes the fact that dealers get shorter 
+as the market falls. And if hedge funds ever do re-gross, small caps and biopharma are where 
+the money has the fewest scars. 
+The third needed less than a day to show the problem with selling volatility in the name at the 
+center of everything. After-hours futures took the hint, with the Nasdaq 100 down about 1.1% 
+and the S&P down 0.5% on Wednesday evening, which, for those keeping score, is already 
+nearly half of that 1.10% weekly straddle, in the other direction. 
+Investors spent a record 55.8 million puts last week insuring against the midterms, the Fed and 
+an AI unwind. As far as we can tell, nobody bought one against the Nvidia boardroom. 
+Much more in the full "Vol Views" note, available to pro subs. 
+ 
+ 
+ 
+ 
