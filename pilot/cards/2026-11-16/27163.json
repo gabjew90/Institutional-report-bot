@@ -1,0 +1,450 @@
+{
+ "brief": "UBS's Curtis frames Jensen Huang's exit as a big deal: debate holds it could take ~18 months before effects hit Nvidia products, with open questions on remaining Nvidia downside and possible upside for AVGO. Curtis stays bearish on semis (and software, too high again), arguing sell-siders should cut 2028 numbers 20% to close the gap between chip estimates and power-infrastructure capacity, since he doubts post-election supply concerns are already discounted; a reset needs management to admit double/triple ordering. Separately, Tim's prior Nvidia note warns the departure could pause roughly $50B/quarter of ecosystem financing and Nvidia's supply-chain lead just as credit tightens, and that tighter export limits on NVDA/AMD into China, Singapore and Malaysia could hit about 10% of Nvidia revenue (Singapore alone was near 20% before Nvidia stopped disclosing it). On Cerebras, shares jumped high-teens after results: hardware sales offset industry-wide data-center power delays, and new Microsoft and OCI deals plus an early Amazon ramp diversify the base, but OpenAI still drives EPS and cut its RPO, which UBS blames on power delays letting OpenAI claim contract credits. UBS trimmed its CBRS estimates and price target to $155, kept Buy, calling the OpenAI concern overdone.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Investors debated how long it would take for negative effects on Nvidia's products to appear after Jensen Huang's resignation, with one estimate near 18 months.",
+   "anchor": "Initial debates on Nvidia yesterday were: Time it takes to see any negative effects on products (c 18months",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "~18 months"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Investors debated how much downside remains in Nvidia's share price following Jensen Huang's resignation.",
+   "anchor": "downside left in share price, how bullish is this for AVGO,",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Investors debated whether Jensen Huang's resignation is bullish for Broadcom.",
+   "anchor": "how bullish is this for AVGO,",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst said Jensen Huang and most management teams have historically been 100% bullish all the time, leaving no surprises.",
+   "anchor": "I have written a lot that Jensen and most management teams are 100% bullish all the time which means there",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst said a reset in semis sentiment would require management to acknowledge double and triple ordering.",
+   "anchor": "acknowledgement of double and triple ordering then we can reset. Ultimately, the current sell side numbers",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst said current sell-side semiconductor numbers might turn out to be roughly correct, but almost perfect execution is needed to get there.",
+   "anchor": "might turn out to be correctish, but it feels like almost perfect execution is needed to get there.",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS expects some pause in Nvidia's willingness and ability to keep pursuing AI ecosystem financing deals in the near term even under a new CEO.",
+   "anchor": "some \"pause\" in the company's willingness and ability to continue pursuing these deals in the near term. We",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS estimates Nvidia is generating roughly $50-60 billion per quarter in free cash flow, a big portion of which has been put back into the AI ecosystem.",
+   "anchor": "estimate NVDA is generating ~$50-60B/Q in FCF - a big portion of which has been put back into the system,",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said a pause in Nvidia's ecosystem financing could pull roughly $50 billion or more out of the system, at least temporarily, at a time when interest rates are rising and credit market liquidity is tightening.",
+   "anchor": "so this could easily take ~$50B or more out of the system - at least temporarily - at a potentially key time when",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said Jensen Huang was viewed as singular in driving Nvidia's long-term supply chain agreements, putting the company ahead of peers on procurement.",
+   "anchor": "element of the company's strategy, we always viewed Jensen as somewhat singular in this regard and out in",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said potential new, tighter US export restrictions could impact Nvidia's and AMD's ability to ship product into China and other regions.",
+   "anchor": "that could impact NVDA's (and other companies like AMD's) ability to ship product into China but even more",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS noted Singapore accounted for nearly 20% of Nvidia's revenue at the time Nvidia changed its geographic revenue disclosures in mid-2025.",
+   "anchor": "in mid-C2025, but Singapore was at that time nearly 20% of revenue. If we assume a portion of this, together",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS estimates roughly 10% of Nvidia's revenue could be at risk from a combination of Singapore exposure and remaining China revenue if new export restrictions take effect.",
+   "anchor": "could be in the range of ~10% of revenue",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst said he would want sell-side analysts to use the Jensen Huang news to cut 2028 semiconductor numbers by 20% to close the gap with power-infrastructure (utility) numbers.",
+   "anchor": "to use the Jensen news to take down 2028 numbers by 20% to bridge the gap between semi nos and",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst disagreed that AI supply-side issues are already discounted, and said share prices will only get close to a bottom once numbers are cut.",
+   "anchor": "disagree and think only when nos get cut will we get close to the bottom.  So sell siders \u2013 come on!!!",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said Cerebras' guidance beat was helped by hardware sales growth that more than offset delays in data center power infrastructure.",
+   "anchor": "CBRS put up solid guidance as bigger hardware sales are more than offsetting delays in data center powered",
+   "topic": "Data center buildout credibility",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Cerebras said data center power infrastructure delays are plaguing the entire industry, not just itself.",
+   "anchor": "shell that CBRS says is plaguing the entire industry",
+   "topic": "Data center buildout credibility",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Cerebras shares were up in the high teens percentage after the market close following its results.",
+   "anchor": "On that note I see the following from Tim on Cerebras, up high teens after mkt",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Cerebras confirmed a new deal with Microsoft, which UBS believes is cloud-based, though details were scant.",
+   "anchor": "MSFT (we think cloud-based, though details were scant).",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "Cerebras' customer base is starting to diversify with an early Amazon ramp, though OpenAI remains by far its most important customer.",
+   "anchor": "hardware-based) and the early AMZN ramp, the customer base is starting to diversify - though clearly OpenAI",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said OpenAI remains Cerebras' most important customer by far and will determine its EPS power over the next few years.",
+   "anchor": "remains the most important customer (by far) that will determine EPS power over the next few years. The",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "forecast",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next few years"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said Cerebras is still not running OpenAI's GPT-6 Astra model for public-facing instances, which made messaging on the OpenAI relationship mixed.",
+   "anchor": "messaging on this was a bit mixed, in our view, because CBRS is still not running GPT-6 Astra for public",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "There were net cuts to the OpenAI component of Cerebras' remaining performance obligations (RPO).",
+   "anchor": "facing instances and there were net cuts to the OpenAI component of CBRS' RPO (remaining performance",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said data center power infrastructure delays could let OpenAI claim credits against its Cerebras contract, raising some worry about the relationship's durability.",
+   "anchor": "in the potential for OpenAI to claim \"credits\" against the contract. We do worry a bit about the durability of this",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "forecast",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS flagged some concern about the durability of the Cerebras-OpenAI relationship given personnel changes at OpenAI.",
+   "anchor": "relationship given some personnel changes at OpenAI, but CBRS continues to stress that it is a real take or",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS said Cerebras' OpenAI contract carries significant legal exposure if OpenAI were to back away from the agreement.",
+   "anchor": "pay with significant legal exposure attached to any backpedaling.",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "UBS cut its Cerebras estimates and price target to $155 while taking a more conservative view of the OpenAI ramp, but kept its Buy rating because it thinks the market has over-indexed to this concern.",
+   "anchor": "OpenAI ramp and cutting estimates and PT to $155, but our rating remains Buy as we think the market",
+   "topic": "Cerebras OpenAI concentration risk",
+   "status": "target",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst said he does not see a catalyst for the semiconductor sector to rally.",
+   "anchor": "a catalyst for semis to run (and I do think software is too high again too).  Tim wrote quite nicely pre the Jensen",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS TECH DAILY CURT COMMENT: Nvidia, ams, CBRS, AMAT, Wise",
+   "claim": "The UBS analyst said software valuations look too high again.",
+   "anchor": "a catalyst for semis to run (and I do think software is too high again too).  Tim wrote quite nicely pre the Jensen",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/27163__ubs-tech-daily-curt-comment-nvidia-ams-cbrs-amat-wise.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 29,
+  "matched": 29,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
