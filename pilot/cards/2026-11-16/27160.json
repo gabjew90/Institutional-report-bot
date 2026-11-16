@@ -1,0 +1,407 @@
+{
+ "brief": "UBS sales desk commentary spanning macro, Nvidia, FX and cross-asset one-liners. NY Fed's Williams shifted from no 2027 hikes needed to signaling gradual continued increases, and UBS reads this as evidence he, not Waller, is now Chair Warsh's top lieutenant. Nvidia ousted CEO Jensen Huang, with CFO Colette Kress named interim. Huang will testify before Congress before Thanksgiving. Analyst Timothy Arcuri argues Huang's absence will pause Nvidia's deal-making with neo-clouds and ecosystem partners, and that tighter US restrictions could still hit NVDA and AMD shipments to China and to Singapore and Malaysia. Separately, OpenAI is backing Congress bills to curb China's AI-chip access, and Lutnick faces ouster pressure over Nvidia China-export oversight. Japan's Katayama warned of FX action after USDJPY breached 160. The desk's own flow view says the move is dollar-led, not yen-led, so intervention would likely fail given unchanged rate differentials. Trump claimed Iran victory and wants to disengage even as three carrier groups with 60,000 personnel arrive in the Gulf and the IAEA says it has lost track of Iran's uranium. Also covers Microsoft's outage, Australia CPI, memory-chip calls, an AUD curve trade and Brazil.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "New York Fed president John Williams said US inflation is too high and the Fed needs to take action over time to bring it back to 2%.",
+   "anchor": "warned that US inflation was too high and that the Fed needed to take\naction over time to ensure inflation shifted back to 2%",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's Simon Penn notes Williams previously said only one more hike was needed this year with no further 2027 hikes required, but has now shifted toward a gradual, continued increase in rates.",
+   "anchor": "a few weeks ago he said one more hike was appropriate this year, but there\nwas no need for rates to rise further in 2027",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's Simon Penn says Fed Chair Kevin Warsh appears to have swapped Christopher Waller for John Williams as his top policy lieutenant.",
+   "anchor": "Chair Warsh appears to have swapped Waller for Williams",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Nvidia CEO Jensen Huang will step down effective immediately, with CFO Colette Kress taking over as interim CEO.",
+   "anchor": "Jensen Huang will step down from the role, effective immediately. CFO Colette Kress will take on the role of\ninterim CEO",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Analyst Timothy Arcuri says Jensen Huang has been a singular force at Nvidia so his departure's impact will likely be felt far and wide.",
+   "anchor": "Huang has obviously been a singular force in many ways so the impact will likely be felt far and wide",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Arcuri expects some pause in Nvidia's willingness and ability to continue pursuing funding deals with neo-clouds, LLM developers, ecosystem partners and suppliers in the near term.",
+   "anchor": "there is likely to be some \"pause\" in\nthe company's willingness and ability to continue pursuing these deals in the near term",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Jensen Huang has agreed to testify before Congress ahead of Thanksgiving.",
+   "anchor": "Huang has agreed to testify before Congress ahead of Thanksgiving",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "before Thanksgiving"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's Jolie Ho says potential new, even tighter US restrictions could impact NVDA's and other companies' like AMD's ability to ship product into China.",
+   "anchor": "even tighter restrictions that could impact NVDA's\n(and other companies like AMD's) ability to ship product into China",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "OpenAI is backing a bipartisan congressional effort to block China's access to AI chips and curb its access to chipmaking equipment.",
+   "anchor": "OpenAI is backing a bipartisan effort in\nCongress to block China\u2019s access to artificial intelligence chips and curb China\u2019s access to chipmaking",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Congress is weighing three proposals to restrict future high-end chip sales and reduce diversion of Nvidia's AI processors.",
+   "anchor": "Congress is weighing three proposals that would seek to put restrictions on future sales of high-end\nchips, reduce the diversion of Nvidia\u2019s AI processors",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's Eva Mathew reports lawmakers have criticized Commerce Secretary Howard Lutnick for the administration's refusal to add dozens of Chinese companies to the US trade blacklist.",
+   "anchor": "lawmakers have criticized Lutnick for the administration's refusal to add dozens\nof Chinese companies to the US trade blacklist",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "President Trump said the US does not need a deal with Iran, declaring those days have long passed.",
+   "anchor": "We don\u2019t need a deal with Iran. Those days have long since passed.",
+   "topic": "Iran geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "With three carrier groups in place in the Gulf, the US will have 60,000 military personnel in the region.",
+   "anchor": "In total, with all three groups in place, the US will have 60,000 military personnel in the gulf region.",
+   "topic": "Iran geopolitical risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next few days"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "The IAEA declared its inability to access sites and carry out checks on Iran represents a matter of serious proliferation concern.",
+   "anchor": "It declared that its inability to access sites and carry out checks\nrepresented a \u201cmatter of serious proliferation\u201d",
+   "topic": "Iran geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Japan's Finance Minister Satsuki Katayama said ministry officials will keep working closely with the US Treasury to take appropriate action against one-sided, rapid currency moves.",
+   "anchor": "ministry officials will continue to work closely with the US Treasury to take appropriate action\nas needed in response to one-sided, rapid moves",
+   "topic": "Yen intervention risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "The yen weakened past the psychological 160 per dollar threshold during New York trading Thursday.",
+   "anchor": "the yen weakened past the key psychological threshold of 160 per dollar during\nNew York trading Thursday",
+   "topic": "Yen intervention risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's FX desk says any Japanese intervention would likely be unsuccessful longer-term given rate differentials staying essentially unchanged or shifting further in the dollar's favor.",
+   "anchor": "in the event of an intervention, it\nwould still likely be unsuccessful longer-term given the rate differentials will essentially be unchanged",
+   "topic": "Yen intervention risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "longer-term"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Microsoft's global outage left tens of thousands of users in 74 countries and territories unable to access email and other programs.",
+   "anchor": "tens of thousands of users in 74 countries and territories unable to access their emails and other programs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS economist Stephen Wu expects Australia's headline CPI to rise to 4.7% y/y in October 2026, a new cycle high.",
+   "anchor": "expects Australia headline CPI moved further away from the RBA's target, to 4.7% y/y in October 2026",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS analyst Nicolas Gaudois keeps Samsung as top pick for HBM execution, DRAM pricing and shareholder returns.",
+   "anchor": "keeps Samsung as the\ntop pick for HBM execution, DRAM pricing and shareholder returns",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "SK Hynix remains Buy at 1.0x 2028E book value despite lower near-term pricing estimates and a possible loss of HBM leadership.",
+   "anchor": "SK Hynix remains Buy at 1.0x 2028E book\ndespite lower near-term pricing estimates and a possible loss of HBM leadership",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's precious metals desk calls gold's setup tactically bearish below $3,940-4,000, vulnerable to another liquidation leg if $3,860 breaks.",
+   "anchor": "The setup is still tactically bearish below $3,940\u20134,000, with elevated speculative length and\nETF outflows leaving XAU vulnerable to another liquidation leg if $3,860 breaks",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS says silver's less crowded positioning and monthly ETF creation provide a firmer physical underpinning than gold.",
+   "anchor": "positioning\nis less crowded and monthly ETF creation plus the structural deficit story provide a\nfirmer physical underpinning",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's rates desk thinks asset swap valuations in 10y ACGBs are now screening cheap to 3y ACGBs, favoring paying the AUD Z26 3s10s swap EFP box for a steepener.",
+   "anchor": "The desk thinks asset swap valuations in 10y ACGBs are now screening cheap to 3y ACGBs,",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into year-end"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's Jonathan Garber says BRL downside is increasingly priced into FX and rates markets.",
+   "anchor": "FX and Rates: BRL downside increasingly priced.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "UBS's DeMark technicals show USDBRL as bearish and Bovespa as bullish.",
+   "anchor": "DeMark Technicals: USDBRL is bearish, Bovespa is bullish.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "US Special envoy Jared Kushner said the US cannot reach a Russia-Ukraine war deal without Europe's involvement.",
+   "anchor": "The US cannot reach a deal\nto end the war in Ukraine without Europe\u2019s involvement",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - Fed's Williams - Nvidia Impacts - Japan's Katayama - Microsoft Outage - Wayne Gouro - 2026-11-13",
+   "claim": "Three European covered bond issuances all tightened 7bp versus IPT on Thursday with good demand.",
+   "anchor": "Three covered bond all\ntightened 7 bp vs IPT, with good demand for all of them.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/27160__ubs-s-t-fed-s-williams-nvidia-impacts-japan-s-katayama-micro.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 11,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
