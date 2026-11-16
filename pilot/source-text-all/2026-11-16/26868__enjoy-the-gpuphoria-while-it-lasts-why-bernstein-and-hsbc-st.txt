@@ -1,0 +1,343 @@
+ 
+"Enjoy The GPUphoria While It Lasts": Why 
+Bernstein And HSBC Still Say Sell After 
+CoreWeave's Best Quarter Ever 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, NOV 11, 2026 - 08:35 PM 
+For one morning at least, the AI trade has its poster child back. 
+CoreWeave is up over 20% near $60 in early trading, Nvidia is up 3% (was up as much as 5%), 
+and as we noted in this morning's wrap, futures are higher across the board after a third-quarter 
+report that Bloomberg summarized as easing fears about the neocloud's debt-laden business. 
+Revenue of $3.66 billion beat, margins beat, the full-year guide went up, the backlog hit $132.5 
+billion and the company's beaten-down euro bond jumped as much as 3.6 cents to 79.8 for its 
+biggest move since July. CEO Michael Intrator called it a breakout quarter. 
+Readers already know what we thought of the fine print: $1 billion more revenue, $11.8 billion 
+more debt, and a quarterly interest bill about to cross $1.1 billion. 
+It turns out we have company. The two most prominent bears on the Street read the same 
+report overnight and neither budged. Bernstein's Madison Rezaei kept her Underperform and 
+$54 target in a note titled "Enjoy the GPUphoria while it lasts" (available to pro subs). HSBC's 
+Abhishek Shukla, who took apart Goldman's upgrade last month, kept his Reduce and his $39 
+target , which was 20% below Tuesday's close and is now about 30% below where the stock is 
+trading. 
+ 
+
+ 
+ 
+What makes the two notes worth reading is that neither one disputes the quarter. Both concede 
+it was strong. Their problem is with what the quarter is being used to prove, and it comes down 
+to three things: a price nobody can find in the financials, a funding gap that both bears 
+independently size at about $33 billion for next year, and a supply wave that is 20 times bigger 
+than CoreWeave itself. 
+First, The Bull Case (Courtesy Of Goldman, Hours Before The 
+Print) 
+To understand what the bears are arguing against, start with the best available defense of the 
+business, which happens to have been published at 1pm on Tuesday, three hours before the 
+numbers. 
+Goldman's latest Top of Mind, "Is the AI investment cycle durable?" (available to pro subs), 
+includes a Q&A with the bank's lead software analyst Gabriela Borges, who upgraded 
+CoreWeave to Buy on October 19, in the middle of the meltdown. 
+Her section contains what is probably the clearest picture anyone has drawn of how CoreWeave 
+actually funds itself. The workhorse is the delayed draw term loan, or DDTL, and it works like 
+this: CoreWeave signs a customer, lenders size up that customer's credit and the GPU 
+collateral, the GPUs and the contract go into an SPV funded with roughly 80% debt and 20% 
+equity, the loan is drawn in stages as hardware is delivered, customer payments service and 
+amortize it over the contract, and whatever the chips are worth once the loan is repaid belongs 
+to CoreWeave. 
+ 
+
+ 
+ 
+Borges gives a worked example: a contract for $11 billion a year of compute over four years, 
+$44 billion in all, needs about one gigawatt of new capacity at a capex cost of $37.5 billion 
+today. The DDTL covers most of it, the loan takes its rating from the end customer, and it is fully 
+repaid inside the four years. (Hold on to that $11 billion per gigawatt figure. We'll need it again in 
+a minute.) 
+The second half of the argument is the ramp. Today every new data center is a big addition 
+relative to what is already running, so unproductive capacity weighs on margins and has to be 
+financed from outside. As the base grows, each new ramp gets smaller in relative terms and the 
+installed fleet starts paying for the next one. In Goldman's base case capex reaches a steady 
+state in 2028 and free cash flow turns positive in 2030. 
+ 
+As for the credit blowout that set off October's rout, Borges makes two points. The CDS has 
+widened partly because it is one of the few liquid data center swaps around, so everyone with 
+infrastructure exposure buys it as a hedge. And the $10 billion of unsecured parent debt trading 
+at a 16% yield-to-worst is not what the next data center costs to finance, because the secured 
+DDTLs price far lower. On that, at least, the company backed her up on the call: the next DDTL 
+is expected to carry an investment-grade rating and yield 7.0% to 7.5%, about half of where the 
+junk bonds trade (we'll see where it actually prices). 
+ 
+
+ 
+ 
+It is a coherent story, and well told. It also comes from a bank that sits at the top of the syndicate 
+for Anthropic's $100 billion IPO, which is being marketed this very week and which needs 
+another CoreWeave accident about as much as Texas needs another moratorium. We are sure 
+the timing is a coincidence and that the Chinese wall is in excellent repair. 
+Either way, the diagram is useful. Because once you see where the equity value sits in that 
+six-box flow (box 6, the residual), the bear case more or less explains itself. 
+What You Have To Believe (And Why Bernstein Doesn't) 
+Rezaei, who put a $76 billion number on the funding hole three weeks ago, does something 
+unusual for a sell-rated analyst after a beat: she admits it hurts. Here is how she opens: 
+CoreWeave delivered about the best quarter we could have asked for. They’re continuing to 
+mature as a company, executing better with every print, and managing the narrative more 
+competently than they ever have. Stats were good-to-great, funding concerns were addressed, 
+the strategic moves make sense, and, much as we were after 2Q earnings, we’re left grappling 
+with our Underperform. 
+ 
+
+ 
+She even raised her numbers. Bernstein's 2026 adjusted EPS estimate goes to a loss of $3.54 
+from a loss of $5.14, and 2027 to a loss of $3.20 from $6.60. With the stock down 65% from its 
+May high, she writes that her team wants to be believers and would make many of the same 
+calls in Intrator's chair. 
+And yet the rating stays, on a long-term value of $54 (22.5x forward adjusted EBIT, trimmed 
+from 23.5x), with a near-term floor of $45 to $54 and room to 
+73 if AI sentiment turns. Her 
+64 −
+view is that October's de-rating is semi-permanent: the six-month average multiple was 27x, and 
+it isn't coming back. 
+ 
+Why? Because in her framework the bull case needs three things to be true at once, and she 
+believes none of them. The first leap of faith is supply: 
+1) Data center supply stays tight, keeping pricing for near-term capacity extremely elevated. 
+CRWV is “seasoning” their capacity, electing to not offer 2028 GWs today, but rather to wait until 
+they can lock in higher pricing (referencing $40M/MW). Hey, it worked for SPCX. But with an 
+incremental 55GW+ announced between the major cloud providers, neoclouds, and SPCX 
+through 2028, we are extremely skeptical this holds. 
+Translation: CoreWeave is deliberately not selling its 2028 capacity today because it thinks it 
+can get a better price later. That worked for SpaceX, as Bernstein concedes. The catch is in the 
+firm's own pipeline data, the same dataset behind Bernstein's finding that most of the 
+announced US pipeline will never get built. Even after haircutting every project for credibility, the 
+big clouds, the neoclouds and SpaceX are still on track to add about 55 GW through 2028 (75 
+GW before the haircut). CoreWeave's piece of that is 2 to 3 GW. 
+ 
+
+ 
+ 
+For today's prices to hold through that, Bernstein says, market-wide demand has to multiply 
+many times over. Maybe it will. But it is quite a thing to bet a $47 billion debt stack on. 
+Which is where box 6 comes in. Management told investors that more than 130,000 GPUs 
+come off contract in 2027 and about 170,000 more in 2028, fully paid off, and that at current 
+prices re-renting them would generate nearly $4 billion of annualized revenue from the first 
+cohort and nearly $10 billion with the second, no new capex required. Bernstein backs out what 
+that assumes: about $3.81 per GPU-hour, or $24 million per megawatt per year, for chips that 
+will be three to five years old. 
+ 
+Now read down the table. At the Silicon Data H100 index level of last December, $2.00 an hour, 
+the $10 billion becomes $5.3 billion. At the SemiAnalysis trough of October 2025, $1.70, it is 
+$4.5 billion. The same GPUs were renting for less than half of what management now assumes 
+just thirteen months ago, and that was before 55 GW of new supply. 
+Put differently, a company whose equity value lives in what a four-year-old GPU rents for in 
+2028 just told the market that number is at an all-time high. Of course it did. 
+ 
+
+ 
+$20 Million Per Megawatt? HSBC Went Looking For It 
+HSBC's note zeroes in on the single most bullish thing CoreWeave said on Tuesday: that it can 
+now sell compute at $20 to $25 million per megawatt per year on four- to five-year contracts, 
+and at up to $40 million on short-term deals. That followed a 25% price hike across products in 
+July and another 10% later in the quarter, with more coming in Q4. 
+The trouble is what the company has collected up to now. HSBC estimates $12 to $13 million 
+per megawatt on its contracts historically. Bernstein, dividing reported revenue by average 
+active power, gets even less: $9.2 million in the third quarter, which is lower than the $10.7 
+million of two years ago. 
+ 
+ 
+
+ 
+Remember Goldman's worked example? $11 billion a year for one gigawatt is $11 million per 
+megawatt. So the bank's own illustration of a typical contract lands right on the bears' estimate 
+of history and at about half of what management now says it charges. 
+Shukla's test is simple. If prices had really doubled, it would show up in asset turnover: revenue 
+per dollar of installed equipment. It came in at 30.5% in Q3, against 28.6% in Q2, 30.0% in 2025 
+and 34.8% in 2024. And the new guidance doesn't change the picture either: the raised 
+21 
+20 −
+billion exit run-rate, set against Q4 capex, implies turnover of about 32.6%, almost exactly the 
+33% HSBC has modeled all along, and about where Oracle's cloud business sits. 
+ 
+Shukla's verdict: “We believe the price comments may require deeper analysis and may indicate 
+either excessive optimism or higher cost capacity per MW than has been realized in the past.” 
+In other words, either the 
+25 million is a sales pitch, or each new megawatt now costs so 
+20 −
+much more to build that the higher price just covers it. For shareholders the two come to the 
+same thing. HSBC's rule of thumb is that a gigawatt of GPU capacity runs about $50 billion 
+all-in, $37.5 billion of IT gear that CoreWeave buys plus $12.5 billion of shell that it leases, so a 
+33% turnover on the gear gets you to $12.4 million per megawatt. To be fair to the company, a 
+portfolio of multi-year contracts reprices slowly, and HSBC says as much. But nothing in the 
+2027 guidance suggests the repricing is about to show up. 
+The margin beat gets the same treatment. A 10.4% adjusted operating margin, against 
+guidance of 6.5%, looks like an inflection until you see that the company averaged about 16% 
+before the recent dip and still talks about 25% long term. HSBC's take is that the estimates were 
+anchored on sandbagged guidance. 
+ 
+
+ 
+ 
+And then there is the one piece of 2027 guidance the company did offer: EBITDA over interest 
+expense, excluding prepayments, should more than double next year. Sounds great. But 
+consensus and HSBC were already modeling an increase of 2.4x to 2.6x. HSBC's read is as dry 
+as it gets: “As 2.42x-2.56x is ‘more than 2x’, if management expects the figure to rise by more 
+than 2.5x, we would have preferred it to state more than 2.5x explicitly.” 
+What about the pivot to short-term contracts at $40 million a megawatt, the newest neocloud 
+bull thesis according to HSBC's own investor conversations? The order book says it isn't 
+happening. In Q2, 41% of the $103.7 billion backlog was due within 24 months. In Q3 the 
+backlog grew to $132.5 billion and the share due within two years fell to 36%. The book is 
+getting longer. 
+ 
+
+ 
+ 
+There is an irony here. Borges defends the credit by pointing out that 95%+ of the business is 
+four- to five-year take-or-pay. Fine. But then the $40 million spot price that juiced Tuesday's 
+margins is a rounding error in the mix, and it can't be the reason to own the stock. 
+$33 Billion Short, By Two Different Roads 
+On funding, management's message was that the problem is solved: $6.5 billion of cash and 
+securities (only $4.2 billion of it unrestricted), nearly $5 billion of undrawn DDTLs, about $9 
+billion of customer prepayments and deposits arriving within three months, and less than $5 
+billion of new parent-level capital needed through 2027. Intrator added that the company won't 
+touch the unsecured market at current rates (at 16%, who would?). 
+ 
+
+ 
+Bernstein lines those sources up against what it thinks the backlog costs to deliver, about $60 
+billion, and comes up $32.5 billion short. 
+ 
+HSBC gets to nearly the same place from the other direction: it estimates CoreWeave must 
+raise $33 billion of fresh financing in 2027, after undrawn credit lines fell to $5 billion from $10 
+billion in a single quarter. 
+The two views can be reconciled, probably. Management's sub-$5 billion figure counts only 
+capital raised at the parent. The other $30 billion or so is meant to come from new asset-level 
+DDTLs and from customers. So the plan works as long as two doors stay open. 
+●​ Lenders. The next DDTL is supposed to fund more than 90% of the associated capex at 
+7.0%-7.5%. Good news if it prices there. It also means the equity cushion under each 
+new data center is getting thinner at exactly the moment the bears are questioning the 
+collateral's resale value. 
+●​ Customers. Prepayments now run 15% to 50% of contract value on every new deal, per 
+Bernstein, up from 15%-25% at the end of 2025. Bernstein makes the obvious point: the 
+whole reason a customer signs a multi-year cloud contract is to turn upfront capex into 
+opex. They are paying upfront today because capacity is scarce. HSBC adds that these 
+advances probably carry interest, as Oracle's do. So it's still borrowing, just from the 
+customer; meanwhile hyperscalers aren't just sitting there in a corner, watching 
+patiently... 
+And the equity door? CoreWeave sold $4.2 billion of converts in the quarter and filed an ATM for 
+up to 35 million shares. Bernstein reckons using it would cost the stock 2% to 6%, which is 
+manageable. It just isn't nothing. 
+ 
+
+ 
+Bernstein's third leap of faith covers it: 
+3) CoreWeave reaches true hyper-scale and flips its economics: self-funding, investment-grade, 
+and head-to-head with the big clouds. Today, Q3 interest of $846M was more than 2x AOI, debt 
+rose $11.8B in a quarter to $46.9B against $4.0B of equity, and adjusted NI doesn’t turn positive 
+until 1H28. Getting there takes either a wildly prolonged supply-demand imbalance, or a pivot 
+where software becomes a high-margin moat and/or enterprise becomes defensible. We’ve 
+written about why that’s unlikely, but could happen. 
+ 
+The operating line is finally growing faster than the interest line, as Intrator was keen to stress. 
+But look at where Bernstein has them a year out: $1.02 billion of adjusted operating income 
+against $1.56 billion of interest in 3Q27. Better. Still upside down. Leverage, meanwhile, hit 7.3x 
+net debt to EBITDA. 
+ 
+
+ 
+ 
+HSBC's longer-dated numbers are the ones Goldman's ramp chart doesn't show. Goldman has 
+free cash flow turning positive in 2030. HSBC has it negative every single year through 2030, 
+some $74 billion of cumulative burn from 2026 on, with net debt climbing from $38 billion at the 
+end of this year to $96 billion. 
+ 
+
+ 
+ 
+Here is the detail we found most telling. After a blowout quarter, HSBC raised its revenue, 
+EBITDA and operating profit forecasts for 2028 through 2030... and cut its 2028 EPS estimate 
+by 15%, to $0.82 from $0.96. The reason: a bigger backlog means more capex (its 2028 
+number jumps 27%), which means more debt, which means interest expense that is 14% to 
+20% higher than it thought. Growth that costs more than it earns. That was HSBC's whole 
+argument last month, and nothing changed on Tuesday. 
+Two Bears, One Rating, Very Different Spreadsheets 
+It is worth pointing out that the two firms don't agree with each other on much beyond the rating. 
+HSBC is the optimist: it has CoreWeave turning a profit in 2028 and earning $2.58 a share by 
+2029. Bernstein has losses widening every year to $8.09 a share in 2029. 
+ 
+ 
+
+ 
+So HSBC's is the bear case in which everything goes more or less right, and the stock is still too 
+expensive. On its 2030 numbers CoreWeave trades at 11.7x EV/EBIT after stock comp, against 
+6.6x for Oracle and a small premium to Amazon, Meta and Microsoft, companies that fund their 
+capex out of cash flow and don't have a CDS quoted in points upfront. 
+ 
+Even Goldman's Guest Isn't Convinced 
+Bernstein and HSBC are hardly alone. D.A. Davidson's Gil Luria went straight for the interest 
+coverage. On Bloomberg TV he said: “Their interest expense is far higher than adjusted 
+operating income — that tells you that the business they generate from these data centers is not 
+ 
+
+ 
+enough to pay down the debt that they’re accruing... It’s a structurally challenged business, 
+that’s why it’s been under so much pressure.” 
+MoffettNathanson's Nick Del Deo flagged the Texas policy risk (the governor-elect wants a 
+pause) and the 16% yield on the parent debt. Dan Ives, of all people, compared the company to 
+a sailboat in a Category 5 hurricane and wondered whether it can physically deliver the backlog. 
+UBS's Karl Keirstead thinks rebuilding confidence takes several quarters, and Stifel trimmed its 
+target citing funding. When Dan Ives is the one worrying about debt, well, something has 
+changed. 
+But the most interesting skeptic is inside Goldman's own publication. The lead interview in the 
+same Top of Mind is with Chamath Palihapitiya, who compares a neocloud to an airline: GPUs 
+are the engine, the data center is the fuselage, powered land is the airport and an hour of 
+compute is a seat that spoils if nobody buys it. He puts breakeven utilization at roughly 70% to 
+75%, and warns that a company with long-dated commitments to one GPU generation can't 
+swap it out every time Nvidia ships a new one. Palihapitiya's bear case needs no accident at all: 
+The bear case is largely the status quo: companies continue spending on AI, but most of that 
+spending remains in the experimentation bucket rather than becoming large, recurring 
+enterprise commitments. In that scenario, token consumption never explodes, leaving 
+neoclouds in the 75-85% utilization gray zone in which they are making money, but not enough 
+to pay off their debts before their hardware becomes obsolete. Nothing needs to get much 
+worse for that outcome to materialize. 
+He also draws a line between neoclouds that own their land, power and shells and those that 
+lease them, calling the second group middlemen whose model requires operational perfection. 
+CoreWeave leases its shells; its operating lease liabilities were $18.7 billion at the end of 
+September, up from $8.2 billion at year-end. 
+And Borges herself, to her credit, names the same risk Bernstein builds its whole note on. Here 
+is her own answer to what would worry her: 
+The second is supply. Most industry participants tell us the compute environment is very supply 
+constrained today. However, a large amount of capacity is set to come online in the next two 
+years. So, the key will be whether demand remains strong enough for neoclouds to earn 
+attractive returns on this new supply. If too much supply comes online, compute prices could fall. 
+This is especially risky for neoclouds that sell on the spot market; as a point of comparison, we 
+estimate that 95%+ of CoreWeave’s business is 4-5 year take-or-pay contracts. 
+So the bull and the bears agree on the variable. They disagree on whether 55 GW of new 
+supply is more than the market can absorb. 
+ 
+
+ 
+A Great Quarter For A Business That Still Has To Outrun Its Own 
+Collateral 
+None of this means the stock can't keep rallying. It was down 65% from its May high going into 
+a report that beat on every line, and Bernstein itself allows for $64 to $73 if sentiment turns. 
+Near term, the bears are probably going to feel some pain. Rezaei's last line says it best: 
+“Execution keeps improving; the fundamentals remain the overhang.” 
+But step back and look at what Tuesday actually settled. It showed that when compute is 
+scarce, CoreWeave can raise prices, pull in prepayments and borrow against contracts at 7%. 
+Nobody doubted that. What the bears doubt is the part that can't be reported in a quarter: 
+whether the scarcity lasts long enough for a company with $47 billion of debt, $4 billion of equity 
+and no free cash flow this decade to pay down its loans before the chips behind them are worth 
+half as much. Goldman's diagram has six boxes, and the first five went fine. The entire equity 
+story is box six. 
+We have been saying since last October that the AI buildout is a debt story first and a 
+technology story second. A quarter in which the bulls' favorite new data point is a price that the 
+balance sheet can't confirm, and in which the company's answer to its funding gap is to borrow 
+from its own customers, fits that description rather well. We side with the bears on the 
+three-year view, and with the tape for about as long as the GPUphoria lasts. 
+Then again, when Gartner expects more than 80% of neoclouds to fold, being the one that 
+lenders still answer the phone for probably counts for something. 
+The next test comes within weeks, when that investment-grade DDTL is supposed to price at 
+7.0%-7.5%. We'll be watching where it clears. 
+Much more in the full Bernstein "Enjoy the GPUphoria while it lasts" note, the HSBC 
+CoreWeave note and Goldman's Top of Mind, all available to pro subs. 
+ 
+ 
