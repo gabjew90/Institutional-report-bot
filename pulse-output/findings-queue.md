@@ -1397,3 +1397,10 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Dropped thread: Nvidia governance story (Lutnick testimony, 6 banks) absent from the NVDA WATCH line after yesterday's lead. 30-year auction result not closed out. Gold LONG read absent third day.
 - **observation** — Soft PPI with higher yields: no cause given for the bond selloff.
 - **observation** — Clusterer window is about a week on a no-research day; 90 promoted topics vs 30 yesterday. BoE hike cluster (21 banks) suppressed as "covered" by a Fed theme at 0.7571.
+
+## 2026-11-16 (headless QC)
+- **deterministic-fixable** — `pulse-context/latest.json` is again a post-publish rebuild (320 PDFs vs 169 published, 18:21 EST after-hours, SPY -1.91% vs published -0.36% Friday close). RECAP prices cannot be audited. Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-13).
+- **prompt-session** — EDIT dropped Bernstein's NVDA downgrade from the MAIN EVENT although the coverage block mandates citing it, and the Megaspeed/DOJ investigation (6 banks) never appears, so the lead gives no reason for the resignation. Make the mandatory-citation check run after EDIT.
+- **observation** — Driver trail still does not name the 3 lint hard issues and the 1 final_validate violation that triggered SCRUB and FIXUP.
+- **observation** — Unverified in the dump: Goldman's cut "all valuation, none from profit forecasts", Wells Fargo Wednesday briefing, JPM 8% China share.
+- **observation** — Cover test suppresses a non-Fed December-hike cluster (BoJ, RBI, ECB) under the Fed theme at 0.804 and a dollar breakout under 'spx breakout' at 0.7882; matches on head nouns, not instrument.

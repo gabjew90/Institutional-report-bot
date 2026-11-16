@@ -1005,3 +1005,7 @@ no findings (0 FAIL, 5 CONCERN, 4 clean). Notes for a session:
 ## 2026-11-14
 
 no findings (1 CONCERN: unsupported "months of support above the 200DMA" claim on BTC; judgment, not a FAIL)
+
+## 2026-11-15
+
+no findings (1 CONCERN: Saylor liquidation answer, grounded but "dollar-for-dollar" reserves claim unverified and answer about 90 words for a Quick lookup; judgment, not a FAIL)
