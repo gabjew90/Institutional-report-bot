@@ -1,0 +1,31 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-11-16T14:06:49.589168Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=169; anchors 660/698 matched, 0 empty, 2 too_short (rate=0.946)", "at": "2026-11-16T14:06:54.512539Z"},
+  "omnipulse": {"decision": "CLASSIC", "detail": "omnipulse: none for 2026-11-16 (not published after 600s) -> classic pulse", "at": "2026-11-16T14:17:05.536825Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "soft violations only (advisory)", "at": "2026-11-16T14:21:18.935218Z"},
+  "lint": {"decision": "DISPATCH_SCRUB", "detail": "3 hard issue(s)", "at": "2026-11-16T14:23:57.586999Z"},
+  "scrub_relint": {"decision": "CONTINUE", "detail": "0 hard issues after SCRUB", "at": "2026-11-16T14:24:26.909830Z"},
+  "final_validate": {"decision": "DISPATCH_FIXUP", "detail": "1 EDIT/SCRUB-introduced hard violation(s); violations at /tmp/final_fixup_violations.json; after FIXUP run: gate final_validate --recheck", "at": "2026-11-16T14:24:27.694748Z"},
+  "final_validate_recheck": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-11-16T14:24:50.944048Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-11-16T14:24:51.572693Z"},
+  "adversarial": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-11-16T14:27:10.112234Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit", "at": "2026-11-16T14:27:10.723467Z"}
+ },
+ "budgets": {"draft_rerolls": 1},
+ "history": [
+  {"gate": "holiday", "decision": "CONTINUE", "at": "2026-11-16T14:06:49.589168Z"},
+  {"gate": "volume", "decision": "CONTINUE", "at": "2026-11-16T14:06:54.512539Z"},
+  {"gate": "omnipulse", "decision": "CLASSIC", "at": "2026-11-16T14:17:05.536825Z"},
+  {"gate": "draft_validate", "decision": "REROLL_DRAFT", "at": "2026-11-16T14:20:45.652832Z"},
+  {"gate": "draft_validate", "decision": "CONTINUE", "at": "2026-11-16T14:21:18.935218Z"},
+  {"gate": "lint", "decision": "DISPATCH_SCRUB", "at": "2026-11-16T14:23:57.586999Z"},
+  {"gate": "scrub_relint", "decision": "CONTINUE", "at": "2026-11-16T14:24:26.909830Z"},
+  {"gate": "final_validate", "decision": "DISPATCH_FIXUP", "at": "2026-11-16T14:24:27.694748Z"},
+  {"gate": "final_validate_recheck", "decision": "CONTINUE", "at": "2026-11-16T14:24:50.944048Z"},
+  {"gate": "strip", "decision": "CONTINUE", "at": "2026-11-16T14:24:51.572693Z"},
+  {"gate": "adversarial", "decision": "CONTINUE", "at": "2026-11-16T14:27:10.112234Z"},
+  {"gate": "preflight", "decision": "PASS", "at": "2026-11-16T14:27:10.723467Z"}
+ ],
+ "lint": {"last_hard": 0}
+}

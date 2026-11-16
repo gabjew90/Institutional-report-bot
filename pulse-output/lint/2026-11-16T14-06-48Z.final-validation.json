@@ -1,0 +1,34 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.3, 0.4, 0.8, 1.9, 2.7, 5.5, 6.94, 33.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **A December Fed rate increase is fully priced.** October core CPI, which leaves out food and energy, rose 0.3% for a third straight month, and headline CPI rose 0.4% against the 0.3% expected. The "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "15% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.3, 0.4, 0.8, 1.9, 2.7, 5.5, 6.94, 33.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "15",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "October core CPI rose 0.3% on the month for the third time running, and a quarter-point increase in December is now the base case. SEB puts the market-implied chance of a half-point move at 15% after "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.25% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.3, 0.4, 0.8, 1.9, 2.7, 5.5, 6.94, 33.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.25",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "October core CPI rose 0.3% on the month for the third time running, and a quarter-point increase in December is now the base case. SEB puts the market-implied chance of a half-point move at 15% after "
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 3,
+ "exit_code": 4
+}
