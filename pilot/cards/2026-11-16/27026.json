@@ -1,0 +1,653 @@
+{
+ "brief": "GS consumer desk morning note, 13 Nov 2026. Futures are firmer (SPX +25bps, NDX +15bps, RTY +25bps), the 10-year yield down 2.5bps to 4.85%, WTI off 10bps to $88.65, amid light newsflow beyond a global Microsoft 365 outage (MSFT -1.5% premarket). NVDA is rebounding 2%. Post-earnings movers: CBRS +17%, AMAT +60bps, CSCO -2.75%. Today's docket: US PPI, Eurozone GDP, four Fed speakers, and the RVTY investor day. Ahead: Warsh on 11/16, NVDA earnings 11/17, major retail prints, Tencent and BABA results, and the Trump-Xi meeting 11/18-19. Consumer discretionary has lagged the market for a third straight session and has given back most of its post-election outperformance. The desk reads this as a return to the 1H26 regime, driven partly by a momentum/factor rotation favoring 12-month winners (where AI positioning is cleaner), with consumer holding less or the wrong-way exposure there. The desk notes as interesting that future momentum-index rebalances should be supportive of consumer. Earnings: DDS +0.5% (modest EPS and comp beat), FLO -9% (EPS and EBITDA miss with a deep FY guide cut, the Nature's Own relaunch slower than expected), OFRM -8% (3Q revenue and EBITDA beat overshadowed by an FY guide cut tied to the Tractor Wheels recall).",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "US SPX equity futures point to a modestly firmer open, up 25bps premarket on 13 Nov 2026.",
+   "anchor": "US equity futures point to a modestly firmer open (SPX +25bps, NDX +15bps, RTY +25bps)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "US NDX equity futures point to a modestly firmer open, up 15bps premarket on 13 Nov 2026.",
+   "anchor": "US equity futures point to a modestly firmer open (SPX +25bps, NDX +15bps, RTY +25bps)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "US RTY equity futures point to a modestly firmer open, up 25bps premarket on 13 Nov 2026.",
+   "anchor": "US equity futures point to a modestly firmer open (SPX +25bps, NDX +15bps, RTY +25bps)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "The 10-year UST yield is down 2.5bps to 4.85% premarket on 13 Nov 2026.",
+   "anchor": "the UST 10-year yield down 2.5bps to 4.85%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "WTI crude is off 10bps at $88.65 premarket on 13 Nov 2026.",
+   "anchor": "and WTI off 10bps at $88.65, amid light",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "MSFT is down 1.5% premarket on 13 Nov 2026 amid a global Microsoft 365 outage.",
+   "anchor": "amid light newsflow beyond the global Microsoft 365 outage (MSFT -1.5% pre-market)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "NVDA is rebounding 2% on 13 Nov 2026.",
+   "anchor": "NVDA is rebounding (+2%), while post-earnings, CBRS leads (+17%), AMAT is firmer (+60bps) and CSCO lags (-2.75%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "CBRS is leading post-earnings movers, up 17%, on 13 Nov 2026.",
+   "anchor": "NVDA is rebounding (+2%), while post-earnings, CBRS leads (+17%), AMAT is firmer (+60bps) and CSCO lags (-2.75%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "AMAT is firmer post-earnings, up 60bps, on 13 Nov 2026.",
+   "anchor": "NVDA is rebounding (+2%), while post-earnings, CBRS leads (+17%), AMAT is firmer (+60bps) and CSCO lags (-2.75%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "CSCO lags post-earnings, down 2.75%, on 13 Nov 2026.",
+   "anchor": "NVDA is rebounding (+2%), while post-earnings, CBRS leads (+17%), AMAT is firmer (+60bps) and CSCO lags (-2.75%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Consumer discretionary stocks have lagged the broader market for a third straight session and have given back most of their post-election outperformance.",
+   "anchor": "Discretionary lagged the market for the third straight session yday and has now given up most of the post-election outperformance.",
+   "topic": "Consumer discretionary momentum rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "The desk attributes the return to the old 1H26 trading regime partly to a momentum/factor rotation in which 12-month winners, where AI positioning is cleaner, have started to outperform.",
+   "anchor": "seems at least partly driven by momentum/factor shifts where 12 month winners have started to outperform (AI positioning much cleaner)",
+   "topic": "Consumer discretionary momentum rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Consumer stocks have less exposure, or the wrong-way exposure, to the momentum/factor shift favoring 12-month winners.",
+   "anchor": "and consumer has less/wrong way exposure there;",
+   "topic": "Consumer discretionary momentum rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "GS flags as interesting that future rebalances of the momentum factor should be supportive of consumer discretionary stocks.",
+   "anchor": "but found it interesting that future rebalances of momentum should",
+   "topic": "Consumer discretionary momentum rotation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "DDS reported EPS of $8.38 versus $8.08 consensus, a modest beat.",
+   "anchor": "modest EPS and comp beat. EPS was $8.38 (vs $8.08 cons).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DDS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "DDS reported revenue of $1.48B, in line with the $1.48B consensus.",
+   "anchor": "Revenue was $1.48B (vs $1.48B cons).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DDS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "DDS reported comparable sales growth of 1.0% versus 0% consensus, led by home/furniture, men's and juniors'/children's categories.",
+   "anchor": "Comps were 1.0% (vs 0% cons), led by home/furniture, men's and juniors'/children's.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DDS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "DDS retail gross margin was flat at 45.3% while SG&A rose to 30.3% of sales from 30.0% a year earlier on higher payroll costs.",
+   "anchor": "Retail gross margin was flat at 45.3%, while SG&A was 30.3% of sales (vs 30.0% last year) on higher payroll.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DDS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "DDS ending inventory increased 4%, slightly ahead of sales growth, and the company gave no formal EPS or sales guidance.",
+   "anchor": "Ending inventory increased 4%, slightly ahead of sales growth. There was no formal EPS or sales guidance.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DDS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO missed on EPS and EBITDA and issued a deep FY guidance cut.",
+   "anchor": "miss on EPS and EBITDA with a deep FY guide cut.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO reported EPS of $0.10 versus $0.15 consensus.",
+   "anchor": "EPS was $0.10 (vs $0.15 cons).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO reported revenue of $1.17B versus $1.18B consensus on volume down 7.0%.",
+   "anchor": "Revenue was $1.17B (vs $1.18B cons) on volume of -7.0%.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO reported adjusted EBITDA of $78.9M versus $97.2M consensus, with margin of 6.8% versus 8.2% consensus.",
+   "anchor": "Adjusted EBITDA was $78.9M (vs $97.2M cons), with margin of 6.8% (vs 8.2% cons).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO cut its FY EPS guidance to $0.63-0.68 from $0.75-0.85 prior guidance, versus $0.78 consensus.",
+   "anchor": "FY EPS guide was cut to $0.63-0.68 (vs $0.78 cons and $0.75-0.85 prior guidance),",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO cut its FY revenue guidance to $5.016-5.063B from $5.070-5.142B prior guidance, versus $5.09B consensus.",
+   "anchor": "revenue to $5.016-5.063B (vs $5.09B cons and $5.070-5.142B prior guidance), and adjusted EBITDA to $415-430M",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO cut its FY adjusted EBITDA guidance to $415-430M from $453-481M prior guidance, versus $460.6M consensus.",
+   "anchor": "and adjusted EBITDA to $415-430M (vs $460.6M cons and $453-481M prior guidance).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO's Nature's Own brand relaunch is improving more slowly than anticipated, mainly in the loaf category.",
+   "anchor": "The Nature's Own relaunch is improving more slowly than anticipated, mainly in loaf.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "FLO's CEO said the company expects the operating environment to remain challenging near term but remains confident in the business's long-term potential.",
+   "anchor": "We expect the environment to remain challenging in the near term, but we remain confident in the long-term potential of the business.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FLO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM's modest 3Q revenue and EBITDA beats were overshadowed by a steep FY guidance cut tied to the Tractor Wheels recall.",
+   "anchor": "modest 3Q revenue and EBITDA beats are overshadowed by a steep FY guide cut tied to the Tractor Wheels recall.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM reported 3Q EPS of -$0.09 versus -$0.08 consensus.",
+   "anchor": "EPS was -$0.09 (vs -$0.08 cons).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM reported 3Q revenue of $89.1M versus $88.4M consensus on volume growth of 32%.",
+   "anchor": "Revenue was $89.1M (vs $88.4M cons) on volume growth of 32%.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM reported adjusted EBITDA of -$1.0M versus -$2.6M consensus, a beat, but gross margin fell 600bps to 36.1%.",
+   "anchor": "Adjusted EBITDA was -$1.0M (vs -$2.6M cons), but gross margin fell 600 bps to 36.1%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM cut its FY revenue guidance to $290-300M from $327-335M prior guidance, versus $320.3M consensus.",
+   "anchor": "FY revenue guide was cut to $290-300M (vs $320.3M cons and $327-335M prior guidance),",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM cut its FY adjusted EBITDA guidance to -$4.5M to -$7M from $3-4.5M prior guidance, versus $2.9M consensus, implying a sharp 4Q hit.",
+   "anchor": "and adjusted EBITDA to -$4.5M to -$7M (vs $2.9M cons and $3-4.5M prior guidance), implying a sharp 4Q hit.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "OFRM's CEO said the company is committed to resolving the Tractor Wheels situation correctly while continuing to earn the trust of families and retailers.",
+   "anchor": "We are committed to resolving the Tractor Wheels situation correctly, continuing to earn the trust of families",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "OFRM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Baird upgraded DPZ.",
+   "anchor": "Upgrades: Baird upgrades DPZ. Downgrades: Stifel downgrades LOW.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DPZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Stifel downgraded LOW.",
+   "anchor": "Upgrades: Baird upgrades DPZ. Downgrades: Stifel downgrades LOW.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "LOW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Piper downgraded YETI.",
+   "anchor": "Piper downgrades YETI. Daiwa downgrades APTV.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Daiwa downgraded APTV.",
+   "anchor": "Piper downgrades YETI. Daiwa downgrades APTV.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "APTV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Evercore downgraded FND.",
+   "anchor": "Evercore downgrades FND, TSCO. Initiations: StoneX initiates BIRK, DECK at Buy.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "Evercore downgraded TSCO.",
+   "anchor": "Evercore downgrades FND, TSCO. Initiations: StoneX initiates BIRK, DECK at Buy.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TSCO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "StoneX initiated BIRK at Buy.",
+   "anchor": "Evercore downgrades FND, TSCO. Initiations: StoneX initiates BIRK, DECK at Buy.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BIRK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US)",
+   "claim": "StoneX initiated DECK at Buy.",
+   "anchor": "Evercore downgrades FND, TSCO. Initiations: StoneX initiates BIRK, DECK at Buy.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DECK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/27026__gs-consumer-morning-trading-update-us.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 43,
+  "matched": 43,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 39,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
