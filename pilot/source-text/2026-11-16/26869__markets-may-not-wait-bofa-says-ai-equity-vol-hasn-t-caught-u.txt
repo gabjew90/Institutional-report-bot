@@ -1,0 +1,176 @@
+ 
+"Markets May Not Wait": BofA Says AI Equity Vol 
+Hasn't Caught Up With What Credit Already Knows 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, NOV 11, 2026 - 08:05 PM 
+The bond market has been sounding the alarm about AI for months. The stock market, it seems, 
+has had its headphones on. 
+That, in a nutshell, is the message of the latest Global Equity Volatility Insights note from BofA's 
+equity derivatives team(available to pro subs), titled simply "The AI credit-equity disagreement." 
+The bank's strategists (Benjamin Bowler et al.) find that as hyperscalers have turned into some 
+of the biggest borrowers in the investment grade market, their bond spreads and CDS have 
+blown out to the widest levels in at least five years... while their P/E multiples and implied vols 
+have barely budged. Here is how they frame it: 
+The scale of the AI capex cycle is increasingly being felt in credit, as hyperscalers' growing 
+funding needs and rising presence in debt markets have driven corporate bond spreads and 
+CDS to widen. Equities have been slower to reprice, with implied volatility across many AI 
+beneficiaries lagging the deterioration already visible in credit. 
+In other words, one of these two markets is wrong about AI, and BofA has a pretty good idea 
+which one. 
+If this all sounds familiar, it should: we have spent the better part of the past year documenting 
+how the AI buildout turned into a debt binge, ever since we first warned last October that "AI Is 
+Now A Debt Bubble Too, Quietly Surpassing All Banks To Become The Largest Sector In The 
+Market." And three weeks before BofA got around to it, we flagged the exact same disconnect in 
+one tweet: 
+So we'll allow ourselves a modest victory lap, and then let BofA do the heavy lifting. 
+Credit Has Done The Math 
+The bank starts with the obvious: the AI capex cycle is now so big that it can only be funded in 
+capital markets, and the question is no longer whether the debt can be raised, but at what price. 
+ 
+
+ 
+As BofA puts it, the issue is "how much additional AI-related risk credit markets are willing to 
+absorb." 
+The answer, so far, is "less than the hyperscalers need." Citing its US credit strategists, BofA 
+notes that if this year's pace of supply continues into 2027, five hyperscalers could go from 3% 
+of the US IG corporate bond index at the end of 2025 to 6.3% by the end of 2027. That's a 
+doubling in two years for a handful of issuers that, until recently, barely borrowed at all (recall 
+that, as Hartnett tallied last week, hyperscaler bond issuance went from $17 billion in 2024 to 
+$182 billion this year). 
+And the bond market has priced it accordingly. Hyperscaler corporate bond spreads have 
+surged to roughly 140bps (read off the chart, so approximate), the widest in the five years BofA 
+tracks. Meanwhile their forward P/E (shown inverted in red) has gone essentially nowhere: 
+ 
+Put differently, bondholders are demanding to be paid a lot more for lending to the hyperscalers, 
+while shareholders are paying the same multiple they always did. Somebody hasn't read the 
+memo. 
+ 
+
+ 
+The vol market tells the same story. Standardize both series as z-scores and the gap is glaring: 
+hyperscaler spreads sit roughly 2.5 standard deviations above their five-year average, while 
+their 1-year 20-delta put vols are only about one standard deviation rich (again, both read off the 
+chart): 
+ 
+"Markets May Not Wait" 
+To its credit, BofA doesn't pretend that this kind of disconnect has to close on a schedule. But 
+when it does, it probably won't close gently. This is probably the most important paragraph in the 
+note: 
+In our view, it's important to acknowledge that this disconnect can persist or even widen while 
+vulnerabilities remain latent and no specific catalyst emerges. However, equity volatility would 
+likely catch up rapidly if higher leverage exposes previously untested vulnerabilities or if 
+fundraising pressures were to begin to challenge future revenue expectations. Importantly in this 
+case, markets may not wait for the AI earnings impact to materialise. A reflexive deterioration in 
+ 
+
+ 
+sentiment where funding concerns weaken the equity upside narrative could itself be sufficient 
+to drive equity volatility higher. 
+Translation: equity investors are waiting for the AI earnings to disappoint, but the funding stress 
+alone could do the job first. 
+Which is what makes the past two weeks so interesting. Meta chose to sell up to $95 billion in 
+stock rather than another jumbo bond deal; Microsoft, the cleanest balance sheet in the group, 
+asked for at least $25 billion in bonds (prompting us to ask "If The Cleanest Hyperscaler Needs 
+$25 Billion In Bonds, Who Doesn't?"); the off-balance sheet time bomb inside AI hit $4.1 trillion; 
+and on Monday, CoreWeave guided to a $1.1 billion quarterly interest bill as its debt hit $47 
+billion. That is exactly the "fundraising pressure" BofA is talking about, and none of it required an 
+earnings miss. 
+So why hasn't equity vol reacted? BofA's explanation is positioning: the bank thinks the unwind 
+of excess leverage built up over the summer has "suppressed volatility vs what the credit signal 
+would suggest." Fewer forced sellers, less vol... until there is. 
+Hyperscalers And Nvidia: Where The Disconnect Is Widest 
+Next, BofA screens its universe of global AI beneficiaries for the names where equity vol looks 
+cheapest relative to credit. Names below the red diagonal have implied vol z-scores below their 
+spread z-scores, i.e., equity vol that hasn't kept up with credit. The outliers are exactly who 
+you'd expect: the hyperscalers (MSFT, AMZN, GOOGL, META, ORCL) and Nvidia, which, as 
+BofA notes, reflects their "greater funding needs versus the net cash positions of many other AI 
+beneficiaries": 
+ 
+
+ 
+ 
+Nvidia is the standout: its spread z-score is well above 1, yet its put vol z-score is negative. 
+Given that the stock has lost about $1.2 trillion in market cap in the past 10 days, per Tuesday's 
+market wrap, and its CEO is now the subject of an independent board probe, "cheap" is one 
+way to describe NVDA vol. 
+The second screen looks at changes rather than levels: how much did each name's implied vol 
+move over the past three months, versus what its historical relationship with credit spreads says 
+it should have moved? Here the biggest laggards are the memory names: SK Hynix's vol is 
+roughly 25 points below what its spreads imply, followed by Marvell and Micron: 
+ 
+
+ 
+ 
+Which brings us to something else we noticed over the weekend: for the first time ever, 
+chipmaker credit risk is trading wider than hyperscaler credit risk. 
+So the credit market is now worried about the people selling the shovels too, while the vol 
+market still prices SK Hynix like it's 2024. That's not a disconnect that tends to resolve in favor 
+of the shovel sellers. 
+The Trade: Long Vol, Long Correlation, ~6.5x Payout 
+Combining the two screens, BofA picks the 15 names with the largest dislocations, then finds 
+the subset that minimizes basket volatility. The result is an eight-name, equally weighted basket: 
+Dassault Systèmes, Amazon, Meta, Nokia, SAP, SK Hynix, ASML and Alphabet. The trade: 
+ 
+
+ 
+Buy a Dec27 85-65% put spread on a basket of AI-geared names (Dassault Systemes, 
+Amazon, Meta Platforms, Nokia, SAP, SK Hynix, ASML and Alphabet) for 3.11% (~6.5x max 
+payout; implied correl: 27% on average). 
+The long put is struck roughly at mid-April levels, i.e., the trade pays if the basket gives back 
+most of its post-April gains: 
+ 
+The clever bit is the correlation leg. Because it's a basket option, the buyer is also long 
+correlation, and that is currently dirt cheap: average pairwise realized correlation among the 
+eight names has collapsed to around its 1st percentile of the past 10 years: 
+ 
+
+ 
+ 
+And that's exactly why BofA wants it. In its words, "given the interconnected and potentially 
+circular nature of the AI financing ecosystem, we think owning stock correlation alongside 
+volatility can help hedge against idiosyncratic concerns becoming a system-wide repricing 
+across AI-exposed names." Or, as we put it more bluntly every time Nvidia invests in a customer 
+who then buys more Nvidia chips: when the circle breaks, it breaks all at once. 
+One Bank, Two Very Different AI Debt Calls 
+There is a fun twist here. Just last week, BofA's own CIO Michael Hartnett (the man who told 
+clients a year ago that the best trade into 2026 was shorting hyperscaler bonds) flipped to 
+buying them, calling US tech bonds "diamonds in the rough" with tech bond returns relative to 
+the IG index at 30-year lows. 
+Read together, the two BofA teams agree on the diagnosis: credit has already priced a lot of AI 
+pain, and equities haven't. They just disagree on which side of the gap to stand on. Hartnett 
+bets credit was too gloomy; the vol team bets equities are too complacent. One of them will be 
+ 
+
+ 
+right, and the GEVI trade at least has the advantage of a defined downside (the 3.11% 
+premium). 
+For what it's worth, the vol team isn't outright bearish on tech either. In the same note, BofA 
+argues that last Thursday's carnage (the Nasdaq's 6.4% plunge was a -4.4 sigma move and the 
+worst day since Covid, the S&P's 4.4% drop a -5.6 sigma event, while the VIX jumped nearly 
+11.6 points) was "another positioning-driven fragility event, rather than a fully 
+fundamentally-driven selloff," and that "material upside risk to US tech remains from these 
+drawdown levels." Exhibit A: record inflows into SOXL, the 3x levered semis ETF, on the very 
+day semis crashed. Nothing says "capitulation" like retail buying the dip with triple leverage. 
+Hence the structure: a long-dated put spread on the names where credit is screaming, rather 
+than an outright short on the whole sector. 
+Credit Usually Gets There First 
+BofA's data run through last Friday, and a few things have changed since then (mostly in the 
+trade's favor). Monday's ramp was, per Nomura's Charlie McElligott, an "absolutely epic vol 
+crush," which made the equity side of the disconnect even cheaper. Then on Tuesday a hot CPI 
+print and a parade of Fed hawks sent the 10Y back above 5% after an ugly auction, and while 
+stocks slid, HY tech was the worst performer in credit. Even Fed Governor Bowman chimed in, 
+warning of the risk of "a large correction in equity valuations" tied to AI returns. 
+BofA's conclusion is that it sees "an opportunity to position for equity volatility to catch up with 
+the deterioration already observed in credit." We'd go a step further. When stocks and credit 
+disagree, credit is usually the one that's right, and usually the one that moves first. It moved first 
+here too: the hyperscalers are borrowing at the widest spreads in years, the chipmakers now 
+trade wider still, and the Fed is hiking into a $4.1 trillion off-balance sheet pile of AI obligations. 
+The equity market can keep its headphones on for a while longer, maybe even through 
+Anthropic's IPO. But with the funding bill coming due one jumbo deal at a time, it may soon 
+discover that, as BofA put it, markets may not wait. 
+Much more in the full BofA "The AI credit-equity disagreement" note, available to pro subs. 
+ 
+ 
+ 
+ 
