@@ -1,0 +1,442 @@
+{
+ "brief": "Wedbush (Outperform, PT $345 vs. $173.73) addresses reports that Nvidia's board is preparing to oust CEO Jensen Huang after NYT, WSJ and Bloomberg reporting of a second relationship with a direct report and a hired executive-search firm; Wedbush does not call the ouster certain but sees it as the likely outcome. An executive transition would raise uncertainty, but Wedbush argues NVDA's valuation (~10X FY'28 EPS versus a typical 20-30X+ range for semis with ~70% margins and ~70% growth) and near-term setup (a 5%+ beat streak, supply locked through 2027-2028, demand outrunning supply, Rubin Vera near launch) give the company room to find its footing. Historical precedents are mixed: Marvell's 2016 ouster eventually led to AI-ASIC success, while HP's and Intel's abrupt post-affair transitions preceded lasting decline, though those CEOs weren't founders. Apple's Jobs-to-Cook handoff, the closest parallel, worked despite differing skill sets. If NVDA stumbles, Wedbush names AMD, then Cerebras, as the likeliest beneficiaries, since Google's TPUs can't be a primary third-party supplier and custom ASICs remain hard to execute. Wedbush also flags a reported US policy restricting Chinese firms' access to high-end accelerators outside China as a modest, non-primary revenue risk.",
+ "cards": [
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush rates NVDA Outperform with a 12-month price target of $345.00 against a $173.73 price at publication.",
+   "anchor": "Rating: OUTPERFORM Price: $173.73 12-Month Price Target: $345.00",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush derives its NVDA price target by applying a roughly 22X P/E multiple to its FY2028 EPS estimate plus net cash.",
+   "anchor": "We arrived at our price target by applying a PE multiple of ~22X to our FY2028 estimate (plus net cash).",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2028"
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "The New York Times reported that Nvidia CEO Jensen Huang likely had a second relationship with a direct report, based on accounts from five Nvidia employees.",
+   "anchor": "the NY Times reported that embattled Nvidia CEO Jensen Huang likely had a second relationship with a direct report per accounts from five Nvidia employees",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "The Wall Street Journal reported that Nvidia's board is preparing to oust its CEO following the relationship revelation.",
+   "anchor": "the WSJ writes that the Nvidia board is preparing to oust its CEO following this revelation",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Bloomberg reported that Nvidia has hired an executive search firm to identify potential CEO candidates.",
+   "anchor": "Bloomberg suggesting the company has hired an executive search firm to identify potential CEO candidates",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush does not view Jensen Huang's ouster as a certainty but believes it is currently the most likely outcome.",
+   "anchor": "we wouldn't view Jensen's ouster as fait accompli, this resolution appears the most likely end game at this point",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush believes NVDA's current valuation and near-term sales and demand setup moderate the risk of an executive transition and give the company leeway to find its footing.",
+   "anchor": "both the current valuation and near-term sales/demand setup moderate risk for the company and provide some leeway for NVDA to find its way",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "At roughly 10X FY2028 EPS, Wedbush says almost any level of uncertainty from the CEO situation is already priced into NVDA's stock.",
+   "anchor": "at ~10X FY'28 EPS, almost any level of uncertainty is already baked into the stock.",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY2028"
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "A 2016 board investigation found Marvell leadership had inappropriately pushed overly aggressive sales recognition, resulting in inflated company numbers.",
+   "anchor": "A 2016 board investigation, however, determined Marvell leadership had inappropriately pushed overly aggressively to recognize sales resulting in inflated company numbers.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "After a slow start, Marvell prospered following its 2016 leadership change and became one of the key players supporting the AI revolution.",
+   "anchor": "After what might be characterized as a slow start, Marvell has prospered, becoming one of the key players supporting the AI revolution",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Mark Hurd and Brian Krzanich both departed their CEO posts relatively abruptly following affairs, with no clear successors in place.",
+   "anchor": "Both Mark Hurd and Brian Krzanich departed their posts relatively abruptly following affairs with no clear successors in place.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush notes that HP and Intel had large established executive hierarchies and non-founder CEOs, unlike Nvidia's situation.",
+   "anchor": "these companies had large established executive hierarchies and the CEOs were not founders/visionaries.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush views Steve Jobs as the closest recent parallel to Jensen Huang in stature and company role.",
+   "anchor": "Steve Jobs is perhaps the closest recent technology executive (in stature and company role) to Jensen Huang.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush believes Tim Cook performed admirably for Apple and its shareholders during his time leading the company, prior to his recent departure.",
+   "anchor": "we believe it would be hard to argue that Tim Cook didn't perform admirably for Apple and shareholders during his time leading the company",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "NVDA has averaged a greater-than-5% earnings beat over the last four quarters.",
+   "anchor": "NVDA has averaged a 5%+ beat the last 4 quarters.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush expects NVDA to lift guidance and raise its roughly 70% next-year revenue growth forecast when it reports this quarter.",
+   "anchor": "if that changes this quarter and if NVDA doesn't also lift guidance and effectively increase the 70% revenue growth forecast for next year.",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "The Information reported that the US is finalizing policy that would prevent Chinese firms from accessing high-end NVDA accelerators in geographies outside China.",
+   "anchor": "The Information's report from yesterday suggesting the US is finalizing policy that would prevent Chinese firms from accessing high-end accelerators in geographies outside China.",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says the reported Chinese-accelerator export restriction is not NVDA's most significant revenue bucket but would still have some impact on sales.",
+   "anchor": "we don't see this revenue bucket as the most significant for NVDA, such a change would clearly have some impact on sales.",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says demand for AI processing is running ahead of supply, as evidenced by rising GPU rental rates.",
+   "anchor": "with demand for processing running ahead of supply (as evidence by rising rental rates for GPUs)",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says NVDA's material supply is locked up in many cases through 2027, if not 2028.",
+   "anchor": "with material supply in many cases locked up through 2027 if not 2028)",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027-2028"
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says NVDA's next-generation Rubin Vera chip is seemingly nearing launch.",
+   "anchor": "with Rubin Vera seemingly at the finish line",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "NVDA trades at roughly 10X Wedbush's CY2027 EPS estimate despite gross margins and expected FY1 revenue growth both around 70%.",
+   "anchor": "with NVDA trading at ~10x our CY2027 EPS numbers, despite GMs in the 70% range and expected FY1 growth in the 70% range",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "CY2027"
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says semiconductor companies with NVDA's margin and growth profile would typically trade at 20X to 30X-plus P/E multiples.",
+   "anchor": "more typically we would expect P/E multiples for semiconductor companies with these metrics to be in the 20X to 30X+ range)",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush believes NVDA's share price already bakes in substantial uncertainty beyond the CEO transition, including potential revenue and earnings disruption.",
+   "anchor": "we believe substantial uncertainty (beyond even the impact of a CEO transition) and even revenue and earnings disruption is already baked into NVDA's share price.",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush sees AMD as the clearest likely beneficiary if NVDA stumbles, given its Instinct platform's similarity to NVDA's offering.",
+   "anchor": "we see AMD as the clearest likely beneficiary with its Instinct platform offering the most similar solution today.",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush views Cerebras as the only other accelerator maker with significant current traction at large customers, positioning it to benefit from any NVDA misexecution.",
+   "anchor": "we would see any misexecution by NVDA as creating an opportunity for Cerebras, which as of today remains the only other party with significant traction",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says Google's TPUs are a competitive product but cannot be the primary source of industry accelerator supply because Google competes with its own primary customers.",
+   "anchor": "we believe Google offers an extremely competitive product, it also necessarily competes with its primary customers and as such, we believe cannot be the primary",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wedbush",
+   "document": "Nvidia: Where Do We Go From Here?",
+   "claim": "Wedbush says building custom ASICs and accelerators is difficult, with more failures than successful implementations to date.",
+   "anchor": "building ASICs and accelerators is difficult and stories of failures outpace those of successful implementations.",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/26775__wedbush-nvidia-where-do-we-go-from-here-12-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
