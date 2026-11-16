@@ -1,0 +1,39 @@
+{
+ "unread_source_files_at_edit": 25,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 18,
+  "cards": 303,
+  "max_doc_id": 26871
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 122,
+  "brief_citations": 6,
+  "distinct_cards_cited": 121,
+  "card_count": 303,
+  "quintiles": [
+   17,
+   19,
+   18,
+   33,
+   35
+  ],
+  "edge_quintile_share": 0.426,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Opens that size have historically turned into four to seven times the figure over the full session, which points to $450mn to $770mn today and a place among the ten biggest retail buying days in any U",
+    "cite": "c45,c46",
+    "reason": "figures not in cited card(s): ['450000000']"
+   }
+  ],
+  "word_count": 2055
+ }
+}
