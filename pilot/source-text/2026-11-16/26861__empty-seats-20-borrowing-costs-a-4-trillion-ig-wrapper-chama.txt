@@ -1,0 +1,196 @@
+ 
+Empty Seats, 20% Borrowing Costs, & A $4 Trillion 
+IG Wrapper: Chamath Maps The Neocloud 
+Endgame 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, NOV 11, 2026 - 04:15 PM 
+Last night CoreWeave delivered the best quarter in its history, then guided to a $1.1 billion 
+quarterly interest bill as debt hit $47 billion. Tucked deeper in the release was a number that 
+matters even more: only 37% of the power CoreWeave has signed for is actually switched on, 
+down from 41% a quarter earlier. 
+That gap between what has been promised and what is actually running is exactly what Social 
+Capital founder Chamath Palihapitiya, whose recent warnings about CoreWeave and neoclouds 
+"garnered considerable attention" (as Goldman's Allison Nathan put it), zeroes in on in 
+Goldman's latest flagship Top of Mind, "Is the AI investment cycle durable?" (available to pro 
+subs). His diagnosis, in his own words: 
+Those experiences revealed a mismatch between promised data center capacity, actual 
+capacity, and returns. That matters particularly for neoclouds, which are making enormous 
+commitments for GPUs, power, and data center capacity, while the demand needed to support 
+those commitments ultimately depends on end-customers earning a meaningful return on their 
+AI spending. 
+In other words, the entire neocloud stack is a bet that someone, somewhere, will eventually 
+make money using AI.And as Chamath points out, so far almost nobody can prove they have. 
+Airlines, Not Banks 
+Chamath's framing of the business model is the cleanest we have seen: 
+Neoclouds have the opposite funding model of a bank. Banks borrow short and lend long; 
+neoclouds use speculative short-term revenue to support long-dated, fixed obligations. The best 
+analogy for how the neocloud business works—made by both Ken Griffin and Sridhar 
+ 
+
+ 
+Ramaswamy—is the airline industry. GPUs are the engine. The data center is the airplane shell. 
+Powered land is the airport. Compute is the seat, sold to companies by the hour. And like an 
+empty airline seat, an unsold hour of compute is perishable. 
+So the whole thing lives or dies on utilization. Airlines need roughly 80-85% load factors to 
+break even; for neoclouds, Chamath puts the comparable figure at roughly 70-75%, depending 
+on operator and GPU class. Everything above that is where the money gets made. 
+The twist: the efficiency gains that make AI cheaper for customers hurt whoever owns the 
+GPUs. Operators can't upgrade every time Nvidia ships a new chip because they still have to 
+amortize the old ones, and smaller models mean fewer tokens. Demand has to outrun the 
+efficiency gains, or the seats go empty. 
+Which brings us to the bear case, and it is a remarkably unexciting one: 
+The bear case is largely the status quo: companies continue spending on AI, but most of that 
+spending remains in the experimentation bucket rather than becoming large, recurring 
+enterprise commitments. In that scenario, token consumption never explodes, leaving 
+neoclouds in the 75-85% utilization gray zone in which they are making money, but not enough 
+to pay off their debts before their hardware becomes obsolete. Nothing needs to get much 
+worse for that outcome to materialize. 
+The bond market has already worked this out. CoreWeave's 9.75% 2031 notes now yield north 
+of 16%, and its 5-year CDS has blown out from below 500bp in June to roughly 1,300bp at the 
+peak (chart read approximate): 
+ 
+
+ 
+ 
+"Essentially Zero" 
+Why hasn't the ROI shown up? Chamath, who started the AI-native software platform 8090 
+specifically to find out whether AI was producing real returns ("because I was not convinced it 
+was"), lists two culprits. The first is people: 
+People in the middle ranks of firms are often skeptical or afraid of the technology, so they push 
+back on implementation, significantly slowing diffusion. And even when AI generates 
+productivity gains, they are often lost elsewhere in the value chain; AI may save an employee 
+two hours a day, but that does not necessarily mean the employer gains two hours of productive 
+output. So, the number of companies that can attribute earnings or profitability gains to AI is 
+essentially zero today. 
+Goldman's own numbers more or less back him up: during Q3 earnings season, US portfolio 
+strategist Ryan Hammond counts just 4% of S&P 500 companies quantifying an earnings 
+impact from AI, even as 68% mentioned it on their calls. Lots of talk, few receipts. 
+ 
+
+ 
+The second culprit is the pricing model. AI is sold as inventory (cost per million tokens) rather 
+than as an outcome, and more agents burning more tokens can actually raise a company's total 
+costs even as the price per token falls. Chamath's analogy is the internet in 1999, when 
+everyone sold banner ads by the thousand impressions until Google came along with 
+cost-per-click: 
+Eventually, a company will sell the technology on a cost-per-outcome basis, allowing enterprises 
+to directly assess how much value their spending generated. But that business model does not 
+exist yet. 
+Not exactly a ringing endorsement of the $1.4 trillion consensus now expects the six 
+hyperscalers to spend on capex next year. 
+All Roads Lead Back To The IG Wrapper 
+So if the ROI never comes, who eats the loss? Chamath says the SPVs funding much of the 
+buildout are "well isolated and structured to minimize risk", but then comes the line that should 
+make every IG credit investor sit up: 
+Ultimately, though, all roads lead back to the investment grade (IG) issuers funding the capex 
+buildout: the hyperscalers. The SPVs may isolate risk effectively, but most are underpinned by 
+an IG wrapper somewhere in the system. It is striking that many hyperscalers have shifted from 
+being massively cash flow positive, buying back stock, and largely avoiding debt issuance to 
+issuing debt and equity to finance the buildout. So, they have made an all-in bet that they can 
+backstop the buildout because they believe the AI bull case will ultimately prove right. They will 
+probably be right. The question is when. 
+Regular readers know exactly how big that backstop has become. Our off-balance sheet tracker 
+hit $4.1 trillion at the end of October, up $1 trillion in 90 days, and we flagged the $3.6 trillion 
+milestone as soon as Meta and SpaceX reported: 
+Goldman's chief credit strategist Amanda Lynam, also in this Top of Mind, now puts the bank's 
+number on the same pile: $1.7 trillion of hyperscaler lease commitments, 75% of which haven't 
+commenced yet, plus $1.9 trillion of other unconditional purchase commitments, $685 billion of 
+which comes due by the end of 2027. We took the bank's tally apart line by line on Monday in 
+"An Additional Use Of Cash", and the short version is that Goldman's hyperscaler-only count is 
+the floor: 
+ 
+
+ 
+ 
+Meanwhile, the visible debt keeps piling up. With $67 billion+ of deals announced since October 
+29, the hyperscalers have sold $296 billion of bonds year-to-date, already above Goldman's 
+$250 billion full-year forecast (we covered the blowout in "Credit Crunch Imminent"). Include 
+everyone else and AI-related debt issuance hits $687 billion this year, with only 43% coming 
+directly from the hyperscalers. Even Meta admitted in an SEC filing that "timing is important to 
+secure capital before competitors saturate various funding options." Translation: borrow now, 
+before the other guys drain the pool. 
+And that is because the hyperscalers' capex now exceeds their operating cash flow, a level last 
+seen in the S&P 500 telecom sector at the peak of the dot-com bubble (and we know how that 
+one ended): 
+ 
+
+ 
+ 
+Goldman's estimates have roughly 35% of hyperscaler capex debt-funded this year and next, up 
+from about 24% in 2025 (chart read approximate): 
+ 
+
+ 
+ 
+Borrowing At 20%, CDS At 1,000bp 
+Chamath doesn't expect a 1999-style crash. He expects a "rationalization", and his preferred 
+enforcer is the bond market: 
+If lenders remain unconvinced by neoclouds' utilization assumptions, or they fail to support 
+those assumptions with specific evidence, the cost of capital will rise. The weakest credits could 
+face borrowing costs approaching 20%, CDS spreads could approach 1000bp, and even IG 
+borrowers could face near-double-digit funding costs. The cost of capital is the single most 
+powerful forcing mechanism: if the AI ecosystem must finance itself at rates of 12-20%, the 
+market would be effectively telling the participants to stop fooling around and make the ROI 
+case clear. 
+For CoreWeave that scenario is already here, and last night management effectively conceded 
+the point, with CEO Mike Intrator saying the company "will not use the unsecured debt market to 
+ 
+
+ 
+fund our business at current yields, nor do we need to." Instead, CoreWeave is leaning on 
+customer prepayments and its next delayed-draw term loan, which it expects to price at an 
+implied 7-7.5%. 
+That is also the core of Goldman software analyst Gabriela Borges' defense in the same report: 
+the CDS blowout partly reflects investors using it as a hedge (it is one of the few liquid data 
+center CDS around), the secured DDTLs price "much lower" than the 16% yield-to-worst on the 
+unsecured bonds, and 95%+ of the business sits on 4-5 year take-or-pay contracts. She sees "a 
+very low probability of further pressure on CoreWeave's debt service obligations." Maybe. But a 
+company whose debt rose by $11.8 billion in a single quarter probably shouldn't need a sell-side 
+analyst explaining that its CDS is "just a hedge." 
+Meanwhile, the hyperscalers themselves aren't immune either. CDS on Meta, Nvidia, Google 
+and Amazon has drifted steadily wider all year, with Oracle the clear outlier: 
+ 
+Still, Chamath thinks the hyperscalers come out fine, and the reason is a little uncomfortable for 
+neocloud equity holders: the big guys simply won't keep wrapping operators who fail to execute. 
+He notes that Microsoft recently walked away from a planned data center project in Europe over 
+execution issues, which fits with last week's Bloomberg report that "leaders at MSFT have 
+ 
+
+ 
+grown frustrated with the neocloud providers over high costs and delays." And if some 
+neoclouds fail, the hyperscalers just buy the assets: 
+I suspect that in five years, the hyperscalers will end up being massive direct owners of land, 
+power, and shell for this reason. So, the hyperscalers will be fine in the end. 
+Goldman internet analyst Eric Sheridan agrees with the ranking: he thinks the six major 
+hyperscalers (now including SpaceX) can "easily achieve a 15%+ return on invested capital", 
+backed by a $1.8 trillion cloud backlog. But even he admits the circular financing "continues to 
+make me nervous", likening it to the late-1990s telecom buildout: "someone starts pulling on a 
+thread, and the next thing you know, your whole sweater is at your feet." 
+Eighteen Months To Show The Receipts 
+So how long does the industry have? Chamath's answer: the next 18 months are critical, as 
+more of the AI stack goes public and investors see whether model providers can shift from 
+selling tokens à la carte toward outcome-based pricing (his tell: the revenue mix between tokens 
+and subscriptions). Where things stand today: 
+The underlying issue remains the same: someone still has to provide canonical, falsifiable proof 
+of a direct link between AI spending and ROI. And nobody has done that yet. 
+Chamath thinks the most likely outcome is "a correction and a redistribution of assets rather 
+than a crash", with the hyperscalers scooping up the wreckage. We are a little less sanguine. A 
+redistribution of assets is a crash if you happen to own the neocloud's bonds or equity, and the 
+hyperscalers doing the scooping are the same ones that have quietly stacked up $4.1 trillion in 
+off-balance sheet commitments while their capex runs ahead of their cash flow. As we have 
+been warning since last October, AI became a debt bubble too, and Chamath just told 
+Goldman's clients where it ends: wherever the IG wrapper does. 
+And here is the scale of what is riding on that wrapper: an AI buildout on track to swallow a 
+bigger share of GDP than the railroads, electrification, the interstate highways or the telecom 
+bubble ever did: 
+ 
+
+ 
+ 
+Much more in the full Goldman Top of Mind "Is the AI investment cycle durable?", available to 
+pro subs. 
+ 
+ 
+ 
+ 
