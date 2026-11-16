@@ -1,0 +1,131 @@
+{
+ "brief": "Media reports suggest NVIDIA's Board of Directors is preparing to replace Jensen Huang as CEO and is working with an outside firm on successor candidates. UBS argues the impact would be felt across three areas. First, financing: NVIDIA generates roughly $50-60B/quarter in free cash flow, a large portion of which recycles back into financing for neo-clouds, LLM developers, ecosystem partners and suppliers that Huang has personally driven; even a leader who maintains the same approach could pause these deals near term, potentially pulling $50B or more out of the system temporarily, at a time when rates are rising and parts of the credit market are less liquid. Second, supply chain: UBS views Huang as uniquely ahead of peers in locking in long-term agreements for memory, substrates and other inputs. Third, separately from the succession question, UBS flags risk of tighter US restrictions on shipments to China and to alternate regions such as Singapore, which was near 20% of revenue when NVIDIA last disclosed its geographic split; UBS estimates exposure at risk around 10% of revenue. UBS keeps its Buy rating and $300 price target unchanged, calling any succession impact a multi-year question.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "Media reports suggest NVIDIA's Board of Directors is working with an outside firm to determine candidates to succeed Jensen Huang as CEO.",
+   "anchor": "Jensen Huang as CEO and working with an outside firm to determine candidates as",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "UBS estimates that NVIDIA is generating approximately $50 billion to $60 billion per quarter in free cash flow.",
+   "anchor": "We estimate NVDA is generating ~$50-60B/Q in FCF - a big",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "UBS estimates a pause in NVIDIA-driven financing could take roughly $50 billion or more out of the financial system, at least temporarily, at a potentially key time.",
+   "anchor": "$50B or more out of the system - at least temporarily - at a potentially key time",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "UBS notes Singapore represented nearly 20% of NVIDIA's revenue at the time the company last changed its geographic revenue disclosures, in mid-2025.",
+   "anchor": "disclosures in mid-C2025, but Singapore was at that time nearly 20% of revenue.",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "UBS estimates NVIDIA's revenue exposure at risk from potential new US restrictions on shipments to China and Singapore could be in the range of approximately 10% of revenue.",
+   "anchor": "the range of ~10% of revenue.",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "UBS reiterates its unchanged price target of $300 for NVIDIA, based on an approximately 14x C2028E P/E multiple.",
+   "anchor": "Our PT remains unchanged at $300, based on a ~14x C2028E P/E multiple (unchanged)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: Media Reports on CEO Change; A Few Thoughts",
+   "claim": "UBS forecasts NVIDIA C2028E EPS of $22.08, unchanged from its prior estimate.",
+   "anchor": "applied to C2028E EPS of $22.08 (unchanged).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/26773__ubs-nvidia-corp-media-reports-on-ceo-change-a-few-thoughts-2.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 7,
+  "matched": 7,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
