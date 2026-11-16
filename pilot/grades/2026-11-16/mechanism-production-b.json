@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-16/26658__nvidia-corp-nvda-our-thoughts-on-the-company-s-announced-man.txt",
+ "source_span": "we reduce our 12-month price target to $220 from $300, based on 22X P/E multiple (down from 30X previously) applied to our normalized EPS estimate of $10.00 (unchanged)",
+ "source_chain": "Nvidia's 12-24 month backlog and defined product roadmap shield earnings power over the next 12-18 months, therefore leadership uncertainty falls on the P/E multiple instead of the EPS estimate, therefore Goldman cuts its target to $220 from $300 purely via multiple compression (30X to 22X) with EPS unchanged at $10.00; invalidation: holds until more clarity emerges on future leadership and business momentum (the Apple analogy \u2014 the market needs time to find the right multiple).",
+ "pulse_chain": "Nvidia is sold out for two years (backlog), therefore losing Huang does not cut near-term profit, therefore the damage shows up in what investors pay per dollar of profit, not the profit itself \u2014 Goldman's cut to $220 from $300 is entirely a valuation cut (22x instead of 30x) with none from lower profit forecasts; invalidation: locked-in orders protect 2027 revenue and do nothing for the valuation until a permanent CEO is named.",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's own sequence \u2014 backlog protects earnings, so the hit lands on the multiple not the EPS forecast \u2014 correctly attributed to Goldman with the same figures ($220/$300, 22x/30x) and the same leadership-clarity invalidation, just compressed and reworded.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

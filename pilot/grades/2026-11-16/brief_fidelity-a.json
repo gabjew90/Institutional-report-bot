@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d17",
+   "tier": "rest",
+   "bank": "Wolfe Research",
+   "source_chain": "NYT reports a second affair (with a subordinate) therefore board's effort to keep Huang gets harder therefore an announcement is possible as early as today, but if he steps down there is zero fundamental/earnings/order impact through CY28 (sold out, roadmap set) therefore the only real effect is a hard-to-size multiple discount, much of which may already be priced in given the stock's sub-8x FY29 multiple; separately, export-control fears are overstated because China AI shipments are de minimis and Beijing itself restricts H200 use.",
+   "brief_chain": "Same chain: NYT affair report makes keeping Huang more challenging though not impossible, board met and announcement possible as early as publication day; if Huang steps down, zero fundamental impact through CY28 since sold out and roadmap sets that far; damage limited to a hard-to-size multiple discount, partly already priced in given sub-8x FY29 multiple; export-control worries dismissed as misplaced given de minimis China shipments and Beijing's own H200 restriction.",
+   "distortions": [
+    {
+     "what": "Brief adds 'though not impossible' as an explicit qualifier; the source only implies this by saying the board 'will make their best efforts to keep him' despite the new allegations, without using the word 'impossible.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying stance (board still trying, but it's harder) is unchanged; this is an inference consistent with the source, not a new claim."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d18",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Huang resigns amid two alleged relationships (one tied to Chinese intelligence) therefore CDS spike and JPM expects continued spread weakness through the leadership transition and legal/regulatory fallout therefore JPM stays Underweight; separately, the halted-then-DOJ-moved Megaspeed probe plus a more hostile post-midterm Congress raises credit risk beyond China sales to overseas customers/financing; separately, Huang's exit removes the system's chief financing advocate, compounding existing circularity risk from NVIDIA's balance-sheet support of weaker AI counterparties, though hyperscaler plans are not expected to change near-term.",
+   "brief_chain": "Same chain: JPM reiterates Underweight after Huang's resignation over the two alleged relationships and the 'no secrets compromised' statement; Kress named interim CEO while board weighs successors; CDS at record highs, JPM expects weaker spreads through the transition/fallout; Megaspeed probe moved to DOJ (not dropped) after NVIDIA contact, tougher oversight expected from the more Democratic incoming Congress, risk extends beyond China sales to overseas customers/financing; circularity risk from balance-sheet support plus loss of Huang as financing advocate, though hyperscaler near-term plans unaffected.",
+   "distortions": [
+    {
+     "what": "Brief compresses the credit-risk-extension clause to 'overseas customers and financing,' dropping the source's 'end users and infrastructure projects.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the Underweight thesis and its stated risk channel are preserved; this is a compression of supporting detail."
+    },
+    {
+     "what": "Brief paraphrases 'last week's blue wave' as 'the new, more Democratic Congress,' and omits the specific $35bn debt-outstanding figure and the three stated upside risks to the rating.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 'blue wave' is a faithful translation of the political shift driving the oversight call, and the dropped figures are secondary color, not the rating driver."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d11",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Media reports say the board is readying a Huang ouster and is sourcing successors with an outside firm therefore three impact channels: (1) financing \u2014 Huang personally drives NVIDIA's $50-60B/Q FCF recycling into the AI ecosystem, so even a steady-handed successor could pause ~$50B+ of it temporarily amid tightening/less-liquid credit; (2) supply chain \u2014 Huang was uniquely ahead on long-term input agreements; (3) separately, tighter China/Singapore export restrictions could put ~10% of revenue at risk (Singapore was ~20% of revenue at last disclosure); UBS keeps Buy/$300 PT, calling any succession impact a multi-year question.",
+   "brief_chain": "Same chain, same three channels, same $50-60B/Q FCF and ~$50B temporary-pause figures, same ~20%-of-revenue Singapore figure and ~10%-of-revenue at-risk estimate, same unchanged Buy/$300 PT and multi-year framing.",
+   "distortions": [
+    {
+     "what": "Brief frames the export-restriction point as 'separately from the succession question,' a characterization the source implies (via its closing line that any CEO-related impact 'goes beyond the CEO') but does not state explicitly as a structural separation of the three points.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the figures, direction and PT are unchanged; this only affects which paragraph the point is filed under conceptually."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d24",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Huang resigns after reports he was a target of foreign intelligence efforts therefore NVDA falls >4.3%, dragging the Nasdaq and Asian tech markets therefore UBS reads this as proof key-person/governance risk now matters alongside earnings growth given AI gains' narrow concentration; separately, the market is rotating from rewarding capex commitments to monetization/balance-sheet/utilization scrutiny even though underlying AI demand (cloud revenue, $1.0tr/$1.4tr capex forecasts) stays robust; separately, China chip restrictions are unlikely to ease and deployment scrutiny may rise, hurting overseas sales without denting demand given tight supply; therefore UBS keeps structural AI conviction but argues for more selectivity (favoring hyperscalers, selective quality semis/hardware, diversification).",
+   "brief_chain": "Same chain and same figures (4.3% NVDA drop, 0.4% Nasdaq drag, Taiwan/Korea pressure, Kress as interim CEO, Jones as chair, $1.0tr/$1.4tr capex forecasts, ~10%... no, same selectivity conclusion and favored exposures).",
+   "distortions": [
+    {
+     "what": "Brief drops the source's full 'AI is increasingly a geopolitical issue' paragraph (tracking requirements, regulatory scrutiny, alternative supply chains/domestic capacity) and the specific 'defensive technology exposures such as payment networks and potential beneficiaries of lower memory costs' detail under the selectivity call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both are supporting elaboration on the same selectivity/export-restriction thesis the brief already states; no distinct stance or instrument is lost."
+    },
+    {
+     "what": "Brief implies the NVDA drop caused the Nasdaq decline, which in turn pressured Taiwan/Korea; the source's clause order suggests the Taiwan/Korea pressure came first ('after earlier putting pressure on' those markets), with the Nasdaq drag separate.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 sequencing among simultaneous market reactions to the same headline doesn't change any stance, lean or figure."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

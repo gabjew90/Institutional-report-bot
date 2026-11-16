@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-16/26773__ubs-nvidia-corp-media-reports-on-ceo-change-a-few-thoughts-2.txt",
+ "source_span": "We estimate NVDA is generating ~$50-60B/Q in FCF... this could easily take ~$50B or more out of the system - at least temporarily - when interest rates are rising and certain segments of the credit market have become less liquid.",
+ "source_chain": "Jensen Huang's likely removal therefore a pause in the financing role he personally drove for neo-clouds, LLM developers and suppliers therefore roughly $50B/quarter of that recycled free cash flow is temporarily pulled out of the AI financing system, at a time rates are rising and parts of the credit market are already thin (invalidation/boundary: UBS treats this as a temporary liquidity effect, not a fundamentals change, and leaves its $300 PT and C2028E EPS unchanged).",
+ "pulse_chain": "Huang's likely removal (board preparing to oust him, stock down ~9-11%) therefore the open question is whether the financing and supply-lock role he personally built is replaceable therefore, per UBS, a leadership pause could pull roughly $50B/quarter temporarily out of that financing system while rates rise and credit is thin (invalidation deferred to the Nov 18 board decision: an operator with the roadmap intact resolves it, unresolved diversion/export questions leave the overhang).",
+ "preserved": true,
+ "why": "The pulse reproduces UBS's figure, direction, and temporary/thin-credit qualifier without reversing it or attributing it to a different bank, and the added replaceability/governance framing is additive rather than a contradiction of UBS's own (unstated) boundary condition.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

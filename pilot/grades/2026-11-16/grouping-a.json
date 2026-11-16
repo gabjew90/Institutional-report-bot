@@ -1,0 +1,63 @@
+{
+ "metric": 1,
+ "total_cards": 265,
+ "fragmentation_sets": [
+  {
+   "subject": "Post-midterm AI-sector equity selloff: recovery signs vs. structural put-erosion risk",
+   "labels": [
+    "post midterm equity put risk",
+    "equity credit rebound"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "US housing market and mortgage-rate conditions",
+   "labels": [
+    "us housing market slowdown",
+    "mortgage rate decline"
+   ],
+   "cards": 7
+  },
+  {
+   "subject": "Iran war de-escalation and Saudi oil-supply recovery",
+   "labels": [
+    "iran geopolitical risk",
+    "saudi oil production recovery"
+   ],
+   "cards": 15
+  }
+ ],
+ "fragmented_mass_share": 0.13,
+ "mis_merges": [
+  {
+   "label": "nvidia ai narrative shift",
+   "subjects": [
+    "Mizuho's standalone NVDA financial/TAM modeling (FCF forecast, bull/bear price targets, CPU revenue, PC gaming/auto share)",
+    "the AI-compute competitive-moat narrative (GPU/ASIC share parity, CUDA lock-in weakening, Google TPU/AMD gains) from J.P. Morgan and William Blair"
+   ],
+   "would_change_theme_selection": true,
+   "why": "An editor scanning labels could read this as one already-covered NVDA valuation theme and miss that the competitive-moat-erosion story (Nvidia's software lock-in weakening to Google TPU and AMD) is a distinct, timely angle worth its own brief alongside the CEO-succession theme."
+  },
+  {
+   "label": "reit timber operating updates",
+   "subjects": [
+    "STAG Industrial leasing and rent-growth metrics",
+    "Weyerhaeuser lumber/OSB price realizations"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both are minor single-name operational updates too small to be a lead or brief theme on this day regardless of grouping."
+  }
+ ],
+ "pass": false,
+ "notes": "The labeled card lists in this input sum to 265 cards, not the 776 stated in the ledger header; fragmentation share is computed over the visible 265. misc holds 12/265 (4.5%) cards, correctly treated as ungrouped overflow, not fragmentation.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

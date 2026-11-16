@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d17",
+   "tier": "rest",
+   "bank": "Wolfe Research",
+   "source_chain": "NYT reports Huang had an affair with a subordinate executive, on top of the Chinese-intelligence allegations, making it harder (not impossible) for the board to keep him; board met the prior evening and an announcement is possible as soon as this note's date \u2192 if Huang steps down, Wolfe sees zero fundamental/earnings/order impact through CY28 since NVDA is sold out and its roadmap already runs that far \u2192 the real cost would be a hard-to-size multiple discount, much of which may already be priced in given the stock trades under 8x FY29 earnings \u2192 separately, export-control fears are overblown since China AI shipments are de minimis and China already restricts the permitted H200.",
+   "brief_chain": "NYT affair report makes it more challenging, though not impossible, for the board to keep Huang; board met the evening before, announcement possible as early as publication day \u2192 if Huang steps down, zero fundamental/earnings/order impact through CY28 (sold out, roadmap already set) \u2192 damage limited to a hard-to-size multiple discount, partly already priced in at sub-8x FY29 earnings \u2192 export-control worries dismissed since China shipments are de minimis and China already restricts the H200.",
+   "distortions": [
+    {
+     "what": "Brief states NVDA 'is sold out' through CY28; source qualifies this as 'mainly sold out through that period.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the rating, PT and zero-fundamental-impact call are unchanged either way; dropping 'mainly' doesn't alter the stance or figures."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d18",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Huang resigns as CEO amid reports of a relationship tied to Chinese intelligence and a separate relationship with an NVIDIA employee, after reports the board was preparing to remove him \u2192 Kress named interim CEO, CDS hits record highs \u2192 JPM stays Underweight, expecting weaker cash spreads through the leadership transition and legal/regulatory fallout \u2192 separately, the Megaspeed export-diversion case moving to DOJ plus a more Democratic incoming Congress raises oversight and export risk beyond China sales \u2192 NVIDIA's balance-sheet support for lower-rated AI counterparties creates circularity risk that Huang's exit (an advocate reassuring lenders) makes harder to manage, though hyperscaler plans aren't expected to change near-term.",
+   "brief_chain": "Huang resigns following board moves to remove him over the two alleged relationships; NVIDIA denies secrets were compromised \u2192 Kress interim CEO while board weighs successors \u2192 CDS at record highs, JPM stays Underweight expecting weaker spreads through transition/fallout \u2192 separately, the Megaspeed probe moving to DOJ plus a more Democratic Congress in January raises oversight risk beyond China sales \u2192 circularity risk from NVIDIA's counterparty financing, worsened by losing Huang as an advocate to lenders, though hyperscaler plans are expected to hold.",
+   "distortions": [
+    {
+     "what": "Brief frames the board's action as 'board moves to remove him'; source attributes this only to media reports ('after reports that the board was preparing to remove him').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 JPM's Underweight call and rationale are the same regardless of whether the removal effort is stated as fact or as reported; the resignation itself is undisputed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d11",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Media reports the board is preparing to replace Huang with outside-firm help \u2192 UBS flags three channels: (1) financing \u2014 Huang personally drove the ~$50-60B/quarter FCF recycling into ecosystem financing, which could pause and pull ~$50B+ out of the system temporarily at a time of rising rates and thinner credit liquidity; (2) supply chain \u2014 Huang was uniquely ahead of peers locking in long-term memory/substrate agreements; (3) separately, risk of tighter export restrictions to China and regions like Singapore/Malaysia, with Singapore near 20% of revenue at last disclosure and ~10% of revenue estimated at risk \u2192 UBS keeps Buy/$300 PT, framing any CEO-succession effect, like other company issues, as something that plays out over years.",
+   "brief_chain": "Media reports the board is preparing to replace Huang with outside-firm help \u2192 UBS flags three areas: financing (Huang-driven ~$50-60B/quarter FCF recycling, pause risk pulling $50B+ out of the system amid rising rates/less liquid credit), supply chain (Huang uniquely ahead on long-term memory/substrate agreements), and separately, export-restriction risk to China and Singapore (~20% of revenue at last disclosure, ~10% estimated at risk) \u2192 UBS keeps Buy/$300 PT, calling any succession impact a multi-year question.",
+   "distortions": [
+    {
+     "what": "Brief names only Singapore among the alternate regions at risk from tighter restrictions; source also names Malaysia.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the ~10% of revenue estimate and the Buy/$300 PT are unchanged; Malaysia is a secondary example within the same risk point."
+    },
+    {
+     "what": "Brief ties the 'multi-year question' framing specifically to succession impact; source applies that framing more broadly ('this goes beyond the CEO... for any company... would take years to manifest'), alongside other unlisted issues like the product roadmap.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the rating/PT and the substance of the three risk channels are identical; this is a scope narrowing of a closing caveat, not a change in UBS's call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d24",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA fell >4.3% Thursday, dragging the Nasdaq ~0.4% lower and pressuring Taiwan/South Korea tech, after Huang resigned following reports he was the target of a foreign intelligence effort; Kress becomes interim CEO, Jones becomes board chair \u2192 UBS reads this as key-person/governance risk now mattering alongside earnings growth given AI gains' concentration in a narrow group of names, as investors rotate from rewarding spending commitments to assessing monetization/balance sheets/utilization/returns, even though underlying AI demand (cloud revenue, capex forecasts) stays robust \u2192 separately, US-China chip restrictions are unlikely to ease and deployment scrutiny could rise, hurting overseas sales without denting underlying demand given tight compute supply \u2192 UBS keeps its structural AI conviction but argues for more selectivity (favoring strong hyperscalers and quality semis/hardware with less margin expansion to unwind, plus defensive tech and memory-cost beneficiaries) and diversification.",
+   "brief_chain": "NVDA fell >4.3% Thursday, dragging the Nasdaq ~0.4% lower and pressuring Taiwan/South Korea tech, after Huang resigned following reports he was the target of a foreign intelligence effort; Kress interim CEO, Jones board chair \u2192 UBS reads this as key-person/governance risk now mattering alongside earnings growth given AI gains' concentration, amid a rotation from spending-commitment euphoria to monetization/balance-sheet scrutiny, even as underlying demand stays robust \u2192 separately, US chip restrictions to China are unlikely to ease and scrutiny could rise, hurting overseas sales without denting demand given tight supply \u2192 UBS keeps structural AI conviction but argues for more selectivity (strong hyperscalers, selective quality semis/hardware) and diversification.",
+   "distortions": [
+    {
+     "what": "Brief drops the 'less margin expansion to unwind' qualifier on which semis/hardware names UBS favors.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the selectivity call and the named favored groups are unchanged; this is a dropped secondary qualifier."
+    },
+    {
+     "what": "Brief omits UBS's mention of defensive tech exposures (payment networks) and potential beneficiaries of lower memory costs in consumer electronics as additional favored areas.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are additional examples within the same 'more selectivity/diversification' conclusion, not a change to the house view."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

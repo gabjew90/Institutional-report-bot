@@ -1,0 +1,44 @@
+{
+ "metric": 1,
+ "total_cards": 266,
+ "fragmentation_sets": [
+  {
+   "subject": "NVDA stock reaction to Huang's exit \u2014 institutional downgrades vs. retail buying frenzy",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda retail buying surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Post-midterm political friction on the AI data-center buildout (permitting/moratoriums and who pays for power)",
+   "labels": [
+    "ai buildout political backlash",
+    "ai data center power spend"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "Post-midterm equity/credit regime debate \u2014 put erosion vs. recovery",
+   "labels": [
+    "post midterm equity put risk",
+    "equity credit rebound"
+   ],
+   "cards": 12
+  }
+ ],
+ "fragmented_mass_share": 0.1842,
+ "mis_merges": [],
+ "pass": false,
+ "notes": "Ledger header states 776 cards but only 266 are enumerated under the reader topic labels provided; this grading covers only the enumerated cards. No mis-merge reached the bar (one label forcing together subjects a careful reader would never combine); 'europe growth debt risk' and '2026 midterm election results' bundle several angles each but read as one note's takeaways, not a forced merge. Fragmentation alone (18.4% of visible cards) already fails the 10% threshold, driven mainly by the Huang-exit story being split across succession-risk and retail-flow labels.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

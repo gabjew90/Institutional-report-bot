@@ -1,0 +1,73 @@
+{
+ "metric": 1,
+ "total_cards": 776,
+ "fragmentation_sets": [
+  {
+   "subject": "Jensen Huang's shock NVIDIA exit: analyst succession-risk downgrades and the retail market's reaction to the same news",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda retail buying surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Post-midterm equity/credit volatility regime: structurally elevated vol with the Fed/Trump put eroding (Bloomberg) vs. this week's technical stabilization in equities and credit (RBC)",
+   "labels": [
+    "cross asset volatility regime shift",
+    "post midterm equity put risk",
+    "equity credit rebound"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "US housing slowdown amid elevated (but recently easing) mortgage rates",
+   "labels": [
+    "us housing market slowdown",
+    "mortgage rate decline"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.0863,
+ "mis_merges": [
+  {
+   "label": "nvidia ai narrative shift",
+   "subjects": [
+    "NVDA's financial/valuation and TAM model (Mizuho's bull/bear price targets, FCF and segment estimates; J.P. Morgan's GPU/ASIC parity thesis) \u2014 belongs with the earnings-preview theme",
+    "The Huang-departure-driven competitive-threat narrative (William Blair: AMD/Broadcom/Google competition, CUDA lock-in weakening) \u2014 belongs with the Huang succession/retail-reaction theme"
+   ],
+   "would_change_theme_selection": false,
+   "why": "NVDA/Huang is already the day's dominant story by card mass regardless of which label the competitive-threat cards sit under, and the financial-model cards would simply join the existing earnings-preview theme without adding or removing a lead theme."
+  },
+  {
+   "label": "europe growth debt risk",
+   "subjects": [
+    "European corporate capex/sector fundamentals from the UBS conference (supply constraints, cost pass-through, bank profitability)",
+    "Sovereign debt monetization and government-credibility sentiment poll (two-thirds expect monetization, 63% see false promises) plus a separate private-credit risk flag"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both halves are diffuse single-conference color too thin on their own to be picked as a lead theme, combined or split."
+  },
+  {
+   "label": "reit timber operating updates",
+   "subjects": [
+    "STAG Industrial's leasing volume and rent-spread update",
+    "Weyerhaeuser's lumber/OSB realized pricing update"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Two unrelated single-stock operating updates totaling only 5 cards, far too small to affect which themes an editor would lead with."
+  }
+ ],
+ "pass": true,
+ "notes": "misc holds 12 cards (1.5% of the day), counted in fragmented mass per the overflow rule. The two large fragmentation sets (Huang/NVDA reaction split, and the Bloomberg/RBC post-midterm vol-regime split) account for most of the fragmented mass; the day stays just under the 10% line at 8.6%.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

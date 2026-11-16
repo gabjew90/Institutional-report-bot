@@ -1,0 +1,147 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+   "span": "Huang was the driving force behind Nvidia's creative financing schemes at customers... He was equally central on the supply side, securing leading allocations of memory, wafers, and optics... what's at risk is the next round of deals",
+   "why": "William Blair's bear case is explicitly that Huang's irreplaceable skill was locking in supply allocations and financing customers' purchases, and that this (not the existing book) is what's at risk from his departure."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26750__ms-quantitative-equity-research-ai-correction-multiples-rese.txt",
+   "span": "Multiple compression accounts for the correction, although future earnings risks may already be priced into share prices... distinguish multiple compression from earnings revisions",
+   "why": "MS frames the correction exactly as a question of multiple compression vs. anticipated earnings deterioration, finding compression explains more than the whole decline while earnings estimates actually rose."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+   "span": "we are downgrading NVDA to Market Perform and will wait for the dust to settle before reassessing",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26765__mizuho-nvidia-corporation-increasing-challenges-with-trouble.txt",
+   "span": "Maintain NVDA at Outperform with $250 PT, ~16x F28E P/E... be a significant distraction for NVDA for the next 6-7 months",
+   "why": "All figures (rating, PT, multiple, distraction duration) match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26765__mizuho-nvidia-corporation-increasing-challenges-with-trouble.txt",
+   "span": "Earnings on Nov 17 - We see upside into OctQ/JanQ earnings",
+   "why": "Confirmed via 27181 that Nov 17 2026 is a Tuesday; Mizuho confirms the Nov 17 report is the OctQ (October-quarter) print."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26587__core-inflation-starts-biting.txt",
+   "span": "core CPI was solid, both in quantity (0.3% MoM SA for the third time in a row)... OER (rent), car insurance and recreation services were all strong",
+   "why": "Exact match on figure, streak length, and the named broad-based categories."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26871__voters-just-repriced-the-ai-buildout-citadel-securities-bond.txt",
+   "span": "I remain constructive on the long-term demand for AI, but increasingly selective about where the economic rents from that demand will accrue... shaped as much by political consent... as by the extraordinary technological possibilities",
+   "why": "Source is attributed to Citadel Securities (meta.json) and argues politics, not demand, now governs who captures AI earnings."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26871__voters-just-repriced-the-ai-buildout-citadel-securities-bond.txt",
+   "span": "Texas Governor-elect Gina Hinojosa's commitment to maintain a moratorium until stronger protections are legislated... Pennsylvania's Shapiro administration already offers greater permitting speed and certainty to projects meeting standards on electricity affordability and community benefits",
+   "why": "Direct match on both named officials and conditions."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26871__voters-just-repriced-the-ai-buildout-citadel-securities-bond.txt",
+   "span": "restricting incremental capacity should support utilisation and the scarcity value of the installed base... my relative preference for hyperscalers with operational compute, secure power access, financial flexibility, and several routes to monetisation",
+   "why": "Direct match on mechanism and the named hyperscaler preference criteria."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+   "span": "Leadership Vacuum... Our concern, though, is that without Huang, Nvidia loses the creative, relationship-driven dealmaking... The Competitive Moat Is Narrowing",
+   "why": "The note's second key concern (Leadership Vacuum, continued into the dealmaking/moat discussion) is argued entirely on financing and competitive-moat grounds, not governance.",
+   "searched": [
+    "Leadership Vacuum",
+    "governance"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26587__core-inflation-starts-biting.txt",
+   "span": "we expect more acceleration in Eurozone core inflation towards 2.6% at year-end and 2.8-2.9% in early 2027... While energy prices eased lately",
+   "why": "Source confirmed as Credit Agricole (CA-CIB) via meta.json; figures and energy caveat match exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26587__core-inflation-starts-biting.txt",
+   "span": "Higher natural gas prices, oil prices and the lower EUR/USD all point to an upward revision of the ECB's core HICP forecasts, with the only significant mitigating factor being tighter financial conditions",
+   "why": "Direct match, terms paraphrased faithfully (gas/oil prices, weaker EUR/USD, ECB core forecasts, tighter financial conditions)."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26809__up-and-adam.txt",
+   "span": "Citi's US Economic Surprise Index has climbed steadily since late summer, reaching its highest level since August 2023. In contrast, the Euro Zone's comparable gauge has declined, turning negative for the first time since July",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26809__up-and-adam.txt",
+   "span": "Anthropic is targeting a market cap of up to $1.5t... Reports suggest the offering is several times oversubscribed... recovering from last week's post-election concerns... consensus estimates projecting 2027 EPS growth of 42% versus 16% for the S&P 500 overall",
+   "why": "All figures match exactly; a different file (27123) had conflicting numbers (above $1.5T, 37% premium) but 26809 is the precise match for every figure in this sentence.",
+   "searched": [
+    "$1.5 trillion",
+    "42%"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26809__up-and-adam.txt",
+   "span": "the Mortgage Bankers Association's average 30-year rate slipped to 7.21% last week, marking four straight weekly declines... mortgage rates remain ~90 bps higher YTD",
+   "why": "Exact match on rate, streak, and YTD gap."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-16/26773__ubs-nvidia-corp-media-reports-on-ceo-change-a-few-thoughts-2.txt",
+ "source_span": "We estimate NVDA is generating ~$50-60B/Q in FCF - a big portion of which has been put back into the system, so this could easily take ~$50B or more out of the system - at least temporarily",
+ "source_chain": "Jensen is the key driving force behind NVDA's financing of neo-clouds, LLM developers and suppliers, therefore a CEO change pauses that dealmaking in the near term, therefore roughly $50B or more of the ~$50-60B/Q FCF normally recycled into the system could be pulled out temporarily, worse because rates are rising and parts of the credit market are already illiquid (invalidation: a new leader who maintains the same approach limits this to a near-term pause, not a permanent withdrawal).",
+ "pulse_chain": "UBS says Nvidia generates roughly $50B-$60B/Q in free cash flow, much of it recycled into financing for cloud providers, model developers and suppliers, therefore a pause under new leadership could pull $50B or more out of that system temporarily, worse while rates rise and parts of the credit market are thin.",
+ "preserved": true,
+ "why": "The pulse reproduces UBS's exact figures, the financing-recycling mechanism, the CEO-change-causes-a-pause step, and the rates/illiquid-credit aggravating condition, attributed to the correct bank with no reversed or invented step.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

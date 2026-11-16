@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+   "span": "Huang was the driving force behind Nvidia's creative financing schemes at customers... He was equally central on the supply side, securing leading allocations of memory, wafers, and optics through prepayments, multiyear purchase agreements",
+   "why": "William Blair's downgrade note states Huang personally drove customer financing (OpenAI equity stake, Anthropic/xAI investments, CoreWeave backstops) and personally secured supply via prepayments and multiyear agreements, and frames his loss as a 'Leadership Vacuum' with 'no obvious successor' -- the exact replaceability question the sentence poses."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26750__ms-quantitative-equity-research-ai-correction-multiples-rese.txt",
+   "span": "Multiple compression accounts for the correction, although future earnings risks may already be priced into share prices... to distinguish multiple compression from earnings revisions",
+   "why": "Morgan Stanley's note (titled 'AI Correction: Multiples Reset, Estimates Hold') is built entirely around this exact dichotomy -- whether the AI selloff is multiple compression or an earnings-fundamentals problem -- and concludes it is the former with earnings resilient so far."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+   "span": "downgrading NVDA to Market Perform and will wait for the dust to settle before reassessing",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26765__mizuho-nvidia-corporation-increasing-challenges-with-trouble.txt",
+   "span": "Maintain NVDA at Outperform with $250 PT, ~16x F28E P/E... we believe this will be a significant distraction for NVDA for the next 6-7 months",
+   "why": "All figures (Outperform, $250, ~16x FY28 P/E, 6-7 month distraction from succession) match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26766__oppenheimer-nvidia-corp-leadership-vacuum-downgrade-to-perfo.txt",
+   "span": "NVDA reports earnings Tuesday (11/17)... upside to the F3Q (Oct.) print",
+   "why": "Oppenheimer (corroborated by Mizuho's 'Earnings on Nov 17... OctQ') confirms NVDA's fiscal Q3 (October-quarter) report lands Tuesday 11/17; framing it as deciding the 'earnings half' ties directly to the multiple-vs-earnings debate in s2 without asserting any unsupported figure."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26587__core-inflation-starts-biting.txt",
+   "span": "core CPI was solid, both in quantity (0.3% MoM SA for the third time in a row)... OER (rent), car insurance and recreation services were all strong",
+   "why": "Matches exactly; OER is standard desk shorthand for owners' equivalent rent."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26871__voters-just-repriced-the-ai-buildout-citadel-securities-bond.txt",
+   "span": "THE POLITICS OF AI ARE FORCING A REASSESSMENT OF THE BUILDOUT... Scarce Compute Wins, Suppliers Lose",
+   "why": "Citadel Securities' entire piece (headline and body) argues political constraints, not AI demand, are now the deciding variable for which parts of the AI value chain capture returns."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26871__voters-just-repriced-the-ai-buildout-citadel-securities-bond.txt",
+   "span": "Texas Governor-elect Gina Hinojosa's commitment to maintain a moratorium until stronger protections are legislated... Pennsylvania's Shapiro administration already offers greater permitting speed and certainty to projects meeting standards on electricity affordability and community benefits",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26871__voters-just-repriced-the-ai-buildout-citadel-securities-bond.txt",
+   "span": "restricting incremental capacity should support utilisation and the scarcity value of the installed base... my relative preference for hyperscalers with operational compute, secure power access, financial flexibility, and several routes to monetisation",
+   "why": "Matches the sentence's logic (held-back capacity raises value of running compute and the return hurdle for future capacity) and the named hyperscaler-preference criteria almost word for word."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26777__william-blair-nvidia-heavy-is-the-head-that-wears-the-crown-.txt",
+   "span": "The Competitive Moat Is Narrowing. Beyond the latest developments and concerns about Huang's possible departure, we have some concerns that Nvidia's lead in AI infrastructure is narrowing",
+   "why": "William Blair's third downgrade bullet (ASIC/GPU competition, CUDA stickiness erosion) is explicitly introduced as separate from the governance/CEO-departure concerns of the first two bullets."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26587__core-inflation-starts-biting.txt",
+   "span": "While energy prices eased lately, we expect more acceleration in Eurozone core inflation towards 2.6% at year-end and 2.8-2.9% in early 2027",
+   "why": "Source is Credit Agricole (CA-CIB); figures and the energy-easing caveat match exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26587__core-inflation-starts-biting.txt",
+   "span": "Higher natural gas prices, oil prices and the lower EUR/USD all point to an upward revision of the ECB's core HICP forecasts, with the only significant mitigating factor being tighter financial conditions",
+   "why": "Verbatim match, same Credit Agricole (CA-CIB) note."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26809__up-and-adam.txt",
+   "span": "Citi's US Economic Surprise Index has climbed steadily since late summer, reaching its highest level since August 2023. In contrast, the Euro Zone's comparable gauge has declined, turning negative for the first time since July",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26809__up-and-adam.txt",
+   "span": "Anthropic is targeting a market cap of up to $1.5t... Reports suggest the offering is several times oversubscribed... consensus estimates projecting 2027 EPS growth of 42% versus 16% for the S&P 500 overall",
+   "why": "All figures match exactly, including the post-election-wobble recovery framing."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26809__up-and-adam.txt",
+   "span": "the Mortgage Bankers Association's average 30-year rate slipped to 7.21% last week, marking four straight weekly declines... mortgage rates remain ~90 bps higher YTD",
+   "why": "Matches exactly; YTD is correctly rendered as 'since the start of the year.'"
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-16/26658__nvidia-corp-nvda-our-thoughts-on-the-company-s-announced-man.txt",
+ "source_span": "these developments are likely to have a measured direct impact on Nvidia's financials and earnings power over the next 12-18 months...However, we expect the stock's multiple to experience a greater impact given the level of uncertainty",
+ "source_chain": "Huang's resignation raises leadership/execution uncertainty, therefore near-term earnings power is largely protected by Nvidia's 12-24 month backlog and already-locked 2-3 year roadmap, therefore the uncertainty instead hits the stock's P/E multiple, which Goldman cuts from 30x to 22x on an unchanged $10.00 normalized EPS estimate ($300 to $220 PT) \u2014 Buy retained because at ~10x NTM P/E the risk/reward is still favorable given ~80% EPS growth, with the view revisited only if customer order levels slow, execution slips, or the investigations worsen.",
+ "pulse_chain": "Huang's departure creates leadership uncertainty, therefore Nvidia stays sold out for about two years so profit forecasts are unaffected, therefore the damage from losing him lands on the multiple investors will pay rather than on earnings (Goldman: $300 to $220, 30x to 22x, EPS estimate unchanged), with the debate resolved by Tuesday's earnings under interim CEO Kress \u2014 bulls argue the backlog already justifies ~10x forward earnings (Goldman holds Buy/$220 into the print), bears (Seaport) argue customers will use the disruption to shift orders to AMD/Broadcom.",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's own mechanism exactly \u2014 unchanged EPS estimate, multiple cut from 30x to 22x, $300-to-$220 target, Buy retained \u2014 correctly attributed to Goldman with no reversed step, swapped bank, or invented cause.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
