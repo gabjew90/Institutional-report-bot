@@ -1,0 +1,589 @@
+{
+ "brief": "Last Thursday investors bought a record 55.8 million puts (3.4x the 10-year average), the biggest hedging day ever, one week after the midterms hit the AI trade; by Monday they were dumping protection at a near-record pace. Goldman's vol desk reads this as light positioning (net leverage at a 5-year low, 43.3%), a jittery Panic Index (6.5/10) and a vol-of-vol spike (VVIX realized vol to 208) that together make the hedges themselves the most volatile asset. The desk still likes owning S&P downside skew, since dealers are structurally short vol on the way down and long on the way up. It also pitched selling volatility on Nvidia via a costless call spread collar (ref $166.50, 10% cushion) to add exposure cheaply. The stock closed Wednesday at $173.73, but a same-day NYT/WSJ report that the board may remove Huang sent it down 8.6% after hours to $158.78, burning 47% of the cushion in hours. Separately, Goldman flags small-cap and biopharma volatility as cheap, buying IWM calls, even though hot CPI and a forecast third 2027 rate hike cut against rate-sensitive small caps.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Investors bought more puts last Thursday than on any day in history.",
+   "anchor": "investors bought more puts than on any day in history",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Investor positioning is light, with US net leverage at a 5-year low per Goldman's Prime book.",
+   "anchor": "Investor positioning is light (US net leverage at 5yr lows per GS PB)",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's Panic Index reads 6.5 out of 10, which the desk calls jittery.",
+   "anchor": "the vol complex is jittery (Panic Index at 6.5/10)",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Last Thursday was the largest put volume session on record.",
+   "anchor": "options volumes have ballooned (last Thursday was the largest put volume session ever)",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "55.8 million put contracts traded across all US venues in a single session, the most on record.",
+   "anchor": "55.8 million put contracts in a single session, the most on record",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "That put volume was roughly 3.4x the 10-year daily average of 16.4 million contracts.",
+   "anchor": "roughly 3.4x the 10-year daily average of 16.4 million",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Put volumes have since cooled to about 30.8 million, still nearly double the decade average.",
+   "anchor": "Volumes have since cooled to about 30.8 million, which is still nearly double the decade average",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "US fundamental long/short funds were running just 43.3% net as of Monday after the biggest weekly degross since March 2020.",
+   "anchor": "US fundamental long/short funds were running just 43.3% net after the biggest weekly degross since March 2020",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "As of Wednesday morning the options market was pricing a 1.10% move in the S&P through Friday.",
+   "anchor": "the options market was pricing a 1.10% move in the S&P through Friday",
+   "topic": "cross-asset volatility regime shift",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "through Friday"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The VVIX posted its 2nd largest one-day increase on record last Thursday, then a top-10 one-day decline on Monday.",
+   "anchor": "posted its 2nd largest one-day increase on record last Thursday, followed by a top-10 one-day decline on Monday",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "1-month realized volatility of the VVIX has surged to 208, the highest in Goldman's 10-year chart.",
+   "anchor": "1-month realized volatility of the VVIX has surged to 208, the highest in Goldman's 10-year chart",
+   "topic": "cross-asset volatility regime shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Nomura's Charlie McElligott concluded the VIX floor has moved up to 18 even though the fuel for another squeeze has been purged.",
+   "anchor": "the VIX floor has moved up to 18 even though the fuel for another squeeze has been purged",
+   "topic": "cross-asset volatility regime shift",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's desk likes owning downside skew because the street remains structurally short vol on the way down and long vol on the way up.",
+   "anchor": "the desk likes owning downside skew here given the street remains structurally short vol on the way down and long vol on the way up",
+   "topic": "cross-asset volatility regime shift",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's trade idea is SPX Dec 18 7300/7850 risk reversals for $29, -41 delta, with December futures at 7600.",
+   "anchor": "SPX Dec 18 7300/7850 risk reversals for $29 (-41 delta, with December futures at 7600)",
+   "topic": "cross-asset volatility regime shift",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Dec 18"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The average Nasdaq 100 stock now carries 1-month at-the-money implied volatility of about 44.",
+   "anchor": "the average Nasdaq 100 stock now carries 1-month at-the-money implied vol of about 44",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's AI Data Center basket has realized roughly 80 volatility over the past month.",
+   "anchor": "the bank's AI Data Center basket (GSTMTDAT) has realized roughly 80 vol over the past month",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The AI Data Center basket's realized volatility eclipses its Liberation Day high and runs at 2.6x its five-year average of 31.",
+   "anchor": "eclipsing even its Liberation Day high and running at 2.6x its five-year average of 31",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Hyperscaler implied volatility has barely budged even as hyperscaler credit spreads blew out to five-year wides, per BofA.",
+   "anchor": "hyperscaler implied vols have barely budged even as their credit spreads blew out to five-year wides",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "NVDA has dropped nearly 30% since early October, erasing over $1.75tn in market cap and trading near 24x P/E, valuations not seen since 2019.",
+   "anchor": "NVDA has dropped nearly 30% since early October, erasing over $1.75tn in market cap and trading at valuations not seen since 2019 (~24x P/E)",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Nvidia's cheap multiple looks worse because the company has lost its CEO and is in a succession crisis.",
+   "anchor": "the company lost its CEO and finds itself in a succession crisis",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's trade idea is an NVDA Dec 18, 2026 150/180/210 call spread collar for zero cost, referenced off $166.50.",
+   "anchor": "NVDA 18Dec26 150/180/210 call spread collar for costless (ref 166.50)",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 18, 2026"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "In the collar, the buyer sells the 150 put, 9.9% below the reference, and uses the premium to buy a 180/210 call spread.",
+   "anchor": "The buyer sells the 150 put (9.9% below the reference) and uses the premium to buy a 180/210 call spread",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 18, 2026"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Above $180 the collar makes up to $30 a share, and below $150 the buyer owns Nvidia with every dollar lower.",
+   "anchor": "Above $180 the trade makes up to $30 a share, and below $150 the buyer owns Nvidia with every dollar lower",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 18, 2026"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Nvidia closed Wednesday at $173.73, up 2.9% on the day and comfortably above the collar's reference price.",
+   "anchor": "Nvidia closed Wednesday at $173.73, up 2.9% on the day and comfortably above the reference",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Nvidia fell 8.6% after hours to $158.78, after trading as low as $156.20.",
+   "anchor": "the stock down 8.6% after hours to $158.78, after trading as low as $156.20",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "after hours Wednesday"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Nvidia's after-hours price is below any Nvidia close since July 2025.",
+   "anchor": "That's below any Nvidia close since July 2025",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The move from the $166.50 reference to $158.78 is $7.72, or 47% of the collar's cushion, gone before the first regular session trade.",
+   "anchor": "from the $166.50 reference to $158.78 is $7.72, or 47% of the cushion, gone before the first regular-session trade",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "At the after-hours low, Nvidia's stock was 4% from the short put strike.",
+   "anchor": "At the after-hours low, the stock was 4% from the short put strike",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's plain-vanilla idea is IWM Dec 31 295 calls for $2.33, 21 delta, referenced off $280.58.",
+   "anchor": "IWM Dec 31 295 calls for $2.33 (21 delta, ref $280.58)",
+   "topic": "small-cap and biopharma volatility value",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 31"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The IWM call trade's breakeven is $297.33, or 6% higher than the reference.",
+   "anchor": "breakeven is $297.33, or 6% higher",
+   "topic": "small-cap and biopharma volatility value",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 31"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "A knock-out version of the IWM call that voids if SPY touches 800 before expiry costs $0.98, a 53% discount per Goldman.",
+   "anchor": "That costs $0.98, which Goldman pegs at a 53% discount",
+   "topic": "small-cap and biopharma volatility value",
+   "status": "target",
+   "instruments": [
+    "IWM",
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 31"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The spread between IWM and SPY 2-month implied volatility has collapsed to 3.4 vol points, against an average of 6.4 since late 2020.",
+   "anchor": "The spread between IWM and SPY 2-month implied vol has collapsed to 3.4 vol points, against an average of 6.4 since late 2020",
+   "topic": "small-cap and biopharma volatility value",
+   "status": "level",
+   "instruments": [
+    "IWM",
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "For the second quarter in a row, almost every large-cap biopharma company beat on revenue and most raised guidance.",
+   "anchor": "for the second quarter in a row, almost every large-cap biopharma company beat on revenue, and most raised guidance",
+   "topic": "small-cap and biopharma volatility value",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Tuesday's hot CPI print sent rate hike odds soaring.",
+   "anchor": "Tuesday's hot CPI sent hike odds soaring",
+   "topic": "US core CPI / Fed hike path",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Tuesday"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman now expects a third rate hike in March 2027.",
+   "anchor": "Goldman now expects a third rate hike in March 2027",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "March 2027"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Treasury futures on Wednesday implied the 10-year yield back above 5%.",
+   "anchor": "Treasury futures on Wednesday implied a 10Y back above 5%",
+   "topic": "US core CPI / Fed hike path",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's first dual-binary pays out only if NDX falls below 95% of spot and 2Y SOFR rises more than 25bps above its forward, costing 8.5%.",
+   "anchor": "NDX below 95% of spot and 2Y SOFR more than 25bps above its forward. Cost: 8.5%",
+   "topic": "US core CPI / Fed hike path",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Feb 19, 2027"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman's second dual-binary pays out only if NDX rises above 110% of spot and 2Y SOFR falls more than 25bps below its forward, costing 7.75%.",
+   "anchor": "NDX above 110% and 2Y SOFR more than 25bps below its forward. Cost: 7.75%",
+   "topic": "US core CPI / Fed hike path",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Feb 19, 2027"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "The dual-binary prices imply payouts of roughly 11.8 to 1 and 12.9 to 1.",
+   "anchor": "those prices imply payouts of roughly 11.8 to 1 and 12.9 to 1",
+   "topic": "US core CPI / Fed hike path",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "Goldman gives the standalone odds of each dual-binary leg as 26%/36% for the first and 25%/34% for the second.",
+   "anchor": "Goldman gives the standalone odds of each leg as 26%/36% for the first and 25%/34% for the second",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The \"Volatility Of Protection\" Hits A Record: Goldman's Vol Desk On The Biggest Put Day Ever... And An Nvidia Collar That Aged Badly",
+   "claim": "After-hours futures on Wednesday evening showed the Nasdaq 100 down about 1.1% and the S&P down 0.5%.",
+   "anchor": "with the Nasdaq 100 down about 1.1% and the S&P down 0.5% on Wednesday evening",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Wednesday evening"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/27189__the-volatility-of-protection-hits-a-record-goldman-s-vol-des.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 41,
+  "matched": 41,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
