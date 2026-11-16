@@ -1,0 +1,132 @@
+{
+ "brief": "Media reports suggest NVDA's Board is preparing to oust Jensen Huang as CEO and is working with an outside firm on successor candidates. UBS says impact would be felt widely in three areas. First, financing: NVDA generates roughly $50-60B/quarter in FCF, much of it recycled into AI-ecosystem financing for neo-clouds, LLM developers and suppliers; a pause under new leadership could pull roughly $50B or more out of the system, at least temporarily, at a time of rising rates and less liquid credit segments. Second, supply chain: NVDA has been far ahead of peers in long-term agreements (memory, substrates), with Jensen viewed as singular in procurement. Third, potential for tighter US restrictions on shipments to China and to Singapore/Malaysia, which UBS estimates could put roughly 10% of revenue at risk. UBS treats the succession itself as unconfirmed and says any impact would take years to manifest; it keeps its Buy rating and $300 price target unchanged, based on 14x C2028E P/E on $22.08 EPS.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "Media reports suggest NVDA's Board of Directors is preparing to oust Jensen Huang as CEO and is working with an outside firm to find successor candidates.",
+   "anchor": "NVDA's Board of Directors is now preparing to oust Jensen Huang as CEO and working with an outside firm to determine candidates as successors.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "UBS estimates NVDA is generating approximately $50 billion to $60 billion per quarter in free cash flow.",
+   "anchor": "We estimate NVDA is generating ~$50-60B/Q in FCF",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "UBS estimates a pause in NVIDIA-driven AI ecosystem financing could pull roughly $50 billion or more out of the system, at least temporarily.",
+   "anchor": "this could easily take ~ $50B or more out of the system - at least temporarily -",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "UBS notes NVIDIA has often been far ahead of peers in securing long-term supply agreements across areas including memory and substrates.",
+   "anchor": "supply agreements in a host of key areas including memory, substrates, and other areas.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "UBS flags potential for tighter US government restrictions on NVDA's and AMD's ability to ship product into China and into regions like Singapore and Malaysia.",
+   "anchor": "could impact NVDA's (and other companies like AMD's) ability to ship product into China",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "UBS estimates that Singapore exposure together with remaining China revenue could put roughly 10% of NVDA's revenue at risk from tighter restrictions.",
+   "anchor": "we estimate this could be in the range of ~10% of revenue.",
+   "topic": "NVDA China export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS - NVIDIA Media Reports on CEO Change A Few Thoughts - 11 Nov 2026",
+   "claim": "UBS maintains an unchanged price target of $300 for NVDA based on a 14x C2028E P/E multiple.",
+   "anchor": "Our PT remains unchanged at $300, based on a ~14x C2028E P/E multiple",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-16/26774__ubs-nvidia-media-reports-on-ceo-change-a-few-thoughts-11-nov.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 7,
+  "matched": 7,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
