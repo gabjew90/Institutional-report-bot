@@ -1,0 +1,324 @@
+{
+ "brief": "Goldman's mid-day US equities color (Nov 13) frames today's index weakness as concentrated in AI/semiconductors rather than broad-based: 60% of S&P 500 constituents are higher and the index excluding AI (SPXXAI) is up 40bps even as headline indices trade red. NVDA is down 3.3% (erasing roughly $500bn of market cap week-to-date), AVGO -5.2% and AMD -10.6%, dragging the broader GSTMTSEM semiconductor index down 3.8%. Unlike yesterday's intra-sector rotation, where some semis outperformed, today's selloff is sector-wide, and hyperscalers are the beneficiaries of the rotation out of semis. Separately, the note's chart highlights hyperscaler valuations: their P/E has fallen sharply and nearly closed the gap with the rest of the index, making them look attractive. This morning's PPI print pushed rates higher and led Goldman's economics team to lower its core PCE estimate, while crude trades above $95, adding to the day's pressure. Flows are skewed 14.5% better for sale across the franchise, with both hedge funds and long-only accounts net selling, concentrated in tech, macro products and consumer services. Next week: Warsh speaks Monday, NVDA reports earnings Tuesday.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "60% of S&P 500 constituents are trading higher today even as the headline index is in the red.",
+   "anchor": "Under the hood, 60% of the SPX\nis in the green today",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "The S&P 500 excluding AI names (SPXXAI Index) is up 40 basis points today.",
+   "anchor": "SPX ex-AI (SPXXAI Index) is +40bps.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Treasury yields are higher today following this morning's PPI release.",
+   "anchor": "rates are higher today\nfollowing PPI this morning",
+   "topic": "US core CPI / Fed hike path",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Goldman Sachs economics lowered its core PCE estimate after this morning's PPI print.",
+   "anchor": "triggering GS econ to reduce our core PCE estimate",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Crude oil is elevated today, trading above $95.",
+   "anchor": "oil is elevated with crude\nticking above $95.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "NVDA is down 3.3% today.",
+   "anchor": "Semis and AI continue to be under pressure today with NVDA -3.3%",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "NVDA has erased approximately $500 billion of market capitalization week-to-date.",
+   "anchor": "(WTD has erased ~$500bn of market cap)",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "week to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "AVGO is down 5.2% today.",
+   "anchor": "/ AVGO -5.2% / AMD -10.6% providing major pressure on indices today.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "AMD is down 10.6% today.",
+   "anchor": "/ AVGO -5.2% / AMD -10.6% providing major pressure on indices today.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Unlike yesterday's intra-semiconductor rotation in which some names outperformed, the entire semiconductor sector is under broad-based pressure today, with the GSTMTSEM Index down 3.8%.",
+   "anchor": "Unlike yesterday, where there were\nintra-Semis rotations and we saw beneficiaries outperform, the whole space is under pressure today\n(GSTMTSEM Index -3.8%).",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Hyperscaler stocks are the beneficiary of today's rotation out of semiconductors.",
+   "anchor": "Hyperscalers have been the beneficiary of this rotation today.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "MSFT is trading in the green today after yesterday's outage.",
+   "anchor": "MSFT\u2019s outage yesterday, the stock is now trading in the green.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Goldman's TMT Cyber Security basket (GSTMTCYB Index) is down 1.5% on the day.",
+   "anchor": "TMT Cyber Security basket (GSTMTCYB Index) is weak on the day, -1.5%.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Warsh is scheduled to speak next Monday.",
+   "anchor": "Focus next week lies on Warsh\nspeaking on Monday",
+   "topic": "US core CPI / Fed hike path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "NVDA is scheduled to report earnings next Tuesday.",
+   "anchor": "speaking on Monday and NVDA earnings Tuesday.",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Exchange volumes are muted today, tracking 2% below the 5-day average.",
+   "anchor": "exchange volumes are muted tracking -2% vs 5dma.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "ETF volumes remain elevated, accounting for 32% of the tape today.",
+   "anchor": "ETF volumes continue the trend of being\nelevated at 32% of the tape",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Liquidity is challenged today, with the S&P 500's top-of-book size at just $4.8 million.",
+   "anchor": "liquidity continues to be challenged with SPX Top of Book just at $4.8mm.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Goldman's overall franchise activity level is a 5 out of 10 today.",
+   "anchor": "We are currently a 5 out of 10 in terms of overall activity levels",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Goldman's overall franchise flows are skewed 14.5% better for sale today.",
+   "anchor": "overall franchise flows are skewed 14.5%\nbetter for sale.",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Both hedge funds and long-only accounts are significantly skewed better for sale today, with supply concentrated in information technology, macro products, and consumer services.",
+   "anchor": "Both HFs and LOs are significantly skewed better for sale with supply in information tech, macro products, and\nconsumer services.",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Mid-Day Color",
+   "claim": "Hyperscaler stocks look particularly attractive after their P/E ratio fell sharply and nearly closed the valuation gap with the rest of the S&P 500.",
+   "anchor": "Hyperscalers look particularly attractive. Not only has the P/E fallen sharply, but it has\nnow virtually closed the gap with the other 495 companies",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27301__us-equities-mid-day-color.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 6,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
