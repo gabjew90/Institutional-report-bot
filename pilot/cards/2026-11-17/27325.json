@@ -1,0 +1,776 @@
+{
+ "brief": "Nvidia rose from 1% of S&P 500 market cap in December 2022 to 8.5% by May 2026, faster than any of the ten companies that have held the index's largest-company title since 1960, most of which (Cisco, GE, IBM, Altria, AT&T) later declined sharply. Jensen Huang's exit as CEO, announced this week, ends Nvidia's founder-led era; Altimeter's Gerstner and Atreides's Baker wrote the board asking it to leave open the option of his return. Nvidia's valuation has repriced to the cheapest among large AI stocks (PEG 0.2x) after a 13% drop; sell-side targets were cut sharply (Baird -60%) while retail bought the dip. Beyond leadership, Nvidia's share of frontier-lab future compute agreements fell to 39% from over 80% in 2023-2025, as AMD and Google TPUs close the inference-cost gap. Huang was a vocal opponent of China chip restrictions; the pending RASA bill, which would tighten controls on remote Chinese chip access, passed the House but stalled in the Senate, while Nvidia's Singapore-billed revenue share rose from 8% to 22% before it stopped disclosing the figures. A shift in Nvidia's vendor financing could also hurt dependent neoclouds like CoreWeave, though broader AI-demand markers still look healthy.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's share of S&P 500 market cap rose from 1% in December 2022 to 8.5% by May 2026.",
+   "anchor": "rose from 1% of the S&P 500 in December 2022 to 8.5% by May 2026",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's CEO is leaving and the company's leadership will change.",
+   "anchor": "Nvidia\u2019s CEO flew too close to the sun and the company\u2019s leadership will now change",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Brad Gerstner of Altimeter and Gavin Baker of Atreides sent Nvidia's board a letter asking for a deliberate leadership process that leaves open the option of Jensen Huang's return.",
+   "anchor": "a \u201cdeliberate process regarding the leadership of Nvidia that leaves all options on the table, including the return of Jensen Huang\u201d",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia trades at the lowest valuation among large AI stocks by a wide margin.",
+   "anchor": "Nvidia now trades at the lowest valuation among large AI stocks by a wide margin",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia earned 83% of AI chip revenues from 2023-2025, with gross margins of 75% and operating margins of 66%.",
+   "anchor": "which earned 83% of AI chip revenues from 2023-2025 with gross margins of 75% and operating margins of 66%",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2023-2025"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia trades at a PEG ratio of 0.2x, well below other companies and sectors.",
+   "anchor": "now trades at a PEG (P/E to consensus earnings growth) ratio of just 0.2x, compared to much higher figures for other companies and sectors",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Hyperscaler free cash flow has been eroding due to a surge in capital spending that is now financed by debt.",
+   "anchor": "hyperscaler free cash flow has been eroding due to a surge in capital spending which is now financed by debt",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's free cash flow margins have been sustained at extraordinarily high levels.",
+   "anchor": "Nvidia free cash flow margins have been sustained at extraordinarily high levels",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's cash flow dynamics should be maintained for some time because the semiconductor industry has very long test/design/build cycles.",
+   "anchor": "semiconductor industry has very long test/design/build cycles, so Nvidia\u2019s cashflow dynamics should be maintained for some time",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's share of future frontier lab compute agreements has fallen to 39%, down from over 80% in 2023-2025.",
+   "anchor": "Nvidia has only a 39% share of future frontier lab compute agreements compared to its 80%+ market share from 2023-2025",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Some competitors may be closing the inference-workload performance gap with Nvidia.",
+   "anchor": "some competitors may be closing the performance gap on inference workloads",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's Rubin Ultra chip series, rolling out in 2027, may close the inference performance gap with competitors.",
+   "anchor": "Nvidia\u2019s Rubin Ultra series may change that when rolled out in 2027",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "AMD ranks at the top on inference performance per chip among AI accelerators.",
+   "anchor": "the inference performance per chip actually shows AMD at the top",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "A frontier lab can now onboard new models on AMD GPUs in just 3 days, down from 6-12 months a year earlier.",
+   "anchor": "they can onboard new models on AMD GPUs in just 3 days",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's argument for its competitive moat is that superior tokens-per-watt efficiency and its CUDA software ecosystem make switching to competitors uneconomic.",
+   "anchor": "its superior tokens per watt and superior software ecosystem (CUDA) made switching uneconomic",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "AMD's MI455X results may have eroded part of Nvidia's tokens-per-watt and CUDA competitive advantage.",
+   "anchor": "AMD's results on the MI455X may have eroded at least part of that advantage",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Google's TPU outperforms Nvidia's GB300 on cost and speed across all but the slowest speed tiers running the Qwen 3.5 397B open-weight model.",
+   "anchor": "Across all speeds except the slowest ones, Google\u2019s TPU looks better",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Chinese open weight AI models consume the majority of tokens and their capability continues to track improvements in closed frontier-lab models.",
+   "anchor": "consumes the majority of tokens and whose performance continues to track improvements of closed frontier lab models",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "SemiAnalysis estimates 1.5 GW of restricted Nvidia chips have already ended up in China.",
+   "anchor": "Semianalysis estimates that 1.5 GW of restricted Nvidia chips have already ended up in China",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "The Remote Access Security Act (RASA), which would restrict Chinese remote access to US AI chips, passed the House 369-22 but has not had a Senate vote.",
+   "anchor": "the Remote Access Security Act, which passed the House 369-22 but has not come up for a vote in the Senate",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Culper Research identified Megaspeed, a Singapore-based company with a large Malaysia footprint, as an Nvidia customer funded and controlled by Alibaba.",
+   "anchor": "identified by Culper Research in May 2026 as an Nvidia customer that is funded and controlled by Alibaba",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "The share of Nvidia's revenue billed to customers with Singapore addresses rose from 8% to 22% since Biden-era export controls took effect.",
+   "anchor": "the share of Nvidia\u2019s revenue billed to customers with Singapore addresses rose from 8% to 22%",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia stopped breaking out its Singapore-billed revenue figures in July 2025.",
+   "anchor": "in July 2025 Nvidia stopped breaking out the figures entirely",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia spent 58% of its operating cash flow on equity investments and M&A over the last three quarters.",
+   "anchor": "Nvidia spent 58% of its operating cash flow on equity investments and M&A",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last three quarters"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's off-balance sheet long term debt and lease liabilities rose from $214bn to $422bn between Q1 and Q2 2026.",
+   "anchor": "Nvidia\u2019s off-balance sheet long term debt and lease liabilities rose from $214 bn to $422 bn",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q1-Q2 2026"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Including land, power, and shell guarantees, Nvidia's off-balance-sheet liabilities rise to $530bn.",
+   "anchor": "when including land, power and shell guarantees, this figure rises to $530 bn",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Circular and other AI-to-AI deals represented more than 50% of all investments in AI firms from 2021-2025.",
+   "anchor": "circular deals and other AI to AI deals represented more than 50% of all investments in AI firms from 2021-2025",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2021-2025"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "A shift in Nvidia's vendor financing and acquisition approach could negatively affect neocloud companies CoreWeave, Nebius, Applied Digital, and IREN.",
+   "anchor": "could negatively affect neocloud companies such as CoreWeave, Nebius, Applied Digital and IREN",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "CRWV",
+    "NBIS",
+    "APLD",
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's ability to lock up memory and logic wafer supply chains may change, benefiting chipmakers like AMD and Broadcom.",
+   "anchor": "Nvidia\u2019s ability to lock up supply chains for memory and logic wafers may change as well",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AMD",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Yields on debt financing AI infrastructure, both high-yield and investment grade, have risen sharply this year.",
+   "anchor": "Yields on debt related to financing AI infrastructure (both HY and investment grade) have already been rising sharply this year",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia has invested capital in US open-weight model companies Reflection, Thinking Machines, and Poolside.",
+   "anchor": "spent capital supporting US open weight models via investments in Reflection, Thinking Machines and Poolside",
+   "topic": "AI investment boom risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's support for US open-weight models, including its own Nemotron model, could fade.",
+   "anchor": "This support, and support for its own Nemotron open weight model, could fade",
+   "topic": "AI investment boom risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Z.AI, DeepSeek, and Meituan have cited training and inference activity on Huawei Ascend NPUs in 2026.",
+   "anchor": "Z.AI, DeepSeek and Meituan cited training and inference activity on Huawei Ascend NPUs",
+   "topic": "NVDA China export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Median and average sell-side price targets implied a roughly 40% one-year gain for Nvidia before last week's leadership announcement.",
+   "anchor": "Median and average sell side price forecasts for Nvidia implied a roughly 40% one year gain",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 year"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Retail investors treated Nvidia's 13% stock decline as a buying opportunity.",
+   "anchor": "they considered the 13% decline in Nvidia stock a buying opportunity",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Retail buying in Nvidia spiked in late February when the stock fell almost 10% after Q4 revenue results.",
+   "anchor": "Retail buying also spiked in late February when Nvidia fell almost 10% after reporting Q4 revenues",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "late February"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "JPMorgan's Cembalest says Nvidia looks interesting for long-term holders at 32% below its all-time high.",
+   "anchor": "Nvidia looks interesting for long term holders at 32% below its all-time high",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Nvidia's net debt to EBITDA ratio is still below zero, reflecting its cash stockpile.",
+   "anchor": "its net debt to EBITDA ratio is still below zero",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Baird cut its Nvidia price target from $500 to $200, a 60% reduction.",
+   "anchor": "Percent change Baird $500 $200 -60%",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 year"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "UBS raised its Nvidia price target from $280 to $300, a 7% increase.",
+   "anchor": "$300 -5% UBS $280 $300 +7%",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 year"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "The current AI capital spending boom is the largest since the US railroads in the 1880s.",
+   "anchor": "the largest capital spending boom since the US railroads in the 1880\u2019s",
+   "topic": "AI investment boom risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Legacy Nvidia GPUs are still in heavy demand years after deployment, with rental prices rising.",
+   "anchor": "rising prices of legacy Nvidia GPUs which are still in heavy demand years after deployment",
+   "topic": "AI investment boom risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Taiwanese and South Korean AI chip and hardware exports continue to increase.",
+   "anchor": "the continued increase in Taiwanese and South Korean chip/hardware exports",
+   "topic": "AI investment boom risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "US data centers have a sub-1% vacancy rate.",
+   "anchor": "the sub-1% vacancy rate of US data centers",
+   "topic": "AI investment boom risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "The US midterms produced an unmistakable voter revolt against data center buildout.",
+   "anchor": "one of the unmistakable outcomes of the US midterms was the voter revolt",
+   "topic": "AI investment boom risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "If data center capacity becomes scarcer because of political restrictions, owners may need to continually upgrade to more efficient chips to increase token output and revenue.",
+   "anchor": "owners of data centers might need to continually upgrade to better and more efficient chips in order to increase token output and revenues",
+   "topic": "AI investment boom risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "One beneficiary of data center capacity becoming scarcer could be Nvidia, via replacement-GPU demand.",
+   "anchor": "one of the beneficiaries could be Nvidia",
+   "topic": "AI investment boom risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Cisco's peak valuation reached a P/E of 200x and price-to-sales of about 35x.",
+   "anchor": "Cisco whose peak valuations reached a P/E of 200x and price to sales of ~35x",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "Apple, today's S&P 500 market-cap leader, has a P/E of 39x and price-to-sales of 11x.",
+   "anchor": "today market-leader Apple has a P/E of 39x and price to sales of 11x",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "GE Capital represented 60% of GE's profits and 50% of its revenue before the financial crisis.",
+   "anchor": "GE Capital which before the financial crisis represented 60% of GE profits and 50% of revenue",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "GE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Icarus Files: What's next for Nvidia and AI",
+   "claim": "IBM lost half its value from 1987 to 1993 after the personal computer and open-systems revolutions disrupted its mainframe monopoly.",
+   "anchor": "leading the company to lose half its value from 1987 to 1993",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1987-1993"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27325__the-icarus-files-what-s-next-for-nvidia-and-ai.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 51,
+  "matched": 51,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
