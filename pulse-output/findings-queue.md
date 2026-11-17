@@ -1404,3 +1404,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Driver trail still does not name the 3 lint hard issues and the 1 final_validate violation that triggered SCRUB and FIXUP.
 - **observation** — Unverified in the dump: Goldman's cut "all valuation, none from profit forecasts", Wells Fargo Wednesday briefing, JPM 8% China share.
 - **observation** — Cover test suppresses a non-Fed December-hike cluster (BoJ, RBI, ECB) under the Fed theme at 0.804 and a dollar breakout under 'spx breakout' at 0.7882; matches on head nouns, not instrument.
+
+## 2026-11-17 (headless QC)
+- **deterministic-fixable** — The `omnipulse_body_voice` rewrite ("Goldman added" -> "In Goldman's view,") produced a verbless sentence in Brief 3 of the locked body. Make the voice pass check that the sentence still has a finite verb, or skip rewrites that start a clause the rest of the sentence does not continue.
+- **deterministic-fixable** — `pulse-context/latest.json` is again a post-publish rebuild (17:37 EST, 171 PDFs vs 241 published). RECAP prices and many body figures cannot be audited. Archive the dump keyed by `QC_PULSE_TS` (repeat of 11-03 through 11-16).
+- **prompt-session** — The Nvidia WATCH bullet carries an S&P 500 implied move (1.93% through Friday, Goldman) but no Nvidia implied move. Require the stock's own straddle for a named earnings print.
+- **observation** — Microsoft service outage (5 banks / 13 PDFs) dropped by the writer's 6-bank cutoff for discovered themes; the two debt-ceiling clusters (3+4 banks) would pass if merged.
+- **observation** — Nvidia lead states Huang resigned with no reason although the context has an investigation cluster. Second day running.
+- **observation** — TRADE BOARD is six Morgan Stanley longs unrelated to the day's themes. Driver trail still does not name the final_validate violation behind FIXUP.

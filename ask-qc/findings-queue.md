@@ -1009,3 +1009,15 @@ no findings (1 CONCERN: unsupported "months of support above the 200DMA" claim o
 ## 2026-11-15
 
 no findings (1 CONCERN: Saylor liquidation answer, grounded but "dollar-for-dollar" reserves claim unverified and answer about 90 words for a Quick lookup; judgment, not a FAIL)
+
+## 2026-11-16
+
+- **judgment, with a tool bug (FAIL)** (04:49 UTC, BK, "overall standings at the end of week 6", fantasy): `lookup_fantasy_league topic=standings week=6` (and week=5) returns the CURRENT standings (Arxfic 6-3 / 1237 PF ...) labeled `"week": 6`. The model then invented week-6 records and PF (Arxfic 5-1 / 782.4, 2Pale 0-6 / 471.8). The tool should refuse or mark a historical week as unavailable. Also seen at 04:48 (answer built on the same payload). Candidate assertion if mechanical: for a fantasy question naming a past week with `topic=standings`, the answer must match `(?i)(not available|can't|don't have).*(week|history)` unless the figures were computed in code from matchups.
+- **judgment (FAIL)** (04:42 UTC, Ry, "Will I make playoffs"): "total points for is 1033, which is the lowest in the league". 2Pale has 790 in the same payload. Regex-able in part: a "lowest/highest in the league" claim for a fantasy stat should be checked against the standings payload. `validate_answer.py` returned nothing.
+- **judgment (FAIL)** (04:54 UTC, BK, "toughest schedule the next 5 weeks"): answered with points against through week 9, labeled as schedule difficulty, and ignored the week-11 matchups it fetched. `validate_answer.py` returned nothing.
+- **judgment (FAIL)** (04:56 UTC, BK, "who do you predict will make playoffs"): only `situation` fetched. "Declan ... sixth seed on points tiebreakers and schedule favorability" and "cutline solidifies at eight wins" have no source and contradict the 04:55 answer. `validate_answer.py` returned nothing.
+- **predates-class (FAIL)** (18:00 UTC, bulch, "nvda earnings time"): "JPMorgan reiterates its Underweight rating with a $215 price target" is the stored-field problem fixed by `discord_bot/desk_line.py` (commit 2026-11-17T09:22 PST, after this turn). The same turn gave six arrows (Nemotron press release, Market Ear, JPM) for a time-of-report lookup. Verify with the harness that `stock_body` now posts only the date/time lines for a plain date question.
+- **judgment (CONCERN)** (20:35 UTC, BK, "When is bottom"): invented rule "bottom arrives when volatility spikes past 25-30". Also 20:35:28, S&P -1.47% from a search snippet while the live tool showed -2.02% thirty seconds later.
+- **judgment (CONCERN)** (20:36 UTC, Sam, a bait question as a reply to the bot): routed `follow_up`/FACT and answered with an IPO recap instead of banter.
+- **judgment (CONCERN)** (16:00 UTC, bulch, "whens nvda earnings with time"): five arrows for a Quick lookup, no clock time given.
+- **judgment (CONCERN)** (17:28 UTC, Ry): "12% ... based on historical base rates" with no source or computation.
