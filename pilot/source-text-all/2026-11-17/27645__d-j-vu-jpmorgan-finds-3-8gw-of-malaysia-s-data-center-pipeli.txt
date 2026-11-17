@@ -1,0 +1,289 @@
+ 
+"Déjà Vu": JPMorgan Finds 3.8GW Of Malaysia's 
+Data Center Pipeline Tied To Chinese Operators As 
+Washington Moves To Shut The Backdoor 
+ 
+BY TYLER DURDEN 
+SUNDAY, NOV 15, 2026 - 10:20 PM 
+For three years, Malaysia's pitch to the AI industry was simple: cheap land, cheap power, and 
+no awkward questions about who the tenant is. 
+This week, Washington started asking. 
+With Jensen Huang out at Nvidia, 14 sellside desks hunting for the stock's floor and the "Bank of 
+Nvidia" missing its chairman, the next leg of the scandal was always going to land in Southeast 
+Asia, where Megaspeed and its Malaysian unit Speedmatrix did their shopping. And now we 
+have the first hard number on how much is at stake. In a note titled "Malaysia Data Centers: 
+Déjà vu of potential US chip controls?" (available to pro subs), JPMorgan's Malaysia research 
+team writes that roughly 3.8GW of data center capacity in the country is associated with 
+Chinese operators, or about 25% of the entire pipeline. 
+In other words, one in every four megawatts Malaysia plans to build is tied to exactly the 
+customers Washington is now trying to lock out. And, as we explain below, that's almost 
+certainly the floor. 
+One In Four (Or Is It Closer To One In Three?) 
+Start with the size of the prize. JPM's proprietary tracker now puts Malaysia's data center 
+pipeline at roughly 12.7GW, more than double the 5.9GW it was tracking in 2025. However, just 
+like in the US where only a fraction of the pipeline is "credible", only 1.3GW is live and another 
+2.2GW is under construction. The rest is either "committed" (4.0GW) or early-stage (5.2GW), 
+which the bank defines as announced or speculative capacity with land and power yet to be 
+secured. 
+ 
+
+ 
+ 
+Put differently, 72% of the pipeline hasn't broken ground, and 41% of it is little more than a press 
+release. That's the part that tends to evaporate first when the tenant can no longer get chips. 
+Against that backdrop, here is the bank's headline finding, and the caveat it delivers, all in the 
+same quote: 
+Our proprietary Malaysia DC tracker identifies ~3.8GW of capacity associated with Chinese DC 
+operators, representing ~25% of Malaysia’s pipeline. Actual Chinese end-demand exposure 
+could vary, as our tracker maps operators rather than tenants, and does not capture Chinese 
+tenants leasing capacity from non-Chinese colocation providers (e.g. Yondr, BDC and K2). 
+Translation: the 3.8GW counts only data centers where the operator is Chinese. It says nothing 
+about Chinese tenants renting space from everyone else. 
+And that's a rather large blind spot. JPM doesn't name names, but the usual suspects are well 
+known: DayOne, the former GDS unit that sits on our casualty list after mulling whether to halve 
+its $5BN US IPO, operated 29% of Malaysia's built IT capacity at the end of 2024, according to 
+Data Centre Dynamics. The biggest operator of all, at 32%, was Bridge Data Centres, a 
+Bain-backed unit of ChinData whose parent has historically counted ByteDance as its largest 
+tenant. JPM lists "BDC" (presumably Bridge) among its non-Chinese colocation providers, which 
+means whatever TikTok's parent rents there is outside the 3.8GW. 
+There's also some curious math. Divide 3.8GW by the tracker's own 12.7GW and you get 30%, 
+well above the "~25%" in the text (which would need a 15GW pipeline). Maybe the bank is using 
+a wider denominator, maybe it's rounding generously, or it could just be using a hyperactive 
+LLM. Either way, the real exposure to Chinese end-demand is higher than one in four: 
+ 
+
+ 
+ 
+How The Backdoor Works (And Why It Was Legal) 
+Regular readers know the story, because we have been telling it since January 2025, when we 
+asked "Did DeepSeek Use Shell Companies In Singapore To Procure Nvidia Blacklisted 
+Chips?", and again five weeks later when Singapore started probing middlemen shipping Nvidia 
+servers to Malaysia. Back then Jensen Huang's answer was that he saw no evidence of 
+diversion. That one has aged about as well as his employment contract. 
+There are really two backdoors. The first is plain smuggling: buy the chips through a front 
+company and ship them on, which is what Megaspeed is accused of (it denies wrongdoing, and 
+as we noted yesterday in "Who Whacked Jensen Huang?", even the CIA isn't fully sold on the 
+spy part). The Information puts the value of Nvidia chips that moved through Megaspeed and 
+Speedmatrix at no less than $7.5 billion, and by Bloomberg's count Nvidia's own tally to the US 
+government missed 50,000 of them. 
+The second backdoor is the big one, and it's perfectly legal: US export controls govern where a 
+chip is shipped, not who rents time on it. So a Chinese AI lab that can't import a Blackwell can 
+simply lease one in Johor. Goldman's Asia economics team, led by Andrew Tilton, had a polite 
+name for it back in September, in a note that Bloomberg dusted off this week: "export-control 
+arbitrage" (more on that note in a moment). Epoch AI estimates some 275,000 Nvidia 
+accelerators were imported into Malaysia in 2024 and 2025 alone. 
+That arbitrage was already closing before the scandal: Oracle killed a $7BN chip-leasing deal 
+with Tencent across its Southeast Asian data centers after a visit from Trump officials, and 
+ 
+
+ 
+Nvidia quietly told cloud customers that 51% of their services must go to non-Chinese clients. 
+Then came Alice Huang, and Washington found its excuse to finish the job. The Megaspeed 
+blacklist fight we flagged on Tuesday... 
+... has since turned into a full rewrite of the rulebook. According to the WSJ, Commerce is 
+looking at new export rules and licensing requirements for Malaysia, Thailand, Indonesia and 
+Singapore. The Information goes further: it reports that BIS is in the final stages of a rule adding 
+seven countries (those four plus Brazil, Norway and South Africa) to the license list for anything 
+at or above Blackwell, with importers having to name the end user, and that it could land this 
+month. On the Hill, both parties are racing to bolt chip curbs onto the must-pass defense bill: 
+And with Huang gone, the industry has lost the one man who could talk the White House out of 
+it. 
+Goldman: Nobody In Asia Has More Riding On This Than 
+Malaysia 
+So how much does Malaysia stand to lose? For that we go to the Goldman note itself, "Exports 
+and Beyond: Asia's Broadening AI Dividend", published two months ago, when Alice Huang was 
+still just a face in Jensen's Taipei party photos. 
+The bank's ASEAN data center thesis rests on two legs. One is the respectable one: power and 
+grid constraints in tier-1 markets are pushing hyperscalers to places where land, electricity and 
+regulators are all more accommodating. The other is the arbitrage, and Goldman is refreshingly 
+blunt about who is doing it: a footnote names ByteDance as reportedly among the Chinese firms 
+training their newest models in Southeast Asian data centers, and notes that TikTok's $25BN 
+data-infrastructure project in Thailand, approved in May, is worth 4.3% of that country's GDP. 
+On the back of both, Goldman's TMT team expects ASEAN capacity to quadruple in five years, 
+with Johor the region's largest hub by 2030. Malaysia already has more live capacity than 
+Singapore, Korea or Hong Kong, at about 1.3GW (which, reassuringly, matches the live figure in 
+JPM's tracker): 
+ 
+
+ 
+ 
+The physical evidence is hard to miss. Malaysia's net imports of diesel generators, the backup 
+power of choice for data centers, were running more than $200 million above their 2018-22 
+average on the latest reading, far ahead of Thailand, Indonesia or Australia: 
+ 
+
+ 
+ 
+What does that do for growth? Goldman estimates data center construction adds an average of 
+30bps a year to Malaysian GDP over 2026-2028 (20bps for Thailand, 10bps for Indonesia), with 
+Malaysia getting the single biggest impulse next year, at roughly 36bps: 
+ 
+
+ 
+ 
+If that sounds small next to RM385 billion of approved investment, it's because about two-thirds 
+of what goes into a data center is imported chips and electrical gear. The part that stays in 
+Malaysia is concrete, cabling and construction wages, and once the building is up, permanent 
+headcount is in the low hundreds. 
+The more interesting number is what happens after the servers are switched on. Malaysia's ICT 
+services balance swung from a deficit of 20bps of GDP to a surplus of 30bps between Q2 2025 
+and Q2 2026, and 2025 was the first year since 2011 that the country ran an overall services 
+surplus: 
+ 
+
+ 
+ 
+Goldman reads that as Johor selling cloud and inference back to Singapore. Maybe. But think 
+about what an "ICT services export" from a Malaysian data center actually is: a foreigner renting 
+compute that sits in Malaysia. That is the remote-access loophole, showing up in the balance of 
+payments. 
+Put it all together and the bank concludes that Malaysia is the ASEAN economy with the most to 
+gain from AI. Its summary table has AI contributing 3.4 percentage points of Malaysia's 5.2% 
+growth this year, i.e. roughly two-thirds of it: 
+ 
+
+ 
+ 
+To be fair to Kuala Lumpur, most of that (2.8 points) is tech hardware exports, mainly chip 
+assembly and testing, which no Commerce rule on Blackwells will touch. The slice that runs 
+through data centers is the 0.2 points of construction plus the 0.4 points of ICT services exports: 
+call it 0.6 points, or a bit more than a tenth of this year's growth. So the macro hit is 
+manageable. The hit to the handful of Bursa-listed contractors and utilities that have been living 
+off it is another matter. 
+And here is the part that has aged best. Goldman closes with a warning about the region's AI 
+dependence: 
+This positioning is inherently double-edged. While the region is highly leveraged to the AI supply 
+chain and has so far delivered robust growth thanks to the investment boom, such concentration 
+leaves the region vulnerable to any reversal in AI investments. A moderation in hyperscaler 
+capex, whether driven by higher financing costs, greater investor scrutiny of ROI or 
+slower-than-expected progress in AI adoption, might generate a meaningful growth headwind 
+for the region. 
+Higher financing costs, ROI scrutiny, slower adoption: all present and accounted for. What's 
+missing from the list of risks is the one thing the same note had named, six pages earlier, as a 
+driver of the boom. Arbitrage, after all, only works until the other side notices. 
+Kuala Lumpur Discovers Paperwork 
+Malaysia, which has approved RM385.7 billion ($95 billion) of data center investment since 
+2021 and whose construction sector grew 6% last quarter on the back of it, per Reuters, is now 
+scrambling to look like a responsible custodian. 
+ 
+
+ 
+On Thursday, Trade Minister Johari Abdul Ghani said the government is drafting a law forcing 
+data centers to disclose their operators, locations, power use and how many GPUs they bring 
+in. He also said he saw no legal basis to investigate Speedmatrix. By Friday, his ministry was 
+working with customs to find out whether Speedmatrix's chips had been re-exported, while 
+stressing that it had never given the company the all-clear. Prime Minister Anwar Ibrahim, for his 
+part, says there is no sign any chips left the country. 
+The most revealing detail is in the ministry's own statement: a data center tenant can bring AI 
+chips into Malaysia without any permit or license (only exporting them has required one, since 
+July 2025). Just 55 of the country's 117 approved projects are even operating. So nobody in 
+Kuala Lumpur actually knows how many GPUs are in the country, who owns them, or who is 
+logged into them from Hangzhou. Well, somebody is about to find out. 
+Déjà Vu, With One Big Difference 
+Why "déjà vu"? Because Malaysia has seen this movie. In January 2025, Biden's AI diffusion 
+rule capped chip exports to the country and local data center names were routed: in the first two 
+weeks of that year, as the rule took shape, YTL Power lost 13% and Gamuda 9%. Four days 
+after the rule, JPMorgan cut Sunway Construction and YTL Power to Underweight and Gamuda 
+to Neutral, all on the same day (we'd guess that was no coincidence). Trump then scrapped the 
+rule, and the downgraded stocks did this: 
+ 
+SunCon more than doubled. Which is probably why, this time around, the bank is in no mood to 
+repeat the exercise: all five stocks in the note are rated Overweight, even as the market does 
+ 
+
+ 
+the downgrading for it. On Thursday alone YTL Power shed 8% and more than RM3 billion of 
+market cap, taking its slide since the end of September to roughly 26%, with the contractors in 
+tow (Gamuda lost another 3% on Friday): 
+ 
+The one big difference with 2025 is who is writing the rules. Last time a lame-duck 
+administration published a rule on its way out the door, and its successor scrapped it four 
+months later with Nvidia's CEO cheering from the front row. This time the rule comes from 
+Trump's own Commerce Department, Congress wants an even tougher one, and the 
+lobbyist-in-chief is unemployed. 
+Nor are valuations pricing in a rerun. JPM's own charts show SunCon at 20x forward earnings 
+against a 10-year average of 17x, and Gamuda at 18x against 15x (chart source: Bloomberg, 
+via JPM): 
+ 
+ 
+
+ 
+Who Gets Hit, According To JPMorgan 
+The bank's answer is, more or less: not the stocks we cover. Start with its argument for why the 
+builders are mostly insulated: 
+While the implications of potential US measures remain unclear, we see relatively low direct 
+exposure for GAM and SCGB, as most of their DC clients are Western hyperscalers developing 
+capacity primarily for their own use, rather than third-party operators potentially exposed to 
+chip-diversion restrictions. 
+The numbers behind that: JPM counts 24 hyperscaler packages in Selangor and Negeri 
+Sembilan worth 1,554MW and RM46.6 billion, of which 14 packages (828MW, RM24.8BN) have 
+yet to be awarded. Gamuda, with a US hyperscaler client and only ~15% of its orderbook in 
+data centers, is the safer of the two; for SunCon, every RM1BN of data center wins gained or 
+lost moves FY27/28 earnings by 3-4%. 
+ 
+Fair enough, but note the hedge buried in the same note: contractors may escape direct 
+restrictions, yet a change in customers' investment plans or timelines would hit everyone. More 
+than half that table is still to be awarded, after all. 
+Next, the bank's defense of YTL Power: 
+In colocation, GPU procurement sits with tenants, limiting YTLP’s direct exposure. Long-dated 
+contracts with bank-guarantees offer downside protection, while YTLP’s integrated land, power 
+and DC infrastructure lets it target US tenants for future capacity. 
+ 
+
+ 
+YTL's 150MW of live capacity is split evenly between US and non-US customers, JPM says, 
+without spelling out who the non-US half is. Tenaga, meanwhile, is covered by five-year 
+take-or-pay supply agreements, so it gets paid whether or not the servers ever show up. And 
+NationGate gets a clean bill of health: 
+Nationgate’s Nvidia GPU assembly lasted about three quarters, and we stripped all GPU 
+revenue from forecasts at end-2025. Any licensing risk sits with exporters, not contract 
+manufacturers, delivering locally. 
+Add it all up and the latest price targets in the note's own tables sit 26% to 64% above 
+Thursday's close (YTL Power: RM7.20 vs RM4.40). Which is either a screaming opportunity, or 
+a reminder that price targets tend to follow price, not the other way around. 
+The Other 4GW 
+To be fair, there is a bull case, and it comes from Morgan Stanley. In its Nov 2 global power deck 
+(also available to pro subs), the bank estimated that about 15GW of America's data center 
+power shortfall will spill over to Asia, with Malaysia taking the single biggest slice at 4GW: 
+ 
+That was before the blue tsunami froze a good chunk of the US pipeline. So maybe the 
+Americans chased out of Texas and Ohio simply backfill whatever the Chinese vacate in Johor: 
+4GW in, 3.8GW out, and nobody gets hurt. One Singapore chip executive told Reuters as much, 
+arguing that fewer chips for China means more for everyone else. 
+ 
+
+ 
+Maybe. But there's a catch: under the rule The Information describes, every Blackwell headed to 
+Malaysia needs a US license, whoever the tenant is. An American hyperscaler will get one. It 
+will just take longer, and the whole point of Johor was that it was fast. 
+What to watch: 
+●​ The Commerce rule: could be announced as soon as this month. The detail that matters 
+is whether it regulates only shipments or also remote access, i.e. existing capacity. 
+●​ The defense bill: three chip-control bills, including mandatory location tracking, are being 
+lined up for the NDAA. 
+●​ Nov 18: the date three House committee chairs set for a closed-door briefing on Huang's 
+dealings with Alice Huang. 
+●​ Malaysia's customs findings on Speedmatrix, and how fast the GPU-disclosure law 
+moves. 
+●​ The unawarded 828MW of hyperscaler packages: any slippage shows up in Gamuda 
+and SunCon's orderbooks first. 
+Nobody Asked Who The Tenant Was 
+JPMorgan's conclusion is that the scope of any US measures is uncertain, direct exposure for 
+its stocks is low, and the committed investments provide support. That's one possibility. The 
+other, and to us the more likely, is that a pipeline which is 72% unbuilt, at least a quarter 
+Chinese by operator and an unknown amount more by tenant, in a country that only this week 
+decided to start counting its GPUs, is about to get a lot smaller. 
+We said in December that Johor had become a magnet for AI data centers. Magnets, it turns 
+out, also attract the Bureau of Industry and Security. 
+Which means our running tally of data center deals that have been pulled, pushed, repriced or 
+puked gets its first entry from Malaysia. We doubt it will be the last: 
+ 
+
+ 
+ 
+Much more in the full JPMorgan "Malaysia Data Centers" note and Goldman's "Exports and 
+Beyond: Asia's Broadening AI Dividend", both available to pro subs. 
+ 
+ 
+ 
+ 
