@@ -1,7 +1,7 @@
 {
- "attempts": 2,
- "given_up": false,
- "last_reason": "reader: bearish\",\"conviction\":\"medium\",\"timeframe\":\"\"}, {\"bank\":\"Goldman Sachs\",\"document\":\"Everything Bad, Everywhere, All At O",
+ "attempts": 3,
+ "given_up": true,
+ "last_reason": "reader: {\"bank\": \"Zero Hedge\", \"document\": \"Everything Bad, Everywhere, All At Once... Except Stocks: Jensen Quits, Inflation Hi",
  "history": [
   {
    "at": "2026-11-17T01:09Z",
@@ -12,6 +12,11 @@
    "at": "2026-11-17T05:11Z",
    "run_id": "44020962414",
    "reason": "reader: bearish\",\"conviction\":\"medium\",\"timeframe\":\"\"}, {\"bank\":\"Goldman Sachs\",\"document\":\"Everything Bad, Everywhere, All At O"
+  },
+  {
+   "at": "2026-11-17T09:11Z",
+   "run_id": "44051522406",
+   "reason": "reader: {\"bank\": \"Zero Hedge\", \"document\": \"Everything Bad, Everywhere, All At Once... Except Stocks: Jensen Quits, Inflation Hi"
   }
  ]
 }
