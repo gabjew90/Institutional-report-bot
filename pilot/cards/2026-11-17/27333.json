@@ -1,0 +1,576 @@
+{
+ "brief": "Credit markets remain open to hyperscalers: they priced ~$67bn of unsecured IG bonds (US+EUR) within 5 days since 9/30, so Morgan Stanley expects a quieter year-end. Post-midterms, combined 2027 capex forecasts stay unchanged at ~$1.66tr (+75% vs '26), but financing outcomes diverge along a widening quality divide: risk-reward improves for HQ hyperscalers (AMZN/GOOGL/META/MSFT) while data-center bonds and neoclouds see more spread volatility given execution and funding risk. Midterms push ~5GW of US IT capacity from 2028 to 2029 (Texas/Ohio projects not yet under construction), deepening the near-term power shortfall to 44GW through 2028, which reinforces the divide: largest companies can redirect investment, new construction faces more scrutiny. Leveraged finance stays subdued ($5bn in October). Data-center ABS spreads hit record wides on technical, not thematic, weakness; investors want amortization, which could tighten spreads if introduced. On single names: Oracle reaffirmed ~$20bn FY27 funding split evenly debt/equity, then priced $10bn bond plus $10bn equity after its Analyst Day; Amazon disclosed an $80bn supplier-financing facility; chip financing is accelerating ($103bn announced in October).",
+ "cards": [
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Hyperscalers priced roughly $67bn of unsecured investment-grade bonds across the US and EUR markets within 5 business days since September 30.",
+   "anchor": "Hyperscalers priced ~$67bn of unsecured IG bonds (US+EUR) within 5 business days, reinforcing the market\u2019s capacity to absorb substantial supply",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley expects AI-related leveraged finance supply to remain subdued with a higher bar for new deals.",
+   "anchor": "AI-related leveraged finance supply should remain subdued, with a higher bar for new deals.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "through year-end 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "AI-related leveraged finance issuance totaled just $5bn in October, and Morgan Stanley expects limited supply through year-end.",
+   "anchor": "October saw just $5bn of issuance, and we expect limited supply through year-end",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "through year-end 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Data center securitized credit spreads moved sharply wider in October with another $2bn pricing across three ABS deals.",
+   "anchor": "Spreads in data center securitized credit moved sharply wider in October with another $2bn pricing across three ABS deals.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Oracle's Analyst Day in Las Vegas was followed by a $10bn bond deal and a $10bn equity raise.",
+   "anchor": "we attended ORCL\u2019s Analyst Day in Las Vegas, which was followed by a $10bn bond deal and $10bn equity raise",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Bespoke chip and supplier financing has become a key focus of investor inquiries ahead of upcoming off-cycle NVDA and DELL earnings.",
+   "anchor": "Recent headlines and disclosures have made bespoke chip and supplier financing a key focus of investor inquiries ahead of upcoming off-cycle semiconductor and hardware earnings",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "ahead of upcoming off-cycle earnings"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Volumes of AI and data center supply now total $646bn year-to-date, roughly 3x FY25 supply.",
+   "anchor": "Volumes of AI and data center supply now sit at \n$646bn YTD, ~3x FY25 supply.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley expects little, if any, additional unsecured hyperscaler bond issuance through year-end.",
+   "anchor": "we expect little, if any, additional \nunsecured hyperscaler issuance through YE.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through year-end 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Hyperscalers have announced roughly $210bn of equity issuance year-to-date, with some ATM programs yet to be completed.",
+   "anchor": "hyperscalers \nannounced ~$210bn of equity issuance (some ATM programs yet to completed).",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley's equity team shifts roughly 5GW of US IT capacity from 2028 to 2029 following the midterms.",
+   "anchor": "Our equity colleagues shift ~5 \nGW of US IT capacity from 2028 to 2029",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "2028 to 2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley's combined 2027 capex forecast is unchanged at roughly $1.66tr, up 75% versus 2026.",
+   "anchor": "we're now at ~$1.66tr of capex in 2027, +75% vs. 2026",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Annual US data center capacity additions are now forecast at ~20GW in 2028, down from ~25GW previously, and ~28GW in 2029, up from ~23GW previously.",
+   "anchor": "Annual US \nadditions are now at ~20 GW in 2028, versus ~25 GW previously, and ~28 GW in 2029, \nversus ~23 GW previously.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2028-2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley's Powering AI model now projects a 44GW net US power shortfall through 2028, up from 38GW previously.",
+   "anchor": "Morgan Stanley's Powering AI model now projects a \n44 GW net US power shortfall through 2028, versus 38 GW previously",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "The largest AI capex companies have greater flexibility to redirect investment and improve productivity from existing capacity, while new construction financing faces greater scrutiny of power access.",
+   "anchor": "the largest companies have greater \nflexibility to redirect investment and improve productivity from existing capacity, \nwhile new construction financing faces greater scrutiny of power access",
+   "topic": "Data center buildout credibility",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley views risk-reward for HQ hyperscalers (AMZN, GOOGL, META, MSFT) as improving.",
+   "anchor": "Risk-reward for HQ hyperscalers is improving.",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley expects more spread volatility for data center bonds and neoclouds given execution and funding risks.",
+   "anchor": "expect more spread volatility for data center bonds \nand neoclouds given execution and funding risks",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Neoclouds face compounding funding risk from higher costs, greater reliance on external capital, less diversified business models, and limited operating track records.",
+   "anchor": "For neoclouds, higher funding costs compound greater reliance on external capital, \nless diversified business models, and limited operating track records.",
+   "topic": "Data center buildout credibility",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Bespoke chip financing is accelerating, with $103bn in transactions officially announced in October.",
+   "anchor": "numerous \ntransactions being discussed in the press, with some already officially \nannounced ($103bn total in October)",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Hyperscalers disclose $1.3tr of future lease payments for leases that have not yet started.",
+   "anchor": "Hyperscalers disclose $1.3tr of future lease payments for leases that have not yet \nstarted.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley forecasts hyperscaler data center shells acquired under leases will total $195bn in 2027.",
+   "anchor": "we \nforecast data center shells acquired under leases across the hyperscalers will total \n$195bn in 2027",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "AI-related debt share of the IG index continues to rise rapidly amid heavy issuance.",
+   "anchor": "AI-related debt share of the IG Index continues to \nrise rapidly on the back of heavy issuance",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "HQ hyperscaler (AMZN, GOOGL, META, MSFT) credit spreads are now 9bp wider than the IG index.",
+   "anchor": "HQ Hyperscalers spreads are now 9bp \nwider than the IG Index",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "LQ hyperscaler credit spreads, including Oracle's, have widened the most year-to-date, while the broader IG index is 13bps wider on the year.",
+   "anchor": "YTD widening most severe for the LQ \nHyperscaler cohort, IG Index now 13bps wider on the \nyear",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "YTD 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Hyperscalers' reported credit metrics are broadly in line with the broader tech sector but carry roughly double the cash-to-debt ratio.",
+   "anchor": "Hyperscaler reported metrics more in line with \nbroader Tech, but with double the cash-to-debt",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Off-balance-sheet leverage is rising as hyperscalers (GOOGL, META, AMZN, MSFT, ORCL) enter into long-dated leases for data center shells.",
+   "anchor": "Off-balance sheet leverage is rising as hyperscalers \nenter into long-dated leases for data center shells...",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "META",
+    "AMZN",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Oracle reaffirmed its investment-grade commitment and roughly $20bn of remaining FY27 funding needs, to be split evenly between debt and equity.",
+   "anchor": "ORCL reaffirmed its IG commitment and ~$20bn remaining FY27 funding needs, but \noutlined those to be split evenly between debt and equity",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Oracle management implied tens of billions in debt-like 5-year vendor financing and customer prepayments to help support over $200bn of medium-term capex.",
+   "anchor": "Management implied tens of billions of 5Y vendor \nfinancing, which we feel is debt-like, and customer prepayments, to help support >$200bn \nmedium-term capex.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "medium-term"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Oracle is leasing data center shells rather than self-building, driving roughly $65bn of construction loans outside public markets tied to ~4GW of critical IT load.",
+   "anchor": "ORCL is \nleasing shells rather than self-building, which has driven substantial financing outside \npublic markets, including ~$65bn construction loans tied to ~4GW  critical IT load.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Amazon disclosed supplier-financing arrangements including a secured loan facility of up to $80bn.",
+   "anchor": "coincided with AMZN\u2019s disclosure of supplier financing \narrangements, including a secured loan facility of up to $80bn.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Dell's DFS-related debt exceeded $20bn last quarter, above the Core segment's implied ~$14bn.",
+   "anchor": "DELL\u2019s DFS-related debt exceeded \n$20bn last quarter, above the Core\u2019s implied ~$14bn",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley sees near-term spread pressure as warranted for Dell pending clarity on its finco's role in AI server financing.",
+   "anchor": "For DELL, also in our coverage, near-term \nspread pressure appears warranted pending clarity on its finco\u2019s role in AI server financing",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Nebius disclosed a new $3.5bn senior secured facility from a sole arranger/agent that was not identified as contract-backed.",
+   "anchor": "Nebius disclosed a new $3.5bn senior secured \nfacility from a sole arranger/agent that was not identified as contract-backed.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "CoreWeave had roughly $5bn of combined recourse and nonrecourse OEM financing as of 2Q26.",
+   "anchor": "follows ~$5bn of combined recourse and nonrecourse OEM financing at \nCRWV as of 2Q26",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "as of 2Q26"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley's Buy ORCLCP 5Y CDS trade, entered at +57bp on 9/28/25, has moved to +307bp.",
+   "anchor": "Buy ORCLCP 5Y CDS\n+57bp\n9/28/25\n+307bp",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley's Sell ORCL 5.2% 9/26/35 bond trade, entered at +167bp on 1/23/26, has moved to +300bp.",
+   "anchor": "Sell ORCL 5.2 9/26/35\n+167bp\n1/23/26\n+300bp",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Data center ABS AAA spreads have printed at their all-time widest level of 200bp.",
+   "anchor": "in recent deals, we have seen the all-time widest print on AAAs (200)",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley believes data center ABS spread weakness is primarily driven by technical factors rather than fundamental concerns over the AI thematic.",
+   "anchor": "We believe this weakness is primarily driven by technical factors, rather than \nfundamental concerns over the thematic backdrop.",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Securitized credit investors have expressed a strong desire to see amortization introduced within data center ABS trusts.",
+   "anchor": "investors have expressed a \nreal desire to see amortization within the ABS trusts.",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The State of AI Financing: Hyperscalers Are Back",
+   "claim": "Morgan Stanley thinks an amortizing data-center ABS structure could see meaningful spread tightening from the current 200bp AAA level.",
+   "anchor": "With AAA spreads now \npricing at 200, we think an amortizing deal could see meaningful spread tightening.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27333__the-state-of-ai-financing-hyperscalers-are-back.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 39,
+  "matched": 39,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
