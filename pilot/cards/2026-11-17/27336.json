@@ -1,0 +1,233 @@
+{
+ "brief": "Bitcoin has lost roughly a quarter of its value since October 21. A weekend flush triggered near $2 billion in liquidations after BTC broke below its 200-day moving average around $73,000. ETF outflows have run seven straight days, with $2.35 billion leaving spot BTC ETFs over the last two weeks. MARA sold 13,597 BTC, about $1.1 billion, in six weeks, 40% of its September-end holdings, using $750 million to repay Bitcoin-backed loans and signaling future sales toward AI data-center funding. It has sold over 40,000 BTC in 2026. Bitcoin is again trading below Strategy's average purchase price, raising doubt over whether Strategy can keep bidding while others sell. Funding turned negative on Binance, OKX and Bybit on November 13, meaning traders increasingly pay to hold shorts. The note floats a theory, citing the SpaceX IPO precedent (BTC fell 19% in the 50 days before it versus a similar 18% decline now before Anthropic's), that investors are selling Bitcoin to fund Anthropic IPO allocations, calling it possible capital rotation into AI. It also notes NVDA's six-week losing streak, longest since 2012, and Chinese equities red 13 of the last 14 weeks, framing Bitcoin's drop as reconnecting with weak risk assets.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Bitcoin has lost roughly a quarter of its value since October 21.",
+   "anchor": "Bitcoin has lost roughly a quarter of its value since October 21",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "The weekend crypto liquidation flush totaled nearly $2 billion.",
+   "anchor": "nearly $2 billion in crypto liquidations",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Bitcoin's selling accelerated after BTC broke below its 200-day moving average around $73,000.",
+   "anchor": "Bitcoin selling accelerated after BTC broke below its 200-day moving average around $73,000.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "$2.35 billion left spot Bitcoin ETFs over the two weeks before the note.",
+   "anchor": "$2.35 billion left spot BTC ETFs over the last two weeks",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Spot Bitcoin ETFs have recorded seven straight days of selling.",
+   "anchor": "Seven straight days of ETF selling",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "MARA sold 13,597 BTC for about $1.1 billion.",
+   "anchor": "has sold 13,597 BTC for approximately $1.1 billion",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [
+    "MARA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "MARA's Bitcoin sale over six weeks equaled 40% of its September-end holdings.",
+   "anchor": "just six weeks, equivalent to 40% of its September-end holdings.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [
+    "MARA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "MARA used $750 million from its Bitcoin sales to repay Bitcoin-backed loans.",
+   "anchor": "The company used $750 million to repay Bitcoin-backed loans",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [
+    "MARA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "MARA has sold more than 40,000 BTC in 2026 including earlier disposals.",
+   "anchor": "MARA has now sold more than 40,000 BTC in 2026.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [
+    "MARA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Bitcoin is again trading below Strategy's average Bitcoin purchase price, raising doubt over whether Strategy can keep bidding.",
+   "anchor": "Bitcoin is once again trading below Strategy's average purchase price.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "level",
+   "instruments": [
+    "MSTR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Market participants suspect investors are selling Bitcoin to raise cash for Anthropic IPO allocations.",
+   "anchor": "Bitcoin, to raise cash for the deal.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Bitcoin fell 19% in the 50 days before the SpaceX IPO and has declined a similar 18% over the comparable period before Anthropic's expected IPO, per figures attributed to Strive's Matt Cole.",
+   "anchor": "Bitcoin fell 19% in the 50 days preceding the SpaceX IPO and has declined a similar 18% over the",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "50 days before IPO"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "Funding turned negative on Binance, OKX and Bybit on November 13, meaning traders increasingly pay to hold short positions.",
+   "anchor": "Funding turned negative on Binance, OKX and Bybit on November 13.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "NVDA has traded red for six consecutive weeks, its longest losing streak since 2012.",
+   "anchor": "6 consecutive weeks, its longest losing streak since 2012.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "PAIN Bitcoin has lost over $10,000 in a week",
+   "claim": "China's stock market has traded red in 13 of the last 14 weeks, its weakest period in history.",
+   "anchor": "13 of the last 14 weeks, the weakest period in its history.",
+   "topic": "Bitcoin selloff drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27336__pain-bitcoin-has-lost-over-10-000-in-a-week.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 15,
+  "matched": 15,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
