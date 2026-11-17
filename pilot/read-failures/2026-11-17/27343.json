@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: }, \"timeframe\":\"\"}, {\"bank\":\"Zero Hedge\",\"document\":\"Everything Bad, Everywhere, All At Once... Except Stocks: Jensen Qu",
+ "last_reason": "reader: bearish\",\"conviction\":\"medium\",\"timeframe\":\"\"}, {\"bank\":\"Goldman Sachs\",\"document\":\"Everything Bad, Everywhere, All At O",
  "history": [
   {
    "at": "2026-11-17T01:09Z",
    "run_id": "43992103926",
    "reason": "reader: }, \"timeframe\":\"\"}, {\"bank\":\"Zero Hedge\",\"document\":\"Everything Bad, Everywhere, All At Once... Except Stocks: Jensen Qu"
+  },
+  {
+   "at": "2026-11-17T05:11Z",
+   "run_id": "44020962414",
+   "reason": "reader: bearish\",\"conviction\":\"medium\",\"timeframe\":\"\"}, {\"bank\":\"Goldman Sachs\",\"document\":\"Everything Bad, Everywhere, All At O"
   }
  ]
 }
