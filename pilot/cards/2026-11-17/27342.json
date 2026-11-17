@@ -1,0 +1,1252 @@
+{
+ "brief": "Nvidia CEO Jensen Huang resigned effective immediately; CFO Colette Kress becomes interim CEO while keeping the CFO title. The stock fell as much as 13% intraday, closing down about 4%; CoreWeave fell 11% the same day while marketing a $4bn+ loan Nvidia likely guarantees. The piece catalogs Nvidia's circular AI financing web: $99bn of equity stakes (OpenAI, Anthropic, Safe Superintelligence, xAI/SpaceX, neoclouds, suppliers, Hugging Face), $108.5bn of guarantees (including a $105bn OpenAI Ohio backstop that Kress, not Huang, halved), and $366bn of future commitments, totaling $530.5bn excluding Huang's pledge to backstop up to $125bn (25%) of a separate $500bn financing platform that has produced no deals in three months. Per WSJ reporting, Huang's son-in-law Nico Caprez had been running aggressive financing deals; Kress pushed back, was dismissed by Huang as 'a deer in the headlights,' then curbed the program from August. Goldman, UBS and William Blair all flag that new financing deals, not existing ones, get harder without Huang, raising competitive risk from Broadcom and AMD. Nvidia reports Q3 earnings Tuesday Nov 17, the first test of whether the financing machine still runs.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia announced that Jensen Huang has resigned effective immediately, with CFO Colette Kress taking over as interim CEO while keeping the CFO job.",
+   "anchor": "Jensen Huang has resigned, effective immediately, with CFO Colette Kress taking over as interim CEO",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "14 sell-side desks were cutting ratings and price targets on Nvidia after Huang's resignation.",
+   "anchor": "while 14 sellside desks were busy cutting ratings and price targets",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia stock initially plunged more than 13% on the resignation news before paring losses to close about 4% lower.",
+   "anchor": "The stock, which initially plunged more than 13% on the news, pared losses and close about 4% lower",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "CoreWeave fell 11% the same day it was marketing a $4 billion-plus investment-grade loan that Nvidia is presumably guaranteeing.",
+   "anchor": "CoreWeave (CRWV) fell 11% on the same day it was marketing a $4BN+ investment-grade loan",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "CRWV",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's equity investment book stood at $99 billion as of July 26, roughly 13 times its level a year earlier.",
+   "anchor": "Nvidia's equity book stood at $99 billion as of July 26, roughly 13 times where it was a year earlier",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested $30 billion into OpenAI in March 2026.",
+   "anchor": "AI labs: $30BN into OpenAI in March, up to $10BN into Anthropic",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia committed up to $10 billion into Anthropic, including a $10 billion anchor order in Anthropic's IPO alongside Google.",
+   "anchor": "up to $10BN into Anthropic (plus a $10BN anchor order in Anthropic's IPO, alongside Google)",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested about $5 billion into Ilya Sutskever's Safe Superintelligence in July 2026.",
+   "anchor": "about $5BN into Ilya Sutskever's Safe Superintelligence in July",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's xAI investment has since turned into a SpaceX stake worth about $21 billion as of the end of June 2026.",
+   "anchor": "an xAI cheque that has since turned into a SpaceX stake worth some $21BN at the end of June",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested $2 billion into CoreWeave in January 2026.",
+   "anchor": "Neoclouds: $2BN into CoreWeave in January, $2BN of pre-funded Nebius warrants",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia pre-funded $2 billion of Nebius warrants in March 2026.",
+   "anchor": "$2BN of pre-funded Nebius warrants in March, the right to buy up to $2.1BN of IREN stock",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia holds the right to buy up to $2.1 billion of IREN stock, granted in May 2026.",
+   "anchor": "the right to buy up to $2.1BN of IREN stock in May, and $1BN of Nscale notes",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia committed $1 billion of Nscale notes due to fund this month.",
+   "anchor": "$1BN of Nscale notes due to fund this month",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested $3 billion into Meta's record equity raise in late October 2026.",
+   "anchor": "Customers: $3BN into Meta's record equity raise in late October, which we covered in",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested $5 billion into Intel, a stake now worth about $30 billion.",
+   "anchor": "Suppliers: $5BN into Intel (now worth about $30BN), $2BN each into Coherent, Lumentum, Marvell and Synopsys",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested $2 billion each into Coherent, Lumentum, Marvell and Synopsys.",
+   "anchor": "$2BN each into Coherent, Lumentum, Marvell and Synopsys, up to $3.2BN in Corning and $1BN in Nokia",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "COHR",
+    "LITE",
+    "MRVL",
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested up to $3.2 billion in Corning.",
+   "anchor": "up to $3.2BN in Corning and $1BN in Nokia",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "GLW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia invested $1 billion in Nokia.",
+   "anchor": "up to $3.2BN in Corning and $1BN in Nokia",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NOK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia struck a roughly $20 billion licensing deal with Groq.",
+   "anchor": "IP and models: the ~$20BN Groq licensing deal, $6BN to license Poolside's model factory",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia paid $6 billion to license Poolside's model factory plus $1 billion of Poolside equity.",
+   "anchor": "$6BN to license Poolside's model factory (plus $1BN of Poolside equity) and the pending $12.9BN acquisition",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia has a pending $12.9 billion acquisition of Hugging Face.",
+   "anchor": "and the pending $12.9BN acquisition of Hugging Face",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia was weighing a $250 billion backstop for OpenAI, as first reported by the WSJ in July 2026.",
+   "anchor": "the WSJ first reported that Nvidia was weighing a $250 billion backstop for OpenAI",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia stock fell 5% the day the $250 billion OpenAI backstop report emerged, wiping out about $250 billion of market value.",
+   "anchor": "The stock fell 5% the next day, wiping out roughly $250 billion of market value",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Colette Kress reworked the Nvidia-OpenAI deal and cut Nvidia's initial commitment in half.",
+   "anchor": "it was Colette Kress who reworked the deal and cut Nvidia's initial commitment in half",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's final 8-K capped its OpenAI guarantee at $105 billion, with an option for 3.8 more gigawatts.",
+   "anchor": "the final 8-K capped the guarantee at $105 billion, with an option for 3.8 more gigawatts",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia wired $1.5 billion to the landlord of the Ohio OpenAI data center site.",
+   "anchor": "Nvidia had also wired $1.5 billion to the landlord",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Each generation of Nvidia infrastructure deployed at the Ohio OpenAI site could represent about 1.5 million GPUs, or $150 billion to $200 billion in Nvidia revenue.",
+   "anchor": "could represent about 1.5 million GPUs, or roughly $150 billion to $200 billion in Nvidia revenue",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia guarantees $105 billion of rent to sell up to $200 billion of chips every upgrade cycle, for 20 years, under the Ohio deal structure.",
+   "anchor": "Nvidia guarantees $105 billion of rent to sell up to $200 billion of chips, every upgrade cycle, for 20 years",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "20 years"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's 10-Q for the quarter ended July 26 disclosed $366 billion of future commitments, led by $279 billion of supply and capacity purchases, up from $119 billion three months earlier.",
+   "anchor": "$366 billion of future commitments, led by $279 billion of supply and capacity purchases (up from $119 billion just three months earlier)",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's commitments included $29 billion of cloud service agreements, $25 billion of data center leases and $25 billion of equity investments promised but not yet funded.",
+   "anchor": "plus $29 billion of cloud service agreements, $25 billion of data center leases, $25 billion of equity investments promised but not yet funded",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's future commitments included $8 billion of capex.",
+   "anchor": "not yet funded and $8 billion of capex",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's 10-Q disclosed $56 billion of 'additional' commitments, including $36 billion of agreements to buy capacity back from AI clouds.",
+   "anchor": "$56 billion of \"additional\" commitments: $36 billion of agreements to buy capacity back from AI clouds",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia signs $20 billion of data center leases and passes them on to neocloud partners.",
+   "anchor": "and $20 billion of data center leases Nvidia signs and then passes on to neocloud partners",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's 10-Q disclosed $108.5 billion of guarantees: the $105 billion Ohio backstop for OpenAI and $3.5 billion of land, power and shell guarantees for AI-cloud partners' leases.",
+   "anchor": "$108.5 billion of guarantees: the $105 billion Ohio backstop for OpenAI and $3.5 billion of land, power and shell guarantees for AI-cloud partners' leases",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Zero Hedge calculates Nvidia's disclosed commitments, guarantees and additional commitments add up to $530.5 billion.",
+   "anchor": "That adds up to $530.5 billion (a number we have been keeping close tabs on in the past few quarters)",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Jensen Huang pledged Nvidia could backstop up to $125 billion, or 25%, of the $500 billion AI financing platform he launched in August 2026.",
+   "anchor": "Huang's pledge that Nvidia could backstop up to $125 billion, or 25%, of the $500 billion financing platform he launched in August",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Panmure Liberum",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Panmure Liberum warned the 'bank of Nvidia' financing platform was a moat for the chipmaker but also a source of credit risk.",
+   "anchor": "Panmure Liberum's warning that the \"bank of Nvidia\" was a moat for the chipmaker but also a source of credit risk",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Three months after Huang launched the $500 billion AI financing platform, it has produced no deals.",
+   "anchor": "Three months later, the platform has produced no deals and the man who launched it... is gone",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "three months"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's contingent and committed cash obligations total roughly half a trillion dollars against a company that generates $50-60 billion of free cash flow per quarter.",
+   "anchor": "roughly half a trillion dollars of contingent and committed cash for a company that generates $50-60 billion of free cash flow a quarter",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "a quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Goldman's James Schneider kept his Buy rating on Nvidia but cut his price target to $220 from $300 after the CEO announcement.",
+   "anchor": "Goldman's James Schneider, who kept his Buy rating but cut his target to $220 from $300 in a note published after the announcement",
+   "topic": "NVDA CEO succession risk",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Goldman's James Schneider expects Nvidia to honor every financing commitment it has already announced.",
+   "anchor": "expects Nvidia to honor every commitment it has already announced",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Goldman's James Schneider says new multi-party ecosystem investments at the same scale will be harder to pull off without Huang's vision, reach and convening power.",
+   "anchor": "new multi-party ecosystem investments at the same scale will be harder to pull off without Huang's vision, reach and convening power",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Goldman's James Schneider believes Nvidia shares had already been trading at a wide discount because investors feared AI infrastructure growth could slow without Nvidia-provided financing.",
+   "anchor": "investors' concern that growth could slow dramatically for AI infrastructure without the financing provided by Nvidia or its competitors",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "UBS's Tim Arcuri lists Nvidia's role as a financing source for the AI industry as the first of his three key areas of impact from Huang's exit.",
+   "anchor": "Tim Arcuri, in a First Read published Wednesday night, leads with it as the first of his three key areas of impact",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "UBS's Tim Arcuri estimates even a temporary pause in Nvidia's financing could pull $50 billion or more out of the AI ecosystem at a time when interest rates are rising.",
+   "anchor": "50B or more out of the system - at least temporarily - at a potentially key time when interest rates are rising",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "William Blair's Sebastien Naji downgraded Nvidia to Market Perform in a note titled 'Heavy Is the Head That Wears the Crown'.",
+   "anchor": "William Blair's Sebastien Naji, who downgraded to Market Perform in \"Heavy Is the Head That Wears the Crown\", also lists what that money bought",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "William Blair",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "William Blair's Sebastien Naji warns that with Huang gone, Nvidia could face more significant competition from Broadcom (AVGO, Outperform) and AMD (Outperform).",
+   "anchor": "we believe Nvidia could open itself to more significant competition from vendors like Broadcom (AVGO $353.80; Outperform) and AMD (AMD $575.38; Outperform)",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AVGO",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027 and beyond"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia has been offering residual value support on up to 25% of a deal under its $500 billion financing platform.",
+   "anchor": "Nvidia has been offering residual value support on up to 25% of a deal",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Some customers and Wall Street partners have pushed Nvidia to raise its 25% backstop level in the past month because Broadcom offers much more.",
+   "anchor": "in the past month some customers and Wall Street partners have pushed it to go higher, because Broadcom offers much more",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Broadcom backstopped $30 billion of a $35 billion debt deal for Anthropic's TPUs in May 2026.",
+   "anchor": "Broadcom backstopped $30 billion of a $35 billion debt deal for Anthropic's TPUs in May",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Broadcom is backstopping about 72.5%, or $43 billion, of a second $63 billion Anthropic deal.",
+   "anchor": "is backstopping about 72.5%, or $43 billion, of a second $63 billion Anthropic deal",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Per Bloomberg, the earliest Nvidia could likely announce a platform deal is January 2027, assuming Huang's exit doesn't derail the transactions.",
+   "anchor": "the earliest Nvidia could likely announce a platform deal is January, and that assumes Huang's exit doesn't derail the transactions, or the whole project",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "January 2027"
+  },
+  {
+   "bank": "CNBC",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "CNBC reported that Huang's exit casts a shadow over Wall Street's $500 billion AI financing bet and tests his vision of turning AI chips into tradable debt securities.",
+   "anchor": "Huang's exit casts a shadow over Wall Street's $500 billion AI financing bet and tests his vision of turning AI chips into tradable debt securities",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "CNBC",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "The agreements between Nvidia and the six asset managers in its $500 billion financing platform are still preliminary memorandums of understanding, subject to final agreements.",
+   "anchor": "the agreements with the six asset managers are still preliminary memorandums of understanding, subject to final agreements",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Raymond James's Sunaina Sinha Haldea says Huang's exit gives every firm in the $500bn financing platform a natural moment to pause and revisit terms.",
+   "anchor": "the change gives every firm involved a natural moment to pause and look at the terms again",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Raymond James's Sunaina Sinha Haldea says lenders could want to be paid more for the uncertainty created by Huang's exit.",
+   "anchor": "they could want to be paid more for the uncertainty.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Raymond James's Sunaina Sinha Haldea expects lenders to ask harder questions about who is really carrying the risk in AI financing structures, with scrutiny spreading throughout the AI infrastructure deal market.",
+   "anchor": "ask harder questions about who is really carrying the risk in these structures, and that scrutiny will spread throughout the AI infrastructure deal market",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Saxo",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Saxo's Charu Chanana warns the bigger risk from Huang's exit is a ripple effect across AI financing broadly, not the Nvidia partnerships themselves unraveling.",
+   "anchor": "warns that the bigger risk is a ripple effect across AI financing, at a time when rising debt, circular financing and uncertain returns",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Saxo",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Saxo's Charu Chanana says the Nvidia CEO transition is not a financing crisis yet, but could become a catalyst for a broader repricing of risk across the AI ecosystem.",
+   "anchor": "This is not a financing crisis yet, but it could become a catalyst for a broader repricing of risk across the AI ecosystem",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Goldman's Top of Mind diagram shows CoreWeave's delayed-draw term loans priced off the customer's credit rating, which determines how much debt the SPV can carry and at what price.",
+   "anchor": "with the customer's credit rating in step two deciding how much debt the SPV can carry, and at what price",
+   "topic": "Data center buildout credibility",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nscale got $860 million of rent guarantees from Nvidia for its Texas data center site.",
+   "anchor": "Nscale got $860 million of rent guarantees for its Texas site and, per The Information",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Information",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nscale is negotiating more than $5 billion of Nvidia credit support for the West Virginia data center campus it is building for Anthropic.",
+   "anchor": "is negotiating more than $5 billion of Nvidia credit support for the West Virginia campus it is building for Anthropic",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Chamath Palihapitiya, in Goldman's Top of Mind, puts neocloud breakeven utilization at roughly 70% to 75% and compares them to airlines.",
+   "anchor": "Chamath Palihapitiya compares them to airlines, puts breakeven utilization at roughly 70% to 75%",
+   "topic": "Data center buildout credibility",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Palihapitiya's bear case holds that AI spending stays mostly in the experimentation bucket, leaving neoclouds in a 75-85% utilization gray zone where they make money but not enough to pay off their debts.",
+   "anchor": "leaving neoclouds in the 75-85% utilization gray zone in which they are making money, but not enough to pay off their debts",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "CoreWeave's euro-denominated bonds still trade around 80 cents on the dollar.",
+   "anchor": "CoreWeave's euro bonds still trade around 80 cents",
+   "topic": "Data center buildout credibility",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Australia's Firmus slashed and then pulled its IPO in October 2026 after the Nvidia-backed funding window shut.",
+   "anchor": "Australia's Firmus slashed and then pulled its IPO in October",
+   "topic": "Data center buildout credibility",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Per the WSJ, Nvidia was in talks to provide billions of dollars of guarantees to companies that couldn't afford its chips, which Huang diagnosed as a ballooning problem in August 2026.",
+   "anchor": "Nvidia was in talks to provide billions of dollars of guarantees to companies that couldn't afford its chips",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Some of Nvidia's aggressive financing deals were run by Huang's son-in-law Nico Caprez, who was promoted to vice president in January 2026.",
+   "anchor": "Some of those deals were being run by Huang's own son-in-law, Nico Caprez, promoted to vice president in January",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nico Caprez and fellow VP Raj Mirpuri were telling prospective partners in spring 2026 that Nvidia could arrange credit support within a couple of weeks in exchange for a cut of their revenue.",
+   "anchor": "were telling prospective partners that Nvidia could arrange credit support within a couple of weeks, in exchange for a cut of their revenue",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "spring 2026"
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Huang interrupted Colette Kress's presentation in August 2026 to call her 'a deer in the headlights' and dismissed her as a reporting CFO.",
+   "anchor": "interrupting Kress's presentation to call her \"a deer in the headlights\" and dismissing her as a reporting CFO",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Colette Kress was the Nvidia executive who halved the OpenAI backstop that Zero Hedge says had sparked an AI credit rout.",
+   "anchor": "she was the one who halved the OpenAI backstop (the same backstop we warned at the time had sparked an AI credit rout)",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "After the downsized OpenAI deal was signed on August 17, 2026, Huang had staff build a framework to judge whether a financing guarantee was worthwhile by factoring in the chip sales it could generate.",
+   "anchor": "have staff build a framework to judge whether a guarantee was worthwhile by factoring in the chip sales it could generate",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Wall Street Journal",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia paused some of its revenue-share credit support deals in late August 2026, requiring each deal to go through the executive team.",
+   "anchor": "Nvidia paused some of the revenue-share credit support deals, with cloud companies told that each deal now had to go through the executive team",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "late August 2026"
+  },
+  {
+   "bank": "Nvidia",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Colette Kress said in late August 2026 that Nvidia recognizes the scale of its financing support and knows some will call it circular financing, but sees it differently.",
+   "anchor": "\u201cWe recognize the scale of this support, and we know some will call this circular financing. We see it differently,\u201d",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nvidia",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Colette Kress said in late August 2026 that the equity returns on Nvidia's invested capital in its financing deals will be excellent.",
+   "anchor": "\u201cThe equity returns on our invested capital will be excellent.\u201d",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nvidia",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "At a Berlin conference, Huang told six CEOs of Nvidia's biggest chip buyers a fable about a Japanese soup vendor who refused to sell him a second bowl to keep his customer base diverse.",
+   "anchor": "a fable about a Japanese soup vendor who refused to sell him a second bowl, because he would rather keep his customer base diverse",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nvidia",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Huang told neocloud chip buyers at a Berlin conference: 'You are not establishing the value of my products.'",
+   "anchor": "\u201cYou are not establishing the value of my products,\u201d he said.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's average monthly P/E fell from 23 in May 2026 to 16 in October 2026.",
+   "anchor": "Nvidia's average monthly P/E fell from 23 in May to 16 in October",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia responded to its P/E decline with the largest stock buyback in its history.",
+   "anchor": "the company responded with the largest buyback in history",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Information",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "A cloud provider that buys Nvidia chips told The Information that the uncertainty after Huang's exit has it reconsidering a switch to Google or AMD.",
+   "anchor": "a cloud provider that buys Nvidia chips told it the uncertainty after Huang's exit has it reconsidering a switch to Google or AMD",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Nvidia's board decided that Colette Kress will serve as a reporting CFO rather than a strategy-setting executive for the foreseeable future.",
+   "anchor": "(which is what the company's board decided this morning she will do for the foreseeable future)",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "foreseeable future"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "The DOJ is looking at Nvidia customers' shipments and House committee chairs want a closed-door briefing, adding pressure on Kress to protect the balance sheet.",
+   "anchor": "with a board searching for a permanent replacement, the DOJ looking at customers' shipments and House committee chairs wanting a closed-door briefing",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Bank Of Nvidia Just Lost Its Chairman: Mapping Every Circular AI Deal That Now Hangs On Colette Kress",
+   "claim": "Colette Kress reports Nvidia's Q3 earnings on Tuesday, November 17, 2026, the first test of whether the company's financing platform stays open for new deals.",
+   "anchor": "The first test comes on Tuesday, Nov 17, when Kress reports Q3",
+   "topic": "NVDA CEO succession risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November 17, 2026"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 83,
+  "matched": 83,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
