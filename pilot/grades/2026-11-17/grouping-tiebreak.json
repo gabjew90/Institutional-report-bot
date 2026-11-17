@@ -1,0 +1,85 @@
+{
+ "metric": 1,
+ "total_cards": 543,
+ "fragmentation_sets": [
+  {
+   "subject": "Jensen Huang's reported NVIDIA departure: strategic/downside risk read vs. the record retail buying reaction",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda retail buying surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Light/de-grossed positioning driving a momentum-factor rotation out of AI-semis/consumer-discretionary and a year-end squeeze debate",
+   "labels": [
+    "hedge fund positioning",
+    "year end equity squeeze setup",
+    "tech semis bounce back",
+    "ai momentum unwind",
+    "consumer discretionary momentum rotation"
+   ],
+   "cards": 48
+  },
+  {
+   "subject": "State-level data-center moratoria/political backlash and the resulting rotation toward hyperscalers (operational power/compute) over neocloud/pipeline capacity plays",
+   "labels": [
+    "data center buildout credibility",
+    "ai buildout political backlash",
+    "ai data center power spend",
+    "ai equity positioning asymmetry"
+   ],
+   "cards": 35
+  },
+  {
+   "subject": "Dollar strength/breakout thesis (positioning, flows and technicals pointing the same way)",
+   "labels": [
+    "usd strength outlook",
+    "dollar breakout foreign inflows"
+   ],
+   "cards": 13
+  }
+ ],
+ "fragmented_mass_share": 0.22,
+ "mis_merges": [
+  {
+   "label": "dollar oil outlook",
+   "subjects": [
+    "Goldman's Brent price-scenario call (base case high-$70s, upside spike risk, risk-premium unwind)",
+    "Goldman's 2027 dollar/EUR FX call (3% USD decline, bearish EUR into France's election)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "These are two unrelated, independently pulse-worthy trade calls (a commodity view and an FX view) bundled under one label, so an editor scanning labels could pick only one and silently drop the other."
+  },
+  {
+   "label": "reit timber operating updates",
+   "subjects": [
+    "STAG Industrial's quarter-to-date industrial leasing/rent-change metrics",
+    "Weyerhaeuser's lumber and OSB realized-pricing updates"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Two unrelated single-name, single-sector operating updates (industrial REIT leasing vs. timber products pricing) with no shared thesis, but both are too niche individually to plausibly become a lead or brief theme today."
+  },
+  {
+   "label": "small cap biopharma volatility value",
+   "subjects": [
+    "Goldman's IWM options trade and the IWM/SPY implied-vol spread",
+    "Large-cap biopharma's revenue-beat/guidance-raise trend"
+   ],
+   "would_change_theme_selection": false,
+   "why": "A single unrelated biopharma-earnings card is appended to an otherwise coherent small-cap options/vol trade write-up, but it is one thin card and would not on its own alter which theme an editor leads with."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/543 cards (~2.2%), correctly excluded from fragmented mass per the overflow rule. The ledger header states 2420 cards for the day, but only 543 are present in the supplied input; this grading is computed against the 543 actually shown, so the share may not reflect the full day's ledger.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

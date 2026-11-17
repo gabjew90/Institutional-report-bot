@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+ "source_span": "For three years, the AI trade had a lender of last resort, and it sold GPUs. That lender just lost its chairman... this could easily take ~$50B or more out of the system",
+ "source_chain": "Huang personally ran Nvidia's $530.5B vendor-financing machine (equity stakes, guarantees, buybacks) that funds the buyers of its chips, therefore a pause in his financing willingness/ability could pull ~$50B+ out of the AI ecosystem (UBS Arcuri) even though existing commitments are honored, therefore the next round of multi-party deals gets harder, slower and pricier (Goldman Schneider: Buy kept, target cut to $220) while bulls (Piper Sandler) say product fundamentals and the $300 target are untouched; invalidation is Kress's Nov 17 Q3 report, the first test of whether the $500B platform \u2014 zero deals in three months, earliest January 2027 \u2014 stays open.",
+ "pulse_chain": "Huang resigned but the 2027-2028 order book is already sold, so the story is financing not demand, therefore Nvidia's $50-60B/quarter of spare cash recycled into funding buyers (UBS Arcuri) means even a temporary pause could pull $50B+ out of the system against $530.5B of commitments including the $105B OpenAI Ohio backstop, therefore banks split on the consequence: Goldman keeps Buy but cuts target to $220 expecting commitments honored and the next round harder, JPM goes Underweight the credit expecting costlier/slower deals, Piper Sandler holds its $300 target on an unchanged investment case; invalidation is Kress's Nov 17 Q3 report as the first test of whether the financing platform stays open, with zero deals in three months and January 2027 the earliest plausible one.",
+ "preserved": true,
+ "why": "The pulse reproduces the note's full chain (financing not demand, personal pause risk quantified at ~$50B, honored-vs-harder-next-round split, same Nov 17/zero-deals-in-three-months/Jan 2027 invalidation) with each figure and stance correctly attributed to the bank that made it, including Piper Sandler's verified $300 target at 14x CY28E EPS of ~$23.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

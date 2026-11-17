@@ -1,0 +1,83 @@
+{
+ "metric": 1,
+ "total_cards": 542,
+ "fragmentation_sets": [
+  {
+   "subject": "AI data center buildout: political moratoria and capacity credibility",
+   "labels": [
+    "data center buildout credibility",
+    "ai buildout political backlash"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "NVDA CEO exit (Huang): Street downgrades and retail buying reaction to the same news",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda retail buying surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI/semis momentum unwind rotating into hyperscalers",
+   "labels": [
+    "ai momentum unwind",
+    "ai equity positioning asymmetry"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "Oil prices ease as Saudi supply recovers",
+   "labels": [
+    "oil price relief",
+    "saudi oil production recovery"
+   ],
+   "cards": 6
+  }
+ ],
+ "fragmented_mass_share": 0.13,
+ "mis_merges": [
+  {
+   "label": "global monetary policy tightening cycle",
+   "subjects": [
+    "Fed hike path",
+    "ECB hike path",
+    "BoC hike path",
+    "BoE hike path",
+    "RBA pause"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Five distinct central banks are bundled under one label, but the Fed and BoE sub-theses are each independently and more fully covered by their own dedicated labels ('us core cpi fed hike path', 'boe rate path'), so an editor loses nothing in theme selection even though the bundle misrepresents five separate policy stories as one."
+  },
+  {
+   "label": "small cap biopharma volatility value",
+   "subjects": [
+    "IWM small-cap options / vol-compression trade idea",
+    "large-cap biopharma earnings-beat season"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Two unrelated instrument stories (an IWM options structure and a biopharma earnings recap) are jammed into one label, but each sub-item carries only 1-4 cards on a day dominated by NVDA and CPI, so neither was ever a lead-theme candidate."
+  },
+  {
+   "label": "reit timber operating updates",
+   "subjects": [
+    "STAG Industrial leasing/rent trends",
+    "Weyerhaeuser lumber/OSB pricing"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Two unrelated single-name sector updates (industrial REIT leasing vs. timber product pricing) are combined by label name alone; total mass (5 cards) is far below lead-theme scale regardless."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/542 cards (2.2%), correctly excluded from fragmented mass as declared overflow. The ledger header states 2,420 cards for the day, but instrument-group bank tallies (e.g., NVDA: 34 banks) far exceed the ~7 banks visible across the printed NVDA labels, so this grading covers only the sample of labels/cards actually shown (542 counted), not the full day; the share and pass verdict are provisional against that visible sample, not the full ledger.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,122 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Hot CPI + unresolved Iran blockade + midterm backlash against data centers + Huang's resignation drive a cross-asset scorecard where USD/safe-havens win and CCC HY/front-end rates lose, therefore hyperscalers (who own power/compute) gain leverage over lease-dependent neocloud tenants even as hyperscaler IG spreads widen and non-IG AI issuance freezes, therefore Goldman draws an Apple/Jobs de-rating analogy on NVDA but still calls it a buy on ~80% EPS growth, therefore the AI-equity-to-consumption wealth-effect link means a 30/15% drawdown would flip a 0.4pp tailwind into a 0.6pp drag, therefore unresolved Iran risk keeps the Fed from looking through hot CPI, therefore Goldman adds a third hike (March 2027) with an unchanged terminal rate that still sits below market pricing out to 2028, therefore the 'Dovish Goldilocks' quadrant stays locked for now.",
+   "brief_chain": "Same causal chain: hot CPI + Iran blockade + midterm backlash + Huang resignation drive the cross-asset winners/losers split, therefore hyperscalers are advantaged over neocloud tenants despite widening credit spreads and frozen non-IG issuance, therefore Goldman's Apple analogy still ends in 'buy' on EPS growth, therefore the wealth-effect scenario flips tailwind to drag, therefore unresolved Iran/shutdown risk plus hot CPI drives a third hike with an unchanged, below-market terminal rate.",
+   "distortions": [
+    {
+     "what": "Brief omits the specific nature of Huang's personal scandal (alleged intelligence-asset relationship, then an affair with a subordinate executive) covered in the source, reducing it to 'resignation.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the trade-relevant facts (resignation, Kress as interim CEO, Nov 17 earnings as the test, the Apple/Jobs analog) are preserved; the scandal detail is background, not actionable."
+    },
+    {
+     "what": "Brief paraphrases the wealth-effect drag as a drag on '2027 growth' where the source specifies 'real PCE (consumption) growth,' not GDP growth broadly.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the magnitude (0.4pp tailwind to 0.6pp drag) and mechanism (equity-wealth-effect on the consumer) are preserved; the generic word 'growth' instead of 'PCE/consumption growth' doesn't change the directional read."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d13",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Huang resigns, exposing Nvidia's role as the AI ecosystem's lender of last resort via equity stakes, guarantees and commitments (~$530.5bn plus a $99bn equity book, excluding a further $125bn platform pledge), therefore Kress \u2014 who had already pushed back on the aggressive dealmaking and halved the Ohio backstop \u2014 now runs the checkbook as interim CEO, therefore Goldman/UBS/William Blair agree existing commitments survive but new multi-party deals get harder without Huang's convening power (William Blair specifically flags Broadcom/AMD competitive risk), therefore the already-stalled $500bn platform faces lenders demanding more than a 25% backstop, therefore Nvidia's Nov 17 Q3 print is the first test of whether the financing machine still runs.",
+   "brief_chain": "Same chain: Huang's resignation exposes the circular financing web (~$99bn equity, $108.5bn guarantees, $366bn commitments, ~$530.5bn total excluding the $125bn platform pledge), therefore Kress-vs-Caprez internal friction preceded the exit, therefore all three banks say new deals (not existing ones) get harder, raising Broadcom/AMD competitive risk, therefore Nov 17 earnings is the first test.",
+   "distortions": [
+    {
+     "what": "Brief's phrasing ('$99bn of equity stakes..., $108.5bn of guarantees..., and $366bn of future commitments, totaling $530.5bn...') implies $530.5bn is the sum of those three figures (which would be $573.5bn), while the source's $530.5bn figure explicitly excludes the $99bn equity book and includes a $56bn 'additional commitments' category the brief never mentions.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the scale of the exposure (roughly half a trillion dollars, plus a $99bn equity book, plus up to $125bn more) reads the same either way; miscomposing the subtotal doesn't change the bearish-on-financing-circularity read."
+    },
+    {
+     "what": "Brief's sentence ('Kress pushed back, was dismissed by Huang..., then curbed the program from August') reads as Kress personally curbing the financing program in August, while the source attributes that late-August pause to Nvidia's/Huang's response; Kress's confirmed personal action is specifically halving the Ohio backstop.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 either way the point is that internal resistance to the financing spree predated Huang's exit; exactly who pulled the brake in August doesn't change the forward call."
+    },
+    {
+     "what": "Brief attributes the Broadcom/AMD competitive-risk warning to 'Goldman, UBS and William Blair all,' but only William Blair's Naji explicitly names Broadcom/AMD in the source; Goldman's and UBS's quoted passages are about financing deals getting harder generically.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the shared conclusion (new deals get harder without Huang) holds across all three regardless of which desk specifically names the competitors."
+    },
+    {
+     "what": "Brief omits that Goldman's Schneider specifically cut his NVDA price target to $220 from $300 (while keeping a Buy rating), reporting only his qualitative conclusion.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 dropped supporting detail; Goldman's stance (still Buy) is unchanged, and the brief's broader point (new deals get harder) stands without the specific target cut."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 4
+  },
+  {
+   "id": "d30",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Huang is ousted amid scandal, Kress becomes interim CEO and Jones first Chair as NVDA hits new lows, therefore Goldman's Privorotsky (writing hours before the ouster) says the market absorbed Nvidia-specific weakness via a narrow, mechanical rally (vol reset, short squeeze, low positioning) in retail favorites/semis while megacaps fell, therefore he's skeptical the rally is durable absent lower oil and rates, therefore on AI infrastructure he separates compute demand from multiples and recommends renting rallies given cost-of-capital/permitting/2028 supply-demand/monetization overhangs, therefore unresolved Iran and Russia-Ukraine risk reinforces a 'chop' base case, therefore Wedbush's Ives (NVDA worth 25% less without Huang) and next Tuesday's earnings are the near-term tests.",
+   "brief_chain": "Same chain: Huang ousted, Kress/Jones take over, NVDA at new lows, therefore Privorotsky calls the prior day's rally narrow and mechanical rather than durable, therefore a durable breakout needs lower oil/rates, therefore on AI infra he favors renting rallies over buy-and-hold given the same four overhangs, therefore unresolved Iran/Russia-Ukraine risk persists, therefore Ives's 25%-less-without-Huang call and next Tuesday's earnings are the tests.",
+   "distortions": [
+    {
+     "what": "Brief condenses the durable-breakout conditions to 'lower oil and rates, which may be connected,' dropping the source's third stated condition, 'broader leadership.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the 'chop absent a breakout' base case and its primary drivers (oil, rates) are preserved; dropping the secondary 'broader leadership' qualifier doesn't change the trade read."
+    },
+    {
+     "what": "Brief compresses the detailed Iran/Russia-Ukraine geopolitical color (conflicting headlines, a two-week window, a third carrier group, Polymarket ceasefire odds near 10%/25%) to 'remain unresolved.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the conclusion (no near-term resolution, no help toward a durable breakout) is unchanged by dropping the specific odds and details."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d37",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "A volatile week (record one-day selloff, mid-week recovery, then a renewed hit from hotter inflation, higher yields and Huang's ejection) frames GS's 2027 outlook release, therefore GS sees stable global growth (2.8%) and slowing inflation but earnings deceleration everywhere, hence Overweight US/Japan, Underweight Europe and a European-bank downgrade despite recent European outperformance, therefore AI capex keeps growing to $1.8tn but the investment impulse peaks in 1H27 and is already priced in post-midterms, therefore GIR calls duration attractive (10y at 4.6%, pricing too hawkish), therefore Europe is framed as an AI hedge on its own merits (FCF yield, buybacks, shrinking supply), and separately, IF Middle East de-escalation occurs, falling Brent and lower yields would favor Retailers/Utilities/Telecoms/DAX over Energy/Banks/Insurance.",
+   "brief_chain": "Same growth/rates/earnings/AI-capex/duration chain, but collapses the two separate Europe arguments into one: 'Europe is a resilient AI hedge, supported by falling Brent..., lower yields, buybacks and shrinking equity supply, favoring Retailers, Utilities, Telecoms and the DAX over Energy, Banks and Insurance' \u2014 stated as a flat, current call with no conditioning.",
+   "distortions": [
+    {
+     "what": "Brief merges two separate GS points into one unconditional sector call. Source point 5 (Europe as AI hedge) rests on a 5.5% FCF yield, buybacks and shrinking equity supply; source point 6 (Brent falling to $78/bbl and lower yields favoring Retailers/Utilities/Telecoms/DAX over Energy/Banks/Insurance) is explicitly framed as 'In a scenario of further deescalation' \u2014 a conditional, not GS's base case today. The brief drops the conditional entirely.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 read the brief and the long-Retailers/Utilities/Telecoms/DAX, short-Energy/Banks/Insurance rotation reads as actionable now; GS frames it as contingent on an unconfirmed future de-escalation, i.e. the brief drops the trade's trigger condition."
+    },
+    {
+     "what": "Brief omits that GS is 'Neutral Asia/EM' alongside Overweight US/Japan and Underweight Europe.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the three calls that carry the narrative (OW US/Japan, UW Europe, European-bank downgrade) are preserved; the EM/Asia neutral stance is a side detail."
+    },
+    {
+     "what": "Brief's favored-sectors list under the de-escalation scenario drops 'UK Real Estate,' which the source lists alongside Retailers, Utilities, Telecoms and the DAX.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 dropping one minor beneficiary from a five-item list doesn't change the direction of the call."
+    },
+    {
+     "what": "Brief omits GIR's above-consensus US GDP growth call (2.4% vs. 2.2% consensus) that supports the Overweight-US argument.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the Overweight US stance and its stated support (earnings resilience, de-rating) stand without this supporting macro figure."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 11,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

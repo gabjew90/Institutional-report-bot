@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+ "source_span": "a big chunk of Nvidia's $50-60BN in quarterly free cash flow gets recycled straight back into customers, suppliers and neoclouds, and even a temporary pause could pull $50BN or more out of the AI ecosystem",
+ "source_chain": "Nvidia's $50-60B/quarter FCF is recycled into equity stakes, guarantees and backstops for the labs/neoclouds/suppliers that buy its chips (the 'bank of Nvidia', run personally by Huang) therefore his sudden exit risks a pause that could pull $50B+ out of that financing loop just as credit tightens, even though existing commitments (the $530.5B of stakes/guarantees, including the $105B OpenAI Ohio backstop) will be honored and new deals merely get harder/slower/costlier (Goldman, JPM credit) therefore the open question is whether the loop stays open, which Kress's Nov 17 Q3 report and the stalled $500B platform (zero deals in three months, earliest Jan 2027) will test. Invalidation: if that platform shows a new deal proceeding rather than staying frozen, the pause thesis breaks.",
+ "pulse_chain": "UBS: Nvidia's ~$50-60B/quarter spare cash has been recycled into funding the companies that buy its products, and Huang ran that lending personally, therefore his resignation risks a pause pulling $50B+ out of the system as borrowing costs rise, against $530.5B of existing commitments including the $105B OpenAI rent backstop, therefore banks split on the fallout (Goldman: commitments honored, next round harder, cut target to $220 keeping Buy; JPMorgan: Underweight the credit, new deals take longer/cost more, and separately cuts equity target to $215 stripping China from FY28; Piper Sandler: no change to the investment case, keeps $300) therefore the test is Kress's Q3 report on Nov 17, given the $500B platform has produced zero deals in three months and the earliest one could land is January 2027.",
+ "preserved": true,
+ "why": "The pulse reproduces the same lending/pause mechanism, the same quantified estimates, the same bank attributions (verified against the UBS, Goldman, JPM equity, JPM credit, and Piper Sandler notes), and the same invalidation condition (Kress's Nov 17 Q3 report testing whether the $500B financing platform reopens) as the source.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

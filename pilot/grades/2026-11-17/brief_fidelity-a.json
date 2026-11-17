@@ -1,0 +1,96 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Hot CPI + unresolved Iran risk + midterm backlash against data centers + Huang's resignation stress AI/credit together, so Goldman reads hyperscalers as winners over lease-dependent neocloud tenants, flags widening hyperscaler IG spreads and a dried-up non-IG AI debt market as the financing risk, ties AI equity levels to the consumption wealth effect, treats Huang's exit like Jobs' 2011 absence (de-rate but still buyable on ~80% EPS growth), and because Iran risk may stop the Fed from looking through hot CPI, adds a third hike for March 2027 while holding its terminal rate below where markets price out to 2028.",
+   "brief_chain": "Same chain: CPI miss + Iran blockade + hostile midterm result + Huang's resignation set the backdrop; hyperscalers favored over neocloud tenants amid widening credit spreads and frozen non-IG issuance; AI rally tied to consumption downside; Jobs/Apple analogy on Nvidia with a buy call on EPS growth; Iran/shutdown risk pushes Goldman to add a March 2027 hike while leaving the terminal rate unchanged, below market pricing to 2028.",
+   "distortions": [
+    {
+     "what": "Brief folds the Dec 11 shutdown deadline and the Iran-driven 'Fed can't fully look through CPI' argument into one causal clause ('keep energy prices from fully offsetting CPI'), compressing two separable source points (the shutdown-negotiation risk around Iran, and the Fed's look-through logic) into a single simplified mechanism.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the resulting call (third 25bp hike, March 2027, terminal rate unchanged, below market pricing to 2028) is stated correctly either way."
+    },
+    {
+     "what": "Brief says non-IG AI debt issuance 'stopped entirely'; source specifies 'no new deals in the past month' after ~30 over the prior year, a narrower temporal claim generalized into an absolute.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 doesn't change the credit-risk read on neoclouds, only the precision of the timeframe."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d13",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Huang's resignation removes the dealmaker behind Nvidia's circular financing web ($99bn equity + $108.5bn guarantees + $366bn future commitments + $56bn additional commitments = $530.5bn, excluding the equity book and Huang's $125bn platform pledge); existing deals get honored but new ones get harder without him per Goldman/UBS/William Blair, with William Blair specifically flagging Broadcom/AMD competitive risk; WSJ reporting shows Kress had already been reining in the financing spree her son-in-law-adjacent colleague Caprez ran (dismissed by Huang as 'a deer in the headlights'), including halving the OpenAI Ohio backstop; so Kress as interim CEO protects the balance sheet rather than signing new giant guarantees; Nov 17 Q3 earnings are the first test of whether the machine still runs.",
+   "brief_chain": "Same chain, but states the $99bn equity, $108.5bn guarantees and $366bn future commitments 'total' $530.5bn, and attributes the Broadcom/AMD competitive-risk flag to Goldman, UBS and William Blair collectively.",
+   "distortions": [
+    {
+     "what": "Brief lists $99bn equity + $108.5bn guarantees + $366bn commitments as totaling $530.5bn; source's $530.5bn figure is actually $366bn future commitments + $56bn additional commitments + $108.5bn guarantees, explicitly excluding the $99bn equity book (true sum of the brief's three listed items is $573.5bn, and the $56bn category is dropped entirely).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 doesn't change the rating/stance on Nvidia (Goldman Buy, target cut) or the risk thesis about the financing machine slowing; it's an arithmetic/composition slip in a scale figure."
+    },
+    {
+     "what": "Brief attributes the Broadcom/AMD competitive-risk claim to 'Goldman, UBS and William Blair all'; in the source only William Blair's Naji explicitly names Broadcom/AMD as beneficiaries of weakened Nvidia financing \u2014 Goldman and UBS are quoted only on financing getting harder, not on naming those competitors.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying call (new deals get harder without Huang) is correctly attributed to all three; only the specific competitor-naming detail is over-attributed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d30",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Hours before Huang's ouster, Goldman's Privorotsky calls Wednesday's rally narrow and mechanical (vol-complex reset, systematic L/S squeeze, low positioning) rather than durable; he keeps treating AI infrastructure as a rent-the-rally trade given cost-of-capital, permitting, 2028 supply and monetization overhangs; with Iran and Russia-Ukraine risk unresolved and Huang now gone right before Kress's first earnings call, a durable breakout needs lower oil and rates (possibly the same thing), otherwise the market chops \u2014 a read Wedbush's Dan Ives (Nvidia worth 25% less without Huang) reinforces.",
+   "brief_chain": "Matches: narrow, mechanical rally pre-ouster; rent-don't-marry-the-rally framing on AI infrastructure citing the same four overhangs; unresolved Iran/Russia-Ukraine risk plus Huang's exit into Kress's earnings call leaves chop as the base case absent lower oil/rates; Dan Ives's 25%-less call closes it out.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d37",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "A week of record volatility capped by Huang's ouster frames Goldman's 2027 outlook suite: stable 2.8% global growth and slowing inflation with 2 more Fed hikes/1 ECB hike (below market pricing) before both cut by year-end, against Middle East and AI-capex downside risks; decelerating EPS growth everywhere keeps GS Overweight US/Japan, Neutral Asia/EM, Underweight Europe (downgrading European banks) even though European banks have outrun the Mag7 and the CAC-40 has outrun GS's AI-winner basket; AI capex still rises to $1.8tn (adding 0.4pp to global GDP) but the investment impulse peaks in 1H27 and is already priced in; GIR likes duration (10y UST at 4.6%, hawkish pricing) and casts Europe as an AI hedge on falling Brent, lower yields, buybacks and shrinking supply, favoring Retailers/Utilities/Telecoms/UK Real Estate/DAX over Energy/Banks/Insurance.",
+   "brief_chain": "Matches closely: same growth/inflation/rate-path and downside-risk framing; same EPS deceleration figures and Overweight US/Japan, Underweight Europe stance with the same European-banks-vs-Mag7 and CAC-40-vs-AI-basket tension; same AI capex trajectory/peak-in-1H27/already-priced-in read; same duration call and Europe-as-AI-hedge thesis with the same Brent target and sector tilts, minus a few secondary items.",
+   "distortions": [
+    {
+     "what": "Brief omits the 'Neutral Asia/EM' leg of GS's regional equity stance, naming only Overweight US/Japan and Underweight Europe.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the stated calls (Overweight US/Japan, Underweight Europe) are unchanged; Asia/EM is simply dropped, not misstated."
+    },
+    {
+     "what": "Brief's sector-tilt list drops 'UK Real Estate' from the group favored by falling Brent and lower yields (Retailers, Utilities, Telecoms, UK Real Estate, DAX), keeping only Retailers/Utilities/Telecoms/DAX.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 doesn't reverse or add a sector call, just shortens the list."
+    },
+    {
+     "what": "Brief omits that the AI capex rise to $1.8tn is quantified as adding 0.4pp to global GDP growth.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a supporting magnitude is dropped, not the capex trajectory or peaking-impulse call itself."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 7,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

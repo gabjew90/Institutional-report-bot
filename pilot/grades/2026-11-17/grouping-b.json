@@ -1,0 +1,81 @@
+{
+ "metric": 1,
+ "total_cards": 543,
+ "fragmentation_sets": [
+  {
+   "subject": "Elevated cross-asset volatility regime and the erosion of the Fed/Trump policy puts (one Bloomberg thesis split by data vs. interpretation)",
+   "labels": [
+    "cross asset volatility regime shift",
+    "post midterm equity put risk"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "RBC's global central-bank rate-hike path, with the Bank of England leg and its gilt call duplicated into its own label",
+   "labels": [
+    "global monetary policy tightening cycle",
+    "boe rate path"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Oil price relief from Middle East de-escalation and Saudi supply recovery",
+   "labels": [
+    "oil price relief",
+    "saudi oil production recovery"
+   ],
+   "cards": 6
+  }
+ ],
+ "fragmented_mass_share": 0.072,
+ "mis_merges": [
+  {
+   "label": "iran geopolitical risk",
+   "subjects": [
+    "Iran/Israel war risk, Hormuz blockade and US-Iran diplomacy",
+    "Germany-Russia defense policy (Palantir-replacement targeting system, Chinese-drone ban, France questioning German missile strikes on Russia) \u2014 three cards duplicated verbatim from the 'russia ukraine war risk' label, where they correctly belong"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Russia-Ukraine theme is independently and robustly covered by its own label (9 other cards), so the duplicate misfiling inflates Iran's apparent card count but doesn't cause an editor to miss or merge a theme."
+  },
+  {
+   "label": "dollar oil outlook",
+   "subjects": [
+    "Oil price trajectory and risk-premium unwind (Brent range, gas hedges, spike scenario)",
+    "Dollar/FX outlook tied to US tech exceptionalism eroding and euro bearishness into France's election"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The tech-exceptionalism-driven dollar call is a distinct, timely thesis that connects directly to today's dominant NVDA/AI-selloff story; filed under an oil-titled label, an editor scanning for FX/dollar angles on the AI unwind would likely miss it."
+  },
+  {
+   "label": "small cap biopharma volatility value",
+   "subjects": [
+    "IWM-vs-SPY options/volatility trade idea (Goldman knock-out call structure)",
+    "Large-cap biopharma Q2 earnings beat and guidance-raise trend"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both sub-threads carry only 4 and 1 cards respectively, too thin for either to be brief-worthy on its own regardless of the merge."
+  },
+  {
+   "label": "reit timber operating updates",
+   "subjects": [
+    "STAG Industrial leasing volume and rent-growth metrics",
+    "Weyerhaeuser lumber and OSB price realizations"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Two unrelated single-company operating updates bundled together, but at 5 total cards neither is close to the mass needed for a standalone theme."
+  }
+ ],
+ "pass": false,
+ "notes": "Mass share is under the 0.10 ceiling, but the 'dollar oil outlook' mis-merge is judged to hide a theme-relevant angle, so pass is false. The ledger header states 2420 cards for the day; only 543 cards across these labels were present in the input reviewed here.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+ "source_span": "For three years, the AI trade had a lender of last resort, and it sold GPUs. That lender just lost its chairman. ... that's roughly half a trillion dollars of contingent and committed cash for a company that generates $50-60 billion of free cash flow a quarter.",
+ "source_chain": "Jensen Huang personally drove Nvidia's $530.5B of financing commitments/guarantees/buybacks (incl. the $105B Ohio/OpenAI backstop) that recycle its $50-60B/quarter FCF back into AI-ecosystem buyers, therefore his exit pauses the willingness/ability to write new deals (UBS: could pull ~$50B+ out of the system just as rates rise and credit tightens), therefore the banks split on severity (Goldman: existing deals honored, next round harder, PT cut to $220 from $300, Buy kept; JPM credit: Underweight, continued spread weakness; Piper Sandler: investment case unchanged, $300 PT kept) \u2014 invalidated/tested by whether the $500B financing platform (zero deals in 3 months, earliest Jan 2027) stays open to new deals going forward.",
+ "pulse_chain": "Jensen Huang resigned, therefore UBS's $50-60B/quarter spare cash recycled into AI financing could see a pause pulling $50B+ out of the system as borrowing costs rise, therefore banks split (Goldman cuts target to $220 from $300 keeping Buy, expects every commitment honored but the next round harder; JPM Underweight the credit, expects new deals to take longer/cost more; Piper Sandler keeps $300 target, says CEO change doesn't alter the case) \u2014 invalidated/tested by Kress's Nov 17 earnings as the first read on whether the $500B platform (zero deals in three months, earliest Jan 2027) stays open to new deals.",
+ "preserved": true,
+ "why": "The pulse reproduces the source's lending mechanism, the same direction and figures for each named bank (UBS's $50-60B/quarter, Goldman's $220/$300 target cut with Buy kept, JPM credit's Underweight, Piper Sandler's unchanged $300 case), and the same platform-deal invalidation condition, with no reversed step or swapped attribution.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

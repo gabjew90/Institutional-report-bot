@@ -1,0 +1,149 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/27181__can-the-ai-rally-survive-nvidia-without-jensen.txt",
+   "span": "Harvey C. Jones becomes the company's first-ever Chair, and the search",
+   "why": "Source states Harvey C. Jones becomes the company's first-ever Chair, matching the sentence exactly (corroborated in 26658, 27252, 27343)."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+   "span": "those deals were being run by Huang's own son-in-law, Nico Caprez, promoted to vice president",
+   "why": "The only source discussing Nvidia's lending/credit-support deals states they were run by Huang's son-in-law Nico Caprez, not Huang personally (a Wells Fargo note separately says 'strategic investments were driven personally by Jensen,' but that is about investment decisions generally, not 'the lending' specifically). The sentence reverses who actually ran the lending deals.",
+   "searched": [
+    "lending",
+    "personally",
+    "Huang ran"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26773__ubs-nvidia-corp-media-reports-on-ceo-change-a-few-thoughts-2.txt",
+   "span": "$50-60B/Q in FCF - a big portion of which has been put back into the system, so this could easily take ~$50B or more out of the system - at least temporarily",
+   "why": "UBS (analyst Timothy Arcuri) estimates NVDA generates ~$50-60B/Q in FCF, a big portion recycled into the ecosystem, and a pause could take ~$50B or more out of the system at a time of rising rates \u2014 matches the sentence exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26658__nvidia-corp-nvda-our-thoughts-on-the-company-s-announced-man.txt",
+   "span": "We are Buy rated on NVDA. However, we reduce our 12-month price target to $220 from $300",
+   "why": "Goldman's James Schneider note expects the company to fulfill all previously announced commitments, says it may be harder to negotiate new multi-party investments at the same scale, cuts the 12-month target to $220 from $300, and retains Buy \u2014 matches the sentence exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26769__piper-sandler-nvidia-board-meets-uncertainty-remains-stock-a.txt",
+   "span": "we don't see a change of CEO as changing the investment case",
+   "why": "Piper Sandler's note states 'we don't see a change of CEO as changing the investment case,' keeps a $300 target, and gives a 14x multiple of CY28E earnings of ~$23 \u2014 matches the sentence exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26764__jpmorgan-nvidia-uncertainty-on-leadership-and-regulatory-ris.txt",
+   "span": "removing the company's reported \"China + Other\" shipments (~8% of F1H27 revenues) from our FY28 revenue estimates. This drives a ~10% EPS cut",
+   "why": "The ~8% F1H27 China+Other revenue strip, ~10% FY28 EPS cut, and $215 Dec-2027 price target all trace to J.P. Morgan Securities LLC's note, not to a bank named 'Morgan.' The pulse separately and correctly names 'Morgan Stanley' in full elsewhere (s15, a distinct bank with its own distinct figures), so the bare 'Morgan' here misattributes JPMorgan's call to an ambiguous/wrong house.",
+   "searched": [
+    "$215",
+    "8%",
+    "Morgan Stanley nvidia FY28"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/27190__who-funds-the-data-center-pipeline-now-that-junk-buyers-have.txt",
+   "span": "non-AI BB/B paper sits around 265bp",
+   "why": "Source states AI-related high yield spreads blew out to ~425bp while non-AI BB/B paper sits around 265bp \u2014 matches the sentence exactly (corroborated in 27340)."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "hedge funds net sold US stocks for a second straight week and for the fifth week in six",
+   "why": "Source states hedge funds net sold US stocks for a second straight week and for the fifth week in six, with this week's selling coming mostly from fresh single-name shorts rather than the prior week's long liquidation \u2014 matches the sentence exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "the long/short ratio in US Info Tech dropped to 1.5, the lowest level in Goldman's records going back to 2016",
+   "why": "Matches the sentence exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27340__half-a-trillion-in-ious-a-dead-junk-market-a-fed-that-won-t-.txt",
+   "span": "The week before saw 55.8 million puts trade across US venues, the most ever",
+   "why": "Source explicitly frames the 55.8 million puts as occurring in the week before midterm week \u2014 matches the sentence's timing and figure exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/27183__gigawatts-vs-bragawatts-586gw-announced-199-real-mapping-who.txt",
+   "span": "of 586 GW of capacity that is under construction, announced or land-banked, just 199 GW, or 34%, is credible",
+   "why": "Bernstein (Madison Rezaei) ran all 8,858 North American projects in its database through its credibility model and credits 199 of 586 GW (34%) \u2014 matches the sentence exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-16/26866__the-one-price-to-watch-in-the-bonfire-of-data-centers.txt",
+   "span": "Compute scarcity favors the hyperscalers, who own or lease up to three-quarters of existing US AI data-center capacity",
+   "why": "The source's stance (compute scarcity favoring hyperscalers/cloud operators over chip/equipment makers like Nvidia, Eaton and Vertiv, with hyperscalers bouncing while semiconductor stocks fell since the election) directly supports the sentence's checkable claim; the superlative framing ('cleanest explanation') is editorial voice layered on a supported stance, not a changed fact."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27336__pain-bitcoin-has-lost-over-10-000-in-a-week.txt",
+   "span": "Funding turned negative on Binance, OKX and Bybit on November 13... traders are increasingly paying to be short",
+   "why": "Matches the sentence exactly, including the exchanges and date."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27253__macro-outlook-2027-steady-baseline-downside-risks.txt",
+   "span": "62% of S&P 500 earnings growth and, at the peak, 92% of the change in US market cap",
+   "why": "Goldman's Macro Outlook 2027 gives AI's 62% of S&P earnings growth and 92% peak contribution to market-cap change, the S&P earnings growth deceleration from 36% to 11%, and frames the AI investment impulse (YoY share of GDP) as peaking in H1 2027 \u2014 matches the sentence."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27326__2027-global-strategy-outlook-embracing-risk.txt",
+   "span": "We raise our 12-month S&P 500 price target to 8,700 (19x forward EPS of $458)",
+   "why": "Morgan Stanley's own 2027 Global Strategy Outlook ('An intact AI capex cycle,' 'Max OW on global equities') raises its 12-month S&P target to 8,700 on 19x 2028 EPS of $458 \u2014 matches the sentence exactly; this is a distinct, independently-sourced Morgan Stanley call, separate from Goldman's coincidentally identical 8,700 target in a different note."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

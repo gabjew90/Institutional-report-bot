@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+ "source_span": "a big chunk of Nvidia's $50-60BN in quarterly free cash flow gets recycled straight back into customers, suppliers and neoclouds, and even a temporary pause could pull $50BN or more out of the AI ecosystem",
+ "source_chain": "Huang, who personally drove Nvidia's equity-stake/guarantee financing of its own customers and suppliers ($50-60B/quarter of FCF recycled, $530.5B of commitments/guarantees), resigns, therefore existing commitments get honored but the next round of multi-party financing deals (especially the stalled $500B platform) gets harder, slower and pricier without his convening power (Goldman, UBS, William Blair all say this, not a demand problem since the 2027-28 order book is signed), therefore AI financing/credit conditions tighten for the neoclouds and labs downstream of Nvidia's balance sheet; invalidated if Kress's Nov 17 Q3 call shows the platform still closing deals (the earliest a platform deal could plausibly land is January).",
+ "pulse_chain": "Huang, who personally ran Nvidia's lending (spare cash recycled into funding buyers, $530.5B of commitments/guarantees), resigns, therefore the argument is about financing rather than demand (2027-28 capacity already sold out) and banks split on whether the next round of deals survives without him (Goldman: existing commitments honored, next round harder, cut target; JPM: Underweight the credit, deals take longer; Piper: CEO change doesn't alter the case), therefore the $500B platform's three months of no deals stays unresolved; invalidated by Kress's Tuesday Nov 17 Q3 report as the first test of whether the platform stays open to new deals, with January 2027 the earliest plausible deal.",
+ "preserved": true,
+ "why": "The pulse keeps the note's exact causal chain (Huang = personal financier, not the product, so his exit is a financing-not-demand shock that falls hardest on the next round of deals) with the same bank attributions (Goldman's cut-to-$220-but-Buy, UBS's $50-60B recycling estimate) and the same invalidation (Kress's Nov 17 earnings call as the test of whether the $500B platform reopens).",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
