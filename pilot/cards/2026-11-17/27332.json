@@ -1,0 +1,448 @@
+{
+ "brief": "Morgan Stanley argues the market's reaction to the US midterm election results is overdone. The new data center review process pushes about 20% of US projects, roughly 5GW, from 2028 to 2029, not a reduction, because newly elected Texas and Ohio governors are unlikely to disrupt construction already under way. Aggregate hyperscaler capex stays unchanged at $1.6T/$1.8T in 2027/2028, with Google, Meta, Amazon, Microsoft and Oracle capex forecasts individually reaffirmed. The delay elongates the capex cycle, improving the credit outlook and lease rates and favoring the largest, best-capitalized players. The Powering AI model still shows a powered data center shortfall above 30% through 2028. Semis multiples have compressed to attractive levels, with Nvidia and Broadcom near 9x CY28 P/E, and the firm prefers compute over memory, analog and networking. AI-related debt issuance has reached $543bn, more than double FY25's level, with hyperscalers the largest issuers and a widening quality divide between issuers. Morgan Stanley recommends buying the drop across hyperscalers, select data-center supply chain names and software enablers/AI adopters, arguing S&P 500 earnings exposure to the capex pushout is limited.",
+ "cards": [
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley views the market's reaction to the US midterm election results as overdone.",
+   "anchor": "We believe the market's reaction to the midterms is overdone.",
+   "topic": "AI investment boom risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley expects the ultimate impact of the midterms to be a push-out of some AI data center projects from 2028 to 2029 rather than a derailing of the AI capex story.",
+   "anchor": "the ultimate impact will be a push-out of some projects from 2028 to 2029, rather than a derailing of the capex story",
+   "topic": "AI investment boom risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2028-2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley expects the new data center review process to shift about 20% of US data center projects from 2028 to 2029.",
+   "anchor": "but the new DC review process will shift ~20% of US projects from '28 to '29.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2028-2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley's Powering AI model shows a powered data center shortfall of more than 30% through 2028.",
+   "anchor": "Our Powering AI model shows >30% powered DC shortfall through '28",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley expects US data center builds to stay roughly flat from 2027 to 2028 before growing about 40% in 2029.",
+   "anchor": "US data center builds remain ~flat from '27 to '28, with ~40% growth in '29.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2027-2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley expects an even higher importance on exponential compute efficiencies from AI labs to enable technology diffusion across the economy.",
+   "anchor": "Expect an even higher importance on exponential compute efficiencies from the labs to enable tech diffusion across the economy.",
+   "topic": "AI investment boom risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley's Google capex forecast of $375 billion in 2027 and $400 billion in 2028 remains unchanged.",
+   "anchor": "Our GOOGL capex forecast of $375bn/$400bn in '27/'28 remains unchanged.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley's Meta capex forecast of $225 billion in 2027 and $250 billion in 2028 remains unchanged.",
+   "anchor": "Our META capex forecast of $225bn/$250bn in '27/'28 remains unchanged.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley's Amazon capex forecast of $355 billion in 2027 and $365 billion in 2028 remains unchanged.",
+   "anchor": "Our AMZN capex forecast of $355bn/$365bn in '27/'28 remains unchanged.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley retains Microsoft capex estimates of about $238 billion in fiscal 2027, $298 billion in fiscal 2028 and $358 billion in fiscal 2029, with growth moderating from about 64% to about 25% and 20%.",
+   "anchor": "retain our CapEx estimates of ~$238bn / ~$298bn / ~$358bn in FY27 / FY28 / FY29, with growth moderating from ~64% to ~25% and ~20%",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "FY27-FY29"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley's SpaceX year-end-2027 gigawatt forecast of 8.3 GW is already below the 10.2 GW consensus and well below Elon Musk's indicated 13 GW.",
+   "anchor": "Our YE27 gigawatt forecast of (8.3 GW) was already below consensus (10.2 GW) and well below Musk\u2019s indicated 13 GW",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "YE2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley estimates every $10 change in SpaceX's compute revenue per watt adds about $55 billion to 2027 revenue.",
+   "anchor": "every $10 change in rev/watt adds ~$55bn in 2027 revenue based on our current gigawatt forecast.",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley forecasts SpaceX's total installed terrestrial data center capacity never exceeding 25 GW at any point.",
+   "anchor": "total installed terrestrial capacity never exceeds 25 GW at any point in our forecast",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through 2030s"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley estimates Oracle needs about $220 billion of capex to complete its targeted data center build-out.",
+   "anchor": "the company sees a ~$220bn capex requirement to complete this portion of the build out in aggregate",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Nvidia and Broadcom both trade at attractive multiples of about 9x calendar year 2028 price-to-earnings.",
+   "anchor": "AVGO both ~9x CY28 P/E).  Within compute the secondary",
+   "topic": "AI investment boom risk",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley is reinstating Nvidia as a Top Pick, supported by its normalized derivative return framework.",
+   "anchor": "Reinstating Top Pick as NDR supports our positive views.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley views ASML as the best positioned stock in its coverage for outperformance and reiterates it as a Top Pick.",
+   "anchor": "we think ASML is the best positioned stock in our coverage for outperformance; we reiterate our Top Pick.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley sets its ASML price target at \u20ac1,700, applying a 25x multiple to its FY28 EPS estimate of \u20ac68.47.",
+   "anchor": "Applied to our FY28 EPSe (\u20ac68.47), this sets our PT at \u20ac1,700.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "target",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley models 94 EUV shipments for ASML in FY27 and 111 EUV shipments in FY28.",
+   "anchor": "we model 94 EUV shipments in FY27 (92 Low NA, 2 High NA) and 111 EUV shipments in FY28 (103 Low NA, 8",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27-FY28"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley estimates Sandisk could repurchase more than 50% of the company between now and the end of 2028 given its share price and buyback pace.",
+   "anchor": "at the current share price of $835 and buybacks in the range of 50% of revenue, they could repurchase >50% of the company",
+   "topic": "Nvidia AI narrative shift",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley views analog semiconductors, including NXP Semiconductors and Analog Devices, as a less attractive risk-reward than memory or compute within the semis sector.",
+   "anchor": "Analog stocks have held up the best during the slowdown, but represent a less attractive risk reward as a group than memory or compute",
+   "topic": "Nvidia AI narrative shift",
+   "status": "level",
+   "instruments": [
+    "NXPI",
+    "ADI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Global AI-related debt supply has reached about $543 billion, more than double FY25's level.",
+   "anchor": "With ~$543bn of AI-related debt supply across global fixed income markets (more than double of FY25 supply",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2026 YTD"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Unsecured corporate issuance from hyperscalers is the largest component of AI-related debt supply, accounting for about 60% of the year-to-date total.",
+   "anchor": "Unsecured corporate issuance from hyperscalers is the largest component of AI-related debt supply, accounting for approximately 60% of the year-to-date total.",
+   "topic": "AI data center financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2026 YTD"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley maintains its view that AI-related debt issuance will be higher in 2027 than in 2026.",
+   "anchor": "We maintain our view that AI-related issuance will be higher in 2027 than in 2026.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2027 vs 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley estimates data center capex represents about 5% of consensus S&P 500 revenue in 2027, rising slightly but staying in the mid-single digits in 2028.",
+   "anchor": "data center capex for 2027 represents 5% of consensus revenue for the S&P 500.",
+   "topic": "AI investment boom risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley views the potential impact of delayed data center capacity on S&P 500 revenue and earnings as limited, with the index now pricing at 18x forward earnings near Liberation Day valuation levels.",
+   "anchor": "the impact on S&P 500 revenues and earnings is limited and now more than priced at 18x forward earnings (around Liberation Day valuation",
+   "topic": "AI investment boom risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley's sentiment and positioning indicator has come in from elevated levels but is not yet as stretched as during the March selloff.",
+   "anchor": "Our sentiment/positioning indicator has come in, but is still not quite at the levels seen during the March selloff.",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "44% of S&P 500 companies cited at least one quantifiable benefit from AI adoption on a trailing 12-month basis, up from 32% a year earlier.",
+   "anchor": "44% of S&P 500 companies cited at least one quantifiable benefit from AI adoption, up from 32% a year ago.",
+   "topic": "AI investment boom risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "trailing 12 months"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley now forecasts 105 GW of total US data center capacity in 2028, down from its prior forecast of 110 GW.",
+   "anchor": "We now forecast 105 GW of total US capacity in 2028 (vs. 110 GW previously)",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Buy the Drop: AI Investment Opportunities Post the US Midterms",
+   "claim": "Morgan Stanley now forecasts 219 GW of global data center capacity in 2028, down from its prior forecast of 224 GW.",
+   "anchor": "We now forecast 219 GW (IT) of global capacity in 2028 (vs. 224 GW previously)",
+   "topic": "Data center buildout credibility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "2028"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27332__buy-the-drop-ai-investment-opportunities-post-the-us-midterm.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
