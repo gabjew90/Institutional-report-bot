@@ -300,3 +300,17 @@ def test_of_one_banks_notes_the_equity_research_gets_the_desk_arrow():
     # the check on the model's words: the equity rating is Overweight
     assert D.strip_wrong_calls("→ JPMorgan reiterates its Underweight rating with a $215 price target.",
                                [D.clean_note(JPM_SALES), D.clean_note(JPM)])[1]
+
+
+def test_a_note_with_a_postable_rating_ranks_ahead_of_newer_notes_without_one():
+    """Second live sample, 2026-11-17: a strategy note and a roundup, both
+    newer and neither with a postable rating, took the two desk arrows and
+    JPMorgan's equity note was left out."""
+    ms = {"source": "Morgan Stanley", "published": "2026-11-17", "report_type": "strategy",
+          "calls": [{"action": "reiterate", "rating": "Overweight", "price_target": "$300.00",
+                     "rationale": "Highest-conviction compute bucket.", "conviction": "high"}]}
+    body, text = _turn([ms, TME_UNSTATED, JPM])
+    assert [d["line"] for d in body["desks"]] == [JPM_LINE]
+    slots = [ln for ln in text.splitlines() if "DESK:" in ln]
+    assert len(slots) == O.MAX_DESKS and "DESK: JPMorgan" in slots[0] and "DESK: Morgan Stanley" in slots[1]
+    assert "Overweight" not in slots[1] and "$300" not in slots[1]

@@ -307,17 +307,17 @@ def desk_notes(research: dict | None, fresh: dict | None, asked: str = "") -> li
     keep_previews = bool(fresh) and _asks_about_desks(asked, research)
     notes = sorted(research.get("notes") or [], key=lambda n: str(n.get("published") or ""),
                    reverse=True)                     # newest first ...
-    notes.sort(key=lambda n: (                       # ... then calls, high conviction first (stable)
+    # ... then a rating or target that can be posted (a house's equity
+    # research, discord_bot/desk_line.py) ahead of a call without one, calls
+    # ahead of other notes, high conviction first (stable). With newest
+    # first alone, JPMorgan's sales note of the day stood in for its equity
+    # note of the day before, and two newer notes with no rating left that
+    # equity note out of the answer (2026-11-17).
+    from discord_bot import desk_line
+    notes.sort(key=lambda n: (
+        not desk_line.line(n),
         not n.get("calls"),
         not any((c.get("conviction") or "") == "high" for c in n.get("calls") or [])))
-    # ... and of one bank's notes, the one whose rating or target can be
-    # posted (its equity research) ahead of its sales and credit notes.
-    # Stable, so the order across banks above is kept.
-    from discord_bot import desk_line
-    first_seen: dict = {}
-    for i, n in enumerate(notes):
-        first_seen.setdefault(n.get("source") or "", i)
-    notes.sort(key=lambda n: (first_seen[n.get("source") or ""], not desk_line.line(n)))
     out, banks = [], set()
     for n in notes:
         bank = n.get("source") or ""
