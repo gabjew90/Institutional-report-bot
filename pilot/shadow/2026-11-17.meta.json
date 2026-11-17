@@ -1,0 +1,39 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 93,
+ "pack": {
+  "documents": 78,
+  "cards": 2420,
+  "max_doc_id": 27342
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 101,
+  "brief_citations": 8,
+  "distinct_cards_cited": 101,
+  "card_count": 2420,
+  "quintiles": [
+   26,
+   15,
+   18,
+   24,
+   18
+  ],
+  "edge_quintile_share": 0.436,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Piper Sandler takes the other side, arguing a change of chief executive does not alter the investment case, and keeps a $300 target on 14 times 2028 earnings of about $23 [c49][c57].",
+    "cite": "c49,c57",
+    "reason": "figures not in cited card(s): ['300']"
+   }
+  ],
+  "word_count": 1565
+ }
+}
