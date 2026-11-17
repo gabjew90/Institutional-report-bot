@@ -19,6 +19,12 @@ def test_relayed_broker_is_credited():
 
 
 def test_outline_says_whose_call_it_is():
-    note = {"calls": [{"action": "downgrade", "rating": "Neutral", "rationale": "Piper cut it",
-                       "call_by": "Piper Sandler"}]}
-    assert S._desk_text(note).startswith("reports Piper Sandler's call, not its own: downgrade")
+    note = {"source": "Safra",
+            "calls": [{"action": "downgrade", "rating": "Neutral", "call_by": "Piper Sandler",
+                       "rationale": "Piper Sandler downgraded it to Neutral on pricing"}]}
+    assert S._desk_text(note).startswith("reports Piper Sandler's call, not its own: downgrade, Neutral: ")
+    # a relayed action or rating the note's words do not state is left out
+    # (2026-11-17: a roundup's extracted fields are not the broker's)
+    vague = {"source": "Safra", "calls": [{"action": "downgrade", "rating": "Neutral",
+                                           "rationale": "Piper cut it", "call_by": "Piper Sandler"}]}
+    assert S._desk_text(vague) == "reports Piper Sandler's call, not its own: Piper cut it"

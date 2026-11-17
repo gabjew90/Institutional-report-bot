@@ -8,14 +8,14 @@ from discord_bot import desk_line as D
 from discord_bot import stock_body as B
 from discord_bot import stock_outline as O
 
-JPM = {"source": "JPMorgan", "published": "2026-11-12",
+JPM = {"source": "JPMorgan", "published": "2026-11-12", "report_type": "equity_research",
        "calls": [{"action": "price_target_change", "rating": "Overweight", "price_target": "$215.00",
                   "rationale": "PT cut reflects removal of China-related revenue from FY28 estimates "
                                "and increased management/regulatory risk.", "conviction": "medium"}],
        "insights": ["JPMorgan maintains an Overweight rating on NVDA but cuts the price target to $215 "
                     "from $320, citing leadership uncertainty and increased regulatory risk regarding China."]}
 JPM_LINE = "→ **JPMorgan** (Nov 12): rated Overweight, price target **$215**, cut from $320."
-GS = {"source": "Goldman Sachs", "published": "2026-11-10",
+GS = {"source": "Goldman Sachs", "published": "2026-11-10", "report_type": "equity_research",
       "calls": [{"action": "reiterate", "rating": "Buy", "price_target": "N/A",
                  "rationale": "Data center demand is ahead of supply into the print", "conviction": "high"}]}
 PRICE = {"status": "ok", "session": "REGULAR", "quotes": [
@@ -28,7 +28,7 @@ TODAY = date(2026, 11, 16)
 
 
 def _note(target, text, action="price_target_change", rating="Buy"):
-    return {"source": "Goldman Sachs", "published": "2026-11-05",
+    return {"source": "Goldman Sachs", "published": "2026-11-05", "report_type": "equity_research",
             "calls": [{"action": action, "rating": rating, "price_target": target, "rationale": text}]}
 
 
@@ -74,9 +74,65 @@ def test_the_action_sets_the_wording():
     assert D.line(_note("$40", "", rating="N/A")) == "→ **Goldman Sachs** (Nov 5): price target **$40**."
     # a note with neither has no line: its view stays a slot for the model
     assert D.line(_note("N/A", "Guide above Street", action="positive_catalyst_watch", rating="N/A")) == ""
-    relayed = _note("N/A", "cut to Neutral at Piper Sandler", action="downgrade", rating="Neutral")
+    relayed = _note("N/A", "Piper Sandler downgraded it to Neutral on pricing", action="downgrade", rating="Neutral")
     relayed["calls"][0]["call_by"] = "Piper Sandler"
-    assert D.line(relayed) == "→ **Piper Sandler**, as relayed in a Goldman Sachs note (Nov 5): downgraded to Neutral."
+    assert D.line(relayed) == "→ **Piper Sandler**, relayed by Goldman Sachs (Nov 5): downgraded to Neutral."
+
+
+# The Market Ear's roundups of what other brokers did, as stored 2026-11-17.
+TME_UNSTATED = {"source": "The Market Ear", "published": "2026-11-17",
+                "calls": [{"action": "price_target_change", "rating": "Neutral", "price_target": "$220",
+                           "rationale": "Goldman's James Schneider cut the multiple from 30x to 22x following "
+                                        "Jensen Huang's resignation.", "conviction": "medium", "call_by": "Goldman"}]}
+TME_STATED = {"source": "The Market Ear", "published": "2026-11-17",
+              "calls": [{"action": "price_target_change", "rating": "Buy", "price_target": "$220",
+                         "rationale": "Goldman Sachs cut the target from $300, citing concerns that AI "
+                                      "infrastructure growth could slow.", "call_by": "Goldman Sachs"}],
+              "insights": ["Goldman Sachs cut its NVDA price target to $220 from $300, citing concerns that "
+                           "growth could slow without Nvidia-provided financing."]}
+TME_OWN = {"source": "The Market Ear", "published": "2026-11-16",
+           "calls": [{"action": "positive_catalyst_watch", "rating": "Neutral", "price_target": "N/A",
+                      "rationale": "Rebounded 4% as part of the broader AI trade revival."}]}
+
+
+def test_a_roundups_field_is_posted_only_when_its_text_states_it():
+    """The first live sample posted "Goldman ... rated Neutral, price target
+    $220" from a roundup whose extraction had filled in "Neutral". Goldman's
+    rating that day was Buy."""
+    assert D.line(TME_UNSTATED) == ""
+    assert D.fields(TME_UNSTATED) == {"holder": "Goldman", "relayed": True, "action": "", "rating": "",
+                                      "target": "", "prior": None, "credit": False}
+    # the slot the model words carries no unstated field either
+    slot = O._desk_text(TME_UNSTATED)
+    assert slot.startswith("reports Goldman's call, not its own: Goldman's James Schneider cut the multiple")
+    assert "Neutral" not in slot and "$220" not in slot
+    # the target is in a sentence naming the broker, the rating is in none
+    assert D.line(TME_STATED) == ("→ **Goldman Sachs**, relayed by The Market Ear (Nov 17): "
+                                  "price target **$220**, cut from $300.")
+    # a publication has no rating of its own
+    assert D.line(TME_OWN) == "" and "Neutral" not in O._desk_text(TME_OWN)
+    assert not D.own_broker("The Market Ear") and not D.own_broker("Bloomberg")
+    assert not D.own_broker("Zerohedge , summarizing HSBC and Goldman Sachs research")
+    assert D.own_broker("Goldman Sachs Global Investment Research") and D.own_broker("J.P. Morgan")
+    assert all(D.own_broker(s) for s in ("JPMorgan", "JPM", "Goldman Sachs", "BofA", "Morgan Stanley", "UBS"))
+    # "buy" as a verb in a sentence about the broker is not its rating
+    verb = {"source": "The Market Ear", "published": "2026-11-17",
+            "calls": [{"action": "reiterate", "rating": "Buy", "price_target": "N/A", "call_by": "Goldman",
+                       "rationale": "Goldman reiterated that clients should buy the dip."}]}
+    assert D.line(verb) == ""
+    # the check on the model's words credits a roundup with stated fields only
+    assert D.strip_wrong_calls("→ The Market Ear keeps a Neutral rating on it.", [TME_OWN])[1]
+
+
+def test_a_relayed_line_sits_with_the_arrow_naming_the_broker():
+    results = {R.T_PRICE: PRICE, R.T_SNAPSHOT: SNAP, R.T_RESEARCH: {"status": "ok", "notes": [TME_STATED]}}
+    body = B.build("ticker_opinion", "NVDA", results, asked="what do you think of nvda", today=TODAY)
+    line = body["desks"][0]["line"]
+    answer = ("→ CNN Business noted the pressure on the stock ahead of the report.\n\n"
+              "→ The Market Ear highlights that Goldman's analyst lowered the multiple he applies after the "
+              "change of chief executive.")
+    parts = B.compose(answer, body)[0].split("\n\n")
+    assert parts[-2] == line and parts[-3].startswith("→ CNN Business"), parts
 
 
 def _turn(notes, asked="what do you think of nvda"):
@@ -189,3 +245,58 @@ def test_the_reason_slot_reads_cleanly():
     assert D.reason(note) == ("PT cut reflects removal of China-related revenue from FY28 estimates and "
                               "increased management/regulatory risk. Its figures: JPM sees F3Q revenue of "
                               "$108B against the Street's $107B")
+
+
+# JPMorgan on NVDA in the week of 2026-11-10, as stored.
+JPM_SALES = {"source": "JPMorgan", "published": "2026-11-13", "report_type": "sales_trading",
+             "title": "JPM Market Intel Morning Update",
+             "calls": [{"action": "reiterate", "rating": "Underweight", "price_target": "$215",
+                        "rationale": "Leadership transition, regulatory fallout, and circularity concerns in "
+                                     "AI ecosystem spending.", "conviction": "medium"}],
+             "insights": ["Credit analysts remain underweight NVDA due to leadership transition risks and "
+                          "potential regulatory fallout from the new Congress."]}
+JPM_CREDIT = {"source": "JPMorgan", "published": "2026-11-13", "report_type": "credit",
+              "title": "NVIDIA Corporation: Can the Vision Outlast the Visionary?",
+              "calls": [{"action": "reiterate", "rating": "Underweight", "price_target": "N/A",
+                         "rationale": "Continued spread weakness expected due to leadership transition and "
+                                      "legal/regulatory flux."}],
+              "insights": ["JPMorgan remains Underweight on NVIDIA, citing spread weakness and the need for "
+                           "clarity on governance."]}
+GS_SALES = {"source": "Goldman Sachs", "published": "2026-11-09", "report_type": "sales_trading",
+            "calls": [{"action": "positive_catalyst_watch", "rating": "Overweight", "price_target": "N/A",
+                       "rationale": "GS favors NVDA in AI compute, noting current levels imply no growth "
+                                    "from 2027."}]}
+
+
+def test_only_a_houses_own_equity_research_is_trusted_with_its_fields():
+    """The answer the audit flagged, "JPMorgan reiterates its Underweight
+    rating with a $215 price target", came from the sales note's stored
+    fields: the credit analysts' view beside the equity target."""
+    assert D.line(JPM_SALES) == "" and D.line(JPM_CREDIT) == "" and D.line(GS_SALES) == ""
+    assert D.fields(JPM_CREDIT)["credit"] and not D.fields(JPM)["credit"]
+    for note in (JPM_SALES, JPM_CREDIT, GS_SALES):
+        call = D.clean_note(note)["calls"][0]
+        assert "rating" not in call and "price_target" not in call and call["rationale"]
+    assert D.clean_note(JPM_SALES)["calls"][0].get("action") is None          # "reiterate" of nothing
+    assert D.clean_note(GS_SALES)["calls"][0]["action"] == "positive_catalyst_watch"
+    assert "debt" in D.clean_note(JPM_CREDIT)["desk"]
+    # the equity note keeps its fields, with the target as it is posted
+    assert D.clean_note(JPM)["calls"][0] == {**JPM["calls"][0], "price_target": "$215"}
+    # what the model is handed for the other notes carries no rating
+    assert "Underweight" not in O._desk_text(JPM_SALES) and "$215" not in O._desk_text(JPM_SALES)
+    assert O._desk_text(JPM_CREDIT).startswith("its credit analysts, on the company's debt and not the stock: ")
+    # a sales note's field is kept when its own sentence about the house states it
+    stated = {**GS_SALES, "insights": ["Goldman Sachs reiterates its Buy rating on NVDA with a $250 target."],
+              "calls": [{**GS_SALES["calls"][0], "action": "reiterate", "rating": "Buy", "price_target": "$250"}]}
+    assert D.line(stated) == "→ **Goldman Sachs** (Nov 9): rated Buy, price target **$250**."
+
+
+def test_of_one_banks_notes_the_equity_research_gets_the_desk_arrow():
+    """Newest first put the sales note ahead of the equity note of the day before."""
+    body, text = _turn([JPM_SALES, JPM_CREDIT, JPM])
+    assert [d["line"] for d in body["desks"]] == [JPM_LINE]
+    assert text.count("DESK: JPMorgan") == 1 and "PT cut reflects removal" in text
+    assert "Underweight" not in text
+    # the check on the model's words: the equity rating is Overweight
+    assert D.strip_wrong_calls("→ JPMorgan reiterates its Underweight rating with a $215 price target.",
+                               [D.clean_note(JPM_SALES), D.clean_note(JPM)])[1]

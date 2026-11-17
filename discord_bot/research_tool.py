@@ -36,7 +36,12 @@ def _build_research_tool():
                     "calls: [{action, rating, price_target, rationale, "
                     "conviction}], earnings: [str], insights: [str], "
                     "trade_ideas: [{description, rationale, risk, "
-                    "time_horizon, conviction}]}]}. status=no_data means no "
+                    "time_horizon, conviction}]}]}. A call carries rating and "
+                    "price_target only when the note can be credited with them "
+                    "(the house's own equity research, or stated in the note's "
+                    "own text); a call without them has no rating to report. "
+                    "`desk` on a note marks credit research, a view on the "
+                    "company's debt. status=no_data means no "
                     "bank note in the window names the ticker."
                 ),
                 parameters=types.Schema(
@@ -76,6 +81,15 @@ async def _execute_research(args: dict) -> dict:
         return {"status": "no_data", "symbol": symbol, "days": days,
                 "error": f"No bank research note in the last {days} days names {symbol}. "
                          f"Say so. Do not invent a desk view."}
+    # A stored rating or target is kept only where the note can be credited
+    # with it (discord_bot/desk_line.py: a house's own equity research, or
+    # a field the note's own sentence states). Done here so the model's
+    # payload, the outline and the checks all read the same fields.
+    try:
+        from discord_bot import desk_line
+        notes = [desk_line.clean_note(n) for n in notes]
+    except Exception as e:
+        log.warning(f"lookup_research: field check failed, stored fields kept: {e}")
     banks = []
     for n in notes:
         if n.get("source") and n["source"] not in banks:

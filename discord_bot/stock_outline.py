@@ -200,13 +200,21 @@ def _desk_text(note: dict) -> str:
     with its rationale, else an earnings line, else an insight."""
     first_earnings = (note.get("earnings") or [""])[0]
     for c in note.get("calls") or []:
-        bits = [(c.get("action") or "").replace("_", " "), c.get("rating"),
-                f"price target {c['price_target']}" if c.get("price_target") and str(c["price_target"]).upper() != "N/A" else None]
-        head = ", ".join(b for b in bits if b and b != "N/A")
+        # the rating and target only as the note may be credited with them:
+        # a roundup's extracted fields are kept when its text states them
+        from discord_bot import desk_line
+        f = desk_line.fields(note)
+        bits = [f["action"].replace("_", " "), f["rating"],
+                f"price target {f['target']}" if f["target"] else None]
+        head = ", ".join(b for b in bits if b)
         text = f"{head}: {c.get('rationale') or ''}".strip(": ")
         if c.get("call_by"):
             # the note relays another broker's action (2026-10-26 audit A21)
             text = f"reports {c['call_by']}'s call, not its own: {text}"
+        elif f["credit"]:
+            # JPMorgan's credit analysts were Underweight NVIDIA's bonds the
+            # week its equity research was Overweight the stock (2026-11-17)
+            text = f"its credit analysts, on the company's debt and not the stock: {text}"
         # the desk's own numbers live in its earnings lines, not the call
         if first_earnings and first_earnings not in text:
             text += f". Its figures: {first_earnings}"
@@ -302,6 +310,14 @@ def desk_notes(research: dict | None, fresh: dict | None, asked: str = "") -> li
     notes.sort(key=lambda n: (                       # ... then calls, high conviction first (stable)
         not n.get("calls"),
         not any((c.get("conviction") or "") == "high" for c in n.get("calls") or [])))
+    # ... and of one bank's notes, the one whose rating or target can be
+    # posted (its equity research) ahead of its sales and credit notes.
+    # Stable, so the order across banks above is kept.
+    from discord_bot import desk_line
+    first_seen: dict = {}
+    for i, n in enumerate(notes):
+        first_seen.setdefault(n.get("source") or "", i)
+    notes.sort(key=lambda n: (first_seen[n.get("source") or ""], not desk_line.line(n)))
     out, banks = [], set()
     for n in notes:
         bank = n.get("source") or ""

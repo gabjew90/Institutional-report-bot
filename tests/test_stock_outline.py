@@ -150,7 +150,7 @@ def test_after_a_print_only_a_note_written_after_it_gets_a_desk_slot():
                          "rationale": "WFE share gains", "conviction": "high"}]},
              {"source": "UBS", "published": "2026-11-12", "insights": ["UBS models fiscal Q1 revenue of $11.3B, "
                                                                         "3% above the Street."]},
-             {"source": "Citi", "published": "2026-11-13",
+             {"source": "Citi", "published": "2026-11-13", "report_type": "equity_research",
               "calls": [{"action": "price_target_change", "rating": "Buy", "price_target": "$450",
                          "rationale": "Guide above the Street on foundry orders", "conviction": "medium"}]}]
     results = _amat(**{R.T_RESEARCH: {"status": "ok", "notes": notes}})

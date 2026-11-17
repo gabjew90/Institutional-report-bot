@@ -278,7 +278,10 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
         for note, preview in so.desk_notes(results.get(R.T_RESEARCH), fresh, asked):
             ln = desk_line.line(note, preview=preview)
             if ln:
-                desks.append({"bank": str(note.get("source") or ""), "line": ln})
+                # `who` is the broker the line credits: a roundup's source
+                # relays another broker's call
+                desks.append({"bank": str(note.get("source") or ""), "line": ln,
+                              "who": desk_line.fields(note)["holder"]})
     if not sections:
         # No feed gave a line. The turn then runs without a body, as before,
         # and the checks that stand down for a body stay on.
@@ -337,7 +340,8 @@ def compose(answer: str, body: dict) -> tuple[str, int]:
     arrows: list[str] = []
     for part in kept:
         for d in desks:
-            if d["bank"] not in placed and desk_line.names(part, d["bank"]):
+            if d["bank"] not in placed and (desk_line.names(part, d.get("who") or d["bank"])
+                                            or desk_line.names(part, d["bank"])):
                 arrows.append(d["line"])
                 placed.add(d["bank"])
         arrows.append(part)

@@ -35,11 +35,15 @@ def _prefixes(text: str) -> set[str]:
 
 def _key(source: str) -> str:
     """How an answer names the bank: 'Goldman Sachs' -> 'goldman', and two
-    words where the first alone is another bank's ('Morgan Stanley')."""
+    words where the first alone is another bank's ('Morgan Stanley') or a
+    plain word ('The Market Ear' -> 'market ear'; its key was 'the' until
+    2026-11-17, so every sentence with "the" in it named it)."""
     words = (source or "").lower().split()
+    if words and words[0] == "the":
+        words = words[1:]
     if not words:
         return ""
-    return " ".join(words[:2]) if words[0] in ("morgan", "bank", "jp") else words[0]
+    return " ".join(words[:2]) if words[0] in ("morgan", "bank", "jp", "market") else words[0]
 
 
 def notes_by_bank(notes: list[dict]) -> dict[str, str]:

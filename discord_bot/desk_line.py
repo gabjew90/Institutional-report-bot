@@ -1,13 +1,21 @@
 """A desk's rating and price target, posted by code (2026-11-17, audit run 12 A1).
 
 "JPMorgan reiterates its Underweight rating with a $215 price target" was
-posted on 2026-11-16. The note says Overweight, target cut to $215 from
-$320, and its stored call carried exactly that: rating "Overweight", price
-target "$215.00". The outline handed those fields to the model as a DESK
-slot and the model worded them, inverting the rating.
+posted on 2026-11-16. JPMorgan's equity research on NVDA says Overweight,
+target cut to $215 from $320. The words came from another JPMorgan note, a
+sales commentary stored with rating "Underweight" (its credit analysts'
+view of the bonds) beside the equity target. The outline handed whichever
+note sorted first to the model as a DESK slot with its stored fields.
 
-A rating and a target are structured fields of the note, so they are a
-posted line like the price or the EPS (discord_bot/stock_body.py):
+Two things follow, and both are here.
+
+Which stored fields a note may be credited with (`fields`, `clean_note`):
+a rating house's own equity research is trusted, and anywhere else a field
+is kept only when the note's own sentence states it. `lookup_research`
+applies this to every note before anything reads it.
+
+A rating and a target that pass are a posted line like the price or the
+EPS (discord_bot/stock_body.py):
 
     → **JPMorgan** (Nov 12): rated Overweight, price target **$215**, cut from $320.
 
@@ -67,18 +75,23 @@ def _note_sentences(note: dict, call: dict) -> list[str]:
     return [s for t in texts for s in _SENTENCE_RE.split(t) if s.strip()]
 
 
+def _num_pattern(value: float) -> str:
+    """The number as a note may write it: with or without thousands commas
+    and trailing zeros, behind a currency sign, and not part of a longer one."""
+    whole = f"{value:.2f}".rstrip("0").rstrip(".")
+    digits = re.escape(whole.split(".")[0])
+    frac = whole.split(".")[1] if "." in whole else ""
+    return (r"(?<![\d.,])[^\s\d(),;:]{0,4}" + r",?".join(digits)
+            + (rf"\.{frac}0*" if frac else r"(?:\.0+)?") + r"(?![\d,]|\.\d)")
+
+
 def prior_target(note: dict, call: dict) -> tuple[str, str] | None:
     """("cut" | "raised", the previous target as the note writes it), from
     a sentence of the note that states this target against the old one."""
     target = _number(_clean(call.get("price_target")))
     if not target:
         return None
-    whole = f"{target:.2f}".rstrip("0").rstrip(".")
-    digits = re.escape(whole.split(".")[0])
-    frac = whole.split(".")[1] if "." in whole else ""
-    # the same number with or without thousands commas and trailing zeros
-    num = r"(?<![\d.,])[^\s\d(),;:]{0,4}" + r",?".join(digits) + (
-        rf"\.{frac}0*" if frac else r"(?:\.0+)?") + r"(?![\d,]|\.\d)"
+    num = _num_pattern(target)
     step = r"(?:cut|raised|lowered|up|down|increased|reduced|lifted|trimmed|hiked)"
     after = re.compile(
         num + r"(?:\s+(?:price\s+)?(?:target|PT|TP|PO))?\s*,?\s*\(?(?:" + step + r"\s+)?from\s+(" + _MONEY + ")",
@@ -105,6 +118,108 @@ def _when(published: str, preview: bool = False) -> str:
     return f" ({d:%b} {d.day}{', before the report' if preview else ''})"
 
 
+_SOURCE_ALIASES = {"jpm": "jpmorgan", "gs": "goldman", "ms": "morgan stanley", "db": "deutsche bank",
+                   "citigroup": "citi", "baml": "bofa"}
+
+
+def own_broker(source: str) -> bool:
+    """The note's source is a house that rates stocks, so the rating and
+    target on its own note are its own. The Market Ear, a newsletter or a
+    macro shop is not one."""
+    import db  # noqa: F401  (the facade loads before db_parts)
+    from db_parts.pdf import _BROKERS
+    s = re.sub(r"\.", "", (source or "").strip().lower())
+    s = _SOURCE_ALIASES.get(s, s)
+    # the source opens with the house's name: "Zerohedge, summarizing HSBC
+    # and Goldman Sachs research" is not Goldman's note
+    return bool(s) and any(re.match(re.escape(b.lower().replace(".", "")) + r"(?![a-z])", s) for b in _BROKERS)
+
+
+# A rating action must be in the note's words about the broker too.
+_ACTION_STEMS = {"upgrade": "upgrad", "downgrade": "downgrad", "initiate": "initiat"}
+
+
+# A sentence about the company's debt does not state a stock rating.
+_CREDIT_RE = re.compile(r"\bcredit\b|\bspreads?\b|\bbonds?\b|\bCDS\b|\bnotes\s+due\b", re.I)
+_RATING_ACTIONS = frozenset({"upgrade", "downgrade", "initiate", "reiterate", "price_target_change"})
+
+
+def fields(note: dict) -> dict:
+    """What the note's first call may be credited with, and to whom:
+    {"holder", "relayed", "action", "rating", "target", "prior", "credit"}.
+
+    The stored rating and target are trusted on one kind of note only: a
+    rating house's own equity research. Everywhere else the extraction
+    fills the field whether or not the note stated one, so there a field is
+    kept only when a sentence of the note names the broker and states it,
+    and a credit note's is never kept: it rates the company's debt.
+
+    Why, all from NVDA in the week of 2026-11-10. JPMorgan's equity
+    research was Overweight with the target cut to $215 from $320. Its
+    credit research was Underweight on the bonds. Its sales commentary was
+    stored as "Underweight, $215", the credit view beside the equity
+    target, and that is the note behind the posted "JPMorgan reiterates its
+    Underweight rating with a $215 price target" (audit run 12 A1). The
+    Market Ear's "14 banks weigh in" was stored with Goldman and JPMorgan
+    both "Neutral". Goldman's sales notes carry "Outperform" and
+    "Overweight", ratings Goldman does not use. Over 21 days, 126 of 571
+    house-and-ticker pairs with two or more notes had stored ratings on
+    different sides."""
+    source = str(note.get("source") or "").strip()
+    kind = str(note.get("report_type") or "").strip().lower()
+    out = {"holder": source, "relayed": False, "action": "", "rating": "", "target": "", "prior": None,
+           "credit": kind == "credit"}
+    calls = note.get("calls") or []
+    if not calls or not source:
+        return out
+    call = calls[0]
+    holder = str(call.get("call_by") or "").strip() or source
+    action = str(call.get("action") or "").lower()
+    rating = _clean(call.get("rating"))
+    target = _trim(_clean(call.get("price_target")))
+    relayed = holder != source
+    if kind == "credit":
+        rating = target = ""
+        action = "" if action in _RATING_ACTIONS else action
+    elif relayed or kind != "equity_research" or not own_broker(source):
+        said = [s for s in _note_sentences(note, call) if names(s, holder) and not _CREDIT_RE.search(s)]
+        if rating and not any(_in_text(rating, s, strict=True) for s in said):
+            rating = ""
+        value = _number(target)
+        if target and not (value and any(re.search(_num_pattern(value), s) for s in said)):
+            target = ""
+        stem = _ACTION_STEMS.get(action)
+        if stem and not any(stem in s.lower() for s in said):
+            action = ""
+    if (action == "reiterate" and not rating) or (action == "price_target_change" and not target):
+        action = ""
+    out.update(holder=holder, relayed=relayed, action=action, rating=rating, target=target)
+    if target:
+        out["prior"] = prior_target(note, call)
+    return out
+
+
+def clean_note(note: dict) -> dict:
+    """The note with each call's action, rating and target as `fields`
+    credits them, for every reader of the research: the model's payload,
+    the outline and the checks. A dropped field is removed, not blanked."""
+    calls = []
+    for c in note.get("calls") or []:
+        f = fields({**note, "calls": [c]})
+        kept = {k: v for k, v in c.items() if k not in ("action", "rating", "price_target")}
+        if f["action"]:
+            kept["action"] = f["action"]
+        if f["rating"]:
+            kept["rating"] = f["rating"]
+        if f["target"]:
+            kept["price_target"] = f["target"]
+        calls.append(kept)
+    out = {**note, "calls": calls}
+    if str(note.get("report_type") or "").lower() == "credit":
+        out["desk"] = "credit research: its view is on the company's debt, not a stock rating"
+    return out
+
+
 _ACTION_HEAD = {"upgrade": ("upgraded to {r}", "upgraded"),
                 "downgrade": ("downgraded to {r}", "downgraded"),
                 "initiate": ("initiated at {r}", "initiated coverage")}
@@ -114,29 +229,23 @@ def line(note: dict, preview: bool = False) -> str:
     """The posted line for a note's rating and target, '' when the note
     carries neither. `preview`: the note was written before a report that
     is now out."""
-    call = call_of(note)
-    bank = str(note.get("source") or "").strip()
-    if not call or not bank:
-        return ""
-    rating = _clean(call.get("rating"))
-    target = _trim(_clean(call.get("price_target")))
-    with_rating, bare = _ACTION_HEAD.get(str(call.get("action") or "").lower(), ("rated {r}", ""))
+    f = fields(note)
+    with_rating, bare = _ACTION_HEAD.get(f["action"], ("rated {r}", ""))
     parts = []
-    head = with_rating.format(r=rating) if rating else bare
+    if not (f["rating"] or f["target"]):
+        return ""
+    head = with_rating.format(r=f["rating"]) if f["rating"] else bare
     if head:
         parts.append(head)
-    if target:
-        piece = f"price target **{target}**"
-        prior = prior_target(note, call)
-        if prior:
-            piece += f", {prior[0]} from {prior[1]}"
+    if f["target"]:
+        piece = f"price target **{f['target']}**"
+        if f["prior"]:
+            piece += f", {f['prior'][0]} from {f['prior'][1]}"
         parts.append(piece)
-    if not parts:
-        return ""
-    who = f"**{bank}**"
-    if call.get("call_by"):
+    who = f"**{f['holder']}**"
+    if f["relayed"]:
         # the note relays another broker's action (2026-10-26 audit A21)
-        who = f"**{call['call_by']}**, as relayed in a {bank} note"
+        who += f", relayed by {note.get('source')}"
     return f"→ {who}{_when(note.get('published'), preview)}: {', '.join(parts)}."
 
 
@@ -197,15 +306,23 @@ def names(text: str, bank: str) -> bool:
     return _named((text or "").lower(), _names(bank))
 
 
-def _in_text(rating: str, text: str) -> bool:
+def _in_text(rating: str, text: str, strict: bool = False) -> bool:
     """The rating as a word of the note's own text ('Equal Weight' for
-    'equal-weight'; not 'buy' inside 'buyback')."""
+    'equal-weight'; not 'buy' inside 'buyback'). `strict`: a rating that is
+    also an ordinary word (buy, sell, hold) must be written as a rating,
+    with its capital ("tells clients to buy the dip" is not a Buy rating)."""
     parts = [re.escape(p) for p in re.split(r"[\s-]+", rating.strip()) if p]
-    return bool(parts) and bool(re.search(r"\b" + r"[\s-]?".join(parts) + r"\b", text or "", re.I))
+    if not parts:
+        return False
+    if strict and rating.strip().lower() in _CASE_SENSITIVE:
+        return bool(re.search(r"\b" + re.escape(rating.strip().capitalize()) + r"\b", text or ""))
+    return bool(re.search(r"\b" + r"[\s-]?".join(parts) + r"\b", text or "", re.I))
 
 
 def _bank_facts(notes: list[dict]) -> dict[str, dict]:
-    """bank key -> {"names", "ratings", "targets", "text"} from its notes."""
+    """bank key -> {"names", "ratings", "targets", "text", "rating_text"} from
+    its notes. `rating_text` is what a stock rating may be read from: the
+    sentences that are not about the company's debt, credit notes left out."""
     from discord_bot.desk_claims import _key
     out: dict[str, dict] = {}
     for n in notes or []:
@@ -213,11 +330,13 @@ def _bank_facts(notes: list[dict]) -> dict[str, dict]:
         if not key:
             continue
         f = out.setdefault(key, {"names": _names(str(n.get("source") or "")), "ratings": set(),
-                                 "targets": [], "text": ""})
+                                 "targets": [], "text": "", "rating_text": ""})
+        before = len(f["text"])
         for c in n.get("calls") or []:
-            if _clean(c.get("rating")):
-                f["ratings"].add(_norm(_clean(c["rating"])))
-            for v in (_clean(c.get("price_target")), (prior_target(n, c) or ("", ""))[1]):
+            got = fields({**n, "calls": [c]})        # a roundup's fields only when its text states them
+            if got["rating"]:
+                f["ratings"].add(_norm(got["rating"]))
+            for v in (got["target"], (got["prior"] or ("", ""))[1]):
                 if _number(v) is not None:
                     f["targets"].append(_number(v))
             f["text"] += " " + str(c.get("rationale") or "")
@@ -227,6 +346,9 @@ def _bank_facts(notes: list[dict]) -> dict[str, dict]:
             f["text"] += " " + " ".join(str(d.get(k) or "") for k in ("figure", "metric", "context"))
         for t in n.get("trade_ideas") or []:
             f["text"] += " " + " ".join(str(t.get(k) or "") for k in ("description", "rationale"))
+        if str(n.get("report_type") or "").lower() != "credit":
+            f["rating_text"] += " " + " ".join(
+                x for x in _SENTENCE_RE.split(f["text"][before:]) if not _CREDIT_RE.search(x))
     return out
 
 
@@ -238,7 +360,7 @@ def _wrong(sentence: str, facts: dict) -> bool:
             word = m.group(1)
             if i and word.lower() in _CASE_SENSITIVE and not word[0].isupper():
                 continue                    # after a verb, "keeps a hold on costs" is prose
-            if _norm(word) not in facts["ratings"] and not _in_text(word, facts["text"]):
+            if _norm(word) not in facts["ratings"] and not _in_text(word, facts["rating_text"]):
                 return True
     values = list(facts["targets"])
     values += [v for v in (_number(x) for x in re.findall(r"\d[\d,]*(?:\.\d+)?", facts["text"])) if v]
