@@ -1,0 +1,442 @@
+{
+ "brief": "The NDX broke a 4-week losing streak, closing up ~350bps, led by the SOX's +800bps (best week since August), yet both indices stayed below their 200-dmas. The author reads the bounce as cleaner positioning (GS PB data: short covering via macro products) plus intra-market rotation into Defensives, Big Tech and Low Vol, against a tougher macro backdrop: US Financial Conditions hit their tightest in ~18 months after a hotter CPI print, with 10yr yields at 5.15% and oil near $96/brl. NVDA fell to -12% YTD, its worst relative week versus Semis since 2008, fueling debate over how far that bounce can stretch. Market consensus on positioning is unusually thin outside a receptive tilt toward hyperscalers, with live debate over bear-market-bounce versus new bull leg. NVDA reports Tuesday post-close at a 14-day RSI of 24 (lowest since 2019) and 11x NTM P/E, market cap back below $4tn and now matching MSFT's. GS Econ's 2027 outlook: 2.8% global growth as lower energy prices and AI capex outweigh tighter financial conditions, with downside risk from Iran escalation, French fiscal deficits, AI capex disappointment, and early signs AI is already weighing on the job market.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "The Nasdaq 100 closed up about 350 basis points on the week, breaking a 4-week losing streak.",
+   "anchor": "The NDX broke a 4 week losing streak, closing up ~350 bps on the week led by Semis/SOX up ~800 bps",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "The SOX semiconductor index rose about 800 basis points on the week, its best week since early August.",
+   "anchor": "up ~800 bps on the week (best week since early August)",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Both the Nasdaq 100 and the SOX remained below their 200-day moving averages as of last Friday.",
+   "anchor": "both the NDX and the SOX still closed below their 200-dmas on Friday",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Nvidia is now down 12% year-to-date after its biggest week of underperformance relative to Semis since 2008.",
+   "anchor": "Nvidia now down 12% YTD after turning in\nits biggest week of u/p relative to Semis since 2008",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "US Financial Conditions rose to their tightest level in about 18 months following another hotter-than-expected CPI print.",
+   "anchor": "US Financial Conditions rose to their highest (\u2018tightest\u2019) levels in ~18-months\nfollowing another hot(ter) CPI print",
+   "topic": "US core CPI / Fed hike path",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "The 10-year Treasury yield is back at 5.15%.",
+   "anchor": "10yr Yields back at 5.15% and Oil back towards $96/brl",
+   "topic": "US core CPI / Fed hike path",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Oil prices have moved back toward $96 per barrel.",
+   "anchor": "10yr Yields back at 5.15% and Oil back towards $96/brl",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Last week's rally reflected cleaner positioning, with Goldman's prime brokerage data noting covering via macro products.",
+   "anchor": "the strength last week was largely an output of cleaner positioning (GS PB data noted\ncovering via macro products)",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Last week's bounce also reflected intra-market rotation into Defensives, Big Tech (including AMD and AVGO) and Low Vol names.",
+   "anchor": "intra-market rotations (Defensives, Big Tech (incld AMD + AVGO) and\nLow Vol names",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Goldman's TMT desk observes unusually little market consensus right now on where we are in the AI/semis cycle.",
+   "anchor": "there appears to be relatively LITTLE CONSENSUS in the market right now",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "The one pocket of market consensus right now is a broadly receptive tilt toward the hyperscalers.",
+   "anchor": "at least away from a\nbroadly receptive tilt towards the Hyperscalers",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "There's active debate over whether the rally is a bear market bounce or a bull market forming.",
+   "anchor": "if this is a bear market bounce or a bull market forming",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Dispersion has picked up within Software, including inside the Cyber and Data Infrastructure cohorts.",
+   "anchor": "Software has seen\ndispersion pick up (including within Cyber & Data Infra cohorts)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Internet stocks have become squeezy and difficult to trade, though some value interest is emerging.",
+   "anchor": "Internet has gotten squeezy and\ndifficult to trade (thought it does feel like some \u2018value\u2019 interest emerging here)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Nvidia's 14-day RSI is 24 heading into its Tuesday post-close earnings report, the lowest since 2019.",
+   "anchor": "Nvidia reports Tuesday post close (11/17) .. the stock has a 14-day RSI of 24, lowest since 2019",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Nvidia heads into its earnings print trading at 11x NTM P/E.",
+   "anchor": "heads into the print at 11x NTM P/E",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Nvidia's market cap is back below $4 trillion, now matching Microsoft's.",
+   "anchor": "NVDA mrkt cap is back below $4trn (and now matching\nthat of MSFT\u2019s)",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Into Nvidia's print, investor focus will likely be on Vera Rubin momentum, visibility into 2027+, gross margins and capital allocation.",
+   "anchor": "investor focus will likely be on Vera Rubin\nmomentum, visibility into 2027+, GMs and capital allocation",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Disney stock is re-testing the $120s level that has acted as a ceiling over the last 4+ years heading into its Tuesday earnings report.",
+   "anchor": "stock quietly re-testing the $120s level that has acted as\nsomewhat of a ceiling over the last ~4+ years",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DIS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Palo Alto Networks has traded lower the day after earnings (T+1) in 9 of its last 12 prints.",
+   "anchor": "chart below: PANW lower 9 of 12 prints, T+1",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Broad market sentiment on Palo Alto Networks remains upbeat as it is seen as one of the thematically 'right way' AI names in the market.",
+   "anchor": "broad market sentiment on PANW remains upbeat as the name has become one\nof the more thematically \u2018right way\u2019 AI names in the market",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Palo Alto Networks starts lapping its CyberArk and Chronosphere acquisitions in fiscal Q1 2027.",
+   "anchor": "especially as PANW starts to lap acquisitions in 1Q\u2019C27 (thinking;\nCyberArk & Chronosphere)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "1Q 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Intuit stock has not closed above its 200-day moving average in over a year.",
+   "anchor": "the stock has not\nclosed above its 200-dma in >1 year",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Bear points on Apple post-earnings include deceleration in Services growth, gross margin headwinds and AI unknowns around server-side inference costs.",
+   "anchor": "deceleration in Services growth, GM headwinds, AI unknowns \u2013 esp around server-side inference\ncosts",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "The S&P 500 excluding AI names has outperformed the S&P 500 over the last year and was more resilient through last week's selloff.",
+   "anchor": "SPX ex-AI has now outperformed vs SPX over the last year, and has been more resilient through last\nweek\u2019s sell-off",
+   "topic": "Tech/Semis bounce back",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Goldman's economics team forecasts the global economy will grow 2.8% in 2027.",
+   "anchor": "We expect the global economy to grow 2.8% in 2027, as lower energy prices and still-strong AI capex outweigh tighter financial conditions",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Goldman flags renewed escalation in Iran as a risk that could cause another energy price surge.",
+   "anchor": "First, renewed escalation in Iran could result in another\nenergy price surge.",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Goldman flags large fiscal deficits, especially in France, as a risk of pushing long-term yields up more sharply.",
+   "anchor": "Second, large fiscal deficits could push up long-term yields more sharply, especially in\nFrance.",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Goldman flags a risk that AI capex disappoints due to capacity constraints, regulation, credit market stress, or weaker demand.",
+   "anchor": "Third, AI capex could disappoint because of capacity constraints, regulation, credit market stress,\nor weaker demand.",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT .. bounce back 15 Nov 2026",
+   "claim": "Goldman sees early signs that AI is weighing on the job market.",
+   "anchor": "We also see early signs that AI is weighing on the job market",
+   "topic": "2027 global markets outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27302__gs-us-tmt-bounce-back-15-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 9,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
