@@ -1,0 +1,127 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-17T14:05:51.020437Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=241; anchors 915/950 matched, 1 empty, 3 too_short (rate=0.963)",
+   "at": "2026-11-17T14:05:55.834708Z"
+  },
+  "omnipulse": {
+   "decision": "OMNIPULSE",
+   "detail": "omnipulse: 2026-11-17 ok, 6 themes -> omnipulse pulse",
+   "at": "2026-11-17T14:05:56.604794Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-11-17T14:07:45.132468Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "1 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-11-17T14:08:53.954913Z"
+  },
+  "final_validate": {
+   "decision": "DISPATCH_FIXUP",
+   "detail": "1 EDIT/SCRUB-introduced hard violation(s); violations at /tmp/final_fixup_violations.json; after FIXUP run: gate final_validate --recheck",
+   "at": "2026-11-17T14:08:57.977694Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-17T14:09:27.056436Z"
+  },
+  "final_validate_recheck": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-17T14:09:27.011291Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-17T14:10:29.564331Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-11-17T14:10:29.593152Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 1
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:05:51.020437Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:05:55.834708Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "OMNIPULSE",
+   "at": "2026-11-17T14:05:56.604794Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-11-17T14:07:27.481820Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:07:45.132468Z"
+  },
+  {
+   "record": "omnipulse_body_voice",
+   "detail": "'Goldman added' -> 'In Goldman's view,'",
+   "at": "2026-11-17T14:08:53.874886Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-11-17T14:08:53.954913Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "DISPATCH_FIXUP",
+   "at": "2026-11-17T14:08:57.977694Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:08:58.016634Z"
+  },
+  {
+   "gate": "final_validate_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:09:27.011291Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:09:27.056436Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-11-17T14:10:29.564331Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-17T14:10:29.593152Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}

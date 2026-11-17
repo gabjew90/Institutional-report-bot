@@ -1,0 +1,70 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.91% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.91",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Heading into today's open, stocks are coming off a technology-led selloff. $SPY closed Monday down 1.91% and $QQQ lost 2.67%, one session before Nvidia reports tonight for the first time under interim"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.67% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.67",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Heading into today's open, stocks are coming off a technology-led selloff. $SPY closed Monday down 1.91% and $QQQ lost 2.67%, one session before Nvidia reports tonight for the first time under interim"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.14% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.5, 0.21, 0.63, 0.8, 0.9, 21.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.14",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **October retail sales (8:30 AM ET) beat.** Sales rose 0.21% on the month against forecasts of 0.1% to 0.2%, and 0.63% excluding autos against 0.4% expected, after September gains of 0.8% and 0.9%. "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.30% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.30",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "October core consumer prices rose 0.30% on the month, a third consecutive upside surprise, and the three-month annualized pace reached 3.7%, the fastest since early 2025. In Goldman's view, a third 25"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-4.50% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-4.50",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "October core consumer prices rose 0.30% on the month, a third consecutive upside surprise, and the three-month annualized pace reached 3.7%, the fastest since early 2025. In Goldman's view, a third 25"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.3% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.3",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "October core consumer prices rose 0.30% on the month, a third consecutive upside surprise, and the three-month annualized pace reached 3.7%, the fastest since early 2025. In Goldman's view, a third 25"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.35% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.35",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "October core consumer prices rose 0.30% on the month, a third consecutive upside surprise, and the three-month annualized pace reached 3.7%, the fastest since early 2025. In Goldman's view, a third 25"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 7,
+ "exit_code": 4
+}
