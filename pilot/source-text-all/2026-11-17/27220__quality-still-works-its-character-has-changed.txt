@@ -1,0 +1,695 @@
+ 
+ 
+Index Research and Design | Equities 
+Quality still works 
+Its character has changed 
+November 2026 
+AUTHORS 
+Tom Chan, CFA 
+Senior Analyst 
+Tsun.Chan@lseg.com 
+ 
+Matt Monach, CFA 
+Senior Manager 
+Matt.Monach@lseg.com 
+ 
+Sergiy Lesyk 
+Director 
+Sergiy.Lesyk@lseg.com 
+
+Index Research and Design | Equities 
+FTSE Russell  
+2
+Overview 
+Quality remains one of the most intuitive and widely adopted equity factors. 
+Investors naturally prefer companies that generate consistent profits, allocate 
+capital efficiently, maintain strong balance sheets and produce sustainable 
+cash flows. These characteristics have historically been associated with 
+stronger long-term performance and greater resilience through market cycles. 
+The economic foundations of Quality remain intact. However, the market 
+expression of Quality has evolved. Over the last two decades, the rise of 
+asset-light, highly scalable Technology businesses has reshaped the sectoral 
+and business-model composition of global equities. As a result, unconstrained 
+Quality portfolios increasingly reflect exposure to highly profitable Technology 
+companies and US mega-cap growth stocks. 
+Our analysis highlights five key findings: 
+– Quality remains economically relevant and empirically robust. 
+– The realised exposure of Quality has become more Technology-led and 
+less inherently defensive. 
+– Return on Assets (ROA) is now the dominant driver of broad Quality 
+performance. 
+– After neutralising sector, country and style exposures, Accruals emerge as 
+the strongest pure stock-selection signal. 
+– The growing divergence between profitability and earnings quality reinforces 
+the importance of understanding implementation choices. 
+Quality still works. But implementation increasingly determines the exposure 
+investors actually receive. 
+  
+
+Index Research and Design | Equities 
+FTSE Russell  
+3
+Contents 
+1. Introduction ........................................................................................................................ 4 
+2. What do we mean by Quality ............................................................................................ 4 
+3. Accruals are the link between profits and cash ................................................................ 5 
+4. Quality has become technology-led .................................................................................. 7 
+5. ROA is dominating ............................................................................................................ 7 
+6. When profits run ahead of cash ........................................................................................ 8 
+7. The AI investment cycle – a rhyme not a forecast .......................................................... 10 
+8. Pure Quality tells a different story ................................................................................... 11 
+9. Signal overlap is rising .................................................................................................... 12 
+10. Quality is not automatically defensive ........................................................................... 12 
+11. Index construction matters ............................................................................................ 13 
+12. Conclusion ..................................................................................................................... 14 
+References .......................................................................................................................... 14 
+ 
+ 
+ 
+
+Index Research and Design | Equities 
+FTSE Russell  
+4
+1. Introduction 
+The Quality factor is one of the most widely adopted investment styles within modern 
+factor investing. At its core, Quality reflects the belief that companies exhibiting strong 
+profitability, efficient capital allocation, robust financial positions and sustainable earnings 
+should outperform weaker businesses over the long term. 
+Academic research and practical investment experience have identified several 
+characteristics commonly associated with high-quality companies: 
+– Persistent profitability 
+– Efficient use of assets 
+– Strong cash-flow generation 
+– Conservative leverage 
+– Earnings supported by cash rather than accounting adjustments 
+Such businesses often display greater resilience through economic cycles, stronger 
+competitive positions and a greater capacity to reinvest capital at attractive rates. 
+While the intuition behind Quality remains straightforward, implementation is considerably 
+more complex. There is no universally accepted definition of Quality. Different providers 
+place different emphasis on profitability, balance-sheet strength, earnings stability and 
+cash-flow measures. 
+Within the FTSE Russell framework, Quality combines profitability and leverage through 
+four complementary measures: 
+– Return on Assets (ROA) 
+– Change in Asset Turnover 
+– Accruals 
+– Operating Cash Flow to Debt 
+Together, these measures seek to identify companies that are not only profitable, but 
+whose profitability is sustainable, efficiently generated and supported by strong financial 
+foundations. 
+The importance of this broader perspective has increased in recent years. Structural 
+changes in global equity markets, particularly the rise of Technology companies and the 
+growing importance of intangible capital, have altered how traditional Quality metrics 
+behave in practice. 
+2. What do we mean by Quality 
+Quality investing is built on a simple idea: investors should prefer companies that are 
+profitable, efficient, cash-generative and financially resilient. The intuition has not 
+changed. What has changed is where those characteristics are concentrated within global 
+equity markets. 
+ 
+
+Index Research and Design | Equities 
+FTSE Russell  
+5
+Within the FTSE Russell framework, Quality combines profitability and leverage 
+characteristics. Profitability is measured using ROA, change in asset turnover and 
+Accruals. Accruals are sign-reversed so that lower accruals represent stronger earnings 
+quality. The leverage component is measured using operating cash flow relative to debt. 
+Table 1. Components of the Quality framework 
+Dimension 
+Descriptor 
+Adjustment 
+Economic Role 
+Profitability 
+ROA 
+Region neutral 
+Profitability relative to 
+asset base 
+Profitability 
+Change in Asset Turnover 
+(D_ATO) 
+Region neutral 
+Improvement in operating 
+efficiency 
+Earnings Quality 
+Accruals (sign reversed) 
+Region neutral 
+Cash-backed earnings 
+Leverage / Cash Flow 
+Strength 
+Operating Cash Flow to 
+Debt (OPCFD) 
+Region + Industry neutral 
+Cash-flow coverage 
+of debt 
+Composite 
+Quality_Z 
+Combined profitability and 
+leverage score 
+Broad Quality exposure 
+Source. FTSE Russell. 
+The definition remains economically relevant. The more important question is whether the 
+same definition now delivers the same investor experience. The evidence suggests that it 
+does not. 
+3. Accruals are the link between profits and cash 
+Quality investing is built on a simple idea: investors should prefer companies that are 
+profitable, efficient and these characteristics are sustainable.  
+Among all Quality components, Accruals are often the least understood. Yet decades of 
+accounting and investment research suggest they may be among the most valuable 
+indicators of earnings quality and future stock performance. At their core, Accruals 
+measure the difference between accounting earnings and the cash generated by a 
+business. 
+Accounting standards are designed to measure economic activity rather than simply 
+record cash transactions. Revenue may be recognised before cash is received. Expenses 
+may be recognised before cash is paid. These timing differences create accruals. 
+Non-cash earnings may be entirely legitimate. They may arise because customers have 
+not yet paid invoices, because inventory has increased, because depreciation patterns 
+differ from investment spending or because expenditures have been capitalised rather 
+than expensed immediately. However, those earnings are inherently less certain than 
+cash already sitting in the bank. 
+This distinction matters because cash ultimately determines a company’s ability to fund 
+growth, repay debt, return capital to shareholders, finance acquisitions and weather 
+periods of economic stress. 
+For this reason, investors often distinguish between high profitability and high-quality 
+profitability. A company can generate strong reported earnings while simultaneously 
+producing relatively weak cash flow. 
+
+Index Research and Design | Equities 
+FTSE Russell  
+6
+When a large proportion of earnings is derived from accounting accruals rather than cash 
+generation, future earnings may prove less persistent than current earnings suggest. High 
+accruals can arise from: rapid growth in accounts receivable, revenue recognised ahead 
+of cash collection, inventory accumulation, capitalisation of expenditures, aggressive 
+accounting assumptions, or large investments whose future economic benefits remain 
+uncertain. 
+None of these developments are inherently problematic. In fact, many rapidly growing 
+companies naturally exhibit some of these characteristics. The issue is that accounting 
+assumptions must eventually convert into realised cash flows. If they do not, earnings 
+often disappoint. 
+Accruals therefore act as a measure of earnings sustainability rather than profitability 
+itself. 
+The importance of Accruals was first formalised by Sloan (1996), whose research 
+demonstrated that investors often fail to adequately distinguish between the accrual and 
+cash-flow components of earnings. Companies with low accruals subsequently generated 
+superior stock returns, while companies with high accruals tended to underperform. 
+Subsequent research by Richardson et al. (2005) reinforced those findings by 
+demonstrating that the least reliable portions of reported earnings are often associated 
+with accrual-based accounting estimates rather than realised cash flows. This body of 
+evidence became known as the Accrual Anomaly, one of the most robust findings in the 
+Quality-investing literature. 
+The importance of Accruals may actually be increasing because modern equity markets 
+are increasingly dominated by businesses whose value is driven by intangible assets. 
+Traditional industrial firms generated profits primarily through physical assets and tangible 
+capital. Today’s leading Technology companies generate profits through software, 
+intellectual property, data assets, cloud infrastructure, network effects, brand capital. 
+These business models often produce extremely high ROA, relatively low reported asset 
+bases, rapid investment cycles, significant capital commitments, greater reliance on 
+accounting estimates and assumptions. As a result, profitability and earnings quality can 
+diverge more meaningfully than they did in traditional industrial sectors. 
+This does not imply that Technology companies are low quality. Many remain among the 
+most profitable and cash-generative businesses ever created. However, it does mean that 
+profitability alone may no longer provide a complete picture. ROA tells investors how 
+much profit a company generates. Accruals help investors assess how much confidence 
+they should place in that profit. 
+Viewed differently, ROA measures the quantity of profitability, while Accruals provide 
+insight into the quality of profitability. 
+High Accruals should not be interpreted as a bearish signal. Nor should they be viewed as 
+a market-timing indicator. Instead, they provide context. When ROA is high and Accruals 
+are low, profitability is generally supported by strong cash generation. For this reason, 
+Accruals are best viewed as a risk-monitoring tool rather than a prediction tool. It is about 
+identifying companies whose profits are most likely to endure. 
+
+Index Research and Design | Equities 
+FTSE Russell  
+7
+4. Quality has become technology-led 
+The most important structural change in Quality investing has been the rise of Technology 
+as the dominant Quality sector. 
+Modern Technology companies often exhibit exactly the characteristics rewarded by 
+Quality metrics: 
+– High margins 
+– High ROA 
+– Strong cash generation 
+– Limited leverage 
+– Scalable business models 
+– Low physical capital intensity 
+Because global equity markets are market-capitalisation weighted, these characteristics 
+become even more influential when the largest companies possess them. 
+The mechanism is straightforward: 
+High benchmark weights multiplied by high Quality scores naturally produce larger 
+Technology exposures in unconstrained Quality portfolios. This does not imply that the 
+Quality signal is flawed. 
+Many Technology companies genuinely are highly profitable and financially strong. 
+However, it does mean that unconstrained Quality increasingly captures exposure to a 
+particular business model: asset-light, scalable, highly profitable and often US-listed 
+mega-cap growth companies. 
+For investors, that materially changes the nature of the exposure. 
+5. ROA is dominating 
+ROA has become the central engine of broad Quality performance. 
+In our simulated 20-year analysis of the FTSE Developed universe, the Quality composite 
+and ROA generated remarkably similar results. 
+Table 2. Standard unconstrained Quality performance 
+Signal 
+Active return p.a. 
+Tracking error 
+Information ratio 
+Alpha t-stat 
+Quality composite 
+1.11% 
+2.18% 
+0.51 
+2.88 
+ROA 
+1.10% 
+2.14% 
+0.52 
+2.58 
+OPCFD 
+0.44% 
+1.22% 
+0.36 
+1.52 
+Accruals 
+0.21% 
+1.45% 
+0.15 
+1.05 
+D_ATO 
+0.05% 
+1.00% 
+0.05 
+0.06 
+Source. FTSE Russell. 
+
+Index Research and Design | Equities 
+FTSE Russell  
+8
+The evidence suggests that ROA now drives much of what investors experience as 
+“Quality.” 
+This is both a strength and a potential risk. ROA is an exceptionally powerful measure of 
+profitability. However, it is also deeply influenced by sector composition and business-
+model structure. Asset-light firms can appear extraordinarily profitable because their 
+reported asset bases frequently understate internally generated intangible assets such as 
+software, data, intellectual property and brand value. As a result, today’s Quality portfolios 
+increasingly reflect the economics of modern business models rather than traditional 
+notions of defensiveness. 
+6. When profits run ahead of cash 
+Technology has delivered the highest industry-level ROA in developed markets for nearly 
+two decades (Chart 1). 
+Chart 1. ROA by Industry, 2006-2025 
+ 
+Source: FTSE Russell. FTSE Developed Index data from December 2005 - December 2025. Past performance is no 
+guarantee of future results. 
+However, industry-level Accruals have recently risen meaningfully relative to historical 
+norms (Chart 2). Importantly, these statistics are market-capitalisation weighted. The 
+observation therefore reflects the behaviour of the largest Technology companies rather 
+than the typical Technology company. Analysis of Accrual dispersion within Technology 
+reveals substantial variation across firms. The median company appears considerably 
+less extreme than aggregate industry statistics suggest. 
+  a  si  al
+  . 
+    
+    
+    
+                                
+    
+    
+  . 
+  . 
+  . 
+ . 
+ . 
+ . 
+ . 
+ . 
+  l  o  u i atio s
+     olo y
+  alt   ar 
+ i a  ials
+  al stat 
+ o su  r  is r tio ary
+ o su  r  ta l s
+   ustrials
+ asi   at rial
+   r y
+ tiliti s
+
+Index Research and Design | Equities 
+FTSE Russell  
+9
+Chart 2. Accruals by Industry in 2006-2025 
+ 
+Source: FTSE Russell. FTSE Developed Index data from December 2005 - December 2025. Past performance is no 
+guarantee of future results. 
+However, when firms are grouped by accrual deciles, a striking result emerges (Chart 3). 
+Companies in the highest-accrual decile now account for more than 60% of Technology 
+sector market capitalisation. 
+Chart 3. Share of market weight by accrual decile 
+ 
+Source: FTSE Russell. FTSE Developed Index data from December 2005 - December 2025. Past performance is no 
+guarantee of future results. 
+This is not a breadth effect. It is a concentration effect. In other words, benchmark 
+investors may inherit elevated accrual exposure without actively choosing to do so. The 
+key question is not whether Technology is low quality. Many of the world’s largest 
+Technology firms remain extraordinarily profitable and cash-generative. 
+The more important question is whether today’s exceptional profitability remains fully 
+supported by cash generation, or whether an increasing proportion depends upon 
+accounting accruals. That distinction lies at the heart of earnings quality. 
+    
+    
+    
+    
+    
+  a  si  al
+  . 
+  . 
+ . 
+ . 
+ . 
+                                   
+  l  o  u i atio s
+     olo y
+  alt   ar 
+ i a  ials
+  al stat 
+ o su  r  is r tio ary
+ o su  r  ta l s
+   ustrials
+ asi   at rial
+   r y
+ tiliti s
+
+Index Research and Design | Equities 
+FTSE Russell  
+10 
+7. The AI investment cycle – a rhyme not a forecast 
+The current AI investment cycle makes the distinction between profitability and earnings 
+quality particularly relevant. 
+Leading Technology firms are investing unprecedented amounts into AI infrastructure, 
+semiconductors, data centres, networking capacity and ecosystem development while 
+simultaneously reporting exceptional profitability. 
+A broadly similar tension emerged during 2012-2014 when Technology profitability 
+remained strong while Accrual characteristics deteriorated (Chart 4). 
+Chart 4. Rolling one-year information ratios for ROA and Accrual factors 
+ 
+ 
+Source: FTSE Russell calculations. Fixed-tilt factor portfolios relative to the capitalisation-weighted FTSE Developed 
+benchmark. Fixed-tilt portfolios retain their associated country, industry and style exposures; the results are not pure factor 
+returns. 
+The comparison should not be interpreted as a forecast. Today’s environment is 
+fundamentally different. Periods of technological transformation frequently create tension 
+between current profitability and future growth investment, cash-flow generation and 
+earnings quality 
+The question is not whether AI investment is justified. The relevant question is whether 
+exceptional profitability remains fully supported by sustainable cash generation as 
+investment intensity increases. The historical parallel is therefore a question rather than 
+an answer. 
+-1.5
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+2006 20072008 200920102011 20122013 20142015 20162017 201820192020 20212022 20232024 2025
+IR
+ROA
+-1.5
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+IR
+Accruals
+µ=0.56 
+IR=0 
+Mean 
+µ=0.25 
+IR=0 
+Mean 
+
+Index Research and Design | Equities 
+FTSE Russell  
+11 
+8. Pure Quality tells a different story 
+To isolate stock-selection effects from broader allocation effects, we constructed a Pure 
+Quality index that neutralises sector, country and off target factor exposures. The Quality 
+excess return remains positive. However, the magnitude and ranking of signals change 
+materially. 
+Table 3. Pure Quality results 
+Pure signal 
+Active return p.a. 
+Tracking error 
+Information ratio 
+Alpha t-stat 
+Accruals 
+0.35% 
+0.70% 
+0.50 
+2.32 
+Quality Composite 
+0.23% 
+0.70% 
+0.33 
+1.69 
+OPCFD 
+0.12% 
+0.58% 
+0.21 
+1.12 
+D_ATO 
+0.08% 
+0.70% 
+0.11 
+0.52 
+ROA 
+0.07% 
+0.79% 
+0.08 
+0.50 
+Source. FTSE Russell. 
+The implications are significant. ROA is the strongest broad allocation signal within 
+Quality. Accruals are the strongest pure stock-selection signal. Once sector and business-
+model effects are neutralised, Accruals become the most informative indicator of 
+company-level Quality. 
+Chart 5. Comparison of IR of pure Quality and standard Quality factors 
+ 
+Source: FTSE Russell. FTSE Developed Index data from December 2005 - December 2025. Past performance is no 
+guarantee of future results. 
+Profitability explains much of broad Quality performance, while earnings quality explains 
+much of pure Quality performance. The definition remains economically relevant. The 
+more important question is whether the same definition now delivers the same investor 
+experience. The evidence suggests that it does not. 
+0.52 
+0.51 
+0.36 
+0.15 
+0.05 
+0.08 
+0.33 
+0.21 
+0.50 
+0.11 
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+ROA
+Quality
+OPCFD
+Accruals
+D_ATO
+Information ratio
+Standard quality tilt
+Pure/neutralised signal
+
+Index Research and Design | Equities 
+FTSE Russell  
+12 
+9. Signal overlap is rising 
+The component analysis also highlights increasing overlap within the Quality framework. 
+ROA and the broader Quality composite exhibit extremely high realised correlation. 
+Operating Cash Flow to Debt has increasingly moved in line with ROA and Quality, 
+although its standalone contribution has been weaker (Chart 6). 
+Chart 6. Latest realised correlations between Quality indicators 
+ 
+Source: FTSE Russell. FTSE Developed Index data from December 2005 - December 2025. Past performance is no 
+guarantee of future results. 
+Accruals remain more differentiated. This differentiation helps explain why Accruals 
+provide meaningful incremental information after other exposures are removed. The 
+practical lesson is that factor design should focus not only on economic intuition but also 
+on incremental information content. A component should justify its inclusion not simply 
+because it sounds sensible, but because it contributes unique insight. 
+10. Quality is not automatically defensive 
+Historically, Quality has often been viewed as a defensive equity factor. 
+That perception is only partly correct today. As Quality has become increasingly linked to 
+profitable Technology companies and mega-cap growth leadership, factor beta has risen. 
+Recent diagnostics indicate rolling betas above one for broad Quality and ROA-based 
+portfolios. 
+Investors seeking defensive Quality exposure increasingly require explicit controls around: 
+– Beta 
+– Volatility 
+– Downside risk 
+– Drawdown sensitivity 
+Quality alone is no longer automatically defensive. 
+
+Index Research and Design | Equities 
+FTSE Russell  
+13 
+Investors should therefore distinguish carefully between Quality as a profitability factor 
+and Quality as a defensive equity strategy. 
+Chart 7. Beta of Quality components 
+ 
+Source: FTSE Russell. FTSE Developed Index data from December 2022-December 2025. Past performance is no guarantee 
+of future results. 
+Those objectives are related but no longer synonymous. 
+11. Index construction matters 
+Quality is not a single parameter exposure. Different implementations serve different 
+objectives. 
+Table 4. Quality implementation choices 
+Exposure type 
+What it captures 
+Investor use case 
+Standard Quality 
+Broad Quality tilt with natural sector, 
+country and style exposures 
+Capturing where Quality is concentrated 
+within markets 
+Pure Quality 
+Quality after neutralising sector, country 
+and style effects 
+Cleaner stock-selection attribution 
+Defensive Quality 
+Quality with explicit risk controls 
+Quality exposure with a defensive 
+objective 
+Source. FTSE Russell. 
+These approaches are related but not interchangeable. A Standard Quality strategy may 
+outperform because it identifies sectors and business models where profitability is 
+concentrated. A Pure Quality strategy provides cleaner attribution but a smaller return 
+premium. A Defensive Quality strategy requires explicit portfolio controls because Quality 
+alone no longer guarantees a defensive exposure. 
+Understanding implementation has therefore become increasingly important for 
+understanding expected performance. 
+0.90 
+1.03 
+1.06 
+1.06 
+1.08 
+ 0.85
+ 0.90
+ 0.95
+ 1.00
+ 1.05
+ 1.10
+Accruals
+D_ATO
+OPCFD
+Quality
+ROA
+Rolling beta to benchmark
+
+Index Research and Design | Equities 
+FTSE Russell  
+14 
+12. Conclusion 
+Quality remains one of the most intuitive and economically grounded equity factors. 
+Investors continue to prefer profitable companies, efficient capital allocators, strong 
+balance sheets and sustainable earnings. What has changed is the market expression of 
+those characteristics. 
+The rise of highly profitable, asset-light and scalable Technology businesses has 
+increasingly shaped realised Quality exposure. Consequently, broad Quality has become 
+more closely tied to Technology leadership, profitability and mega-cap growth dynamics 
+than many investors realise. ROA remains the dominant driver of broad Quality 
+performance. 
+However, once sector, country and style exposures are removed, Accruals emerge as the 
+strongest pure stock-selection signal. This distinction is particularly relevant today, as 
+some of the market’s most profitable companies simultaneously exhibit elevated accrual 
+characteristics during an unprecedented AI investment cycle. 
+The lesson is not that Technology is low quality. Nor is it that profitability has lost 
+relevance. High profitability and high-quality profitability are not always the same thing. 
+ROA tells investors how much profit a company generates. Accruals help investors 
+assess how sustainable that profit may be. 
+Quality remains fit for purpose but implementation defines the exposure. Standard Quality, 
+Pure Quality and Defensive Quality should be viewed as distinct investment objectives 
+with different sources of risk, return and portfolio behaviour. 
+Understanding the difference between them is increasingly important. Above all, investors 
+should understand what they own. 
+References 
+FTSE Russell (2014), Factor Exposure Indexes: Quality Factor. 
+Sloan, R. G. (1996), Do Stock Prices Fully Reflect Information in Accruals and Cash 
+Flows About Future Earnings?, The Accounting Review. 
+Richardson, S., Sloan, R., Soliman, M., & Tuna, I. (2005), Accrual Reliability, Earnings 
+Persistence and Stock Prices, Journal of Accounting and Economics. 
+ 
+
+ 
+Disclaimer 
+©      Lo  o   to k  x  a    Grou   l  a   its a  li abl   rou  u   rtaki  s (“L  G”). L  G i  lu  s ( )        t r atio al Li it   (“    ”), ( )  ra k  uss ll  o  a y 
+(“ uss ll”), (3)      Global   bt  a ital  ark ts    . “      a a a”, ( )       ix      o   LL  (“       ”), ( )      (  iji  )  o sulti   Li it   (“WO  ”), ( )          A  
+(“FTSE EU”). All rights reserved.  
+FTSE Russell® is a trading name of FTSE, Russell, FTSE Canada, FTSE FI, WOFE, FTSE EU and other LSEG entities providing LSEG Benchmark and     x s rvi  s. “    ®”, 
+“ uss ll®”, “      uss ll®”, “     Goo ®”, “   ®”, “  fi itiv”, “W  ™” “  ™” a   all ot  r tra   arks a   s rvi    arks us     r i  (w  t  r r  ist r   or u r  ist r  ) ar  
+trademarks and/or service marks owned or licensed by the applicable member of LSEG or their respective licensors.  
+FTSE International Limited is authorised as a Benchmark Administrator and regulated in the United Kingdom (UK) by the Financial Conduct Authority (“FCA”) under the UK 
+      arks    ulatio .          A  is aut oris   as a       ark A  i istrator by t   Autorité   s  ar   s  i a  i rs (“A  ”) and is supervised by the European Securities and 
+ ark ts Aut ority (“   A”) u   r t            arks    ulatio .  
+All information is provided for information purposes only. All information and data contained in this publication is obtained by LSEG, from sources believed by it to be accurate and 
+reliable. Because of the possibility of human and mechanical inaccuracy as well as other factors, however, such information and data is provided “as is” without warranty of any kind. 
+No member of LSEG nor their respective directors, officers, employees, partners or licensors make any claim, prediction, warranty or representation whatsoever, expressly or impliedly, 
+either as to the accuracy, timeliness, completeness, merchantability of any information or LSEG Products, or of results to be obtained from the use of LSEG products, including but not 
+limited to indices, rates, data and analytics, or the fitness or suitability of the LSEG products for any particular purpose to which they might be put. The user of the information assumes 
+the entire risk of any use it may make or permit to be made of the information. 
+No responsibility or liability can be accepted by any member of LSEG nor their respective directors, officers, employees, partners or licensors for (a) any loss or damage in whole or in 
+part caused by, resulting from, or relating to any inaccuracy (negligent or otherwise) or other circumstance involved in procuring, collecting, compiling, interpreting, analysing, editing, 
+transcribing, transmitting, communicating or delivering any such information or data or from use of this document or links to this document or (b) any direct, indirect, special, 
+consequential or incidental damages whatsoever, even if any member of LSEG is advised in advance of the possibility of such damages, resulting from the use of, or inability to use, 
+such information.  
+No member of LSEG nor their respective directors, officers, employees, partners or licensors provide investment advice and nothing in this document should be taken as constituting 
+financial or investment advice. No member of LSEG nor their respective directors, officers, employees, partners or licensors make any representation regarding the advisability of 
+investing in any asset or whether such investment creates any legal or compliance risks for the investor. A decision to invest in any such asset should not be made in reliance on any 
+information herein. Indices and rates cannot be invested in directly. Inclusion of an asset in an index or rate is not a recommendation to buy, sell or hold that asset nor confirmation that 
+any particular investor may lawfully buy, sell or hold the asset or an index or rate containing the asset. The general information contained in this publication should not be acted upon 
+without obtaining specific legal, tax, and investment advice from a licensed professional. 
+Past performance is no guarantee of future results. Charts and graphs are provided for illustrative purposes only. Index and/or rate returns shown may not represent the results of the 
+actual trading of investable assets. Certain returns shown may reflect back-tested performance. All performance presented prior to the index or rate inception date is back-tested 
+performance. Back-tested performance is not actual performance, but is hypothetical. The back-test calculations are based on the same methodology that was in effect when the index 
+or rate was officially launched. However, back-tested data may reflect the application of the index or rate methodology with the benefit of hindsight, and the historic calculations of an 
+index or rate may change from month to month based on revisions to the underlying economic data used in the calculation of the index or rate.  
+This document may contain forward-looking assessments. These are based upon a number of assumptions concerning future conditions that ultimately may prove to be inaccurate. 
+Such forward-looking assessments are subject to risks and uncertainties and may be affected by various factors that may cause actual results to differ materially. No member of LSEG 
+nor their licensors assume any duty to and do not undertake to update forward-looking assessments.  
+No part of this information may be reproduced, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording or otherwise, 
+without prior written permission of the applicable member of LSEG. Use and distribution of LSEG data requires a licence from LSEG and/or its licensors. 
+ 
+ 
+ 
+ 
+ 
+ABOUT FTSE RUSSELL 
+FTSE Russell is a leading global provider of index and benchmark solutions, spanning diverse asset classes and investment objectives. As a trusted 
+investment partner we help investors make better-informed investment decisions, manage risk, and seize opportunities. 
+Market participants look to us for our expertise in developing and managing global index solutions across asset classes. Asset owners, asset 
+managers, ETF providers and investment banks choose FTSE Russell solutions to benchmark their investment performance and create investment 
+funds, ETFs, structured products, and index-based derivatives. Our clients use our solutions for asset allocation, investment strategy analysis and 
+risk management, and value us for our robust governance process and operational integrity. 
+For over 40 years we have been at the forefront of driving change for the investor, always innovating to shape the next generation of benchmarks 
+and investment solutions that open up new opportunities for the global investment community. 
+ 
+CONTACT US 
+ 
+To receive our research and insights email and Market Maps reports, directly to your inbox, subscribe here. 
+ 
+To learn more, visit lseg.com/ftse-russell; email info@ftserussell.com; or call your regional Client Service team office: 
+EMEA +44 (0) 20 7866 1810 
+Americas +1 800 721 2225 
+Asia Pacific ex Japan: +852 2164 3333 
+Japan: +81 3 6441 1430 
+ 
