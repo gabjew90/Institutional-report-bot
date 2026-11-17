@@ -1,0 +1,343 @@
+{
+ "brief": "A Market Ear roundup frames the AI trade as at a decision point. Nvidia fell to its major trendline, now 22% below its 200-day average versus 30% at the Liberation Day lows, and NDX was rejected at its own 200-day with 27k the pivot level, as vol-control and risk-parity funds sold over $30bn in a week (JPM, GS, LSEG Workspace). JPM argues Nvidia is cheap despite the drop: it captured 83% of 2023-2025 AI chip revenue at 75% gross and 66% operating margins, now trading at a 0.2x PEG. GS adds that AI semis trade at 11x 2028 earnings versus 16x for the S&P 500 despite 31% forecast growth, implying either an earnings collapse or excess pessimism, with momentum shorts in NDX now vulnerable to a squeeze and systematic funds possible buyers by December/January if vol settles. Separately, DB's Sachdeva says Asian chip surpluses are recycling into US equities rather than Treasuries, feeding dollar strength, resistance at 105, but tying the dollar's fate to AI. GS sees Europe's near-zero AI beta as an emerging diversification trade.",
+ "cards": [
+  {
+   "bank": "JPM",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Nvidia's weighting in the S&P 500 rose from 1% in December 2022 to 8.5% by May this year.",
+   "anchor": "1% of the S&P 500. By May this year, that figure had exploded to 8.5%.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "JPM's Cembalest compares Nvidia's extraordinary ascent to previous market kings including GM, IBM, GE and Cisco.",
+   "anchor": "Cembalest compares Nvidia's extraordinary ascent with previous market kings, including GM, IBM, GE\nand Cisco.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "NVDA touched its major trendline at Thursday's lows.",
+   "anchor": "NVDA touched the massive trendline at Thursday's lows.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "NVDA is still trading 22% below its 200-day moving average.",
+   "anchor": "NVDA is still trading 22% below its 200-day moving\naverage.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "NVDA traded some 30% below its 200-day moving average at the Liberation Day lows.",
+   "anchor": "the stock traded some 30% below the same average at the Liberation Day\nlows.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "JPM estimates Nvidia captured 83% of AI chip revenues between 2023 and 2025.",
+   "anchor": "JPM estimates\nthe company captured 83% of AI chip revenues between 2023 and 2025",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2023-2025"
+  },
+  {
+   "bank": "JPM",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Nvidia's gross margins were 75% and operating margins were 66%.",
+   "anchor": "with gross margins of 75%\nand operating margins of 66%.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Nvidia trades at a PEG ratio of just 0.2x, the cheapest of the major AI names on that measure.",
+   "anchor": "Nvidia now trades at a PEG ratio of just 0.2x,\nmaking it by far the cheapest of the major AI names on this measure.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Unlike hyperscalers burning cash to finance the AI buildout, Nvidia continues to generate remarkable free cash flow margins.",
+   "anchor": "burning through cash to finance the AI buildout, Nvidia\ncontinues to generate remarkable free cash flow margins.",
+   "topic": "Nvidia AI narrative shift",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Semiconductors have underperformed the S&P 500 by more than 30 percentage points since June, the sharpest relative drawdown since 2002.",
+   "anchor": "Semiconductors have underperformed the S&P 500 by more than 30 percentage points since June, the\nsharpest relative drawdown since 2002.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since June"
+  },
+  {
+   "bank": "GS",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Goldman's AI semiconductor basket trades at just 11x 2028 earnings versus nearly 16x for the S&P 500, despite consensus forecasting 31% earnings growth in 2028.",
+   "anchor": "Goldman's AI semiconductor basket now trades at just 11x\n2028 earnings versus nearly 16x for the S&P 500, despite consensus forecasting 31% earnings growth",
+   "topic": "AI momentum unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "GS",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "At the S&P 500's multiple, current AI semiconductor prices would imply earnings declining approximately 6%.",
+   "anchor": "At the broader market's multiple, current prices would imply earnings declining approximately\n6%.",
+   "topic": "AI momentum unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "NDX was rejected right at its 200-day moving average.",
+   "anchor": "NDX was rejected right at the 200-day moving average. We are still above the latest panic lows, but",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "The big make-or-break level for NDX futures is 27k.",
+   "anchor": "momentum is far from impressive. The big make-or-break level is 27k in NDX futures. This was a key",
+   "topic": "AI momentum unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Equity vols are spiking again, with the VXN/VIX gap remaining stubbornly wide.",
+   "anchor": "Equity vols are spiking again, with the VXN/VIX gap remaining stubbornly wide.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Momentum players are running close to maximum shorts in NDX, with selling pressure real but positioning increasingly vulnerable to a sharp reversal.",
+   "anchor": "Momentum players are running close to maximum shorts in NDX. The selling pressure is real, but\npositioning is becoming increasingly vulnerable to a sharp reversal.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Vol control and risk parity strategies are estimated to have sold more than $30bn combined over the past week.",
+   "anchor": "Vol control and risk parity strategies\nare estimated to have sold more than $30bn combined over the past week.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "GS",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "These systematic funds could become meaningful buyers in December/January if volatility settles down.",
+   "anchor": "these same funds could become\nmeaningful buyers in December/January if volatility settles down.",
+   "topic": "AI momentum unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December/January"
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "The dollar has little meaningful resistance until the big 105 level.",
+   "anchor": "of bears off guard, with little meaningful resistance until the big 105 level.",
+   "topic": "Dollar breakout and foreign inflows",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Foreign equity inflows into the US have surpassed $1 trillion annually, becoming an increasingly important source of US financing.",
+   "anchor": "Foreign equity inflows have surpassed $1 trillion annually. The AI boom is becoming an increasingly\nimportant source of financing for the US.",
+   "topic": "Dollar breakout and foreign inflows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "DB's Sachdeva says Asia's chip-trade surpluses are increasingly being recycled into US equities rather than Treasuries, unlike the petrodollar era.",
+   "anchor": "these dollars are increasingly\nbeing recycled into US equities rather than Treasuries.",
+   "topic": "Dollar breakout and foreign inflows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "US equities are three times as volatile as Treasuries, and tech stocks can be up to ten times as volatile.",
+   "anchor": "US\nequities are three times as volatile as Treasuries, and tech stocks can be up to ten times as volatile.",
+   "topic": "Dollar breakout and foreign inflows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS/Bloomberg",
+   "document": "everyone is dumping ai thats where things get interesting",
+   "claim": "Goldman calculates that the STOXX Europe 600 has a two-year daily beta of less than 0.05 to its US AI basket.",
+   "anchor": "Goldman calculates\nthat the STOXX Europe 600 has a two-year daily beta of less than 0.05 to its US AI basket.",
+   "topic": "Europe AI diversification trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27593__everyone-is-dumping-ai-thats-where-things-get-interesting.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 23,
+  "matched": 23,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
