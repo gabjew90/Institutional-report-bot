@@ -118,21 +118,13 @@ def _when(published: str, preview: bool = False) -> str:
     return f" ({d:%b} {d.day}{', before the report' if preview else ''})"
 
 
-_SOURCE_ALIASES = {"jpm": "jpmorgan", "gs": "goldman", "ms": "morgan stanley", "db": "deutsche bank",
-                   "citigroup": "citi", "baml": "bofa"}
-
-
 def own_broker(source: str) -> bool:
     """The note's source is a house that rates stocks, so the rating and
     target on its own note are its own. The Market Ear, a newsletter or a
-    macro shop is not one."""
+    macro shop is not one. One definition, beside the list of houses."""
     import db  # noqa: F401  (the facade loads before db_parts)
-    from db_parts.pdf import _BROKERS
-    s = re.sub(r"\.", "", (source or "").strip().lower())
-    s = _SOURCE_ALIASES.get(s, s)
-    # the source opens with the house's name: "Zerohedge, summarizing HSBC
-    # and Goldman Sachs research" is not Goldman's note
-    return bool(s) and any(re.match(re.escape(b.lower().replace(".", "")) + r"(?![a-z])", s) for b in _BROKERS)
+    from db_parts.pdf import rating_house
+    return rating_house(source)
 
 
 # A rating action must be in the note's words about the broker too.

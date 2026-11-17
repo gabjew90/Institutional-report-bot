@@ -1331,7 +1331,7 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
                  AND a.id IN (SELECT MAX(id) FROM pdf_analyses GROUP BY pdf_file_id)
                  AND a.created_at >= datetime('now', ?)
                ORDER BY a.id DESC LIMIT ?""",
-            (sym, f"-{int(days)} days", int(limit) * 3)).fetchall()
+            (sym, f"-{int(days)} days", int(limit) * 12)).fetchall()
     except Exception as e:
         log.warning(f"research_for_ticker query failed: {e}")
         return []
@@ -1424,9 +1424,7 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
             "risks": risks[:2],
             "data_points": data_points[:4],
         })
-        if len(out) >= limit:
-            break
-    return out
+    return _pick_notes(out, int(limit))
 
 
 def recently_covered_tickers(days: int = 7) -> set[str]:
@@ -1489,6 +1487,52 @@ _BROKERS = ("Piper Sandler", "Bernstein", "Evercore", "Oppenheimer", "Cantor Fit
 
 _HOUSE_ALIASES = {"bofa": "bank of america", "ms": "morgan stanley", "gs": "goldman",
                   "db": "deutsche", "jpm": "jpmorgan", "citigroup": "citi"}
+
+
+_SOURCE_ALIASES = {"jpm": "jpmorgan", "gs": "goldman", "ms": "morgan stanley", "db": "deutsche bank",
+                   "citigroup": "citi", "baml": "bofa"}
+
+
+def rating_house(source: str) -> bool:
+    """The source is a house that rates stocks: its name opens the source
+    string ("Zerohedge, summarizing HSBC and Goldman Sachs research" is not
+    Goldman's note). The Market Ear, a newsletter or a macro shop is not one."""
+    import re as _re
+    s = (source or "").strip().lower().replace(".", "")
+    s = _SOURCE_ALIASES.get(s, s)
+    return bool(s) and any(_re.match(_re.escape(b.lower().replace(".", "")) + r"(?![a-z])", s)
+                           for b in _BROKERS)
+
+
+MAX_NOTES_PER_SOURCE = 3
+
+
+def _pick_notes(notes: list[dict], limit: int) -> list[dict]:
+    """The notes an answer is given, from all that name the ticker, newest
+    first. At most MAX_NOTES_PER_SOURCE from one source, and when there are
+    still too many, a rating house's own equity research with a rating or a
+    target is kept ahead of the rest.
+
+    2026-11-17: the newest 12 notes naming NVDA were all from the last day,
+    most of them The Market Ear's, and JPMorgan's equity note of the day
+    before (Overweight, target cut to $215 from $320) never reached the
+    answer."""
+    def _house_equity(n: dict) -> bool:
+        first = (n.get("calls") or [{}])[0]
+        return (n.get("report_type") == "equity_research" and rating_house(n.get("source") or "")
+                and any(str(first.get(k) or "").strip().lower() not in _PLACEHOLDERS
+                        for k in ("rating", "price_target")))
+
+    def _first(pairs: list, n: int) -> list:
+        return sorted(pairs, key=lambda p: (not _house_equity(p[1]), p[0]))[:n]
+
+    by_source: dict[str, list] = {}
+    for i, n in enumerate(notes):
+        by_source.setdefault(n.get("source") or "", []).append((i, n))
+    # within a source too: a bank's sales, morning and credit notes of the
+    # day must not take its three places from its equity note
+    kept = [p for pairs in by_source.values() for p in _first(pairs, MAX_NOTES_PER_SOURCE)]
+    return [n for _, n in sorted(_first(kept, limit), key=lambda p: p[0])]
 
 
 def _same_house(source: str, broker: str) -> bool:
