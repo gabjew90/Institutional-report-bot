@@ -1,0 +1,125 @@
+{
+ "brief": "UBS sales desk positioning note (S&T) on US hedge fund and long-only crowding ahead of this week's earnings. Hedge funds are long crowded into US names reporting this week (score +9.6) and into the broader US region (+1.2). Short HF crowded names (score below -7): FUBO, VVV, WMT. Very heavily long HF crowded names (score above +21): DIS, INTU, KEYS, NVDA, WMG. A combined hedge-fund-crowding and long-only-ownership screen flags a positioning tailwind in names that are hedge fund crowded longs while mutual funds are simultaneously underweight: AMZN, BAC, BRK/B, COST, CVX, DIS, ET, FTNT, LMT, META, MMM, MO, MSFT, NEM, OXY, PG, PSX, PYPL, RTX, TSLA. DOW and GD have fallen out of the top 3 names on that combined screen. A separate sector-level table (hedge fund versus long-only) ranks stocks only against sector peers, not on an absolute basis, and is available via a linked spreadsheet. The note reports positioning data and does not argue a directional market thesis.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - USA- Where is the Crowd Positioned Ahead of Results- Stock insights for HF and LO - Josh Guilliard - 2026-11-16",
+   "claim": "Hedge funds are long crowded into US stocks reporting earnings this week, with a crowding score of +9.6, and into the broader US region, with a score of +1.2.",
+   "anchor": "Hedge funds are long crowded into US names reporting this week (+9.6) and the broader region (+1.2).",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - USA- Where is the Crowd Positioned Ahead of Results- Stock insights for HF and LO - Josh Guilliard - 2026-11-16",
+   "claim": "FUBO, VVV, and WMT are short hedge fund crowded, with crowding scores below -7.",
+   "anchor": "Short HF Crowded (score <-7): FUBO / VVV / WMT",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [
+    "FUBO",
+    "VVV",
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - USA- Where is the Crowd Positioned Ahead of Results- Stock insights for HF and LO - Josh Guilliard - 2026-11-16",
+   "claim": "DIS, INTU, KEYS, NVDA, and WMG are very heavily long hedge fund crowded, with crowding scores above +21.",
+   "anchor": "Very Heavily Long HF Crowded (score > +21) : DIS / INTU / KEYS / NVDA / WMG",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [
+    "DIS",
+    "INTU",
+    "KEYS",
+    "NVDA",
+    "WMG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - USA- Where is the Crowd Positioned Ahead of Results- Stock insights for HF and LO - Josh Guilliard - 2026-11-16",
+   "claim": "AMZN, BAC, BRK/B, COST, CVX, DIS, ET, FTNT, LMT, META, MMM, MO, MSFT, NEM, OXY, PG, PSX, PYPL, RTX, and TSLA are hedge fund crowded longs where mutual funds are simultaneously underweight, a positioning tailwind.",
+   "anchor": "Hedge fund crowded longs where mutual funds are underweight:  AMZN / BAC / BRK/B / COST / CVX",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "BAC",
+    "BRK/B",
+    "COST",
+    "CVX",
+    "DIS",
+    "ET",
+    "FTNT",
+    "LMT",
+    "META",
+    "MMM",
+    "MO",
+    "MSFT",
+    "NEM",
+    "OXY",
+    "PG",
+    "PSX",
+    "PYPL",
+    "RTX",
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS S&T - USA- Where is the Crowd Positioned Ahead of Results- Stock insights for HF and LO - Josh Guilliard - 2026-11-16",
+   "claim": "DOW and GD are no longer among the top 3 hedge fund crowded longs that are also mutual fund underweights.",
+   "anchor": "Names that are no longer the top 3 HF crowded longs and MF underweights:\nDOW / GD",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [
+    "DOW",
+    "GD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27634__ubs-s-t-usa-where-is-the-crowd-positioned-ahead-of-results-s.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 5,
+  "matched": 5,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
