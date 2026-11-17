@@ -8125,6 +8125,14 @@ async def _ask_09_rank_and_regen_guards(
             if _dc_cut and not _dc_gutted(answer, _dc_out):
                 answer = _dc_out
                 _ask_meta["guards"].append("desk-claim:stripped")
+            # A rating or price target none of that bank's notes carry
+            # (discord_bot/desk_line.py, 2026-11-17 audit run 12 A1:
+            # JPMorgan's Overweight posted as "Underweight").
+            from discord_bot import desk_line as _dl
+            _dl_out, _dl_cut = _dl.strip_wrong_calls(answer, _ask_meta["research_notes"])
+            if _dl_cut and not _dc_gutted(answer, _dl_out):
+                answer = _dl_out
+                _ask_meta["guards"].append(f"desk-call:stripped:{len(_dl_cut)}")
         if answer and _ask_meta.get("snapshot_growth"):
             from discord_bot import revenue_yoy as _ry
             answer, _ry_fixed = _ry.correct(answer, _ask_meta["snapshot_growth"],

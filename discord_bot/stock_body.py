@@ -12,7 +12,9 @@ POSITIONING slots.
 Here the lines the feeds carry are rendered for every such turn, chosen by
 the stock's state and by what was asked, and posted as written. The model
 writes arrows only for what no feed carries: the business line, the news,
-an analyst's action, a desk's view (stock_outline.build_outline).
+an analyst's action, a desk's reason (stock_outline.build_outline). A desk's
+rating and price target are fields of its note and are a posted line as well
+(discord_bot/desk_line.py, 2026-11-17).
 
 State, from the snapshot's report dates:
 
@@ -266,9 +268,23 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
         # report (out but not filled, or no date listed): the outline then
         # asks the model for the rest from the news and the earnings block.
         add("price", [price_line(results.get(R.T_PRICE), snap, symbol, named=not sections)[0]])
+    # A desk's rating and price target are fields of its note, so they are a
+    # line too (discord_bot/desk_line.py). Kept apart from `lines`: compose
+    # puts each beside the model's arrow on that desk's reason.
+    desks = []
+    if sections and not narrow:
+        from discord_bot import desk_line
+        from discord_bot import stock_outline as so
+        for note, preview in so.desk_notes(results.get(R.T_RESEARCH), fresh, asked):
+            ln = desk_line.line(note, preview=preview)
+            if ln:
+                desks.append({"bank": str(note.get("source") or ""), "line": ln})
     if not sections:
+        # No feed gave a line. The turn then runs without a body, as before,
+        # and the checks that stand down for a body stay on.
         return None
     return {"lines": [ln for _, ln in sections], "kinds": sorted({k for k, _ in sections}),
+            "desks": desks,
             "state": state, "symbol": symbol, "shape": shape,
             "has_price": any(k == "price" for k, _ in sections),
             "price": quoted if any(k == "price" for k, _ in sections) else None,
@@ -299,7 +315,9 @@ def compose(answer: str, body: dict) -> tuple[str, int]:
     from discord_bot.answer_block import _NOT_A_LEAD, adds_nothing
     from discord_bot.data_footer import strip_model_sources
     from discord_bot.figure_provenance import _lines
-    text = "\n\n".join(body["lines"])
+    from discord_bot import desk_line
+    desks = list(body.get("desks") or [])
+    text = "\n\n".join([*body["lines"], *(d["line"] for d in desks)])
     kept, dropped = [], 0
     for part in _lines(strip_model_sources(answer or "").strip()):
         part = part.strip()
@@ -313,4 +331,15 @@ def compose(answer: str, body: dict) -> tuple[str, int]:
         if part[-1].isalnum() or part[-1] in ")*%":
             part += "."
         kept.append(part)
-    return "\n\n".join([text, *kept]), dropped
+    # A desk's line goes in front of the first arrow that names the desk
+    # (the model's reason for it). One no arrow names stays with the lines.
+    placed: set[str] = set()
+    arrows: list[str] = []
+    for part in kept:
+        for d in desks:
+            if d["bank"] not in placed and desk_line.names(part, d["bank"]):
+                arrows.append(d["line"])
+                placed.add(d["bank"])
+        arrows.append(part)
+    top = [*body["lines"], *(d["line"] for d in desks if d["bank"] not in placed)]
+    return "\n\n".join([*top, *arrows]), dropped

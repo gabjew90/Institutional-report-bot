@@ -287,13 +287,16 @@ def _asks_about_desks(asked: str, research: dict | None) -> bool:
     return False
 
 
-def _desk_slots(research: dict | None, fresh: dict | None, asked: str = "") -> list[str]:
+def desk_notes(research: dict | None, fresh: dict | None, asked: str = "") -> list[tuple[dict, bool]]:
+    """The notes that get a desk arrow, each with whether it was written
+    before a report that is now out. Calls first (a rating or target is a
+    view), high conviction first, newest first, one note per bank, at most
+    MAX_DESKS. stock_body posts the rating and target of each as a line
+    (discord_bot/desk_line.py) and `_desk_slots` hands the model the rest."""
     if (research or {}).get("status") != "ok":
         return []
     from discord_bot.ask_router import _is_preview
     keep_previews = bool(fresh) and _asks_about_desks(asked, research)
-    # Calls first (a rating or target is a view), high conviction first,
-    # newest first; one note per bank.
     notes = sorted(research.get("notes") or [], key=lambda n: str(n.get("published") or ""),
                    reverse=True)                     # newest first ...
     notes.sort(key=lambda n: (                       # ... then calls, high conviction first (stable)
@@ -304,17 +307,38 @@ def _desk_slots(research: dict | None, fresh: dict | None, asked: str = "") -> l
         bank = n.get("source") or ""
         if not bank or bank in banks:
             continue
-        text = _desk_text(n)
         preview = bool(fresh) and _is_preview(n, fresh)
         if preview and not keep_previews:
             continue                      # the result is out: what it expected is not the answer
-        if not text or not _has_view(n, _desk_pieces(n)):
+        if not _desk_text(n) or not _has_view(n, _desk_pieces(n)):
             continue                      # the bank's next note may have one
-        tag = ", written before the report: what it expected" if preview else ""
-        out.append(f"DESK: {bank} ({n.get('published')}{tag}): {text} [{bank}; this view only]")
+        out.append((n, preview))
         banks.add(bank)
         if len(out) >= MAX_DESKS:
             break
+    return out
+
+
+def _desk_slots(research: dict | None, fresh: dict | None, asked: str = "",
+                posted_banks: frozenset | set = frozenset()) -> list[str]:
+    """One slot per desk. For a bank in `posted_banks` the rating and the
+    target are a posted line (2026-11-17, audit run 12 A1: the model was
+    handed "Overweight, price target $215.00" and wrote "reiterates its
+    Underweight rating"), so the slot carries the reason only, and there is
+    no slot when the note gives none."""
+    from discord_bot import desk_line
+    out = []
+    for n, preview in desk_notes(research, fresh, asked):
+        bank = n.get("source") or ""
+        tag = ", written before the report: what it expected" if preview else ""
+        if bank in posted_banks:
+            why = desk_line.reason(n)
+            if why:
+                out.append(f"DESK: {bank} ({n.get('published')}{tag}): its rating and price target are "
+                           f"a posted line. Start the arrow with the bank's name and give its reason "
+                           f"only, with no rating and no price target: {why} [{bank}; this view only]")
+            continue
+        out.append(f"DESK: {bank} ({n.get('published')}{tag}): {_desk_text(n)} [{bank}; this view only]")
     return out
 
 
@@ -364,7 +388,8 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
     from discord_bot import stock_body as B
     if not symbol or (shape not in B.SHAPES) or (not posted and shape not in _STOCK_SHAPES):
         return ""
-    lines = (posted or {}).get("lines") or []
+    desks = (posted or {}).get("desks") or []
+    lines = [*((posted or {}).get("lines") or []), *(d["line"] for d in desks)]
     kinds = set((posted or {}).get("kinds") or [])
     state = (posted or {}).get("state") or (
         "none" if not fresh else "print" if fresh.get("actual") is not None else "pending")
@@ -382,7 +407,7 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
             _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
             _driver_slot(results.get(R.T_PRIMER), fresh),
             analyst,
-            *_desk_slots(research, fresh, asked),
+            *_desk_slots(research, fresh, asked, {d["bank"] for d in desks}),
             _chain_error_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,
         ]
     slots = [s for s in slots if s]

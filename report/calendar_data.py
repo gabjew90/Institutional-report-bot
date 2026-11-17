@@ -7,6 +7,7 @@ Spec: docs/superpowers/specs/2026-08-15-daily-calendar-graphic-design.md
 
 import re
 import logging
+import threading
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
@@ -266,6 +267,12 @@ class CalendarDay:
     nasdaq_only_added: list[str] = field(default_factory=list)
     # Rows whose session came from Nasdaq (Finnhub blank or different).
     session_from_nasdaq: list[str] = field(default_factory=list)
+    # Large names kept although Nasdaq lists them on no nearby date, and
+    # the ones dropped because it lists them on another (symbol -> that
+    # date). Kept for QC: the 2026-11-17 audit could not tell which rule
+    # had let QXO onto the sheet.
+    finnhub_only_kept: list[str] = field(default_factory=list)
+    listed_elsewhere: dict = field(default_factory=dict)
 
 
 def _weekday_label(date_iso: str) -> str:
@@ -666,8 +673,92 @@ def _nasdaq_rows_for(date_iso: str) -> dict | None:
         return None
 
 
+# How far either side of a date Nasdaq's calendar is read for a large name
+# it does not list on that date.
+NEARBY_DAYS = 14
+_NEARBY_TTL_PAST_S = 6 * 3600
+_NEARBY_TTL_AHEAD_S = 600
+# An unreadable or empty date is asked again soon: the fetch returns None
+# for both, and a failed read must not stand for hours.
+_NEARBY_TTL_NONE_S = 120
+# The whole lookup gives up after this long. The dates still being read
+# finish on their own and fill the cache for the next call.
+_NEARBY_BUDGET_S = 8.0
+# (the fetcher, date) -> (read at, rows). Keyed by the fetcher as well so a
+# test's stand-in never reads rows another stand-in returned.
+_nearby_cache: dict = {}
+# One lookup at a time: a week's slate reconciles five dates at once, and
+# their windows are nearly the same 20 dates.
+_nearby_lock = threading.Lock()
+
+
+def _nasdaq_rows_cached(date_iso: str) -> dict | None:
+    import time
+    fetch = news_data.fetch_nasdaq_earnings_rows
+    key = (fetch, date_iso)
+    now = time.time()
+    hit = _nearby_cache.get(key)
+    if hit:
+        past = date_iso < datetime.now(timezone.utc).astimezone(_ET).date().isoformat()
+        ttl = (_NEARBY_TTL_NONE_S if not hit[1] else
+               _NEARBY_TTL_PAST_S if past else _NEARBY_TTL_AHEAD_S)
+        if now - hit[0] < ttl:
+            return hit[1]
+    try:
+        rows = fetch(date_iso)
+    except Exception as e:
+        log.warning(f"calendar: Nasdaq nearby-date read failed for {date_iso} ({e})")
+        rows = None
+    if len(_nearby_cache) > 400:
+        _nearby_cache.clear()
+    _nearby_cache[key] = (now, rows)
+    return rows
+
+
+def nasdaq_listed_elsewhere(date_iso: str, symbols: list[str]) -> dict[str, str]:
+    """symbol -> the nearest other date Nasdaq's calendar lists it on, within
+    NEARBY_DAYS either side of `date_iso`. A name with an entry is not
+    "missing from Nasdaq yet": Nasdaq has it on another day, as scheduled
+    there or as already reported there.
+
+    2026-11-17 (audit run 12 C1, C2, A11; also ARM in run 8 and Brookfield
+    in run 11): the rule that keeps a large Finnhub-only name looked at one
+    date. The 11-17 sheet and its X post listed QXO, which had reported on
+    11-12, the 11-16 sheet listed PDD (Nasdaq: 11-19) and the 11-17 sheet
+    WSM (11-19). A date that cannot be read says nothing, so the name is
+    then kept as before.
+
+    Three requests at a time. From the worker the 20 dates read in 0.4 s
+    and a request straight after was served (2026-11-17)."""
+    from concurrent.futures import ThreadPoolExecutor, wait
+    from datetime import date as _date, timedelta
+    want = {s.strip().upper() for s in symbols or [] if s and s.strip()}
+    try:
+        day = _date.fromisoformat(date_iso)
+    except ValueError:
+        return {}
+    if not want:
+        return {}
+    days = [day + timedelta(days=k) for k in range(-NEARBY_DAYS, NEARBY_DAYS + 1) if k]
+    days = [d for d in days if d.weekday() < 5]
+    days.sort(key=lambda d: abs((d - day).days))             # nearest first
+    with _nearby_lock:
+        pool = ThreadPoolExecutor(max_workers=3)
+        try:
+            futures = [pool.submit(_nasdaq_rows_cached, d.isoformat()) for d in days]
+            wait(futures, timeout=_NEARBY_BUDGET_S)
+        finally:
+            pool.shutdown(wait=False, cancel_futures=True)
+    found: dict[str, str] = {}
+    for d, f in zip(days, futures):
+        rows = f.result() if f.done() and not f.cancelled() else None
+        for sym in want.intersection(rows or {}):
+            found.setdefault(sym, d.isoformat())
+    return found
+
+
 def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
-                       resolve_caps) -> dict:
+                       resolve_caps, listed_elsewhere=None) -> dict:
     """Finnhub's earnings rows for one date, checked against Nasdaq's.
 
     The one place the date, session and cap of an earnings row are decided.
@@ -676,9 +767,13 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
     and Gilead reported on days they did not, and missed SpaceX (audit A2).
 
     `resolve_caps(symbols) -> {sym: {"cap", "name"}}` supplies caps for the
-    symbols Nasdaq has no dollar cap for. Returns bmo / amc symbol lists,
-    `confirmed` sessions, `caps`, and the QC lists."""
-    out = {"date_unconfirmed": [], "nasdaq_only_added": [], "session_from_nasdaq": []}
+    symbols Nasdaq has no dollar cap for. `listed_elsewhere(date_iso,
+    symbols) -> {SYM: date}` says which of the large names Nasdaq lacks for
+    this date it lists on a nearby one (default `nasdaq_listed_elsewhere`).
+    Returns bmo / amc symbol lists, `confirmed` sessions, `caps`, and the
+    QC lists."""
+    out = {"date_unconfirmed": [], "nasdaq_only_added": [], "session_from_nasdaq": [],
+           "finnhub_only_kept": [], "listed_elsewhere": {}}
     raw = list(raw or [])
     # Second source on the report DATE (2026-09-14, Cracker Barrel: Finnhub
     # kept a stale Monday date after the company announced 9/23). A row
@@ -709,6 +804,24 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
                     off.append(sym)
             else:
                 kept_raw.append(r)
+        if big_unconfirmed:
+            # "Not listed yet" means on none of Nasdaq's nearby dates. A
+            # name Nasdaq has on another day moved or already reported.
+            try:
+                moved = (listed_elsewhere or nasdaq_listed_elsewhere)(date_iso, big_unconfirmed) or {}
+            except Exception as e:
+                log.warning(f"calendar: nearby-date check failed for {date_iso} ({e})")
+                moved = {}
+            moved = {s: moved[s.upper()] for s in big_unconfirmed if s.upper() in moved}
+            if moved:
+                out["listed_elsewhere"] = dict(sorted(moved.items()))
+                log.info(f"calendar: dropped for {date_iso}, Nasdaq lists them on another "
+                         f"date: {out['listed_elsewhere']}")
+                kept_raw = [r for r in kept_raw
+                            if not (r.get("_date_unconfirmed")
+                                    and (r.get("symbol") or "").strip() in moved)]
+                big_unconfirmed = [s for s in big_unconfirmed if s not in moved]
+                off.extend(moved)
         if off:
             out["date_unconfirmed"] = sorted(set(off))
             log.info(f"calendar: {len(off)} Finnhub row(s) for {date_iso} "
@@ -895,6 +1008,8 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     day.date_unconfirmed = rec["date_unconfirmed"]
     day.nasdaq_only_added = rec["nasdaq_only_added"]
     day.session_from_nasdaq = rec["session_from_nasdaq"]
+    day.finnhub_only_kept = rec["finnhub_only_kept"]
+    day.listed_elsewhere = rec["listed_elsewhere"]
     bmo_syms, amc_syms = rec["bmo"], rec["amc"]
     confirmed, caps = rec["confirmed"], rec["caps"]
 
