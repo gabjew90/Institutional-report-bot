@@ -1,0 +1,362 @@
+{
+ "brief": "Equities fell to close the week as semis/AI names 'caught down' to NVDA, which the desk frames as the semis rubber band stretched too far. Macro toughened: VIX at 20, 10yr yields at 5.13% after a hot CPI print, USD breaking out, oil in the high-$90s. The move was rotational. NVDA shed $500bn of market cap while AMD and AVGO added ~$500bn+ combined. Flows show long-only supply in NVDA rotating into hyperscalers and other large-cap tech. LO and HF cohorts finished the week as moderate net sellers, and debate continues on the semis landscape amid Nvidia and election newsflow. Prime brokerage data show hedge funds net sold US equities for a second straight week (5 of 6), driven by single-stock shorts partly offset by short covers and macro buys. US ETF shorts fell 8.6%, the largest covering in 7 months, while 8 of 11 sectors were net sold, led by Info Tech, Financials, Healthcare and Staples. Financials' net selling was the largest in 8 months. L/S gross leverage rose to 209.1%, net leverage to 45.4%. Ahead: NVDA reports Tuesday under interim CEO Colette Kress, BABA Thursday, plus consumer earnings, Retail Sales and FOMC minutes. S&P implied move through 11/20 is 1.93%.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "US equities broadly fell this week as broader semis and AI-thematic stocks caught down to NVDA.",
+   "anchor": "Equities lower to close out the week with broader semis / AI thematics \u201ccatching down\u201d to NVDA.",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "Goldman's Callahan argues that in hindsight the semis rubber band had seemingly been stretched too far before this week's selloff.",
+   "anchor": "the \u2018rubber band\u2019 in Semis (seemingly) got stretched too far",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "The VIX stood at 20 as the macro backdrop toughened this week.",
+   "anchor": "The macro has also quietly gotten tougher again with VIX at 20",
+   "topic": "cross-asset volatility regime shift",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "The 10-year Treasury yield rose back to 5.13% following a hot CPI print.",
+   "anchor": "10yr back at 5.13% (following hot CPI) / USD breaking out",
+   "topic": "cross-asset volatility regime shift",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "The US dollar broke out this week as part of the tougher macro backdrop.",
+   "anchor": "(following hot CPI) / USD breaking out / Oil back in high-$90s",
+   "topic": "cross-asset volatility regime shift",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "Oil moved back into the high-$90s this week.",
+   "anchor": "USD breaking out / Oil back in high-$90s, etc.",
+   "topic": "cross-asset volatility regime shift",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "NVDA shed $500bn of market cap week-to-date.",
+   "anchor": "NVDA shed $500bn of mrkt cap, as AMD + AVGO added ~$500bn+ of market cap, combined",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "AMD and AVGO together added roughly $500bn or more of market cap week-to-date.",
+   "anchor": "NVDA shed $500bn of mrkt cap, as AMD + AVGO added ~$500bn+ of market cap, combined",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "Goldman's flows showed a glaring drumbeat of supply in NVDA from the long-only community rotating into hyperscalers and other large-cap tech.",
+   "anchor": "a glaring drumbeat of supply in NVDA from LO community with $s rotating into Hyperscalers and other pockets of large cap tech",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "There is still ongoing debate on the broader semis landscape as investors digest recent Nvidia and election newsflow.",
+   "anchor": "Still ongoing debate on the broader Semis landscape as investor continue to digest recent newsflow (Nvidia + Election).",
+   "topic": "AI momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "Both long-only and hedge fund cohorts finished the week as moderate net sellers of US equities.",
+   "anchor": "Overall, both LO and HF cohorts finished moderate net sellers on the week.",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "The S&P 500's implied move through next Friday, November 20, is 1.93%.",
+   "anchor": "S&P implied move through next Friday (11/20) is 1.93%.",
+   "topic": "cross-asset volatility regime shift",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through 11/20"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "NVDA reports earnings on Tuesday, its first report under interim CEO Colette Kress.",
+   "anchor": "NVDA (Tues \u2014 first report under interim CEO Colette Kress) and BABA (Thurs)",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Tuesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "BABA reports earnings on Thursday.",
+   "anchor": "NVDA (Tues \u2014 first report under interim CEO Colette Kress) and BABA (Thurs)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "A handful of consumer prints are due this week: TSN and ARMK Monday, HD Tuesday, TJX, TGT and LOW Wednesday, WMT, ROST and GAP Thursday, and BJ Friday.",
+   "anchor": "a handful of consumer prints (TSN, ARMK Mon // HD Tues // TJX, TGT, LOW Wed // WMT, ROST, GAP Thurs // BJ Fri).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "TSN",
+    "ARMK",
+    "HD",
+    "TJX",
+    "TGT",
+    "LOW",
+    "WMT",
+    "ROST",
+    "GAP",
+    "BJ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "US Retail Sales data is due Tuesday in an otherwise slower macro week.",
+   "anchor": "Slower macro week with focus on US Retail Sales (Tues) and FOMC meeting minutes (Wed).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "RETAIL_SALES",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Tuesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "FOMC meeting minutes are due Wednesday in an otherwise slower macro week.",
+   "anchor": "Slower macro week with focus on US Retail Sales (Tues) and FOMC meeting minutes (Wed).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "Hedge funds net sold US equities for a second straight week, 5 of the last 6 weeks.",
+   "anchor": "Prime: HFs net sold US equities for a second straight week (5 of last 6)",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "The hedge fund selling was driven by short sales in single stocks, partly offset by short covers and long buys in macro products.",
+   "anchor": "driven by short sales in Single Stocks partially offset by short covers + long buys in Macro Products",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "US ETF shorts decreased 8.6%, the largest percentage of short covering in 7 months.",
+   "anchor": "US ETF shorts decreased -8.6% \u2013 the largest % covering in 7 month",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "8 of 11 sectors were net sold this week, led by Info Tech, Financials, Healthcare and Staples.",
+   "anchor": "8 of 11 sectors were net sold, led by Info Tech/Financials/Healthcare/Staples.",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "US Fundamental long/short gross leverage rose 1.6 points to 209.1%, in the 34th percentile over one year.",
+   "anchor": "US Fundamental L/S Gross leverage rose +1.6 pts to 209.1% (34th percentile one-year)",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "US Fundamental long/short net leverage rose 2.1 points to 45.4%, in the 4th percentile over one year.",
+   "anchor": "US Fundamental L/S Net leverage rose +2.1pts to 45.4% (4th percentile one-year)",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US EQUITIES COLOR: CATCH DOWN",
+   "claim": "This week's percentage net selling in US Financials was the largest in 8 months, in the 99th percentile over 5 years.",
+   "anchor": "This week's % net selling in US Financials was the largest in 8 months (99th percentile 5-year).",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27309__us-equities-color-catch-down.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 24,
+  "matched": 24,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
