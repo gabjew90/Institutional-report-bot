@@ -1,0 +1,192 @@
+ 
+$1.4 Trillion In AI Spending, 0.2% Of GDP Growth: 
+Goldman Explains Where The AI Boom Goes 
+Missing 
+ 
+BY TYLER DURDEN 
+FRIDAY, NOV 13, 2026 - 02:40 AM 
+The AI capex boom is big enough to see from space. It is just very hard to find in the GDP data. 
+That is the paradox at the heart of Goldman's freshly published 2027 capex outlook ("2027 
+Capex Outlook: How Much of an AI Boost?", available to pro subs), in which economist Jessica 
+Rindels estimates that US spending on AI hardware and software will top $900 billion 
+annualized by the end of this year and hit $1.4 trillion by end-2027, roughly 4% of US GDP. And 
+yet, by the bank's math, the direct boost to measured GDP growth from all that spending will 
+be... 0.2 percentage points. In both years. 
+Where does the rest go? Mostly to Taiwan, and into an accounting rule written for a world in 
+which chips went into toasters rather than trillion-parameter models. That matters, because we 
+have been tracking how the AI buildout gets paid for ever since we warned last October that AI 
+had become a debt bubble too. The bills, it turns out, are real and denominated in dollars. The 
+growth, less so. 
+The Year AI Ate Capex 
+First, the good news, of which there was plenty in 2026. Real business fixed investment grew at 
+an 11% annualized pace in the first three quarters of the year, and Goldman expects another 
+8.4% in Q4. AI did most of the heavy lifting: 
+"Intellectual property and equipment investment have been very strong this year, largely due to 
+AI spending, which we estimate accounted for 6.5pp of overall business fixed investment growth 
+this year. The investment tax incentives in last year's fiscal bill, which incentivized business 
+investment by lowering the cost of capital for US companies, likely added a meaningful boost of 
+about 3pp." 
+ 
+
+ 
+In other words, more than half of this year's capex growth was AI, and a good chunk of the rest 
+was courtesy of the expensing provisions in last year's fiscal bill. Strip out both and, on our 
+napkin, capex growth would have been a meager 1.5% or so. 
+ 
+And Goldman, which back in June already saw 2027 hyperscaler capex rising as high as $1.4 
+trillion, is sticking with the theme: AI "will remain the dominant driver of capex growth in 2027." 
+The bank forecasts a further $500 billion (1.5% of GDP) increase in AI spending next year, 
+slightly below this year's $550 billion jump, with roughly $1.3 trillion of the end-2027 run-rate 
+going to hardware. 
+ 
+
+ 
+ 
+One detail worth flagging: Goldman expects the increase "to be frontloaded and investment 
+growth to slow somewhat in the second half of the year." Remember that line; we'll come back 
+to it. 
+Three Ways To Lose $250 Billion 
+So why does a $500 billion spending increase barely register in GDP? Rindels gives three 
+reasons. 
+First, inflation. Of the $500 billion nominal increase, real spending grows by only $250-300 
+billion (about 0.8% of GDP), "largely reflecting very strong growth in computer and 
+semiconductor prices this year." Half the boom, in other words, is just the price of the chips 
+going up. Nothing says "deflationary technology" like a GPU that costs more every quarter. 
+Second, imports. Most of the equipment that powers AI is made abroad, so every dollar of 
+investment is largely cancelled out by a dollar of imports. The left panel below shows changes in 
+information processing capex moving almost one-for-one with net imports of computer and 
+communication equipment: 
+ 
+
+ 
+ 
+The right panel is the more interesting one. Much of the value in an imported Nvidia or 
+Broadcom chip comes from design work done in California, which should count as US GDP via 
+exports of technology services. But while Nvidia and Broadcom foreign revenue has gone 
+parabolic, US exports of tech-related services have barely budged. Put differently, the statistics 
+are missing much of the US value-add, perhaps because it gets booked by a subsidiary 
+somewhere with a friendlier tax rate. 
+Third, and our favorite, semiconductors technically don't count as investment at all. Because 
+chips historically went into products that were resold, the national accounts treat them as 
+intermediate inputs to avoid double-counting. That made sense for a laptop. It makes no sense 
+for a GPU cluster training a frontier model, and Goldman spells out the absurd result: 
+"In fact, this means that imported semiconductors used for AI make a negative contribution to 
+GDP because they are counted as imports but not as investment." 
+Translation: every time a hyperscaler buys a rack of imported AI chips, measured US GDP goes 
+down. The BEA's statisticians, we assume, are aware. 
+True vs. Measured: The Gap In One Chart 
+Add it all up and Goldman estimates that AI will boost "true" capex growth (with semiconductors 
+counted as the investment they obviously are) by 5.3pp in 2027, versus just 4.3pp for measured 
+capex. Note the giant hatched bars in late 2025 and Q3 2026: those are the chip purchases the 
+official data simply didn't see. 
+ 
+
+ 
+ 
+On GDP the gap is bigger still. The direct boost to measured real GDP growth is 0.2pp both this 
+year and next; add back semiconductor investment and the uncounted chip-design exports and 
+the "true" direct effect jumps to 0.8pp in 2026 and 0.7pp in 2027. Then come the spillovers: a 
+stock-market wealth effect from AI names (positive), the hit to real incomes from AI-driven 
+electricity and other price increases (negative), and some crowding out of other spending 
+(negative). Net-net, Goldman lands on a 0.6pp boost to true GDP growth in both years. 
+ 
+That number is worth comparing with what the rest of the Street is saying. Morgan Stanley, likely 
+counting the spending before netting out much of the imports, came up with a much splashier 
+figure a few days ago: 
+ 
+
+ 
+Both can be right: one counts what gets spent, the other what stays home. (When the bull case 
+depends on your choice of national accounts methodology, that's usually a tell.) 
+Voters Reach For The Plug... Just Not Yet 
+Then there is last week's political shock. Goldman now expects newly elected Democratic 
+governors in Texas, Georgia and Michigan, states which account for over a third of planned US 
+data center capacity, to impose moratoria on new data centers. Right after the vote, Goldman's 
+equity analysts had already put 45% of planned capacity in the moratorium zone. 
+Rindels is relaxed about 2027 for three reasons: i) moratoria will likely hit only projects not yet 
+permitted, ii) spending is concentrated in the back half of a 2-3 year construction timeline, so 
+most delayed spending wouldn't have landed in 2027 anyway, and iii) she doesn't expect the 
+moratoria to be long-lived. The right panel below shows just how little of next year's capacity sits 
+in the "announced, not under construction" bucket... and how much of 2028-2030 does. 
+ 
+That last point is the catch, and Goldman concedes it: moratoria that are stricter or 
+longer-lasting than expected "pose downside risks, particularly in 2028-2029." It's the same 
+conclusion JPMorgan reached earlier this week when it asked whether you can build a $2 trillion 
+capex cycle without a permit: 2027 is paid for, 2028 needs a permit. 
+Meanwhile, the old subsidy boom keeps deflating. Construction of IRA- and CHIPS-subsidized 
+factories is down 
+14𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑦𝑒𝑎𝑟−𝑡𝑜−𝑑𝑎𝑡𝑒(𝑎𝑛𝑑𝐺𝑜𝑙𝑑𝑚𝑎𝑛𝑠𝑒𝑒𝑠𝑖𝑡𝑓𝑎𝑙𝑙𝑖𝑛𝑔𝑚𝑢𝑐ℎ𝑓𝑢𝑟𝑡ℎ𝑒𝑟), 𝑤ℎ𝑖𝑐ℎ𝑘𝑛𝑜𝑐𝑘𝑒𝑑0. 5𝑝𝑝𝑜𝑓𝑓𝑐𝑎𝑝𝑒𝑥𝑔𝑟𝑜𝑤𝑡ℎ𝑡ℎ𝑖𝑠
+34 billion YTD) and power plants (+$9 billion) more than filled the hole. So much for the 
+reshoring renaissance; the new factories turned out to be server farms. 
+ 
+
+ 
+ 
+Oil Helps, Rates Hurt 
+Two more swing factors. On the plus side, sustained higher oil prices since the start of the Iran 
+war have finally coaxed US producers into drilling, adding 0.5pp to capex growth this year, and 
+Goldman expects another 0.5pp in 2027. The shale patch remains famously disciplined, though, 
+and Goldman's commodity team estimates WTI needs to stay above $70 (vs. roughly $90 
+today) for capex to keep rising. A peace deal with Tehran would be great for gasoline prices and 
+bad for the rig count. 
+ 
+On the minus side: rates. Goldman's FCI has tightened notably over the past two months on 
+higher yields and lower stocks, and the bank's impulse model says that tighter financial 
+conditions will shave 1.0pp off capex growth next year if they stay where they are. With the 10Y 
+touching 5% this morning, "where they are" is doing a lot of work. Of course, the causality runs 
+ 
+
+ 
+both ways: as Goldman itself warned back in September, AI capex is now driving rates, and the 
+Fed is just a passenger. 
+ 
+Goldman's own trading desk has been less sanguine than the economists. As the bank's Delta 
+One head put it last week: 
+His punchline, after noting the SOX at a 12x blended forward P/E and Nvidia at its lowest 
+multiple since 2013: the market may be telling us "potentially 2027 is a peak." 
+8% Capex, Frontloaded 
+Put it all together and Goldman forecasts real business fixed investment growth of 8% (Q4/Q4) 
+in 2027, nearly double the 4.2% consensus, and real GDP growth of 2.4%. As the chart shows, 
+though, the path slopes gently downward through the year, consistent with that frontloaded AI 
+spend. 
+ 
+
+ 
+ 
+Not everyone is buying even that. Jefferies' Chris Wood made "The case for a peak in AI capex" 
+last week (also available to pro subs), pointing to widening hyperscaler bond spreads and 
+blowing-out neocloud CDS as the market's way of saying the spending curve is near its top. 
+And then, this morning, the AI trade lost its founding CEO: Jensen Huang resigned from Nvidia 
+after a week of escalating reports about his personal life, including a relationship with an 
+executive tied to Singapore-based Nvidia customer Megaspeed whom US intelligence 
+reportedly linked to Chinese state security. CFO Colette Kress is interim CEO, per the 
+company's 8-K. Nvidia was already down 7.5% premarket on the ouster reports, neoclouds 
+were off 5-10% per Goldman's TMT desk, and the Street is now hunting for Nvidia's floor. None 
+of this changes 2027 budgets overnight. It does change who sits across the table on the biggest 
+purchase orders in corporate history, and how much patience Washington has for an AI supply 
+chain that runs through Singapore. 
+A Boom Paid In Dollars, Counted In Taiwan 
+Goldman's economists are unambiguously bullish on activity: nearly double consensus on 
+capex, with AI "the dominant driver" for another year. 
+Read from the other side, though, the note is the most concise explanation yet of why the AI 
+boom feels so much bigger in markets than in the economy. Half the nominal increase is price, 
+most of the hardware is imported, and the chips themselves count as a negative. What remains 
+is a 0.2pp boost to measured growth, financed by a capex curve that, by the hyperscalers' own 
+ 
+
+ 
+disclosures, now leans heavily on debt and off-balance-sheet commitments: we tracked $4.1 
+trillion of those last month, up $1 trillion in 90 days, and Goldman's equity analysts followed up a 
+few days later: 
+So which is it: a durable 8% capex year, or the top? Goldman's own forecast already answers it, 
+in its fine print: frontloaded spending, growth slowing through 2027, moratoria biting in 2028-29, 
+and a 1pp drag from financial conditions that only gets bigger if yields keep climbing. We think 
+2027 will be remembered as the peak of the AI capex cycle, and the economy will find out that 
+the part of the boom it got to keep was a lot smaller than the part it has to pay for. Then again, 
+at least the GDP data won't notice the slowdown much either. 
+Much more in the full Goldman "2027 Capex Outlook: How Much of an AI Boost?" note and the 
+Jefferies "The case for a peak in AI capex" note, both available to pro subs. 
+ 
+ 
+ 
+ 
