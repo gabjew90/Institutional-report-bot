@@ -1,0 +1,3608 @@
+Top 10 Emerging Technologies 
+for Planetary Health: 
+Energy Edition
+I N S I G H T R E P O R T
+N O V E M B E R 2 0 2 6
+In collaboration 
+with Frontiers
+
+Images: Images created by Studio Miko, developed 
+using generative AI under designer direction.
+Disclaimer 
+This document is published by the  
+World Economic Forum as a contribution 
+to a project, insight area or interaction. 
+The findings, interpretations and 
+conclusions expressed herein are a result 
+of a collaborative process facilitated and 
+endorsed by the World Economic Forum 
+but whose results do not necessarily 
+represent the views of the World Economic 
+Forum, nor the entirety of its Members, 
+Partners or other stakeholders.
+© 2026 World Economic Forum. All rights 
+reserved. No part of this publication may 
+be reproduced or transmitted in any form 
+or by any means, including photocopying 
+and recording, or by any information 
+storage and retrieval system.
+Contents
+Foreword
+3
+Introduction
+4
+1	
+Calcined-clay limestone cement (LC3)
+6
+2	
+Virtual power plants and grids
+9
+3	
+Abundant materials batteries
+12
+4	
+Thermal energy storage (heat batteries)
+15
+5	
+Perovskite-silicon tandem solar cells
+18
+6	
+Advanced subsea HVDC interconnectors
+21
+7	
+Modular nuclear reactors
+24
+8	
+Building-integrated photovoltaics
+27
+9	
+Floating offshore wind
+30
+10	 Next-generation lithium batteries
+33
+Conclusion
+36
+Appendix 1: Planetary boundaries primer
+37
+Appendix 2: Methodology
+38
+Contributors
+42
+Endnotes
+44
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+2
+
+Foreword
+Planetary boundaries offer a window into 
+understanding the conditions that make modern 
+human life on Earth possible. They describe limits in 
+the Earth systems that regulate climate, freshwater, 
+land, nutrients, oceans and the living biosphere, 
+regulating stability, resilience and life support on 
+Earth. Together, they define the safe operating space 
+within which humans can thrive. These boundaries 
+are not a checklist of separate environmental 
+problems. They are connected processes, and 
+pressure in one can increase pressure in another. 
+Earlier this year, we published our third annual 
+Planetary Health Check, confirming that seven of the 
+nine boundaries have been breached, with no clear 
+evidence of recovery.1 We continue to move further 
+away from safety and deeper into danger. The 
+consequences will unfold unevenly, but the direction 
+is clear: action is needed now to move towards 
+recovery and mitigate the worst impacts.
+Humanity has a profound, documented impact on 
+these systems. We shape them through what we 
+extract, build, consume and waste, and it is in our 
+power to change our influence. Agriculture can 
+restore soils or exhaust them; cities can protect 
+watersheds or seal them; and industry can reduce 
+pollution or spread pollutants through air, water 
+and ecosystems. Technology is embedded in 
+all of these choices. It can substitute damaging 
+processes, make resource use more efficient or 
+repair ecosystems. Technology can also accelerate 
+extraction, lock in wasteful demand, shift impacts 
+from one boundary to another or create new 
+dependencies whose consequences are difficult to 
+anticipate. There is no silver bullet, and technologies 
+need to be assessed by their net impact across 
+planetary pressures, dependencies and costs, 
+in addition to their potential and realized benefits.
+Energy systems are particularly consequential 
+because they intersect with so many of the 
+boundaries. Energy systems are a primary 
+determinant of how much carbon enters the 
+atmosphere and, through that, how quickly oceans 
+acidify. They also shape how land, water, minerals 
+and infrastructure are used across the economy, 
+influencing air quality, the production of goods, 
+transport, buildings and food, and communities’ ability 
+to withstand heat, disruption and price shocks. More 
+than a single-sector intervention, the energy transition 
+is a lever that can ease pressure across several 
+boundaries, provided it is designed around material 
+limits, ecosystems’ health, resilience and fair access.
+Last year’s edition of this report examined emerging 
+technologies across food, water, ecosystems, 
+industry and energy, showing the breadth of 
+innovation driving planetary health. This year, 
+its focus on energy technologies reflects both 
+the scale of the challenge and the possibility of 
+gains compounding when generation, storage, 
+materials, buildings, industry and digital systems 
+are considered together. The technologies that 
+follow should not be read as a substitute for proven 
+solutions, policy or changed patterns of production 
+and consumption. They are options whose value 
+will depend on how responsibly they are developed, 
+combined and deployed.
+Johan Rockström
+Director, Potsdam Institute for 
+Climate Impact Research (PIK)
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+November 2026
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+3
+
+Introduction
+Building a cleaner, more secure and 
+equitable energy system requires innovation 
+across technologies and infrastructure.
+The way the world generates, moves and stores 
+energy affects nearly every planetary boundary 
+under strain. This report looks at 10 technologies 
+best positioned to ease that strain and at what 
+it will take for decision-makers in government, 
+finance and industry to scale them. These 10 
+were chosen from dozens of contenders based on 
+how much they could ease pressure on the planet, 
+widen access to reliable power and strengthen 
+the systems that deliver it, each with a credible 
+path to deployment by 2030 (see Figure 1).
+This edition arrives at a moment of growing 
+pressure on energy systems. Markets are volatile, 
+supply chains are concentrated, and the push for 
+energy independence could even drive a return to 
+coal in places where cleaner alternatives cannot 
+keep up with demand. The energy transition needs 
+to cut emissions and also reduce the dependencies 
+that leave any one country exposed to shocks it 
+cannot fully control.
+The 10 technologies in this report meet that need 
+in different ways. A battery built from materials 
+common enough to source almost anywhere 
+keeps working in cold that would stall a lithium 
+battery entirely. A blend of clay and limestone 
+can now replace roughly half of the core material 
+of ordinary cement, cutting emissions from 
+concrete production, one of the world’s most 
+carbon-intensive materials. Each chapter includes 
+an overview of the technology and three short 
+assessments of its impact on planetary boundaries, 
+equity and security, weighing the benefits and real 
+trade-offs for the planet, people and systems.
+Three patterns emerge from the list of technologies 
+that are worth tracking while reading.
+First, they address different kinds of bottlenecks. 
+Several solve a materials problem, replacing a 
+scarce, concentrated input with one common 
+enough to find almost anywhere. Others solve a 
+systems problem instead, closing the gap between 
+when the grid generates power and when it is 
+needed. Understanding which kinds of problems a 
+technology solves is often the fastest way to identify 
+what could accelerate or stall its advancement from 
+a mineral deal to a regulator’s decision.
+Second, they reach the world in different ways. 
+Granular technologies spread through many small 
+deployments that each get a little cheaper to build, 
+so their progress shows up gradually, one project 
+at a time. Infrastructure-scale technologies depend 
+instead on a smaller number of large, capital-
+intensive projects, so their progress often turns on 
+a single decision, e.g. a construction approval or 
+a procurement standard that can unlock multiple 
+subsequent projects at once. This difference 
+shapes their effects on the wider system. Granular 
+technologies often improve existing systems from 
+within, while infrastructure-scale technologies have 
+the potential to reshape them from the ground up.
+Finally, they are not designed to work in isolation. 
+Examined individually, each addresses a specific 
+problem. Paired together and combined with other 
+enabling technologies, their value often compounds 
+instead. A subsea cable carrying an offshore wind 
+farm’s power ashore is only as useful as the battery 
+that can absorb what it generates. A heat battery 
+only banks power that a software-coordinated grid 
+has already made available. The technologies in this 
+report are building blocks, meant to work together 
+rather than stand alone.
+Reaching this combination of technologies took a 
+wide range of expert perspectives. This report was 
+developed in collaboration with 18 experts from 
+business, academia, government and international 
+organizations, drawn from 10 countries and six 
+regions. They were essential in shaping the selection 
+and analysis of the technologies featured here.
+Every technology in this report can help ease 
+pressure on the planet. How far that benefit 
+reaches, and how many people actually get to 
+share in it, depends on how these technologies 
+are built, integrated and put to use from here. 
+Sebastian Buckup
+Managing Director, 
+World Economic Forum
+Frederick Fenter
+Chief Executive Editor, 
+Frontiers
+ The energy 
+transition needs 
+to cut emissions 
+and also reduce 
+the dependencies 
+that leave any one 
+country exposed 
+to shocks it cannot 
+fully control.
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+4
+
+Impact on planetary boundaries 
+F I G U R E 1
+Technologies
+Calcined-clay
+limestone cement (LC3)
+Control 
+variable
+High-risk zone
+High-risk line
+Planetary boundary
+Zone of increasing risk
+Safe operating space
+Virtual power
+plants and grids
+Abundant materials
+batteries
+Thermal energy
+storage (heat batteries)
+Perovskite-silicon
+tandem solar cells
+Advanced subsea
+HVDC interconnectors
+Modular nuclear
+reactors
+Building-integrated
+photovoltaics
+Next-generation
+lithium batteries
+Floating offshore
+wind
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+5
+Notes: For a full explanation of each planetary boundary, please refer to the Appendix of this report; *phosphorus cycle; **nitrogen cycle.
+Source: Potsdam Institute for Climate Impact Research. (n.d.). Planetary Boundaries Science (PBScience) Lab. 
+ .
+
+Calcined-clay limestone cement 
+Lower-carbon cement for 
+tomorrow’s roads and bridges
+01
+
+A $100 billion near-zero-carbon 
+cement market by 2035
+International Energy Agency (IEA). (2025). Demand- and supply-side measures 
+for the steel and cement transition: Executive summary.
+Today’s cement starts with limestone and clay, 
+crushed together and fired in a kiln hot enough 
+to break the limestone.2 This releases carbon 
+stored in the rock for millions of years. Reaching 
+that temperature also takes enormous amounts of 
+fuel, adding to the process’s total emissions. Hard 
+grey pellets called clinker come out of the other 
+end. Ground fine and mixed with small amounts 
+of gypsum, clinker becomes Portland cement, 
+the powder that binds sand, gravel and water into 
+concrete. It is also the material behind many of the 
+roads, bridges and buildings on Earth.3 Cement is 
+responsible for about 8% of global carbon dioxide 
+(CO2) emissions,4 making it one of the most critical 
+materials to decarbonize in order to achieve global 
+net-zero ambitions.
+One way to cut those emissions is to use less 
+clinker. Calcined-clay limestone cement (LC3), 
+still uses clay and limestone but processes them in 
+a radically different way. The clay is calcined and 
+heated enough to drive off water locked inside its 
+structure and break down its original crystal form, 
+leaving it chemically unstable and highly reactive. 
+The limestone is ground fine instead, which gives 
+it far more surface area for reaction. Neither does 
+much on its own, but the two put together activate 
+each other. When combined with the remaining 
+clinker, the three react to seal the pores, giving 
+concrete its strength.5 In early testing, cement made 
+this way, with clinker cut nearly in half, has already 
+outperformed ordinary Portland cement in strength6 
+while cutting emissions on two fronts. Less clinker 
+means less of the chemical reaction that releases 
+CO2. Because clay is heated at roughly half the 
+temperature required for clinker production, LC3 
+also directly reduces industrial energy demand, 
+not just process emissions. These two effects 
+combined bring emissions down by up to 40% 
+compared to ordinary Portland cement.7
+LC3’s chemistry, developed by a research 
+partnership led by EPFL in Switzerland with 
+institutions in India and Cuba,8 has been proven 
+in labs for years, but getting it into an actual 
+building requires the paperwork to catch up. In 
+2021, Europe adopted a new cement standard, 
+allowing up to half of a cement’s mass to come 
+from calcined clay and limestone combined.9 India 
+followed in 2023, publishing a standard that sets 
+a minimum clinker content of 50% and clears 
+calcined clay for up to 35% of the mix.10 A builder 
+specifying cement in Paris or Mumbai can now 
+reach for LC3 without applying for an exemption.
+Two projects already show that shift at work. In 
+Colombia, a plant at Rio Claro has been producing 
+calcined clay cement since around 2020; by 2024, 
+it had made more than two million tonnes of it, 
+used in bridges, tunnels, highways and high-rise 
+buildings.11 In Denmark, a version of this cement 
+called FUTURECEM has been sold commercially 
+since 2021, and within a year it spread to France, 
+Belgium and the Benelux region, poured into 
+foundations, cast into precast panels and used on 
+at least one bridge.12 The rules are keeping pace 
+with the material. In the US, an existing standard 
+already allows for LC3 to be used in construction.13,14 
+While Europe’s old codes didn’t permit this kind of 
+blend, regulators issued a new code in 2021 that 
+did.15 A similar wave of regulatory revisions has 
+been required across emerging economies, such 
+as India, Brazil and Colombia, where LC3 presents 
+an opportunity to address high clinker costs and 
+carbon emissions simultaneously.16
+However, scaling low-carbon cement production 
+globally could take over $1 trillion in investment.17 
+Standards are emerging, but procurement, testing 
+and buyer confidence remain key bottlenecks. In 
+the US, an existing standard already permits far 
+higher clinker replacement than the roughly 5% 
+most contractors specify by default, but state 
+transport departments and federal buyers have 
+been slow to translate that flexibility into contracts.18 
+Public buyers can close that gap directly. They 
+need performance-based specifications that judge 
+a cement by its strength and durability rather than 
+its ingredient list, plus the testing infrastructure to 
+support them. Federal programmes such as Buy 
+Clean, together with low-carbon procurement rules, 
+are already pushing procurement in that direction.19 
+How far that reach extends into state-level cement 
+specifications over the next few years will determine 
+how fast LC3 can scale.
+If LC3 reaches global scale, a different challenge 
+could emerge. LC3 shifts cement’s dependence on 
+quarried rock from limestone burned into clinker to 
+clay burned at a lower heat instead. Which deposits 
+end up carrying that new weight, on whose land 
+and under whose oversight, are the questions the 
+industry is only beginning to answer.
+ Cement is 
+responsible for 
+about 8% of global 
+carbon dioxide 
+emissions, making 
+it one of the most 
+critical materials 
+to decarbonize in 
+order to achieve 
+global net-zero 
+ambitions.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+7
+
+Equity
+LC3 can make construction more affordable. Replacing up to 
+half of the clinker with limestone and calcined clay can reduce 
+production costs while strengthening the cement. This is particularly 
+important for growing cities in need of more homes, roads and 
+hospitals. Processing local clay can also create new jobs in cement-
+producing regions and shift more value creation into countries 
+that currently import clinker but possess clay resources. However, 
+lower production costs do not automatically mean cheaper 
+construction. Savings may not be propagated down the value 
+chain, as new processing equipment requires investment, reliable 
+heat, testing facilities and skilled workers. The clay must also have 
+the right properties, while building rules, public procurement and 
+affordable financing must accept LC3 before smaller companies 
+and lower-income communities can benefit. Public procurement 
+and building standards will play a major role in determining the rate 
+at which lower-cost cement reaches affordable housing and public 
+infrastructure, breaking out beyond niche projects.
+Security
+LC3 can strengthen industrial and energy security by reducing 
+dependence on fuel-intensive clinker production and imported 
+materials. Because it cuts clinker production, which often relies on 
+imported coal, petroleum coke or gas, it reduces exposure to fuel 
+shocks and import bills. Most countries also have direct access to 
+clay and limestone and can often adapt existing kilns to produce 
+LC3. However, resilience still depends on local geology, transport 
+and steady heat for clay calcination. Plants still need gypsum, 
+electricity, laboratories and precise process control. A country that 
+lacks these capabilities may swap fuel dependency for imported 
+equipment, expertise or calcined clay.
+Planetary boundaries
+Climate change pressure can be reduced because LC3 uses about 
+half as much clinker as conventional cement, decreasing both process 
+emissions and the energy required to produce cement. This can cut 
+carbon emissions by up to 40%.20
+Biosphere integrity pressures may shift rather than disappear. LC3 
+reduces limestone extraction but increases demand for calcined clay, 
+which can still damage habitats, underscoring the importance of 
+responsible sourcing and land restoration.
+Ocean acidification may slow when LC3 replaces conventional cement 
+because lower CO2 emissions mean less CO2 is absorbed by the 
+oceans. Growth in total cement production can offset those savings.
+Land system change may be affected. Quarrying for clay adds new 
+land disturbance even as limestone quarrying falls, so the net effect 
+depends on where clay deposits are opened and whether sites are 
+restored afterwards.
+Atmospheric aerosol loading can fall because burning less coal and 
+petroleum coke in cement kilns cuts particulate and sulfur emissions.
+Planetary
+boundary
+High-risk
+line
+LC3’s impact on planetary boundaries
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+8
+
+Virtual power plants and grids 
+Coordinating batteries, cars 
+and buildings as one power plant
+02
+
+Wherever air conditioning drives demand, the 
+hottest days of the year bring the heaviest load 
+on the grid. Utilities plan for those days using 
+known relationships between heat and power 
+consumption. Every added degree pulls a certain 
+amount of extra power on to the grid, and that 
+calculation tells a utility how much reserve capacity 
+to hold and how many backup plants to keep 
+ready. That relationship has grown steeper and less 
+predictable over the past five years as both average 
+temperatures and the frequency of heat waves 
+climb. Grids now draw more power at the same 
+temperature than they used to. Recent growth in 
+electric-vehicle charging and data centre demand 
+is adding to the pressure. When the combined load 
+outruns the plan, the result is blackouts in some 
+places and dirtier backup power in others.
+Closing that gap increasingly relies on two kinds 
+of software working together to coordinate the 
+grid directly: virtual power plants and digital twins. 
+A virtual power plant links real devices already in 
+homes and businesses, such as home batteries, EV 
+chargers and smart thermostats, into a single system 
+a grid operator can call on directly.21 Each device 
+constantly reports its own status, how charged 
+a battery is and whether a car is plugged into a 
+shared platform.22 When the grid needs power, that 
+platform sends a single signal telling specific devices 
+exactly how much to release and when,23 much 
+like how a conductor cues different sections of an 
+orchestra rather than shouting instructions to each 
+musician separately. A digital twin works differently. 
+It is a continuously updated model of the grid itself, 
+fed by live data on how power is actually flowing, so 
+operators can test an action like drawing down a set 
+of batteries or rerouting a line to see what it would 
+do to the system before it happens in reality.24 Where 
+a virtual power plant acts, a digital twin predicts.
+Recent breakthroughs have made it possible to treat 
+distributed devices as a grid resource rather than 
+just a pilot experiment. For years, a home battery 
+or an EV sitting in a driveway faced two limits as a 
+grid resource. Storage was too expensive to deploy 
+at meaningful scale, and the software meant to 
+coordinate thousands of devices at once was too 
+slow to trust with a real-time grid event. Both limits 
+broke within the same year. Battery pack prices for 
+stationary storage fell 45% in 2025 to an all-time 
+low of $70 per kilowatt-hour (KWh) – the sharpest 
+drop of any battery category, for the first time 
+making them cheaper than electric-vehicle packs.25 
+Coordination software caught up on the same 
+timeline, moving from updating every few seconds 
+or minutes to responding in under a second.26
+California showed what a virtual power plant can 
+already do. In July 2025, three utilities coordinated 
+more than 100,000 home batteries into a single 
+two-hour pilot test, delivering enough power to run 
+hundreds of thousands of homes during a peak-
+demand event.27 In Germany, Next Kraftwerke’s 
+platform now controls more capacity than a dozen 
+full-sized power plants, without owning one.28 
+Digital twins are already preventing blackouts, but 
+they exist as isolated tools rather than a single, 
+all-knowing simulation. For example, at the asset 
+level, the New York Power Authority runs live digital 
+twins to monitor the health of physical hardware, 
+tracking vibrations and temperatures to catch failing 
+turbines or transformers days before they cause 
+outages.29 Managing the wider grid has traditionally 
+relied on decades-old, static what-if models known 
+as contingency analyses, but the Department of 
+Energy (DOE) is already planning the transition from 
+these legacy, snapshot-based models to a true 
+system-level digital twin, a live simulation capable of 
+modelling grid behaviour in real time while linking it 
+to the micro-physics of power plants.30
+Virtual power plants and grids reach full scale when 
+the two tools work as one system, with a digital 
+twin testing each move a virtual power plant makes 
+before the grid feels it. Grid operators need to open 
+their markets so that households and businesses 
+are paid for the power their devices supply, just 
+as a power plant is. Some power markets already 
+pay these devices directly, while others have set 
+opening dates years after regulators first required 
+it. Before a digital twin can rehearse a bigger virtual 
+power plant action, it needs a live, shared picture 
+of the grid to test that action against, built on data 
+every utility describes in the same way. That data-
+sharing layer is what grid operators are now piloting. 
+With those two pieces put together, a digital twin 
+could check a virtual power plant’s next move 
+before it happens, rather than after.
+Every large-scale test of virtual power plant software 
+so far has been a planned event, a scheduled pilot 
+or a forecast peak. None has yet faced a failure like 
+the April 2025 blackout, which cut power across 
+Spain and Portugal without warning. Holding a grid 
+together through one would mean relying on devices, 
+and data, owned by millions of households.
+ A virtual power 
+plant links real 
+devices already 
+in homes and 
+businesses, such 
+as home batteries, 
+EV chargers 
+and smart 
+thermostats, into 
+a single system a 
+grid operator can 
+call on directly.
+80–160 GW of flexible capacity 
+by 2030 in the US alone
+U.S. Department of Energy. (2023). DOE releases new report on pathways to commercial liftoff for virtual power plants. 
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+10
+
+Equity
+Virtual power plants link household and industrial equipment, 
+so participants can shift when they use or supply electricity. 
+Digital twins use live data to create a virtual copy of the grid, helping 
+utilities detect faults, plan upgrades and connect more renewable 
+energy without building as much extra capacity. Together, these 
+tools can reduce outages and lower costs while creating jobs in 
+installation, software and operations. However, these gains come 
+with their own conditions. Customers need equipment that can 
+be controlled remotely, smart meters, reliable internet, fair contracts 
+and privacy guarantees. Utilities need sensors, compatible 
+data systems and trained staff. Public funding, protections for 
+renters and transparent payments are essential to ensure that 
+these systems drive an increased uptake of renewable energy 
+and benefit poorer and rural communities, not just households 
+already equipped with costly batteries and electric vehicles.
+Security
+Virtual power plants can make it easier to use renewable energy 
+at scale, reducing reliance on imported fuels, gas-fired plants 
+used during periods of high demand and single large power 
+stations. Digital twins also support resilience by allowing operators 
+to simulate extreme events, identify weak points and test repairs 
+without disrupting the live grid. However, both systems depend 
+on communications networks, sensors, cloud services and 
+software. False data, cyberattacks or inaccurate models could lead 
+to poor decisions affecting many parts of the grid at once. Systems 
+that rely heavily on batteries may also remain dependent on a small 
+number of battery manufacturers. True resilience requires secure 
+data sharing, compatible systems and manual backups if networks 
+fail or suppliers stop providing support.
+Planetary boundaries
+Climate change pressure can be reduced when digital tools 
+help integrate renewables and reduce fossil fuel backups. 
+However, the net benefit depends on the generation displaced, 
+storage losses and the additional energy and materials required 
+for computing and communications.
+Ocean acidification can be reduced indirectly when virtual power 
+plants and digital twins help replace fossil-fuel generation with 
+renewables, reducing the amount of CO2 absorbed by the oceans.
+Biosphere integrity can be affected in different ways. Digital tools 
+may reduce the need for new power plants and grid infrastructure, 
+but producing batteries, sensors and servers requires mining 
+and creates waste.
+Virtual power plants and grids’ impact on planetary boundaries
+Planetary
+boundary
+High-risk
+line
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+11
+
+Abundant materials batteries
+Everyday metals for a more 
+secure energy supply
+03
+
+Winter is hard on clean power grids. A spell of calm, 
+overcast weather can last for days, leaving wind 
+turbines idle and solar panels under cloud just as 
+long, cold nights push electricity demand up. Most 
+batteries on these grids hold two to four hours of 
+power. Once they run out, gas and coal plants tend 
+to fill the gap.
+Grid batteries are now being installed faster 
+than ever, and most of them use lithium-ion, 
+a technology engineers built to be small and 
+light – tuned for phones and cars, where every 
+gram of weight costs range.31 Grid storage does 
+not share that weight constraint, and dropping 
+it opens the door to batteries built from entirely 
+different materials. This is why battery makers 
+are increasingly turning to sodium, zinc and iron, 
+elements abundant enough to let chemistry diversify 
+along two axes at once: what a battery is built to do, 
+and where its materials come from. On the functional 
+side, that means trading weight for the property 
+that matters on-site, whether that’s cold tolerance, 
+fire safety or multi-day duration. On the materials 
+side, sodium, zinc and iron are common enough to 
+source almost anywhere,32 unlike lithium and cobalt, 
+whose supply chains are narrow and concentrated. 
+Choosing these minerals also reduces dependence 
+on the handful of countries that currently control 
+today’s scarcer materials and eases the pressure 
+on land and water near extraction sites. 
+Sodium, zinc and iron have each been known 
+battery candidates for decades;33 sodium-ion 
+research alone predates the smartphone.34 
+Getting them out of the lab has taken years 
+of manufacturing build-out. Production lines 
+have gone in, yields have improved, and costs 
+have come down,35 in one case backed by a 
+$305.3 million federal loan guarantee.36 As a result, 
+CATL (Contemporary Amperex Technology), Eos 
+Energy and Great River Energy have each brought 
+projects online at the scale of 1 gigawatt-hour 
+(GWh) in the past two years. They are building a 
+portfolio of batteries, each suited to a different job, 
+rather than betting on one winning chemistry.
+A sodium ion is larger and holds a weaker grip 
+on its electrons than a lithium ion, so it keeps 
+moving through a battery even as the surrounding 
+chemistry slows in the cold. The newest commercial 
+cells hold on to more than 90% of their charge at 
+-40°C,37 a temperature that stalls most other battery 
+chemistries. However, that mobility has a cost: 
+a sodium ion carries less charge for its size than 
+lithium, which means that a sodium battery stores 
+about 30% less energy in the same volume.38 That’s 
+enough to rule sodium out of long-range electric 
+vehicles, but doesn’t matter for a fixed installation. 
+A 60 GWh supply agreement signed by a major 
+Chinese battery company in 2026, the largest 
+sodium-ion order to date, shows how fast that 
+market is moving.39 
+Zinc solves a different problem – fire. A lithium-ion 
+battery catches fire because its electrolyte, the fluid 
+ions move through, is flammable. A zinc battery 
+replaces that fluid with water, removing the fuel a 
+fire needs to spread.40 The trade is energy density. 
+Water can’t hold as much charge as the liquid it 
+replaces, which keeps zinc’s energy density too 
+low for compact uses.41 With ample energy density 
+for stationary uses, the US zinc battery maker Eos 
+Energy is building a 400 megawatt-hour (MWh) 
+system for Marine Corps Base Camp Pendleton, 
+where fire risk is not a trade-off the base is willing to 
+make.42
+Iron-air trades on cost rather than performance. 
+The battery runs on rust. Discharging lets iron 
+oxidize and release electrons; charging reverses the 
+reaction and pulls the oxygen back out.43 Iron costs 
+almost nothing,44 so iron-air batteries can be built to 
+hold a charge for around 100 hours45 – long enough 
+to carry a grid through days of dead calm or heavy 
+cloud. The trade is efficiency. Charging diverts 
+some current into a side reaction that splits water 
+into hydrogen, energy that never comes back,46 
+holding recharge efficiency to about half of what a 
+typical battery achieves.47 A Minnesota utility, Great 
+River Energy, has brought the first commercial iron-
+air system online, backed by an 80 GWh pipeline 
+that has Google as a customer.48,49
+Material abundance only pays off if manufacturing 
+capacity keeps pace with materials, and right now 
+it has not. China supplies an estimated 99% of 
+sodium-ion cells today,50 but that gap is starting to 
+close. A sodium-ion system has begun powering 
+part of a Wisconsin utility’s grid, the first deployment 
+of its kind outside China.51,52 
+A grid no longer has to rely on a single chemistry 
+to survive three days of calm, but material 
+diversification is still a work in progress and 
+depends on where new factories are built. A grid 
+that trades scarce lithium for abundant sodium 
+still depends on whoever controls the machinery 
+that turns raw ore into a cell.
+ Choosing 
+these minerals 
+also reduces 
+dependence 
+on the handful 
+of countries 
+that currently 
+control today’s 
+scarcer materials 
+and eases the 
+pressure on land 
+and water near 
+extraction sites.
+1,200 GW of battery storage by 2030 – enough to store 
+the world’s entire wind energy output
+International Energy Agency (IEA). (2024). Outlook for battery demand and supply.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+13
+
+Equity
+Zinc-based, iron-air and sodium-ion batteries could expand access to 
+electricity storage in different ways. Sodium-ion batteries can manage 
+daily changes in solar power, water-based zinc batteries can provide 
+safer storage, and iron-air batteries can supply power during cloudy or 
+windless periods. However, all three technologies require factories, 
+grid connections, supporting equipment and trained technicians. 
+Iron-air batteries also need large sites, and all three remain relatively 
+expensive to produce at scale. Government purchasing, long-term 
+investment and local training will determine whether communities 
+gain reliable electricity and jobs or simply import finished systems, 
+reinforcing today’s dominant battery hubs.
+Security
+While different types contribute to supply chain diversification, they 
+reduce different vulnerabilities. Sodium-ion batteries can reduce 
+demand for lithium and use many existing battery factories. However, 
+their key materials and production are still concentrated in a few 
+countries. Zinc-based batteries rely on widely traded metals, and 
+water-based designs are less likely to catch fire. However, some 
+require high-quality zinc, manganese, bromine or specialized 
+components. Iron-air batteries use widely available iron and can 
+store electricity for up to four days. This could reduce the need for 
+gas-fired power when renewable energy is unavailable. However, 
+the technology is still new and depends on large sites, electronic 
+equipment and software, creating potential new vulnerabilities.
+Planetary boundaries
+Climate change pressure can fall when sodium-ion batteries manage 
+daily changes in electricity use, iron-air batteries provide longer-term 
+backup and zinc-based batteries replace fossil-fuel generators. 
+Extracting those materials and producing these batteries still creates 
+emissions, but far less than the fossil fuels they displace.
+Biosphere integrity pressures may shift as iron-air and many 
+zinc-based and sodium-ion batteries avoid lithium and cobalt. 
+However, mining iron, zinc and manganese can still damage habitats. 
+Net effects depend on material quantities, sourcing locations, battery 
+lifetime and recycling.
+Freshwater change pressure may be reduced where these batteries 
+avoid water-intensive lithium supply chains, but mining and processing 
+zinc, iron and manganese also require water. The outcome depends 
+on local water availability, extraction methods and material demand 
+over the battery lifetime. If left unmanaged, water contamination 
+creates additional risks for ecosystems and communities.
+Ocean acidification can be reduced indirectly when zinc-based, 
+iron-air and sodium-ion batteries help renewable electricity replace 
+fossil fuels, reducing CO2 entering the oceans. Emissions from 
+manufacturing reduce, but don’t outweigh, this benefit.
+Novel entity pressure may ease with water-based zinc and iron-air 
+designs, which avoid the flammable, fluorinated electrolytes used in 
+lithium-ion batteries. Sodium-ion cells still rely on similar fluorinated 
+salts and binders.
+Planetary
+boundary
+High-risk
+line
+Abundant materials batteries’ impact on planetary boundaries
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+14
+
+Thermal energy 
+storage (heat batteries)
+Storing clean power as 
+heat until it’s needed
+04
+
+Making steel, cement or chemicals means keeping 
+a furnace at extreme heat around the clock, and 
+most of that heat still comes from burning gas or 
+coal. Fuel suits the job because it can be stored 
+and available on demand. Solar and wind now 
+produce some of the cheapest electricity available, 
+but only when the weather allows. Chemical 
+batteries can deliver that power for a few hours, but 
+keeping a furnace running for days would require so 
+much battery capacity that generating heat this way 
+would cost more than burning gas.
+Instead of relying on rare, temperamental minerals 
+like lithium and cobalt, thermal energy storage, 
+often referred to as a heat battery, routes electricity 
+through low-cost, durable elements with high 
+heat resistance, such as sand, firebrick, carbon 
+blocks or molten salt. These cores soak up thermal 
+energy at temperatures ranging from 1,000°C to an 
+incandescent 2,400°C, depending on the design,53,54 
+and hold that energy for hours or days, discharging 
+it on demand as high-pressure steam or scorching 
+air directly into factory boilers.55 The energy doesn’t 
+need to be consumed the millisecond it’s generated. 
+It gets locked in as heat and tapped whenever the 
+furnace demands it.
+As more renewable capacity has come online, 
+the moments when power is nearly free, or even 
+costs money to offload, have become routine on 
+many grids. A heat battery charges during those 
+hours and stores energy until the furnace needs 
+it. Within about three years, heat batteries have 
+gone from small pilot projects to installations 
+running at nearly a thousand times that scale – a 
+speed few other pieces of industrial hardware can 
+match.56,57 Regulation is starting to catch up too. 
+The European Commission’s Electrification Action 
+Plan proposes cutting network charges for industrial 
+users who shift their power use to off-peak hours, 
+narrowing the gap that has long kept gas cheaper 
+than electricity.58
+Thermal energy storage is already running inside 
+operating factories across a range of industrial 
+sectors, financed increasingly by mainstream 
+energy companies and public development 
+banks. In Germany, Rondo Energy is building a 
+100 MWh battery for Covestro, a major chemicals 
+manufacturer, backed by €75 million from the 
+European Investment Bank and Breakthrough 
+Energy Catalyst.59 In Hungary, a corn-processing 
+plant that had run on gas for years switched 
+to heat batteries in 2025, without paying any 
+upfront capital cost. Kyoto Group built the 
+battery, owns it and takes on the risk if anything 
+goes wrong. The plant pays for the heat it uses 
+the same way it always paid its gas bill, under 
+a 15-year agreement.60
+Brick, sand, molten salt and carbon blocks all 
+reliably hold and release industrial-grade heat, 
+but every factory requires heat to be delivered 
+differently. One might need steam while another 
+needs blistering hot air, so each installation is still 
+its own custom engineering job rather than an off-
+the-shelf product.61 Even once those engineering 
+challenges are addressed, another barrier 
+remains: electricity markets were not designed 
+for how heat batteries operate. Most industrial 
+tariffs are still built for steady, predictable demand, 
+while a heat battery draws power in fast, flexible 
+bursts whenever electricity is cheap. Today’s 
+pricing rules were never designed for that 
+pattern. For heat batteries to scale, regulators 
+will need to go beyond tariff cuts and introduce 
+binding policy.62 
+A heat battery doesn’t need fossil fuel to keep 
+the furnace running around the clock, just a grid 
+handing off more electricity than it can use when 
+the battery is ready to bank it as heat. Furnaces 
+burn roughly a fifth of the energy the world uses, 
+and nearly all of it comes from fuel shipped, piped 
+or mined in from somewhere else.63 Electrifying 
+that share would simultaneously reduce industrial 
+emissions, improve energy security and create 
+a new source of flexible demand for increasingly 
+renewable electricity systems.
+ The energy 
+doesn’t need 
+to be consumed 
+the millisecond 
+it’s generated. 
+It gets locked 
+in as heat and 
+tapped whenever 
+the furnace 
+demands it.
+A fifth of global energy still waiting to electrify
+Bellevrat, E. & West, K. (2018). Clean and efficient heat for industry. International Energy Agency (IEA).
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+16
+
+Equity
+Heat batteries store cheap electricity or waste heat and 
+provide a steady heat supply for factories and other industrial 
+facilities. Simple materials such as sand, brick and concrete 
+can cost much less than chemical batteries and help users 
+avoid expensive peak-hour electricity prices. This could 
+improve the competitiveness of energy-intensive industries 
+while preserving skilled industrial jobs. However, these 
+benefits will not be shared equally without support. Projects 
+need investment, strong grid connections, good insulation, 
+heat-transfer equipment and trained workers. Smaller 
+manufacturers and low-income households may need 
+targeted funding and fairer electricity rates for lower system 
+costs to reduce their bills.
+Security
+Heat batteries provide a buffer when electricity supply is 
+uneven. They store extra wind and solar power or waste 
+heat and release it when electricity is scarce. This can reduce 
+peak demand and reliance on imported gas. Systems using 
+sand, brick or concrete also avoid many minerals needed 
+for chemical batteries and can be built close to users in 
+many regions. However, some risks remain. Electric heating 
+depends on reliable grids, control systems, insulation and 
+heat-transfer equipment. Molten salts and other specialized 
+materials must be safely contained and maintained by trained 
+workers. During a prolonged blackout, a heat battery can 
+support only the connected equipment and only until its 
+stored heat is used.
+Planetary boundaries
+Climate change pressure can be reduced when stored 
+renewable electricity or waste heat replaces coal, oil and gas.
+Ocean acidification can slow when stored renewable 
+electricity or recovered waste heat replaces fossil fuels, 
+reducing CO2 entering the oceans. 
+Atmospheric aerosol loading can fall where heat batteries 
+replace fuel burned on-site in industrial boilers, especially coal, 
+thereby cutting particulate and sulfur emissions close to where 
+people live and work.
+Thermal energy storage (heat batteries): impact on planetary boundaries
+Planetary
+boundary
+High-risk
+line
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+17
+
+Perovskite-silicon 
+tandem solar cells
+Converting more of the 
+sun’s light into electricity
+05
+
+Getting a new solar installation permitted, 
+connected and built can take years. For a country 
+trying to build more solar power, especially where 
+space is limited, getting more electricity from 
+each new solar site can be valuable. Right now, 
+silicon’s own physics sets the limit for whether that’s 
+possible. Even under ideal, theoretical conditions, 
+a conventional single-junction silicon solar cell can 
+convert no more than about 29% of the sunlight it 
+receives into electricity.64 
+A perovskite-silicon tandem cell breaks through 
+that wall by putting two solar cells to work instead 
+of one. Picture two sieves stacked on top of each 
+other, each with a different mesh size. The top 
+layer, a manufactured crystal called perovskite, 
+catches the high-energy blue and green light.65 
+Whatever slips through it, mostly red and infrared 
+light, falls on to an ordinary silicon cell underneath, 
+which catches that instead.66 Working together, 
+the two layers can realistically reach 42–43% 
+efficiency.67 Oxford PV says its tandem panels 
+already generate up to 20% more energy than a 
+standard silicon panel from the same site.68 How 
+the cell gets manufactured also matters. Beyond 
+operational efficiency gains, perovskites could 
+also change how solar cells are manufactured. 
+Growing silicon crystal requires high-temperature 
+furnaces and substantial energy, while perovskites 
+can be deposited as a thin coating directly on to 
+a finished silicon cell using industrial techniques 
+such as evaporation or printing.69 They also require 
+only small quantities of their active materials, 
+potentially reducing reliance on the energy-
+intensive production of high-purity silicon. This 
+technology can plug into an industry that already 
+manufactures at enormous volume, rather than 
+requiring a new one.
+Until recently, only fingernail-sized tandem cells, 
+built at lab scale, could beat silicon’s limit. A cell 
+of that size first broke past it in 2020, and by 
+2025, the record had climbed to 34.85%.70,71 
+Reproducing that result at commercial size was a 
+separate challenge, and manufacturers only solved 
+it in 2026. A cell scaled up to roughly the size of a 
+small tablet still reached 30% efficiency, just short 
+of the lab record.72 Investors did not wait for further 
+experimentation. Swift Solar committed $27 million 
+to build its first US tandem factory, years before 
+a full-sized panel, around the size of a twin bed, 
+performed anywhere near the lab number.73
+That bet has already produced concrete outcomes. 
+Oxford PV has shipped commercial tandem panels 
+to a US utility customer, and GCL Optoelectronics 
+has switched on a factory in Kunshan, China, built 
+to produce them at gigawatt scale.74,75 A single 
+customer’s first order became industrial-scale 
+supply within about a year.
+Solar technology durability and longevity 
+factor heavily in energy and financial efficiency 
+calculations. Independent modelling suggests 
+a smaller tandem system could still match an 
+equivalent silicon system’s total lifetime output, but 
+only if the panels last roughly 25 years outdoors,76 
+well past what today’s accelerated ageing tests can 
+confirm.77 That 25-year threshold is the number 
+to watch. Once testing can credibly project past 
+it, banks can underwrite the technology instead of 
+merely watching it. Two things stand in the way: 
+1.	 Manufacturers still have to iron out defects, 
+including pinholes and uneven residue, that 
+show up when the coating process moves 
+from a small lab sample to a full-sized panel.78 
+2.	 Testing bodies need to publish a shared ageing 
+standard specific to perovskite, one that reflects 
+the heat, ultraviolet light and dust of the hot, 
+dry regions where much of the world’s new 
+solar is being built.
+Squeezing more power from land already secured 
+is one of the things this technology has to prove. 
+The physics is increasingly working. The remaining 
+question is whether manufacturers, lenders and 
+regulators can prove the technology durable enough 
+to become a mainstream part of the solar industry.
+ A perovskite-
+silicon tandem 
+cell breaks through 
+silicon’s limit by 
+putting two solar 
+cells to work 
+instead of one.
+Up to 20% more power from the same solar site
+International Energy Agency (IEA). (2024). Outlook for battery demand and supply.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+19
+
+Equity
+Perovskite–silicon tandem panels capture more sunlight than 
+standard silicon panels, producing more electricity from the same 
+roof or piece of land. This could lower costs for households and 
+businesses with limited space and improve access to reliable 
+electricity when combined with storage or flexible electricity use. 
+Manufacturing could also create skilled jobs in panel production, 
+testing and recycling. However, lower costs are not guaranteed. 
+Tandem panels require more complex production, have not yet 
+been tested over several decades and may be more expensive 
+to finance. Without affordable loans for lower-income households, 
+strong warranties, local skills and fair grid rules, most benefits 
+may go to property owners and large developers.
+Security
+Perovskite–silicon tandem panels shift some energy-security risks 
+from fuel supply to manufacturing. Because each panel produces 
+more electricity, they can reduce pressure on land, equipment 
+and limited grid connections. Smaller, distributed solar installations 
+can also reduce fuel imports and reliance on large power plants. 
+However, tandem panels cannot consistently produce electricity 
+as sunlight changes. Reliable supply still depends on batteries, 
+flexible electricity use and strong grids. The technology also 
+remains dependent on a concentrated silicon supply chain, 
+and adds specialized coatings, precise quality control and lead 
+management. Until the panels are proven to last for decades 
+outdoors, early deterioration could reduce their reliability, make 
+them harder to finance and lower their expected electricity output.
+Planetary boundaries
+Climate change pressure can be reduced when efficient tandem 
+panels replace fossil-fuel power and have low emissions over their 
+full life cycle. However, if they deteriorate quickly and need early 
+replacement, this benefit would be reduced. 
+Freshwater change may fall when tandem panels replace power 
+sources that use large amounts of water. However, producing 
+silicon, mining raw materials and cleaning panels can still 
+consume or pollute water.
+Biosphere integrity may benefit where higher power output per 
+unit area avoids habitat conversion compared with conventional solar 
+installations. However, poorly located solar parks, mining and harmful 
+material leaks can still damage ecosystems.
+Novel entities could increase if lead or chemical solvents used in 
+tandem panels are released during manufacturing, use or disposal.
+Land system change pressure may decrease where higher efficiency 
+avoids the conversion of forests or other natural vegetation to produce 
+an equivalent electricity output. However, large solar projects can still 
+replace farmland or natural habitats.
+Ocean acidification can be reduced indirectly when efficient tandem 
+solar panels replace fossil-fuel generation, thereby reducing CO2 
+entering the oceans. Short lifespans and manufacturing emissions 
+reduce this benefit.
+Perovskite-silicon tandem solar cells’ impact on planetary boundaries
+Planetary
+boundary
+High-risk
+line
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+20
+
+Advanced subsea 
+HVDC interconnectors
+Sharing surplus power 
+across seas and borders
+06
+
+Across the world, clean electricity is increasingly 
+abundant in the wrong place at the wrong time. 
+Wind output often peaks overnight, when demand 
+is lowest; solar output peaks at midday, hours 
+before the evening surge in use. When a region has 
+nowhere to send its surplus, or nowhere to draw 
+from when its own generation dips, grid operators 
+throttle back turbines, disconnect panels and leave 
+hydropower reservoirs full. The limiting factor sits in 
+the wires between one grid and the next.
+A subsea high-voltage direct current (HVDC) 
+interconnector helps direct that surplus to where 
+it can be used. A cable running along the seabed 
+links two national grids, so a country can export 
+power when it has more than it needs and import 
+it when it doesn’t. At each end, a converter station 
+changes the grid’s alternating current (AC) into 
+direct current (DC) for the crossing, then changes it 
+back on arrival. Over distances this long, AC would 
+waste much of its energy repeatedly charging 
+the cable itself, while DC avoids that loss.79 While 
+single links have connected pairs of countries for 
+decades, recent advances have enabled higher-
+voltage cables to connect multiple countries into 
+shared networks.
+Raising the voltage depends on the insulation 
+wrapped around the cable’s copper core. Newer 
+forms of insulation use a tougher, heat-resistant 
+plastic, lined with thin layers that stop electric 
+charge from building up inside it. This allows cables 
+to operate at higher temperatures and enables 
+a single cable to carry more power, which can 
+reduce the number of parallel cables required for 
+a project.80 One cable can now carry roughly the 
+output of two large coal-fired power plants, more 
+than twice what the previous generation carried. 
+That extra capacity is starting to make shared 
+cable networks possible, and regulators have 
+begun replacing project-by-project connections 
+with shared infrastructure planned in advance.81
+Cables now reach far enough to connect places 
+with significantly different weather and resources. 
+Viking Link, which opened at the end of 2023, 
+runs under the North Sea from Denmark to 
+England, helping both countries balance supply 
+and demand as renewable generation fluctuates.82 
+Tunisia and Italy have now contracted the first 
+HVDC cable between Europe and North Africa, 
+which could open a route into Europe for Tunisia’s 
+solar power.83
+Two things need to happen at once for HVDC 
+to scale. Shipbuilders and cable-layers need to 
+keep adding capacity to lay all this cable, since 
+orders are already outpacing what the industry 
+can build and install.84 Manufacturers also need 
+to prove that equipment from different companies 
+can work together on the same line, so a fault in 
+one place doesn’t take down the whole system.85 
+The milestone to watch is the first time the 
+technology is proven on a live, multi-country grid, 
+followed by a contract that actually requires open 
+competition among suppliers. Regulators are 
+moving in the same direction. The UK’s energy 
+regulator approved its first shared, multi-purpose 
+interconnector in 2024, instead of treating each 
+new cable as its own one-off project.86
+Whether subsea HVDC becomes the connective 
+tissue of an integrated offshore electricity system or 
+remains a patchwork of bilateral links depends on 
+whether interoperability can be demonstrated over 
+the next few years.
+ While single links 
+have connected 
+pairs of countries 
+for decades, recent 
+advances have 
+enabled higher-
+voltage cables to 
+connect multiple 
+countries into 
+shared networks.
+Connecting 2,000 GW of offshore 
+wind capacity to the grid by 2050
+International Renewable Energy Agency. (2025). Offshore wind: From 83 GW today to 2,000 GW by 2050.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+22
+
+Equity
+Subsea HVDC connectors allow regions to trade electricity 
+over long distances. They can expand access to cheaper 
+power, reduce price spikes and create skilled jobs in ports, 
+cable installation and grid operation. However, lower energy 
+bills are not guaranteed. Projects require substantial long-
+term financing, strong local grids, converter stations and 
+specialized workers. Regulators determine whether the 
+benefits go mainly to consumers or investors, and whether 
+coastal communities benefit from hosting cable landings. 
+Lower-income markets may need public guarantees, 
+fair pricing and training to participate. In addition, coastal 
+communities and fishing groups should participate in 
+route selection and decisions on livelihood protection 
+and benefit sharing.
+Security
+Subsea HVDC connectors can reduce reliance on imported 
+fuels by connecting countries to neighbouring power 
+systems. They allow regions to share backup capacity, 
+reduce the impact of local shortages and balance wind and 
+solar power across areas with different weather conditions. 
+This can reduce dependence on gas and the need for 
+backup plants, but it also creates new vulnerabilities beneath 
+the sea. A damaged cable or converter station can remove a 
+large amount of electricity, while repair ships and replacement 
+equipment are limited. Cross-border electricity flows also 
+depend on secure digital systems, compatible rules and 
+political trust. A network with several connections offers 
+greater flexibility, while reliance on a few large cables can 
+create strategic weak points.
+Planetary boundaries
+Climate change pressure can decline when these cables 
+deliver renewable electricity from distant regions and reduce 
+fossil-fuel generation. Producing and installing the cables can 
+still create residual emissions, but far less than the fossil fuels 
+they displace.
+Biosphere integrity effects are largely local and concentrated 
+during installation, when trenching disturbs the seabed and 
+stirs up sediment that settles and recovers over time. Once 
+cables are operating, questions remain around their heat 
+and electromagnetic fields, which electro-sensitive species 
+such as sharks, rays and eels can detect. Burying cables 
+and laying pairs close together, so their magnetic fields partly 
+cancel, reduces that exposure. Marine spatial planning, 
+routing that avoids sensitive habitats, appropriate installation 
+methods and monitoring of cumulative effects are needed 
+to limit these pressures. 
+Ocean acidification can be reduced indirectly when the 
+cables replace fossil-fuel generation and reduce the amount 
+of CO2 absorbed by the ocean. The benefit depends on the 
+source of the electricity being traded.
+Subsea HVDC interconnectors’ impact on planetary boundaries
+Planetary
+boundary
+High-risk
+line
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+23
+
+Modular nuclear reactors
+Building nuclear power in 
+smaller, repeatable units
+07
+
+Most places need power that runs every hour, 
+whether or not the wind is blowing or the sun is out. 
+Today, one of the easiest ways to guarantee that 
+continuity is a gas plant that will continue burning gas 
+for the next thirty years. Modular nuclear reactors 
+are a bet that a cleaner option can be built fast 
+and cheaply enough to compete with that default.
+Every nuclear reactor follows the same basic 
+process. Splitting uranium releases heat, the 
+heat turns water into steam, and the steam spins 
+a turbine that generates electricity – the same 
+process a coal or gas plant uses, with fission 
+replacing combustion.87 The idea behind a modular 
+reactor is to build that same machine in the same 
+way as a manufactured product. Standardized 
+parts come off a factory line, ship to a site and are 
+assembled there, the way a modular home goes up 
+in weeks instead of the months a site-built house 
+takes. That approach splits into two families. Most 
+small modular reactors adapt the water-cooled 
+designs that already run most of the world’s nuclear 
+fleet, scaled down to roughly a third the output of 
+a conventional plant. Microreactors shrink the idea 
+further, small enough that some are designed to 
+ship in a handful of standard containers.88
+Small modular reactors have moved from drawings 
+to working plants. Russia has operated a floating 
+plant in its Arctic since 2020, and China has 
+operated a demonstration plant since 2023.89 
+The first in North America is under construction 
+at Ontario Power Generation’s Darlington site in 
+Canada, where four identical reactors are planned.90 
+Technology companies that need round-the-clock 
+power for data centres are now paying to bring 
+more online, with Amazon backing X-energy91 
+and Google contracting with Kairos Power.92
+The microreactor side of the bet is being tested 
+differently. A US Department of Defense programme 
+called Project Pele has finished building a 
+transportable reactor and delivered its first full load 
+of fuel to a national laboratory, aiming to generate 
+electricity by 2028, a target that has already slipped 
+three years from its original schedule.93 For it to 
+replace the diesel generator that would otherwise 
+power a base or mine with no other option, it has 
+to prove that it can run reliably enough, for long 
+enough, without refuelling.
+To help settle the bet, reactor builders need to 
+show that costs fall as they build more of the same 
+design. NuScale’s first planned US plant collapsed 
+in 2023 when the expected price of its electricity 
+climbed by more than half and the Utah towns that 
+had signed up to buy it pulled out. Ontario Power 
+Generation expects its fourth Darlington reactor 
+to cost a third as much as its first. Governments 
+need to fund a domestic supply chain for the more 
+highly enriched uranium fuels needed by many 
+microreactor designs. The US has already started, 
+since the country doesn’t yet produce this fuel at 
+commercial scale.94 At least one dedicated fuel-
+production line is already under construction, with 
+the goal of opening before the end of the decade.95
+To accelerate project timelines, regulators are also 
+starting to allow later projects to reuse already-
+approved reactor designs, skipping a full review 
+for each new project. 
+If costs do fall, modular reactors could be built by 
+the hundreds by 2050.96 That would bring reactors 
+to many communities that have never hosted them, 
+often displacing fossil fuel plants while creating new 
+challenges around waste storage and disposal.
+ If costs do fall, 
+modular reactors 
+could be built 
+by the hundreds 
+by 2050.
+$670 billion small modular reactors 
+buildout by 2050 – if the cost curve holds
+International Energy Agency (IEA). (2025). Outlook for nuclear investment.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+25
+
+Equity
+Nuclear microreactors could replace costly diesel at mines and 
+in remote communities. Small modular reactors using familiar 
+pressurized-water designs could provide electricity and heat to 
+smaller grids and industrial sites. Both could create skilled jobs 
+and reduce exposure to fuel-price swings, but neither guarantees 
+affordable energy. Microreactors may need specialized fuel, transport 
+arrangements and trained operators. Small modular reactors still 
+require cooling systems, grid connections and supporting nuclear 
+infrastructure. Early projects face high financing and licensing costs, 
+and factory production will reduce costs only after many units are 
+built. Public funding, community consent, local training and fair 
+pricing will determine who benefits.
+Security
+Nuclear microreactors could keep essential facilities running during 
+grid failures and replace diesel dependencies with reactors that 
+operate for years. Small modular reactors could add generating 
+capacity gradually while using well-established reactor skills and 
+fuel supplies. However, they change rather than eliminate security 
+risks. Many microreactors require more highly enriched uranium 
+or specialized fuels made by only a few suppliers. Small modular 
+reactors also depend on a concentrated global system for processing 
+and enriching uranium. More reactor sites could increase exposure 
+to physical attacks, cyberattacks and failures in safety controls. 
+Resilience will require diverse fuel suppliers, secure transport, well-
+trained operators, credible plans for handling nuclear waste and 
+strong international regulations, including safeguards for maintaining 
+nuclear safety during conflicts.
+Planetary boundaries
+Climate change pressure can decline when microreactors replace 
+diesel and small modular reactors replace coal or gas. Uranium mining, 
+fuel processing and construction still produce emissions, but these are 
+far outweighed by the benefits over the reactors’ lifetimes.
+Biosphere integrity pressures may decrease where reactor types 
+better avoid habitat conversion and fossil-fuel extraction compared 
+with the electricity sources they replace. However, uranium mining, 
+multiple reactor sites, heated water discharges and rare accidents can 
+still damage habitats.
+Freshwater change depends on the reactor design, cooling method 
+and local water availability. Some microreactor designs can reject 
+heat without cooling-water withdrawals, while water-cooled systems 
+vary in their withdrawals and consumption. Heat and drought can 
+constrain cooling and electricity output, making climate-resilient siting 
+and cooling design important.
+Ocean acidification can be reduced indirectly as both reactor 
+types replace fossil-fuel generation and reduce CO2 emissions. 
+However, slow or expensive deployment could delay these benefits. 
+Novel entities include radioactive waste. Small modular reactors 
+use established fuel types, while many microreactors may use 
+newer fuels that require different systems for treatment, transport 
+and disposal. 
+Land system change pressure can decline because nuclear 
+power needs less land per unit of electricity than almost any 
+other source, although uranium mines and waste storage sites 
+still occupy land.
+Atmospheric aerosol loading can fall where microreactors replace 
+diesel generators at mines, military bases and remote communities, 
+cutting soot and other particulate emissions.
+Modular nuclear reactors’ impact on planetary boundaries
+Planetary
+boundary
+High-risk
+line
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+26
+
+Building-integrated photovoltaics
+Generating electricity from 
+roofs, walls and windows
+08
+
+A city’s rooftops are among its largest unused 
+surfaces. When a solar developer looks for land to 
+build new generating capacity, they typically look 
+past the city towards farmland at its edge, even 
+though the roof of the building next door receives 
+the same sunlight. Cities occupy just 2–3% of the 
+world’s land yet drive 70–80% of its energy use.97
+Building-integrated photovoltaics (BIPV) put a 
+photovoltaic layer to work as a roof, façade or 
+even window.98 Manufacturers laminate silicon cells 
+directly into the glass, metal or polymer a roof or 
+façade would need anyway and wire the whole 
+assembly into the structure as the building goes up. 
+The same principle extends to windows. A thinner, 
+transparent photovoltaic layer can capture invisible 
+infrared light while letting visible light through, so 
+a window still lets daylight in even as it generates 
+power.99 Colour is a separate engineering challenge, 
+since a photovoltaic surface is naturally dark. 
+Coatings can now bend light into colour using a 
+microscopically textured surface, the same principle 
+behind a butterfly wing’s blue. That avoids the paint 
+or dye layer that would otherwise block light before 
+it reaches the cell underneath, so manufacturers 
+can colour-match a panel to a building’s brick 
+or stone while it still generates power.100
+Several recent developments are now helping turn 
+BIPV from bespoke architectural projects into a 
+repeatable construction product: a recognized 
+international standard, faster prefabricated 
+installation methods and new building regulations 
+requiring solar-ready construction. Until recently, 
+a BIPV panel had to satisfy electrical safety codes 
+built for solar panels and, separately, fire, structural 
+and weatherproofing codes built for roofs and 
+walls, with no single standard covering both. 
+A single new international standard now closes 
+that gap, giving certifiers one set of requirements 
+to check against.101 Assembly is catching up 
+too. A prefabricated, insulated façade panel 
+demonstrated in Germany in 2024 snaps into a 
+building without a separate supporting frame and 
+installs in under an hour and a half per panel, a 
+fraction of the time a custom-built façade usually 
+takes.102 The European Union has added its own 
+push. New buildings there must now be solar-ready, 
+with installation required starting in 2026.103
+Two working buildings already show what BIPV 
+construction looks like in practice. Copenhagen 
+International School is clad in 12,000 panels of 
+coloured solar glass, each set at a slightly different 
+angle so the façade shifts between shades of green 
+as the light changes. Together, they supply about 
+half of the school’s electricity.104 At King’s Cross 
+Station in London, the roof was already built and in 
+daily use by roughly 40 million passengers a year 
+when custom glass panels went in to cover part of 
+the Grade I-listed structure (the UK’s highest level 
+of heritage protection). The panels now generate 
+roughly 10% of the station’s electricity, and the 
+station never closed during installation.105
+The remaining challenge is whether BIPV can 
+be valued both as an energy technology and a 
+construction material. A BIPV project is usually 
+judged only on the electricity it produces, even 
+though it’s also the roofing or façade a building 
+needs anyway. Only 13% of BIPV projects make 
+financial sense under electricity-only accounting. 
+Counting the roofing or cladding they replaced as 
+a cost saving pushes the share of viable projects 
+to 62%.106 Manufacturers can also bring costs 
+down by building BIPV at real volume. Real-world 
+installations currently show only one in 10 BIPV 
+projects using fully prefabricated construction,107 
+even though a leading German research institute 
+has already proven a system that works.108 If both 
+pathways move together, BIPV could eventually 
+cost about the same as a standard roof or façade 
+with solar panels installed separately on top. 
+Every building already standing is a potential 
+power plant. BIPV turns existing roofs and walls 
+into part of the energy system, without requiring 
+new land. Whether BIPV remains a niche 
+architectural feature or a standard part of new 
+construction now depends less on the technology 
+itself than on standards, manufacturing scale and 
+how buildings are valued.
+ Manufacturers 
+laminate silicon 
+cells directly into 
+the glass, metal 
+or polymer a roof 
+or façade would 
+need anyway.
+The world’s rooftops could generate 
+27 petawatt-hours of electricity a year –  
+all the world’s homes used six in 2019
+Joshi, S. et al. (2021). High resolution global spatiotemporal assessment of rooftop solar 
+photovoltaics potential for renewable electricity generation. Nature Communications, vol. 12.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+28
+
+Equity
+BIPV replace conventional building materials with solar panels 
+that generate electricity from roofs, façades and windows. By 
+producing power where it is used, they can reduce energy bills 
+and ease pressure on electricity grids, particularly in dense cities 
+with limited land. They can also create skilled local jobs in design, 
+construction and installation, while giving architects and designers 
+greater scope to integrate sustainability into their work. However, 
+the benefits depend on upfront investment, building design, local 
+sunlight, electricity prices and access to financing. Property owners 
+typically receive most of the financial gains, while tenants may not 
+benefit much unless leases or regulations ensure savings are shared. 
+Affordable finance, incentives for social housing, clear standards 
+and workers trained across construction and electrical trades 
+are essential to broadening access.
+Security
+By generating electricity directly on buildings, BIPV can reduce 
+reliance on imported fuels, large power plants and long-distance 
+transmission lines. It can also help relieve pressure on local electricity 
+grids during the day. However, most grid-connected systems 
+stop operating during power outages unless they are paired with 
+battery storage and suitable inverters. BIPV also depends on 
+concentrated solar supply chains and connected inverters that 
+introduce cybersecurity risks. Because the panels also serve as 
+roofs or façades, failures can affect both electricity generation 
+and the building itself. A diverse supplier base, secure technical 
+standards and a skilled maintenance workforce will be critical 
+to ensuring BIPV strengthens energy resilience.
+Planetary boundaries
+Climate change pressure can decrease when BIPV replaces 
+both fossil-fuel electricity and conventional building materials. 
+Manufacturing silicon, glass and other components still creates 
+emissions, but these are far outweighed by the avoided emissions 
+over BIPV’s lifetime.
+Land-system change pressure may decrease where BIPV uses 
+existing buildings and avoids conversion of forests or other natural 
+vegetation for solar farms. 
+Biosphere integrity can be benefitted by reducing the need to convert 
+natural land for energy generation. However, mining silicon, silver and 
+copper can still harm ecosystems unless supported by responsible 
+sourcing and land restoration.
+Freshwater change pressure may decrease when BIPV replaces 
+water-intensive electricity generation. However, producing silicon, 
+glass and metals still requires water and can shift water demand and 
+pollution to manufacturing regions.
+Ocean acidification can be reduced indirectly when solar panels built 
+into buildings replace fossil-fuel electricity, reducing CO2 entering the 
+oceans. Embodied emissions and lower output on shaded surfaces 
+reduce this benefit, but don’t outweigh it.
+BIPV impact on planetary boundaries
+Planetary
+boundary
+High-risk
+line
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+29
+
+Floating offshore wind
+Turning strong deep-
+sea winds into power
+09
+
+Most offshore wind turbines stand on foundations 
+driven into the seafloor, the way pilings hold up a 
+pier. The deeper the water, the taller and heavier 
+that foundation has to be, and beyond about 60 
+metres, the cost stops making economic sense. 
+The strong, steady winds over deeper water mostly 
+go untapped.
+Floating offshore wind works the same way any 
+turbine does, with blades catching the air and 
+spinning a shaft, and the shaft driving a generator 
+that produces current. The difference is what holds 
+the turbine up. A floating turbine rests on a platform 
+riding on the surface, held in place by mooring lines 
+and anchors rather than a rigid connection to the 
+bottom, the way a ship stays put at anchor rather 
+than being built into the harbor floor.109 Replacing 
+a rigid seabed foundation with a moored floating 
+platform lets floating turbines reach water past 300 
+meters deep110 – water that has held some of the 
+world’s strongest offshore wind completely out of 
+reach until now.111
+Several technical solutions make this possible. 
+Where the seabed drops away completely, 
+engineers weigh a long, narrow spar cylinder at 
+the bottom, letting it hang deep underwater so 
+the turbine at the other end rides upright like a 
+fishing bobber, no matter how rough the surface 
+gets. A semi-submersible platform takes a different 
+approach, distributing buoyancy and ballast across 
+several connected floating columns for greater 
+stability. Where the seabed can hold a taut line, 
+anchor lines staked into the bottom pull a tension-
+leg platform down tight instead, using buoyancy 
+and tension together to limit movement, more 
+like a tent pitched hard into the ground.112
+The amount of steel and cable a floating wind 
+project needs per megawatt produced is falling 
+rapidly for two reasons. One large turbine can now 
+generate what used to require several smaller ones. 
+Building fewer turbines means building less of 
+everything that holds them up, cutting total project 
+costs 15 to 20%.113 Anchoring has also gotten 
+smarter on its own. Platforms placed close enough 
+together can now share a single anchor point 
+instead of each one needing its own, cutting how 
+much anchor hardware a project needs, regardless 
+of turbine size.114 As a result, floating offshore wind 
+has fallen down the cost curve, and multi-turbine 
+floating arrays are now running at scale.
+One of those arrays, WindFloat Atlantic, sits 
+off Portugal on three floating platforms. It has 
+produced power continuously for four years and, 
+along the way, ridden out a storm with waves as 
+tall as a six-story building and winds strong enough 
+to flip a truck, without any damage.115 Off the coast 
+of Norway, 11 floating turbines built by Equinor, 
+the country’s state-controlled energy company, 
+power five oil and gas platforms far out at sea. 
+The platforms otherwise burn some of the gas 
+they produce to make their own electricity, and the 
+turbines are designed to supply about a third of it, 
+and more when the wind is strong.116
+To capture steady, strong winds blowing over the 
+deep ocean at scale, the industry needs to coalesce 
+around a small number of platform designs so 
+certification bodies can publish shared standards 
+for anchors and underwater power cables.117 
+Once a design can be certified against a common 
+standard, manufacturers can build the same platform 
+repeatedly instead of engineering each project from 
+scratch. That transition from bespoke engineering 
+to repeatable manufacturing is what will determine 
+whether floating offshore wind follows the same 
+cost curve as fixed offshore wind. Ports also need 
+to evolve. A floating platform is built and assembled 
+onshore, then towed out to sea fully formed, so the 
+port itself has to be large enough to construct and 
+launch something that size, not just receive finished 
+turbines. To address this issue, the UK is already 
+building a dedicated assembly hub at one of its ports, 
+due to open in 2027.118 Other governments with deep 
+coastal water need ports built to the same scale.
+Floating wind costs roughly 1.5 to 2 times what 
+fixed-bottom offshore wind costs today. Forecasts 
+now put those two costs on a converging path 
+by around 2030 to 2032, contingent on the 
+development of shared platform standards and 
+factories beginning to build identical platforms at 
+scale.119 Closing this gap on schedule is the real test.
+Not every floating wind project announcement 
+leads to actual construction. Some companies have 
+already walked away from projects with government 
+backing already secured, taking a payout instead of 
+building anything at all.120 Whether floating offshore 
+wind follows the cost curve of fixed offshore 
+wind now depends less on engineering than on 
+standardization, manufacturing capacity and the 
+infrastructure needed to build projects at scale.
+ Replacing 
+a rigid seabed 
+foundation with 
+a moored floating 
+platform lets 
+floating turbines 
+reach some of the 
+world’s strongest 
+offshore wind.
+Unlocking 80% of the world’s 
+offshore wind resource
+Global Wind Energy Council. (2022). Floating offshore wind: A global opportunity.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+31
+
+Equity
+Floating wind turbines can use stronger winds farther offshore, 
+providing new electricity for coastal regions and islands. 
+They could diversify electricity supplies, reduce the impact of 
+fuel-price increases and create jobs in ports, manufacturing 
+and marine services. However, floating wind projects are currently 
+more expensive than turbines fixed to the seabed. They also need 
+upgraded ports, specialized ships, new connections to the grid 
+and long-term investment. Electricity-market rules and pricing 
+determine whether future cost reductions benefit households and 
+businesses. Early consultation, local training and fair procurement 
+can help ensure that coastal communities gain skilled jobs rather 
+than mainly bearing disruption to fishing and other livelihoods.
+Security
+Floating wind can access large areas of deep water, reduce reliance 
+on imported fuels and spread electricity generation across more 
+locations. Because the turbines need no fuel to operate, they are 
+less exposed to sudden changes in commodity prices. However, 
+changing wind conditions still require flexible grids, batteries or other 
+backup power. Some risks are also shifted offshore. Electricity may 
+depend on underwater cables, sometimes with limited alternative 
+routes. Repairs require suitable ports, specialized ships, favourable 
+weather and trained crews. Turbines also require large amounts of 
+steel and copper, while some use rare-earth magnets made through 
+supply chains concentrated in a few countries. Resilience, therefore, 
+depends on spare cables, repair capacity, diverse suppliers and 
+coordinated grid planning.
+Planetary boundaries
+Climate change pressure can be reduced because floating wind 
+produces few emissions over its lifetime and can replace fossil-fuel 
+power. Producing steel, concrete and cables, as well as operating 
+construction and repair ships, can still create emissions, but far less 
+than the fossil fuels they replace. 
+Biosphere integrity outcomes are site-specific. Floating turbines 
+may reduce some seabed disturbance relative to fixed-bottom 
+designs as they avoid pile-driving, one of the loudest sources 
+of underwater noise and a major concern for porpoises, dolphins 
+and whales. Colonization of their structures does not by itself 
+establish a net biodiversity benefit. Mooring lines and dynamic 
+cables suspended in the water column can catch lost fishing gear, 
+creating an entanglement risk for whales and turtles, while anchors, 
+vessel activity and turbine blades can affect habitats, fish and seabirds. 
+Siting, cumulative effects, fisheries displacement and long-term 
+monitoring must inform deployment.
+Ocean acidification can be reduced indirectly when floating wind 
+reduces CO2 emissions from electricity generation, provided it replaces 
+fossil-fuel power rather than simply adding to total electricity supply.
+Land system change pressure may decrease where floating wind 
+avoids the conversion of forests or other natural vegetation for land-
+based power generation. However, ports, substations and electricity 
+lines can still take up coastal land and divide habitats.
+Planetary
+boundary
+High-risk
+line
+Floating offshore wind impact on planetary boundaries
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+32
+
+Next-generation lithium batteries
+Storing more energy in less weight
+10
+
+Lithium is light enough to float on water. That same 
+lightness is why it holds more energy for its weight 
+than any other practical battery material, and why 
+it became the standard chemistry for nearly every 
+battery built today. Engineers have pushed that 
+design close to its limit. Getting more now means 
+changing what’s inside the battery without giving up 
+the energy density that made lithium the choice in 
+the first place.
+Next-generation lithium batteries keep lithium 
+ions carrying charge between two electrodes and 
+rebuild a different part of the battery around it. In a 
+conventional cell, lithium ions slide in and out of the 
+electrodes, always returning to the same fixed spot. 
+One electrode is made mainly of graphite, while the 
+other is made of a heavier compound containing 
+lithium and other metals such as cobalt and nickel. 
+A flammable liquid sitting between the electrodes 
+carries those ions back and forth.121
+Lithium-sulphur batteries replace the heavier 
+electrode with sulphur and swap graphite for pure 
+lithium metal. As the battery discharges, sulphur 
+reacts with lithium and dissolves, much like ice 
+melting into water. Charging reverses the reaction, 
+and the sulphur reforms, much like water freezing 
+back into ice. That direct reaction, dissolving and 
+reforming rather than sliding in and out of a fixed 
+spot, is what lets the cell pack more energy into 
+the same space than a conventional design can.122 
+Solid-state batteries leave the electrodes in place 
+and target the liquid instead, replacing it with a 
+solid material that conducts lithium ions but blocks 
+electrons, and cannot catch fire the way the liquid 
+can. Removing that liquid also clears the way for 
+pure lithium metal in place of graphite, the same 
+upgrade lithium-sulphur makes, from a different 
+direction, without the fire risk.123 Both approaches 
+pack more energy into the same weight of material, 
+so a lighter battery can do the same job, or the 
+same battery can do more.
+In the past few years, coatings have begun to 
+address the specific failure modes that kept 
+next-generation lithium batteries locked in the lab 
+for decades. In a solid-state cell, thin threads of 
+metallic lithium called dendrites grow through the 
+solid electrolyte during charging, much like tree 
+roots finding and widening a crack in pavement, 
+until they connect the two sides and short the 
+battery. New coatings and layered materials now 
+block those threads before they can spread.124 In 
+a lithium-sulphur cell, the reaction at the sulphur 
+electrode throws off a byproduct that drifts to the 
+lithium side like silt settling into a pipe, coating it 
+and cutting the battery’s life short. A coating tested 
+at Argonne National Laboratory now traps that 
+byproduct before it reaches the lithium side and has 
+kept a test cell running for 700 charge cycles.125
+Next-generation lithium batteries have already 
+left the lab for the road, the sky and orbit. Lyten, 
+a US-based battery start-up, has cells flying in 
+commercial drones and has been selected for a 
+demonstration aboard the International Space 
+Station.126 Solid-state has moved further still, 
+without leaving Earth. In September 2025, a cell 
+built by QuantumScape and PowerCo powered 
+a motorcycle around a demonstration circuit at 
+a major auto show, charging from 10% to 80% in 
+about the time it takes to fill a gas tank.127 Toyota 
+and its battery supplier Idemitsu have gone a step 
+further again, committing to solid-state cells in a 
+production vehicle by 2027 or 2028 – the clearest 
+signal yet of how soon this technology could reach 
+an ordinary car.128
+Lithium-sulphur will prove itself once it can hold 
+far more charge than today’s batteries and survive 
+years of daily charging. The coating that already 
+protects a small lab cell needs to carry over into 
+a full-size battery, with the same reliability it shows 
+in the lab. Producers are now building and testing 
+cells at that larger scale to prove it can work.129
+Solid-state will prove itself once car factories can 
+build it repeatedly at a cost close to that of today’s 
+batteries. Getting there means mastering exact 
+control over layer thickness, pressure and humidity 
+– the kind of precision that turns one successful 
+cell into thousands of identical ones. Every cell that 
+comes off the line at that same quality closes the 
+gap between today’s higher production cost and 
+the price point automakers are building towards.130 
+Both chemistries are converging on the same 
+milestone. A factory that can build the exact same 
+battery, flawlessly, run after run, is what turns a 
+working cell into a technology ready for real scale.
+Both routes retain a dependence on lithium. 
+Lithium-sulphur cells avoid nickel and cobalt, 
+while solid-state cells may still use cathodes 
+containing these metals. Higher energy density 
+can open new applications, potentially increasing 
+total lithium demand. Where that deepening 
+demand gets met, and under what conditions, 
+is a question next-generation lithium batteries 
+have only begun to raise.
+ Both approaches 
+pack more energy 
+into the same 
+weight of material, 
+so a lighter 
+battery can do 
+the same job, or 
+the same battery 
+can do more.
+EV battery demand is expected to grow  
+almost seven times by 2035
+International Energy Agency (IEA). (2024). Outlook for battery and energy demand.
+Indication of economic opportunity
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+34
+
+Equity
+Lithium-sulphur and solid-state batteries could store more 
+energy in a smaller, lighter battery. This could extend the range 
+of electric vehicles, improve backup power and reduce the 
+amount of equipment needed for energy storage. They also 
+have distinct advantages: lithium-sulphur batteries replace 
+expensive nickel and cobalt with low-cost sulphur, while solid-
+state batteries may be less likely to catch fire. However, none of 
+these technologies guarantees lower electricity or vehicle costs. 
+Lithium price, new manufacturing equipment, high levels of 
+early production waste and uncertainty about cycle lives could 
+keep costs high. Affordable financing, strong warranties, repair 
+and recycling networks, skilled workers and clear manufacturer 
+responsibilities will determine where the jobs and savings go.
+Security
+These batteries could reduce oil use and help store renewable 
+electricity, but each technology has different supply risks. Lithium-
+sulphur batteries avoid nickel and cobalt but still depend on lithium 
+metal. Solid-state batteries may use fewer flammable liquids, but 
+they require specialized materials and highly precise manufacturing. 
+Both technologies still depend on lithium processing and battery 
+production concentrated in a small number of countries. While 
+circular models could help mitigate these dependencies, batteries 
+that wear out quickly, have fragile internal components or produce 
+too many defective units could still prove unreliable and expensive. 
+Supplier diversity, common standards and battery-specific recycling 
+systems will determine which technology can scale, and which can’t.
+Planetary boundaries
+Climate change pressure can be reduced if these batteries speed 
+up the shift to electric transport and renewable electricity. Energy-
+intensive materials, production waste and batteries that need early 
+replacement could offset some of these gains, but not enough to 
+reverse the overall benefit. 
+Freshwater change pressure may increase where additional lithium 
+extraction and processing alter water availability, particularly in water-
+stressed regions. Impacts depend on the deposit, extraction method 
+and local hydrology. Contamination can also harm ecosystems and 
+communities, while recycling can reduce the need for new lithium.
+Biosphere integrity can be harmed as new lithium mines take up land 
+and disturb habitats. On the other hand, lithium-sulphur batteries may 
+reduce the need for nickel and cobalt mining. The effect of solid-state 
+batteries will depend on the materials eventually used at scale.
+Novel entities remain a concern because lithium-sulphur batteries 
+use liquid chemicals that can become hazardous waste, including 
+the PFAS (per- and polyfluoroalkyl substances) family of persistent 
+chemicals, which recent research has traced in the environment 
+around battery manufacturing sites.131 Solid-state batteries may be 
+safer because they use fewer flammable liquids, but they introduce 
+other less familiar materials, including sulphides, oxides and polymers.
+Ocean acidification can be reduced indirectly when advanced lithium 
+batteries help renewable power and electric vehicles replace fossil 
+fuels, reducing the amount of CO2 entering the oceans. Manufacturing 
+emissions reduce this benefit, but not enough to reverse it.
+Planetary
+boundary
+High-risk
+line
+Next-generation lithium batteries’ impact on planetary boundaries
+Planetary boundaries net impact:
+Likely positive (inward arrow)
+Likely negative (outward arrow)
+Unclear
+Climate 
+change
+CO2-
+concen-
+tration
+Radiative 
+forcing
+P cycle
+Green 
+water
+Functional 
+integrity
+Genetic 
+diversity
+Blue 
+water
+Stratospheric 
+ozone 
+depletion
+Atmospheric
+aerosol
+loading
+Ocean 
+acidiﬁcation
+Modiﬁcation of 
+biogeochemical 
+ﬂows
+Freshwater 
+change
+Land system 
+change
+Change in 
+biosphere 
+integrity
+Introduction of
+novel entities
+N cycle
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+35
+
+Conclusion
+The 10 technologies featured in this report offer 
+benefits beyond emissions reduction. Together, 
+they could strengthen resilience, improve energy 
+security and reduce pressure on the planet’s natural 
+systems. Their contribution depends on the systems 
+they replace, where they are deployed and how 
+impacts are managed across their full life cycles. 
+Lower carbon emissions do not automatically imply 
+lower pressure on every planetary boundary.
+Today’s conditions make that promise even more 
+compelling. Fuel markets are more volatile than they 
+were a decade ago, mineral supply chains have 
+concentrated in fewer hands, and more countries 
+are choosing to generate power at home rather 
+than depend on others for it. At the same time, 
+energy infrastructure must withstand intensifying 
+heat, drought, storms and coastal flooding. 
+The technologies best positioned to benefit from 
+that situation are the ones that trade a fragile 
+dependency, an imported tanker, a single overseas 
+supplier, for an energy source a country can build 
+and hold on to itself, or share with neighbours on 
+terms it can rely on.
+That trade is real progress, but it rarely ends the 
+story. Sodium and zinc can be sourced in many 
+places on Earth, yet nearly all of the world’s 
+sodium-ion battery cells are still built inside a single 
+country’s factories. A grid coordinated by software 
+can call on thousands of batteries and thermostats 
+at once, solving a problem no fuel tank ever could, 
+and simultaneously creating a single system a bad 
+actor could disrupt at scale. Dependencies can be 
+reduced but rarely removed entirely.
+How a technology reaches scale carries its own 
+version of the same trade-off. A building-integrated 
+solar panel or a sodium-ion battery installation 
+succeeds or fails one project at a time, so one 
+weak deployment barely dents the average, and 
+progress compounds across thousands of small 
+wins even when no single one makes headlines. 
+A modular reactor or a subsea cable is tested by 
+a handful of projects – or sometimes only one. 
+When that’s the case, the entire bet rides on that 
+project succeeding, and a single failure (e.g. a 
+cancelled reactor order or a stalled cable contract) 
+can look like proof that the technology doesn’t 
+work even when the underlying economics haven’t 
+changed. These two paths put the risk in different 
+places – spread thin across many small bets, or 
+concentrated in a few large ones – and reward 
+different kinds of patience accordingly.
+Whichever bets pay off, the more important 
+question will remain unanswered. Getting the 
+technology right does not guarantee getting the 
+outcome right. A solar façade may lower a building’s 
+electricity bill, but tenants will not capture their share 
+of the savings unless a lease or regulation distributes 
+them differently. An offshore wind farm may create 
+jobs, but they will not necessarily go to the fishing 
+communities that use those waters unless local 
+hiring is built into the contract. A cement plant using 
+a lower-carbon blend may reduce costs for public 
+buyers, but only if procurement rules assess cement 
+on performance rather than habit. A battery factory 
+that uses abundant, widely sourced minerals may 
+still concentrate jobs in one country unless the 
+investment agreement addresses how benefits will be 
+shared. Communities also need a voice in siting and 
+benefit-sharing decisions, protection of livelihoods 
+and access to affordable energy. Every one of these 
+decisions has to be made while the technology is 
+still being built, not once it is already running.
+The same test will apply to whichever technologies 
+join this list next. Enhanced geothermal offers a 
+domestic, always-on source of power that AI-
+assisted exploration is making steadily cheaper to 
+find, though it featured in last year’s edition and was 
+set aside on that basis rather than its merits. Cooling 
+already accounts for more than a third of electricity 
+demand in some tropical economies, a share only 
+growing as cities warm, but the most cutting-edge 
+approaches, such as solid-state cooling, remain too 
+early-stage to offer a credible path to deployment by 
+2030. Nuclear fusion could reshape energy systems 
+entirely if it ever closes the gap that still separates 
+it from commercial reality. Each will eventually face 
+the same question that the 10 in this report already 
+do: what dependencies will it create and who will 
+decide where that dependency lands?
+The window to answer those questions is short. 
+Every technology in this report was chosen for a 
+credible path to deployment by 2030,132 so the 
+contracts, standards and siting choices that will 
+settle those questions are being made now. Energy 
+produces roughly three-quarters of the world’s 
+greenhouse gas emissions, and those emissions 
+will keep adding up for as long as today’s systems 
+stay in place.
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+36
+
+Appendix 1: Planetary 
+boundaries primer
+The planetary boundaries framework identifies 
+nine critical Earth system processes that regulate 
+the stability and resilience of the planet. Scientists 
+have defined safe operating limits for each of 
+these processes to ensure a stable environment 
+for humanity. 
+Biosphere integrity (boundary crossed) measures 
+the health and diversity of ecosystems and species. 
+Loss of biodiversity undermines the resilience of 
+Earth’s systems and the benefits they provide.
+Climate change (boundary crossed) refers to 
+the increase in the concentration of greenhouse 
+gases in the atmosphere, primarily CO2. Crossing 
+this boundary increases the risk of severe and 
+irreversible climate impacts.
+Freshwater change (boundary crossed) concerns 
+the consumption and management of freshwater 
+resources. Overuse can lead to water scarcity 
+and ecosystem degradation.
+Land-system change (boundary crossed) 
+involves the conversion of forests, grasslands 
+and other natural habitats into agricultural 
+or urban areas. Excessive land-use change 
+disrupts ecosystems and carbon storage.
+Modification of biogeochemical flows (boundary 
+crossed) tracks the flow of nutrients, especially 
+nitrogen and phosphorus, from fertilizers into the 
+environment. Excessive flows cause water pollution 
+and dead zones in oceans and lakes.
+Novel entities (boundary crossed) covers the 
+release of new substances, such as synthetic 
+chemicals, plastics and elements whose 
+abundances have been altered by humans, 
+including heavy metals. These can have unknown 
+or harmful effects on living organisms and 
+ecosystems and contribute to climate change, 
+atmospheric aerosol loading and stratospheric 
+ozone depletion.
+Ocean acidification (boundary crossed) 
+results from increased CO2 dissolving in oceans, 
+lowering pH levels. This threatens marine life, 
+especially organisms with calcium carbonate 
+shells or skeletons.
+Atmospheric aerosol loading refers to the 
+presence of tiny particles in the atmosphere 
+from pollution, dust or natural sources. High 
+concentrations affect climate and human health.
+Stratospheric ozone depletion involves 
+the thinning of the ozone layer, which protects 
+life on Earth from harmful ultraviolet radiation. 
+Ozone depletion increases health risks and 
+damages ecosystems. 
+Staying within these boundaries is essential 
+for maintaining a stable and resilient planet.
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+37
+
+Appendix 2: Methodology
+The 10 technologies featured in this report 
+were selected through a combination of AI-driven 
+discovery, thematic prioritization and expert 
+consultations. The detailed methodology is 
+outlined below.
+Phase 1: Technology discovery
+Frontiers’ AI Discovery Tool was used to identify, 
+assess and rank a longlist of 80 emerging 
+technologies according to the following instructions.
+Scope and definitions
+	–
+Subject: emerging technologies that could 
+enable human activities to remain within 
+planetary boundaries while remaining affordable, 
+scalable and accessible globally (the study 
+covers both entirely novel innovations 
+and established technologies applied in 
+transformative new ways)
+	–
+In scope: scientific, engineering, digital, biological, 
+chemical or materials-based approaches
+	–
+Out of scope: policy, finance, governance 
+or behaviour-change interventions
+Eligibility gating 
+Technologies failing any of the three gates below 
+were automatically excluded from the longlist.
+	–
+A current technology readiness level (TRL) 
+of 5–8
+	–
+A credible commercial deployment pathway 
+by 2030 
+	–
+A stated, plausible mechanistic link to at least 
+one planetary boundary
+Assessment criteria and relative weights
+Technologies passing the three gates were 
+assessed and ranked according to the following 
+weighted criteria.
+	–
+Academic momentum (20%): ecosystem trend, 
+tech-specific trend, basis used, growth figures
+	–
+Commercial momentum (15%): patents, 
+funding, start-up/company activity, milestones
+	–
+Deployment viability (25%): TRL/anchor, 
+developer breadth, cost/trajectory, critical 
+materials, barrier, regulatory status, concentration 
+risk, supply chain trajectory, project pipeline
+	–
+Planetary boundaries impact (40%): the breadth 
+and magnitude of each technology’s positive 
+and negative effects across the planetary 
+boundaries, with greater weight given to 
+boundaries that are already significantly overshot
+Table 1 presents the full list of technologies 
+identified during the discovery phase.
+1
+Advanced compressed air energy storage
+2
+Advanced point-source carbon capture
+3
+AI-driven materials discovery
+4
+Ammonia cracking for hydrogen
+5
+Anion-exchange-membrane electrolysis
+6
+Atmospheric water harvesting
+7
+Battery hydrometallurgical recycling
+8
+Biochar carbon removal
+9
+Bioenergy with carbon capture (BECCS)
+10
+Biomass gasification
+11
+Building-integrated photovoltaics
+12
+Calcined-clay limestone cement (LC3)
+13
+Cellulosic ethanol
+14
+Chemical recycling (pyrolysis) of mixed plastics
+15
+Closed-loop geothermal systems
+16
+CO2 mineralised construction materials
+17
+CO2 thermodynamic batteries
+18
+CO2-to-chemicals electrolysis
+19
+Controlled-environment vertical farming
+20
+Cultivated meat
+21
+Digital twins for power grids
+22
+Direct air capture
+23
+Direct lithium extraction
+24
+e-Methane (power-to-gas)
+25
+e-Methanol synthesis
+26
+Enhanced geothermal systems
+Full list of technologies
+TA B L E 1
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+38
+
+27
+Enhanced rock weathering
+28
+Enzymatic plastic recycling
+29
+Floating offshore wind
+30
+Floating photovoltaics
+31
+Gene-edited climate-resilient crops
+32
+Gravity-based energy storage
+33
+Green ammonia synthesis
+34
+Green hydrogen salt-cavern storage
+35
+Grid-forming inverters
+36
+Grid-scale flywheel storage
+37
+High-temperature gas-cooled reactors
+38
+High-temperature superconducting cables
+39
+Hydrogen direct-reduced iron steelmaking
+40
+In-situ carbon mineralization
+41
+Iron-air batteries
+42
+Liquid air energy storage
+43
+Liquid organic hydrogen carriers
+44
+Lithium-sulfur batteries
+45
+Low-carbon aluminium (inert anode smelting)
+46
+Methane pyrolysis (turquoise hydrogen)
+47
+Methane-inhibiting feed additives
+48
+Microalgae protein production
+49
+Microbial nitrogen-fixing biofertilizers
+50
+Microbial protein from gas fermentation
+51
+Molten oxide electrolysis steelmaking
+52
+Mycelium-based materials
+53
+Next-generation concentrated solar power
+54
+Nuclear microreactors
+55
+Passive daytime radiative cooling
+56
+PEM water electrolysis
+57
+Perovskite-silicon tandem solar cells
+58
+PFAS destruction technologies
+59
+PHA bioplastics
+60
+Power-to-liquid sustainable aviation fuel
+61
+Precision agriculture sensing
+62
+Precision fermentation
+63
+Pumped thermal (Carnot) storage
+64
+Satellite methane monitoring
+65
+Silicon-anode lithium-ion batteries
+66
+Small modular reactors (integral PWR)
+67
+Sodium-cooled fast reactors
+68
+Sodium-ion batteries
+69
+Solar-thermal desalination
+70
+Solid-oxide electrolysis
+71
+Solid-state (caloric) cooling
+72
+Solid-state lithium batteries
+73
+Subsea HVDC interconnectors
+74
+Thermal energy storage (heat batteries)
+75
+Thermoelectric waste-heat recovery
+76
+Tidal stream energy
+77
+Vanadium redox flow batteries
+78
+Virtual power plants
+79
+Wave energy converters
+80
+Zinc-based batteries
+Full list of technologies (continued)
+TA B L E 1
+Phase 2: Thematic prioritization 
+The project team reviewed the list and prioritized 
+20 technologies with the greatest potential to 
+deliver impact against the following metrics:
+	–
+Sustainability: potential to reduce pressure 
+on planetary boundaries and support 
+environmentally sustainable energy systems
+	–
+Equity: potential to improve energy access, 
+affordability and price stability while supporting 
+inclusive economic growth and development
+	–
+Security: potential to strengthen energy security 
+through a more diversified energy mix, increased 
+energy availability and more reliable, resilient 
+energy systems
+During this process, technologies featured in the 
+2026 or 2025 editions of the Top 10 Emerging 
+Technologies report were excluded from the top 20. 
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+39
+
+Five technology groupings were also introduced to 
+consolidate closely related technologies that address 
+the same challenge through similar approaches:
+	–
+Abundant-material batteries: zinc-based 
+batteries, iron-air batteries, sodium-ion batteries
+	–
+Air-based energy storage: advanced 
+compressed air energy storage, liquid air 
+energy storage
+	–
+Modular nuclear reactors: nuclear 
+microreactors, small modular reactors – integral 
+pressurized water reactor (PWR)
+	–
+Next-generation lithium batteries: lithium-
+sulphur batteries, silicon-anode lithium-ion 
+batteries, solid-state lithium batteries
+	–
+Virtual power plants and smart grids: virtual 
+power plants, digital twins for power grids
+Phase 3: Final selection
+An advisory committee of 18 experts from 
+business, academia, government and international 
+organizations was convened, representing 10 
+countries across six regions.
+Committee members received a survey asking them 
+to rank the 20 shortlisted technologies from most 
+to least important. They could also nominate up 
+to three additional technologies from the broader 
+list of 80. Members were asked to apply the same 
+sustainability, equity and security criteria used 
+during phase 2. A Borda count was then used to 
+aggregate the responses and identify a provisional 
+top 10. Several write-in additions were considered, 
+but none was included in the top 10. Table 2 
+presents all proposed additions, the number of 
+times each was suggested, their rankings and the 
+rationale for not including them in the final selection.
+Technology
+Suggestions
+Ranks
+Rationale
+Enhanced geothermal systems
+5
+2,4,5,6,21
+Featured in 2025 edition
+Grid-forming inverters
+2
+6,22
+Featured in 2025 edition
+Direct air capture
+2
+18,23
+Limited energy relevance
+Passive daytime radiative cooling
+1
+10
+Featured in 2026 flagship
+Aqueous batteries
+1
+2
+Limited suggestions
+Copper metallisation for solar cells
+1
+3
+Limited suggestions
+Tidal power
+1
+6
+Limited suggestions
+Rare-earth magnet recycling
+1
+12
+Limited suggestions
+Hydrogen direct-reduced iron steelmaking
+1
+21
+Limited suggestions
+Battery hydrometallurgical recycling
+1
+22
+Limited suggestions
+Gravity-based storage
+1
+22
+Limited suggestions
+Solar-thermal desalination
+1
+23
+Limited suggestions
+Material circularity
+1
+4
+Broad scope
+Advanced grid technologies
+1
+6
+Broad scope
+Synthetic fuels
+1
+15
+Broad scope
+Green hydrogen and derivatives
+1
+21
+Broad scope
+Cultivated meat
+1
+21
+Limited energy relevance
+Carbon removal and next generation CCUS
+1
+22
+Broad scope
+Low carbon building materials
+1
+23
+Broad scope
+Suggested additions
+TA B L E 2
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+40
+
+Members discussed the provisional selection 
+during a group meeting and were subsequently 
+given the opportunity to revise their rankings, 
+except for the top 5, for which there was already 
+broad consensus. Figure 2 presents the final 
+voting results.
+Final voting results
+F I G U R E 2
+Next-generation 
+lithium batteries
+Molten oxide 
+electrolysis steelmaking
+Solid-oxide
+electrolysis
+Air-based energy 
+storage
+Next-generation con-
+centrated solar power
+Solid-state (caloric) 
+cooling
+High-temperature 
+superconducting cables
+Vanadium redox ﬂow 
+batteries
+High-temperature 
+gas-cooled reactors
+Anion-exchange-
+membrane electrolysis
+CO2 thermodynamic 
+batteries
+Calcined-clay
+limestone cement (LC3)
+Virtual power plants 
+and grids
+Abundant materials 
+batteries
+Thermal energy 
+storage (heat batteries)
+Perovskite-silicon 
+tandem solar cells
+Subsea HVDC 
+interconnectors
+Modular nuclear 
+reactors
+Building-integrated 
+photovoltaics
+Floating offshore wind
+Technology
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Rank
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+Individual rankings
+Average rank
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+41
+
+World Economic Forum 
+Kimmy Bettinger
+Manager, Centre for Frontier Technologies 
+and Innovation
+Helen Burdett
+Director, Centre for Frontier Technologies 
+and Innovation
+Valentin Golovtchenko
+Manager, Centre for Frontier Technologies 
+and Innovation
+Shivin Kohli
+Senior Manager, Strategic Insight & Foresight,  
+Centre for Nature and Climate
+Meredith McCleary
+Analyst, Strategic Impact,  
+Centre for Frontier Technologies and Innovation
+Frontiers
+Toby Dore
+Advanced Analytics Manager
+George Thomas
+Head, External Affairs, Strategic Partnerships
+Contributors
+Acknowledgements
+Advisory Committee
+Doug Arent
+Senior Fellow, Polsky Energy Center, 
+World Resources Institute
+Alessa Berg
+Founder and Chief Executive Officer,  
+Top Tier Impact
+Rumaitha Al Busaidi
+Vice-President, Environment Society of Oman
+Ben Caldecott
+Founding Director, Oxford Sustainable Finance 
+Group, University of Oxford
+Frederick Fenter
+Chief Executive Editor, Frontiers
+Rana Ghoneim
+Director, Division of Energy and Climate Action, 
+United Nations Industrial Development Organization
+Arunabha Ghosh
+Founding Chief Executive Officer, Council on 
+Energy, Environment and Water
+Earl Jones
+Operating Partner, DCVC
+Ann Mettler
+President, Catalyse Europe
+Gregory Nemet
+Professor, La Follette School of Public Affairs, 
+University of Wisconsin–Madison
+Charlotte Pera
+Executive Director, Sustainability Accelerator, 
+Stanford Doerr School of Sustainability
+Samir Rachidi
+Director General, IRESEN
+Joisa Saraiva
+Professor and Director, Fundação Getulio Vargas
+Guruprakash Sastry
+Regional Head, Infrastructure (Climate); 
+Associate Vice-President, Infosys
+Kevin Chika Urama
+Chief Economist and Vice-President, 
+African Development Bank
+Evelyn Wang
+Vice-President for Energy and Climate, 
+Massachusetts Institute of Technology
+Mehrad Yaghmai
+Managing Partner, Cool Climate Collective
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+42
+
+World Economic Forum
+Anne Therese Andersen
+Senior Associate, Emerging Markets, 
+Centre for Energy and Materials
+Roberto Bocca
+Senior Director, Centre for Energy and Materials
+Sebastian Buckup
+Managing Director, World Economic Forum
+Aengus Collins
+Director, Strategic Insight, 
+Centre for Nature and Climate
+Akshay Joshi
+Senior Director, Centre for Cybersecurity 
+& Frontier Technology
+Espen Mehlum
+Director, Energy, Centre for Energy and Materials
+Stephan Mergenthaler
+Managing Director, Chief Technology Officer
+Frontiers
+Anna Ondicova
+Strategic Partnerships and Engagements
+Production
+Louis Chaplin
+Editor, Studio Miko
+Laurence Denmark
+Creative Director, Studio Miko
+Charlotte Ivany
+Designer, Studio Miko
+George Messer
+Designer, Studio Miko
+World Economic Forum 
+Public Engagement
+Maxwell Hall
+Creative Editorial Lead
+Floris Landi
+Design Lead
+Sybile Penhirin 
+Head, Video and Design
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+43
+
+1.	
+Potsdam Institute for Climate Impact Research. (2026). Planetary health check 2026: A scientific assessment of the state 
+of the planet.  .
+2.	
+Rothman, M. (2021). Can concrete, a major CO2 emitter, be made greener?. PBS News.  
+show/can-concrete-a-major-co2-emitter-be-made-greener.
+3.	
+Ibid.
+4.	
+Gregory, J. & Logan, A. (2025). Concrete. Massachusetts Institute of Technology (MIT) Climate Portal.  
+ .
+5.	
+Antoni, M., Rossen, J., Martirena, F. & Scrivener, K. (2012). Cement substitution by a combination of metakaolin and 
+limestone. Cement and Concrete Research, vol. 42, no. 12, pp. 1579–1589.  
+article/abs/pii/S0008884612002074.
+6.	
+Ibid.
+7.	
+United Nations Industrial Development Organization. (2026). LC3 guide: Best practices.  
+resources/lc3-guide-best-practices/.
+8.	
+Limestone Calcined Clay Cement (LC3). (n.d.). History LC3-Project.  .
+9.	
+Kanavaris, F. et al. (2023). Standardisation of low clinker cements containing calcined clay and limestone. 
+Materials and Structures, vol. 56, article. 169.  .
+10.	
+Ibid.
+11.	
+Thanhauser, S. (2024). A gamechanger for low-carbon cement. ClimateWorks Foundation.  
+blog/a-gamechanger-for-low-carbon-cement/
+12.	
+Cementir Holding. (2022). Cementir further exploits FUTURECEM®, limestone calcined clay technology, by launching 
+in France and Benelux.  
+limestone-calcined-clay-technology-launching.
+13.	
+Gangotra, A., Kennedy, K. & Carlsen, W. (2024). The U.S. needs to lower cement emissions—“Blended cement” can help. 
+World Resources Institute.  .
+14.	
+Clean Air Task Force. (2025). Recasting the future: Policy approaches to drive cement decarbonization.  
+ .
+15.	
+European Committee for Standardization. (2021). EN 197-5:2021: Cement—Part 5: Portland-composite cement CEM 
+II/C-M and composite cement CEM VI.  
+05787fc839a2/en-197-5-2021?srsltid=AfmBOorYHZQGi8382Q6rL1Rhe-MBn4DqWEctz97oTPEelEGm2i5AOTzP .
+16.	
+United Nations Industrial Development Organization. (2025). Standards for building a low-carbon and low-clinker future. 
+ .
+17.	
+International Energy Agency (IEA). (2025). Demand- and supply-side measures for the industry transition. 
+ 
+SideMeasuresfortheIndustryTransition.pdf.
+18.	
+Clean Air Task Force. (2025). Recasting the future: Policy approaches to drive cement decarbonization.  
+ .
+19.	
+Gangotra, A., Kennedy, K. & Carlsen, W. (2024). The U.S. needs to lower cement emissions—“Blended cement” can help. 
+World Resources Institute.  .
+20.	
+Mediacom. (2023). The future of construction with more sustainable cement. EPFL.  
+future-of-construction-with-more-sustainable-cement/.
+21.	
+Federal Energy Regulatory Commission. (2020). Participation of distributed energy resource aggregations in markets 
+operated by regional transmission organizations and independent system operators.  
+files/2020-09/E-1_0.pdf.
+22.	
+Ibid.
+23.	
+Ibid.
+24.	
+Sifat, M. (2023). Towards electric digital twin grid: Technology and framework review. Energy and AI, vol. 11.  
+ .
+25.	
+BloombergNEF. (2025). Lithium-ion battery pack prices fall to $108 per kilowatt-hour despite rising metal prices.  
+ 
+rising-metal-prices-bloombergnef/.
+26.	
+GE Vernova. (n.d.). GridOS distributed energy resources management system.  
+products/gridos/distributed-energy-resources-management-system.
+27.	
+Doherty, P. (2025). Power to the people: California’s biggest battery test ever just changed the game. PG&E.  
+pge.com/en/newsroom/currents/future-of-energy/power-to-the-people--california-s-biggest-battery-test-ever-just.html.
+Endnotes
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+44
+
+28.	
+Next Kraftwerke. (2022). Next Kraftwerke passes 10,000-megawatt milestone of aggregated capacity.  
+kraftwerke.com/news/10000-megawatt-of-aggregated-capacity.
+29.	
+Ciampoli, P. (2025). NYPA president and CEO Justin Driscoll says innovation is part of NYPA’s ecosystem.  
+American Public Power Association.  
+driscoll-says-innovation-part-nypas-ecosystem.
+30.	
+Pacific Northwest National Laboratory. (n.d.). Genesis Mission: Phase 1 projects.  
+mission/phase-1-projects.
+31.	
+Brushett, F. & Krol, A. (n.d.). Batteries. Massachusetts Institute of Technology (MIT) Climate Portal.  
+explainers/batteries.
+32.	
+International Energy Agency (IEA). (2024). Batteries and secure energy transitions.  
+and-secure-energy-transitions.
+33.	
+Wang, N., Yu, H., Yin, J. & Yu, X. (2025). pH-responsive nano-vaccine combined with anti-PD-1 antibodies for enhanced 
+immunotherapy of breast cancer. Theranostics, vol. 15, no. 12, pp. 6022–6043.  
+PMC11913365/.
+34.	
+Kann, S. (2025). The promise and perils of sodium-ion batteries. Latitude Media.  
+catalyst-promise-and-perils-of-sodium-ion-batteries/.
+35.	
+Mims, C. (2026). China-free batteries made from salt are finally here. The Wall Street Journal.  
+business/energy-oil/china-free-batteries-made-from-salt-are-finally-here-cc1cd766.
+36.	
+US Department of Energy. (2024). Biden–Harris administration announces $303.5 million loan guarantee to Eos Energy 
+Enterprises.  
+energy-enterprises-0.
+37.	
+Buntz, B. (2026). The post-lithium materials race is no longer theoretical. R&D World.  
+post-lithium-materials-race-is-no-longer-theoretical/.
+38.	
+American Physical Society. (2024). Sodium as a green substitute for lithium in batteries.  .
+39.	
+CATL. (2026). CATL releases its 2025 annual report.  .
+40.	
+Nature Energy. (2020). No need to reduce water.  .
+41.	
+Ibid.
+42.	
+Eos Energy Enterprises. (2024). Eos Energy secures 400 MWh order with International Electric Power.  
+eose.com/news-releases/news-release-details/eos-energy-secures-400-mwh-order-international-electric-power.
+43.	
+Liu, T. et al. (2026, July 23). Review of the principle, research progress, and application of iron–air batteries. Preprints.org. 
+ 
+44.	
+U.S. Geological Survey. (2026). Mineral commodity summaries 2026.  
+mcs2026.pdf.
+45.	
+St. John, J. (2024). Form Energy raises $405M for its 100-hour iron-air batteries. Canary Media.  
+canarymedia.com/articles/long-duration-energy-storage/form-energy-raises-405m-for-its-100-hour-iron-air-batteries.
+46.	
+Malkhandi, S. et al. (2013). Self-assembled monolayers of n-alkanethiols suppress hydrogen evolution and increase the 
+efficiency of rechargeable iron battery electrodes. Journal of the American Chemical Society, vol. 135, no. 1, pp. 347–353. 
+ 
+.
+47.	
+Al Bostami, R. et al. (2025). Advancements in zinc-air battery technology and water-splitting. Energy Nexus, vol. 17. 
+ .
+48.	
+Spector, J. (2023). Form Energy closes its biggest deal yet for long-duration energy storage. Canary Media.  
+ 
+duration-energy-storage.
+49.	
+Neuhauser, A. (2026). Scoop: Form Energy cuts valuation in latest raise. Axios.  
+deals/2026/08/12/form-energy-valuation-series-g-lower.
+50.	
+Lombardo, T., Paoli, L., Fernandez Pales, A. & Gül, T. (2026). Sodium-ion battery momentum grows, but challenges 
+remain. International Energy Agency (IEA).  
+challenges-remain.
+51.	
+Crooks, E. (2025). Sodium-ion batteries enter the energy storage market. Wood Mackenzie.  
+blogs/energy-pulse/sodium-ion-batteries-enter-energy-storage-market/.
+52.	
+Mother Jones. (2026). General Motors and Peak Energy are developing sodium-ion battery storage technology.  
+ 
+technology-development/.
+53.	
+Antora Energy. (2024). Antora Energy raises Series B funding to accelerate industrial decarbonization.  
+ .
+54.	
+Shah, J. (2025). Grains to grid: The power of sand batteries. Saur Energy.  
+saur-energy-explains-grains-to-grid-power-of-sand-batteries.
+55.	
+Antora Energy. (2026). Antora Energy announces Series C funding.  .
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+45
+
+56.	
+Wesoff, E. (2024). Cheap, clean energy could unleash the power of thermal storage. Canary Media.  
+ .
+57.	
+Antora Energy. (2023). Antora Energy launches its thermal energy storage system.  
+system-launch.
+58.	
+Vela, A. (2026). EU electrification plan finally tackles barriers to fossil-free heating and cooling. European Environmental 
+Bureau.  .
+59.	
+European Commission. (2026). Commission boosts Europe’s competitiveness, decarbonisation and independence 
+with Electrification Action Plan and ETS review.  .
+60.	
+Kyoto Group. (2025). World’s largest thermal energy storage unit inaugurated.  
+largest-thermal-energy-storage-unit-inaugurated.
+61.	
+Mallapragada, D. et al. (2023). Decarbonization of the chemical industry through electrification: Barriers and opportunities. 
+Joule, vol. 7, issue. 1, pp. 23–4.  .
+62.	
+van Gendt, G. et al. (2026). Industrial heat electrification in Europe: New business models emerge. McKinsey & Company. 
+ 
+new-business-models-emerge/.
+63.	
+Bellevrat, E. & West, K. (2018). Clean and efficient heat for industry. International Energy Agency (IEA).  
+ 
+commentaries/clean-and-efficient-heat-for-industry.
+64.	
+Rockström, J. et al. (2009). A safe operating space for humanity. Nature, vol. 461, pp. 472–475.  
+com/articles/461472a.
+65.	
+Fell, A. et al. (2025). Elucidating the efficiency limit of silicon-based monolithic tandem cells through the combination 
+of Auger and Shockley–Queisser limits. EES Solar, vol. 1, no. 6, pp. 1030–1039.  
+article/1/6/1030/313100/Elucidating-the-efficiency-limit-of-silicon-based.
+66.	
+Ibid.
+67.	
+Ibid.
+68.	
+Hall, M. (2024). Oxford PV starts commercial distribution of perovskite solar modules. pv magazine.  
+magazine.com/2024/09/05/oxford-pv-starts-commercial-distribution-of-perovskite-solar-modules/.
+69.	
+World Economic Forum. (2016). Top 10 emerging technologies of 2016.  
+emerging-technologies-of-2016/.
+70.	
+LONGi. (2025). 34.85%! LONGi sets a new world efficiency record for silicon–perovskite tandem solar cells.  
+ .
+71.	
+Liu, J. et al. (2024). Perovskite/silicon tandem solar cells with bilayer interface passivation. Nature, vol. 635, pp. 596–603. 
+ .
+72.	
+Luo, C. et al. (2026). Thermally evaporated perovskite/silicon tandems via formamidinium eutectic. Nature, vol. 657, 
+pp. 385–392.  .
+73.	
+Evangelista, S. (2017). The school with the largest solar facade in the world. EPFL.  
+with-the-largest-solar-facade-in-the--9/.
+74.	
+Hall, M. (2024). Oxford PV starts commercial distribution of perovskite solar modules. pv magazine.  
+ .
+75.	
+Taiyang News. (2026). TN SNEC 2026: GCL Perovskite Roadmap: Mass Production, 4T Tandem Advantages & Space 
+Applications.  .
+76.	
+Li, Q. et al. (2022). Life cycle assessment of organic solar cells and perovskite solar cells with graphene transparent 
+electrodes. Renewable Energy, vol. 195, pp. 906–917.  
+S0960148122009077.
+77.	
+Machado da Silva, I. et al. (2026). Environmental and animal reservoirs of methicillin-resistant Staphylococcus aureus 
+(MRSA): A One Health challenge. Journal of Toxicology and Environmental Health, Part B, vol. 29(5), pp. 329–357.  
+ .
+78.	
+Yang, C. et al. (2024). Achievements, challenges, and future prospects for industrialization of perovskite solar cells.  
+Light: Science & Applications, vol. 13, article. 227.  .
+79.	
+Chandio, R. (2023). Control and protection of MMC-based HVDC systems: A review. Energy Reports, vol. 9,  
+pp. 1571–1588.  .
+80.	
+Dow. (2026). Dow delivers a step change in HVDC insulation.  
+delivers-step-change-in-hvdc-insulation.html.
+81.	
+European Commission. (n.d.). North Seas Energy Cooperation.  
+level-groups/north-seas-energy-cooperation_en.
+82.	
+National Grid. (2024). National Grid announces commercial operations of Viking Link—the world’s longest land and subsea 
+interconnector.  
+land-and-subsea.
+83.	
+Casey, J. (2026). Hitachi Energy awarded contract for Elmed converter stations. Energy Global.  
+ .
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+46
+
+84.	
+Jan De Nul. (2025). Jan De Nul launches the world’s largest cable-laying vessel.  
+nul-launches-largest-cable-laying-vessel-world.
+85.	
+Wang, M. et al. (2021). Multi-vendor interoperability in HVDC grid protection: State-of-the-art and challenges ahead. 
+IET Generation, Transmission & Distribution, vol. 15, pp. 2153–2175.  
+doi/10.1049/gtd2.12165.
+86.	
+Ofgem. (2025). Empowering Great Britain for a clean and flexible energy future through the next generation of 
+interconnectors.  
+next-generation-interconnectors.
+87.	
+World Economic Forum. (2026). Fostering effective energy transition 2026.  
+transition-index-2026/.
+88.	
+Goldman Sachs. (2024). Is nuclear energy the answer to AI data centers’ power consumption?.  
+ .
+89.	
+Liou, J. (2023). What are small modular reactors (SMRs)?. International Atomic Energy Agency.  
+newscenter/news/what-are-small-modular-reactors-smrs.
+90.	
+Seidl, M. & Wang, X. (2023). Editorial: Unique safety features and licensing requirements of small modular reactors. 
+Frontiers in Energy Research, vol. 11.  .
+91.	
+X-energy. (2024). Amazon invests in X-energy to support advanced small modular nuclear reactors and expand carbon-free 
+power.  
+and-expand-carbon-free-power.
+92.	
+World Nuclear News. (2024). Google and Kairos Power team up for SMR deployments.  
+org/articles/google-and-kairos-power-team-up-for-smr-deployments-in-us-first.
+93.	
+Utah San Rafael Energy Lab. (n.d.). Valar Atomics.  .
+94.	
+Amazon. (2024). Amazon signs agreements for innovative nuclear energy projects to address growing energy demands. 
+ .
+95.	
+U.S. Nuclear Regulatory Commission. (n.d.). Hermes 2—Kairos Power.  
+facility-licensing/hermes2-kairos.
+96.	
+Neutron Bytes. (2025). GEH BWRX-300 SMR approved for construction at OPG’s Darlington site.  
+com/2025/05/17/geh-bwrx-300-smr-approved-for-construction-at-opgs-darlingtion-site/.
+97.	
+United Nations Environment Programme (UNEP). (2026). Global status report for buildings and construction 2025–2026. 
+ .
+98.	
+Ruan, D. (2025). Building-integrated photovoltaics through multi-physics synergies: A critical review of optical, thermal, 
+and electrical models in façade applications. Renewable Energy, vol. 251.  
+abs/pii/S0960148125009942.
+99.	
+Ulsan National Institute of Science and Technology. (2025). Enhanced stability of semitransparent organic solar modules 
+through molecular asymmetry.  
+through-molecular-asymmetry/.
+100.	
+Fraunhofer Institute for Solar Energy Systems ISE. (n.d.). Building-integrated photovoltaics (BIPV).  
+fraunhofer.de/en/business-areas/solar-power-plants-and-integrated-photovoltaics/integrated-photovoltaics/building-
+integrated-photovoltaics-bipv.html.
+101.	
+International Electrotechnical Commission. (2023). IEC 61730-1:2023: Photovoltaic (PV) module safety qualification—
+Part 1: Requirements for construction.  
+b8ae88fdf715/iec-61730-1-2023.
+102.	
+Fraunhofer Institute for Solar Energy Systems ISE. (2024). Quick-to-install and thermally insulated BIPV façade element. 
+ 
+element.html.
+103.	
+European Commission. (n.d.). Energy performance of buildings directive.  
+efficiency/energy-performance-buildings/energy-performance-buildings-directive_en.
+104.	
+Solarchitecture. (n.d.). Umwelt Arena AG.  .
+105.	
+Albinius, N., Rau, B., Riedel, M. & Ulbrich, C. (2025). A comprehensive case study of a full-size BIPV facade. Energies, 
+vol. 18, no. 5.  .
+106.	
+Bonomo, P. & Frontini, F. (2024). Building integrated photovoltaics (BIPV): Analysis of the technological transfer 
+process and innovation dynamics in the Swiss building sector. Buildings, vol. 14, no. 6.  
+5309/14/6/1510.
+107.	
+IEA Photovoltaic Power Systems Programme. (n.d.). Enabling framework for the development of BIPV.  
+org/research-tasks/enabling-framework-for-the-development-of-bipv/.
+108.	
+Fraunhofer Institute for Solar Energy Systems ISE. (2024). Quick-to-install and thermally insulated BIPV façade element. 
+ 
+element.html.
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+47
+
+109.	
+Academy of Offshore Wind Aviation. (2025). Beyond the horizon: The future of offshore wind is floating.  
+ .
+110.	
+Equinor. (n.d.). Hywind Tampen.  .
+111.	
+World Economic Forum. (2022). What is offshore wind and what does its future look like?.  
+stories/energy-transition/offshore-wind-farms-future-renewables/.
+112.	
+International Renewable Energy Agency. (2024). Floating offshore wind outlook.  
+IRENA/Agency/Publication/2024/Jul/IRENA_G7_Floating_offshore_wind_outlook_2024.pdf.
+113.	
+Energy Solutions. (2026). Offshore wind economics 2026.  
+economics-2026.
+114.	
+International Renewable Energy Agency. (2024). Floating offshore wind outlook.  
+IRENA/Agency/Publication/2024/Jul/IRENA_G7_Floating_offshore_wind_outlook_2024.pdf.
+115.	
+International Renewable Energy Agency. (2024). Floating offshore wind outlook.  
+IRENA/Agency/Publication/2024/Jul/IRENA_G7_Floating_offshore_wind_outlook_2024.pdf.
+116.	
+Equinor. (n.d.). Hywind Tampen.  .
+117.	
+International Renewable Energy Agency. (2024). Floating offshore wind outlook.  
+IRENA/Agency/Publication/2024/Jul/IRENA_G7_Floating_offshore_wind_outlook_2024.pdf.
+118.	
+Offshore Wind Scotland. (2025). Port of Cromarty Firth secures £55m FLOWMIS funding.  
+offshorewindscotland.org.uk/news/2025/march/6/port-of-cromarty-firth-secures-55m-flowmis-funding/.
+119.	
+International Renewable Energy Agency. (2024). Floating offshore wind outlook.  
+IRENA/Agency/Publication/2024/Jul/IRENA_G7_Floating_offshore_wind_outlook_2024.pdf.
+120.	
+Los Angeles Times. (2026). Another offshore wind developer exits California in $1.22-billion deal with Trump.  
+ 
+deal-with-trump.
+121.	
+Jose, S. et al. (2025). Solid-state lithium batteries: Advances, challenges, and future perspectives. Batteries, vol. 11, no. 
+3.  .
+122.	
+Argonne National Laboratory. (2025). Unlocking the potential of lithium-sulfur batteries.  
+unlocking-the-potential-of-lithiumsulfur-batteries.
+123.	
+Zhang, N. (2024). Solid electrolyte membranes for all-solid-state rechargeable batteries. eTransportation, vol. 20.  
+ .
+124.	
+Ning, Z. et al. (2023). Dendrite initiation and propagation in lithium metal solid-state batteries. Nature, vol. 618, 287–293. 
+ .
+125.	
+Argonne National Laboratory. (2023). Lithium-sulfur batteries are one step closer to powering the future.  
+ .
+126.	
+Lyten. (n.d.). Lithium-sulfur.  .
+127.	
+Waldersee, V. (2024). Volkswagen to ramp up solid-state battery production with QuantumScape deal. Reuters.  
+ 
+quantumscape-deal-2024-07-11/.
+128.	
+Idemitsu Kosan & Toyota Motor. (2023). Idemitsu and Toyota announce beginning of cooperation toward mass production 
+of all-solid-state batteries for BEVs.  .
+129.	
+Das, S. et al. (2024). Optimization of the form factors of advanced Li-S pouch cells. Small, vol. 20.  
+wiley.com/doi/10.1002/smll.202311850.
+130.	
+McBride, M. (2026). Battery geopolitics: Balancing industrial power in the race to store energy. Carnegie Endowment for 
+International Peace.  
+race-to-store-energy.
+131.	
+Kelleher, S. (2024). Electric vehicle batteries adding to toxic PFAS pollution, study finds. The New Lede.  
+ 
+.
+132.	
+Ritchie, H. (2020). Sector by sector: Where do global greenhouse gas emissions come from?. Our World in Data.  
+ 
+.
+Top 10 Emerging Technologies for Planetary Health: Energy Edition
+48
+
+World Economic Forum
+91–93 route de la Capite
+CH-1223 Cologny/Geneva
+Switzerland 
+Tel.: 	+41 (0) 22 869 1212
+Fax: +41 (0) 22 786 2744
+contact@weforum.org
+www.weforum.org
+The World Economic Forum 
+is the trusted global platform 
+for public-private cooperation, 
+bringing together leaders 
+from business, government, 
+civil society, international 
+organizations, academia and 
+the next generation to turn 
+foresight and dialogue into 
+meaningful action on the world’s 
+most pressing challenges.
