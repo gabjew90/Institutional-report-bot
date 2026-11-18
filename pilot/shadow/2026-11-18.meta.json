@@ -1,0 +1,44 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 94,
+ "pack": {
+  "documents": 50,
+  "cards": 1800,
+  "max_doc_id": 27647
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 110,
+  "brief_citations": 11,
+  "distinct_cards_cited": 110,
+  "card_count": 1800,
+  "quintiles": [
+   22,
+   36,
+   24,
+   16,
+   12
+  ],
+  "edge_quintile_share": 0.309,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Goldman is on the other side of that trade.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "The weekend flush triggered nearly $2 billion of forced closures after the price broke below its 200-day average around $73,000 [c1784].",
+    "cite": "c1784",
+    "reason": "figures not in cited card(s): ['2000000000']"
+   }
+  ],
+  "word_count": 1703
+ }
+}
