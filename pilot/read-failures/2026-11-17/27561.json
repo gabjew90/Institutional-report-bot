@@ -1,7 +1,7 @@
 {
- "attempts": 2,
- "given_up": false,
- "last_reason": "reader: \"status\":\"released\",\"instruments\":[\"CBRS\",\"MSFT\"],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"conviction\":\"medium\",\"timef",
+ "attempts": 3,
+ "given_up": true,
+ "last_reason": "reader: 829M consensus; analysts\",\"topic\":\"misc\",\"status\":\"forecast\",\"instruments\":[],\"macro_key\":\"OTHER\",\"direction\":\"bearish\",",
  "history": [
   {
    "at": "2026-11-18T01:44Z",
@@ -12,6 +12,11 @@
    "at": "2026-11-18T05:11Z",
    "run_id": "44241126582",
    "reason": "reader: \"status\":\"released\",\"instruments\":[\"CBRS\",\"MSFT\"],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"conviction\":\"medium\",\"timef"
+  },
+  {
+   "at": "2026-11-18T09:18Z",
+   "run_id": "44271809884",
+   "reason": "reader: 829M consensus; analysts\",\"topic\":\"misc\",\"status\":\"forecast\",\"instruments\":[],\"macro_key\":\"OTHER\",\"direction\":\"bearish\","
   }
  ]
 }
