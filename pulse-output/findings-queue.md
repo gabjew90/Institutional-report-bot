@@ -1412,3 +1412,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Microsoft service outage (5 banks / 13 PDFs) dropped by the writer's 6-bank cutoff for discovered themes; the two debt-ceiling clusters (3+4 banks) would pass if merged.
 - **observation** — Nvidia lead states Huang resigned with no reason although the context has an investigation cluster. Second day running.
 - **observation** — TRADE BOARD is six Morgan Stanley longs unrelated to the day's themes. Driver trail still does not name the final_validate violation behind FIXUP.
+
+## 2026-11-18 (headless QC)
+- **deterministic-fixable** — The locked Omnipulse body shipped future-tense Nvidia ("reports Tuesday", "heads into Tuesday's report") beside a RECAP reporting the beat (earnings calendar had NVDA actuals). Add a check that flags any body sentence naming a company in the calendar's "already reported" list with a future-tense report verb, and drop or hold the body if it fires.
+- **deterministic-fixable** — Soft repair removed a whole brief from the locked body and the driver restored it at preflight (`omnipulse_body_restored`). Record in the driver trail what the repair changed and whether the restore overrode the repair's fix. The final adversarial file is empty while STEP 7 reports six findings, and no residuals file exists for the day.
+- **prompt-session** — "per JPMorgan" on October core CPI +0.30%: the dump ties it to Deutsche Bank. Attribution check on the Omnipulse body against the dump's source_bank fields.
+- **prompt-session** — Warsh (8 banks over two clusters) and Brent (5 banks, 17% drop) absent; body locked so the coverage block cannot reach it. Same 6-bank cutoff as 11-17.
+- **observation** — Unverified in the dump: Goldman 36% to 11% 2027 EPS growth, multi-manager worst month since March 2020, 20 points underweight tech, 2nd-percentile net leverage (dump has 3rd percentile on 1 year), Morgan Stanley diffusion-index figures.
+- **observation** — Today's dump is pre-publish (171 PDFs, 12:22 EST), unlike 11-03 through 11-17. Check whether the archive fix landed.
+- **observation** — TRADE BOARD Citi DELL and HPE lines end in a truncated "…".
