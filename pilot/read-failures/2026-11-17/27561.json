@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: \": \"Market Update US, Europe & Asia\", \"claim\": \"Senate Banking Chair Tim Scott called on Huang and Lutnick to testify be",
+ "last_reason": "reader: \"status\":\"released\",\"instruments\":[\"CBRS\",\"MSFT\"],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"conviction\":\"medium\",\"timef",
  "history": [
   {
    "at": "2026-11-18T01:44Z",
    "run_id": "44212350841",
    "reason": "reader: \": \"Market Update US, Europe & Asia\", \"claim\": \"Senate Banking Chair Tim Scott called on Huang and Lutnick to testify be"
+  },
+  {
+   "at": "2026-11-18T05:11Z",
+   "run_id": "44241126582",
+   "reason": "reader: \"status\":\"released\",\"instruments\":[\"CBRS\",\"MSFT\"],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"conviction\":\"medium\",\"timef"
   }
  ]
 }
