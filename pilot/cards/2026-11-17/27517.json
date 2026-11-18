@@ -1,0 +1,423 @@
+{
+ "brief": "Weekly chart roundup from Syz. Microsoft suffered a global outage Friday affecting multiple regions except China, which runs separate infrastructure. Nvidia's CEO resigned amid an ongoing investigation; the stock has fallen 36% from its all-time high, wiping over $2tn in market value, marking a sixth straight weekly decline and its lowest price since July 2025, and handing the title of world's largest company back to Apple. Despite the slide, Nvidia now trades near 10x forward earnings, cheaper than Broadcom (17x), TSMC (18x), Alphabet (19x) and AMD (33x); only Micron is cheaper at 4.3x. Goldman expects Nvidia to honor existing AI financing commitments, but whether new deals hold the same terms is an open question, with neocloud borrowing costs in focus as CCC credit spreads sit near cycle-wide highs; Nvidia's Tuesday Q3 report, and any comment on its $500bn in commitments, is framed as the next signal. Vanguard and BlackRock hold Nvidia's largest reported blocks; Jensen Huang holds a 3.41% stake. SpaceX's connectivity revenue grew 69.5% y/y in Q3, far outpacing AT&T, T-Mobile and Verizon, as it moves toward mobile spectrum. Binance says it has fully covered its $6.3bn hack with a new proof-of-reserves snapshot.",
+ "cards": [
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia's CEO has resigned amid an ongoing investigation.",
+   "anchor": "The CEO has resigned amid an ongoing investigation",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia's stock trades 36% below its all-time high.",
+   "anchor": "the stock now sits 36% below its all-time high",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia's decline has wiped more than $2tn off the company's market value.",
+   "anchor": "a fall that has wiped more than $2tn off the company\u2019s market value",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia has lost the title of world's largest company back to Apple.",
+   "anchor": "handed the number one spot back to Apple",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia's share price has dropped to its lowest level since July 2025.",
+   "anchor": "The share price has dropped to its lowest level since July 2025",
+   "topic": "NVDA CEO succession risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia has posted a sixth straight weekly decline, its longest losing streak since 2012.",
+   "anchor": "after a sixth straight weekly decline, the longest losing streak since 2012.",
+   "topic": "NVDA CEO succession risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia now trades at roughly 10x forward earnings, cheaper than nearly every other AI name.",
+   "anchor": "Nvidia $NVDA now trades at ~10x forward earnings which makes it cheaper than nearly every other AI name",
+   "topic": "AI semiconductor valuation reset",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Among AI chip peers, Broadcom trades at 17x forward earnings, TSMC at 18x, Alphabet at 19x and AMD at 33x.",
+   "anchor": "\u203a Broadcom 17x \u203a TSMC 18x \u203a Alphabet 19x \u203a AMD 33x",
+   "topic": "AI semiconductor valuation reset",
+   "status": "level",
+   "instruments": [
+    "AVGO",
+    "TSM",
+    "GOOGL",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Only Micron is cheaper than Nvidia among AI-related names, trading at 4.3x forward earnings.",
+   "anchor": "Only Micron is cheaper at 4.3x",
+   "topic": "AI semiconductor valuation reset",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Goldman expects Nvidia to honour its existing AI financing commitments.",
+   "anchor": "Goldman expects Nvidia to honour its existing commitments.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "It is an open question whether Nvidia will keep providing financing backstops of 25% or more on the same terms for new AI deals.",
+   "anchor": "If lenders are asking for backstops of 25% or more, will Nvidia keep providing them on the same terms?",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "CCC credit spreads are already near the widest levels of this cycle amid AI financing concerns.",
+   "anchor": "with CCC spreads already near the widest levels of this cycle?",
+   "topic": "AI data center financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Nvidia's Q3 results, due Tuesday 17 November, are framed as the first clue to how its AI financing role may change.",
+   "anchor": "The first clue could come on Tuesday, 17 November, when Colette Kress reports Q3 results.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "17 November 2026"
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "If Nvidia's CFO is asked about the $500bn in commitments on the Q3 call, her answer could signal how willing Nvidia is to make fresh financing commitments.",
+   "anchor": "If she\u2019s asked about the $500bn, her answer could give investors a sense of how willing Nvidia is to make fresh commitments.",
+   "topic": "AI data center financing",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "17 November 2026"
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Vanguard and BlackRock manage the largest reported blocks of Nvidia shares.",
+   "anchor": "Vanguard and BlackRock manage the largest reported blocks of shares",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Jensen Huang is Nvidia's largest individual shareholder, disclosed in its 2026 proxy with a 3.41% beneficial stake.",
+   "anchor": "Jensen Huang is the largest individual shareholder disclosed in Nvidia\u2019s 2026 proxy, with a 3.41% beneficial stake.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "SpaceX's connectivity revenue grew 69.5% year over year in Q3 2026.",
+   "anchor": "SpaceX\u2019s connectivity revenue grew 69.5% year over year in Q3 2026",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "SpaceX's connectivity revenue growth far outpaced AT&T at 7.2%, T-Mobile at 6.3% and Verizon at 2.9%.",
+   "anchor": "far ahead of AT&T at 7.2%, T-Mobile at 6.3% and Verizon at 2.9%.",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "released",
+   "instruments": [
+    "T",
+    "TMUS",
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "SpaceX's connectivity business brought in $5.25 billion in revenue and $3.49bn in adjusted EBITDA.",
+   "anchor": "The business brought in $5.25 billion in revenue and $3.49bn in adjusted EBITDA.",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "SpaceX's consumer revenue rose 57% while government and enterprise revenue jumped 91%.",
+   "anchor": "Consumer revenue rose 57%, while government and enterprise revenue jumped 91%.",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Starlink's subscriber base doubled over the period even as average revenue per user fell from $83 to $69.",
+   "anchor": "Starlink\u2019s subscriber base doubled over the period, even as average revenue per user fell from $83 to $69.",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "The telecom giants are still generating roughly four to six times as much connectivity and service revenue as SpaceX.",
+   "anchor": "The telecom giants are still much larger, generating roughly four to six times as much revenue across their connectivity and service businesses.",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "level",
+   "instruments": [
+    "T",
+    "TMUS",
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "SpaceX has agreed to acquire nationwide low-band spectrum for Starlink Mobile.",
+   "anchor": "SpaceX has agreed to acquire nationwide low-band spectrum for Starlink Mobile.",
+   "topic": "SpaceX Starlink revenue growth vs telecoms",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Binance confirms it has fully covered the assets affected by the $6.3bn hack and published a new proof-of-reserves snapshot.",
+   "anchor": "Binance confirms it has fully covered the assets affected by the $6.3bnhack and publishes a new proof-of-reserves snapshot.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Once Binance's zero-knowledge proof is generated, users will be able to independently verify their balances were backed at least 1:1.",
+   "anchor": "users will be able to independently verify that their balances in the snapshot were backed at least 1:1.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "Microsoft experienced a massive global outage Friday morning, with services disrupted across multiple regions.",
+   "anchor": "On Friday morning, Microsoft experienced a massive global outage, with services disrupted across multiple regions.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Syz",
+   "document": "The week in seven charts",
+   "claim": "China was unaffected by Microsoft's outage, possibly because it operates separate Microsoft service infrastructure from the rest of the world.",
+   "anchor": "China was unaffected, possibly because it operates separate Microsoft service infrastructure from the rest of the world.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27517__the-week-in-seven-charts.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 27,
+  "matched": 27,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 6,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
