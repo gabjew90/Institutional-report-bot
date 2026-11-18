@@ -1,0 +1,25 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.11% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.2, 0.21, 0.4, 0.63, 0.8, 0.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.11",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **October retail sales came in above forecast on Tuesday.** Sales rose 0.21% on the month against 0.1% expected, and 0.63% excluding autos against 0.4% expected. Stronger spending adds to the case f"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.45% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.2, 0.21, 0.4, 0.63, 0.8, 0.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.45",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **October retail sales came in above forecast on Tuesday.** Sales rose 0.21% on the month against 0.1% expected, and 0.63% excluding autos against 0.4% expected. Stronger spending adds to the case f"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4
+}
