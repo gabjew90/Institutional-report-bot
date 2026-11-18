@@ -1,0 +1,197 @@
+{
+ "brief": "Raymond James's weekly earnings tracker reports 84% of S&P 500 firms have beaten 3Q26 EPS estimates, above the 10-year average of 77%, putting the index on track for a third consecutive quarter of EPS growth above 25%. Aggregate figures show 31.3% year-over-year EPS growth, an 83.9% beat rate, and 14.1% sales growth, led by Energy (156.2% EPS growth, 100% beat rate) and Information Technology (67.8% EPS growth, 94.5% beat rate). This week's calendar is dominated by NVIDIA, reporting Tuesday, which the note frames as the latest read on AI infrastructure demand; Walmart and Target report later in the week and are flagged as the gauge of household purchasing behavior and discretionary-demand resilience heading into year end. A transcript-spotlight section adds three management comments with no independent analysis attached: KKR says it deployed $20bn in Q3 ($98bn trailing twelve months, up 15%) against a record $146bn of dry powder; Constellation Energy says the market overreacted to midterm-election fears that Democrats would block data-center construction; Applied Materials expects 2027 to be another record year as AI drives multi-year semiconductor demand.",
+ "cards": [
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "84% of firms have beaten 3Q26 EPS estimates, above the 10-year average beat rate of 77%.",
+   "anchor": "84% of firms have beat 3Q26 EPS estimates\u2014well above the 10-year average of 77%.",
+   "topic": "Q3 earnings season strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "The S&P 500 is on track for its third consecutive quarter of EPS growth above 25%.",
+   "anchor": "Third Consecutive Quarter of 25%+ EPS Growth",
+   "topic": "Q3 earnings season strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "The S&P 500 overall posted 31.3% year-over-year EPS growth this earnings season, with an 83.9% beat rate and 14.1% sales growth.",
+   "anchor": "5.4% S&P 500 31.3% 83.9% 14.1%",
+   "topic": "Q3 earnings season strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "The Energy sector posted 156.2% year-over-year EPS growth this earnings season, with a 100.0% beat rate and 36.0% sales growth.",
+   "anchor": "Sector EPS Growth Sector Beat Rate Sector Sales Growth Energy 156.2% 100.0% 36.0%",
+   "topic": "Q3 earnings season strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "Information Technology posted 67.8% year-over-year EPS growth this earnings season, with a 94.5% beat rate and 41.9% sales growth.",
+   "anchor": "Information Technology 67.8% 94.5% 41.9% Materials",
+   "topic": "Q3 earnings season strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "Markets this week are focused on NVIDIA's earnings as the latest read on AI infrastructure demand.",
+   "anchor": "markets will be focused on NVIDIA's results for the latest read on AI infrastructure demand",
+   "topic": "NVDA Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Earnings-Blast",
+   "claim": "Walmart and Target's results this week will offer insight into household purchasing behavior and the resilience of discretionary demand heading into year end.",
+   "anchor": "results from Walmart and Target will offer insights into household purchasing behavior and the resilience of discretionary demand heading into year end",
+   "topic": "US retail sales and consumer check",
+   "status": "forecast",
+   "instruments": [
+    "WMT",
+    "TGT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "heading into year end"
+  },
+  {
+   "bank": "KKR & Co",
+   "document": "Earnings-Blast",
+   "claim": "KKR deployed $20 billion of capital in Q3 across a broad base of geographies and asset classes.",
+   "anchor": "we deployed $20 billion of capital in Q3 with activity really broad-based across geographies and asset classes",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "KKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "KKR & Co",
+   "document": "Earnings-Blast",
+   "claim": "KKR has invested $98 billion over the trailing 12 months, up 15% versus the prior period.",
+   "anchor": "This brings us to $98 billion of capital invested over the trailing 12 months, which is up 15% compared to the prior period.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "KKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "trailing 12 months"
+  },
+  {
+   "bank": "KKR & Co",
+   "document": "Earnings-Blast",
+   "claim": "KKR holds a record $146 billion of dry powder available to deploy.",
+   "anchor": "with a record $146 billion of dry powder available, we remain incredibly well-positioned to build our portfolio for the future",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "KKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Constellation Energy",
+   "document": "Earnings-Blast",
+   "claim": "Constellation Energy says markets have overreacted to midterm election results on fears that Democrats will block data center construction.",
+   "anchor": "an overreaction in the market to the election results based upon fear that Democrats won't let data centers get built",
+   "topic": "AI buildout political backlash",
+   "status": "released",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Applied Materials",
+   "document": "Earnings-Blast",
+   "claim": "Applied Materials expects 2027 to be another record year for the semiconductor industry and another year of outperformance for the company.",
+   "anchor": "We see 2027 as another record year for the industry and another year of outperformance for Applied",
+   "topic": "AI investment boom risk",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27546__earnings-blast.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 12,
+  "matched": 12,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 3,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
