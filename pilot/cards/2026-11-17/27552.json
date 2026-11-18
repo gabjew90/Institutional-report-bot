@@ -1,0 +1,612 @@
+{
+ "brief": "RBC (equity research, Ken Herbert) maintains Outperform and a $225 price target on SpaceX (SPCX, $139.11) after Flight 15: Starship's upper stage was caught for the first time from Starbase, while the Super Heavy booster exploded in the Gulf after diverting from a tower catch on a low-fuel reading. RBC calls the booster loss insignificant for sentiment and views the catch as de-risking reusability, which could cut costs across Connectivity and AI; it flags sustained post-2028 launch cadence (3,500-7,800 cumulative launches needed for 50GW of orbital compute) as the key catalyst to watch. Post-midterm elections, RBC expects more political headline risk to SpaceX's >$74B Texas/Arizona data center buildout and to NASA contracts, as Democrats push for more competitive, less Musk-favorable awards; RBC still sees SpaceX as best-positioned in space given its lift capacity, and flags NASA's new $10B CLPS framework, helped by ULA's failed Vulcan launch, as a bookings tailwind. On AI, RBC calls Grok a laggard (intelligence index 38 vs. 60) but views cheap open-source models as a demand accelerant, not a threat, for SpaceX's compute business. The $225 PT rests on a 10x multiple on 2029E EBITDA of $280.2B; upside is $275, downside $100.",
+ "cards": [
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX successfully caught Starship's upper stage during Flight 15 from Starbase, Texas.",
+   "anchor": "SpaceX successfully caught Starship during Flight 15 from Starbase, TX.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC views SpaceX's Starship tower catch as a key incremental step toward Starship reusability and future launch cadence.",
+   "anchor": "We view the tower catch as a key incremental step towards Starship reusability and the future launch cadence.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC views SpaceX's terrestrial data center buildout as facing more headline risk from political pushback following the midterm elections.",
+   "anchor": "we view SPCX's build out of terrestrial data centers as potentially facing more headline risk from political pushback",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX has announced plans to build two supercompute facilities, in Texas and Arizona.",
+   "anchor": "SPCX has announced plans to build two supercompute facilities in TX and AZ.",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX's Super Heavy booster exploded in the Gulf after diverting away from a planned launchpad tower catch during Flight 15.",
+   "anchor": "SPCX's Super Heavy booster did explode in the gulf after diverting away from a launchpad tower catch.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX said it correctly diverted away from the tower catch due to early indications of a low fuel reading on re-entry.",
+   "anchor": "SPCX noted it correctly diverted a tower catch with early indications signaling a low fuel indication on re-entry.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC views the Super Heavy booster diversion and loss during Flight 15 as not a significant risk to sentiment on SpaceX stock.",
+   "anchor": "we view the diversion as not a significant risk for sentiment.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX is advancing two supercompute facilities, in Rio Grande Valley, Texas and Cochise County, Arizona, representing a combined investment of more than $74 billion.",
+   "anchor": "one in Rio Grande Valley, TX, and one in Cochise County, AZ \u2014 representing a combined >$74B investment.",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX's Texas supercompute project involves more than $24 billion in new infrastructure plus $220 million for water expansion.",
+   "anchor": ">$24B in new infrastructure plus $220M for water expansion",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX's $50 billion Arizona supercompute campus aims to strengthen regional energy infrastructure and potentially reduce electricity bills for cooperative members by up to 20%.",
+   "anchor": "the $50B Arizona campus aims to strengthen regional energy infrastructure and potentially reduce electricity bills for cooperative members by up to 20%.",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC believes SpaceX's terrestrial data center build will continue but possibly at a slower pace given the shifting political landscape.",
+   "anchor": "We believe the terrestrial data center build will continue, but perhaps at a slower pace",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC believes Democrats could put headline pressure on SpaceX's NASA-related contracts, pushing to strengthen competition and ensure a less politically biased award environment.",
+   "anchor": "We believe Democrats could put headline pressure on SPCX's NASA-related contracts, vying to strengthen competition and ensure a less politically biased award environment.",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC views SpaceX as best-positioned across the space sector despite expected political scrutiny of its government contracts.",
+   "anchor": "We view SPCX as best-positioned across the space sector.",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC does not believe the government has any real alternatives to SpaceX given its launch lift capacity.",
+   "anchor": "we do not believe the gov't has any real options to SPCX and its lift capacity.",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "NASA recently unveiled a $10 billion Commercial Lunar Payload Services framework that may drive incremental bookings for SpaceX.",
+   "anchor": "NASA recently unveiled a $10B Commercial Lunar Payload Services (CLPS) framework that may drive incremental bookings for SPCX",
+   "topic": "SpaceX post-midterm political risk",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC maintains its Outperform rating and $225 price target on SpaceX.",
+   "anchor": "Maintain OP and $225 PT. We view the Starship launchpad catch as positive",
+   "topic": "SpaceX valuation and price target",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC's $225 price target for SpaceX is based on a 10x weighted average multiple applied to its 2029 sum-of-the-parts EBITDA estimate of $280.2 billion.",
+   "anchor": "Our PT is based on a 10x weighted avg multiple applied to our 2029 SOTP with total adj. EBITDA of $280.2B.",
+   "topic": "SpaceX valuation and price target",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC's upside scenario for SpaceX is $275 per share, driven by faster revenue growth and EBITDA expansion from a faster-than-estimated Starship launch cadence.",
+   "anchor": "Our upside scenario is $275/share. We believe that the company could realize faster revenue growth",
+   "topic": "SpaceX valuation and price target",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "In RBC's upside scenario, SpaceX total sales reach approximately $424 billion with approximately $297 billion in EBITDA at 70% margins.",
+   "anchor": "we expect total sales to hit ~$424B, which we believe could generate ~$297B in EBITDA (70% margins).",
+   "topic": "SpaceX valuation and price target",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC's downside scenario for SpaceX is $100 per share, reflecting a slower Starship launch cadence pushing Connectivity and AI revenue growth to the right.",
+   "anchor": "Our downside scenario is $100/share. We believe that a slower Starship launch cadence could push revenue growth",
+   "topic": "SpaceX valuation and price target",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC's downside scenario models SpaceX FY2029E revenue growth of just approximately $218 billion and EBITDA of approximately $135.6 billion.",
+   "anchor": "we model revenue growth of just ~$218B and EBITDA of ~ $135.6B in FY29E.",
+   "topic": "SpaceX valuation and price target",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX controls more than 80% of global mass launched to orbit and operates approximately 9,600 Starlink satellites serving more than 10.3 million subscribers across 164 countries.",
+   "anchor": "The company controls 80%+ of global mass to orbit, operates ~9,600 Starlink satellites serving 10.3M+ subscribers across\n164 countries",
+   "topic": "SpaceX valuation and price target",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX has deployed gigawatt-scale AI compute infrastructure, Colossus I and II, anchored by a cloud contract with Google worth $920 million per month.",
+   "anchor": "deployed gigawatt-scale AI compute infrastructure (Colossus I & II) anchored by a landmark cloud contract with Google ($920M/month).",
+   "topic": "SpaceX AI business position",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX's Starlink segment generates 60%+ EBITDA margins with a $24 billion signed revenue backlog through 2028.",
+   "anchor": "Starlink's highly scalable, capital-light connectivity flywheel generating 60%+ EBITDA margins with a $24B signed revenue backlog through 2028",
+   "topic": "SpaceX valuation and price target",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC notes SpaceX is today the laggard among four major AI labs, with Grok's intelligence index at 38 versus a market-leading 60.",
+   "anchor": "SPCX today is the laggard among the four major AI labs, with Grok's intelligence index at 38 versus a market-leading 60.",
+   "topic": "SpaceX AI business position",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC views the rise of cheaper open-source AI models as an accelerant, not a risk, to SpaceX's compute business.",
+   "anchor": "We view this as an accelerant, not a risk.",
+   "topic": "SpaceX AI business position",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "The OpenRouter market grew 7x in nine months, from 6.5 trillion to 44 trillion tokens per month, according to RBC.",
+   "anchor": "the OpenRouter market grew 7x in nine months (6.5T to 44T tokens/month).",
+   "topic": "SpaceX AI business position",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX's pending $60 billion Cursor acquisition could embed Grok as the default model in a widely used developer IDE.",
+   "anchor": "the $60B Cursor acquisition, which could embed Grok as the default model in a widely used developer IDE.",
+   "topic": "SpaceX AI business position",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "pending close"
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX has outlined a framework requiring 3,500 to 7,800 cumulative Starship launches to reach 50 gigawatts of orbital compute.",
+   "anchor": "a framework requiring 3,500\u20137,800 cumulative Starship launches to reach 50 GW of orbital compute.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC believes sustained Starship launch cadence improvement after 2028 is the single most important catalyst to monitor for SpaceX stock.",
+   "anchor": "We believe sustained launch cadence improvement post-2028 is the single most important stock catalyst to monitor.",
+   "topic": "SpaceX Starship reusability milestone",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC notes SpaceX's Starlink faces a structural disadvantage versus fiber and cable, with a roughly 5-year satellite replacement cycle against 15-25 year asset lives for terrestrial broadband.",
+   "anchor": "Starlink's ~5-year satellite replacement cycle creates a recurring capex burden that structurally disadvantages it versus fiber and cable operators with 15\u201325-year\nasset lives.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX's Starlink broadband subscribers nearly doubled in 2025, demonstrating Starlink can compete on price, per RBC.",
+   "anchor": "Broadband subscribers nearly doubled in 2025, demonstrating Starlink can compete on price",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC estimates SpaceX's Direct-to-Device coverage model addresses no more than 5% of the Starlink Mobility total addressable market.",
+   "anchor": "RBC estimates it addresses no more than 5% of the Mobility TAM.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC's preferred growth path for Starlink Mobility is an MVNO arrangement over SpaceX building a fourth wireless network.",
+   "anchor": "RBC's preferred path is MVNO over building a fourth wireless network",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "Elon Musk controls approximately 82% of SpaceX's voting power post-IPO, limiting Class A shareholder influence over corporate matters.",
+   "anchor": "Musk controls ~82% of voting power post-IPO, limiting Class A shareholder influence over corporate matters.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC lists key-person dependency on Elon Musk as a risk, since his reduced involvement could significantly disrupt SpaceX's strategy, culture, and investor confidence.",
+   "anchor": "Loss or reduced involvement of Elon Musk could significantly disrupt strategy, culture, and investor confidence.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "SpaceX operates approximately 75% of all active satellites in Low-Earth Orbit, and RBC flags stricter debris mitigation regulation as a cost risk.",
+   "anchor": "as the operator of ~75% of all active satellites in Low-Earth Orbit, stricter debris mitigation regulations could increase costs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC believes investors remain focused on the potential for a merger between SpaceX and Tesla.",
+   "anchor": "we believe investors remain focused on the potential for a merger with Tesla (TSLA).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPCX",
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "RBC",
+   "document": "SpaceX catches Starship Flight 15, data centers and space contracts are renewed focus post-midterms",
+   "claim": "RBC estimates SpaceX is targeting a combined total addressable market of approximately $28.5 trillion across Space, Connectivity, and AI.",
+   "anchor": "targeting a combined TAM of ~$28.5T.",
+   "topic": "SpaceX valuation and price target",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-17/27552__rbc-november-16-2026-spacex-spacex-catches-starship-flight-1.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 39,
+  "matched": 39,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
