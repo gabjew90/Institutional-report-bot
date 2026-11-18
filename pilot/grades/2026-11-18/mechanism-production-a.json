@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+ "source_span": "This week's US selling came mostly from fresh shorts. In other words, the fast money spent the best week for chips in seven months pressing bets against individual stocks.",
+ "source_chain": "Semis/S&P had their best week since April despite bad news (lost CEO, hot CPI, hawkish Fed talk), therefore hedge funds did not chase the rally but sold into it via fresh single-stock shorts while covering index/ETF hedges (tech long/short ratio hit a record low since 2016, >20pts underweight tech; net leverage rose only from price action and hedge-covering, still 2nd percentile; October was multi-PM funds' worst month on record, worse than March 2020), therefore positioning is a 'clean slate' where a squeeze is possible but nobody wants to own the rally, therefore the two things the market is pricing (positioning vs. the Fed) get tested by Nvidia's earnings Tuesday and the Fed's Dec 9 decision, and only one of those resolves next month.",
+ "pulse_chain": "S&P/semis had their best week since April, therefore Goldman's prime book shows hedge funds sold into that strength for a second week via fresh single-stock shorts (not long liquidation) funded by covering index/ETF hedges (tech long/short ratio at a record low since 2016, >20pts underweight tech; leverage up only from price action/hedge-covering, still 2nd percentile; October was multi-manager funds' worst month on record, worse than March 2020), therefore that positioning story sits against a bond market pricing a hawkish Fed (worst 2-year week since 2024, Dec-hike odds to 113%), therefore two events settle which read is right: the Fed's Dec 9 decision and Nvidia's Tuesday earnings.",
+ "preserved": true,
+ "why": "The pulse reproduces the note's mechanism (rally met with fresh single-stock shorts funded by hedge-covering, record-low tech long/short ratio, 2nd-percentile net leverage, worst multi-PM month) with the same Goldman attribution and the same invalidation (Nvidia Tuesday, Fed Dec 9) the note itself names as the next data points that resolve the positioning-vs-Fed split.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

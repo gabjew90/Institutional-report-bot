@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+ "source_span": "Last week's selling was long liquidation, plain and simple. This week's US selling came mostly from fresh shorts. In other words, the fast money spent the best week for chips in seven months pressing bets against individual stocks.",
+ "source_chain": "A: S&P +2.5%/semis +8% (best chip week since April) came against bad news (Jensen's exit, a third hot CPI, Waller floating 50bp) \u2014 therefore B: hedge funds still net sold, but switched the form of selling from long liquidation to fresh single-stock shorts funded by covering index/ETF hedges (-8.6%, largest in 7 months), driving the US tech long/short ratio to a record low (1.5) \u2014 therefore C: net leverage stayed near 5-year lows despite the rally, so positioning is a 'clean slate' that history (MS/JPM) says should be bullish, yet the pros used it to short rather than buy. Invalidation: whether that read is right resolves at two named events \u2014 the Dec 9 FOMC (50bp hike priced) and Nvidia's first post-Jensen earnings, Tuesday.",
+ "pulse_chain": "A: S&P +2.5%, semis best week since April [c852][c331] \u2014 therefore B: Goldman's prime book shows hedge funds selling into the rally a second straight week, now as fresh single-stock shorts funded by covering index/ETF hedges (-8.6%, largest in 7 months) [c1330][c1339][c1257], tech long/short ratio at a record low 1.5 [c1338] \u2014 therefore C: net leverage rose only from the market going up and hedge-covering, still 2nd percentile of 5 years [c1358][c1359], so the 'clean slate' (MS max overweight, JPM's clean-out read) is disputed by Goldman's slower-growth/AI-impulse-peak case. Invalidation: the Dec 9 FOMC with a half-point hike on the table, and Nvidia reporting Tuesday under its interim CEO, are named as the two events that settle it [c1151][c128].",
+ "preserved": true,
+ "why": "The pulse keeps the note's exact mechanism (rally met not with long-liquidation but fresh single-stock shorts funded by hedge-covering, record-low tech L/S ratio, low net leverage despite the up week) and closes on the same two-event invalidation the note itself names (Dec 9 FOMC, Nvidia's first post-Jensen print), without reversing the direction or swapping in a different resolution.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

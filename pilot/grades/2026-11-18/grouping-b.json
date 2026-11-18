@@ -1,0 +1,106 @@
+{
+ "metric": 1,
+ "total_cards": 534,
+ "fragmentation_sets": [
+  {
+   "subject": "Hedge funds' historic degrossing creating a year-end equity squeeze setup",
+   "labels": [
+    "hedge fund positioning",
+    "year end equity squeeze setup"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Retail's buy-the-dip reaction to Nvidia's CEO succession news",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda retail buying surge"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "AI/semis valuation reset heading into Nvidia's Q3 print",
+   "labels": [
+    "ai semiconductor valuation reset",
+    "nvda q3 earnings preview"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Semis sector whiplash: this week's momentum unwind into a bounce",
+   "labels": [
+    "ai momentum unwind",
+    "tech semis bounce back"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "AI data-center buildout facing midterm-election political backlash",
+   "labels": [
+    "data center buildout credibility",
+    "ai buildout political backlash",
+    "spacex post midterm political risk"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "Oil's round trip: Iran-risk spike fading into a de-escalation plunge",
+   "labels": [
+    "iran geopolitical risk",
+    "oil price relief"
+   ],
+   "cards": 21
+  }
+ ],
+ "fragmented_mass_share": 0.22,
+ "mis_merges": [
+  {
+   "label": "oil price relief",
+   "subjects": [
+    "observed oil price decline / relief rally (JPM, SocGen, base-case 2027 forecasts)",
+    "Morgan Stanley's 'Rates and Oil Downside' scenario, a hypothetical oil SPIKE to $125-150 driving a Fed-hiking recession"
+   ],
+   "would_change_theme_selection": true,
+   "why": "the MS tail-risk scenario runs in the opposite price direction from the label's relief narrative, so an editor scanning for themes under a 'relief' heading would likely never surface this distinct recession-risk case."
+  },
+  {
+   "label": "hedge fund positioning",
+   "subjects": [
+    "equity/tech hedge-fund de-risking and sector rotation",
+    "oil futures long positioning / Brent's 20% drawdown"
+   ],
+   "would_change_theme_selection": false,
+   "why": "the oil content duplicates material already independently selectable under 'oil price relief' and 'iran geopolitical risk', so an editor would still reach that theme."
+  },
+  {
+   "label": "nvidia ai narrative shift",
+   "subjects": [
+    "Nvidia's AI compute-share erosion to AMD/Google TPU",
+    "Morgan Stanley's ASML Top Pick reinstatement and \u20ac1,700 price-target math"
+   ],
+   "would_change_theme_selection": false,
+   "why": "the ASML price-target detail is single-stock analyst math too narrow to have been chosen as its own theme regardless of where it was filed."
+  },
+  {
+   "label": "dollar oil outlook",
+   "subjects": [
+    "Goldman's 2027 Brent oil-price scenarios",
+    "Goldman's 2027 dollar/FX outlook"
+   ],
+   "would_change_theme_selection": false,
+   "why": "both theses recur intact elsewhere ('oil price relief'/'iran geopolitical risk' for oil, '2027 global markets outlook'/'usd strength outlook' for the dollar), so nothing is lost to an editor."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmented mass share (0.22) clears the 0.10 ceiling on its own, and one mis-merge (oil price relief burying MS's oil-spike recession scenario) would independently change theme selection. Total_cards (534) reflects what the supplied topic-label lists actually enumerate; the ledger header states 1800 for the day, so additional cards exist outside this excerpt's visible scope.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

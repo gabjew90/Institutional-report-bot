@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+ "source_span": "Put the two together and the fast money has swapped index hedges for stock-specific shorts... concluded that the stock market spent the week pricing positioning while the bond market priced the Fed. Only one of those gets settled next month.",
+ "source_chain": "S&P rallied 2.5% / semis +8% (best week since April) and survived bad AI-trade news, therefore hedge funds should have re-risked, but instead they kept net selling for a 5th week in 6 and swapped index/ETF hedge-covering for fresh single-stock shorts, therefore US tech long/short ratio hit a record low (1.5, lowest since 2016) and net leverage's rise was purely mechanical (market-up + hedge-covering, still 2nd percentile) with October the worst month on record for multi-PM funds, therefore funds are reading the bond market (2yr worst week since 2024, Fed's Dec 9 50bp-hike risk) as the real signal over the equity rally; invalidation: resolved by the Dec 9 FOMC decision and Nvidia's Tuesday earnings (first data point, first report without Jensen).",
+ "pulse_chain": "S&P +2.5% and semis best week since April, therefore Goldman's prime book shows hedge funds selling into that strength a second straight week, with the selling now fresh single-stock shorts funded by covering index/ETF hedges (ETF shorts -8.6%, largest in 7 months), therefore US tech long/short ratio is a record low 1.5 (20+ points underweight) and net leverage's rise is only market-up/hedge-covering, still 2nd percentile, with October the worst month on record for multi-PM funds, therefore (via the bond market move and bank disagreement: MS bullish, JPM neutral, GS bearish on 2027 earnings growth) the debate stays open; invalidation: settled by the Dec 9 FOMC meeting (50bp hike on the table) and Nvidia's Tuesday earnings, its first under interim CEO Colette Kress.",
+ "preserved": true,
+ "why": "The pulse keeps every step of d1's chain in the same order and direction (rally met with intensified, hedge-covering-funded single-stock shorting despite the rally, record-low tech positioning, deceptive leverage rise, historic October losses) with correct Goldman attribution, and closes on the same two resolving events (Dec 9 FOMC, Nvidia earnings) that d1 itself names as the invalidation.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,107 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "HFs net sold again and added fresh single-stock shorts (Info Tech, Financials, Health Care) despite a 2.5% S&P rally and an 8% semis rip, therefore the leverage uptick came only from the market's own rise and index-hedge covering (not buying), leaving net exposure near 5-year lows, therefore with October the worst month on record for multi-PM funds, bulls read the light positioning as a 'blank slate' setup for a year-end squeeze while VIX-put buying shows skepticism the rally itself extends.",
+   "brief_chain": "Same chain: fresh single-name shorts into a rally, leverage up only from covering/price not conviction buying, worst month on record for multi-PM funds, bulls call it a blank slate squeeze setup, VIX puts signal skepticism.",
+   "distortions": [
+    {
+     "what": "Brief labels Peter Callahan 'Goldman's own strategist'; source calls him Goldman's 'top TMT specialist'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same person, same quote, same call; job-title wording doesn't change the read."
+    },
+    {
+     "what": "Brief says net leverage 'stays near five-year lows'; source gives the precise figure as 2nd percentile of the past five years.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 '2nd percentile' and 'near five-year lows' describe the same extreme, just at different precision."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d17",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Equities caught down to NVDA as macro toughened (VIX, 10yr, USD, oil), therefore long-only flow rotated out of NVDA into hyperscalers/large-cap tech and both LO and HF cohorts finished moderate net sellers, therefore prime data shows a second straight week of HF net selling via single-stock shorts (ETF shorts covered, 8/11 sectors sold, Financials selling the largest in 8 months) ahead of NVDA/BABA earnings, Retail Sales and FOMC minutes.",
+   "brief_chain": "Same chain, condensed: NVDA-led catch-down, LO supply into hyperscalers, moderate net selling, prime book confirms single-stock short-driven selling with the stated leverage levels, ahead of the same catalysts.",
+   "distortions": [
+    {
+     "what": "Brief drops the '99th percentile 5-year' qualifier on Financials' net selling, keeping only 'largest in 8 months'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both stats describe the same extreme selling; dropping one is a compression, not a contradiction."
+    },
+    {
+     "what": "Brief gives leverage levels (209.1% gross, 45.4% net) without the point-change deltas (+1.6pts, +2.1pts) the source states.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the absolute levels (what matters for the positioning read) are preserved exactly."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d6",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "HFs stayed defensively light (net exposure 5th percentile, gross at a 1yr low) and bought with no conviction even in outperforming AI names, therefore retail (~$25bn, including a record same-day Nvidia dip-buy after Huang's resignation) and resuming buybacks did the actual buying, therefore even with earnings mostly beating and MS holding its capex forecast, a third hot CPI and hawkish Fedspeak pushed hike odds to 113% and have de-rated the market's multiple, while Europe diverges by rallying to records despite higher US yields.",
+   "brief_chain": "Same chain: light, low-conviction HF positioning; retail/buybacks as the real buyers, including the record Nvidia dip-buy; earnings beat and capex forecast held; hawkish Fed repriced hike odds and the multiple; Europe hits records despite higher US yields.",
+   "distortions": [
+    {
+     "what": "Brief says ~40% of US L/S funds are 'flat or down on the year'; source says 'flat or down as of last week', not explicitly tied to YTD performance.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 either reading supports the same 'funds have little room/appetite to add risk' point."
+    },
+    {
+     "what": "Brief implies this week's hot CPI and hawkish Fedspeak 'de-rated the S&P's forward P/E from 23.2x to 18.2x'; source frames that de-rating as having occurred since 4Q25 (a multi-month move), not purely from this week's data.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the multiple level and direction are correct; only the implied speed/timing of the de-rating is compressed."
+    },
+    {
+     "what": "Brief calls the $1.6bn Nvidia retail buy a 'record'; source calls it 'nearly 10x the next most-bought stock' and separately (via a cited real-time report) 'the biggest opening bid ever recorded in NVDA', not explicitly a record day-total.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the scale and direction (retail absorbing institutional selling) are accurate either way."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d10",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Nvidia's financing backstop for the AI ecosystem is now under more cautious management (Kress halved the OpenAI backstop) just as junk-bond funding for AI data centers has dried up (wider spreads, no new deals, IG wraps that only bite on completion), therefore the earnings tailwind from hyperscaler capex is set to fade and flip to a drag by 2028 even though the capex barely moves GDP, therefore a hawkish Fed (hot CPI/PPI, weak auctions) is the real headwind that already-exhausted positioning is temporarily offsetting.",
+   "brief_chain": "Same six-idea chain: Kress's more cautious backstop stance, dried-up AI junk financing with the IG-wrap trapdoor, earnings growth halving as the capex tailwind fades then flips to a drag, capex's outsized market impact vs minimal GDP impact, and a hawkish Fed as the headwind positioning is absorbing.",
+   "distortions": [
+    {
+     "what": "Brief states no new AI junk deals since September 'because' IG tenant wraps only activate on completion, drawing a causal link between two points the source presents separately (deal-flow contraction since September vs. the IG-wrap completion trapdoor).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both underlying facts are accurate and point the same cautious direction on AI credit; only the inferred 'because' linking them is the brief's own gloss."
+    },
+    {
+     "what": "Brief says 'no new AI junk deals since September'; source says supply contracted dramatically since end-September with 'no new deals coming over the last month' specifically.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the practical read (AI junk issuance has stopped) is the same under either phrasing."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

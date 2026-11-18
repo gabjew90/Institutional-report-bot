@@ -1,0 +1,145 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "Last week's selling was long liquidation, plain and simple. This week's US selling came mostly from fresh shorts... the selling was almost entirely new single-name shorts. Put the two together and the fast money has swapped index hedges for stock-specific shorts",
+   "why": "Source states the shift from long liquidation to fresh single-stock shorts, funded by covering index/ETF hedges (ETF shorts down 8.6%, largest covering in 7 months)."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27647__morgan-stanley-s-savone-finds-hedge-funds-folding-into-the-r.txt",
+   "span": "Retail, for one, to the tune of about $25 billion over the past week through Thursday... retail net bought $1.6 billion of Nvidia on Thursday alone, nearly 10x the demand for the next most-bought stock",
+   "why": "Exact match on both figures and attribution to Morgan Stanley (Savone/QDS models)."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "the stock market spent the week pricing positioning while the bond market priced the Fed",
+   "why": "Supports the contrast that the bond market was pricing a distinct driver (the Fed) from what equities were pricing."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27343__everything-bad-everywhere-all-at-once-except-stocks-jensen-q.txt",
+   "span": "Goldman's economists added a third hike in March 2027, taking the peak funds rate to...",
+   "why": "Exact match."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27324__oil-relief-cpi-stickiness-ai-de-risking-fed-patience-at-risk.txt",
+   "span": "We continue to prefer hyperscalers to the high-beta AI players, favoring balance-sheet strength and free-cash-flow durability.",
+   "why": "Document confirmed as JPMorgan (\"The J.P. Morgan View\"); matches sentence exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+   "span": "Nvidia announced that Jensen Huang has resigned, effective immediately, with CFO Colette Kress taking over as interim CEO (while keeping the CFO job)",
+   "why": "Exact match."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27252__no-one-can-fill-jensen-s-leather-jacket-14-banks-weigh-in-as.txt",
+   "span": "He keeps his Buy rating but cuts his price target to $220 from $300... the bank expects every announced commitment to be honored, it thinks new multi-party ecosystem investments at the same scale will be harder to pull off",
+   "why": "Matches rating, target change, and the honored-commitments/harder-new-deals point tied to Huang's convening power mentioned just prior."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+   "span": "this could easily take ~$50B or more out of the system - at least temporarily",
+   "why": "Matches UBS's Tim Arcuri estimate exactly, attributed correctly."
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27333__the-state-of-ai-financing-hyperscalers-are-back.txt",
+   "span": "Between October 29 and November 4, hyperscalers priced ~$67bn of supply across the US and EUR IG markets",
+   "why": "The $67bn/5-business-day issuance burst is dated October 29-November 4 in the source, not anchored to September 30 as the sentence claims; a separate MS note (27647) describes the $67bn as cumulative 'since September 30' with no 5-day framing. The sentence conflates the two, placing a month-later event's tight window at the wrong anchor date. The $103bn chip-financing-in-October figure is itself accurate.",
+   "searched": [
+    "67bn",
+    "within 5 business days",
+    "September 30",
+    "103bn chip financing"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27326__2027-global-strategy-outlook-embracing-risk.txt",
+   "span": "We take off our long-held underweight on high-quality hyperscalers, but would add risk selectively at the long-end.",
+   "why": "Exact match, correctly attributed to Morgan Stanley."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27546__earnings-blast.txt",
+   "span": "Constellation Energy: \"I do think we have seen a bit of an overreaction in the market to the election results...\"",
+   "why": "Direct quote from Constellation Energy management matches the sentence."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27333__the-state-of-ai-financing-hyperscalers-are-back.txt",
+   "span": "We think risk-reward for HQ hyperscalers is improving... the largest companies have greater flexibility to redirect investment and improve productivity from existing capacity",
+   "why": "Matches conclusion on best-capitalized hyperscalers and their ability to redirect spending."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27329__ai-correction-multiples-reset-estimates-hold.txt",
+   "span": "Of the 94 members, 61 had reported results by their respective cut-off dates, and their FY2 estimates rose (median +4.5%, net revision breadth +57%)",
+   "why": "Exact match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27329__ai-correction-multiples-reset-estimates-hold.txt",
+   "span": "the AI Adopters portfolio returned -3.2% and AI Enablers -29.0%... is +48% against +2% for Adopters... the rotation remains valuation-led, rather than earnings-led",
+   "why": "Exact match on all figures and the valuation-led characterization."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27597__this-is-the-real-bubble.txt",
+   "span": "staples' forward dividend yield relative to the 10-year Treasury is sitting at the 1st percentile. Defensive, yes. Cheap? Anything but.",
+   "why": "Exact match."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

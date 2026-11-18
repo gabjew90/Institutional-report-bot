@@ -1,0 +1,147 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "The US Info Tech long/short ratio is now 1.5, down from a 2026 peak of 2.14 in early June... leaves hedge funds more than 20 points underweight tech vs. the S&P",
+   "why": "GS Armbrust note (27440) separately gives 'lowest level on our record (since 2016)' for the same 1.5 ratio; this file gives the 20-point underweight figure. Both match the sentence exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "US Fundamental L/S net leverage rose 2.1 points to 45.4%... The entire increase came from the market going up and from covering index hedges; nobody actually bought anything. Net is still in the 2nd percentile of the past five years",
+   "why": "Direct match on mechanism (price appreciation + hedge covering, not buying) and the 2nd percentile/five-year figure."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27647__morgan-stanley-s-savone-finds-hedge-funds-folding-into-the-r.txt",
+   "span": "retail net bought $1.6 billion of Nvidia on Thursday alone, nearly 10x the demand for the next most-bought stock... Retail was more engaged, buying an estimated ~$25B over the past week through Thursday",
+   "why": "All three figures (($25B weekly, $1.6B NVDA Thursday, ~10x next stock) match Morgan Stanley's QDS data as reported."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "the stock market spent the week pricing positioning while the bond market priced the Fed",
+   "why": "Vague paraphrase but the stance (bond market priced something distinct from what stocks priced) is a bank's stance (Goldman) stated in the source.",
+   "searched": [
+    "bond market priced",
+    "priced something else"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27324__oil-relief-cpi-stickiness-ai-de-risking-fed-patience-at-risk.txt",
+   "span": "We continue to prefer hyperscalers to the high-beta AI players, favoring balance-sheet strength and free-cash-flow durability",
+   "why": "JPMorgan (confirmed via meta.json) states exactly this preference."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27252__no-one-can-fill-jensen-s-leather-jacket-14-banks-weigh-in-as.txt",
+   "span": "Nvidia (NVDA) announced that its co-founder and only CEO in 33 years has resigned, effective immediately... CFO Colette Kress takes over as interim CEO (while keeping the CFO job)",
+   "why": "Exact match on resignation timing and Kress's dual role."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27252__no-one-can-fill-jensen-s-leather-jacket-14-banks-weigh-in-as.txt",
+   "span": "Kress, as both interim CEO and CFO, presents Q3 results on Nov 17... Somebody will ask her about the $500 billion [financing platform]",
+   "why": "Matches the $500bn commitments and the call framing."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27340__half-a-trillion-in-ious-a-dead-junk-market-a-fed-that-won-t-.txt",
+   "span": "AI-related high yield spreads have blown out to roughly 425bp against about 265bp for non-AI BB/B paper... investment grade tenant wraps only become effective on completion",
+   "why": "Attributed to Goldman's Miriam Wheeler in source; matches spread figures, no-new-deals-since-September claim, and the completion-contingent guarantee mechanic."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27333__the-state-of-ai-financing-hyperscalers-are-back.txt",
+   "span": "we have seen the all-time widest print on AAAs (200)... We believe this weakness is primarily driven by technical factors, rather than fundamental concerns over the thematic backdrop",
+   "why": "Morgan Stanley (confirmed via meta.json) states exactly the 200bp AAA print and the supply/technical-not-verdict framing."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27326__2027-global-strategy-outlook-embracing-risk.txt",
+   "span": "We take off our long-held underweight on high-quality hyperscalers, but would add risk selectively at the long-end",
+   "why": "Morgan Stanley (confirmed via meta.json) states this removal of the underweight directly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27329__ai-correction-multiples-reset-estimates-hold.txt",
+   "span": "consensus EPS rose by about 3 log points... while P/E multiples contracted by about 37 log points overall... for these stocks, the de-rating accounts for more than the entire price decline... 30 Sep to cut-off... 5 Nov 2026 close for all others",
+   "why": "Morgan Stanley decomposition exactly matches the Sept 30-Nov 5 window and the valuation-driven finding."
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27329__ai-correction-multiples-reset-estimates-hold.txt",
+   "span": "US and Europe moved from the middle of their ranges to the bottom quintile (median percentiles 17 and 13). Japan de-rated most, from the 82nd to the 28th percentile, even though every Japanese member saw flat or higher FY2 estimates... Asia/EM... 7 of its 26 members (27%) saw FY2 consensus cut by more than 0.5%",
+   "why": "The quintile/82nd-to-28th figures are correct, but 'no member seeing lower estimates' universalizes a Japan-only qualifier ('every Japanese member saw flat or higher FY2 estimates'); the same document states 7 of 26 Asia/EM members DID see estimate cuts, directly contradicting the sentence's claim as stated.",
+   "searched": [
+    "no member seeing lower estimates",
+    "lower estimates"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27638__what-to-watch-in-the-week-ahead-english-1669763.txt",
+   "span": "We expect Eurozone earnings to grow 15% next year and remain positive on the region's equities. [UBS]; Raise MSCI Europe target to 3030 (+15% upside) [Morgan Stanley, 27326]",
+   "why": "Both bank claims verified verbatim in their respective source files."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27310__weekly-mash-2027-outlooks.txt",
+   "span": "France's CAC-40 was outperforming our basket of AI-winners over the last 12mths... European banks have now outperformed the mighty 'Mag7' over 1yr, 2yrs, 3yrs, 4yrs & 5yrs",
+   "why": "Goldman Sachs (Mark Wilson) states both comparisons exactly as paraphrased."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27336__pain-bitcoin-has-lost-over-10-000-in-a-week.txt",
+   "span": "Bitcoin is once again trading below Strategy's average purchase price... Funding turned negative on Binance, OKX and Bybit on November 13... traders are increasingly paying to be short",
+   "why": "Direct match on all elements including the exact date and exchanges."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,129 @@
+{
+ "metric": 1,
+ "total_cards": 1800,
+ "fragmentation_sets": [
+  {
+   "subject": "Nvidia CEO transition, valuation collapse, and Q3 earnings print",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda q3 earnings preview",
+    "nvda retail buying surge"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "Data-center buildout political/regulatory risk after the midterms",
+   "labels": [
+    "data center buildout credibility",
+    "ai buildout political backlash"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "AI capex boom: debt financing strain and growth-cycle peak risk",
+   "labels": [
+    "ai data center financing",
+    "ai investment boom risk"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Tech/AI hedge fund positioning unwind and rotation into hyperscalers",
+   "labels": [
+    "hedge fund positioning",
+    "ai momentum unwind",
+    "tech semis bounce back",
+    "ai equity positioning asymmetry"
+   ],
+   "cards": 38
+  },
+  {
+   "subject": "Oil price outlook, Iran/Hormuz risk, and dollar/rates spillover",
+   "labels": [
+    "oil price relief",
+    "iran geopolitical risk",
+    "dollar oil outlook"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "SpaceX investment thesis: valuation, Starlink growth, Starship test, AI/data-center business, political risk",
+   "labels": [
+    "spacex post midterm political risk",
+    "spacex valuation price target",
+    "spacex starlink revenue growth vs telecoms",
+    "spacex starship reusability milestone",
+    "spacex ai business position"
+   ],
+   "cards": 38
+  },
+  {
+   "subject": "Europe's low AI-beta and resulting outperformance/diversification appeal",
+   "labels": [
+    "european equity outperformance",
+    "europe 2027 equity outlook",
+    "europe ai diversification trade"
+   ],
+   "cards": 34
+  },
+  {
+   "subject": "Q3 2026 earnings season strength and 2027 EPS outlook",
+   "labels": [
+    "q3 earnings season strength",
+    "s p 500 2027 earnings outlook"
+   ],
+   "cards": 11
+  }
+ ],
+ "fragmented_mass_share": 0.117,
+ "mis_merges": [
+  {
+   "label": "hedge fund positioning",
+   "subjects": [
+    "hedge fund equity/tech de-risking and rotation",
+    "oil futures positioning / Brent drawdown"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Only 2 of 12 cards are oil-specific, and oil positioning is already fully covered by the dedicated oil cluster, so an editor would still pick the right themes."
+  },
+  {
+   "label": "usd em carry regime",
+   "subjects": [
+    "Iran/Hormuz de-escalation and oil-range forecast",
+    "EM FX/rates carry trade recommendations (EURUSD/USDZAR/USDMXN binaries, HUF, SAGB)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Hormuz/oil backdrop is 2 of 13 cards and duplicates content already owned by the dedicated oil cluster; the label's EM carry trade ideas remain its clear main subject."
+  },
+  {
+   "label": "us growth outlook",
+   "subjects": [
+    "JPM's October retail-sales print preview",
+    "Morgan Stanley's multi-year 2027-2028 structural GDP/consumption/housing outlook"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The retail-sales card is 1 of 12 and a near-duplicate of content in the dedicated retail-sales label, too small a share to redirect an editor's theme pick."
+  },
+  {
+   "label": "em equity selloff",
+   "subjects": [
+    "Brazil's Lula re-election-driven equity selloff",
+    "Korea/Taiwan tech-concentration-driven EM selloff and EAFE context"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The 3 Brazil cards duplicate the far richer dedicated 'brazil macro asset outlook' label, so an editor still has that fuller theme to draw on; the remaining 6 Korea/Taiwan/EAFE cards still read as a coherent EM theme on their own."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmentation share (0.117) exceeds the 0.10 threshold, concentrated in a handful of large source notes (GS prime-brokerage flows, GS's 2027 outlook, an RBC SpaceX deep-dive) each split by the reader into 2-5 separate topic labels. No mis-merge was judged severe enough on its own to change theme selection.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

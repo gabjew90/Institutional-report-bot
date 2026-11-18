@@ -1,0 +1,73 @@
+{
+ "metric": 1,
+ "total_cards": 1800,
+ "fragmentation_sets": [
+  {
+   "subject": "SpaceX: political risk to its data-center buildout, valuation/price target, the Starship test outcome, its AI compute business, and Starlink's growth vs. telecoms \u2014 one company story, mostly one RBC note",
+   "labels": [
+    "spacex post midterm political risk",
+    "spacex valuation price target",
+    "spacex starship reusability milestone",
+    "spacex ai business position",
+    "spacex starlink revenue growth vs telecoms"
+   ],
+   "cards": 38
+  },
+  {
+   "subject": "Nvidia's CEO departure: succession/governance risk, the valuation-defense case, and retail buying the dip",
+   "labels": [
+    "nvda ceo succession risk",
+    "nvda retail buying surge"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "Data-center buildout political/regulatory risk after the midterms (did the sweep actually threaten buildout)",
+   "labels": [
+    "data center buildout credibility",
+    "ai buildout political backlash"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "Is the AI/semis selloff over: momentum-factor unwind, cross-bank positioning reads, and the bounce-back-or-bear-trap debate",
+   "labels": [
+    "ai momentum unwind",
+    "tech semis bounce back",
+    "us equity momentum unwind",
+    "ai equity positioning asymmetry"
+   ],
+   "cards": 38
+  },
+  {
+   "subject": "Q3 2026 earnings-season beat-rate strength and its 2027 EPS growth read-through",
+   "labels": [
+    "q3 earnings season strength",
+    "s p 500 2027 earnings outlook"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Hedge funds purge tech/AI exposure to record lows \u2014 the degrossing-driven year-end squeeze setup",
+   "labels": [
+    "hedge fund positioning",
+    "year end equity squeeze setup"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.076,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "misc holds 12 of 1800 cards (0.67%), all unrelated single-line flow/levels notes, correctly left as overflow. The two biggest fragmentation sets (SpaceX's single-company story split 5 ways, and the AI/semis unwind-vs-bounce debate split 4 ways across GS/Pictet/UBS/Market Ear) account for most of the fragmented mass; no label held two genuinely incompatible subjects at a confidence level clearing the mis-merge bar.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

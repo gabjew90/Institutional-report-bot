@@ -1,0 +1,148 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27440__gs-armbrust-what-matters-today-info-tech-long-short-ratio-at.txt",
+   "span": "US Info Tech long/short ratio now stands at 1.5 (vs. YTD peak of 2.14 seen in early June), the lowest level on our record (since 2016).",
+   "why": "Goldman's Armbrust note gives the 1.5 ratio and 'lowest level on record since 2016' verbatim; the companion Goldman-sourced piece (27341__shorting-the-rip...) independently states 'leaves hedge funds more than 20 points underweight tech vs. the S&P, per Goldman's chart', confirming the second clause."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+   "span": "The entire increase came from the market going up and from covering index hedges; nobody actually bought anything. Net is still in the 2nd percentile of the past five years.",
+   "why": "Exact match on mechanism (market up + covering, not buying) and the '2nd percentile of the past five years' figure for net leverage."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27226__ms-savone-global-reflections-14-nov-2026.txt",
+   "span": "Retail was more engaged, buying an estimated ~$25B over the past week through Thursday... retail net bought $1.6B of Nvidia (NVDA) on Thursday, nearly 10x the demand of the next-most-bought single name",
+   "why": "All three figures (~$25B weekly retail, $1.6B NVDA Thursday, nearly 10x next-most-bought) appear verbatim in the Morgan Stanley (Savone) note, attributed to MS's QDS models."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27343__everything-bad-everywhere-all-at-once-except-stocks-jensen-q.txt",
+   "span": "while the bond market, which hadn't priced any of it, had to do all the work... the question for next week is whether the bond market's verdict eventually reaches stocks",
+   "why": "Opinion-shaped sentence; the source explicitly frames bonds and stocks as reacting differently to the week's news, with the piece stating 'We side with the bond market' against the equity market's calmer read -- supports 'priced something else entirely' as a compressed paraphrase of a documented stance.",
+   "searched": [
+    "priced something else entirely",
+    "bond market priced"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27324__oil-relief-cpi-stickiness-ai-de-risking-fed-patience-at-risk.txt",
+   "span": "We continue to prefer hyperscalers to the high-beta AI players, favoring balance-sheet strength and free-cash-flow durability.",
+   "why": "Verbatim JPMorgan (confirmed via meta.json source field and 'J P M O R G A N' header) statement of preference for hyperscalers over high-beta AI names."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27342__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+   "span": "Jensen Huang has resigned, effective immediately, with CFO Colette Kress taking over as interim CEO (while keeping the CFO job)",
+   "why": "Near-verbatim match, corroborated across multiple sources (27254, 27247, 27252, 27343) all describing resignation effective immediately and Kress as interim CEO retaining the CFO role."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27252__no-one-can-fill-jensen-s-leather-jacket-14-banks-weigh-in-as.txt",
+   "span": "Kress, as both interim CEO and CFO, presents Q3 results on Nov 17... Somebody will ask her about the $500 billion.",
+   "why": "Matches the setup exactly: Kress presenting on the earnings call, with the open question being whether she stands behind the $500bn financing platform."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27340__half-a-trillion-in-ious-a-dead-junk-market-a-fed-that-won-t-.txt",
+   "span": "AI-related high yield spreads have blown out to roughly 425bp against about 265bp for non-AI BB/B paper... Wheeler also flagged the trapdoor... investment grade tenant wraps only become effective on completion",
+   "why": "Figures (425bp vs 265bp), the no-new-deals-since-September detail, and the IG tenant guarantee mechanic all match Goldman's Miriam Wheeler commentary verbatim."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27333__the-state-of-ai-financing-hyperscalers-are-back.txt",
+   "span": "we have seen the all-time widest print on AAAs (200)... We believe this weakness is primarily driven by technical factors, rather than fundamental concerns over the thematic backdrop.",
+   "why": "Morgan Stanley note gives the all-time-wide 200bp AAA print and explicitly frames it as a technical/supply issue rather than a thematic verdict."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27326__2027-global-strategy-outlook-embracing-risk.txt",
+   "span": "We close our underweight on HQ hyperscalers, and add selectively at the long-end.",
+   "why": "Morgan Stanley verbatim; 'HQ hyperscalers' = high-quality hyperscaler credit."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27329__ai-correction-multiples-reset-estimates-hold.txt",
+   "span": "P/E multiples contracted by about 37 log points overall... for these stocks, the de-rating accounts for more than the entire price decline... 30 Sep to cut-off... 5 Nov 2026 close for all others",
+   "why": "Morgan Stanley's decomposition exhibit uses the exact 30 Sep to 5 Nov window and finds valuation (de-rating) accounts for more than the entire price decline, i.e. almost entirely valuation-driven."
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27329__ai-correction-multiples-reset-estimates-hold.txt",
+   "span": "US and Europe moved from the middle of their ranges to the bottom quintile (median percentiles 17 and 13). Japan de-rated most, from the 82nd to the 28th percentile, even though every Japanese member saw flat or higher FY2 estimates... 7 of its 26 members (27%) saw FY2 consensus cut by more than 0.5%",
+   "why": "The quintile figures and Japan's 82nd-to-28th percentile move are correct, but 'no member seeing lower estimates' misattributes a Japan-specific fact (every Japanese member saw flat/higher FY2 estimates) to the whole set: the same source states 27% of Asia/EM members did see FY2 estimates cut over the period, so the generalized 'no member' claim is false.",
+   "searched": [
+    "no member seeing lower estimates",
+    "82nd to the 28th percentile",
+    "bottom quintile"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27638__what-to-watch-in-the-week-ahead-english-1669763.txt",
+   "span": "We expect Eurozone earnings to grow 15% next year and remain positive on the region's equities.",
+   "why": "UBS verbatim for the earnings growth/stance clause; Morgan Stanley's 'Raise MSCI Europe target to 3030 (+15% upside)' (27326) confirms the second clause."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27310__weekly-mash-2027-outlooks.txt",
+   "span": "even France's CAC-40 was outperforming our basket of AI-winners over the last 12mths (chart 1), and that European banks have now outperformed the mighty 'Mag7' over 1yr, 2yrs, 3yrs, 4yrs & 5yrs",
+   "why": "Verbatim match from Goldman's Peter Wilson weekly note for both comparisons."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-17/27336__pain-bitcoin-has-lost-over-10-000-in-a-week.txt",
+   "span": "Bitcoin is once again trading below Strategy's average purchase price... Funding turned negative on Binance, OKX and Bybit on November 13. That's an important shift: the market is no longer just liquidating longs; traders are increasingly paying to be short.",
+   "why": "Both clauses match verbatim, including the exact three exchanges and date."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

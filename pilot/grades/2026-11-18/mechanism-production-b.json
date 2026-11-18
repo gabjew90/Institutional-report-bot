@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-17/27341__shorting-the-rip-hedge-funds-sell-into-best-chip-rally-since.txt",
+ "source_span": "A clean slate is only bullish if someone picks up the chalk, and this week, handed a 2.5% rally... hedge funds chose to short more stocks.",
+ "source_chain": "A: despite a 2.5% S&P rally and the best chip week since April, Goldman's prime book shows hedge funds net selling US stocks for a 2nd straight week. B: therefore, the selling changed form from long liquidation to fresh single-stock shorts funded by covering index/ETF hedges (-8.6%, largest in 7 months), driving the US tech long/short ratio to a record low (1.5, >20pts underweight) while net leverage's rise came only from price action and hedge-covering, not buying (still 2nd percentile). C: therefore, despite ideal 'clean slate' conditions for a squeeze, the pros chose to short more, which tracks the bond market pricing a harder Fed (2yr worst week since 2024, Dec 9 FOMC with a 50bp hike on the table) rather than the stock market's positioning story. Invalidation: Nvidia's earnings (Tuesday, first without Jensen) and the Dec 9 Fed decision are the next data points that settle which read is right.",
+ "pulse_chain": "A: despite the S&P +2.5% and semis +8% (best since April), Goldman's prime book shows hedge funds selling into that strength for a 2nd straight week (5 of 6). B: therefore, the selling shifted from long liquidation to fresh single-stock shorts funded by covering index/ETF hedges (-8.6%, largest in 7 months), driving the tech long/short ratio to a record low (1.5, >20pts underweight), while net leverage's rise came only from price action/covering, not buying (still 2nd percentile); October was the worst month on record for multi-PM funds. C: retail bought instead ($25B, incl. $1.6B of $NVDA), and the bond market priced a harder Fed (2yr worst week since 2024, Dec hike odds 84%->113%) rather than the stock market's positioning squeeze. Invalidation: the Dec 9 Fed decision (50bp hike on the table) and Nvidia's earnings Tuesday (first under interim CEO Kress) are what settle it.",
+ "preserved": true,
+ "why": "Every step of the mechanism (selling swapped from long liquidation to fresh single-stock shorts via hedge-covering, tech crowding hit a record low, net leverage's rise was hedge-driven not buying) is reproduced with correct attribution to Goldman, and the invalidation is the identical pair of catalysts (Dec 9 FOMC, Nvidia's Tuesday print) the note itself names, with only added retail-flow and bank-target context layered on top.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

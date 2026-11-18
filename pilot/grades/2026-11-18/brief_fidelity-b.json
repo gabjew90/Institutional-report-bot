@@ -1,0 +1,81 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Rally plus a survived CEO exit and hot CPI should draw funds back in, but they net sold again, shifting from index-hedge liquidation to fresh single-stock shorts in Tech/Financials/Health Care (all crowded hiding places from the AI unwind) -> leverage rose only from the market's rise and hedge-covering, not buying, with net still near multi-year lows -> October was historically brutal for pod shops -> bulls (MS/JPM/GS macro) see a light-positioning squeeze setup, Goldman's TMT desk calls it a low-consensus 'blank slate,' but heavy VIX-put buying shows skepticism the rally extends.",
+   "brief_chain": "Same causal chain: funds sold into the rally via fresh single-stock shorts instead of buying, leverage rose from covering not conviction, October was historically bad, bulls see a squeeze setup, but VIX puts signal skepticism.",
+   "distortions": [
+    {
+     "what": "Brief attributes the 'blank slate' quote to 'Goldman's own strategist'; source names him as Goldman's top TMT specialist, Peter Callahan.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the content and direction of the quote (low consensus, blank slate) is unchanged by the title used for its author."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d17",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Equities fell into the weekend as semis/AI 'caught down' to NVDA after the rubber band stretched too far, amid tougher macro (VIX, yields, USD, oil) -> flow was rotational, NVDA supply into AMD/AVGO and hyperscalers -> HFs net sold a second week via single-stock shorts partly offset by macro covers/buys, ETF shorts fell 8.6%, Financials' selling the largest in 8 months, gross/net leverage both ticked up -> ahead: NVDA/BABA earnings, Retail Sales, FOMC minutes, S&P implied move 1.93%.",
+   "brief_chain": "Matches the source chain point for point: the catch-down rotation, tougher macro, HF selling pattern and leverage levels, and the week-ahead calendar.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d6",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "HFs stayed defensive (net 47%/5th percentile, gross 202%/1-yr low) even as the rally ran, buying split between short-covering and new longs, ~40% of funds flat/down on the year -> retail (~$25bn) and resuming buybacks did the real buying -> Nvidia's Huang resigned, the stock fell to a 13-year-low forward P/E (~$1.7tn peak-to-trough), yet retail bought a record $1.6bn the same day institutions sold -> earnings mostly beat and MS kept its 2027 capex forecast unchanged despite new state rules pushing 5GW into 2029 -> hot CPI/hawkish Fed pushed Dec-hike odds to 113% and de-rated the SPX multiple to 18.2x -> Europe diverged to record highs with crowded positioning despite higher US yields.",
+   "brief_chain": "Same chain and figures, with two compression/framing slips noted below; the stance (HFs defensive, retail/buybacks driving the tape, Fed getting more hawkish, Europe diverging bullishly) is unchanged.",
+   "distortions": [
+    {
+     "what": "Brief says net exposure 'held at 47%'; source says net leverage rose 5 points on the week to 47%, a rise rather than a static level.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 47% is still the 5th percentile either way; the 'funds remain light/defensive' read is identical under both readings."
+    },
+    {
+     "what": "Brief ties the $1.7tn market-cap loss directly to the resignation ('Jensen Huang resigned, erasing about $1.7 trillion'); source frames the $1.7tn figure as a peak-to-trough decline shown in a chart, not a same-day/same-week causal result of the resignation.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the stock is still at a 13-year-low P/E and still down sharply either way; nothing about the trade, lean or invalidation level changes based on the precise attribution window."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d10",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Nvidia's CEO exit removes a major private financier of the AI trade (Kress had already halved the OpenAI backstop); Goldman expects signed deals honored but new rounds harder, UBS sees a possible $50bn liquidity hit if NVDA pauses -> the AI junk market has been frozen since September with spreads blown out, and separately, IG tenant-wrap 'safety' in the cleaner deals doesn't activate until the building is complete -> Goldman's 2027 outlook sees S&P earnings growth roughly halving as capex's EPS boost fades and flips to a drag by 2028 -> AI capex nearing 4% of GDP adds almost nothing to GDP growth because of import/intermediate-goods accounting -> the Fed won't look through hot CPI/PPI and floated a 50bp hike, yet stocks rallied because forced sellers had already de-grossed, making positioning a tailwind against a Fed-driven headwind.",
+   "brief_chain": "Same six ideas condensed, with one invented causal link noted below; the overall picture (financing stress, earnings growth halving, Fed hawkish, positioning as tailwind) is unchanged.",
+   "distortions": [
+    {
+     "what": "Brief states there have been 'no new AI junk deals since September... because investment-grade tenant wraps only activate once a building is complete.' The source presents these as two separate Wheeler points \u2014 the non-IG market freeze, and a distinct 'trapdoor' risk in IG-wrapped deals \u2014 with no causal link between them.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both underlying facts (deal freeze, wrap-activation timing) are accurate and point the same direction (AI credit financing is strained); no trade, lean, or invalidation condition turns on whether one causes the other."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 4,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}
