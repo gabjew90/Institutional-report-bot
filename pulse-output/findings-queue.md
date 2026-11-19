@@ -1421,3 +1421,10 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Unverified in the dump: Goldman 36% to 11% 2027 EPS growth, multi-manager worst month since March 2020, 20 points underweight tech, 2nd-percentile net leverage (dump has 3rd percentile on 1 year), Morgan Stanley diffusion-index figures.
 - **observation** — Today's dump is pre-publish (171 PDFs, 12:22 EST), unlike 11-03 through 11-17. Check whether the archive fix landed.
 - **observation** — TRADE BOARD Citi DELL and HPE lines end in a truncated "…".
+
+## 2026-11-19 (headless QC)
+- **deterministic-fixable** — `pulse-context/latest.json` is again a post-publish rebuild (22:22 UTC, 108 PDFs vs 581 published). RECAP prices and TRADE BOARD sources cannot be audited. Archive the dump keyed by `QC_PULSE_TS`.
+- **deterministic-fixable** — Driver trail records a draft_validate REROLL_DRAFT with no violation name, so a zero-judgment anomaly cannot be read from the trail.
+- **observation** — TRADE BOARD Morgan Stanley $SPX "OW, PT 8,700, 15% upside": the dump carries the 8,700 SPX target on Goldman notes (+17%), none on Morgan Stanley. Check the attribution against the full corpus.
+- **observation** — Unverified: Dell "Citi Buy, $550" in WATCH, Oppenheimer/Bernstein NVDA, Goldman SCA and AMAT, Morgan Stanley FOXA board lines.
+- **observation** — Self-review's claim that the Trump/Xi/Putin APEC meeting was dropped by EDIT is unverified here; check on the next archived dump.
