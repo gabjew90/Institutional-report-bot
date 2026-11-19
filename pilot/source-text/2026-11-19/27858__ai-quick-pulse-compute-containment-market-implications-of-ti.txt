@@ -1,0 +1,633 @@
+Report Completion Date
+17 November 2026, 08:59 UTC
+Chief Investment Office GWM
+Investment Research
+AI quick pulse: Compute containment – market 
+implications of tighter US AI controls
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+ 
+Authors: Ulrike Hoffmann-Burchardi, Chief Investment Officer Americas and Global Head of Equities, UBS Financial Services Inc. (UBS FS); Delwin Kurnia 
+Limas, CFA, CIO Equity Strategist, UBS AG Singapore Branch; Kevin Dennean, CFA, CIO Equity Strategist, US Technology & Telecom, UBS Financial Services 
+Inc. (UBS FS); Achille Monnet, CIO Equity Analyst, UBS Switzerland AG; Allen Pu, CFA, CIO Equity Strategist, UBS AG Hong Kong Branch; Arafat Alafate, 
+CIO Equity Strategist, UBS AG Hong Kong Branch; Nikolaos Fostieris, Global Equity Strategist, UBS Switzerland AG; Xueqiong Huang, Equity Strategist, 
+UBS AG Singapore Branch
+• The US commerce department’s new BIS interim final rule 
+further tightens mainland China’s access to advanced 
+AI compute, targeting both offshore data-center access 
+and third-country semiconductor supply chains. The rule 
+introduces three key restrictions: 1) a license requirement 
+where overseas data centers provide compute to 
+mainland Chinese entities/other D:5 jurisdictions; 2) 
+tighter restrictions on foundries and OSATs providing 
+advanced chip manufacturing and packaging services to 
+mainland Chinese fabless companies; and 3) destination-
+based licensing for covered advanced chips shipped to 
+Brazil, Indonesia, Malaysia, Singapore, and Thailand.
+• We estimate the combined remote-access and GPU 
+restrictions could affect around 5-10% of global AI 
+capex forecast for 2027, but the ultimate revenue 
+impact should be smaller as supply-constrained GPU 
+and cloud capacity is redirected to unmet demand 
+elsewhere. Around one-third of this compute is expected 
+to come from remote access to overseas data centers, 
+making it the largest pool directly exposed to the 
+new restrictions. A further 14% is expected to come 
+from future shipments of US chips directly to mainland 
+China, while around 18% would come from future 
+domestic accelerator production. The remaining one-
+third is already deployed and would therefore be difficult 
+for the new controls to affect directly.
+• The largest downside risks are to mainland China-
+exposed neo-clouds, Southeast Asian data-center 
+operators and mainland Chinese pure-play AI labs, 
+while NVIDIA faces near-term earnings risk given its 
+demand buffer. US hyperscalers and US AI labs should be 
+relative beneficiaries, while tighter offshore access should 
+accelerate mainland China’s semiconductor localization 
+push, supporting Naura Technology and JCET over the 
+longer term.
+Source: Shutterstock
+This report has been prepared by UBS Financial Services Inc. (UBS FS), UBS AG Singapore Branch, UBS Switzerland AG,
+UBS AG Hong Kong Branch. Analyst certification and required disclosures begin on page 6. UBSFS accepts 
+responsibility for the contents of this report. U.S. persons who receive this report and wish to effect any transactions in 
+any security discussed in this report should do so with UBSFS and not UBS AG.
+Page 1 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+ 
+What happened?
+The new interim final rule from the Bureau of Industry 
+and Security (BIS), an agency within the US Department 
+of Commerce, marks a significant shift in how the US 
+restricts access to advanced computing power by entities 
+headquartered in, or ultimately controlled from, mainland 
+China or other Country Group D:5 jurisdictions. Once 
+effective, the controls will follow the ultimate user of the 
+compute rather than stopping at the physical location of 
+the chips. Overseas data centers will require a license if 
+they provide, directly or indirectly, more than 12 million 
+aggregate TPP of covered computing capacity to an entity 
+headquartered in, or ultimately controlled from, Macau or 
+a D:5 jurisdiction. This is roughly equivalent to 700-800 
+NVIDIA H100-class GPUs, although the actual number will 
+depend on the chip and system configuration.
+The BIS is also introducing license requirements for exports, 
+re-exports and in-country transfers of covered advanced 
+chips to Singapore, Malaysia, Thailand, Indonesia, and 
+Brazil, which it views as presenting a higher-than-normal 
+diversion risk. US-headquartered companies and businesses 
+with a US ultimate parent may qualify for an exemption, 
+subject to reporting requirements. Data-center operators, 
+chip exporters, foundries, and outsourced semiconductor 
+assembly and test companies (OSATs) will face more 
+extensive due diligence requirements covering customer 
+ownership, indirect access, intermediaries, and ultimate 
+control.
+The rule also introduces tighter restrictions on foundries and 
+OSATs providing advanced chip manufacturing or packaging 
+services to mainland Chinese fabless semiconductor 
+companies. This reduces the routes available for such 
+companies to design advanced chips domestically and have 
+them manufactured or packaged through third-country 
+suppliers.
+More broadly, the measures make it harder for D:5 
+entities to access restricted compute through offshore 
+subsidiaries, resellers or third-party cloud providers. The 
+limited exemption for qualifying commercial recommender 
+systems may apply to ByteDance, in our view, but is unlikely 
+to cover frontier-model training or general-purpose cloud 
+workloads. The BIS has also withdrawn the broader Biden-
+era AI Diffusion Rule and replaced it with a narrower regime 
+focused on remote access, end-users, and diversion risk.
+The main uncertainty is how aggressively the BIS 
+implements the rule. Existing offshore arrangements are not 
+automatically grandfathered, and affected data centers will 
+have 90 days from the effective date to obtain a license 
+if they want to continue serving covered D:5 customers. 
+Applications will be reviewed case by case, giving the BIS 
+considerable discretion and providing limited visibility on 
+approval rates. Key issues include the final Federal Register 
+text and effective date, how aggregate total processing 
+performance (TPP) will be calculated, the treatment of 
+shared clusters and cloud resellers, and the evidence 
+required to verify ownership and permitted workloads. The 
+BIS can also add countries to the diversion-risk list and 
+take action against companies or jurisdictions that facilitate 
+evasion.
+How much of 2027 AI capex is at risk?
+We estimate that the combined impact of the remote-access 
+and GPU restrictions could affect around 5-10% of global AI 
+capex in 2027, against our forecast of USD 1.4 trillion. The 
+IFP, a non-partisan Washington-based think tank, estimates 
+that mainland China will have access to 8.8 million H100-
+equivalent accelerators by the end of 2027. Around one-
+third of this compute is expected to come from remote 
+access to overseas data centers, making it the largest pool 
+directly exposed to the new restrictions. A further 14% is 
+expected to come from future shipments of US chips directly 
+to mainland China, while around 18% would come from 
+future domestic accelerator production. The remaining one-
+third is already deployed and would therefore be difficult for 
+the new controls to affect directly.
+This breakdown suggests that close to half of the projected 
+2027 compute base could remain exposed to tighter US 
+controls through remote access or future chip shipments. 
+The resulting impact on global AI capex and supplier revenue 
+should be smaller, however, if displaced demand can be 
+redirected to customers elsewhere. During its previous 
+quarterly earnings discussion, NVIDIA indicated that revenue 
+was on track to grow by 70% in 2027, while underlying 
+demand could have supported growth closer to 100% if 
+additional supply had been available. This suggests that 
+the company may have a sizable demand buffer. If the 
+restrictions take effect, at least part of the affected demand 
+could therefore be replaced by existing unmet demand 
+from other customers, reducing the impact on overall capex 
+deployment.
+How would the rule affect the different parts of the 
+AI ecosystem?
+The financial impact should be very uneven. Below, we rank 
+the potential impact from most negative to most positive.
+1. Select neo-clouds and Southeast Asian data-center 
+operators
+Neo-clouds and data-center operators that have built 
+capacity around demand from D:5 entities face the 
+greatest direct risk. Some may struggle to replace affected 
+customers quickly, particularly where facilities, accelerator 
+configurations and financing structures were designed 
+around specific anchor tenants. Lower utilization could 
+weaken project returns, delay planned capacity additions, 
+and increase refinancing pressure.
+Page 2 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+We continue to recommend a selective approach to the 
+sector. Existing financing constraints, permit delays, and 
+balance-sheet risks have already weakened the investment 
+case, while the new restrictions create further downside for 
+companies with concentrated exposure to D:5 customers. 
+The risks are greatest for highly leveraged operators whose 
+ability to service debt depends on a rapid increase in 
+utilization.
+2. Mainland Chinese pure-play AI labs
+Pure-play AI labs in mainland China could also face material 
+headwinds. Restricted access to frontier accelerators would 
+directly limit their ability to train competitive models and add 
+further pressure to already challenging cash economics. IFP 
+estimates that the US currently holds a lead of around seven 
+months over mainland China in advanced AI capabilities. It 
+estimates that tighter compute restrictions and controls on 
+model distillation could widen this lead to as much as 13 
+months.
+The smaller standalone labs appear most vulnerable because 
+they have limited internal compute capacity and fewer 
+alternative sources of funding. We recommend remaining 
+selective in this area.
+3. NVIDIA and its hardware supply chain
+NVIDIA and its supply chain have the greatest underlying 
+exposure within the semiconductor sector, in our view, 
+because the affected training workloads rely heavily on 
+its accelerator and software ecosystem. We estimate that 
+up to 15% of NVIDIA-related demand could be exposed. 
+This does not imply an equivalent reduction in revenue or 
+earnings estimates. NVIDIA remains supply constrained and 
+has indicated that revenue could grow by around 70% 
+in 2027, while underlying demand could support growth 
+closer to 100% if additional supply were available.
+This unmet demand may allow NVIDIA to redirect some 
+capacity from affected D:5 customers to buyers elsewhere. 
+If around half of the exposed demand is absorbed by the 
+existing pipeline, we estimate downside risk of 7-8% to 
+earnings estimates. The impact on the wider supply chain 
+will depend on how quickly capacity is reallocated and 
+whether any residual reduction in accelerator shipments 
+flows through to HBM, networking, substrates, foundry, and 
+advanced packaging orders.
+For NVIDIA, the more important issue is the sustainability of 
+growth into 2028. Consensus forecasts still imply revenue 
+growth of around 36% year over year, well above our 
+forecast of 7% growth in global AI capex. This creates 
+a clear risk of estimate revisions as supply constraints 
+ease and revenue becomes more dependent on underlying 
+demand. Even in a severe downside scenario in which 
+2028 EPS estimates are cut in half, however, the shares 
+would trade at around 16x 2028 P/E at the current price, 
+which we would view as an attractive valuation. Near-
+term upside may remain limited until there is greater clarity 
+around leadership succession and the company’s longer-
+term strategy, leaving the shares to likely remain range-
+bound despite the valuation support.
+AMD’s potential exposure is likely below 5%, given 
+its smaller role in the affected workloads. Broadcom 
+should face limited direct impact because Google’s TPU 
+ecosystem is not widely used by model developers 
+in D:5 jurisdictions. In the near term, AMD and 
+Broadcom could therefore prove relatively resilient given 
+their lower direct exposure. Uncertainty around NVIDIA’s 
+longer-term succession planning provides an additional 
+reason for investors to consider diversification within the 
+semiconductor portfolio.
+4. Large mainland Chinese internet platforms
+Large internet platforms in mainland China may face a 
+smaller immediate earnings impact and could benefit if 
+some offshore compute demand migrates back to domestic 
+cloud infrastructure. Platforms with in-house semiconductor 
+capabilities also have greater flexibility to redirect internally 
+developed compute capacity from external customers 
+toward their own workloads. The more important risk 
+is strategic rather than near term and financial. Training 
+frontier large language models could exceed the 12 million 
+aggregate TPP threshold, which may constrain access to the 
+scale of offshore compute required for leading-edge model 
+development. This could slow model progress and widen the 
+capability gap with US AI labs.
+5. US hyperscalers
+US hyperscalers should face a smaller direct earnings impact 
+than mainland China-focused neo-clouds and offshore 
+data-center operators. Their precise exposure to affected 
+customers is not publicly disclosed, but the revenue at risk is 
+likely to be modest relative to the scale and diversity of their 
+cloud businesses. Compliance and enforcement risks should 
+also discourage major US platforms from serving customers 
+whose ownership or end-use cannot be clearly verified.
+More importantly, advanced AI compute remains capacity 
+constrained as demand broadens across enterprise 
+customers and model developers. H100 rental prices have 
+increased 6% over the past month and 37% year to 
+date, suggesting that demand remains strong relative 
+to available capacity. This should give hyperscalers a 
+meaningful reallocation buffer. Capacity no longer available 
+to D:5 entities could be redirected to customers elsewhere, 
+limiting the extent to which affected demand translates 
+into lost revenue. Our preferred hyperscalers are Microsoft, 
+Meta, Amazon, and Alphabet, in descending order.
+6. US AI labs
+US AI labs should be relative beneficiaries. Reduced access 
+to advanced offshore compute by D:5 entities could widen 
+the compute advantage of US model developers, supporting 
+faster model development and reinforcing their position at 
+the frontier. Slower progress by competing open-weight 
+Page 3 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+models could also reduce pricing pressure and improve the 
+revenue outlook for leading US labs.
+A stronger revenue trajectory would make the sector’s 
+large contracted compute commitments more financially 
+sustainable. This could indirectly support the hyperscalers by 
+improving the quality and credibility of their AI-related cloud 
+backlogs.
+7. Mainland Chinese semiconductor localization
+Mainland Chinese foundries, OSATs, AI-chip designers, 
+and semiconductor-equipment vendors could be longer-
+term beneficiaries as tighter access to offshore compute 
+accelerates investment in domestic AI-compute capacity. 
+We expect the restrictions to support demand for 
+indigenous accelerators and increase investment in 
+advanced foundry capacity, packaging, memory, and 
+semiconductor equipment.
+The new restrictions on foundries and OSATs providing 
+advanced manufacturing and packaging services to 
+mainland Chinese fabless companies create a near-term 
+constraint. Over time, however, they should reinforce the 
+strategic case for developing a more self-sufficient domestic 
+supply chain. We favor Naura Technology and JCET as key 
+beneficiaries of this localization trend.
+China’s remote AI chip access
+Overseas data centers are a key source of China’s AI compute.
+Source: IFP, UBS, as of 2026
+Page 4 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Page 5 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Appendix
+Required Disclosures
+Analyst certification
+Each research analyst primarily responsible for the content of this research report, in whole or in part, certifies that with 
+respect to each security or issuer that the analyst covered in this report: (1) all of the views expressed accurately reflect his 
+or her personal views about those securities or issuers; and (2) no part of his or her compensation was, is, or will be, directly 
+or indirectly, related to the specific recommendations or views expressed by that research analyst in the research report.
+For information on the ways in which CIO manages conflicts and maintains independence of its investment views and 
+publication offering, and research and rating methodologies, please visit www.ubs.com/research-methodology
+Company/Country Disclosures   (17 November 2026)
+Within the past 12 months UBS AG, its affiliates or subsidiaries may have received or provided investment services and 
+activities or ancillary services as per MiFID II which may have given rise to a payment or promise of a payment in relation to 
+these services from or to each company mentioned in the publication.
+Advanced Micro Devices 1, 2, 3, 4, 5, Alphabet Inc 1, 6, 7, 8, Amazon.com 1, 6, 7, 8, Broadcom Inc. 1, 8, Meta Platforms 
+1, 6, 7, 8, Microsoft Corp. 1, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16; NVIDIA Corporation 1, 8, 9,
+1. UBS Securities LLC makes a market in the securities and/or ADRs of this company.
+2. This company/entity is, or within the past 12 months has been, a client of UBS Financial Services Inc, and non-investment 
+banking securities-related services are being, or have been, provided.
+3. Within the past 12 months, UBS has received compensation for products and services other than investment banking 
+services from this company/entity.
+4. UBS holds a short position of 0.5% or more of the listed shares of this company.
+5. Because this security exhibits higher-than-average volatility, the FSR has been set at 15% above the MRA for a Buy rating, 
+and at -15% below the MRA for a Sell rating (compared with 6/-6% under the normal rating system).
+6. The fixed income analyst covering this company, a member of his or her team, or one of their household members has 
+a long common stock position in this company.
+7. The UBS Wealth Management strategist, a member of his or her team, or one of their household members has a long 
+common stock position in this company.
+8. UBS holds a long position of 0.5% or more of the listed shares of this company.
+9. The equity analyst covering this company, a member of his or her team, or one of their household members has a long 
+common stock position in this company.
+10. UBS beneficially owned 1% or more of a class of this company's common equity securities as of last month's end (or 
+the prior month's end if this report is dated less than 10 days after the most recent month's end).
+11. Within the past 12 months, UBS has received compensation for investment banking services from this company/entity 
+or one of its affiliates.
+12. UBS expects to receive or intend to seek compensation for investment banking services from this company/entity within 
+the next three months.
+13. This company/entity is, or within the past 12 months has been, a client of UBS Securities LLC and/or its affiliates, and 
+investment banking services are being, or have been, provided.
+14. This company/entity is, or within the past 12 months has been, a client of UBS Securities LLC, and non-investment 
+banking securities-related services are being, or have been, provided.
+15. This company/entity is, or within the past 12 months has been, a client of UBS Securities LLC, and non-securities services 
+are being, or have been, provided.
+16. UBS has acted as manager/co-manager in the underwriting or placement of securities of this company/entity or one of 
+its affiliates within the past 12 months.
+Contact
+For investors of UBS Financial Services Inc: For a complete set of required disclosures relating to the companies that 
+are the subject of this report, please mail a request to UBS CIO Global Wealth Management Business Management, 1285 
+Avenue of the Americas, 12th Floor, Avenue of the Americas, New York, NY 10019.
+For all other investors: If you require information on UBS Chief Investment Office WM and its research products, please 
+contact the mailbox ubs-cio-wm@ubs.com (please note that e-mail communication is unsecured) or contact your client 
+advisor for assistance.
+Frequency of updates
+Page 6 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+CIO Equity Selection Lists and CIO Equity Portfolios can be updated on a daily basis, and are refreshed whenever there 
+is a material change.
+Risk views on bond issuers and instruments are affirmed sporadically and changed ad hoc, subject to market 
+developments.
+Producers, disseminators and their competent authorities
+This publication has been produced and/or disseminated to you by the UBS Group entity, its subsidiaries, affiliates, and 
+branches, you have a banking relationship with.
+UBS AG Australia Branch is supervised by the Australian Prudential Regulation Authority and is regulated by the Australian 
+Securities and Investments Commission. UBS SuMi TRUST Wealth Management Co., Ltd. is regulated by the Financial 
+Services Agency (FSA). UBS AG Singapore Branch is regulated by the Monetary Authority of Singapore (MAS). UBS 
+Securities Co. Limited is licensed to conduct securities investment consultancy businesses by the China Securities Regulatory 
+Commission. UBS AG Hong Kong Branch is regulated by the Securities and Futures Commission (Hong Kong) and the 
+Hong Kong Monetary Authority (HKMA). UBS AG Taipei Branch is authorized and regulated by the Financial Supervisory 
+Commission (FSC) of the Republic of China (Taiwan). UBS Switzerland AG is regulated by the Swiss Financial Market 
+Supervisory Authority (FINMA). UBS Europe SE, Germany, is duly authorized by the European Central Bank (ECB), and 
+supervised by the ECB, the German Central Bank (Deutsche Bundesbank) and the German Federal Financial Services 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht). UBS Europe SE, Luxembourg Branch (UBS LUX) 
+is a branch of UBS Europe SE, a credit institution constituted under German law, duly authorized by the German Federal 
+Financial Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht – “BaFin”) and subject to the joint 
+prudential supervision of BaFin, the German Central Bank (Deutsche Bundesbank) and the European Central Bank (ECB). 
+UBS LUX is furthermore supervised by the Luxembourg prudential supervisory authority (Commission de Surveillance du 
+Secteur Financier), in its role as host member state authority. UBS Europe SE, Succursale Italia is subject to the joint 
+supervision of the European Central Bank (ECB), the German Central Bank (Deutsche Bundesbank), the German Federal 
+Financial Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht), as well as of the Bank of Italy 
+(Banca d’Italia) and the Italian Financial Markets Supervisory Authority (Commissione Nazionale per le Società e la Borsa – 
+CONSOB). UBS AG Sucursal en España is authorized by the Banco de España. UBS Europe SE, Sucursal em Portugal
+(UBS Portugal) is a branch of UBS Europe SE, a credit institution constituted under German law, duly authorized by the 
+German Federal Financial Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht – "BaFin") and subject to 
+the joint prudential supervision of BaFin, the central bank of Germany (Deutsche Bundesbank) and the European Central 
+Bank (ECB). UBS Portugal is furthermore supervised by the Portuguese banking and financial authorities as the “Banco 
+de Portugal” and the “Comissão do Mercado dos Valores Mobiliários" in their role as host member state authority. UBS 
+Europe SE, Denmark Branch, filial af UBS Europe SE is subject to the joint supervision of the European Central Bank 
+(ECB), the German Central Bank (Deutsche Bundesbank), the German Federal Financial Services Supervisory Authority 
+(Bundesanstalt für Finanzdienstleistungsaufsicht), as well as of the Danish Financial Supervisory Authority (Finanstilsynet).
+UBS Europe SE, Sweden Bankfilial is subject to the joint supervision of the European Central Bank (ECB), the German 
+Central bank (Deutsche Bundesbank), the German Federal Financial Services Supervisory Authority (Bundesanstalt für 
+Finanzdienstleistungsaufsicht), as well as of the Swedish supervisory authority (Finansinspektionen). UBS Europe SE 
+Succursale de France is subject to the joint supervision of the European Central Bank, the German Central Bank (Deutsche 
+Bundesbank), the German Federal Financial Services Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht), 
+as well as of the French "Autorité de contrôle prudentiel et de résolution" and "Autorité des marchés financiers". UBS 
+(Monaco) S.A. operates under a banking license granted by the “Autorité de Contrôle Prudentiel et de Résolution” (ACPR) 
+and the Monegasque government and is also licensed by the “Commission de Contrôle des Activités Financières” (CCAF) 
+to provide investment services in Monaco. UBS AG London Branch is regulated by the Prudential Regulatory Authority 
+(PRA) and the Financial Conduct Authority (FCA). UBS AG Jersey Branch is regulated and authorized by the Jersey Financial 
+Services Commission for the conduct of banking, funds and investment business. In Israel, UBS Switzerland AG is registered 
+as Foreign Dealer in cooperation with UBS Wealth Management Israel Ltd., a wholly owned UBS subsidiary. UBS Wealth 
+Management Israel Ltd. is an Investment Marketing licensee which engages in Investment Marketing and is regulated by 
+the Israel Securities Authority. UBS AG Bahrain Branch is authorized and regulated by the Central Bank of Bahrain. UBS 
+AG Dubai Branch is licensed in the Dubai International Financial Centre (DIFC) by the Dubai Financial Services Authority 
+(DFSA) as an authorised firm. UBS AG Abu Dhabi Branch is licensed and regulated by the Financial Services Regulatory 
+Authority (“FSRA”) of the Abu Dhabi Global Market. UBS Qatar LLC is authorized by the Qatar Financial Centre Regulatory 
+Authority. UBS Saudi Arabia is authorised and regulated by the Capital Market Authority to conduct securities business 
+under licence number 08113-37. UBS BB Corretora de Câmbio, Títulos e Valores Mobiliários S.A. is regulated by 
+Comissão de Valores Mobiliários. UBS Asesores México, S.A. de C.V. is regulated by Comisión Nacional Bancaria y de 
+Valores (CNBV). UBS Financial Services Inc. is registered as a broker-dealer with the Securities and Exchange Commission 
+(SEC), a futures commission merchant with the Commodity Futures Trading Commission (CFTC) and the National Futures 
+Association and is a member of various exchanges and the Financial Industry Regulatory Authority (FINRA).
+Equity selection system
+Page 7 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Appendix: Important Information and Disclosures About our EquityResearch Reports
+Equities Investment Risk
+Stock market returns are difficult to forecast because of fluctuations in the economy, investor psychology, geopolitical 
+conditions and other important variables. UBS does and seeks to do business with companies included in its research reports. 
+Investors should therefore be aware that the firm may have a conflict of interest that could affect the objectivity of this 
+report. Investors should consider this report as only a single factor in making their investment decision.
+CIO Equity Research Approach
+Effective 1 November 2026, CIO does not rate or rank equity securities in the Most Preferred, Bellwether (in the US), 
+and Least Preferred framework or publish “top picks” or similar ratings. Instead, CIO seeks to synthesize UBS Investment 
+Bank (IB) Global Research issued by our affiliate and evaluate its implications from the perspective of Wealth Management 
+investors highlighting relevant stock opportunities from the broad universe covered by IB Global Research as CIO Selected, 
+while placing greater emphasis on portfolio-level analysis through CIO Equity Portfolios. For more information, see
+Equity methodology, published on 28 October 2026. The description of “CIO Selected” as a designation rather than a 
+rating does not affect the application of any legal or regulatory requirement governing investment research, investment 
+recommendations or information recommending or suggesting an investment strategy where that requirement otherwise 
+applies.
+CIO Selected Designation and CIO Selection Lists
+CIO Selected stocks are intended to support the UBS House View (see global asset class preferences definitions) and are 
+chosen based on their overall risk-return profiles and other relevant considerations. The starting universe for the CIO Selected 
+designation generally consists of securities covered by IB Global Research and rated Buy or Neutral. From that universe, CIO 
+Equities applies its own investment judgment, considering a variety of factors such as the fundamental outlook, expected 
+performance relative to an identified benchmark, market, sector and industry trends, risk and return characteristics, downside 
+considerations, diversification benefits, and other relevant factors. No single factor is necessarily determinative. Rather, CIO 
+considers these factors collectively and holistically in determining which securities warrant inclusion in a CIO Equity Selection 
+List.
+In certain circumstances, CIO may designate a security that is not covered by IB Global Research as CIO Selected where 
+CIO determines that the security presents a relevant investment opportunity and applicable eligibility, reasonable-basis and 
+approval requirements for such selections have been satisfied. A security will no longer be eligible for inclusion in any CIO 
+Selection List if IB Global Research changes its rating to Sell. In such cases, CIO Equities will remove it from applicable 
+Selection Lists within a reasonable timeframe.
+• The CIO Selected designation is not a rating.
+• Inclusion reflects CIO Equities' current preference within the defined universe and objective of the applicable Selected List.
+• It does not create a separate Buy, Neutral, or Sell rating, does not establish a CIO Equities price target, and does not 
+supersede or modify the underlying IB Global Research rating or price target.
+• Exclusion or removal of a security for any reason other than a change in IB Global Research rating to “Sell” does not 
+indicate a negative investment view or constitute a recommendation to sell.
+• Inclusion of a security on a selection list does not constitute initiation of coverage or imply continuous coverage. Likewise, 
+removal from a selection list does not constitute termination of coverage.
+• Recipients should not assume that a security remains CIO Selected after the date of this publication. The current status 
+of a security should be verified using the most recent CIO publication.
+A CIO Selected designation reflects CIO Equities’ current, dynamic view within the applicable list’s opportunity set. It is not a 
+view on the security’s expected standalone absolute performance. The Selection Lists reflect CIO Equities’ views at a specific 
+point in time and are subject to change without notice. CIO strategists will review and update the selections as market 
+conditions, investment opportunities, and their assessment of relevant factors evolve.
+CIO Equity Portfolios
+CIO Equity Portfolios are published research model portfolio comprising stocks with specified weights that reflect each 
+security’s allocation within the portfolio and, in aggregate, total 100%. These weights represent portfolio allocations and 
+are not active weights or measures of overweight or underweight relative to the benchmark. Portfolios may focus on 
+sectors, countries, regions, investment themes, or another stated objective. Each portfolio is constructed relative to an 
+identified benchmark, which is used to define the relevant opportunity set, but the portfolio is not designed to replicate the 
+benchmark exactly. The CIO view applies to the portfolio in aggregate, including how the holdings work together, rather than 
+each individual holding. It is a research model, not a client-specific portfolio, managed investment strategy, or guaranteed 
+outcome. CIO Portfolios do not represent actual accounts, trading or investments and performance will not be published.
+Page 8 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Portfolio weights are not security-level ratings or rankings and do not express the relative or absolute investment merit, 
+expected performance, or degree of conviction associated with any security or issuer. A higher weight should not be 
+interpreted as reflecting a more favorable view, greater conviction, or higher expected return.
+A security’s inclusion in or removal from the portfolio, or the size or adjustment of its portfolio weight, does not establish, 
+modify, or imply a research rating or CIO Selected designation; constitute a rating action; indicate a change in the standalone 
+investment view of the security; establish or imply continuous research coverage; or constitute the initiation of research 
+coverage. Such additions, removals, and weight changes reflect portfolio construction decisions only.
+Research Restrictions: Issuing of research on a company by CIO GWM can be restricted due to legal, regulatory, contractual 
+or best business practice obligations which are normally caused by UBS IB’s involvement in an investment banking transaction 
+in regard to the concerned company.
+Global asset class preferences
+This report may include references to CIO’s asset class views. The asset class preferences provide high-level guidance to 
+make investment decisions. The preferences reflect the collective judgement of the members of the House View meeting, 
+primarily based on assessments of expected total returns on liquid and commonly known indices, House View scenarios, and 
+strategist convictions over the next 12 months. Note that the positioning of our different investment strategies may differ 
+from these views owing to such factors as portfolio construction, concentration, and borrowing constraints.
+Attractive: CIO considers opportunities in this asset class.
+Neutral: CIO does not expect outsized returns or losses. Hold longer-term exposure.
+Unattractive: CIO considers alternative opportunities than this asset class.
+Note: For equities, we have a five-tier system with two additional preferences
+Most Attractive: CIO considers that investors should seek opportunities to add exposure in this asset class.
+Least Attractive: CIO considers seeking more favorable alternatives opportunities than this asset class.
+When equities are included with the other asset classes in the three-tier rating system, we collapse “Most Attractive” with 
+“Attractive” and “Least Attractive” with “Unattractive.”
+Current UBS CIO global rating distribution (as of last month-end)
+CIO Selected
+100%
+. .
+.
+.
+Page 9 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Important Information About UBS, Use and Limitations of Research Reports and Other Matters
+Global Dissemination
+UBS Chief Investment Office's ("CIO") investment views are prepared and published by the Global Wealth Management 
+business of UBS Switzerland AG (regulated by FINMA in Switzerland) or its affiliates ("UBS"), part of UBS Group AG 
+("UBS Group"). The investment views have been prepared in accordance with legal requirements designed to promote the 
+independence of investment research.
+This publication has been produced and/or disseminated to you by the UBS Group entity, its subsidiaries, affiliates, and 
+branches, you have a banking relationship with. The full name of the producing and/or disseminating entity and its competent 
+authority can be found in the section “Producers, disseminators and their competent authorities.”
+The date and time of the first dissemination of this publication is the same as the date and time of its publication.
+UBS Research: At UBS, research is produced by two separate business divisions: UBS CIO GWM Research is produced by 
+UBS Global Wealth Management and UBS Global Research is produced by UBS Investment Bank. Both sources of research 
+operate independently of one another and the views expressed in such reports may reflect the different assumptions, 
+views and analytical methods of the analysts or strategists who prepared them. Except for certain economic forecasts (for 
+which UBS CIO and UBS Global Research may collaborate), investment recommendations, views, ratings, price targets, and 
+valuations provided by each of the separate research organizations may be different, or inconsistent. Please refer to each 
+relevant research product for the details as to their methodologies. Not all clients may have access to all products from every 
+organization. Each research product is subject to the policies and procedures of the organization that produces it.
+For information on the ways in which UBS Securities LLC manages conflicts and maintains independence of its UBS 
+Global Research product; historical performance information; certain additional disclosures concerning UBS Global Research 
+recommendations; and terms and conditions for certain third party data used in research report, please visit https://
+www.ubs.com/disclosures.
+No Solicitation: This publication is for your information only and is not intended as an offer, or a solicitation of an offer, to buy 
+or sell any investment or other specific product. The analysis contained herein does not constitute a personal recommendation 
+or take into account the particular investment objectives, investment strategies, financial situation and needs of any specific 
+recipient. It is based on numerous assumptions. Different assumptions could result in materially different results. Certain 
+services and products are subject to legal restrictions and cannot be offered worldwide on an unrestricted basis and/or may 
+not be eligible for sale to all investors. Research reports do not consider the potential tax treatment of the securities covered. 
+UBS does not provide legal or tax advice and makes no representations as to the tax treatment of assets or the investment 
+returns thereon both in general or with reference to specific client's circumstances and needs.
+Sources, Opinions and Forecasts: All information and opinions expressed in this document were obtained from sources 
+believed to be reliable and in good faith, but no representation or warranty, express or implied, is made as to its accuracy or 
+completeness (other than disclosures relating to UBS). All information and opinions as well as any forecasts, estimates and 
+market prices indicated are current as of the date of this report, and are subject to change without notice. This publication 
+is not intended to be a complete statement or summary of the securities, markets or developments referred to in the report. 
+Opinions expressed herein may differ or be contrary to those expressed by other business areas or divisions of UBS as a result 
+of using different assumptions and/or criteria. UBS may utilize artificial intelligence tools (“AI Tools”) in the preparation of 
+this document. Notwithstanding any such use of AI Tools, this document has undergone human review.
+Restricted Use: In no circumstances may this document or any of the information (including any forecast, value, index or 
+other calculated amount ("Values")) be used for any of the following purposes (i) valuation or accounting purposes; (ii) to 
+determine the amounts due or payable, the price or the value of any financial instrument or financial contract; or (iii) to 
+measure the performance of any financial instrument including, without limitation, for the purpose of tracking the return 
+or performance of any Value or of defining the asset allocation of portfolio or of computing performance fees. By receiving 
+this document and the information you will be deemed to represent and warrant to UBS that you will not use this document 
+or otherwise rely on any of the information for any of the above purposes.
+This Material May Not Be Reproduced or Copies Circulated Without Prior Authority of UBS. Unless otherwise agreed 
+in writing UBS expressly prohibits the distribution and transfer of this material to third parties for any reason. In case this 
+research or publication is provided to an External Asset Manager or an External Financial Consultant, UBS expressly prohibits 
+that it is redistributed by the External Asset Manager or the External Financial Consultant and is made available to their 
+clients and/or third parties. UBS accepts no liability whatsoever for any claims or lawsuits from any third parties arising from 
+the use or distribution of this material. This report is for distribution only under such circumstances as may be permitted by 
+applicable law. For information on the ways in which CIO manages conflicts and maintains independence of its investment 
+views and publication offering, and research and rating methodologies, please visit www.ubs.com/research-methodology. 
+Additional information on the relevant authors of this publication and other CIO publication(s) referenced in this report; and 
+copies of any past reports on this topic; are available upon request from your client advisor.
+Proprietary Positions and Transactions: UBS and any of its directors or employees may be entitled at any time to hold 
+long or short positions in investment instruments referred to herein, carry out transactions involving relevant investment 
+Page 10 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+instruments in the capacity of principal or agent, or provide any other services or have officers, who serve as directors, either 
+to/for the issuer, the investment instrument itself or to/for any company commercially or financially affiliated to such issuers. 
+At any time, investment decisions (including whether to buy, sell or hold securities) made by UBS and its employees may 
+differ from or be contrary to the opinions expressed in UBS research publications. UBS relies on information barriers to control 
+the flow of information contained in one or more areas within UBS, into other areas, units, divisions or affiliates of UBS. 
+Additional information will be made available upon request.
+Equity Strategist Compensation: The compensation of the Equity Strategist(s) who prepared this report is determined 
+exclusively by research management and CIO Research senior management (not including investment banking). Equity 
+Strategist compensation is not based on investment banking, sales and trading or principal trading revenues, however, 
+compensation may relate to the revenues of UBS Group as a whole, of which investment banking, sales and trading and 
+principal trading are a part.
+Instrument/Issuer-specific Risk information: Some investments may not be readily realizable since the market in the 
+securities is illiquid and therefore valuing the investment and identifying the risk to which you are exposed may be difficult 
+to quantify.
+Futures and options trading is not suitable for every investor as there is a substantial risk of loss, and losses in excess of an 
+initial investment may occur.
+Past performance of an investment is no guarantee for its future performance.
+Some investments may be subject to sudden and large falls in value and on realization you may receive back less than you 
+invested or may be required to pay more. Changes in foreign exchange rates may have an adverse effect on the price, value 
+or income of an investment.
+Options and futures are not suitable for all investors, and trading in these instruments is considered risky and may be 
+appropriate only for sophisticated investors. Prior to buying or selling an option, and for the complete risks relating to options, 
+you must receive a copy of "Characteristics and Risks of Standardized Options". You may read the document at https://
+www.theocc.com/about/publications/character-risks.jsp or ask your financial advisor for a copy.
+Investing in structured investments involves significant risks. For a detailed discussion of the risks involved in investing in any 
+particular structured investment, you must read the relevant offering materials for that investment. Structured investments 
+are unsecured obligations of a particular issuer with returns linked to the performance of an underlying asset. Depending on 
+the terms of the investment, investors could lose all or a substantial portion of their investment based on the performance 
+of the underlying asset. Investors could also lose their entire investment if the issuer becomes insolvent. UBS does not 
+guarantee in any way the obligations or the financial condition of any issuer or the accuracy of any financial information 
+provided by any issuer. Structured investments are not traditional investments and investing in a structured investment is not 
+equivalent to investing directly in the underlying asset. Structured investments may have limited or no liquidity, and investors 
+should be prepared to hold their investment to maturity. The return of structured investments may be limited by a maximum 
+gain, participation rate or other feature. Structured investments may include call features and, if a structured investment is 
+called early, investors would not earn any further return and may not be able to reinvest in similar investments with similar 
+terms. Structured investments include costs and fees which are generally embedded in the price of the investment. The tax 
+treatment of a structured investment may be complex and may differ from a direct investment in the underlying asset. UBS 
+and its employees do not provide tax advice. Investors should consult their own tax advisor about their own tax situation 
+before investing in any securities.
+Important Information About Sustainable Investing Strategies: This terminology refers to definitions in the UBS 
+Sustainable Investing Framework and does not refer or relate to any product-specific regulatory labelling regime or naming 
+conventions.Sustainable investing strategies aim to consider and incorporate environmental, social and governance (ESG) 
+factors into investment process and portfolio construction. Strategies across geographies approach ESG analysis and 
+incorporate the findings in a variety of ways. Incorporating ESG factors or sustainable investing considerations may inhibit 
+UBS’s ability to participate in or to advise on certain investment opportunities that otherwise would be consistent with the 
+Client’s investment objectives. The returns on a portfolio incorporating ESG factors or sustainable investing considerations 
+may be lower or higher than portfolios where ESG factors, exclusions, or other sustainability issues are not considered by 
+UBS, and the investment opportunities available to such portfolios may differ.
+USA: Distributed to US persons only by UBS Financial Services Inc. or UBS Securities LLC, subsidiaries of UBS AG. UBS 
+Financial Services Inc. accepts responsibility for the content of a report prepared by a non-US affiliate when it 
+distributes reports to US persons. All transactions by a US person in the securities mentioned in this report should 
+be effected through a US-registered broker dealer affiliated with UBS, and not through a non-US affiliate. The 
+contents of this report have not been and will not be approved by any securities or investment authority in the 
+United States or elsewhere. UBS Financial Services Inc. is not acting as a municipal advisor to any municipal entity 
+or obligated person within the meaning of Section 15B of the Securities Exchange Act (the "Municipal Advisor 
+Rule") and the opinions or views contained herein are not intended to be, and do not constitute, advice within 
+the meaning of the Municipal Advisor Rule.
+For country information, please visit ubs.com/cio-country-disclaimer-sr or ask your advisor for the full disclaimer.
+Page 11 of 12
+
+Transformational Innovation Opportunities (TRIO): Artificial Intelligence
+Version F/2026.
+© UBS 2026. The key symbol and UBS are among the registered and unregistered trademarks of UBS. All rights reserved.
+Page 12 of 12
