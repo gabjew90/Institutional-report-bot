@@ -1,0 +1,164 @@
+ 
+The CUDA Moat Drained In 3 Days: JPM's 
+Cembalest Says Jensen Is Nvidia's Smaller Problem 
+ 
+BY TYLER DURDEN 
+TUESDAY, NOV 17, 2026 - 02:20 AM 
+Jensen Huang is gone. What's left for Nvidia may be the bigger story. 
+Since Huang resigned on Thursday, the scandal has eaten every headline: the alleged spy, the 
+affairs, the Situation Room fights and the succession drama. In his latest Eye on the Market 
+note, "The Icarus Files: What's next for Nvidia and AI"(available to pro subs), JPMorgan's 
+Michael Cembalest steps back from the tabloid stuff and looks at the business. He opens Issue 
+3 with a line that doesn't leave much room for doubt: 
+"This is the most important section of this note. Jensen is a tireless advocate of open weight 
+models. One could argue that he needs to be, given the shift underway by the frontier labs to 
+either their own chips or other providers." 
+In other words, Nvidia is being squeezed from both ends. At the top, the frontier labs are 
+spreading their compute across AMD, Google, Amazon and custom silicon. At the bottom, its 
+fastest-growing pocket of demand is the Chinese open-weight ecosystem, and as of this 
+morning Washington has put most of it under license. 
+"Only 28%": The Frontier Labs Vote With Their Feet 
+Start with the number that should worry Nvidia bulls more than any board fight. Cembalest 
+tallied every compute agreement the frontier labs have announced with deployment from 2026 
+onward. Of roughly 44GW in total, Nvidia GPUs account for just 12.1GW, or 28%. Broadcom's 
+custom chips take 23%, AMD 18%, Amazon's Trainium 16%, Google's TPUs 14% and Cerebras 
+the last 2%. For context, Silicon Analysts put Nvidia's share of AI chip revenue at 80-90% in 
+2024-2025. 
+ 
+
+ 
+ 
+Look at the right-hand box: of the seven biggest buyers of accelerators (the five hyperscalers 
+and the two frontier labs), only SpaceX isn't trying to build its own. Everyone else is designing a 
+way around Nvidia's 75% gross margins. 
+None of this started last week. When OpenAI signed its multi-gigawatt deal with AMD in October 
+2025, AMD soared the most in nearly a decade, and we called it the AI circle jerk expanding. A 
+year later that "circle" has turned into a pie chart where Nvidia holds barely a quarter. 
+The CUDA Moat, Drained In 3 Days 
+Why are the labs diversifying? Because the performance gap is closing, and on inference it may 
+already be gone. Epoch AI's new inference index (it scores memory and chip-to-chip 
+communication along with raw throughput) puts AMD's MI455X at the top of the table, at roughly 
+2.9x a GB300, ahead even of Nvidia's own Vera Rubin VR200 at roughly 2.2x (both read off the 
+chart). Cembalest concedes that Rubin Ultra "may change that when rolled out in 2027." That's 
+a long time to wait in this market. 
+The anecdote that matters more comes from Cembalest's own conversations: 
+"This is consistent with what we heard from one of the frontier labs last week: a year ago it 
+would have taken 6-12 months to onboard and start running models on AMD GPUs. The 
+process was expensive and cumbersome given engineering required. Now, using their latest AI 
+model to do the engineering, they can onboard new models on AMD GPUs in just 3 days. 
+Nvidia's argument has always been that its superior tokens per watt and superior software 
+ecosystem (CUDA) made switching uneconomic. AMD's results on the MI455X may have 
+eroded at least part of that advantage." 
+Put differently, the AI is now writing its own way off CUDA. Cembalest doesn't name the lab, but 
+regular readers got the gist four days earlier, when we retweeted Marcelo Lima's take that "the 
+Nvidia CUDA moat is gone": Anthropic treats all compute as fungible, and it took Mythos 3 days 
+ 
+
+ 
+to work out how to run itself on AMD hardware. So we'll allow ourselves a modest victory lap 
+over JPM. 
+Google is pressing from the other side. On SemiAnalysis's inference model, a TPU7x beats 
+Nvidia's GB300 NVL72 on tokens per dollar at every speed except the slowest ones. Pay 
+attention to the benchmark model: Qwen 3.5 397B, a Chinese open-weight model. That bit of 
+irony is where the second squeeze comes in. 
+ 
+Nvidia's Other Core Market: Chinese Open Weights 
+As the frontier labs drift away, Cembalest points to "one of Nvidia's core markets": the Chinese 
+open-weight community, which "consumes the majority of tokens" on OpenRouter while its 
+models keep tracking the closed frontier on Epoch's capabilities index. 
+ 
+That's why Jensen spent his last summer as CEO fighting for open weights in Washington, and 
+why we argued on Friday that his exit clears the way for a federal crackdown on them (a theory 
+David Sacks took a step further on All-In). Cembalest adds the piece our earlier analysis was 
+missing: how much of China's AI compute actually runs on American chips, and where it sits. 
+ 
+
+ 
+A Third Of China's AI Compute Is Rented American Silicon 
+Drawing on an Institute for Progress report from last month, Cembalest breaks down China's 
+projected AI compute at end-2027. A little over a third (36%) is already inside China, whether 
+made there, imported legally or smuggled in, and "Nvidia is a major supplier, willingly or not" to 
+the latter two. SemiAnalysis estimates that 1.5GW of restricted Nvidia chips have already ended 
+up in China. 
+But, Cembalest writes, "the most interesting slice is the blue one": remote access to US AI 
+chips, a full 32% of China's compute. Three-quarters of China's overseas compute sits in 
+Southeast Asia. 
+ 
+He points to the Remote Access Security Act (RASA) as the tool aimed at that slice. RASA 
+passed the House 369-22 but never got a Senate vote, and Cembalest notes that the China 
+hawks "appear to have the upper hand right now in DC." 
+Make that "had" the upper hand. Two days after the note came out, Washington skipped the 
+Senate altogether. This morning Commerce issued an interim final rule that closes the "cloud 
+loophole", as we detailed earlier. It requires a license to ship advanced chips to any data center 
+that would supply more than 12 million TPP to China-headquartered firms (roughly 750 H100s, 
+so about four racks of Blackwells), and it puts Singapore, Malaysia, Indonesia, Thailand and 
+Brazil under a blanket license requirement unless the buyer is US-headquartered. Existing 
+operators have 90 days. 
+Map that onto Cembalest's pies and the scale is obvious: the rule goes after the single largest 
+slice of China's AI compute, at its geographic center of gravity. Goldman's Jim Schneider 
+warned on Friday that Nvidia's "operations in certain jurisdictions could face more scrutiny going 
+forward." That took one business day. 
+ 
+
+ 
+"Not Really Behaved Like An American Company" 
+Cembalest is blunter than most sell-side writers about how Nvidia got here: "Nvidia under 
+Jensen's leadership was sharply at odds with political forces in the US that favor ring-fencing 
+China." His receipts: 
+●​ Jensen told Bloomberg "we must work with them in every possible way," called it 
+"lunacy" (to Dwarkesh Patel) to worry about the PLA using US hardware for AI 
+cyberattacks, and called the "China hawk" label a "badge of shame"; 
+●​ Nvidia lobbied against tighter export controls from 2022, and critics say the A800, H800 
+and H20 legally sidestepped the purpose of those controls; 
+●​ Culper Research flagged Megaspeed back in May as an Nvidia customer funded and 
+controlled by Alibaba, and wrote that Jensen visited Megaspeed every few months, with 
+Alibaba representatives along every single time; 
+●​ and the kicker: the share of Nvidia revenue billed to Singapore addresses rose from 8% 
+to 22% after the Biden controls, then in July 2025 Nvidia stopped breaking out the figure 
+altogether. 
+Funny how that works. We started asking how DeepSeek got hold of blacklisted Nvidia silicon 
+via Singapore shell companies back in January 2025. This month the paper trail finally caught 
+up with the routing map: 
+Then came the link that tied the chips to the open weights: 
+Cembalest also quotes former Stratechery writer Andrew Sharp, who sums up the DC view of 
+Nvidia about as sharply as you'd expect: 
+"While reaping the unbelievable rewards of US markets, laws and customers, Nvidia has not 
+really behaved like an American company that's answerable to the American government. 
+Instead, Huang continued selling chips to China at all costs and sought to substitute his own 
+judgment for that of Congress, the White House and practically the entire US intelligence 
+community..." 
+One caveat Cembalest's note predates: the spy angle itself is getting shakier. The Washington 
+Post reported that Marco Rubio reworked a CIA memo that didn't reach that conclusion, the 
+DOJ hasn't confirmed it, and this morning Trump said "I don't know that she was a spy at all," 
+adding he "would not mind" Jensen coming back. Still, Commerce published its rule anyway, at 
+the direction of Treasury and the NSC. Whatever happened to the honeypot, the policy is now 
+on paper. 
+ 
+
+ 
+Huawei Says Thank You 
+So where does the demand go? Cembalest spells out the obvious second-order effect: if the 
+remote-access curbs work, "Chinese companies will have even more incentive to develop their 
+own accelerators." That's already happening. In 2026, Z.AI, DeepSeek and Meituan all cited 
+training and inference on Huawei Ascend NPUs, and last month we noted that DeepSeek is 
+now helping design Huawei's chips. Nvidia made exactly that argument while lobbying against 
+the rule. It lost, and with Jensen gone it has a lot less political capital to spend on the next fight. 
+To be fair, Cembalest isn't calling a collapse. Nvidia earned 83% of AI chip revenue from 2023 to 
+2025 at 75% gross margins, chip design cycles are long, and he finds the stock "interesting for 
+long term holders" at 32% below its all-time high with a PEG of 0.2x, which makes it the 
+cheapest large AI stock by a wide margin. 
+Maybe. But a 0.2x PEG assumes the consensus growth numbers hold, and both legs under 
+them are moving. The frontier labs are buying more of everyone else's chips, and the Chinese 
+open-weight buyers who absorbed the slack now need a license. We suspect the market is 
+pricing exactly that into the "cheap" multiple. As Cembalest himself puts it, the shifting 
+competitive landscape is "in some ways just as notable a risk for investors as its management 
+change." 
+We'll find out tomorrow how much of this Colette Kress is willing to address on her first earnings 
+call as interim CEO. Our advice: listen for "Southeast Asia." Nvidia stopped telling us how much 
+revenue came from there 16 months ago, and now we know why. 
+Much more in the full "The Icarus Files: What's next for Nvidia and AI" note from JPMorgan's 
+Michael Cembalest, available to pro subs. 
+ 
+ 
+ 
+ 
