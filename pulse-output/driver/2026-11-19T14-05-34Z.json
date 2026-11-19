@@ -1,0 +1,107 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-19T14:05:35.855865Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=581",
+   "at": "2026-11-19T14:05:40.581780Z"
+  },
+  "omnipulse": {
+   "decision": "LIGHT",
+   "detail": "no new bank research since the last pulse",
+   "at": "2026-11-19T14:05:41.370673Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "clean",
+   "at": "2026-11-19T14:07:14.965290Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "11 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-11-19T14:08:11.204933Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-19T14:08:14.570945Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-19T14:08:14.629440Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-19T14:08:51.889153Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-11-19T14:08:51.930935Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 1
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-19T14:05:35.855865Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-19T14:05:40.581780Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "LIGHT",
+   "at": "2026-11-19T14:05:41.370673Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-11-19T14:07:03.278036Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-19T14:07:14.965290Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-11-19T14:08:11.204933Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-19T14:08:14.570945Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-19T14:08:14.629440Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-11-19T14:08:51.889153Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-19T14:08:51.930935Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
