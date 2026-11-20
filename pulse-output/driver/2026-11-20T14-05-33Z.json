@@ -1,0 +1,189 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-20T14:05:34.289866Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=294; anchors 1201/1240 matched, 0 empty, 1 too_short (rate=0.969)",
+   "at": "2026-11-20T14:05:39.037895Z"
+  },
+  "omnipulse": {
+   "decision": "OMNIPULSE",
+   "detail": "omnipulse: 2026-11-20 ok, 6 themes -> omnipulse pulse",
+   "at": "2026-11-20T14:05:40.357604Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-11-20T14:07:26.483947Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "1 hard issue(s)",
+   "at": "2026-11-20T14:13:17.571831Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-20T14:13:41.520104Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-20T14:13:41.574675Z"
+  },
+  "final_validate_recheck": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-20T14:09:18.326206Z"
+  },
+  "adversarial": {
+   "decision": "DISPATCH_SOFT_REPAIR",
+   "detail": "0 hard, 1 soft finding(s) and the repair budget is untouched -- apply them: ONE repair pass (SCRUB contract) with items at adversarial_soft_items.json, re-dispatch the checker fresh, then run: gate adversarial --recheck",
+   "at": "2026-11-20T14:10:15.660342Z"
+  },
+  "adversarial_recheck": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-20T14:13:17.461876Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-11-20T14:13:41.606703Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-11-20T14:13:41.259535Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 1,
+  "adversarial_soft_repairs": 1,
+  "adversarial_repairs": 1
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:05:34.289866Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:05:39.037895Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "OMNIPULSE",
+   "at": "2026-11-20T14:05:40.357604Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-11-20T14:07:13.524848Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:07:26.483947Z"
+  },
+  {
+   "record": "omnipulse_body_voice",
+   "detail": "'Deutsche Bank notes' -> 'In Deutsche Bank's view,'",
+   "at": "2026-11-20T14:08:47.224027Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-11-20T14:08:47.319672Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "DISPATCH_FIXUP",
+   "at": "2026-11-20T14:08:50.758430Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:08:50.815114Z"
+  },
+  {
+   "gate": "final_validate_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:09:18.326206Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:09:18.400928Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "DISPATCH_SOFT_REPAIR",
+   "at": "2026-11-20T14:10:15.660342Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:11:33.329133Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-20T14:11:33.366942Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-11-20T14:12:19.695753Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "BLOCK",
+   "at": "2026-11-20T14:12:19.742069Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:13:17.461876Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-11-20T14:13:17.571831Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "BLOCK",
+   "at": "2026-11-20T14:13:17.609092Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:13:41.259535Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:13:41.520104Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-20T14:13:41.574675Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-20T14:13:41.606703Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}

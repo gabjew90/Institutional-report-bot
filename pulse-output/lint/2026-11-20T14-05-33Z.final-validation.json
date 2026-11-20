@@ -1,0 +1,70 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "62% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "62",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "92% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "92",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "36% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "36",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "11% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "11",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "14% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "14",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.6% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.6",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.15% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-1.8, -0.1, 0.9, 1.5, 2.9, 3.0, 3.2, 3.3, 3.4, 6.4, 8.0, 13.0, 21.0, 200.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.15",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Goldman's 2027 outlooks run off a single turn: global AI investment keeps rising, from $1.1 trillion in 2026 to $1.8 trillion in 2027, but its growth as a share of GDP peaks in the first half of next "
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 7,
+ "exit_code": 4
+}
