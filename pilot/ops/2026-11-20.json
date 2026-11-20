@@ -20,8 +20,15 @@
    "total": 8,
    "failed": 1,
    "in_pulse_window": false
+  },
+  {
+   "run_id": "44715424087",
+   "finished_utc": "10:10",
+   "total": 1,
+   "failed": 1,
+   "in_pulse_window": false
   }
  ],
- "reader_failure_rate": 0.143,
+ "reader_failure_rate": 0.172,
  "collided_with_pulse_window": false
 }

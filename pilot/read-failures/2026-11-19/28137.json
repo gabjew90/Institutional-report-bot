@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: {\"bank\": \"UBS\", \"document\": \"UBS - Core Convictions Multi-Asset Rundown - 16 Nov 2026\", \"claim\": \"UBS expects a more haw",
+ "last_reason": "reader: {\"bank\": \"UBS\", \"document\": \"UBS - Core Convictions Multi-Asset Rundown - 16 Nov 2026\", \"claim\": \"UBS forecasts ICE Bren",
  "history": [
   {
    "at": "2026-11-20T09:17Z",
    "run_id": "44706984425",
    "reason": "reader: {\"bank\": \"UBS\", \"document\": \"UBS - Core Convictions Multi-Asset Rundown - 16 Nov 2026\", \"claim\": \"UBS expects a more haw"
+  },
+  {
+   "at": "2026-11-20T10:10Z",
+   "run_id": "44715424087",
+   "reason": "reader: {\"bank\": \"UBS\", \"document\": \"UBS - Core Convictions Multi-Asset Rundown - 16 Nov 2026\", \"claim\": \"UBS forecasts ICE Bren"
   }
  ]
 }
