@@ -3967,3 +3967,20 @@ Not caught, and why: a correction posted in the room without replying to the bot
 | A false claim inside a roast | 1 | banter |
 
 Five of the 18 are fixed by work since. The largest open groups are the asked fact, earnings questions the router misreads, and price statistics.
+
+## 2026-11-20: the pulse credits a note only with a rating it states
+
+Checked whether the pulse reads the stored `rating` and `price_target` that /ask stopped trusting on 11-17. It does, in three places: the TRADE BOARD's calls (`pulse_sections.extract_state_from_ctx`), the high-conviction block and the HIGH_CONVICTION summaries (`synthesizer.py`), and the serialized analyses themselves.
+
+**One false line was on the board published this morning:** "Natixis $VLVLY · UP · Moody's cut rating to Ba2 from Ba1". The note is a Natixis morning briefing reporting a Moody's credit downgrade of Volvo Cars. The extraction stored rating "Underperform", action "downgrade". Earlier boards carried the same kind of line: a private bank's credit views on OXY and ABXCN as "OP" (11-12, 11-13), a newsletter's "Buy" on INTC (11-11, 11-13).
+
+Measured on 21 days of stored notes (987 with a rated mover): for the 415 house-and-stock pairs where the house's own equity research gives one rating, the stored rating on that house's other notes agreed 326 times and disagreed 124. Nine of the disagreements were a stock given "Overweight" or "Neutral" from a sentence about the house's asset allocation.
+
+- `report/credited_calls.py :: credit` runs first in `build_pulse_context` and `synthesize_daily_pulse`. Each mover goes through `desk_line.fields`, built the way /ask's research lookup builds a note: only lines about that stock (`about_matcher`, moved out of `research_for_ticker` so both use it), relayed calls excluded (`_quoted_broker`).
+- With the rule, the kept ratings on non-research notes agree with the house's equity research 18 times out of 18.
+- A mover with nothing credited keeps its ticker and rationale in the analyses and leaves the high-conviction lists, which are lists of calls.
+- The board no longer prints an action enum ("price_target_change") where a rating was dropped.
+
+**Cost, for the owner:** nine mornings of boards go from 54 lines to 35. 11-10 would have had no desk calls, 11-18 one, 11-17 two. Many dropped lines are probably real calls relayed in the house's own briefing ("Citi $DELL Buy, PT $550") that the stored text does not state in a sentence naming the bank. A looser rule (the house's own note states the rating about the stock, and the sentence credits nobody else) brings back about 10 lines. Against equity research it kept 83 agreeing ratings and 15 disagreeing before two fixes that would remove 13 of the 15 (relays from brokers outside the list, allocation sentences). Not built: it loosens the rule the owner approved for /ask on 11-17.
+
+The extraction prompt still fills the fields on any note. Left alone: both products now read them through the rule, and the Claude lane's prompt is frozen for the pilot.

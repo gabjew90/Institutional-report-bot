@@ -1093,6 +1093,10 @@ def _format_high_conviction_calls(analyses: list[PdfAnalysis]) -> str:
             pt_str = f" PT {pt}" if pt and pt.upper() not in ("N/A", "NA", "") else ""
             rating = (mm.rating or "").strip()
             rating_str = f" {rating}" if rating and rating.upper() not in ("N/A",) else ""
+            if not ((mm.action or "").strip() or rating_str or pt_str):
+                # nothing the note may be credited with (credited_calls):
+                # the mover stays in the analyses, it is not a call
+                continue
             calls.append(
                 f"  - {src}: ${ticker} {mm.action}{rating_str}{pt_str} — "
                 f"{(mm.rationale or '')[:140]}"
@@ -1545,7 +1549,13 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
         hc_items: list[str] = []
         for mm in (a.market_movers or []):
             if (mm.conviction or "").lower() == "high":
-                hc_items.append(f"{mm.ticker}: {mm.action} ({mm.rating})".strip())
+                # a rating the note may not be credited with is blank
+                # (report/credited_calls.py), and so is its action. With
+                # neither, the mover is reporting, not one of the note's calls.
+                if not ((mm.action or "").strip() or (mm.rating or "").strip()):
+                    continue
+                rated = f" ({mm.rating})" if (mm.rating or "").strip() else ""
+                hc_items.append(f"{mm.ticker}: {mm.action}{rated}".strip())
         for ti in (a.trade_ideas or []):
             if (ti.conviction or "").lower() == "high":
                 desc = (ti.description or "")[:90]
@@ -1711,6 +1721,11 @@ def build_pulse_context(
     """
     import pytz
     from config import settings as _settings
+    from report.credited_calls import credit
+
+    # Every reader below gets a mover's rating, target and rating action
+    # only where the note may be credited with them (2026-11-20).
+    analyses = credit(analyses)
 
     today = date.today().isoformat()
     try:
@@ -1886,6 +1901,9 @@ async def synthesize_daily_pulse(
     """
     import pytz
     from config import settings as _settings
+    from report.credited_calls import credit
+
+    analyses = credit(analyses)
 
     client = _get_client()
     today = date.today().isoformat()

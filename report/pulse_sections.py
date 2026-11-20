@@ -588,7 +588,12 @@ def _hc_call_lines(hc_calls: list[dict] | None) -> list[str]:
     for c in calls[:_HC_SUBSECTION_MAX]:
         bank = _clean_inline(c.get("source") or "?")
         tk = (c.get("ticker") or "?").upper()
-        rd = _norm_rating(c.get("rating") or "", c.get("action") or "")
+        # With no rating the action stands in ("upgrade", "initiate"). An
+        # enum is not a word for the reader: "price_target_change, PT $280"
+        # would print once a rating the note never stated is dropped
+        # (report/credited_calls.py, 2026-11-20).
+        action = c.get("action") or ""
+        rd = _norm_rating(c.get("rating") or "", "" if "_" in action else action)
         if rd.upper() in ("N/A", "NA", "NONE"):
             rd = ""
         if rd.upper() in _RATING_LEGEND:

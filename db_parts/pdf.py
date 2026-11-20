@@ -1345,20 +1345,7 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
             a = _json.loads(r["analysis_json"] or "{}")
         except Exception:
             continue
-        name = (r["entity_name"] or "").strip()
-        # The ticker as a whole word (a bare "MU" must not match "must"),
-        # the full company name, and its first word when that is a real
-        # name ("Micron" for "Micron Technology", not "The" or "US").
-        pats = [_re.compile(rf"(?<![A-Za-z]){_re.escape(sym)}(?![A-Za-z])", _re.I)]
-        if name:
-            pats.append(_re.compile(_re.escape(name), _re.I))
-            first = name.split()[0]
-            if len(first) >= 4 and first.lower() not in ("the", "united", "american", "general", "first", "global"):
-                pats.append(_re.compile(rf"\b{_re.escape(first)}\b", _re.I))
-
-        def _about(text: str) -> bool:
-            t = text or ""
-            return any(p.search(t) for p in pats)
+        _about = about_matcher(sym, (r["entity_name"] or "").strip())
 
         # The rationale is the answer's substance (owner, 2026-09-30: a
         # direction with no reasoning is fluff), so it keeps its full
@@ -1549,6 +1536,28 @@ def _same_house(source: str, broker: str) -> bool:
 
 _ACTION = (r"(?:upgrad|downgrad|initiat|reiterat|resum|rais|lower|cut|trim|lift|mov|start|assum)"
            r"\w*")
+
+
+def about_matcher(sym: str, name: str = ""):
+    """A test for whether a line of a note is about one stock: the ticker
+    as a whole word (a bare "MU" must not match "must"), the full company
+    name, or its first word when that is a real name ("Micron" for "Micron
+    Technology", not "The" or "US"). No ticker means nothing matches.
+    Shared by /ask's research lookup and the pulse (report/credited_calls.py),
+    so both read the same lines of a note as being about a stock."""
+    import re as _re
+    sym, name = (sym or "").strip(), (name or "").strip()
+    pats = [_re.compile(rf"(?<![A-Za-z]){_re.escape(sym)}(?![A-Za-z])", _re.I)] if sym else []
+    if sym and name:
+        pats.append(_re.compile(_re.escape(name), _re.I))
+        first = name.split()[0]
+        if len(first) >= 4 and first.lower() not in ("the", "united", "american", "general", "first", "global"):
+            pats.append(_re.compile(rf"\b{_re.escape(first)}\b", _re.I))
+
+    def _about(text: str) -> bool:
+        t = text or ""
+        return any(p.search(t) for p in pats)
+    return _about
 
 
 def _quoted_broker(text: str, source: str) -> str:
