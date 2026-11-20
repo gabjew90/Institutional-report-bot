@@ -1,0 +1,969 @@
+{
+ "brief": "Nvidia reports fiscal Q3 results tonight with interim CEO Colette Kress after Jensen Huang's resignation, a stock down roughly 35% from its October high having shed about $2 trillion in market cap, new export curbs covering Singapore, Malaysia, Thailand and Indonesia, and a newly closed China cloud-rental loophole. Street consensus sees revenue of $109.3 billion against the company's own $108 billion guide, but the buyside bar sits higher: JPMorgan's survey puts revenue at $112.6 billion and UBS's Arcuri expects a $3-4 billion beat plus a roughly $130 billion Q4 guide, so a merely in-line Street number would read as a disappointment. The real debate is not the quarter but whether Kress reaffirms last quarter's 70% revenue-growth guide for next fiscal year under new export rules and leadership uncertainty; BofA puts 10-15% odds that guidance gets pulled entirely until a permanent CEO is named. Options price an 8% move, the richest in two years, though realized moves have usually undershot implied ones historically. Beyond tonight, Goldman and Deutsche Bank frame the bigger question as what multiple the market should put on Nvidia's 2028-2031 earnings, while UBS and SemiAnalysis have each cut their 2028 estimates.",
+ "cards": [
+  {
+   "bank": "Wall Street consensus",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Wall Street consensus expects Nvidia's fiscal Q3 revenue at $109.3 billion, modestly above the company's own $108 billion guide.",
+   "anchor": "Consensus sees revenue of $109.3 billion, modestly above the company's $108 billion guide",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3"
+  },
+  {
+   "bank": "Wall Street consensus",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Wall Street consensus expects Nvidia's fiscal Q3 Data Center revenue at $101.9 billion, split between $54.1 billion in Hyperscale and $48.4 billion in the AI Clouds, Industrial & Enterprise bucket.",
+   "anchor": "Data Center at $101.9 billion (split between $54.1 billion in Hyperscale and $48.4 billion in the newer AI Clouds, Industrial & Enterprise bucket)",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3"
+  },
+  {
+   "bank": "Wall Street consensus",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Wall Street consensus expects Nvidia's fiscal Q3 adjusted gross margin of 74.0% and adjusted EPS of $2.47.",
+   "anchor": "an adjusted gross margin of 74.0% and adjusted EPS of $2.47",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs expects Nvidia to deliver a solid fiscal Q3 and guide fiscal Q4 above the Street, driven mostly by better-than-expected margins.",
+   "anchor": "We expect Nvidia to deliver solid 3Q results, with 4Q guidance above the Street driven by better-than-expected margins.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs has Nvidia's fiscal Q3 EPS at $2.57 versus the Street's $2.42, and fiscal Q4 EPS at $2.88 versus the Street's $2.73.",
+   "anchor": "Goldman has Q3 EPS at $2.57 vs. $2.42 for the Street and Q4 at $2.88 vs. $2.73",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs attributes its above-Street Nvidia EPS forecast entirely to higher gross margin assumptions of 74.1% versus 73.1% this quarter and 72.2% versus 71.5% next quarter, since its revenue forecasts are within 1% of consensus.",
+   "anchor": "with the entire gap coming from gross margin (74.1% vs. 73.1% this quarter, 72.2% vs. 71.5% next)",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs says Nvidia options are pricing an 8% move on the print, which would rank among the largest earnings reactions of the past two years.",
+   "anchor": "Options implying an 8% move on print, which would be up there with some of the largest moves in the past ~2 years of quarterly results.",
+   "topic": "NVDA earnings implied move",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs says investors are watching for any change in Nvidia's capital return ambitions against last quarter's $20 billion share buyback.",
+   "anchor": "any change in capital return ambitions (vs. last qtr = $20bn share repurchase in the qtr)",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs thinks the market is unlikely to get incremental clarity on Nvidia's top leadership situation on tonight's earnings call.",
+   "anchor": "we think unlikely to get anything to get any incremental clarity on that front today",
+   "topic": "Nvidia leadership crisis",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's buyside survey puts Nvidia's fiscal Q3 revenue expectation at $112.6 billion, about $3.5 billion above Street consensus and $4.6 billion above the company's own guide.",
+   "anchor": "puts the buyside at $112.6 billion in revenue for the quarter, some $3.5 billion above the Street and $4.6 billion above the company's own guide",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's buyside survey puts the mean Nvidia fiscal Q3 EPS estimate at $2.63, versus the Street's $2.48.",
+   "anchor": "The survey mean for EPS is $2.63 (Street: $2.48)",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's buyside survey has investors looking for a Nvidia fiscal Q4 revenue guide of $129.1 billion, almost $5 billion above the $124.4 billion consensus.",
+   "anchor": "investors are looking for a Q4 revenue guide of $129.1 billion, almost $5 billion above the $124.4 billion consensus",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's buyside survey has gross margin expectations of 74.2% for Nvidia's fiscal Q3 and a 72.0% guide for fiscal Q4, each a hair above the Street.",
+   "anchor": "Gross margin expectations are tame by comparison: 74.2% for Q3 and a guide of 72.0% for Q4, a hair above the Street on both",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3/Q4"
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS's Tim Arcuri expects Nvidia to beat fiscal Q3 revenue by $3 to $4 billion, potentially reaching $111 to $112 billion.",
+   "anchor": "he expects Nvidia to beat Q3 revenue by $3-4 billion, potentially reaching $111-112 billion",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3"
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS's Tim Arcuri expects Nvidia to guide fiscal Q4 revenue to around $130 billion versus a consensus he pegs at $125 billion.",
+   "anchor": "guide Q4 to around $130 billion vs. a consensus he pegs at $125 billion",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS's Tim Arcuri sees little risk of a gross margin surprise after Nvidia's softer 71-72% guide, with margins starting to recover in fiscal Q1.",
+   "anchor": "He sees little risk of a gross margin surprise after the softer 71-72% guide, with margins starting to recover in fiscal Q1",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q1"
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS's Tim Arcuri calls the Nvidia selloff an attractive buying opportunity now that much of the near-term damage is done.",
+   "anchor": "calls the selloff an attractive buying opportunity now that much of the near-term damage is done",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "BofA puts the odds that Nvidia pulls its guidance altogether until a permanent CEO is named at 10-15%.",
+   "anchor": "puts the odds that guidance gets pulled altogether until a permanent chief is named at 10-15%",
+   "topic": "Nvidia leadership crisis",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's Market Intel desk says reiterating capex plans and support for existing AI financing deals is critical to Nvidia's bull case, while failing to reassure on AI ecosystem financing tops its bear case.",
+   "anchor": "reiterating capex and support for existing financing deals is critical to the bull case, while a failure to reassure on AI ecosystem financing tops its bear case",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS says Nvidia's Rubin chip remains on track to ramp substantially in fiscal Q4 despite delays in some rack components, including rail kits.",
+   "anchor": "UBS says Rubin remains on track to ramp substantially in fiscal Q4 despite delays in some rack components, rail kits among them",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's Josh Meyers says there is tremendous investor frustration with Jensen Huang and many believe more negative headlines about him may be coming.",
+   "anchor": "There\u2019s a tremendous amount of frustration with Jensen for his behavior/indiscretions, and many people believe there may be more negative headlines to come",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's Josh Meyers says Rene Haas and Lip-Bu Tan keep coming up in investor conversations as potential Nvidia CEO successors.",
+   "anchor": "Rene Haas, a former Nvidia employee, and Lip-Bu Tan keep coming up in conversations",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's Josh Meyers has heard an unexpected bullish view from some investors that Nvidia's management bench is deeper than the market thinks.",
+   "anchor": "He has also heard an unexpected view from a few bulls that the bench is deeper than the market thinks",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Investors are concerned that any Nvidia successor faces an uphill battle retaining key, now-wealthy engineers while preserving the company's culture.",
+   "anchor": "many key engineers are now quite wealthy; retaining them and keeping the culture are going to be a balancing act for the board",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Jensen Huang's role in leveraging circular financing to build and support Nvidia's AI ecosystem is seen as unlikely to continue at the same rate under a new CEO.",
+   "anchor": "Jensen\u2019s role in leveraging circular financing to build and support the ecosystem; that seems unlikely to continue at the same rate under a new CEO",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Treasury Secretary Bessent has told Nvidia's board he wants an outsider named as the next CEO.",
+   "anchor": "Treasury Secretary Bessent has already told the board he wants an outsider",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Stricter China export controls are expected to be bad for open-source AI models and potentially bad for Nvidia as well.",
+   "anchor": "The expectation is that this will be bad for open source models, and potentially also bad for NVDA.",
+   "topic": "AI export controls",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's Harlan Sur says leadership uncertainty and China regulatory risk have reframed the debate around Nvidia.",
+   "anchor": "analyst Harlan Sur's preview says leadership uncertainty and China regulatory risk have reframed the debate",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan credit analyst Erica Spear asks whether Nvidia's business vision can outlast its visionary founder.",
+   "anchor": "credit analyst Erica Spear asks whether the vision can outlast the visionary",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS says Nvidia options are pricing an implied move of 7.95%, the largest implied earnings move in two years.",
+   "anchor": "Options are pricing a move of about 8% in either direction (7.95% per UBS, the largest implied move in two years)",
+   "topic": "NVDA earnings implied move",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Nvidia's one-month implied volatility heading into tonight's print is the highest it has been since March 2025.",
+   "anchor": "1-month implied vol is the highest heading into a print since March 2025",
+   "topic": "NVDA earnings implied move",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Nvidia's three-month implied volatility has risen above 50% from the low 30s in early October.",
+   "anchor": "Three-month vol, meanwhile, has blown out above 50% from the low 30s in early October.",
+   "topic": "NVDA earnings implied move",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS says SPX options are pricing Wednesday's session as the largest one-day move for the remainder of the year.",
+   "anchor": "UBS notes that SPX options are pricing Wednesday as the largest one-day move for the remainder of the year",
+   "topic": "NVDA earnings implied move",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "In eight of the last ten quarters Nvidia's stock moved less than the options market had priced, with the average implied move at 7.7% versus an average realized move of 4.8%.",
+   "anchor": "In eight of the last ten quarters the stock moved less than the options market had priced, with the average implied move at 7.7% and the average realized move at just 4.8%",
+   "topic": "NVDA earnings implied move",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "On three occasions in the past two years, November 2024, August 2025 and May 2026, Nvidia's earnings reaction produced a stock move of less than 2%.",
+   "anchor": "those occasions (November 2024, August 2025 and May 2026) the \u201cmost important earnings report in the world\u201d produced a move of less than 2%.",
+   "topic": "NVDA earnings implied move",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Last quarter, implied volatility for Nvidia's earnings had drifted to a two-year low of 5.9% and the stock then moved 8.7%.",
+   "anchor": "implied had drifted to a series low of 5.9% and the stock promptly moved 8.7%",
+   "topic": "NVDA earnings implied move",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "JPMorgan's equity vol team recommends avoiding short gamma into Nvidia's earnings print.",
+   "anchor": "They recommend avoiding short gamma into the print, which is a polite way of saying nobody has a clue.",
+   "topic": "NVDA earnings implied move",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Levered ETFs saw $5.2 billion of outflows in JPMorgan's latest flow data as semiconductor positioning was de-grossed, with SOXL alone losing $3.7 billion.",
+   "anchor": "levered ETFs saw $5.2 billion of outflows in JPMorgan's latest flow data as semis were de-grossed (SOXL alone lost $3.7 billion)",
+   "topic": "NVDA earnings implied move",
+   "status": "released",
+   "instruments": [
+    "SOXL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "The levered Nvidia ETF NVDL took in about $0.7 billion as dip buyers showed up.",
+   "anchor": "the levered Nvidia product NVDL took in about $0.7 billion as dip buyers showed up",
+   "topic": "NVDA earnings implied move",
+   "status": "released",
+   "instruments": [
+    "NVDL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Retail investors set an all-time record for opening-bid buying the day Jensen Huang left but have since been getting cold feet.",
+   "anchor": "Retail, which set an all-time record for opening-bid buying the day Huang left, has since been getting cold feet.",
+   "topic": "Nvidia leadership crisis",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Zero Hedge's 13F roundup showed institutional investors were heading for the exits in Nvidia well before Jensen Huang's resignation.",
+   "anchor": "the pros, as we showed in our 13F roundup, were heading for the exits well before any of this",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Nvidia now trades below 12x forward earnings, the lowest multiple in 13 years according to Morgan Stanley.",
+   "anchor": "now trades below 12x forward earnings, the lowest multiple in 13 years according to Morgan Stanley",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs's Peter Callahan shows Nvidia's fiscal 2028 EPS estimates have barely budged from their highs even as the stock price collapsed.",
+   "anchor": "fiscal 2028 EPS estimates have barely budged from their highs even as the price collapsed",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs's Rich Privorotsky says Nvidia's near-term numbers could be robust, but the market has no idea what multiple to put on 2028, 2029 or 2030 earnings.",
+   "anchor": "I suspect the near-term numbers could be robust. But the market simply has no idea what multiple to put on 2028, 2029 or 2030 earnings.",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028-2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs's Sean Johnstone says a minority of investors see downside risk to Nvidia's guidance, but most see limited near-term risk and are focused instead on CEO succession.",
+   "anchor": "a minority see downside risk to guidance, but most see limited near-term risk and are more focused on how the company addresses CEO succession",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Goldman Sachs's Sean Johnstone says the bigger debate for Nvidia remains calendar 2028, rather than the next couple of quarters.",
+   "anchor": "Overall, the bigger debate remains calendar 2028, rather than the next couple of quarters.",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "calendar 2028"
+  },
+  {
+   "bank": "SemiAnalysis",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "SemiAnalysis cut its 2028 AI accelerator spending forecast by 28%, pinning most of the downside on Nvidia.",
+   "anchor": "cut its 2028 accelerator spending forecast by 28% and pinned most of the downside on Nvidia",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "UBS's Tim Arcuri cut his calendar 2028 Nvidia revenue and EPS estimates to $885 billion and $20.01, from $985 billion and $22.08, and lowered his price target to $240 from $300.",
+   "anchor": "cut his C'28 revenue and EPS estimates to $885 billion and $20.01 from $985 billion and $22.08 on the Southeast Asia risk, and lowered his price target to $240 from $300",
+   "topic": "Nvidia stock valuation",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Deutsche Bank's Jim Reid notes Nvidia's current rolling four-quarter earnings of roughly $240 billion are already ahead of Saudi Aramco's record 2022 profit.",
+   "anchor": "it is at roughly $240 billion on a rolling four-quarter basis today, already ahead of Saudi Aramco's record 2022",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Deutsche Bank's Jim Reid notes consensus has Nvidia's earnings reaching $625 billion by 2031.",
+   "anchor": "consensus has it reaching $625 billion by 2031",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2031"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Deutsche Bank's Jim Reid notes that analysts' 2031 Nvidia earnings estimate has more than doubled over the past year even as the stock is down 16%.",
+   "anchor": "It has more than doubled in a year in which the stock is down 16%.",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2031"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Deutsche Bank's Jim Reid calculates that if the $625 billion 2031 earnings estimate is right, Nvidia trades at about 6x 2031 earnings, and a 16x multiple would make it the first $10 trillion company in history.",
+   "anchor": "if the $625 billion is right, Nvidia trades at about 6x 2031 earnings, and a modest 16x would make it the first $10 trillion company in history",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2031"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Zero Hedge expects Nvidia's interim CEO Colette Kress to deliver a beat, the buyback, and maybe even a raise, since the next two quarters were largely sold before Huang's exit.",
+   "anchor": "Kress will most likely deliver the beat, the buyback and maybe even the raise, because the next two quarters were sold long before Huang's exit",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q3/Q4"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Zero Hedge expects Nvidia to reaffirm its 70% revenue growth guide for next fiscal year but with enough export-rule qualifiers to let both sides claim victory.",
+   "anchor": "We suspect the 70% gets \"reaffirmed\" with enough qualifiers about export rules to let both sides claim victory",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next fiscal year"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Zero Hedge expects the 8% move the options market is pricing for Nvidia's earnings to prove too low, probably to the downside first, since the buyside bar leaves little room for an ordinary beat.",
+   "anchor": "the 8% the options market is pricing proves, if anything, too low - probably to the downside first, since the buyside bar leaves little room for an ordinary beat",
+   "topic": "NVDA earnings implied move",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "New US export rules now cover AI chip sales through Singapore, Malaysia, Thailand and Indonesia.",
+   "anchor": "facing new export rules covering Singapore, Malaysia, Thailand and Indonesia",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Nvidia's board has created a National Security and Export Control Oversight Committee.",
+   "anchor": "a board that has just created a National Security and Export Control Oversight Committee",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Washington has closed the cloud loophole that allowed AI chip rentals to China.",
+   "anchor": "a Washington that just closed the \"cloud loophole\" on AI chip rentals to China",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vital Knowledge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Vital Knowledge's Adam Crisafulli says the consensus has been assuming Nvidia reaffirms its 70% growth guide, but fears are rising that it could instead pull guidance.",
+   "anchor": "The consensus has been assuming the former, but fears are rising about the latter.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Bloomberg says the market needs strong guidance from Nvidia tonight, ideally with the 70% growth target reiterated.",
+   "anchor": "Strong guidance, and ideally the 70% reiterated;",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Bloomberg says the most important thing the market needs tonight is comfort around Nvidia's leadership transition.",
+   "anchor": "And, most important of all, comfort around the leadership transition.",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Nvidia's stock is down roughly 35% from its early October all-time high and has shed about $2 trillion in market cap since mid-October.",
+   "anchor": "a stock that is down roughly 35% from its early October all-time high and has shed about $2 trillion in market cap since mid-October",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Nvidia Earnings Preview: Everything You Need To Know About The First Print Without Jensen",
+   "claim": "Nvidia has suffered the biggest market cap decline in its history.",
+   "anchor": "The result is a stock that has suffered the biggest market cap decline in its history",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28177__nvidia-earnings-preview-everything-you-need-to-know-about-th.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 63,
+  "matched": 63,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
