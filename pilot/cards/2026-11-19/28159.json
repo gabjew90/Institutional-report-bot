@@ -1,0 +1,341 @@
+{
+ "brief": "UBS examines BIS's new rule restricting remote cloud access to advanced chips, which it says effectively revives Biden's unenacted AI Diffusion Rule and was unusually drafted at Treasury's direction. UBS cannot confirm the rule targets NVDA directly but calls the timing coincidental, consistent with risk it flagged in estimate cuts a day earlier. Chain: current law requires no license for shipments to Malaysia, Thailand, Indonesia or Singapore, so Malaysia's data-center build surged (2GW online, 10GW under construction, 25GW approved, backed by both US and China hyperscalers), with roughly half reportedly serving China-domiciled firms. A carve-out exists for retailers/social media, but US firms will likely compliance conservatively anyway, so UBS estimates 1-2GW of demand (mostly NVDA's) could be stripped, about 10% impact at $30B/GW; NVDA can divert shipments near-term, making this more a longer-term risk, especially if US power/shell permitting tightens. Separately, MATCH Act passage odds have risen (possible NDAA rider), though an expert argues the ASML/TEL-vs-US China sales gap is too small to justify it, a DUV ban risks trailing-edge China spillover, and FDPR use could upset allies more than tariffs. ASML/Japan suppliers are most exposed; KLAC is UBS's only indirectly-hit name via litho attach. Read-across: NVDA most directly hit; the memory-through-equipment chain suffers from the lost demand, though MATCH Act passage could eventually help non-China memory suppliers by capping China's domestic capacity.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "BIS posted a new rule addressing remote access to advanced semiconductors.",
+   "anchor": "The US Dept. of Commerce Bureau of Industry and Security (BIS) posted a new rule addressing remote access to advanced semiconductors.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS believes the new cloud-access rule is essentially attempting to accomplish the same thing as the Biden Administration's AI Diffusion Rule, which was issued but never put into effect.",
+   "anchor": "we believe the rule  is essentially attempting to accomplish the same thing as the AI Diffusion Rule issued by the Biden Administration",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS's experts say the new rule was written by, and at the direction of, the Department of Treasury, which is atypical for such a rule.",
+   "anchor": "the rule was \"written by, and at the direction of the  Department of Treasury\" - atypical for such a rule, according to our experts.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS cannot confirm the new rule is a direct response to the NVDA situation but calls the timing highly coincidental, consistent with a risk it had already flagged in its estimate cuts the prior day.",
+   "anchor": "to the NVDA situation, the timing seems highly coincidental and we highlighted this risk here and in our estimate cuts yesterday morning.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "Current export control laws have not required a license for chip shipments to Malaysia, Thailand, Indonesia and Singapore.",
+   "anchor": "Current export control laws have not required a license  for shipments to key countries such as Malaysia, Thailand, Indonesia, and Singapore",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "Press reports cited by UBS suggest about 2GW of new data centers are now online in a single Malaysian province, with another 10GW under construction.",
+   "anchor": "suggesting ~2GW of new data centers now online in a single province in Malaysia with another ~10GW currently under construction",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "Total approved data-center volume in Malaysia is up to about 25GW, with backing from both US and China hyperscalers.",
+   "anchor": "construction, and  total approved volume up to ~25GW with backing from both US and China hyperscalers.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "A New York Times article indicated that about half of Malaysia's data-center shipment run-rate is going to China-domiciled companies.",
+   "anchor": "shipments into Malaysia alone of a few GW/yr and the NYT article indicated that about half of this is going to China-domiciled  companies.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS expects US companies to err on the side of conservatism under the new rule's carve-out for online retailers and social media firms unless they can be continuously assured of the end customer.",
+   "anchor": "the new rule for online retailers and social media companies but we would think that US companies would err on the side of conservatism",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS estimates the new rule could strip 1-2GW out of current chip demand, with most of this likely coming from NVDA.",
+   "anchor": "it is possible that this new rule could strip 1-2GW out of current demand, with most of this likely being from NVDA.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "At $30B+ per GW, the estimated 1-2GW demand loss is roughly consistent with UBS's estimate of a 10% demand impact to NVDA.",
+   "anchor": "NVDA. At $30B+/GW, this is roughly consistent with our estimate of a 10% demand impact,",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "NVDA should still be able to divert the affected shipments to other customers to mitigate any near-term demand impact from the new rule.",
+   "anchor": "NVDA should still be able to divert these shipments to other customers to mitigate any near-term impact",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS sees the new rule's demand impact as more of a longer-term issue for NVDA, especially if powered shell permitting gets more restrictive in the US.",
+   "anchor": "so we see this as more of a longer-term issue especially if powered shell permitting gets more restrictive in the US.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "longer-term"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS's conversations with experts marked a clear shift in tone toward higher odds of the MATCH Act passing versus prior months.",
+   "anchor": "our conversations with experts marked a clear shift in tone around the odds of the MATCH Act passing vs. prior months",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "The MATCH Act could potentially be attached to the NDAA in the upcoming Congress.",
+   "anchor": "with the legislation potentially being attached to the NDAA in this upcoming Congress.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "upcoming Congress"
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "An expert firmly believes the disparity between what ASML and TEL currently sell into China versus US semiconductor equipment suppliers is not all that significant.",
+   "anchor": "the disparity between what ASML, TEL, and other foreign equipment suppliers currently sell into China vs. US SPE suppliers is not all that significant,",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "The small sales disparity makes the MATCH Act more a point of tension with US allies such as the Netherlands and Japan.",
+   "anchor": "significant, making the rule more of a point of tension with US allies such as the Netherlands and Japan.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "A contemplated ban on immersion DUV equipment under the MATCH Act would make supporting trailing-edge fabs and lines in China quite challenging, with potential spillover effects across the semiconductor equipment industry.",
+   "anchor": "Third, a contemplated ban on immersion DUV would make supporting trailing-edge fabs and lines in China quite challenging, with potential spillover effects across the industry,",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "An expert indicated that the US government's use of the Foreign Direct Product Rule could be more upsetting to allies than tariffs.",
+   "anchor": "indicated that the use of FDPR by the USG could be more upsetting than tariffs",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "In UBS's coverage, KLAC is the only name seen as indirectly negatively affected by passage of the MATCH Act, given its high attach to litho process steps.",
+   "anchor": "we see KLAC being the only one really indirectly negatively affected by the passage of this rule given its high attach to litho process steps",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS sees NVDA as the most directly impacted company by the new cloud-access rule.",
+   "anchor": "We see NVDA as the most directly impacted by this rule,",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "The entire supply chain, from memory through semiconductor equipment, would ultimately be negatively affected by the closure of the large demand corridor the new rule targets.",
+   "anchor": "the entire supply chain, from memory through SPE, would ultimately be negatively affected by the closure of such a large demand corridor.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "UBS Global I/O Semiconductors New US Export Controls on Cloud Access; Assessing the Impact",
+   "claim": "UBS argues that over the longer term, approving the MATCH Act could benefit memory suppliers outside China by constraining domestic Chinese capacity additions.",
+   "anchor": "we could argue that, over the longer term, approving  the MATCH Act could benefit memory suppliers outside China by constraining domestic Chinese capacity additions.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "longer term"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28159__ubs-ubs-global-i-o-semiconductors-new-us-export-controls-on-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 23,
+  "matched": 23,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
