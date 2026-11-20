@@ -79,6 +79,53 @@ _FREQ_RE = re.compile(
     r"|religiously|always|recurring|unprompted)\b,?", re.I)
 _HABIT_CLAUSE_RE = re.compile(
     r",?\s*\b(?:whenever|every time|each time|any time|anytime)\b[^,.;\]\)\"“]*", re.I)
+# 2026-11-19 audit (run 13, M4): about 28 bullets with one source message
+# called it a habit in other words: "his go-to excuse", "his standard
+# reaction", "Obsessed with protein intake". The adjective goes, and
+# "obsessed with" becomes what one message shows: he posted about it.
+_HABIT_WORD_RE = re.compile(
+    r"(?:\b(an?)\s+|(,)\s+)?(?:\b(?:go-?to|standard|signature|trademark|usual|typical|classic|favou?rite"
+    r"|obsessively|habitually)\b,?\s+)+(?=(.?))", re.I)
+_OBSESSED_RE = re.compile(r"\b(obsess(?:ed|es)|obsession)\s+(?:with|over|about)\b", re.I)
+# The writer's verdict on a quote, as an adjective (run 13, M5: "a baseless
+# claim", "his delusional take", "a transparent deflection"). It has no
+# data to rule with. The word goes and the quote stays.
+_JUDGMENT_WORD_RE = re.compile(
+    r"(?:\b(an?)\s+|(,)\s+)?(?:\b(?:baseless|unfounded|delusional|nonsensical|dubious|laughable|absurd|pathetic"
+    r"|transparent(?=\s+(?:deflection|attempt|excuse|lie|cope|ploy)))\b,?\s*)+(?=(.?))", re.I)
+# A trailing clause about how the room took it (run 13, M5: "though the
+# room remains skeptical", "despite the room questioning his whereabouts",
+# "that just made the room cringe"). The clause goes and the bullet stays.
+_ROOM_TAIL_RE = re.compile(
+    r",?\s*\b(?:though|although|despite|while|even as|leaving|much to|that (?:just )?made|which (?:just )?made)\b"
+    # not "everyone": "trades while everyone sleeps" is his own conduct
+    r"[^.\]\)\n]{0,20}\b(?:the room|the chat|the group)\b[^.\]\)\n]*", re.I)
+
+
+def _cut_word(m: re.Match) -> str:
+    """Nothing in place of the word, and the article before it made to fit
+    the word that now follows ("an absurd take" -> "a take")."""
+    art, comma, nxt = m.group(1), m.group(2), m.group(3) or ""
+    if comma:
+        return " "          # "his immediate, transparent deflection"
+    if not art:
+        return ""
+    a = "A" if art[0].isupper() else "a"
+    return a + ("n " if nxt.lower() in tuple("aeiou") else " ")
+
+
+def soften(line: str) -> str:
+    """The line without verdict adjectives and room-reaction tails, outside
+    quotes. Applied before the checks that drop a bullet, so a real quote
+    is not lost over the writer's adjective."""
+    parts = re.split(r"([\"“][^\"“”\n]*[\"”])", line)
+    out = []
+    for i, p in enumerate(parts):
+        if not i % 2:
+            p = _JUDGMENT_WORD_RE.sub(_cut_word, _ROOM_TAIL_RE.sub("", p))
+            p = re.sub(r"\s+([,.\]])", r"\1", p)
+        out.append(p)
+    return re.sub(r"[ \t]{2,}", " ", "".join(out))
 # The writer cites the member's messages by id, as the messages block shows them.
 _CITE_RE = re.compile(r"[ \t]*\{\s*m\d+(?:\s*[, ]\s*m?\d+)*\s*\}")
 # The code-written tail on a kept bullet; removed before a line is checked.
@@ -533,6 +580,7 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None,
             continue
         cited = [by_id[i] for i in citations(line) if i in by_id]
         line = strip_tag(strip_citations(line).rstrip())    # the tag is re-derived from the source
+        line = soften(line)
         reason = ""
         dq_all = _DQ_RE.findall(line)
         dq = [q for q in dq_all if len(q.split()) >= 2]
@@ -608,6 +656,12 @@ def apply(profile: str, user_id: int, verified_quotes: list[str] | None = None,
     return _drop_empty_sections("\n".join(keep)), dropped
 
 
+def _posted_about(m: re.Match) -> str:
+    word = {"obsessed": "posted about", "obsesses": "posts about",
+            "obsession": "post about"}[m.group(1).lower()]
+    return word.capitalize() if m.group(1)[0].isupper() else word
+
+
 def _drop_habit(line: str) -> str:
     """The line without frequency words and "whenever ..." clauses, outside quotes."""
     parts = re.split(r"([\"“][^\"“”\n]*[\"”])", line)
@@ -615,9 +669,15 @@ def _drop_habit(line: str) -> str:
     for i, p in enumerate(parts):
         if not i % 2:
             p = _HABIT_CLAUSE_RE.sub("", _FREQ_RE.sub("", p))
+            p = _HABIT_WORD_RE.sub(_cut_word, p)
+            p = _OBSESSED_RE.sub(_posted_about, p)
             p = re.sub(r"\s+([,.\]])", r"\1", re.sub(r",\s*,", ",", p))
         out.append(p)
-    return re.sub(r"[ \t]{2,}", " ", "".join(out))
+    text = re.sub(r"[ \t]{2,}", " ", "".join(out))
+    # a bullet that opened with a capital still does ("Obsessively tracks")
+    if re.match(r"\s*-\s+[A-Z]", line):
+        text = re.sub(r"^(\s*-\s+)([a-z])", lambda m: m.group(1) + m.group(2).upper(), text)
+    return text
 
 
 def _check_prose(line: str, haystack: str) -> tuple[str, list[str]]:
@@ -628,6 +688,7 @@ def _check_prose(line: str, haystack: str) -> tuple[str, list[str]]:
     head, body = (m.group(1), line[m.end():]) if m else ("", line)
     keep, gone = [], []
     for s in re.split(r"(?<=[.!?])\s+", strip_citations(body)):
+        s = soften(s)
         quotes = [q for q in _DQ_RE.findall(s) if len(q.split()) >= 2]
         bad = ("room-reaction claim" if _ROOM_CLAIM_RE.search(_outside_quotes(s))
                else "rules on whether a claim was true" if _VERDICT_RE.search(_outside_quotes(s))

@@ -311,8 +311,6 @@ def export_user_profiles_markdown() -> str:
         slur_n = r["slur_count"] or 0
         ts = r["trader_score"]
         tr_rank = trader_rank_by_uid.get(int(r["user_id"]))
-        tr_rationale = (r["trader_rationale"] or "").strip()
-        racism_rationale_str = (r["racism_rationale"] or "").strip()
         try:
             slur_examples_list = _json.loads(r["slur_examples"] or "[]")
         except Exception:
@@ -353,10 +351,17 @@ def export_user_profiles_markdown() -> str:
             score_bits.append(f"**trader-rank:** #{tr_rank}/{trader_rank_total}")
         if score_bits:
             lines.append(f"> {' · '.join(score_bits)}")
-        if tr_rationale:
-            lines.append(f"> _trader: {tr_rationale}_")
-        if racism_rationale_str:
-            lines.append(f"> _racism: {racism_rationale_str}_")
+        # The record, from the log. The writer's two paragraphs about
+        # the score are not printed (2026-11-20, audit run 13 M2 and M3:
+        # four members with no slur on record were said to "drop slurs",
+        # and the member with the best record was a "tilt-prone gambler").
+        try:
+            record = _db.format_member_ledger_line(_db.member_ledger_summary(int(r["user_id"])))
+        except Exception as e:
+            log.warning(f"ledger line failed in snapshot export: {e}")
+            record = ""
+        if record:
+            lines.append(f"> _trades: {record}_")
         # Profile body now carries all the ammo content inline in
         # named sections (Voice / Retarded takes / Recent trades /
         # Recent personal life). For OLD profiles that haven't been
@@ -965,7 +970,9 @@ def trader_evidence(user_id: int, days: int = 21) -> dict:
         "window_days": int(days),
         "wins": led.get("wins", 0),
         "losses": led.get("losses", 0),
-        "ghosted": int(pts.get("entries_ghosted") or 0),
+        # positions opened in the window that expired with no exit posted,
+        # from the same count as the wins and losses (db.trade_tally)
+        "ghosted": int(led.get("expired_no_exit") or 0),
         "receipt_points": int(pts.get("points") or 0),
         "avg_gain_pct_on_closes": round(avg) if avg is not None else None,
         # member_recent_tickers returns a set; slicing it raised TypeError on
@@ -1014,7 +1021,7 @@ def lookup_user_ranks(
 
     if username and username.strip():
         row = conn.execute(
-            """SELECT user_id, display_name, username, trader_rationale
+            """SELECT user_id, display_name, username
                  FROM user_profiles
                 WHERE LOWER(username) = LOWER(?)""",
             (username.strip(),),
@@ -1036,7 +1043,9 @@ def lookup_user_ranks(
                 "user_id": uid,
                 "trader_rank": trader_ranks.get(uid),
                 "trader_rank_total": trader_total,
-                "trader_rationale": row["trader_rationale"],
+                # The writer's paragraph about the trader is not served
+                # (2026-11-20, audit run 13 M3: "tilt-prone gambler" for the
+                # member with the best record). The record is, from the log.
                 "trader_evidence": trader_evidence(uid),
                 "racism_rank": standing["rank"],
                 "racism_rank_total": standing["rank_total"],
@@ -1059,10 +1068,9 @@ def lookup_user_ranks(
     if metric == "trader":
         ranked = [
             {"user_id": int(r["user_id"]), "username": r["username"],
-             "display_name": r["display_name"],
-             "trader_rationale": r["trader_rationale"]}
+             "display_name": r["display_name"]}
             for r in conn.execute(
-                """SELECT user_id, display_name, username, trader_rationale
+                """SELECT user_id, display_name, username
                      FROM user_profiles
                     WHERE trader_score IS NOT NULL
                     ORDER BY trader_score DESC, user_id ASC""").fetchall()
@@ -1076,7 +1084,6 @@ def lookup_user_ranks(
                "username": u["username"], "display_name": u["display_name"],
                "user_id": u["user_id"]}
         if metric == "trader":
-            out["trader_rationale"] = u.get("trader_rationale")
             out["trader_evidence"] = trader_evidence(u["user_id"])
         else:
             st = dict(u, rank_total=board["total"],

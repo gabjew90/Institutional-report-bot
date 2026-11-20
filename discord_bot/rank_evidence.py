@@ -59,7 +59,7 @@ def _trader_line(u: dict, rank, total) -> str:
     body = (f"{ev.get('wins', 0)}W/{ev.get('losses', 0)}L documented in "
             f"{ev.get('window_days', 21)}d, {ev.get('receipt_points', 0)} win pts")
     if ev.get("ghosted"):
-        body += f", {ev['ghosted']} opened with no close logged"
+        body += f", {ev['ghosted']} opened and expired with no exit posted"
     if ev.get("avg_gain_pct_on_closes") is not None:
         body += f", avg {ev['avg_gain_pct_on_closes']:+d}% on closes"
     return f"{head}: {body}"

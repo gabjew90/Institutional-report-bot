@@ -290,3 +290,39 @@ def test_a_window_past_the_log_is_cut_to_what_is_kept():
         assert "in the last 45 days, as far back as the trade log is kept in full" in out[0]
     finally:
         _clean(conn)
+
+
+def test_a_rank_carries_the_record_and_not_the_writers_paragraph():
+    """Audit run 13, M2 and M3: the stored paragraph called the member with
+    the best record a "tilt-prone gambler", and four members with no slur
+    on record were said to "drop slurs". Neither paragraph is served."""
+    from discord_bot import rank_evidence
+    conn = db.get_connection()
+    _load(conn)
+    conn.execute("DELETE FROM user_profiles WHERE user_id = ?", (A,))
+    conn.execute(
+        "INSERT INTO user_profiles (user_id, username, display_name, profile_text, trader_score, "
+        "trader_rationale, racism_rationale) VALUES (?, 'tallya', 'TallyA', 'x', 61, "
+        "'A tilt-prone gambler in the average-joe bracket.', 'Drops slurs with nonchalance.')", (A,))
+    conn.commit()
+    try:
+        res = db.lookup_user_ranks(username="tallya")
+        user = res["users"][0]
+        assert "trader_rationale" not in user and "racism_rationale" not in user
+        ev = user["trader_evidence"]
+        # 21 days: the same count the record answer posts
+        t = db.trade_tally(author_ids=[A], days=21)
+        assert (ev["wins"], ev["losses"], ev["ghosted"]) == (t["wins"], t["losses"], t["expired_no_exit"])
+        foot = rank_evidence.footer("his trader rank", [res])
+        assert f"{t['wins']}W/{t['losses']}L documented in 21d" in foot
+        if t["expired_no_exit"]:
+            assert "opened and expired with no exit posted" in foot
+        top = db.lookup_user_ranks(metric="trader", top_n=50)
+        assert all("trader_rationale" not in u for u in top["users"])
+        snap = db.export_user_profiles_markdown()
+        assert "tilt-prone gambler" not in snap and "Drops slurs" not in snap
+        assert f"_trades: documented 21d: {t['wins']}W/{t['losses']}L" in snap
+    finally:
+        conn.execute("DELETE FROM user_profiles WHERE user_id = ?", (A,))
+        conn.commit()
+        _clean(conn)

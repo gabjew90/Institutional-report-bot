@@ -3929,3 +3929,13 @@ Checked against 543 logged questions from October and November before and after:
 - **"**S&P 500**" in a replied-to answer is not the stock S.** A reply under a market recap had been handed SentinelOne's price. Older than this change, and more exposed by it.
 
 `scripts/ask_fixture_run.py` did not run on the owner's machine on 11-20: the API rejected the local Gemini key as invalid. Why was not checked. `--offline` passes (49 fixtures structurally valid).
+
+## 2026-11-20: profiles, the parts of audit run 13 that code decides (M2, M3, M4, M5)
+
+Every quote in the 22 audited profiles traced to its member. The failures were the words around the quotes and the two paragraphs written about a rank.
+
+- **The two rank paragraphs are no longer shown (M2, M3).** The stored racism paragraph said four members "drop slurs" who have none on record, and the trader paragraph called the member with the best record a "tilt-prone gambler". `lookup_user_ranks` no longer returns `trader_rationale`. A rank comes with `trader_evidence`, whose wins, losses and "opened and expired with no exit posted" are the tally's. The published snapshot prints the record line from the log in place of both paragraphs, and its racism line was already the board's count. The /ask prompt's "Ordinals + rationales when asked" reads "Ordinals + evidence when asked" (net -2 chars). The paragraphs had already drawn two repair checks (`check_rationale`, `fix_receipts_claim`).
+- **One message is not a habit (M4).** On a bullet with one source message `_drop_habit` now also removes "go-to", "standard", "signature", "usual", "typical", "classic" and "favourite", and "obsessed with" becomes "posted about".
+- **Verdict adjectives and room-reaction tails (M5).** `profile_guards.soften` removes "baseless", "delusional", "nonsensical", "dubious", "absurd" and "transparent" in front of what it rules on, and a trailing clause about the room ("though the room remains skeptical", "that just made the room cringe"). The bullet and its quote stay. It runs before the checks that drop a bullet and on the Personality paragraph, and the nightly sweep applies it to stored profiles.
+
+Left: the writer is still asked for both paragraphs and its prompt still says readers see them. The trader paragraph feeds the next refresh as the scorer's own notes. The racism paragraph has no reader left and its "Drops slurs with casual..." example is the template the audit found, so it should be retired from the prompt and the schema. M1 (a bullet's subject taken from the message it replies to) is not done: it needs a check of the framing's topic words against the member's own message, measured on the stored profiles before it is trusted.
