@@ -191,7 +191,7 @@ def test_the_average_drops_gains_that_cannot_be_results():
     conn.execute("CREATE TABLE analyst_trades (id INTEGER PRIMARY KEY, author_id INTEGER, "
                  "gain_pct REAL, contract_type TEXT, action TEXT, posted_at TEXT, ticker TEXT, "
                  "strike REAL, price REAL, is_trade INTEGER DEFAULT 1, author TEXT, caller TEXT, "
-                 "tracking_mode TEXT DEFAULT 'member', expiry TEXT)")
+                 "tracking_mode TEXT DEFAULT 'member', expiry TEXT, expiry_close REAL)")
     for g, ct in [(2009.0, "stock"), (-600.0, "unclear"), (-107.0, "unclear"),
                   (-45.0, "stock"), (-30.0, "unclear")]:
         conn.execute("INSERT INTO analyst_trades (author_id, gain_pct, contract_type, action, "

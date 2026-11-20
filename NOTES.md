@@ -3984,3 +3984,16 @@ Measured on 21 days of stored notes (987 with a rated mover): for the 415 house-
 **Cost, for the owner:** nine mornings of boards go from 54 lines to 35. 11-10 would have had no desk calls, 11-18 one, 11-17 two. Many dropped lines are probably real calls relayed in the house's own briefing ("Citi $DELL Buy, PT $550") that the stored text does not state in a sentence naming the bank. A looser rule (the house's own note states the rating about the stock, and the sentence credits nobody else) brings back about 10 lines. Against equity research it kept 83 agreeing ratings and 15 disagreeing before two fixes that would remove 13 of the 15 (relays from brokers outside the list, allocation sentences). Not built: it loosens the rule the owner approved for /ask on 11-17.
 
 The extraction prompt still fills the fields on any note. Left alone: both products now read them through the rule, and the Claude lane's prompt is frozen for the pilot.
+
+## 2026-11-20: what an unposted exit's contract was worth at expiry
+
+A position that expired with no trim or close posted counted as an unknown, and the second win rate counted every one as a loss. One part of it is knowable: the underlying's close on expiry day against the strike. On the 45 days to 11-20 the room had 157 such positions: 113 contracts finished out of the money, 42 in the money, 2 had no close.
+
+- `analyst_log/expiry_outcome.py`: `state` (worthless, in the money, unknown) and `closes_for` (the price lookups, blocking).
+- The daily sweep (16:00 ET and at startup) stores the close on the marked rows, `analyst_trades.expiry_close`, priced in a thread. Stored once: the feed restates old closes after a split and a stored strike is never restated. A close outside 0.4x to 2.5x of the strike is not stored (SNDK 1000 calls against a 110 close in the dry run).
+- `tally.build` counts `expired_worthless` and `expired_in_money` inside `expired_no_exit`. When every such expiry is priced, the second posted win rate counts only the worthless ones as losses and the line says how many more expired in the money. When some are not priced the old rate stays, with the split beside it.
+- The model's payloads carry the same split (`member_close_stats`, the caller summary block).
+
+Wording rule: it is the contract that expired worthless. Whether the trader held it is not in the log, so no line says he lost it.
+
+Dry run on a copy of the rows, last 30 days: the room 95% of 219 closes, or 56% with all 153 no-exit expiries as losses (104 worthless, 42 in the money, 7 not priced). One caller: 94% of 16 closes, or 60% counting the 9 worthless expiries, 1 more in the money.

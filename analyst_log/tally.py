@@ -26,6 +26,11 @@ exit is matched to its open wherever each was posted. What is counted:
   expired   a position opened in the window that passed its expiry with
             no trim or close posted. The outcome is unknown: it counts
             with the losses in the win rate and is always its own figure.
+            Where the sweep stored the underlying's close on expiry day,
+            the contract is also counted as `expired_worthless` or
+            `expired_in_money` (expiry_outcome.py), and
+            `win_rate_worthless_pct` counts only the worthless ones as
+            losses, once every such expiry is priced.
   open      a position opened in the window, not expired, not closed
 
 A close is counted by the day it was posted, an expiry and an open by the
@@ -40,6 +45,7 @@ from __future__ import annotations
 from datetime import date
 from statistics import median
 
+from analyst_log import expiry_outcome as X
 from analyst_log import positions as P
 
 KINDS = ("call", "put", "other")
@@ -65,7 +71,8 @@ def _kind(p: dict) -> str:
 
 
 def _zero() -> dict:
-    return {"wins": 0, "losses": 0, "expired_no_exit": 0, "open": 0, "opened": 0}
+    return {"wins": 0, "losses": 0, "expired_no_exit": 0, "expired_worthless": 0,
+            "expired_in_money": 0, "open": 0, "opened": 0}
 
 
 def _trade(p: dict, e: dict | None, gain: float | None, trader) -> dict:
@@ -88,6 +95,16 @@ def _trade(p: dict, e: dict | None, gain: float | None, trader) -> dict:
 
 def _rate(c: dict) -> float | None:
     decided = c["wins"] + c["losses"] + c["expired_no_exit"]
+    return round(100.0 * c["wins"] / decided, 1) if decided else None
+
+
+def _rate_worthless(c: dict) -> float | None:
+    """Wins over the closes with a result plus the positions whose contract
+    expired worthless with no exit posted. None unless every such expiry
+    has its outcome, so the figure never mixes known and unknown."""
+    if not c["expired_no_exit"] or c["expired_worthless"] + c["expired_in_money"] != c["expired_no_exit"]:
+        return None
+    decided = c["wins"] + c["losses"] + c["expired_worthless"]
     return round(100.0 * c["wins"] / decided, 1) if decided else None
 
 
@@ -152,7 +169,13 @@ def build(rows: list[dict], *, since: str, until: str | None = None, today: date
                     no_entry += 1
             if entered and p["status"] == "expired_no_exit":
                 add("expired_no_exit")
-                silent.append(_trade(p, None, None, trader))
+                # what the contract was worth at expiry, when the sweep
+                # stored the underlying's close (expiry_outcome.py)
+                close = next((r.get("expiry_close") for r in p["opens"] if r.get("expiry_close")), None)
+                at = X.state(p["contract_type"], p["strike"], close)
+                if at:
+                    add("expired_worthless" if at == X.WORTHLESS else "expired_in_money")
+                silent.append({**_trade(p, None, None, trader), "expiry_close": close, "at_expiry": at})
             elif entered and p["status"] == "open":
                 add("open")
 
@@ -164,10 +187,12 @@ def build(rows: list[dict], *, since: str, until: str | None = None, today: date
     scored = win_gains + loss_gains
     for c in (*kinds.values(), *traders.values()):
         c["win_rate_pct"] = _rate(c)
+        c["win_rate_worthless_pct"] = _rate_worthless(c)
     return {
         **total,
         "decided": total["wins"] + total["losses"] + total["expired_no_exit"],
         "win_rate_pct": _rate(total),
+        "win_rate_worthless_pct": _rate_worthless(total),
         "flat": flat,
         "discarded": discarded,
         "closes_without_entry": no_entry,

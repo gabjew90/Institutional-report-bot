@@ -885,6 +885,10 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         # the display name was stored). Both default-safe for old rows.
         ("tracking_mode", "ALTER TABLE analyst_trades ADD COLUMN tracking_mode TEXT NOT NULL DEFAULT 'caller'"),
         ("author_id", "ALTER TABLE analyst_trades ADD COLUMN author_id INTEGER"),
+        # The underlying's close on expiry day, stored by the daily sweep
+        # for a position that expired with no exit posted
+        # (analyst_log/expiry_outcome.py, 2026-11-20).
+        ("expiry_close", "ALTER TABLE analyst_trades ADD COLUMN expiry_close REAL"),
         # chat_messages OCR columns — added when image OCR landed. Live
         # deploys with the older 13-column chat_messages table get these
         # three columns appended (SQLite ALTER TABLE ADD COLUMN is cheap;
@@ -1639,6 +1643,8 @@ from db_parts.analyst import (  # noqa: E402,F401
     insert_text_extracted_trade_if_not_dup,
     known_trade_caller_names,
     mark_expired_analyst_positions,
+    expired_rows_missing_close,
+    set_expiry_closes,
     prune_bot_book_posts,
     purge_old_expired_analyst_trades,
     record_analyst_trade,

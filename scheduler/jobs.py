@@ -1769,6 +1769,25 @@ async def _analyst_expire_sweep_job(bot=None):
     try:
         import db
         expired_rows = db.mark_expired_analyst_positions()
+    except Exception as e:
+        log.error(f"Analyst expire sweep failed: {e}", exc_info=True)
+        return
+    # What each no-exit position's contract was worth at expiry: the
+    # underlying's close on expiry day, stored once (2026-11-20,
+    # analyst_log/expiry_outcome.py). The price feed blocks, so it runs in
+    # a thread. The first run fills the rows already marked.
+    try:
+        missing = db.expired_rows_missing_close()
+        if missing:
+            import asyncio
+            from analyst_log import expiry_outcome
+            closes = await asyncio.to_thread(expiry_outcome.closes_for, missing)
+            stored = db.set_expiry_closes(closes)
+            log.info(f"Analyst expire sweep: stored the expiry-day close on {stored} of "
+                     f"{len(missing)} rows with no exit posted")
+    except Exception as e:
+        log.error(f"Analyst expire sweep: expiry closes failed: {e}", exc_info=True)
+    try:
         if not expired_rows:
             log.info("Analyst expire sweep: nothing to mark")
             return

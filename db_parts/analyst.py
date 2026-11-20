@@ -744,7 +744,8 @@ def trade_tally(
             "WHERE LOWER(caller) = ? AND author_id IS NOT NULL", (name,)).fetchall()]
 
     cols = ("at.id, at.author_id, at.author, at.caller, at.tracking_mode, at.ticker, "
-            "at.contract_type, at.strike, at.expiry, at.action, at.gain_pct, at.price, at.posted_at")
+            "at.contract_type, at.strike, at.expiry, at.action, at.gain_pct, at.price, at.posted_at, "
+            "at.expiry_close")
     join = ""
     if channel_id is not None:
         cols += ", cm.channel_id"
@@ -831,13 +832,16 @@ def compute_caller_win_loss_summary(
             (caller.strip().lower(),)).fetchall()]
         if ids:
             e = trade_tally(author_ids=ids, days=days)
-            everywhere = {k: e[k] for k in ("wins", "losses", "expired_no_exit", "flat", "open")}
+            everywhere = {k: e[k] for k in ("wins", "losses", "expired_no_exit", "expired_worthless",
+                                            "expired_in_money", "flat", "open")}
     return {
         "everywhere": everywhere,
         "days": days,
         "wins": t["wins"],
         "losses_documented": t["losses"],
         "losses_silent_expiry": t["expired_no_exit"],
+        "silent_expiry_worthless": t["expired_worthless"],
+        "silent_expiry_in_money": t["expired_in_money"],
         "total_losses": total_losses,
         "flat": t["flat"],
         "decided": t["decided"],
@@ -1577,6 +1581,37 @@ def mark_expired_analyst_positions() -> list[dict]:
     return [{k: r.get(k) for k in keep} for r in newly]
 
 
+def expired_rows_missing_close(limit: int = 600) -> list[dict]:
+    """The open and add rows of positions that expired with no exit posted
+    and have no close of the underlying stored yet: options with a strike
+    and an expiry before today. The sweep job prices them off the event
+    loop (analyst_log/expiry_outcome.py) and stores the result with
+    `set_expiry_closes`."""
+    rows = _db.get_connection().execute(
+        f"""SELECT id, ticker, contract_type, strike, expiry
+            FROM analyst_trades
+            WHERE is_trade = 1 AND inferred_status = 'expired_unknown'
+              AND expiry_close IS NULL
+              AND strike IS NOT NULL AND expiry IS NOT NULL
+              AND LOWER(contract_type) IN ('call', 'put')
+              AND expiry < date('now')
+              AND posted_at > datetime('now', '-{SWEEP_LOOKBACK_DAYS} days')
+            ORDER BY expiry DESC LIMIT ?""", (int(limit),)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def set_expiry_closes(closes: dict[int, float]) -> int:
+    """Store the underlying's close on expiry day on each row. Returns the
+    number of rows written."""
+    if not closes:
+        return 0
+    conn = _db.get_connection()
+    conn.executemany("UPDATE analyst_trades SET expiry_close = ? WHERE id = ? AND expiry_close IS NULL",
+                     [(float(px), int(i)) for i, px in closes.items()])
+    conn.commit()
+    return len(closes)
+
+
 def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) -> dict:
     """Which names the room is piled into, from the member trade ledger.
 
@@ -1803,9 +1838,14 @@ def member_close_stats(author_id: int, days: int = 30,
         "closes_with_no_result_logged": t["flat"],
         "wins": t["wins"], "losses": t["losses"],
         "opened": t["opened"], "expired_with_no_exit_posted": t["expired_no_exit"],
+        # of those, what the contract was worth at expiry where the sweep
+        # has priced it: a fact about the contract, not a result he posted
+        "of_those_contract_expired_worthless": t["expired_worthless"],
+        "of_those_contract_expired_in_the_money": t["expired_in_money"],
         "still_open": t["open"],
         "win_rate_pct_of_closes": round(100.0 * t["wins"] / closes, 1) if closes else None,
         "win_rate_pct_counting_expiries_as_losses": t["win_rate_pct"],
+        "win_rate_pct_counting_worthless_expiries_as_losses": t["win_rate_worthless_pct"],
         "avg_gain_pct": t["avg_close_pct"],
     }
 

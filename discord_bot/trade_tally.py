@@ -374,21 +374,45 @@ def _rate_of_closes(t: dict) -> int | None:
     return round(100 * t["wins"] / closes) if closes else None
 
 
+def _at_expiry(c: dict) -> str:
+    """What the contracts behind the no-exit expiries were worth at expiry,
+    where the sweep has priced them: " (35 worthless at expiry, 13 in the
+    money)". '' when none is priced."""
+    w, m = c.get("expired_worthless", 0), c.get("expired_in_money", 0)
+    if not (w or m):
+        return ""
+    rest = c["expired_no_exit"] - w - m
+    return (f" ({w:,} worthless at expiry, {m:,} in the money"
+            + (f", {rest:,} not priced" if rest > 0 else "") + ")")
+
+
 def _lead(label: str, where: str, t: dict) -> str:
     closes = t["wins"] + t["losses"]
     exp = t["expired_no_exit"]
     if not closes:
         tail = "no close with a result logged"
         if exp:
-            tail += f", and {_n(exp, 'position')} expired with no exit posted"
+            tail += f", and {_n(exp, 'position')} expired with no exit posted{_at_expiry(t)}"
         return f"→ {label}{where}: {tail}"
     out = (f"→ {label}{where}: win rate **{_rate_of_closes(t)}%** of the {_n(closes, 'close')} with a "
            f"result (**{t['wins']:,}** {'win' if t['wins'] == 1 else 'wins'}, "
            f"**{t['losses']:,}** {'loss' if t['losses'] == 1 else 'losses'})")
-    if exp:
+    worthless = t.get("expired_worthless", 0)
+    if exp and t.get("win_rate_worthless_pct") is not None:
+        # every such expiry is priced: count as losses only the contracts
+        # that finished worthless, and say what the others finished as
+        if worthless:
+            out += (f", or **{round(t['win_rate_worthless_pct'])}%** when the "
+                    f"{_n(worthless, 'position')} whose contract expired worthless with no exit posted "
+                    + ("is" if worthless == 1 else "are") + " counted as "
+                    + ("a loss" if worthless == 1 else "losses"))
+        if t["expired_in_money"]:
+            out += (f". {_n(t['expired_in_money'], 'more position')} expired in the money "
+                    "with no exit posted")
+    elif exp:
         out += (f", or **{round(t['win_rate_pct'])}%** when the {_n(exp, 'position')} that expired "
                 "with no exit posted " + ("is" if exp == 1 else "are") + " counted as "
-                + ("a loss" if exp == 1 else "losses"))
+                + ("a loss" if exp == 1 else "losses") + _at_expiry(t))
     return out
 
 
@@ -424,7 +448,7 @@ def _detail(t: dict, split: bool) -> list[str]:
                 continue
             s = f"{name}: {_n(c['wins'], 'win')}, {_n(c['losses'], 'loss', 'losses')}"
             if c["expired_no_exit"]:
-                s += f", {c['expired_no_exit']:,} expired with no exit"
+                s += f", {c['expired_no_exit']:,} expired with no exit{_at_expiry(c)}"
             kinds.append(s)
         if len(kinds) > 1:
             out.append("→ " + ". ".join(kinds))
@@ -463,7 +487,8 @@ def lines(res: dict) -> list[str]:
             a = al["tally"]
             out.append(f"→ In #{al['channel']} alone: {_n(a['opened'], 'alert')} opened, "
                        f"{_n(a['wins'], 'win')}, {_n(a['losses'], 'loss', 'losses')}, "
-                       f"{a['expired_no_exit']:,} expired with no exit posted, {a['open']:,} still open")
+                       f"{a['expired_no_exit']:,} expired with no exit posted{_at_expiry(a)}, "
+                       f"{a['open']:,} still open")
     return out
 
 

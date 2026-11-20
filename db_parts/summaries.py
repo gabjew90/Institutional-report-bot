@@ -198,6 +198,12 @@ def format_analyst_trades_for_context(
             out_lines.append(
                 f"- Win rate: {wl['win_rate_pct']}% on {wl['decided']} decided trades"
             )
+            if wl.get("silent_expiry_worthless") or wl.get("silent_expiry_in_money"):
+                # the contract's value at expiry, not a result he posted
+                out_lines.append(
+                    f"- Of the silent expiries, {wl['silent_expiry_worthless']} contracts finished "
+                    f"worthless at expiry and {wl['silent_expiry_in_money']} finished in the money "
+                    f"(from the underlying's close on expiry day). Whether he held them is not logged.")
             if wl["avg_win_pct"] is not None:
                 out_lines.append(f"- Avg win: {wl['avg_win_pct']:+.1f}%")
             if wl["avg_loss_pct"] is not None:

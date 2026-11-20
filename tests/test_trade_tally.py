@@ -87,8 +87,9 @@ def test_each_trader_is_built_alone_and_counted_once():
                 since=SINCE, today=TODAY)
     # trader 8's NVDA close is his own result, not a second exit of trader 7's alert
     assert (t["wins"], t["losses"]) == (2, 2)
-    assert t["by_trader"][8] == {"wins": 0, "losses": 1, "expired_no_exit": 0, "open": 0,
-                                 "opened": 0, "win_rate_pct": 0.0}
+    assert t["by_trader"][8] == {"wins": 0, "losses": 1, "expired_no_exit": 0, "expired_worthless": 0,
+                                 "expired_in_money": 0, "open": 0, "opened": 0, "win_rate_pct": 0.0,
+                                 "win_rate_worthless_pct": None}
     # a trader with nothing inside the window is not one of the traders
     old = [("2026-09-01T15:00", "IBM", "call", 300, "2026-09-05", "close", None, 10.0, MAIN)]
     t = T.build(_rows() + [dict(r, id=200) for r in _rows(old, author=9)], since=SINCE, today=TODAY)
@@ -326,3 +327,86 @@ def test_a_rank_carries_the_record_and_not_the_writers_paragraph():
         conn.execute("DELETE FROM user_profiles WHERE user_id = ?", (A,))
         conn.commit()
         _clean(conn)
+
+
+# 2026-11-20: what a no-exit position's contract was worth at expiry
+# (analyst_log/expiry_outcome.py). Over the 45 days before, 113 of the
+# room's 157 such positions finished out of the money and 42 in the money.
+
+def _opt(i, action, ticker, kind, strike, expiry, posted, gain=None, close=None, author=7):
+    return {"id": i, "author_id": author, "author": "m", "caller": None, "tracking_mode": "member",
+            "ticker": ticker, "contract_type": kind, "strike": strike, "expiry": expiry,
+            "action": action, "gain_pct": gain, "price": None, "posted_at": posted,
+            "expiry_close": close}
+
+
+def test_the_contract_state_at_expiry():
+    from analyst_log import expiry_outcome as X
+    assert X.state("call", 740, 690.44) == X.WORTHLESS
+    assert X.state("call", 7150, 7175.83) == X.IN_MONEY and round(X.intrinsic("call", 7150, 7175.83), 2) == 25.83
+    assert X.state("put", 98, 96.92) == X.IN_MONEY
+    assert X.state("put", 7200, 7323.63) == X.WORTHLESS
+    # nothing stored, no strike, or shares: unknown
+    assert X.state("call", 740, None) is None and X.state("call", None, 700) is None
+    assert X.state("stock", 100, 90) is None
+
+
+def test_closes_are_fetched_only_where_a_result_can_be_read():
+    from analyst_log import expiry_outcome as X
+    asked = []
+
+    def price_on(ticker, day):
+        asked.append((ticker, day))
+        return {"MU": 690.44, "SNDK": 110.63}.get(ticker)
+
+    rows = [
+        {"id": 1, "ticker": "MU", "contract_type": "call", "strike": 740.0, "expiry": "2026-11-19"},
+        # a close nine times away from the strike is a restated price or a misread strike
+        {"id": 2, "ticker": "SNDK", "contract_type": "call", "strike": 1000.0, "expiry": "2026-11-13"},
+        {"id": 3, "ticker": "ZZZZ", "contract_type": "put", "strike": 10.0, "expiry": "2026-11-13"},
+        {"id": 4, "ticker": "MU", "contract_type": "stock", "strike": None, "expiry": None},
+    ]
+    assert X.closes_for(rows, price_on=price_on) == {1: 690.44}
+    assert ("MU", "2026-11-19") in asked and all(t != "MU" or d for t, d in asked)
+
+
+def test_no_exit_expiries_are_split_by_what_the_contract_was_worth():
+    rows = [
+        _opt(1, "open", "MU", "call", 740, "2026-11-13", "2026-11-10T15:00:00", close=690.44),
+        _opt(2, "open", "SPX", "call", 7150, "2026-11-13", "2026-11-11T15:00:00", close=7175.83),
+        _opt(3, "open", "NVDA", "call", 150, "2026-11-13", "2026-11-11T16:00:00"),
+        _opt(4, "close", "NVDA", "call", 150, "2026-11-13", "2026-11-12T16:00:00", gain=40),
+    ]
+    t = T.build(rows, since="2026-11-01T00:00:00", today=date(2026, 11, 20))
+    assert (t["wins"], t["expired_no_exit"], t["expired_worthless"], t["expired_in_money"]) == (1, 2, 1, 1)
+    # every expiry is priced: only the worthless one counts as a loss
+    assert t["win_rate_pct"] == 33.3 and t["win_rate_worthless_pct"] == 50.0
+    assert {s["at_expiry"] for s in t["silent_expiry_trades"]} == {"worthless", "in_money"}
+
+
+def test_a_rate_is_not_built_from_part_of_the_expiries():
+    rows = [
+        _opt(1, "open", "MU", "call", 740, "2026-11-13", "2026-11-10T15:00:00", close=690.44),
+        _opt(2, "open", "SPX", "call", 7150, "2026-11-13", "2026-11-11T15:00:00"),
+    ]
+    t = T.build(rows, since="2026-11-01T00:00:00", today=date(2026, 11, 20))
+    assert (t["expired_no_exit"], t["expired_worthless"], t["expired_in_money"]) == (2, 1, 0)
+    assert t["win_rate_worthless_pct"] is None
+
+
+def test_the_posted_line_says_what_the_contracts_were_worth():
+    base = {"wins": 60, "losses": 1, "expired_no_exit": 48, "open": 5, "opened": 110,
+            "win_rate_pct": 55.0}
+    priced = dict(base, expired_worthless=35, expired_in_money=13, win_rate_worthless_pct=62.5)
+    line = TT._lead("**BK**", ", last 30 days", priced)
+    assert "win rate **98%** of the 61 closes with a result" in line
+    assert ("or **62%** when the 35 positions whose contract expired worthless with no exit posted "
+            "are counted as losses. 13 more positions expired in the money with no exit posted") in line
+    # not priced yet: the old wording, every expiry as a loss
+    old = TT._lead("**BK**", ", last 30 days", dict(base, expired_worthless=0, expired_in_money=0,
+                                                   win_rate_worthless_pct=None))
+    assert "or **55%** when the 48 positions that expired with no exit posted are counted as losses" in old
+    # partly priced: the old rate, with what is known beside it
+    part = TT._lead("**BK**", ", last 30 days", dict(base, expired_worthless=30, expired_in_money=10,
+                                                    win_rate_worthless_pct=None))
+    assert "counted as losses (30 worthless at expiry, 10 in the money, 8 not priced)" in part
