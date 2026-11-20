@@ -219,6 +219,7 @@ def summarize(entries: list[dict], examples: int = 15) -> dict:
             "share_pct": _pct(len(es), n),
             "corrected_pct": _pct(sum(e["corrected"] for e in es), len(es)),
             "reasked_pct": _pct(sum(e["reasked"] for e in es), len(es)),
+            "did_not_land_pct": _pct(sum(e["did_not_land"] for e in es), len(es)),
             "inferred": sum(e["shape_inferred"] for e in es),
             "median_s": round(statistics.median(lats), 1) if lats else None,
             "p90_s": _p90(lats),
@@ -252,6 +253,12 @@ def summarize(entries: list[dict], examples: int = 15) -> dict:
         "short_circuit": sum(e["type"].startswith("short_circuit") for e in entries),
         "corrected": sum(e["corrected"] for e in entries),
         "reasked": sum(e["reasked"] for e in entries),
+        "gave_up": sum(e["gave_up"] for e in entries),
+        "did_not_land": sum(e["did_not_land"] for e in entries),
+        "reasked_examples": [
+            {"ts": e["ts"], "shape": group(e),
+             "question": ask_router._last_line(e["question"])[:120]}
+            for e in [e for e in entries if e["reasked"] or e["gave_up"]][-examples:]],
         "unplaced_corrections": placed["unplaced_corrections"],
         "corrected_examples": [
             {"ts": e["ts"], "shape": group(e),
@@ -281,10 +288,14 @@ def render(s: dict) -> str:
         f"# /ask scoreboard: {s['first']} to {s['last']} UTC",
         "",
         f"- Answers: {n} (failed {s['failed']}, short-circuit {s['short_circuit']})",
-        f"- Corrected by the room: {s['corrected']} ({_pct(s['corrected'], n)}%)"
+        f"- Did not land (corrected, asked again, or no answer): "
+        f"{s['did_not_land']} ({_pct(s['did_not_land'], n)}%)",
+        f"- Corrected by the asker: {s['corrected']} ({_pct(s['corrected'], n)}%)"
         + (f", {s['unplaced_corrections']} more not matched to an answer"
            if s["unplaced_corrections"] else ""),
-        f"- Asked again within 10 minutes: {s['reasked']} ({_pct(s['reasked'], n)}%)",
+        f"- Asked again (within 10 minutes, or as a reply under the answer): "
+        f"{s['reasked']} ({_pct(s['reasked'], n)}%)",
+        f"- No answer (a canned line or an API failure): {s['gave_up']} ({_pct(s['gave_up'], n)}%)",
         f"- Words changed after the model wrote them: {s['changed']} ({_pct(s['changed'], n)}%)",
         f"- Punctuation cleanup only: {s['punctuation_only']} ({_pct(s['punctuation_only'], n)}%)",
         f"- No check fired: {s['no_check']} ({_pct(s['no_check'], n)}%)",
@@ -292,12 +303,13 @@ def render(s: dict) -> str:
         "",
         "## By shape",
         "",
-        "| shape | asks | share | corrected | asked again | median s | p90 s | words changed | retried | failed | top checks | top tools |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| shape | asks | share | did not land | corrected | asked again | median s | p90 s | words changed | retried | failed | top checks | top tools |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in s["shapes"]:
         lines.append(
-            f"| {r['shape']} | {r['asks']} | {r['share_pct']}% | {r['corrected_pct']}% | "
+            f"| {r['shape']} | {r['asks']} | {r['share_pct']}% | {r['did_not_land_pct']}% | "
+            f"{r['corrected_pct']}% | "
             f"{r['reasked_pct']}% | {r['median_s']} | "
             f"{r['p90_s']} | {r['changed_pct']}% | {r['retried_pct']}% | {r['failed']} | "
             f"{_fmt_pairs(r['top_checks'])} | {_fmt_pairs(r['top_tools'])} |")
@@ -312,9 +324,12 @@ def render(s: dict) -> str:
         lines.append(f"| {r['check']} | {r['fires']} | {r['share_pct']}% | "
                      f"{r['changed_pct']}% | {_fmt_pairs(r['shapes'])} |")
     if s["corrected_examples"]:
-        lines += ["", "## Latest answers the room corrected", ""]
+        lines += ["", "## Latest answers the asker corrected", ""]
         lines += [f"- {e['ts'][:16]} [{e['shape']}] {e['question']} → \"{e['correction']}\""
                   for e in s["corrected_examples"]]
+    if s["reasked_examples"]:
+        lines += ["", "## Latest questions asked again or given no answer", ""]
+        lines += [f"- {e['ts'][:16]} [{e['shape']}] {e['question']}" for e in s["reasked_examples"]]
     if s["unknown_examples"]:
         lines += ["", "## Latest factual questions on the catch-all", ""]
         lines += [f"- {e['ts'][:16]} #{e['channel']}: {e['question']}"

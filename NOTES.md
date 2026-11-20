@@ -3939,3 +3939,31 @@ Every quote in the 22 audited profiles traced to its member. The failures were t
 - **Verdict adjectives and room-reaction tails (M5).** `profile_guards.soften` removes "baseless", "delusional", "nonsensical", "dubious", "absurd" and "transparent" in front of what it rules on, and a trailing clause about the room ("though the room remains skeptical", "that just made the room cringe"). The bullet and its quote stay. It runs before the checks that drop a bullet and on the Personality paragraph, and the nightly sweep applies it to stored profiles.
 
 Left: the writer is still asked for both paragraphs and its prompt still says readers see them. The trader paragraph feeds the next refresh as the scorer's own notes. The racism paragraph has no reader left and its "Drops slurs with casual..." example is the template the audit found, so it should be retired from the prompt and the schema. M1 (a bullet's subject taken from the message it replies to) is not done: it needs a check of the framing's topic words against the member's own message, measured on the stored profiles before it is trusted.
+
+## 2026-11-20: the outcome measure counts what it was missing (owner: measurement first)
+
+Two audits in a row (11-16, 11-19) read "0 corrected, 0 re-asked" on the scoreboard while both happened. A fresh month was labelled by hand, every reply to the bot and every repeated question from 10-27 to 11-19 (245 answers): 16 answers did not land by the asker's own next message. The 10-28 matcher caught 3 of them and raised 3 false alarms.
+
+- **A re-ask posted as a reply was never tested.** A reply went down the correction branch only. A reply that restates the question under the answer it got now marks that answer as asked again (`ask_outcomes.restates`).
+- **A canned no-answer line counted as an answer.** "Thought myself in circles", "No response came back", the validator's refusal and an API failure are now `gave_up`.
+- **A few correction phrasings and three kinds of banter** that only look like a complaint are handled in `ask_outcomes.py` alone. `follow_up.py`, which routes live replies, is unchanged, so the measure does not move the thing it measures.
+- The scoreboard leads with one number, **did not land**, per shape.
+
+Now 10 of the 16 are caught with no false alarm, on the set it was widened on. Run back over 09-01 to 10-26 (718 answers) it flags 11 more answers than before, each one read: 10 canned lines and one re-ask as a reply, none false.
+
+Not caught, and why: a correction posted in the room without replying to the bot (2 in the 11-17 to 11-20 audit window) is not in the ask logs, a re-ask in different words shares no words with the first, and a contrary fact stated plainly has no marker.
+
+**What the 16, plus the 2 room corrections, were about** (18 answers, 10-27 to 11-20):
+
+| cause | answers | status |
+|---|---|---|
+| Asked for one fact and did not get it (a clock time three times, a percentage once) | 4 | open: no feed carries a call time or a listing time |
+| Fantasy league table (standings, a past week, playoff picture) | 3 | fixed 11-19, the table is computed and posted by code |
+| The trade log (a cut not logged as an exit, an invented average entry, counts from the model's own SQL) | 3 | 2 fixed (11-11 position builder, 11-20 tally), the unlogged exit is open |
+| An earnings question the router misread ("has" taken as HAS on a slate question, three tickers answered for one, a typo read as MAIN) | 3 | open, all three still misroute on today's router |
+| No answer at all on a price statistic (average return by weekday, twice) | 2 | open: the model runs out of output on the price rows |
+| Wrong team's record in a fantasy answer | 1 | not re-checked |
+| Timeframe the asker had not stated | 1 | not a defect |
+| A false claim inside a roast | 1 | banter |
+
+Five of the 18 are fixed by work since. The largest open groups are the asked fact, earnings questions the router misreads, and price statistics.

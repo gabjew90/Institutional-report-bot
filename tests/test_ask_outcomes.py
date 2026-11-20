@@ -92,3 +92,48 @@ def test_the_same_question_again_within_ten_minutes_is_a_reask():
     other = _e("2026-09-09 22:31:00", "how many total messages have I sent in this channel", asker="bk")
     O.mark([a, b, c, other])
     assert a["reasked"] and not b["reasked"] and not c["reasked"]
+
+
+# 2026-11-20: a fresh hand-labelled month (10-27 to 11-19) showed what the
+# measure never tested. The examples are written for the test, in the shape
+# of the labelled replies.
+
+def test_a_reask_posted_as_a_reply_counts():
+    answer = "→ **AAPL** closed at $255.46. Reports today after the close."
+    a = _e("2026-11-17 21:26:45", "what time is the Apple earnings call", answer)
+    b = _e("2026-11-17 21:27:25", _reply("what time is the call", answer))
+    nxt = _e("2026-11-17 21:28:00", _reply("how about the guidance", answer))
+    O.mark([a, b, nxt])
+    assert a["reasked"] and a["did_not_land"] and not a["corrected"]
+    assert not b["reasked"] and not b["did_not_land"]
+
+
+def test_one_symbol_from_a_question_that_named_several():
+    assert O.restates("and MSFT", "aapl, msft and nvda earnings expectations")
+    # one shared word is no re-ask on its own
+    assert not O.restates("no shot", "is there a shot it holds 400")
+    assert not O.restates("how about the cash flow", "is amazon cash flow negative")
+
+
+def test_a_canned_line_is_no_answer():
+    assert O.gave_up("→ Thought myself in circles and ran out of room. Try asking it more directly.")
+    assert O.gave_up("→ No response came back (reason: STOP). Try again or rephrase.\n\nData: x")
+    # the cleaner turns the dash into a comma
+    assert O.gave_up("→ don't have that one, pull it from your broker or data vendor.")
+    assert not O.gave_up("→ **AAPL** at $255.46")
+    e = _e("2026-11-11 21:27:43", "average return on Thursdays",
+           "→ Thought myself in circles and ran out of room. Try asking it more directly.")
+    O.mark([e])
+    assert e["gave_up"] and e["did_not_land"]
+
+
+def test_measure_only_corrections_and_the_banter_that_looks_like_one():
+    for t in ("You have to work each one out separately", "give me a number",
+              "So again, who makes the playoffs"):
+        assert O.is_correction(t), t
+    for t in ("I'm asking for a friend", "No shit", "I'm not a fucking pussy",
+              "do you have to hold through the print", "give me the price of NVDA and AMD"):
+        assert not O.is_correction(t), t
+    # the live route's pattern is not widened by the measure
+    from discord_bot import follow_up
+    assert not follow_up.is_correction("give me a number")

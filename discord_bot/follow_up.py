@@ -32,7 +32,8 @@ _ASKED_MAX = 300
 
 # Written from 316 hand-labelled replies to the bot (2026-09-01 to 10-26). On
 # those it catches 44 of 50 corrections with 3 false alarms. The whole pattern
-# is the outcome measure in scripts/ask_outcomes.py. Routing leaves out what the
+# is where the outcome measure in scripts/ask_outcomes.py starts (it adds and
+# excludes a few phrasings of its own, 2026-11-20). Routing leaves out what the
 # asker says about themselves: asking the question again does not answer "I
 # never trade that", and "I'm not a [insult]" is an insult (the first live one,
 # 11-02, got a full FSLR answer).

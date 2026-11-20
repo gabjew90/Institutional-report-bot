@@ -126,6 +126,9 @@ def test_check_names_drop_counts_and_trigger_words():
 def test_render_has_both_tables(tmp_path):
     out = S.render(S.summarize(_entries(tmp_path)))
     assert "## By shape" in out and "## By check" in out and "| business-line | 1 |" in out
+    # the outcome leads: one number for answers that did not land
+    assert "- Did not land (corrected, asked again, or no answer): 0 (0.0%)" in out
+    assert "| shape | asks | share | did not land | corrected | asked again |" in out
 
 
 def _block(hms: str) -> str:
