@@ -1,0 +1,640 @@
+{
+ "brief": "NVDA posted a broad 3Q beat: EPS of $2.68 versus $2.48 consensus, revenue up 103% to $115.8bn versus $109.1bn consensus, driven by $107.6bn of data-center revenue, with gross margin of 74.9% above the 74.0% estimate. NVDA guided Q4 revenue to $126.1-133.9bn versus $125.25bn consensus and raised its FY2028 revenue growth outlook to roughly 75% from 70%, citing data-center readiness, durable demand and access to capital. Separately, UBS's 3Q26 earnings tracker shows 91.7% of S&P 500 market cap has reported, with blended estimates of 14.8% revenue growth and 32.8% EPS growth, and UBS's own running estimate at 33.0%. Growth is bifurcated by group: Energy leads at 155.2%, TECH+ at 50.7%, Cyclicals ex-Energy at 20.3%, Financials at 11.0%, Non-Cyclicals at 10.7%. Within TECH+, the six largest companies are expected to lag the rest of the market as a group (25.6% vs 35.2%); results are mixed, with META, MSFT, AAPL and NVDA beating their own estimates while GOOGL and AMZN missed. Aggregate earnings are beating by 5.8%, with 77% of companies topping estimates, and EPS revisions are improving atypically for this point in the season.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "NVDA posted 3Q26 EPS of $2.68 versus $2.48 consensus and revenue up 103% year over year to $115.8bn versus $109.1bn consensus.",
+   "anchor": "NVDA delivered a broad beat, with EPS of $2.68 (vs $2.48 cons) and revenue up 103% \nyoy at $115.8bn (vs $109.1bn cons)",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "NVDA's revenue beat was driven by data center revenue of $107.6bn versus $101.9bn consensus.",
+   "anchor": "driven by data center revenue of $107.6bn (vs \n$101.9bn cons)",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "NVDA's gross margin reached 74.9%, about 90 basis points above the 74.0% estimate.",
+   "anchor": "Gross margin reached 74.9%, ~90bp above the 74.0% estimate.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "NVDA guided Q4 revenue to $126.1bn-$133.9bn versus $125.25bn consensus, with gross margin guided at 71%-72%, broadly in line with expectations.",
+   "anchor": "revenue was guided at $126.1-$133.9bn (vs $125.25bn cons) while gross margin was \nguided at 71%-72% which was broadly in line with expectations.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "NVDA raised its FY2028 revenue growth outlook to about 75% year over year from 70%, off a higher FY2027 base, citing data center readiness, durable customer demand and access to capital.",
+   "anchor": "FY2028 revenue \ngrowth outlook was raised to ~75% yoy from 70%, off a higher FY2027 base, citing \ndata center readiness, durable customer demand and access to capital",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "91.7% of the S&P 500's market cap has reported 3Q26 results.",
+   "anchor": "91.7% of the S&P 500's market cap has reported.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "3Q26 S&P 500 expectations are for revenue to grow 14.8% and EPS to grow 32.8% year over year.",
+   "anchor": "3Q expectations are for revenues to \ngrow  14.8% and EPS  to grow 32.8%.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "TECH+ companies are expected to post 3Q26 EPS growth of 50.7% year over year.",
+   "anchor": "TECH+: 50.7%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Financials are expected to post 3Q26 EPS growth of 11.0% year over year.",
+   "anchor": "Financials: 11.0%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Non-Cyclicals are expected to post 3Q26 EPS growth of 10.7% year over year.",
+   "anchor": "Non-Cyclicals: 10.7%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Cyclicals ex-Energy are expected to post 3Q26 EPS growth of 20.3% year over year.",
+   "anchor": "Cyclicals ex-Energy: 20.3%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Energy is expected to post 3Q26 EPS growth of 155.2% year over year, the strongest of the groups shown.",
+   "anchor": "Energy: 155.2%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "The six largest TECH+ companies are expected to lag the rest of the market as a group, with EPS growth of 25.6% versus 35.2%.",
+   "anchor": "The six largest TECH+ companies are expected to lag the rest of the market as a group \n(EPS growth 25.6%  vs. 35.2%)",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "META's 3Q26 EPS growth was expected at -6.9% year over year but came in at 3.8%.",
+   "anchor": "META \u2013 3Q26E: -6.9%; 3Q26A: 3.8%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "GOOGL's 3Q26 EPS growth was expected at 6.3% year over year but came in at -5.8%.",
+   "anchor": "GOOGL \u2013 3Q26E: 6.3%; 3Q26A: -5.8%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "MSFT's 3Q26 EPS growth was expected at 14.4% year over year and came in at 18.3%.",
+   "anchor": "MSFT \u2013 3Q26E: 14.4%; 3Q26A:  18.3%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "AMZN's 3Q26 EPS growth was expected at 2.0% year over year but came in at -2.0%.",
+   "anchor": "AMZN \u2013 3Q26E: 2.0%; 3Q26A: -2.0%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "AAPL's 3Q26 EPS growth was expected at 5.5% year over year and came in at 9.0%.",
+   "anchor": "AAPL \u2013 3Q26E: 5.5%; 3Q26A: 9.0%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "NVDA's 3Q26 EPS growth was expected at 88.9% year over year and came in at 104.5%.",
+   "anchor": "NVDA \u2013 3Q26E: 88.9%; 3Q26A: 104.5%",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Consensus estimates suggest only Energy, Materials and TECH+ are expected to outpace the S&P 500 in 3Q26 while REITs is expected to be a drag on earnings.",
+   "anchor": "Current consensus estimates suggest only Energy, Materials and TECH+ are expected to \noutpace the S&P 500 while REITs is expected to be a drag on 3Q earnings.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "3Q26 earnings are beating estimates by 5.8% on aggregate so far, with 77% of companies topping projections to date.",
+   "anchor": "Earnings are \nbeating estimates by 5.8% on aggregate so far, with 77% of companies topping \nprojections to date.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "3Q26 S&P 500 EPS growth is on pace for 33.0%, assuming the historical trend of estimate revisions through the end of reporting season.",
+   "anchor": "EPS is on pace for 33.0%, assuming the historical trend of estimate \nrevisions through the end of reporting season.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Over the next 5 trading days, 23 companies representing 3.3% of the S&P 500's market cap are due to report, including Walmart, Intuit, Ross Stores, Hewlett Packard, Agilent Technologies and Dell Technologies.",
+   "anchor": "Over the next 5 trading days, 23 companies representing  3.3% of the S&P 500's market \ncap will report results, including  Walmart, Intuit, Ross Stores, Hewlett Packard, Agilent \nTechnologies and Dell Technologies.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next 5 trading days"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "TECH+ has had an outsized impact on S&P 500 EPS growth over the past year.",
+   "anchor": "TECH+ has had an outsized impact on S&P 500 EPS growth over the past year.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "The median S&P 500 company is expected to outgrow the cap-weighted index in 3 of 11 groups in 3Q26.",
+   "anchor": "The median company is expected to \noutgrow the cap-weighted index in 3 \nout of 11 groups",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "On a median basis, Energy and Tech+ are expected to see the strongest 3Q26 EPS growth.",
+   "anchor": "On a median basis, Energy and Tech+ \nare expected to see the strongest \ngrowth",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Energy and TECH+ are outpacing the rest of the market in 2026E EPS growth.",
+   "anchor": " Energy and TECH+ are outpacing the \nrest of the market",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "REITs and Staples are a drag on 2026E S&P 500 EPS growth.",
+   "anchor": "REITs and Staples are  a drag.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "The S&P 500 is expected to grow EPS at 29.6% in 2026 based on consensus estimates.",
+   "anchor": "S&P 500 is expected to grow at \n29.6% based on consensus estimates.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "S&P 500 earnings estimates typically decline going into reporting season and improve as results come in.",
+   "anchor": "Earnings estimates typically \ndecline going into reporting season, and \nimprove as results come in.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Unlike the typical seasonal pattern, 3Q26 EPS revisions have been improving over the last three months.",
+   "anchor": "That is not the case this quarter with \nEPS revisions improving over the last \n3 months.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "last 3 months"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Tech+ continues to support S&P 500 earnings, while ex-Tech revisions remain solid.",
+   "anchor": "Tech+ continues to support S&P 500 \nearnings, while ex-Tech revisions \nremain solid.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "2026 EPS revisions have continued to be strong through the first and second quarters.",
+   "anchor": "2026 revisions have continued to be \nstrong through 1Q and 2Q.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "1Q-2Q 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "Even ex-Tech 2026 EPS revisions are positive, compared with a historical pattern of being revised down 5%.",
+   "anchor": "Even for ex-Tech which had been \nrevised down -5% historically.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "ELV reported a $1.85 per share benefit from favorable non-operating items, primarily investment income valuation adjustments, which UBS adjusted lower to exclude.",
+   "anchor": "ELV reported  $1.85 per share benefit from favorable non-operating items, \nprimarily investment income valuation adjustments. EPS was adjusted lower to \nexclude this charge.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "ELV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "AAPL's diluted EPS of $2.10 includes a favourable impact of $0.05 from tariff refunds.",
+   "anchor": "AAPL diluted earnings per share of $2.10 includes favourable impact of $0.05 \nfrom tariff refunds.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "GOOG reported EPS of $2.12, which included $8.7bn of unrealised losses in equity securities.",
+   "anchor": "GOOG reported EPS of $2.12 but this included unrealised losses in equity \nsecurities of $8.7bn.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "BAC reported EPS of $0.91, which included a charge of $1.2bn for an anti-money-laundering regulatory settlement.",
+   "anchor": "BAC reported EPS of $0.91 but this included a charge of $1.2bn",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "JPM reported EPS of $5.57, which included $658 million in investment securities losses.",
+   "anchor": "JPM reported EPS of $5.57 but this included $658 million in investment securities \nlosses.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "META reported a one-time litigation charge of $9.89 billion, and UBS uses an adjusted diluted EPS of $7.40 excluding that charge for its analysis.",
+   "anchor": "META reported a one-time litigation charge of $9.89 billion. Excluding this \nexceptional item, adjusted diluted EPS was $7.40, which we use for our analysis.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "CHTR reported a $6.3B non-cash franchise impairment, which UBS adjusts consensus EPS to exclude.",
+   "anchor": "CHTR reported $6.3B non-cash franchise impairment. We adjust consensus EPS to \nexclude this one-time charge.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "CHTR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "LLY reported IPR&D charges of $4.2bn resulting in EPS of $7.48, and UBS made no adjustments to reported or consensus estimates for this.",
+   "anchor": "LLY reported IPR&D charges of $4.2bn resulting in an EPS of $7.48. We have not \nmade any adjustments  to reported or consensus estimates.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "LLY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "MRK reported IPR&D charges of $400mn resulting in EPS of $2.49, and UBS made no adjustments to reported or consensus estimates for this.",
+   "anchor": "MRK reported IPR&D charges of $400mn resulting in an EPS of $2.49. We have \nnot made any adjustments  to reported or consensus estimates.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "MRK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "UBS",
+   "document": "3Q26 Earnings Brief: November 18",
+   "claim": "BRK.B reported $9.4bn of investment gains, and the EPS used in UBS's analysis already excludes these gains.",
+   "anchor": "BRK.B reported $9.4bn of investment gains. The EPS used in our analysis already \nexcludes these gains.",
+   "topic": "3Q26 earnings season tracker",
+   "status": "released",
+   "instruments": [
+    "BRK.B"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28162__3q26-earnings-brief-november-18.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 44,
+  "matched": 44,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
