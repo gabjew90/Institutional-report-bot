@@ -1428,3 +1428,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — TRADE BOARD Morgan Stanley $SPX "OW, PT 8,700, 15% upside": the dump carries the 8,700 SPX target on Goldman notes (+17%), none on Morgan Stanley. Check the attribution against the full corpus.
 - **observation** — Unverified: Dell "Citi Buy, $550" in WATCH, Oppenheimer/Bernstein NVDA, Goldman SCA and AMAT, Morgan Stanley FOXA board lines.
 - **observation** — Self-review's claim that the Trump/Xi/Putin APEC meeting was dropped by EDIT is unverified here; check on the next archived dump.
+
+## 2026-11-20 (headless QC)
+- **deterministic-fixable** — TRADE BOARD shipped "Natixis $VLVLY · UP" from a Moody's credit downgrade of Volvo Cars (dump HIGH_CONVICTION "VLVLY: downgrade"). A credit rating action is not an equity underperform call. Confirm whether `report/credited_calls.py` covers the Omnipulse-day board path.
+- **deterministic-fixable** — Driver trail names no violation for draft_validate REROLL_DRAFT, final_validate DISPATCH_FIXUP, the hard adversarial finding (second recheck, preflight BLOCK) or the lint hard issue. Four preflight outcomes in one run with no record of what was repaired, and the final adversarial file is `{"findings": []}`. Record each finding and the diff the repair made. Gate timestamps are also out of order (final_validate_recheck 14:09:18 listed after 14:13 entries).
+- **deterministic-fixable** — `pulse-context/latest.json` is post-publish again (20:50Z, 15:50 EST, SPY -3.09% vs the pulse's -1.96%). Third day running. RECAP prices cannot be audited. Archive the dump keyed by `QC_PULSE_TS`.
+- **observation** — Unverifiable in the dump: Anthropic offering (1,127,000,000 shares at $83, $93.5B), Waller's December quarter-point-plus-guidance statement, TS Lombard Blitz's ~50/50 half-point odds, Nvidia +4.9% after hours and Nasdaq -0.7%, UBS "1 to 2 gigawatts".
+- **observation** — MAIN EVENT's only Nvidia price reaction is a Tuesday after-hours move; Thursday's session reaction is missing from a Friday pulse.
+- **prompt-session** — Locked body omits the staged positioning split (JPMorgan/Goldman buy-the-washout vs BTIG/Citi sell-the-rally), US consumer resilience (11 banks) and a second bank on 2027 outlook (UBS). Same 6-bank cutoff as 11-17 and 11-18.
