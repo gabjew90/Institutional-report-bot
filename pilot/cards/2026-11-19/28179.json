@@ -1,0 +1,689 @@
+{
+ "brief": "Jensen Huang resigned as Nvidia CEO. JPMorgan's Michael Cembalest argues the scandal distracts from a bigger problem: Nvidia's chip and political position eroding. Of roughly 44GW in compute deals the frontier labs have announced for 2026 onward, Nvidia GPUs take only 28%, versus an 80-90% AI chip revenue share in 2024-2025, as labs diversify to Broadcom, AMD, Amazon and Google chips. The CUDA software moat is closing too: a frontier lab's onboarding time on AMD GPUs fell from 6-12 months to 3 days using AI-assisted engineering, and AMD's MI455X now benchmarks ahead of Nvidia's own Vera Rubin VR200. Simultaneously, Nvidia's other core market, Chinese open-weight compute, faces a new Commerce rule closing the \"cloud loophole\" on remote access to US chips, projected at 32% of China's AI compute by end-2027 and concentrated in Southeast Asia. This follows Nvidia's own lobbying history against export controls and undisclosed Singapore billing. Cembalest still calls the stock interesting for long-term holders at a 0.2x PEG, the cheapest large AI name, but says the competitive shift is as notable a risk as the leadership change.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Of roughly 44GW in frontier-lab compute deals announced for deployment from 2026 onward, Nvidia GPUs account for just 12.1GW, or 28%.",
+   "anchor": "Of roughly 44GW in total, Nvidia GPUs account for just 12.1GW, or 28%.",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "2026 onward"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Broadcom's custom chips account for 23% of the frontier labs' announced compute deployment from 2026 onward.",
+   "anchor": "Broadcom's custom chips take 23%, AMD 18%, Amazon's Trainium 16%, Google's TPUs 14% and Cerebras the last 2%.",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 onward"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "AMD accounts for 18% of the frontier labs' announced compute deployment from 2026 onward.",
+   "anchor": "Broadcom's custom chips take 23%, AMD 18%, Amazon's Trainium 16%, Google's TPUs 14% and Cerebras the last 2%.",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 onward"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Amazon's Trainium accounts for 16% of the frontier labs' announced compute deployment from 2026 onward.",
+   "anchor": "Broadcom's custom chips take 23%, AMD 18%, Amazon's Trainium 16%, Google's TPUs 14% and Cerebras the last 2%.",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 onward"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Google's TPUs account for 14% of the frontier labs' announced compute deployment from 2026 onward.",
+   "anchor": "Broadcom's custom chips take 23%, AMD 18%, Amazon's Trainium 16%, Google's TPUs 14% and Cerebras the last 2%.",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 onward"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Cerebras accounts for the last 2% of the frontier labs' announced compute deployment from 2026 onward.",
+   "anchor": "Broadcom's custom chips take 23%, AMD 18%, Amazon's Trainium 16%, Google's TPUs 14% and Cerebras the last 2%.",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026 onward"
+  },
+  {
+   "bank": "Silicon Analysts",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia's share of AI chip revenue was 80-90% in 2024-2025.",
+   "anchor": "Silicon Analysts put Nvidia's share of AI chip revenue at 80-90% in 2024-2025.",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2024-2025"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Of the seven biggest buyers of accelerators, the five hyperscalers and the two frontier labs, only SpaceX isn't trying to build its own chips.",
+   "anchor": "of the seven biggest buyers of accelerators (the five hyperscalers and the two frontier labs), only SpaceX isn't trying to build its own.",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "When OpenAI signed its multi-gigawatt deal with AMD in October 2025, AMD had its biggest rally in nearly a decade.",
+   "anchor": "When OpenAI signed its multi-gigawatt deal with AMD in October 2025, AMD soared the most in nearly a decade",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October 2025"
+  },
+  {
+   "bank": "Epoch AI",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Epoch AI's inference index puts AMD's MI455X at roughly 2.9x a GB300, ahead of Nvidia's own Vera Rubin VR200 at roughly 2.2x.",
+   "anchor": "puts AMD's MI455X at the top of the table, at roughly 2.9x a GB300, ahead even of Nvidia's own Vera Rubin VR200 at roughly 2.2x",
+   "topic": "Nvidia chip share erosion",
+   "status": "level",
+   "instruments": [
+    "AMD",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Cembalest concedes Nvidia's Rubin Ultra may close the inference performance gap when it rolls out in 2027.",
+   "anchor": "Rubin Ultra \"may change that when rolled out in 2027.\"",
+   "topic": "Nvidia chip share erosion",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "A year ago, onboarding and running models on AMD GPUs would have taken a frontier lab 6-12 months.",
+   "anchor": "a year ago it would have taken 6-12 months to onboard and start running models on AMD GPUs.",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "a year ago"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Using its latest AI model to do the engineering, a frontier lab can now onboard new models on AMD GPUs in 3 days.",
+   "anchor": "using their latest AI model to do the engineering, they can onboard new models on AMD GPUs in just 3 days.",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "currently"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "AMD's results on the MI455X may have eroded at least part of Nvidia's tokens-per-watt and CUDA software ecosystem advantage.",
+   "anchor": "AMD's results on the MI455X may have eroded at least part of that advantage.",
+   "topic": "Nvidia chip share erosion",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Anthropic treats all compute as fungible, and it took its Mythos model 3 days to get running on AMD hardware.",
+   "anchor": "Anthropic treats all compute as fungible, and it took Mythos 3 days",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "SemiAnalysis",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "On SemiAnalysis's inference model, a TPU7x beats Nvidia's GB300 NVL72 on tokens per dollar at every speed except the slowest ones.",
+   "anchor": "a TPU7x beats Nvidia's GB300 NVL72 on tokens per dollar at every speed except the slowest ones.",
+   "topic": "Nvidia chip share erosion",
+   "status": "level",
+   "instruments": [
+    "GOOGL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "The Chinese open-weight community consumes the majority of tokens on OpenRouter while its models keep tracking the closed frontier on Epoch's capabilities index.",
+   "anchor": "the Chinese open-weight community, which \"consumes the majority of tokens\" on OpenRouter while its models keep tracking the closed frontier on Epoch's capabilities index.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "A little over a third, 36%, of China's projected AI compute will already be inside China, made there, imported legally, or smuggled in.",
+   "anchor": "A little over a third (36%) is already inside China, whether made there, imported legally or smuggled in",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by end-2027"
+  },
+  {
+   "bank": "SemiAnalysis",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "An estimated 1.5GW of restricted Nvidia chips have already ended up in China.",
+   "anchor": "SemiAnalysis estimates that 1.5GW of restricted Nvidia chips have already ended up in China.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Remote access to US AI chips will account for a full 32% of China's projected AI compute.",
+   "anchor": "remote access to US AI chips, a full 32% of China's compute.",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by end-2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Three-quarters of China's overseas AI compute sits in Southeast Asia.",
+   "anchor": "Three-quarters of China's overseas compute sits in Southeast Asia.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "The Remote Access Security Act passed the House 369-22 but never got a Senate vote.",
+   "anchor": "RASA passed the House 369-22 but never got a Senate vote",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "China hawks appeared to have the upper hand in Washington on remote-access chip rules.",
+   "anchor": "the China hawks \"appear to have the upper hand right now in DC.\"",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Commerce Department",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Commerce's new rule requires a license to ship advanced chips to any data center that would supply more than 12 million TPP to China-headquartered firms.",
+   "anchor": "It requires a license to ship advanced chips to any data center that would supply more than 12 million TPP to China-headquartered firms",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Commerce Department",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "The rule puts Singapore, Malaysia, Indonesia, Thailand and Brazil under a blanket license requirement unless the buyer is US-headquartered.",
+   "anchor": "it puts Singapore, Malaysia, Indonesia, Thailand and Brazil under a blanket license requirement unless the buyer is US-headquartered.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Commerce Department",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Existing operators have 90 days to comply with the new chip-shipment licensing rule.",
+   "anchor": "unless the buyer is US-headquartered. Existing operators have 90 days.",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "90 days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Goldman's Jim Schneider warned that Nvidia's operations in certain jurisdictions could face more scrutiny going forward.",
+   "anchor": "Nvidia's \"operations in certain jurisdictions could face more scrutiny going forward.\"",
+   "topic": "AI export controls",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "going forward"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "In 2026, Z.AI, DeepSeek and Meituan all cited training and inference on Huawei Ascend NPUs.",
+   "anchor": "Z.AI, DeepSeek and Meituan all cited training and inference on Huawei Ascend NPUs",
+   "topic": "AI export controls",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Jensen Huang resigned as Nvidia CEO on Thursday, and the scandal has dominated headlines since.",
+   "anchor": "Since Huang resigned on Thursday, the scandal has eaten every headline",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia under Jensen's leadership was sharply at odds with US political forces that favor ring-fencing China.",
+   "anchor": "Nvidia under Jensen's leadership was sharply at odds with political forces in the US that favor ring-fencing China.",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Jensen Huang called it lunacy to worry about the PLA using US hardware for AI cyberattacks.",
+   "anchor": "called it \"lunacy\" (to Dwarkesh Patel) to worry about the PLA using US hardware for AI cyberattacks",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia lobbied against tighter export controls from 2022, and critics say the A800, H800 and H20 legally sidestepped the purpose of those controls.",
+   "anchor": "Nvidia lobbied against tighter export controls from 2022, and critics say the A800, H800 and H20 legally sidestepped the purpose of those controls",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since 2022"
+  },
+  {
+   "bank": "Culper Research",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Culper Research flagged Megaspeed as an Nvidia customer funded and controlled by Alibaba.",
+   "anchor": "Culper Research flagged Megaspeed back in May as an Nvidia customer funded and controlled by Alibaba",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "May"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "The share of Nvidia revenue billed to Singapore addresses rose from 8% to 22% after the Biden-era export controls.",
+   "anchor": "the share of Nvidia revenue billed to Singapore addresses rose from 8% to 22% after the Biden controls",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia stopped breaking out the Singapore revenue figure altogether in July 2025.",
+   "anchor": "then in July 2025 Nvidia stopped breaking out the figure altogether.",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "July 2025"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Andrew Sharp says Nvidia has not really behaved like an American company that's answerable to the American government.",
+   "anchor": "Nvidia has not really behaved like an American company that's answerable to the American government.",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Trump said he does not know that the Nvidia spy suspect was a spy at all.",
+   "anchor": "Trump said \"I don't know that she was a spy at all,\"",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Trump added he would not mind Jensen Huang coming back as Nvidia CEO.",
+   "anchor": "adding he \"would not mind\" Jensen coming back.",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia earned 83% of AI chip revenue from 2023 to 2025 at 75% gross margins.",
+   "anchor": "Nvidia earned 83% of AI chip revenue from 2023 to 2025 at 75% gross margins",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2023-2025"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Cembalest still finds Nvidia stock interesting for long-term holders, trading 32% below its all-time high at a PEG of 0.2x.",
+   "anchor": "he finds the stock \"interesting for long term holders\" at 32% below its all-time high with a PEG of 0.2x",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia's 0.2x PEG makes it the cheapest large AI stock by a wide margin.",
+   "anchor": "which makes it the cheapest large AI stock by a wide margin.",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia's 0.2x PEG assumes the consensus growth numbers hold, and both legs under them are moving.",
+   "anchor": "a 0.2x PEG assumes the consensus growth numbers hold, and both legs under them are moving.",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Cembalest says the shifting competitive landscape is in some ways just as notable a risk for Nvidia investors as its management change.",
+   "anchor": "the shifting competitive landscape is \"in some ways just as notable a risk for investors as its management change.\"",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Colette Kress, as interim CEO, will address how much of this on her first earnings call.",
+   "anchor": "how much of this Colette Kress is willing to address on her first earnings call as interim CEO.",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The CUDA Moat Drained In 3 Days: JPM's Cembalest Says Jensen Is Nvidia's Smaller Problem",
+   "claim": "Nvidia stopped disclosing how much revenue came from Southeast Asia 16 months ago.",
+   "anchor": "Nvidia stopped telling us how much revenue came from there 16 months ago, and now we know why.",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "16 months ago"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28179__the-cuda-moat-drained-in-3-days-jpm-s-cembalest-says-jensen-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 45,
+  "matched": 45,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
