@@ -1,0 +1,64 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 95,
+ "pack": {
+  "documents": 25,
+  "cards": 898,
+  "max_doc_id": 28181
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 113,
+  "brief_citations": 21,
+  "distinct_cards_cited": 113,
+  "card_count": 898,
+  "quintiles": [
+   35,
+   16,
+   19,
+   26,
+   17
+  ],
+  "edge_quintile_share": 0.46,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "JPMorgan's Michael Cembalest argues the competitive position is the bigger risk.",
+    "cite": "",
+    "reason": "bank named (['jpmorgan']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "If the 2028 commitment line is flat again, UBS has the right read.",
+    "cite": "",
+    "reason": "bank named (['ubs']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Its credit forecast has investment-grade spreads widening from 88 to 105 basis points next year [c754], and high-yield from 320 to 410 [c755].",
+    "cite": "c754,c755",
+    "reason": "figures not in cited card(s): ['320', '410']"
+   },
+   {
+    "sentence": "Core Scientific registered a $1.3 billion, 341,000 square foot data center shell in Hunt County, Texas for AMD, with construction listed to start November 24 [c231][c264] [d16].",
+    "cite": "c231,c264",
+    "reason": "figures not in cited card(s): ['341000']"
+   },
+   {
+    "sentence": "The firm has acted on the discomfort, cutting US equities by 3.5 percentage points to a small underweight and raising cash to 14% [c544][c443] [d18].",
+    "cite": "c544,c443",
+    "reason": "figures not in cited card(s): ['14%']"
+   },
+   {
+    "sentence": "With 91.7% of S&P 500 market value reported, third-quarter results are beating estimates by 5.8%, 77% of companies have topped projections, and earnings growth is on pace for 33% [c576][c526][c527] [d",
+    "cite": "c576,c526,c527",
+    "reason": "figures not in cited card(s): ['33%']"
+   }
+  ],
+  "word_count": 1833
+ }
+}
