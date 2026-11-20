@@ -1,0 +1,755 @@
+{
+ "brief": "The WSJ reports interim CEO Colette Kress is expected to rein in Nvidia's financing of AI deals, but Huang had already begun closing the checkbook before his ouster: an August pause on revenue-share credit support, then a Berlin ultimatum telling neocloud CEOs to secure upfront customer payments or lose GPU allocations, since he could divert capacity to Musk instead. The stated driver: Nvidia's off-balance-sheet commitments hit $530bn (supply and capacity purchases $279bn, more than doubling in three months) just as hyperscalers drift toward rival chips, so funding buyers while still owing suppliers became unsustainable. Kress, who already cut Nvidia's OpenAI backstop in half, must now choose protecting the balance sheet over market share, since AMD, Google and Broadcom offer rivals similar financing terms. UBS's Arcuri estimates a pause could pull $50bn from the AI ecosystem; AI-issuer credit spreads have widened to roughly 140bps. Nebius's prepayment-funded capex model is framed as the template cash-burning neoclouds cannot copy. Venture-stage dependents such as Reflection AI and Thinking Machines face capital risk if Nvidia's equity checkbook also closes. Goldman still sees the selloff as a buying opportunity given cheap relative multiples, but names financing cost, not construction capacity, as the real constraint.",
+ "cards": [
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The WSJ reported that interim CEO Colette Kress is expected to rein in Nvidia's deals after a stretch of aggressively financing computing deals and startup investments.",
+   "anchor": "interim CEO Colette Kress is expected to rein in deals after a stretch in which Nvidia (NVDA) aggressively financed computing deals and startup investments",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia's total off-balance-sheet commitments and guarantees reached $530 billion at the end of July, led by $279 billion of supply and capacity purchase commitments.",
+   "anchor": "total off-balance sheet commitments and guarantees reached $530 billion at the end of July, led by $279 billion of supply and capacity purchases",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia's supply and capacity purchase commitments more than doubled from $119 billion three months earlier.",
+   "anchor": "a line that more than doubled from $119 billion in just three months",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "UBS's Tim Arcuri warned that even a temporary pause in Nvidia's dealmaking could pull $50 billion or more out of the AI ecosystem as rates rise.",
+   "anchor": "even a temporary pause in Nvidia's dealmaking could pull $50 billion or more out of the AI ecosystem, at a time when rates are rising",
+   "topic": "Nvidia financing pullback",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nebius",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nebius said customer prepayments covered more than 100% of its capital expenditure in the third quarter.",
+   "anchor": "customer prepayments covered more than 100% of its capex in the third quarter",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nebius",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nebius expects advance payments and asset-backed financing to fund 75% to 85% of the $40 billion to $45 billion it plans to spend next year.",
+   "anchor": "expects advance payments and asset-backed financing to fund 75% to 85% of the $40 billion to $45 billion it plans to spend next year",
+   "topic": "Nvidia financing pullback",
+   "status": "forecast",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Bloomberg reported that Nvidia's $500 billion chip-financing platform has yet to produce a single deal, with lenders pushing Nvidia to raise its backstop above the 25% it has offered.",
+   "anchor": "has yet to produce a single deal, with lenders pushing Nvidia to backstop more than the 25% it has offered",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Reuters",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Reuters reported that Nvidia's chip-financing platform is unlikely to disappear, but losing its chief dealmaker makes the riskier bets harder to bankroll.",
+   "anchor": "the platform is unlikely to disappear, but that losing its chief dealmaker makes the riskier bets harder to bankroll",
+   "topic": "Nvidia financing pullback",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Bloomberg reported that Broadcom is backstopping roughly 72.5% of a $63 billion deal for Anthropic's TPUs, almost three times what Nvidia was willing to cover.",
+   "anchor": "Broadcom (AVGO), per Bloomberg, is backstopping roughly 72.5% of a $63 billion deal for Anthropic's TPUs, almost three times what Nvidia was willing to cover.",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "AVGO",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The WSJ reported that rivals such as Google and AMD were offering the same neocloud companies similar financing incentives, and Huang didn't want to lose share.",
+   "anchor": "rivals such as Google and AMD (AMD) were offering the same companies similar incentives, and Huang didn't want to lose share",
+   "topic": "Nvidia chip share erosion",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Huang told his finance team in August that big cloud providers were drifting toward alternative chips while the wafers and memory Nvidia had committed to buy were piling up.",
+   "anchor": "the big cloud providers were drifting toward alternative chips while the wafers and memory Nvidia had already agreed to buy were bearing down on him",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's 2027 Global Markets Outlook shows investment-grade spreads for AI-related issuers blowing out to roughly 140bps, near where the broader market peaked during the Liberation Day panic, while non-AI spreads sit below 100bps.",
+   "anchor": "investment grade spreads for AI-related issuers blowing out to roughly 140bps, about where the rest of the market peaked in the Liberation Day panic",
+   "topic": "AI credit spread widening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's leveraged finance desk said CoreWeave's four high-yield notes gained an average of 4 points on the week while the broader junk bond market lost half a point.",
+   "anchor": "CoreWeave's (CRWV) four high-yield notes gained an average of 4 points on the week while the rest of the junk market lost half a point",
+   "topic": "AI credit spread widening",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's leveraged finance desk said its HY AI data center basket tightened 60bps versus 20bps for the broader high-yield index, its best week relative to the index since July.",
+   "anchor": "Goldman's HY AI data center basket tightened 60bps against 20bps for the index, its best week relative to high yield since July",
+   "topic": "AI credit spread widening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia's own CDS spread was little changed over the prior two weeks.",
+   "anchor": "Even Nvidia's own CDS spent the past two weeks going nowhere.",
+   "topic": "AI credit spread widening",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Reuters",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Reuters reported CoreWeave and Nebius down 5.4% and 5.5% in the premarket, with IREN, Applied Digital and Core Scientific off by about 5% each.",
+   "anchor": "CoreWeave and Nebius are down 5.4% and 5.5% in the premarket, according to Reuters, with IREN, Applied Digital and Core Scientific off by about 5%",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "CRWV",
+    "NBIS",
+    "IREN",
+    "APLD",
+    "CORZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Reuters",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia was 2.2% lower after its longest weekly losing streak since October 2012.",
+   "anchor": "while Nvidia itself is 2.2% lower after its longest weekly losing streak since October 2012",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's Lee Coppersmith said the AI debate has changed dramatically in the past month and that client sentiment is about as negative as the desk has seen in quite some time.",
+   "anchor": "the AI debate has changed dramatically in the past month and that client sentiment is about as negative as the desk has seen",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's prime book data showed the US Info Tech long/short ratio dropped to its lowest level since the dataset began in 2016.",
+   "anchor": "the US Info Tech long/short ratio dropped to the lowest level since the dataset began in 2016",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman said tech selling has changed character, from long liquidation to outright new short positions.",
+   "anchor": "the selling has changed character, from long liquidation to outright new shorts",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman semiconductor analyst James Schneider wrote in his post-resignation note that Nvidia's existing commitments should hold but new deals of the same size may be harder to put together.",
+   "anchor": "existing commitments should hold but new deals of the same size may be harder to put together",
+   "topic": "Nvidia financing pullback",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's AI Semis basket trades at just 11x 2028 earnings versus nearly 16x for the S&P 500.",
+   "anchor": "Goldman's AI Semis basket now trades at just 11x 2028 earnings versus nearly 16x for the S&P",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Consensus still expects the AI Semis group's earnings to grow 31% in 2028.",
+   "anchor": "consensus still expects the group's earnings to grow 31% that year",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman said that valuing the AI Semis basket at the market multiple, today's prices imply group earnings falling about 6%.",
+   "anchor": "Value the basket at the market multiple and today's prices imply earnings falling about 6%",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's Lee Coppersmith concluded that stocks can grind higher after the positioning reset and that parts of AI look interesting again.",
+   "anchor": "His conclusion is that stocks can grind higher after the positioning reset, and that parts of AI look interesting again.",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's Lee Coppersmith said that with AI spending growth peaking and financing getting more expensive, the desk would stay disciplined on hedges.",
+   "anchor": "With AI spending growth peaking and financing getting more expensive, we'd stay disciplined on hedges.",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's TMT specialist sales desk said Nvidia has long acted as lender of last resort to parts of the AI ecosystem, particularly neoclouds, with its strategic edge resting heavily on Jensen Huang's personal relationships.",
+   "anchor": "lender of last resort to parts of the AI ecosystem, particularly neoclouds, and much of its strategic edge has rested on Jensen's personal relationships",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Goldman's TMT specialist sales desk said the key uncertainty is whether Nvidia's new CEO will have the same willingness or authority to deploy the balance sheet aggressively.",
+   "anchor": "The key uncertainty is whether a new CEO will have the same willingness or authority to deploy the balance sheet aggressively.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "JPMorgan's TMT desk said it does not expect hyperscalers to change their near-term infrastructure plans solely because Huang has departed.",
+   "anchor": "We do not expect hyperscalers to change their near-term infrastructure plans solely because Huang has departed.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "JPMorgan's TMT desk said Huang's departure adds uncertainty at a time when financing needs across the AI ecosystem are already substantial.",
+   "anchor": "this adds uncertainty at a time when the financing needs across the AI ecosystem are already substantial.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Huang told neocloud CEOs in Berlin that he could give Nvidia's GPU capacity to Elon Musk instead, since Musk wanted it.",
+   "anchor": "I could just give all this capacity to Elon! Elon wants it!",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Huang told neocloud executives that if they wanted allocations of Nvidia's GPUs, they would need to secure upfront payments from their own customers.",
+   "anchor": "if they wanted allocations of its GPUs they would need to secure upfront payments from their own customers",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Information",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The Information reported that Nvidia has guaranteed nearly $20 billion of Lambda's leases and agreed to buy CoreWeave's unsold cloud capacity.",
+   "anchor": "Nvidia has guaranteed nearly $20 billion of Lambda's leases and agreed to buy CoreWeave's unsold cloud capacity",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Information",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The Information reported that finance executives say the belief Nvidia will step in to help neoclouds has largely evaporated since Huang left.",
+   "anchor": "finance executives say the belief that Nvidia will step in to help the neoclouds has largely evaporated since Huang",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nscale's amended IPO filing shows Nvidia taking a further $1 billion of its notes or shares around the filing date.",
+   "anchor": "Nscale's amended IPO filing has Nvidia taking a further $1 billion of its notes or shares on or around today",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Australian Financial Review",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The AFR reported that Firmus is trying to raise $3 billion privately, a sum that includes prepayments from customers such as Nvidia.",
+   "anchor": "is now trying to raise $3 billion privately, a sum that according to the AFR includes prepayments from customers such as... Nvidia.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The Journal reported, citing PitchBook, that Nvidia has taken part in a record 129 venture capital deals this year as of Nov 10, up from 49 in all of 2023.",
+   "anchor": "Nvidia has taken part in a record 129 venture capital deals this year (as of Nov 10), up from 49 in all of 2023",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia's venture deals this year account for 27% of global VC deal value.",
+   "anchor": "those deals account for 27% of global VC deal value.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Perplexity",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Perplexity's Aravind Srinivas told employees on Oct 30 that Nvidia had closed a $3 billion investment in the company.",
+   "anchor": "Perplexity's Aravind Srinivas told employees on Oct 30 that Nvidia had closed a $3 billion investment in the company",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Perplexity is now raising additional funding at a $38 billion pre-money valuation.",
+   "anchor": "the AI search startup is now raising more at a $38 billion pre-money valuation.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia recently offered to license the technology of Reflection AI, an open-source model developer valued at $25 billion.",
+   "anchor": "Nvidia recently offered to license the technology of Reflection AI, an open-source model developer valued at $25 billion",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "No agreement between Nvidia and Reflection AI was reached before Huang left the company.",
+   "anchor": "no agreement was reached before Huang left.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Nvidia has been finalizing a major investment in Thinking Machines Lab at a $40 billion valuation, a deal Thinking Machines is confident will close.",
+   "anchor": "It has also been finalizing a massive investment in Thinking Machines Lab at a $40 billion valuation, a deal Thinking Machines is confident will close",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Reflection AI and Thinking Machines Lab both burn huge amounts of capital every month on compute, and neither has found a way to generate substantial revenue.",
+   "anchor": "Both companies burn huge amounts of capital every month on compute and neither has found a way to generate substantial revenue",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The WSJ reported that founders and venture backers of cash-hungry startups said a pullback in Nvidia's future equity investments could leave them struggling to find capital.",
+   "anchor": "founders and venture-capital backers of companies with little to no sales said that if Nvidia did pull back from future equity investments,",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Colette Kress cut Nvidia's OpenAI backstop in half, making her the one senior Nvidia executive who thought the checkbook was too open while it was still fashionable.",
+   "anchor": "who cut the OpenAI backstop in half, which is to say the one senior executive at Nvidia who thought the checkbook was too open",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The WSJ wrote that startups who had been counting on Nvidia's support expect an even greater pullback with a more cautious finance chief now in charge.",
+   "anchor": "the startups who had been counting on Nvidia's support expect an even greater pullback.",
+   "topic": "Nvidia financing pullback",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Financial Times",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The FT reported that Huang has discussed a comeback with confidantes.",
+   "anchor": "the FT reports that Huang has discussed a comeback with confidantes",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Financial Times",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "Treasury Secretary Bessent has given Nvidia's board 10 days and wants an outsider installed as CEO.",
+   "anchor": "Treasury Secretary Bessent has given the board 10 days and wants an outsider.",
+   "topic": "Nvidia political exposure",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Last Call At The Bank Of Nvidia: New CEO To Shut 'Open Checkbook' As Huang's Final Warning To Neoclouds Emerges",
+   "claim": "The WSJ reported, via Reuters, that the Trump administration plans to designate more than two dozen AI companies as national champions, including Nvidia, Amazon, Microsoft, OpenAI and Anthropic.",
+   "anchor": "the Trump administration plans to designate more than two dozen AI companies as national champions, among them Nvidia, Amazon, Microsoft, OpenAI and Anthropic",
+   "topic": "Nvidia political exposure",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28176__last-call-at-the-bank-of-nvidia-new-ceo-to-shut-open-checkbo.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 50,
+  "matched": 50,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
