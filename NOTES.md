@@ -3917,3 +3917,15 @@ Not switched: `compute_member_points`. Counted from the tally, the top six by po
 - `ticker_snapshot.market_cap_text` words the market cap line: Yahoo's figure, or price times Yahoo's share count and saying so, or "not listed by Yahoo" with the float's value under its own name and the reason it is smaller. The model's payload (`render`) and the posted line carry the same words. The shares line says when Yahoo has no count of shares outstanding.
 - `price_block.field_lines` posts one line per asked field, the snapshot's or a line saying Yahoo lists none, and `stock_body.company_lines` reads it too. A market cap at a price the asker states is that price times the share count.
 - The quote line keeps a sub-dollar price's fractions of a cent ($0.0201 printed as $0.02, and a coin at $0.0000123 as $0.00).
+
+## 2026-11-20: the router reads words as words and one named stock as a stock (audit run 13, A9 and A10)
+
+Checked against 543 logged questions from October and November before and after: 12 change route, 25 more lose a junk ticker and keep their route, none of the 12 is a regression.
+
+- **A word is a word.** "what is the least valuable company by market cap" priced the ticker LEAST: an unlisted token after a lead-in was kept as a weak ticker whatever it was. An unlisted lowercase token that is an English word, plural included, is no longer kept (`ask_router._is_word`, the two lowercase passes of `extract_tickers`). Gone with it: TOO, HAVE, LINUX, PERU, MOST, ORDER, DRUGS, DRIVE, WATER, FIRE, PAST and others. "after hours earnings pls" now reaches the slate (HOURS had blocked it).
+- **One stock named in a question gets its data.** "is NVDA gonna save us" and "what is ACH net income" went to the catch-all with no stock data. A single capitalised listed symbol, no English word, no member named, in a message that asks something, now takes the stock route. A question after another ticker ("like BRZU equivalent") does not.
+- **Weaker signs of a stock question** (`_STOCK_HINT_RE`: mcap, report, a typo of earnings, "hold 400") let a lowercase symbol be read: "did nbis report", "what time are nvda earninfs released", "will tsla hold 400". Under a stock answer they count only when the reply asks something ("when report").
+- **"mcap" is the market cap**: "whats the mcap of crwv" is one snapshot field, posted by code. A change in it ("how much mcap has nvda lost") is not that route.
+- **"**S&P 500**" in a replied-to answer is not the stock S.** A reply under a market recap had been handed SentinelOne's price. Older than this change, and more exposed by it.
+
+`scripts/ask_fixture_run.py` cannot run on the owner's machine: the local Gemini key is invalid since the keys were moved to the worker. `--offline` passes (49 fixtures structurally valid).

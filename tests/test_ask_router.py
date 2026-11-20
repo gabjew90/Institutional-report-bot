@@ -1030,3 +1030,51 @@ def test_one_company_beside_a_session_word_is_that_company_2026_10_31():
     for q in ("who reports tonight besides NVDA", "what else reports after the bell besides MSTR",
               "AMZN and AAPL earnings tonight", "earnings after the bell today", "WHO REPORTS TONIGHT"):
         assert R.classify(q).shape == R.EARNINGS_SLATE, q
+
+
+def test_audit_run_13_a_word_is_not_a_ticker_and_one_stock_gets_its_data():
+    """2026-11-17 to 11-19 (audit run 13). "what is the least valuable company
+    by market cap" priced the ticker LEAST. "is NVDA gonna save us", "did nbis
+    report" and "what time are nvda earninfs released" went to the catch-all
+    with no stock data."""
+    # an English word nothing is listed under is a word, plural or not
+    for q in ("what is the least valuable company by market cap on the NYSE or nasdaq",
+              "what is the most valuable company", "is water wet", "after hours earnings pls",
+              "do a calculation of the win rate of the member channel is the past month"):
+        assert R.classify(q).tickers == [], q
+    assert R.classify("what’s ants opening mcap").shape == R.UNKNOWN
+    assert R.classify("after hours earnings pls").shape == R.EARNINGS_SLATE
+    # one listed stock in capitals, in a question: its data
+    for q, sym in (("is NVDA gonna save us", "NVDA"), ("can NVDA save the market", "NVDA"),
+                   ("what is ACH net income", "ACH")):
+        r = R.classify(q)
+        assert r.shape == R.TICKER_OPINION and r.tickers == [sym], q
+        assert R.T_SNAPSHOT in [p[0] for p in r.prefetch], q
+    # a lowercase symbol beside a word that says stock
+    for q, sym in (("did nbis report", "NBIS"), ("what time are nvda earninfs released", "NVDA"),
+                   ("will tsla hold 400", "TSLA"), ("How much mcap has nvda lost these last week", "NVDA")):
+        r = R.classify(q)
+        assert r.shape == R.TICKER_OPINION and r.tickers == [sym], q
+    assert R.T_EDATE in [p[0] for p in R.classify("what time are nvda earninfs released").prefetch]
+    # "mcap" is the market cap: one field of the snapshot
+    r = R.classify("whats the mcap of crwv")
+    assert r.shape == R.PRICE and r.reason == "one snapshot field" and r.tickers == ["CRWV"]
+    # a symbol written in capitals keeps that route when nothing is listed under it
+    assert R.classify("at 2 cents a share what is the market cap of ACCH").shape == R.PRICE
+    # not a question, a member, a word, or a question after another ticker: as before
+    for q in ("lmao nvda", "NVDA lol", "is AI a bubble", "IS THIS BOT BROKEN",
+              "whats israel etf ticker? Like BRZU equivalent", "report him to the mods",
+              "who has the better run game, bama or Georgia"):
+        assert R.classify(q).shape == R.UNKNOWN, q
+    assert R.classify("is NVDA gonna save us", names_member=True).shape == R.UNKNOWN
+
+
+def test_a_bold_index_name_in_the_replied_to_answer_is_not_a_stock():
+    """A reply under a market recap ("**S&P 500** slipped") carried the
+    ticker S and was handed SentinelOne's price."""
+    q = ('[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"→ **S&P 500** slipped **-0.2%** '
+         'to **7,801.77** and the **Dow** dropped."\n\n[Sam\'s message to you]\nHow about now ?')
+    assert R.reply_parent_tickers(q) == []
+    assert R.classify(q).prefetch in ([], None)
+    q2 = q.replace("**S&P 500** slipped", "**NVDA** slipped")
+    assert R.reply_parent_tickers(q2) == ["NVDA"]

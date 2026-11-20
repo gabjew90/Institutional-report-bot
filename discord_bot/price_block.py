@@ -34,7 +34,7 @@ _INDEX_NAMES = {"^GSPC": "SPX", "^NDX": "NDX", "^VIX": "VIX", "^DJI": "Dow", "^R
 
 # question words -> the snapshot render() line that answers them
 _FIELDS = (
-    (re.compile(r"\bmarket\s+cap", re.I), "market cap"),
+    (re.compile(r"\bmarket\s+cap|\bmcap\b|\bmkt\s+cap", re.I), "market cap"),
     (re.compile(r"\bshares\s+outstanding|\bshare\s+count|\bfloat\b|\bshort\s+interest|\bhow\s+many\s+shares",
                 re.I), "shares"),
     (re.compile(r"\bcash\b|\bdebts?\b|\bfcf\b|\bcapex\b|\bcapital\s+(?:spending|expenditures?)|\bbalance\s+sheet",

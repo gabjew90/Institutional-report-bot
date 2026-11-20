@@ -308,8 +308,12 @@ def not_a_ticker(tok: str) -> bool:
 
 def _is_word(tok: str) -> bool:
     w = tok.lower()
-    return (w in _COMMON_WORDS or w in _listed.english_words() or w in _room_words()
-            or tok.upper() in _NOT_TICKERS)
+    words = _listed.english_words()
+    return (w in _COMMON_WORDS or w in words or w in _room_words() or tok.upper() in _NOT_TICKERS
+            # The word list holds base forms: "ants", "drives". Lowercase
+            # only: a capitalised "Brinks" may be a company's name.
+            or (tok == w and len(w) > 3 and w.endswith("s")
+                and (w[:-1] in words or (w.endswith("es") and w[:-2] in words))))
 
 
 def _resolve(tok: str) -> str | None:
@@ -416,7 +420,9 @@ def extract_tickers(text: str, *, lowercase: bool = True,
         r = _resolve(m.group(1))
         if r and r not in out:
             out.append(r)
-        elif not r and t not in weak:
+        elif not r and t not in weak and not _is_word(m.group(1)):
+            # an English word nothing is listed under is a word ("what is
+            # the least valuable company" priced LEAST, 2026-11-18)
             weak.append(t)
     for t in lower_context_tickers(text, weak):
         if t not in out:
@@ -484,7 +490,7 @@ def lower_context_tickers(text: str, weak: list[str] | None = None) -> list[str]
         t = _resolve(tok)
         if t and t not in out:
             out.append(t)
-        elif not t and weak is not None and tok.upper() not in weak:
+        elif not t and weak is not None and tok.upper() not in weak and not _is_word(tok):
             weak.append(tok.upper())
     return out
 
@@ -958,7 +964,7 @@ _NEWS_RE = re.compile(
 _VALUATION = (r"(?:forward\s+)?p\s*/\s*e\b|(?:forward\s+)?pe(?:\s+ratio)?\b|price[\s-]+to[\s-]+(?:sales|earnings)"
               r"|p\s*/\s*s\b|valuation|earnings\s+multiple|(?:what|which)\s+multiple")
 _SNAPSHOT_FIELD_RE = re.compile(
-    r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?"
+    r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?|mcap|mkt\s+cap"
     r"|short\s+interest|how\s+many\s+shares|fundamentals?"
     # the snapshot's trailing four quarters: this question got the stock
     # rundown with no cash flow in it (2026-11-02, "AAPL free cash flow and
@@ -1598,7 +1604,14 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
     # cap) is a data lookup: price and snapshot, no news and no outline, so
     # the business-line rewrite cannot give a segment as the cause of a move
     # nobody asked about (2026-10-18 audit A20).
-    if tickers and _SNAPSHOT_FIELD_RE.search(q) and not re.search(r"\bwhy\b", ql):
+    # not a cause and not a change ("how much mcap has nvda lost"): the
+    # field as it stands answers neither
+    # and only for something listed or written as a symbol (ACCH trades
+    # over the counter): a lowercase word no feed knows ("ants opening
+    # mcap") is left to the catch-all, which can search for it
+    if (tickers and (listed(tickers[0]) or tickers[0] in extract_tickers(q, lowercase=False))
+            and _SNAPSHOT_FIELD_RE.search(q)) and not re.search(
+            r"\b(?:why|lost|lose|losing|gained?|added|shed|wiped|erased)\b", ql):
         r.shape, r.reason = PRICE, "one snapshot field"
         r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})] + \
             _stock_prefetch(tickers[0], research=False)
@@ -1707,6 +1720,16 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
     if not strong and not names_member and tickers and listed(tickers[0]) and (
             _MARKET_WORD_RE.search(q) or not _is_word(tickers[0])):
         strong = named = tickers[:1]
+    # A question that names one listed stock in capitals and nothing else
+    # (2026-11-20, audit run 13: "is NVDA gonna save us" and "what is ACH
+    # net income" went to the catch-all with no stock data). The symbol
+    # must be no English word and no member, and the message must ask
+    # something. Not `named`: that also means "a company named under an
+    # earnings answer", which this is not. A question after another
+    # ticker ("like BRZU equivalent") is not about this one.
+    asks_about_one = bool(
+        len(strong) == 1 and not names_member and not _is_word(strong[0]) and not _shouting(q)
+        and ("?" in q or _ASKS_RE.match(q)) and not _OTHER_THAN_RE.search(q))
     # Under the bot's earnings answer, a named company is an earnings-date
     # question (2026-10-26 audit A3: SPCX, the day it reported).
     if named and re.search(r"\b(?:earnings|reports?|reporting|after close|before (?:the )?open)\b",
@@ -1727,7 +1750,9 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
     # close?" and "ASTS PUTS PRINTED RETARD" got a five-slot outline
     # (2026-10-26 audit A9); a reaction gets the price and nothing else.
     if (carried and strong and is_stock(strong[0])
-            and not ((_MARKET_WORD_RE.search(q) or re.search(r"\b(?:buy|sell|dip|short|long)\b", ql))
+            and not ((_MARKET_WORD_RE.search(q) or re.search(r"\b(?:buy|sell|dip|short|long)\b", ql)
+                      # "when report": a weaker sign counts when the reply asks
+                      or (_STOCK_HINT_RE.search(q) and ("?" in q or _ASKS_RE.match(q))))
                      and not _shouting(q))):
         r.tickers = strong
         r.reason = "reaction to a message about a ticker: price only"
@@ -1735,12 +1760,14 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
         r.shape = UNKNOWN
         return r
     if (strong and is_stock(strong[0]) and strong[0].lower() not in _COMMON_WORDS
-            and ("$" in q or named or _MARKET_WORD_RE.search(q) or (carried and "?" in q))):
+            and ("$" in q or named or _MARKET_WORD_RE.search(q) or (carried and "?" in q)
+                 or (carried and _STOCK_HINT_RE.search(q)) or (asks_about_one and not carried))):
         r.tickers = strong
         r.shape, r.reason = TICKER_OPINION, (
             "ticker from the replied-to message" if carried else "ticker with no other shape")
         r.prefetch = _stock_prefetch(strong[0]) + [(T_PRICE, {"symbols": [strong[0]]})]
-        if re.search(r"\b(?:earnings|print|report(?:ed|s)?|numbers|er)\b", ql):
+        # "earn\w+" also reads a typo ("earninfs", "earnigns")
+        if re.search(r"\b(?:earn\w+|print|report(?:ed|s)?|numbers|er)\b", ql):
             r.prefetch.append((T_EDATE, {"symbol": strong[0]}))
         return r
     # A reply to the bot's own trade-log post ("📝 Logged: OPEN TSLA 400C")
@@ -1762,6 +1789,14 @@ _LOGGED_PARENT_RE = re.compile(
     r"\b(?:OPEN|ADD|TRIM|CLOSE|EXIT)\s+\*\*\$?([A-Z][A-Z.]{0,5})\b")
 
 
+# A message that opens the way a question does, with or without its "?".
+_ASKS_RE = re.compile(
+    r"\s*(?:is|are|was|were|will|would|can|could|should|does|do|did|has|have|what(?:'?s)?|why|how(?:'?s)?"
+    r"|when(?:'?s)?|where|who(?:'?s)?|which|any|thoughts?|you\s+think)\b", re.I)
+_OTHER_THAN_RE = re.compile(
+    r"\b(?:like|equivalent|similar\s+to|alternatives?\s+to|instead\s+of|other\s+than|besides)\b", re.I)
+
+
 # Words that make a capitalised token a stock question. Everyday words
 # (up, down, red, buy, cash) are left out: "SV up early?" is about a member.
 _MARKET_WORD_RE = re.compile(
@@ -1774,6 +1809,17 @@ _MARKET_WORD_RE = re.compile(
     r"|a\s+buy|a\s+sell|bull(?:ish)?|bear(?:ish)?)\b", re.I)
 
 
+# Weaker signs of a stock question (2026-11-20, audit run 13: "whats the
+# mcap of crwv", "did nbis report", "what time are nvda earninfs released"
+# and "will tsla hold 400" carried no market word, so the lowercase symbol
+# was never read). Kept apart from the market words: under a stock answer
+# "reported" and "earned" are everyday words, and a reaction there gets the
+# price only unless it also asks something.
+_STOCK_HINT_RE = re.compile(
+    r"\b(?:mcap|mkt\s+cap|earn[a-z]{3,6}|report(?:ed|s|ing)?"
+    r"|(?:hold|break|reclaim|los)(?:s|es|ing)?\s+\$?\d+)\b", re.I)
+
+
 def stock_intent(text: str) -> bool:
     """The question asks something about a stock, whatever the ticker: a
     market word or one of the stock shapes' phrasings. Decided before a
@@ -1782,7 +1828,7 @@ def stock_intent(text: str) -> bool:
     q = text or ""
     return any(rx.search(q) for rx in (
         _MARKET_WORD_RE, _PROFILE_RE, _EDATE_RE, _PRICE_RE, _NEWS_RE, _OPINION_RE, _HISTORY_RE,
-        _CHAIN_RE, _EVENT_RETURN_RE, _SNAPSHOT_FIELD_RE))
+        _CHAIN_RE, _EVENT_RETURN_RE, _SNAPSHOT_FIELD_RE, _STOCK_HINT_RE))
 
 
 def reply_parent_tickers(question: str) -> list[str]:
@@ -1798,7 +1844,9 @@ def reply_parent_tickers(question: str) -> list[str]:
         # million DLA contract"); only a cashtag, a "(TICKER)" or a bold
         # "**TICKER" is the subject (2026-10-18 audit A13: DLA was researched
         # and primed as the stock behind an ELMT answer).
-        marked = re.findall(r"\$([A-Z]{1,5})\b|\(([A-Z]{1,5})\)|\*\*([A-Z]{1,5})\b", text)
+        # "**S&P 500**" is not the stock S (2026-11-20: a reply under a
+        # market recap was handed SentinelOne's price)
+        marked = re.findall(r"\$([A-Z]{1,5})\b|\(([A-Z]{1,5})\)|\*\*([A-Z]{1,5})\b(?!&)", text)
         text = " ".join(f"${next(g for g in t if g)}" for t in marked)
     elif not _MARKET_WORD_RE.search(text):
         # A pasted article that says Google indexes Discord ("per TC") is
