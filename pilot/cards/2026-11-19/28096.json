@@ -1,0 +1,199 @@
+{
+ "brief": "Hedge funds have purged technology exposure to record lows: Goldman's prime book shows the US tech long/short ratio at 1.5, down from 2.14 in June and the lowest since the series began in 2016, while BofA's survey shows net overweight Tech falling roughly -27 points, one of the steepest monthly declines on record, alongside 52% of respondents now expecting AI hyperscaler capex cuts. JPMorgan data shows hedge fund net exposure to the momentum factor has flipped slightly negative, with only quant funds still net long, and Vanda/Sober Look data puts institutional AI-equity exposure at its lowest since April 2025. With positioning this washed out, Bloomberg and LSEG data show a possible double bottom and the Nasdaq 100 back near its long-term trendline, and SentimenTrader notes that historically, once over half of Nasdaq 100 names are in a bear market, the index has gained an average 5% over the next three months 59% of the time. Meanwhile the AI spending case still holds: Goldman sees 40% to 175% upside to Nvidia and points to its roughly $227bn buyback authorization, Goldman expects AI infrastructure earnings growth to slow from near 90% to below 20% by 2029, and Morgan Stanley sees hyperscaler capex still rising, to over $1.6tn in 2027 and almost $1.8tn in 2028. The note's conclusion: positioning is washed out enough for a bounce, not that the AI spending theme itself is broken.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "The US technology long/short ratio in Goldman's prime brokerage book has collapsed to 1.5, down from 2.14 in June, the lowest reading since the series began in 2016.",
+   "anchor": "the US technology long/short ratio has collapsed to 1.5, down from 2.14 in June. That's the lowest reading since the series began in 2016",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "BofA's survey shows the net percentage of investors overweight Tech dropped to roughly -27 percentage points, one of the steepest monthly declines in the series, rivaling the 2004 washout.",
+   "anchor": "to roughly -27 ppt, one of the steepest monthly declines in the series,\" rivaling the 2004 washout.",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "52% of respondents to BofA's survey now expect AI hyperscaler capex cuts.",
+   "anchor": "the survey's finding that 52% now expect AI hyperscaler capex cuts.",
+   "topic": "AI investment peak 2027",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "JPMorgan Prime data shows global hedge fund net exposure to the momentum factor has flipped slightly negative as equity long/short funds and multi-strategy funds abandon the factor, with only quant funds still net long.",
+   "anchor": "Global hedge fund net exposure has flipped slightly negative as equity long/short funds and multi-strats abandon the factor.",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda / Sober Look, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "Institutional exposure to AI-related equities has dropped to its lowest level since April 2025.",
+   "anchor": "Institutional exposure to AI-related equities has dropped to its lowest level since April 2025.",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "A first bounce is in and a potential double bottom is taking shape in tech after the positioning washout, though the lows still need to hold.",
+   "anchor": "The first bounce is in, and a potential double bottom is taking shape.",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "The Nasdaq 100 is back near its massive long-term trendline even though the short-term picture looks ugly.",
+   "anchor": "NDX is back near its massive long-term trendline.",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "Goldman Sachs sees roughly 40% upside to Nvidia in its base case and 175% upside in its bull case.",
+   "anchor": "Goldman sees roughly 40% upside to Nvidia in its base case and an extraordinary 175% in its bull case.",
+   "topic": "Nvidia stock valuation",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nvidia, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "Nvidia intends to return all excess cash to shareholders and has approximately $227 billion in buyback authorization remaining.",
+   "anchor": "Nvidia says it intends to return all excess cash to shareholders, with approximately $227 billion in buyback authorization remaining.",
+   "topic": "Nvidia stock valuation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "Goldman Sachs Global Investment Research expects AI infrastructure earnings growth to slow from nearly 90% to below 20% by 2029.",
+   "anchor": "Goldman expects AI infrastructure earnings growth to slow from nearly 90% to below 20% by 2029.",
+   "topic": "AI investment peak 2027",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2029"
+  },
+  {
+   "bank": "Morgan Stanley, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "Morgan Stanley Research sees hyperscaler capex rising from $951 billion in 2026 to more than $1.6 trillion in 2027 and almost $1.8 trillion in 2028.",
+   "anchor": "Morgan Stanley Research sees hyperscaler capex rising from $951 billion in 2026 to more than $1.6 trillion in 2027 and almost $1.8 trillion in 2028.",
+   "topic": "AI investment peak 2027",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 to 2028"
+  },
+  {
+   "bank": "Sentiment Trader, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "More than half of Nasdaq 100 constituents are currently in bear-market territory.",
+   "anchor": "More than half of Nasdaq 100 constituents are in bear-market territory.",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Sentiment Trader, relayed by The Market Ear",
+   "document": "the tech puke is done",
+   "claim": "Historically, when the 10-day average of Nasdaq 100 bear-market breadth crosses above 51.5%, the Nasdaq has gained an average of 5% over the following three months, with positive returns 59% of the time.",
+   "anchor": "when the 10-day average crosses above 51.5%, the Nasdaq has gained an average of 5% over the following three months, with positive returns 59%",
+   "topic": "AI tech-led equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next three months"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28096__the-tech-puke-is-done.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 13,
+  "matched": 13,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
