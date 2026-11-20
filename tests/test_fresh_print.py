@@ -125,7 +125,9 @@ def test_a_release_yahoo_has_not_filled_yet_still_marks_previews():
     text = R.render_research({"symbol": "ACN", "fresh_print": f, "banks": ["Goldman Sachs"],
                               "notes": [{"source": "Goldman Sachs", "published": "2026-09-28",
                                          "title": "ACN preview"}]})
-    assert "figures are not in the data yet" in text and "PREVIEW" in text
+    # the clock knows the scheduled time, not the release (2026-11-17, NVDA)
+    assert "ACN WAS DUE TO REPORT 2026-10-01 before the open" in text and "PREVIEW" in text
+    assert "RESULTS ARE OUT" not in text and "No feed carries the result yet" in text
 
 
 def test_a_nine_oclock_release_is_before_the_open():

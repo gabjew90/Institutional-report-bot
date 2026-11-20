@@ -61,7 +61,7 @@ def test_a_projected_date_says_so():
 def test_a_report_already_out_or_not_listed_gives_no_lines():
     edate, snap, price = _amd()
     out = dict(edate, next=dict(edate["next"], when="today (Tue Nov 3), after market close "
-                                                    "(already released: the results are out)"))
+                                                    + eb.TIME_PASSED))
     assert eb.block_lines(out, snap, price) == []
     assert eb.block_lines(dict(edate, next=None), snap, price) == []
     assert eb.block_lines(edate, snap, price)

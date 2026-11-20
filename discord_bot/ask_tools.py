@@ -1881,7 +1881,13 @@ def reconcile_earnings_with_snapshot(edate: dict, snap: dict) -> bool:
     $69.3B" from Finnhub while the snapshot beside it had Yahoo's $38.28 /
     $61.75B (Micron guided $38.15 / $61.5B), and stated Finnhub's projected
     Dec 15 as fact. Yahoo's consensus wins a disagreement; the date is
-    called confirmed only when both feeds list it."""
+    called confirmed only when both feeds list it.
+
+    When both feeds list the same report date, Yahoo's figures replace the
+    calendar's whether or not they disagree, so every payload and every
+    posted line of a turn carry one consensus (2026-11-17, audit run 13 A8:
+    NVDA's was given as $2.53 on $111.28B and, two minutes later, as $2.47
+    on $108.7B)."""
     nxt = (edate or {}).get("next")
     g = ((snap or {}).get("growth") or {}) if (snap or {}).get("status") == "ok" else {}
     if not isinstance(nxt, dict) or not nxt.get("date") or not g:
@@ -1893,6 +1899,17 @@ def reconcile_earnings_with_snapshot(edate: dict, snap: dict) -> bool:
         differs = fe is not None and ye is not None and abs(float(fe) - ye) > 0.05 * abs(ye)
     except (TypeError, ValueError):
         differs = False
+    # Yahoo's row is the same quarter only when its report date is near the
+    # calendar's. In the hours after a report the calendar has moved on to
+    # the next quarter and Yahoo has not: the two estimates then differ
+    # because they are for different quarters.
+    try:
+        from datetime import date as _d
+        _y = str((g.get("next_report") or {}).get("date") or "")[:10]
+        if _y and abs((_d.fromisoformat(_y) - _d.fromisoformat(str(nxt["date"])[:10])).days) > 14:
+            differs = False
+    except ValueError:
+        pass
     if differs:
         nxt["eps_estimate"] = ye
         nxt["revenue_estimate"] = nq.get("revenue")
@@ -1901,12 +1918,36 @@ def reconcile_earnings_with_snapshot(edate: dict, snap: dict) -> bool:
         changed = True
     ydate = (g.get("next_report") or {}).get("date")
     if ydate and ydate[:10] == str(nxt["date"])[:10]:
+        for key, value in (("eps_estimate", ye), ("revenue_estimate", nq.get("revenue"))):
+            if value is not None and nxt.get(key) != value:
+                nxt[key] = value
+                nxt.setdefault("consensus_source", "Yahoo analyst consensus")
+                changed = True
         nxt["date_status"] = "listed by both the calendar feed and Yahoo"
     else:
         nxt["date_status"] = ("projected, not confirmed: say the date is expected, not set"
                               + (f" (Yahoo lists {ydate[:10]})" if ydate else ""))
         changed = True
     return changed
+
+
+async def _execute_earnings_date_one_consensus(args: dict) -> dict:
+    """`lookup_earnings_date` when the model calls it on its own: the same
+    result, with its consensus checked against Yahoo's as the prefetch path
+    does in phase 2. The snapshot is cached 15 minutes per symbol, and a
+    slow or failed read leaves the calendar's figures as they were."""
+    import asyncio
+    out = await _execute_earnings_date(args)
+    if not (isinstance(out, dict) and out.get("status") == "ok" and isinstance(out.get("next"), dict)):
+        return out
+    try:
+        from report import ticker_snapshot as _ts
+        sym = str(out.get("symbol") or (args or {}).get("symbol") or "")
+        snap = await asyncio.wait_for(asyncio.to_thread(_ts.fetch, sym), timeout=6)
+        reconcile_earnings_with_snapshot(out, snap)
+    except Exception as e:      # noqa: BLE001  (the date is still the answer)
+        log.info(f"lookup_earnings_date: consensus not checked against Yahoo ({e})")
+    return out
 
 
 def _relative_day_et(date_iso: str, timing: str = "", now=None) -> str:
@@ -1926,13 +1967,15 @@ def _relative_day_et(date_iso: str, timing: str = "", now=None) -> str:
         n, f"in {n} days" if n > 1 else f"{-n} days ago")
     out = f"{rel} ({d.strftime('%a %b')} {d.day})"
     out = f"{out}, {timing}" if timing else out
-    # A report earlier today has happened (2026-10-07: APLD and LEVI were
-    # called "reports today after the close" 10-16 minutes after release).
+    # A report earlier today may have happened (2026-10-07: APLD and LEVI
+    # were called "reports today after the close" 10-16 minutes after
+    # release). The clock cannot say it has: see earnings_block.TIME_PASSED.
+    from discord_bot.earnings_block import TIME_PASSED
     minutes = et.hour * 60 + et.minute
     t = (timing or "").lower()
     if n == 0 and (("after" in t and minutes >= 16 * 60 + 15)
                    or ("before" in t and minutes >= 9 * 60 + 30)):
-        out += " (already released: the results are out)"
+        out += " " + TIME_PASSED
     return out
 
 

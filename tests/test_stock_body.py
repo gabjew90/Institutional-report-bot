@@ -4,6 +4,7 @@ single-stock route, and the model writes only what no feed carries."""
 from datetime import date
 
 from discord_bot import ask_router as R
+from discord_bot import earnings_block as eb
 from discord_bot import stock_body as B
 from discord_bot import stock_outline as O
 
@@ -78,7 +79,7 @@ def test_did_it_beat_is_answered_from_the_last_report_when_no_print_is_fresh():
 
 def test_a_print_is_posted_on_the_date_route_too():
     out = dict(EDATE, next=dict(EDATE["next"], when="today (Mon Nov 2), before market open "
-                                                    "(already released: the results are out)"))
+                                                    + eb.TIME_PASSED))
     body = B.build("earnings_date", "AMD", _results(**{R.T_EDATE: out}), fresh=FRESH,
                    asked="did amd beat", today=TODAY)
     assert body["state"] == "print" and body["eps"] == 2.10
@@ -133,26 +134,61 @@ def test_a_report_out_but_not_in_the_feeds_posts_no_result_line():
         "status": "ok", "digest": "- 2026-11-02: AMD reported revenue of $13.4 billion and EPS of $2.10; "
                                   "guided fourth-quarter revenue to $14 billion (Reuters)"}}
     body = B.build("ticker_opinion", "AMD", results, fresh=pending, today=TODAY)
-    assert body["state"] == "pending" and body["lines"] == [QUOTE]
+    # the news carries the result, so the line does not say it is missing
+    assert body["state"] == "pending" and body["lines"] == [
+        QUOTE, "→ Was due to report today (Mon Nov 2), before the open. Consensus: EPS **$1.96**."]
     text = O.build_outline(results, "ticker_opinion", "AMD", fresh=pending, posted=body)
     assert _slots(text) == ["RESULT", "GUIDANCE", "DRIVER"]
 
 
 def test_a_date_question_in_the_first_hours_after_a_report_still_gets_a_body():
     """2026-10-07: "what time apld report earnings" at 4:20 PM ET. The feeds
-    have no figure yet, so the price is posted and the result is the
-    model's from the news."""
+    have no figure yet, so when it was due, its consensus and the price are
+    posted, and the result is the model's from the news line that has it."""
     pending = {"date": "2026-11-02", "session": "before the open", "actual": None, "estimate": 1.96,
                "symbol": "AMD"}
     out = dict(EDATE, next=dict(EDATE["next"], when="today (Mon Nov 2), before market open "
-                                                    "(already released: the results are out)"))
+                                                    + eb.TIME_PASSED))
     results = _results(**{R.T_EDATE: out, R.T_NEWS: {
         "status": "ok", "digest": "- 2026-11-02: AMD reported revenue of $13.4 billion (Reuters)"}})
     body = B.build("earnings_date", "AMD", results, fresh=pending, asked="what time does amd report",
                    today=TODAY)
-    assert body["lines"] == [QUOTE] and body["state"] == "pending"
+    assert body["state"] == "pending" and body["lines"] == [
+        "→ **AMD** was due to report today (Mon Nov 2), before the open.",
+        "→ Consensus: EPS **$1.96**.", "→ Trading at **$503.61**, -0.2% today."]
     text = O.build_outline(results, "earnings_date", "AMD", fresh=pending, posted=body)
     assert _slots(text) == ["RESULT"]
+
+
+def test_a_report_whose_time_has_passed_is_not_called_out_by_the_clock():
+    """2026-11-17 (audit run 13 A2, A3): "when is nvda earnings" at 4:16 PM
+    ET, four minutes before NVDA released. The tool said "already released:
+    the results are out", no date line was posted, and the model filled a
+    RESULT slot with a board committee and a share-price line."""
+    pending = {"date": "2026-11-02", "session": "after the close", "actual": None, "estimate": 1.96,
+               "symbol": "AMD"}
+    out = dict(EDATE, next=dict(EDATE["next"], when="today (Mon Nov 2), after market close " + eb.TIME_PASSED))
+    results = _results(**{R.T_EDATE: out, R.T_NEWS: {"status": "ok", "digest": (
+        "- 2026-11-02: The Board of Directors established an oversight committee (AMD)\n"
+        "- 2026-11-02: AMD stock moved down 0.60% to close at $155.21 as investors awaited the "
+        "company's upcoming earnings report (Investing.com)\n"
+        "- 2026-10-30: AMD reported third-quarter revenue of $9.2 billion (Reuters)")}})
+    body = B.build("earnings_date", "AMD", results, fresh=pending, asked="when is amd earnings", today=TODAY)
+    assert body["lines"] == [
+        "→ **AMD** was due to report today (Mon Nov 2), after the close. "
+        "The result is not in the data feeds yet.",
+        "→ Consensus: EPS **$1.96**.", "→ Trading at **$503.61**, -0.2% today."]
+    text = O.build_outline(results, "earnings_date", "AMD", fresh=pending, posted=body)
+    assert _slots(text) == [] and "RESULT" not in text and "reported" not in text.split("Do not write")[1]
+    # the tool's note says what the clock knows
+    from datetime import datetime, timezone
+    from discord_bot.ask_tools import _relative_day_et
+    when = _relative_day_et("2026-11-17", "after market close",
+                            now=datetime(2026, 11, 17, 21, 16, tzinfo=timezone.utc))
+    assert when.endswith(eb.TIME_PASSED) and "released" not in when and "are out" not in when
+    # and the research header does not announce a result either
+    head = R.render_research({"symbol": "AMD", "notes": [], "fresh_print": pending})
+    assert "RESULTS ARE OUT" not in head and "WAS DUE TO REPORT 2026-11-02 after the close" in head
 
 
 def test_a_print_the_feeds_carry_without_revenue_still_posts_the_eps():

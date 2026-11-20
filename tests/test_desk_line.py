@@ -314,3 +314,21 @@ def test_a_note_with_a_postable_rating_ranks_ahead_of_newer_notes_without_one():
     slots = [ln for ln in text.splitlines() if "DESK:" in ln]
     assert len(slots) == O.MAX_DESKS and "DESK: JPMorgan" in slots[0] and "DESK: Morgan Stanley" in slots[1]
     assert "Overweight" not in slots[1] and "$300" not in slots[1]
+
+
+def test_a_target_is_posted_only_when_it_is_one_price():
+    """2026-11-18 (audit run 13 A1): "Morgan Stanley (Nov 17): price target
+    31% upside" was posted on UNH from a strategy note's screen."""
+    ms = {"source": "Morgan Stanley", "published": "2026-11-17", "report_type": "strategy",
+          "calls": [{"action": "positive_catalyst_watch", "price_target": "31% upside",
+                     "rationale": "AI Adoption Leader with 31% upside to the MS price target."}]}
+    assert D.fields(ms)["target"] == "" and D.line(ms) == ""
+    assert "price_target" not in D.clean_note(ms)["calls"][0]
+    # the house's own equity research is held to the same form
+    for bad in ("31% upside", "$550-$570", "150-146", "3,260 TWD / 620.00 USD", "raised"):
+        assert D.fields(_note(bad, "x"))["target"] == "", bad
+        assert "price target" not in D.line(_note(bad, "x")), bad
+    for good, shown in (("$215.00", "$215"), ("HK$156", "HK$156"), ("GBX 1,940", "GBX 1,940"),
+                        ("155p", "155p"), ("W500,000", "W500,000"), ("E80", "E80"),
+                        ("$580 (from $710)", "$580"), ("€63.5", "€63.5")):
+        assert D.fields(_note(good, "x"))["target"] == shown, good

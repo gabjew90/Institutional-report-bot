@@ -108,7 +108,8 @@ def _slots(text):
 
 def test_a_print_not_in_the_feeds_yet_is_the_result_the_guidance_the_driver_and_the_analyst():
     text, body = _outline(_amat(), "ticker_opinion", "AMAT", fresh=AMAT_FRESH)
-    assert body["state"] == "pending" and body["lines"] == ["→ **AMAT** at **$383.14**, -3.6% today."]
+    assert body["state"] == "pending" and body["lines"] == [
+        "→ **AMAT** at **$383.14**, -3.6% today.", "→ Was due to report Thu Nov 12, after the close."]
     slots = _slots(text)
     assert [s.split(":")[0] for s in slots] == ["RESULT", "GUIDANCE", "DRIVER", "ANALYST ACTION"]
     result, guidance, analyst = slots[0], slots[1], slots[3]
@@ -128,7 +129,7 @@ def test_the_stocks_move_comes_from_the_live_quote_not_the_news_line():
     # with no live quote the news line's account is all there is
     no_quote, none = _outline(_amat(**{R.T_PRICE: {"status": "error"}}), "ticker_opinion", "AMAT",
                               fresh=AMAT_FRESH)
-    assert none is None and "shares moving lower" in no_quote
+    assert none["kinds"] == ["upcoming"] and "shares moving lower" in no_quote
 
 
 def test_a_note_that_only_lists_the_report_date_gets_no_desk_slot():
@@ -303,3 +304,19 @@ def test_after_a_print_the_driver_slot_is_the_driver_only():
     before = O.build_outline(_amat(), "ticker_opinion", "AMAT")
     assert "DRIVER: Semiconductor Systems drives" in after and "What it is judged on" not in after
     assert "What it is judged on: gross margin" in before
+
+
+def test_a_result_clause_states_a_reported_figure():
+    """2026-11-17: what counted as "the result" in the news before NVDA released."""
+    yes = ["NVIDIA reported record revenue of $115.8 billion, ahead of the $108.7 billion consensus",
+           "EPS of $2.68 beat estimates"]
+    no = ["NVDA stock moved down 0.60% to close at $155.21 as investors awaited the company's upcoming earnings report",
+          "The Board of Directors established a National Security and Export Control Oversight Committee",
+          "Jensen Huang stated he would be honored to return as CEO",
+          "shares slid to $150 on profit-taking ahead of its report"]
+    assert all(O._carries_result(c) for c in yes) and not any(O._carries_result(c) for c in no)
+    lines = ["- 2026-11-16: NVDA reported revenue of $57.0 billion a year ago (Reuters)",
+             "- 2026-11-17: NVDA reported revenue of $115.8 billion; guided fourth-quarter revenue to $130 billion (Reuters)"]
+    result, guidance = O.result_clauses(lines, "2026-11-17")
+    assert result == ["NVDA reported revenue of $115.8 billion (Reuters)"] and len(guidance) == 1
+    assert O.result_clauses(lines[:1], "2026-11-17") == ([], [])

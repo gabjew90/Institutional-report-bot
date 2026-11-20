@@ -111,7 +111,10 @@ def test_without_the_revenue_the_eps_line_is_still_posted_and_without_the_eps_no
     assert "revenue" not in block["kinds"] and "guidance" in block["kinds"]
     pending = {"date": "2026-11-12", "session": "after the close", "actual": None, "estimate": 4.05,
                "symbol": "AMAT"}
-    assert _block(pending, g, PRICE, NEWS)["lines"] == ["→ **AMAT** at **$384.16**, -3.6% today."]
+    # no result line without the EPS: when it was due, and its consensus
+    assert _block(pending, g, PRICE, NEWS)["lines"] == [
+        "→ **AMAT** at **$384.16**, -3.6% today.",
+        "→ Was due to report yesterday (Thu Nov 12), after the close. Consensus: EPS **$4.05**."]
 
 
 def test_a_miss_a_match_and_a_loss_read_as_what_they_are():

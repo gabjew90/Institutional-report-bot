@@ -65,6 +65,14 @@ def _with_growth(fig: str, pct: float | None) -> str:
     return f"**{fig}** ({pct:+.1f}% y/y)" if pct is not None else f"**{fig}**"
 
 
+# What the earnings-date tool appends to `when` once a report's scheduled
+# session has begun. It says what the clock knows and no more: until
+# 2026-11-19 it read "already released: the results are out" from 4:15 PM
+# ET, and on 2026-11-17 NVDA, which released at about 4:20, was called out
+# at 4:16 (audit run 13 A2). Whether a report is out is a feed's fact.
+TIME_PASSED = "(the scheduled time has passed; this feed does not say whether the result is out)"
+
+
 def consensus(nxt: dict, growth: dict) -> dict:
     """{eps, revenue, eps_growth_pct, revenue_growth_pct, source} from one
     source. Yahoo's row is used when its next report date is the
@@ -95,12 +103,13 @@ def price_line(price: dict | None, symbol: str) -> str:
 
 def block_lines(edate: dict, snapshot: dict | None = None, price: dict | None = None) -> list[str]:
     """The lines for one company's next report, [] when the feed has no
-    coming report to give (none listed, or one already released)."""
+    coming report to give (none listed, or one whose time has passed: the
+    pending lines in stock_body cover that)."""
     nxt = (edate or {}).get("next")
     when = str((nxt or {}).get("when") or "").replace(", timing TBD", ", time not announced")
     if not isinstance(nxt, dict) or not nxt.get("date") or not when:
         return []
-    if "already released" in when or "ago" in when or when.startswith("yesterday"):
+    if TIME_PASSED in when or "ago" in when or when.startswith("yesterday"):
         return []
     sym = str(edate.get("symbol") or "").upper()
     if not sym:

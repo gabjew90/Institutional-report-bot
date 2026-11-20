@@ -118,6 +118,40 @@ def _split_news(lines: list[str], cut_moves: bool, since: str = "") -> dict[str,
     return out
 
 
+# A clause that states a reported figure: a results word and a dollar
+# amount, and not a line about a report still to come.
+_RESULT_FIGURE_RE = re.compile(
+    r"\b(?:reported|posted|delivered|EPS|earnings per share|revenues?|sales|net income|profit(?!-))\b", re.I)
+# "ahead of estimates" is a result; "ahead of its report" is not
+_NOT_YET_RE = re.compile(
+    r"\b(?:upcoming|await\w*|(?:set|due|scheduled|expected|slated)\s+to\s+report|will\s+report|"
+    r"(?:ahead\s+of|before|into)\s+(?:the\s+|its\s+)?(?:report|earnings|results|print))\b", re.I)
+
+
+def _carries_result(clause: str) -> bool:
+    return bool(_RESULT_FIGURE_RE.search(clause) and re.search(r"\$\s?\d", clause)
+                and not _NOT_YET_RE.search(clause))
+
+
+def _since(lines: list[str], since: str) -> list[str]:
+    """The news lines dated on or after the report date."""
+    out = []
+    for raw in lines:
+        m = _DATED_RE.match(raw)
+        if m and m.group(1) >= since[:10]:
+            out.append(raw)
+    return out
+
+
+def result_clauses(lines: list[str], since: str, cut_moves: bool = False) -> tuple[list[str], list[str]]:
+    """(result clauses, guidance clauses) of the news lines dated on or
+    after the report date, the result ones only when they state a reported
+    figure. Empty when the news does not carry the result."""
+    after = _split_news(_since(lines, since)[:MAX_NEWS_LINES], cut_moves=cut_moves, since=since)
+    result = [c for c in after["result"] if _carries_result(c)]
+    return result, (after["guidance"] if result else [])
+
+
 def _news_slots(state: str, fresh: dict | None, news: dict | None, have_price: bool = False,
                 revenue_posted: bool = False) -> tuple[list[str], str | None]:
     """What the news lines add to the lines code posts (stock_body). Second
@@ -126,8 +160,13 @@ def _news_slots(state: str, fresh: dict | None, news: dict | None, have_price: b
 
     - print: the result and the guidance are posted. When no feed carried
       the revenue, the result clauses of the news get a slot for it.
-    - pending (the report is out, Yahoo has not filled the figures): the
-      result and the guidance are only in the news, each its own slot.
+    - pending (the report's time has passed, no feed carries the result):
+      a RESULT slot only when a news line dated on or after the report
+      date states a reported figure, and the guidance with it. Nothing
+      here says the report is out: on 2026-11-17 the slot read "reported
+      ...; the figures are in the news lines" four minutes before NVDA
+      released, and the model filled it with a board committee and the
+      former chief executive's remarks (audit run 13 A2, A3).
     - otherwise the dated lines themselves."""
     lines = []
     if (news or {}).get("status") == "ok":
@@ -151,15 +190,15 @@ def _news_slots(state: str, fresh: dict | None, news: dict | None, have_price: b
         return [("RESULT DETAIL: the EPS line is posted. From the news, the revenue and what else "
                  "the posted lines do not carry" + (", naming the publisher each line ends with" if named else "")
                  + ": " + " | ".join(result) + " [news search]")], analyst
-    when = f"{fresh['date']} {fresh.get('session') or ''}".strip()
-    head = f"RESULT: reported {when}; the figures are in the news lines [news search]"
-    if parts["result"]:
-        named = any(_PUBLISHER_RE.search(p) for p in parts["result"])
-        head += (". From the news" + (", name the publisher each line ends with" if named else "")
-                 + ": " + " | ".join(parts["result"]))
-    slots = [head]
-    if parts["guidance"]:
-        slots.append("GUIDANCE: " + " | ".join(parts["guidance"]) + " [news search]")
+    result, guidance = result_clauses(lines, since, cut_moves=have_price)
+    if not result:
+        return [], analyst
+    named = any(_PUBLISHER_RE.search(p) for p in result)
+    slots = ["RESULT: the news lines carry the report's figures"
+             + (", name the publisher each line ends with" if named else "")
+             + ": " + " | ".join(result) + " [news search]"]
+    if guidance:
+        slots.append("GUIDANCE: " + " | ".join(guidance) + " [news search]")
     return slots, analyst
 
 
@@ -412,12 +451,16 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
     research = results.get(R.T_RESEARCH)
     # A reply to an earlier answer is a narrow question, and a plain date
     # lookup is answered by its lines: neither gets the rundown.
-    lookup = shape == "earnings_date" and state == "none" and not research
-    slots: list = []
-    if shape != "follow_up" and not lookup:
+    news_slots, analyst = [], None
+    if shape != "follow_up":
         news_slots, analyst = _news_slots(state, fresh, results.get(R.T_NEWS),
                                           have_price="price" in kinds,
                                           revenue_posted="revenue" in kinds)
+    # the same when the report's time has passed and the news has no result
+    lookup = shape == "earnings_date" and not research and (
+        state == "none" or (state == "pending" and not news_slots))
+    slots: list = []
+    if shape != "follow_up" and not lookup:
         slots = [
             *news_slots,
             _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,

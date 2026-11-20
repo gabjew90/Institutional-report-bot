@@ -59,6 +59,23 @@ def _trim(money: str) -> str:
     return re.sub(r"(\d)\.0+(?!\d)", r"\1", (money or "").strip())
 
 
+# One price: an optional currency sign or code, a number, an optional unit
+# ("$215", "HK$156", "GBX 1,940", "155p", "W500,000", "E80").
+_PRICE_RE = re.compile(r"(?:[$€£¥₩₹]|[A-Z]{1,3}\$|[A-Za-z]{1,4}\.?\s?)?\d[\d,]*(?:\.\d+)?\s?(?:[kKmM]n?|p|[A-Z]{3})?")
+
+
+def _price(target: str) -> str:
+    """The stored target when it is one price, else ''. A note's own aside
+    after it ("$580 (from $710)") is dropped.
+
+    2026-11-18: the bot posted "Morgan Stanley (Nov 17): price target 31%
+    upside" on UNH. The stored field was the text "31% upside", from a
+    strategy note's screen. Of 2,095 targets stored in the 21 days before,
+    14 were a percentage and 45 a range or two currencies."""
+    text = re.sub(r"\s*\(.*$", "", (target or "").strip()).lstrip("~≈ ")
+    return text if _PRICE_RE.fullmatch(text) else ""
+
+
 def call_of(note: dict) -> dict | None:
     """The note's call on the name when it carries a rating or a target:
     the first call, the one stock_outline shows."""
@@ -168,7 +185,7 @@ def fields(note: dict) -> dict:
     holder = str(call.get("call_by") or "").strip() or source
     action = str(call.get("action") or "").lower()
     rating = _clean(call.get("rating"))
-    target = _trim(_clean(call.get("price_target")))
+    target = _trim(_price(_clean(call.get("price_target"))))
     relayed = holder != source
     if kind == "credit":
         rating = target = ""

@@ -21,9 +21,10 @@ State, from the snapshot's report dates:
 - print:   a report in the last three days with its EPS (ask_router.fresh_print).
            Lines: EPS against its estimate and a year earlier, revenue when a
            feed has it, the guidance clauses of the news lines.
-- pending: the report's time has passed and Yahoo has not filled the
-           figures. No result line: the model writes the result from the
-           news lines.
+- pending: the report's scheduled time has passed and no feed carries the
+           result. Lines: when it was due and its consensus (pending_lines).
+           Whether it is out is not known here: the model writes a result
+           only from a news line that carries one.
 - last:    an older report, when a date or reply question asks how it went.
 - none:    the next report with its consensus.
 
@@ -151,6 +152,41 @@ def upcoming_lines(symbol: str, edate: dict | None, snapshot: dict | None,
     return lines
 
 
+def pending_lines(symbol: str, fresh: dict, snapshot: dict | None,
+                  today: date | None = None, in_news: bool = False) -> list[str]:
+    """A report whose scheduled time has passed and whose result no feed
+    carries yet: when it was due and the consensus it is set against.
+
+    Until 2026-11-19 this state posted no report line, and a clock rule
+    told the model the results were out from 4:15 PM ET. On 2026-11-17
+    "when is nvda earnings" at 4:16 PM, four minutes before the release,
+    was answered with the price and a news item about a board committee
+    (audit run 13 A2). Both lines stay true before and after the release.
+    `in_news`: a news line carries the result, which the model then writes
+    in its own arrow, so the line does not say the result is missing."""
+    from discord_bot import earnings_block as eb
+    try:
+        d = date.fromisoformat(str(fresh.get("date"))[:10])
+    except ValueError:
+        return []
+    today = today or datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+    day = f"{d:%a} {d:%b} {d.day}"
+    rel = {0: f"today ({day})", 1: f"yesterday ({day})"}.get((today - d).days, day)
+    session = f", {fresh['session']}" if fresh.get("session") else ""
+    lines = [f"→ **{symbol}** was due to report {rel}{session}."
+             + ("" if in_news else " The result is not in the data feeds yet.")]
+    growth = (snapshot or {}).get("growth") or {}
+    c = eb.consensus({"date": fresh.get("date"), "eps_estimate": fresh.get("estimate")}, growth)
+    parts = []
+    if c["eps"] is not None:
+        parts.append("EPS " + eb._with_growth(eb._eps(float(c["eps"])), c["eps_growth_pct"]))
+    if c["revenue"] is not None:
+        parts.append("revenue " + eb._with_growth(eb._money(float(c["revenue"])), c["revenue_growth_pct"]))
+    if parts:
+        lines.append("→ Consensus: " + " on ".join(parts) + ".")
+    return lines
+
+
 def company_lines(snapshot: dict | None, asked: str) -> list[str]:
     """The snapshot lines the asker's words ask for, as price_block reads
     them: market cap, shares and short interest, balance sheet, valuation."""
@@ -174,6 +210,7 @@ def _unnamed(line: str, symbol: str) -> str:
     """The line without the symbol it opens with, for a line that follows
     one already naming the stock."""
     for old, new in ((f"→ **{symbol}** reports ", "→ Reports "),
+                     (f"→ **{symbol}** was due to report ", "→ Was due to report "),
                      (f"→ **{symbol}** is expected to report ", "→ Expected to report "),
                      (f"→ **{symbol}** reported ", "→ Reported ")):
         if line.startswith(old):
@@ -248,8 +285,18 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
     want_upcoming = ((date_q and (state != "print" or bool(_WHEN_RE.search(asked))))
                      or (not narrow and state == "none")
                      or (narrow and state == "none" and bool(_REPLY_DATE_RE.search(asked))))
-    if want_upcoming and state != "pending":
-        up = upcoming_lines(symbol, results.get(R.T_EDATE), snap, today)
+    if state == "pending":
+        # not on a reply: it follows an answer that already gave the status
+        want_upcoming = not narrow
+    if want_upcoming:
+        if state == "pending":
+            from discord_bot import stock_outline as _so
+            # read as the outline reads it, so the line and the RESULT slot agree
+            in_news = bool(_so.result_clauses(news_lines, str(fresh.get("date") or ""),
+                                              cut_moves=bool(quote))[0])
+            up = pending_lines(symbol, fresh, snap, today, in_news=in_news)
+        else:
+            up = upcoming_lines(symbol, results.get(R.T_EDATE), snap, today)
         if printed:
             up = [ln for ln in up if not ln.startswith("→ Last report")]
         if not date_q:

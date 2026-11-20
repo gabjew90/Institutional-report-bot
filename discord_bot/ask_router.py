@@ -2032,11 +2032,14 @@ def render_research(result: dict) -> str:
         # 2026-09-30/10-01: MU was answered twice from "bullish into the
         # print" previews after it had reported. Marked in code, from the
         # report date, so the label does not depend on the model noticing.
-        head = f"RESULTS ARE OUT: {sym} reported {fresh['date']} {fresh.get('session', '')}".rstrip()
+        when = f"{fresh['date']} {fresh.get('session', '')}".rstrip()
         if fresh.get("actual") is not None and fresh.get("estimate") is not None:
-            head += f": EPS ${fresh['actual']:,.2f} vs ${fresh['estimate']:,.2f} estimated."
+            head = (f"RESULTS ARE OUT: {sym} reported {when}: EPS ${fresh['actual']:,.2f} vs "
+                    f"${fresh['estimate']:,.2f} estimated.")
         else:
-            head += ". The figures are not in the data yet: take them from the news block."
+            # the clock knows the scheduled time, not the release (2026-11-17, NVDA)
+            head = (f"{sym} WAS DUE TO REPORT {when} AND THAT TIME HAS PASSED. No feed carries the "
+                    "result yet: state a result only when a news line gives its figures.")
         out.append(head + " Notes marked PREVIEW were written before that report: give them as "
                    "what the desks expected, set against the result, never as the outlook into a "
                    "print still to come.")
