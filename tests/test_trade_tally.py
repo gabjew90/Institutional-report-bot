@@ -410,3 +410,51 @@ def test_the_posted_line_says_what_the_contracts_were_worth():
     part = TT._lead("**BK**", ", last 30 days", dict(base, expired_worthless=30, expired_in_money=10,
                                                     win_rate_worthless_pct=None))
     assert "counted as losses (30 worthless at expiry, 10 in the money, 8 not priced)" in part
+
+
+def _count(**kw):
+    base = {"wins": 0, "losses": 0, "expired_no_exit": 0, "expired_worthless": 0, "expired_in_money": 0,
+            "open": 0, "opened": 0, "flat": 0, "closes_without_entry": 0, "discarded": 0,
+            "win_rate_pct": None, "win_rate_worthless_pct": None, "avg_win_pct": None, "avg_loss_pct": None,
+            "median_win_pct": None,
+            "by_kind": {k: {"wins": 0, "losses": 0, "expired_no_exit": 0} for k in ("call", "put", "other")}}
+    return {**base, **kw}
+
+
+def test_a_callers_alerts_lead_his_record():
+    # Owner, 2026-11-20: the alerts are what a follower could take. Until
+    # then they were the last line under a rate built mostly from the main chat.
+    everything = _count(wins=60, losses=1, expired_no_exit=48, opened=110, open=5, win_rate_pct=55.0)
+    alerts = _count(wins=5, losses=0, expired_no_exit=6, expired_worthless=4, expired_in_money=2,
+                    opened=17, open=6, win_rate_pct=45.5, win_rate_worthless_pct=55.6)
+    res = {"status": "ok", "window_label": "in the last 30 days", "in_channel": "", "contract_type": None,
+           "ticker": None,
+           "subjects": [{"label": "**BK**", "tally": everything, "members": 0,
+                         "alerts": {"channel": "kyle-alerts", "tally": alerts}}]}
+    out = TT.lines(res)
+    assert out[0].startswith("→ **BK**'s alerts in #kyle-alerts, in the last 30 days: win rate **100%** of the "
+                             "5 closes with a result")
+    assert "or **56%** when the 4 positions whose contract expired worthless" in out[0]
+    assert out[1] == "→ 17 alerts opened, 6 still open"
+    assert out[2].startswith("→ In every channel, alerts included, in the last 30 days: win rate **98%** of the "
+                             "61 closes")
+    # a member with no alert channel keeps one lead under his own name
+    res["subjects"][0].pop("alerts")
+    assert TT.lines(res)[0].startswith("→ **BK**, in the last 30 days: win rate **98%**")
+    # the asker's own alerts
+    res["subjects"][0].update(label="**You**", alerts={"channel": "kyle-alerts", "tally": alerts})
+    assert TT.lines(res)[0].startswith("→ **Your** alerts in #kyle-alerts")
+
+
+def test_a_reply_is_answered_here_only_when_its_own_words_say_whose_record():
+    # Owner, 2026-11-20. Replies are 43% of questions. Over 963 logged
+    # entries two replies were record questions, one of them self-contained.
+    assert TT.stands_alone(TT.parse("what's my % win rate on calls and what's my average % profits"))
+    assert TT.stands_alone(TT.parse("what is the win rate of the room on puts this month"))
+    assert TT.stands_alone(TT.parse("what's kyle's win rate"))
+    # whose record is in the message replied to
+    assert not TT.stands_alone(TT.parse("what about his win rate on puts?"))
+    assert not TT.stands_alone(TT.parse("and the win rate?"))
+    # a remark under an answer, not a question
+    assert not TT.stands_alone(TT.parse("my win rate is fine"))
+    assert not TT.stands_alone(None)

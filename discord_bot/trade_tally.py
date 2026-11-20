@@ -78,7 +78,7 @@ _ASK_RE = re.compile(
 BARE_PHRASE_WORDS = 8
 
 _SELF_RE = re.compile(
-    r"\bmy\s+(?:\w+\s+){0,2}(?:win|wins|losses|record|w\s*/\s*l|track|hit|returns?|trades?|puts?|calls?|alerts?|plays?)\b"
+    r"\bmy\s+(?:[\w%]+\s+){0,2}(?:win|wins|losses|record|w\s*/\s*l|track|hit|returns?|trades?|puts?|calls?|alerts?|plays?)\b"
     r"|\bhow\s+many\s+(?:\w+\s+){1,2}(?:do|did|have)\s+i\b|\b(?:am|have)\s+i\s+(?:been\s+)?(?:winning|profitable|green)\b"
     r"|\bhow\s+am\s+i\s+doing\b|\b(?:do|did|have)\s+i\s+(?:have|won|win|hit)\b", re.I)
 # a name written beside the record: "bk's win rate", "win rate of kyle"
@@ -199,6 +199,16 @@ def parse(text: str, channel_id: int | None = None) -> dict | None:
         "tickers": [] if cash else _ticker_candidates(t),
         "window": window,
     }
+
+
+def stands_alone(spec: dict | None) -> bool:
+    """A record question whose own words say whose record: "what's my win
+    rate", "win rate of the room on puts". Asked as a reply to the bot it
+    is answered here like any other. "what about his puts" is not one: who
+    "his" is sits in the message replied to, and the model takes it."""
+    return bool(spec and _ASK_RE.search(spec["text"]) and (
+        spec["self"] or spec["names"] or spec["pair_names"] or spec["room"]
+        or spec["channel_id"] or spec["this_channel"]))
 
 
 def channel_in(text: str) -> int | None:
@@ -476,19 +486,25 @@ def lines(res: dict) -> list[str]:
             out.append(f"→ No trades logged for {who}{where}")
             continue
         members = f", {_n(sub['members'], 'member')}" if sub.get("members", 0) > 1 else ""
-        out.append(_lead(label, f"{filt}{res['in_channel']}{members}, {res['window_label']}", t))
+        place = f"{filt}{res['in_channel']}{members}, {res['window_label']}"
+        al = sub.get("alerts") if solo else None
+        a = al["tally"] if al else None
+        if a and (a["opened"] or a["wins"] or a["losses"]):
+            # A caller's alerts lead his record: they are the trades a
+            # follower could take. What he posted in every channel comes
+            # second (owner, 2026-11-20. Until then the alerts were the
+            # last line, under a rate built mostly from the main chat).
+            whose = "**Your**" if label == "**You**" else f"{label}'s"
+            out.append(_lead(f"{whose} alerts in #{al['channel']}", f"{filt}, {res['window_label']}", a))
+            out.append(f"→ {_n(a['opened'], 'alert')} opened, {a['open']:,} still open")
+            out.append(_lead("In every channel, alerts included", place, t))
+        else:
+            out.append(_lead(label, place, t))
         if not solo:
             continue
         out += _detail(t, split=not res.get("contract_type"))
         if sub.get("top"):
             out.append("→ Most active: " + " · ".join(f"**{n}** {_short(c)}" for n, c in sub["top"]))
-        al = sub.get("alerts")
-        if al and (al["tally"]["opened"] or al["tally"]["wins"] or al["tally"]["losses"]):
-            a = al["tally"]
-            out.append(f"→ In #{al['channel']} alone: {_n(a['opened'], 'alert')} opened, "
-                       f"{_n(a['wins'], 'win')}, {_n(a['losses'], 'loss', 'losses')}, "
-                       f"{a['expired_no_exit']:,} expired with no exit posted{_at_expiry(a)}, "
-                       f"{a['open']:,} still open")
     return out
 
 

@@ -8702,12 +8702,14 @@ async def _answer_with_gemini(
         # a name nobody is logged under: the model takes it
 
     # A win rate or record from the trade log is counted in code too
-    # (discord_bot/trade_tally.py, 2026-11-20). A reply is left to the
-    # model: its subject is in the message replied to.
+    # (discord_bot/trade_tally.py, 2026-11-20). A reply is answered here
+    # when its own words say whose record it asks for. Otherwise its
+    # subject is in the message replied to, and the model takes it.
     from discord_bot import trade_tally as _trade_tally
     try:
-        _tt_spec = (None if "[MESSAGE BEING REPLIED TO" in question
-                    else _trade_tally.parse(_cc_asker(question), channel_id))
+        _tt_spec = _trade_tally.parse(_cc_asker(question), channel_id)
+        if "[MESSAGE BEING REPLIED TO" in question and not _trade_tally.stands_alone(_tt_spec):
+            _tt_spec = None
     except Exception as e:
         log.warning(f"/ask: trade tally parse failed, handing to the model: {e}")
         _tt_spec = None

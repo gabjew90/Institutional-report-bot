@@ -3997,3 +3997,12 @@ A position that expired with no trim or close posted counted as an unknown, and 
 Wording rule: it is the contract that expired worthless. Whether the trader held it is not in the log, so no line says he lost it.
 
 Dry run on a copy of the rows, last 30 days: the room 95% of 219 closes, or 56% with all 153 no-exit expiries as losses (104 worthless, 42 in the money, 7 not priced). One caller: 94% of 16 closes, or 60% counting the 9 worthless expiries, 1 more in the money.
+
+## 2026-11-20: a caller's alerts lead, and a reply that names its subject is counted in code
+
+Two owner picks on the trade record (2026-11-20).
+
+- **Alerts first.** A caller's posted record opened with everything he posted in any channel and gave his alert channel one closing line. One caller read 98% on everything while his alerts in the window were 5 winning closes and 6 expiries with no exit out of 17. The alerts are what a follower could take, so `trade_tally.lines` now leads with them, then "In every channel, alerts included".
+- **Replies.** Every reply to the bot went to the model. A reply whose own words say whose record it asks for is now counted in code like a first question (`trade_tally.stands_alone`: it asks, and names a member, the asker, a channel or the room). A reply that leans on the message above it ("what about his puts") still goes to the model. Replayed over all 963 logged questions since 09-01: two replies were record questions, one self-contained ("what's my % win rate on calls"), which also showed `_SELF_RE` did not read "my % win rate".
+
+Not done: rank points (`compute_member_points`) reading the same count. It carries its own policy (winning trims score, recency bands, a gain-less post in the gains channel presumed a win) and a pinned smoke, so it needs its own before-and-after table.
