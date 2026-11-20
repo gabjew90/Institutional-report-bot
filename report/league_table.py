@@ -184,6 +184,7 @@ def build(weeks: dict[int, list[dict]], names: dict[int, str], *, playoff_start:
             "seed": seed, "roster_id": rid, "manager": names.get(rid) or f"roster {rid}",
             "wins": r["wins"], "losses": r["losses"], "ties": r["ties"],
             "points_for": r["pf"], "points_against": r["pa"], "points_for_rank": pf_rank[rid],
+            "points_per_game": round(ppg[rid], 1),
             "remaining": [{"week": w, "opponent": names.get(o) or f"roster {o}"} for w, o in opps],
             "remaining_opponents_ppg": (round(statistics.fmean(ppg[o] for _, o in opps), 1) if opps else None),
             "playoff_odds": (round(sim[rid]["odds"], 4) if sim else None),

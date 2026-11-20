@@ -304,6 +304,10 @@ def fetch_players_trimmed() -> list[tuple[str, str, str, str]]:
 TOPICS = (
     "league", "standings", "matchups", "roster",
     "transactions", "draft", "trending", "projections",
+    # The league table computed from the weekly scores, for any week
+    # played: records, points, remaining opponents, playoff odds
+    # (report/league_table.py, 2026-11-19).
+    "table",
     # What players ACTUALLY scored, against what they were projected to.
     # fetch_weekly_stats has existed since the module was written and no
     # topic ever called it, so "what did he actually put up" was
@@ -340,6 +344,15 @@ def _owner_label(sleeper_user_id: str, users_by_id: dict) -> str:
     )
     co = CO_OWNERS.get(str(sleeper_user_id))
     return f"{label} + {co}" if co else label
+
+
+def _table_name(sleeper_user_id: str, users_by_id: dict) -> str:
+    """The short name a table row carries: the room's name for a mapped
+    manager, the Sleeper display name otherwise."""
+    mapped = SLEEPER_TO_DISCORD.get(str(sleeper_user_id))
+    if mapped:
+        return mapped[2]
+    return str(users_by_id.get(str(sleeper_user_id), {}).get("display_name") or sleeper_user_id)
 
 
 def _resolve_member(member: str, users_by_id: dict) -> str | None:
@@ -608,6 +621,35 @@ def build_topic_payload(
             _owner_label(str(r.get("owner_id")), users_by_id)
             for r in rosters
         ]
+
+    elif topic == "table" or (topic == "standings" and week):
+        # The table computed from the weekly scores, for any week played
+        # (report/league_table.py). `standings` with a week goes here too:
+        # until 2026-11-19 it returned the current table labelled with the
+        # week asked for, and the week-6 standings were invented from it.
+        from report import league_table as _lt
+        ls = league.get("settings") or {}
+        playoff_start = int(ls.get("playoff_week_start") or 15)
+        names = {r.get("roster_id"): _table_name(str(r.get("owner_id")), users_by_id)
+                 for r in rosters if r.get("roster_id") is not None}
+        weeks = _lt.fetch_weeks(league_id, current_week, playoff_start - 1)
+        table = _lt.build(weeks, names, playoff_start=playoff_start,
+                          spots=int(ls.get("playoff_teams") or 6), season=season,
+                          through=int(week) if week else None,
+                          final_week=ls.get("last_scored_leg"))
+        out["week"] = table["through_week"] or wk
+        out["records_through_week"] = table["through_week"]
+        if topic == "table":
+            out["table"] = table
+        else:
+            out["standings"] = [
+                {"manager": t["manager"],
+                 "record": f"{t['wins']}-{t['losses']}" + (f"-{t['ties']}" if t["ties"] else ""),
+                 "points_for": t["points_for"], "points_against": t["points_against"]}
+                for t in table["teams"]]
+            if week and int(week) > table["last_played_week"]:
+                out["records_note"] = (f"Week {int(week)} is not final. These records cover weeks "
+                                       f"1-{table['through_week']}.")
 
     elif topic == "standings":
         rows = []

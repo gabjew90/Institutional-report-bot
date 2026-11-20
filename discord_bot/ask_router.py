@@ -684,11 +684,25 @@ _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
     ("league", re.compile(
         r"\b(?:league\s+(?:settings?|rules?|scoring|size|members)"
         r"|who(?:'s|s| is| are)\s+in\s+the\s+league)\b", re.I)),
-    ("standings", re.compile(
-        r"\b(?:standings?|records?|first\s+place|last\s+place|best\s+team"
+    # The league table: standings for any week played, remaining schedules,
+    # playoff odds. Computed in report/league_table.py and posted as lines
+    # (discord_bot/league_lines.py, 2026-11-19); until then each of these
+    # was assembled by the model from the current standings payload.
+    ("table", re.compile(
+        r"\b(?:standings?|records?|first\s+place|last\s+place|best\s+team|worst\s+team"
         r"|who(?:'s|s| is)\s+(?:winning|leading|best|worst)"
-        r"|(?:gonna|going\s+to)\s+win\s+(?:the\s+)?(?:league|championship|it\s+all))\b", re.I)),
+        r"|(?:gonna|going\s+to)\s+win\s+(?:the\s+)?(?:league|championship|it\s+all)"
+        r"|playoffs?|post\s?season|clinch\w*|eliminated|seeds?|seeding"
+        r"|strength\s+of\s+schedule|(?:remaining|toughest|hardest|easiest|softest)\s+schedules?"
+        r"|schedule\s+(?:strength|difficulty)|(?:hardest|toughest|easiest)\s+(?:road|path|remaining)"
+        r"|points?\s+(?:for|against)|(?:most|fewest|least)\s+points"
+        r"|(?:top|bottom)\s+\d{1,2}\s+(?:teams?|seeds?|spots?|managers?|at|after|through|thru|as\s+of|in\s+(?:the\s+)?(?:league|standings))"
+        r"|(?:toughest|hardest|easiest|softest)\s+(?:remaining\s+)?schedules?"
+        r"|how(?:'s|s| is)\s+(?:the|our)\s+league(?:\s+looking)?)\b", re.I)),
 ]
+# "through week 6", "after week 6", "week 6 standings": the week a table
+# question is about.
+_TABLE_WEEK_RE = re.compile(r"\bweek\s+(\d{1,2})\b", re.I)
 
 # "my", "I", "me": the asker is asking about their own team, and the
 # pipeline knows who they are, so the roster and projection lookups can
@@ -722,6 +736,9 @@ _FOOTBALL_RE = re.compile(
     r"|outlook|rank(?:ed|ings?)?|tiers?|compare|versus|\bvs\.?\b|better"
     r"|gonna\s+win|whos?\s+winning|waiver|claim|stash|grab"
     r"|who(?:'s|s| is)\s+(?:winning|losing|best|worst)|record|standings?|playoffs?"
+    # league-table words (2026-11-16: "toughest schedule over the next 5
+    # weeks" and "top 6 at the end of week 6" matched nothing here)
+    r"|schedules?|seeds?|seeding|clinch\w*|eliminated|top\s+\d{1,2}|week\s+\d{1,2}|league"
     r"|sunday|monday\s+night|thursday\s+night|red\s*zone|snaps?|targets?|carries"
     # Team names (2026-10-04: "what % chance of winning did Jamal have
     # before this Panthers?" matched nothing). Bare "chance" is not here:
@@ -870,12 +887,19 @@ def _as_fantasy(r: "Route", q: str, reason: str, *,
     # guessing which slice to ask for (2026-09-03, owner). Draft,
     # transactions, trending and league settings are not in it, so
     # those topics still ride alongside.
+    table_args: dict = {"topic": "table"}
+    wk = _TABLE_WEEK_RE.search(q or "")
+    if wk and 1 <= int(wk.group(1)) <= 18:
+        table_args["week"] = int(wk.group(1))
     if asker_manager:
         prefetch.append((T_FANTASY, {"topic": "situation", "member": asker_manager}))
         if topic in ("draft", "transactions", "trending", "league"):
             prefetch.append((T_FANTASY, {"topic": topic}))
+        elif topic == "table":
+            # a manager asking about the league gets the table as well
+            prefetch.append((T_FANTASY, table_args))
     else:
-        args: dict = {"topic": topic}
+        args: dict = table_args if topic == "table" else {"topic": topic}
         if topic and (topic != "roster"):
             prefetch.append((T_FANTASY, args))
     # A start/sit question names players: their projections, wherever they

@@ -2325,7 +2325,13 @@ def _build_fantasy_league_tool():
                     "draft picks, who's trending, projections. Managers "
                     "are resolved to their Discord identities.\n"
                     "`topic` (required): 'league' (settings + who's in "
-                    "it) | 'standings' (records + points) | 'matchups' "
+                    "it) | 'standings' (records + points) | 'table' (the "
+                    "league table computed from the weekly scores, for the "
+                    "current week or a past one via `week`: seed, record, "
+                    "points for and against, each team's remaining opponents, "
+                    "playoff odds and expected wins. USE THIS for standings "
+                    "at a past week, strength of schedule and playoff "
+                    "chances; never work those out yourself) | 'matchups' "
                     "(every game: scores, margins, who's left to play, "
                     "standouts, projected finals) | 'roster' (one manager's "
                     "starters + bench — requires `member`) | "
@@ -2355,9 +2361,9 @@ def _build_fantasy_league_tool():
                         "topic": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "league | standings | matchups | roster "
-                                "| transactions | draft | trending | "
-                                "projections | stats | situation"
+                                "league | standings | table | matchups | "
+                                "roster | transactions | draft | trending "
+                                "| projections | stats | situation"
                             ),
                         ),
                         "week": types.Schema(

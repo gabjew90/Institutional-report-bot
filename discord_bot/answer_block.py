@@ -62,6 +62,10 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
     elif tool == "event_returns":
         from discord_bot import event_returns
         lines = event_returns.block_lines(result)
+    elif tool == "lookup_fantasy_league" and result.get("table"):
+        # standings, remaining schedules and playoff odds (2026-11-19)
+        from discord_bot import league_lines
+        lines = league_lines.block_lines(result, question)
     # A company's report date is no longer here: every turn about one stock
     # gets its lines from discord_bot/stock_body.py (2026-11-13).
     elif (tool == "lookup_market_price" and (context or {}).get("shape") == "price"

@@ -272,12 +272,15 @@ def test_fantasy_prefetch_topic_follows_the_question():
         "who should i start this week": "projections",
         "my matchup this week": "matchups",
         "who is in the league": "league",
-        "league standings": "standings",
-        "hows the league doing": "standings",   # fallback
+        "league standings": "table",
+        "hows the league doing": "table",
+        "week 6 standings": "table",
+        "fantasy league thoughts": "standings",   # fallback
     }
     for q, topic in cases.items():
         r = R.classify(q, fantasy_enabled=True)
-        assert r.prefetch == [(R.T_FANTASY, {"topic": topic})], (q, r.prefetch)
+        want = {"topic": topic, "week": 6} if q == "week 6 standings" else {"topic": topic}
+        assert r.prefetch == [(R.T_FANTASY, want)], (q, r.prefetch)
 
 
 def test_roster_questions_are_not_prefetched():
@@ -378,7 +381,10 @@ def test_the_six_common_league_questions():
     sit = (R.T_FANTASY, {"topic": "situation", "member": "BK"})
     expected = {
         "who's gonna win the matchup": [sit],
-        "whos gonna win the league": [sit],
+        # a league-table question gets the table beside it (2026-11-19)
+        "whos gonna win the league": [sit, (R.T_FANTASY, {"topic": "table"})],
+        "who has the toughest remaining schedule over the next 5 weeks": [sit, (R.T_FANTASY, {"topic": "table"})],
+        "top 6 at the end of week 6": [sit, (R.T_FANTASY, {"topic": "table", "week": 6})],
         "hows my matchup": [sit],
         "hows my outlook": [sit],
         "compare bk and declan teams": [sit],

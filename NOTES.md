@@ -3885,3 +3885,13 @@ Fixed in this commit:
 - **One consensus (A8).** NVDA's consensus was given as $2.53 on $111.28B (the calendar feed, worded by the model on the catch-all) and two minutes later as $2.47 on $108.7B (the code line, Yahoo). `reconcile_earnings_with_snapshot` now takes Yahoo's figures whenever both feeds list the same report date, the model's own `lookup_earnings_date` call is reconciled too (`_execute_earnings_date_one_consensus`, the snapshot cached 15 minutes, 6 s limit), and the older disagreement rule no longer fires across quarters (dates more than 14 days apart).
 
 Not fixed, in the agreed order: the fantasy league table (design 3, before Sunday), then one trade-log tally with a scope (A4, A5, A6), then the missing-field line (A7), the router (A9, A10) and the profile framing checks. A clock-time question ("what time is the call") still has no feed and is the "asked fact" design.
+
+## 2026-11-19: the fantasy league table is posted by code (design 3 of audit run 12)
+
+`report/league_table.py` (committed 11-17, unused until now) is wired in: the `table` topic of `lookup_fantasy_league`, the router's `table` topic for standings, schedule and playoff words (a manager gets it beside their `situation`, and "week N" is passed through), and `discord_bot/league_lines.py`, whose lines `answer_block` posts as written. `standings` with a `week` now reads the same table, so a past week is no longer the current table under another label.
+
+Checked against the live league on 11-19: week 10 records and points match Sleeper, the week-6 table puts f.jamal first at 5-1 with 861.8 points (the answer invented on 11-16 said 3-3), and the cold read of fourteen weekly files took 1.8 s.
+
+Owner decisions taken as defaults, to confirm: the playoff odds are a simulation from each team's scoring so far and are labelled "my own estimate" in the header line; a standings answer lists all twelve teams unless the question says "top N teams".
+
+Known and left: two `tests/test_chat_count.py` tests fail in the first hours after midnight New York time, with or without this change (the fixture's "today" messages fall on the previous New York day).
