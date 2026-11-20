@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+   "span": "purchase commitments plus long-term supply obligations ... from ~$311B in FQ2 (and ~$145B in FQ1) to ~$430B",
+   "why": "UBS gives the exact $311B (prior quarter) to $430B (current quarter) jump in Nvidia's supply/purchase commitments, matching the figures and the one-quarter ('three months ago') gap."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27703__db-reid-cotd-apple-oranges-and-chips-17-nov-2026.txt",
+   "span": "consensus has it reaching around $625bn by 2031 ... Nvidia is trading on around 6x those potential future earnings at its current market cap",
+   "why": "Matches Reid's $625bn 2031 consensus-earnings figure and the ~6x multiple exactly, attributed correctly to Deutsche Bank's Jim Reid."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+   "span": "the 10-Q will be filed \"in the coming weeks\" - later than usual. When queried on our callback, management indicated this was related to the ongoing investigation",
+   "why": "UBS states the 10-Q is late and that management, on UBS's own callback, attributed the delay to the ongoing investigation."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28173__deutsche-says-the-bear-trifecta-can-t-all-hit-at-once-but-ev.txt",
+   "span": "The 3-month annualized pace of US core CPI hit 3.75% in October, the fastest since April 2024.",
+   "why": "Direct, exact match of figure, period, and comparison."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28097__the-volatility-trap-wall-street-is-facing-a-massive-two-way-.txt",
+   "span": "a further 5% decline in equities could trigger approximately $81.8bn of mechanical selling from options ... $66.1bn of buying",
+   "why": "Nomura's rebalance-grid figures round to $82bn selling / $66bn buying on a 5% move, matching the sentence."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28097__the-volatility-trap-wall-street-is-facing-a-massive-two-way-.txt",
+   "span": "VIX at 25 and VVIX at 121 ... McElligott sees the VIX floor shifting higher, but limited positioning fuel for a genuine volatility shock above 30 without a much deeper equity selloff.",
+   "why": "Exact match of levels and McElligott's floor/no-fuel-above-30 view."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28176__last-call-at-the-bank-of-nvidia-new-ceo-to-shut-open-checkbo.txt",
+   "span": "interim CEO Colette Kress is expected to rein in deals ... the October conference in Berlin ... Huang told the same executives ... they would need to secure upfront payments from their own customers",
+   "why": "Matches Kress's expected reining-in, and Huang's Berlin ultimatum to neocloud CEOs about upfront customer payments to keep allocations."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27879__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+   "span": "UBS's Tim Arcuri ... even a temporary pause ... could pull $50BN or more out of the AI ecosystem",
+   "why": "Direct match of attribution and figure."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27878__one-blackstone-can-t-sell-800-million-of-debt-the-other-just.txt",
+   "span": "investment grade spreads for AI-related issuers have blown out to roughly 140bps while everyone else sits below 100bps",
+   "why": "Matches the ~140bps extra yield for AI-related borrowers."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28175__huang-over-hormuz-headlines-hammer-stocks-spoos-lose-as-bond.txt; pilot-data/pilot/source-text/2026-11-19/27878__one-blackstone-can-t-sell-800-million-of-debt-the-other-just.txt",
+   "span": "...and Data-Center CDS back above 450bps...  /  QTS...came back from the private placement market with $300 million of the $800 million it wanted",
+   "why": "Both figures (CDS >450bps; QTS placing $300M of $800M) are directly supported, across two source notes."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27980__gs-armbrust-what-matters-today-nvda-beat-hfs-de-risking-cont.txt",
+   "span": "Nvidia saying its more selective on customer financing: investments, commitments and guarantees will prioritize projects with land, power, buildings and clear demand",
+   "why": "Total commitments still rose to $518bn (continuing use) while Nvidia signaled increased selectivity on future support \u2014 matches the sentence."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27874__goldman-sees-10y-yields-sliding-50bps-to-4-6-in-2027-as-bond.txt; pilot-data/pilot/source-text/2026-11-19/28178__one-peak-to-rule-them-all-how-the-ai-hangover-runs-through-e.txt",
+   "span": "10Y Treasury yields to fall from 5.13% to 4.6% by year-end 2027  /  is 4.6%. The 10Y ended last week above 5.15%.",
+   "why": "Target (4.6% by end-2027) and the 'ended last week above 5.15%' comparator both appear verbatim."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27864__tech-sell-off-puts-ai-investment-case-to-the-test-english-16.txt",
+   "span": "The US commerce department's Bureau of Industry and Security on Monday issued a new rule ... data center operators in Singapore, Malaysia, Thailand, Indonesia, and Brazil will need to obtain a US government license",
+   "why": "Matches day, agency, rule type, and the five named countries; the US-headquartered exemption is corroborated in the companion UBS/Barclays notes."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28179__the-cuda-moat-drained-in-3-days-jpm-s-cembalest-says-jensen-.txt",
+   "span": "Cembalest breaks down China's projected AI compute at end-2027 ... remote access to US AI chips, a full 32% of China's compute. Three-quarters of China's overseas compute sits in Southeast Asia.",
+   "why": "Exact match of figures, attribution, and timeframe."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28159__ubs-ubs-global-i-o-semiconductors-new-us-export-controls-on-.txt",
+   "span": "NVDA should still be able to divert these shipments to other customers to mitigate any near-term impact so we see this as more of a longer-term issue especially if powered shell permitting gets more restrictive in the US",
+   "why": "Direct match of UBS's near-term/longer-term framing and the permitting conditional."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

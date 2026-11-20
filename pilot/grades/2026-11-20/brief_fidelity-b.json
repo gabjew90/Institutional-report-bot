@@ -1,0 +1,102 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA's 3QFY27 results beat on revenue/EPS, led by Data Center (hyperscaler + ACIE) growth and margin upside, therefore guidance for the Jan-2027 quarter (ex-China) also beat with a well-flagged 4QFY27 margin trough ahead of a FY28 recovery, therefore management raised FY28 revenue-growth guidance to ~75%, therefore UBS expects mid-to-high-single-digit earnings-estimate upgrades and stays constructive on its AI TRIO picks while flagging the AI rally's maturity and a coming shift in focus toward monetization.",
+   "brief_chain": "Same chain: beat on revenue/EPS and segment growth/margins, therefore guidance beat (ex-China) with the flagged 4Q trough/FY28 recovery, therefore raised FY28 growth guide to ~75%, therefore expected earnings-estimate upgrades and continued UBS constructive stance with a monetization caveat.",
+   "distortions": [
+    {
+     "what": "Brief drops supporting color from the five-takeaways section (post-Jensen leadership-bench commentary, continued TSMC engagement, secured memory/packaging capacity) that explains management's confidence but isn't itself a figure or call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is color supporting an already-stated conclusion (management confidence), not a stance, figure, or conviction level in its own right."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d6",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA's Q3 beat and raised Q4/FY28 guide reinforce UBS's structural AI thesis of robust demand against tight supply, therefore UBS projects aggregate AI capex rising from $1tr this year to $1.4tr (2027) and $1.5tr (2028), but flags monetization as the real test, therefore two risk threads (chip-export curbs that could pressure above-UBS 2028 capex consensus, and a longer Fed hiking cycle raising AI financing risk) argue for staying engaged with the theme while shifting toward greater selectivity, diversification, and a defensive-tech balance.",
+   "brief_chain": "Same chain: beat/raised guide reinforces the structural thesis, UBS's own aggregate capex forecast of $1.4tr/$1.5tr, monetization as the ultimate test, two risk threads (export curbs vs. UBS's 2028 capex view; longer hiking cycle vs. financing risk), ending in the same selective/diversified/defensive-balanced stance.",
+   "distortions": [
+    {
+     "what": "Brief frames the $1.4tr (2027)/$1.5tr (2028) capex figures as UBS 'raising its own forecast.' The source states these as UBS's forward trajectory for AI capex growth ($1tr\u2192$1.4tr\u2192$1.5tr), not explicitly as an upward revision from a prior UBS estimate.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the end figures and the bullish structural framing are identical either way; nothing about direction, conviction, or forecast status changes."
+    },
+    {
+     "what": "Brief drops that NVDA shares' 4.9% after-hours rise followed a prior 0.4% Tuesday decline.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 secondary price-action detail, doesn't affect any call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "NVDA reports Q3 under interim CEO Kress amid a ~35%/$2tn drawdown and new export rules/closed China loophole, therefore the buyside bar (JPMorgan survey, UBS's Arcuri) sits well above the Street/company guide so a merely in-line print would disappoint, therefore the real debate is whether Kress reaffirms the 70% FY28 growth guide under leadership/export uncertainty (BofA: 10-15% odds it's pulled), therefore options price the richest move in two years though realized moves have usually undershot implied ones, therefore the author concludes the quarter is likely fine and the 70% likely gets 'reaffirmed' with qualifiers, but believes the priced 8% move understates the real reaction and that it skews to the downside first \u2014 with the larger multi-year debate being what multiple the market assigns to 2028-2031 earnings, where UBS and SemiAnalysis have each already cut estimates.",
+   "brief_chain": "Matches through the options-pricing/historical-undershoot point and the 2028-2031 multiple debate, but ends there \u2014 it omits the author's own concluding call that the 70% guide likely gets reaffirmed with qualifiers and, more importantly, that the actual reaction is expected to exceed the priced 8% move and skew to the downside.",
+   "distortions": [
+    {
+     "what": "Brief omits the article's own concluding directional call: that the priced 8% move likely understates the real reaction and that the move skews to the downside first, and that the 70% guide likely gets 'reaffirmed' with export-rule qualifiers.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader acting on the brief has no directional lean on tonight's reaction, while the source explicitly argues the move understates risk and skews bearish, which is itself the article's trade-relevant conclusion."
+    },
+    {
+     "what": "Brief drops the 'Jensen-Sized Hole' section's specifics (named succession candidates Rene Haas and Lip-Bu Tan, Treasury Secretary Bessent wanting an outside CEO, petitions to reinstate Huang).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is color supporting the already-stated 'leadership uncertainty' point, not a distinct stance or figure."
+    },
+    {
+     "what": "Brief compresses Goldman's framing of a 2028-2030 earnings-multiple debate and Deutsche Bank's separate 2031-earnings-multiple chart into a single 'Goldman and Deutsche Bank... 2028-2031' claim.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both banks are genuinely debating what multiple applies to out-year Nvidia earnings; the year-range compression doesn't change the call."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 2
+  },
+  {
+   "id": "d19",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Goldman's 2027 outlook reports converge on one point: global AI investment keeps growing in dollar terms (2026 $1.1tn \u2192 2027 $1.8tn), but its growth rate as a share of GDP peaks in 1H27 \u2014 a second-derivative turn that matters far more for markets than the economy, since AI drives only 21% of US GDP growth versus 62% of S&P earnings growth and up to 92% of market-value gains \u2014 therefore every asset-class call follows from that asymmetry: equities (EPS growth halves, S&P target 8,700, buy Hyperscalers at 19.7x), credit (spreads widen on AI debt issuance), rates (bonds regain hedge value, 10Y target 4.6% vs. >5.15% now), FX (Dollar weakens ~3% as an AI-linked asset while Yen/Yuan strengthen), and commodities (collapsed oil risk premium argues for gold/copper hedges) \u2014 and while Goldman's own baseline is benign, the article's author (distinct from Goldman) argues the downside path is more likely, given continued Fed hikes, record equity supply, and credit already cracking at the AI edges.",
+   "brief_chain": "Matches the source chain point for point, including correctly separating Goldman's own benign baseline from the author's independent downside call.",
+   "distortions": [
+    {
+     "what": "Brief states 'five 2027 outlook notes (macro, equities, credit, rates, FX, commodities)' \u2014 naming six categories under a count of five. The source itself names five published documents but breaks them into six rows (credit and rates are both drawn from one cross-asset 'Growing Pains' report).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 reflects an ambiguity already present in the source's own document-count vs. table-row framing; all six category calls are still individually correct."
+    },
+    {
+     "what": "Brief drops the regional equity tilt (overweight US and Japan, underweight Europe) and the specific energy-hedge trades (June 2027 European gasoline and Q1 TTF call spreads) from the equities and commodities calls.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are additional secondary recommendations layered on top of the stated headline calls (buy Hyperscalers; buy gold/copper), not a reversal of them."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 7,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

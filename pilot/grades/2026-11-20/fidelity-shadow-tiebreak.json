@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28104__ai-quick-pulse-nvda-3qfy27-results-strength-in-challenging-t.txt",
+   "span": "NVIDIA's 3QFY27 results came in ahead of expectations, with revenue of USD 115.8bn versus consensus of USD 109.0bn and non-GAAP EPS of USD 2.68 versus USD 2.48 consensus. Data center revenue reached USD 107.6bn, up 110% y/y",
+   "why": "Every figure (revenue, consensus, EPS, EPS consensus, data center revenue, y/y growth) matches exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28104__ai-quick-pulse-nvda-3qfy27-results-strength-in-challenging-t.txt",
+   "span": "Guidance for the January 2027 quarter of USD 130.0bn \u00b13% was also comfortably above the consensus of USD 125.3bn ... management raised FY28 (January 2028) revenue growth expectations to approximately 75% from 70%",
+   "why": "Guidance figure, consensus figure, and the growth-guidance raise (FY28 = next fiscal year) all match."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+   "span": "some investors have been worried about C2027 cuts, but our view has always been that this is more about how much things decelerate in C2028 ... trim C2028 a bit more (now up <10% Y/Y) with EPS now ~$18.80 ... our PT comes down only slightly to $220 and we maintain Buy",
+   "why": "The 2028-growth estimate, EPS, price-target cut ($240\u2192$220) and Buy rating are all faithful. But the sentence claims UBS's own worry 'moved from a 2027 cut to' 2028 deceleration; the source explicitly attributes the 2027-cut worry to 'some investors' and states UBS's view 'has always been' about 2028, not that it shifted there from a prior 2027 concern. This misattributes whose worry it was and inverts a 'constant' into a 'change over time.'",
+   "searched": [
+    "worry has moved",
+    "2027 cut"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28172__dealers-most-short-gamma-since-2019-as-mcelligott-braces-for.txt",
+   "span": "Nomura's rebalance grid shows just how lopsided the mechanics have become: options dealers, levered ETFs and vol control funds would need to sell roughly $82 billion on a 5% down day, but \"only\" buy about $66 billion on a 5% up day.",
+   "why": "Exact match on both figures and the asymmetric framing."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28097__the-volatility-trap-wall-street-is-facing-a-massive-two-way-.txt",
+   "span": "VIX at 25 and VVIX at 121. ... McElligott sees the VIX floor shifting higher, but limited positioning fuel for a genuine volatility shock above 30 without a much deeper equity selloff.",
+   "why": "Exact match on levels and the attributed view."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28176__last-call-at-the-bank-of-nvidia-new-ceo-to-shut-open-checkbo.txt",
+   "span": "interim CEO Colette Kress is expected to rein in deals ... the October conference in Berlin ... where he lectured half a dozen neocloud CEOs ... Huang told the same executives that Nvidia's days as an open checkbook were over, and that if they wanted allocations of its GPUs they would need to secure upfront payments from their own customers.",
+   "why": "Matches Kress's expected role, Huang having already acted first, and the Berlin ultimatum to neocloud CEOs about upfront customer payments."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28176__last-call-at-the-bank-of-nvidia-new-ceo-to-shut-open-checkbo.txt",
+   "span": "total off-balance sheet commitments and guarantees reached $530 billion at the end of July, led by $279 billion of supply and capacity purchases, a line that more than doubled from $119 billion in just three months.",
+   "why": "All figures and the doubling claim match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/27876__has-the-ai-selloff-gone-too-far-or-is-wall-street-front-runn.txt",
+   "span": "to roughly 140bps, the wides of the past two years and some 40bps over non-AI credit",
+   "why": "140bps figure for AI-related credit spread widening is corroborated across multiple sources."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28178__one-peak-to-rule-them-all-how-the-ai-hangover-runs-through-e.txt",
+   "span": "AI explains 21% of US GDP growth, but 62% of S&P 500 earnings growth and, at the peak, 92% of the gain in US market value.",
+   "why": "All three percentages match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/27858__ai-quick-pulse-compute-containment-market-implications-of-ti.txt",
+   "span": "destination-based licensing for covered advanced chips shipped to Brazil, Indonesia, Malaysia, Singapore, and Thailand ... US-headquartered companies and businesses with a US ultimate parent may qualify for an exemption",
+   "why": "Country list, license requirement, US-headquartered exemption, and (corroborated in 27865) the Monday timing and China/overseas-compute rationale all match."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28159__ubs-ubs-global-i-o-semiconductors-new-us-export-controls-on-.txt",
+   "span": "it is possible that this new rule could strip 1-2GW out of current demand, with most of this likely being from NVDA. At $30B+/GW, this is roughly consistent with our estimate of a 10% demand impact ... We see NVDA as the most directly impacted by this rule",
+   "why": "Every figure and the 'most directly hit' attribution to Nvidia match exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28099__2026-11-18-anatomy-of-a-crash-lessons-from-dotcom-en.txt",
+   "span": "The Nasdaq peaked on 10 March 2000. By mid-April, the index was down by over a third ... additional hikes at every FOMC meeting \u2013 February (25bps), March (25bps) and May (50bp) ... By mid-June, the market was up 35% from the lows ... Rate hikes \u201cno longer mattered\u201d because the US technology sector was \u201crelatively immune to higher interest rates\u201d",
+   "why": "Peak date, drawdown, each Fed hike month, rebound percentage/timing, and the 'immune to rate hikes' narrative all match."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28103__2026-11-18-underweight-us-equities-en.txt",
+   "span": "We take 3.5pp out of the US, now a small underweight ... We raise cash substantially, taking the allocation to 14.0%",
+   "why": "The 3.5pp US equity cut to small underweight and the cash raise to 14% both match exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28100__2026-11-18-problems-yes-crisis-no-that-comes-later-en.txt",
+   "span": "it is not a crisis threatening growth ... A major bear market is in the offing, but it is not being offered today ... The 10Y gets to 6% next year ... Like I said, there is a crisis brewing, but today is not it.",
+   "why": "Author is Steven Blitz (byline in source); 'not a crisis now, bear market/crisis later' and the 10Y-to-6%-next-year call both match. 'Correction' is a reasonable gloss for 'problems, not crisis' and changes no figure or attribution."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot/source-text/2026-11-19/28165__us-equities-english-1669742.txt",
+   "span": "Chief Investment Office GWM ... we have downgraded US equities from Attractive to Neutral ... we have lowered our June 2027 S&P 500 price target to 8,000 from 8,400 ... several key market drivers shift from accelerating to decelerating growth",
+   "why": "Rating change to Neutral, target cut 8,400\u21928,000, and the accelerating/decelerating growth rationale all match exactly."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

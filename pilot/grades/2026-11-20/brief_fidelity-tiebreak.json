@@ -1,0 +1,107 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA 3QFY27 beats revenue/EPS/margins on data-center strength (hyperscaler +71% off tough comp, ACIE +195% on Vera Rubin) therefore guidance ($130bn ex-China, GM 71-72% bracketing 4QFY27 trough) tops consensus therefore management raises FY28 growth to ~75% from 70% therefore UBS expects mid-high-single-digit EPS upgrades, while board weighs CEO succession, NVDA tightens customer financing, and buyback rises to $227bn, therefore UBS stays constructive but flags year-4-of-rally monetization risk",
+   "brief_chain": "Same chain: beat on revenue/EPS/margins and data-center detail, therefore guidance tops consensus with a 4QFY27 margin trough, therefore FY28 growth raised to ~75% drives UBS's EPS-upgrade expectation, plus CEO search, tighter customer financing, $227bn buyback, therefore constructive-but-cautious (4th year of rally, monetization focus)",
+   "distortions": [
+    {
+     "what": "Brief omits UBS's standing AI TRIO stock preference (favor platform/application beneficiaries; like enabling-layer infra with pricing power), which the source restates at the end",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is an unchanged standing preference, not new information from this note; dropping the restatement doesn't alter any call."
+    },
+    {
+     "what": "Brief drops the \"\u00b13%\" band on the $130.0bn guide figure",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the beat-vs-consensus direction and magnitude are unaffected by omitting the stated tolerance band."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d6",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA Q3 beat and above-Street Q4/FY guide (75% vs 70% growth) therefore shares rise after-hours despite a weak Nasdaq close on demand/capex worries, therefore UBS reiterates AI as structural (raises own capex forecast to $1.4tr/$1.5tr) but flags growing sensitivity to geopolitical/macro risk (chip export curbs, a longer Fed hiking cycle stressing leveraged infra financing) therefore recommends staying engaged but more selective and diversified",
+   "brief_chain": "Same chain: NVDA beat and raised guide drives the after-hours pop despite a soft Nasdaq close, therefore UBS stays structurally bullish (raised capex forecast) while flagging two risk threads (export curbs, Fed hiking/financing stress) therefore recommends selectivity, quality tilt and diversification",
+   "distortions": [
+    {
+     "what": "Brief omits the $1tr-in-2026 baseline for UBS's own capex forecast, keeping only the 2027/2028 figures",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the forward figures and their upward direction are preserved; the dropped baseline doesn't change the call."
+    },
+    {
+     "what": "Brief tightens \"could generate headlines about state and local restrictions\" to \"invite state-level restrictions after the midterms\"",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both describe the same contingent, secondary risk to capex sentiment, not a change in stance or conviction."
+    },
+    {
+     "what": "Brief compresses UBS's base-case-modest-tightening-but-rising-risk-of-25bp-moves framing into \"a longer Fed hiking cycle\"",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying financing-risk conclusion for leveraged infra providers is unchanged."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "NVDA reports Q3 tonight under interim CEO Kress post-Huang with the stock already down ~35%/-$2tn, therefore the quarter itself isn't the worry but the buyside bar (JPM $112.6bn, UBS Arcuri +$3-4bn) sits well above Street consensus ($109.3bn), therefore the real debate is whether Kress reaffirms the 70% FY28 growth guide under new export rules/leadership uncertainty (BofA: 10-15% odds guidance is pulled), therefore options price a rich 8% move that has historically overshot realized moves, and beyond tonight the bigger question is what multiple the market pays for 2028-2031 earnings as UBS/SemiAnalysis cut 2028 estimates",
+   "brief_chain": "Same chain: NVDA reports tonight under Kress post-resignation with new export curbs/closed loophole, therefore Street's $109.3bn vs the company's $108bn guide is actually the low bar since the buyside (JPM, UBS's Arcuri) sits higher, meaning in-line would read as a miss, therefore the real debate is the 70% reaffirmation under new rules/leadership (BofA's 10-15% pulled-guidance odds), therefore the 8% priced move (richest in two years, historically overshooting realized), and beyond tonight the 2028-2031 earnings multiple question with UBS/SemiAnalysis cutting 2028 numbers",
+   "distortions": [
+    {
+     "what": "Brief omits Goldman analyst Schneider's above-consensus preview, the national-security export-control board committee, and the named succession candidates (Haas, Tan)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 none of these change the stated consensus/buyside figures, the 70%-guide debate, or the options-pricing conclusion that the brief carries."
+    },
+    {
+     "what": "Brief states a merely in-line Street number \"would read as a disappointment\" as a direct inference from the source's buyside-bar framing rather than a verbatim source sentence",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this restates the source's own explicit point (buyside needs a beat above Street/guide to call it in line) without altering the conclusion."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d19",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Global AI investment keeps rising ($1.1tn to $1.8tn in 2027) but its growth rate as a share of GDP peaks in 1H27, therefore because AI explains far more of S&P earnings/market-value gains (62%/92%) than of GDP growth (21%), the peak is a bigger test for markets than the economy, therefore every desk's 2027 call reflects it: equities (EPS growth halves, S&P 8,700, buy Hyperscalers at 19.7x), credit (spreads widen, IG 88bp\u2192105bp, HY 320bp\u2192410bp), rates (bonds regain hedge value, 10Y target 4.6% vs >5.15% now), FX (Dollar -3% as an AI-linked asset, long Yen/Yuan), commodities (collapsed oil risk premium argues for gold/copper hedges), therefore Goldman's own baseline is benign but the author judges the downside path more likely given continued Fed hikes, record equity supply, and AI-edge credit cracks",
+   "brief_chain": "Same chain: AI investment keeps rising but its GDP-share growth rate peaks in 1H27, a second-derivative turn that hits markets harder than the economy given the 21%/62%/92% asymmetry, therefore it drives every asset call (EPS halving/S&P 8,700/buy Hyperscalers at 19.7x; wider IG/HY spreads; bonds as the new hedge at a 4.6% 10Y target vs >5.15% now; a weaker AI-linked Dollar with Yen/Yuan strength; gold/copper as hedges on the collapsed oil premium), therefore Goldman's baseline is benign but the author sees downside as more likely, citing Fed hikes, record equity supply, and AI-edge credit cracks",
+   "distortions": [
+    {
+     "what": "Brief labels six thematic categories (macro, equities, credit, rates, FX, commodities) as \"five outlook notes,\" mirroring the source's own inconsistent framing (five physical reports, a six-row table)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a labeling artifact inherited from the source itself, not a change to any figure or call."
+    },
+    {
+     "what": "Brief drops the regional equity tilt (overweight US and Japan, underweight Europe) and the \"level peaks in 2028\" clarifying detail, keeping only the Hyperscaler call and the GDP-share peak timing",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the retained Hyperscaler-buy call and peak-timing framing are unchanged; the dropped regional detail doesn't alter the cited trade."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

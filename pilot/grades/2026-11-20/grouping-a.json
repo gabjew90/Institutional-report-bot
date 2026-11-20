@@ -1,0 +1,64 @@
+{
+ "metric": 1,
+ "total_cards": 898,
+ "fragmentation_sets": [
+  {
+   "subject": "Fed December policy path: hawkish 50bp-hike case vs. equity-driven pivot bet",
+   "labels": [
+    "fed hawkish repricing",
+    "warsh fed pivot bet"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "UBS's AI capex monetization and demand-durability case",
+   "labels": [
+    "ai monetization risk",
+    "ai demand reacceleration"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.049,
+ "mis_merges": [
+  {
+   "label": "ai investment peak 2027",
+   "subjects": [
+    "AI capex/investment peak-timing forecasts (BofA/Goldman/Morgan Stanley capex figures and GDP impact)",
+    "Goldman's 2027 macro and Fed-rate-path forecast (global growth, core PCE, two hikes then a cut)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Fed-hawkish theme is already fully populated by its own label, so burying one corroborating Goldman data point here changes evidence location, not which themes an editor would pick."
+  },
+  {
+   "label": "nvidia stock valuation",
+   "subjects": [
+    "NVDA-specific valuation and price targets (Goldman/UBS targets, buyback authorization, EPS estimates)",
+    "Tech-sector positioning washout (Goldman's long/short ratio collapse, sentiment, liquidation-to-shorting shift)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The positioning-washout subject is already a robust standalone theme (12 cards, 6+ sources) under 'ai tech led equity selloff', so these 3 misplaced cards duplicate rather than create a theme."
+  },
+  {
+   "label": "us equity sector preferences",
+   "subjects": [
+    "TS Lombard's regional/country and sector allocation shifts (Taiwan, China, India, Europe recycling, Healthcare, Energy)",
+    "UBS's AI-stack diversification framework (Enabling/Intelligence/Application layer stock selection)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both are minor allocation-color briefs with no claim on the day's lead themes, so merging two unrelated bank notes under one label changes organization, not selection."
+  }
+ ],
+ "pass": true,
+ "notes": "UBS's S&P 500 year-end-2027 price target is given as 8,200 in 'us equities rating downgrade' and 8,900 in 'spx 2027 derating rebound'; that looks like a data inconsistency rather than a grouping defect, flagged for the data team, not scored here. misc holds 12 cards (~1.3% of total), correctly left out of fragmented mass.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

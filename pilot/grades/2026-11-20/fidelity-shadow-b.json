@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28104__ai-quick-pulse-nvda-3qfy27-results-strength-in-challenging-t.txt",
+   "span": "revenue of USD 115.8bn versus consensus of USD 109.0bn and non-GAAP EPS of USD 2.68 versus USD 2.48 consensus. Data center revenue reached USD 107.6bn, up 110% y/y",
+   "why": "All five figures (revenue, consensus, EPS, EPS consensus, data-center revenue and its y/y growth) match verbatim."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28104__ai-quick-pulse-nvda-3qfy27-results-strength-in-challenging-t.txt",
+   "span": "Guidance ... of USD 130.0bn ... above the consensus of USD 125.3bn ... management raised its FY28 revenue growth outlook to approximately 75% y/y from 70%",
+   "why": "Guide, consensus and the FY28 (next fiscal year) growth-guidance raise from 70% to 75% all match."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+   "span": "trim C2028 a bit more (now up <10% Y/Y) with EPS now ~$18.80 ... PT comes down only slightly to $220 and we maintain Buy ... We trim our PT from $240 to $220",
+   "why": "C2028 growth cut to under 10%, EPS ~$18.80, PT cut $240->$220, Buy kept; the 2027-relief/2028-worry framing matches the note's C2027-vs-C2028 commentary."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28172__dealers-most-short-gamma-since-2019-as-mcelligott-braces-for.txt",
+   "span": "Nomura's rebalance grid ... options dealers, levered ETFs and vol control funds would need to sell roughly $82 billion on a 5% down day, but \"only\" buy about $66 billion on a 5% up day",
+   "why": "Exact figures and attribution to Nomura's rebalance grid match."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28097__the-volatility-trap-wall-street-is-facing-a-massive-two-way-.txt",
+   "span": "VIX at 25 and VVIX at 121 ... McElligott sees the VIX floor shifting higher, but limited positioning fuel for a genuine volatility shock above 30 without a much deeper equity selloff",
+   "why": "VIX/VVIX levels and the floor-rising/no-fuel-above-30 view match verbatim."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28176__last-call-at-the-bank-of-nvidia-new-ceo-to-shut-open-checkbo.txt",
+   "span": "interim CEO Colette Kress is expected to rein in deals ... the October conference in Berlin ... Huang told the same executives that Nvidia's days as an open checkbook were over ... they would need to secure upfront payments from their own customers",
+   "why": "Kress as interim CEO reining in financing deals, and Huang's Berlin ultimatum to neocloud CEOs about upfront payments, both confirmed."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27879__the-bank-of-nvidia-just-lost-its-chairman-mapping-every-circ.txt",
+   "span": "$530 Billion Of IOUs ... quarter ended July 26: $366 billion of future commitments, led by $279 billion of supply and capacity purchases (up from $119 billion just three months earlier) ... That adds up to $530.5 billion",
+   "why": "Total ($530.5bn), end-of-July quarter, $279bn supply/capacity figure and the more-than-doubling from $119bn all match."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/27881__equities-are-pricing-a-slowdown-rates-are-pricing-inflation-.txt",
+   "span": "AI-related IG spreads blowing out to the year's wides near 140bps while non-AI IG sits right around its average",
+   "why": "140bp figure for AI-related credit spreads matches exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28178__one-peak-to-rule-them-all-how-the-ai-hangover-runs-through-e.txt",
+   "span": "AI accounted for just 21% of US GDP growth, against 62% of S&P earnings growth and as much as 92% of the rise in US market value at the peak",
+   "why": "All three percentages match verbatim and in the same framing (markets more exposed than the economy)."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28179__the-cuda-moat-drained-in-3-days-jpm-s-cembalest-says-jensen-.txt",
+   "span": "This morning Commerce issued an interim final rule ... puts Singapore, Malaysia, Indonesia, Thailand and Brazil under a blanket license requirement unless the buyer is US-headquartered",
+   "why": "License requirement, the five named countries and the US-headquartered carve-out match; a companion source dates the rule to 16 November, a Monday, and frames it as closing the offshore-compute route."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28159__ubs-ubs-global-i-o-semiconductors-new-us-export-controls-on-.txt",
+   "span": "this new rule could strip 1-2GW out of current demand, with most of this likely being from NVDA. At $30B+/GW, this is roughly consistent with our estimate of a 10% demand impact",
+   "why": "1-2GW, ~10% demand impact, $30B+/GW, and Nvidia as the most-exposed name all match UBS's estimate."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28099__2026-11-18-anatomy-of-a-crash-lessons-from-dotcom-en.txt",
+   "span": "The Nasdaq peaked on 10 March 2000. By mid-April, the index was down by over a third ... additional hikes at every FOMC meeting \u2013 February (25bps), March (25bps) and May (50bp) ... technology sector was \"relatively immune to higher interest rates\"",
+   "why": "Peak date, >1/3 drop by mid-April, the three 2000 hikes, and the immunity narrative all confirmed here; the 35%-rally-by-mid-June figure is confirmed in the companion TS Lombard piece (28095__the-most-dangerous-lesson-from-the-dotcom-crash.txt)."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28103__2026-11-18-underweight-us-equities-en.txt",
+   "span": "We take 3.5pp out of the US, now a small underweight ... We raise cash substantially, taking the allocation to 14.0%",
+   "why": "3.5pp US cut to small underweight and cash raised to 14% both match verbatim."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-11-19/28100__2026-11-18-problems-yes-crisis-no-that-comes-later-en.txt",
+   "span": "A major bear market is in the offing, but it is not being offered today ... The 10Y gets to 6% next year and eventually tops at 8%. Like I said, there is a crisis brewing, but today is not it.",
+   "why": "Authored by Steven Blitz, titled 'Problems Yes, Crisis No - That Comes Later'; today-not-a-crisis, bear market arriving later, and 10Y to 6% next year all match."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-11-19/28147__ubs-equity-compass-november-en-v9-1.txt",
+   "span": "we lower our June 2027 S&P 500 target to 8,000 from 8,400 and introduce a December 2027 target of 8,200 ... key market drivers shift from accelerating to decelerating growth",
+   "why": "Neutral downgrade, target cut 8,400->8,000, and the accelerating-to-decelerating-growth rationale all match verbatim."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

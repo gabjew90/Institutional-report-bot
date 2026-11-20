@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+ "source_span": "Of this increase, >$100B was for supply and capacity for F2028/C2027 - signaling strong conviction in revenue growth in C2027 and backing its guidance raise, while supply for F2029/C2028 did not go up much at all and actually increased only a similarly small amount for F2030/C2029.",
+ "source_chain": "A: Total supply commitments rose to ~$430B, with over $100B of the increase earmarked for F2028/C2027 delivery while F2029/C2028 commitments barely moved (unlike last quarter's big step-up in longer-dated commits). Therefore B: this signals strong conviction in C2027 revenue and backs the guidance raise, but does nothing to mollify the market's separate, pre-existing fear about a growth deceleration in C2028 (a fear UBS says it has held all along, independent of this quarter's print). Therefore C: UBS trims its C2028 estimate (growth to <10% Y/Y, EPS ~$18.80) and cuts its PT to $220 from $240 on an unchanged 12x multiple, keeping Buy. Invalidation/forward marker (separate, unconnected item in the note): UBS flags that NVDA's 10-Q, usually filed with earnings, will instead be filed 'in the coming weeks' because of an ongoing investigation and possible new risk-factor disclosures - a legal/disclosure concern, not a data point UBS ties to resolving the C2028 commitment question. UBS states only that 2028 questions 'are likely to persist', not that a specific future filing will settle them.",
+ "pulse_chain": "A: Nvidia added >$100B of 2027 capacity commitments while 2028 commitments 'barely moved'. Therefore B: UBS reads this as 2027 conviction but a 2028 growth-deceleration worry, trimming its 2028 EPS estimate and cutting its PT to $220 from $240 while keeping Buy. Therefore C (invalidation, pulse's own addition): 'Next quarter's filing settles it. If the 2028 commitment line is flat again, UBS has the right read. The 10-Q is already late, and management told UBS the delay relates to an ongoing investigation.'",
+ "preserved": false,
+ "why": "The pulse's invalidation step fuses two things the note keeps separate - the delayed 10-Q (an investigation/risk-factor disclosure matter) and next quarter's supply-commitment data (which UBS gets from its regular quarterly disclosure regardless of 10-Q timing) - manufacturing a 'the late 10-Q is what will settle the 2028 debate' mechanism that UBS never argues; UBS itself only says the 2028 question 'is likely to persist', with no stated condition that would settle it next quarter.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

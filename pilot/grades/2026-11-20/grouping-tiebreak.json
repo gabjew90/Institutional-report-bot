@@ -1,0 +1,82 @@
+{
+ "metric": 1,
+ "total_cards": 898,
+ "fragmentation_sets": [
+  {
+   "subject": "Nvidia's CEO-succession crisis and the political pressure driving it, after Huang's resignation",
+   "labels": [
+    "nvidia leadership crisis",
+    "nvidia political exposure"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex sustainability debate \u2014 GS/MS/BofA capex-peak/cut caution vs UBS demand-reacceleration optimism and UBS's own downside scenario",
+   "labels": [
+    "ai investment peak 2027",
+    "ai demand reacceleration",
+    "ai monetization risk",
+    "ai disappointment recession scenario"
+   ],
+   "cards": 43
+  },
+  {
+   "subject": "The Fed's hawkish-vs-pivot policy path under Warsh (hike odds, the 'Warsh put' reflexivity read, and the yield scenario that follows from it)",
+   "labels": [
+    "fed hawkish repricing",
+    "warsh fed pivot bet",
+    "bond yield scenario"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "Oil's Hormuz-risk-vs-glut price tension and its quantified growth impact",
+   "labels": [
+    "hormuz risk vs oil glut",
+    "oil scenario stress test"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "European fiscal spread risk, the specific risk named and used as evidence in DB's bear-risk-offsetting thesis",
+   "labels": [
+    "bear risk offsetting thesis",
+    "european fiscal spread risk"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.121,
+ "mis_merges": [
+  {
+   "label": "us equity sector preferences",
+   "subjects": [
+    "TS Lombard's global/geographic allocation shift (Healthcare overweight, Energy downgrade, China made the biggest underweight, India to benchmark, proceeds recycled into euro-area equities)",
+    "UBS's AI-stack diversification framework for stock selection (Enabling/Intelligence/Application layers, platform and infrastructure favorites)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "An editor reading this label for its AI-stack content would likely miss TS Lombard's standalone, headline-worthy call that China is now its biggest equity underweight."
+  },
+  {
+   "label": "nvidia stock valuation",
+   "subjects": [
+    "UBS's NVDA fundamental 2028+ growth-deceleration thesis (EPS and price-target cuts), which duplicates evidence already filed under 'nvidia 2028 deceleration risk'",
+    "Goldman's AI/tech positioning and sentiment-collapse commentary (prime-book long/short ratio, selling-character shift, AI Semis basket valuation), which duplicates the same long/short-ratio stat already filed under 'ai tech led equity selloff'"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The label reads as one NVDA-valuation story but its evidence actually belongs to two subjects already covered elsewhere, so an editor could treat duplicated stats as fresh support for whichever theme they pick."
+  }
+ ],
+ "pass": false,
+ "notes": "The displayed label/card lists itemize ~373 cards against the stated 898-card total, so fragmented_mass_share (109/898) is a lower-bound estimate; against the visible total alone the share is ~0.29. 'misc' holds 12 of the itemized cards (~3% of the visible sample) and is excluded from mis-merge consideration as declared overflow. The largest fragmentation driver is the AI-capex bull/bear debate split four ways by source bank rather than by subject.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA beats on revenue, EPS, data-center growth and margins despite the CEO transition, therefore guidance for the Jan-2027 quarter and FY28 revenue growth (raised to ~75% from 70%) also top expectations, therefore UBS expects mid- to high-single-digit earnings-estimate upgrades, therefore UBS stays constructive on AI capex names (favoring platform/application and well-positioned infrastructure names) while flagging that this is the fourth year of the rally and monetization will matter more than incremental capex.",
+   "brief_chain": "Same chain: beat on revenue/EPS/data-center/margins -> above-consensus guidance with a 4Q trough and FY28 margin recovery -> FY28 growth raised to ~75% from 70% -> mid/high-single-digit EPS upgrades expected -> UBS stays constructive but flags the fourth-year-of-the-rally/monetization caveat.",
+   "distortions": [
+    {
+     "what": "Brief omits management's stated intent to fully utilize the USD 227bn buyback capacity by end of 2028, keeping only the dollar totals.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the capital-return conclusion (large, newly expanded buyback) is unchanged; only a supporting timeline detail is dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d6",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "NVDA's Q3 beat and raised FY28 guidance reinforce UBS's structural-AI-opportunity view and its own rising AI capex forecast ($1tr this year to $1.4tr/$1.5tr in 2027/2028), therefore but tighter China chip-export rules and a longer Fed hiking cycle raise capex-estimate and AI-financing risk, therefore UBS's conclusion is to stay engaged with AI but be more selective, diversified, and tilted toward financially strong/durable names rather than exiting the theme.",
+   "brief_chain": "Same chain: NVDA beat and raised guidance support the structural AI thesis and UBS's own capex forecast -> export curbs (limited direct revenue hit but consensus-capex and sentiment risk) and a longer hiking cycle (financing risk, stress already visible) are the two risk threads -> conclusion is selectivity and diversification, not retreat.",
+   "distortions": [
+    {
+     "what": "Brief drops NVIDIA's own 0.4% Tuesday share-price decline that preceded the 4.9% after-hours pop, keeping only the Nasdaq's 0.7% pre-print decline.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the after-hours reaction (up 4.9%) and the reason given (index-wide chip-demand/capex worries) are both preserved; the dropped intraday NVDA move doesn't bear on the call."
+    },
+    {
+     "what": "Brief phrases UBS's own capex trajectory as UBS \"raises its own aggregate AI capex forecast to USD 1.4tr in 2027 and USD 1.5tr in 2028,\" where the source states this as UBS's current projected path (\"we expect aggregate AI capital spending to increase from USD 1tr this year to USD 1.4tr in 2027 and USD 1.5tr in 2028\") with no mention of a prior, lower UBS estimate being revised.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the dollar figures and the bullish-on-AI-capex conclusion are identical either way; \"raises...to\" vs. \"increases...to\" is a wording choice describing the same upward trajectory, not an invented separate revision event."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "NVDA reports tonight under interim CEO Kress amid a ~35%/$2tn drawdown, new export curbs and a closed China cloud-rental loophole, therefore the official Street bar ($109.3bn/$108bn guide) is modest but the buyside/whisper bar (JPMorgan $112.6bn, UBS Arcuri +$3-4bn and a ~$130bn Q4 guide) is materially higher, therefore the real debate isn't the quarter but whether Kress reaffirms the 70% FY-growth guide under leadership and export uncertainty (BofA: 10-15% odds guidance is pulled entirely), therefore options price an unusually rich ~8% move even though realized moves have usually undershot implied ones, and the unresolved question beyond tonight is what multiple 2028+ earnings deserve, with UBS and SemiAnalysis already cutting 2028 estimates.",
+   "brief_chain": "Same chain and same figures throughout: modest Street bar vs. a higher buyside/whisper bar -> the real debate is the 70% FY28 guide surviving leadership/export uncertainty, with BofA's 10-15% pulled-guidance odds -> options price a rich 8% move against a history of overpriced moves -> the bigger unresolved question is the multiple on out-year earnings, with UBS and SemiAnalysis cutting 2028 numbers.",
+   "distortions": [
+    {
+     "what": "Brief's opening sentence combines the \"new export curbs covering Singapore, Malaysia, Thailand and Indonesia\" detail (stated later in the source, re: the board's National Security and Export Control Oversight Committee) with the lede paragraph's separate mention of a board export-controls committee and the closed China cloud-rental loophole, presenting them as one list.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both facts are accurately reported elsewhere in the same source document; only their sentence-level grouping differs, not their content or implication."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d19",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Goldman's 2027 outlook series (5 published notes, broken into 6 outlook categories in its own table) agree AI investment keeps rising ($1.1tn to $1.8tn in 2027) but its growth rate as a share of GDP peaks in 1H27, therefore because AI drives S&P earnings (62%) and market-value gains (up to 92%) far more than GDP (21%), this second-derivative turn is a much bigger test for markets than for the economy, therefore every asset-class call (equities: EPS growth halves, S&P 8,700, buy Hyperscalers at 19.7x; credit: spreads widen; rates: bonds regain hedge value, 10Y 4.6%; FX: softer dollar, long yen/yuan; commodities: buy gold/copper as the oil risk premium collapses) is hedging that same risk, therefore while Goldman's own baseline is benign, the Zero Hedge author's own view is that the downside path (continued Fed hikes, record equity supply, credit already cracking at the AI edges) is more likely.",
+   "brief_chain": "Same chain and same figures: AI investment keeps rising but its GDP-share growth rate peaks 1H27 -> that asymmetry (21% GDP vs. 62%/92% earnings/market-value) makes it a bigger market risk than economic risk -> every asset call (equities, credit, bonds, FX, commodities) reflects that same hedge -> Goldman's baseline is benign but the author argues downside is more likely, citing Fed hikes, equity supply and cracking AI credit.",
+   "distortions": [
+    {
+     "what": "Brief's opening describes \"five 2027 outlook notes (macro, equities, credit, rates, FX, commodities)\" \u2014 six categories named under a count of five. The source names five published reports (Macro, Global Markets/cross-asset, equities, FX, commodities) but its own summary table splits the cross-asset note into separate credit and rates rows, i.e. six categories.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 every one of the six category calls (equities, credit, rates, FX, commodities, plus macro) is itself stated correctly later in the brief; only the headline count-vs-list arithmetic is off, with no effect on any stance, lean, conviction, invalidation or figure status."
+    },
+    {
+     "what": "Brief drops the \"Overweight the US and Japan, underweight Europe\" regional equity calls, keeping only the S&P target and the Hyperscalers buy.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the dropped detail is supporting regional allocation color; the stated calls (S&P 8,700, buy Hyperscalers at 19.7x) are unchanged and accurate."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

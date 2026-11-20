@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+ "source_span": "total supply ... rose from ~$311B in FQ2 ... to ~$430B. Of this increase, >$100B was for supply and capacity for F2028/C2027 - signaling strong conviction in revenue growth in C2027 ... while supply for F2029/C2028 did not go up much at all ... This is in contrast to last Q, when there was a very large step up in longer-term commitments.",
+ "source_chain": "A: Total supply commitments jumped from $311B to $430B, with >$100B of that increase earmarked for C2027 delivery, confirming conviction in 2027 growth and backing the guidance raise. THEREFORE B: C2028 commits barely moved, unlike last quarter's large step-up in longer-dated commitments, so the relief doesn't extend to the far year. THEREFORE C: UBS's worry shifts from a 2027 cut to how hard 2028 decelerates, so it trims C2028 growth to just under 10% Y/Y (EPS ~$18.80) and cuts its PT to $220 from $240 while keeping Buy. Invalidation (hedged in the note): a big increase in 2028 commits would have mollified deceleration fears; separately, the 10-Q (which would show updated commitment detail) is delayed, tied by management to an ongoing investigation.",
+ "pulse_chain": "A: More than $100B of the increase in purchase commitments was for 2027 capacity ($430B total vs ~$311B three months ago), which UBS reads as conviction in 2027 demand. THEREFORE B: Commitments for 2028 barely moved, in contrast to last quarter's large step-up in longer-dated commitments. THEREFORE C: UBS's worry has moved from a 2027 cut to how hard growth decelerates in 2028, so it trimmed its 2028 growth estimate to just under 10% with EPS of about $18.80, cutting its PT to $220 from $240 while keeping Buy. Invalidation: next quarter's filing (10-Q, already late due to the investigation) settles it \u2014 if the 2028 commitment line is flat again, UBS has the right read.",
+ "preserved": true,
+ "why": "Every figure and the full A-therefore-B-therefore-C chain (commitment totals, 2027-vs-2028 split, the bank attribution to UBS, the growth/EPS trim, and the PT cut from $240 to $220 with Buy retained) match the note exactly; the pulse's invalidation combines two facts the note states separately (a 2028-commit increase would ease the fear; the 10-Q is delayed over an investigation) into one forward test, which is compression of adjacent source facts, not a reversed or invented mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

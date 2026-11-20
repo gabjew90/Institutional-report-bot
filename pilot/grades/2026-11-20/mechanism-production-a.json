@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+ "source_span": "total supply ... rose from ~$311B in FQ2 ... to ~$430B ... >$100B was for supply and capacity for F2028/C2027 - signaling strong conviction in revenue growth in C2027 ... while supply for F2029/C2028 did not go up much at all ... in contrast to last Q, when there was a very large step up in longer-term commitments",
+ "source_chain": "NVDA added >$100B of supply/purchase commitments earmarked for 2027 delivery, pushing total commitments from ~$311B to ~$430B, therefore this signals strong conviction in 2027 revenue growth and backs the guidance raise, but 2028 commitments barely moved (unlike last quarter's large step-up), therefore UBS's concern shifts from a 2027 cut to how much growth decelerates in 2028, so it trims C2028 EPS to ~$18.80 (sub-10% growth) and cuts its price target to $220 from $240 while keeping Buy; invalidation: a large increase in 2028/2029 commits next time would have mollified the deceleration fear, so continued flatness is what keeps the bearish 2028 read alive.",
+ "pulse_chain": "Nvidia's beat and raise plus >$100B of new commitments earmarked for 2027 capacity read by UBS as conviction in 2027 demand, therefore 2028 commitments barely moved (in contrast to last quarter's large step-up, with total commitments near $430B against ~$311B three months ago), therefore UBS's worry moved from a 2027 cut to how hard 2028 decelerates, trimming 2028 growth to just under 10% with EPS ~$18.80 and cutting the price target to $220 from $240 while keeping Buy; invalidation: if the 2028 commitment line is flat again next quarter, UBS has the right read.",
+ "preserved": true,
+ "why": "The pulse reproduces UBS's exact therefore-chain (2027 commitment surge signals 2027 conviction, flat 2028 commitments shift the worry to 2028 deceleration, driving the EPS trim and PT cut to $220 from $240 with Buy kept) and the same confirm/disconfirm invalidation condition on future 2028 commitments, with only the 10-Q-delay detail loosely bolted on as color rather than as a reversed or invented mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

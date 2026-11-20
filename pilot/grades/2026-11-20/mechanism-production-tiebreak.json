@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+ "source_span": "total supply ... rose from ~$311B in FQ2 ... to ~$430B. Of this increase, >$100B was for supply and capacity for F2028/C2027 - signaling strong conviction in revenue growth in C2027 ..., while supply for F2029/C2028 did not go up much at all ... This is in contrast to last Q, when there was a very large step up in longer-term commitments. It is hard to read too much into changes this far out",
+ "source_chain": "Total supply commitments jumped $311B to $430B, with over $100B of that for 2027 delivery, which UBS reads as strong conviction in 2027 growth backing the guide, therefore 2028/2029 commitments barely moved (unlike last quarter's big step-up), therefore UBS's concern shifts from a 2027 cut to how hard 2028 decelerates, trimming 2028 growth to just under 10% and the price target to $220 from $240 while keeping Buy; UBS hedges this itself ('hard to read too much into changes this far out') and separately, unconnected to this commitments debate, flags that the 10-Q is delayed 'in the coming weeks' because of the ongoing investigation into whether added risk factors are needed.",
+ "pulse_chain": "Same A and B steps as the source (commitment mix 2027 vs 2028, UBS's shift in worry, the estimate and PT cut) therefore 'next quarter's filing settles it: if the 2028 commitment line is flat again, UBS has the right read,' with the delayed 10-Q (due to the investigation) offered as the mechanism that will deliver that test.",
+ "preserved": false,
+ "why": "The pulse invents an invalidation UBS never states - that the late 10-Q (which UBS ties only to the unrelated investigation and potential legal/risk-factor disclosures) is the test that will settle the 2027-vs-2028 commitments debate, when UBS's own next-quarter commitments disclosure comes through earnings reporting, not the 10-Q, and UBS explicitly hedges the whole point ('hard to read too much into changes this far out') rather than setting up a falsifiable test.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,70 @@
+{
+ "metric": 1,
+ "total_cards": 898,
+ "fragmentation_sets": [
+  {
+   "subject": "Is this a dot-com/2008-style crash, or just a correction? (TS Lombard/Blitz)",
+   "labels": [
+    "ai crash dotcom parallels",
+    "correction not crisis"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "UBS's AI capex/demand outlook: structurally bullish on demand, cautious on monetization",
+   "labels": [
+    "ai monetization risk",
+    "ai demand reacceleration"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "What the Fed does next: hike-on (Blitz) vs pivot/reflexive-put (Goldman/Fed speakers)",
+   "labels": [
+    "fed hawkish repricing",
+    "warsh fed pivot bet"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "Bank sector/country rotation calls (into healthcare/financials/Europe, out of staples/energy/tech concentration)",
+   "labels": [
+    "us equity sector preferences",
+    "cyclicals over defensives rotation"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "Nvidia's leadership crisis, including the political pressure driving the CEO search",
+   "labels": [
+    "nvidia leadership crisis",
+    "nvidia political exposure"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.295,
+ "mis_merges": [
+  {
+   "label": "nvidia political exposure",
+   "subjects": [
+    "Political pressure on Nvidia's board over CEO succession (Bessent's ultimatum, Huang comeback talk, national-champion designation)",
+    "Nvidia's China export-control evasion and national-security credibility problem (Megaspeed/Alibaba link, concealed Singapore revenue, lobbying history, spy-suspect remark)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Folded under a label an editor reads as CEO-succession drama (and largely redundant with 'nvidia leadership crisis'), the export-control-evasion/national-security thread is a distinct, pulse-worthy scandal that risks being missed entirely as its own angle, especially since the separate 'ai export controls' label covers only the macro policy story, not Nvidia's own circumvention conduct."
+  }
+ ],
+ "pass": false,
+ "notes": "Visible cards sum to 373 against the stated 898-card total; share is computed over the visible set and may not hold exactly at full scale. misc accounts for 12 of 373 visible cards (~3.2%) and is excluded from fragmented mass as declared overflow.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
