@@ -3928,4 +3928,4 @@ Checked against 543 logged questions from October and November before and after:
 - **"mcap" is the market cap**: "whats the mcap of crwv" is one snapshot field, posted by code. A change in it ("how much mcap has nvda lost") is not that route.
 - **"**S&P 500**" in a replied-to answer is not the stock S.** A reply under a market recap had been handed SentinelOne's price. Older than this change, and more exposed by it.
 
-`scripts/ask_fixture_run.py` cannot run on the owner's machine: the local Gemini key is invalid since the keys were moved to the worker. `--offline` passes (49 fixtures structurally valid).
+`scripts/ask_fixture_run.py` did not run on the owner's machine on 11-20: the API rejected the local Gemini key as invalid. Why was not checked. `--offline` passes (49 fixtures structurally valid).
