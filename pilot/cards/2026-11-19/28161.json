@@ -1,0 +1,551 @@
+{
+ "brief": "NVIDIA's FQ3 revenue of $115.8B beat UBS and Street estimates by 5-6%, with Data Center about 5% ahead and Edge Compute about 14% ahead; gross margin of 74.9% and EPS of $2.68 also beat. FQ4 guidance of about $130B revenue and 71-72% gross margin matched UBS's preview, and NVIDIA raised C2027 revenue growth guidance from 70% to 75%, which UBS reads as strong conviction in 2027 demand backed by over $100B of added C2027 supply commitments. But supply commitments for C2028 and C2029 rose only slightly, so UBS's standing worry shifts from C2027 cuts to how much growth decelerates in C2028, with a related risk that NVIDIA becomes beholden to its own purchase commitments to keep funding customer revenue. Talent retention after recent management changes, plus a 10-Q delay tied to an ongoing investigation, add governance uncertainty. Management told UBS that Southeast Asia licensing rules are not denting customer plans. UBS trims its price target to $220 from $240, unchanged 12x C2028E multiple on a lowered $18.80 EPS estimate, and keeps its Buy rating.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA reported FQ3 revenue of $115.8 billion, 5-6% above both UBS and Street estimates and well ahead of its usual roughly $2 billion quarterly beat.",
+   "anchor": "NVDA reported FQ3 revenue of $115.8B, above both UBSe and Street by \n5-6% and notably ahead of its usual ~$2B/Q beat.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's Data Center segment revenue came in about 5% ahead of UBS's estimate, led by growth in both hyperscale and ACIE customers.",
+   "anchor": "Data Center was \n~5% ahead of our expectations - led by growth in both the hyperscale and ACIE",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's Edge Compute revenue was about 14% ahead of UBS's estimate in FQ3.",
+   "anchor": "Edge Compute was \n~14% ahead of UBSe.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's FQ3 gross margin of 74.9% was near the top of its guidance range, while operating expenses came in about $350 million below guidance.",
+   "anchor": "Gross margin of 74.9% was near the top end of the \nguidance range while opex came in ~$350MM below guidance",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's non-GAAP EPS of $2.68 in FQ3 beat both UBS's and Street's estimates of $2.53 and $2.48.",
+   "anchor": "non-GAAP EPS of $2.68 was above UBSe/Street \n$2.53/$2.48.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's FQ3 Data Center networking and compute revenue split was about $21.3 billion and $86.3 billion, above UBS's estimate of $18.3 billion and $84.7 billion.",
+   "anchor": "the networking/compute \nsplit was ~$21.3B (we estimate)/~$86.3B versus UBSe of $18.3B/$84.7B.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA guided FQ4 revenue to about $130 billion at the midpoint.",
+   "anchor": "the company guided FQ4 revenue to ~$130B",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ4"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA guided FQ4 gross margin to 71-72%, in line with UBS's preview.",
+   "anchor": "gross margin to 71-72% - spot in line with our preview",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ4"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA raised its C2027 revenue growth guidance slightly, from 70% to 75%.",
+   "anchor": "walked F2028/C2027 revenue guidance up slightly from 70% to 75%",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "C2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA management told UBS the impact from recent licensing requirements in Southeast Asia is not having much effect, as customers are not changing plans.",
+   "anchor": "the impact from the recent \nlicensing requirements in SE Asia is not having much effect",
+   "topic": "AI export controls",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA guided FQ4 operating expenses to about $10.7 billion, heavier than UBS had anticipated.",
+   "anchor": "Opex guidance of ~$10.7B was heavier than \nanticipated",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FQ4"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS estimates NVIDIA's FQ1 operating expenses will land in the $10.9-11.0 billion range on continued sequential opex growth.",
+   "anchor": "this would put FQ1 opex in the $10.9-11.0B range",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "FQ1"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's total supply commitments rose from about $311 billion in FQ2 to about $430 billion in FQ3, up from about $145 billion in FQ1.",
+   "anchor": "total supply (independent of timeframe) rose \nfrom ~$311B in FQ2 (and ~$145B in FQ1) to ~$430B",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "More than $100 billion of NVIDIA's supply commitment increase was for C2027 capacity, which UBS reads as strong conviction in C2027 revenue growth.",
+   "anchor": ">$100B was for supply and capacity for F2028/C2027 - signaling strong \nconviction in revenue growth in C2027",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "C2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's supply commitments for C2028 did not increase much, in contrast to the prior quarter's large step-up in longer-term commitments.",
+   "anchor": "supply for F2029/C2028 did not go up much at all",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "C2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS's standing view is that the bigger question for NVIDIA is not C2027 cuts but how much growth decelerates in C2028.",
+   "anchor": "our view has always been that this is \nmore about how much things decelerate in C2028.",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "C2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS sees a real risk that NVIDIA becomes beholden to its purchase commitments and has to keep spending to drive revenue from its customers.",
+   "anchor": "NVDA becomes beholden to these purchase \ncommitments and has to keep throwing money at its customers to drive revenue.",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA disclosed three direct customers each above 10% of revenue in FQ3 (14%, 11%, and 11%), versus a single customer above 10% at 16% last quarter.",
+   "anchor": "three  direct customers were >10% of revenue (14%, 11%, and \n11%, respectively) versus a single customer >10% last Q at 16% of revenue.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA said two U.S. frontier labs will together account for 15% of Data Center revenue this year, implying about $60 billion.",
+   "anchor": "two U.S. frontier labs will be 15% of Data Center revenue \nthis year on a combined basis, which would imply something in the ~$60B range.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA said its 10-Q will be filed \"in the coming weeks,\" later than its usual cadence.",
+   "anchor": "the company announced that the 10-Q will be filed \"in the coming \nweeks\" - later than usual.",
+   "topic": "Nvidia leadership crisis",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA management told UBS on a callback that the delayed 10-Q filing relates to an ongoing investigation and whether additional risk factors need to be added.",
+   "anchor": "this \nwas related to the ongoing investigation and whether  any additional risk factors would \nneed to be added to the filing.",
+   "topic": "Nvidia leadership crisis",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS flagged talent retention, given NVIDIA's recent management changes, as a potentially legitimate concern.",
+   "anchor": "talent retention given recent management changes might also be a \nlegitimate concern here.",
+   "topic": "Nvidia leadership crisis",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS said NVIDIA's language on supporting the ecosystem and neoclouds sounded more measured, describing it as \"disciplined and selective.\"",
+   "anchor": "the language to us sounded  more \nmeasured (\"disciplined and selective\").",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's commentary on share buybacks supports a step up in the run rate to about $40-50 billion per quarter, which UBS expects to keep rising.",
+   "anchor": "the company's commentary on share \nrepo supports a step up to ~$40-50B/Q, and this number should continue to move \nhigher.",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA bought back about $22 billion of stock in FQ3, above UBS's $19 billion estimate.",
+   "anchor": "The company bought back ~$22B of \nstock - slightly better than our $19B expectation",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FQ3"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA reiterated it plans to fully execute its $227 billion total buyback authorization by F2028.",
+   "anchor": "reiterated that it plans to fully \nexecute on the $227B total authorization by F2028",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS said NVIDIA's C2027 commentary and added purchase commitments offer some relief for the supply chain, but with little added for C2028, concerns about a slowdown there are likely to persist.",
+   "anchor": "there was not much added for C2028, so questions \nabout the impact from a slowdown are likely to persist.",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "C2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS trimmed its NVIDIA C2028 growth estimate to just under 10% year-over-year, with EPS now estimated at about $18.80.",
+   "anchor": "trim C2028 a \nbit more (now up <10% Y/Y) with EPS now ~$18.80",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "C2028"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS now expects NVIDIA's C2029 to neither grow nor decline.",
+   "anchor": "take a view that C2029  also \ndoesn't grow, but doesn't decline either.",
+   "topic": "Nvidia stock valuation",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "C2029"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS cut its NVIDIA price target to $220 from $240, keeping its P/E multiple unchanged at 12x C2028E earnings.",
+   "anchor": "We trim our PT from $240 to $220 as we leave our P/E multiple unchanged at 12x",
+   "topic": "Nvidia stock valuation",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS maintained its Buy rating on NVIDIA even as it trimmed the price target.",
+   "anchor": "our PT comes down only slightly \nto $220 and we maintain Buy.",
+   "topic": "Nvidia stock valuation",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's purchase commitments for the remainder of F2027 were $92 billion last quarter, with $69 billion still remaining for FQ4.",
+   "anchor": "this number was $92B \nlast Q with $69B still remaining for the final Q of the year.",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "FQ4"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "UBS estimates NVIDIA's implied FQ4 cost of goods sold at about $38 billion compared to $69 billion of purchase commitments, pointing to a possible inventory build.",
+   "anchor": "The same analysis for FQ4 \nshows implied COGS of ~$38B compared to purchase commits of $69B.",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "FQ4"
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA's purchase commitments were literally flat from January 2026 to July 2026, while its cost of goods sold was about $50 billion over that period, pointing to timing mismatches.",
+   "anchor": "literally flat and did not change from Jan'26 to Jul'26, while NVDA's COGS was ~\n$50B during this time.",
+   "topic": "Nvidia 2028 deceleration risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "NVIDIA Corp: A Symbolic Show of Strength; We Have Cut '28, But Keep The Faith",
+   "claim": "NVIDIA guided for FQ4 to be the bottom for gross margin for the year, with margin recovering afterward.",
+   "anchor": "company did guide to FQ4 being the bottom for GM, with GM recovering to",
+   "topic": "NVDA earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-19/28161__ubs-nvidia-corp-a-symbolic-show-of-strength-we-have-cut-28-b.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 35,
+  "matched": 35,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
