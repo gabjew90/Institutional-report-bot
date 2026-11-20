@@ -1643,6 +1643,8 @@ from db_parts.analyst import (  # noqa: E402,F401
     purge_old_expired_analyst_trades,
     record_analyst_trade,
     record_bot_book_post,
+    trade_tally,
+    TALLY_MAX_DAYS,
 )
 from db_parts.ask import (  # noqa: E402,F401
     ask_turn_of_answer,

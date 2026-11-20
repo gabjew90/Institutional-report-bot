@@ -102,7 +102,11 @@ TOOL_DOCS["lookup_user_profile"] = (
 ) + _COMMON
 
 TOOL_DOCS["lookup_trade_log"] = (
-    "TWO ANCHORS — exactly one per call.\n"
+    "A WIN RATE, RECORD OR COUNT OF WINS comes from this tool, never from "
+    "`query_data`: a member's from `logged_record` (username anchor), a "
+    "caller's from kind=\"tally\", a channel's or the whole room's from "
+    "`scope`.\n"
+    "TWO ANCHORS — exactly one per call (or `scope` alone).\n"
     "Caller anchor: `caller=\"abe\"|\"bankerkyle\"`, "
     "`kind=\"open\"|\"recent\"|\"tally\"|\"all\"`, `days?` — the "
     "structured log for a registered caller, high fidelity "
@@ -266,8 +270,9 @@ TOOL_DOCS["query_data"] = (
     "blocked; 500-row cap. Key tables: `chat_messages` (the corpus — no "
     "per-message racism score, so approximate a slur trend with "
     "`content LIKE '%nigg%'` and SAY it's approximate), `analyst_trades` "
-    "(WINS-BIASED — losses leak as `inferred_status='expired_unknown'` "
-    "ghosts, so a naive win-rate is wrong). QUERY `analyst_trades_real`, "
+    "(one position is several rows, so a count of rows is not a count of "
+    "trades: a win rate, a record or a count of wins comes from "
+    "`lookup_trade_log`, never from here). QUERY `analyst_trades_real`, "
     "NOT `analyst_trades`: the raw table is 98% non-trades — the "
     "classifier writes one row per message it inspects and 75,960 of "
     "77,362 rows are is_trade=0 with ticker, action and gain_pct all "

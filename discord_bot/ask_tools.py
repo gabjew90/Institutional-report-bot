@@ -640,7 +640,14 @@ def _build_trade_log_tool():
                     "'recent' = last N days of trade events. 'tally' = "
                     "W/L summary. 'all' = everything.\n"
                     "`days` overrides defaults (7 for kind=recent, 30 "
-                    "for kind=tally; ignored for kind=open / kind=all)."
+                    "for kind=tally; ignored for kind=open / kind=all).\n"
+                    "(c) `scope`: 'room' for every channel, or 'channel' "
+                    "with `channel` (\"member alerts\", \"kyle alerts\", "
+                    "\"gain loss porn\"), with no caller and no username. "
+                    "Returns `record_lines`: wins, losses, positions that "
+                    "expired with no exit posted and both win rates, counted "
+                    "in code. `contract_type` ('call' | 'put') and `ticker` "
+                    "narrow it; `days` up to 45."
                 ),
                 parameters=types.Schema(
                     type=types.Type.OBJECT,
@@ -660,6 +667,22 @@ def _build_trade_log_tool():
                         "days": types.Schema(
                             type=types.Type.INTEGER,
                             description="Window override in days (1..180).",
+                        ),
+                        "scope": types.Schema(
+                            type=types.Type.STRING,
+                            description="room | channel: the record of every channel or of one.",
+                        ),
+                        "channel": types.Schema(
+                            type=types.Type.STRING,
+                            description="With scope=channel: the channel as the room names it.",
+                        ),
+                        "contract_type": types.Schema(
+                            type=types.Type.STRING,
+                            description="With scope: call | put.",
+                        ),
+                        "ticker": types.Schema(
+                            type=types.Type.STRING,
+                            description="With scope: one symbol.",
                         ),
                     },
                 ),
@@ -690,6 +713,31 @@ async def _execute_trade_log(args: dict) -> dict:
     # time, not now).
     from datetime import datetime as _dt2, timezone as _tz2
     as_of = _dt2.now(_tz2.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # --- ROOM OR CHANNEL RECORD ---
+    # Counted and worded in code (discord_bot/trade_tally.py, 2026-11-20):
+    # "returns on puts this month" had been answered from the model's own
+    # SQL, which counted rows.
+    scope = (args.get("scope") or "").strip().lower()
+    if scope in ("room", "channel"):
+        from discord_bot import trade_tally as _tt
+        try:
+            spec = _tt.spec_for(scope=scope, channel=args.get("channel"),
+                                contract_type=args.get("contract_type"),
+                                ticker=args.get("ticker"),
+                                days=int(days_arg) if days_arg else None)
+            res = await asyncio.to_thread(_tt.run, spec, None, None) if spec else None
+            record = _tt.lines(res) if res else []
+        except Exception as e:
+            log.warning(f"lookup_trade_log record path failed: {e}")
+            return {"status": "error", "as_of": as_of, "error": f"{type(e).__name__}: {e}"}
+        if not record:
+            return {"status": "not_found", "as_of": as_of,
+                    "error": f"no channel the bot reads matches {args.get('channel')!r}."}
+        return {"status": "ok", "as_of": as_of, "anchor": {"type": scope},
+                "data_quality": "member", "record_lines": record,
+                "note": ("Counted in code from the trade log. Give these figures as written. "
+                         "Never count wins or compute a win rate yourself.")}
 
     # Validation: anchor exclusivity.
     if caller and username:
@@ -856,8 +904,10 @@ async def _execute_trade_log(args: dict) -> dict:
             "all": await asyncio.to_thread(db.member_close_stats, user_id, max(int(days), 30)),
             "calls": await asyncio.to_thread(db.member_close_stats, user_id, max(int(days), 30), "call"),
             "puts": await asyncio.to_thread(db.member_close_stats, user_id, max(int(days), 30), "put"),
-            "note": ("Computed from the trade log's closes and trims, impossible gains removed. "
-                     "Quote these figures for a win rate or average; never compute one yourself."),
+            "note": ("Counted in code from the trade log: closes with a result, positions that "
+                     "expired with no exit posted, impossible gains removed. Quote these figures "
+                     "for a win rate, record or average and say which win rate you are giving; "
+                     "never compute one yourself."),
         }
     except Exception as e:
         log.warning(f"lookup_trade_log close stats failed: {e}")

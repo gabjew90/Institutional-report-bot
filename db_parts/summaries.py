@@ -202,6 +202,17 @@ def format_analyst_trades_for_context(
                 out_lines.append(f"- Avg win: {wl['avg_win_pct']:+.1f}%")
             if wl["avg_loss_pct"] is not None:
                 out_lines.append(f"- Avg documented loss: {wl['avg_loss_pct']:+.1f}%")
+            ev = wl.get("everywhere")
+            if ev and (ev["wins"], ev["losses"]) != (wl["wins"], wl["losses_documented"]):
+                # The tally above is the alerts. His results posted in the
+                # main chat are his too (2026-11-19: BK was given "40% win
+                # rate" from 10 alerts on a day his rows held 60 winning
+                # closes).
+                out_lines.append(
+                    f"- In every channel he posts in, alerts included: {ev['wins']} winning "
+                    f"closes, {ev['losses']} losing, {ev['expired_no_exit']} positions opened "
+                    f"and expired with no exit posted. Say which of the two records a figure "
+                    f"is from.")
 
             # Specific trade lists — so the bot doesn't fabricate which
             # tickers were wins vs silent-expiry losses when asked for the

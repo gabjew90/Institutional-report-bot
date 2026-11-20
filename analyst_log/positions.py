@@ -74,6 +74,29 @@ def _num(v) -> float | None:
     return f if f else None
 
 
+def plausible_gain(gain, contract_type=None) -> float | None:
+    """A logged gain that can be a real result, else None.
+
+    Below -100% is impossible for a long position. A share position does
+    not gain more than +300% inside the few weeks this ledger covers:
+    those rows are a dollar profit read as a percent (2026-10-09 audit:
+    Monsoon's APLD share close stored as +2009% printed his record as
+    "0W/14L · avg +245% on closes"). Only a row logged as a call or put
+    keeps a larger gain, since a same-day lotto can return 20x; rows the
+    extractor could not type ("unclear", blank) are mostly share posts."""
+    if gain is None:
+        return None
+    try:
+        g = float(gain)
+    except (TypeError, ValueError):
+        return None
+    if g < -100:
+        return None
+    if (contract_type or "").lower() not in ("call", "put") and g > 300:
+        return None
+    return g
+
+
 def build(rows: list[dict], today: date | None = None) -> list[dict]:
     """Positions from one trader's trade rows, oldest first.
 
@@ -160,7 +183,18 @@ def position_of(positions: list[dict]) -> dict[int, dict]:
 
 
 def entry_price(p: dict) -> float | None:
-    return _num((p.get("entry") or {}).get("price"))
+    """The price of the position's first open that carries one. A caller's
+    alert and his mention of the same trade in the main chat are one
+    position, and the mention often comes first with no price."""
+    entry = p.get("entry") or {}
+    for o in [entry, *(p.get("opens") or [])]:
+        # an add at a later price is not the entry
+        if o is not entry and (o.get("action") or "").lower() != "open":
+            continue
+        px = _num(o.get("price"))
+        if px is not None:
+            return px
+    return None
 
 
 def dollars_per_contract(p: dict, exit_row: dict, gain: float | None) -> float | None:

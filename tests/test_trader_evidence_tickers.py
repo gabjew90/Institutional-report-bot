@@ -73,7 +73,10 @@ def test_member_close_stats_drops_impossible_rows_2026_10_26():
     conn.commit()
     s = db.member_close_stats(930001, days=30)
     assert s["closes_counted"] == 2 and s["closes_discarded_as_impossible"] == 1
-    assert s["win_rate_pct"] == 50.0 and s["avg_gain_pct"] == 15.0
+    assert s["win_rate_pct_of_closes"] == 50.0 and s["avg_gain_pct"] == 15.0
+    # nothing was opened, so nothing expired: both rates agree
+    assert s["win_rate_pct_counting_expiries_as_losses"] == 50.0
+    assert s["expired_with_no_exit_posted"] == 0
     assert db.member_close_stats(930001, days=30, contract_type="call")["wins"] == 1
     conn.execute("DELETE FROM analyst_trades WHERE author_id = 930001")
     conn.commit()

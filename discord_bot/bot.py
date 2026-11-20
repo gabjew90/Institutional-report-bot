@@ -3303,6 +3303,46 @@ async def _answer_chat_count_directly(
     return discord.Embed(description=desc, color=0x1ABC9C)
 
 
+# A win rate or record of a member, a channel or the room is counted and
+# written in code by discord_bot/trade_tally.py, with no model call
+# (2026-11-20). Until then the model assembled it: "the win rate of the
+# member channel" got the two callers' tallies, and "returns on puts this
+# month" got row counts from SQL the model wrote.
+async def _answer_trade_tally_directly(
+    question: str,
+    spec: dict,
+    user_id: int,
+    channel_id: int | None,
+    asker_display_name: str = "",
+    asker_username: str = "",
+    channel_name: str = "",
+):
+    """The record embed, or None to hand the question to the model."""
+    from discord_bot import trade_tally as _tt
+    try:
+        desc = await asyncio.to_thread(_tt.answer, spec, user_id, channel_id)
+    except Exception as e:
+        log.warning(f"/ask: trade tally failed, handing to the model: {e}")
+        return None
+    if not desc:
+        return None
+    desc += "\n\nData: room trade ledger"
+    try:
+        await asyncio.to_thread(db.record_ask_query, user_id)
+        await asyncio.to_thread(
+            db.append_ask_interaction,
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            channel_name=channel_name,
+            question=question,
+            answer=desc,
+            interaction_type="short_circuit_trade_tally",
+        )
+    except Exception as e:
+        log.warning(f"trade-tally logging non-fatal failure: {e}")
+    return discord.Embed(description=desc, color=0x1ABC9C)
+
+
 # =====================================================================
 # Intent router — structural grounding (2026-06-19)
 # =====================================================================
@@ -8660,6 +8700,27 @@ async def _answer_with_gemini(
         if embed is not None:
             return embed
         # a name nobody is logged under: the model takes it
+
+    # A win rate or record from the trade log is counted in code too
+    # (discord_bot/trade_tally.py, 2026-11-20). A reply is left to the
+    # model: its subject is in the message replied to.
+    from discord_bot import trade_tally as _trade_tally
+    try:
+        _tt_spec = (None if "[MESSAGE BEING REPLIED TO" in question
+                    else _trade_tally.parse(_cc_asker(question), channel_id))
+    except Exception as e:
+        log.warning(f"/ask: trade tally parse failed, handing to the model: {e}")
+        _tt_spec = None
+    if _tt_spec:
+        embed = await _answer_trade_tally_directly(
+            question, _tt_spec, user_id, channel_id,
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            channel_name=channel_name,
+        )
+        if embed is not None:
+            return embed
+        # nobody and nothing it can place: the model takes it
 
     # Playoff odds for a stated league format are arithmetic
     # (discord_bot/fantasy_odds.py, 2026-10-27 audit F1-F3).
