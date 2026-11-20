@@ -202,8 +202,8 @@ def company_lines(snapshot: dict | None, asked: str) -> list[str]:
         want = ["market cap", "shares", "balance sheet", "valuation"]
     if not want:
         return []
-    have = pb._snapshot_lines(snap)
-    return [pb._as_line(a, have[a]) for a in want if a in have]
+    # a field the feed lacks gets a line saying so (price_block.field_lines)
+    return pb.field_lines(snap, want, asked)
 
 
 def _unnamed(line: str, symbol: str) -> str:

@@ -676,6 +676,50 @@ def _market_open(now: datetime | None = None) -> bool:
     return 9 * 60 + 30 <= mins < 16 * 60
 
 
+def market_cap_text(s: dict, at_price: float | None = None) -> str:
+    """The market cap as the feed supports it, in words that say which.
+
+    2026-11-18 (audit run 13, A7): Yahoo listed no market cap and no count
+    of shares outstanding for a delisted stock, the snapshot carried only
+    its float, and "what is the market cap" was answered as price times
+    float ($1.13M, the float being about 73% of the shares). A field the
+    feed lacks is said to be missing here, in the line every reader of the
+    snapshot gets, and the float's value is given under its own name.
+
+    `at_price` is a price the asker stated ("at 2 cents a share"): the
+    figure is then that price times the share count.
+    """
+    price = at_price if at_price is not None else s.get("price")
+    shares, flt = s.get("shares_outstanding"), s.get("float_shares")
+    listed = _money(s["market_cap"]) if s.get("market_cap") else ""
+    if listed and at_price is None:
+        return listed
+    if price and shares:
+        why = "" if at_price is not None else ", Yahoo lists no market cap"
+        return (f"{_money(price * shares)} ({price_text(price)} a share times Yahoo's count of "
+                f"{_count(shares)} shares outstanding{why})")
+    if listed:
+        # a stated price with no share count to multiply: the listed figure
+        return f"{listed} at the current price. Yahoo lists no share count to reprice it with"
+    if price and flt:
+        return (f"not listed by Yahoo, which has no count of shares outstanding for {s.get('symbol')}. "
+                f"The float of {_count(flt)} shares is worth {_money(price * flt)} at {price_text(price)}. "
+                "The float leaves out shares insiders hold, so the market cap is larger")
+    if s.get("symbol"):
+        return f"not listed by Yahoo for {s['symbol']}"
+    return ""
+
+
+def price_text(price: float) -> str:
+    """A price in dollars. Below a dollar it keeps its fractions of a cent
+    to three significant digits: $0.0201, $0.50, $0.0000123."""
+    import math
+    if price >= 1 or price <= 0 or round(price, 2) == round(price, 8):
+        return f"${price:,.2f}"
+    digits = max(4, 2 - math.floor(math.log10(price)))
+    return f"${price:.{digits}f}".rstrip("0")
+
+
 def render(snap: dict) -> str:
     """The snapshot as a few labelled lines for the model to read."""
     s = snap
@@ -687,8 +731,9 @@ def render(snap: dict) -> str:
     lines.append(head)
     if s.get("business"):
         lines.append(f"business: {s['business']}")
-    if s.get("market_cap"):
-        lines.append(f"market cap: {_money(s['market_cap'])}")
+    cap = market_cap_text(s)
+    if cap:
+        lines.append(f"market cap: {cap}")
     rng = []
     if s.get("week52_low") is not None and s.get("week52_high") is not None:
         rng.append(f"52-week range ${s['week52_low']:,.2f} to ${s['week52_high']:,.2f}")
@@ -717,6 +762,8 @@ def render(snap: dict) -> str:
         fl.append(f"float {_count(s['float_shares'])} shares")
     if s.get("shares_outstanding"):
         fl.append(f"{_count(s['shares_outstanding'])} outstanding")
+    elif s.get("float_shares"):
+        fl.append("no count of shares outstanding listed by Yahoo")
     if s.get("short_pct_float") is not None:
         sp = f"short interest {s['short_pct_float']}% of float"
         if s.get("days_to_cover") is not None:

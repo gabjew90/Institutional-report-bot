@@ -3909,3 +3909,11 @@ Four readers each counted a record their own way. On 11-19 the room got "4W / 6L
 Owner decisions taken as defaults, to confirm: two win rates are posted instead of one; a caller's own record is everything he posted, with his alert channel on its own line; a reply is left to the model; a close with no result posted in the gains channel is no longer presumed a win on the profile line (one member drops from 3 wins to 2 and below the three the loss-jab check needs).
 
 Not switched: `compute_member_points`. Counted from the tally, the top six by points keep their order and twelve of nineteen members with points move, most by one place (the two largest moves are 12th to 16th and 17th to 24th).
+
+## 2026-11-20: a field the feed lacks is said to be missing (audit run 13, A7)
+
+"at 2 cents a share what is the market cap of ACCH" (11-18) was answered "$1.13M", price times float. Yahoo lists no market cap and no count of shares outstanding for the stock, `price_block.block_lines` returned nothing when an asked field was missing, and the model filled the gap with the only share figure in its payload. Outside sources put the count near 76.9M, so the figure was about 27% low.
+
+- `ticker_snapshot.market_cap_text` words the market cap line: Yahoo's figure, or price times Yahoo's share count and saying so, or "not listed by Yahoo" with the float's value under its own name and the reason it is smaller. The model's payload (`render`) and the posted line carry the same words. The shares line says when Yahoo has no count of shares outstanding.
+- `price_block.field_lines` posts one line per asked field, the snapshot's or a line saying Yahoo lists none, and `stock_body.company_lines` reads it too. A market cap at a price the asker states is that price times the share count.
+- The quote line keeps a sub-dollar price's fractions of a cent ($0.0201 printed as $0.02, and a coin at $0.0000123 as $0.00).

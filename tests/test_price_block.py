@@ -58,9 +58,52 @@ def test_what_the_lines_cannot_answer_goes_to_the_model():
     assert pb.block_lines(vol, snap, "qcom volume") == []
     two = dict(price, quotes=price["quotes"] + [dict(price["quotes"][0], symbol="AVGO")])
     assert pb.block_lines(two, snap, "qcom vs avgo market cap") == []
-    # a field the snapshot lacks
+
+
+def test_a_field_the_feed_lacks_is_said_to_be_missing():
+    """2026-11-18, audit run 13 A7: Yahoo listed no market cap and no count
+    of shares outstanding for a delisted stock, no lines were posted, and
+    the model answered "what is the market cap" with price times float
+    ($1.13M, the float being about 73% of the shares)."""
+    price, snap = _qcom()
     assert pb.block_lines(price, dict(snap, total_cash=None, total_debt=None,
-                                      operating_cashflow_ttm=None), "qcom debt") == []
+                                      operating_cashflow_ttm=None), "qcom debt")[-1] == (
+        "→ **Balance sheet:** Yahoo lists no cash, debt or cash flow for QCOM.")
+    acch = {"status": "ok", "symbol": "ACCH", "price": 0.0201, "week52_high": 0.0599,
+            "week52_low": 0.02, "float_shares": 56184764.0}
+    quote = {"session": "AFTER-HOURS", "quotes": [
+        {"symbol": "ACCH", "price": 0.0201, "change_pct": -34.1, "data_freshness": "regular_session_close"}]}
+    lines = pb.block_lines(quote, acch, "at 2 cents a share what is the market cap of ACCH")
+    # a sub-dollar price keeps its fractions of a cent
+    assert lines[0] == "→ **ACCH** last close **$0.0201** (-34.1% that session)."
+    assert lines[1] == (
+        "→ **Market cap at $0.02 a share:** not listed by Yahoo, which has no count of shares "
+        "outstanding for ACCH. The float of 56.2M shares is worth $1.1M at $0.02. The float leaves "
+        "out shares insiders hold, so the market cap is larger.")
+    assert pb.block_lines(quote, acch, "how many shares outstanding does acch have")[1] == (
+        "→ **Shares:** float 56.2M shares, no count of shares outstanding listed by Yahoo.")
+    # with a share count the figure is computed, and says from what
+    full = dict(acch, shares_outstanding=76900000.0)
+    assert pb.block_lines(quote, full, "acch market cap")[1] == (
+        "→ **Market cap:** $1.5M ($0.0201 a share times Yahoo's count of 76.9M shares outstanding, "
+        "Yahoo lists no market cap).")
+    # a price the asker states is the price used
+    assert pb.block_lines(quote, full, "what is ACCH's market cap at $5 a share")[1] == (
+        "→ **Market cap at $5.00 a share:** $384.5M ($5.00 a share times Yahoo's count of 76.9M "
+        "shares outstanding).")
+    assert pb.stated_price("at 2 cents a share") == 0.02 and pb.stated_price("acch market cap") is None
+    # the model's payload carries the same words
+    from report.ticker_snapshot import render
+    assert "market cap: not listed by Yahoo, which has no count of shares outstanding for ACCH" in render(acch)
+
+
+def test_the_stock_body_says_so_too():
+    from discord_bot import stock_body as sb
+    acch = {"status": "ok", "symbol": "ACCH", "price": 0.0201, "float_shares": 56184764.0}
+    assert sb.company_lines(acch, "acch valuation and balance sheet") == [
+        "→ **Balance sheet:** Yahoo lists no cash, debt or cash flow for ACCH.",
+        "→ **Valuation:** Yahoo lists no valuation figures for ACCH."]
+    assert sb.company_lines(acch, "why is acch down") == []
 
 
 def test_answer_block_builds_it_on_the_price_shape_only():

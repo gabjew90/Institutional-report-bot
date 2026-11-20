@@ -14,7 +14,9 @@ are rendered here and the model writes only the opening:
 2. for one stock, the company-data lines the question asks for (market
    cap, shares and short interest, cash and debt with cash flow,
    valuation), taken from the snapshot's own labelled lines, or a market
-   cap and 52-week line when it asks for none.
+   cap and 52-week line when it asks for none. A field the feed has
+   nothing of gets a line saying so (`field_lines`, 2026-11-20), and a
+   market cap "at 2 cents a share" is that price times the share count.
 
 A quote that failed, a volume question, or a second ask in the question
 gets no block: the model's answer covers what these lines cannot.
@@ -41,6 +43,12 @@ _FIELDS = (
 _FUNDAMENTALS_RE = re.compile(r"\bfundamentals?\b", re.I)
 
 
+def _d(price: float) -> str:
+    """Dollars. A sub-dollar price keeps its fractions of a cent."""
+    from report.ticker_snapshot import price_text
+    return price_text(float(price))
+
+
 def quote_line(q: dict, session: str = "", with_symbol: bool = True) -> str:
     """One quote as a line, '' when it carries no price."""
     if q.get("price") is None:
@@ -56,22 +64,22 @@ def quote_line(q: dict, session: str = "", with_symbol: bool = True) -> str:
         # an index level is points, not dollars
         return f"→ {who}at **{p:,.2f}**" + (f", {chg:+.1f}% today" if chg is not None else "") + "."
     if q.get("source") in _CRYPTO_SOURCES:
-        return f"→ {who}**${p:,.2f}**" + (f", {chg:+.1f}% over 24 hours" if chg is not None else "") + "."
+        return f"→ {who}**{_d(p)}**" + (f", {chg:+.1f}% over 24 hours" if chg is not None else "") + "."
     if fresh == "live_extended_hours":
         if session == "PRE-MARKET":
-            return (f"→ {who}**${p:,.2f}** pre-market"
+            return (f"→ {who}**{_d(p)}** pre-market"
                     + (f", {chg:+.1f}% from the last close" if chg is not None else "") + ".")
         close, ext = q.get("regular_session_close"), q.get("extended_hours_change_pct")
         if close is not None:
             day = f" ({chg:+.1f}% on the day)" if chg is not None else ""
             ah = f", {ext:+.1f}%" if ext is not None else ""
             lead = f"{who}closed" if who else "Closed"
-            return f"→ {lead} at **${float(close):,.2f}**{day}, **${p:,.2f}** after hours{ah}."
+            return f"→ {lead} at **{_d(float(close))}**{day}, **{_d(p)}** after hours{ah}."
     if fresh in ("regular_session_close", "last_print"):
         lead = f"{who}last close" if who else "Last close"
-        return f"→ {lead} **${p:,.2f}**" + (f" ({chg:+.1f}% that session)" if chg is not None else "") + "."
+        return f"→ {lead} **{_d(p)}**" + (f" ({chg:+.1f}% that session)" if chg is not None else "") + "."
     lead = f"{who}at" if who else "Trading at"
-    return f"→ {lead} **${p:,.2f}**" + (f", {chg:+.1f}% today" if chg is not None else "") + "."
+    return f"→ {lead} **{_d(p)}**" + (f", {chg:+.1f}% today" if chg is not None else "") + "."
 
 
 def _snapshot_lines(snapshot: dict) -> dict:
@@ -87,6 +95,47 @@ def _snapshot_lines(snapshot: dict) -> dict:
 
 def _as_line(label: str, rest: str) -> str:
     return f"→ **{label[:1].upper() + label[1:]}:** {rest}" + ("" if rest.endswith(".") else ".")
+
+
+# What the feed has nothing of, said in the answer (2026-11-20, audit run
+# 13 A7). Until then an asked field the snapshot lacked meant no posted
+# lines at all, and the model filled the gap: a market cap from the float.
+_MISSING = {
+    "shares": "Yahoo lists no share count, float or short interest for {sym}",
+    "balance sheet": "Yahoo lists no cash, debt or cash flow for {sym}",
+    "valuation": "Yahoo lists no valuation figures for {sym}",
+}
+# "at 2 cents a share", "at $5 per share": a price the asker states
+_AT_PRICE_RE = re.compile(
+    r"\bat\s+\$?(\d+(?:\.\d+)?)\s*(cents?|¢|dollars?|bucks)?\s*(?:a|per|/)\s*share\b", re.I)
+
+
+def stated_price(question: str) -> float | None:
+    m = _AT_PRICE_RE.search(question or "")
+    if not m:
+        return None
+    v = float(m.group(1))
+    return v / 100 if (m.group(2) or "").lower().startswith(("cent", "¢")) else v
+
+
+def field_lines(snap: dict, asked: list[str], question: str = "") -> list[str]:
+    """One line per company-data field asked for: the snapshot's own line,
+    or a line saying the feed has none. A market cap at a price the asker
+    stated is that price times the share count."""
+    from report.ticker_snapshot import market_cap_text, price_text
+    have = _snapshot_lines(snap)
+    sym = snap.get("symbol") or "it"
+    at = stated_price(question)
+    out = []
+    for a in asked:
+        if a == "market cap" and at:
+            out.append(_as_line(f"market cap at {price_text(at)} a share",
+                                market_cap_text(snap, at_price=at)))
+        elif a in have:
+            out.append(_as_line(a, have[a]))
+        elif a in _MISSING:
+            out.append(_as_line(a, _MISSING[a].format(sym=sym)))
+    return out
 
 
 def block_lines(price: dict, snapshot: dict | None = None, question: str = "") -> list[str]:
@@ -114,13 +163,10 @@ def block_lines(price: dict, snapshot: dict | None = None, question: str = "") -
         # company data is fetched for one stock only: "SpaceX vs Tesla
         # market cap" is the model's
         return [] if asked else lines
-    have = _snapshot_lines(snap)
     if asked:
-        missing = [a for a in asked if a not in have]
-        if missing:
-            return []       # the snapshot lacks it: the model says so, or searches
-        return lines + [_as_line(a, have[a]) for a in asked]
+        return lines + field_lines(snap, asked, q)
     # a plain price question: where it sits, beside what it is worth
+    have = _snapshot_lines(snap)
     ctx = []
     if snap.get("market_cap"):
         ctx.append(f"market cap {have.get('market cap', '')}".strip())
