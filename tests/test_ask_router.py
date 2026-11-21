@@ -1059,10 +1059,14 @@ def test_audit_run_13_a_word_is_not_a_ticker_and_one_stock_gets_its_data():
         assert r.shape == R.TICKER_OPINION and r.tickers == [sym], q
         assert R.T_SNAPSHOT in [p[0] for p in r.prefetch], q
     # a lowercase symbol beside a word that says stock
-    for q, sym in (("did nbis report", "NBIS"), ("what time are nvda earninfs released", "NVDA"),
-                   ("will tsla hold 400", "TSLA"), ("How much mcap has nvda lost these last week", "NVDA")):
+    for q, sym in (("will tsla hold 400", "TSLA"), ("How much mcap has nvda lost these last week", "NVDA")):
         r = R.classify(q)
         assert r.shape == R.TICKER_OPINION and r.tickers == [sym], q
+    # since 2026-11-21 these two are read as questions about the report
+    for q, sym in (("did nbis report", "NBIS"), ("what time are nvda earninfs released", "NVDA")):
+        r = R.classify(q)
+        assert r.shape == R.EARNINGS_DATE and r.tickers == [sym], q
+        assert R.T_SNAPSHOT in [p[0] for p in r.prefetch], q
     assert R.T_EDATE in [p[0] for p in R.classify("what time are nvda earninfs released").prefetch]
     # "mcap" is the market cap: one field of the snapshot
     r = R.classify("whats the mcap of crwv")
@@ -1086,3 +1090,76 @@ def test_a_bold_index_name_in_the_replied_to_answer_is_not_a_stock():
     assert R.classify(q).prefetch in ([], None)
     q2 = q.replace("**S&P 500** slipped", "**NVDA** slipped")
     assert R.reply_parent_tickers(q2) == ["NVDA"]
+
+
+def test_a_word_the_room_never_types_as_a_ticker_is_not_one_beside_earnings():
+    """2026-11-21, the room's own usage (assets/room_tickers.txt). "has" is
+    typed 1,570 times and never as a ticker: "name everyone that has earnings
+    this evening" was answered about Hasbro (2026-11-05). "main" likewise
+    ("what other main earnings we have" was read as Main Street Capital)."""
+    assert R.word_in_slot("has") and R.word_in_slot("main") and R.word_in_slot("all")
+    assert not R.word_in_slot("amd") and not R.word_in_slot("mu") and not R.word_in_slot("plug")
+    r = R.classify("name everyone that has earnings this evening, dont forget any")
+    assert r.shape == R.EARNINGS_SLATE and r.tickers == []
+    for q in ("which big companies has earnings next week?", "who has earnings tonight",
+              "what are the main earnings this week"):
+        r = R.classify(q)
+        assert r.shape == R.EARNINGS_SLATE and r.tickers == [], q
+    assert "MAIN" not in R.classify("what time is and earnings and what other main earnings we have").tickers
+    # a ticker the room does type keeps its slot
+    for q, sym in (("when is amd earnings", "AMD"), ("mu earnings date", "MU"), ("arm earnings", "ARM")):
+        assert R.classify(q).tickers == [sym], q
+    # and stray words no longer ride along as tickers on other shapes
+    assert R.classify("whos the most racist in the chat").tickers == []
+    assert R.classify("what economic data is out this week").tickers == []
+
+
+def test_a_ticker_the_room_types_as_one_needs_no_lead_in():
+    """"how much has amd dropped since october 15" named no stock: "amd" is
+    in the English word list. The room charts it more often than it types
+    it as a word, so in a stock question it is the ticker."""
+    assert R.free_ticker("amd") and R.free_ticker("mu") and R.free_ticker("spy") and R.free_ticker("meta")
+    assert not R.free_ticker("now") and not R.free_ticker("be") and not R.free_ticker("app")
+    assert not R.free_ticker("es")                    # two letters need far more evidence
+    for q, sym in (("how much has amd dropped since october 15", "AMD"), ("how much is mu up this year", "MU")):
+        r = R.classify(q)
+        assert r.tickers == [sym] and [t for t, _ in r.prefetch] == [R.T_STATS], q
+    for q in ("is it time to buy now", "the app is down, how is the stock", "what will be the move after earnings"):
+        assert R.classify(q).tickers == [], q
+
+
+def test_names_listed_before_a_ticker_are_asked_about_too():
+    """2026-11-03: "give me amd,qcom,arm earnings expectations" was read as
+    ARM alone, and the answer left AMD out."""
+    for q in ("give me amd,qcom,arm earnings expectations", "amd, qcom and arm earnings expectations",
+              "give me AMD, QCOM, ARM earnings expectations"):
+        r = R.classify(q)
+        assert r.shape == R.EARNINGS_DATE and r.tickers == ["AMD", "QCOM", "ARM"], q
+        assert r.prefetch == [(R.T_EDATE, {"symbol": s, "several": True}) for s in ("AMD", "QCOM", "ARM")], q
+    r = R.classify("when do amd and nvda report")
+    assert r.tickers == ["AMD", "NVDA"] and [t for t, _ in r.prefetch] == [R.T_EDATE, R.T_EDATE]
+    # a word in the list is not a symbol
+    assert R.classify("play, hold or amd earnings").tickers == ["AMD"]
+    # a result question keeps the one-stock path, which has the result lines
+    r = R.classify("did amd beat, and nvda earnings date")
+    assert R.T_SNAPSHOT in [t for t, _ in r.prefetch]
+
+
+def test_an_earnings_question_is_read_as_one_whatever_its_wording():
+    """Each of these took the view shape or none until 2026-11-21."""
+    for q, sym in (("when are MU earnings", "MU"), ("when MP earnings", "MP"),
+                   ("tell me date/time of MU earnings", "MU"), ("clanker nvda earnings time", "NVDA"),
+                   ("what time are nvda earninfs released", "NVDA"), ("did nbis report", "NBIS"),
+                   ("what was alabs earnings", "ALABS"),
+                   # a company named in words or with one capital
+                   ("when does Avgo report", "AVGO"), ("when's applovin earnings", "APP"),
+                   ("what specific time does lennar report today", "LEN")):
+        r = R.classify(q)
+        assert r.shape == R.EARNINGS_DATE and r.tickers == [sym], q
+    # not every "earn..." is a typo of earnings
+    assert R._EARN_TYPO_RE.sub("earnings", "earninfs earnigns earned earnest earners") == \
+        "earnings earnings earned earnest earners"
+    # a long word that only starts a company's name is no ticker outside the when-slot
+    assert R.classify("this morning earnings were decent").tickers == []
+    assert R.classify("when does everyone report").tickers == []
+    assert R.classify("when is morning earnings").tickers == []          # not Morningstar

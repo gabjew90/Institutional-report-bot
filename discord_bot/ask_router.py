@@ -290,6 +290,57 @@ def _room_words() -> frozenset[str]:
     return _room_words_cache
 
 
+# A listed symbol that is also an English word, as the room uses it
+# (assets/room_tickers.txt: word, times typed in lowercase, times typed as a
+# ticker in a cashtag or a chart command; scripts/build_room_words.py
+# --tickers). "has" is typed 1,570 times and never as a ticker; "mu" 331
+# times against 672 as one. Until 2026-11-21 any English word a symbol is
+# listed under was a ticker beside a company word, so "name everyone that
+# has earnings this evening" was answered about Hasbro, and none was a
+# ticker without a lead-in, so "how much has amd dropped" named no stock.
+_ROOM_TICKERS_PATH = os.path.join(os.path.dirname(_listed.SNAPSHOT), "room_tickers.txt")
+_room_tickers_cache: dict[str, tuple[int, int]] | None = None
+SLOT_WORD_MIN_USES = 50     # typed this often in the room ...
+SLOT_TICKER_RATIO = 0.03    # ... and as a ticker under 3 times in 100: a word, even beside "earnings"
+FREE_TICKER_RATIO = 0.75    # typed as a ticker nearly as often as as a word ...
+FREE_TICKER_MIN = 10        # ... and at least this often (100 for two letters): a ticker with no lead-in
+FREE_TICKER_MIN_2 = 100
+
+
+def _room_tickers() -> dict[str, tuple[int, int]]:
+    global _room_tickers_cache
+    if _room_tickers_cache is None:
+        out: dict[str, tuple[int, int]] = {}
+        try:
+            with open(_ROOM_TICKERS_PATH, encoding="utf-8") as f:
+                for ln in f:
+                    parts = ln.split()
+                    if len(parts) == 3 and not ln.startswith("#"):
+                        out[parts[0]] = (int(parts[1]), int(parts[2]))
+        except (OSError, ValueError):
+            out = {}
+        _room_tickers_cache = out
+    return _room_tickers_cache
+
+
+def word_in_slot(tok: str) -> bool:
+    """A lowercase token the room types as a word and almost never as a
+    ticker: not a symbol even in a ticker slot ("has earnings", "main
+    earnings"). A word the room rarely types at all stays a ticker there
+    ("plug earnings")."""
+    low, ev = _room_tickers().get((tok or "").lower(), (0, 0))
+    return tok == tok.lower() and low >= SLOT_WORD_MIN_USES and ev < SLOT_TICKER_RATIO * low
+
+
+def free_ticker(tok: str) -> bool:
+    """An English word the room types as a ticker about as often as as a
+    word ("amd", "mu", "spy", "meta", "hood"): a ticker in a stock question
+    with no lead-in."""
+    low, ev = _room_tickers().get((tok or "").lower(), (0, 0))
+    need = FREE_TICKER_MIN_2 if len(tok or "") <= 2 else FREE_TICKER_MIN
+    return ev >= need and ev >= FREE_TICKER_RATIO * max(1, low)
+
+
 def listed(t: str) -> bool:
     """A symbol the room could mean: on a US exchange (Nasdaq's directory,
     discord_bot/listed_symbols.py), an index or coin the router knows, a
@@ -334,7 +385,7 @@ def _resolve(tok: str) -> str | None:
 
 # A lowercase symbol with no lead-in ("how has rddt performed", "what does
 # elmt do"): any listed one that is not a word, in a stock question.
-_FREE_RE = re.compile(r"(?<![$A-Za-z'])([a-z]{3,5})(?![A-Za-z'])")
+_FREE_RE = re.compile(r"(?<![$A-Za-z'])([a-z]{2,5})(?![A-Za-z'])")
 
 
 def _free_lowercase(text: str) -> list[str]:
@@ -342,7 +393,13 @@ def _free_lowercase(text: str) -> list[str]:
     # a link's path is not the asker's words
     for m in _FREE_RE.finditer(re.sub(r"https?://\S+", " ", text or "")):
         w = m.group(1)
-        if _is_word(w) or not _listed.is_listed(w.upper()):
+        # An English word counts only when the room types it as a ticker
+        # ("amd", "mu"); two letters only then.
+        if w in _COMMON_WORDS or w.upper() in _NOT_TICKERS:
+            continue
+        if (len(w) == 2 or _is_word(w)) and not free_ticker(w):
+            continue
+        if not _listed.is_listed(w.upper()):
             continue
         if w.upper() not in out:
             out.append(w.upper())
@@ -421,7 +478,7 @@ def extract_tickers(text: str, *, lowercase: bool = True,
     # it is an English word we know.
     for m in list(_LOWER_LEADIN_RE.finditer(text)) + list(_LOWER_TRAILING_RE.finditer(text)):
         t = m.group(1).upper()
-        if t in _NOT_TICKERS or t.lower() in _COMMON_WORDS:
+        if t in _NOT_TICKERS or t.lower() in _COMMON_WORDS or word_in_slot(m.group(1)):
             continue
         r = _resolve(m.group(1))
         if r and r not in out:
@@ -465,7 +522,11 @@ _LOWER_CONTEXT_RE = re.compile(
     r"|^\s*([a-z]{2,5})\s+(?:is|are)\s+report(?:s|ing)\b"
     # "when's ibm report", "what time apld report earnings" (2026-10-28
     # scoreboard: no ticker, so the date shape never fired)
-    r"|\b(?:when'?s|when\s+(?:does|is|will)|what\s+time\s+(?:does|is|will|did)?)\s*([a-z]{2,5})\s+report"
+    # A company named in words or with a capital: "when does Avgo report",
+    # "when's applovin earnings" (2026-11-21: neither named a stock). This
+    # slot's subject is a company, so a name of up to 12 letters is tried.
+    r"|\b(?:when'?s|when\s+(?:does|is|will|do|did)|what\s+(?:specific\s+|exact\s+)?time\s+(?:does|is|will|did)?)"
+    r"\s*([a-z]{2,12})\s+(?:report|earnings)"
     # "Your forgot spcx", "what about aapl" (2026-10-26 audit A3)
     r"|\b(?:forgot|forget|missed|left\s+out|leaving\s+out|what\s+about|how\s+about)\s+\$?([a-z]{2,5})\b",
     re.I)
@@ -489,15 +550,55 @@ def lower_context_tickers(text: str, weak: list[str] | None = None) -> list[str]
     a coin) goes into `weak` when the caller passes it."""
     out: list[str] = []
     for m in _LOWER_CONTEXT_RE.finditer(text or ""):
-        tok = next(g for g in m.groups() if g)
-        if (tok != tok.lower() or tok.upper() in _NOT_TICKERS or tok.lower() in _COMMON_WORDS
-                or tok.lower() in _ADJ_BEFORE_COMPANY_WORD):
+        idx, tok = next((i, g) for i, g in enumerate(m.groups(), 1) if g)
+        # the when-does-X-report slot (group 4) takes a capitalised name too
+        named = idx == 4 and (tok == tok.lower() or tok == tok.capitalize())
+        if ((tok != tok.lower() and not named) or tok.upper() in _NOT_TICKERS
+                or tok.lower() in _COMMON_WORDS or tok.lower() in _ADJ_BEFORE_COMPANY_WORD
+                or word_in_slot(tok.lower())):
+            continue
+        if len(tok) > 5:
+            # a name, never an unknown symbol, and never a word of the day
+            # that starts a company's name ("when is morning earnings" is
+            # not Morningstar's; the word list holds five letters at most)
+            t = None if tok.lower() in _NOT_NAMES else _listed.by_name(tok)
+            if t and t not in out:
+                out.append(t)
             continue
         t = _resolve(tok)
-        if t and t not in out:
-            out.append(t)
-        elif not t and weak is not None and tok.upper() not in weak and not _is_word(tok):
+        if t:
+            # "amd,qcom,arm earnings expectations": the names listed in
+            # front of it are asked about too (2026-11-03: ARM alone was read)
+            for s in [*_listed_before(text, m.start(idx)), t]:
+                if s not in out:
+                    out.append(s)
+        elif weak is not None and tok.upper() not in weak and not _is_word(tok):
             weak.append(tok.upper())
+    return out
+
+
+_NOT_NAMES = frozenset(
+    "morning evening tonight tomorrow yesterday monday tuesday wednesday thursday friday saturday sunday "
+    "weekly monthly quarterly annual premarket afterhours market markets earnings everyone anyone someone "
+    "nobody another company companies national american general united global international premier "
+    "liberty frontier express energy capital financial digital".split())
+_LIST_BEFORE_RE = re.compile(r"((?:\$?[A-Za-z]{2,5}\s*(?:,|/|&|\band\b|\bor\b)\s*){1,4})$")
+
+
+def _listed_before(text: str, start: int) -> list[str]:
+    """The symbols listed just in front of a ticker ("amd, qcom and" before
+    "arm"), in order. Each must be listed, and an English word among them
+    must be one the room types as a ticker at least now and then."""
+    m = _LIST_BEFORE_RE.search((text or "")[:start])
+    out: list[str] = []
+    for tok in re.findall(r"[A-Za-z]{2,5}", m.group(1)) if m else []:
+        w = tok.lower()
+        if w in ("and", "or") or w in _COMMON_WORDS or tok.upper() in _NOT_TICKERS or word_in_slot(w):
+            continue
+        if _is_word(w) and _room_tickers().get(w, (0, 0))[1] < 3:
+            continue
+        if _listed.is_listed(tok.upper()) and tok.upper() not in out:
+            out.append(tok.upper())
     return out
 
 
@@ -545,7 +646,7 @@ _COMMON_WORDS = {
 
 _SLATE_RE = re.compile(
     r"\b(?:who(?:'s|s| is| are)?\s+(?:all\s+)?report(?:s|ing)?"
-    r"|(?:reports?|reporting|earnings?)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?"
+    r"|(?:reports?|reporting|earnings?)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?|this\s+(?:evening|afternoon|morning)"
     r"|this\s+week|next\s+week|after\s+(?:the\s+)?(?:close|bell)|before\s+(?:the\s+)?(?:open|bell)"
     r"|on\s+deck|slate|lineup|calendar))\b", re.I)
 # A request for the list itself, which a named company does not narrow:
@@ -563,8 +664,17 @@ _SLATE_SESSION_RE = re.compile(
     r"\bearnings?\b.{0,40}?\b(?:after\s*hours?|after\s+\d{1,2}\s*(?:pm|p\.m\.)|pre-?market)"
     r"|\b(?:this\s+morning|tonight|today|tomorrow|after\s*hours?|pre-?market)(?:'?s)?\s+earnings?\b", re.I)
 _EDATE_RE = re.compile(
-    r"\b(?:(?:when\s+(?:does|is|do|will)|when'?s|what\s+time(?:\s+(?:does|is|do|will|did))?)\b.{0,30}?\b(?:report|earnings)"
-    r"|earnings\s+date|next\s+(?:quarter|earnings|report)"
+    # "when are MU earnings", "when MP earnings", "what specific time does
+    # lennar report" and "nvda earnings time" took the view shape until
+    # 2026-11-21, so the date did not lead.
+    r"\b(?:(?:when\s+(?:does|is|do|will|are|did)|when'?s|what\s+(?:specific\s+|exact\s+)?time(?:\s+(?:does|is|do|will|did|are))?)"
+    r"\b.{0,30}?\b(?:report|earnings)"
+    r"|when\s+\$?[A-Za-z]{1,5}\s+(?:earnings|reports?)"
+    r"|earnings\s+(?:date|time|day)|(?:date|time|day)(?:\s*/\s*(?:date|time))?\s+(?:of|for)\s+\S+\s+earnings"
+    r"|next\s+(?:quarter|earnings|report)"
+    r"|earnings\s+(?:expectations?|estimates?|consensus|previews?)"
+    r"|(?:what\s+(?:was|were)|how\s+(?:was|were))\s+\S+\s+earnings"
+    r"|did\s+\S+\s+report(?:ed)?|has\s+\S+\s+reported"
     r"|did\s+\S+\s+(?:beat|miss)|(?:beat|miss)\s+(?:last\s+quarter|earnings|estimates)"
     r"|(?:expected|consensus|estimates?)\s+(?:for|on)\s+\S+\s+earnings"
     r"|what(?:'s| is)\s+expected\s+for)\b", re.I)
@@ -1174,7 +1284,8 @@ _NOT_STOCKS = {"SPY", "QQQ", "IWM", "DIA", "TLT", "GLD", "SLV", "USO", "UVXY", "
                "EEM", "FXI", "KRE", "GDX", "VOO", "VTI"}
 _BARE_TICKER_Q_RE = re.compile(r"^\s*\$?[A-Za-z]{1,5}\s*[?!.]*\s*$")
 _RESULT_Q_RE = re.compile(
-    r"\b(?:beat|beats|miss|missed|did|results?|reported|guid(?:e|ance)|numbers|how\s+(?:did|was))\b", re.I)
+    r"\b(?:beat|beats|miss|missed|did|results?|reported|guid(?:e|ance)|numbers|how\s+(?:did|was|were)"
+    r"|what\s+(?:was|were))\b", re.I)
 
 
 def is_stock(sym: str) -> bool:
@@ -1183,6 +1294,7 @@ def is_stock(sym: str) -> bool:
 
 
 MAX_CAUSE_SYMBOLS = 3        # news searches run in code for one "why did they move" question
+MAX_EARNINGS_SYMBOLS = 5     # companies in one "when do they report" question
 
 
 def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None,
@@ -1439,11 +1551,17 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     return r
 
 
+# "earn" and three to six letters that is not a word of its own
+_EARN_TYPO_RE = re.compile(r"\bearn(?!ings?\b|ed\b|est\b|ers?\b|outs?\b|estly\b)[a-z]{3,6}\b", re.I)
+
+
 def _classify(question: str, *, fantasy_enabled: bool = False,
               channel_name: str = "", asker_manager: str = "",
               channel_id: int | None = None, names_member: bool = False,
               carry: bool = True) -> Route:
-    q = _last_line(question)
+    # "what time are nvda earninfs released": a misspelt "earnings" is read
+    # as the word, so the earnings shapes and the ticker slot beside it see it
+    q = _EARN_TYPO_RE.sub("earnings", _last_line(question))
     ql = q.lower()
     in_channel = fantasy_enabled and in_fantasy_channel(channel_name, channel_id)
     tickers = extract_tickers(q)
@@ -1629,6 +1747,16 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
             r.prefetch.append((T_EDATE, {"symbol": sym}))
         return r
     if _EDATE_RE.search(q) and tickers:
+        # Several companies' dates or expectations: each one's report and
+        # consensus, posted as a line by code (answer_block). On 2026-11-03
+        # "give me amd,qcom,arm earnings expectations" was read as ARM alone
+        # and the answer left AMD out. A result question keeps the
+        # one-stock path, which has the result lines.
+        several = [t for t in tickers if is_stock(t)][:MAX_EARNINGS_SYMBOLS]
+        if len(several) >= 2 and not _RESULT_Q_RE.search(q):
+            r.shape, r.reason, r.tickers = EARNINGS_DATE, "several companies' reports", several
+            r.prefetch = [(T_EDATE, {"symbol": t, "several": True}) for t in several]
+            return r
         r.shape, r.reason = EARNINGS_DATE, "single-ticker earnings shape"
         # A result question ("did PLTR beat") needs the news; a date
         # lookup ("when does NVDA report") does not pay for a search.

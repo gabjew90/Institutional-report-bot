@@ -78,6 +78,7 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
     _execute_chat_search,
     _execute_earnings_date,
     _execute_earnings_date_one_consensus,
+    _execute_earnings_date_prefetch,
     _execute_earnings_slate,
     _execute_economic_calendar,
     _execute_fantasy_league,
@@ -5183,7 +5184,7 @@ async def _ask_02_call_model_with_tools(
     from discord_bot.asked_fact import _execute_asked_fact
     _prefetch_exec = {
         _ask_router.T_SLATE: _execute_earnings_slate,
-        _ask_router.T_EDATE: _execute_earnings_date,
+        _ask_router.T_EDATE: _execute_earnings_date_prefetch,
         _ask_router.T_PRICE: _execute_market_price,
         _ask_router.T_CHAIN: _execute_options_chain,
         _ask_router.T_ECON: _execute_economic_calendar,
@@ -5311,6 +5312,8 @@ async def _ask_02_call_model_with_tools(
     import pytz as _ab_tz
     _ab_now = datetime.now(_ab_tz.timezone(settings.timezone))
     _ab_ctx = {"shape": _ask_route.shape, "snapshot": _snap_res, "fresh": _fresh,
+               "several": any(_t == _ask_router.T_EDATE and (_a or {}).get("several")
+                              for _t, _a in _pf_plan),
                "research": any(_t == _ask_router.T_RESEARCH for _t, _ in _pf_plan),
                "price": next((_r for (_t, _), _r in zip(_pf_plan, _pf_results)
                               if _t == _ask_router.T_PRICE and isinstance(_r, dict)), None)}

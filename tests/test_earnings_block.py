@@ -84,3 +84,34 @@ def test_the_date_lines_are_no_longer_an_answer_block():
     ctx = {"shape": "earnings_date", "snapshot": snap, "price": price}
     assert answer_block.build("lookup_earnings_date", edate, date(2026, 11, 2),
                               question="when does amd report", context=ctx) is None
+
+
+def test_several_companies_get_one_line_each_and_none_is_left_out():
+    """2026-11-21: "give me amd,qcom,arm earnings expectations" (11-03) was
+    answered for two of the three. Each company's coming report is one line
+    posted by code, and one with no line to give still gets a line."""
+    from discord_bot import answer_block as AB
+    from datetime import date
+    amd = {"status": "ok", "symbol": "AMD", "next": {
+        "date": "2026-11-03", "timing": "after market close",
+        "when": "tomorrow (Tue Nov 3), after market close",
+        "eps_estimate": 1.97, "revenue_estimate": 13.22e9, "date_status": "listed by both feeds"}}
+    assert eb.one_line(amd) == ["→ **AMD** reports tomorrow (Tue Nov 3), after market close. "
+                                "Consensus: EPS **$1.97** on revenue **$13.22B**."]
+    # with the year-ago figures the executor attaches, growth comes first
+    grown = {**amd, "growth": {"next_report": {"date": "2026-11-03"},
+                               "next_quarter": {"eps": 1.96, "eps_year_ago": 1.20, "revenue": 13.09e9,
+                                                "revenue_year_ago": 9.246e9},
+                               "last_report": {"date": "2026-08-04", "actual": 1.05, "estimate": 1.02}}}
+    assert eb.one_line(grown) == ["→ **AMD** reports tomorrow (Tue Nov 3), after market close. "
+                                  "Consensus: EPS **$1.96** (+63.3% y/y) on revenue **$13.09B** (+41.6% y/y)."]
+    passed = {"status": "ok", "symbol": "QCOM", "next": {
+        "date": "2026-11-02", "timing": "after market close",
+        "when": "today (Mon Nov 2), after market close " + eb.TIME_PASSED}}
+    assert eb.one_line(passed) == ["→ **QCOM** was due to report today (Mon Nov 2), after market close."]
+    assert eb.one_line({"status": "ok", "symbol": "ARM"}) == ["→ **ARM**: no coming report date is listed."]
+    # posted by the answer block only on the several-companies route
+    ctx = {"shape": "earnings_date", "several": True}
+    blk = AB.build("lookup_earnings_date", amd, date(2026, 11, 2), context=ctx)
+    assert blk and blk["lines"] == eb.one_line(amd)
+    assert AB.build("lookup_earnings_date", amd, date(2026, 11, 2), context={"shape": "earnings_date"}) is None

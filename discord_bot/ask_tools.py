@@ -1997,9 +1997,22 @@ async def _execute_earnings_date_one_consensus(args: dict) -> dict:
         sym = str(out.get("symbol") or (args or {}).get("symbol") or "")
         snap = await asyncio.wait_for(asyncio.to_thread(_ts.fetch, sym), timeout=6)
         reconcile_earnings_with_snapshot(out, snap)
+        if (args or {}).get("several") and isinstance(snap, dict) and snap.get("growth"):
+            # the year-ago figures, so the posted line gives growth first
+            # (earnings_block.one_line); no snapshot is prefetched on this route
+            out["growth"] = snap["growth"]
     except Exception as e:      # noqa: BLE001  (the date is still the answer)
         log.info(f"lookup_earnings_date: consensus not checked against Yahoo ({e})")
     return out
+
+
+async def _execute_earnings_date_prefetch(args: dict) -> dict:
+    """The router's earnings-date prefetch. For several companies in one
+    question no snapshot is prefetched to check each consensus against, so
+    this does it itself (`several`); for one, phase 2 does."""
+    if (args or {}).get("several"):
+        return await _execute_earnings_date_one_consensus(args)
+    return await _execute_earnings_date(args)
 
 
 def _relative_day_et(date_iso: str, timing: str = "", now=None) -> str:

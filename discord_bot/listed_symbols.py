@@ -209,7 +209,14 @@ def by_name(word: str) -> str | None:
     hits = list(_by_word.get(w, []))
     if not hits:
         hits = [s for k, syms in _by_word.items() if k.startswith(w) for s in syms]
-    return hits[0] if len(hits) == 1 else None
+    if len(hits) == 1:
+        return hits[0]
+    # Share classes of one company ("lennar": LEN and LEN.B) are one stock:
+    # the plain symbol, when it is among them.
+    roots = {h.split(".")[0] for h in hits}
+    if len(roots) == 1 and next(iter(roots)) in hits:
+        return next(iter(roots))
+    return None
 
 
 def english_words() -> frozenset[str]:

@@ -89,6 +89,29 @@ def consensus(nxt: dict, growth: dict) -> dict:
             "eps_growth_pct": None, "revenue_growth_pct": None, "source": "calendar"}
 
 
+def one_line(edate: dict) -> list[str]:
+    """One company's coming report as a single line, for a question about
+    several: the date with its consensus. A report whose time has passed,
+    or none listed, still gets a line, so no company asked about is left
+    out ("give me amd,qcom,arm earnings expectations", 2026-11-03: the
+    answer covered two of the three)."""
+    sym = str((edate or {}).get("symbol") or "").upper()
+    if not sym:
+        return []
+    # the executor attaches Yahoo's growth block on this route (`several`)
+    growth = (edate or {}).get("growth")
+    lines = block_lines(edate, {"status": "ok", "growth": growth} if growth else None)
+    if lines:
+        consensus_line = next((ln for ln in lines[1:] if ln.startswith("→ Consensus")), "")
+        return [lines[0] + (" " + consensus_line[2:] if consensus_line else "")]
+    nxt = (edate or {}).get("next") or {}
+    when = str(nxt.get("when") or "")
+    if nxt.get("date") and when:
+        day = when.split(" (the ", 1)[0].split(". ", 1)[0].rstrip(".")
+        return [f"→ **{sym}** was due to report {day}."]
+    return [f"→ **{sym}**: no coming report date is listed."]
+
+
 def price_line(price: dict | None, symbol: str) -> str:
     """The quote for `symbol` in the session's own terms, '' without one."""
     if not isinstance(price, dict) or price.get("status") != "ok":

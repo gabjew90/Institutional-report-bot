@@ -4085,3 +4085,24 @@ Replay over the 963 logged questions: 10 gain the search, all clock-time questio
 Not built, the owner's call: "what are the chances spy ends red for the year" answered "low", and the asker replied "give me a percentage". A probability can be computed from the option chain (the chance the stock closes below a level by a date, as the options price it), which is not the same as a forecast. Other facts no feed carries (a lock-up expiry, a split date, an investor day) are answered by the model's own search today and none was among the failures.
 
 Also today: the calendar-fallback smoke reached the live BLS API in every case but one. With BLS slow it ran 170 s against a 150 s limit and blocked the push gate. The agency layer is stubbed for that smoke (5 s).
+
+## 2026-11-21: earnings questions the router misread, and words that are also tickers
+
+Second of the remaining approved items. The 11-20 breakdown named three misreads. Routing every logged earnings question on its bare text found more, with four causes.
+
+1. **A word that is also a symbol.** "name everyone that has earnings this evening" was answered about Hasbro (HAS), "what other main earnings we have" about Main Street Capital (MAIN). Any English word a symbol is listed under counted as a ticker beside a company word, because "amd earnings" and "mu earnings" have to work. Nothing told "has" from "amd". The room's own chat does: counted read-only on the worker over 232,906 messages since 07-01, "has" is typed 1,570 times and never as a ticker (a cashtag or the chart command), "mu" 331 times against 672 as one. `assets/room_tickers.txt` holds the counts and `scripts/build_room_words.py --tickers` rebuilds it.
+   - A word typed 50 times or more and as a ticker under 3 times in 100 is a word, even beside "earnings".
+   - A word typed as a ticker three quarters as often as as a word is a ticker with no lead-in. That closes the gap noted this morning: "how much has amd dropped since october 15" now gets the statistic.
+2. **A list.** "give me amd,qcom,arm earnings expectations" was read as ARM alone, and the answer left AMD out. Names listed in front of a ticker are read with it, and a question about several companies' reports gets one line per company, posted by code.
+3. **A phrasing or a spelling.** "when are MU earnings", "when MP earnings", "nvda earnings time", "did nbis report", "what time are nvda earninfs released".
+4. **A company named in words.** "when does Avgo report", "when's applovin earnings", "what specific time does lennar report today".
+
+Replay over the 963 logged questions: 34 routes move. 18 only lose a stray word that rode along as a ticker (CHAT on eight "who is the most X in the chat" questions, SEMI, TOP, OUT, TEAM, MADE). The other 16 are earnings questions now read as asked. None lost a ticker it should have kept.
+
+Harness samples (2026-11-21):
+
+- "give me amd,qcom,arm earnings expectations": three lines, AMD, QCOM and ARM, each with its date and consensus.
+- "name everyone that has earnings this evening, dont forget any": the day's slate ("No US earnings scheduled for today, Saturday, Nov 21").
+- "how much has amd dropped since october 15": "**AMD** is down **24.5%** since Oct 15: **$562.23** at the Oct 15 close to **$424.39** at the Nov 20 close".
+
+Left: "what time is and earnings and what other main earnings we have" no longer reads MAIN, and goes to the catch-all ("and" for AMD is a guess code should not make). "did AMD and NVDA beat" (a result question about two stocks) keeps the catch-all. The model's opening above the AMD statistic was decoration ("a brutal round-trip", "a brief mid-month squeeze"): whether an opening is wanted above code-posted lines at all is the owner's call.

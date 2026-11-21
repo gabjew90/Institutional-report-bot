@@ -257,12 +257,13 @@ def window(q: str, today: date) -> dict | None:
 
 def _lower_symbol(q: str) -> str | None:
     """A listed symbol typed in lowercase or with one capital, when the
-    question is already known to ask for a statistic. Never an English
-    word or a word of the room's."""
+    question is already known to ask for a statistic. Never a word of the
+    room's, and an English word only when the room types it as a ticker
+    about as often ("amd", "mu": ask_router.free_ticker)."""
     from discord_bot import ask_router as R, listed_symbols as L
     # a link's path is not the asker's words
     for tok in re.findall(r"(?<![\w$#@<])[A-Za-z]{2,5}(?![\w'])", re.sub(r"https?://\S+", " ", q or "")):
-        if tok.isupper() or R._is_word(tok) or R.not_a_ticker(tok):
+        if tok.isupper() or R.not_a_ticker(tok) or (R._is_word(tok) and not R.free_ticker(tok.lower())):
             continue
         if L.is_listed(tok.upper()):
             return tok.upper()

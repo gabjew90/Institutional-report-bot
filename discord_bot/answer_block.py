@@ -70,7 +70,11 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
         from discord_bot import league_lines
         lines = league_lines.block_lines(result, question)
     # A company's report date is no longer here: every turn about one stock
-    # gets its lines from discord_bot/stock_body.py (2026-11-13).
+    # gets its lines from discord_bot/stock_body.py (2026-11-13). Several
+    # companies in one question get a line each (2026-11-21).
+    elif tool == "lookup_earnings_date" and (context or {}).get("several"):
+        from discord_bot import earnings_block
+        lines = earnings_block.one_line(result)
     elif (tool == "lookup_market_price" and (context or {}).get("shape") == "price"
           and not (context or {}).get("research")):
         from discord_bot import price_block
