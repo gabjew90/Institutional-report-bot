@@ -169,6 +169,56 @@ def needs_search(plan: list, results: list, asked: str = "", today: date | None 
     return not ran or any(not isinstance(r, dict) or r.get("status") not in ("ok", "no_data") for r in ran)
 
 
+# A first word that does not tell one listed company from another.
+_GENERIC_FIRST = frozenset(
+    "american first general united national international global the new advanced applied digital".split())
+
+
+def _mentions(lines: list[str], sym: str) -> bool:
+    """A news line names the stock: its symbol as a word, or the first
+    word of its listed name ("Zscaler" for ZS)."""
+    from discord_bot import listed_symbols as L
+    text = " ".join(lines)
+    if len(sym) >= 2 and re.search(rf"(?<![A-Za-z]){re.escape(sym)}(?![A-Za-z])", text):
+        return True
+    first = re.split(r"[\s,.]+", (L.name(sym) or "").strip())[0]
+    return (len(first) >= 4 and first.lower() not in _GENERIC_FIRST
+            and re.search(rf"\b{re.escape(first)}\b", text, re.I) is not None)
+
+
+def _groups(symbols: list[str], lines: dict[str, list[str]]) -> list[list[str]]:
+    """The stocks that have news lines, grouped where one's lines name
+    another: CrowdStrike's line about buying Zscaler is one event for both
+    (two of four harness runs on 2026-11-21 wrote it once per stock)."""
+    group = {s: [s] for s in symbols}
+    for a in symbols:
+        for b in symbols:
+            if a != b and lines.get(a) and group[a] is not group[b] and _mentions(lines[a], b):
+                joined = group[a] + [s for s in group[b] if s not in group[a]]
+                for s in joined:
+                    group[s] = joined
+    out, seen = [], set()
+    for s in symbols:
+        g = group[s]
+        if id(g) not in seen and any(lines.get(x) for x in g):
+            seen.add(id(g))
+            out.append(sorted(g, key=symbols.index))
+    return out
+
+
+def _merged(per_stock: list[list[str]]) -> list[str]:
+    """Several stocks' lines as one list: each stock's first before any
+    stock's second, a repeated line once, at most MAX_LINES."""
+    out, seen = [], set()
+    for i in range(max((len(x) for x in per_stock), default=0)):
+        for lines in per_stock:
+            key = re.sub(r"[^a-z0-9]", "", lines[i].lower()) if i < len(lines) else ""
+            if key and key not in seen:
+                seen.add(key)
+                out.append(lines[i])
+    return out[:MAX_LINES]
+
+
 def build(plan: list, results: list, asked: str = "", today: date | None = None) -> dict | None:
     """The body of a cause turn from the route's prefetch plan and its
     results (None for a prefetch that timed out), or None when no stock was
@@ -191,12 +241,19 @@ def build(plan: list, results: list, asked: str = "", today: date | None = None)
     if not lines:
         return None
     cut = cutoff(asked, today)
-    news, found_nothing, failed = {}, [], []
+    per_stock = {sym: fresh_lines(res, asked, today) for sym, res in searched}
+    # One event that moved several of the stocks is one block and one
+    # sentence. A stock another's line names is explained by that line,
+    # whatever its own search returned.
+    news, explained = {}, set()
+    for group in _groups([s for s, _ in searched], per_stock):
+        news[" and ".join(group)] = _merged([per_stock[s] for s in group])
+        explained.update(group)
+    found_nothing, failed = [], []
     for sym, res in searched:
-        got = fresh_lines(res, asked, today)
-        if got:
-            news[sym] = got
-        elif res is not None and res.get("status") in ("ok", "no_data"):
+        if sym in explained:
+            continue
+        if res is not None and res.get("status") in ("ok", "no_data"):
             found_nothing.append(sym)
         else:
             failed.append(sym)
@@ -233,9 +290,10 @@ def outline(body: dict) -> str:
                 "reported cause. Never offer a reason from memory, from the price action or from the "
                 "sector.]")
     n = c["slots"]
-    arrows = ("one arrow" if n == 1 else
-              "one arrow when one event explains all of the moves, naming the stocks it moved, and "
-              f"otherwise one arrow per stock, at most {n} arrows")
+    arrows = "one arrow" if n == 1 else f"one arrow per NEWS block below, {n} arrows"
+    if any(" and " in label for label in c["news"]):
+        arrows += (", and where a block is on several stocks, one sentence on the event that moved "
+                   "them, naming each")
     rest = ""
     if c["missing"]:
         gone = [*c["found_nothing"], *c["failed"]]
@@ -302,8 +360,11 @@ def merge_news(prev: dict | None, res: dict) -> dict:
     links, seen = [], set()
     for i in range(max(len(a), len(b))):
         for src in (a, b):
-            if i < len(src) and src[i].get("url") not in seen:
-                seen.add(src[i].get("url"))
+            # one link per site: two pages of one site read as the same
+            # source twice ("stocktitan.net" on both lines, 2026-11-21 harness)
+            site = (src[i].get("title") or src[i].get("url") or "").lower() if i < len(src) else ""
+            if i < len(src) and src[i].get("url") not in seen and site not in seen:
+                seen.update({src[i].get("url"), site})
                 links.append(src[i])
     digest = "\n".join(d for d in ((prev or {}).get("digest") or "", res.get("digest") or "") if d)
     return {"sources": links, "digest": digest}

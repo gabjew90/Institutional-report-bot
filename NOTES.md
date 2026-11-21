@@ -4052,4 +4052,6 @@ Samples (2026-11-21, a Saturday, so the quote feed gives the last close):
 
 Replay over the 963 logged questions: one route changes ("why is mrvl down off avgo earnings" gains two searches). 15 cause questions name a stock and take the shorter shape unless a report was out.
 
-Not done: the outline asks for one arrow when one event moved two stocks, and the model sometimes writes one per stock, both sourced. A fund, an index, a coin or a sector has no code search of its own.
+Same day, after the owner asked about the open points: one event that moved two stocks is now one block and one sentence. Stocks are grouped in code when one's news line names the other (CrowdStrike's line names Zscaler), so the model is asked for one arrow and capped at one. One link per site in the footer.
+
+Not done: a fund, an index, a coin or a sector has no code search of its own. The sentence can credit a publisher (Bloomberg) while the links are the pages that relayed it.

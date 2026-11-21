@@ -25,6 +25,14 @@ CRWD_NEWS = {"status": "ok", "symbol": "CRWD", "sources": [{"title": "reuters.co
 OLD_NEWS = {"status": "ok", "symbol": "CRWD", "sources": [],
             "digest": "2026-11-16: CrowdStrike opened a new office (PR Newswire)"}
 PLAN = [(R.T_PRICE, {"symbols": ["CRWD", "ZS"]}), (R.T_NEWS, {"symbol": "CRWD"}), (R.T_NEWS, {"symbol": "ZS"})]
+# Two stocks with nothing to do with each other: one has news, one has none.
+PRICE2 = {"status": "ok", "session": "CLOSED", "quotes": [
+    {"symbol": "KO", "price": 96.99, "change_pct": 0.9, "data_freshness": "regular_session_close"},
+    PRICE["quotes"][1]]}
+KO_OLD = {"status": "ok", "symbol": "KO", "sources": [],
+          "digest": "2026-11-16: Coca-Cola opened a bottling plant (PR Newswire)"}
+PLAN2 = [(R.T_PRICE, {"symbols": ["KO", "ZS"]}), (R.T_NEWS, {"symbol": "KO"}), (R.T_NEWS, {"symbol": "ZS"})]
+KO_LINE = "→ **KO** last close **$96.99** (+0.9% that session)."
 CRWD_LINE = "→ **CRWD** closed at **$229.44** (-5.8% on the day), **$211.80** after hours, -7.7%."
 ZS_LINE = "→ **ZS** closed at **$194.82** (-5.3% on the day), **$226.50** after hours, +16.3%."
 
@@ -109,23 +117,42 @@ def test_the_news_own_account_of_the_move_is_cut_and_a_short_line_is_left_whole(
 
 # ------------------------------------------------------------------- the body
 
-def test_the_body_is_a_price_line_per_name_and_the_news_per_stock():
+def test_one_event_that_moved_two_stocks_is_one_block_and_one_sentence():
+    """Each stock's line names the other company: the talks are one event
+    (two of four harness runs on 2026-11-21 wrote it once per stock)."""
     body = M.build(PLAN, [PRICE, CRWD_NEWS, ZS_NEWS], today=SAT)
     assert body["lines"] == [CRWD_LINE, ZS_LINE]
     c = body["cause"]
-    assert c["slots"] == 2 and c["missing"] == [] and list(c["news"]) == ["CRWD", "ZS"]
+    assert c["slots"] == 1 and c["missing"] == [] and list(c["news"]) == ["CRWD and ZS"]
+    assert c["news"]["CRWD and ZS"] == [
+        "2026-11-20: CrowdStrike is exploring a purchase of Zscaler (Reuters)",
+        "2026-11-20: CrowdStrike is in talks to acquire Zscaler (Bloomberg)"]
     text = M.outline(body)
-    assert CRWD_LINE in text and "NEWS ON ZS: 2026-11-20: CrowdStrike is in talks" in text
-    assert "at most 2 arrows" in text and "one arrow when one event explains" in text and "18%" not in text
+    assert CRWD_LINE in text and "NEWS ON CRWD and ZS: 2026-11-20: CrowdStrike is exploring" in text
+    assert "Write one arrow, and where a block is on several stocks" in text and "18%" not in text
+
+
+def test_a_stock_another_stocks_line_names_is_explained_by_it():
+    # CRWD's own search found nothing recent, and ZS's line is about CrowdStrike
+    body = M.build(PLAN, [PRICE, OLD_NEWS, ZS_NEWS], today=SAT)
+    c = body["cause"]
+    assert list(c["news"]) == ["CRWD and ZS"] and c["found_nothing"] == [] and c["missing"] == []
+
+
+def test_two_unrelated_stocks_keep_a_block_each():
+    ko = {"status": "ok", "symbol": "KO", "digest": "2026-11-20: Coca-Cola raised its dividend (Reuters)"}
+    body = M.build(PLAN2, [PRICE2, ko, ZS_NEWS], today=SAT)
+    assert list(body["cause"]["news"]) == ["KO", "ZS"] and body["cause"]["slots"] == 2
+    assert "one arrow per NEWS block below, 2 arrows" in M.outline(body)
 
 
 def test_a_stock_with_nothing_recent_gets_a_line_and_no_slot():
-    body = M.build(PLAN, [PRICE, OLD_NEWS, ZS_NEWS], today=SAT)
+    body = M.build(PLAN2, [PRICE2, KO_OLD, ZS_NEWS], today=SAT)
     c = body["cause"]
-    assert c["slots"] == 1 and c["found_nothing"] == ["CRWD"]
-    assert c["missing"] == ["→ The news search found nothing on **CRWD** dated Fri Nov 20 or later, "
+    assert c["slots"] == 1 and c["found_nothing"] == ["KO"]
+    assert c["missing"] == ["→ The news search found nothing on **KO** dated Fri Nov 20 or later, "
                             "so no reason for the move is confirmed."]
-    assert "NEWS ON CRWD" not in M.outline(body)
+    assert "NEWS ON KO" not in M.outline(body)
 
 
 def test_a_search_that_did_not_come_back_is_said_to_have_failed():
@@ -157,9 +184,9 @@ INVENTED = ("→ Cyber names seeing extreme bifurcated flow and multiple compres
 
 
 def test_one_arrow_per_stock_with_news_and_the_rest_dropped():
-    body = M.build(PLAN, [PRICE, OLD_NEWS, ZS_NEWS], today=SAT)
+    body = M.build(PLAN2, [PRICE2, KO_OLD, ZS_NEWS], today=SAT)
     out, info = M.compose(CAUSE + "\n\n" + INVENTED, body)
-    assert out == "\n\n".join([CRWD_LINE, ZS_LINE, CAUSE, body["cause"]["missing"][0]])
+    assert out == "\n\n".join([KO_LINE, ZS_LINE, CAUSE, body["cause"]["missing"][0]])
     assert info == {"kept": 1, "dropped": 1, "missing": True, "fallback": False}
 
 
@@ -175,10 +202,10 @@ def test_a_cause_with_no_news_and_no_sources_is_not_posted():
 def test_the_models_own_search_supplies_the_cause_only_when_the_systems_failed():
     sourced = "→ CrowdStrike is in talks to buy ZS, per Bloomberg."
     # ZS's search did not come back: a reply with Google sources stands in for it
-    body = M.build(PLAN, [PRICE, OLD_NEWS, None], today=SAT)
+    body = M.build(PLAN2, [PRICE2, KO_OLD, None], today=SAT)
     out, info = M.compose(sourced, body, grounded=True)
     assert "in talks to buy ZS" in out and info["kept"] == 1 and "did not come back" not in out
-    assert out.endswith("→ The news search found nothing on **CRWD** dated Fri Nov 20 or later, "
+    assert out.endswith("→ The news search found nothing on **KO** dated Fri Nov 20 or later, "
                         "so no reason for the move is confirmed.")
     out, info = M.compose(sourced, body, grounded=False)
     assert "in talks" not in out and "did not come back" in out
@@ -205,9 +232,9 @@ def test_the_models_search_is_forced_only_when_none_ran_or_one_failed():
 def test_a_news_line_is_posted_as_written_when_the_model_wrote_no_cause():
     body = M.build(PLAN, [PRICE, CRWD_NEWS, ZS_NEWS], today=SAT)
     out, info = M.compose("", body)
-    assert info["fallback"] and info["kept"] == 2
-    assert "→ Nov 20: CrowdStrike is exploring a purchase of Zscaler (Reuters)." in out
-    assert "→ Nov 20: CrowdStrike is in talks to acquire Zscaler (Bloomberg)." in out
+    # one event, so one line: the first of the block
+    assert info["fallback"] and info["kept"] == 1
+    assert out.endswith("→ Nov 20: CrowdStrike is exploring a purchase of Zscaler (Reuters).")
 
 
 def test_the_no_answer_line_is_never_an_arrow():
