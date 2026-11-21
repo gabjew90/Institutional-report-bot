@@ -1,0 +1,522 @@
+{
+ "brief": "Citadel Securities' Shah argues Nvidia executes fine near-term without Jensen Huang (Q3 revenue beat, raised 2028 growth outlook) but long-term risk appetite for unproven bets erodes without a founder willing to make them, and new management is already acting more conservative: a Q4 outlook assuming zero China compute revenue and a CFO citing customers' access to capital. Separately, Shah distinguishes AI demand, model-development profitability, and returns on owning compute: physical data-center scarcity is intact (supply up 33.7% YoY, vacancy near record lows), so compute already in service keeps a premium, but regulation aimed at model development rather than construction would weaken the demand that premium depends on. Anthropic's S-1 shows revenue growing fast but compute costs growing faster, with ~$900bn of commitments against ~$132bn cash, reducing Shah's three hurdles (inference margin, research cost, return on capital) to things strong demand helps but does not guarantee, leading him to prefer diversified platforms over single frontier labs. Hot GDP, payrolls, wages and CPI data raise December 50bp hike odds per Waller; only productivity offers relief. A controlled AI capex slowdown is manageable, Shah says, but an outright stop would hit growth, earnings and rates simultaneously.",
+ "cards": [
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's fiscal Q3 revenue of $115.8 billion beat the $109.3 billion consensus.",
+   "anchor": "Q3 revenue of $115.8 billion smashed the $109.3 billion consensus",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's data center revenue came in at $107.6 billion in the quarter.",
+   "anchor": "data center revenue came in at $107.6 billion",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia raised its 2028 revenue growth outlook to roughly 75% next year, up from 70%.",
+   "anchor": "revenue now seen growing ~75% next year, up from 70%",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's board stated it will not bring Jensen Huang back.",
+   "anchor": "a board that flatly said it won't bring him back",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia created a new National Security and Export Control Oversight Committee.",
+   "anchor": "National Security and Export Control Oversight Committee",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Jensen Huang's departure does not end the congressional investigations facing Nvidia.",
+   "anchor": "Jensen's departure won't make the congressional investigations go away",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah argues that assuming Nvidia's growth trajectory continues unchanged understates how much Jensen Huang's individual excellence contributed to it.",
+   "anchor": "assuming the same trajectory continues understates how much individual excellence mattered",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah's specific worry is that Nvidia's new management turns conservative, especially around financing customers.",
+   "anchor": "Shah's specific worry is that new management turns conservative, especially around financing customers",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's Q4 outlook assumes zero data center compute revenue from China.",
+   "anchor": "Nvidia's Q4 outlook now assumes zero data center compute revenue from China",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's interim CEO Colette Kress said the Q4 outlook takes into account customers' access to capital.",
+   "anchor": "said the outlook takes into account \"our customers' access to capital.\"",
+   "topic": "Nvidia post-Jensen risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's stakes in private companies on its balance sheet grew to $65.5 billion from $8.2 billion a year earlier.",
+   "anchor": "stakes in private companies on the balance sheet have exploded to $65.5 billion, from just $8.2 billion a year earlier",
+   "topic": "AI capex debt financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia's supply and capacity commitments reached $390 billion, up from $279 billion a quarter ago.",
+   "anchor": "Add $390 billion of supply and capacity commitments (up from $279 billion a quarter ago)",
+   "topic": "AI capex debt financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Nvidia added another $111 billion of commitments in the third quarter alone.",
+   "anchor": "Nvidia added another $111 billion in commitments in Q3 alone",
+   "topic": "AI capex debt financing",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah warns that an outright stop in AI investment, as opposed to a controlled slowdown, would change the outlook for growth, earnings and rates all at once.",
+   "anchor": "an outright investment stop would change the outlook for growth, earnings and rates all at once",
+   "topic": "AI capex debt financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Supply across primary North American data center markets rose 33.7% year over year while vacancy fell to 1.4%.",
+   "anchor": "supply across the primary North American data center markets rose 33.7% YoY, yet vacancy fell to just 1.4%",
+   "topic": "AI data center compute scarcity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "H1"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "80% of data center capacity under construction was already preleased.",
+   "anchor": "80% of capacity under construction was already preleased",
+   "topic": "AI data center compute scarcity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Rents for 3-10MW data center requirements rose 8.3%.",
+   "anchor": "Rents for 3-10MW requirements rose 8.3%",
+   "topic": "AI data center compute scarcity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Microsoft blamed its capex shortfall on delayed third-party capacity deliveries while still describing customer demand as exceeding available supply.",
+   "anchor": "management blamed its capex shortfall on delayed third-party capacity deliveries, while still describing customer demand as exceeding available supply",
+   "topic": "AI data center compute scarcity",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah says the premium increasingly belongs to compute that can earn a return today.",
+   "anchor": "The premium increasingly belongs to compute that can earn a return today.",
+   "topic": "AI data center compute scarcity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah argues limits on construction preserve the scarcity value of existing compute, while limits on model development or deployment would weaken demand.",
+   "anchor": "limits on construction preserve the scarcity value of existing compute, but limits on model development or deployment would weaken the very demand",
+   "topic": "AI data center compute scarcity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Anthropic generated more than 80% of its Q3 revenue from models released in the prior six months.",
+   "anchor": "Anthropic generated more than 80% of Q3 revenue from models released in the prior six months",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Anthropic's revenue rose about 47% quarter over quarter to $17 billion.",
+   "anchor": "Revenue rose ~47% QoQ to $17 billion",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "QoQ"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Anthropic's compute and infrastructure expenses jumped about 77% to $9.9 billion, pushing their share of revenue to 58% from 48% in Q2.",
+   "anchor": "compute and infrastructure expenses jumped ~77% to $9.9 billion, pushing their share of revenue back up to 58%, from 48% in Q2",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "QoQ"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Anthropic's adjusted operating margin fell from 19% to 15%, pressured by expensive short-term compute.",
+   "anchor": "the adjusted operating margin fell from 19% to 15%, with expensive short-term compute a major pressure point",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Anthropic's S-1 disclosed roughly $900 billion of multi-year purchase and lease commitments against about $132 billion of cash and short-term investments.",
+   "anchor": "roughly $900 billion of multi-year purchase and lease commitments, substantially all for compute and infrastructure, against ~$132 billion of cash and short-term investments",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah identifies three hurdles for frontier labs: earning an attractive inference margin, covering recurring research costs, and earning a satisfactory return on committed capital.",
+   "anchor": "i) earning an attractive margin on inference, ii) covering the recurring cost of frontier research, and iii) earning a satisfactory return on committed capital",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Shah prefers platforms that can monetize the deployment of intelligence across multiple providers over betting on any single frontier lab winning the margin war.",
+   "anchor": "more comfortable with platforms that can monetize the deployment of intelligence across multiple providers, rather than betting on any single lab winning the margin war",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Anthropic's IPO order books are reportedly filling up with tickets of $10 billion or more.",
+   "anchor": "the order books for the biggest IPO ever reportedly fill up with $10 billion-plus tickets",
+   "topic": "Anthropic IPO valuation debate",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Q3 real GDP grew 3.4% annualized, with private domestic final sales up 4.9%.",
+   "anchor": "Q3 real GDP grew 3.4% annualized, with private domestic final sales up 4.9%",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "October payrolls rose 165K with 84K of upward revisions to the prior two months.",
+   "anchor": "October payrolls rose 165K with 84K of upward revisions to the prior two months",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Average hourly earnings rose 0.4% month over month.",
+   "anchor": "average hourly earnings rose 0.4% MoM",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "MoM"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Core CPI came in at 0.3% again, failing to deliver the hoped-for moderation.",
+   "anchor": "core CPI came in at 0.3% again, failing to deliver the hoped-for moderation",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Fed governor Waller said a core CPI reading around 0.3% or higher would justify considering a 50bp hike in December.",
+   "anchor": "a reading around 0.3% or higher would justify considering a 50bp hike in December",
+   "topic": "Fed December hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "58% of the CPI basket is running above a 3% annualized pace on a 3-month basis, and 70% on a month-over-month basis.",
+   "anchor": "58% of the CPI basket running above a 3% annualized pace on a 3-month basis, and 70% on a month-over-month basis",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Q3 productivity rose 3.6% annualized while unit labor costs fell 0.7%.",
+   "anchor": "Q3 productivity rose 3.6% annualized while unit labor costs fell 0.7%",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Decapit-AI-tion: Citadel Securities' Shah On The Three Hurdles Now Facing Frontier AI",
+   "claim": "Despite some tightening, financial conditions remain comfortably looser than their historical average.",
+   "anchor": "despite some tightening, they remain comfortably looser than their historical average",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-21/28684__decapit-ai-tion-citadel-securities-shah-on-the-three-hurdles.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 36,
+  "matched": 36,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
