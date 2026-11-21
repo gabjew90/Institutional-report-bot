@@ -46,6 +46,14 @@ from report import news_data as _nd_iso  # noqa: E402
 _FF_TMP = _Path(_tempfile.mkdtemp()) / "ff.json"
 _nd_iso._ff_disk_path = lambda: _FF_TMP
 
+# The agency layer (report/print_watch) fills actuals from the live BLS and
+# BEA APIs, 20 s a call. Every case here is about the calendar feeds, and
+# on 2026-11-21 a slow BLS ran this smoke past its 150 s limit and blocked
+# the push gate. No case reaches an agency: each is answered "no data".
+from report import print_watch as _pw_iso  # noqa: E402
+_pw_iso._bls_post = lambda *a, **k: None
+_pw_iso._bea_get = lambda *a, **k: None
+
 
 def _ok(msg):
     print(f"PASS {msg}")
