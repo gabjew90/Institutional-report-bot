@@ -1,0 +1,304 @@
+ 
+"Last Chopper Out Of Saigon": The Skeptics Line Up 
+As Anthropic's $1.5 Trillion Debut Meets A 99-Cent 
+DeepSeek 
+ 
+BY TYLER DURDEN 
+THURSDAY, NOV 19, 2026 - 06:25 PM 
+The biggest IPO in history starts trading later this morning, and for a deal this oversubscribed 
+there are a surprising number of people on the record telling you to be careful. 
+One investor described the scramble for an allocation to the WSJ as "almost like the last 
+chopper out of Saigon", which, well, is usually about the time the cautious voices become worth 
+a listen. We count five of them this morning:  
+●​ i) a sell-side analyst who ran the open-weight math,  
+●​ ii) a Bloomberg columnist telling readers to sit this one out,  
+●​ iii) Bloomberg Intelligence on everything that has to go right,  
+●​ iv) Europe's largest asset manager, and  
+●​ v) Morgan Stanley's macro chief on the one risk he says nobody is pricing. 
+We start with the risk that Anthropic itself puts near the top of the list. 
+Anthropic's own prospectus names open-weight models as one of its biggest competitive 
+threats. This morning, a few hours before the stock trades for the first time, one analyst decided 
+to check whether the threat survives contact with an AWS invoice. 
+The answer, according to Seaport Research's Jay Goldberg: mostly not... unless you are one of 
+Anthropic's biggest customers. Which, as we'll see, is exactly the problem. 
+Quick recap: as we detailed last night, Anthropic priced at $83, $5 above the top of the range, 
+and upsized to 980 million shares, raising more than $107 billion including the $26 billion vendor 
+placement (Google, Nvidia, AMD, Broadcom, Micron, Microsoft and TSMC). That's roughly $1.1 
+trillion on shares outstanding, or about $1.5 trillion fully diluted, depending (as always) on who's 
+counting. 
+ 
+
+ 
+ 
+And the market loves it, for now: per Bloomberg, ANT was indicated up to 24% higher on the 
+gray market this morning, with Nasdaq 100 futures up 2%. So much for the overhang that had 
+everyone puking gold, crypto and Nvidia to make room (and with hedge funds 11 points 
+underweight tech, the pros may have to chase, which is something we discussed earlier in 
+"Hedge Funds Are 11 Points Underweight Tech On Anthropic Day..."). 
+ 
+But the pop is the easy part. The question that matters for a stock priced at 18x a run rate 
+whose growth halved last quarter is whether Anthropic can keep charging premium prices while 
+the Chinese labs give their models away for free. That's the question Seaport takes on in "The 
+Open Weight Challenge" (available to pro subs). 
+ 
+
+ 
+"Why Would Anyone Pay Anthropic?" 
+Goldberg sets up the bear case in plain English: 
+"Anthropic says that one of its biggest competitive threats are open-weight models. These 
+sound like a great alternative. The models are free, users just have to download them on their 
+computers. They get to protect their data and only have to pay the cost of running those 
+computers. Seems obvious, why would anyone pay Anthropic? The math turns out to be much 
+more complicated, and Anthropic wins in many cases." 
+Regular readers know this is a debate we've been having since DeepSeek's first bombshell in 
+January 2025, and one that went from academic to existential this summer, when Chinese 
+open-weight models flooded the market and token prices dropped below $1 for the first time. By 
+September, we summed up the entire AI financing stack in one tweet: 
+So Seaport's note is really an attempt to answer the "whole story." Goldberg boils it down to two 
+factors: i) the cost of compute and ii) model capabilities. 
+Running Your Own Servers Costs Real Money 
+On compute, the argument is blunt: owning the hardware means scarce, expensive GPUs plus 
+power and staff, and "few companies really want to do this." The alternative is renting reserved 
+GPU instances from AWS (Seaport says the math holds for Azure and GCP too). And here 
+Goldberg gets in a dig at the man who, as of last Friday, no longer runs Nvidia: 
+"The problem here is that AWS does not have enough GPUs (Thank you, Jensen). The 
+hyperscalers in general charge high prices for their GPU instances... They also typically require 
+a one to three-year commitment. But how much of that will the average enterprise actually use? 
+During the day, workers may max out their tokens at peak hour prices, but then they go home 
+and the reserved compute goes unused." 
+Translation: you pay for a rented GPU 24/7, but your employees only burn tokens for part of the 
+day. Add it all up and, per Seaport, self-hosting a model on AWS only makes sense for 
+customers spending more than $2.4 million a year. 
+Here is the chart that does the heavy lifting (chart source Seaport Research and company data). 
+It plots the all-in cost per million tokens of self-hosting three open-weight models on reserved 
+AWS instances against monthly token volume, with Anthropic's own prices as the horizontal 
+lines: 
+ 
+
+ 
+ 
+A few things jump out. DeepSeek V4 Pro only crosses below Claude Opus 5.5 (
+4) at roughly the $2.4 million-a-year mark, which is the cost 
+8𝑝𝑒𝑟𝑚𝑖𝑙𝑙𝑖𝑜𝑛𝑡𝑜𝑘𝑒𝑛𝑠)𝑎𝑛𝑑𝑆𝑜𝑛𝑛𝑒𝑡5. 5(
+of the smallest fleet you can run. Kimi K3 never gets there at all: it flattens out somewhere north 
+of $10 even at a trillion-plus tokens a month, above Opus (we noted last week that Kimi's 
+first-party API is priced like a closed model; apparently so is running it yourself). And the 
+cheapest line on the chart belongs to Claude Haiku 5.5 at $0.20, roughly a fifth of the $0.99 that 
+DeepSeek V4 Pro costs from its cheapest host. 
+That last point is the one Goldberg finds most notable: 
+"In almost all cases, using Anthropic's cheapest model – Haiku – is the cheapest option 
+regardless of usage or hosting... Most people assume that the future of open-weights models 
+will be some version of using Anthropic for complex tasks while using open-weights for all the 
+small, routine jobs. This math shows that does not make economic sense." 
+The Whales Are The Ones Who Can Walk 
+So far so bullish. Now look at who sits above that $2.4 million line. Per the S-1/A, Anthropic has 
+11,900 customers spending more than $100,000 a year, about 1,900 with contracts over $1 
+million and 250 above $10 million: 
+ 
+
+ 
+ 
+Seaport's conclusion is that "for the vast majority of customers, self-hosting does not make 
+economic sense." Fair enough, by count. But by dollars, it's a very different picture: the 
+customers who can rationally walk are, by definition, the ones writing the biggest checks. A few 
+hundred whales spending $10 million-plus each carry far more weight in an $81 billion run rate 
+than thousands of $100K accounts (the S-1 doesn't break out revenue by tier, so we can't say 
+exactly how much). And the bigger they are, the better self-hosting looks: on Seaport's own 
+chart, DeepSeek V4 Pro falls to roughly $0.50 per million tokens at the high end, about a 
+sixteenth of Opus. 
+Then there is the middle option: a third-party host like AWS Bedrock, paying per token instead 
+of per hour. Better economics, says Seaport, but less security (your data sits in the host's data 
+store) and fewer features: 
+"Customers who work through Bedrock do not get the same features as customers who just go 
+direct with Anthropic. This may include fewer API primitives or more limited access to the 
+newest models. Put simply, working with a host is cheaper for many customers (the larger, the 
+better the economics), but comes at the cost of more limited outputs." 
+Which is a slightly awkward argument for a company that, as we pointed out last night, sells 
+nearly half its revenue through the hyperscalers' own cloud marketplaces, the same storefronts 
+that will happily rent you DeepSeek, Kimi or GLM one click away. 
+The Bet Is The Frontier... And The Frontier Is Getting Cheaper 
+Which brings us to the second factor, and the one Goldberg says everything hinges on: 
+ 
+
+ 
+"Our position is that Anthropic can maintain its margin advantage by staying at the frontier. Their 
+models need to be better. And since they are better, people want to use them more... Buying 
+Anthropic stock requires believing that they can continue pushing the frontier." 
+We agree with the framing. Where we differ is on what "winning" has looked like so far: 
+Anthropic has held the line against open weights mostly by cutting price. As we flagged in 
+October, Anthropic's token prices were slashed by 50% in a single month: 
+ 
+The S-1/A shows where that went: price cuts and discounts shaved about $600 million off Q3 
+revenue, compute and infrastructure jumped to 58% of sales from 48%, and each dollar of 
+compute bought $1.72 of revenue, down from $2.08, as we laid out last night. The first-ever 
+operating profit lasted exactly one quarter. Goldman's "Token Prices Are Falling Faster Than 
+Demand" warning (Sep 3) is starting to look less like a forecast and more like a 10-Q. 
+Put differently, Seaport's Haiku-at-20-cents punchline cuts both ways: Anthropic beats 
+DeepSeek on the routine jobs by selling tokens at commodity prices, which is great for share 
+and less great for the "margin advantage" the whole thesis rests on. 
+Two more factors could shift the math against Anthropic, and they don't appear in Seaport's 
+dozens of variables: 
+●​ GPU rents are falling. Seaport's breakeven assumes hyperscalers keep charging "high 
+prices for their GPU instances." Rental prices for all but the newest chips have been 
+rolling over since September; every cut drags the $2.4 million breakeven lower and pulls 
+more customers into "self-host" territory. And, as many increasingly warn, the big drop in 
+GPU rentals is about to kick in, now that the "Bank of Nvidia" no longer exists. 
+●​ The frontier leaks. The White House alleged in July that Moonshot distilled Anthropic's 
+Fable, and Anthropic itself dropped its newest Fable at a 20% discount as the roadshow 
+ 
+
+ 
+kicked off. A capability lead that the competition can copy in months, and that you 
+discount at launch, is a melting ice cube with a very good PR team. 
+Then again, Anthropic may not need to win the economics argument at all if Washington settles 
+it instead. As we wrote last week, with Jensen Huang gone, the loudest corporate defender of 
+open weights has left the building, and a federal crackdown on open models suddenly looks a 
+lot more likely, something David Sacks says Anthropic's "safetyist" allies have wanted all along 
+(Anthropic says it has never advocated a ban). Nothing protects a margin like a moat built by 
+Congress. 
+Paying 40x 2028 Earnings For A Race Nobody Can Stop Running 
+Now for the valuation. Using Seaport's 16.25 billion diluted shares, $83 works out to roughly 
+$1.35 trillion. Against Goldberg's estimates (he carries no rating or price target), that's about 
+8.8x 2027 revenue of $153.9 billion, a year in which he still sees an adjusted loss of $0.96 per 
+share, and roughly 39x 2028 EPS of $2.13 (napkin math, Seaport's numbers). If the gray market 
+is right and ANT opens around $103 (24% above the offer), call it closer to 48x. Here is the 
+revenue path that has to happen for those multiples to make sense: 
+ 
+That's revenue going from $4.6 billion in 2025 to $317 billion in 2028, roughly 69x in three years, 
+while the industry's unit price keeps falling and the balance sheet carries $109.5 billion of debt 
+(per Seaport) on top of a compute bill that now runs to roughly $900 billion. 
+And that's the generous version. Goldberg's 2027 revenue number is probably the high one on 
+the Street: Bloomberg Intelligence's Mandeep Singh and William Tong put the deal at around 
+$1.5 trillion, or 12-13x expected 2027 sales, while Bloomberg's own one-year forward 
+ 
+
+ 
+price-to-sales figure is 11.1x. Run those backwards and the market is underwriting somewhere 
+between $115 billion and $135 billion of 2027 revenue (napkin math again), a good $20-40 
+billion less than Seaport's $153.9 billion. So depending, once more, on who's counting, ANT 
+comes to market at anywhere from 9x to 13x next year's sales: 
+ 
+Pick whichever bar you like, they all sit well above the megacaps that own, supply and distribute 
+Anthropic. As the chart below from Bloomberg Opinion shows, the only members of the 
+trillion-dollar club that are pricier on this metric are Tesla and Eli Lilly (SpaceX is tied at 11.1x), 
+while Alphabet, Nvidia, Meta and Amazon can all be had for between 3x and 6x: 
+ 
+
+ 
+ 
+What does the premium pay for? The BI duo spells out what the upsized pricing assumes: 
+"Anthropic's upsized IPO pricing reflects expectations that recursive self-improvement can help 
+the company further optimize compute costs and expand into new markets such as drug 
+discovery. First-party agent products remain central to sustaining its high net revenue retention 
+and fending off competition from frontier models released by hyperscale peers, including 
+Google's Gemini and Meta's Muse. Execution on enterprise adoption and API monetization will 
+be key to supporting the valuation of around $1.5 trillion, about 12-13x expected 2027 sales, 
+particularly as token-pricing pressure across frontier models intensifies." 
+Translation: the price already embeds i) recursive self-improvement that makes compute 
+cheaper and opens new markets like drug discovery, ii) first-party agents that keep net revenue 
+retention high against Google's Gemini and Meta's Muse, and iii) clean execution on enterprise 
+adoption and API monetization, all of it while token-pricing pressure across the frontier gets 
+worse. That's three things that have to go right and one that is already going wrong (see the 
+50% price cut above). And when the support for a multiple is that the product will teach itself to 
+cost less, you are probably no longer doing a DCF. 
+ 
+
+ 
+Amundi CIO Vincent Mortier, who helps run Europe's largest asset manager, was more direct. 
+He likes the company, he just isn't convinced that Anthropic, or anybody else, has shown it can 
+earn a return on spending this large, and so he calls the valuation "a bit excessive": 
+"Question marks are still alive regarding the monetization of it; the capacity of players like 
+Anthropic, but also others, to monetize their huge investments... That's why we believe it's a bit 
+excessive, even though this company in particular is, of course, of very good quality." 
+Which, in asset-manager speak, is roughly equivalent to screaming. 
+The Doomsday Hedge You Already Own 
+Then there is the question of why a deal that so many people are nervous about is also the 
+most oversubscribed in history. Bloomberg Opinion's Nir Kaissar has a theory in his column this 
+morning, "Anthropic IPO Spreads a Case of FOMO. Ignore It": people are buying ANT as 
+insurance. If AI really does wreck jobs, companies and whole industries, the thinking goes, you 
+want a piece of one of the few names left standing, whatever you think of the technology. 
+Kaissar's answer to the hedgers is that they already own it. Amazon and Alphabet together 
+make up about 9% of the S&P 500 and will hold 28% of Anthropic after the offering, which by his 
+math already hands anyone holding the US market a look-through stake of roughly 3%. More is 
+coming through index trackers and active funds once a $1.5 trillion company starts clearing the 
+inclusion hurdles, and maybe at a better price: IPOs have a habit of slumping after the party, 
+and SpaceX is down about 30% from its post-IPO high. 
+The more interesting argument is about size. The megacaps that made early buyers rich came 
+public tiny: 
+"The difference is that those companies were worth a fraction of Anthropic's expected IPO 
+valuation when they came to market — in Nvidia's case, just 0.04%. Anthropic would have to be 
+worth several quadrillion dollars to deliver a comparable payoff. It's more likely that most of the 
+money to be made in Anthropic has already been pocketed for the foreseeable future." 
+We ran the numbers: if Nvidia listed at 0.04% of Anthropic's $1.5 trillion, then repeating Nvidia's 
+run means a 2,500-bagger, or about $3.75 quadrillion, which is 30-odd years of global GDP, give 
+or take. Even the last chopper out doesn't fly that high. Most of the money in ANT has probably 
+already been made, by people who aren't buying today. 
+Unless, of course, Anthropic gets to keep all the profits. And this is where the columnist and the 
+Seaport analyst end up arguing the same point from opposite sides: 
+ 
+
+ 
+"The problem with outsized profits is that they attract competition, which is arguably Anthropic's 
+biggest vulnerability. It wasn't that long ago that OpenAI's ChatGPT was the only chatbot 
+anyone had heard of. Anthropic's Claude has made inroads because large language models 
+have shallow moats: They're relatively easy to replicate, and brand loyalty is limited. Just ask 
+Dario Amodei, who left OpenAI, where he helped lead research on GPT-2 and GPT-3 before 
+founding Anthropic in 2021. What happened to OpenAI could easily happen to Anthropic." 
+Put differently, Seaport says you can own the stock as long as the frontier lead holds, and 
+Kaissar says frontier leads in this business don't hold: the models are easy to copy, nobody is 
+loyal to a chatbot, and the man running Anthropic is himself the proof, having walked out of 
+OpenAI in 2021 after helping lead its GPT-2 and GPT-3 research. His comparison for what the 
+Chinese labs do next is the fight their EV makers are giving Tesla, which is not a chart any ANT 
+buyer wants to look at this morning. 
+Two more of his points land close to home: 
+●​ The partners are also the competition. Anthropic's real edge is infrastructure and 
+distribution through Amazon and Alphabet, and those arrangements last exactly as long 
+as everybody wins. Both have AI ambitions of their own, and as we noted above, both 
+run the storefronts where nearly half of Anthropic's revenue is sold. 
+●​ Washington cuts both ways. We said a crackdown on open weights would be a moat 
+built by Congress. Kaissar sees the other half: windfall profits invite regulation, Dario 
+Amodei is all but asking lawmakers to step in, and midterm voters around the country 
+just passed a pile of measures to ban, cap or slow data centers. A slowdown, he notes, 
+would mostly help the incumbents trading at half the multiple. 
+The One Risk Nobody Has A Line Item For 
+To be fair, Seaport is honest about the stakes. Its risk section also lists, with an admirably 
+straight face, the risk that Anthropic "could develop AI systems which become fully autonomous 
+and wipe out humanity which may lead to a serious decline in earnings." On the upside: "If 
+Anthropic cures cancer it would greatly increase its value beyond our current valuation 
+estimate." Hard to argue with either. 
+The joke writes itself, but one line up in the same list is the version that could actually show up 
+in a quarter: a system that slips its constraints and does damage in the real world, or gets used 
+by somebody else in a cyberattack that lands on Anthropic's doorstep. 
+ 
+
+ 
+Morgan Stanley's global head of macro strategy Matthew Hornbach thinks that is the one the 
+market has wrong. For all the optimism flowing back into AI, he warns, the damage from a 
+breach of AI safeguards is the biggest risk currently underpriced by markets. 
+It's hard to disagree. There is no cell in anyone's model for it, the company most exposed is the 
+one whose entire pitch is that it is the safe one, and as of today that company is roughly $1.5 
+trillion of index weight in waiting. A tail risk that used to belong to a few VCs and hyperscalers is 
+about to be in everyone's 401(k). 
+Greed, Fear And A Freefall To The Bottom 
+So, to sum up the cautious side of the tape on day one: Seaport says the stock only works if the 
+frontier lead holds; Bloomberg Intelligence says the price needs self-improving models and firm 
+token prices; Amundi says it's a bit excessive; Morgan Stanley says the biggest tail risk is going 
+for free; and Kaissar says that whether you are buying out of greed or fear, the index will hand 
+you plenty of it anyway. 
+Here's our take. Seaport is right that "open weights are free" is too simple, and that for the long 
+tail of enterprise customers Claude (especially Haiku) is the cheaper, easier choice. But a $1.35 
+trillion valuation (or $1.5 trillion, pick your share count) pays for the whales, at frontier margins, 
+for years, and on Seaport's own chart those are precisely the customers for whom the 
+open-weight escape hatch is already open, and getting wider with every GPU rent cut and every 
+Chinese price cut. Anthropic can keep its lead the way it has all year, by cutting prices, or it can 
+keep its margins. Doing both is the bet, and we suspect the next couple of quarterly reports will 
+show which one gave. 
+Or, as we put it earlier this month, when everyone was still focused on the roadshow: 
+The opening print will tell us how much of that the market cares about today. The Q4 print will 
+tell us how much it should have. 
+Much more in the full Seaport Research "The Open Weight Challenge" note, available to pro 
+subs. 
+ 
+ 
+ 
+ 
