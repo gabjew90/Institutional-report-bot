@@ -1,0 +1,169 @@
+ 
+Decapit-AI-tion: Citadel Securities' Shah On The 
+Three Hurdles Now Facing Frontier AI 
+ 
+BY TYLER DURDEN 
+THURSDAY, NOV 19, 2026 - 02:15 AM 
+Nvidia (NVDA) finally gave the market what it wanted on Tuesday: a blowout quarter and a 
+raised 2028 outlook, with revenue now seen growing ~75% next year, up from 70%. 
+It also gave the market something it didn't ask for: the first earnings call in the company's 
+30-plus-year history without Jensen Huang, a board that flatly said it won't bring him back, and a 
+brand-new "National Security and Export Control Oversight Committee." 
+Which is why the timing of the latest note from Citadel Securities' macro guru Nohshad Shah, 
+cheekily titled "Decapit-ai-tion", could not be better. Shah, whose notes we have featured 
+regularly, including his August warning that Washington risks regulating the wrong part of AI, 
+argues that Nvidia will keep executing just fine without its founder in the near term. The question 
+is what happens to the next decade of growth when the guy willing to make the crazy bets is 
+gone. 
+ 
+ 
+
+ 
+And then he zooms out to the bigger problem, one we have been obsessing over since last 
+October, when we first warned that AI had quietly become a debt bubble too: demand for 
+intelligence and the profitability of producing it are two very different things. 
+Jensen Was The Risk Budget 
+Shah starts with a tribute. He calls Huang a generational founder who saw the potential of 
+general-purpose parallel computing years before anyone else, and turned a gaming graphics 
+shop into the core infrastructure supplier of the AI revolution. The team he built is excellent, 
+Shah says, but it isn't Jensen. He also warns against the lazy Apple-after-Steve-Jobs 
+comparison. 
+The near-term case is easy: Nvidia's engineering, its software ecosystem and its customer 
+relationships don't vanish overnight. Tuesday's numbers prove the point: Q3 revenue of $115.8 
+billion smashed the $109.3 billion consensus, and data center revenue came in at $107.6 billion. 
+The long-term case is harder. Shah argues that exceptional founders have the conviction and 
+authority to commit their companies to investments that a professional manager could never 
+justify to a board, pointing to Elon and Zuck as examples of people who kept making huge bets 
+before the payoff was visible, and kept going through the criticism. Strip out the founder, and 
+assuming the same trajectory continues understates how much individual excellence mattered. 
+Shah's specific worry is that new management turns conservative, especially around financing 
+customers. That might actually improve capital discipline, he concedes, but it would also mean 
+less support for the broader buildout. The bigger risk is that the caution spreads to the 
+long-dated, uncertain projects that kept expanding Nvidia's addressable market in the first place. 
+Regular readers know exactly how much customer financing we're talking about. When Nvidia 
+reported, we put out this chart of the "Bank of Nvidia": stakes in private companies on the 
+balance sheet have exploded to $65.5 billion, from just $8.2 billion a year earlier. 
+ 
+
+ 
+ 
+Add $390 billion of supply and capacity commitments (up from $279 billion a quarter ago), and 
+any shift in risk appetite at Nvidia ripples through the entire AI ecosystem. As we also charted, 
+Nvidia added another $111 billion in commitments in Q3 alone. 
+ 
+Shah also points out that Jensen's departure won't make the congressional investigations go 
+away, and any restrictions that come out of them could matter a lot. On that front, the new 
+management didn't waste any time proving his point about a more cautious Nvidia: 
+This, from the company that lobbied hard to loosen those very restrictions. Nvidia's Q4 outlook 
+now assumes zero data center compute revenue from China, and the CFO, now interim CEO 
+Colette Kress, said the outlook takes into account "our customers' access to capital." 
+Translation: the post-Jensen Nvidia is already studying who can actually pay. Then again, a 
+ 
+
+ 
+board that won't take questions about why its founder left was never going to be the bold, 
+swing-for-the-fences type. 
+Scarcity Is Still Real... For Compute That Already Exists 
+The heart of Shah's note is a distinction he keeps returning to: the demand for AI, the 
+profitability of frontier model development, and the returns from owning compute are 
+increasingly different propositions. 
+Start with the physical side, where the scarcity is very much intact. Citing CBRE's H1 data, Shah 
+notes that supply across the primary North American data center markets rose 33.7% YoY, yet 
+vacancy fell to just 1.4%, while 80% of capacity under construction was already preleased. 
+Rents for 3-10MW requirements rose 8.3%. In other words, a one-third jump in supply still 
+couldn't dent scarcity. 
+Microsoft offered a fresher example, Shah writes: management blamed its capex shortfall on 
+delayed third-party capacity deliveries, while still describing customer demand as exceeding 
+available supply. So a lower capex number may reflect trouble getting capacity delivered rather 
+than weaker demand. 
+Meanwhile, the pricing data from Shah's own chart show the same thing: GPU rental rates and 
+token volumes have both kept climbing all year (chart source: Ramp, Silicon Data, Citadel 
+Securities). 
+ 
+Building on his long-running argument that the AI race is global but the veto is local, Shah says 
+political constraints on the buildout sharpen the gap between capacity that is already running 
+ 
+
+ 
+and projects still waiting on permits, financing and power. If demand holds, restricting new 
+supply should support utilization and the scarcity value of the installed base, which favors 
+hyperscalers with operating compute, secure power, established distribution and the flexibility to 
+monetize multiple models. Or, in Shah's own words: 
+"The premium increasingly belongs to compute that can earn a return today." 
+There is a catch, though. Shah warns that the type of regulation matters enormously: limits on 
+construction preserve the scarcity value of existing compute, but limits on model development or 
+deployment would weaken the very demand that is supposed to fill it. 
+Anthropic's Three Hurdles 
+Which brings us to the frontier labs, and to Anthropic, whose record IPO is reportedly guiding to 
+the top of its range or above as we write this. 
+Shah notes that Anthropic generated more than 80% of Q3 revenue from models released in 
+the prior six months, which shows how much depends on a relentless launch cadence. He then 
+walks through the updated S-1 we covered earlier this month: 
+●​ Revenue rose ~47% QoQ to $17 billion, but compute and infrastructure expenses 
+jumped ~77% to $9.9 billion, pushing their share of revenue back up to 58%, from 48% 
+in Q2. 
+●​ Adjusted operating profit rose in dollar terms, but the adjusted operating margin fell from 
+19% to 15%, with expensive short-term compute a major pressure point. 
+●​ The filing disclosed roughly $900 billion of multi-year purchase and lease commitments, 
+substantially all for compute and infrastructure, against ~$132 billion of cash and 
+short-term investments. 
+Put differently, revenue is growing at a pace any other company would kill for, and costs are 
+growing faster. Shah's point is that a committed cost base this big has to keep earning an 
+adequate return, while competition can force the next round of investment before the last model 
+has paid for itself, and cheaper rivals keep squeezing how much of each efficiency gain the 
+developer actually gets to keep. 
+He boils it down to three separate hurdles: i) earning an attractive margin on inference, ii) 
+covering the recurring cost of frontier research, and iii) earning a satisfactory return on 
+committed capital. Strong demand helps clear all three, Shah says, but guarantees none of 
+them. 
+We framed the same dilemma just last week: 
+ 
+
+ 
+That's why Shah remains more comfortable with platforms that can monetize the deployment of 
+intelligence across multiple providers, rather than betting on any single lab winning the margin 
+war. Something to keep in mind as the order books for the biggest IPO ever reportedly fill up 
+with $10 billion-plus tickets. 
+Meanwhile, The Fed Has Plenty Of Reasons To Keep Hiking 
+The macro backdrop isn't offering any relief either. Shah runs through the data: Q3 real GDP 
+grew 3.4% annualized, with private domestic final sales up 4.9%; October payrolls rose 165K 
+with 84K of upward revisions to the prior two months; average hourly earnings rose 0.4% MoM; 
+and core CPI came in at 0.3% again, failing to deliver the hoped-for moderation. 
+That matters because Waller said hours before the print that a reading around 0.3% or higher 
+would justify considering a 50bp hike in December. The rest of the committee hasn't signed on 
+to a larger move yet, but Shah says the upside risk to further hikes has clearly grown. And 
+inflation isn't confined to a few categories: Shah's chart shows 58% of the CPI basket running 
+above a 3% annualized pace on a 3-month basis, and 70% on a month-over-month basis. 
+ 
+The one bright spot is productivity: Q3 productivity rose 3.6% annualized while unit labor costs 
+fell 0.7%, which Shah calls encouraging evidence that supply capacity is growing alongside 
+demand. He is careful to say the release doesn't show how much of that is AI, but it does show 
+why a sustained productivity boom would be so valuable. 
+ 
+
+ 
+For now, Shah argues, financial conditions still have more work to do: despite some tightening, 
+they remain comfortably looser than their historical average. And as he has argued before, the 
+more tightening markets do on their own, the less the Fed has to do, and vice versa. So anyone 
+hoping that a weaker stock market alone will bring the Fed to the rescue is probably going to be 
+disappointed. 
+The Timing Is Now Everything 
+Shah closes by admitting that his bullish US growth view and his call for more hikes both 
+depend on one thing: a resilient AI investment cycle. A controlled slowdown in capex could 
+improve discipline and let revenues catch up, he says, but an outright investment stop would 
+change the outlook for growth, earnings and rates all at once. He remains constructive on the 
+deployment of intelligence, but with political constraints, competition and higher financing costs 
+all piling up, when the returns arrive now matters as much as whether they do. 
+We'd add that the controlled slowdown and the investment stop may be closer cousins than the 
+bulls would like to believe. In just one week, the AI trade lost its biggest champion, its biggest 
+supplier cut off China and started talking about its customers' access to capital, and its most 
+important frontier lab disclosed that compute costs are growing far faster than revenue, just as it 
+asks public investors for a trillion-dollar-plus valuation. Throw in a Fed openly debating 50bps, 
+and the "controlled" part of a controlled moderation is doing a lot of heavy lifting. 
+Nvidia's board may be confident it doesn't need Jensen to deliver the next quarter. Whether 
+anyone left is willing to underwrite the next decade is another matter entirely. 
+Much more in the full "Decapit-ai-tion" note from Citadel Securities' Nohshad Shah. 
+ 
+ 
+ 
+ 
