@@ -1,0 +1,281 @@
+{
+ "brief": "A month ago, the author flagged Taiwan's crowded AI positioning, accelerating foreign outflows, and stretched divergence versus Korea and semiconductors, judging fundamentals strong but expectations extreme and the market vulnerable to a catch-down. That catch-down has now happened: EWT has fallen 34% from its all-time high, sits below its 200-day moving average, and has closed its gap with EWY. An EWT December 95 put flagged less than a month ago as a cheap catch-down trade has risen from $2 to almost $20, nearly 10x. Foreign investors sold another $6bn last week, taking YTD net selling to $99bn (Goldman), $75bn from TSMC alone. Hedge funds have cut Taiwan exposure further this month via long liquidation and fresh shorts: net allocation fell to the 24th percentile over the past year (85th over five years), gross allocation to the 89th percentile over five years. Taiwan is now the biggest underweight for both Asian (530bps) and global EM (425bps) active funds, and its usual Q4-into-Chinese New Year seasonal strength is not showing up. Weekly RSI has collapsed at a pace not seen since the Covid crash. The desk is not yet buying the dip but says the extremes are hard to ignore.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "A month before this note, the desk flagged crowded AI positioning, accelerating foreign outflows, and stretched divergence between Taiwan and Korea and semiconductors, judging Taiwan's fundamentals strong but expectations extreme enough to leave it vulnerable to a sharp catch-down.",
+   "anchor": "A month ago (here), we flagged the growing risks in Taiwan, highlighting crowded AI positioning, accelerating foreign outflows and stretched divergences versus Korea and semiconductors.",
+   "topic": "Taiwan equity selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "EWT has fallen 34% from its all-time highs and is trading well below its 200-day moving average.",
+   "anchor": "EWT has crashed 34% from its all-time highs, trading well below the 200-day moving average.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "EWT has closed its performance gap versus EWY after an absolutely massive reset in Taiwan.",
+   "anchor": "EWT has now closed the gap versus EWY. The reset in Taiwan has been absolutely massive.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [
+    "EWT",
+    "EWY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Less than a month before this note, the desk highlighted the EWT December 95 put as a cheap way to play a potential catch-down in Taiwan.",
+   "anchor": "Less than a month ago, we highlighted the EWT December 95 put as a cheap way to play a potential catch-down in Taiwan.",
+   "topic": "Taiwan equity selloff",
+   "status": "forecast",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "The EWT December 95 put has risen from $2 to almost $20, nearly a 10x gain.",
+   "anchor": "That put has now gone from $2 to almost $20. Nearly 10x.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Foreign investors sold another $6bn in Taiwan last week, taking cumulative YTD foreign net selling to $99bn according to Goldman Sachs.",
+   "anchor": "Another $6bn left the market last week, taking cumulative foreign net selling to a massive $99bn YTD, according to Goldman.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Of the $99bn in YTD foreign net selling of Taiwan, $75bn has come from TSMC alone.",
+   "anchor": "Of that, an extraordinary $75bn has come from TSMC alone.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Hedge funds have aggressively reduced Taiwan exposure month-to-date through both long liquidation and fresh short positions.",
+   "anchor": "Hedge funds have been aggressively reducing Taiwan exposure MTD, driven by both long liquidation and fresh shorts.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "MTD"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Hedge fund net allocation to Taiwan has dropped to 4.4%, the 24th percentile over the past year but still the 85th percentile over five years.",
+   "anchor": "Net allocation has dropped to 4.4%, the 24th percentile over the past year, but still the 85th percentile over five years.",
+   "topic": "Taiwan equity selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Hedge fund gross allocation to Taiwan has declined to 3.8%, remaining at the 89th percentile over five years.",
+   "anchor": "Gross allocation has also declined to 3.8%, remaining at the 89th percentile over five years.",
+   "topic": "Taiwan equity selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Taiwan is now the biggest underweight position among both Asian and global emerging-market active funds.",
+   "anchor": "Taiwan is now the biggest underweight among both Asian and global EM active funds.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Asian active funds are 530 basis points underweight Taiwan while global emerging-market active funds are 425 basis points underweight.",
+   "anchor": "Asian funds are 530bps underweight Taiwan, while EM funds are 425bps underweight.",
+   "topic": "Taiwan equity selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Both Asian and global emerging-market active funds reduced their Taiwan exposure further in October.",
+   "anchor": "Both groups reduced exposure further in October.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "October"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Taiwan has historically enjoyed a strong seasonal run through the fourth quarter and into Chinese New Year.",
+   "anchor": "Taiwan has historically enjoyed a strong seasonal run through Q4 and into Chinese New Year.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4 into Chinese New Year"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Taiwan's market is diverging sharply from its usual seasonal pattern this year as the AI unwind continues.",
+   "anchor": "The market is diverging sharply from its usual seasonal pattern as the AI unwind continues.",
+   "topic": "Taiwan equity selloff",
+   "status": "released",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "The collapse in Taiwan's RSI has not been this aggressive since the Covid crash.",
+   "anchor": "The collapse in RSI hasn't been this aggressive since the Covid crash.",
+   "topic": "Taiwan equity selloff",
+   "status": "level",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "Weekly EWT RSI has not yet reached outright disaster levels, but the speed of its deterioration has been extreme.",
+   "anchor": "Weekly EWT RSI has yet to reach outright disaster levels, but the speed of the deterioration has been extreme.",
+   "topic": "Taiwan equity selloff",
+   "status": "level",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Taiwan Massacre",
+   "claim": "The desk is not yet ready to buy the dip in Taiwan despite extreme oversold conditions, though some of those extremes are becoming hard to ignore.",
+   "anchor": "We aren't ready to catch falling knives just yet, but some of these extremes are becoming hard to ignore.",
+   "topic": "Taiwan equity selloff",
+   "status": "forecast",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-21/28680__the-taiwan-massacre.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 18,
+  "matched": 18,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
