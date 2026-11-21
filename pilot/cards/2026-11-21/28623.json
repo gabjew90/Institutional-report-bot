@@ -1,0 +1,608 @@
+{
+ "brief": "Overnight risk-off: US S&P futures were down 50bps as the tech selloff continued, with sharp declines in Taiwan, KOSPI and Japan, then Germany; German PPI printed hot (8.1% vs 7.1% expected), and CTA liquidation hit copper, gold and crude. Growth-scare fears pushed the 10-year yield below 5% to 4.98%, with bitcoin holding near $61.8k. On Deere: corporate commentary has improved (Deere's early order program up 5%, AGCO guiding to 15-20%) even as the fundamental backdrop has deteriorated because crop prices rolled over. GS hears buy-side net income expectations near $5.7bn, below the $6.1bn consensus, and leans negative on Deere over six months; the stock, at $625 versus $700, is approaching 200-day support at $615. Fiscal 2026 should mark a trough, but the 25%+ rebound embedded in consensus is realistic at best. Keysight beat on EPS, revenue, orders and margins, guided Q1 well ahead, and expanded its buyback to $710mm; GS notes a beat-and-raise is unwelcome now because the market wants misses to find a bottom. AeroVironment's GIR dinner takeaways: two new contracts push the year near fully sold against 86% prior visibility, budget tailwinds continue into FY27, and the 2026 Investor Day margin target is 14.5% to 18-20% by FY30.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "US S&P futures were down 50bps early in pre-market trading.",
+   "anchor": "US S&P futures down 50bps early in pre-market trading as the",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Taiwan equities were off 623bps overnight amid the broader Asia selloff.",
+   "anchor": "Overseas markets hit hard particularly in Asia with Taiwan off 623bps,",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "The KOSPI was down 521bps overnight.",
+   "anchor": "KOSPI down 521bps and Japan lower by 506bps.",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Japan equities were lower by 506bps overnight.",
+   "anchor": "KOSPI down 521bps and Japan lower by 506bps.",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "European equities took a cue from Asia, with Germany leading the downside off 165bps.",
+   "anchor": "Europe taking a cue with Germany leading the downside off 165bps.",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "German PPI came in hot at 8.1% versus 7.1% expected.",
+   "anchor": "PPI in Germany came in hot \u2013 big numbers 8.1% vs. 7.1% expected.",
+   "topic": "Everything selloff broadening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Sharp CTA liquidation this week hit copper, gold and crude, all remaining for sale.",
+   "anchor": "we saw sharp CTA liquidation this week as copper, gold, crude remain for sale.",
+   "topic": "Everything selloff broadening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "The 10-year Treasury yield fell back below 5% to 4.98% on growth-scare fears.",
+   "anchor": "year back below 5% to 4.98%, dollar flat and Bitcoin holding at lower level $61.8k last.",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Bitcoin was holding at a lower level around $61.8k.",
+   "anchor": "year back below 5% to 4.98%, dollar flat and Bitcoin holding at lower level $61.8k last.",
+   "topic": "Everything selloff broadening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Deere will report fiscal Q4 next week and guide for 2027.",
+   "anchor": "DE will report next week fiscal Q4 and guide 2027.",
+   "topic": "Deere Q4 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Deere said its early order program was up 5% when it last reported.",
+   "anchor": "DE said early order program up 5% when they last reported, CNH",
+   "topic": "Deere Q4 earnings preview",
+   "status": "released",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AGCO raised its order guidance bar to a 15-20% range.",
+   "anchor": "AGCO raised the bar at 15-20%.",
+   "topic": "Deere Q4 earnings preview",
+   "status": "released",
+   "instruments": [
+    "AGCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Investors GS spoke with expect Deere's net income guide to come in below the $6.1bn standing consensus.",
+   "anchor": "conversations with investors that expected a net income guide below the $6.1bn standing consensus \u2013",
+   "topic": "Deere Q4 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Investor expectations for Deere's net income guide center on a $5.7bn starting midpoint.",
+   "anchor": "expectations in the $5.7bn range for a starting midpoint.",
+   "topic": "Deere Q4 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "GS leans negative on Deere over the next six months.",
+   "anchor": "Over the next six months, we lean negative on DE",
+   "topic": "Deere Q4 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "six months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Deere stock trades at $625, down from $700.",
+   "anchor": "the stock is $625 vs. $700",
+   "topic": "Deere Q4 earnings preview",
+   "status": "level",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Deere stock is approaching support at its $615 200-day moving average.",
+   "anchor": "and approaching support at $615 200 day.",
+   "topic": "Deere Q4 earnings preview",
+   "status": "level",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Deere earnings are set to trough in fiscal 2026, but the 25%+ rebound embedded in consensus appears realistic at best and aggressive.",
+   "anchor": "trough in fiscal 2026, the 25%+ rebound embedded in consensus appears realistic at best and aggressive at",
+   "topic": "Deere Q4 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "fiscal 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Keysight's Q4 EPS came in at $3.61, ahead of the $3.37 consensus, on revenue of $1.99bn.",
+   "anchor": "Elsewhere on the micro, KEYS Q4 EPS $3.61 ahead of $3.37 consensus on revenue of $1.99bn vs.",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Keysight's book-to-bill was above 1x with $8.13bn in orders, up 49% year over year.",
+   "anchor": "$1.95bn in consensus. Book to bill above 1x with $8.13bn in orders up 49% year over year and 69.3%",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Keysight gross margins were up 460bps year over year, and orders, revenue, operating margin and EPS all continued higher.",
+   "anchor": "gross margins that were up 460bps year over year. Orders, revenue, operating margin and EPS all continue",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Keysight guides Q1 EPS to $3.63-3.69, well ahead of the $3.21 consensus, with revenue guided to $2.04-2.06bn.",
+   "anchor": "to step up sequentially. Guides Q1 well ahead with $3.63-3.69 EPS vs. $3.21 on revenue $2.04-2.06bn",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Keysight's Q1 revenue guide is ahead of the $1.96bn consensus, and the post-earnings call carried a 10% implied move.",
+   "anchor": "ahead of $1.96bn consensus. Call yesterday at 4:30pm with 10% implied move. Mark's first take here As",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "level",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "Keysight expanded its share repurchase program by $250mm, bringing planned repurchase to $710mm.",
+   "anchor": "discuss. CW expands share repurchase program $250mm so now looking at $710mm of share repurchase",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment stated it had visibility into 86% of its full-year revenue guidance as of post F1Q.",
+   "anchor": "Backlog. Post F1Q, AVAV stated it had visibility into 86% of its full-year revenue guidance. Since then,",
+   "topic": "AVAV backlog and margins",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment announced a ~$315mn award in its Autonomous Systems segment under a $940mn contract vehicle.",
+   "anchor": "the company has announced 1) a ~$315mn award in the Autonomous Systems segment under a $940mn",
+   "topic": "AVAV backlog and margins",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "The $315mn funded portion of AeroVironment's Autonomous Systems award is expected to convert to revenue within 12-18 months.",
+   "anchor": "IDIQ contract, with the $315mn funded portion expected to convert to revenue within 12-18 months; and",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment received a $405mn order from a Middle East customer for LOCUST X3.",
+   "anchor": "2) a $405mn order from a Middle East customer for LOCUST X3, expected to convert to revenue within",
+   "topic": "AVAV backlog and margins",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "GS estimates AeroVironment's current run rates imply the fiscal year is now close to 100% sold on the prior visibility.",
+   "anchor": "12-24 months. Those monthly dollar run rates would imply the year is now close to 100% sold on the prior",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment will win more new business through the rest of the fiscal year on top of its prior 86% visibility and two new larger contracts.",
+   "anchor": "86% plus those two larger new contracts, and AVAV will win more new business in the year.",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment's F2Q book-to-bill should also be strong.",
+   "anchor": "bill should also be strong as a result.",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment sees a continued strong funding environment for its product verticals.",
+   "anchor": "Budget Environment. The company sees a continued strong funding environment for its product verticals.",
+   "topic": "AVAV backlog and margins",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment management is not particularly concerned with a short continuing resolution, given the amount of backlog on hand.",
+   "anchor": "Management is not particularly concerned with a short continuing resolution given the amount of backlog",
+   "topic": "AVAV backlog and margins",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment is not expecting additional large reconciliation dollars, with few new starts relied upon in its backlog.",
+   "anchor": "in hand and few new starts relied upon; and it is not expecting additional large reconciliation dollars in the",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "The final FY27 budget base will likely be higher than FY26, which had already grown substantially.",
+   "anchor": "final FY2027 budget. The final FY27 base will likely be higher than FY26, which had grown substantially",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment sees multiple years of authorization growth still to be converted to outlays.",
+   "anchor": "itself. AVAV sees multiple years of authorization growth still to be converted to outlays, that includes",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment's product areas remain high on the Pentagon priority list, and the company is fielding substantial international demand.",
+   "anchor": "the pentagon priority list; while also fielding substantial international demand.",
+   "topic": "AVAV backlog and margins",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment targets EBITDA margin expansion from 14.5% in FY26 to 18-20% by FY30.",
+   "anchor": "14.5% (FY26) to 18-20% (FY30). AVAV expects margin expansion to come in part from a higher mix of",
+   "topic": "AVAV backlog and margins",
+   "status": "target",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY26-FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment expects margin expansion to come partly from a higher mix of international sales and fixed-price contracts, and from cost reduction opportunities.",
+   "anchor": "international sales and fixed price contracts. The company also sees additional opportunities to reduce",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials KEYS DE guide AVAV takes 20 Nov 2026",
+   "claim": "AeroVironment's capacity expansions will allow it to bring certain manufacturing components back in-house through in-sourcing.",
+   "anchor": "costs through in-sourcing. Capacity expansions will allow AVAV to bring certain manufacturing",
+   "topic": "AVAV backlog and margins",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-21/28623__gs-novak-gs-u-s-industrials-materials-keys-de-guide-avav-tak.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 40,
+  "matched": 40,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
