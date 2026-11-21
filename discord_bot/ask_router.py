@@ -1082,6 +1082,40 @@ _CAUSE_PAST_RE = re.compile(
     r"|(?:in|during)\s+q[1-4]|this\s+(?:month|quarter|year)|ytd)\b", re.I)
 
 
+# The market as a whole, asked about now: why it is moving, what it is
+# doing, a summary of the session.
+_MARKET_NAME = (r"(?:(?:the\s+)?(?:stock\s+)?markets?|stocks|equities|indices|indexes|(?:the\s+)?tape"
+                r"|s&p(?:\s*500)?|nasdaq|the\s+dow)")
+_MARKET_TODAY_RE = re.compile(
+    r"\b(?:why|what(?:'s|s|\s+is)?\s+(?:happening|going\s+on)|how(?:'s|s|\s+is|\s+are))\b.{0,30}?\b"
+    + _MARKET_NAME + r"\b"
+    r"|\b" + _MARKET_NAME + r"\b.{0,30}?\b(?:today|so\s+far|right\s+now|rn|this\s+(?:morning|afternoon)"
+    r"|dying|bleeding|tanking|dumping|ripping|selling\s+off|crashing)\b"
+    r"|\b(?:summary|recap|tldr|tl;dr|rundown)\b.{0,30}?\b" + _MARKET_NAME + r"\b", re.I)
+# Not this: another quantity, the market's hours, a forecast, history.
+_MARKET_OTHER_RE = re.compile(
+    r"\b(?:volume|breadth|gamma|gex|flows?|positioning|valuation|multiple|market\s+cap|mcap|hours?"
+    r"|opens?|opened|closed?|closes|holiday|schedule|over\s+there|will|gonna|going\s+to|tomorrow|next"
+    r"|before|after|should|predict\w*|bubble|top|bottom|korea\w*|japan\w*|china|chinese|europe\w*"
+    r"|historical\w*|average|usually|typically"
+    # a view asked for is the model's to give ("what do you think of the market today")
+    r"|think|thoughts?|opinion|view|take|feel|bullish|bearish|outlook)\b", re.I)
+MARKET_SYMBOLS = ["SPX", "NDX", "VIX"]
+
+
+def asks_market(asked: str) -> bool:
+    """The asker's words ask what the US market is doing now or why."""
+    q = asked or ""
+    return (bool(_MARKET_TODAY_RE.search(q)) and not _MARKET_OTHER_RE.search(q)
+            and not _CAUSE_MORE_RE.search(q) and not _CAUSE_PAST_RE.search(q) and not _STAT_RE.search(q))
+
+
+def market_prefetch() -> list:
+    """The index quotes and the code-run search for what moved the market."""
+    return [(T_PRICE, {"symbols": [price_symbol(s) for s in MARKET_SYMBOLS]}),
+            (T_NEWS, {"symbol": MARKET_SYMBOLS[0], "market": True})]
+
+
 def asks_cause(asked: str) -> bool:
     """The asker's words ask why something moved or what happened to it
     in the last days, and nothing more (discord_bot/move_cause.py)."""
@@ -1815,6 +1849,9 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
             # group's bellwethers and search the news on the first one
             # (2026-10-06: no tools ran, the move size was never given).
             basket = sector_basket(ql)
+            if not basket and asks_market(q) and not names_member:
+                r.reason = "the market today"
+                r.prefetch = market_prefetch()
             if basket:
                 r.tickers = basket
                 # `basket`: the search is on the group's first name, not on a
@@ -1979,6 +2016,13 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
     if logged:
         r.tickers = [logged.group(1)]
         r.prefetch = [(T_PRICE, {"symbols": [price_symbol(logged.group(1))]})]
+    # The market as a whole, now: the index quotes from the feed and the
+    # reasons from a search run in code (2026-11-21: "why are the markets
+    # dying today" was answered with index moves read out of articles).
+    elif not tickers and not names_member and asks_market(q):
+        r.shape, r.reason = NEWS_EVENT, "the market today"
+        r.prefetch = market_prefetch()
+        return r
     r.shape = UNKNOWN
     return r
 
@@ -2227,7 +2271,8 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         pubs = ", ".join(s.get("title") or "" for s in result.get("sources") or [] if s.get("title"))
         days = result.get("window_days") or 0
         head = (f"NEWS ON {result.get('symbol')}, the largest events of the last {days} days"
-                if days > 7 else f"NEWS ON {result.get('symbol')}")
+                if days > 7 else "NEWS ON THE US MARKET" if result.get("symbol") == "MARKET"
+                else f"NEWS ON {result.get('symbol')}")
         moves = "; ".join(f"{m['date']} {m['pct']:+.1f}%" for m in result.get("moves") or [])
         return (f"[{lead}{tail}]\n{head}:\n{result.get('digest')}"
                 + (f"\nLargest one-day moves in that time, from Yahoo's closes: {moves}" if moves else "")

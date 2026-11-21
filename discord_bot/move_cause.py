@@ -86,6 +86,12 @@ _CAUSED_MOVE_RE = re.compile(
     r",?\s+(?:causing|sending|pushing|driving|lifting|dragging|"
     r"(?:which|that)\s+(?:sent|pushed|lifted|drove|dragged|caused))\s+"
     r"(?=[^;|]*(?:\bshares?\b|\bstock\b|%))[^;|]*$", re.I)
+# "..., with the Nasdaq falling 5.6%": an article's own index move, which is
+# the figure that goes stale beside the live quote.
+_INDEX_TAIL_RE = re.compile(
+    r",?\s+(?:with|as|while|and)\s+(?:the\s+)?(?:s&p(?:\s*500)?|nasdaq(?:\s+(?:composite|100))?|dow(?:\s+jones)?"
+    r"(?:\s+industrial\s+average)?|vix|russell(?:\s+2000)?|(?:major\s+|main\s+)?(?:indexes|indices|averages))\b"
+    r"[^;|]*$", re.I)
 # a second date the search wrote after the first: "(2026-11-21 reports):"
 _SECOND_DATE_RE = re.compile(r"^(?:\([^()]*20\d\d-\d\d-\d\d[^()]*\)|20\d\d-\d\d-\d\d)[:,]?\s*")
 
@@ -103,7 +109,7 @@ def _clean(line: str) -> str:
     pm = _PUBLISHER_RE.search(body.rstrip(". "))
     if pm:
         pub, body = f" ({pm.group(1)})", body.rstrip(". ")[:pm.start()]
-    cut = _CAUSED_MOVE_RE.sub("", _MOVE_TAIL_RE.sub("", body)).strip().rstrip(".,")
+    cut = _INDEX_TAIL_RE.sub("", _CAUSED_MOVE_RE.sub("", _MOVE_TAIL_RE.sub("", body))).strip().rstrip(".,")
     if len(cut.split()) >= 4:
         body = cut
     body = body.strip().rstrip(".")
@@ -124,8 +130,12 @@ def fresh_lines(news: dict | None, asked: str = "", today: date | None = None) -
     return out[:MAX_LINES]
 
 
+MARKET = "the US market"       # the label of the market-wide search (ask_router.market_prefetch)
+MARKET_ARROWS = 2              # a session usually has more than one driver
+
+
 def _names(symbols: list[str]) -> str:
-    bold = [f"**{s}**" for s in symbols]
+    bold = [s if s == MARKET else f"**{s}**" for s in symbols]
     return bold[0] if len(bold) == 1 else ", ".join(bold[:-1]) + " or " + bold[-1]
 
 
@@ -154,6 +164,8 @@ def _named_search(tool: str, args: dict | None) -> str:
     """The stock a news search of the plan is about, when the asker named
     it: '' for another tool, a fund or coin, or a sector basket's first name."""
     from discord_bot import ask_router as R
+    if tool == R.T_NEWS and (args or {}).get("market"):
+        return MARKET
     sym = str((args or {}).get("symbol") or "").upper()
     return sym if tool == R.T_NEWS and R.is_stock(sym) and not (args or {}).get("basket") else ""
 
@@ -289,6 +301,12 @@ def outline(body: dict) -> str:
                 "the move, and the system says so under your reply. Reply with the one line: No "
                 "reported cause. Never offer a reason from memory, from the price action or from the "
                 "sector.]")
+    if MARKET in c["news"]:
+        return (head + f"Write at most {MARKET_ARROWS} arrows: what moved the market, one sentence each, "
+                "taken from the news lines below and from nothing else. Give the reasons the lines "
+                "state and no figure they do not carry. Name one publisher per arrow, the one its line "
+                "ends with, in plain text. If no line explains the move, say the news lines give no "
+                "reason for it.]" + chr(10) + "NEWS ON THE US MARKET: " + " | ".join(c["news"][MARKET]))
     n = c["slots"]
     arrows = "one arrow" if n == 1 else f"one arrow per NEWS block below, {n} arrows"
     if any(" and " in label for label in c["news"]):
@@ -338,7 +356,16 @@ def compose(answer: str, body: dict, grounded: bool = False) -> tuple[str, dict]
     c = body["cause"]
     kept, dropped = B.arrows(answer, body)
     own_search = grounded and bool(c["failed"]) and not c["slots"]
-    cap = c["slots"] or (MAX_GROUNDED_ARROWS if own_search else 0)
+    if not own_search:
+        # A figure in the cause must be one the price lines or the news
+        # lines carry: an index move read out of an article is the figure
+        # that went stale ("S&P 500 down 2.1%" beside the live quote).
+        from discord_bot.figure_provenance import unsourced_figures
+        evidence = chr(10).join([*body["lines"], *(ln for lines in c["news"].values() for ln in lines)])
+        sourced = [p for p in kept if not unsourced_figures(p, evidence)[1]]
+        dropped += len(kept) - len(sourced)
+        kept = sourced
+    cap = (MARKET_ARROWS if MARKET in c["news"] else c["slots"]) or (MAX_GROUNDED_ARROWS if own_search else 0)
     dropped += max(0, len(kept) - cap)
     kept = kept[:cap]
     fallback = False

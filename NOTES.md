@@ -4106,3 +4106,23 @@ Harness samples (2026-11-21):
 - "how much has amd dropped since october 15": "**AMD** is down **24.5%** since Oct 15: **$562.23** at the Oct 15 close to **$424.39** at the Nov 20 close".
 
 Left: "what time is and earnings and what other main earnings we have" no longer reads MAIN, and goes to the catch-all ("and" for AMD is a guess code should not make). "did AMD and NVDA beat" (a result question about two stocks) keeps the catch-all. The model's opening above the AMD statistic was decoration ("a brutal round-trip", "a brief mid-month squeeze"): whether an opening is wanted above code-posted lines at all is the owner's call.
+
+## 2026-11-21: market questions answered with the live index, not an article's
+
+Third of the remaining approved items. The 11-20 figure sample had two answers that gave index moves from news articles as today's figures when the tape had moved on by 0.6 to 3.4 points ("S&P -1.47% at 7,450" at a minute it was 7,408, and "why are the markets dying today").
+
+Cause: a market question that names no ticker went to the catch-all. The model searched, and an article's "S&P 500 down 2.1%" was the only index figure it had.
+
+Built, on the path the stock cause question already takes (`discord_bot/move_cause.py`):
+
+- The router reads a question about what the US market is doing now or why. Its hours, a forecast, history, another quantity (volume) and a view asked for are other questions.
+- Code fetches the SPX, NDX and VIX quotes and runs the news search in a market mode, which asks for the reasons and for no index level or percentage.
+- The answer is the three index lines, posted by code, and at most two sentences from the news lines.
+- An index line says "today" only while the session is open. On a weekend it had read "at 6,910.39, -3.7% today".
+- A figure in a cause sentence must be one the price lines or the news lines carry, on every cause turn. An article's own index move is cut from the news lines before the model sees them.
+
+Harness sample (2026-11-21, a Saturday): "why are the markets dying today?" got SPX last close 6,910.39 (-3.7%), NDX 25,028.98 (-5.6%), VIX 35.89 (+26.2%), then two sentences on the tech sell-off and on rate worries, each naming its publisher. 4.6 s.
+
+Replay over the 963 logged questions: 3 routes move, the three market questions.
+
+Seen on the way and not changed: "spx ndx vix price" is answered from price history with a "couldn't verify" warning under correct figures.

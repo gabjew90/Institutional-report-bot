@@ -55,6 +55,20 @@ PROMPT = (
     "No opinions, no forecasts of your own, no background. If you find nothing dated in "
     "the window, reply exactly: NO RECENT NEWS."
 )
+# The market as a whole (2026-11-21): "why are the markets dying today" was
+# answered with index moves taken from articles ("S&P 500 down 2.1%") where
+# the live quote had moved on. The reasons are searched here, and the index
+# levels come from the quote feed (discord_bot/move_cause.py).
+MARKET = "MARKET"
+MARKET_PROMPT = (
+    "Search the web for why the US stock market moved in its most recent session, today included. "
+    "Report only facts, newest first, at most 5 lines, each line starting with its date "
+    "(YYYY-MM-DD) and ending with the publisher in parentheses: the reasons market reports give "
+    "for the move (economic data, the Fed, bond yields, oil, geopolitics, earnings, a sector or "
+    "a few large stocks). Give no level and no percentage for the S&P 500, the Nasdaq, the Dow or "
+    "the VIX: those are quoted separately. No opinions, no forecasts, no background. If you find "
+    "nothing dated in the last 3 days, reply exactly: NO RECENT NEWS."
+)
 LONG_DAYS = 90
 MAX_MOVES = 3
 HISTORY_TIMEOUT_S = 2.5
@@ -104,9 +118,12 @@ async def _execute_ticker_news(args: dict) -> dict:
     from google.genai import types
     from config import settings
     sym = (args.get("symbol") or "").strip().upper().lstrip("$")
+    market = bool(args.get("market"))
+    if market:
+        sym = MARKET
     if not sym:
         return {"status": "error", "error": "No symbol provided."}
-    days = LONG_DAYS if int(args.get("days") or WINDOW_DAYS) > WINDOW_DAYS else WINDOW_DAYS
+    days = LONG_DAYS if int(args.get("days") or WINDOW_DAYS) > WINDOW_DAYS and not market else WINDOW_DAYS
     key = f"{sym}:{days}"
     hit = _CACHE.get(key)
     if hit and time.monotonic() - hit[0] < CACHE_TTL_S:
@@ -121,7 +138,9 @@ async def _execute_ticker_news(args: dict) -> dict:
     name = (args.get("name") or "").strip() or _listed.name(sym)
     name_part = f" ({name})" if name else ""
     moves: list[dict] = []
-    if days == WINDOW_DAYS:
+    if market:
+        prompt = MARKET_PROMPT
+    elif days == WINDOW_DAYS:
         prompt = PROMPT.format(sym=sym, name=name_part)
     else:
         from datetime import date, timedelta

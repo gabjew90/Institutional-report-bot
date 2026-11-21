@@ -5395,7 +5395,8 @@ async def _ask_02_call_model_with_tools(
         # one stock or several (discord_bot/move_cause.py, 2026-11-21).
         from discord_bot import move_cause as _mc
         _mc_asked = _ask_route.reask or _so_asked
-        if (_ask_route.shape == _ask_router.NEWS_EVENT and _ask_router.asks_cause(_mc_asked)
+        if (_ask_route.shape == _ask_router.NEWS_EVENT
+                and (_ask_router.asks_cause(_mc_asked) or _ask_router.asks_market(_mc_asked))
                 and not _fresh and (not _body or _body["state"] == "none")
                 and any(_t == _ask_router.T_PRICE for _t, _ in _pf_plan)):
             _mc_body = _mc.build(_pf_plan, _pf_results, _mc_asked)

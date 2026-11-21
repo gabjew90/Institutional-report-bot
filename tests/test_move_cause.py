@@ -259,3 +259,78 @@ def test_a_cause_from_the_news_lines_cites_them_named_publisher_first():
     # two links as everywhere else, the publisher the answer names first
     assert cited.index("reuters.com") < cited.index("bloomberg.com")
     assert cited.count("](<") == 2 and "stocktitan" not in cited
+
+
+# ------------------------------------------------------------------ the market
+
+SEP = chr(10) * 2
+IDX = {"status": "ok", "session": "OPEN", "quotes": [
+    {"symbol": "^GSPC", "price": 6910.39, "change_pct": -3.7, "data_freshness": "live_regular_session"},
+    {"symbol": "^NDX", "price": 25028.98, "change_pct": -5.61, "data_freshness": "live_regular_session"},
+    {"symbol": "^VIX", "price": 35.89, "change_pct": 26.19, "data_freshness": "live_regular_session"}]}
+MKT_NEWS = {"status": "ok", "symbol": "MARKET", "sources": [{"title": "fool.com", "url": "https://f/1"}],
+            "digest": "2026-11-20: Investors retreated from technology and AI stocks on valuation concerns "
+                      "and a slide in chipmakers such as Nvidia, with the Nasdaq falling 5.6% (The Motley Fool)\n"
+                      "2026-11-20: Treasury yields rose after hot producer prices (Reuters)"}
+
+
+def test_a_market_question_gets_the_index_quotes_and_a_search_run_in_code():
+    """2026-11-20: "why are the markets dying today" was answered with index
+    moves read out of articles. The quotes come from the feed and the
+    reasons from a search code runs."""
+    for q in ("why market down", "why are the markets dying today?", "what is the market doing today",
+              "give me quick summary of market today so far", "why is the nasdaq dumping"):
+        r = R.classify(q)
+        assert r.shape == R.NEWS_EVENT and r.reason == "the market today", q
+        assert r.prefetch == [(R.T_PRICE, {"symbols": ["^GSPC", "^NDX", "^VIX"]}),
+                              (R.T_NEWS, {"symbol": "SPX", "market": True})], q
+    # hours, forecasts, history, another quantity and a view are other questions
+    for q in ("is the market open today", "will the market crash tomorrow", "what happened to the market in 2008",
+              "how is todays volume for stocks so far?", "what do you think of the market today",
+              "So that means the stock market over there is open right now", "stocks only go up",
+              "Market go up or down before ipo"):
+        assert not R.asks_market(q), q
+    assert R.classify("why is nvda down").reason != "the market today"
+
+
+def test_the_market_body_is_the_index_lines_and_up_to_two_reasons():
+    plan = R.market_prefetch()
+    body = M.build(plan, [IDX, MKT_NEWS], "why are the markets dying today?", today=SAT)
+    assert body["lines"] == ["→ **SPX** at **6,910.39**, -3.7% today.", "→ **NDX** at **25,028.98**, -5.6% today.",
+                             "→ **VIX** at **35.89**, +26.2% today."]
+    news = body["cause"]["news"][M.MARKET]
+    assert len(news) == 2 and "5.6%" not in news[0]            # the article's own index move is cut
+    assert "at most 2 arrows" in M.outline(body) and "NEWS ON THE US MARKET" in M.outline(body)
+    a = "→ Investors pulled back from technology and AI stocks on valuation concerns (The Motley Fool)."
+    b = "→ Treasury yields rose after hot producer prices (Reuters)."
+    c = "→ Semiconductors led the decline as traders braced for the Fed."
+    out, info = M.compose("\n\n".join([a, b, c]), body)
+    assert out == "\n\n".join([*body["lines"], a, b]) and info["kept"] == 2 and info["dropped"] == 1
+
+
+def test_a_figure_in_the_cause_must_be_in_the_price_or_news_lines():
+    """The stale figure was an index move taken from an article."""
+    body = M.build(R.market_prefetch(), [IDX, MKT_NEWS], today=SAT)
+    stale = "→ The Nasdaq is down 3.5% and the S&P 500 2.1% as tech sells off (The Motley Fool)."
+    fine = "→ Treasury yields rose after hot producer prices (Reuters)."
+    out, info = M.compose(stale + "\n\n" + fine, body)
+    assert "3.5%" not in out and "Treasury yields" in out and info["dropped"] == 1
+    # every arrow dropped: the search's own line is posted as written
+    out, info = M.compose(stale, body)
+    assert info["fallback"] and "3.5%" not in out and "→ Nov 20: Investors retreated" in out
+
+
+def test_nothing_found_on_the_market_is_said_plainly():
+    body = M.build(R.market_prefetch(), [IDX, {"status": "no_data", "symbol": "MARKET"}], today=SAT)
+    assert body["cause"]["missing"] == ["→ The news search found nothing on the US market dated Fri Nov 20 or "
+                                        "later, so no reason for the move is confirmed."]
+    assert not M.needs_search(R.market_prefetch(), [IDX, {"status": "no_data"}], today=SAT)
+
+
+def test_an_index_line_says_today_only_while_the_session_is_open():
+    from discord_bot.price_block import quote_line
+    q = IDX["quotes"][0]
+    assert quote_line(q, "OPEN") == "→ **SPX** at **6,910.39**, -3.7% today."
+    assert quote_line(q, "AFTER-HOURS") == "→ **SPX** closed at **6,910.39**, -3.7% on the day."
+    assert quote_line(q, "WEEKEND-CLOSED") == "→ **SPX** last close **6,910.39** (-3.7% that session)."
+    assert quote_line(q, "PRE-MARKET") == "→ **SPX** last close **6,910.39** (-3.7% that session)."

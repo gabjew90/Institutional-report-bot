@@ -61,7 +61,15 @@ def quote_line(q: dict, session: str = "", with_symbol: bool = True) -> str:
         bps = q.get("change_bps")
         return f"→ {who}at **{float(q['yield_pct']):.2f}%**" + (f", {bps:+.1f} bps" if bps is not None else "") + "."
     if sym.startswith("^"):
-        # an index level is points, not dollars
+        # An index level is points, not dollars. The cash index does not
+        # trade outside the session: after the close, before the open and
+        # at a weekend its last print is the close, not "today".
+        if session == "AFTER-HOURS":
+            lead = f"{who}closed" if who else "Closed"
+            return f"→ {lead} at **{p:,.2f}**" + (f", {chg:+.1f}% on the day" if chg is not None else "") + "."
+        if session in ("PRE-MARKET", "WEEKEND-CLOSED"):
+            lead = f"{who}last close" if who else "Last close"
+            return f"→ {lead} **{p:,.2f}**" + (f" ({chg:+.1f}% that session)" if chg is not None else "") + "."
         return f"→ {who}at **{p:,.2f}**" + (f", {chg:+.1f}% today" if chg is not None else "") + "."
     if q.get("source") in _CRYPTO_SOURCES:
         return f"→ {who}**{_d(p)}**" + (f", {chg:+.1f}% over 24 hours" if chg is not None else "") + "."
