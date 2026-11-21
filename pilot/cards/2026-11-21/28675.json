@@ -1,0 +1,392 @@
+{
+ "brief": "The Market Ear's weekly wrap strings together several extremes. SPX broke its 200-day moving average, then its longer-term trendline, and now trades below 7,000 in futures, with RSI at its most oversold since the Liberation Day panic. MS prime brokerage data puts US long/short hedge fund net exposure at 42%, an 8th percentile reading since 2010 that historically coincides with 5% median SPX earnings growth. Current consensus instead expects 16% growth next year, a disconnect between positioning and expectations. Separately, GS prime brokerage data shows hedge funds dumping Asian AI/tech exposure, with long sales outpacing shorts 2.4 to 1, concentrated in Korea and Taiwan. Korea allocation is back to January levels, and Taiwan allocation has fallen to a 24th percentile. A EWT December 95 put recommended under a month ago to play a Taiwan catch-down has risen from $2 to almost $20. DB separately argues India can benefit from AI adoption rather than invention, citing its 1.5 billion potential users. Gold and silver are both extremely oversold, gold's RSI near decade lows and silver's RSI down from 90 to 30, with gold volatility spiking as the metal fails to find a bid.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "SPX broke below its 200-day moving average early in the week.",
+   "anchor": "SPX broke below the 200-day moving average early in the week",
+   "topic": "S&P 200-day moving average breakdown",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "SPX took out its longer-term trendline midweek.",
+   "anchor": "took out the longer-term trendline midweek",
+   "topic": "S&P 200-day moving average breakdown",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "SPX futures are now trading below the 7,000 level.",
+   "anchor": "is now trading below the massive 7,000 level (futures)",
+   "topic": "S&P 200-day moving average breakdown",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "SPX's RSI has reached its most oversold level since the Liberation Day panic.",
+   "anchor": "RSI has reached its most oversold levels since the Liberation Day panic",
+   "topic": "S&P 200-day moving average breakdown",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "US long/short hedge fund net exposure has dropped to 42%, the lowest in a year and the 8th percentile since 2010, per Morgan Stanley prime brokerage data.",
+   "anchor": "US L/S hedge fund net exposure has dropped to 42%, the lowest in a year and just the 8th percentile since 2010",
+   "topic": "Equity positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Net exposure at current levels has historically coincided with median expected SPX earnings growth of just 5%, with the highest reading around 10%.",
+   "anchor": "net exposure at these levels has coincided with median expected SPX earnings growth of just 5%, with the highest reading around 10%",
+   "topic": "Equity positioning and flows",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Current consensus expects 16% SPX earnings growth next year.",
+   "anchor": "Current consensus expects 16% earnings growth next year",
+   "topic": "Equity positioning and flows",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Hedge funds are dumping Asian AI/tech exposure, with long sales outpacing short sales by 2.4 to 1, per Goldman Sachs prime brokerage data.",
+   "anchor": "Hedge funds continue dumping Asian AI/tech exposure, with long sales outpacing short sales by 2.4 to 1",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Net allocation to Korea is now back to levels last seen in early January.",
+   "anchor": "Net allocation to Korea is now back to levels last seen in early January",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "KOSPI volatility is up from its early October lows but the reaction looks muted given the scale of the sell-off.",
+   "anchor": "KOSPI VIX is up from its early October lows, but the reaction looks relatively muted given the scale of the sell-off",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Investors in the Korea sell-off are dumping longs through stop-loss selling rather than buying downside protection.",
+   "anchor": "investors are simply dumping their longs rather than chasing downside protection",
+   "topic": "Asian AI unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "SK Hynix looks cheap on a blended 24-month P/E basis, but its real risk is earnings sustainability.",
+   "anchor": "The stock looks cheap on a blended 24-month P/E basis, but the real risk is earnings sustainability",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Pressing a short on SK Hynix is becoming increasingly difficult given its valuation cushion.",
+   "anchor": "pressing the short here is becoming increasingly difficult given the valuation cushion",
+   "topic": "Asian AI unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Taiwan net allocation has dropped to 4.4%, the 24th percentile over the past year but the 85th percentile over five years.",
+   "anchor": "Net allocation has dropped to 4.4%, the 24th percentile over the past year, but still the 85th percentile on a five-year basis",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Taiwan gross allocation has declined to 3.8%, the 89th percentile over five years.",
+   "anchor": "Gross allocation has also declined to 3.8%, remaining at the 89th percentile over five years",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "The Market Ear recommended the EWT December 95 put under a month ago as a cheap way to play a potential catch-down in Taiwan.",
+   "anchor": "we highlighted the EWT December 95 put as a cheap way to play a potential catch-down in Taiwan",
+   "topic": "Asian AI unwind",
+   "status": "target",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "The EWT December 95 put has gone from about $2 to almost $20, nearly 10 times its original price.",
+   "anchor": "That put has now gone from $2 to almost $20. Nearly 10x.",
+   "topic": "Asian AI unwind",
+   "status": "released",
+   "instruments": [
+    "EWT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "DB argues India could become one of the biggest beneficiaries of AI without winning the race to build the technology.",
+   "anchor": "India could become one of the biggest beneficiaries of AI without winning the race to build the technology",
+   "topic": "India AI adoption thesis",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "DB argues that while the US and China spend hundreds of billions building AI models, chips and infrastructure, India can focus on adopting cheap AI across its economy.",
+   "anchor": "US and China spend hundreds of billions developing models, chips and infrastructure, India can focus on adopting increasingly cheap AI",
+   "topic": "India AI adoption thesis",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "India has nearly 1.5 billion potential users, established digital infrastructure and a large technology workforce.",
+   "anchor": "The country has nearly 1.5 billion potential users, an established digital infrastructure and a massive technology workforce",
+   "topic": "India AI adoption thesis",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Gold is reaching extremely oversold levels, with RSI approaching some of its lowest readings in decades.",
+   "anchor": "Gold is reaching extremely oversold levels. RSI is approaching some of the lowest readings in decades",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "The Market Ear says gold's selloff is starting to tempt the contrarian in them despite disliking catching falling knives.",
+   "anchor": "We don't like catching falling knives, but this one is starting to tempt the contrarian in us",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Gold volatility is exploding higher as the metal fails to catch a bid.",
+   "anchor": "Gold volatility is exploding higher today as the shiny metal simply can't catch a bid",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "The crowd is scrambling for downside protection on gold, showing how panicky the sell-off has become.",
+   "anchor": "The crowd is scrambling for downside protection, showing just how panicky this sell-off has become",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "The Market Ear says current conditions are worth watching for anyone considering dipping into gold longs.",
+   "anchor": "If you ever considered dipping a toe into gold longs, these are the types of conditions worth paying attention to",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "bidless",
+   "claim": "Silver's weekly RSI has collapsed from above 90 to 30 in almost a straight line, a level lower only once since Covid.",
+   "anchor": "Silver's weekly RSI has been lower only once since Covid. It has collapsed from above 90 to 30 in almost a straight line",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "level",
+   "instruments": [
+    "SLV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-21/28675__bidless.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
