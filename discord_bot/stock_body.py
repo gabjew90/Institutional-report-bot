@@ -357,17 +357,15 @@ def _restates(part: str, body: dict, body_text: str) -> bool:
     return not missing
 
 
-def compose(answer: str, body: dict) -> tuple[str, int]:
-    """(the posted lines followed by the model's arrows, how many of its
-    arrows were dropped). An arrow is dropped when it only restates the
-    lines: it repeats a headline figure with none of its own, or it says
-    nothing the lines do not."""
+def arrows(answer: str, body: dict) -> tuple[list[str], int]:
+    """(the model's arrows worth posting under the lines, how many were
+    dropped). An arrow is dropped when it only restates the lines: it
+    repeats a headline figure with none of its own, or it says nothing the
+    lines do not."""
     from discord_bot.answer_block import _NOT_A_LEAD, adds_nothing
     from discord_bot.data_footer import strip_model_sources
     from discord_bot.figure_provenance import _lines
-    from discord_bot import desk_line
-    desks = list(body.get("desks") or [])
-    text = "\n\n".join([*body["lines"], *(d["line"] for d in desks)])
+    text = "\n\n".join([*body["lines"], *(d["line"] for d in body.get("desks") or [])])
     kept, dropped = [], 0
     for part in _lines(strip_model_sources(answer or "").strip()):
         part = part.strip()
@@ -381,16 +379,25 @@ def compose(answer: str, body: dict) -> tuple[str, int]:
         if part[-1].isalnum() or part[-1] in ")*%":
             part += "."
         kept.append(part)
+    return kept, dropped
+
+
+def compose(answer: str, body: dict) -> tuple[str, int]:
+    """(the posted lines followed by the model's arrows, how many of its
+    arrows were dropped, see `arrows`)."""
+    from discord_bot import desk_line
+    desks = list(body.get("desks") or [])
+    kept, dropped = arrows(answer, body)
     # A desk's line goes in front of the first arrow that names the desk
     # (the model's reason for it). One no arrow names stays with the lines.
     placed: set[str] = set()
-    arrows: list[str] = []
+    out: list[str] = []
     for part in kept:
         for d in desks:
             if d["bank"] not in placed and (desk_line.names(part, d.get("who") or d["bank"])
                                             or desk_line.names(part, d["bank"])):
-                arrows.append(d["line"])
+                out.append(d["line"])
                 placed.add(d["bank"])
-        arrows.append(part)
+        out.append(part)
     top = [*body["lines"], *(d["line"] for d in desks if d["bank"] not in placed)]
-    return "\n\n".join([*top, *arrows]), dropped
+    return "\n\n".join([*top, *out]), dropped

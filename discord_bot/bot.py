@@ -5341,9 +5341,10 @@ async def _ask_02_call_model_with_tools(
             _ask_meta["recap_coverage"] = _recap_line(_pf_res)
         if (_pf_tool in (_ask_router.T_NEWS, _ask_router.T_EVENTS)
                 and _pf_res.get("status") == "ok"):
-            # Cited in phase 10 when the answer uses a figure from it.
-            _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
-                                 "digest": _pf_res.get("digest") or ""}
+            # Cited in phase 10 when the answer uses a figure from it. A
+            # question about two stocks runs two searches: both are kept.
+            from discord_bot.move_cause import merge_news as _merge_news
+            _ask_meta["news"] = _merge_news(_ask_meta.get("news"), _pf_res)
         _ask_tool_log.append(_pf_tool)
         _pf_text = _ask_router.inject_text(_pf_tool, _pf_res, has_images=_has_attached_image)
         if not _pf_text:
@@ -5381,6 +5382,20 @@ async def _ask_02_call_model_with_tools(
         _body = _sb.build(_ask_route.shape, _so_symbol, _pf_by_tool, fresh=_fresh, asked=_so_asked)
         _outline = _so.build_outline(_pf_by_tool, _ask_route.shape, _so_symbol, fresh=_fresh,
                                      asked=_so_asked, posted=_body)
+        # "Why did it move / what happened to it", with no report out: the
+        # price lines and the cause from the news lines, nothing else, for
+        # one stock or several (discord_bot/move_cause.py, 2026-11-21).
+        from discord_bot import move_cause as _mc
+        _mc_asked = _ask_route.reask or _so_asked
+        if (_ask_route.shape == _ask_router.NEWS_EVENT and _ask_router.asks_cause(_mc_asked)
+                and not _fresh and (not _body or _body["state"] == "none")
+                and any(_t == _ask_router.T_PRICE for _t, _ in _pf_plan)):
+            _mc_body = _mc.build(_pf_plan, _pf_results, _mc_asked)
+            if _mc_body:
+                _body, _outline = _mc_body, _mc.outline(_mc_body)
+            # Read by the grounding net: price data is no source for a cause.
+            _ask_meta["move_cause"] = {
+                "needs_search": _mc.needs_search(_pf_plan, _pf_results, _mc_asked)}
         if _outline and _body:
             _ask_meta["stock_body"] = _body
         if _outline:
@@ -6731,7 +6746,22 @@ async def _ask_07_validation_ladder(
     # exemption of 2026-10-05 (a tool returned data and every figure is in
     # the full evidence, prior answers included) still holds alongside.
     from discord_bot.fantasy_guard import _bot_parent
+    # A question about why something moved, in a turn where no news search
+    # ran (a fund, an index, a coin) or one did not come back: the draft's
+    # figures are the price feed's, and a price is no source for a cause.
+    # The search is forced whatever the figures match (2026-11-20: "what
+    # happened with CRWD and ZS after hours" stood down here and posted a
+    # made-up cause). Not when the search ran and found nothing: that is
+    # the answer, and move_cause posts it.
+    from discord_bot.data_footer import _FALLBACK_PREFIXES as _no_answer
+    _cause_unsourced = bool(
+        (_ask_meta.get("move_cause") or {}).get("needs_search")
+        and answer and not answer.lstrip().startswith(_no_answer)
+        and not _grounding_has_sources(grounding_metadata))
+    if _cause_unsourced:
+        _ground_trigger_web = True
     if ((_ground_trigger_web or _ground_trigger_shape or _ground_trigger_calendar)
+            and not _cause_unsourced
             and (_draft_on_own_data(answer, _ask_evidence_text(
                     contents, response, _bot_parent(question), user_content, chat=False))
                  or (_ground_trigger_web and _tool_sourced(
@@ -6889,8 +6919,10 @@ async def _ask_07_validation_ladder(
             # retry that cannot find league or calendar data says it
             # "couldn't verify", and that used to replace an answer whose
             # figures all came from a tool payload.
-            elif _tool_sourced(answer, _ask_tool_trace,
-                               _ask_evidence_text(contents, response, question, user_content)):
+            # not for an unsourced cause: its figures are the price feed's,
+            # and the draft's reason still has nothing behind it
+            elif not _cause_unsourced and _tool_sourced(answer, _ask_tool_trace, _ask_evidence_text(
+                    contents, response, question, user_content)):
                 # Google found nothing, but a data tool did: every
                 # figure in the answer is in a payload the turn saw.
                 # Keep the answer, no hedge (2026-09-17).
@@ -8187,7 +8219,19 @@ async def _ask_09_rank_and_regen_guards(
     # The stock's lines are posted as code rendered them, above the model's
     # arrows (discord_bot/stock_body.py, 2026-11-13). After the checks
     # above: they read the model's words, and these lines are not its.
-    if _ask_meta.get("stock_body") and answer:
+    if (_ask_meta.get("stock_body") or {}).get("cause") and answer:
+        # why it moved: the price lines, the cause from the news lines, and
+        # a line for a stock the search found nothing on (move_cause.py)
+        from discord_bot import move_cause as _mc
+        _mc_grounded = _grounding_has_sources(grounding_metadata)
+        answer, _mc_out = _mc.compose(answer, _ask_meta["stock_body"], grounded=_mc_grounded)
+        # the links are cited when a cause was written from the news lines
+        _ask_meta["cite_news"] = bool(_mc_out["kept"]) and not _mc_grounded
+        _ask_meta["guards"].append(
+            "move-cause" + (":line-as-written" if _mc_out["fallback"] else "")
+            + (":no-news" if _mc_out["missing"] else "")
+            + (f":dropped-{_mc_out['dropped']}" if _mc_out["dropped"] else ""))
+    elif _ask_meta.get("stock_body") and answer:
         from discord_bot import stock_body as _sb
         answer, _sb_dropped = _sb.compose(answer, _ask_meta["stock_body"])
         _ask_meta["guards"].append("stock-body:" + _ask_meta["stock_body"]["state"]
@@ -8226,6 +8270,8 @@ def _business_line_guard(answer, _ask_meta):
     from discord_bot import business_line as _bl
     primer = (_ask_meta.get("primer") or {})
     if (_rewritable_stock_answer(answer, _ask_meta, _BUSINESS_LINE_SHAPES)
+            # a "why did it move" answer is the price and the cause
+            and not (_ask_meta.get("stock_body") or {}).get("cause")
             and primer.get("primer")
             and not _bl.names_business_line(answer, primer["primer"])):
         _ask_meta["guards"].append("business-line:missing")
@@ -8523,7 +8569,8 @@ async def _ask_10_log_and_render(
         # and the news prefetch's links are cited when the answer uses a
         # figure from it (data_footer.compose, 2026-09-30/10-08).
         _with_data = _data_footer.compose(
-            sources_footer, answer, _ask_meta.get("news"), _ask_tool_trace)
+            sources_footer, answer, _ask_meta.get("news"), _ask_tool_trace,
+            cite_news=bool(_ask_meta.get("cite_news")))
         if _with_data != sources_footer:
             _ask_meta["guards"].append("data-footer")
         sources_footer = _with_data

@@ -940,15 +940,45 @@ _STAT_RE = re.compile(
     r"|historically|on\s+average|average\s+(?:return|move|gain|loss)|last\s+time\s+(?:both|that|the|\S+\s+and)"
     r"|(?:seasonal|seasonality)|(?:september|october|december|january)\s+(?:effect|returns?|performance)"
     r"|(?:how\s+often|what\s+percent(?:age)?\s+of)\b)", re.I)
-_NEWS_RE = re.compile(
-    r"\b(?:why\s+(?:is|are|did|was|were|has|have)\s+\S+\s+(?:been\s+)?(?:trading\s+)?(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving"
+# A question about why something moved or what happened to it. The subject
+# may be two or three names ("why are CRWD and ZS down" matched nothing
+# until 2026-11-21, when the subject had to be one token).
+_CAUSE = (
+    r"why\s+(?:is|are|did|was|were|has|have)\s+\S+(?:(?:\s*,\s*|\s+(?:and|&|or)\s+)\S+){0,3}\s+"
+    r"(?:both\s+)?(?:been\s+)?(?:trading\s+)?(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving"
     r"|dropping|dropped|crashing|bleeding|sliding|sinking|plunging|selling\s+off|pumping|surging|jumping|soaring|rallying|spiking"
     # base forms after "did" and "going up/down" ("why did googl dump",
     # "why is MRNA going down", 2026-10-26 audit A20)
     r"|dump|tank|drop|crash|rip|pump|moon|fall|sell\s+off|go\s+(?:up|down)|going\s+(?:up|down))"
     r"|(?:news|what(?:'s|s|\s+is))\s+(?:driving|behind|moving)\s+\$?[A-Za-z]{1,5}\b"
-    r"|what\s+(?:just\s+)?happened\s+(?:to|with)\b|headlines?|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
-    r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with"
+    r"|what\s+(?:just\s+)?happened\s+(?:to|with)\b"
+    r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with")
+_CAUSE_RE = re.compile(r"\b(?:" + _CAUSE + r")\b", re.I)
+# The same question also asking for something a cause does not answer: the
+# desks, the odds, a trade, the report date. It keeps the full rundown.
+_CAUSE_MORE_RE = re.compile(
+    r"\b(?:analysts?|desks?|banks?|street|price\s+targets?|targets?|ratings?|upgrad\w*|downgrad\w*"
+    r"|odds|probability|chances?|should\s+i|worth\s+buying|calls?|puts?|options?|strikes?"
+    r"|when\s+(?:do|does|is|are|will)|earnings\s+date|next\s+(?:earnings|report|print)|outlook|guidance)\b", re.I)
+# A move further back than the news search reaches (its window is a week):
+# "what happened to GM in August where the share price went from 72$ to 92$".
+_CAUSE_PAST_RE = re.compile(
+    r"\b(?:(?:in|during|since|back\s+in|last|early|late|mid)\s+(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may"
+    r"|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)"
+    r"|(?:19|20)\d\d|last\s+(?:month|quarter|year)|\d+\s+(?:weeks?|months?|years?)\s+ago"
+    r"|(?:in|during)\s+q[1-4]|this\s+(?:month|quarter|year)|ytd)\b", re.I)
+
+
+def asks_cause(asked: str) -> bool:
+    """The asker's words ask why something moved or what happened to it
+    in the last days, and nothing more (discord_bot/move_cause.py)."""
+    q = asked or ""
+    return bool(_CAUSE_RE.search(q)) and not _CAUSE_MORE_RE.search(q) and not _CAUSE_PAST_RE.search(q)
+
+
+_NEWS_RE = re.compile(
+    r"\b(?:" + _CAUSE +
+    r"|headlines?|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
     # Figures a reader expects sourced, not recalled (2026-09-03 ask
     # log: a Kalshi/Polymarket probability and an NVDA shares-outstanding
     # count were answered from memory with no tool and no search after
@@ -1147,6 +1177,9 @@ _RESULT_Q_RE = re.compile(
 def is_stock(sym: str) -> bool:
     s = (sym or "").upper()
     return bool(s) and s not in _CRYPTO and s not in INDEX_SYMBOLS and s not in _NOT_STOCKS
+
+
+MAX_CAUSE_SYMBOLS = 3        # news searches run in code for one "why did they move" question
 
 
 def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None,
@@ -1625,6 +1658,14 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
             r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:4]]})]
             if len(tickers) == 1:
                 r.prefetch += _stock_prefetch(tickers[0])
+            elif _CAUSE_RE.search(q):
+                # Two or three stocks: the news search on each, run in code.
+                # With one stock it always ran; with two the turn had prices
+                # only, the model did not search, and it made up the cause
+                # ("what happened with CRWD and ZS after hours", 2026-11-20,
+                # the evening CrowdStrike was reported in talks to buy Zscaler).
+                r.prefetch += [(T_NEWS, {"symbol": t})
+                               for t in [t for t in tickers if is_stock(t)][:MAX_CAUSE_SYMBOLS]]
             if re.search(r"\bodds\b|\bbeat|\bmiss", ql):
                 r.prefetch.append((T_EDATE, {"symbol": tickers[0]}))
         else:
@@ -1634,7 +1675,10 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
             basket = sector_basket(ql)
             if basket:
                 r.tickers = basket
-                r.prefetch = [(T_PRICE, {"symbols": basket}), (T_NEWS, {"symbol": basket[0]})]
+                # `basket`: the search is on the group's first name, not on a
+                # stock the asker named (move_cause builds no body from it)
+                r.prefetch = [(T_PRICE, {"symbols": basket}),
+                              (T_NEWS, {"symbol": basket[0], "basket": True})]
         return r
     # `names_member`: the caller found a room member named in the asker's
     # words, so the correction is about the room, not the news.

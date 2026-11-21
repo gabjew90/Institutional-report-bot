@@ -26,7 +26,7 @@ CASES = [
     ("what's expected for AVGO earnings", R.EARNINGS_DATE, [R.T_EDATE, R.T_PRICE, R.T_SNAPSHOT, R.T_PRIMER]),
     # news / odds
     ("odds HPE beats earnings", R.NEWS_EVENT, [R.T_PRICE, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER, R.T_EDATE]),
-    ("why is mrvl down off avgo earnings", R.NEWS_EVENT, [R.T_PRICE]),
+    ("why is mrvl down off avgo earnings", R.NEWS_EVENT, [R.T_PRICE, R.T_NEWS, R.T_NEWS]),
     ("explain pltr death", R.NEWS_EVENT, [R.T_PRICE, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER]),
     # price
     ("what's TSLA at", R.PRICE, [R.T_PRICE, R.T_SNAPSHOT, R.T_PRIMER]),
@@ -723,7 +723,7 @@ def test_a_sector_question_prices_its_bellwethers():
     r = R.classify("why is memory down today")
     assert r.shape == R.NEWS_EVENT and r.tickers[0] == "MU"
     assert (R.T_PRICE, {"symbols": ["MU", "SNDK", "WDC", "STX"]}) in r.prefetch
-    assert (R.T_NEWS, {"symbol": "MU"}) in r.prefetch
+    assert (R.T_NEWS, {"symbol": "MU", "basket": True}) in r.prefetch
     assert R.classify("what is the room positioned in heading into tomorrow").prefetch == [
         (R.T_ROOM, {"days": 3})]
 

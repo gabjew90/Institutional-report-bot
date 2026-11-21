@@ -4020,3 +4020,36 @@ First of "the rest, ordered by what the breakdown shows" (owner, 2026-11-20). Th
 Also confirmed today: the pulse rating rule of 11-20 ran in production on the 11:00 ET context build (7 notes, no mover credited with a rating).
 
 Found, not built: a lowercase ticker that is also an English word ("how much has amd dropped since october 15") is not read as a ticker without a lead-in, in any shape. `assets/english_words.txt` holds amd, spy, mu, meta, coin and hood.
+
+## 2026-11-21: why a stock moved, searched in code and answered in two lines
+
+Owner, 2026-11-21, after asking why the bot could not answer "what happened with CRWD and ZS stocks right now after hours" (2026-11-20, 4:38 PM ET) when Google could. The bot posted both moves correctly and a third arrow it made up. CrowdStrike had been reported in talks to buy Zscaler, and the room had said so minutes earlier.
+
+Three causes, all in code:
+
+1. The news search ran in code only when one stock was named. With two, the turn had prices alone.
+2. Google was offered and the model did not call it. Google's own docs say the model decides whether to search.
+3. The grounding net stood down because every figure of the draft was in the price payload. A cause with no figure has nothing to check.
+
+Evidence before the build: the same question about ZS alone, run live the next day, found the talks. Of the logged why and what-happened answers since 09-01, 26 had a search behind them and 1 did not land. Ten had none (the 11-20 one included): 2 gave up and 5 stated a cause or odds with nothing behind it.
+
+Built (`discord_bot/move_cause.py`):
+
+- The router runs the news search for every stock named in a cause question, up to three, and "why are X and Y down" now routes as news.
+- A question that asks only for the cause, on named stocks with no report out, gets one shape: a price line per name, the cause from the news lines dated since the trading day before today, and nothing else. The one-stock answer had been five arrows with the cause third.
+- A stock whose search found nothing gets a line saying so, built in code, and the model's arrows for it are dropped.
+- The grounding net no longer stands down on price data for a cause question when no named-stock search ran or one failed.
+
+Found in the harness and changed before shipping: when the system's search found nothing, the forced fallback search returned filler with links ("valuation resets and profit-taking" on KO, which was up 0.9%). A search that ran and found nothing is now the answer. The model's own search stands in only for a search that did not come back.
+
+Harness method: the local Gemini key is no longer valid, so the patched code was run on the worker from a copy of the app in `/tmp` with the diff applied (`git apply`), the patch sent over `railway ssh` standard input. The live app was not touched.
+
+Samples (2026-11-21, a Saturday, so the quote feed gives the last close):
+
+- "what happened with CRWD and ZS stocks right now after hours": both closes, then "**CRWD** was reported to be in ongoing acquisition talks with rival cybersecurity provider **ZS** (Bloomberg)."
+- "what happened to ZS": the close, then one sentence on the reported talks.
+- "why is KO down": the close (+0.9%), then "The news search found nothing on **KO** dated Fri Nov 20 or later, so no reason for the move is confirmed."
+
+Replay over the 963 logged questions: one route changes ("why is mrvl down off avgo earnings" gains two searches). 15 cause questions name a stock and take the shorter shape unless a report was out.
+
+Not done: the outline asks for one arrow when one event moved two stocks, and the model sometimes writes one per stock, both sourced. A fund, an index, a coin or a sector has no code search of its own.

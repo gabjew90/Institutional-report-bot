@@ -181,15 +181,32 @@ def numeric_cores(text: str) -> set[str]:
 _FALLBACK_PREFIXES = ("→ No response came back", "→ Thought myself in circles")
 
 
+MAX_NEWS_LINKS = 2
+
+
+def _named_first(links: list[dict], answer: str) -> list[dict]:
+    """The links whose site the answer names as a publisher come first
+    ("(Bloomberg)" and bloomberg.com), the rest in the order given."""
+    text = re.sub(r"[^a-z0-9]", "", (answer or "").lower())
+
+    def _named(s: dict) -> bool:
+        site = re.sub(r"[^a-z0-9.]", "", (s.get("title") or "").lower()).split(".")[0]
+        return len(site) >= 4 and site in text
+    return sorted(links, key=lambda s: not _named(s))
+
+
 def compose(grounding_footer: str, answer: str, news: dict | None,
-            tool_trace: list[dict] | None) -> str:
+            tool_trace: list[dict] | None, cite_news: bool = False) -> str:
     """The answer's citation block.
 
     Google grounding on the answer wins outright, as before. Otherwise:
     the news prefetch's links, but only when the answer carries a figure
     from the news digest (a link cited for a headline the answer never
     used says nothing about where its numbers came from), then the Data
-    line naming the bot's own feeds, which includes the news search."""
+    line naming the bot's own feeds, which includes the news search.
+    `cite_news`: the answer's cause was written from the news lines
+    (discord_bot/move_cause.py), which often carry no figure, so the links
+    are cited without that test, the publishers the answer names first."""
     if (answer or "").lstrip().startswith(_FALLBACK_PREFIXES):
         return ""   # nothing was answered, so nothing was sourced (audit A29)
     if grounding_footer:
@@ -201,10 +218,12 @@ def compose(grounding_footer: str, answer: str, news: dict | None,
     out = ""
     news = news or {}
     links = news.get("sources") or []
-    if links and figures(answer) & figures(news.get("digest") or ""):
+    if links and (cite_news or figures(answer) & figures(news.get("digest") or "")):
+        if cite_news:
+            links = _named_first(links, answer)
         out = "\n\nSources:\n" + "\n".join(
             f"[{i + 1}] [{(s.get('title') or s['url'])[:80]}](<{s['url']}>)"
-            for i, s in enumerate(links[:2]))
+            for i, s in enumerate(links[:MAX_NEWS_LINKS]))
     data = footer(tool_trace, answer)
     if data:
         out = out + "\n" + data.lstrip("\n") if out else data
