@@ -29,6 +29,7 @@ FEEDS: dict[str, str] = {
     "margin_math": "margin math from the question's figures and live prices",
     "event_returns": "event dates (Google) and daily closes (Yahoo)",
     "price_stats": "daily closes (Yahoo), statistic computed by the bot",
+    "asked_fact": "report and call time (Google search)",
     "spy_holdings": "S&P 500 figures from SPY's holdings and prices (Yahoo)",
     "ticker_news": "news search (Google)",
     "ticker_primer": "company background (Google)",

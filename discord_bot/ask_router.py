@@ -98,6 +98,9 @@ T_EVENTS = "event_returns"
 T_STATS = "price_stats"
 # Prefetch only: discord_bot/chat_recap.py reads the whole window (2026-11-02).
 T_RECAP = "chat_recap"
+# Prefetch only: discord_bot/asked_fact.py, one search run in code for a fact
+# no feed carries: the clock time of a report and of its call (2026-11-21).
+T_FACT = "asked_fact"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
              T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT,
              T_AUCTION}
@@ -1422,6 +1425,17 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     # banter).
     if r.shape == TICKER_OPINION:
         r.factual = is_fact_question(_last_line(question), r.tickers)
+    # The clock time of a report or its call: no feed carries one, so one
+    # search for exactly that runs in code (discord_bot/asked_fact.py). Only
+    # on a turn that already fetches the stock's own data.
+    if r.shape in (EARNINGS_DATE, TICKER_OPINION, FOLLOW_UP) and any(
+            t == T_SNAPSHOT for t, _ in r.prefetch):
+        from discord_bot import asked_fact as _af
+        sym = next((str(a.get("symbol") or "") for t, a in r.prefetch if t == T_SNAPSHOT), "")
+        # a complaint asks the earlier question again: its words decide
+        fact = _af.parse(r.reask or _last_line(question), r.shape, sym)
+        if fact:
+            r.prefetch.append((T_FACT, fact))
     return r
 
 
@@ -1982,6 +1996,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                   "in code. Nothing outside this block. The system adds a line saying what was "
                   "read, so do not write one. status other than ok: say the recap could not be "
                   "read, and invent nothing."),
+        T_FACT: ("REPORT TIME, from a web search the system ran just now for the announced clock "
+                 "time of the earnings release and of its call. The system posts what it found as a "
+                 "line of the reply: do not restate it, and never give a usual or typical time. "
+                 "status other than ok: no announced time was found, so state no clock time."),
         T_STATS: ("PRICE STATISTIC, computed by the system from Yahoo's daily closes. Every level, "
                   "percentage and date comes from here. status other than ok: say the statistic could "
                   "not be computed and why, never fill it in."),

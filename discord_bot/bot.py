@@ -5180,6 +5180,7 @@ async def _ask_02_call_model_with_tools(
     from discord_bot.chat_recap import _execute_chat_recap
     from discord_bot.event_returns import _execute_event_returns
     from discord_bot.price_stats import _execute_price_stats
+    from discord_bot.asked_fact import _execute_asked_fact
     _prefetch_exec = {
         _ask_router.T_SLATE: _execute_earnings_slate,
         _ask_router.T_EDATE: _execute_earnings_date,
@@ -5198,6 +5199,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_MARGIN: _execute_margin_math,
         _ask_router.T_EVENTS: _execute_event_returns,
         _ask_router.T_STATS: _execute_price_stats,
+        _ask_router.T_FACT: _execute_asked_fact,
         _ask_router.T_RECAP: _execute_chat_recap,
     }
     _ask_meta["route_shape"] = _ask_route.shape
@@ -5339,7 +5341,7 @@ async def _ask_02_call_model_with_tools(
         if _pf_tool == _ask_router.T_RECAP and _pf_res.get("status") == "ok":
             from discord_bot.chat_recap import coverage_line as _recap_line
             _ask_meta["recap_coverage"] = _recap_line(_pf_res)
-        if (_pf_tool in (_ask_router.T_NEWS, _ask_router.T_EVENTS)
+        if (_pf_tool in (_ask_router.T_NEWS, _ask_router.T_EVENTS, _ask_router.T_FACT)
                 and _pf_res.get("status") == "ok"):
             # Cited in phase 10 when the answer uses a figure from it. A
             # question about two stocks runs two searches: both are kept.
@@ -5377,6 +5379,9 @@ async def _ask_02_call_model_with_tools(
         from discord_bot import stock_body as _sb
         from discord_bot import stock_outline as _so
         _pf_by_tool = {t: r for (t, _), r in zip(_pf_plan, _pf_results) if isinstance(r, dict)}
+        if any(_t == _ask_router.T_FACT for _t, _ in _pf_plan):
+            # asked, and timed out: the body says the search did not come back
+            _pf_by_tool.setdefault(_ask_router.T_FACT, {"status": "timeout"})
         _so_symbol = _so.outline_symbol(_pf_plan)
         _so_asked = _ask_router.asker_text(question)
         _body = _sb.build(_ask_route.shape, _so_symbol, _pf_by_tool, fresh=_fresh, asked=_so_asked)
@@ -8233,7 +8238,11 @@ async def _ask_09_rank_and_regen_guards(
             + (f":dropped-{_mc_out['dropped']}" if _mc_out["dropped"] else ""))
     elif _ask_meta.get("stock_body") and answer:
         from discord_bot import stock_body as _sb
-        answer, _sb_dropped = _sb.compose(answer, _ask_meta["stock_body"])
+        answer, _sb_dropped = _sb.compose(answer, _ask_meta["stock_body"],
+                                          grounded=_grounding_has_sources(grounding_metadata))
+        if _ask_meta["stock_body"].get("fact_found"):
+            # the searched time's page is cited (data_footer.compose)
+            _ask_meta["cite_news"] = True
         _ask_meta["guards"].append("stock-body:" + _ask_meta["stock_body"]["state"]
                                    + (f":dropped-{_sb_dropped}" if _sb_dropped else ""))
     # After the lines are in: the label reads the answer the room sees.

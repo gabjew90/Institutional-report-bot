@@ -4055,3 +4055,33 @@ Replay over the 963 logged questions: one route changes ("why is mrvl down off a
 Same day, after the owner asked about the open points: one event that moved two stocks is now one block and one sentence. Stocks are grouped in code when one's news line names the other (CrowdStrike's line names Zscaler), so the model is asked for one arrow and capped at one. One link per site in the footer.
 
 Not done: a fund, an index, a coin or a sector has no code search of its own. The sentence can credit a publisher (Bloomberg) while the links are the pages that relayed it.
+
+## 2026-11-21: the clock time of a report and its call, searched in code
+
+First of the remaining approved items (owner: "go on to the asked-fact path and continue"). The 11-20 breakdown had four answers where the asker wanted one fact and did not get it: a clock time three times and a percentage once.
+
+All 20 clock-time questions logged since 09-01 were read. Nine were about a report or its call. Where the model happened to search, the company's own notice gave the time (ORCL, MU, APLD, PANW). Where the code-built date answer took the turn, the asker got the day and the session and no time (NBIS twice, NVDA). Where neither happened, the model answered from habit: "numbers typically cross the wire between 4:05 and 4:15 PM ET, with the conference call following at 5:00 PM ET" (LEN), "right after the 4:00 PM ET bell" (NVDA, which released at about 4:20).
+
+Built (`discord_bot/asked_fact.py`), on the same principle as the news search and the cause search: the search is run by code, and the model words none of the answer.
+
+- The router adds the search when the words ask a clock time on a turn about one stock's report.
+- The search must reply in four fixed lines: DATE, RELEASE, CALL, SOURCE. Code converts the stated time zone to Eastern.
+- The reply is kept only when its date is the report date the earnings feeds carry, a day either side. That is the provenance check: about five searches in six returned no links, and a coming report's date cannot come from the model's memory.
+- A release time that contradicts the session is dropped ("after market close" and 1:20 PM is an unconverted zone).
+- The line leads the answer. When the time is the whole question the answer is that line and the report's day, and nothing else.
+- Nothing found is a posted line. The model's own search stands in only when the system's did not come back.
+
+Worker probe, six companies, about 1.6 s each: NVDA call 2 p.m. PT (5:00 PM ET, Nov 17), ZS 1:30 p.m. PT (Dec 2), DE 9:00 a.m. Central (Nov 25), DELL 3:30 p.m. CST (Nov 24), ADI results 7:00 and call 10:00 Eastern (Nov 24), NBIS call 8:00 a.m. Eastern (Nov 12). Every date matched the feed.
+
+Harness samples (2026-11-21):
+
+- "what time does dell report": "**DELL** earnings call at **4:30 PM ET**, Tue Nov 24 (Dell Technologies Investor Relations). No release time was found." then "Reports in 3 days (Tue Nov 24), after market close."
+- "what time is Nvidia earnings call": "**NVDA** earnings call at **5:00 PM ET**, results at **4:20 PM ET**, Tue Nov 17 (NVIDIA Investor Relations)." then the next report's projected date.
+
+The first harness pass posted six arrows (the time, then the day, the consensus, the last report, the price and a filler sentence). Trimmed to two before shipping.
+
+Replay over the 963 logged questions: 10 gain the search, all clock-time questions about a report or a call.
+
+Not built, the owner's call: "what are the chances spy ends red for the year" answered "low", and the asker replied "give me a percentage". A probability can be computed from the option chain (the chance the stock closes below a level by a date, as the options price it), which is not the same as a forecast. Other facts no feed carries (a lock-up expiry, a split date, an investor day) are answered by the model's own search today and none was among the failures.
+
+Also today: the calendar-fallback smoke reached the live BLS API in every case but one. With BLS slow it ran 170 s against a 150 s limit and blocked the push gate. The agency layer is stubbed for that smoke (5 s).

@@ -253,6 +253,22 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
     def add(kind: str, lines) -> None:
         sections.extend((kind, ln) for ln in lines if ln)
 
+    # A clock time asked of the report or its call leads the turn: the time
+    # a code-run search found and the feeds' report date bears out, or a
+    # line saying none was found (discord_bot/asked_fact.py, 2026-11-21).
+    fact, fact_found = results.get(R.T_FACT), False
+    if fact is not None:
+        from discord_bot import asked_fact as af
+        ed = _ok(results.get(R.T_EDATE)) or {}
+        growth = (snap or {}).get("growth") or {}
+        rows = [(fresh or {}), {"date": (ed.get("next") or {}).get("date"),
+                                "session": (ed.get("next") or {}).get("timing")},
+                {"date": (ed.get("last") or {}).get("date"), "session": (ed.get("last") or {}).get("timing")},
+                growth.get("next_report") or {}, last]
+        fact_lines, fact_found = af.lines(fact, [(str(r["date"]), str(r.get("session") or ""))
+                                                 for r in rows if r.get("date")], symbol, today)
+        add("fact", fact_lines)
+
     if quote and not date_q and not narrow:
         add("price", [quote])
     if printed and narrow:
@@ -329,12 +345,31 @@ def build(shape: str, symbol: str, results: dict, fresh: dict | None = None,
                 # relays another broker's call
                 desks.append({"bank": str(note.get("source") or ""), "line": ln,
                               "who": desk_line.fields(note)["holder"]})
+    # A clock-time question is answered by the time and the report's day
+    # (after a print, the result lines too: a print that happened leads).
+    # The consensus, the last report and the price were not asked for
+    # (2026-11-21 harness: "what time does dell report" was six arrows).
+    fact_only = False
+    if fact is not None and (date_q or narrow):
+        from discord_bot import asked_fact as af
+        fact_only = af.only_time(asked)
+    if fact_only:
+        kept, day_given = [], False
+        for kind, ln in sections:
+            if kind == "price" or (kind == "upcoming" and day_given):
+                continue
+            day_given = day_given or kind == "upcoming"
+            kept.append((kind, ln))
+        sections, desks = kept, []
     if not sections:
         # No feed gave a line. The turn then runs without a body, as before,
         # and the checks that stand down for a body stay on.
         return None
     return {"lines": [ln for _, ln in sections], "kinds": sorted({k for k, _ in sections}),
             "desks": desks,
+            # a clock time was asked and searched; whether the search came back
+            "fact": fact is not None, "fact_found": fact_found, "fact_only": fact_only,
+            "fact_failed": isinstance(fact, dict) and fact.get("status") in ("timeout", "error"),
             "state": state, "symbol": symbol, "shape": shape,
             "has_price": any(k == "price" for k, _ in sections),
             "price": quoted if any(k == "price" for k, _ in sections) else None,
@@ -357,21 +392,31 @@ def _restates(part: str, body: dict, body_text: str) -> bool:
     return not missing
 
 
-def arrows(answer: str, body: dict) -> tuple[list[str], int]:
+def arrows(answer: str, body: dict, grounded: bool = False) -> tuple[list[str], int]:
     """(the model's arrows worth posting under the lines, how many were
     dropped). An arrow is dropped when it only restates the lines: it
     repeats a headline figure with none of its own, or it says nothing the
-    lines do not."""
+    lines do not. On a turn that asked a report's clock time, an arrow
+    giving a time the posted line does not carry is dropped too ("numbers
+    typically cross the wire between 4:05 and 4:15 PM ET"), unless the
+    system's search did not come back and the reply has Google sources
+    (`grounded`)."""
     from discord_bot.answer_block import _NOT_A_LEAD, adds_nothing
     from discord_bot.data_footer import strip_model_sources
     from discord_bot.figure_provenance import _lines
+    from discord_bot.asked_fact import unposted_clock
     text = "\n\n".join([*body["lines"], *(d["line"] for d in body.get("desks") or [])])
+    own_times = body.get("fact") and not (grounded and body.get("fact_failed"))
     kept, dropped = [], 0
     for part in _lines(strip_model_sources(answer or "").strip()):
         part = part.strip()
         if not part or part.startswith(_NOT_A_LEAD):
             continue
         if _restates(part, body, text) or adds_nothing(part, text, ""):
+            dropped += 1
+            continue
+        # a clock-time question is answered by its lines: nothing is added
+        if own_times and (body.get("fact_only") or unposted_clock(part, text)):
             dropped += 1
             continue
         # the posted lines end with a full stop, and the model's arrows
@@ -382,12 +427,12 @@ def arrows(answer: str, body: dict) -> tuple[list[str], int]:
     return kept, dropped
 
 
-def compose(answer: str, body: dict) -> tuple[str, int]:
+def compose(answer: str, body: dict, grounded: bool = False) -> tuple[str, int]:
     """(the posted lines followed by the model's arrows, how many of its
     arrows were dropped, see `arrows`)."""
     from discord_bot import desk_line
     desks = list(body.get("desks") or [])
-    kept, dropped = arrows(answer, body)
+    kept, dropped = arrows(answer, body, grounded)
     # A desk's line goes in front of the first arrow that names the desk
     # (the model's reason for it). One no arrow names stays with the lines.
     placed: set[str] = set()
