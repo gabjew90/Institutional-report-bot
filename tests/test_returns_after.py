@@ -28,7 +28,7 @@ def test_a_horizon_not_reached_says_so():
 
 
 def test_executor_returns_event_returns(monkeypatch):
-    monkeypatch.setattr(md, "fetch_price_history", lambda s, a, b=None, i="1d": _hist())
+    monkeypatch.setattr(md, "fetch_price_history", lambda *a: _hist())
     out = asyncio.run(T._execute_price_history({"symbol": "SPCX", "event_dates": ["2026-08-06", "junk"]}))
     assert [r["date"] for r in out["returns_after_dates"]] == ["2026-08-06"]
     assert "points" not in out

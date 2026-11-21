@@ -93,6 +93,9 @@ T_MARGIN = "margin_math"
 # Prefetch only: discord_bot/event_returns.py, event dates by search and
 # returns from the closes (2026-10-27).
 T_EVENTS = "event_returns"
+# Prefetch only: discord_bot/price_stats.py, a moving average, a change over
+# a window or a weekday average, computed from the closes (2026-11-21).
+T_STATS = "price_stats"
 # Prefetch only: discord_bot/chat_recap.py reads the whole window (2026-11-02).
 T_RECAP = "chat_recap"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
@@ -1653,6 +1656,18 @@ def _classify(question: str, *, fantasy_enabled: bool = False,
         r.shape, r.reason = PRICE_HISTORY, "all-time high"
         r.prefetch = [(T_HISTORY, {"symbol": price_symbol(t), "all_time_high": True}) for t in tickers[:4]]
         return r
+    # A moving average, the change over a window, a weekday's average move:
+    # computed in code from the closes (discord_bot/price_stats.py,
+    # 2026-11-21). A question that names a member is about the member.
+    from discord_bot import price_stats as _ps
+    stat = (None if names_member or _TECH_SHARE_RE.search(q) or _EX_TOP_RE.search(q)
+            else _ps.parse(q, tickers))
+    if stat:
+        r.shape, r.reason = PRICE_HISTORY, "price statistic"
+        # an index or coin read by name is no ticker for the turn after
+        r.tickers = tickers or ([stat["symbol"]] if stat["symbol"].isalpha() else [])
+        r.prefetch = [(T_STATS, stat)]
+        return r
     if _HISTORY_RE.search(q) and tickers:
         r.shape, r.reason = PRICE_HISTORY, "history words + ticker"
         r.prefetch = [(T_HISTORY, {"symbol": tickers[0]})] + _stock_prefetch(tickers[0], research=False)
@@ -1923,6 +1938,9 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                   "in code. Nothing outside this block. The system adds a line saying what was "
                   "read, so do not write one. status other than ok: say the recap could not be "
                   "read, and invent nothing."),
+        T_STATS: ("PRICE STATISTIC, computed by the system from Yahoo's daily closes. Every level, "
+                  "percentage and date comes from here. status other than ok: say the statistic could "
+                  "not be computed and why, never fill it in."),
         T_EVENTS: ("RETURNS AFTER EVENTS: the dates from a Google search the system ran, the returns "
                    "computed by the system from Yahoo's daily closes. Every date and return comes "
                    "from here. status other than ok: say what is missing, never fill it in."),

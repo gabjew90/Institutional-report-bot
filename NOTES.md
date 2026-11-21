@@ -4006,3 +4006,17 @@ Two owner picks on the trade record (2026-11-20).
 - **Replies.** Every reply to the bot went to the model. A reply whose own words say whose record it asks for is now counted in code like a first question (`trade_tally.stands_alone`: it asks, and names a member, the asker, a channel or the room). A reply that leans on the message above it ("what about his puts") still goes to the model. Replayed over all 963 logged questions since 09-01: two replies were record questions, one self-contained ("what's my % win rate on calls"), which also showed `_SELF_RE` did not read "my % win rate".
 
 Not done: rank points (`compute_member_points`) reading the same count. It carries its own policy (winning trims score, recency bands, a gain-less post in the gains channel presumed a win) and a pinned smoke, so it needs its own before-and-after table.
+
+## 2026-11-21: price statistics computed in code
+
+First of "the rest, ordered by what the breakdown shows" (owner, 2026-11-20). The figure sample had two answers wrong on a statistic the model worked out itself, and the outcome measure had the same question fail twice in a minute.
+
+- New `discord_bot/price_stats.py`: a moving average, the change over a window, a weekday's average move. The router reads the statistic and its window from the question, the series is fetched once, the figure is computed in code and the lines are posted as written. The model writes only the opening.
+- Closes are adjusted for splits and not for dividends, in this path and in the model's `lookup_price_history` and `event_returns`. Before, every level the bot quoted from history was dividend-adjusted: a January close for SPY read lower than the price that printed, and a record high for a dividend payer read lower than the real one.
+- Check against a known figure: SPY in 2022, -19.5% from $474.96 to $382.43, which is the published price return.
+- Replay over the 958 logged questions since 09-01: 7 change route. Six are the statistic questions this was built for. The seventh is a member's claim about a stock's three-month move, which now gets the figure.
+- "Last year" is calendar 2025 and "the last year" the trailing twelve months. "In 2 weeks" looks ahead and is not claimed.
+
+Also confirmed today: the pulse rating rule of 11-20 ran in production on the 11:00 ET context build (7 notes, no mover credited with a rating).
+
+Found, not built: a lowercase ticker that is also an English word ("how much has amd dropped since october 15") is not read as a ticker without a lead-in, in any shape. `assets/english_words.txt` holds amd, spy, mu, meta, coin and hood.

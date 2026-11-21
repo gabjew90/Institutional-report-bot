@@ -87,7 +87,7 @@ _OTHER_SUBJECT_RE = re.compile(
     r"|dow|vix|futures|(?:the\s+|stock\s+)market(?!\s+cap))\b", re.I)
 _TICKER_TOOLS = {"lookup_market_price", "lookup_ticker_snapshot", "lookup_earnings_date",
                  "lookup_research", "lookup_options_chain", "lookup_price_history",
-                 "event_returns"}
+                 "event_returns", "price_stats"}
 # not "^GSPC": an index is no stock to carry into the next question
 _SYMBOL_RE = re.compile(r"(?<![\^\w])[A-Z][A-Z.\-]{0,9}\b")
 

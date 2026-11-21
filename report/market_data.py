@@ -241,6 +241,7 @@ def fetch_price_history(
     start_iso: str,
     end_iso: str | None = None,
     interval: str = "1d",
+    adjust: bool = True,
 ) -> list[dict] | None:
     """Daily (or weekly) close history for `symbol` via yfinance.
 
@@ -262,7 +263,10 @@ def fetch_price_history(
         log.warning(f"yfinance not installed: {e}")
         return None
     try:
-        kwargs = {"start": start_iso, "interval": interval}
+        # adjust=False: closes adjusted for splits and not for dividends,
+        # so a level is the price that printed (2026-11-21: a year-to-date
+        # return was quoted from a dividend-adjusted January close).
+        kwargs = {"start": start_iso, "interval": interval, "auto_adjust": adjust}
         if end_iso:
             kwargs["end"] = end_iso
         hist = yf.Ticker(symbol).history(**kwargs)

@@ -182,7 +182,7 @@ async def _execute_event_returns(args: dict) -> dict:
                 "error": f"No dated {event} found for {sym}: say so, never guess dates."}
     start = (date.fromisoformat(events[-1]["date"]) - timedelta(days=10)).isoformat()
     try:
-        hist = await asyncio.to_thread(_md.fetch_price_history, sym, start, None, "1d")
+        hist = await asyncio.to_thread(_md.fetch_price_history, sym, start, None, "1d", False)
     except Exception as e:
         log.warning(f"event returns {sym}: history failed: {e}")
         hist = None

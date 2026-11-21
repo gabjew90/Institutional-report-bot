@@ -1205,8 +1205,10 @@ async def _execute_price_history(args: dict) -> dict:
         from datetime import timedelta
         start = (datetime.utcnow() - timedelta(days=90)).strftime("%Y-%m-%d")
     try:
+        # closes as printed: adjusted for splits, not for dividends, so a
+        # level is the price of that day and a record high is the real one
         hist = await asyncio.to_thread(
-            _md.fetch_price_history, symbol, start, end, interval
+            _md.fetch_price_history, symbol, start, end, interval, False
         )
     except Exception as e:
         return {"status": "error",

@@ -868,7 +868,7 @@ _ASK_PREFETCH_TIMEOUT_S = 8.0  # router prefetch deadline (2026-09-02)
 _FP_GROUNDED_LIVE = False
 # A search then a price history, both in code (discord_bot/event_returns.py).
 # chat_recap: two rounds of its chunk calls, each under chat_recap.CHUNK_TIMEOUT_S
-_ASK_PREFETCH_TIMEOUT_BY_TOOL = {"event_returns": 14.0, "chat_recap": 35.0}
+_ASK_PREFETCH_TIMEOUT_BY_TOOL = {"event_returns": 14.0, "chat_recap": 35.0, "price_stats": 12.0}
 # Deadline for a tool the model calls itself (2026-10-18 audit A1: five
 # sequential slate calls with no deadline made one answer take 549 s).
 _ASK_TOOL_TIMEOUT_S = 25.0
@@ -5179,6 +5179,7 @@ async def _ask_02_call_model_with_tools(
     from discord_bot import room_rank as _room_rank
     from discord_bot.chat_recap import _execute_chat_recap
     from discord_bot.event_returns import _execute_event_returns
+    from discord_bot.price_stats import _execute_price_stats
     _prefetch_exec = {
         _ask_router.T_SLATE: _execute_earnings_slate,
         _ask_router.T_EDATE: _execute_earnings_date,
@@ -5196,6 +5197,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_AUCTION: _execute_treasury_auctions,
         _ask_router.T_MARGIN: _execute_margin_math,
         _ask_router.T_EVENTS: _execute_event_returns,
+        _ask_router.T_STATS: _execute_price_stats,
         _ask_router.T_RECAP: _execute_chat_recap,
     }
     _ask_meta["route_shape"] = _ask_route.shape

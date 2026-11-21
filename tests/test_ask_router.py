@@ -40,8 +40,15 @@ CASES = [
     ("what did NFP come in at", R.ECON_CALENDAR, [R.T_ECON]),
     ("is the fed cutting this meeting", R.ECON_CALENDAR, [R.T_ECON]),
     # history
-    ("how has NVDA done since january", R.PRICE_HISTORY, [R.T_HISTORY, R.T_SNAPSHOT, R.T_PRIMER]),
-    ("PLTR ytd", R.PRICE_HISTORY, [R.T_HISTORY, R.T_SNAPSHOT, R.T_PRIMER]),
+    ("how has NVDA traded", R.PRICE_HISTORY, [R.T_HISTORY, R.T_SNAPSHOT, R.T_PRIMER]),
+    # a statistic over a window is computed in code (2026-11-21)
+    ("how has NVDA done since january", R.PRICE_HISTORY, [R.T_STATS]),
+    ("PLTR ytd", R.PRICE_HISTORY, [R.T_STATS]),
+    ("200 day moving on btc is what", R.PRICE_HISTORY, [R.T_STATS]),
+    ("what is the average qqq return on Thursdays for 2026", R.PRICE_HISTORY, [R.T_STATS]),
+    ("What is the average return for the Nasdaq on Thursdays in 2026", R.PRICE_HISTORY, [R.T_STATS]),
+    ("in the last 21 days how much % has NVDA dropped", R.PRICE_HISTORY, [R.T_STATS]),
+    ("5 year return on amazon", R.PRICE_HISTORY, [R.T_STATS]),
     # company profile
     ("what does CLS do", R.COMPANY_PROFILE, [R.T_PRICE, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER]),
     ("what does SPSC do?", R.COMPANY_PROFILE, [R.T_PRICE, R.T_RESEARCH, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER]),
@@ -227,11 +234,12 @@ def test_every_prefetch_tool_has_an_executor_in_phase_2():
     used = set()
     for q in ("who reports today", "when does NVDA report", "what's TSLA at",
               "NVDA options chain", "when is CPI", "how has NVDA done ytd",
-              "why is nvda down, odds it beats"):
+              "how has NVDA traded", "why is nvda down, odds it beats"):
         used |= {t for t, _ in R.classify(q).prefetch}
     used |= {t for t, _ in R.classify("league standings", fantasy_enabled=True).prefetch}
     used |= {t for t, _ in R.classify("what is the room piled into").prefetch}
-    assert used >= {R.T_SLATE, R.T_EDATE, R.T_PRICE, R.T_CHAIN, R.T_ECON, R.T_HISTORY, R.T_FANTASY, R.T_ROOM}
+    assert used >= {R.T_SLATE, R.T_EDATE, R.T_PRICE, R.T_CHAIN, R.T_ECON, R.T_HISTORY, R.T_FANTASY, R.T_ROOM,
+                    R.T_STATS}
     for t in used:
         const = [k for k, v in vars(R).items() if k.startswith("T_") and v == t][0]
         assert f"_ask_router.{const}: _execute_" in src, t
@@ -482,7 +490,7 @@ def test_prefetch_plan_never_hashes_the_args_dict():
     from discord_bot.bot import _ask_prefetch_plan
     execs = {R.T_SLATE: 1, R.T_EDATE: 1, R.T_PRICE: 1, R.T_CHAIN: 1,
              R.T_ECON: 1, R.T_HISTORY: 1, R.T_FANTASY: 1, R.T_RESEARCH: 1, R.T_SNAPSHOT: 1,
-             R.T_NEWS: 1, R.T_PRIMER: 1}
+             R.T_NEWS: 1, R.T_PRIMER: 1, R.T_STATS: 1}
     questions = [
         "who reports today", "when does NVDA report", "what's TSLA at",
         "NVDA options chain", "when is CPI", "how has NVDA done since january",

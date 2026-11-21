@@ -62,6 +62,9 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
     elif tool == "event_returns":
         from discord_bot import event_returns
         lines = event_returns.block_lines(result)
+    elif tool == "price_stats":
+        from discord_bot import price_stats
+        lines = price_stats.block_lines(result, today)
     elif tool == "lookup_fantasy_league" and result.get("table"):
         # standings, remaining schedules and playoff odds (2026-11-19)
         from discord_bot import league_lines
