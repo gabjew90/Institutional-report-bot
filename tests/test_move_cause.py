@@ -334,3 +334,15 @@ def test_an_index_line_says_today_only_while_the_session_is_open():
     assert quote_line(q, "AFTER-HOURS") == "→ **SPX** closed at **6,910.39**, -3.7% on the day."
     assert quote_line(q, "WEEKEND-CLOSED") == "→ **SPX** last close **6,910.39** (-3.7% that session)."
     assert quote_line(q, "PRE-MARKET") == "→ **SPX** last close **6,910.39** (-3.7% that session)."
+
+
+def test_a_why_or_a_news_request_is_a_cause_question_once_the_turn_is_news():
+    """Asked only after the route is a news question with a quote: these
+    reached that route through the reader and got the five-arrow rundown
+    (2026-11-22 harness, "why is aaoi dead")."""
+    for q in ("why is aaoi dead", "why unh dumped ?", "sls news", "any news on elmt", "what news from GLW ?"):
+        assert R.asks_cause(q), q
+    for q in ("why is NVDA down, should i buy", "why did NVDA drop last month", "has snowflake presented yet?"):
+        assert not R.asks_cause(q), q
+    # the loose form does not make a question a news question on its own
+    assert R.classify("why is BK so bad at trading").shape != R.NEWS_EVENT

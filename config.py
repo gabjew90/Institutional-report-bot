@@ -58,6 +58,10 @@ class Settings(BaseSettings):
     # GOOGLE_API_KEY); free-tier is 5000 grounded prompts/month, shared
     # across the Google AI Studio account.
     ask_daily_quota_per_user: int = 40
+    # A model reads the questions the regex router cannot place
+    # (discord_bot/ask_reader.py, 2026-11-22). ASK_READER_ENABLED=false
+    # returns /ask to the router alone.
+    ask_reader_enabled: bool = True
     # gemini-3.1-flash-lite (GA). Previously defaulted to a non-existent
     # "gemini-3.1-lite" alias — that name 404s on the v1beta API; only
     # downstream paths that overrode via env var were working. Preview

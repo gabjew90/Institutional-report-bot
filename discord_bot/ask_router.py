@@ -175,6 +175,10 @@ class Route:
     follow_asked: str = ""
     reask: str = ""
     force_fact: bool = False
+    # (needs_web, is_factual) from the flag classifier when phase 0 already
+    # ran it beside the reader (discord_bot/ask_reader.py): phase 1 reads it
+    # here and does not call the classifier a second time.
+    flags: tuple | None = None
 
     @property
     def deterministic(self) -> bool:
@@ -1116,11 +1120,27 @@ def market_prefetch() -> list:
             (T_NEWS, {"symbol": MARKET_SYMBOLS[0], "market": True})]
 
 
+# Read only once the turn is already a news question with a quote fetched
+# (bot.py asks this after the route is set): any "why ..." and any plain
+# request for the news is then a cause question, whatever its move word.
+# "why is aaoi dead", "why unh dumped ?", "sls news", "any news on elmt"
+# reached the news shape through the reader and got the five-arrow
+# rundown (2026-11-22 harness). Not part of _NEWS_RE: "why is BK so bad
+# at trading" must not route as news on this alone.
+_CAUSE_LOOSE_RE = re.compile(
+    # not "why would / should / does ...": that asks for an explanation, and
+    # a news line is not one
+    r"^\s*(?:and\s+|so\s+|but\s+|ok\s+)?why\b(?!\s+(?:would|should|could|can|do|does|don'?t|doesn'?t|wouldn'?t)\b)"
+    r"|\b(?:any|what|whats|what's|latest|the)\s+news\b|\bnews\s+(?:on|for|from|about|regarding)\b"
+    r"|^\s*\$?[A-Za-z]{1,5}\s+news\s*\??\s*$", re.I)
+
+
 def asks_cause(asked: str) -> bool:
     """The asker's words ask why something moved or what happened to it
     in the last days, and nothing more (discord_bot/move_cause.py)."""
     q = asked or ""
-    return bool(_CAUSE_RE.search(q)) and not _CAUSE_MORE_RE.search(q) and not _CAUSE_PAST_RE.search(q)
+    return (bool(_CAUSE_RE.search(q) or _CAUSE_LOOSE_RE.search(q))
+            and not _CAUSE_MORE_RE.search(q) and not _CAUSE_PAST_RE.search(q))
 
 
 _NEWS_RE = re.compile(
@@ -1583,6 +1603,189 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         if fact:
             r.prefetch.append((T_FACT, fact))
     return r
+
+
+# ----------------------------------------------- a model's reading, checked
+# discord_bot/ask_reader.py: where the patterns here placed nothing, or fell
+# back to "a view on the stock" because a ticker was named, one structured
+# model call says what kind of question it is and which tickers it names.
+# The functions below decide whether that reading is used, check its
+# tickers, and build the data plan this router builds for that kind.
+
+_FALLBACK_VIEW_REASONS = ("ticker with no other shape", "ticker from the replied-to message")
+# an index or a coin named in words
+_KEEP_NAMES = {"SPX": r"s&p|spx", "NDX": r"nasdaq|ndx", "VIX": r"vix|volatility index", "DOW": r"dow",
+               "DJIA": r"dow", "RUT": r"russell|rut", "BTC": r"bitcoin|btc", "ETH": r"ethereum|eth",
+               "SOL": r"solana|sol"}
+
+
+_FIGURE_CHANGE_RE = re.compile(r"\b(?:why|lost|lose|losing|gained?|added|shed|wiped|erased)\b", re.I)
+# the asker themself, or the room as a whole
+_SELF_OR_ROOM_RE = re.compile(
+    r"\b(?:i|i'?m|my|mine|me|myself|we|our|this\s+(?:discord|room|server|chat|channel)|the\s+room"
+    r"|callers?|alerts?)\b", re.I)
+
+
+def reading_wanted(r: Route) -> bool:
+    """A route a model's reading may improve: the plain catch-all (nothing
+    recognised, no reply logic at work), or the fallback view on a stock."""
+    if r.follow_up or r.reask:
+        return False
+    if r.shape == UNKNOWN:
+        return not r.prefetch and not r.reason
+    return r.shape == TICKER_OPINION and r.reason in _FALLBACK_VIEW_REASONS
+
+
+def reading_tickers(tickers: list[str], question: str) -> list[str]:
+    """The reading's tickers that hold up: listed (or an index or coin this
+    router knows), and named in the message itself, by symbol or by the
+    company's name. The model reads context well and can also supply a
+    symbol nobody typed ("CFTC" for a question under a legal answer)."""
+    text = question or ""
+    out: list[str] = []
+    for t in tickers or []:
+        # letters only: one reading came back as "CB RS"
+        t = "".join(c for c in (t or "").upper() if c.isalnum() or c == ".")
+        if not t or t in out:
+            continue
+        if t in _KEEP:
+            if re.search(r"\b(?:" + _KEEP_NAMES.get(t, re.escape(t.lower())) + r")\b", text, re.I):
+                out.append(t)
+            continue
+        if not_a_ticker(t) or not (t in _COMPANY_SYMBOLS or _listed.is_listed(t)):
+            continue
+        # A symbol that is also a word the room types must be written as a
+        # symbol: in capitals or with a cashtag.
+        wordy = _is_word(t.lower()) and not free_ticker(t.lower())
+        sym = r"(?<![A-Za-z])\$?" + re.escape(t) + r"(?![A-Za-z])"
+        if re.search(sym, text, 0 if wordy else re.I):
+            out.append(t)
+            continue
+        first = re.split(r"[\s,.]+", (_listed.name(t) or "").strip())[0]
+        named = [k for k, v in COMPANY_TICKERS.items() if v == t]
+        if ((len(first) >= 4 and first.lower() not in _NOT_NAMES
+             and re.search(r"\b" + re.escape(first) + r"\b", text, re.I))
+                or any(re.search(r"\b" + re.escape(k) + r"\b", text, re.I) for k in named)):
+            out.append(t)
+    return out
+
+
+def _route_for_kind(kind: str, tickers: list[str], q: str) -> Route | None:
+    """The route this router builds for `kind`, from tickers already
+    checked. None when the kind needs a ticker and there is none."""
+    stocks = [t for t in tickers if is_stock(t)]
+    r = Route(shape=UNKNOWN, tickers=list(tickers))
+    if kind == EARNINGS_DATE:
+        if not stocks:
+            return None
+        several = stocks[:MAX_EARNINGS_SYMBOLS]
+        if len(several) >= 2 and not _RESULT_Q_RE.search(q):
+            r.shape, r.reason, r.tickers = EARNINGS_DATE, "several companies' reports", several
+            r.prefetch = [(T_EDATE, {"symbol": t, "several": True}) for t in several]
+            return r
+        r.shape, r.reason, r.tickers = EARNINGS_DATE, "one company's report", stocks[:1]
+        r.prefetch = [(T_EDATE, {"symbol": stocks[0]}),
+                      (T_PRICE, {"symbols": [price_symbol(stocks[0])]})] + _stock_prefetch(
+            stocks[0], research=False, news=bool(_RESULT_Q_RE.search(q)))
+        return r
+    if kind == PRICE:
+        if not tickers:
+            return None
+        r.shape, r.reason = PRICE, "a price or one company figure"
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:6]]})]
+        if len(tickers) == 1:
+            r.prefetch += _stock_prefetch(tickers[0], research=False)
+        return r
+    if kind == PRICE_HISTORY:
+        if not tickers:
+            return None
+        from discord_bot import price_stats as _ps
+        stat = _ps.parse(q, tickers)
+        r.shape = PRICE_HISTORY
+        if stat:
+            r.reason, r.prefetch = "price statistic", [(T_STATS, stat)]
+        else:
+            r.reason = "price history"
+            r.prefetch = [(T_HISTORY, {"symbol": tickers[0]})] + _stock_prefetch(tickers[0], research=False)
+        return r
+    if kind == COMPANY_PROFILE:
+        if not stocks:
+            return None
+        r.shape, r.reason, r.tickers = COMPANY_PROFILE, "what the company is", stocks[:1]
+        r.prefetch = ([(T_PRICE, {"symbols": [price_symbol(stocks[0])]})]
+                      + _stock_prefetch(stocks[0], news_days=NEWS_PROFILE_DAYS))
+        return r
+    if kind == NEWS_EVENT:
+        r.shape, r.reason = NEWS_EVENT, "why or what happened"
+        if tickers:
+            r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:4]]})]
+            if len(tickers) == 1:
+                r.prefetch += _stock_prefetch(tickers[0])
+            else:
+                r.prefetch += [(T_NEWS, {"symbol": t}) for t in stocks[:MAX_CAUSE_SYMBOLS]]
+        elif asks_market(q):
+            r.reason, r.prefetch = "the market today", market_prefetch()
+        return r
+    if kind in (MEMBER_LEDGER, CHAT_HISTORY):
+        r.shape, r.reason, r.tickers = kind, "the room's own record", []
+        return r
+    return None
+
+
+def apply_reading(r: Route, question: str, reading: dict | None, *, names_member: bool = False) -> Route:
+    """The route after a model's reading of the question, or `r` itself
+    when the reading is not used. `reading` is ask_reader.read's result."""
+    if not reading or not reading_wanted(r):
+        return r
+    from discord_bot import ask_reader as _rd
+    q = _EARN_TYPO_RE.sub("earnings", _last_line(question))
+    kind = reading.get("kind") or ""
+    view = r.shape == TICKER_OPINION
+    named = reading_tickers(reading.get("tickers") or [], question)
+    if view:
+        if kind in _rd.NOT_A_QUESTION:
+            # Not a question about the stock ("i now own 2000 shares what %
+            # is that", "Is ry gay ?" where RY is a listed bank and Ry a
+            # member): the catch-all answers what was asked, with the price
+            # when the model agrees a ticker is named. No stock rundown.
+            out = Route(shape=UNKNOWN, tickers=named[:1],
+                        reason="reader: not a question about the stock")
+            if named:
+                out.prefetch = [(T_PRICE, {"symbols": [price_symbol(named[0])]})]
+            return out
+        if kind not in _rd.VIEW_KINDS:
+            return r
+    else:
+        # A statement or a reaction stays with the catch-all: there the
+        # model named a kind wrongly as often as rightly.
+        if kind not in _rd.UNPLACED_KINDS or not _rd.asks(q):
+            return r
+        if names_member and kind not in (MEMBER_LEDGER, CHAT_HISTORY):
+            return r                      # a question about a member is the room's
+    # The model's tickers only, never the router's own: its fallback view
+    # may rest on a word it read as a symbol ("give me a TLDR; why is tech
+    # getting hammered" read TLDR).
+    tickers = named
+    # The price kind posts the quote and the company figures as the body of
+    # the answer, so the question must ask for one in the router's own
+    # terms: the model also calls "what was their revenue each year since
+    # 2021" and "how much avgo does pelosi own" a price.
+    if kind == PRICE and (not (_PRICE_RE.search(q) or _SNAPSHOT_FIELD_RE.search(q))
+                          # a change in a figure is not the figure ("how much
+                          # mcap has nvda lost"), as in the router's own rule
+                          or _FIGURE_CHANGE_RE.search(q)):
+        return r
+    # A member's record is about a member, the asker or the room: "show me
+    # pelosis portfolio breakdown" is none of them, and that kind has no
+    # web search.
+    if kind == MEMBER_LEDGER and not (names_member or _SELF_OR_ROOM_RE.search(
+            re.sub(r"\b(?:show|give|tell|get|let|send)\s+me\b", " ", q, flags=re.I))):
+        return r
+    out = _route_for_kind(kind, tickers, q)
+    if out is None:
+        return r
+    out.reason = "reader: " + out.reason
+    return out
 
 
 # "earn" and three to six letters that is not a word of its own

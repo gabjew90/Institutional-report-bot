@@ -4377,6 +4377,7 @@ async def _ask_00_setup_tools_and_context(
     user_id,
     question,
     channel_name="",
+    client=None,
 ):
     """Phase 0 of /ask (split 2026-09-01; text verbatim from
     _answer_with_gemini). Parameters are the locals the original
@@ -4500,6 +4501,41 @@ async def _ask_00_setup_tools_and_context(
         asker_manager=_asker_manager,
         channel_id=channel_id,
         names_member=_names_a_member(_route_question))
+    # Where the patterns placed nothing, or fell back to a view on the stock
+    # because a ticker was named, a model reads the question: what kind it is
+    # and which tickers it names. Code checks that reading and builds the
+    # same data plan the router builds (discord_bot/ask_reader.py,
+    # 2026-11-22). For a catch-all question the flag classifier that phase 1
+    # would run anyway runs beside it, so the reading adds no wait. Any
+    # failure leaves the router's route as it was.
+    if settings.ask_reader_enabled and _ask_router.reading_wanted(_ask_route):
+        _flags_task = None
+        try:
+            from discord_bot import ask_reader as _ask_reader
+            _rd_task = asyncio.create_task(
+                _ask_reader.read(_route_question, channel_name or "", safety_settings))
+            if client is not None and not _ask_route.deterministic:
+                _flags_task = asyncio.create_task(_classify_ask_needs_web(
+                    client, settings.ask_gemini_model or settings.gemini_model,
+                    safety_settings, question))
+            _reading = await _rd_task
+            _read_route = _ask_router.apply_reading(
+                _ask_route, _route_question, _reading,
+                names_member=_names_a_member(_route_question))
+            if _read_route is not _ask_route:
+                log.info(f"/ask: reader {(_reading or {}).get('kind')} "
+                         f"{(_reading or {}).get('tickers')} replaced the router's "
+                         f"{_ask_route.shape} ({_ask_route.reason or 'nothing recognised'})")
+                _ask_route = _read_route
+            if _flags_task is not None:
+                if _ask_route.deterministic:
+                    _flags_task.cancel()
+                else:
+                    _ask_route.flags = await _flags_task
+        except Exception as e:
+            log.warning(f"/ask: reader step failed (non-fatal, the router's route stands): {e}")
+            if _flags_task is not None:
+                _flags_task.cancel()
     # Replying "thoughts?" to your OWN earlier message hands over nothing:
     # it is still your question, and the handed-over note made the bot talk
     # about the asker in the third person (2026-10-06, 2Pale).
@@ -4815,6 +4851,9 @@ async def _ask_01_build_prompt(
         needs_web, _route_is_factual = _ask_route.needs_web, _ask_route.is_factual
         log.info(f"/ask: router shape {_ask_route.shape} -> "
                  f"{'WEB' if needs_web else 'LOCAL'}/{'FACT' if _route_is_factual else 'BANTER'}")
+    elif _ask_route.flags is not None:
+        # phase 0 ran the classifier beside the reader
+        needs_web, _route_is_factual = _ask_route.flags
     else:
         needs_web, _route_is_factual = await _classify_ask_needs_web(
             client, ask_model, safety_settings, _ask_route.reask or question
@@ -8824,6 +8863,7 @@ async def _answer_with_gemini(
             user_id=user_id,
             question=question,
             channel_name=channel_name,
+            client=client,
         )
         (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content) = await _ask_01_build_prompt(
             _ask_route=_ask_route,

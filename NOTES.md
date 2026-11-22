@@ -4137,3 +4137,37 @@ Owner's go on 2026-11-22, four days before Thanksgiving. `report/market_data._se
 - `last_session_day` names the day a last-close figure belongs to. The price tool's note said "FRIDAY'S close" on any closed day and "YESTERDAY'S" on any morning, which is wrong on a holiday and on a Monday.
 
 Checked on Wed Nov 25, Thanksgiving, the half day before and after 1 PM, the weekend, Monday morning, and the July 4 weekend whose Friday was the holiday.
+
+## 2026-11-22: a model reads the questions the regex router cannot place
+
+Owner asked whether one Gemini call should read the question in place of the patterns, then: "we need to figure the parsing today".
+
+**Measured first.** One structured Flash-Lite call (a closed list of kinds, the tickers, what is asked) over all 969 logged questions since 09-01, read-only on the worker, beside the router as it stands after yesterday's fixes. No error, no filter block, 0.74 s median, $0.40 for the whole run. They disagreed on 422 questions. All 422 were judged blind by two independent reviewers, with the two systems shuffled per item. The reviewers agreed with each other on 86% of the kinds.
+
+| where the two disagreed | model right | router right |
+|---|---|---|
+| kind of question (299 judged alike) | 218 | 68 |
+| tickers (165 judged alike) | 139 | 21 |
+
+Overall, taking both as right where they agree: about 91% against 73% on the kind, 97% against 84% on the tickers.
+
+**What each gets wrong.** The router does not place a real question (542 of 967 went to the catch-all). The model names a kind for a remark: right 37 to 3 on a "why / what happened" that is a question, and 5 to 12 on a stock view that is not one. Read twice, one question in ten got a different kind.
+
+**The check that nearly stopped this.** Joined to the outcome measure, the questions the reading rescues did not land 6.3% of the time, against 8.2% for the questions the router already places. Misreading was not where answers went wrong. I withdrew the recommendation, and the owner asked for the parsing to be settled anyway. Built on the narrow terms the evidence supports.
+
+**Built** (`discord_bot/ask_reader.py`, `ask_router.apply_reading`):
+
+- The reading is consulted for the plain catch-all and for the router's fallback "view on the stock" (a ticker named and no pattern matched), nowhere else.
+- On the catch-all it is used when the asker's words are a question or request and the kind is one the model was right on four times in five.
+- On the fallback view it is used when the model names another kind (right 41 to 1), and a message that is no question about the stock goes to the catch-all with no rundown.
+- Code checks the tickers (listed, and named in the message), never carries over the router's own, and builds the same data plan the router builds.
+- It runs beside the flag classifier that already ran on catch-all questions, so those wait no longer.
+- `ASK_READER_ENABLED=false` turns it off.
+
+Reading all 128 routes the first draft changed found four faults, fixed before shipping: the router's misread ticker carried into the new route (TLDR), "price" read too widely ("what was their revenue each year since 2021", which would have posted a quote as the answer), a member question about a non-member (on a kind with no web search), and a price lookup on a word that is no ticker.
+
+Final replay with the recorded readings: 104 of 963 routes change. Of the 97 both reviewers judged, 90 were right, 3 were the router's and 4 were neither.
+
+Harness (2026-11-22): "why is aaoi dead" went from a stock view to the price and one sourced sentence. "does Levi also have earnings call" got the report lines. "Hard name to play" stayed chat. "do any serious business people actually use mac. AAPL doesnt count" got no stock rundown.
+
+To check after it has run: the outcome measure for the changed routes, and the fallback-view questions, which wait about 0.75 s longer.
