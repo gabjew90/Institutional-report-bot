@@ -1,0 +1,686 @@
+{
+ "brief": "Goldman's TMT morning note describes a global, AI-centered risk-off session: Asian and European tech equities sold off sharply, US futures fell, and AI bellwethers including NVDA, SMH and DRAM extended declines, with NVDA now lower in 9 of its last 10 sessions since the Jensen news broke. The desk ties this to a 3.3% intraday S&P reversal the prior day, poor breadth, and hawkish Fed commentary from Goolsbee and Barr that kept rate-hike odds fully priced in, with Waller and Cook scheduled to speak later that day. Company-specific drivers: Apple is reportedly building its own AI agent following Meta's Muse breakout; Intuit cut FY Consumer guidance on agentic-AI risk and agreed to sell Mailchimp to Bending Spoons for $3.68bn, sending the stock sharply lower; Elastic fell despite Cloud acceleration because its second-half outlook was unchanged; and BILL agreed to a $6.0bn all-cash take-private by TPG and Corpay. Separately, Goldman stayed positive on China semis, Keysight beat with record orders, Globant narrowed its outlook on Middle East demand weakness, a bus tour covered ANET/CSCO/SMCI, and HSBC upgraded TSLA to Hold.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Asian and European equities are broadly weaker, with Korea and Japan down about 5%, Hong Kong down about 2% (Hong Kong Tech down about 4%) and Europe down about 1.5% (Euro Tech down about 4%).",
+   "anchor": "based weakness in Asia (Korea -5%, Japan -5%, HK -2%, HK Tech -4%) and Europe (currently -1.5%,\nwith Euro Tech -4%)",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "AI bellwether stocks are under pressure, with NVDA down about 3% and lower in 9 of the last 10 sessions since the Jensen news broke, the SMH semiconductor ETF down about 3.5% and DRAM names down about 5%.",
+   "anchor": "across AI bellwethers (NVDA -3%, lower in 9 of 10 sessions\nsince Jensen news broke, SMH -3.5%, DRAM -5%).",
+   "topic": "Asian AI unwind",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "SMH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Capital markets activity did not deliver the stabilizing force for risk appetite that many market participants had hoped for.",
+   "anchor": "as Capital Markets activity did not appear to deliver the stabilizing force for risk-\nappetite that many had hoped for.",
+   "topic": "Asian AI unwind",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "The S&P 500 saw a 3.3% intraday reversal yesterday, accompanied by a lack of defensive bid.",
+   "anchor": "after a 3.3% intraday reversal in the S&P\nyesterday, lack of defensive bid, and continued poor breadth",
+   "topic": "US equity reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Market breadth remained poor, with 464 names finishing lower yesterday.",
+   "anchor": "continued poor breadth (464 names finishing in the red).",
+   "topic": "US equity reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Hawkish Fed commentary is compounding pressure on equities, with rate hike odds now fully priced into markets.",
+   "anchor": "Hawkish\nFed commentary is compounding the pressure on equities, with rate hike odds now fully priced in;",
+   "topic": "US equity reversal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Chicago Fed President Goolsbee said everything remains on the table following several consecutive months of borderline disturbingly high inflation.",
+   "anchor": "Chicago Fed President Goolsbee said \"everything\" remains on the table following several consecutive\nmonths of \"borderline disturbingly high\" inflation",
+   "topic": "US equity reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Fed Governor Michael Barr signaled that further rate adjustments may be warranted, per Bloomberg.",
+   "anchor": "& Fed Governor Michael Barr also signaled further rate\nadjustments may be warranted (bbg).",
+   "topic": "US equity reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Fed Governors Waller and Cook are scheduled to speak today, at 8:25am and 12:15pm respectively.",
+   "anchor": "Today we hear from Feds Waller @ 8:25am && Cook @ 12:15pm.",
+   "topic": "US equity reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "The S&P 500 is down about 70bps, the Nasdaq 100 down about 150bps and the Russell 2000 down about 20bps on the session.",
+   "anchor": "SPX -70bps// NDX -150bps // RTY -20bps //",
+   "topic": "US equity reversal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "The VIX is at 29.82.",
+   "anchor": "Gold -115bps @ $3,583.97/oz // VIX @ 29.82 // DXY @",
+   "topic": "US equity reversal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Gold fell about 115bps to $3,583.97 per ounce.",
+   "anchor": "WTI -100bps @ $82.40 // Gold -115bps @ $3,583.97/oz // VIX @ 29.82",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "WTI crude oil fell about 100bps to $82.40 a barrel.",
+   "anchor": "US 2-year yields\n-5.5bps @ 4.71% // WTI -100bps @ $82.40",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "US 10-year Treasury yields fell about 6.6bps to 4.98% and 2-year yields fell about 5.5bps to 4.71%.",
+   "anchor": "RTY -20bps // US 10-year yields -6.6bps @ 4.98% // US 2-year yields",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "The DXY dollar index is at 103.84.",
+   "anchor": "VIX @ 29.82 // DXY @\n103.84.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Intuit shares were down about 10% after cutting guidance amid an agentic AI threat to its business.",
+   "anchor": "- INTU -10%...Guidance cut amid agentic AI threat",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Intuit's fiscal Q1 revenue was $4.4 billion, up 12% year over year, above its guidance range of $4.294 to $4.313 billion (+11% y/y).",
+   "anchor": "F1Q Revs $4.4bn (+12% y/y) vs guide $4.294-4.313 (+11% y/y).",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Intuit's Global Business Solutions revenue grew 15% year over year, up from 14% last quarter, with Online Ecosystem revenue up 20% year over year.",
+   "anchor": "GBS Revs +15% y/y (vs +14% y/y last\nqtr) with Online Ecosystem revs +20% y/y.",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Intuit reported fiscal Q1 non-GAAP EPS of $2.44 to $2.48.",
+   "anchor": "Online Ecosystem revs +20% y/y. Non-GAAP EPS $2.44-2.48.",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Intuit repurchased $1.5 billion of stock in the first quarter.",
+   "anchor": "Intuit repurchased $1.5 billion of\nstock in the first quarter.",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Intuit lowered its full-year Consumer segment revenue guidance to 2-4% year-over-year growth from a prior 4-6%, while reiterating Global Business Solutions guidance of 13-14% y/y growth.",
+   "anchor": "FY Guide: lowers FY Consumer guide to +2-4% y/y (vs prior +4-6% y/y) and\nreits GBS +13-14% y/y.",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "forecast",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Bending Spoons entered into a definitive agreement to acquire Mailchimp from Intuit for $3.68 billion, paid mostly in cash with some stock.",
+   "anchor": "\"Bending Spoons Has Entered Into A Definitive Agreement To Acquire Mailchimp\" \u2013\nfor $3.68bn (mostly cash, some stock).",
+   "topic": "Intuit guidance cut and Mailchimp sale",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "BILL will be acquired for $63.25 per share in an all-cash transaction, representing a fully diluted equity value of approximately $6.0 billion.",
+   "anchor": "BILL will be acquired for $63.25 per share in an all-cash transaction, representing a fully diluted equity\nvalue of approximately $6.0 billion.",
+   "topic": "BILL take-private acquisition",
+   "status": "released",
+   "instruments": [
+    "BILL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "The BILL acquisition is expected to close in the first half of 2027, subject to BILL stockholder and regulatory approval.",
+   "anchor": "is expected to close in the first half of 2027, subject to customary closing conditions,\nincluding approval by BILL stockholders and the receipt of required regulatory approvals.",
+   "topic": "BILL take-private acquisition",
+   "status": "forecast",
+   "instruments": [
+    "BILL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "H1 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Starboard Value, BILL's largest stockholder, and BILL's CEO and founder Ren\u00e9 Lacerte have agreed to vote their shares in favor of the acquisition agreement.",
+   "anchor": "Starboard Value, BILL's largest stockholder, and BILL's CEO and\nFounder, Ren\u00e9 Lacerte, have agreed to vote their shares in favor of the agreement.",
+   "topic": "BILL take-private acquisition",
+   "status": "released",
+   "instruments": [
+    "BILL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "There are no financing conditions to the BILL acquisition.",
+   "anchor": "There are no\nfinancing conditions to the transaction.",
+   "topic": "BILL take-private acquisition",
+   "status": "released",
+   "instruments": [
+    "BILL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Keysight reported 4QFY26 revenue of $1.99 billion, adjusted EBIT margin of 35.8% and non-GAAP EPS of $3.61, above both Street estimates ($1.95bn/34.5%/$3.37) and Goldman Sachs estimates ($1.95bn/35.0%/$3.39).",
+   "anchor": "Keysight reported 4QFY26 revenue/adjusted EBIT margin/non-GAAP EPS of $1.99 bn/35.8%/$3.61,\ncompared to the Street at $1.95 bn/34.5%/$3.37 and GS at $1.95 bn/35.0%/$3.39.",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Keysight's quarterly orders were a record $2,339 million, up 12% quarter over quarter and up 53% year over year as reported (49% organically).",
+   "anchor": "Orders in the quarter\nwere a record $2,339 mn (up 12% qoq, up 53% yoy as reported, and up 49% yoy organically) and the",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Keysight's book-to-bill ratio was 1.17x in the quarter.",
+   "anchor": "BTB was 1.17X. Orders grew 12% qoq, which was in the range of typical seasonality,",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs views Keysight's 12% quarter-over-quarter order growth as roughly in line with investor expectations.",
+   "anchor": "and we think about\nin line with investor expectations",
+   "topic": "Keysight Q4 earnings beat",
+   "status": "released",
+   "instruments": [
+    "KEYS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Apple is developing its own autonomous AI agent that can get things done on behalf of users.",
+   "anchor": "Apple Inc. is developing its own autonomous artificial intelligence agent that can get things done on",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Apple's AI agent move follows the breakout consumer success of Meta's Muse.",
+   "anchor": "The move follows the breakout success of Meta's Muse,\nwhich has captured the attention of consumers in recent months",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "AAPL traded flat and META fell about 2% following reports that Apple is working on its own AI agent.",
+   "anchor": "- AAPL flat / META -2%\u2026 reports that AAPL is working on own AI Agent",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Elastic's Annual Elastic Cloud revenue growth accelerated for a second consecutive quarter, to +30% from +27% constant currency.",
+   "anchor": "Elastic reported solid F2Q results, with Annual Elastic Cloud accelerating for a second consecutive quarter\n(to +30%, from +27% CC),",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Elastic's Sales-Led Subscription Revenue came in 1.6% above consensus, cRPO held at +20% constant currency and operating margin beat consensus by 300 basis points.",
+   "anchor": "Sales-Led Subscription Revenue +1.6% above Consensus, cRPO holding at\n+20% CC and OpM +300 bps above Consensus\u2026",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "About 40% of Elastic customers spending more than $100K now use Elastic for AI, up from 23% in F2Q26.",
+   "anchor": "retrieval and unstructured data, with ~40% of >$100K customers now using Elastic for AI (up from 23%\nin F2Q26).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs wants to see sustained Cloud momentum and better Observability growth before turning more constructive on the durability of Elastic's Sales-Led Subscription Revenue acceleration.",
+   "anchor": "though we'd like to see sustained Cloud momentum and better Observability growth before getting more\nconstructive on the durability of Sales-Led Subscription Revenue acceleration.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Elastic shares fell about 5% in pre-market trading after an outlook paired with an unchanged F2H view.",
+   "anchor": "ESTC: Cloud Acceleration Paired with Unchanged F2H Outlook. Stock -5% in pre.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs is positive on China semiconductors, expecting the local ecosystem to ride on AI investments in China.",
+   "anchor": "We are positive on China Semis and expect the local ecosystem to ride on AI investments in China and the",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs forecasts China's local AI chips market to grow at a 102% CAGR from 2025 to 2030E, reaching $678 billion by 2030E in its base case.",
+   "anchor": "We expect local AI chips market to\nenjoy +102% CAGR in 2025-30E to US$678bn by 2030E in our base case,",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2025-2030E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs expects Globant stock to be range bound following a narrowed outlook, with progress on AI initiatives tempered by Middle East demand weakness.",
+   "anchor": "We expect the stock to be range bound following a narrowed outlook, as solid progress on the company's",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GLOB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Globant's AI Pods business expects to achieve an exit run-rate ARR of $130 million by the end of 2026, up from $110 million.",
+   "anchor": "where it expects to achieve an\nexit run rate ARR of $130mn (up from $110mn) by the end of 2026.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GLOB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by end of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs rates Arista Networks (ANET) Buy.",
+   "anchor": "with management teams from 650 Group (Private), Arista Networks (ANET, Buy), Cisco Systems (CSCO,\n\nNeutral), and Super Micro Computer (SMCI, Sell).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ANET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs rates Cisco Systems (CSCO) Neutral.",
+   "anchor": "with management teams from 650 Group (Private), Arista Networks (ANET, Buy), Cisco Systems (CSCO,\n\nNeutral), and Super Micro Computer (SMCI, Sell).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "Goldman Sachs rates Super Micro Computer (SMCI) Sell.",
+   "anchor": "with management teams from 650 Group (Private), Arista Networks (ANET, Buy), Cisco Systems (CSCO,\n\nNeutral), and Super Micro Computer (SMCI, Sell).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SMCI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "HSBC",
+   "document": "GS Kamshad - GS TMT TODAY 11.20.26",
+   "claim": "HSBC upgraded Tesla (TSLA) to Hold.",
+   "anchor": "STREET ACTIONS:\nUpgrades: TSLA (Hold, HSBC)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-21/28619__gs-kamshad-gs-tmt-today-11-20-26-20-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 47,
+  "matched": 46,
+  "failed": 1,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 20,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 1,
+  "needs_reask": false
+ }
+}
