@@ -102,6 +102,37 @@ def is_us_market_holiday(date_iso: str) -> str | bool | None:
 # comments retain some market relevance, _DESCRIPTION is the prose
 # block that gets injected into prompts.
 
+# Days the NYSE closes at 1:00 PM ET (nyse.com/trade/hours-calendars, read
+# 2026-11-22). Update annually with US_MARKET_HOLIDAYS.
+EARLY_CLOSES = {
+    "2026-11-27": (13, 0),      # the day after Thanksgiving
+    "2026-12-24": (13, 0),      # Christmas Eve
+    "2027-11-26": (13, 0),      # the day after Thanksgiving
+}
+
+
+def market_close_time(date_iso: str) -> tuple[int, int]:
+    """(hour, minute) New York time the regular session ends that day."""
+    return EARLY_CLOSES.get((date_iso or "")[:10], (16, 0))
+
+
+def is_trading_day(date_iso: str) -> bool:
+    """A weekday the NYSE is not fully closed. A year the holiday list does
+    not cover counts as no holidays, as everywhere here."""
+    from datetime import date
+    d = date.fromisoformat(date_iso[:10])
+    return d.weekday() < 5 and not is_us_market_holiday(date_iso)
+
+
+def previous_trading_day(date_iso: str) -> str:
+    """Last NYSE session date strictly before `date_iso`."""
+    from datetime import date, timedelta
+    d = date.fromisoformat(date_iso[:10]) - timedelta(days=1)
+    while not is_trading_day(d.isoformat()):
+        d -= timedelta(days=1)
+    return d.isoformat()
+
+
 def next_trading_day(date_iso: str) -> str:
     """First NYSE session date strictly after `date_iso`: skips weekends
     and full closures. A year the holiday list does not cover is treated

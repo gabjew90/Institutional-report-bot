@@ -2640,18 +2640,26 @@ async def _execute_market_price(args: dict) -> dict:
             "a reference point. Don't phrase the price as 'after-hours at $X' "
             "— it's the 4 PM close. Crypto prices ARE live."
         )
-    elif session_code == "PRE-MARKET":
-        quote_data_caveat = (
-            "STOCK PRICES BELOW = YESTERDAY'S regular-session close. Finnhub "
-            "/quote does NOT return live pre-market prints. Phrase as "
-            "'yesterday's close' not 'pre-market price at $X'. Crypto prices "
-            "ARE live."
-        )
-    elif session_code == "WEEKEND-CLOSED":
-        quote_data_caveat = (
-            "STOCK PRICES BELOW = FRIDAY'S regular-session close. Markets "
-            "are closed for the weekend. Crypto prices ARE live."
-        )
+    elif session_code in ("PRE-MARKET", "WEEKEND-CLOSED"):
+        # The day the close belongs to is named: on a Monday morning it is
+        # not yesterday's, and on a market holiday it is not Friday's
+        # (2026-11-22, before Thanksgiving).
+        try:
+            _last_day = f"{_md.last_session_day(now_et):%A}"
+        except Exception:
+            _last_day = "the last session"
+        if session_code == "PRE-MARKET":
+            quote_data_caveat = (
+                f"STOCK PRICES BELOW = {_last_day.upper()}'S regular-session close. Finnhub "
+                "/quote does NOT return live pre-market prints. Phrase as "
+                f"'{_last_day}'s close' not 'pre-market price at $X'. Crypto prices "
+                "ARE live."
+            )
+        else:
+            quote_data_caveat = (
+                f"STOCK PRICES BELOW = {_last_day.upper()}'S regular-session close. Markets "
+                "are closed today (a weekend or a market holiday). Crypto prices ARE live."
+            )
 
     timestamp = now_et.strftime("%Y-%m-%d %H:%M %Z")
 

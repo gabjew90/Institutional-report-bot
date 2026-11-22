@@ -91,9 +91,14 @@ def test_pre_market_caveat_present():
         return ("PRE-MARKET",
                 "Markets PRE-OPEN (before 9:30 AM ET).")
 
+    # The caveat names the day the close belongs to (2026-11-22): on a
+    # Monday morning or after a holiday it is not yesterday's.
+    from datetime import date as _date
     with (
         patch("report.market_data._session_label",
               side_effect=fake_session_label),
+        patch("report.market_data.last_session_day",
+              return_value=_date(2026, 6, 2)),
         patch("report.market_data._fetch_yahoo_extended_hours",
               return_value=None),
         patch("report.market_data._fetch_finnhub_quote",
@@ -102,10 +107,10 @@ def test_pre_market_caveat_present():
         result = asyncio.run(bot_mod._execute_market_price({"symbols": ["NVDA"]}))
     assert result.get("session") == "PRE-MARKET"
     caveat = result.get("stock_quote_data_caveat") or ""
-    assert "yesterday" in caveat.lower(), (
-        f"PRE-MARKET caveat should reference yesterday's close: {caveat!r}"
+    assert "TUESDAY'S regular-session close" in caveat and "pre-market" in caveat.lower(), (
+        f"PRE-MARKET caveat should name the last session's close: {caveat!r}"
     )
-    _ok("PRE-MARKET response carries explicit yesterday's-close caveat")
+    _ok("PRE-MARKET response carries the last session's close caveat, by day")
 
 
 def test_open_session_no_stock_caveat_set():

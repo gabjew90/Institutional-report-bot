@@ -62,11 +62,8 @@ def _today() -> date:
 
 def prev_trading_day(today: date) -> date:
     """The last trading day strictly before `today`."""
-    from world_context import is_us_market_holiday
-    d = today - timedelta(days=1)
-    while d.weekday() >= 5 or is_us_market_holiday(d.isoformat()):
-        d -= timedelta(days=1)
-    return d
+    from world_context import previous_trading_day
+    return date.fromisoformat(previous_trading_day(today.isoformat()))
 
 
 def cutoff(asked: str = "", today: date | None = None) -> date:

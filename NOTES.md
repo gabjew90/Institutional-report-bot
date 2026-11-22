@@ -4126,3 +4126,14 @@ Harness sample (2026-11-21, a Saturday): "why are the markets dying today?" got 
 Replay over the 963 logged questions: 3 routes move, the three market questions.
 
 Seen on the way and not changed: "spx ndx vix price" is answered from price history with a "couldn't verify" warning under correct figures.
+
+## 2026-11-22: the session label knows market holidays and early closes
+
+Owner's go on 2026-11-22, four days before Thanksgiving. `report/market_data._session_label` knew weekends only, so on a market holiday a quote would have been labelled as a live session's move, and at 2 PM on the half day after it as still trading.
+
+- `world_context.EARLY_CLOSES` holds the 1:00 PM closes (Nov 27 and Dec 24, 2026, Nov 26, 2027, read from the NYSE's calendar page on 2026-11-22), with `market_close_time`, `is_trading_day` and `previous_trading_day`. Update it each year with the holiday list.
+- A market holiday returns the closed-day code (`WEEKEND-CLOSED`, which now means "no session today") with a note that names the holiday and the day of the last session.
+- The session ends at the day's own close time.
+- `last_session_day` names the day a last-close figure belongs to. The price tool's note said "FRIDAY'S close" on any closed day and "YESTERDAY'S" on any morning, which is wrong on a holiday and on a Monday.
+
+Checked on Wed Nov 25, Thanksgiving, the half day before and after 1 PM, the weekend, Monday morning, and the July 4 weekend whose Friday was the holiday.

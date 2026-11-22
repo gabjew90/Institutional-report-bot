@@ -645,6 +645,14 @@ def _session_label(now_et: datetime) -> tuple[str, str]:
 
     Returns (short_code, explanatory_line) pair. short_code one of:
     - 'PRE-MARKET', 'OPEN', 'AFTER-HOURS', 'WEEKEND-CLOSED'
+
+    A full market holiday is 'WEEKEND-CLOSED' too (the code means "no
+    session today": the last print is the last session's close), and the
+    regular session ends at 1:00 PM on an early-close day. Until
+    2026-11-22 only weekends were known here, so a quote on Thanksgiving
+    would have read as a live session's move, and one at 2 PM on the
+    half day after it as still trading. `last_session_day` names the day
+    the close belongs to.
     """
     # NOTE: the session label applies to US equities/bonds/futures. Crypto trades
     # 24/7/365, so crypto % is ALWAYS a live current-day move regardless of session.
@@ -674,16 +682,54 @@ def _session_label(now_et: datetime) -> tuple[str, str]:
         "Crypto trades 24/7 — its % reflects today's move since 00:00 UTC."
     )
 
+    import world_context as _wc
+    today = now_et.date().isoformat()
     # Weekend
     if now_et.weekday() >= 5:  # Sat=5, Sun=6
-        return ("WEEKEND-CLOSED", WEEKEND_NOTE)
-    # Weekday
+        last = last_session_day(now_et)
+        if last.weekday() == 4:
+            return ("WEEKEND-CLOSED", WEEKEND_NOTE)
+        # the Friday was a holiday: the last session is an earlier day
+        return ("WEEKEND-CLOSED", WEEKEND_NOTE.replace("Friday 4pm ET", f"{last:%A}'s close")
+                .replace("Friday's full session", f"{last:%A}'s full session"))
+    holiday = _wc.is_us_market_holiday(today)
+    if holiday:
+        last = last_session_day(now_et)
+        return ("WEEKEND-CLOSED", (
+            f"Markets CLOSED today ({holiday}, a market holiday). Traditional markets "
+            f"(stocks/bonds/oil/gold/DXY) haven't traded since {last:%A}'s close — the % changes below "
+            f"reflect {last:%A}'s full session. Do NOT describe traditional-market % as 'today's' moves. "
+            "Crypto trades 24/7 and its % IS a live current-day move — describe crypto as 'today's' normally."))
+    # Weekday session
     hm = (now_et.hour, now_et.minute)
+    close = _wc.market_close_time(today)
     if hm < (9, 30):
-        return ("PRE-MARKET", PRE_MARKET_NOTE)
-    if hm < (16, 0):
+        last = last_session_day(now_et)
+        if (now_et.date() - last).days == 1:
+            return ("PRE-MARKET", PRE_MARKET_NOTE)
+        # Monday, or the morning after a holiday: "yesterday" had no session
+        return ("PRE-MARKET", PRE_MARKET_NOTE.replace("YESTERDAY'S full session", f"{last:%A}'s full session")
+                .replace("yesterday's close", f"{last:%A}'s close"))
+    if hm < close:
+        if close != (16, 0):
+            return ("OPEN", OPEN_NOTE + " Today is an early close: the regular session ends at 1:00 PM ET.")
         return ("OPEN", OPEN_NOTE)
+    if close != (16, 0):
+        return ("AFTER-HOURS", AFTER_HOURS_NOTE.replace(
+            "post 4 PM ET", "the market closed early today, at 1:00 PM ET"))
     return ("AFTER-HOURS", AFTER_HOURS_NOTE)
+
+
+def last_session_day(now_et: datetime):
+    """The date of the session a quote's last regular-session print belongs
+    to: today once today's session has opened, else the last trading day
+    before today."""
+    import world_context as _wc
+    from datetime import date as _date
+    today = now_et.date()
+    if _wc.is_trading_day(today.isoformat()) and (now_et.hour, now_et.minute) >= (9, 30):
+        return today
+    return _date.fromisoformat(_wc.previous_trading_day(today.isoformat()))
 
 
 # Yahoo yield-index symbols. NOTE: although the old CBOE convention
@@ -761,11 +807,13 @@ def fetch_market_snapshot() -> str:
     lines = [f"CURRENT MARKET DATA (as of {ts}, session: {session_code}):", session_note, ""]
 
     # Label the % column based on session so Gemini doesn't call it "today's" when it isn't
+    _last = last_session_day(now_et)
     pct_label = {
         "OPEN": "session-to-date",
         "AFTER-HOURS": "today's session",
-        "PRE-MARKET": "yesterday's session",
-        "WEEKEND-CLOSED": "Friday's session",
+        # the day named: on a Monday morning or after a holiday it is not yesterday
+        "PRE-MARKET": f"{_last:%A}'s session",
+        "WEEKEND-CLOSED": f"{_last:%A}'s session",
     }.get(session_code, "last session")
 
     if traditional:
