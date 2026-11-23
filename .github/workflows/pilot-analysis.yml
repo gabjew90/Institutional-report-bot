@@ -35,6 +35,8 @@ concurrency:
 env:
   PILOT_ROOT: pilot
   PILOT_BRANCH: pilot-data
+  # each document's line is printed as it finishes, not when the run ends
+  PYTHONUNBUFFERED: "1"
 
 jobs:
   analyze:

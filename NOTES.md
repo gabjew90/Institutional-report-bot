@@ -4274,3 +4274,37 @@ The 400 MB limit comes from the trim log: about 150 MB fresh, 200 to 320 MB thro
 
 **Alert.** Workspace usage limit: soft $10, no hard limit (read back). A hard limit would stop the bot, so none is set. At this month's rate the email arrives around the middle of each billing period.
 
+## 2026-11-23 (last): the Claude lane was doing the work twice. Traced and rebuilt (owner: "A")
+
+Owner asked how Gemini usage looked and whether the bot was off Gemini apart from /ask. It is not. The call ledger for the last 30 days, at list prices: about $68, against $50.81 billed for 08-30 to 09-26.
+
+| feature | 30 days |
+|---|---|
+| PDF deep analysis | $30.90 |
+| PDF triage | $19.90 |
+| profile refresh | $7.25 |
+| /ask with its news, primer and recap calls | about $5 |
+| screenshot and chat OCR | $2.90 |
+| trade classifier, member trade batch | $1.65 |
+| race tagger, backup pulse | $0.55 |
+
+Not in the ledger: the theme build's embedding calls and Google Search grounding. Triage averages 8,954 input tokens a call where this repo's docs say about 2,000. Not looked into.
+
+**The lane.** Both switches were on and Claude analysed 108 HIGH and MEDIUM notes in 14 days against Gemini's 1,887. Joined per note for 11-15 to 11-23 (lane rows against the commit time of each record on pilot-data): 960 handed over, 960 analysed by Claude, 83 loaded.
+
+| priority | what the worker did | notes | when Claude's record arrived |
+|---|---|---|---|
+| HIGH | loaded | 53 | median 29 min |
+| HIGH | Gemini at once, "past the readers' cap" | 289 | 221 within 2 hours, median 33 min |
+| HIGH | waited 120 min, then Gemini | 53 | median 8 hours |
+| HIGH | pre-pulse sweep | 25 | median 78 min |
+| MEDIUM | loaded | 30 | median 101 min |
+| MEDIUM | waited 120 min, then Gemini | 432 | median 10.6 hours |
+| MEDIUM | pre-pulse sweep | 78 | median 3.8 hours |
+
+Causes: a cap that belongs to the Omnipulse readers was applied to this lane (rule of 10-18, wrong about what the workflow did); the workflow took the oldest ids first while the worker waited for the newest, so in the 11-19 batch the first 75 analyses went to 73 notes already given to Gemini; and 25 notes a run on a 30-minute clock (none 22:30 to 06:00 UTC, two-hourly at weekends) against 270 to 320 notes arriving within an hour or two. The workflow also never learned a note had been given up, so it worked through the week's backlog for hours.
+
+**Built.** The worker publishes `pilot/lane/waiting.json` and starts runs on demand. The workflow analyses only that list, 4 at a time. Details in CLAUDE.md (`github_bridge/claude_lane.py` row) and the commit. Dry run on a `ci/**` branch before the deploy: 12 notes, 4 at a time, 165 s, median 33 s, no usage-limit answer, about 260 an hour.
+
+What this should change, to check after the next research batch: lane rows ending `completed` instead of `gemini_done`, no "past the pilot readers' daily cap" reason at all, and the `pdf_deep` line of the Gemini ledger falling. What it does not change: triage, profiles, OCR and the classifiers stay on Gemini. Known limit, not built: when the lane is down every note waits the full 120 minutes before Gemini, where 69% of HIGH notes used to go at once. A signal from the workflow to the worker ("down until") would remove that wait.
+
