@@ -1,0 +1,146 @@
+{
+ "brief": "The Market Ear compiles eight unconnected charts the note frames as 'extremes,' with no single argument tying them together. Ericsson now trades at a 50% valuation premium to Nvidia, which the note frames as ironic given Ericsson's dot-com-era peak. Hedge fund positioning in AI stocks has fallen back to summer-2023 levels, when Anthropic was valued near $5 billion. AI capex is expected to reach $1.3 trillion in 2027 even as free cash flow among the spenders runs -$283 billion. Semiconductor earnings-revisions breadth is rolling over, presented sarcastically to undercut the idea that chip earnings are no longer cyclical. The S&P 500's 493 non-Mag7 members are outgrowing the Mag7 in EPS for the first time since Q4 2022, a trend analysts expect to continue in Q4 (30.8% versus 24.1%). The note also cites a decade of S&P 500 forward P/E contractions, Morgan Stanley's Global Risk Demand Index sitting in 'clear fear territory,' and investment-grade yields now exceeding the S&P 500's earnings yield by the widest margin since the early 2000s, with less volatility.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "Ericsson traded at a 50% valuation premium to Nvidia this week.",
+   "anchor": "Ericsson this week traded at a 50% valuation premium to NVDA.",
+   "topic": "Ericsson NVDA valuation irony",
+   "status": "released",
+   "instruments": [
+    "ERIC",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "Hedge fund positioning in AI stocks has fallen back to summer 2023 levels.",
+   "anchor": "Hedge fund positioning in AI stocks is back to summer 2023 levels.",
+   "topic": "Equity positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "AI-related capex is expected to reach $1.3 trillion in 2027 despite negative free cash flow of $283 billion among the spenders.",
+   "anchor": "$1.3tn AI capex expected in \u201927 despite -$283bn FCF.",
+   "topic": "AI capex debt financing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "Semiconductor earnings revisions breadth is rolling over.",
+   "anchor": "Semiconductor earnings revisions breadth is rolling over.",
+   "topic": "Semiconductor earnings revisions breadth",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "The S&P 500's other 493 companies are outpacing the Magnificent Seven in EPS growth, one quarter ahead of schedule, for the first time since Q4 2022.",
+   "anchor": "The Other 493 are outpacing the Mag 7 in EPS growth\u2014one quarter ahead of schedule\u2014for the first time since Q4'22.",
+   "topic": "Mag7 vs broader market EPS growth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "Analysts expect the Other 493's EPS growth to continue outpacing the Magnificent Seven's in the fourth quarter, at 30.8% versus 24.1%.",
+   "anchor": "Analysts expect that trend to continue in Q4 (30.8% vs. 24.1%).",
+   "topic": "Mag7 vs broader market EPS growth",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "The S&P 500's forward 12-month P/E multiple has seen contractions over the past decade.",
+   "anchor": "S&P 500 forward 12m P/E multiple contractions during the past decade.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "Morgan Stanley's Global Risk Demand Index is in clear fear territory.",
+   "anchor": "Morgan Stanley's Global Risk Demand Index in clear fear territory.",
+   "topic": "Equity positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Ultimate 2000 Irony: Ericsson Now Trades At A 50% Premium",
+   "claim": "Investment-grade credit yields now exceed S&P 500 earnings yields by the widest margin since the early 2000s, with much less volatility.",
+   "anchor": "The last time IG yields were this far above the S&P 500 earnings yield was in the early 2000s.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-22/28811__the-ultimate-2000-irony-ericsson-now-trades-at-a-50-premium-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
