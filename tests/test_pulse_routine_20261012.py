@@ -29,7 +29,13 @@ def test_push_list_carries_every_artifact_present(tmp_path, monkeypatch):
              "lint_report.json": "[]", "adversarial_verdict.json": '{"findings": []}'}
     for name, body in files.items():
         (tmp_path / name).write_text(body, encoding="utf-8")
-    monkeypatch.setattr(PD, "Path", lambda p: tmp_path / str(p).replace("/tmp/", ""))
+    # The routine's /tmp files live in tmp_path here. A path already under
+    # tmp_path is left alone: on Linux tmp_path is itself under /tmp, and
+    # stripping "/tmp/" from it sent the output file somewhere that does
+    # not exist (2026-11-23, first run on the GitHub runner).
+    from pathlib import Path as _RealPath
+    monkeypatch.setattr(PD, "Path", lambda p: _RealPath(p) if str(p).startswith(str(tmp_path))
+                        else tmp_path / str(p).replace("/tmp/", ""))
     out = tmp_path / "push.json"
     assert PD.push_list(str(out)) == 0
     paths = [f["path"] for f in json.loads(out.read_text(encoding="utf-8"))]

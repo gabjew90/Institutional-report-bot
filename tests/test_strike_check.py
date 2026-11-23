@@ -75,7 +75,11 @@ def test_a_failed_lookup_is_retried_after_a_while():
         assert SC.price_on("QQQ", "2026-10-05") is None
         assert SC.price_on("QQQ", "2026-10-05") is None
         assert len(calls) == 1, "a miss is cached briefly"
-        SC._cache[("QQQ", "2026-10-05")] = (None, 0.0)
+        # Stamped older than the miss lifetime on THIS clock: a monotonic
+        # clock starts near zero on a fresh machine, so a literal 0.0 was
+        # "old" on a laptop and recent on the GitHub runner (2026-11-23).
+        import time
+        SC._cache[("QQQ", "2026-10-05")] = (None, time.monotonic() - SC._MISS_TTL_S - 1)
         assert SC.price_on("QQQ", "2026-10-05") is None
         assert len(calls) == 2, "and retried once it is old"
     SC._cache.clear()
