@@ -38,7 +38,10 @@ def test_a_month_day_before_a_word_is_not_a_magnitude():
 
 def test_the_pulse_side_keeps_the_sentence_form_and_the_card_side_aliases_bp():
     assert nums("gained 536 basis points") == ["536bp"]
-    assert nums("gained 536 basis points", card_side=True) == ["5.36%", "536bp"]
+    # the card side also offers the bare number: a sentence that names the
+    # unit once ("from 88 to 105 basis points, and high-yield from 320 to
+    # 410") elides it on the rest (2026-11-23)
+    assert nums("gained 536 basis points", card_side=True) == ["5.36%", "536", "536bp"]
     assert nums("rose 5.36%", card_side=True) == ["5.36%"]
     assert "3bp" in nums("10-year yields fell 3bp to 4.75%")
 

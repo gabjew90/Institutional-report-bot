@@ -31,22 +31,45 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
 
-CITE_RE = re.compile(r"\[(c|d)(\d+)\]")
+# One marker, or several in one pair of brackets: the editor also writes
+# "[c443, c444]" and "[c713, c714, d2]". Until 2026-11-23 only the single
+# form was read, so a grouped marker counted as no citation, its ids were
+# read as figures, and the clean step left it in the text: the 2026-10-05
+# pulse was published with seven such markers in it.
+CITE_RE = re.compile(r"\[\s*((?:c|d)\d+(?:\s*[,;]\s*(?:c|d)\d+)*)\s*\]")
+_CITE_ID_RE = re.compile(r"(c|d)(\d+)")
+
+
+def cites_in(text: str) -> list[tuple[str, int]]:
+    """Every citation in `text`, in order, grouped markers included."""
+    return [(k, int(n)) for g in CITE_RE.findall(text or "")
+            for k, n in _CITE_ID_RE.findall(g)]
+
+
 # A magnitude suffix must end at a word boundary: "16 meeting" used to
 # read as "16m" (plan-4.3 stress run, 2026-09-17), and the k/m/bn
 # forms are folded into the value below so "40k" in a card matches
 # "40,000" in the pulse. The editor writes figures out in plain English
 # by contract; the cards keep the source's shorthand.
+# "percent" written out is the % sign (the 2026-10-30 edition wrote it
+# that way throughout and failed eight sentences the cards carry), and
+# "mb/d" is millions of barrels a day. A suffix followed by a slash is
+# still a magnitude ("$1.5bn/year"); the one ratio that matters, a
+# percentage "m/m", is settled in _norm_num.
+_PCT = r"(?:%|\s?(?:percent|per cent)(?![A-Za-z]))"
 NUM_RE = re.compile(
-    r"(?<![A-Za-z])[$€£¥]?\d[\d,]*(?:\.\d+)?%?"
-    r"(?:\s?(?:basis points?|bp|bps|k|K|mn|m|M|bn|bln|B|tn|T|x|times|thousand|million|billion|trillion)"
+    r"(?<![A-Za-z])[$€£¥]?\d[\d,]*(?:\.\d+)?" + _PCT + r"?"
+    r"(?:\s?(?:basis points?|bp|bps|mb/d|kb/d|k|K|mn|m|M|bn|bln|B|tn|T|x|times|thousand|million|billion|trillion)"
     r"(?![A-Za-z]))?")
 _MAGNITUDE = {"k": 1e3, "thousand": 1e3, "m": 1e6, "mn": 1e6, "million": 1e6,
               "bn": 1e9, "b": 1e9, "bln": 1e9, "billion": 1e9,
               "t": 1e12, "tn": 1e12, "trillion": 1e12}
 # "3.5-3.75%" carries the % on the second number only; the pulse writes
 # "3.5% to 3.75%". The first bound gets its own % figure.
-_RANGE_PCT_RE = re.compile(r"(?<![\d.])(\d+(?:\.\d+)?)\s*(?:-|–|to)\s*(\d+(?:\.\d+)?)%")
+# The first bound must not itself follow a hyphen: "voting 6-3 to 4.85%"
+# is a vote and a rate, and read "3%" as a figure (2026-11-06).
+_RANGE_PCT_RE = re.compile(
+    r"(?<![\d.\-–])(\d+(?:\.\d+)?)\s*(?:-|–|to)\s*(\d+(?:\.\d+)?)" + _PCT)
 
 
 def _fmt(val: float) -> str:
@@ -64,6 +87,9 @@ def _aliases(n: str) -> set[str]:
             out.add(_fmt(float(n[:-2]) / 100) + "%")
         except ValueError:
             pass
+        # ...and the bare number: "from 88 to 105 basis points, and
+        # high-yield from 320 to 410" names the unit once (2026-11-20).
+        out.add(n[:-2])
     return out
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$\[(])")
 
@@ -77,6 +103,7 @@ KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "
 def _norm_num(tok: str) -> str:
     t = tok.strip().lower().replace(",", "").replace(" ", "")
     t = t.replace("$", "").replace("€", "").replace("£", "").replace("¥", "")
+    t = t.replace("percent", "%").replace("mb/d", "m").replace("kb/d", "k")
     t = re.sub(r"(basispoints?|bps|bp)$", "bp", t)
     # A multiple is the bare number: "14.5x" and "14.5 times" are one
     # figure, and "raised guidance 3 times" is a count, not a figure.
@@ -84,6 +111,15 @@ def _norm_num(tok: str) -> str:
     m = re.fullmatch(r"(\d+(?:\.\d+)?)(k|thousand|mn|m|million|bn|bln|b|billion|tn|t|trillion)", t)
     if m:
         return _fmt(float(m.group(1)) * _MAGNITUDE[m.group(2)])
+    # A percentage carries no magnitude: "0.3%m/m" is 0.3%, not 0.3% of a
+    # million (2026-10-13, four forecasts failed on it).
+    if "%" in t:
+        t = t[:t.index("%") + 1]
+    # One spelling per value: a card's "5.0%", "63.30%" and "$300.00" are
+    # the pulse's "5%", "63.3%" and "$300" (five failures in six weeks).
+    m = re.fullmatch(r"(\d+\.\d+)(%|bp)?", t)
+    if m:
+        return _fmt(float(m.group(1))) + (m.group(2) or "")
     return t
 
 
@@ -94,8 +130,8 @@ _INDEX_NAME_RE = re.compile(
 
 def _numbers(text: str, *, card_side: bool = False) -> set[str]:
     """Figures in `text`, normalised. The pulse side keeps each figure
-    in the form the sentence used, so a failure names text the editor
-    can find; the card side adds the bp->% alias."""
+    in the form the sentence used (trailing zeros aside), so a failure
+    names text the editor can find; the card side adds the bp aliases."""
     # "Nasdaq 100", "Russell 2000", "S&P 500" are names, not figures
     # (shakedown 2026-09-02: three false failures on one shadow pulse)
     text = _INDEX_NAME_RE.sub(" ", text or "")
@@ -133,18 +169,23 @@ def _bank_matches(named: str, cited_bank: str) -> bool:
     return any(_word_in(a, cb) for a in aliases.get(named, []))
 
 
-def sentences(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
-    """Every prose sentence of the body with its citations (possibly none)."""
+def sentences_by_theme(md: str) -> list[tuple[str, list[tuple[str, int]], int]]:
+    """Every prose sentence of the body with its citations (possibly none)
+    and the number of the theme it sits in: a heading line starts a new
+    theme, so a theme is one `###` block or one section's lead-in."""
     # Artifacts written before 2026-09-18 carry a `## _LEANS` block that
     # was never prose; the split is a no-op for everything since.
     body = md.split("## _LEANS")[0]
     out = []
+    theme = 0
     for para in body.split("\n"):
-        if not para.strip() or para.startswith("#"):
+        if para.startswith("#"):
+            theme += 1
+            continue
+        if not para.strip():
             continue
         for s in SENT_SPLIT.split(para.strip()):
-            cites = [(k, int(n)) for k, n in CITE_RE.findall(s)]
-            out.append((s, cites))
+            out.append((s, cites_in(s), theme))
     return out
 
 
@@ -155,7 +196,15 @@ def verify(md: str, pack: dict) -> dict:
     failures: list[dict] = []
     cited_positions: list[int] = []
     n_card_cites = n_doc_cites = 0
-    for sent, cites in sentences(md):
+    rows = sentences_by_theme(md)
+    # The banks each theme cites, for a sentence that names a bank and
+    # cites nothing (see below).
+    theme_banks: dict[int, list[str]] = {}
+    for _s, _cites, _theme in rows:
+        for k, n in _cites:
+            src = (cards if k == "c" else docs).get(f"{k}{n}") or {}
+            theme_banks.setdefault(_theme, []).append(src.get("bank") or "")
+    for sent, cites, theme in rows:
         clean = CITE_RE.sub("", sent)
         sent_nums = _numbers(clean)
         card_keys = [f"c{n}" for k, n in cites if k == "c"]
@@ -192,6 +241,15 @@ def verify(md: str, pack: dict) -> dict:
             cited_banks = [c.get("bank") or "" for c in valid_cards]
             cited_banks += [(docs.get(f"d{n}") or {}).get("bank") or ""
                             for k, n in cites if k == "d"]
+            # A sentence with no citation of its own that opens or closes
+            # a bank's argument ("Goldman is buying the rebound.") is
+            # checked against the theme: the bank must be one the theme
+            # cites. 14 of the 47 failures on published days (2026-09-29
+            # to 11-20) were such sentences, each beside cited sentences
+            # from that bank. A bank no sentence of the theme cites still
+            # fails, which is the 2026-09-24 case this check was built for.
+            if not cites:
+                cited_banks = theme_banks.get(theme) or []
             if not any(_bank_matches(b, cb) for b in named for cb in cited_banks):
                 failures.append({"sentence": sent[:200],
                                  "cite": ",".join(f"{k}{n}" for k, n in cites),
@@ -228,7 +286,7 @@ def verify(md: str, pack: dict) -> dict:
 
 
 def strip_markers(md: str) -> str:
-    return re.sub(r"\s?\[(?:c|d)\d+\]", "", md)
+    return re.sub(r"\s?" + CITE_RE.pattern, "", md)
 
 
 def main() -> int:

@@ -79,7 +79,10 @@ MAX_FETCH_ERRORS = 3
 # 20-minute wait on 2026-09-28 made that pulse 20 minutes late).
 DEFAULT_WAIT_S = 600
 
-_MARKER_RE = re.compile(r"\[(?:c|d)\d+\]")
+# Any bracket that opens with a card or brief id, so a grouped marker
+# ("[c443, c444]") is caught as well: the 2026-10-05 pulse was published
+# with seven of them because this read the single form only.
+_MARKER_RE = re.compile(r"\[\s*(?:c|d)\d+\s*[\],;]")
 _H2_RE = re.compile(r"^## .*$", re.MULTILINE)
 
 
