@@ -1,91 +1,46 @@
-# Shadow pilot scoreboard
+# Omnipulse editions
 
-Day 1: NOT SET (every day below is shakedown, uncounted). Counted days: 0 of 10.
+Model grading was retired on 2026-11-23. Grades through 2026-11-20 are under `pilot/grades/`, and the scoreboard that showed them is in this file's history.
 
-Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on record. A passing fragmentation number certifies the architecture at light corpus load only.
+| day | citations | failed | unread@edit | given up | edge | readers ok | note |
+|---|---|---|---|---|---|---|---|
+| 2026-09-02 | 96 | 2 | 0 | — | 46% | no |  |
+| 2026-09-03 | 114 | 4 | 25 | — | 45% | — | VOID (stale cards) |
+| 2026-09-04 | 131 | 0 | 8 | — | 42% | no | VOID (stale cards) |
+| 2026-09-07 | 98 | 2 | 0 | 2 | 42% | no |  |
+| 2026-09-08 | 117 | 2 | 0 | 2 | 45% | yes |  |
+| 2026-09-09 | 137 | 5 | 4 | 2 | 49% | yes | VOID (stale cards) |
+| 2026-09-10 | 104 | 4 | 0 | 2 | 45% | yes |  |
+| 2026-09-11 | 93 | 1 | 11 | 2 | 26% | yes | VOID (stale cards) |
+| 2026-09-14 | 114 | 8 | 2 | 2 | 38% | no | VOID (stale cards) |
+| 2026-09-17 | 121 | 2 | 0 | 90 | 40% | yes |  |
+| 2026-09-18 | 99 | 3 | 0 | 90 | 30% | yes |  |
+| 2026-09-21 | 111 | 2 | 0 | 90 | 45% | yes |  |
+| 2026-09-23 | 99 | 3 | 0 | 90 | 40% | yes |  |
+| 2026-09-24 | 77 | 3 | 0 | 90 | 49% | yes |  |
+| 2026-09-28 | 110 | 1 | 0 | 90 | 38% | yes |  |
+| 2026-09-29 | 97 | 3 | 0 | 90 | 30% | yes |  |
+| 2026-10-01 | 147 | 5 | 4 | 90 | 31% | yes | VOID (stale cards) |
+| 2026-10-05 | 52 | 16 | 0 | 90 | 28% | yes |  |
+| 2026-10-07 | 117 | 3 | 49 | 91 | 32% | no | VOID (stale cards) |
+| 2026-10-12 | 75 | 1 | 0 | 91 | 33% | yes |  |
+| 2026-10-13 | 87 | 5 | 0 | 91 | 39% | yes |  |
+| 2026-10-15 | 108 | 3 | 13 | 91 | 39% | yes | VOID (stale cards) |
+| 2026-10-19 | 132 | 1 | 0 | 92 | 43% | no |  |
+| 2026-10-20 | 133 | 3 | 0 | 92 | 45% | no |  |
+| 2026-10-28 | 88 | 0 | 0 | 92 | 40% | yes |  |
+| 2026-10-29 | 90 | 22 | 17 | 92 | 38% | yes | VOID (stale cards) |
+| 2026-10-30 | 88 | 11 | 0 | 92 | 29% | — |  |
+| 2026-11-03 | 119 | 1 | 0 | 92 | 33% | yes |  |
+| 2026-11-06 | 114 | 1 | 0 | 92 | 46% | yes |  |
+| 2026-11-10 | 115 | 2 | 11 | 92 | 30% | no | VOID (stale cards) |
+| 2026-11-11 | 101 | 6 | 0 | 92 | 53% | yes |  |
+| 2026-11-12 | 103 | 1 | 0 | 92 | 47% | yes |  |
+| 2026-11-16 | 128 | 1 | 25 | 92 | 43% | yes | VOID (stale cards) |
+| 2026-11-17 | 109 | 1 | 0 | 93 | 44% | no |  |
+| 2026-11-18 | 121 | 2 | 0 | 94 | 31% | no |  |
+| 2026-11-20 | 134 | 6 | 0 | 95 | 46% | no |  |
+| 2026-11-23 | 117 | 0 | 0 | 95 | 22% | no |  |
 
-| day | counted | m1 frag | m1 merge | m2 shadow | m2 prod | m2 pass | 2a material | 2a non-mat | m3 shadow | m3 prod | m4 edge | m5 | unread@edit | tiebreak |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-09-02 | shakedown | — | no | — | — | no | 1.00 | 100% | 1.00 | 0.00 | 46% | no | 0 | m1, m2_shadow, m2_production |
-| 2026-09-03 | VOID (stale cards) | — | no | — | — | no | 1.00 | 100% | 1.00 | 0.00 | 45% | no | 25 | m1, m2_shadow |
-| 2026-09-04 | VOID (stale cards) | 24% | — | 87% | — | no | — | 80% | 1.00 | — | 42% | no | 8 | m2a, m3_production, m1 merge |
-| 2026-09-05 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-06 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-07 | shakedown | — | — | — | — | no | — | — | — | — | 42% | no | 0 |  |
-| 2026-09-08 | shakedown | — | yes | — | — | no | 0.00 | 100% | 1.00 | 1.00 | 45% | yes | 0 | m1, m2_shadow, m2_production |
-| 2026-09-09 | VOID (stale cards) | 23% | yes | 100% | 67% | yes | 0.00 | 100% | 1.00 | 0.00 | 49% | yes | 4 |  |
-| 2026-09-10 | shakedown | 48% | yes | 73% | — | no | 0.00 | 100% | 1.00 | 0.00 | 45% | yes | 0 |  |
-| 2026-09-11 | VOID (stale cards) | 9% | yes | 100% | — | no | 0.00 | 100% | 1.00 | 1.00 | 26% | yes | 11 |  |
-| 2026-09-12 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-09-13 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-14 | VOID (stale cards) | 2% | no | — | 53% | no | 0.00 | 100% | 1.00 | 0.00 | 38% | no | 2 |  |
-| 2026-09-15 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-16 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-09-17 | shakedown | 4% | yes | — | — | no | 0.00 | 100% | 1.00 | 0.00 | 40% | yes | 0 | m2_shadow, m2_production |
-| 2026-09-18 | shakedown | 4% | no | — | 67% | no | 0.00 | 100% | 1.00 | 1.00 | 30% | yes | 0 | m2_shadow |
-| 2026-09-19 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-09-20 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-09-21 | shakedown | 25% | no | 87% | 47% | yes | 1.00 | 50% | 1.00 | 0.00 | 45% | yes | 0 |  |
-| 2026-09-22 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-23 | shakedown | 36% | — | 80% | 80% | yes | 0.00 | 100% | 1.00 | 1.00 | 40% | yes | 0 | m1 merge |
-| 2026-09-24 | shakedown | 6% | no | 100% | 73% | yes | 0.00 | 50% | 1.00 | 0.00 | 49% | yes | 0 |  |
-| 2026-09-25 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-26 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-27 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-09-28 | shakedown | 15% | yes | 100% | 67% | yes | 0.00 | 100% | 1.00 | 0.00 | 38% | yes | 0 |  |
-| 2026-09-29 | shakedown | 36% | yes | 87% | 100% | no | 1.00 | 100% | 1.00 | 1.00 | 30% | yes | 0 |  |
-| 2026-09-30 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-01 | VOID (stale cards) | — | — | — | — | no | — | — | — | — | 31% | yes | 4 |  |
-| 2026-10-02 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-03 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-04 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-05 | shakedown | 6% | no | 100% | 100% | yes | 0.00 | 40% | 1.00 | 1.00 | 28% | yes | 0 |  |
-| 2026-10-06 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-07 | VOID (stale cards) | — | — | — | — | no | — | — | — | — | 32% | no | 49 |  |
-| 2026-10-08 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-09 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-10 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-11 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-12 | shakedown | 9% | yes | 100% | 93% | yes | 0.00 | 100% | 1.00 | 1.00 | 33% | yes | 0 |  |
-| 2026-10-13 | shakedown | 29% | yes | 87% | 100% | no | 0.00 | 50% | 1.00 | 0.00 | 39% | yes | 0 |  |
-| 2026-10-14 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-15 | VOID (stale cards) | 7% | no | 93% | 100% | no | 2.00 | 100% | 1.00 | 0.00 | 39% | yes | 13 |  |
-| 2026-10-16 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-17 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-18 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-19 | shakedown | 6% | yes | 100% | 93% | yes | 1.00 | 100% | 1.00 | 1.00 | 43% | no | 0 |  |
-| 2026-10-20 | shakedown | 29% | no | 87% | 87% | yes | 0.00 | 100% | 1.00 | 1.00 | 45% | no | 0 |  |
-| 2026-10-21 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-22 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-23 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-24 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-25 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-26 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-10-27 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-10-28 | shakedown | 5% | no | 100% | — | no | 0.00 | 100% | 1.00 | 1.00 | 40% | yes | 0 |  |
-| 2026-10-29 | VOID (stale cards) | 25% | no | 93% | — | no | 0.00 | 100% | 1.00 | 1.00 | 38% | yes | 17 |  |
-| 2026-10-30 | shakedown | 23% | no | 100% | 18% | yes | 0.00 | 100% | 1.00 | — | 29% | no | 0 |  |
-| 2026-10-31 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-01 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-02 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-11-03 | shakedown | 8% | yes | — | 87% | no | 2.00 | 75% | 1.00 | 0.00 | 33% | yes | 0 |  |
-| 2026-11-04 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-05 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-06 | shakedown | 8% | yes | 93% | 100% | no | 0.00 | 100% | 0.00 | 0.00 | 46% | yes | 0 |  |
-| 2026-11-07 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-08 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-11-09 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-10 | VOID (stale cards) | 4% | no | 87% | — | no | 0.00 | 100% | 1.00 | 0.00 | 30% | no | 11 |  |
-| 2026-11-11 | shakedown | 2% | yes | 93% | — | no | 1.00 | 100% | 1.00 | 0.00 | 53% | yes | 0 |  |
-| 2026-11-12 | shakedown | 7% | yes | 100% | 100% | yes | 0.00 | 75% | 1.00 | 1.00 | 47% | yes | 0 |  |
-| 2026-11-13 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-14 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-15 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-16 | VOID (stale cards) | 9% | no | 100% | — | no | 0.00 | 100% | 1.00 | 1.00 | 43% | yes | 25 |  |
-| 2026-11-17 | shakedown | 22% | yes | — | — | no | 0.00 | 100% | 1.00 | 1.00 | 44% | no | 0 |  |
-| 2026-11-18 | shakedown | 8% | no | 93% | 93% | yes | 0.00 | 100% | 1.00 | 1.00 | 31% | no | 0 |  |
-| 2026-11-19 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-11-20 | shakedown | 12% | yes | 93% | 100% | no | 0.00 | 100% | 1.00 | 0.00 | 46% | no | 0 |  |
-
-**Void days (11):** 2026-09-03, 2026-09-04, 2026-09-09, 2026-09-11, 2026-09-14, 2026-10-01, 2026-10-07, 2026-10-15, 2026-10-29, 2026-11-10, 2026-11-16 — the editor ran with source files still unread, so the shadow pulse was written from an incomplete card set. Shown above, excluded from every metric.
+Last 30 editions: 117 failed sentences against 3199 citations, 8 void, 0 flagged for edge citing, 9 with reader failures.
 
