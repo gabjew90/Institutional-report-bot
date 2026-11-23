@@ -1,0 +1,130 @@
+{
+ "brief": "A chart-roundup note juxtaposing current market extremes against Q4 2018, reporting rather than arguing a thesis. The S&P 500 closed more than 4 standard deviations below its 50-day moving average, an extremity last seen August 25, 2015 (Bespoke). The one-week move in VIX was the fifth-largest on record (GS vol desk). An SPX overlay recalls that VIX closed above 36 on Christmas Eve 2018, the same day the S&P 500 made its closing low (GS). On positioning, Hedge Fund VIP stocks' recent drawdown is among the worst on record (Goldman); US single stocks were shorted every day this week, the largest weekly shorting activity since June 2022 and third-largest in the past decade (GS Prime); hedge fund leverage's decline from 12-month highs now matches some of the most extreme deleveraging episodes since 2018 (JPM Prime); and US hedge fund net and gross exposure are both at the zero percentile over the trailing 12 months (Morgan Stanley Prime Brokerage). Separately, gold is in its biggest drawdown since the 1980s (Morgan Stanley). The note lines these stats up under a 2018-echo framing but draws no explicit forecast or trade call.",
+ "cards": [
+  {
+   "bank": "Bespoke",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "The S&P 500 closed more than 4 standard deviations below its 50-day moving average, the most extreme such reading since August 25, 2015.",
+   "anchor": "finished more than 4 standard deviations below its 50-day moving average. The last time\nwe saw anything this extreme was August 25, 2015.",
+   "topic": "US equity reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "The one-week move in VIX this week was the fifth largest on record.",
+   "anchor": "The one-week move in VIX this week was the fifth largest on record.",
+   "topic": "US equity reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "In Q4 2018, the VIX closed above 36 on Christmas Eve, the same day the S&P 500 hit its closing low.",
+   "anchor": "Remember, the VIX closed above 36\non Christmas Eve that year, the very day the S&P 500 hit its closing low.",
+   "topic": "US equity reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "The recent drawdown in Hedge Fund VIP stocks is among the worst on record.",
+   "anchor": "Recent drawdown of Hedge Fund VIPs among worst on record.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "US single stocks were shorted every day this week, the largest weekly shorting activity since June 2022 and the third largest in the past decade.",
+   "anchor": "US Single Stocks collectively were shorted every day this week and saw the largest weekly shorting\nactivity since Jun \u201922",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "Hedge fund leverage's decline from its 12-month highs is now in line with some of the most extreme deleveraging episodes since 2018.",
+   "anchor": "the decline from 12m highs is now in line with some of the most\nextreme episodes we\u2019ve seen since 2018.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "US hedge fund net and gross exposure are both at the zero percentile over the trailing 12 months.",
+   "anchor": "Both zero percentile in nets and gross for the US (12m).",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The Ghost of Winter of 2018: Will Bulls Suffer All the Way Un...",
+   "claim": "Gold is experiencing its biggest drawdown since the 1980s.",
+   "anchor": "Gold\nBiggest drawdown since the 80s.",
+   "topic": "Gold and silver liquidity selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-22/28812__the-ghost-of-winter-of-2018-will-bulls-suffer-all-the-way-un.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
