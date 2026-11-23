@@ -1,0 +1,64 @@
+{
+ "findings": [
+  {
+   "kind": "unsupported-figure",
+   "quote": "a sustained break would open 6150-6315, about a 20% correction from the peak",
+   "why": "The JPMorgan technical outlook in the context gives only the 6800-7000 support and says a sustained break would signal a cyclical bear market; 6150-6315 and a 20% correction appear nowhere.",
+   "fix": "Drop the 6150-6315 and 20% figures and say a sustained break below 6800-7000 would signal a cyclical bear market."
+  },
+  {
+   "kind": "unsupported-figure",
+   "quote": "three-month copper on the London exchange broke trend support at 13800-14050",
+   "why": "The context says only that copper broke pattern support (JPMorgan) and plunged on the LME (Natixis); no 13800-14050 level appears.",
+   "fix": "Remove the 13800-14050 level and say copper broke pattern support."
+  },
+  {
+   "kind": "unsupported-figure",
+   "quote": "with gold well below critical support at 3800-4000 and a sustained break there implying a measured move to the mid-$2,000s",
+   "why": "No JPMorgan entry carries a 3800-4000 gold support zone or a mid-$2,000s measured move; the only JPMorgan gold level in the context is support at $3605.",
+   "fix": "Delete the 3800-4000 and mid-$2,000s figures or replace the sentence with a claim the context carries."
+  },
+  {
+   "kind": "unsupported-figure",
+   "quote": "In past shocks volatility took 6 to 8 weeks to subside, and outside recessions the S&P 500 fell a further 14% to 16%.",
+   "why": "The Deutsche Bank positioning note in the context describes the vol shock and a median -24% recession selloff but has no 6-to-8-week or 14%-16% figure.",
+   "fix": "Delete the sentence or replace it with Deutsche Bank's stated point that the market is halfway to a typical recession selloff (median -24%)."
+  },
+  {
+   "kind": "unsupported-figure",
+   "quote": "a jump of more than 1.5 standard deviations",
+   "why": "The Deutsche Bank entry names a vol shock with measures in the top decile but gives no 1.5 standard deviation definition.",
+   "fix": "Remove the 1.5 standard deviation definition."
+  },
+  {
+   "kind": "unsupported-figure",
+   "quote": "with systematic strategies at their biggest underweight in 18 months",
+   "why": "Deutsche Bank's entry says CTA equity allocation is at a seven-month low (36th percentile) and vol-control funds at the 21st percentile; no 18-month figure appears.",
+   "fix": "Say CTA equity allocation is at a seven-month low and vol-control funds are at the 21st percentile."
+  },
+  {
+   "kind": "unsupported-figure",
+   "quote": "will buy dips only above 5.20%-5.25%",
+   "why": "Natixis says it favors buying dips in the long end and that entry level is critical, with a 4.90%-5.25% range; no 5.20%-5.25% entry level is stated.",
+   "fix": "Say Natixis favors buying dips in long-dated bonds but treats the entry level as critical, without the 5.20%-5.25% figure."
+  },
+  {
+   "kind": "misattribution",
+   "quote": "while Natixis does not expect 50bp but does expect a hawkish meeting that keeps January well priced",
+   "why": "The Natixis entries say only that Fed speakers are hawkish with focus on the size of the December hike; no Natixis view on 50bp or January pricing appears (JPMorgan's briefing is the one calling 50bp unlikely).",
+   "fix": "Drop the Natixis clause or attribute the 50bp-unlikely view to JPMorgan."
+  },
+  {
+   "kind": "unsupported-claim",
+   "quote": "wants last year's three insurance cuts reversed",
+   "why": "Every Waller reference in the context covers his call for a 50bp December hike or a faster pace; none says he wants the 2025 cuts reversed.",
+   "fix": "Cut the clause and keep only that Waller is advocating 50bp in December."
+  },
+  {
+   "kind": "overstated-claim",
+   "quote": "expects the market to rebound as catalysts clear",
+   "why": "JPMorgan's View note stays constructive into 2027 and its briefings are tactically bullish on cleaner positioning, but no entry says it expects a rebound as catalysts clear, and the View says it would fade the cyclicals bounce.",
+   "fix": "Say JPMorgan remains tactically bullish on cleaner positioning instead of forecasting a rebound as catalysts clear."
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.27% stated for Gdp MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.27",
+   "event": "GDP",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday, Nov 25, 8:30 AM ET: October core PCE and the second estimate of third-quarter GDP.** Core PCE, the Fed's preferred inflation measure, is expected at 0.3% on the month. The 0.29% Deutsch"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.2% stated for Gdp MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.2",
+   "event": "GDP",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday, Nov 25, 8:30 AM ET: October core PCE and the second estimate of third-quarter GDP.** Core PCE, the Fed's preferred inflation measure, is expected at 0.3% on the month. The 0.29% Deutsch"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4
+}
