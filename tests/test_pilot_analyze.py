@@ -305,3 +305,73 @@ def test_the_workflow_runs_the_parallel_driver_and_has_a_dry_run():
     assert "pilot_analyze.py run" in run and "--repo pilot-data" in run
     # Inputs reach the shell through the environment, never spliced into the script.
     assert "${{" not in run and "${{" not in steps["Find documents the worker is waiting for"]["run"]
+
+
+def _git(cwd, *args):
+    import subprocess
+    p = subprocess.run(["git", "-C", str(cwd), *args], capture_output=True, text=True)
+    assert p.returncode == 0, (args, p.stderr)
+    return p.stdout
+
+
+def test_run_commits_and_pushes_each_record_and_picks_up_a_list_change(tmp_path):
+    """The real git path: a bare remote, the runner's checkout, and a second
+    clone standing in for the worker, which changes the list mid-run."""
+    import subprocess
+    import threading
+    remote = tmp_path / "remote.git"
+    subprocess.run(["git", "init", "-q", "--bare", "-b", "pilot-data", str(remote)], check=True)
+    seed = tmp_path / "seed"
+    seed.mkdir()
+    date = dt.date.today().isoformat()
+    for i in range(3):
+        _doc(seed, str(18400 + i), date)
+    _doc(seed, "18409", date)
+    # The list starts with three notes. 18409 is published but not waited for.
+    f = seed / "pilot" / PA.WAITING
+    rows = json.loads(f.read_text())["waiting"]
+    f.write_text(json.dumps({"waiting": [r for r in rows if r["id"] != 18409]}))
+    _git(seed, "init", "-q", "-b", "pilot-data")
+    for k, v in (("user.name", "t"), ("user.email", "t@example.com")):
+        _git(seed, "config", k, v)
+    _git(seed, "add", "-A")
+    _git(seed, "commit", "-q", "-m", "seed")
+    _git(seed, "remote", "add", "origin", str(remote))
+    _git(seed, "push", "-q", "origin", "pilot-data")
+
+    checkout, worker = tmp_path / "pilot-data", tmp_path / "worker"
+    for c in (checkout, worker):
+        subprocess.run(["git", "clone", "-q", str(remote), str(c)], check=True)
+        for k, v in (("user.name", "t"), ("user.email", "t@example.com")):
+            _git(c, "config", k, v)
+
+    first = threading.Event()
+
+    def ask(prompt, model):
+        if not first.is_set():
+            first.set()
+            # The worker hands 18409 over and gives up on 18402 while the run works.
+            wf = worker / "pilot" / PA.WAITING
+            cur = json.loads(wf.read_text())["waiting"]
+            keep = [r for r in cur if r["id"] != 18402]
+            keep.append({"id": 18409, "date": date, "priority": "high",
+                         "deadline": "2099-01-01T00:00:00Z"})
+            wf.write_text(json.dumps({"waiting": keep}))
+            _git(worker, "commit", "-q", "-am", "lane: list changed")
+            _git(worker, "push", "-q", "origin", "pilot-data")
+        return GOOD
+    import scripts.pilot_analyze as mod
+    old = mod.REFRESH_S
+    mod.REFRESH_S = 0
+    try:
+        st = PA.run(checkout / "pilot", workers=1, ask=ask, repo=checkout, say=lambda *_: None)
+    finally:
+        mod.REFRESH_S = old
+    assert st["failed"] == 0 and not st["limit"]
+    _git(worker, "pull", "-q", "--rebase", "origin", "pilot-data")
+    done = sorted(p.stem for p in (worker / "pilot" / "analyses" / date).glob("*.json"))
+    # 18400 was in flight when the list changed. 18402 was dropped, 18409 picked up.
+    assert done == ["18400", "18401", "18409"]
+    log = _git(worker, "log", "--format=%s")
+    assert log.count("pilot: analysis (") == 3
+    assert _git(checkout, "status", "--porcelain").strip() == ""
