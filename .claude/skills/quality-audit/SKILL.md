@@ -44,8 +44,9 @@ Sheets posted before 2026-10-02 have no saved image or lineup.
 
 For anything the bundle cannot settle, check the source itself: the full
 ask-log entry (`/data/ask-logs/<date>.md`, which carries the whole prompt),
-a read-only DB query (`sqlite3.connect('file:/data/reports.db?mode=ro', uri=True, timeout=5)`,
-never `import db`), the agency page, or the web. Re-running a question through
+a read-only DB query (`scripts/db_probe.py "SELECT ..."` on the worker, or
+`sqlite3.connect('file:/data/reports.db?mode=ro', uri=True, timeout=5)` inside a script;
+never `import db`, which the worker now refuses), the agency page, or the web. Re-running a question through
 `.claude/skills/ask-harness` shows what the bot says now.
 
 ## 3. Checks

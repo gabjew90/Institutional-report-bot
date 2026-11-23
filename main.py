@@ -45,6 +45,9 @@ async def main() -> None:
 
     # Initialize database
     import db
+    # This process owns the database: any other process that opens it through
+    # db.get_connection() while this one runs is refused (db.claim_owner).
+    db.claim_owner()
     db.get_connection()
     log.info("Database initialized")
 

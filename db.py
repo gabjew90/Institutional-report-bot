@@ -2,6 +2,7 @@
 
 import json
 import logging
+import os
 import re
 import sqlite3
 import threading
@@ -186,16 +187,122 @@ def _ensure_schema(conn: sqlite3.Connection) -> None:
         _schema_ready = True
 
 
+# One owner per live database (2026-11-23, audit fix 2).
+#
+# "Never `import db` in a second process against the live volume" was a
+# written rule from 2026-09-04, when a probe over `railway ssh` ran the schema
+# pass below against the worker's database, hung on the write lock for 30
+# minutes and cost the worker 16 failed statements. The rule was broken again
+# on 09-21. It is code now.
+#
+# The bot process (main.py) calls claim_owner() before its first connection:
+# it takes an exclusive lock on `<db path>.owner` for its lifetime and puts a
+# marker in its environment, which the batch process and any other child it
+# starts inherit. A process with no marker that finds the lock held is a
+# stranger on a live database (a shell on the worker, a script run by hand)
+# and get_connection() refuses it before anything is opened. With no lock
+# holder (a developer's machine, the tests, CI) nothing changes.
+#
+# A stranger that must write calls assume_schema_ready() first, which is what
+# removes the hazard: the schema pass does not run. Reads go through
+# scripts/db_probe.py, which opens the file read-only and never imports this
+# module.
+_FAMILY_ENV = "REPORTS_DB_FAMILY"
+_owner_lock_fh = None
+
+
+class LiveDatabaseError(RuntimeError):
+    """A second process tried to open a database the worker owns."""
+
+
+def _owner_lock_path() -> Path:
+    return Path(str(settings.db_path) + ".owner")
+
+
+def claim_owner() -> bool:
+    """Mark this process as the database's owner. Never raises and never
+    blocks boot: a worker that cannot take the lock still runs, and a thread
+    keeps waiting for it. Returns whether the lock is held on return."""
+    global _owner_lock_fh
+    os.environ[_FAMILY_ENV] = str(os.getpid())
+    try:
+        import fcntl
+    except ImportError:  # Windows: no worker runs here
+        return False
+    try:
+        path = _owner_lock_path()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fh = open(path, "a+")
+    except OSError as e:
+        log.warning(f"database owner lock: cannot open {_owner_lock_path()}: {e}")
+        return False
+    try:
+        fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        _owner_lock_fh = fh
+        return True
+    except OSError:
+        pass
+
+    def _wait():
+        global _owner_lock_fh
+        try:
+            fcntl.flock(fh, fcntl.LOCK_EX)
+            _owner_lock_fh = fh
+            log.info("database owner lock: taken after a wait")
+        except OSError as e:
+            log.warning(f"database owner lock: wait failed: {e}")
+    log.warning("database owner lock: held by another process, waiting for it in the background")
+    threading.Thread(target=_wait, name="db-owner-lock", daemon=True).start()
+    return False
+
+
+def _live_owner_elsewhere() -> bool:
+    """Whether another process owns this database and this one is not its child."""
+    if os.environ.get(_FAMILY_ENV):
+        return False
+    try:
+        import fcntl
+    except ImportError:
+        return False
+    path = _owner_lock_path()
+    try:
+        if not path.exists():
+            return False
+        with open(path, "r") as fh:
+            try:
+                fcntl.flock(fh, fcntl.LOCK_SH | fcntl.LOCK_NB)
+            except BlockingIOError:
+                return True
+            fcntl.flock(fh, fcntl.LOCK_UN)
+    except OSError:
+        return False
+    return False
+
+
+def _refuse_stranger() -> None:
+    if _schema_ready and _schema_path == str(settings.db_path):
+        return  # this process already passed, or called assume_schema_ready()
+    if _live_owner_elsewhere():
+        raise LiveDatabaseError(
+            f"{settings.db_path} is owned by the running worker. A second process must not open "
+            "it through db.get_connection(): the schema pass takes the write lock and stalled "
+            "the worker for 30 minutes on 2026-09-04. To read, run "
+            "`python scripts/db_probe.py \"SELECT ...\"` (read-only, no import of db). A second "
+            "process that has to write calls db.assume_schema_ready() before its first connection.")
+
+
 def get_connection() -> sqlite3.Connection:
     global _conn
     if threading.current_thread() is threading.main_thread():
         if _conn is None:
+            _refuse_stranger()
             _conn = _open_connection()
             _schema_ready_reset_if_new_path()
             _ensure_schema(_conn)
         return _conn
     conn = getattr(_local, "conn", None)
     if conn is None:
+        _refuse_stranger()
         conn = _open_connection()
         # Publish before the schema runs, same order as the main-thread
         # branch, so a helper the schema calls gets THIS connection back

@@ -24,6 +24,19 @@
     "claude-code-setup@claude-plugins-official": true
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "if command -v python3 >/dev/null 2>&1; then python3 \"${CLAUDE_PROJECT_DIR:-.}/scripts/command_guard.py\"; else python \"${CLAUDE_PROJECT_DIR:-.}/scripts/command_guard.py\"; fi",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "startup|resume",
