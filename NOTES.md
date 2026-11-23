@@ -4171,3 +4171,37 @@ Final replay with the recorded readings: 104 of 963 routes change. Of the 97 bot
 Harness (2026-11-22): "why is aaoi dead" went from a stock view to the price and one sourced sentence. "does Levi also have earnings call" got the report lines. "Hard name to play" stayed chat. "do any serious business people actually use mac. AAPL doesnt count" got no stock rundown.
 
 To check after it has run: the outcome measure for the changed routes, and the fallback-view questions, which wait about 0.75 s longer.
+
+## 2026-11-23: the harness audit's three picks (tests on GitHub, the citation check, grading retired)
+
+Owner read a harness-engineering article and asked for this repo's agent setup to be audited against it, then took the recommended option on three questions. The audit itself is in the session transcript, not in this file. Its finding in one line: a past failure that became code stayed fixed, and one that became a written rule was broken again (the read-only probe rule, no `pkill`).
+
+**1. Tests on GitHub for every push (`.github/workflows/ci.yml`).** The pre-push hook ran the working copy on the pushing machine, did not run the test suite, and a session could skip it. The new run tests the committed tree on Python 3.12: the test suite, then the fast smokes, about 70 seconds. The first run on the Linux runner failed 13 tests. Eleven were mine (the workflow set `OMNIPULSE_BODY=off` for the whole job; the gate sets it for the smokes only). Two were tests that passed on Windows only: `test_strike_check` stamped a cache miss at monotonic time 0.0, which is recent on a machine that just started, and `test_pulse_routine_20261012` rewrote `/tmp/` in a path that on Linux is already under `/tmp`. Both fixed in the tests.
+
+Railway's Wait for CI (`source.checkSuites` on the worker service, readable and settable with `railway environment config` / `edit`) is what makes a red run stop a deploy. Read from Railway's docs before turning it on: it waits for EVERY GitHub Actions run on the pushed commit and skips the deploy when one failed. The pilot, analysis and heartbeat workflows are dispatched on the deploy branch's head, so one that starts on a new commit while the tests are still running holds the deploy for its length, and a failed one skips it. The window is the length of the test run. The rule that follows: after a push, confirm the deploy happened. State at the end of this session: off. The session's `railway environment edit ... source.checkSuites true` was refused by the permission layer, so the owner sets it. First push with the workflow in place (efba04071): tests green in 70 seconds, deploy succeeded, health check 200.
+
+**2. The citation check.** The pick was for code to drop each sentence the check fails before the Omnipulse body is published, on the condition that the failures were replayed first. Replayed: the body was published on 14 days (09-29 to 11-20) with 47 failed sentences on record. Each day's pack was rebuilt from the cards (from the branch history where cards were added after the edition), accepted only when the old check reproduced the stored failures exactly, and every failed sentence was read against the cards it cites.
+
+| what the failure was | count |
+|---|---|
+| the check misread a sentence the cards support | 26 |
+| a sentence opening or closing a bank's argument, no citation of its own | 14 |
+| a figure no cited card carries | 6 |
+| not traceable (pack not recoverable) | 1 |
+
+The 26: a grouped marker `[c443, c444]` read as no citation, its ids then read as figures (12, all on 10-05); `5.0%` against `5%`, `63.30%` against `63.3%`, `$300.00` against `$300` (5); `0.24% m/m` read as 0.24% of a million (4); "voting 6-3 to 4.85%" read as a 3% to 4.85% range (1); a unit named once and elided after, "from 88 to 105 basis points, and high-yield from 320 to 410" (3); 341,000 against the card's 341,326 (1, still fails).
+
+So the check was fixed and nothing is dropped yet. An uncited sentence that names a bank is now checked against its theme (the bank must be one the theme cites), which keeps the 2026-09-24 case the rule was written for. Also read now: "percent" written out (the 10-30 edition failed eight sentences on it) and `mb/d`. Review caught one over-broad change before it shipped: refusing a magnitude suffix before a slash would have broken `$1.5bn/year` in a card.
+
+Replay, old check against new, over the 22 of 36 editions whose pack could be rebuilt exactly: 79 failures become 15. On published days: 46 become 7.
+
+Found on the way, a published defect: the clean step only removed single markers, and the production guard only looked for single markers, so the 2026-10-05 pulse was published with seven grouped markers in its text. Both read every form now.
+
+Waiting on the owner: the sentences that still fail, listed for them, and their word before code drops such sentences.
+
+**3. Model grading retired.** 25 of the last 25 grader runs were green and each grading day took 42 to 73 minutes of Claude time. The scoreboard read "Day 1: NOT SET, counted days 0 of 10" twelve weeks in, the gate that checks the graders last ran 09-18, and the grades arrived three hours after publication. Removed: both workflows, the 17:00 UTC dispatch slot, four scripts, the grader prompts and fixtures, their tests. The grades through 11-20 stay on `pilot-data`. `pilot/scoreboard.md` is now a row per edition from the editor's own record, rendered by the editor workflow in a step that cannot block the edition's commit.
+
+**Read from the routine's settings (RemoteTrigger, nothing changed):** tools Bash, Read, Glob, Grep, Agent; no model set (the account default runs it); no turn or spend limit; notifications off on all three channels; the Granola connector attached, which the pulse has no use for. No token in the prompt.
+
+Not done, the owner's word needed: deleting the untracked Codex copies (`AGENTS.md`, `.agents/`, `.codex/`), removing the Granola connector from the routine.
+
