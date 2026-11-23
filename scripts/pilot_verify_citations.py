@@ -15,10 +15,15 @@ both sides ("ing" is a bank; "holding" and "JPMorgan" are not
 Usage:
   pilot_verify_citations.py <shadow.md> <pack.json> --meta-out <meta.json>
       [--stripped-out <clean.md>] [--reask-out <reask.json>] [--final]
+      [--drop-failed]
 
 Exit 0 when clean or when --final (record and continue); exit 2 when
 failures exist and --reask-out was requested (the workflow re-asks
 once).
+
+--drop-failed (owner, 2026-11-23): the clean file is written without the
+sentences the check still fails after the re-ask. Until then a failed
+sentence was recorded in the meta and published. See drop_failed.
 """
 from __future__ import annotations
 
@@ -92,6 +97,21 @@ def _aliases(n: str) -> set[str]:
         out.add(n[:-2])
     return out
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$\[(])")
+# A full stop after an initial does not end a sentence: "J.P. Morgan" is
+# one name. 33 sentences in 36 editions were cut there (four on the
+# published 2026-11-17 edition). The check survived that. The drop would
+# not: it would remove half a sentence and publish the other half.
+_INITIAL_END_RE = re.compile(r"(?:^|[\s(])(?:[A-Z]\.)+$")
+
+
+def split_sentences(text: str) -> list[str]:
+    out: list[str] = []
+    for piece in SENT_SPLIT.split(text):
+        if out and _INITIAL_END_RE.search(CITE_RE.sub("", out[-1]).rstrip()):
+            out[-1] += " " + piece
+        else:
+            out.append(piece)
+    return out
 
 KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "bank of america",
                "ubs", "rbc", "barclays", "deutsche", "mizuho", "mufg", "rabobank", "ts lombard",
@@ -169,42 +189,60 @@ def _bank_matches(named: str, cited_bank: str) -> bool:
     return any(_word_in(a, cb) for a in aliases.get(named, []))
 
 
-def sentences_by_theme(md: str) -> list[tuple[str, list[tuple[str, int]], int]]:
-    """Every prose sentence of the body with its citations (possibly none)
-    and the number of the theme it sits in: a heading line starts a new
-    theme, so a theme is one `###` block or one section's lead-in."""
+def _rows(md: str) -> list[tuple[int, int, str, list[tuple[str, int]], int]]:
+    """Every prose sentence of the body: (line number in `md`, its number
+    within that line, the sentence, its citations, its theme). A heading
+    line starts a new theme, so a theme is one `###` block or one
+    section's lead-in."""
     # Artifacts written before 2026-09-18 carry a `## _LEANS` block that
     # was never prose; the split is a no-op for everything since.
     body = md.split("## _LEANS")[0]
     out = []
     theme = 0
-    for para in body.split("\n"):
+    for ln, para in enumerate(body.split("\n")):
         if para.startswith("#"):
             theme += 1
             continue
         if not para.strip():
             continue
-        for s in SENT_SPLIT.split(para.strip()):
-            out.append((s, cites_in(s), theme))
+        for sn, s in enumerate(split_sentences(para.strip())):
+            out.append((ln, sn, s, cites_in(s), theme))
     return out
 
 
+def sentences_by_theme(md: str) -> list[tuple[str, list[tuple[str, int]], int]]:
+    """Every prose sentence with its citations (possibly none) and the
+    number of the theme it sits in."""
+    return [(s, cites, theme) for _ln, _sn, s, cites, theme in _rows(md)]
+
+
 def verify(md: str, pack: dict) -> dict:
+    return _check(md, pack)[0]
+
+
+def _check(md: str, pack: dict) -> tuple[dict, list[tuple[int, int]]]:
+    """The check, and for each failure where its sentence is (line number,
+    sentence number). The drop needs that; the stored record does not."""
     cards = pack.get("cards") or {}
     docs = pack.get("docs") or {}
     card_count = int(pack.get("card_count") or len(cards))
     failures: list[dict] = []
+    at: list[tuple[int, int]] = []
     cited_positions: list[int] = []
     n_card_cites = n_doc_cites = 0
-    rows = sentences_by_theme(md)
+    rows = _rows(md)
     # The banks each theme cites, for a sentence that names a bank and
     # cites nothing (see below).
     theme_banks: dict[int, list[str]] = {}
-    for _s, _cites, _theme in rows:
+    for _ln, _sn, _s, _cites, _theme in rows:
         for k, n in _cites:
             src = (cards if k == "c" else docs).get(f"{k}{n}") or {}
             theme_banks.setdefault(_theme, []).append(src.get("bank") or "")
-    for sent, cites, theme in rows:
+    here = (0, 0)
+    for ln, sn, sent, cites, theme in rows:
+        # the failures the previous sentence added are recorded at its place
+        at += [here] * (len(failures) - len(at))
+        here = (ln, sn)
         clean = CITE_RE.sub("", sent)
         sent_nums = _numbers(clean)
         card_keys = [f"c{n}" for k, n in cites if k == "c"]
@@ -264,6 +302,7 @@ def verify(md: str, pack: dict) -> dict:
         if missing:
             failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
                              "reason": f"figures not in cited card(s): {missing}"})
+    at += [here] * (len(failures) - len(at))
     # metric 4: quintile distribution of cited positions
     quintiles = [0, 0, 0, 0, 0]
     for p in cited_positions:
@@ -272,7 +311,7 @@ def verify(md: str, pack: dict) -> dict:
             quintiles[q] += 1
     total = len(cited_positions)
     edge_share = ((quintiles[0] + quintiles[4]) / total) if total else 0.0
-    return {
+    return ({
         "card_citations": n_card_cites,
         "brief_citations": n_doc_cites,
         "distinct_cards_cited": len(set(cited_positions)),
@@ -282,11 +321,77 @@ def verify(md: str, pack: dict) -> dict:
         "metric4_flag": bool(total) and edge_share > 0.70,
         "failures": failures,
         "word_count": len(CITE_RE.sub("", md.split("## _LEANS")[0]).split()),
-    }
+    }, at)
 
 
 def strip_markers(md: str) -> str:
     return re.sub(r"\s?" + CITE_RE.pattern, "", md)
+
+
+def _remove(md: str, at: set[tuple[int, int]]) -> str:
+    """`md` without the sentences at `at`. A line left with no sentence
+    goes, and a `###` theme left with no prose loses its heading."""
+    lines = md.split("\n")
+    by_line: dict[int, set[int]] = {}
+    for ln, sn in at:
+        by_line.setdefault(ln, set()).add(sn)
+    gone = set()
+    for ln, sns in by_line.items():
+        raw = lines[ln]
+        kept = [s for j, s in enumerate(split_sentences(raw.strip())) if j not in sns]
+        if kept:
+            lines[ln] = raw[:len(raw) - len(raw.lstrip())] + " ".join(kept)
+        else:
+            gone.add(ln)
+    lines = [l for i, l in enumerate(lines) if i not in gone]
+    out = []
+    for i, l in enumerate(lines):
+        if l.startswith("### "):
+            prose = False
+            for nxt in lines[i + 1:]:
+                if nxt.startswith("#"):
+                    break
+                if nxt.strip():
+                    prose = True
+                    break
+            if not prose:
+                continue
+        out.append(l)
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out))
+
+
+# A sentence dropped in one round can be the only citation of a bank that
+# its theme's uncited sentences lean on, so the check runs again on what
+# is left. Each round removes at least one sentence or ends the loop.
+MAX_DROP_ROUNDS = 8
+
+
+def drop_failed(md: str, pack: dict) -> tuple[str, list[dict], int]:
+    """(`md` without every sentence the check fails, what was dropped, how
+    many failures are left).
+
+    Owner, 2026-11-23: a figure or a bank's view that no cited card
+    carries is not published. The editor gets one re-ask first (the
+    workflow); what still fails is removed here, whole sentence, by code.
+    Nothing is reworded. Over the 13 published days whose pack could be
+    rebuilt this removes 7 sentences, at most one a day.
+
+    The last value is 0 unless the rounds ran out. Production refuses a
+    body with failures left, and one that lost too much of its text
+    (omnipulse_body.problems), and runs the classic pulse instead."""
+    dropped: list[dict] = []
+    for _ in range(MAX_DROP_ROUNDS):
+        res, at = _check(md, pack)
+        if not at:
+            return md, dropped, 0
+        text = {(ln, sn): s for ln, sn, s, _c, _t in _rows(md)}
+        reasons: dict[tuple[int, int], list[str]] = {}
+        for f, where in zip(res["failures"], at):
+            reasons.setdefault(where, []).append(f["reason"])
+        for where in sorted(reasons):
+            dropped.append({"sentence": text[where], "reason": "; ".join(reasons[where])})
+        md = _remove(md, set(reasons))
+    return md, dropped, len(_check(md, pack)[1])
 
 
 def main() -> int:
@@ -297,12 +402,27 @@ def main() -> int:
     ap.add_argument("--stripped-out")
     ap.add_argument("--reask-out")
     ap.add_argument("--final", action="store_true")
+    ap.add_argument("--drop-failed", action="store_true")
     a = ap.parse_args()
     with open(a.shadow_md, encoding="utf-8") as fh:
         md = fh.read()
     with open(a.pack_json, encoding="utf-8") as fh:
         pack = json.load(fh)
     res = verify(md, pack)
+    out_md = md
+    if a.drop_failed:
+        # A fault here must not cost the day its files: the clean file is
+        # then written undropped with no "dropped" record, and production
+        # refuses a body whose failures were not dropped.
+        try:
+            out_md, dropped, left = drop_failed(md, pack)
+            words = sum(len(CITE_RE.sub("", d["sentence"]).split()) for d in dropped)
+            res["dropped"] = dropped
+            res["dropped_share"] = round(words / max(1, res["word_count"]), 3)
+            res["remaining_failures"] = left
+        except Exception as e:                                   # noqa: BLE001
+            out_md = md
+            print(f"drop failed: {type(e).__name__}: {e}", file=sys.stderr)
     existing = {}
     if os.path.exists(a.meta_out):
         try:
@@ -315,10 +435,13 @@ def main() -> int:
         json.dump(existing, fh, indent=1)
     if a.stripped_out:
         with open(a.stripped_out, "w", encoding="utf-8") as fh:
-            fh.write(strip_markers(md))
+            fh.write(strip_markers(out_md))
     print(f"citations: {res['card_citations']} card / {res['brief_citations']} brief, "
           f"{len(res['failures'])} failure(s), "
           f"edge-quintile share {res['edge_quintile_share']:.0%}")
+    if "dropped" in res:
+        print(f"dropped {len(res['dropped'])} sentence(s), {res['dropped_share']:.1%} of the body, "
+              f"{res['remaining_failures']} failure(s) left")
     if res["failures"] and a.reask_out and not a.final:
         with open(a.reask_out, "w", encoding="utf-8") as fh:
             json.dump(res["failures"], fh, indent=1)

@@ -4,7 +4,9 @@ One row per edition, from numbers the pipeline computes in code:
 
   citations     card and brief citations in the edition
   failed        sentences the citation check could not vouch for after
-                the editor's one repair pass (pilot_verify_citations.py)
+                the editor's one repair pass (pilot_verify_citations.py).
+                From the 2026-11-24 edition on they are dropped from the
+                body before it is published
   unread@edit   source files still unread when the editor ran. Any such
                 day is VOID: the edition was written from an incomplete
                 card set, and production does not take its body

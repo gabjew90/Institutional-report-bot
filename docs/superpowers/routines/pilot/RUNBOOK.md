@@ -53,11 +53,16 @@ What checks an edition now runs before it is published, in code:
 - `scripts/pilot_verify_citations.py`: every figure in a sentence must be
   in a card that sentence cites, and a bank a sentence names must be one
   its citations (or, for a sentence with none, its theme) carry. The
-  editor gets one repair pass on the failures, and what remains is
-  recorded in `shadow/<date>.meta.json`.
+  editor gets one repair pass on the failures. What remains is
+  recorded in `shadow/<date>.meta.json` and, since 2026-11-23, dropped
+  from `shadow/<date>.clean.md`: the whole sentence, by code, with the
+  check run again on what is left (`drop_failed`). The meta lists the
+  dropped sentences with the reason for each.
 - `scripts/omnipulse_body.py :: problems`: production does not take the
   body of an edition written with source files unread, with a structural
-  problem, or with a citation marker left in its text.
+  problem, with a citation marker left in its text, with failed
+  sentences that were not dropped, or one that lost more than 10% of
+  its words to the drop.
 
 ## Reading the scoreboard
 

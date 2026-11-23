@@ -4205,3 +4205,24 @@ Waiting on the owner: the sentences that still fail, listed for them, and their 
 
 Not done, the owner's word needed: deleting the untracked Codex copies (`AGENTS.md`, `.agents/`, `.codex/`), removing the Granola connector from the routine.
 
+## 2026-11-23 (later): the drop is built, Wait for CI is on, two cleanups
+
+Owner's answers to the morning's report: "Drop", permission to run the Railway command, "Delete and remove granola".
+
+**The drop (`pilot_verify_citations.drop_failed`, `--drop-failed` on the editor workflow's final pass).** A sentence the citation check still fails after the editor's one re-ask is removed from `shadow/<date>.clean.md`, whole, by code. The check runs again on what is left, up to 8 rounds, because a dropped sentence can be the only citation of a bank that its theme's uncited sentences lean on. A paragraph left empty goes and a theme left empty loses its heading. The meta keeps `failures` and adds `dropped` (sentence and reason), `dropped_share` and `remaining_failures`. Production (`omnipulse_body.problems`) refuses a body whose failures were not dropped, one with failures left, and one that lost more than 10% of its words (`MAX_DROP_SHARE`, my number: the replay's largest day was 3.0%, and the days the old check misread at scale would have lost far more). A refused body means the classic pulse, as for every other reason.
+
+Replay over the 22 editions whose pack was rebuilt exactly: 15 sentences dropped, never more than 3 in one edition, none left failing, every edition still passes the structure check. On the 13 published days: 7 sentences, at most one a day, 1.1% to 3.0% of the body.
+
+What the replay shows the drop costs, read sentence by sentence:
+- In 4 of the 7 the next sentence opens with a reference to the dropped one ("Since 1990 that pairing has appeared only...", "Its own numbers assume...", "It has power, land, a tenant..."). The body then reads with a pronoun that points at nothing. Code cannot repair that without rewording, which is not allowed here.
+- 1 of the 7 was true: the card says 341,326 square feet and the sentence said 341,000.
+Options if this reads badly in practice, neither picked: a rounding rule in the check, and a second re-ask that names the sentences about to be removed.
+
+Found in review before the push: the sentence splitter cut after an initial, so "...the level J.P. Morgan's desk flags as support" was two sentences (33 times in 36 editions, four of them on the published 11-17 edition). The check survived that. The drop would have removed one half and published the other. `split_sentences` now keeps a full stop after an initial inside the sentence, and the check and the drop both use it. The replay's counts did not change.
+
+Not touched: "J.P. Morgan" written with the initials is not in the check's list of bank names, so a sentence that names the bank that way is not bank-checked.
+
+**Wait for CI is on** (`source.checkSuites: true` on the worker). `railway environment edit --service-config worker source.checkSuites true` printed the environment name, reported "No changes to apply" under `--json`, and changed nothing. The JSON patch on standard input, keyed by the service id, set it and started no deployment. From this push on a red test run on GitHub stops the deploy.
+
+**Granola removed from the pulse routine** (RemoteTrigger update with `clear_mcp_connections`; prompt, schedule, tools and environment read back unchanged, next run 2026-11-24 14:03 UTC). **Codex copies deleted** from the working tree (`AGENTS.md`, `.agents/`, `.codex/`, all untracked). A second copy sits in the worktree `.claude/worktrees/amazing-lalande-d45469/` and was left alone.
+

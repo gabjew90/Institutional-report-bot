@@ -231,7 +231,11 @@ jobs:
               --pack /tmp/ed/pack.json --reasked || true
           fi
           # Pass 2: record whatever remains in the meta, where the
-          # scoreboard counts it. Belt and braces on the exit code: the
+          # scoreboard counts it, and write the clean file without those
+          # sentences (--drop-failed, owner 2026-11-23: a figure or a
+          # bank's view no cited card carries is not published; production
+          # refuses a body whose failures were not dropped).
+          # Belt and braces on the exit code: the
           # verifier no longer returns 1 on --final, and this must not
           # abort the step even if a future check does, because the commit
           # below is skipped when this step fails and the day's pulse is
@@ -239,7 +243,7 @@ jobs:
           set +e
           python scripts/pilot_verify_citations.py "$OUTDIR/$EDIT_STEM.md" /tmp/ed/pack.json \
             --meta-out "$OUTDIR/$EDIT_STEM.meta.json" \
-            --stripped-out "$OUTDIR/$EDIT_STEM.clean.md" --final
+            --stripped-out "$OUTDIR/$EDIT_STEM.clean.md" --final --drop-failed
           echo "pass 2 verifier exit: $?"
           set -e
 

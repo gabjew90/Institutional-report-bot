@@ -47,6 +47,14 @@ MIN_BRIEFS = 2
 # the Omnipulse editor wrote them. It writes 8-11 themes (1,500-1,850
 # words); production ran 3-6.
 MAX_BRIEFS = 5
+# The citation check drops each sentence it cannot vouch for before the
+# body is written (owner, 2026-11-23; pilot_verify_citations.drop_failed).
+# Replayed over 13 published days it dropped at most one sentence a day,
+# under 3% of the body. A day that loses more than this share was written
+# badly or read badly by the check (the 2026-10-05 and 10-30 editions
+# failed 12 and 8 sentences on the check's own misreadings), and a body
+# with that many holes is not published.
+MAX_DROP_SHARE = 0.10
 # What a miss day publishes when the Omnipulse is missing or unusable
 # after the wait (owner option a, 2026-09-29, spec
 # 2026-09-29-light-pulse-miss-day-design.md). "classic" = today's
@@ -234,6 +242,16 @@ def problems(md: str, meta: dict) -> list[str]:
         out.append(f"fewer than {MIN_BRIEFS} BRIEFS")
     if _MARKER_RE.search(md or ""):
         out.append("citation markers survived the clean step")
+    # A sentence the citation check failed is dropped before the clean
+    # file is written. A meta with failures and no record of the drop is
+    # a body that still carries them.
+    cit = (meta or {}).get("citations") or {}
+    if cit.get("failures") and "dropped" not in cit:
+        out.append(f"{len(cit['failures'])} sentence(s) failed the citation check and were not dropped")
+    if cit.get("remaining_failures"):
+        out.append(f"{cit['remaining_failures']} sentence(s) still fail the citation check after the drop")
+    if (cit.get("dropped_share") or 0) > MAX_DROP_SHARE:
+        out.append(f"the citation check dropped {cit['dropped_share']:.0%} of the body")
     return out
 
 
