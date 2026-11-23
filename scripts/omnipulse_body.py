@@ -79,10 +79,11 @@ MAX_FETCH_ERRORS = 3
 # 20-minute wait on 2026-09-28 made that pulse 20 minutes late).
 DEFAULT_WAIT_S = 600
 
-# Any bracket that opens with a card or brief id, so a grouped marker
-# ("[c443, c444]") is caught as well: the 2026-10-05 pulse was published
-# with seven of them because this read the single form only.
-_MARKER_RE = re.compile(r"\[\s*(?:c|d)\d+\s*[\],;]")
+# Any bracket that opens with a card or brief id, whatever follows it: a
+# grouped marker ("[c443, c444]") or a form nobody has written yet
+# ("[c12-c14]"). The 2026-10-05 pulse was published with seven grouped
+# markers because this read the single form only.
+_MARKER_RE = re.compile(r"\[\s*[cd]\d+\b")
 _H2_RE = re.compile(r"^## .*$", re.MULTILINE)
 
 

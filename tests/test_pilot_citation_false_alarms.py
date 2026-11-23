@@ -42,6 +42,9 @@ def test_the_clean_step_removes_a_grouped_marker_and_the_body_check_sees_one():
             "## 3. BRIEFS\n\n### B\n\nText.\n\n### C\n\nText.\n")
     assert "citation markers survived the clean step" in O.problems(body, {})
     assert "citation markers survived the clean step" not in O.problems(strip_markers(body), {})
+    # a form the clean step does not know is refused, not published
+    assert "citation markers survived the clean step" in O.problems(
+        strip_markers(body.replace("[c443, c444]", "[c12-c14]")), {})
     # a bracket that is not a marker is prose
     assert "citation markers survived the clean step" not in O.problems(
         body.replace("[c443, c444]", "[sic]"), {})
