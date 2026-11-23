@@ -13,10 +13,21 @@ mapping, anchor check, conference sessions). The result is a complete
 pdf_analyses-shaped record at pilot/analyses/<date>/<id>.json, so every
 consumer of the Gemini rows can read it unchanged.
 
+Which documents: only the ones the worker is waiting for (2026-11-23). The
+worker publishes pilot/lane/waiting.json (github_bridge/claude_lane.py), each
+note with the time the worker stops waiting and runs Gemini instead. Before
+that this script analysed every note of the last seven days, oldest id first,
+25 a run and one at a time, and of 960 analyses in nine days the worker could
+use 83: the rest arrived after it had given up. Now a note off the list, or
+too close to its deadline, is not analysed, and `run` works several notes at
+once so a day's research, which arrives within an hour or two, is done inside
+the worker's two-hour wait.
+
 Standard library plus this repo only: the runner does not install the
 bot's requirements.
 
-  pending   list documents with no analysis yet (TSV: id, text, meta, date)
+  pending   list the documents the worker waits for (TSV: id, text, meta, date)
+  run       analyse them, several at a time, committing each record
   prompt    write the prompt file for one document
   finalize  parse Claude's answer, build the analysis, write it
   fail      count a failed attempt; a document stops after MAX_ATTEMPTS
@@ -26,7 +37,13 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import re
+import shutil
+import subprocess
 import sys
+import tempfile
+import threading
+import time
 from dataclasses import asdict
 from pathlib import Path
 
@@ -38,40 +55,83 @@ MAX_ATTEMPTS = 3
 MODEL = "claude-sonnet-5-5"
 ANALYSES = "analyses"
 FAILURES = "analysis-failures"
+# The worker's list of notes it is waiting for, relative to the pilot root.
+WAITING = "lane/waiting.json"
+# A note with less than this left before the worker gives up is not started:
+# an analysis takes about a minute and the worker reads results every five.
+MIN_LEFT_S = 240
+SOURCE_DIRS = ("source-text", "source-text-all")
 
 
 def _failures(root: Path, date: str, doc_id: str) -> Path:
     return root / FAILURES / date / f"{doc_id}.json"
 
 
-def pending(root: Path, days: int, limit: int) -> list[tuple[str, str, str, str]]:
-    """Documents with no analysis yet, HIGH first: every HIGH note of the
-    last `days` days (source-text/), then the MEDIUM notes the worker
-    handed to the lane (source-text-all/ with "lane": true in the meta,
-    2026-10-27). source-text-all/ also holds MEDIUM notes Gemini already
-    analysed, for the graders; the mark keeps those out."""
-    today = dt.date.today()
-    dates = [(today - dt.timedelta(days=back)).isoformat() for back in range(days)]
+def load_waiting(root: Path) -> list[dict]:
+    """The worker's list, in the order it wants them. Missing or unreadable
+    means nothing to do: the worker's timeout then runs Gemini."""
+    try:
+        d = json.loads((root / WAITING).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    rows = d.get("waiting") if isinstance(d, dict) else None
+    return [e for e in (rows or []) if isinstance(e, dict)]
+
+
+def _deadline(e: dict) -> dt.datetime | None:
+    try:
+        return dt.datetime.strptime(str(e.get("deadline")), "%Y-%m-%dT%H:%M:%SZ").replace(
+            tzinfo=dt.timezone.utc)
+    except ValueError:
+        return None
+
+
+def pending(root: Path, limit: int = 25,
+            now: dt.datetime | None = None) -> list[tuple[str, str, str, str]]:
+    """Documents the worker is waiting for that have no analysis yet, in the
+    worker's order (HIGH first, nearest deadline first)."""
+    now = now or dt.datetime.now(dt.timezone.utc)
     out = []
-    for folder, lane_only in (("source-text", False), ("source-text-all", True)):
-        for date in dates:
-            for meta in sorted((root / folder / date).glob("*.meta.json")):
-                doc_id = meta.name.split(".")[0]
-                if (root / ANALYSES / date / f"{doc_id}.json").exists():
-                    continue
-                f = _failures(root, date, doc_id)
-                if f.exists() and json.loads(f.read_text()).get("attempts", 0) >= MAX_ATTEMPTS:
-                    continue
-                m = json.loads(meta.read_text(encoding="utf-8"))
-                if lane_only and not m.get("lane"):
-                    continue
-                text = m.get("text_path") or ""
-                # text_path is relative to the pilot-data checkout
-                text_abs = root.parent / text if text else None
-                if not text_abs or not text_abs.exists():
-                    continue
-                out.append((doc_id, str(text_abs), str(meta), date))
-                if len(out) >= limit:
+    for e in load_waiting(root):
+        doc_id, date = str(e.get("id") or ""), str(e.get("date") or "")
+        # Both become path segments: digits and an ISO date, nothing else.
+        if not doc_id.isdigit() or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            continue
+        deadline = _deadline(e)
+        if deadline is not None and (deadline - now).total_seconds() < MIN_LEFT_S:
+            continue
+        if (root / ANALYSES / date / f"{doc_id}.json").exists():
+            continue
+        f = _failures(root, date, doc_id)
+        if f.exists() and json.loads(f.read_text()).get("attempts", 0) >= MAX_ATTEMPTS:
+            continue
+        meta = next((m for m in (root / d / date / f"{doc_id}.meta.json" for d in SOURCE_DIRS)
+                     if m.exists()), None)
+        if meta is None:
+            continue    # the text is not in this checkout yet; the next refresh has it
+        m = json.loads(meta.read_text(encoding="utf-8"))
+        text = m.get("text_path") or ""
+        # text_path is relative to the pilot-data checkout
+        text_abs = root.parent / text if text else None
+        if not text_abs or not text_abs.exists():
+            continue
+        out.append((doc_id, str(text_abs), str(meta), date))
+        if len(out) >= limit:
+            break
+    return out
+
+
+def recent_high(root: Path, n: int) -> list[tuple[str, str, str, str]]:
+    """The n newest HIGH notes on the branch, list or no list: the input of a
+    dry run, which measures speed and commits nothing."""
+    out = []
+    for folder in sorted((root / SOURCE_DIRS[0]).glob("20*"), reverse=True):
+        for meta in sorted(folder.glob("*.meta.json"), reverse=True):
+            m = json.loads(meta.read_text(encoding="utf-8"))
+            text_abs = root.parent / (m.get("text_path") or "")
+            if m.get("text_path") and text_abs.exists():
+                out.append((meta.name.split(".")[0], str(text_abs), str(meta), folder.name))
+                if len(out) >= n:
                     return out
     return out
 
@@ -165,13 +225,154 @@ def fail(root: Path, date: str, doc_id: str, reason: str) -> int:
     return rec["attempts"]
 
 
+REFRESH_S = 20
+PILOT_BRANCH = "pilot-data"
+
+
+def claude_cli(prompt_path: Path, model: str, timeout_s: int = 900) -> str:
+    """One analysis: the prompt on standard input, the CLI's JSON on standard
+    output. A timeout or a crash returns what there is, which then fails
+    finalize and counts as one attempt."""
+    try:
+        with open(prompt_path, "rb") as fin:
+            p = subprocess.run(
+                ["claude", "-p", "--model", model, "--permission-mode", "bypassPermissions",
+                 "--max-turns", "3", "--output-format", "json"],
+                stdin=fin, capture_output=True, timeout=timeout_s)
+        return p.stdout.decode("utf-8", "replace")
+    except subprocess.TimeoutExpired as e:
+        return (e.stdout or b"").decode("utf-8", "replace")
+    except OSError as e:
+        return f"claude CLI did not start: {e}"
+
+
+def _git(repo: Path, *args: str) -> int:
+    return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True).returncode
+
+
+def run(root: Path, *, workers: int = 4, budget_s: float = 1500, model: str = MODEL,
+        ask=claude_cli, repo: Path | None = None, docs: list | None = None,
+        out_root: Path | None = None, say=print) -> dict:
+    """Analyse what the worker waits for, `workers` at a time, until the list
+    is empty, the time budget is spent or Claude answers with a usage limit.
+
+    `repo` is the pilot-data checkout to commit and push each record from;
+    None commits nothing. The checkout is refreshed between documents, so a
+    note the worker hands over mid-run is picked up and one it gave up on is
+    dropped. `docs` and `out_root` are the dry run: a fixed list, records
+    written outside the checkout.
+
+    Every write into the checkout and every git command happens under one
+    lock, because a rebase refuses a tree another thread is writing to."""
+    started = time.monotonic()
+    lock = threading.Lock()
+    stop = threading.Event()
+    claimed: set[str] = set()
+    stats = {"analyzed": 0, "failed": 0, "limit": False, "seconds": []}
+    last_sync = [0.0]
+    dest_root = out_root or root
+    fixed = list(docs) if docs is not None else None
+
+    def claim():
+        with lock:
+            if stop.is_set() or time.monotonic() - started > budget_s:
+                return None
+            if fixed is not None:
+                return fixed.pop(0) if fixed else None
+            if repo is not None and time.monotonic() - last_sync[0] >= REFRESH_S:
+                _git(repo, "pull", "--rebase", "--quiet", "origin", PILOT_BRANCH)
+                last_sync[0] = time.monotonic()
+            for row in pending(root, limit=10 ** 6):
+                if row[0] not in claimed:
+                    claimed.add(row[0])
+                    return row
+            return None
+
+    def persist(label: str) -> None:
+        if repo is None or out_root is not None:
+            return
+        rel = root.relative_to(repo).as_posix()
+        # One path per call: git stages nothing at all when any path given
+        # to one `git add` does not exist, and the failures folder may not.
+        for folder in (ANALYSES, FAILURES):
+            if (root / folder).exists():
+                _git(repo, "add", f"{rel}/{folder}/")
+        if _git(repo, "diff", "--cached", "--quiet") == 0:
+            return
+        if _git(repo, "commit", "-q", "-m", f"pilot: analysis ({label})") != 0:
+            return
+        for _ in range(3):
+            _git(repo, "pull", "--rebase", "--quiet", "origin", PILOT_BRANCH)
+            if _git(repo, "push", "-q", "origin", PILOT_BRANCH) == 0:
+                last_sync[0] = time.monotonic()
+                return
+            time.sleep(3)
+        say(f"::warning::could not push after {label}; the next commit retries")
+
+    def work(n: int) -> None:
+        tmp = Path(tempfile.mkdtemp(prefix=f"lane{n}-"))
+        while True:
+            row = claim()
+            if row is None:
+                return
+            doc_id, text, meta, date = row
+            t0 = time.monotonic()
+            prompt, raw, made = tmp / "prompt.txt", tmp / "raw.txt", tmp / f"{doc_id}.json"
+            try:
+                write_prompt(text, meta, str(prompt))
+                answer = ask(prompt, model)
+            except Exception as e:
+                answer = f"analysis did not run: {e}"
+            if is_limit(answer):
+                # Not this document's fault, and the rest of the run would hit it too.
+                stop.set()
+                with lock:
+                    stats["limit"] = True
+                    claimed.discard(doc_id)
+                say("::warning::Claude usage limit reached; stopping, nothing counted as failed")
+                return
+            raw.write_text(answer, encoding="utf-8")
+            try:
+                finalize(str(raw), text, meta, str(made), model)
+                ok, why = True, ""
+            except Exception as e:
+                ok, why = False, str(e)
+            took = time.monotonic() - t0
+            with lock:
+                if ok:
+                    dest = dest_root / ANALYSES / date / f"{doc_id}.json"
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.move(str(made), str(dest))
+                    stats["analyzed"] += 1
+                else:
+                    fail(dest_root, date, doc_id, " ".join(answer[:120].split()))
+                    stats["failed"] += 1
+                stats["seconds"].append(round(took))
+                persist(doc_id)
+            say(f"{doc_id}: {'ok' if ok else 'FAILED ' + why[:120]} in {took:.0f}s")
+
+    threads = [threading.Thread(target=work, args=(i,), name=f"lane-{i}") for i in range(max(1, workers))]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    stats["wall_seconds"] = round(time.monotonic() - started)
+    return stats
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("pending")
     p.add_argument("--root", required=True)
-    p.add_argument("--days", type=int, default=7)
     p.add_argument("--limit", type=int, default=25)
+    p = sub.add_parser("run")
+    p.add_argument("--root", required=True)
+    p.add_argument("--repo", default="", help="the pilot-data checkout to commit from")
+    p.add_argument("--workers", type=int, default=4)
+    p.add_argument("--budget-minutes", type=float, default=25)
+    p.add_argument("--dry-run", type=int, default=0,
+                   help="analyse this many recent HIGH notes and commit nothing")
     p = sub.add_parser("prompt")
     p.add_argument("--text", required=True)
     p.add_argument("--meta", required=True)
@@ -187,8 +388,27 @@ def main(argv: list[str]) -> int:
         p.add_argument(a, required=True)
     a = ap.parse_args(argv)
     if a.cmd == "pending":
-        for row in pending(Path(a.root), a.days, a.limit):
+        for row in pending(Path(a.root), a.limit):
             print("\t".join(row))
+    elif a.cmd == "run":
+        root = Path(a.root)
+        if a.dry_run > 0:
+            docs = recent_high(root, a.dry_run)
+            st = run(root, workers=a.workers, budget_s=a.budget_minutes * 60, docs=docs,
+                     out_root=Path(tempfile.mkdtemp(prefix="lane-dry-")))
+        else:
+            st = run(root, workers=a.workers, budget_s=a.budget_minutes * 60,
+                     repo=Path(a.repo) if a.repo else None)
+        secs = sorted(st.pop("seconds"))
+        done = st["analyzed"] + st["failed"]
+        print(f"analyzed {st['analyzed']} document(s), {st['failed']} failed, "
+              f"{a.workers} at a time, {st['wall_seconds']}s wall"
+              + (f", per document median {secs[len(secs) // 2]}s max {secs[-1]}s" if secs else "")
+              + (f", {done * 3600 // max(st['wall_seconds'], 1)} an hour" if done else "")
+              + (", stopped by a usage limit" if st["limit"] else ""))
+        if done and not st["analyzed"] and not st["limit"]:
+            print("::error::every analysis failed this run")
+            return 1
     elif a.cmd == "prompt":
         write_prompt(a.text, a.meta, a.out)
     elif a.cmd == "finalize":

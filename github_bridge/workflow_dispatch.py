@@ -37,12 +37,12 @@ PILOT_WORKFLOWS = {
     "pilot-editor.yml": [(13, 55, "mon-fri")],
     # No grader slot: model grading was retired on 2026-11-23 (owner).
     # It ran three hours after publication and fed no decision.
-    # Claude analysis lane (2026-10-06, Gemini retirement spec phase 1):
-    # every 30 minutes on weekdays 06:00-22:30 UTC so a HIGH note is
-    # analysed within the hour, every 2 hours at weekends. A run with
-    # nothing pending ends in about a minute.
-    "pilot-analysis.yml": [(h, m, "mon-fri") for h in range(6, 23) for m in (0, 30)]
-                          + [(h, 0, "sat,sun") for h in range(0, 24, 2)],
+    # Claude analysis lane: no clock slots since 2026-11-23. The worker starts
+    # a run when it has notes waiting (github_bridge/claude_lane.py). The 46
+    # slots a day mostly ran with nothing to do, and a day's research arrives
+    # in one burst that a 30-minute clock, silent overnight and two-hourly at
+    # weekends, could not serve inside the lane's timeout.
+    "pilot-analysis.yml": [],
 }
 
 

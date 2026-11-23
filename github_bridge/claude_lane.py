@@ -8,9 +8,22 @@ Each is off unless set.
 A MEDIUM note's text goes to source-text-all/ (the graders' folder), never
 to source-text/, which is the frozen Omnipulse readers' corpus; its meta
 carries "lane": true so the lane reads only the MEDIUM notes handed to it,
-not the ones Gemini already analysed. The lane takes HIGH notes first in
-every run (scripts/pilot_analyze.py pending), and the readers' daily cap
-applies to HIGH notes only.
+not the ones Gemini already analysed.
+
+The worker says what it is waiting for (2026-11-23). Until then the two sides
+shared no list: the workflow analysed every note of the last seven days,
+oldest id first, 25 a run, while the worker waited for the newest 25 HIGH
+notes of the day and sent the rest to Gemini at once on the belief that the
+lane would never reach them. Between 11-15 and 11-23 Claude analysed all 960
+notes handed to it and the worker loaded 83: 221 notes were sent to Gemini
+"past the readers' cap" although their record arrived within two hours, the
+53 HIGH notes it did wait for were analysed last and arrived a median eight
+hours late, and 432 MEDIUM notes queued behind every HIGH note of the week.
+Now pull() publishes pilot/lane/waiting.json, the notes still waiting with
+each one's deadline, HIGH first and the nearest deadline first, and starts a
+run when the list is not empty. The workflow analyses only what is on that
+list (scripts/pilot_analyze.py). The readers' daily cap has nothing to do
+with this lane and no longer routes anything.
 
 With it on:
 
@@ -60,6 +73,88 @@ def _pilot():
     from scripts.pilot_config import PILOT_BRANCH, PILOT_ROOT
     from scripts.pilot_analyze import ANALYSES, FAILURES, MAX_ATTEMPTS
     return PILOT_BRANCH, PILOT_ROOT, ANALYSES, FAILURES, MAX_ATTEMPTS
+
+
+ANALYSIS_WORKFLOW = "pilot-analysis.yml"
+# What the last published list held, so an unchanged list is not written
+# again. None until this process has read or written it once.
+_last_waiting: str | None = None
+
+
+def waiting_entries(rows: list[dict], timeout_minutes: int) -> list[dict]:
+    """The published form of the rows still waiting: HIGH before MEDIUM, then
+    the nearest deadline. The deadline is when pull() stops waiting."""
+    from datetime import timedelta
+    out = []
+    for r in rows:
+        ts = db._normalize_ts(r.get("committed_at") or r.get("queued_at") or "")
+        try:
+            t = datetime.fromisoformat((ts or "")[:19]).replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+        out.append({
+            "id": int(r["pdf_file_id"]),
+            "date": _date_of(r["bridge_filename"]),
+            "priority": _priority(r),
+            "deadline": (t + timedelta(minutes=timeout_minutes)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        })
+    out.sort(key=lambda e: (e["priority"] != "high", e["deadline"], e["id"]))
+    return out
+
+
+def publish_waiting(entries: list[dict], now: datetime | None = None) -> bool:
+    """Write the list the workflow reads, if it changed. Never raises: with
+    no list, or a stale one, the workflow does less and the timeout sends
+    the notes to Gemini, as before."""
+    global _last_waiting
+    from github_bridge import client as gh
+    from scripts.pilot_analyze import WAITING
+    branch, root = _pilot()[:2]
+    path = f"{root}/{WAITING}"
+    body = json.dumps(entries, separators=(",", ":"))
+    try:
+        if _last_waiting is None:
+            prior = json.loads(gh.get_file_text(path, ref=branch) or "{}")
+            _last_waiting = json.dumps(prior.get("waiting") or [], separators=(",", ":"))
+        if body == _last_waiting:
+            return False
+        now = now or datetime.now(timezone.utc)
+        gh.put_file(path, json.dumps({
+            "written_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "timeout_minutes": int(settings.claude_lane_timeout_minutes),
+            "waiting": entries,
+        }, indent=0), f"lane: {len(entries)} note(s) waiting", ref=branch)
+        _last_waiting = body
+        return True
+    except Exception as e:
+        log.warning(f"claude lane: waiting list not published: {e}")
+        return False
+
+
+RUN_RETRY_S = 900
+_last_run_request = 0.0
+
+
+def _start_a_run(progress: bool) -> None:
+    """Ask for an analysis run. A run already waiting to start is left alone
+    (workflow_dispatch.dispatch). While records keep arriving every tick asks,
+    so the next run is queued behind the one working and starts when it ends.
+    With no record arriving, one request per RUN_RETRY_S: a lane that is down
+    (a usage limit, an expired token) fails a run every 15 minutes, not every
+    five, until the timeout hands its notes to Gemini."""
+    global _last_run_request
+    if not getattr(settings, "pilot_dispatch_enabled", False):
+        return
+    import time
+    now = time.monotonic()
+    if not progress and _last_run_request and now - _last_run_request < RUN_RETRY_S:
+        return
+    try:
+        from github_bridge.workflow_dispatch import dispatch
+        if dispatch(ANALYSIS_WORKFLOW) == 204:
+            _last_run_request = now
+    except Exception as e:
+        log.warning(f"claude lane: could not start a run: {e}")
 
 
 def reachable() -> bool:
@@ -287,32 +382,6 @@ def _given_up(path: str, max_attempts: int) -> bool:
         return False
 
 
-def over_reader_cap(date: str, done: set, failed: set) -> set[int]:
-    """pdf_file_ids in one day folder that the pilot readers will never read.
-
-    The readers take at most MAX_PER_DAY documents per folder, newest first
-    by the bank's day and then by id (scripts/pilot_list_unread.py). A note
-    below that line used to wait the full lane timeout and then go to Gemini
-    anyway: 39 of 73, 30 of 54 and 29 of 54 lane notes on 10-13/15/17
-    (2026-10-18 audit R4). Same ranking here, so those go to Gemini at once.
-    A document with a failure record is left out of the ranking (the reader
-    may have retired it), which errs toward waiting."""
-    from github_bridge.pilot_publish import note_date_from_path
-    from scripts.pilot_list_unread import MAX_PER_DAY
-    if not MAX_PER_DAY:
-        return set()
-    docs = []
-    for r in db.get_lane_rows_any_status(f"{_prefix()}{date}/"):
-        if _priority(r) != "high":
-            continue        # the readers read HIGH only; MEDIUM has no cap
-        pid = int(r["pdf_file_id"])
-        if f"{pid}.json" in failed and f"{pid}.json" not in done:
-            continue
-        docs.append((note_date_from_path(r.get("dropbox_path") or "") or date, pid))
-    docs.sort(reverse=True)
-    return {pid for _, pid in docs[MAX_PER_DAY:] if f"{pid}.json" not in done}
-
-
 def pull(now: datetime | None = None) -> dict:
     """One tick: ingest arrived records, route given-up and overdue
     documents to Gemini. Blocking (GitHub API); run it in a thread."""
@@ -327,21 +396,17 @@ def pull(now: datetime | None = None) -> dict:
     for r in rows:
         by_date[_date_of(r["bridge_filename"])].append(r)
     timeout = settings.claude_lane_timeout_minutes
+    waiting: list[dict] = []
     for date, group in by_date.items():
         done = {it.get("name") for it in gh.list_dir(f"{root}/{analyses}/{date}", ref=branch)
                 if it.get("type") == "file"}
         failed = {it.get("name") for it in gh.list_dir(f"{root}/{failures}/{date}", ref=branch)
                   if it.get("type") == "file"}
-        over_cap = over_reader_cap(date, done, failed)
         for r in group:
             name = f"{int(r['pdf_file_id'])}.json"
             if name in done:
                 if _ingest(r):
                     out["ingested"] += 1
-                continue
-            if int(r["pdf_file_id"]) in over_cap:
-                if _to_gemini(r, "past the pilot readers' daily cap"):
-                    out["to_gemini"] += 1
                 continue
             if name in failed and _given_up(f"{root}/{failures}/{date}/{name}", max_attempts):
                 out["to_gemini"] += _to_gemini(r, f"lane gave up after {max_attempts} attempts")
@@ -358,6 +423,10 @@ def pull(now: datetime | None = None) -> dict:
                         pass
                 continue
             out["waiting"] += 1
+            waiting.append(r)
+    publish_waiting(waiting_entries(waiting, timeout), now)
+    if waiting:
+        _start_a_run(progress=out["ingested"] > 0)
     if out["ingested"] or out["to_gemini"]:
         log.info(f"claude lane pull: {out}")
     return out
@@ -452,6 +521,9 @@ async def sweep_before_pulse() -> dict:
     for r in db.get_lane_rows("committed", _prefix(), limit=500):
         swept += _to_gemini(r, "pre-pulse sweep")
     out["swept"] = swept
+    # Nothing is waiting now: say so, or the workflow keeps analysing notes
+    # Gemini is about to finish.
+    await asyncio.to_thread(publish_waiting, [])
     out["gemini_done"] = await run_fallbacks(limit=500)
     log.info(f"claude lane pre-pulse sweep: {out}")
     return out

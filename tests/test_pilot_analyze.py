@@ -18,7 +18,19 @@ def _doc(root, doc_id="18282", date=None):
         "pdf_file_id": int(doc_id), "file_name": "GS_US_Economics.pdf",
         "source": "Goldman Sachs", "title": "US Economics", "priority": "high",
         "text_path": text_rel}), encoding="utf-8")
+    _wait(root, doc_id, date)
     return date
+
+
+def _wait(root, doc_id, date, priority="high", minutes_left=120, replace=False):
+    """Put a note on the worker's list (pilot/lane/waiting.json)."""
+    f = root / "pilot" / PA.WAITING
+    f.parent.mkdir(parents=True, exist_ok=True)
+    rows = [] if replace or not f.exists() else json.loads(f.read_text())["waiting"]
+    deadline = dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=minutes_left)
+    rows.append({"id": int(doc_id), "date": date, "priority": priority,
+                 "deadline": deadline.strftime("%Y-%m-%dT%H:%M:%SZ")})
+    f.write_text(json.dumps({"waiting": rows}), encoding="utf-8")
 
 
 def test_pending_lists_documents_without_an_analysis(tmp_path):
@@ -26,7 +38,7 @@ def test_pending_lists_documents_without_an_analysis(tmp_path):
     _doc(tmp_path, "18283", date)
     (tmp_path / "pilot" / "analyses" / date).mkdir(parents=True)
     (tmp_path / "pilot" / "analyses" / date / "18283.json").write_text("{}")
-    rows = PA.pending(tmp_path / "pilot", days=3, limit=25)
+    rows = PA.pending(tmp_path / "pilot", limit=25)
     assert [r[0] for r in rows] == ["18282"]
 
 
@@ -34,13 +46,13 @@ def test_a_document_stops_after_three_failed_attempts(tmp_path):
     date = _doc(tmp_path)
     for _ in range(PA.MAX_ATTEMPTS):
         PA.fail(tmp_path / "pilot", date, "18282", "no JSON")
-    assert PA.pending(tmp_path / "pilot", days=3, limit=25) == []
+    assert PA.pending(tmp_path / "pilot", limit=25) == []
 
 
 def test_the_prompt_is_the_production_analysis_prompt_with_the_text(tmp_path):
     from ai_analysis.prompts import ANALYSIS_SYSTEM_PROMPT
     date = _doc(tmp_path)
-    text, meta = PA.pending(tmp_path / "pilot", 3, 25)[0][1:3]
+    text, meta = PA.pending(tmp_path / "pilot", 25)[0][1:3]
     out = tmp_path / "p.txt"
     PA.write_prompt(text, meta, str(out))
     p = out.read_text(encoding="utf-8")
@@ -51,7 +63,7 @@ def test_the_prompt_is_the_production_analysis_prompt_with_the_text(tmp_path):
 
 def test_finalize_builds_a_full_record_with_the_anchor_check(tmp_path):
     _doc(tmp_path)
-    _, text, meta, _ = PA.pending(tmp_path / "pilot", 3, 25)[0]
+    _, text, meta, _ = PA.pending(tmp_path / "pilot", 25)[0]
     answer = tmp_path / "out.txt"
     answer.write_text("```json\n" + json.dumps({
         "source": "Goldman Sachs", "title": "US Economics", "report_type": "macro",
@@ -72,7 +84,7 @@ def test_finalize_builds_a_full_record_with_the_anchor_check(tmp_path):
 
 def test_finalize_refuses_an_answer_without_analysis(tmp_path):
     _doc(tmp_path)
-    _, text, meta, _ = PA.pending(tmp_path / "pilot", 3, 25)[0]
+    _, text, meta, _ = PA.pending(tmp_path / "pilot", 25)[0]
     bad = tmp_path / "bad.txt"
     bad.write_text("I could not read the document.", encoding="utf-8")
     import pytest
@@ -82,7 +94,7 @@ def test_finalize_refuses_an_answer_without_analysis(tmp_path):
 
 def test_cli_json_output_carries_the_answer_and_the_token_usage(tmp_path):
     _doc(tmp_path)
-    _, text, meta, _ = PA.pending(tmp_path / "pilot", 3, 25)[0]
+    _, text, meta, _ = PA.pending(tmp_path / "pilot", 25)[0]
     m = json.loads(open(meta, encoding="utf-8").read())
     m["total_pages"] = 14
     open(meta, "w", encoding="utf-8").write(json.dumps(m))
@@ -118,7 +130,7 @@ def test_a_market_ear_document_keeps_its_banned_source(tmp_path):
     """The TRADE BOARD drops calls sourced to The Market Ear; a Claude
     re-attribution to the underlying desk must not bypass that."""
     _doc(tmp_path)
-    _, text, meta, _ = PA.pending(tmp_path / "pilot", 3, 25)[0]
+    _, text, meta, _ = PA.pending(tmp_path / "pilot", 25)[0]
     m = json.loads(open(meta, encoding="utf-8").read())
     m["source"] = "The Market Ear"
     open(meta, "w", encoding="utf-8").write(json.dumps(m))
@@ -142,14 +154,154 @@ def _medium(root, doc_id, date, lane):
     (st / f"{doc_id}.meta.json").write_text(json.dumps(meta), encoding="utf-8")
 
 
-def test_pending_takes_high_first_then_only_marked_medium_2026_10_27(tmp_path):
-    """The graders' folder also holds MEDIUM notes Gemini analysed; only the
-    ones handed to the lane are read, and every HIGH note comes before them."""
+def test_only_notes_on_the_workers_list_are_pending_in_its_order(tmp_path):
+    """2026-11-23: the workflow analysed every note of the week, oldest id
+    first, while the worker waited for other notes. Now the list decides."""
     today = dt.date.today().isoformat()
     yesterday = (dt.date.today() - dt.timedelta(days=1)).isoformat()
+    _doc(tmp_path, "18282", yesterday)          # HIGH, listed by _doc
+    _doc(tmp_path, "18290", today)
     _medium(tmp_path, "30001", today, lane=True)
-    _medium(tmp_path, "30002", today, lane=False)
-    _doc(tmp_path, "18282", yesterday)
-    rows = PA.pending(tmp_path / "pilot", days=3, limit=25)
-    assert [r[0] for r in rows] == ["18282", "30001"]
-    assert PA.pending(tmp_path / "pilot", days=3, limit=1)[0][0] == "18282"
+    _medium(tmp_path, "30002", today, lane=True)   # published, but the worker gave up on it
+    root = tmp_path / "pilot"
+    # The worker's order: HIGH before MEDIUM, nearest deadline first.
+    _wait(tmp_path, "18290", today, minutes_left=30, replace=True)
+    _wait(tmp_path, "18282", yesterday, minutes_left=90)
+    _wait(tmp_path, "30001", today, priority="medium", minutes_left=60)
+    assert [r[0] for r in PA.pending(root, limit=25)] == ["18290", "18282", "30001"]
+    assert PA.pending(root, limit=1)[0][0] == "18290"
+    assert PA.pending(root, limit=25)[2][2].replace("\\", "/").endswith(
+        f"source-text-all/{today}/30001.meta.json")
+
+
+def test_no_list_means_nothing_to_do(tmp_path):
+    _doc(tmp_path)
+    (tmp_path / "pilot" / PA.WAITING).unlink()
+    assert PA.pending(tmp_path / "pilot", limit=25) == []
+    (tmp_path / "pilot" / PA.WAITING).write_text("not json")
+    assert PA.pending(tmp_path / "pilot", limit=25) == []
+
+
+def test_a_note_too_close_to_its_deadline_is_left_to_gemini(tmp_path):
+    date = _doc(tmp_path)
+    _wait(tmp_path, "18282", date, minutes_left=(PA.MIN_LEFT_S - 30) / 60, replace=True)
+    assert PA.pending(tmp_path / "pilot", limit=25) == []
+    _wait(tmp_path, "18282", date, minutes_left=(PA.MIN_LEFT_S + 60) / 60, replace=True)
+    assert [r[0] for r in PA.pending(tmp_path / "pilot", limit=25)] == ["18282"]
+    _wait(tmp_path, "18282", date, minutes_left=-5, replace=True)   # already past
+    assert PA.pending(tmp_path / "pilot", limit=25) == []
+
+
+def test_a_list_entry_cannot_point_outside_its_folders(tmp_path):
+    date = _doc(tmp_path)
+    f = tmp_path / "pilot" / PA.WAITING
+    f.write_text(json.dumps({"waiting": [
+        {"id": "../../x", "date": date, "deadline": "2099-01-01T00:00:00Z"},
+        {"id": 18282, "date": "../" + date, "deadline": "2099-01-01T00:00:00Z"},
+        "junk", {"id": 18282}]}))
+    assert PA.pending(tmp_path / "pilot", limit=25) == []
+
+
+# ── the parallel run ────────────────────────────────────────────────────────
+
+GOOD = json.dumps({"result": json.dumps({
+    "source": "Goldman Sachs", "title": "US Economics", "report_type": "macro",
+    "key_insights": ["Goldman expects core PCE +0.3% in September."]}), "usage": {}})
+
+
+def _five(tmp_path):
+    date = dt.date.today().isoformat()
+    for i in range(5):
+        _doc(tmp_path, str(18300 + i), date)
+    return date
+
+
+def test_run_analyses_the_list_several_at_a_time(tmp_path):
+    import threading
+    import time
+    date = _five(tmp_path)
+    root = tmp_path / "pilot"
+    live, peak, lock = [0], [0], threading.Lock()
+
+    def ask(prompt, model):
+        with lock:
+            live[0] += 1
+            peak[0] = max(peak[0], live[0])
+        time.sleep(0.15)
+        with lock:
+            live[0] -= 1
+        return GOOD
+    st = PA.run(root, workers=3, ask=ask, say=lambda *_: None)
+    assert st["analyzed"] == 5 and st["failed"] == 0 and not st["limit"]
+    assert peak[0] >= 2                       # in parallel, not one at a time
+    for i in range(5):
+        rec = json.loads((root / "analyses" / date / f"{18300 + i}.json").read_text(encoding="utf-8"))
+        assert rec["pdf_file_id"] == 18300 + i and rec["analysis"]["key_insights"]
+    assert PA.pending(root, limit=25) == []    # and nothing is analysed twice
+
+
+def test_run_counts_a_bad_answer_as_one_attempt_and_goes_on(tmp_path):
+    date = _five(tmp_path)
+    root = tmp_path / "pilot"
+
+    calls = []
+
+    def ask2(prompt, model):
+        calls.append(1)
+        return "no JSON here" if len(calls) == 2 else GOOD
+    st = PA.run(root, workers=1, ask=ask2, say=lambda *_: None)
+    assert st["analyzed"] == 4 and st["failed"] == 1
+    failed = list((root / "analysis-failures" / date).glob("*.json"))
+    assert len(failed) == 1 and json.loads(failed[0].read_text())["attempts"] == 1
+    # The failed one is still on the list for the next run.
+    assert len(PA.pending(root, limit=25)) == 1
+
+
+def test_a_usage_limit_stops_the_run_and_fails_nothing(tmp_path):
+    _five(tmp_path)
+    root = tmp_path / "pilot"
+    calls = []
+
+    def ask(prompt, model):
+        calls.append(1)
+        return GOOD if len(calls) == 1 else json.dumps(
+            {"result": "You have hit your usage limit. Resets 9pm.", "usage": {}})
+    st = PA.run(root, workers=1, ask=ask, say=lambda *_: None)
+    assert st["limit"] and st["analyzed"] == 1 and st["failed"] == 0
+    assert len(calls) == 2
+    assert not (root / "analysis-failures").exists()
+    assert len(PA.pending(root, limit=25)) == 4
+
+
+def test_run_stops_taking_documents_when_its_time_is_up(tmp_path):
+    _five(tmp_path)
+    st = PA.run(tmp_path / "pilot", workers=2, budget_s=-1, ask=lambda p, m: GOOD, say=lambda *_: None)
+    assert st["analyzed"] == 0
+
+
+def test_a_dry_run_reads_recent_notes_and_writes_nothing_to_the_checkout(tmp_path):
+    date = _five(tmp_path)
+    root = tmp_path / "pilot"
+    (root / PA.WAITING).unlink()               # a dry run needs no list
+    docs = PA.recent_high(root, 3)
+    assert [d[0] for d in docs] == ["18304", "18303", "18302"]
+    out = tmp_path / "elsewhere"
+    st = PA.run(root, workers=2, ask=lambda p, m: GOOD, docs=docs, out_root=out, say=lambda *_: None)
+    assert st["analyzed"] == 3
+    assert not (root / "analyses").exists()
+    assert len(list((out / "analyses" / date).glob("*.json"))) == 3
+
+
+def test_the_workflow_runs_the_parallel_driver_and_has_a_dry_run():
+    from pathlib import Path
+    import yaml
+    doc = yaml.safe_load((Path(__file__).resolve().parents[1] / ".github" / "workflows"
+                          / "pilot-analysis.yml").read_text(encoding="utf-8"))
+    trig = doc.get("on", doc.get(True))
+    assert set(trig["workflow_dispatch"]["inputs"]) == {"dry_run", "workers"}
+    assert "schedule" not in trig
+    steps = {s["name"]: s for s in doc["jobs"]["analyze"]["steps"]}
+    run = steps["Analyze"]["run"]
+    assert "pilot_analyze.py run" in run and "--repo pilot-data" in run
+    # Inputs reach the shell through the environment, never spliced into the script.
+    assert "${{" not in run and "${{" not in steps["Find documents the worker is waiting for"]["run"]

@@ -151,3 +151,15 @@ def test_no_pilot_workflow_keeps_a_cron_and_the_worker_covers_every_slot():
     assert {(h, 0, "mon-fri") for h in range(9, 15)} <= readers
     assert (13, 15, "mon-fri") in readers
     assert {(h, 0, "*") for h in (1, 5, 17, 21)} <= readers
+
+
+def test_the_analysis_lane_has_no_clock_slot_and_starts_on_demand():
+    """2026-11-23: a day's research arrives in one burst. Thirty-minute slots,
+    none overnight and two-hourly at weekends, could not serve it inside the
+    lane's timeout, and most slots ran with nothing to do."""
+    assert W.PILOT_WORKFLOWS["pilot-analysis.yml"] == []
+    from github_bridge import claude_lane as L
+    assert L.ANALYSIS_WORKFLOW == "pilot-analysis.yml"
+    import inspect
+    assert "_start_a_run(" in inspect.getsource(L.pull)
+

@@ -24,7 +24,10 @@ def lane_on(monkeypatch):
     monkeypatch.setattr(settings, "github_token", "t")
     monkeypatch.setattr(settings, "github_repo", "o/r")
     monkeypatch.setattr(settings, "pilot_publish_enabled", True)
+    monkeypatch.setattr(settings, "pilot_dispatch_enabled", False, raising=False)
     monkeypatch.setattr(L, "in_pulse_window", lambda now=None: False)
+    monkeypatch.setattr(L, "_last_waiting", None)
+    monkeypatch.setattr(L, "_last_run_request", 0.0)
 
 
 class FakeGitHub:
@@ -42,11 +45,16 @@ class FakeGitHub:
     def get_file(self, path, ref=None):
         return {"path": path} if path in self.files else None
 
+    def put_file(self, path, content, message, ref=None):
+        self.files[path] = content
+        self.writes = getattr(self, "writes", 0) + 1
+        return {}
+
 
 @pytest.fixture
 def fake_gh(monkeypatch):
     f = FakeGitHub()
-    for name in ("list_dir", "get_file_text", "get_file"):
+    for name in ("list_dir", "get_file_text", "get_file", "put_file"):
         monkeypatch.setattr(gh, name, getattr(f, name))
     return f
 
@@ -312,9 +320,17 @@ def test_titles_come_from_cleaned_file_names(name, title):
     assert L.title_from_file_name(name) == title
 
 
-def test_notes_past_the_reader_cap_go_to_gemini_at_once(tmp_path, lane_on, fake_gh, monkeypatch):
-    """2026-10-18 audit R4: the readers take 25 notes a folder, newest first by
-    the bank's day then id; a note below that line waited 120 min for nothing."""
+WAITING_PATH = "pilot/lane/waiting.json"
+
+
+def _listed(fake_gh):
+    return json.loads(fake_gh.files[WAITING_PATH])["waiting"]
+
+
+def test_no_note_is_sent_to_gemini_for_being_past_the_readers_cap(tmp_path, lane_on, fake_gh, monkeypatch):
+    """2026-11-23: the readers' 25-a-day cap is another workflow's. Under it
+    289 of 420 HIGH notes went to Gemini at once in nine days, and Claude's
+    analysis of 221 of them arrived within two hours anyway."""
     import scripts.pilot_list_unread as plu
     monkeypatch.setattr(plu, "MAX_PER_DAY", 2)
     pids = []
@@ -326,26 +342,122 @@ def test_notes_past_the_reader_cap_go_to_gemini_at_once(tmp_path, lane_on, fake_
         _queue(pid)
         pids.append(pid)
     out = L.pull()
-    # the two Oct 6 notes are in scope; both Oct 5 notes are past the cap
-    assert out["to_gemini"] == 2
-    assert db.get_bridge_state(pids[1])["status"] == "committed"
-    assert db.get_bridge_state(pids[2])["status"] == "committed"
-    assert db.get_bridge_state(pids[0])["status"] == "fallback_to_gemini"
-    assert db.get_bridge_state(pids[3])["status"] == "fallback_to_gemini"
+    assert out["to_gemini"] == 0 and out["waiting"] == 4
+    assert all(db.get_bridge_state(p)["status"] == "committed" for p in pids)
+    assert not hasattr(L, "over_reader_cap")
 
 
-def test_a_read_note_keeps_its_place_under_the_cap(tmp_path, lane_on, fake_gh, monkeypatch):
-    import scripts.pilot_list_unread as plu
-    monkeypatch.setattr(plu, "MAX_PER_DAY", 1)
-    a = db.insert_pdf_file("/Current/2026/October/Oct 6/GS/a.pdf", "a.pdf", "")
-    b = db.insert_pdf_file("/Current/2026/October/Oct 6/GS/b.pdf", "b.pdf", "")
-    assert L.over_reader_cap("2026-10-06", set(), set()) == set()  # nothing queued yet
-    _queue(a)
-    _queue(b)
-    # b is newer by id, so it holds the one slot; a is over the cap
-    assert L.over_reader_cap("2026-10-06", set(), set()) == {a}
-    # once a was read it is never routed away
-    assert L.over_reader_cap("2026-10-06", {f"{a}.json"}, set()) == set()
+def test_pull_publishes_what_it_waits_for_with_deadlines(tmp_path, lane_on, fake_gh, monkeypatch):
+    monkeypatch.setattr(settings, "medium_ingestion_backend", "claude_lane", raising=False)
+    h1, _ = _pdf(tmp_path, "h1.pdf")
+    m1, _ = _pdf(tmp_path, "m1.pdf")
+    h2, _ = _pdf(tmp_path, "h2.pdf")
+    done, _ = _pdf(tmp_path, "done.pdf")
+    _queue(h1)
+    db.queue_for_claude_lane(m1, L.analysis_path(m1, "2026-10-06"), json.dumps(MEDIUM.__dict__))
+    _queue(h2)
+    _queue(done)
+    # h2 was handed over an hour before the others: its deadline is nearest.
+    db.get_connection().execute(
+        "UPDATE bridge_ingestion_state SET committed_at = datetime('now','-60 minutes') "
+        "WHERE pdf_file_id = ?", (h2,))
+    db.get_connection().commit()
+    fake_gh.files[L.analysis_path(done, "2026-10-06")] = _record(done)
+    out = L.pull()
+    assert out == {"ingested": 1, "to_gemini": 0, "waiting": 3}
+    rows = _listed(fake_gh)
+    # HIGH before MEDIUM, nearest deadline first, and the arrived note is off the list.
+    assert [r["id"] for r in rows] == [h2, h1, m1]
+    assert [r["priority"] for r in rows] == ["high", "high", "medium"]
+    assert all(r["date"] == "2026-10-06" for r in rows)
+    from datetime import datetime, timedelta, timezone
+    d = datetime.strptime(rows[1]["deadline"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    left = d - datetime.now(timezone.utc)
+    assert timedelta(minutes=settings.claude_lane_timeout_minutes - 2) < left <= timedelta(
+        minutes=settings.claude_lane_timeout_minutes)
+
+
+def test_an_unchanged_list_is_not_written_again(tmp_path, lane_on, fake_gh):
+    pid, _ = _pdf(tmp_path, "a.pdf")
+    _queue(pid)
+    L.pull()
+    assert fake_gh.writes == 1
+    L.pull()
+    L.pull()
+    assert fake_gh.writes == 1
+    # A restart forgets what it wrote, reads the branch and still writes nothing.
+    L._last_waiting = None
+    L.pull()
+    assert fake_gh.writes == 1
+    fake_gh.files[L.analysis_path(pid, "2026-10-06")] = _record(pid)
+    L.pull()
+    assert fake_gh.writes == 2 and _listed(fake_gh) == []
+
+
+def test_a_timed_out_note_leaves_the_list(tmp_path, lane_on, fake_gh, monkeypatch):
+    monkeypatch.setattr("discord_bot.ops_alert.ops_alert_sync", lambda *a, **k: None)
+    pid, _ = _pdf(tmp_path, "late.pdf")
+    _queue(pid)
+    L.pull()
+    assert [r["id"] for r in _listed(fake_gh)] == [pid]
+    db.get_connection().execute(
+        "UPDATE bridge_ingestion_state SET committed_at = datetime('now','-3 hours')")
+    db.get_connection().commit()
+    assert L.pull()["to_gemini"] == 1
+    assert _listed(fake_gh) == []
+
+
+def test_a_failed_write_of_the_list_does_not_stop_the_pull(tmp_path, lane_on, fake_gh, monkeypatch):
+    def boom(*a, **k):
+        raise RuntimeError("GitHub 502")
+    monkeypatch.setattr(gh, "put_file", boom)
+    pid, _ = _pdf(tmp_path, "a.pdf")
+    _queue(pid)
+    assert L.pull()["waiting"] == 1
+    assert WAITING_PATH not in fake_gh.files
+    monkeypatch.setattr(gh, "put_file", fake_gh.put_file)
+    L.pull()                                  # and the next tick writes it
+    assert [r["id"] for r in _listed(fake_gh)] == [pid]
+
+
+def test_pull_starts_a_run_only_when_notes_are_waiting(tmp_path, lane_on, fake_gh, monkeypatch):
+    from github_bridge import workflow_dispatch as W
+    started = []
+    monkeypatch.setattr(W, "dispatch", lambda wf, **k: started.append(wf) or 204)
+    L.pull()
+    assert started == []                      # nothing handed over
+    pid, _ = _pdf(tmp_path, "a.pdf")
+    _queue(pid)
+    L.pull()
+    assert started == []                      # dispatch is off (PILOT_DISPATCH_ENABLED)
+    monkeypatch.setattr(settings, "pilot_dispatch_enabled", True, raising=False)
+    L.pull()
+    assert started == ["pilot-analysis.yml"]
+    L.pull()
+    assert started == ["pilot-analysis.yml"]  # no record since: wait before asking again
+    other, _ = _pdf(tmp_path, "b.pdf")
+    _queue(other)
+    fake_gh.files[L.analysis_path(pid, "2026-10-06")] = _record(pid)
+    L.pull()
+    assert len(started) == 2                  # records are arriving: queue the next run
+    monkeypatch.setattr(L, "_last_run_request", L._last_run_request - L.RUN_RETRY_S - 1)
+    L.pull()
+    assert len(started) == 3                  # quiet for 15 minutes: ask again
+    fake_gh.files[L.analysis_path(other, "2026-10-06")] = _record(other)
+    L.pull()
+    assert len(started) == 3                  # ingested, nothing waiting, no new run
+
+
+def test_the_sweep_empties_the_list(tmp_path, lane_on, fake_gh, monkeypatch):
+    async def none(limit=10):
+        return 0
+    monkeypatch.setattr(L, "run_fallbacks", none)
+    pid, _ = _pdf(tmp_path, "a.pdf")
+    _queue(pid)
+    L.pull()
+    assert len(_listed(fake_gh)) == 1
+    out = asyncio.run(L.sweep_before_pulse())
+    assert out["swept"] == 1 and _listed(fake_gh) == []
 
 
 # --- MEDIUM through the lane (2026-10-27, owner) -------------------------
@@ -396,17 +508,6 @@ def test_a_medium_record_is_stored_as_medium(tmp_path, lane_on, fake_gh):
     fake_gh.files[L.analysis_path(pid, "2026-10-06")] = _record(pid)
     assert L.pull()["ingested"] == 1
     assert _latest(pid)["priority"] == "medium"
-
-
-def test_medium_notes_do_not_count_toward_the_reader_cap(tmp_path, lane_on, fake_gh, monkeypatch):
-    import scripts.pilot_list_unread as plu
-    monkeypatch.setattr(plu, "MAX_PER_DAY", 1)
-    h = db.insert_pdf_file("/Current/2026/October/Oct 6/GS/h.pdf", "h.pdf", "")
-    m = db.insert_pdf_file("/Current/2026/October/Oct 6/UBS/m.pdf", "m.pdf", "")
-    _queue(h)
-    db.queue_for_claude_lane(m, L.analysis_path(m, "2026-10-06"), json.dumps(MEDIUM.__dict__))
-    # m is newer by id but MEDIUM: the one HIGH slot stays h's, and m is never capped
-    assert L.over_reader_cap("2026-10-06", set(), set()) == set()
 
 
 def test_orchestrator_offers_medium_documents_to_the_lane(tmp_path, lane_on, monkeypatch):

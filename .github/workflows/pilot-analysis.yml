@@ -1,16 +1,29 @@
 # Claude analysis lane (spec docs/superpowers/specs/2026-10-06-retire-gemini-
-# pdf-pipeline-design.md, phases 1 and 2). For every HIGH document the pilot
-# publishes, and every MEDIUM document the worker hands to the lane
-# (source-text-all/, meta "lane": true, HIGH first), run the production
-# deep-analysis prompt through Claude and
-# commit a complete pdf_analyses-shaped record to pilot/analyses/. Runs
-# beside the frozen pilot readers (own concurrency group, own paths);
-# the worker dispatches it (github_bridge/workflow_dispatch.py).
-# Production reads nothing from it until the cutover switch.
+# pdf-pipeline-design.md, phases 1 and 2). For every HIGH or MEDIUM document
+# the worker is waiting for (pilot/lane/waiting.json on pilot-data, written by
+# github_bridge/claude_lane.py), run the production deep-analysis prompt
+# through Claude and commit a complete pdf_analyses-shaped record to
+# pilot/analyses/. The worker loads the record, or runs Gemini when none
+# arrives before the deadline in the list.
+#
+# The worker starts a run when its list is not empty. A run works several
+# documents at a time for up to 25 minutes and re-reads the list between
+# documents. The worker starts the next one while notes are still waiting.
+#
+# Beside the frozen pilot readers: own concurrency group, own paths.
 name: pilot-analysis
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Speed test: analyse this many recent HIGH notes and commit nothing (0 = a normal run)"
+        required: false
+        default: "0"
+      workers:
+        description: "Documents analysed at the same time"
+        required: false
+        default: "4"
 
 permissions:
   contents: write
@@ -26,7 +39,7 @@ env:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 45
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -42,14 +55,19 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Find documents without an analysis
+      - name: Find documents the worker is waiting for
         id: pending
+        env:
+          DRY: ${{ inputs.dry_run || '0' }}
         run: |
-          python scripts/pilot_analyze.py pending --root "pilot-data/$PILOT_ROOT" \
-            --days 7 --limit 25 > /tmp/pending.tsv
-          N=$(grep -c . /tmp/pending.tsv || true)
+          if [ "$DRY" != "0" ]; then
+            N="$DRY"
+          else
+            N=$(python scripts/pilot_analyze.py pending --root "pilot-data/$PILOT_ROOT" \
+              --limit 1000 | grep -c . || true)
+          fi
           echo "count=$N" >> "$GITHUB_OUTPUT"
-          echo "pending: $N"
+          echo "waiting: $N"
 
       - name: Install Claude Code
         if: steps.pending.outputs.count != '0'
@@ -74,52 +92,15 @@ jobs:
             exit 1
           fi
 
-      - name: Analyze each document
+      - name: Analyze
         if: steps.pending.outputs.count != '0'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          DRY: ${{ inputs.dry_run || '0' }}
+          WORKERS: ${{ inputs.workers || '4' }}
         run: |
           set -u
           git -C pilot-data config user.name  'pilot-analysis-bot'
           git -C pilot-data config user.email 'actions@users.noreply.github.com'
-          persist () {
-            git -C pilot-data add "$PILOT_ROOT/analyses/" "$PILOT_ROOT/analysis-failures/" 2>/dev/null || true
-            if git -C pilot-data diff --cached --quiet; then return 0; fi
-            git -C pilot-data commit -q -m "pilot: analysis ($1)" || return 0
-            for attempt in 1 2 3; do
-              git -C pilot-data pull --rebase --quiet origin pilot-data || true
-              if git -C pilot-data push -q origin pilot-data; then return 0; fi
-              sleep 3
-            done
-            echo "::warning::could not push after $1; the next run retries"
-          }
-          MODEL=$(python -c "import sys;sys.path.insert(0,'scripts');import pilot_analyze;print(pilot_analyze.MODEL)")
-          TOTAL=0; FAILED=0
-          while IFS=$'\t' read -r ID TEXT META DATE; do
-            [ -z "${ID:-}" ] && continue
-            TOTAL=$((TOTAL+1))
-            OUT="pilot-data/$PILOT_ROOT/analyses/$DATE/$ID.json"
-            python scripts/pilot_analyze.py prompt --text "$TEXT" --meta "$META" --out /tmp/analysis_prompt.txt
-            claude -p --model "$MODEL" --permission-mode bypassPermissions --max-turns 3 \
-              --output-format json \
-              < /tmp/analysis_prompt.txt > /tmp/analysis_out.txt 2>/tmp/analysis_err.txt || true
-            # A usage or rate limit is not this document's fault: it must not
-            # use up an attempt, and the rest of the run would hit it too.
-            if python scripts/pilot_analyze.py limit --raw /tmp/analysis_out.txt; then
-              echo "::warning::Claude usage limit reached; stopping this run, nothing counted as failed"
-              break
-            fi
-            if ! python scripts/pilot_analyze.py finalize --raw /tmp/analysis_out.txt \
-                --text "$TEXT" --meta "$META" --out "$OUT" --model "$MODEL"; then
-              echo "::warning::analysis failed for $ID"
-              echo "stdout head:"; head -c 300 /tmp/analysis_out.txt || true; echo
-              python scripts/pilot_analyze.py fail --root "pilot-data/$PILOT_ROOT" --date "$DATE" \
-                --id "$ID" --reason "$(head -c 120 /tmp/analysis_out.txt | tr '\n' ' ')" || true
-              FAILED=$((FAILED+1))
-            fi
-            persist "$ID"
-          done < /tmp/pending.tsv
-          echo "analyzed $TOTAL document(s), $FAILED failed"
-          if [ "$TOTAL" -gt 0 ] && [ "$FAILED" -eq "$TOTAL" ]; then
-            echo "::error::every analysis failed this run"; exit 1
-          fi
+          python scripts/pilot_analyze.py run --root "pilot-data/$PILOT_ROOT" --repo pilot-data \
+            --workers "$WORKERS" --budget-minutes 25 --dry-run "$DRY"
