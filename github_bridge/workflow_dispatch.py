@@ -35,7 +35,8 @@ PILOT_WORKFLOWS = {
                          + [(13, 15, "mon-fri")]
                          + [(h, 0, "*") for h in (1, 5, 17, 21)],
     "pilot-editor.yml": [(13, 55, "mon-fri")],
-    "pilot-graders.yml": [(17, 0, "mon-fri")],
+    # No grader slot: model grading was retired on 2026-11-23 (owner).
+    # It ran three hours after publication and fed no decision.
     # Claude analysis lane (2026-10-06, Gemini retirement spec phase 1):
     # every 30 minutes on weekdays 06:00-22:30 UTC so a HIGH note is
     # analysed within the hour, every 2 hours at weekends. A run with

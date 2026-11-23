@@ -10,11 +10,9 @@ Discord, Railway DB) is never written by any pilot job.
 | when | job | writes |
 |---|---|---|
 | worker, on HIGH analysis | `github_bridge/pilot_publish.py` (gated `PILOT_PUBLISH_ENABLED`) | `source-text/<date>/<id>__<slug>.txt` + `.meta.json` |
-| worker, on MEDIUM analysis | same publisher | `source-text-all/<date>/...` (graders' corpus only; readers never read it) |
+| worker, on MEDIUM analysis | same publisher | `source-text-all/<date>/...` (the Claude analysis lane's MEDIUM notes; the readers never read it) |
 | 09:00-14:00 hourly, 13:15, 01/05/17/21 | `pilot-readers.yml` | `cards/<date>/<id>.json`, `ops/<date>.json` |
-| 13:55 | `pilot-editor.yml` | `shadow/<date>.md`, `.clean.md`, `.meta.json` |
-| 17:00 | `pilot-graders.yml` | `grades/<date>/<dim>-<artifact>-<a|b>.json`, `scoreboard.md` |
-| dispatch only | `pilot-grader-gate.yml` | `grader-gate/<ts>/` |
+| 13:55 | `pilot-editor.yml` | `shadow/<date>.md`, `.clean.md`, `.meta.json`, `scoreboard.md` |
 
 ## Scheduling: the worker's clock, not GitHub's cron
 
@@ -22,91 +20,64 @@ Shakedown day 1 (2026-09-02) showed GitHub's cron dropping most of our
 schedules: the heartbeat fired twice in a day instead of every 30
 minutes, the readers' 09-14 UTC hourly window fired once, and the
 13:55 editor never fired. `github_bridge/workflow_dispatch.py` POSTs
-`workflow_dispatch` for the readers, editor and graders from the
+`workflow_dispatch` for the readers and the editor from the
 worker's APScheduler at the declared times. It is gated on
 `PILOT_DISPATCH_ENABLED` and needs the worker's `GITHUB_TOKEN` to carry
 **Actions: read and write** (extended 2026-09-02; a 403 pages ops hourly
 rather than failing silently). Only the readers keep a `schedule:`
-fallback, where a late fire is harmless. The editor and graders have
-none: on 2026-09-03 and 09-04 GitHub's cron fired them three hours late
-and the late editor run overwrote the 13:55 shadow pulse with one
-written from a different card set, after production had published, and
-the graders graded that version. A concurrency group only protects
+fallback, where a late fire is harmless. The editor has none: on
+2026-09-03 and 09-04 GitHub's cron fired it three hours late and the
+late run overwrote the 13:55 shadow pulse with one written from a
+different card set, after production had published. A concurrency group only protects
 against two runs at once, not against a second run hours later.
 
 A missed step can be run locally with the same scripts the workflow
 uses (see the 2026-09-02 NOTES entry for the exact commands); the
 artifacts are identical.
 
-## Before day 1 (plan section 4)
+## Model grading: retired 2026-11-23
 
-1. Set `PILOT_PUBLISH_ENABLED=true` on the Railway worker. Source text
-   starts landing on `pilot-data` within the bridge cadence.
-2. Two shakedown days. Check: reader failure rate under 10%
-   (`ops/<date>.json`), zero workflow auth or commit failures, the
-   editor produced `shadow/<date>.md` and
-   citation failures near zero after its one re-ask, the scoreboard
-   renders. A document that fails three reads is recorded under
-   `read-failures/<date>/<id>.json` and leaves the unread list, so one
-   unreadable PDF cannot void every day; the editor meta carries it as
-   `given_up_at_edit`, a coverage gap the grades must be read against.
-3. Run `pilot-grader-gate` from the Actions tab. Every dimension must
-   read `separates`. TOO WEAK means the prompt lets a distorted brief
-   or a misattributed sentence through; fix the prompt, re-run.
-4. Record subscription headroom on the heaviest shakedown day. Shed
-   order if it runs thin: readers tier down first, then the editor,
-   graders last.
-5. Once during shakedown, run the ledger and editor over a merged
-   three-day card set and note the grouping behaviour. Uncounted (plan
-   4.3). Ledger half: `pilot_editor_pack.py --days 3`. Editor half:
-   dispatch `pilot-editor` with inputs `date`, `days=3`, `stress=true`;
-   it writes `pilot/stress/<date>-3d.md`, never `shadow/`.
-6. Commit the file `pilot/DAY1` on `pilot-data` containing the first
-   counted date. From that day: no prompt edits, no model-string
-   edits. Either restarts the clock.
+Until 2026-11-23 a graders workflow ran at 17:00 UTC: two agents per
+dimension graded the day's edition and the production pulse against the
+source text, with a third on a disagreement, and a ten-day verdict was to
+decide whether the design shipped. Day 1 was never set (`pilot/DAY1` was
+never committed), the Omnipulse body went into production on 2026-09-26
+by the owner's decision, and the grades arrived three hours after each
+pulse was published. The owner retired it. The workflows, their scripts,
+the grader prompts and the seeded fixtures are deleted from this
+repository (they are in its history), and the grades through 2026-11-20
+stay under `grades/` on `pilot-data`.
+
+What checks an edition now runs before it is published, in code:
+
+- `scripts/pilot_verify_citations.py`: every figure in a sentence must be
+  in a card that sentence cites, and a bank a sentence names must be one
+  its citations (or, for a sentence with none, its theme) carry. The
+  editor gets one repair pass on the failures, and what remains is
+  recorded in `shadow/<date>.meta.json`.
+- `scripts/omnipulse_body.py :: problems`: production does not take the
+  body of an edition written with source files unread, with a structural
+  problem, or with a citation marker left in its text.
 
 ## Reading the scoreboard
 
-`pilot/scoreboard.md` on `pilot-data`. Days before DAY1 show as
-shakedown and count for nothing. When the two graders disagree on a
-metric, the graders workflow runs a third fresh agent on the same
-frozen prompt and input and records it as `<dim>-tiebreak.json`; that
-grade replaces both and the disagreement clears (spec: the owner may
-delegate tiebreaks). A row that still lists a `tiebreak` entry means
-the third grade was itself unusable; the owner settles it by writing
-`<dim>-owner.json` in the day's grade directory (same shape as an agent
-grade, agent `owner`), which overrides everything.
-
-One exception (owner, 2026-09-25): metric 1's theme-changing mis-merge
-is a majority vote of the usable grades among a, b and the tiebreak,
-and needs two votes on the winning side. The tiebreak votes, it does
-not replace. A 1-1 split (one grader failed, the survivor and the
-tiebreak disagree) shows as `m1 merge` in the tiebreak column and holds
-metric 1 below PASS until the owner writes `grouping-owner.json` with
-a `mis_merges` list. An owner grade without that key leaves the vote to
-the graders.
-
-Decision rule after 10 counted days (frozen): expand to MEDIUM only if
-metrics 1, 2, 2a and 3 all pass; kill if 2, 2a or 3 regress; anything
-else buys exactly one reader-prompt iteration, then re-run, then
-decide. No third iteration.
+`pilot/scoreboard.md` on `pilot-data`, rendered by the editor workflow
+after each edition (`scripts/pilot_scoreboard.py`). One row per edition:
+citations, failed sentences, source files unread at edit (any is a VOID
+day), documents the readers gave up on, the share of citations from the
+first and last fifth of the pack (flagged above 70%), and whether the
+readers ran clean (failure rate under 10%, no read inside the pulse
+window, from `ops/<date>.json`).
 
 ## Deviations recorded
 
-- Reader tiers within HIGH (opus for GS/MS/JPM/Citi/DB/BofA, sonnet
-  for the rest) are the plan's invention, not the spec's; metrics 2
-  and 2a are therefore split by tier on the scoreboard.
+- Reader tiers within HIGH (GS/MS/JPM/Citi/DB/BofA against the rest)
+  are the plan's invention, not the spec's. Both run Sonnet since
+  2026-09-16.
 - The shadow pulse omits RECAP and WHAT TO WATCH (no live data on the
-  runner). Graders compare only THE MAIN EVENT and BRIEFS, stated in
-  every grader prompt.
-- Grader fixtures live in this repo under
-  `docs/superpowers/routines/pilot/grader-fixtures/` (frozen with the
-  prompts) rather than on the data branch; the gate copies its verdict
-  to `pilot-data` under `grader-gate/`.
-- Metric 5 comes from `ops/<date>.json`, written by the readers
-  workflow, not from Actions run metadata.
-- Tiebreaks are delegated to a third fresh grader agent (2026-09-05);
-  the owner's `<dim>-owner.json` override remains.
+  runner).
+- The readers' record comes from `ops/<date>.json`, written by the
+  readers workflow, not from Actions run metadata.
 - A document the readers give up on after three attempts is a recorded
   coverage gap (`read-failures/`, `given_up_at_edit`), not an unread
   file; the void rule counts readable-unread only.

@@ -1,22 +1,29 @@
-"""Render pilot/scoreboard.md from grades/**, shadow/*.meta.json and ops.
+"""Render pilot/scoreboard.md from shadow/*.meta.json and ops/*.json.
 
-Per day, per metric, against the FROZEN thresholds (spec section 8):
-  1  fragmented mass <= 10% POOLED over counted days by card count
-     (owner, 2026-09-25), and no theme-changing mis-merge on any
-     counted day, by majority of the graders (owner, 2026-09-25)
-  2  POOLED over counted days (owner, 2026-09-25): shadow faithful-rate
-     >= production and shadow unsupported-rate <= production. Was
-     'zero unsupported' per day, which one sentence or one grader
-     error in ~150 fails.
-  2a zero MATERIAL distortions (non-material soft ceiling 20%: flag)
-  3  shadow preserved-days >= production over the window
-  4  flag when > 70% of citations sit in the first and last quintiles
-  5  reader failure rate < 10%, no read colliding with the pulse window
+One row per edition, from numbers the pipeline computes in code:
 
-Two agents per dimension: a day's grade is the agreement; a
-disagreement is shown and left for the owner's tiebreak (spec). Days
-before the DAY1 marker are shakedown: shown, never counted. Metrics 2
-and 2a are split by reader tier (plan 3.2).
+  citations     card and brief citations in the edition
+  failed        sentences the citation check could not vouch for after
+                the editor's one repair pass (pilot_verify_citations.py)
+  unread@edit   source files still unread when the editor ran. Any such
+                day is VOID: the edition was written from an incomplete
+                card set, and production does not take its body
+                (omnipulse_body.problems)
+  given up      documents the readers gave up on, a coverage gap
+  edge          share of citations in the first and last fifth of the
+                pack, flagged above 70% (the editor reading only the
+                ends of a long pack)
+  readers       reader failure rate under 10% and no read colliding
+                with the pulse window (ops/<date>.json)
+
+Model grading was retired on 2026-11-23 (owner). Two agents per
+dimension graded each edition against the source text three hours after
+it was published, took 42 to 73 minutes a day, and fed a ten-day verdict
+whose day 1 was never set: the decision it was built for was taken on
+2026-09-26 without it. The grades through 2026-11-20 stay under
+pilot/grades/ on pilot-data, and the scoreboard that showed them is in
+that file's history. This file is rendered by the editor workflow after
+each edition.
 """
 from __future__ import annotations
 
@@ -27,85 +34,8 @@ import os
 import sys
 from collections import defaultdict
 
-SCOPE_LIMIT = ("Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on "
-               "record. A passing fragmentation number certifies the architecture at "
-               "light corpus load only.")
-
-
-def pooled_m1(counted: list[dict]) -> tuple[bool, str]:
-    """Metric 1 over the counted window (owner decision 2026-09-25).
-
-    Fragmented mass is pooled by card count across every counted day
-    whose two graders agree, and passes at <= 10%. The same day's
-    unchanged ledger was graded 20% then 36% (9/23) and 17% then 6%
-    (9/24) on 2026-09-25, so a single-day verdict against a 10% line sat
-    inside grader noise. Any counted day whose graders find a
-    theme-changing mis-merge by majority (merge_verdict) fails the
-    metric. A day with no majority is undecided: it cannot fail the
-    metric, and it holds the verdict below PASS until settled.
-    """
-    frag = cards = 0.0
-    days = 0
-    merge_days, undecided = [], []
-    for r in counted:
-        m = r["m1"]
-        if m.get("theme_changing_merge"):
-            merge_days.append(r["date"])
-        elif m.get("theme_changing_merge") is None:
-            undecided.append(r["date"])
-        if m.get("share") is None or not m.get("cards"):
-            continue
-        days += 1
-        frag += m["share"] * m["cards"]
-        cards += m["cards"]
-    left_out = len(counted) - days
-    if not days:
-        return False, "no counted day with an agreed grouping grade"
-    share = frag / cards
-    ok = share <= 0.10 and not merge_days and not undecided
-    return ok, (f"{days} day(s)"
-                + (f" ({left_out} counted day(s) left out: grader disagreement or missing grade)"
-                   if left_out else "")
-                + f": {share:.0%} fragmented over {int(cards)} cards"
-                + (f"; theme-changing mis-merge on {', '.join(merge_days)}" if merge_days else "")
-                + (f"; mis-merge undecided on {', '.join(undecided)}" if undecided else ""))
-
-
-def pooled_m2(counted: list[dict]) -> tuple[bool, str]:
-    """Metric 2 over the counted window (owner decision 2026-09-25).
-
-    Faithful rate and unsupported rate are each pooled by sentence count
-    across every counted day with usable grades for BOTH pulses, then
-    compared like for like: the shadow passes when its faithful rate is
-    at least production's and its unsupported rate is no higher. The old
-    per-day 'zero unsupported' clause failed a day on a single sentence,
-    and on 2026-09-24 five of six 'unsupported' verdicts were grader
-    blind spots (NUL-byte source files), so a per-day zero measured the
-    graders as much as the pulse.
-    """
-    tot = {"shadow": [0.0, 0, 0], "production": [0.0, 0, 0]}   # faithful, unsupported, n
-    days = 0
-    for r in counted:
-        s, p = r["m2_shadow"], r["m2_production"]
-        if None in (s["rate"], p["rate"], s["n"], p["n"], s["unsupported"], p["unsupported"]):
-            continue
-        days += 1
-        for art, v in (("shadow", s), ("production", p)):
-            tot[art][0] += v["rate"] * v["n"]
-            tot[art][1] += v["unsupported"]
-            tot[art][2] += v["n"]
-    left_out = len(counted) - days
-    if not days:
-        return False, "no counted day with usable grades for both pulses"
-    fr = {a: t[0] / t[2] for a, t in tot.items()}
-    ur = {a: t[1] / t[2] for a, t in tot.items()}
-    ok = fr["shadow"] >= fr["production"] and ur["shadow"] <= ur["production"]
-    return ok, (f"{days} day(s)"
-                + (f" ({left_out} counted day(s) left out: grader disagreement or missing grade)"
-                   if left_out else "")
-                + f": faithful {fr['shadow']:.0%} vs {fr['production']:.0%}, "
-                f"unsupported {tot['shadow'][1]}/{tot['shadow'][2]} ({ur['shadow']:.1%}) "
-                f"vs {tot['production'][1]}/{tot['production'][2]} ({ur['production']:.1%})")
+RETIRED_NOTE = ("Model grading was retired on 2026-11-23. Grades through 2026-11-20 are under "
+                "`pilot/grades/`, and the scoreboard that showed them is in this file's history.")
 
 
 def _load(path: str):
@@ -116,242 +46,43 @@ def _load(path: str):
         return None
 
 
-def day1(pilot_root: str) -> str | None:
-    p = os.path.join(pilot_root, "DAY1")
-    if os.path.exists(p):
-        with open(p, encoding="utf-8") as fh:
-            return fh.read().strip()[:10] or None
-    return None
-
-
 def collect(pilot_root: str) -> dict:
-    days: dict[str, dict] = defaultdict(lambda: {"grades": defaultdict(dict)})
-    for path in sorted(glob.glob(os.path.join(pilot_root, "grades", "*", "*.json"))):
-        date = os.path.basename(os.path.dirname(path))
-        name = os.path.basename(path)[:-5]  # e.g. fidelity-shadow-a
-        doc = _load(path)
-        if doc is None:
-            continue
-        parts = name.split("-")
-        agent = parts[-1]
-        dim = "-".join(parts[:-1])
-        days[date]["grades"][dim][agent] = doc
+    days: dict[str, dict] = defaultdict(dict)
     for path in sorted(glob.glob(os.path.join(pilot_root, "shadow", "*.meta.json"))):
-        date = os.path.basename(path)[:10]
-        days[date]["shadow_meta"] = _load(path) or {}
+        days[os.path.basename(path)[:10]]["shadow_meta"] = _load(path) or {}
     for path in sorted(glob.glob(os.path.join(pilot_root, "ops", "*.json"))):
-        date = os.path.basename(path)[:10]
-        days[date]["ops"] = _load(path) or {}
+        days[os.path.basename(path)[:10]]["ops"] = _load(path) or {}
     return dict(days)
-
-
-def usable(doc):
-    """A grade the scoreboard may score. `failed: True` means finalize
-    could not parse it or validate flagged it (a missing key, mismatched
-    counts, an empty sentence list). Scoring it anyway turned a grader
-    outage into a metric failure attributed to the writer, so an
-    unusable grade counts as a MISSING agent instead (2026-09-03)."""
-    if not isinstance(doc, dict) or doc.get("failed"):
-        return None
-    return doc
-
-
-def agree(a, b, key, tol=0.0):
-    a, b = usable(a), usable(b)
-    if a is None or b is None:
-        return None, "one agent missing or unusable"
-    va, vb = a.get(key), b.get(key)
-    if isinstance(va, (int, float)) and isinstance(vb, (int, float)):
-        return ((va + vb) / 2, "") if abs(va - vb) <= tol else (None, f"disagree {va} vs {vb}")
-    return (va, "") if va == vb else (None, f"disagree {va} vs {vb}")
-
-
-def _apply_tiebreaks(grades: dict) -> dict:
-    """A tiebreak is the day's call for that dimension: it replaces both
-    agent grades so the disagreement clears (review 2026-09-01: it was
-    recorded and ignored). Two sources, in precedence order: `owner`
-    (a hand-written grade, see RUNBOOK) beats `tiebreak` (the third
-    fresh agent the graders workflow runs on a disagreement,
-    2026-09-05). An unusable tiebreak grade is ignored."""
-    out = {}
-    for dim, agents in grades.items():
-        tb = usable(agents.get("owner")) or usable(agents.get("tiebreak"))
-        out[dim] = {"a": tb, "b": tb} if tb else agents
-    return out
-
-
-# Per dimension family: the key the two agents must agree on and the
-# tolerance. Mirrors day_row so the workflow's "who needs a third
-# grader" question and the scoreboard's "who disagreed" column can
-# never drift apart.
-_AGREE_KEYS = {
-    "grouping": ("fragmented_mass_share", 0.05),
-    "fidelity": ("faithful_rate", 0.05),
-    "brief_fidelity": ("material_total", 0.0),
-    "mechanism": ("preserved", 0.0),
-}
-
-
-def tiebreak_stems(grades: dict) -> list[str]:
-    """Dimensions (file stems such as `fidelity-shadow`) whose two agents
-    disagree, or where exactly one agent's grade is usable, and no
-    tiebreak or owner grade exists yet. The graders workflow runs a
-    third fresh agent on each (2026-09-05: seven disagreements sat
-    unresolved across three shakedown days, so `m2 pass` could never
-    compute)."""
-    out = []
-    for dim, agents in sorted(grades.items()):
-        if usable(agents.get("owner")) or usable(agents.get("tiebreak")):
-            continue
-        a, b = usable(agents.get("a")), usable(agents.get("b"))
-        if a is None and b is None:
-            continue  # both graders failed: a third would not settle anything
-        if a is None or b is None:
-            out.append(dim)
-            continue
-        key, tol = _AGREE_KEYS.get(dim.split("-")[0], (None, 0.0))
-        if key is None:
-            continue
-        if agree(a, b, key, tol=tol)[0] is None:
-            out.append(dim)
-            continue
-        if dim == "grouping":
-            if _merge_call(a) != _merge_call(b):
-                out.append(dim)
-    return out
-
-
-def _merge_call(doc) -> bool:
-    return any(m.get("would_change_theme_selection") for m in (doc.get("mis_merges") or []))
-
-
-def merge_verdict(agents: dict) -> tuple[bool | None, str]:
-    """Whether the day carries a theme-changing mis-merge, by majority of
-    the usable graders (owner decision 2026-09-25).
-
-    An owner grade that carries `mis_merges` decides alone (one written
-    only to settle the share leaves the vote to the graders). Otherwise every usable grader among
-    a, b and the tiebreak votes, and a verdict needs at least two votes
-    on the winning side. A split with no majority (a vs b before the
-    tiebreak lands, or one survivor against the tiebreak when a grader
-    failed) is None and goes to the owner. Before this the tiebreak
-    replaced both graders, so one agent's call decided the day, and
-    without a tiebreak one grader's flag failed it: on 2026-09-23 grader
-    b found no theme-changing merge and the tiebreak alone found two.
-    """
-    owner = usable(agents.get("owner"))
-    if owner and "mis_merges" in owner:
-        return _merge_call(owner), ""
-    votes = [_merge_call(x) for x in (agents.get(k) for k in ("a", "b", "tiebreak")) if usable(x)]
-    yes, no = sum(votes), len(votes) - sum(votes)
-    if yes >= 2 and yes > no:
-        return True, ""
-    if no >= 2 and no > yes:
-        return False, ""
-    if not votes:
-        return None, "no usable grader"
-    if len(votes) < 2:
-        return None, "one grader usable"
-    return None, f"disagree merge {yes} yes vs {no} no"
 
 
 def is_void(d: dict) -> bool:
     """A day whose editor ran with source files still unread was written
-    from an incomplete (on 2026-09-03, an entirely stale) card set. Its
-    metrics measure the staleness, not the architecture: shadow fidelity
-    read 70% that day purely because the pulse argued the previous day's
-    documents. Such a day is VOID — shown, never counted, never allowed
-    to pass or fail a metric. One rule, used by day_row and by the
-    header's day count."""
+    from an incomplete (on 2026-09-03, an entirely stale) card set."""
     return bool((d.get("shadow_meta") or {}).get("unread_source_files_at_edit"))
 
 
-def day_row(date: str, d: dict) -> dict:
-    g = _apply_tiebreaks(d["grades"])
-    row = {"date": date}
-    # metric 1
-    ga, gb = g.get("grouping", {}).get("a"), g.get("grouping", {}).get("b")
-    share, note = agree(ga, gb, "fragmented_mass_share", tol=0.05)
-    # Votes come from the raw grades: _apply_tiebreaks would hand the
-    # tiebreak both seats and let one agent decide.
-    merges, merge_note = merge_verdict(d["grades"].get("grouping", {}))
-    cards = None
-    if usable(ga) and usable(gb):
-        cards = max(ga.get("total_cards") or 0, gb.get("total_cards") or 0) or None
-    # Per-day `pass` is informational; the verdict pools the share by
-    # card count across counted days (owner, 2026-09-25, see pooled_m1).
-    row["m1"] = {"share": share, "theme_changing_merge": merges, "note": note,
-                 "merge_note": merge_note, "cards": cards,
-                 "pass": (share is not None and share <= 0.10 and merges is False)}
-    # metric 2 per artifact
-    for art in ("shadow", "production"):
-        a_, b_ = g.get(f"fidelity-{art}", {}).get("a"), g.get(f"fidelity-{art}", {}).get("b")
-        # 0.05, matching metric 1's discipline against its 0.10
-        # threshold. At the old 0.14 two graders could differ by more
-        # than the shadow-vs-production gap being measured and still be
-        # averaged into one number, so a real disagreement never reached
-        # the owner tiebreak the header promises (2026-09-03 review).
-        rate, note = agree(a_, b_, "faithful_rate", tol=0.05)
-        unsup = n = None
-        if usable(a_) and usable(b_):
-            unsup = max(a_.get("unsupported", 0) or 0, b_.get("unsupported", 0) or 0)
-            n = max(len(a_.get("sentences") or []), len(b_.get("sentences") or [])) or None
-        row[f"m2_{art}"] = {"rate": rate, "unsupported": unsup, "n": n, "note": note}
-    s, p = row["m2_shadow"], row["m2_production"]
-    # Per-day column is now the rate comparison only; the verdict is
-    # pooled across counted days (owner, 2026-09-25, see pooled_m2).
-    row["m2_pass"] = (s["rate"] is not None and p["rate"] is not None
-                      and s["rate"] >= p["rate"])
-    # metric 2a with tier split
-    a_, b_ = g.get("brief_fidelity", {}).get("a"), g.get("brief_fidelity", {}).get("b")
-    mat, note = agree(a_, b_, "material_total")
-    # Both agents audit the SAME briefs: count each brief once, taking
-    # the stricter agent's call (review 2026-09-01: audited was doubled).
-    per_brief: dict[str, dict] = {}
-    for x in (a_, b_):
-        for br in (usable(x) or {}).get("briefs") or []:
-            bid = br.get("id") or f"{br.get('bank')}:{br.get('tier')}"
-            cur = per_brief.setdefault(bid, {"tier": br.get("tier") or "?", "material": 0, "non_material": 0})
-            cur["material"] = max(cur["material"], br.get("material_count", 0) or 0)
-            cur["non_material"] = max(cur["non_material"], br.get("non_material_count", 0) or 0)
-    tiers = defaultdict(lambda: {"audited": 0, "material": 0, "non_material": 0})
-    for v in per_brief.values():
-        t = tiers[v["tier"]]
-        t["audited"] += 1
-        t["material"] += v["material"]
-        t["non_material"] += v["non_material"]
-    audited = len(per_brief)
-    # The soft ceiling is "20% of audited BRIEFS carry a non-material
-    # distortion", not a count of distortions (day 1 rendered 333%).
-    briefs_with_nonmat = sum(1 for v in per_brief.values() if v["non_material"] > 0)
-    row["m2a"] = {"material": mat, "note": note, "tiers": dict(tiers),
-                  "non_material_share": round(briefs_with_nonmat / audited, 2) if audited else None,
-                  "pass": mat == 0}
-    # metric 3 per artifact
-    for art in ("shadow", "production"):
-        a_, b_ = g.get(f"mechanism-{art}", {}).get("a"), g.get(f"mechanism-{art}", {}).get("b")
-        pres, note = agree(a_, b_, "preserved")
-        row[f"m3_{art}"] = {"preserved": pres, "note": note}
-    # metric 4 from the editor's citation meta
-    cit = (d.get("shadow_meta") or {}).get("citations") or {}
-    row["m4"] = {"edge_share": cit.get("edge_quintile_share"), "flag": cit.get("metric4_flag"),
-                 "failures": len(cit.get("failures") or [])}
-    row["unread_at_edit"] = (d.get("shadow_meta") or {}).get("unread_source_files_at_edit")
-    row["given_up_at_edit"] = (d.get("shadow_meta") or {}).get("given_up_at_edit")
-    row["void"] = is_void(d)
+def day_row(date: str, d: dict) -> dict | None:
+    """The day's numbers, or None when no edition was written that day
+    (a reader-only ops record is not an edition)."""
+    meta = d.get("shadow_meta")
+    if meta is None:
+        return None
+    cit = meta.get("citations") or {}
     ops = d.get("ops") or {}
-    row["m5"] = {"reader_failure_rate": ops.get("reader_failure_rate"),
-                 "collided_with_pulse_window": ops.get("collided_with_pulse_window"),
-                 "pass": (ops.get("reader_failure_rate") is not None
-                          and ops["reader_failure_rate"] < 0.10
-                          and not ops.get("collided_with_pulse_window"))}
-    row["disagreements"] = [k for k in ("m1", "m2_shadow", "m2_production", "m2a", "m3_shadow", "m3_production")
-                            if row[k].get("note", "").startswith("disagree")]
-    # A split, or a lone usable grader after the tiebreak ran, is the
-    # owner's call. "no usable grader" means grading has not happened.
-    if merge_note and merge_note != "no usable grader":
-        row["disagreements"].append("m1 merge")
-    return row
+    rate = ops.get("reader_failure_rate")
+    return {
+        "date": date,
+        "void": is_void(d),
+        "citations": (cit.get("card_citations") or 0) + (cit.get("brief_citations") or 0),
+        "failed": len(cit.get("failures") or []),
+        "unread_at_edit": meta.get("unread_source_files_at_edit"),
+        "given_up_at_edit": meta.get("given_up_at_edit"),
+        "edge_share": cit.get("edge_quintile_share"),
+        "edge_flag": bool(cit.get("metric4_flag")),
+        "readers_ok": (None if rate is None
+                       else bool(rate < 0.10 and not ops.get("collided_with_pulse_window"))),
+        "structural_problems": meta.get("structural_problems") or [],
+    }
 
 
 def fmt(v, pct=False):
@@ -366,67 +97,31 @@ def fmt(v, pct=False):
 
 def render(pilot_root: str) -> str:
     days = collect(pilot_root)
-    d1 = day1(pilot_root)
-    counted = [d for d in sorted(days)
-               if d1 and d >= d1 and not is_void(days[d])]
-    out = ["# Shadow pilot scoreboard", "",
-           f"Day 1: {d1 or 'NOT SET (every day below is shakedown, uncounted)'}. "
-           f"Counted days: {len(counted)} of 10.", "", SCOPE_LIMIT, "",
-           "| day | counted | m1 frag | m1 merge | m2 shadow | m2 prod | m2 pass | 2a material | 2a non-mat | m3 shadow | m3 prod | m4 edge | m5 | unread@edit | tiebreak |",
-           "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    rows = []
-    for date in sorted(days):
-        r = day_row(date, days[date])
-        r["counted"] = bool(d1) and date >= d1 and not r["void"]
-        rows.append(r)
+    rows = [r for r in (day_row(d, days[d]) for d in sorted(days)) if r]
+    out = ["# Omnipulse editions", "", RETIRED_NOTE, "",
+           "| day | citations | failed | unread@edit | given up | edge | readers ok | note |",
+           "|---|---|---|---|---|---|---|---|"]
+    for r in rows:
+        note = []
+        if r["void"]:
+            note.append("VOID (stale cards)")
+        if r["structural_problems"]:
+            note.append("failed edit: " + "; ".join(r["structural_problems"]))
         out.append("| " + " | ".join([
-            date, "VOID (stale cards)" if r["void"] else ("yes" if r["counted"] else "shakedown"),
-            fmt(r["m1"]["share"], pct=True), fmt(r["m1"]["theme_changing_merge"]),
-            fmt(r["m2_shadow"]["rate"], pct=True), fmt(r["m2_production"]["rate"], pct=True),
-            fmt(r["m2_pass"]), fmt(r["m2a"]["material"]), fmt(r["m2a"]["non_material_share"], pct=True),
-            fmt(r["m3_shadow"]["preserved"]), fmt(r["m3_production"]["preserved"]),
-            fmt(r["m4"]["edge_share"], pct=True) + (" FLAG" if r["m4"]["flag"] else ""),
-            fmt(r["m5"]["pass"]), fmt(r["unread_at_edit"]),
-            ", ".join(r["disagreements"]) or "",
+            r["date"], fmt(r["citations"]), fmt(r["failed"]), fmt(r["unread_at_edit"]),
+            fmt(r["given_up_at_edit"]),
+            fmt(r["edge_share"], pct=True) + (" FLAG" if r["edge_flag"] else ""),
+            fmt(r["readers_ok"]), ", ".join(note),
         ]) + " |")
     out.append("")
-    voided = [r["date"] for r in rows if r["void"]]
-    if voided:
-        out += [f"**Void days ({len(voided)}):** {', '.join(voided)} — the editor ran with "
-                "source files still unread, so the shadow pulse was written from an "
-                "incomplete card set. Shown above, excluded from every metric.", ""]
-    c = [r for r in rows if r["counted"]]
-    if c:
-        m1, m1_detail = pooled_m1(c)
-        m2, m2_detail = pooled_m2(c)
-        m2a = all(r["m2a"]["pass"] for r in c)
-        sh = sum(1 for r in c if r["m3_shadow"]["preserved"] is True)
-        pr = sum(1 for r in c if r["m3_production"]["preserved"] is True)
-        m3 = sh >= pr
-        soft = [r for r in c if (r["m2a"]["non_material_share"] or 0) > 0.20]
-        pending = [r["date"] for r in c if r["disagreements"]]
-        out += ["## Running verdict (counted days only)", "",
-                f"- metric 1 grouping (pooled): {'PASS' if m1 else 'FAIL'} so far; {m1_detail}",
-                f"- metric 2 fact fidelity (pooled): {'PASS' if m2 else 'FAIL'} so far; {m2_detail}",
-                f"- metric 2a brief fidelity: {'PASS' if m2a else 'FAIL'} so far"
-                + (f"; non-material soft ceiling breached on {len(soft)} day(s) (flag)" if soft else ""),
-                f"- metric 3 mechanism: shadow {sh} vs production {pr} preserved days ({'PASS' if m3 else 'FAIL'} so far)",
-                f"- metric 4 attention: {sum(1 for r in c if r['m4']['flag'])} flagged day(s)",
-                f"- metric 5 ops: {sum(1 for r in c if not r['m5']['pass'])} failing day(s)",
-                f"- awaiting owner tiebreak: {', '.join(pending) or 'none'}", "",
-                "Decision rule (frozen): expand to MEDIUM only if 1, 2, 2a and 3 all pass; "
-                "kill if 2, 2a or 3 regress; anything else buys exactly one reader-prompt iteration.", ""]
-    # tier split for 2a
-    tiers = defaultdict(lambda: {"audited": 0, "material": 0, "non_material": 0})
-    for r in c:
-        for t, v in r["m2a"]["tiers"].items():
-            for k in v:
-                tiers[t][k] += v[k]
-    if tiers:
-        out += ["## Metric 2a by reader tier (counted days)", "", "| tier | audited | material | non-material |", "|---|---|---|---|"]
-        for t, v in sorted(tiers.items()):
-            out.append(f"| {t} | {v['audited']} | {v['material']} | {v['non_material']} |")
-        out.append("")
+    last = rows[-30:]
+    if last:
+        cites = sum(r["citations"] for r in last)
+        failed = sum(r["failed"] for r in last)
+        out += [f"Last {len(last)} editions: {failed} failed sentences against {cites} citations, "
+                f"{sum(1 for r in last if r['void'])} void, "
+                f"{sum(1 for r in last if r['edge_flag'])} flagged for edge citing, "
+                f"{sum(1 for r in last if r['readers_ok'] is False)} with reader failures.", ""]
     return "\n".join(out) + "\n"
 
 

@@ -48,8 +48,7 @@ SOURCE_TEXT_DIR = f"{PILOT_ROOT}/source-text"
 SOURCE_TEXT_ALL_DIR = f"{PILOT_ROOT}/source-text-all"
 CARDS_DIR = f"{PILOT_ROOT}/cards"
 SHADOW_DIR = f"{PILOT_ROOT}/shadow"
-GRADES_DIR = f"{PILOT_ROOT}/grades"
-GRADER_FIXTURES_DIR = f"{PILOT_ROOT}/grader-fixtures"
+GRADES_DIR = f"{PILOT_ROOT}/grades"      # history only since 2026-11-23
 SCOREBOARD_PATH = f"{PILOT_ROOT}/scoreboard.md"
 
 # PINNED model strings (plan §3.7). Bare "opus"/"sonnet" are aliases
@@ -65,7 +64,6 @@ SCOREBOARD_PATH = f"{PILOT_ROOT}/scoreboard.md"
 MODEL_READER_TOP = "claude-sonnet-5"    # GS/MS/JPM/Citi/DB/BofA
 MODEL_READER_REST = "claude-sonnet-5"   # everything else
 MODEL_EDITOR = "claude-opus-5"
-MODEL_GRADER = "claude-sonnet-5"
 
 # Reader tiering (plan §3.2 — this plan's deviation, recorded).
 # Matches the multimodal trigger's top-bank line so the two tier

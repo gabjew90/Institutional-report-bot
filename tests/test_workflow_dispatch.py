@@ -140,7 +140,7 @@ def test_no_pilot_workflow_keeps_a_cron_and_the_worker_covers_every_slot():
     import pathlib
     import yaml
     root = pathlib.Path(__file__).resolve().parents[1] / ".github" / "workflows"
-    for wf in ("pilot-readers.yml", "pilot-editor.yml", "pilot-graders.yml"):
+    for wf in ("pilot-readers.yml", "pilot-editor.yml"):
         doc = yaml.safe_load((root / wf).read_text(encoding="utf-8"))
         trig = doc.get("on", doc.get(True)) or {}   # PyYAML reads `on:` as True
         assert "schedule" not in trig, f"{wf} still declares a cron"

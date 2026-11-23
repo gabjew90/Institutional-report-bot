@@ -230,8 +230,8 @@ jobs:
               --prompt docs/superpowers/routines/pilot/editor.md \
               --pack /tmp/ed/pack.json --reasked || true
           fi
-          # Pass 2: record whatever remains; a failed citation is a grade
-          # input, not a blocker. Belt and braces on the exit code: the
+          # Pass 2: record whatever remains in the meta, where the
+          # scoreboard counts it. Belt and braces on the exit code: the
           # verifier no longer returns 1 on --final, and this must not
           # abort the step even if a future check does, because the commit
           # below is skipped when this step fails and the day's pulse is
@@ -243,6 +243,15 @@ jobs:
           echo "pass 2 verifier exit: $?"
           set -e
 
+      # The edition scoreboard (2026-11-23): one row per edition from
+      # the numbers the steps above computed. It was rendered by the
+      # graders workflow until model grading was retired. A fault here
+      # must never cost the day's edition its commit.
+      - name: Scoreboard
+        if: steps.pack.outputs.cards != '0'
+        continue-on-error: true
+        run: python scripts/pilot_scoreboard.py --pilot-root "pilot-data/$PILOT_ROOT"
+
       - name: Commit shadow pulse
         if: steps.pack.outputs.cards != '0'
         working-directory: pilot-data
@@ -253,6 +262,7 @@ jobs:
           # add when any pathspec matches nothing, so naming an absent
           # stress/ (or shadow/) would discard the day's pulse.
           git add "${EDIT_OUTDIR#pilot-data/}"
+          [ -f "$PILOT_ROOT/scoreboard.md" ] && git add "$PILOT_ROOT/scoreboard.md"
           git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
           git commit -m "pilot: ${EDIT_OUTDIR##*/} pulse $EDIT_STEM"
           git pull --rebase --quiet origin pilot-data || true
