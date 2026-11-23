@@ -54,6 +54,11 @@ Commands:
                            severity field is ignored.
   record <label> [detail]  free-form trail entry (agent dispatches etc.)
   preflight             -> PASS | BLOCK (the choke point before STEP 6)
+  compose               -> PASS | BLOCK (builds the published file with
+                           its frontmatter and gate seal; refuses unless
+                           the last preflight passed and final.md is the
+                           text it covered. The bridge recomputes the seal)
+  push_list             -> the one file list STEP 6 pushes
   status                -> dump state
 
 State: {tmp}/driver_state.json. `--tmp DIR` overrides /tmp for tests.
@@ -69,14 +74,32 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-# The hard-violation kinds STEP 5.75 gates on. Mirrors the routine's
-# final-gate set — includes consensus-amnesia (2026-08-20).
-FINAL_GATE_HARD_KINDS = {
-    "duplicate-sibling-sections", "contrarian-buried-in-appendix",
-    "main-event-lean-missing", "leans-block-missing",
-    "weekday-date-mismatch", "released-figure-mismatch",
-    "consensus-amnesia",
-}
+def final_gate_hard_kinds() -> set[str]:
+    """The hard-violation kinds STEP 5.75 gates on: the validator's own
+    list. Until 2026-11-23 this file kept a second copy, which named
+    "released-figure-mismatch" (a kind no validator emits) and left out
+    "released-actual-missing", so a print the EDIT pass dropped from the
+    recap triggered no repair."""
+    try:
+        from scripts.pulse_draft_validate import HARD_VIOLATION_KINDS
+    except ImportError:  # run as scripts/pulse_driver.py
+        from pulse_draft_validate import HARD_VIOLATION_KINDS
+    return set(HARD_VIOLATION_KINDS)
+
+
+def _seal():
+    """scripts/pulse_seal.py, same import pattern as _omni()."""
+    try:
+        from scripts import pulse_seal as m
+    except ImportError:  # run as scripts/pulse_driver.py
+        import pulse_seal as m
+    return m
+
+
+def _sha(text: str) -> str:
+    import hashlib
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
 
 def _omni():
     """scripts/omnipulse_body.py, importable both as a script sibling
@@ -576,9 +599,10 @@ class Driver:
         final_v = self._viols(out_json)
         draft_v = self._viols(self.tmp / "draft_validation.json")
         draft_kinds = {x.get("kind") for x in draft_v}
+        hard_kinds = final_gate_hard_kinds()
         new_hard = [
             x for x in final_v
-            if x.get("kind") in FINAL_GATE_HARD_KINDS
+            if x.get("kind") in hard_kinds
             and x.get("kind") not in draft_kinds
         ]
         # Deterministic repair: ## _LEANS deleted by EDIT/SCRUB is
@@ -913,9 +937,88 @@ class Driver:
                 "preflight", "BLOCK",
                 f"{len(problems)} problem(s) -- fix and re-run "
                 f"preflight; do NOT commit")
-        return self._decide("preflight", "PASS",
-                            "all gates consulted, artifact sane -- "
-                            "proceed to STEP 6 commit")
+        token = self._decide("preflight", "PASS",
+                             "all gates consulted, artifact sane -- "
+                             "proceed to STEP 6: compose, then push")
+        # What this pass covers: compose refuses a final.md that is not
+        # this text.
+        self.state["gates"]["preflight"]["final_sha256"] = _sha(
+            final.read_text(encoding="utf-8"))
+        self._save()
+        return token
+
+    # ------------------------------------------------------------------
+    def compose(self) -> str:
+        """STEP 6: build the published file in code and seal it.
+
+        Until 2026-11-23 the routine's model assembled the frontmatter
+        and the file by hand, from a heredoc it could not run (its GitHub
+        write is refused in the routine's environment). Nothing tied the
+        file it pushed to the text the gates had passed. This refuses
+        unless the last preflight was a PASS and final.md is still the
+        text that pass covered, then writes final_with_frontmatter.md
+        with a seal the bridge recomputes (scripts/pulse_seal.py)."""
+        import os
+        out = self.tmp / "final_with_frontmatter.md"
+        out.unlink(missing_ok=True)
+        pf = self.state.get("gates", {}).get("preflight") or {}
+        if pf.get("decision") != "PASS":
+            return self._decide(
+                "compose", "BLOCK",
+                f"the last preflight is {pf.get('decision') or 'missing'}, "
+                f"not PASS -- run preflight and fix what it names")
+        try:
+            final_md = (self.tmp / "final.md").read_text(encoding="utf-8")
+            ctx = json.loads((self.tmp / "ctx.json").read_text(encoding="utf-8"))
+        except Exception as e:
+            return self._decide("compose", "BLOCK",
+                                f"cannot read final.md or ctx.json: {e}")
+        if _sha(final_md) != pf.get("final_sha256"):
+            return self._decide(
+                "compose", "BLOCK",
+                "final.md changed after the preflight PASS -- re-run the "
+                "gates the change needs (final_validate, strip, "
+                "adversarial --recheck), then preflight")
+        fm = ["---",
+              f"pdf_count: {ctx.get('pdf_count', 0)}",
+              # Estimates at ~4 chars a token, from the context the fire
+              # read and the text it wrote.
+              f"input_tokens: {max(1, (self.tmp / 'ctx.json').stat().st_size // 4)}",
+              f"output_tokens: {max(1, len(final_md) // 4)}",
+              f"dumped_at_utc: {ctx.get('dumped_at_utc', '')}"]
+        # The bridge pages the owner on this line (owner call 2026-08-28).
+        res = self.tmp / "adversarial_residuals.json"
+        if res.exists():
+            try:
+                n_res = len(json.loads(res.read_text(encoding="utf-8")))
+            except Exception:
+                n_res = -1
+            fm.append(f"adversarial_residuals: {n_res}")
+
+        def _file(name: str) -> str:
+            try:
+                return (self.tmp / name).read_text(encoding="utf-8").strip()
+            except OSError:
+                return ""
+
+        mode = _file("pulse_mode.txt") or "classic"
+        fm.append(f"body_source: {mode}")
+        if mode == "light":
+            why = _file("light_reason.txt").replace("\n", " ")[:200]
+            if why:
+                fm.append(f"light_reason: {why}")
+        # A test fire names its channel here and the bridge posts only
+        # there. No line means every configured channel.
+        target = (os.environ.get("TARGET_CHANNELS") or "").strip() or _file("target_channels.txt")
+        if target:
+            fm.append(f"target_channels: {target}")
+        fm.append("---")
+        text = _seal().stamp("\n".join(fm) + "\n\n" + final_md)
+        out.write_text(text, encoding="utf-8")
+        return self._decide(
+            "compose", "PASS",
+            f"{out} written, seal {_seal().read_seal(text)}, "
+            f"target {target or 'all configured channels'}")
 
     def status(self):
         print(json.dumps(self.state, indent=1))
@@ -964,6 +1067,8 @@ def main() -> int:
     if cmd == "preflight":
         token = d.preflight()
         return 0 if token == "PASS" else 3
+    if cmd == "compose":
+        return 0 if d.compose() == "PASS" else 3
     if cmd == "status":
         d.status()
         return 0

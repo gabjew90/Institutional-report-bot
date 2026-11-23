@@ -515,6 +515,39 @@ async def _commit_delivery_failed_marker(
         log.warning(f"Bridge: could not commit QC delivery marker: {e}")
 
 
+# Pulse files whose failed gate check this process already reported: a
+# pulse that stays in pending/ is read again on every 60-second poll.
+_GATE_REPORTED: set[str] = set()
+
+
+async def _report_gate_failure(name: str, action: str, problems: list[str]) -> None:
+    """One ops page and one marker beside the QC review per pulse file.
+    Best-effort: a failed report never changes what happens to the pulse."""
+    if name in _GATE_REPORTED:
+        return
+    _GATE_REPORTED.add(name)
+    from github_bridge import pulse_gate
+    base = name[:-3] if name.endswith(".md") else name
+    what = "REFUSED, not posted" if action == "refuse" else "posted anyway (record mode)"
+    log.error(f"Bridge: gate check failed for {name} ({what}): {problems}")
+    try:
+        from discord_bot.ops_alert import ops_alert as _ops_alert
+        await _ops_alert(
+            f"🔴 pulse {name} failed the gate check, {what}: {problems[0][:300]}",
+            dedupe_key=f"pulse-gate-{name}",
+        )
+    except Exception as e:
+        log.warning(f"Bridge: gate-check page failed: {e}")
+    try:
+        await asyncio.to_thread(
+            gh.put_file, f"{QC_REVIEWS_DIR}/{base}.gate.md",
+            pulse_gate.marker(base, problems, action),
+            f"bridge: gate check failed for {name}",
+        )
+    except Exception as e:
+        log.warning(f"Bridge: could not commit gate-check marker: {e}")
+
+
 async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
     name = item.get("name", "")
     pending_path = f"{PENDING_DIR}/{name}"
@@ -526,6 +559,28 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         if not raw_markdown:
             log.warning(f"Bridge: empty pending file {pending_path} — skipping")
             return
+
+        # Gate check (2026-11-23, github_bridge/pulse_gate.py): is this
+        # the text the routine's checks passed? In record mode a failure
+        # pages ops and the pulse still posts. In enforce mode it is
+        # moved to delivery-failed/ and the backup pulse covers the day.
+        from github_bridge import pulse_gate
+        from scripts import pulse_seal
+        _gate_action, _gate_problems = pulse_gate.verdict(raw_markdown)
+        if _gate_problems:
+            await _report_gate_failure(name, _gate_action, _gate_problems)
+            if _gate_action == "refuse":
+                await asyncio.to_thread(
+                    gh.put_file, delivery_failed_path, raw_markdown,
+                    f"bridge: move to delivery-failed (gate check) {name}",
+                )
+                await asyncio.to_thread(
+                    gh.delete_file, pending_path,
+                    f"bridge: remove pending {name} (gate check)",
+                )
+                return
+        if pulse_gate.mode() != "off":
+            raw_markdown = pulse_seal.mark_checked(raw_markdown, not _gate_problems)
 
         # Parse optional frontmatter for accurate pdf_count + token usage
         meta, markdown = _parse_frontmatter(raw_markdown)

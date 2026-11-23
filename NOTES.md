@@ -4226,3 +4226,18 @@ Not touched: "J.P. Morgan" written with the initials is not in the check's list 
 
 **Granola removed from the pulse routine** (RemoteTrigger update with `clear_mcp_connections`; prompt, schedule, tools and environment read back unchanged, next run 2026-11-24 14:03 UTC). **Codex copies deleted** from the working tree (`AGENTS.md`, `.agents/`, `.codex/`, all untracked). A second copy sits in the worktree `.claude/worktrees/amazing-lalande-d45469/` and was left alone.
 
+## 2026-11-23 (evening): the bridge checks the pulse it posts (audit fix 4)
+
+Owner picked audit fix 4: "the bridge posts only when the check trail ends in a pass". Built differently from that sentence, because the replay that was meant to size it showed the trail cannot be the evidence.
+
+**Replay.** 56 pulses archived since 09-01 against `pulse-output/driver/<ts>.json`: 51 trails say preflight PASS, 5 pulses have no trail. But the trails are not the driver's file. The routine has no GitHub write from code, so the model passes every file as a tool argument, and it rewrites them on the way: ten trails have plain strings where the driver writes records ("DISPATCH_REPAIR (2 hard: Goldman dip-buy call, Natixis range) then recheck CONTINUE 0 hard"), several say "abridged by the routine for transport", and most others have the history removed. A bridge that read the trail would read the model's summary of its own run. The pulse text goes through the same step after the last check. And the published file was never built by code at all: STEP 6 was a 340-line script whose first GitHub call is refused, kept "as the content spec", from which the model assembled the frontmatter and the file by hand.
+
+**Built.**
+- `pulse_driver.py compose`: builds the published file with its frontmatter, only after a preflight PASS and only from the `final.md` that pass covered (preflight now stores the hash). Writes a `gate_seal` checksum over the whole file. The routine's STEP 6 is now preflight, compose, push_list, one push, and the dead script is deleted (353 lines out, 15 in).
+- `github_bridge/pulse_gate.py`: the bridge recomputes the seal on the pending file. Record mode by default (page ops, write `qc-reviews/<ts>.gate.md`, post anyway). `PULSE_GATE_MODE=enforce` refuses the pulse and leaves the day to the 10:45 ET backup pulse. The archive's frontmatter gets `gate_check: pass|failed`.
+- The final gate reads the validator's own hard list. Its second copy named `released-figure-mismatch`, which nothing emits, and left out `released-actual-missing`.
+
+**Why record mode first.** Nobody has measured how faithfully the model copies a 1,500-word file into a tool call. If it slips on one day in ten, enforcing would swap that day's pulse for the backup. The seal ignores line endings, trailing spaces and blank-line runs. The first week's `gate_check` values are the measurement. This is the morning's lesson applied: the citation check was wrong on 26 of 47 failures and nobody knew until its failures were read.
+
+**What this does not do.** The seal is a checksum, so a model that wrote the file itself and computed the seal would pass. The adversarial check's verdict still reaches the gate only through files in the routine's own sandbox. The structural fix for both is to take the model out of the transport: the routine pushes with git to its own branch (`claude/laughing-mendel` is its allowed outcome branch) and the bridge reads from there. Untested whether a routine session can push that way. Not picked.
+

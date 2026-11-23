@@ -146,9 +146,9 @@ def test_a_light_pulse_without_a_reason_still_pages(monkeypatch):
 def test_the_routine_documents_the_light_decision():
     md = (REPO / "docs/superpowers/routines/synthesis-routine.md").read_text(encoding="utf-8")
     assert "DECISION: LIGHT" in md
-    assert "light_reason" in md
     step = md.index("### STEP 2.4")
     nxt = md.index("### STEP 2.5")
     assert step < md.index("DECISION: LIGHT") < nxt
-    # STEP 6 stamps the reason only on a light day
-    assert "if _mode == 'light':" in md and "light_reason: {_why}" in md
+    # STEP 6's file is built by the driver since 2026-11-23, and it stamps
+    # the reason only on a light day (tests/test_pulse_gate_seal.py)
+    assert "scripts/pulse_driver.py compose" in md[md.index("## STEP 6"):md.index("## STEP 7")]

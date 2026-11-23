@@ -393,6 +393,10 @@ class Settings(BaseSettings):
     # time ET on a market day, the worker writes one with Gemini.
     backup_pulse_hour: int = 10
     backup_pulse_minute: int = 45
+    # The bridge's check that a pending pulse is the text the routine's
+    # gates passed (github_bridge/pulse_gate.py): "record" pages ops on a
+    # failure and posts, "enforce" refuses the pulse, "off" skips it.
+    pulse_gate_mode: str = "record"
     dropbox_poll_interval_minutes: int = 15
     process_interval_minutes: int = 5
 
