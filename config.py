@@ -508,6 +508,11 @@ class Settings(BaseSettings):
     # their CPU and memory cannot starve the Discord connection
     # (scheduler/batch_proc.py). False runs every job in one process again.
     batch_process_enabled: bool = True
+    # The batch process ends itself when it is idle and holds more than this
+    # many MB, and its supervisor starts a fresh one (scheduler/batch_proc.py,
+    # Recycling). A fresh one is about 150 MB, a working day about 320 MB, and
+    # the nightly profile refresh leaves about 620 MB behind. 0 turns it off.
+    batch_recycle_rss_mb: int = 400
     claude_lane_timeout_minutes: int = 120
     opus_bridge_timeout_minutes: int = 30
     # PDFs over these limits skip the bridge and go straight to Gemini fallback.

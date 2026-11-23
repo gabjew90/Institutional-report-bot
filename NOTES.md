@@ -4258,3 +4258,19 @@ Where the worker's memory goes, measured on the container three hours after a de
 
 Not built, the owner's call: have the batch process exit when it is idle and over a memory limit, so its supervisor starts a fresh one (worth about $3 to $5 a month, and it restarts the process that builds the pulse context, so it needs an idle check and a quiet window). Not avoidable without a memory cap on the service: the database's page cache, about $4 a month and growing with the file. `uw-pretrade-brief-v2` was last deployed 06-17, its volume is full (5,001 of 5,000 MB) and it is not this repository's. No usage limit or alert is set on the workspace.
 
+## 2026-11-23 (late): the batch process recycles itself, the second project is scheduled for deletion, a $10 alert
+
+Owner's answers to the bill report: "go on 1, delete the second project, set alert at $10".
+
+**Recycle (`scheduler/batch_proc.py`, `scheduler/batch_main.py`, `BATCH_RECYCLE_RSS_MB`, default 400).** Every 30 seconds the batch process checks whether it is over the limit after a trim, has been up 20 minutes, has no scheduler job running and has no cron job due within a minute. If so it exits with code 75 and the supervisor starts a fresh one at once, with a log line and no ops page. Decisions inside it:
+- "No job running" is counted from the scheduler's submit and finish events (`JobCounter`), which is exact for every job the scheduler runs. No batch job starts a task it does not wait for (checked by search, not by a test).
+- Only cron jobs are protected by the one-minute window. An interval job cannot be missed by a restart. Its clock restarts with the process, so the next Dropbox poll can come up to 15 minutes after a recycle.
+- A limit set below what the process needs would restart it every 20 minutes. The 20-minute floor bounds that, and the supervisor treats a code-75 exit sooner than 10 minutes after start as a crash, with backoff and a page.
+- What a recycle loses is what a deploy loses: the theme build's in-memory embedding cache and any other state the process holds. Deploys already do that several times a day.
+
+The 400 MB limit comes from the trim log: about 150 MB fresh, 200 to 320 MB through a working day, 610 MB or more after the profile refresh. Expected effect: the process goes back to about 150 MB a few minutes after 21:00 ET each night instead of carrying 300 to 800 MB until the next deploy, roughly $3 to $5 a month. To check: the worker log line "Batch process recycling" and the next line "recycled itself", then the trim lines after it.
+
+**Second project.** `uw-pretrade-brief-v2` was scheduled for deletion through Railway's own delayed path (`projectScheduleDelete`). Railway removes it on 2026-11-25 19:33 UTC and it can be cancelled until then (`projectScheduleDeleteCancel`, or the dashboard). Looked at before deleting: its volume held 4.5 GB that exists nowhere else, `backups` 3.2 GB (last written 07-31), `raw` 1.2 GB (06-07), `bronze` 143 MB, `snapshots.jsonl` 87 MB. The disk had been full since the summer. Its code is in its own GitHub repository and is not touched.
+
+**Alert.** Workspace usage limit: soft $10, no hard limit (read back). A hard limit would stop the bot, so none is set. At this month's rate the email arrives around the middle of each billing period.
+

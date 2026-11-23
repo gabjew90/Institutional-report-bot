@@ -54,6 +54,86 @@ BATCH_JOB_IDS = frozenset({
 # Per-process housekeeping both processes run.
 SHARED_JOB_IDS = frozenset({"malloc_trim"})
 
+# Recycling (2026-11-23, owner: "go on 1").
+#
+# Railway bills the container's memory, and the batch process keeps what its
+# heaviest job needed. Its own trim log: 320 MB before the 21:00 ET profile
+# refresh on 11-23, 618 MB after it, and malloc_trim gets back about 15 MB of
+# that. Two days after a deploy it sat at 780 to 980 MB. A fresh process is
+# 150 MB. The worker's memory line went $7.15, $9.71, $12.80 over three
+# invoices (NOTES.md, 2026-11-23 night).
+#
+# So the child ends itself when it is over `BATCH_RECYCLE_RSS_MB` with nothing
+# running, and the supervisor starts a fresh one at once, with no ops page.
+# What an exit can cost, and what stops it:
+#   - a job cut off mid-run: only when no job is running (JobCounter, exact,
+#     from the scheduler's own submit and finish events);
+#   - a cron job whose minute falls in the two seconds between processes:
+#     only when no cron job is due within RECYCLE_CRON_CLEAR_S. Interval jobs
+#     cannot be missed, their clock restarts with the process, so the next
+#     Dropbox poll can be up to one interval later;
+#   - a loop of restarts when the limit is set below what the process needs:
+#     never before RECYCLE_MIN_UPTIME_S, and the supervisor treats a recycle
+#     exit sooner than RECYCLE_MIN_RUN_S as a failure, with backoff and a page.
+RECYCLE_EXIT_CODE = 75
+RECYCLE_MIN_UPTIME_S = 1200
+RECYCLE_CRON_CLEAR_S = 60
+RECYCLE_MIN_RUN_S = 600
+# This many recycles inside the window means the limit is below what the
+# process needs between jobs. One ops page says so. The restarts go on.
+RECYCLE_CHURN_COUNT = 4
+RECYCLE_CHURN_WINDOW_S = 3 * 3600
+
+
+def recycle_due(*, rss_mb: float | None, limit_mb: int, uptime_s: float,
+                running_jobs: int, next_cron_s: float | None) -> bool:
+    """Whether the batch process should end itself now. `limit_mb` 0 turns it off."""
+    if not limit_mb or limit_mb <= 0 or rss_mb is None:
+        return False
+    if rss_mb <= limit_mb or uptime_s < RECYCLE_MIN_UPTIME_S or running_jobs > 0:
+        return False
+    return next_cron_s is None or next_cron_s > RECYCLE_CRON_CLEAR_S
+
+
+class JobCounter:
+    """How many scheduler jobs are running in this process right now."""
+
+    def __init__(self):
+        self.running: dict[str, int] = {}
+
+    def attach(self, scheduler) -> "JobCounter":
+        from apscheduler.events import EVENT_JOB_ERROR, EVENT_JOB_EXECUTED, EVENT_JOB_SUBMITTED
+        scheduler.add_listener(self._on_event,
+                               EVENT_JOB_SUBMITTED | EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
+        self._submitted = EVENT_JOB_SUBMITTED
+        return self
+
+    def _on_event(self, event) -> None:
+        job_id = str(getattr(event, "job_id", ""))
+        if event.code == self._submitted:
+            self.running[job_id] = self.running.get(job_id, 0) + 1
+        elif self.running.get(job_id, 0) > 1:
+            self.running[job_id] -= 1
+        else:
+            self.running.pop(job_id, None)
+
+    @property
+    def count(self) -> int:
+        return sum(self.running.values())
+
+
+def next_cron_seconds(scheduler, now=None) -> float | None:
+    """Seconds until the next cron-triggered job, or None when there is none."""
+    from datetime import datetime, timezone
+    from apscheduler.triggers.cron import CronTrigger
+    now = now or datetime.now(timezone.utc)
+    due = [j.next_run_time for j in scheduler.get_jobs()
+           if isinstance(j.trigger, CronTrigger) and getattr(j, "next_run_time", None)]
+    if not due:
+        return None
+    return (min(due) - now).total_seconds()
+
+
 RESTART_DELAYS_S = (10, 30, 60, 120, 300, 600)
 # A child that ran this long before exiting resets the backoff.
 STABLE_AFTER_S = 600
@@ -89,6 +169,7 @@ class BatchSupervisor:
 
     async def _run(self) -> None:
         failures = 0
+        recycles: list[float] = []
         while not self._stopping:
             started = time.monotonic()
             rc: int | None = None
@@ -102,6 +183,24 @@ class BatchSupervisor:
             if self._stopping:
                 return
             ran = time.monotonic() - started
+            if rc == RECYCLE_EXIT_CODE and ran >= RECYCLE_MIN_RUN_S:
+                # The child ended itself to give its memory back. Not a failure.
+                log.info(f"Batch process recycled itself after {ran / 60:.0f} min; starting a fresh one")
+                failures = 0
+                now = time.monotonic()
+                recycles = [t for t in recycles if now - t < RECYCLE_CHURN_WINDOW_S] + [now]
+                if len(recycles) >= RECYCLE_CHURN_COUNT:
+                    recycles = []
+                    try:
+                        from discord_bot.ops_alert import ops_alert
+                        await ops_alert(
+                            f"Batch process restarted itself {RECYCLE_CHURN_COUNT} times in "
+                            f"{RECYCLE_CHURN_WINDOW_S // 3600} hours to give memory back. "
+                            "BATCH_RECYCLE_RSS_MB is probably below what it needs between jobs. "
+                            "Jobs are running.", dedupe_key="batch-recycle-churn")
+                    except Exception as e:
+                        log.warning(f"recycle churn alert failed: {e}")
+                continue
             failures = 1 if ran >= STABLE_AFTER_S else failures + 1
             delay = restart_delay(failures)
             text = (f"Batch process (PDF ingestion, Claude lane, pulse context, "
