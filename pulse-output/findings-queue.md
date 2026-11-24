@@ -1436,3 +1436,13 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Unverifiable in the dump: Anthropic offering (1,127,000,000 shares at $83, $93.5B), Waller's December quarter-point-plus-guidance statement, TS Lombard Blitz's ~50/50 half-point odds, Nvidia +4.9% after hours and Nasdaq -0.7%, UBS "1 to 2 gigawatts".
 - **observation** — MAIN EVENT's only Nvidia price reaction is a Tuesday after-hours move; Thursday's session reaction is missing from a Friday pulse.
 - **prompt-session** — Locked body omits the staged positioning split (JPMorgan/Goldman buy-the-washout vs BTIG/Citi sell-the-rally), US consumer resilience (11 banks) and a second bank on 2027 outlook (UBS). Same 6-bank cutoff as 11-17 and 11-18.
+
+## 2026-11-24 (headless QC)
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild again (15:18Z, 10:18 EST, SPY -0.61% vs the pulse's +4.71%). RECAP prices, the Zscaler $44B deal and the Friday "1 PM" close cannot be audited. Archive the dump keyed by `QC_PULSE_TS`.
+- **deterministic-fixable** — A soft adversarial finding the checker and the self-review both call correct ("built on short covering") shipped on a light day. Consider repairing soft overstated-claim findings when the budget is unspent (1 of 2 repairs used).
+- **deterministic-fixable** — Driver trail names no violation for REROLL_DRAFT or DISPATCH_FIXUP, and no repair diff. Same gap as 11-19 and 11-20.
+- **prompt-session** — RECAP says hedge fund net exposure "adjusted for market sensitivity sat in the 1st percentile of the past three years". The dump has 1st percentile 1-year for unadjusted net leverage and a 5-year low for beta-adjusted. Two stats merged and the window changed.
+- **deterministic-fixable** — `released-actual-missing` fired on October PCE (releases Wednesday) because the validator read September component figures as the print, and the draft passed by adding another month's figure. Decide "released" from the calendar date.
+- **deterministic-fixable** — `consensus-amnesia` forced a week-old Nvidia beat sentence into the RECAP although the prior pulse already reported it. Limit the rule to prints not yet reported in any prior edition.
+- **observation** — Light-day RECAP omits Treasury yields, the 5-year auction and the dollar while open reads ($TLT, $IEI, $UUP, $GLD) turn on them. A new $UUP lean was recorded in `_LEANS` with no published text.
+- **observation** — WATCH lists Best Buy, Dick's, Burlington, Dollar Tree and others as "reporting today" in a 10 AM post. Several normally report before the open, and the session field was not visible here.
