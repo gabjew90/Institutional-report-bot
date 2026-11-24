@@ -4320,3 +4320,9 @@ Why it matters beyond safety: the subscription's weekly allowance was at 76% wit
 
 Also read that evening, nothing changed: the profile refresh is already incremental (my cost plan said otherwise), 13 /ask answers since 11-20 for the owner's question about quality and the Data footer, and `world_context.OFFICIAL_RELEASES` ends 2026-12-23.
 
+## 2026-11-24 (00:50 UTC): 2027 release dates
+
+`world_context.OFFICIAL_RELEASES` ended on 2026-12-23. After that the print alerts would have armed from the ForexFactory feed alone, and Finnhub's economic calendar has answered 403 since at least 11-17. Added for 2027, each read from the agency's page on 2026-11-23: jobs, CPI and PPI (bls.gov/schedule/news_release), Personal Income and Outlays (bea.gov/news/schedule/next-year), and the FOMC's eight meetings (the Fed's calendar, second day of each).
+
+Three things to come back to. The Fed's 2027 dates are tentative on its own page, with the last meeting on November 16-17, none in December, and October 26-27 labelled a Monetary Policy Strategy Meeting: re-read in January. `fed_projections.PROJECTION_MONTHS` assumes a December meeting. ISM's 2027 dates are not in: its calendar is behind a sign-in now, and they are listed, never computed.
+

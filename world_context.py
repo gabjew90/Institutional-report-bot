@@ -370,6 +370,74 @@ OFFICIAL_RELEASES: dict[str, tuple[str, ...]] = {
     "2026-12-10": ("cpi",),
     "2026-12-15": ("ppi",),
     "2026-12-23": ("pce",),
+    # 2027, read from the agencies' pages on 2026-11-23: bls.gov/schedule/
+    # news_release/{empsit,cpi,ppi}.htm, bea.gov/news/schedule/next-year
+    # (Personal Income and Outlays) and the Fed's FOMC calendar. The date
+    # for a meeting is its second day, when the statement comes out.
+    # FOMC 2027 is tentative on the Fed's own page ("each meeting date is
+    # tentative until confirmed at the meeting immediately preceding it"):
+    # it lists eight meetings, the last on November 16-17 and none in
+    # December, and labels October 26-27 "Monetary Policy Strategy Meeting".
+    # Re-read that page in January. NOT here: ISM's 2027 dates. Its release
+    # calendar now sits behind a sign-in, and its dates are listed, never
+    # computed (see above), so the omni-calendar has no ISM backstop for 2027
+    # until someone reads them from ISM.
+    "2027-01-08": ("jobs",),
+    "2027-01-13": ("cpi",),
+    "2027-01-14": ("ppi",),
+    "2027-01-27": ("fomc",),
+    "2027-01-28": ("pce",),
+    "2027-02-05": ("jobs",),
+    "2027-02-11": ("cpi",),
+    "2027-02-12": ("ppi",),
+    "2027-02-25": ("pce",),
+    "2027-03-05": ("jobs",),
+    "2027-03-10": ("cpi",),
+    "2027-03-12": ("ppi",),
+    "2027-03-17": ("fomc",),
+    "2027-03-31": ("pce",),
+    "2027-04-02": ("jobs",),
+    "2027-04-13": ("cpi",),
+    "2027-04-14": ("ppi",),
+    "2027-04-28": ("fomc",),
+    "2027-04-29": ("pce",),
+    "2027-05-07": ("jobs",),
+    "2027-05-12": ("cpi",),
+    "2027-05-13": ("ppi",),
+    "2027-05-27": ("pce",),
+    "2027-06-04": ("jobs",),
+    "2027-06-09": ("fomc",),
+    "2027-06-10": ("cpi",),
+    "2027-06-11": ("ppi",),
+    "2027-06-25": ("pce",),
+    "2027-07-02": ("jobs",),
+    "2027-07-14": ("cpi",),
+    "2027-07-15": ("ppi",),
+    "2027-07-28": ("fomc",),
+    "2027-07-29": ("pce",),
+    "2027-08-06": ("jobs",),
+    "2027-08-10": ("ppi",),
+    "2027-08-11": ("cpi",),
+    "2027-08-25": ("pce",),
+    "2027-09-03": ("jobs",),
+    "2027-09-10": ("ppi",),
+    "2027-09-14": ("cpi",),
+    "2027-09-15": ("fomc",),
+    "2027-09-30": ("pce",),
+    "2027-10-08": ("jobs",),
+    "2027-10-14": ("cpi",),
+    "2027-10-15": ("ppi",),
+    "2027-10-27": ("fomc",),
+    "2027-10-28": ("pce",),
+    "2027-11-05": ("jobs",),
+    "2027-11-10": ("cpi",),
+    "2027-11-12": ("ppi",),
+    "2027-11-17": ("fomc",),
+    "2027-11-24": ("pce",),
+    "2027-12-03": ("jobs",),
+    "2027-12-10": ("cpi",),
+    "2027-12-15": ("ppi",),
+    "2027-12-22": ("pce",),
 }
 
 # The OFFICIAL_RELEASES keys FRED's release schedule does not carry,
