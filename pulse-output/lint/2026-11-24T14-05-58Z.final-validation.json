@@ -1,0 +1,25 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.3% stated for Gdp MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.3",
+   "event": "GDP",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday, Nov 25, 8:30 AM ET: October PCE inflation and Q3 GDP.** Core PCE is expected at +0.3% for the month, the same as September. Natixis puts headline PCE at +0.3% on the month (3.8% over th"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "3.2% stated for Gdp MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "3.2",
+   "event": "GDP",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday, Nov 25, 8:30 AM ET: October PCE inflation and Q3 GDP.** Core PCE is expected at +0.3% for the month, the same as September. Natixis puts headline PCE at +0.3% on the month (3.8% over th"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4
+}

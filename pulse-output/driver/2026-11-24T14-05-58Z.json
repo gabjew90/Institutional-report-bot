@@ -1,0 +1,144 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-24T14:06:04.219049Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=343",
+   "at": "2026-11-24T14:06:07.933946Z"
+  },
+  "omnipulse": {
+   "decision": "LIGHT",
+   "detail": "no new bank research since the last pulse",
+   "at": "2026-11-24T14:06:08.056712Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-11-24T14:08:24.966965Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "8 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-11-24T14:09:26.741705Z"
+  },
+  "final_validate": {
+   "decision": "DISPATCH_FIXUP",
+   "detail": "1 EDIT/SCRUB-introduced hard violation(s); violations at /tmp/final_fixup_violations.json; after FIXUP run: gate final_validate --recheck",
+   "at": "2026-11-24T14:09:32.238851Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-24T14:10:03.922757Z"
+  },
+  "final_validate_recheck": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-11-24T14:10:03.835079Z"
+  },
+  "adversarial": {
+   "decision": "DISPATCH_REPAIR",
+   "detail": "1 hard finding(s), 1 soft; repair 1/2; items at adversarial_repair_items.json; after the repair agent, RE-DISPATCH the checker fresh, then run: gate adversarial --recheck",
+   "at": "2026-11-24T14:11:29.270155Z"
+  },
+  "adversarial_recheck": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings, 1 soft (recorded)",
+   "at": "2026-11-24T14:13:01.912055Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6: compose, then push",
+   "at": "2026-11-24T14:13:06.707203Z",
+   "final_sha256": "1cb1318a86efb2d0c7bc59e2ec05a41b52f2a96fef11a51fbd7a82699a30887a"
+  },
+  "compose": {
+   "decision": "PASS",
+   "detail": "/tmp/final_with_frontmatter.md written, seal 1af3bf4427383271, target all configured channels",
+   "at": "2026-11-24T14:13:10.227237Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 1,
+  "adversarial_repairs": 1
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:06:04.219049Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:06:07.933946Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "LIGHT",
+   "at": "2026-11-24T14:06:08.056712Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-11-24T14:08:11.462384Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:08:24.966965Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-11-24T14:09:26.741705Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "DISPATCH_FIXUP",
+   "at": "2026-11-24T14:09:32.238851Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:09:32.307490Z"
+  },
+  {
+   "gate": "final_validate_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:10:03.835079Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:10:03.922757Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-11-24T14:11:29.270155Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-24T14:13:01.912055Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-24T14:13:06.707203Z"
+  },
+  {
+   "gate": "compose",
+   "decision": "PASS",
+   "at": "2026-11-24T14:13:10.227237Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
