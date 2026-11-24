@@ -4308,3 +4308,15 @@ Causes: a cap that belongs to the Omnipulse readers was applied to this lane (ru
 
 What this should change, to check after the next research batch: lane rows ending `completed` instead of `gemini_done`, no "past the pilot readers' daily cap" reason at all, and the `pdf_deep` line of the Gemini ledger falling. What it does not change: triage, profiles, OCR and the classifiers stay on Gemini. Known limit, not built: when the lane is down every note waits the full 120 minutes before Gemini, where 69% of HIGH notes used to go at once. A signal from the workflow to the worker ("down until") would remove that wait.
 
+## 2026-11-23 (after midnight UTC): the lane's Claude call loses its tools and this repository's context
+
+Owner asked what else was open. One item: the analysis call ran `claude -p --permission-mode bypassPermissions` from the repository checkout, on text from bank PDFs, beside a token that can push to any branch. While removing the tools I read the records' token counts: the 40 records of 11-22 used a median 83,505 input tokens for notes Gemini reads in 16,705 with the same prompt. The difference was this repository's CLAUDE.md (about 31,000 tokens), the project hooks, and Claude Code's coding system prompt and tool definitions, loaded on every call.
+
+`pilot_analyze.claude_cli` now passes `--tools ""`, `--strict-mcp-config`, `--disable-slash-commands`, `--no-session-persistence`, a one-line `--system-prompt`, and runs in the worker thread's temp folder. The analysis prompt itself is unchanged and still travels as the message. `--bare` was not usable: it does not read the subscription's OAuth token.
+
+Dry run on a ci branch, the same 12 notes as the earlier dry run: 12 of 12 analysed, median 25,582 input tokens, 86 s against 165 s, about 500 notes an hour against 261. Not compared: the content of the records before and after. The first live batch's records on pilot-data are the place to look.
+
+Why it matters beyond safety: the subscription's weekly allowance was at 76% with two days left, shared by the pulse routine, the readers, the editor, this lane and coding sessions. The lane's input per note falls by about 70%.
+
+Also read that evening, nothing changed: the profile refresh is already incremental (my cost plan said otherwise), 13 /ask answers since 11-20 for the owner's question about quality and the Data footer, and `world_context.OFFICIAL_RELEASES` ends 2026-12-23.
+

@@ -229,6 +229,27 @@ REFRESH_S = 20
 PILOT_BRANCH = "pilot-data"
 
 
+# The analysis call has no tools and no project context (2026-11-23).
+#
+# Until this date it ran from the repository checkout with every tool allowed
+# (--permission-mode bypassPermissions) on text taken from bank PDFs, beside a
+# token that can push to any branch, the deploying one included. The answer is
+# one JSON object. It needs no tool.
+#
+# Running from the checkout also loaded this repository's CLAUDE.md (about
+# 31,000 tokens), its hooks and Claude Code's own coding system prompt and
+# tool definitions into every call: the 40 records of 2026-11-22 used a median
+# 83,505 input tokens for notes Gemini reads in 16,705 with the same prompt.
+# Now: no tools, no MCP servers, no skills, a one-line system prompt in place
+# of the coding one, and a working directory outside the checkout, so nothing
+# of this repository is read.
+LANE_SYSTEM_PROMPT = ("You analyse one research document. Follow the instructions in the message "
+                      "and answer with the JSON object only.")
+LANE_CLI_FLAGS = ("--tools", "", "--strict-mcp-config", "--disable-slash-commands",
+                  "--no-session-persistence", "--system-prompt", LANE_SYSTEM_PROMPT,
+                  "--max-turns", "3", "--output-format", "json")
+
+
 def claude_cli(prompt_path: Path, model: str, timeout_s: int = 900) -> str:
     """One analysis: the prompt on standard input, the CLI's JSON on standard
     output. A timeout or a crash returns what there is, which then fails
@@ -236,9 +257,10 @@ def claude_cli(prompt_path: Path, model: str, timeout_s: int = 900) -> str:
     try:
         with open(prompt_path, "rb") as fin:
             p = subprocess.run(
-                ["claude", "-p", "--model", model, "--permission-mode", "bypassPermissions",
-                 "--max-turns", "3", "--output-format", "json"],
-                stdin=fin, capture_output=True, timeout=timeout_s)
+                ["claude", "-p", "--model", model, *LANE_CLI_FLAGS],
+                stdin=fin, capture_output=True, timeout=timeout_s,
+                # the worker's own temp folder, never the repository
+                cwd=str(Path(prompt_path).parent))
         return p.stdout.decode("utf-8", "replace")
     except subprocess.TimeoutExpired as e:
         return (e.stdout or b"").decode("utf-8", "replace")
@@ -268,7 +290,7 @@ def run(root: Path, *, workers: int = 4, budget_s: float = 1500, model: str = MO
     lock = threading.Lock()
     stop = threading.Event()
     claimed: set[str] = set()
-    stats = {"analyzed": 0, "failed": 0, "limit": False, "seconds": []}
+    stats = {"analyzed": 0, "failed": 0, "limit": False, "seconds": [], "input_tokens": []}
     last_sync = [0.0]
     dest_root = out_root or root
     fixed = list(docs) if docs is not None else None
@@ -332,8 +354,10 @@ def run(root: Path, *, workers: int = 4, budget_s: float = 1500, model: str = MO
                 say("::warning::Claude usage limit reached; stopping, nothing counted as failed")
                 return
             raw.write_text(answer, encoding="utf-8")
+            used = 0
             try:
-                finalize(str(raw), text, meta, str(made), model)
+                rec = finalize(str(raw), text, meta, str(made), model)
+                used = int((rec.get("analysis") or {}).get("input_tokens") or 0)
                 ok, why = True, ""
             except Exception as e:
                 ok, why = False, str(e)
@@ -344,12 +368,14 @@ def run(root: Path, *, workers: int = 4, budget_s: float = 1500, model: str = MO
                     dest.parent.mkdir(parents=True, exist_ok=True)
                     shutil.move(str(made), str(dest))
                     stats["analyzed"] += 1
+                    stats["input_tokens"].append(used)
                 else:
                     fail(dest_root, date, doc_id, " ".join(answer[:120].split()))
                     stats["failed"] += 1
                 stats["seconds"].append(round(took))
                 persist(doc_id)
-            say(f"{doc_id}: {'ok' if ok else 'FAILED ' + why[:120]} in {took:.0f}s")
+            say(f"{doc_id}: {'ok' if ok else 'FAILED ' + why[:120]} in {took:.0f}s"
+                + (f", {used:,} input tokens" if used else ""))
 
     threads = [threading.Thread(target=work, args=(i,), name=f"lane-{i}") for i in range(max(1, workers))]
     for t in threads:
@@ -400,11 +426,13 @@ def main(argv: list[str]) -> int:
             st = run(root, workers=a.workers, budget_s=a.budget_minutes * 60,
                      repo=Path(a.repo) if a.repo else None)
         secs = sorted(st.pop("seconds"))
+        toks = sorted(st.pop("input_tokens"))
         done = st["analyzed"] + st["failed"]
         print(f"analyzed {st['analyzed']} document(s), {st['failed']} failed, "
               f"{a.workers} at a time, {st['wall_seconds']}s wall"
               + (f", per document median {secs[len(secs) // 2]}s max {secs[-1]}s" if secs else "")
               + (f", {done * 3600 // max(st['wall_seconds'], 1)} an hour" if done else "")
+              + (f", input tokens per document median {toks[len(toks) // 2]:,}" if toks else "")
               + (", stopped by a usage limit" if st["limit"] else ""))
         if done and not st["analyzed"] and not st["limit"]:
             print("::error::every analysis failed this run")

@@ -375,3 +375,35 @@ def test_run_commits_and_pushes_each_record_and_picks_up_a_list_change(tmp_path)
     log = _git(worker, "log", "--format=%s")
     assert log.count("pilot: analysis (") == 3
     assert _git(checkout, "status", "--porcelain").strip() == ""
+
+
+def test_the_analysis_call_has_no_tools_and_reads_nothing_of_the_repository(tmp_path, monkeypatch):
+    """2026-11-23: it ran with every tool allowed on bank PDF text, beside a
+    token that can push to the deploying branch, and loaded CLAUDE.md into
+    every call (83,505 input tokens a note where the note needs about 17,000)."""
+    import subprocess
+    seen = {}
+
+    def fake_run(argv, **kw):
+        seen["argv"], seen["cwd"] = list(argv), kw.get("cwd")
+        return subprocess.CompletedProcess(argv, 0, stdout=GOOD.encode(), stderr=b"")
+    monkeypatch.setattr(PA.subprocess, "run", fake_run)
+    work = tmp_path / "lane0"
+    work.mkdir()
+    (work / "prompt.txt").write_text("x", encoding="utf-8")
+    assert PA.claude_cli(work / "prompt.txt", "m") == GOOD
+    argv = seen["argv"]
+    assert argv[:4] == ["claude", "-p", "--model", "m"]
+    assert argv[argv.index("--tools") + 1] == ""            # no built-in tool at all
+    assert "--strict-mcp-config" in argv and "--mcp-config" not in argv
+    assert "--disable-slash-commands" in argv
+    assert "bypassPermissions" not in argv and "--permission-mode" not in argv
+    assert "--dangerously-skip-permissions" not in argv
+    assert argv[argv.index("--system-prompt") + 1] == PA.LANE_SYSTEM_PROMPT
+    # It runs in its own temp folder, so no CLAUDE.md, hook or setting of this repository loads.
+    from pathlib import Path
+    repo = Path(__file__).resolve().parents[1]
+    assert Path(seen["cwd"]) == work and repo not in Path(seen["cwd"]).parents
+    src = (repo / ".github" / "workflows" / "pilot-analysis.yml").read_text(encoding="utf-8")
+    assert "bypassPermissions" not in src.split("- name: Analyze")[1]
+

@@ -81,7 +81,7 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
           set +e
-          out=$(claude -p "reply with exactly: ok" --model haiku --max-turns 1 2>&1)
+          out=$(cd "$RUNNER_TEMP" && claude -p "reply with exactly: ok" --model haiku --tools "" --max-turns 1 2>&1)
           rc=$?
           set -e
           if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
