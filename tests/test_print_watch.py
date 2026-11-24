@@ -425,8 +425,28 @@ def test_ism_dates_on_the_schedule_never_arm_the_watch():
 
 
 def test_an_exhausted_schedule_is_flagged():
-    assert not PW.official_calendar_exhausted("2026-12-23")
-    assert PW.official_calendar_exhausted("2027-01-04")
+    from datetime import date, timedelta
+    last = max(PW.OFFICIAL_RELEASES)
+    assert not PW.official_calendar_exhausted(last)
+    assert PW.official_calendar_exhausted((date.fromisoformat(last) + timedelta(days=1)).isoformat())
+
+
+def test_the_schedule_runs_through_2027():
+    """The table ended 2026-12-23 until 2026-11-23. Read that day from
+    bls.gov/schedule/news_release, bea.gov/news/schedule/next-year and the
+    Fed's FOMC calendar (tentative, eight meetings, the last in November)."""
+    O = PW.OFFICIAL_RELEASES
+    assert not PW.official_calendar_exhausted("2027-01-04")
+    assert O["2027-01-08"] == ("jobs",) and O["2027-01-13"] == ("cpi",)
+    assert O["2027-01-14"] == ("ppi",) and O["2027-01-28"] == ("pce",)
+    assert O["2027-01-27"] == ("fomc",) and O["2027-11-17"] == ("fomc",)
+    by_key = {}
+    for d, keys in O.items():
+        if d.startswith("2027"):
+            for k in keys:
+                by_key[k] = by_key.get(k, 0) + 1
+    assert by_key == {"jobs": 12, "cpi": 12, "ppi": 12, "pce": 12, "fomc": 8}
+    assert [s.key for s in PW.due_releases("2027-01-08", [], "08:30")] == ["jobs"]
 
 
 def test_a_scheduled_release_with_no_key_pings_ops_before_it_is_missed():
