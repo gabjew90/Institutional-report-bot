@@ -1,0 +1,143 @@
+{
+ "brief": "Persistent headline volatility drove another week of elevated activity on GS's buyback desk, as corporates used peak post-earnings open windows, particularly Friday, to place opportunistic orders. Desk volumes finished at 2.2x 2025 YTD average daily trading volume and 2.4x 2024 YTD ADTV, with flows skewed toward Industrials, Financials, and Consumer Discretionary. The weekly execution mix shifted toward discretionary orders: 47% open market versus 53% 10b5-1, up from 45%/55% the prior week. GS currently estimates 96% of the market is in its open window and at peak participation, and expects participation to taper into year end as corporate blackout periods begin in early to mid December. For the full year, GS expects 2026 market-wide buyback authorizations to finish at $1.65 trillion and executions at $1.4 trillion. Separately, 32 new repurchase programs were authorized this week for a combined $15.7 billion, an active week for new authorizations.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS's buyback desk volumes this week finished at 2.2x 2025 YTD average daily trading volume and 2.4x 2024 YTD ADTV.",
+   "anchor": "Our desk volumes finished at 2.2x vs 2025 YTD ADTV and 2.4x vs 2024 YTD ADTV",
+   "topic": "corporate buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS's buyback desk flows this week skewed toward Industrials, Financials, and Consumer Discretionary sectors.",
+   "anchor": "with flows skewed toward Industrials, Financials, and Consumer Discretionary sectors",
+   "topic": "corporate buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS's weekly execution mix shifted toward discretionary orders, to 47% open market versus 53% 10b5-1 flow.",
+   "anchor": "Our weekly execution mix reflects this surge toward discretionary orders, shifting to 47% open market vs 53% 10b5-1 flow",
+   "topic": "corporate buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "The prior week's execution mix was 45% open market versus 55% 10b5-1 flow.",
+   "anchor": "(compared to the prior week\u2019s 45% / 55% split)",
+   "topic": "corporate buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS currently estimates that 96% of the market is in its open trading window and at peak participation.",
+   "anchor": "We currently estimate 96% of the market is in open window and is at its peak.",
+   "topic": "corporate buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS expects buyback participation to taper into year end as corporate blackout periods begin in early to mid December.",
+   "anchor": "We expect participation will begin to taper into year end with corporate blackouts estimated to start in early to mid December.",
+   "topic": "corporate buyback activity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS expects 2026 full-market share buyback authorizations to finish at $1.65 trillion.",
+   "anchor": "In terms of estimates for the year, we expect 2026 full market authorizations to finish 1.65T",
+   "topic": "corporate buyback activity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "GS expects 2026 full-market share buyback executions to finish at $1.4 trillion.",
+   "anchor": "and 2026 full market executions to finish 1.4T",
+   "topic": "corporate buyback activity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap",
+   "claim": "32 new share repurchase programs were authorized this week for a combined $15.7 billion.",
+   "anchor": "We saw 32 programs authorized this week for $15.7B.",
+   "topic": "corporate buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-25/29030__gs-ranganath-share-repurchase-weekly-recap-23-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
