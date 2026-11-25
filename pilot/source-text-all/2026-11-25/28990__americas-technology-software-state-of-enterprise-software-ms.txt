@@ -1,0 +1,876 @@
+We have had several conversations with technology leaders and engineers over 
+the last 2 weeks against a backdrop of elevated stock volatility. The most tangible 
+takeaway is on upward revisions to cyber budget post several breakages in IT 
+infrastructure, leading to momentum in the “AI Defense” product cycle and 
+accelerated modernization. The conversations on the pace of AI enterprise diffusion 
+are still very mixed – but some organizations are close to or at an inflection point 
+(e.g. solving agentic identity and letting the agents out of the sandbox) and should 
+pave the way for the early majority to follow. We are incrementally positive on CRWD 
+into earnings (especially given the stock pullback) and continue to see MSFT, MDB, 
+PLTR and SNOW best positioned to benefit from the AI enterprise diffusion theme in 
+2027. 
+Key Takeways  
+ 
+ 
+We had several conversations with technology leaders and budget decision 
+makers over the last 2 weeks including at: 
+Microsoft Ignite in SF, Nov 17-18, alongside our investor meeting with EVP of 
+n
+Azure, Arun Ulag 
+Our investor meeting with Palantir CFO Dave Glazer, Chief Architect Akshay 
+n
+Krishnaswamy and Ana Soro from the Office of the CFO in NYC, Nov 18 
+The Goldman Sachs Private Innovation Company Conference in Vegas, Nov 18 
+n
+The Serval Customer Conference in Napa, Nov 12  
+n
+Our key takeaways: 
+Security: Our conversations suggest that the last several days of outages are a 
+1.
+confluence of the following factors: i) aging IT infrastructure; ii) a faster pace of 
+patching in response to new vulnerabilities (e.g. Java and NGINX last week, PHP 
+the prior week). Patches are not always fully baked, nor are organizations 
+prepared for this pace of rollout; this in turn leads to unintended breakage; iii) an 
+uptick in agentic attacks that may in part be tied to a heightened geopolitical 
+environment. Microsoft’s security budget has taken a meaningful step up in the 
+Gabriela Borges, CFA 
++1(212)902-7839 | 
+gabriela.borges@gs.com 
+Goldman Sachs & Co. LLC 
+Matthew Martino 
++1(212)902-0695 | 
+matt.martino@gs.com 
+Goldman Sachs & Co. LLC 
+Callie Valenti 
++1(212)357-2790 | 
+callie.valenti@gs.com 
+Goldman Sachs & Co. LLC 
+Noah Naparst 
++1(917)343-6395 | 
+noah.x.naparst@gs.com 
+Goldman Sachs & Co. LLC 
+Maura Hager 
++1(212)9028724 | maura.hager@gs.com 
+Goldman Sachs & Co. LLC 
+Selina Zhang 
++1(212)357-9979 | 
+selina.zhang@gs.com 
+Goldman Sachs & Co. LLC 
+Praachi Arora 
++1(332)245-7970 | 
+praachi.arora@gs.com 
+Goldman Sachs India SPL
+22 November 2026 | 10:38PM EST
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+AMERICAS TECHNOLOGY: SOFTWARE 
+State of Enterprise Software (MSFT, PLTR, Cyber, Apps) 
+ 
+ 
+
+last 6 months, and it has tightened its feedback loops between its security roll outs 
+and its resiliency best practices. One engineering leader at a bank expects to see 
+stabilization and moderation in issues in the next 3-6 months, noting that the 
+number of bugs is not unlimited.  
+We see two product cycles to watch: 
+Our Palantir meeting highlighted Apollo as a solution for continuous 
+o
+delivery and software upgrades across heterogenous environments. One 
+of Apollo’s features is complete visibility into asset mapping via the current 
+status of the entire software supply chain running in an enterprise 
+environment.  
+We expect to see an inflection in budget allocated to AI defense i.e. 
+o
+continuous agentic penetration testing and remediation such as 
+CrowdStrike’s SafeMind, Microsoft’s Project Perception, Armadin, and Palo 
+Alto Networks’ Continuous Frontier AI Defense. Palo Alto noted deal sizes of 
+$0.5-$6.0mn, with part of this budget allocated toward frontier tokens. 
+For the first time since 2020, security budgets are tangibly accelerating. We had 
+2.
+previously been concerned about an air pocket in Security given a lack of clear 
+frameworks on how to secure AI, such that it is difficult to map the concept of 
+agentic security to specific product cycles. We now expect sustained momentum for 
+security leaders to drive a robust estimate revision cycle over at least the next year. 
+The uptick in spend brings to mind the growth cyclical framework we first introduced 
+in 2016 that posited that Security budgets go through cycles of accelerating and 
+decelerating spend. While budget trends have been relatively stable 2022-1H26, 
+datapoints suggest we are in a period of accelerating budget growth. While the 
+security product ecosystem tied to AI is very dynamic (recall Palo Alto’s comments 
+that it will take some time before it is clear what hooks need to be built, and into 
+which products), we are already seeing a push to modernization alongside the AI 
+Defense product cycle we outline above.  
+We learned of two large financial orgs that quantified the impact in budget: 
+o
+the first plans a ~25% increase in security budget in 2027, with about 1/3 
+going to AI Defense and the other 2/3rds to infrastructure modernization; the 
+second noted that cyber AI budget is up 10x yoy and now comprises 50% of AI 
+spend, with the majority of the increase driven by token spend. One industry 
+expert estimated that 70-80% of engineers are working on security in some 
+capacity in 4Q26. That said, some customers also expressed that 2027 
+budgets broadly will be a fight once existing pen testing budgets have been 
+reallocated, as the pace of increase in 2026 is not sustainable. 
+From Security attach rates to Token Flow: We have a working hypothesis on the 
+3.
+strategic importance of Security vendors: for much of the last decade, most security 
+TAMs have been quite niche. Consider that the total security product TAM of $100bn 
+and the total security services TAM of $100bn compare to the entire app software 
+ecosystem at $600bn (Gartner). However, there now seems to be a number of 
+potential upside nodes around convergence: i) Palo Alto introduced the concept of 
+becoming a specialized inference provider and proprietary model builder with its 
+22 November 2026
+  2
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+proposed acquisition of Applied Compute; ii) Cloudflare noted that its acceleration is 
+not just a function of its Workers infrastructure platform, but also a simultaneous 
+inflection in security demand for Act I and Act II; and iii) we have been writing about 
+the convergence of Security and Observability for some time. This trend has the 
+potential to drive a durable (not just cyclical) premium on EV/sales/growth vs. 
+infrastructure software.  
+Enterprise AI diffusion: we spoke to several AI leaders across the entire 
+4.
+spectrum of “AI pilled” to “frustrated with progress” (note Databricks’ CEO Ali 
+Ghodsi’s comments last week that true enterprise diffusion will take 10-15 years). 
+There is a clear delta between AI native companies that can generally move faster, 
+followed by Software and technology leaders, followed by the rest of the G2000. 
+More broadly, we observed a significant gap between what enterprises would like to 
+do and what they are actually able to do, with FDE organizations still scaling at 
+vendors like Microsoft and seeing varying degrees of operational efficacy.  
+We picked up five tangible examples of technology progress: 
+Palantir noted in our meeting that ontology systems have evolved 
+o
+dramatically in the last 12 months to i) scale core transactional workflows 
+alongside a rewriting of its scenarios and branching framework, which 
+decouples agentic simulations from live execution; ii) broaden from classic 
+Palantir integrations on the data infrastructure side (note Palantir won Partner 
+of the Year for Databricks) to encompass fragmented business logic systems 
+(ERP, CMDB, CRM etc).  
+One Microsoft leader noted that the big unlock in Cowork has come from 
+o
+agents now being able to run reasoning loops that are closely tied to WorkIQ 
+(Microsoft’s proprietary intelligence on any given employee). As EVP of Azure 
+Arun Ulag noted: Copilot may increasingly be the front door to Azure, such 
+that knowledge workers can now consume meaningful parts of the Azure 
+platform stack.  
+One engineering leader in a regulated industry believes its organization will 
+o
+have solved the agentic identity problem as soon as December across two key 
+pillars: agentic identity (where Microsoft was called out as being a leader, in 
+part because of its natural advantages with Entra and Active Directory that 
+are now being reflected into Agent365), and agentic intent. 
+Fireworks (privately-held specialized inference platform) noted that its 
+o
+demand is broadening from coding into finance, legal, CRM, chip design and 
+life sciences, and expects 1000s of specialized models and agents to emerge 
+around different job functions. 
+Mistral is seeing a strong uptick in US FinServ and manufacturing adoption, 
+o
+with IP / data control, business continuity and cost driving greater use of 
+open-weight models. More sophisticated customers are increasingly moving 
+workloads off frontier models where open-weight alternatives are sufficient - 
+most notably in coding agents - given better economics and greater control. 
+We also heard several examples of what still needs to be solved as these 
+technologies move into production. Harness noted that AI can increase code 
+22 November 2026
+  3
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+generation 5-10x (and in some cases 30-40x), while actual software shipped is only 
+growing ~15-20%, as testing, security and deployment struggle to keep pace. A 
+similar gap exists at the workflow level, where large perceived productivity gains are 
+translating into much smaller realized benefits without redesigning the underlying 
+processes. Fireworks also highlighted evals as an important gating factor for 
+production agents: enterprises need confidence not only in the output, but also that 
+agents are completing workflows efficiently, consistently and without exposing 
+proprietary data.  
+Apps: in aggregate, the datapoints we hear lean more negative: 
+5.
+The renewals environment is uneven, with many customers pointing to 
+o
+successful negotiations freeing up more budget for token spend; 
+Back at our April Private Company conference, Serval noted its goals of being 
+o
+an overlay layer to SeviceNow, with full rip and replace still 3-10 years away. 
+Since that time, Serval has now done several full ServiceNow rip and replaces 
+(including at orgs with 20-100K employees, in 4 weeks to 4 months) while also 
+capturing outsized share with AI natives (although large/older/complex orgs 
+are still a work in progress for lands). We spoke with many customers who 
+genuinely love the product.  
+At the GS PICC conference, Harvey described AI moats as a ladder: they 
+o
+assume each advantage lasts a couple of years, and use that window to build 
+the next one. As we explore in Revisiting Moats (and as HubSpot is exploring 
+real time with its “refounding”): the challenge for most SaaS apps is there have 
+been several years of somewhat stagnant innovation such that few new moats 
+have been built, at the same time as coding tools make migrations easier.  
+Harvey also offered an interesting perspective on systems of record: as more 
+o
+work is created within Harvey, the platform naturally captures more of the 
+underlying data and workflows, creating a path to becoming the SOR itself. 
+This suggests that the traditional SOR moat may become more contestable as 
+AI-native applications increasingly own where work gets done. 
+MSFT 
+ 
+ 
+We hosted an investor meeting with EVP of Azure, Arun Ulag, and spoke with 
+several customers and partners.  
+The number of frontier models in the world should be equal to the number of 
+1.
+companies in the world. Microsoft’s frontier ecosystem strategy is centered on 
+accelerating the diffusion of intelligence across the enterprise, where value creation 
+extends beyond any single model or application. Central to this strategy is the idea 
+that enterprises should own their intelligence, with Microsoft’s investment in MAI 
+and custom models enabling customers to build differentiated AI capabilities around 
+proprietary data and workflows. 
+Network effects of intelligence: As AI becomes more deeply embedded in 
+o
+enterprise workflows, agents accumulate richer organizational context and 
+22 November 2026
+  4
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+improve their ability to execute tasks, creating a reinforcing cycle of adoption 
+and intelligence. Microsoft’s existing enterprise footprint and access to 
+context across applications position it well to facilitate this diffusion. 
+An ecosystem rather than a single-model strategy: Microsoft’s investment 
+o
+in MAI and custom models complements its partnerships with frontier labs, 
+allowing it to capture innovation across the model ecosystem while enabling 
+customers to build differentiated intelligence around their proprietary data. 
+Early examples highlight the potential: AT&T customized MAI models for 5G 
+network analytics, Woven by Toyota fine-tuned models on historical software 
+fixes, and Alaska Airlines improved aircraft maintenance report classification 
+accuracy from 81% to 91% through model tuning. We believe this creates an 
+important extension of the network effects of intelligence. 
+More sophisticated organizations may solve agentic identity concerns as early 
+2.
+as December, allowing agents access beyond the sandbox. We continue to hear 
+early proofpoints on E7 upgrades tied in part to Agent 365. Industry experts noted 
+Microsoft’s potential to be a leader in agentic identity, in part because its existing 
+domain expertise on human identity (Entra, Active Directory, policy management) 
+extends naturally to agents, albeit with a greater degree of sophistication on 
+auditing and governance. Agent365 is still early in realizing its full potential, with the 
+next milestone to watch likely tied to collaboration. Customers with dense 
+engineering talent are on track to solve agentic identity as early as the end of 4Q, 
+suggesting that there should be more examples of agents being released from the 
+sandbox in 2027. 
+Persistent focus across the MAI family to deliver better cost. We see Microsoft’s 
+3.
+MAI strategy is to offer a model family that spans across the pareto frontier, 
+optimizing for performance and economics, as opposed to solving for frontier 
+intelligence. The newly launched Decision 1.1 complements this by helping route 
+workloads to the appropriate level of intelligence for the best cost rather than 
+defaulting every task to the most expensive frontier model. The early 
+cost/performance datapoints are notable: MAI-Code-2 offers close to SOTA models’ 
+performance at a fraction of the cost. Combined with giving customers greater 
+control over their models and weights, we believe Microsoft’s differentiation is 
+increasingly about delivering intelligence customers can own and scale economically. 
+Diversification is central to how Microsoft is building its infrastructure fleet and 
+4.
+allocating compute. 
+On Azure: Microsoft emphasized that the hyperscaler business is serving the 
+o
+long tail of customers and workloads, not one dominant customer or 
+workload. Microsoft compared the current cycle with the early days of cloud, 
+where iCloud made up a majority share of Azure storage, which was an 
+important workload but not ultimately what Azure was built around. The same 
+logic applies to AI: Microsoft expects the frontier labs to remain large 
+customers, but is building capacity around a much broader set of enterprise 
+workloads. This reinforces its decision not to skew compute toward short term 
+demand that may not represent the long term shape of Azure. 
+22 November 2026
+  5
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+On silicon: Microsoft’s strategy is to make its 1P (Maia and Cobalt) and 3P 
+o
+silicon compete within a balanced fleet. Notably, AI is increasingly making it 
+easier to optimize software across different silicon architectures, reducing the 
+switching costs that historically created stronger hardware lock in. As such, 
+Microsoft’s objective is not to win on any one generation of silicon, but to 
+drive metronomic cost/performance improvement over time. Importantly, 
+vertical integration is a tool rather than the end state: Microsoft wants a 
+competitive 1P stack while retaining the ability to benefit from the innovations 
+that 3P silicons or suppliers are delivering. 
+Consumption will become the larger dollar opportunity. Microsoft believes it has 
+5.
+struck a balance across subscription and usage based pricing: IT funds the 
+subscription, while the broader business funds consumption against measurable 
+revenue generation or savings, more directly linking AI spend to ROI. The more 
+interesting datapoint was Cowork: Microsoft cited a customer that already uses 
+essentially the full breadth of the Microsoft stack, yet Cowork revenue alone is now 
+higher than all of its other Microsoft spend combined. With enterprise diffusion still 
+early, we are increasingly constructive that broader adoption of agentic workloads 
+across the knowledge worker base can materially expand Microsoft’s wallet share 
+and drive ARPU upside, even among its most deeply penetrated customers. 
+Azure pricing and platform breadth: Microsoft noted that rather than raise prices 
+6.
+to take advantage of tight supply, it instead is executing on a much longer-term 
+strategy of a) monetizing 1P services (that in turn are fungible and dynamically 
+allocated to free up capacity for specific customer chips or regions), and b) 
+cross-selling platform tools like Fabric and higher attach across non-AI services. With 
+Foundry up 3x yoy, customers leverage models to build agents and then consume 
+non-token-services such as CosmosDB, Fabric, Posgres. Out of 44K fabric customers, 
+19K use fabric and foundry together driving acceleration across the data platform. 
+On Apps: Copilot is now a front door to Azure. Microsoft noted that the top of 
+7.
+funnel for Azure has historically been developers. Today, knowledge workers can 
+build directly with Copilot as the primary interface, such that Copilot makes M365 
+sticky, and in turn increases the stickiness of Azure. The non-AI workloads create 
+data gravity for AI workloads. One industry expert noted to us that M365 apps will 
+naturally become less of a direct interface over time; rather, Copilot will be the 
+abstraction layer that in turn creates artifacts in M365.  
+Post its outage last week, Microsoft noted feedback loops between security and 
+8.
+reliability: On reliability, this includes safe deployment practices and systems for 
+change management, telemetry and observability. Security investments have 
+stepped up materially over the last 6 months, with an associated uptick in intensity in 
+Microsoft’s investments to harden its environment. The pace of change is going up in 
+a continuous loop. Microsoft noted that it is seeing more customers push to the 
+cloud in part to outsource this reliability x security problem – we heard first hand 
+engineering teams at customers expressing relief last week that they were not on the 
+hook for solving the outage themselves.  
+Database convergence: Microsoft noted that its OneLake tool has become highly 
+9.
+22 November 2026
+  6
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+differentiated even 3 years post launch. At Ignite, Microsoft launched HorizonDB 
+that sits at the convergence of analytical and transactional databases, such that 
+transaction throughput is best in class.  
+Valuation and Key Risks 
+Separate to the investor meetings, we update our F27E/F28E/F29E adjusted EPS 
+forecasts to $19.72/$24.28/$29.83 from $19.73/$24.28/$29.87. This update is to 
+reflect the incorporation of Microsoft’s recent $25B bond offering.  
+We maintain our 12-month price target of $700, based on a 28x P/E (unchanged) 
+multiple to Microsoft’s SNTM adjusted net income. Key downside risks include: longer 
+ramp for internal silicon which can limit market share gains or gross margin expansion, 
+greater investments in projects outside of expectations (e.g., non-Azure), key leadership 
+changes, and more meaningful shift to custom software that could negatively impact its 
+applications business. 
+PLTR 
+ 
+ 
+We visited Palantir’s New York office on November 18 for a product demo with Dave 
+Glazer, CFO; Akshay Krishnaswamy, Chief Architect; and Ana Soro, Office of the 
+CFO. 
+Sovereign AI positions Palantir as the operating layer across a fragmented AI 
+1.
+stack: Palantir positions itself as an interoperable layer across frontier, open source 
+and open weight models; data platforms including Databricks, Snowflake and 
+BigQuery; and compute environment through Apollo (which enables software to be 
+continuously deployed and managed across public cloud, private cloud and 
+on-premise environments). This architecture should become more valuable as 
+enterprises and governments look to avoid dependence on any single model, 
+database, or cloud. Management’s comment that more data is now flowing out of its 
+systems than flowing in helps illustrate this distinction: a manufacturer may ingest 
+ERP, inventory, demand and factory data, but Palantir uses that context to generate 
+decisions and actions that flow back into SAP, MES, procurement and scheduling 
+systems. In our view, this positions Palantir as an increasingly important 
+orchestration layer across the enterprise AI stack, with value tied to executing real 
+world workflows rather than simply analyzing data or providing access to models.  
+FDE remains a key competitive advantage, while improving development 
+2.
+velocity should allow Palantir to scale the model more efficiently. Palantir’s FDE 
+approach starts “backward from the outcome,” building applications around the 
+business problem a customer is trying to solve, rather than starting with a 
+predefined software product and adapting it to the workflow. The underlying 
+platform has also expanded materially, with Foundry growing from four 
+microservices historically to 300+ today, allowing teams to accomplish in days 
+development work that previously took months. While SaaS incumbents are 
+increasingly introducing their own FDE organizations, we think Palantir’s 
+combination of platform maturity, embedded customer context and outcome driven 
+22 November 2026
+  7
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+development remains differentiated. Longer term, Palantir is also increasingly 
+offloading implementation to partners and customers where appropriate, with 
+longtime customer Airbus supporting ~12K technical users on the platform. This 
+should help Palantir preserve a relatively lean headcount model while scaling 
+deployment capacity. 
+Developer adoption represents an incremental vector for platform expansion, 
+3.
+with Palantir increasingly giving customers the tools to build applications 
+themselves. Pilot is Palantir’s AI powered application builder, allowing developers to 
+move from a natural language prompt to an application with the underlying 
+ontology, frontend code and data model generated alongside it, while OSDK enables 
+developers to access Palantir’s Ontology directly from their own development 
+environments and build custom applications on top of Foundry. Together, these tools 
+lower the barrier to building on Palantir and should allow more application 
+development to shift toward customers and partners over time, expanding use cases 
+without requiring a commensurate increase in Palantir FDE resources. 
+Product depth remains key, with AI accelerating the path from initial 
+4.
+deployment to meaningful wallet share. Contracts are typically ~3 years, but 
+customers frequently expand ~18 months into a deployment as additional use cases 
+emerge. The incremental economics should be attractive because Palantir already 
+has access to the underlying datasets, business logic and ontology required to build 
+additional workflows. Recent pilots demonstrate the magnitude of this expansion, 
+with disclosed examples scaling ~5 to 15x in ACV, including a global athletic 
+company from $1.6mn to ~$21mn, a home appliance company from $1mn to 
+$15mn and an apparel company from $2.5mn to $11.5mn. We think AI is 
+accelerating this enterprise diffusion relative to prior periods, supporting continued 
+wallet share expansion and an increasing number of mega customers, with U.S. 
+commercial ARPC now ~$5m. Customers are scaling faster than prior cohorts, 
+including at mega customers where Palantir already has sizeable wallet share. 
+Apollo as a solution to today’s security and reliability challenges. Meanwhile, 
+5.
+Apollo could become increasingly relevant as enterprises confront the security and 
+operational risks created by legacy software. Apollo provides continuous software 
+delivery across cloud, on premises and other complex environments and allows 
+software to be updated without requiring a standardized underlying infrastructure. 
+As frontier models increasingly surface vulnerabilities and enterprises discover 
+hidden dependencies across legacy systems, we see an opportunity for Palantir to 
+participate not only in the AI application layer but also in the secure deployment and 
+ongoing management of increasingly complex software environments. 
+Innovations to watch: 
+6.
+Non-LLM applications of transformer and diffusion models: The underlying 
+o
+engines of LLMs are transformers and diffusion models; while most enterprise 
+customers think of these engines as being applied to chat bots, there are a 
+broader set of applications that are now being explored. This includes 
+decision-style models, schema-fixed models, and multi-modal models (like 
+Runway in image generation). The pathways for these types of models are 
+22 November 2026
+  8
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+becoming much more efficient, and can also now be applied in domains such 
+as assembly manufacturing, where the transformer is used to translate 
+unstructured data into rigid outputs such as schematics. 
+Advances in traditional computer science: Palantir noted that using machine 
+o
+learning to solve massive logistical problems (like airline scheduling) previously 
+required linear programming solvers, such as CPLEX and Gurobi. These solvers 
+are fast and mathematically exact, but are brittle in nature, requiring 
+specialized hardware and PHD level talent to translate a business operations 
+problem into rigid mathematical equations. Today, LLMs can be used as a 
+universal translator, such that logistical problems are easier to solve in more 
+flexible forms.  
+We are Buy rated on Palantir. Our 12m price target is $235, which is based on 60x 2029E 
+GAAP EPS, discounted back to SNTM (Q5-Q8) to be consistent with our broader 
+coverage framework. 
+Key risks include competition from software and services vendors scaling their FDE 
+motions, a slowdown in enterprise AI adoption and customer expansion, and a potential 
+change in Congress impacting Palantir’s win rate on new US government contracts.
+22 November 2026
+  9
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Gabriela Borges, CFA, Matthew Martino and Callie Valenti, hereby certify that all of the views expressed in this report accurately reflect our 
+personal views about the subject company or companies and its or their securities. We also certify that no part of our compensation was, is or will be, 
+directly or indirectly, related to the specific recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Gabriela Borges, CFA Goldman Sachs & Co. LLC, Matthew Martino Goldman Sachs & Co. LLC, Callie Valenti Goldman Sachs & Co. 
+LLC, Noah Naparst Goldman Sachs & Co. LLC, Maura Hager Goldman Sachs & Co. LLC, Selina Zhang Goldman Sachs & Co. LLC, Praachi Arora Goldman 
+Sachs India SPL. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+The rating(s) for Microsoft Corp. and Palantir Technologies is/are relative to the other companies in its/their coverage universe: Adobe Inc., 
+Akamai Technologies Inc., AvePoint, Check Point, Cloudflare, Commerce.com Inc., CoreWeave Inc., CrowdStrike, Datadog Inc., DigitalOcean Holdings, 
+EverCommerce Inc., Figma Inc., Fortinet, HubSpot Inc., Intuit Inc., Klaviyo, Microsoft Corp., Navan Inc., Octave Intelligence, Okta, Oracle Corp., Palantir 
+Technologies, Palo Alto Networks, SailPoint Inc., Salesforce Inc., SentinelOne, ServiceNow Inc., Shopify Inc., Snowflake Inc., Twilio Inc., Tyler 
+Technologies Inc., Veeva Systems Inc., Workday Inc., Zeta Global, Zscaler  
+Company-specific regulatory disclosures 
+The following disclosures relate to relationships between The Goldman Sachs Group, Inc. (with its affiliates, “Goldman Sachs”) and companies covered 
+by Goldman Sachs Global Investment Research and referred to in this research. 
+Goldman Sachs has received compensation for investment banking services in the past 12 months: Microsoft Corp. ($484.52) 
+Goldman Sachs expects to receive or intends to seek compensation for investment banking services in the next 3 months: Microsoft Corp. ($484.52) 
+and Palantir Technologies ($143.49) 
+Goldman Sachs has received compensation for non-investment banking services during the past 12 months: Microsoft Corp. ($484.52) 
+Goldman Sachs had an investment banking services client relationship during the past 12 months with: Microsoft Corp. ($484.52) and Palantir 
+Technologies ($143.49) 
+Goldman Sachs had a non-investment banking securities-related services client relationship during the past 12 months with: Microsoft Corp. ($484.52) 
+Goldman Sachs had a non-securities services client relationship during the past 12 months with: Microsoft Corp. ($484.52) 
+Goldman Sachs has managed or co-managed a public or Rule 144A offering in the past 12 months: Microsoft Corp. ($484.52) 
+Goldman Sachs is a registered market maker in the securities or derivatives thereof: Microsoft Corp. ($484.52) and Palantir Technologies ($143.49) 
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+22 November 2026
+  10
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+ 
+As of October 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,094 equity securities. Goldman Sachs assigns stocks as 
+Buys and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+ 
+Target price history table(s) 
+ 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+58%
+43%
+Microsoft Corp. (MSFT)
+Palantir Technologies (PLTR)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+29-Oct-26
+700.00
+530.14
+03-Nov-26
+235.00
+175.40
+30-Jul-26
+640.00
+451.10
+08-Oct-26
+230.00
+198.78
+30-Apr-26
+610.00
+407.78
+04-Aug-26
+204.00
+162.66
+29-Jan-26
+600.00
+433.50
+06-May-26
+183.00
+133.79
+11-Jan-26
+655.00
+479.28
+03-Feb-26
+182.00
+157.88
+31-Jul-25
+630.00
+533.50
+04-Nov-25
+188.00
+190.74
+20-May-25
+550.00
+458.17
+05-Aug-25
+141.00
+173.27
+01-May-25
+480.00
+425.40
+06-May-25
+90.00
+108.86
+24-Apr-25
+450.00
+387.30
+04-Feb-25
+80.00
+103.83
+10-Oct-24
+500.00
+415.84
+06-Nov-24
+41.00
+55.53
+26-Apr-24
+515.00
+406.32
+06-Aug-24
+16.00
+26.59
+07-May-24
+14.00
+21.40
+06-Feb-24
+13.00
+21.87
+22 November 2026
+  11
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+22 November 2026
+  12
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+22 November 2026
+  13
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
+
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use. You 
+may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+You may not use, extract, download or retrieve this information, in whole or in part, to train, finetune, adjust, influence the weights or behavior of, or 
+otherwise develop or improve a machine learning or artificial intelligence model or system, or provide or reproduce this information, in whole or in part, 
+as a prompt or input to any such system without the express written consent of Goldman Sachs. Furthermore, you may not bulk download this 
+information, or employ any robot, spider, crawler, scraper, automated agent, or other electronic means to scrape, harvest, extract, or retrieve this 
+information, without the express written consent of Goldman Sachs. A breach of the above terms may result in termination of your right to access this 
+service. 
+22 November 2026
+  14
+Goldman Sachs
+Americas Technology: Software
+ 
+ 
