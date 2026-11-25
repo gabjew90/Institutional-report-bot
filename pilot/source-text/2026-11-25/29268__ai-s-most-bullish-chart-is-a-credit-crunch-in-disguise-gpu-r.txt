@@ -1,0 +1,306 @@
+ 
+AI's "Most Bullish Chart" Is A Credit Crunch In 
+Disguise: GPU Rents Soar As Lenders Slash 
+Advance Rates From 80% To 50% 
+ 
+BY TYLER DURDEN 
+SUNDAY, NOV 22, 2026 - 04:35 PM 
+There is one chart the AI bulls have been pointing to all autumn, even as their "AI supercycle" 
+bubble collapsed all around them.  
+The AI trade peaked in June. CoreWeave imploded in October. The midterms handed data 
+center opponents a near-clean sweep, Jensen Huang is gone, banks are dumping chip-backed 
+loans, and even Anthropic's $2 trillion debut on Thursday, in which most institutions got no 
+allocation at all, coincided with the S&P slipping back below its 200DMA. And yet through all of 
+it, the price of renting a GPU by the hour has gone straight up: Silicon Data's B200 index rose 
+23.5% from the end of August to November 19, from $5.62 to $6.94 per GPU-hour (peaking at 
+$7.10 on Tuesday), while the four-year-old H100 is up 67% since July 2025. 
+ 
+Michael Dell, who has just a few servers to sell, took the victory lap last week: an H100 that 
+rented for $1.96 an hour a year ago now fetches $3.10, up 58%, on a chip that was supposed to 
+be obsolete, which in his telling settles the GPU depreciation debate. 
+ 
+
+ 
+The logic is seductive: rents are a price, prices clear markets, so rising rents mean demand for 
+compute is outrunning supply and everything else is noise. Regular readers know we have 
+never bought it. When Nvidia paused some of its revenue-sharing deals with AI clouds in late 
+August, we asked the obvious question: 
+Three months later, somebody who actually prices these loans for a living has answered it. On 
+this week's Odd Lots (titled, appropriately, "The Problem With AI's Most Bullish Chart"), the 
+shows' hosts (a couple of former BBG TV anchors who have moved on to a more appropriate 
+medium) sat down with Stanley Lee, a former Barclays and Point72 high yield trader who is now 
+chief product officer at Liquid Compute, a startup that runs a GPU rental index and marketplace 
+and works with the private credit funds that finance mid-market neoclouds. His message, well 
+summarized here by Shanu Mathew, is that a big part of the move in that chart is the sound of 
+lenders leaving the room. 
+What The Chart Actually Measures 
+Start with what these indices track. As Lee pointed out, any rental index worth using strips out 
+hyperscaler pricing (the B200 series in the chart above says "Non-Hyperscale" right in its 
+name). What's left is the neocloud market, and within it the short-dated end, where prices are 
+most visible. And like oil, only a small minority of compute actually changes hands there, even 
+though those are the prices everyone uses as the reference rate. 
+So who is the marginal buyer in a thin, short-dated market for neocloud compute? Mostly 
+VC-funded inference and app companies. And why are they there? Lee's answer was blunt: 
+And this is why, you know, spot pricing and On-Demand pricing and short term pricing is 
+remaining so high because it's so indicative not just of the underlying demand, but of the buyers 
+cost of capital. A lot of the buyers of spot on demand and short term pricing wish that they could 
+buy term. They cannot. So for example terms. This means they wish they could buy compute on 
+a longer on a longer scale. So they wish that they could put 30% down at $4.30 per GPU hour 
+for B three hundreds. And they cannot. And maybe they could, you know, six weeks ago. But 
+increasingly they're neo clouds can't sell them that because those neo clouds are unable to take 
+that off, take her to a lender and get financed. So a lot of these people, you know, the spot and 
+the short term market is just as much of a function. I think it's even more of a function right now 
+of cost of capital than underlying demand dynamics. 
+In other words, a good chunk of the spot bid is made up of buyers who would rather be 
+somewhere else. They want a three-year contract at a lower price. The neocloud would love to 
+ 
+
+ 
+sell them one. The deal dies because the neocloud can't take that customer to a lender and get 
+the chips financed, and the buyer still needs compute today. 
+If that sounds familiar, it should. Back in October, in "Spot Is Four Times The Hurdle", we 
+showed that short-term neocloud capacity was renting for $40-50 billion per gigawatt against 
+roughly $20 billion for long-term deals, and noted that the term structure of compute was steeply 
+inverted: buyers were paying about double for the privilege of not committing, the kind of 
+backwardation that usually means a shortage is priced as temporary. We just didn't have the 
+mechanism. Lee does, and it's credit. 
+80%, 70%, 50%: The Vanishing Advance Rate 
+The plain-vanilla product in this market, to the extent a market that did not exist 18 months ago 
+has one, is a three-year, fully amortizing loan of several hundred million dollars to a mid-market 
+neocloud (think converted bitcoin miners, some of them little more than a couple of guys, per 
+Lee), secured by the GPUs and repaid from a take-or-pay contract with an AI company. Here is 
+what has happened to the terms, in Lee's words: 
+We were seeing 80% LTV loans get priced over the summer. I think post Labor Day it was more 
+70%. And now people are asking for 50 to 60%. 
+And the 50% structure, where it's available at all, is being quoted in the mid-to-high teens. Put 
+that on a $100 million cluster: 
+ 
+Since Labor Day, the cash a neocloud has to find outside the senior loan has gone from $30 
+million to as much as $50 million, a 67% increase. And here's the detail that makes it bite: many 
+of the smaller operators were never putting in their own equity to begin with. They were bridging 
+ 
+
+ 
+the gap with customer prepayments. So when the lender asks for 50% LTV, the neocloud has 
+two choices: i) go back to its customers and demand even bigger prepayments (customers 
+whose coffers are venture equity, and VCs deployed about 25% less in Q3 than in Q1), or ii) 
+raise holdco equity of its own, in a market where neocloud equity is not exactly in demand. Lee's 
+summary is the cleanest line of the episode: "access to debt is going to equal access to equity 
+in the middle market." 
+The lenders have other complaints too. A take-or-pay contract only pays if the operator keeps 
+the cluster running, so private credit has started underwriting the operator and the offtaker 
+separately; one large lender told Lee to stop showing him any deal that is a neocloud's first or 
+second deployment. And the offtakers themselves are a problem: lenders now see five to ten 
+loans a week backed by the same handful of AI companies. Tracy Alloway said that part made 
+her think of subprime correlations in 2008, and we wouldn't argue (we've been calling these 
+things Collateralized Chip Obligations for a reason). 
+The stressed end of the market has already moved on to three-to-six month rescue and bridge 
+loans with tight covenants. If there's no takeout (and the takeout would have to come from, yes, 
+private credit), the lender forecloses and takes the chips. 
+$33,000 To Avoid A $35,000 Deposit 
+Now look at it from the buyer's side, because this is where it gets interesting. Lee described two 
+offers he showed the same customer for three years of B300 capacity: 
+You know, we were I was showing a deal to someone where you could rent, you know, three 
+years worth of B, three hundreds at $4.40 for GPU, our 30% down or I'll show it to you zero 
+prepay high fives, mid high fives. They will choose the zero prepay mid high fives. 
+ 
+
+ 
+ 
+Do the napkin math. Three years is 26,280 hours, so one B300 at $4.40 costs about $115,600, 
+of which 30%, or roughly $34,700, is due upfront. The zero-prepay version at, say, $5.65 costs 
+about $148,500. So the startup pays roughly $33,000 more per GPU to avoid fronting $35,000. 
+Treat the prepayment as a loan and the implied interest rate works out to somewhere between 
+30% and 55% a year, depending on how the deposit is credited against the contract 
+(approximate, and the buyer does get some flexibility for its money). 
+Why would anyone take that trade? Because cash on the balance sheet is the startup's lifeline, 
+and because signing more compute lets it grow revenue faster, which lets it go back to the VCs 
+and raise more money... to sign more compute. Whatever that is, it is probably not what Michael 
+Dell has in mind when he says demand is strong. 
+Put the two sides together. The operators who can't finance term contracts don't build new 
+clusters, so supply growth in the mid-market slows. The buyers who can't get (or won't pay for) 
+term contracts crowd into short-dated capacity, so the visible price goes up. Both effects push 
+the index higher, and neither one requires a single additional dollar of end-user revenue. 
+A Thin Market With Four Prices 
+How thin is this market? Thin enough that nobody agrees on the price. When Bernstein took 
+apart CoreWeave's (CRWV) claim that re-renting its off-contract GPUs would generate $10 
+billion a year (in "Enjoy the GPUphoria while it lasts", available to pro subs, which we covered 
+last week), it lined up the going rate for an H100 from four different providers on the same day: 
+ 
+
+ 
+ 
+$3.50, $3.30, $3.01 and $2.80, for the same chip. That's a 25% spread between the highest and 
+lowest "market" price, and CoreWeave's management was assuming $3.81. Meanwhile the 
+Ornn H100 index, which we charted last night, has already rolled over from about $3.50 in early 
+November to $2.92. SemiAnalysis's one-year contract price troughed at $1.70 just thirteen 
+months ago. 
+Lee was candid about what that means for anyone treating the index as collateral value, which 
+is the part that should worry anyone lending against it: 
+And it's quite interesting because if the chart is going up and to the right, because credit is 
+getting harder, that is not really a healthy and sustainable environment. If there's a breaking 
+point and people are starting to run out of money, that's where the floor can drop out from below. 
+The spot market is pretty thin. You know, a good question that I got from, you know, one of the 
+large private credit firms is how many bids do you think really need to get hit for the floor to fall 
+out in these graphs? And the answer is probably a lot less than people think. 
+He would know. Liquid Compute has been fielding one to three calls a day for the past two 
+weeks from large private credit funds asking for indicative prices on put options on its B300 
+rental index. Six months ago nobody asked. And bigger neoclouds are already phoning him to 
+say that if distressed purchase orders from smaller rivals show up, they want to buy them on the 
+cheap. Every one of those trades is a data point that can show up in the index, and as Lee put 
+it, it only takes one newspaper story about falling GPU residual values for private credit to 
+re-examine its priors. 
+(Lee, to be clear, is in the business of selling exactly that kind of hedge, just as Li sells indices 
+and Dell sells servers. Everyone here is talking their book. The question is whose book has the 
+lenders in it.) 
+(Recovery, by the way, is harder than holding a lien on some hardware. To get paid, a lender 
+has to keep the cluster running where it sits and re-let it, which takes access to the facility, an 
+operator, and contracts that can be assigned. Customers who locked in $3.80 when the going 
+ 
+
+ 
+rate is $4.30 are, understandably, asking for non-disturbance agreements so that the lender 
+can't reset them to market. Hardly anything is standardized.) 
+Who Is Paying, And With What? 
+None of this means there is no demand. Lee said so repeatedly, and so will we. The question is 
+what the demand is made of, or as Lee put it: 
+And the demand side is a function of two things the willingness and the ability of the buyers to 
+pay. Right now, we have not had to worry about the willingness of these buyers to pay, but the 
+ability of these buyers to pay is from venture equity. So if if more and more people can't go the 
+anthropic route of converting equity funded compute purchases into revenue funded compute 
+purchases over time, then this is going to be an issue. 
+Anthropic can (increasingly) pay its compute bill out of revenue. Most of its smaller peers pay 
+theirs out of the last funding round. The second kind of demand looks identical on a rental chart 
+right up to the moment the next round doesn't close. It's the same point Rothschild Redburn's 
+Alexander Haissl made in September when he slapped Sell ratings on CoreWeave and Nebius 
+(NBIS): compute prices are rising, but the top-paying customers are mostly VC-funded startups, 
+and their demand lasts exactly as long as external capital does. 
+And that capital has a source. For most of the past two years it was the Bank of Nvidia, which 
+invested in the labs, backstopped the lenders and, per the WSJ, even rented its own chips back 
+from customers so they could show lenders a contract. Interim CEO Colette Kress told analysts 
+on Tuesday that Nvidia still supports the neoclouds but will be more selective about it, which is 
+how lenders of last resort talk right before they stop lending. Paul Kedrosky, the second guest 
+on the episode, called the whole arrangement a fractional reserve banking system with one 
+bank, and reminded listeners that those run in reverse a lot faster than they run forward. 
+Kedrosky's answer when Joe showed him the same chart: 
+Same thing I just think people and this is the story has been the story all along on this stuff is 
+that people confuse number goes up into the right with the viability of the business, your ability 
+to pay off the underlying financing. Right? 
+His own stress test: roughly $10 trillion of cumulative capex needs something like $3 trillion to 
+$6 trillion of annual revenue by 2032 to earn a reasonable return. A rental index tells you what 
+the scarce hour costs today, and that's about all. 
+ 
+
+ 
+Compute Up, Tokens Down 
+Which brings us to the other half of the picture, the one the bulls leave off the chart. The thing a 
+GPU produces is tokens, and the price of tokens has collapsed. Here is the chart we put out last 
+night: 
+ 
+Since July, Ornn's OpenAI token price index has fallen from above $1.20 to $0.31 and its 
+Anthropic index from around $2.00 to $0.77 (chart read approximate), while an hour of H100 
+time got more expensive. Nvidia itself said on Tuesday that token prices are down nearly 60% 
+since May. An input whose price is rising while the price of its output falls by more than half is 
+normally called a margin squeeze (unless throughput per chip is rising even faster, which is the 
+bull case, and good luck finding that in anyone's 10-Q). 
+The bulls have an answer, and it deserves a hearing. Kress argued that cheaper tokens are 
+precisely why demand is exploding: per Goldman's European hardware team (in a Nvidia 
+read-across note, available to pro subs), weekly token volumes on OpenRouter are up 35x from 
+a year ago with agentic workloads about 80% of the total, older Hopper GPUs are being 
+re-contracted at about twice their original price under multi-year agreements, and B300 rates 
+are up more than 60% since launch. Wells Fargo pointed to Oracle's 97.9% AI infrastructure 
+utilization and 20% renewal premiums. And Silicon Data CEO Carmen Li - who may have an 
+ever so slight conflict of interest here - pushed back on the episode directly: her indices include 
+term contracts as well as spot, tighter credit also constrains supply, and a price index was never 
+meant to measure anyone's solvency (a collapse in rental prices would rather adversely impact 
+her own business model). 
+ 
+
+ 
+All fair, and note what every one of those points has in common: they are statements about 
+scarcity. Nobody disputes that a lit, powered GPU is scarce in November 2026, least of all with 
+Texas and its imitators lining up moratoria. But "compute is scarce because nobody can finance 
+the next cluster" and "compute is scarce because customers are making money with it" produce 
+the same chart and very different endings. (Also, "per NVDA" is doing a lot of work in that 
+Goldman sentence. The source of the re-contracting data has $118 billion of guarantees 
+outstanding to the same ecosystem.) 
+Goldman's Favorite Metric Has Stopped Working 
+Here's the irony. In June, when rental prices were falling, Goldman Delta-One head Rich 
+Privorotsky called them the single most important metric in the AI trade: if compute is scarce, 
+prices hold and capex is justified; if they drift lower, the premise is in trouble. Prices duly fell, 
+and the AI trade peaked that month. 
+So what happened when the metric turned back up? From the end of August rents rose more 
+than 20%... and over the same stretch CoreWeave's CDS blew out to around 1,300bp, its 2031 
+notes traded at a 16% yield, Goldman's own Top of Mind (available here for pro subs) had 
+Chamath warning of 20% borrowing costs for the weakest neoclouds, hedge funds went 
+underweight AI for the first time since 2023, and the industry's chief financier lost his job. The 
+"most important metric" hit a record at the same time as AI credit spreads. One of those two 
+markets is misreading the other, and credit is the one with money at risk. 
+(Full disclosure: in late September we tweeted that rental prices for all but the newest chips 
+were rolling over. The tape promptly went the other way. What changed after Labor Day was the 
+advance rate.) 
+Privorotsky seems to have noticed the problem himself. In a note earlier this month (available to 
+pro subs), Goldman's Delta-One head wrote: 
+Oversupply, not power or permitting remains the key MT risk. While headline GPU spot rental 
+rates remain supported by physical scarcity, optimization and smaller specialized models are 
+rapidly compressing per token inference costs. The bear argument is no longer that compute 
+cannot be built, but that efficiency breakthroughs could outpace demand growth. 
+Translation: even the desk that made rental prices its north star now says the headline spot rate 
+is being propped up by physical scarcity while the economics underneath it deteriorate. 
+Then there is the supply of debt this market is supposed to absorb. Goldman's credit strategists 
+expect $320 billion of chip and compute financing in 2027, almost seven times this year's pace 
+ 
+
+ 
+(from "From Shell to Compute", also available to pro subs), and their own chart shows where 
+that paper already clears: 150 to 240bp for investment grade chip deals against about 100bp for 
+ordinary IG, and as much as 775bp for the leveraged ones (chart read approximate). 
+ 
+A good part of that paper only works if someone guarantees the residual value of the chips. For 
+the past year that someone was Nvidia. And the residual value everyone points to as proof the 
+guarantee is safe is... the rental chart. 
+Record Rents, Record Spreads: Pick One 
+So which is it? The same credit shock moves rents in opposite directions depending on where 
+you are in the cycle. In the first phase, the one we are in, buyers shut out of term contracts bid 
+up short-dated capacity while fewer new clusters get funded, and the chart goes up and to the 
+right. In the second, venture funding slows enough that buyers stop paying, operators default, 
+and lenders re-let foreclosed clusters into a market with fewer customers. Supply arrives just as 
+demand leaves. 
+Readers who followed our tanker coverage this year will recognize the pattern. A $1 
+million-a-day supertanker told you a great deal about broken logistics and next to nothing about 
+oil demand. Spot rates for a scarce, financed, depreciating asset spike hardest when the 
+plumbing behind it seizes up. 
+The bulls, for their part, now argue that slower data center construction is good for compute 
+owners (less supply) and that faster construction was also good (more demand). Kedrosky had 
+the best line of the episode: 
+That good news is good news is good news, and bad news is good news. There's like a meme 
+about a large, hairy investor who I won't name, who's sort of standing there at the apocalypse 
+and saying, you know what? This is also good for us. And it's this is the problem, right? That 
+once you start playing this game of finding reasons why both tight supply and wildly abundant 
+ 
+
+ 
+supply are good for you, what you have there is theology. You don't actually have an argument 
+anymore. You just have a belief and all data supports it. 
+We'd go with credit over the chart. The real test, as the hosts concluded, is how much of each 
+company's compute bill is paid out of customer revenue and how much out of the last equity 
+round. Until that number is public for anyone other than Anthropic, a rising rental index is mostly 
+a measure of how badly someone needs a GPU this month and how little a lender will advance 
+against it. 
+For the full list of what happens when those two things meet, here is our running tally of AI data 
+center deals that have been pulled, pushed, repriced or puked: 
+ 
+
+ 
+ 
+In shipping (as in everything else) nothing cures record rates like record rates. In compute, a 
+margin call will probably do it faster. 
+ 
+
+ 
+Much more in the full Goldman "From Shell to Compute" and "Is the AI investment cycle 
+durable?" notes and Bernstein's "Enjoy the GPUphoria while it lasts", all available to pro subs. 
+ 
+ 
+ 
+ 
