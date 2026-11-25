@@ -1,0 +1,30 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "figure": "4.84%",
+   "message": "The figure '4.84%' is attached to [cloud, demand, directly, downside, find] but the source uses it for [amid, change, close, crypto, down]. Re-scope the number to the source's subject or drop it."
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "figure": "4.84",
+   "event": "PCE",
+   "matches_estimate": false,
+   "message": "4.84% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.3])."
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "figure": "4.50",
+   "event": "PCE",
+   "matches_estimate": false,
+   "message": "4.50% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.2, 0.3, 0.7, 2.3, 3.4])."
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 3,
+ "exit_code": 4,
+ "note": "abridged by the routine for transport: message texts shortened and draft_subject/source_subject/sentence fields omitted; full file was /tmp/lint/final-validation"
+}
