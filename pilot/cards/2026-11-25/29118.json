@@ -1,0 +1,740 @@
+{
+ "brief": "Evercore ISI's morning note leads with Jensen Huang's reinstatement as NVDA CEO, framed as backed by the Trump administration: the firm argues this shows the U.S. government has become the implicit backstop of the AI industrial complex, calling it AI's first bailout of the buildout's financing architecture rather than a balance sheet, with implications for capital allocation and risk premiums on AI infrastructure financing. The rest of the note is a roundup of single-name calls (NFLX, Bloom Energy, PayPal, Adyen, Apple, RingCentral, ADI, Sensata, FUBO, SanDisk, SpaceX) alongside three recurring debates: whether AI infrastructure stocks can capture the economic value AI creates given token-price deflation and a delayed free-cash-flow recovery, even as NVDA posts a record $20B Vera Rubin ramp, a $2.5T cloud backlog and guides 75% FY28 revenue growth while the SOX multiple compresses late-cycle; cybersecurity demand (CRWD, OKTA, PANW, SNOW) strengthening into CY27; and memory costs pressuring Apple's margins while driving SanDisk's post-split earnings beat.",
+ "cards": [
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Jensen Huang has been reinstated as CEO and President of NVDA with the apparent full sponsorship of the Trump administration.",
+   "anchor": "reinstatement as CEO and President of NVDA, with what appears to be the full sponsorship of the Trump administration",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says the U.S. government has effectively become the implicit backstop of the AI industrial complex.",
+   "anchor": "the U.S. government has become the implicit backstop of the AI",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI calls Jensen Huang's reinstatement AI's first bailout, of the architecture supporting a trillion-dollar industrial buildout rather than a balance sheet.",
+   "anchor": "this is AI's first bailout \u2014 not of a balance sheet, but of the architecture supporting a",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "NFLX's U.S. subscriber satisfaction score surged to 72%, up 17 points year-over-year.",
+   "anchor": "In the U.S., satisfaction surged to 72%, up 17 points year-over-year",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "NFLX's U.S. churn intentions climbed to 28%.",
+   "anchor": "churn intentions also climbed to 28%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Mark Mahaney) rates NFLX Outperform with a $90 price target.",
+   "anchor": "NFLX (O/P, TP $90, Mark Mahaney): Staying Engaged",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Nicholas Amicucci) rates Bloom Energy (BE) Outperform with a $350 price target.",
+   "anchor": "BE (O/P, TP $350, Nicholas Amicucci): Business Is Blooming",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Bloom Energy's installed costs are projected to be within about $200/kW of competing combined-cycle gas turbines before investment tax credits.",
+   "anchor": "installed costs projected to be within ~$200/kW of competing CCGTs",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Bloom Energy management expects nameplate manufacturing capacity to grow from about 5 GW in FY28 to about 10 GW by FY31.",
+   "anchor": "growing nameplate manufacturing capacity from ~5 GW in FY28 to ~10 GW by FY31",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28-FY31"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Adam Frisch) rates PYPL In Line with a $45 price target.",
+   "anchor": "PYPL (I/L, TP $45, Adam Frisch): New team returns debate to the turnaround",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "PYPL's fourth-quarter results are expected to align with prior guidance.",
+   "anchor": "4Q results are anticipated to align with prior guidance",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's IT Hardware team says AI may create $6-12 trillion of economic value through 10-20% labor savings, but how much converts to infrastructure-provider revenue is uncertain.",
+   "anchor": "AI may create substantial economic value\u2014estimated at $6\u201312T through 10-20% labor savings",
+   "topic": "AI capex growth circularity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's IT Hardware team questions whether growing AI token usage can outpace the deflation in token prices, which could shrink the overall profit pool.",
+   "anchor": "the lingering question concerns whether this growth can outpace the deflation in token prices",
+   "topic": "AI capex growth circularity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's IT Hardware team says the anticipated rebound in AI infrastructure providers' free cash flow is increasingly seen as delayed.",
+   "anchor": "The anticipated rebound in free cash flow (FCF) is increasingly being seen as delayed",
+   "topic": "AI capex growth circularity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Adam Frisch) rates Adyen Outperform with a $1,200 price target.",
+   "anchor": "ADYEN-NL (O/P, TP $1200, Adam Frisch): The 20% growth debate",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Adyen shares have declined about 41% year-to-date and trade at 12.5x NTM EV/EBITDA, which Evercore ISI describes as a substantial discount to legacy peers at 6.6x.",
+   "anchor": "currently trade at 12.5x NTM EV/EBITDA, reflecting a substantial discount compared to legacy peers at 6.6x",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Amit Daryanani) maintains an Outperform/Top Pick rating on AAPL with a $380 price target.",
+   "anchor": "AAPL is maintaining an Outperform rating with a target price of $380",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI expects AAPL's gross margins to trough around 45% in June 2027 before a gradual recovery.",
+   "anchor": "Expectations point towards a potential trough for\nGMs at around 45% in June 2027",
+   "topic": "Global memory pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "June 2027"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "DRAM and NAND represent roughly 29% of AAPL's hardware expenses, per Evercore ISI.",
+   "anchor": "representing roughly 29% of hardware expenses",
+   "topic": "Global memory pricing cycle",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says recent shifts indicate a possible decline in NAND pricing, suggesting upstream cost relief for AAPL's margins.",
+   "anchor": "Recent shifts indicate a possible decline in NAND pricing, suggesting",
+   "topic": "Global memory pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Peter Levine) rates RNG In Line with a $90 price target.",
+   "anchor": "RNG (I/L, TP $90, Peter Levine): Key Takeaways From NYC Investor Meetings",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "RNG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "RNG management targets new products including RingCX and AI to comprise 10% of total ARR by the end of 2027.",
+   "anchor": "with targets set for these to comprise 10% of total ARR by the end of 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "RNG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by end of 2027"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Mark Lipacis) rates ADI Outperform with a $462 price target, advising investors to wait before adding ahead of earnings.",
+   "anchor": "ADI (O/P, TP $462, Mark Lipacis): Oct-Q EPS Preview: Wait to Add",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ADI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "ADI's NTM P/E of 22x exceeds both its historical trough of 15x and the peer median of 18x, per Evercore ISI.",
+   "anchor": "ADI\u2019s NTM P/E of 22x exceeds both its historical trough\nof 15x and the peer median of 18x",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ADI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "53% of investors are now Underweight the analog/MCU sector, yet Evercore ISI says ADI remains tied with TXN as the top analog long into Q3 earnings.",
+   "anchor": "53% of investors are now Underweight in the analog/MCUs sector",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ADI",
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 earnings"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's Kirk Materne highlights SNOW as the preferred growth idea within cybersecurity as market confidence returns.",
+   "anchor": "SNOW is highlighted as the preferred growth idea within cybersecurity",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI notes the IGV software index has seen a marked decline, even as cybersecurity and infrastructure subsectors are expected to rebound strongly once sentiment normalizes.",
+   "anchor": "the IGV index has seen a marked decline, reflecting broader tech trends",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's Peter Levine expects cybersecurity budgets to increase by approximately 20% in CY27.",
+   "anchor": "Expectations for cybersecurity budgets to increase by approximately 20% in CY27",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's Peter Levine is bullish on CRWD and OKTA amid continued cybersecurity demand strength and AI monetization building into CY27.",
+   "anchor": "Building Into CY27 - Bullish on CRWD & OKTA",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "released",
+   "instruments": [
+    "CRWD",
+    "OKTA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says CRWD is demonstrating strong growth in next-gen SIEM, with considerable flexibility.",
+   "anchor": "CRWD is demonstrating strong growth in the next-gen SIEM area, with considerable flexibility",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says SAIL's growth is tracking below expectations, pointing to challenges in execution and complexity.",
+   "anchor": "SAIL: Growth tracking below expectations points to challenges, particularly in execution and complexity.",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "released",
+   "instruments": [
+    "SAIL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says PANW shows robust momentum across offerings including XSIAM and SASE, with a healthy pipeline heading into Q2 2027.",
+   "anchor": "PANW: Robust momentum across various offerings, including XSIAM and SASE, with a healthy pipeline",
+   "topic": "Cybersecurity sector demand strength",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2027"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "NVDA's Vera Rubin ramp contributed $20B in its latest quarter, the fastest product ramp in company history, per Evercore ISI.",
+   "anchor": "$20B from the Vera Rubin ramp, marking the fastest in their history.",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "NVDA anticipates 75% revenue growth for FY28, per Evercore ISI's semiconductor team.",
+   "anchor": "anticipates a 75% revenue\ngrowth for FY28",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says the cloud industry's AI infrastructure backlog now reaches $2.5 trillion, up from $2 trillion three months prior.",
+   "anchor": "The cloud industry's backlog now reaches $2.5 trillion, up from $2 trillion just three months prior",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's Mark Lipacis projects NVDA's P/E to compress toward 8x, reflecting uncertainty around CEO succession and scrutiny of potential China links.",
+   "anchor": "NVDA\u2019s P/E is projected to compress towards an 8x\ntarget, reflecting uncertainties related to CEO succession and scrutiny around potential links to China.",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says the SOX P/E has contracted from 15x to 13x recently and may dip below its ten-year low of 11x by the cycle's end.",
+   "anchor": "The SOX P/E has contracted significantly, dropping from 15x to 13x recently",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI's Mark Mahaney says Anthropic's recent IPO signals a substantial liquidity boost that could facilitate its compute infrastructure commitments, a positive for AMZN and GOOGL given their stakes.",
+   "anchor": "The recent IPO signals a substantial liquidity boost for Anthropic, potentially facilitating",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI says AMZN's Leo satellite deployment plans were disrupted by the Vulcan rocket failure, and launch capacity, not satellites, is now the primary constraint.",
+   "anchor": "However, launch capacity, not satellites, is viewed as the primary constraint",
+   "topic": "US hyperscaler AI capex and earnings",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "SNDK reported fiscal Q1 2027 revenue of $11.03 billion and EPS of $6.19, exceeding Street expectations, per Evercore ISI.",
+   "anchor": "SNDK reported revenue of $11.03 billion and EPS of $6.19, exceeding street",
+   "topic": "Global memory pricing cycle",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1 FY27"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "SNDK's data center revenue grew a remarkable 1685% year-over-year, per Evercore ISI.",
+   "anchor": "which saw a remarkable 1685% increase year-over-year",
+   "topic": "Global memory pricing cycle",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "SNDK guides December-quarter revenue to $12.2-$12.6 billion, representing 310% year-over-year growth, per Evercore ISI.",
+   "anchor": "billion and $12.6 billion, which represents a healthy 310% year-over-year growth.",
+   "topic": "Global memory pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December quarter"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Amit Daryanani) maintains Outperform on SNDK with a $200 price target and a bullish case valuing the stock at $300.",
+   "anchor": "SNDK (O/P, TP $200, Amit Daryanani): Adjusting Model to Reflect Today's Stock Split",
+   "topic": "Global memory pricing cycle",
+   "status": "target",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "FUBO's FY26 pro forma adjusted EBITDA hit $110mm, outperforming expectations, per Evercore ISI (Kutgun Maral, Outperform, $18 price target).",
+   "anchor": "FY26 pro forma adjusted EBITDA hit $110mm, outperforming expectations",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FUBO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "FUBO management maintains its FY28 EBITDA target at a minimum of $300mm, per Evercore ISI.",
+   "anchor": "the target for FY28 is maintained at a minimum of $300mm.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "FUBO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Musk said SpaceX is achieving an AI compute build cost approximately 60% lower than industry consensus, per Evercore ISI's SpaceX note.",
+   "anchor": "Musk noted that SpaceX is achieving a build cost of approximately 60%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "SpaceX's recent bond sale aims to raise $32 billion to finance Nvidia chip purchases for its AI compute build-out, per Evercore ISI.",
+   "anchor": "$32 Billion GPU Financing: SpaceX's recent bond sale aims to finance Nvidia chips",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Evercore ISI (Amit Daryanani) rates Sensata (ST) In Line with a $50 price target.",
+   "anchor": "ST (I/L, TP $50, Amit Daryanani)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ST"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Evercore ISI",
+   "document": "Morning Rips... Jensen back as NVDA CEO... Semis +12%... US Government effectively back stops the bank of NVDA",
+   "claim": "Sensata forecasts 2026 data center revenue of about $48-$50 million, a substantial 76% increase, per Evercore ISI.",
+   "anchor": "Forecasted revenues of ~$48-$50M in 2026 signal a substantial 76% increase",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-25/29118__evercore-isi-tmt-morning-rips-jensen-back-as-nvda-ceo-semis-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 49,
+  "matched": 49,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 22,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
