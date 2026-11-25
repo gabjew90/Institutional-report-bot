@@ -1,147 +1,222 @@
 {
- "brief": "NVDA's Board reinstated Jensen Huang as CEO this morning, a move the note says was orchestrated by the Trump Administration; the President was publicly discussing his involvement as the note was written. The Board said senior US government input leaves it confident Huang's reinstatement poses no national security risk. The note argues Huang's return restores strategic vision, relationships and employee morale, and that Administration backing, a continuing Board investigation into Huang being targeted by foreign intelligence, a new National Security and Export Control Committee, and a new Chief Compliance Officer will calm investor fears over alleged improper China sales, for which the note says no evidence has been presented; it still expects a Congressional inquiry from the incoming Democratic Congress. SE Asia and Brazilian data center shipments became subject to new export controls last week, not prohibited before; NVDA holds that since demand still exceeds supply, impact is insignificant, though the note urges more geographic and customer disclosure to reassure investors. The note also expects continued scrutiny of future NVDA financing deals despite Huang's return, views CEO-CFO tension on this as proper, and likens NVDA's approach to AVGO's: such financing is meant as a short-term bridge until neocloud and frontier-model customers mature.",
+ "brief": "NVDA's Board reinstated Jensen Huang as CEO this morning, a move Wolfe says the Trump Administration orchestrated, with the President discussing his involvement on TV. The Board cited input from senior US government levels in concluding reinstatement poses no national security risk. Huang's return restores strategic vision, expertise, relationships and morale. Administration backing, a continuing Board probe into Huang being targeted by foreign intelligence, a new National Security and Export Control Committee, and a planned Chief Compliance Officer hire should calm fears over alleged improper China sales, though Wolfe notes no evidence of violation has surfaced and still expects a Congressional inquiry from the incoming Democrats. Wolfe's own view is demand so far exceeds supply, so NVDA had no reason to ship where prohibited. On new SE Asia and Brazil data center export controls in effect since last week, Wolfe wants more geographic and customer-HQ revenue disclosure as the key investor reassurance, while NVDA says any impact is insignificant given supply constraints. Wolfe also expects continued financing-deal scrutiny despite the reinstatement, views CEO-CFO tension there as healthy, and sees the financing, like AVGO's, as short-term until neocloud and frontier-model customers mature. Wolfe keeps Outperform, $200 target, 59.3% upside from $125.53.",
  "cards": [
   {
    "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "NVDA's Board reinstated Jensen Huang as CEO.",
-   "anchor": "NVDA\u2019s Board announced the reinstatement of Jensen Huang as CEO.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "NVDA's Board announced the reinstatement of Jensen Huang as CEO.",
+   "anchor": "This morning, NVDA\u2019s Board announced the reinstatement of Jensen Huang as CEO.",
+   "topic": "NVDA Huang CEO reinstatement",
    "status": "released",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bullish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "NVDA's Board stated it is confident Huang's reinstatement poses no national security risk, based on input from senior levels of the US government.",
-   "anchor": "the Board is confident that Mr. Huang\u2019s reinstatement poses no national security risk.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "released",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bullish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research views Jensen Huang as an irreplaceable strategic visionary for NVDA.",
-   "anchor": "Jensen was irreplaceable as a strategic visionary.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "forecast",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bullish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "No evidence has been presented that NVDA shipped product in violation of export regulations.",
-   "anchor": "there has thus far been no evidence presented that NVDA shipped product in violation of regulations.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "released",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bullish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "NVDA's Board formed a National Security and Export Control Committee and will hire a Chief Compliance Officer.",
-   "anchor": "The Board also formed a National Security and Export Control Committee, and would hire a Chief Compliance Officer.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "released",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bullish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research expects a Congressional inquiry into NVDA, as the incoming Democratic Congress is unlikely to drop the issue.",
-   "anchor": "the incoming Democratic Congress is not likely to drop the issue, and we do expect a Congressional inquiry.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "forecast",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bearish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "NVDA's SE Asia and Brazilian data center exposure has been subject to new export controls since early last week.",
-   "anchor": "exposure to SE Asia and Brazilian data centers, which have been subject to new export controls since early last week.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "released",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bearish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "NVDA's position is that since demand is so far ahead of supply, the impact of the new SE Asia and Brazil export regulations would be insignificant.",
-   "anchor": "since demand is so far ahead of supply, any impact from these new regulations would be insignificant.",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "forecast",
-   "instruments": [
-    "NVDA"
-   ],
-   "macro_key": "",
-   "direction": "bullish",
-   "conviction": "medium",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research encourages NVDA to over-disclose its geographic ship-to and customer HQ location detail.",
-   "anchor": "we encourage the company to over disclose in this area",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "forecast",
    "instruments": [
     "NVDA"
    ],
    "macro_key": "",
    "direction": "neutral",
-   "conviction": "low",
+   "conviction": "medium",
    "timeframe": ""
   },
   {
    "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research rates NVDA Outperform with a $200 price target, implying 59.3% upside from the $125.53 reference price.",
-   "anchor": "Rating: Outperform Price: $125.53 Price Target: $200 % Upside: 59.3%",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe says Huang's return was clearly orchestrated by the Trump Administration.",
+   "anchor": "Huang\u2019s return was clearly orchestrated by the Trump Administration, and as we",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "As Wolfe wrote the note, the President was on TV discussing his involvement in the Board's decision.",
+   "anchor": "write this the President is on TV discussing his involvement in the Board\u2019s decision.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "NVDA's Board stated, based on input from senior levels of the US government, that it is confident Huang's reinstatement poses no national security risk.",
+   "anchor": "the Board is confident that Mr. Huang\u2019s reinstatement poses no national\nsecurity risk.\u201d",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe says Huang's return is strategically important for NVDA because Jensen was irreplaceable as a strategic visionary.",
+   "anchor": "Huang\u2019s return is important for NVDA strategically. Naturally, Jensen was\nirreplaceable as a strategic visionary.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe states there has thus far been no evidence presented that NVDA shipped product in violation of regulations.",
+   "anchor": "there has thus far been no evidence presented\nthat NVDA shipped product in violation of regulations.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "NVDA's Board formed a National Security and Export Control Committee and will hire a Chief Compliance Officer.",
+   "anchor": "The Board also formed a\nNational Security and Export Control Committee, and would hire a Chief\nCompliance Officer.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe expects the incoming Democratic Congress will not drop the issue and expects a Congressional inquiry.",
+   "anchor": "the\nincoming Democratic Congress is not likely to drop the issue, and we do expect\na Congressional inquiry.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe's view is it would make no sense for NVDA to purposely ship product where it was not permitted, since demand from legitimate customers is so far ahead of NVDA's ability to supply.",
+   "anchor": "it would make no sense\nfor NVDA to purposely ship where it was not permitted to do so.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "NVDA's exposure to SE Asia and Brazilian data centers has been subject to new export controls since early last week.",
+   "anchor": "NVDA\u2019s exposure to SE Asia and Brazilian data\ncenters, which have been subject to new export controls since early last week.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Shipments to these SE Asia and Brazil data centers were not prohibited until last week but are now subject to new controls depending on the ownership of the data center and its customers.",
+   "anchor": "such shipments were not prohibited until last week, but are\nnow subject to new controls depending on the ownership of the data center",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "NVDA's position following the earnings call is that since demand is so far ahead of supply, any impact from the new SE Asia and Brazil export regulations would be insignificant.",
+   "anchor": "since demand is so far ahead of supply, any impact from these new\nregulations would be insignificant.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe encourages NVDA to over-disclose geographic ship-to location and customer HQ location for all of its revenue.",
+   "anchor": "over disclose in this area, to make it abundantly clear about both the geographic\nship to location and the customer HQ location",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe thinks disclosure is the factor that will reassure investors with respect to NVDA's export control exposure.",
+   "anchor": "We think\ndisclosure is the factor that will reassure investors with respect to this issue.",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe rates NVDA Outperform with a $200 price target and a price of $125.53, implying 59.3% upside.",
+   "anchor": "Rating:\nOutperform\nPrice:\n$125.53\nPrice Target:\n$200\n% Upside:\n59.3%",
+   "topic": "NVDA Huang CEO reinstatement",
    "status": "target",
    "instruments": [
     "NVDA"
@@ -153,10 +228,10 @@
   },
   {
    "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research believes NVDA management signaled during the earnings call that future NVDA financing deals will face increased scrutiny.",
-   "anchor": "NVDA management intended to send a subtle message during the earnings call that future financing deals by NVDA would be subject to increased scrutiny",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe still expects a higher level of scrutiny regarding NVDA's financing deals.",
+   "anchor": "We still expect a higher level of scrutiny regarding financing deals.",
+   "topic": "NVDA Huang CEO reinstatement",
    "status": "forecast",
    "instruments": [
     "NVDA"
@@ -168,46 +243,60 @@
   },
   {
    "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research views tension between NVDA's CEO and CFO over financing deal scrutiny as necessary and proper.",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe believes NVDA management intended to send a subtle message during the earnings call that future financing deals by NVDA would be subject to increased scrutiny going forward.",
+   "anchor": "NVDA management intended to\nsend a subtle message during the earnings call that future financing deals by NVDA would be subject to increased",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe views tension between NVDA's CEO and CFO over scrutiny of financing deals as necessary and proper.",
    "anchor": "We think tension between the CEO and CFO on such financial matters is necessary and proper",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
+   "topic": "NVDA Huang CEO reinstatement",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "NVDA: Now We've Seen Everything",
+   "claim": "Wolfe senses NVDA's financing, similar to AVGO's approach, is only intended to be a short-term endeavor as neocloud and frontier model customers' businesses mature.",
+   "anchor": "we get the sense that such financing is only intended to be a short-term endeavor, as neocloud and\nfrontier model customers businesses mature.",
+   "topic": "NVDA Huang CEO reinstatement",
    "status": "forecast",
    "instruments": [
     "NVDA"
    ],
    "macro_key": "",
    "direction": "neutral",
-   "conviction": "low",
-   "timeframe": ""
-  },
-  {
-   "bank": "Wolfe Research",
-   "document": "NVDA: Now We\u2019ve Seen Everything",
-   "claim": "Wolfe Research likens NVDA's financing approach to AVGO's, expecting such financing to be only a short-term endeavor.",
-   "anchor": "Similar to the approach from AVGO, we get the sense that such financing is only intended to be a short-term endeavor",
-   "topic": "Nvidia post-Huang earnings and financing retreat",
-   "status": "forecast",
-   "instruments": [
-    "NVDA",
-    "AVGO"
-   ],
-   "macro_key": "",
-   "direction": "neutral",
-   "conviction": "low",
+   "conviction": "medium",
    "timeframe": ""
   }
  ],
  "reader_tier": "rest",
- "source_text_path": "pilot-data/pilot/source-text/2026-11-25/29139__nvda-now-we-ve-seen-everything.txt",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-25/29139__wolfe-research-caso-nvda-now-we-ve-seen-everything-23-nov-20.txt",
  "provenance": {
   "model_requested": "claude-sonnet-5",
   "model_version_returned": "unreported",
   "prompt_sha": "a25f1754b1b8"
  },
  "verify": {
-  "total": 13,
-  "matched": 13,
+  "total": 19,
+  "matched": 19,
   "failed": 0,
   "too_short": 0,
   "label_count": 1,
