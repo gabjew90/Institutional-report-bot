@@ -41,6 +41,7 @@ Model grading was retired on 2026-11-23. Grades through 2026-11-20 are under `pi
 | 2026-11-18 | 121 | 2 | 0 | 94 | 31% | no |  |
 | 2026-11-20 | 134 | 6 | 0 | 95 | 46% | no |  |
 | 2026-11-23 | 117 | 0 | 0 | 95 | 22% | no |  |
+| 2026-11-25 | 111 | 0 | 10 | 95 | 44% | no | VOID (stale cards) |
 
-Last 30 editions: 117 failed sentences against 3199 citations, 8 void, 0 flagged for edge citing, 9 with reader failures.
+Last 30 editions: 116 failed sentences against 3217 citations, 8 void, 0 flagged for edge citing, 10 with reader failures.
 

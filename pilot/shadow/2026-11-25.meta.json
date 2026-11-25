@@ -1,0 +1,36 @@
+{
+ "unread_source_files_at_edit": 10,
+ "given_up_at_edit": 95,
+ "pack": {
+  "documents": 15,
+  "cards": 688,
+  "max_doc_id": 28942
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": false,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 102,
+  "brief_citations": 9,
+  "distinct_cards_cited": 102,
+  "card_count": 688,
+  "quintiles": [
+   22,
+   23,
+   18,
+   16,
+   23
+  ],
+  "edge_quintile_share": 0.441,
+  "metric4_flag": false,
+  "failures": [],
+  "word_count": 1743,
+  "dropped": [],
+  "dropped_share": 0.0,
+  "remaining_failures": 0
+ }
+}
