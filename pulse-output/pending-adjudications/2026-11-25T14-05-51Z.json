@@ -1,0 +1,348 @@
+{
+  "pulse_date": "2026-11-25",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai investment and returns",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 13,
+        "skeptical": 5,
+        "neutral": 12
+      },
+      "consensus_view": "Most banks still expect AI spending to drive growth and earnings into 2027, but after the steep sell-off in chip and AI stocks the question has moved from how much companies spend to who actually earns a return, with hyperscalers and AI users favored over hardware suppliers and with debt-funded AI spending drawing more doubt.",
+      "facts_agreed": [
+        {
+          "claim": "Banks now judge AI by which companies earn a return on it rather than which spend the most, and favor the large cloud providers and companies using AI to lift revenue or margins.",
+          "banks_for": [
+            "Amundi Investment Institute",
+            "Goldman Sachs",
+            "Alger",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "the narrative is shifting from who can invest the most to who can capture the highest returns",
+            "we recommend investors own the hyperscalers.",
+            "a growing share of the opportunity may belong to the adopters",
+            "AI adoption remains a high conviction theme from us into 2027"
+          ]
+        },
+        {
+          "claim": "AI and data center investment is expected to remain a main source of economic growth.",
+          "banks_for": [
+            "Northern Trust",
+            "Morgan Stanley",
+            "Raymond James",
+            "Crédit Agricole CIB"
+          ],
+          "evidence_quotes": [
+            "We expect AI investment to remain a source of growth.",
+            "AI investment will likely remain the main driver of global trade in 2027-28",
+            "we expect the data center buildout to continue",
+            "the relatively concentrated nature of growth does create some vulnerability"
+          ]
+        },
+        {
+          "claim": "The borrowing that funds AI spending is growing and investors are charging more for it.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "Jefferies"
+          ],
+          "evidence_quotes": [
+            "investors are increasingly penalizing AI’s financing intensity",
+            "2027 will be the year when chip financing dominates",
+            "any move to a more conservative approach will have tightening implications"
+          ]
+        },
+        {
+          "claim": "Several assumptions behind this year's AI trade are being tested at once, which keeps AI stocks volatile.",
+          "banks_for": [
+            "Goldman Sachs",
+            "HSBC Asset Management"
+          ],
+          "evidence_quotes": [
+            "several assumptions underpinning this year’s AI trade are being tested simultaneously",
+            "monetisation doubts risk keeping AI hyperscalers volatile",
+            "AI-capex risks, high market concentration, relative valuation premiums and elevated volatility"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI capital spending keeps growing or is peaking",
+          "banks_for": [
+            "Raymond James",
+            "Morgan Stanley"
+          ],
+          "for_evidence": "we expect the data center buildout to continue",
+          "banks_against": [
+            "Citadel Securities"
+          ],
+          "against_evidence": "capex growth is halving, data centers face a political veto"
+        },
+        {
+          "claim": "Whether the large cloud providers are a good place to hold AI exposure while payback is unproven",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "hyperscalers are the \"vol adjusted\" best place for your investing dollar",
+          "banks_against": [
+            "HSBC Asset Management"
+          ],
+          "against_evidence": "monetisation doubts risk keeping AI hyperscalers volatile"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed rate hike expectations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 9
+      },
+      "consensus_view": "Most banks expect the Fed to raise rates by a quarter point in December and again around March 2027, lifting the top of its policy rate to about 4.5%, while Allianz warns that markets have historically priced in fewer hikes than the Fed went on to deliver.",
+      "facts_agreed": [
+        {
+          "claim": "Several banks expect the Fed to raise rates at its December meeting, with hot October inflation keeping the hike on track.",
+          "banks_for": [
+            "MetLife Investment Management",
+            "Northern Trust",
+            "Crédit Agricole CIB",
+            "Amundi Investment Institute"
+          ],
+          "evidence_quotes": [
+            "We continue to expect a 25-bp hike in December",
+            "the path is clear for the Federal Open Market Committee (FOMC) to raise rates in December",
+            "further action to raise the target range for the Federal funds rate",
+            "confirms our view that the Fed will raise rates in the near term"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs expects another hike in March after December, its third of the cycle.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "we continue to expect a third hike in March"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "data center construction boom",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 10
+      },
+      "consensus_view": "Data centers are the one part of US construction still growing fast and are holding up the whole building cycle, but state and local political pushback after the midterms, plus power and permit limits, is the open risk to how far the buildout can go.",
+      "facts_agreed": [
+        {
+          "claim": "Data center building is the main support of the US construction cycle and also a concentration risk because so much of the growth depends on it.",
+          "banks_for": [
+            "Allianz Research"
+          ],
+          "evidence_quotes": [
+            "The segment is both the main support of the cycle and a concentration risk."
+          ]
+        },
+        {
+          "claim": "Several desks flag state and local political pushback, including new governors in Texas, Ohio and Georgia and moratorium fights after the midterms, as slowing data center approvals and expansion.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "State and local governments slowing data center expansion",
+            "Newly elected governors restricting data center approvals in Texas, Ohio, Georgia",
+            "Data center moratorium fights",
+            "Post-midterm policy headwinds for data centers",
+            "Data centre power and permit supply constraints"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east energy price shocks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Banks across nine desks treat the Iran and Middle East conflict as an oil price shock that is feeding inflation and central bank policy, while some see the shock already fading on peace hopes; nobody has staked a primary directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Several banks flag the Iran and Middle East conflict as an energy price shock that passes through into inflation and pushes the Fed and ECB toward tightening.",
+          "banks_for": [
+            "Allianz Research",
+            "Crédit Agricole CIB",
+            "Morgan Stanley",
+            "Amundi Investment Institute"
+          ],
+          "evidence_quotes": [
+            "Fed and ECB new tightening cycle driven by Middle East energy prices",
+            "Iran war energy cost pass-through to inflation",
+            "Energy shock and inflation peak in Q1 2027",
+            "Middle East conflict energy price shock"
+          ]
+        },
+        {
+          "claim": "Some banks note the energy shock easing as peace talks and Middle East optimism pull prices lower, even with tanker attacks near Hormuz.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Northern Trust",
+            "MetLife Investment Management",
+            "ZeroHedge"
+          ],
+          "evidence_quotes": [
+            "Iran war energy shock fading",
+            "Declining energy prices on Middle East optimism",
+            "Iran conflict peace talks and oil price uncertainty",
+            "Hormuz tanker attacks yet crude falls"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed monetary policy tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "Most banks expect the Fed to raise rates again because inflation is staying high, with Morgan Stanley and Crédit Agricole calling quarter-point hikes in December and March, while Raymond James thinks markets are pricing more hikes than the Fed will deliver.",
+      "facts_agreed": [
+        {
+          "claim": "Sticky inflation means the Fed is likely to raise rates again in the coming meetings.",
+          "banks_for": [
+            "Crédit Agricole CIB",
+            "Morgan Stanley",
+            "Northern Trust"
+          ],
+          "evidence_quotes": [
+            "we see risks as tilted to the upside",
+            "we expect two additional rate hikes from the Fed with 25bp increases in December and March",
+            "All of this suggests that the Fed may need to raise rates again"
+          ]
+        },
+        {
+          "claim": "A hawkish Fed is pressing on while growth signals weaken, pushing short-term yields up relative to long-term ones.",
+          "banks_for": [
+            "Citadel Securities",
+            "ZeroHedge"
+          ],
+          "evidence_quotes": [
+            "first, a flatter curve, as hot inflation and a hawkish Fed",
+            "the November/December 2018 parallels feel increasingly close"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "How much more tightening the Fed will deliver",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "for_evidence": "we expect two additional rate hikes from the Fed with 25bp increases in December and March",
+          "banks_against": [
+            "Raymond James"
+          ],
+          "against_evidence": "Markets may be overestimating how much additional tightening the Fed will need to deliver"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler debt issuance",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Banks across five desks track record bond borrowing by the big cloud companies to pay for AI data centers, and Goldman and ZeroHedge note that the bonds tied to this build-out are trading worse than the wider corporate bond market, but nobody has staked a directional view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Allianz, HSBC Asset Management and Morgan Stanley flag record investment-grade bond issuance by the large cloud companies to fund AI spending.",
+          "banks_for": [
+            "Allianz Research",
+            "HSBC Asset Management",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Hyperscaler AI capex bond issuance versus sovereign supply",
+            "Record US investment-grade issuance from big tech",
+            "Hyperscaler unsecured issuance and IG supply record"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and ZeroHedge flag that debt tied to hyperscalers and data centers is moving more than the broader corporate bond market, with data-center spreads (the extra yield over Treasuries) widening and funds underweight data-center junk bonds.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ZeroHedge"
+          ],
+          "evidence_quotes": [
+            "Hyperscaler credit basket at 2x beta vs IG100",
+            "HY datacenter bond underweights among funds",
+            "Data-center credit spreads widening"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "anthropic ipo and market reaction",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six desks reference Anthropic's record IPO and the selling in tech stocks that followed it as a live market event, but none has staked a directional view on the stock or its effect on the market.",
+      "facts_agreed": [
+        {
+          "claim": "Several desks flag the Anthropic IPO, from its opening trade to its effect on demand for AI stocks, as a market event this week.",
+          "banks_for": [
+            "Crédit Agricole CIB",
+            "Raymond James",
+            "Citadel Securities",
+            "ZeroHedge"
+          ],
+          "evidence_quotes": [
+            "Anthropic IPO with CA-CIB as joint bookrunner",
+            "Anthropic IPO as sign of AI equity appetite",
+            "Anthropic IPO opening print and market reaction",
+            "Anthropic IPO greenshoe exercised in full",
+            "Nasdaq 100 inclusion of Anthropic Dec 21"
+          ]
+        },
+        {
+          "claim": "Two desks link the record-size IPO to the decline that followed in the stock and in tech shares more broadly.",
+          "banks_for": [
+            "One River Asset Management",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Anthropic record IPO and subsequent slide",
+            "Anthropic IPO hangover driving global tech liquidation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
