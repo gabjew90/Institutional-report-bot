@@ -1,0 +1,446 @@
+{
+ "brief": "Five independent Asian-market reads, framed around a transition period, not a recession, that calls for selectivity and caution on crowded trades rather than broadly hiding or chasing risk. First, Goldman's US Equity Volatility Panic Index reads 9.7 of 10, which the desks read as genuine stress. 15 prior prints above 9.5 preceded S&P 500 gains averaging 4.6% over three months and 9% over six months, though the sample is small and April 2025's spike stayed elevated for weeks before a bottom. Second, Netease (9988 HK) shows crowding risk: mutual funds are about 25bp overweight and the stock is widely held, while short interest is low and Southbound owns only 2% of float, leaving little offsetting bid on a selloff. Third, Asian hedge funds show contained drawdowns month to date versus October, with the Global Prime book's Asia allocation down 260 basis points to 24.3%, still an 8.2% overweight to MSCI World, driven by heavy Info Tech/AI selling. Fourth, India, a two-year regional laggard, is reversing as capital rotates from North Asia and China, with foreign buying of $12.5bn month to date, 70% of year-to-date inflows. Fifth, the Global Copper Basket is down 35% from its August peak, which the note attributes to positioning unwind rather than fundamentals.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Goldman's US Equity Volatility Panic Index reads 9.7 out of 10.",
+   "anchor": "The US and Bloomberg are flagging Goldman\u2019s US Equity Volatility Panic Index at 9.7 out of 10.",
+   "topic": "US volatility panic index",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Goldman's desks read the current Volatility Panic Index level as a sign of genuine market stress, not simply weaker sentiment.",
+   "anchor": "The desks are seeing signs of genuine market stress, not simply a deterioration in sentiment.",
+   "topic": "US volatility panic index",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "15 prior Volatility Panic Index prints above 9.5 preceded S&P 500 gains averaging 4.6% over three months (80% hit rate) and 9% over six months (73% hit rate).",
+   "anchor": "15 prior prints above 9.5 preceded S&P 500 gains averaging 4.6% over three months (80% hit rate) and 9% over six months (73% hit rate)",
+   "topic": "US volatility panic index",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three to six months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "The historical base rate sample is small, and the April 2025 precedent saw Volatility Panic Index readings above 9 persist for weeks before a bottom.",
+   "anchor": "the sample is small and the April 2025 precedent saw readings above 9 persist for weeks before a bottom",
+   "topic": "US volatility panic index",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "A negative surprise on Netease's (9988 HK) crowded position can cause violent price moves and hurt its year-to-date performance.",
+   "anchor": "Crowded positioning, if there are negative surprises, can cause violent moves and impact year-to-date performance.",
+   "topic": "Netease crowded positioning",
+   "status": "level",
+   "instruments": [
+    "NTES"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Netease (9988 HK) was a tough miss for long-only investors, who hold roughly 25bp overweight and widely own the stock.",
+   "anchor": "This was a tough miss for the long only community investors because mutual funds are ~25bp overweight the stock and it is widely held.",
+   "topic": "Netease crowded positioning",
+   "status": "released",
+   "instruments": [
+    "NTES"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Short interest in Netease (9988 HK) is low.",
+   "anchor": "Short interest is low and Southbound has been modest buyers",
+   "topic": "Netease crowded positioning",
+   "status": "level",
+   "instruments": [
+    "NTES"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Southbound investors have been modest buyers of Netease (9988 HK) and own only 2% of its free float.",
+   "anchor": "Southbound has been modest buyers but only own 2% of float.",
+   "topic": "Netease crowded positioning",
+   "status": "level",
+   "instruments": [
+    "NTES"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Netease's (9988 HK) low short interest and minimal Southbound ownership imply minimal offsetting bids to cushion a sell-off.",
+   "anchor": "The latter two points imply minimum bids to mitigate a sell off.",
+   "topic": "Netease crowded positioning",
+   "status": "level",
+   "instruments": [
+    "NTES"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Asian hedge funds continue to face performance challenges month-to-date in November, though drawdowns are more contained than October's steep declines.",
+   "anchor": "Hedge Funds continue to face performance challenges MTD November, but drawdowns were relatively contained vs. the steep October declines.",
+   "topic": "Asian hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Goldman's Global Prime book saw large net selling flows month-to-date driven by long sales, led by North America and Asia.",
+   "anchor": "The Global Prime book experienced large net selling flows MTD, driven by long sales. North America and Asia dominated the selling activity.",
+   "topic": "Asian hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Asian equities saw heavy net selling in Info Tech/AI month-to-date in the Global Prime book, with long sales exceeding short sales 2.4 to 1.",
+   "anchor": "Asian equities continue to see heavy net selling in the Info Tech/AI space, with long sales exceeding short sales 2.4 to 1.",
+   "topic": "Asian hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Global Prime book activity was risk-off, with Emerging Markets dominating selling and de-grossing over Developed Markets.",
+   "anchor": "Activity was risk-off with Emerging markets dominating the selling and de-grossing over Developed markets.",
+   "topic": "Asian hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Net allocation to Asia in the Global Prime book declined 260 basis points month-to-date, to a latest level of 24.3%.",
+   "anchor": "The net allocation to Asia in the Global Prime book declined 260 bps MTD, with the latest level at 24.3%,",
+   "topic": "Asian hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "The Global Prime book's 24.3% Asia allocation is an 8.2% overweight versus the MSCI World benchmark, down from a 20% overweight around mid-June and back to levels last seen in late January.",
+   "anchor": "an 8.2% overweight compared to MSCI World benchmark. This has declined from 20% overweight around mid-June and is back to levels seen in late January.",
+   "topic": "Asian hedge fund de-grossing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Indian equities have underperformed the Asia region for two consecutive years, a rare occurrence over the last 30 years.",
+   "anchor": "Indian equities have underperformed the region for two consecutive years, a rare occurrence in the last 30 years.",
+   "topic": "India equity capital inflows",
+   "status": "released",
+   "instruments": [
+    "INDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two consecutive years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "India is now trading significantly below trend relative to the MXAPJ index.",
+   "anchor": "Relative to the MXAPJ, India is now trading significantly below trend.",
+   "topic": "India equity capital inflows",
+   "status": "level",
+   "instruments": [
+    "INDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "The Nifty has outperformed the MSCI Emerging Market Index by 24% month-to-date.",
+   "anchor": "The Nifty has outperformed the MSCI Emerging Market Index by 24% month-to-date.",
+   "topic": "India equity capital inflows",
+   "status": "released",
+   "instruments": [
+    "INDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "During periods of uncertainty, capital flows from North Asia/China to India within Emerging Market and Asia mandates.",
+   "anchor": "However, for Emerging Market mandates and Asia mandates, capital will flow from North Asia/China to India.",
+   "topic": "India equity capital inflows",
+   "status": "forecast",
+   "instruments": [
+    "INDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Foreign investors bought $3.5bn of Indian equities last week, following $3.8bn the prior week and $5.2bn in the first week of November.",
+   "anchor": "Last week foreigners bought $3.5bn which was on top of the $3.8bn the prior week and $5.2bn during the first week of November.",
+   "topic": "India equity capital inflows",
+   "status": "released",
+   "instruments": [
+    "INDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "the past three weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Foreigners have bought $12.5bn of Indian equities month-to-date, 70% of year-to-date inflows.",
+   "anchor": "Foreigners have bought $12.5bn month-to-date which makes up 70% of the year-to-date inflows.",
+   "topic": "India equity capital inflows",
+   "status": "released",
+   "instruments": [
+    "INDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "The ASX Metals and Mining Index fell 13% this week amid the Australian commodity stock unwind.",
+   "anchor": "The great Australian commodity stock unwind continued this week with the ASX Metals and Mining Index down 13%",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "The GS Global Copper Exposed Index fell 17% this week.",
+   "anchor": "the GS Global Copper Exposed Index was down 17%",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "This week's copper-linked selloff was driven by a stubbornly strong dollar, CTA selling and an AI capex unwind.",
+   "anchor": "because the dollar remains stubbornly high, CTAs are selling, AI unwind (input),",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [
+    "CPER"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Stan Druckenmiller said at the TomorrowX Summit that he is short copper.",
+   "anchor": "Stan Druckenmiller (at TomorrowX Summit) says he\u2019s Short Copper.",
+   "topic": "Copper crowded unwind",
+   "status": "forecast",
+   "instruments": [
+    "CPER"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Camille Cerisey states copper is washing out, not breaking down.",
+   "anchor": "Copper is washing out, not breaking down.",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [
+    "CPER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Camille Cerisey attributes copper's sell-off mainly to an unwind of tariff expectations, rising AI capex concerns and CTA stops rather than fundamental deterioration.",
+   "anchor": "an unwind of tariff expectations, rising AI capex concerns and CTA stops triggered an aggressive liquidity flush.",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [
+    "CPER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "The Global Copper Basket (GSXGCOPP) is down close to 35% from its August peak, a steeper decline than LME copper's 22% drop and the MXWO's 8% drop.",
+   "anchor": "is now down close to 35% from its August peaks (vs LME -22% , MXWO -8%).",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since its August peak"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Camille Cerisey says uncertainty is the catalyst for the copper drawdown, but crowding and positioning determine its magnitude.",
+   "anchor": "uncertainty provides the catalyst, but crowding and positioning determine the magnitude of the drawdown.",
+   "topic": "Copper crowded unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sheren - Five Asian Charts to Watch 22 Nov 2026",
+   "claim": "Goldman's Peter Sheren says the current equity weakness reflects a transition period rather than recession, and recommends selectivity with particular caution around crowded trades rather than broadly hiding or chasing stocks.",
+   "anchor": "Investors should therefore neither hide nor chase stocks. This environment calls for selectivity, with particular caution around crowded trades.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-25/28897__gs-sheren-five-asian-charts-to-watch-22-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
