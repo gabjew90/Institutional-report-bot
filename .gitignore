@@ -77,3 +77,10 @@ ingestions_24h.*
 sample_high.txt
 probe_*.md
 user_screenshot.png
+
+# Written into this folder by the Codex desktop app's import sync (a copy of
+# CLAUDE.md with "Claude" replaced by "Codex", the skills and the hooks),
+# every 12 hours while that sync is on. Never part of this repository.
+AGENTS.md
+.agents/
+.codex/

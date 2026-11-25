@@ -203,18 +203,44 @@ def _pulse_times_utc(now: datetime) -> list[datetime]:
     return [local.astimezone(timezone.utc), routine]
 
 
-def in_pulse_window(now: datetime | None = None) -> bool:
-    """Weekdays, from the first pre-pulse sweep until 30 minutes after the
-    later pulse time. A note arriving then goes straight to Gemini: the lane
-    could not return it before the pulse reads the research."""
-    from datetime import timedelta
+def _local_date(now: datetime) -> str:
     from zoneinfo import ZoneInfo
+    return now.astimezone(ZoneInfo(settings.timezone)).strftime("%Y-%m-%d")
+
+
+def _pulse_still_to_come(now: datetime) -> bool:
+    """Whether a scheduled pulse can still read research today: a trading
+    day whose scheduled pulse has not been posted. Unknown reads as yes, which
+    is the behaviour before this check existed."""
+    day = _local_date(now)
+    try:
+        from world_context import is_trading_day
+        if not is_trading_day(day):
+            return False
+        return not db.daily_pulse_delivered_on(day)
+    except Exception as e:
+        log.warning(f"claude lane: could not tell whether today's pulse is out: {e}")
+        return True
+
+
+def in_pulse_window(now: datetime | None = None) -> bool:
+    """The stretch around the scheduled pulse when a note goes straight to
+    Gemini, because the lane could not return it before the pulse reads the
+    research: from the first pre-pulse sweep until 30 minutes after the later
+    pulse time, on a trading day, and only until the pulse has been posted.
+
+    The last condition is from 2026-11-25. In winter the window ran to 15:30
+    UTC (the settings' 10:00 ET) while the routine posts at about 14:15 UTC:
+    that day 108 of 271 HIGH and MEDIUM notes, all uploaded at 15:00 UTC,
+    went to Gemini for a pulse that was already out, while the lane was
+    returning its notes in ten minutes. A market holiday has no pulse at all."""
+    from datetime import timedelta
     now = now or datetime.now(timezone.utc)
-    if now.astimezone(ZoneInfo(settings.timezone)).weekday() >= 5:
-        return False
     times = _pulse_times_utc(now)
-    return (min(times) - timedelta(minutes=SWEEP_LEAD_MIN)
-            <= now <= max(times) + timedelta(minutes=PULSE_TAIL_MIN))
+    if not (min(times) - timedelta(minutes=SWEEP_LEAD_MIN)
+            <= now <= max(times) + timedelta(minutes=PULSE_TAIL_MIN)):
+        return False
+    return _pulse_still_to_come(now)
 
 
 def _prefix() -> str:
@@ -517,6 +543,13 @@ async def sweep_before_pulse() -> dict:
     if not reachable():
         return {}
     out = await asyncio.to_thread(pull)
+    # Two sweeps are scheduled, one for each pulse time (they differ in
+    # winter). Once the pulse is out, or on a day with none, the second has
+    # nothing to hurry for: it takes what arrived and leaves the rest waiting.
+    if not _pulse_still_to_come(datetime.now(timezone.utc)):
+        out["swept"] = 0
+        log.info(f"claude lane pre-pulse sweep: the pulse is out or none is due, nothing swept: {out}")
+        return out
     swept = 0
     for r in db.get_lane_rows("committed", _prefix(), limit=500):
         swept += _to_gemini(r, "pre-pulse sweep")

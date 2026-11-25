@@ -28,6 +28,9 @@ def lane_on(monkeypatch):
     monkeypatch.setattr(L, "in_pulse_window", lambda now=None: False)
     monkeypatch.setattr(L, "_last_waiting", None)
     monkeypatch.setattr(L, "_last_run_request", 0.0)
+    # The sweep and the window ask whether a pulse is still due today. Pinned,
+    # or these tests would change their answer on a weekend or a holiday.
+    monkeypatch.setattr(L, "_pulse_still_to_come", lambda now: True)
 
 
 class FakeGitHub:
@@ -294,6 +297,8 @@ def test_notes_arriving_in_the_pulse_window_go_to_gemini(monkeypatch):
     monkeypatch.setattr(settings, "daily_pulse_minute", 0)
     monkeypatch.setattr(settings, "timezone", "America/New_York")
     W = L.in_pulse_window
+    delivered = set()
+    monkeypatch.setattr(db, "daily_pulse_delivered_on", lambda day: day in delivered)
     summer = lambda h, m: datetime(2026, 10, 6, h, m, tzinfo=timezone.utc)  # EDT, Tuesday
     assert not W(summer(13, 20))      # 9:20 ET
     assert W(summer(13, 35))          # 9:35 ET
@@ -303,6 +308,33 @@ def test_notes_arriving_in_the_pulse_window_go_to_gemini(monkeypatch):
     assert W(winter(13, 35))          # 8:35 ET, before the routine's 14:00 UTC
     assert W(winter(15, 20))          # 10:20 ET, after the 10 ET pulse
     assert not W(datetime(2026, 10, 10, 13, 45, tzinfo=timezone.utc))  # Saturday
+    # 2026-11-25: the routine posted at 14:27 UTC and 108 notes uploaded at
+    # 15:00 UTC still went to Gemini. Once the pulse is out the window is shut.
+    assert W(winter(15, 5))
+    delivered.add("2026-11-10")
+    assert not W(winter(15, 5)) and not W(winter(13, 45))
+    assert W(datetime(2026, 11, 11, 13, 45, tzinfo=timezone.utc))      # the next morning it opens again
+    # Thanksgiving: no pulse, so no window.
+    assert not W(datetime(2026, 11, 26, 13, 45, tzinfo=timezone.utc))
+    # If the database cannot say, the window stays as it was.
+    def boom(day):
+        raise RuntimeError("locked")
+    monkeypatch.setattr(db, "daily_pulse_delivered_on", boom)
+    assert W(winter(15, 5))
+
+
+def test_the_second_sweep_leaves_notes_waiting_once_the_pulse_is_out(tmp_path, lane_on, fake_gh, monkeypatch):
+    async def none(limit=10):
+        return 0
+    monkeypatch.setattr(L, "run_fallbacks", none)
+    pid, _ = _pdf(tmp_path, "late.pdf")
+    _queue(pid)
+    monkeypatch.setattr(L, "_pulse_still_to_come", lambda now: False)
+    out = asyncio.run(L.sweep_before_pulse())
+    assert out["swept"] == 0 and db.get_bridge_state(pid)["status"] == "committed"
+    monkeypatch.setattr(L, "_pulse_still_to_come", lambda now: True)
+    out = asyncio.run(L.sweep_before_pulse())
+    assert out["swept"] == 1 and db.get_bridge_state(pid)["status"] == "fallback_to_gemini"
 
 
 @pytest.mark.parametrize("name,title", [
