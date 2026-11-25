@@ -1446,3 +1446,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **deterministic-fixable** — `consensus-amnesia` forced a week-old Nvidia beat sentence into the RECAP although the prior pulse already reported it. Limit the rule to prints not yet reported in any prior edition.
 - **observation** — Light-day RECAP omits Treasury yields, the 5-year auction and the dollar while open reads ($TLT, $IEI, $UUP, $GLD) turn on them. A new $UUP lean was recorded in `_LEANS` with no published text.
 - **observation** — WATCH lists Best Buy, Dick's, Burlington, Dollar Tree and others as "reporting today" in a 10 AM post. Several normally report before the open, and the session field was not visible here.
+
+## 2026-11-25 (headless QC)
+- **deterministic-fixable** — RECAP reports Q3 GDP as 3.4% vs 3.5% expected and the price index as 3.4% vs 2.3% ("growth a touch soft"). The dump's calendar has ACTUAL 4.3% for both (released 08:30 EST), prev 3.4%/2.3%, and Reuters headlined growth "revised sharply higher". The 3.4% is the previous reading. Add a validator check that a released calendar row's ACTUAL appears in the RECAP when the row is named, and that the RECAP does not print `prev` as the actual.
+- **deterministic-fixable** — `pulse-context/latest.json` is a post-publish rebuild again (23:16Z, 18:16 EST, SPY -0.29% vs the pulse's -0.49%). Fifth day running. Archive the dump keyed by `QC_PULSE_TS`.
+- **deterministic-fixable** — Driver trail names no violation for the lint hard issue or the final_validate DISPATCH_FIXUP, `budgets` is empty, and no repair diff is kept. Same gap as 11-19, 11-20, 11-24.
+- **prompt-session** — EDIT removed bank attributions DRAFT had (Fed brief 7 desks to 3; support side of the MAIN EVENT debate now "Supporters of the trade"; 62bp and 109bp unsourced). Per the self-review; confirmed in the published text.
+- **prompt-session** — Anthropic IPO overhang (6 banks, Goldman names it a cause) and the Nvidia SEC probe (3 sources, third day) are absent while the MAIN EVENT explains the Nvidia drop as good numbers not lifting stocks.
+- **observation** — Unverifiable: Hormuz mines / Ras Tanura claim, Dell estimates $6.745 and $50.30B, Nasdaq futures -2%, Friday "1 PM" close.
