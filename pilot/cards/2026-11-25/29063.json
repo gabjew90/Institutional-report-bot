@@ -1,0 +1,143 @@
+{
+ "brief": "GS's CTA flow model estimates total systematic selling roughly as large as last week, though less concentrated in North American flows than expected. The desk projects CTAs will sell $68bn of global equities over the next week and up to $106bn over the next month if prices and volatility hold near current levels; it notes these forecasts will shift as trend evolves, since markets were retracing somewhat as the note was written, but still expects trend-following flows to keep selling. Within the S&P 500, the model puts CTAs $11bn net short, with about $5.5bn of selling estimated this week. GS flags that this week's SPX flow forecast looks small given Friday's price action: although the model estimated CTAs sold nearly $51bn of SPX over the past month, elevated volatility is currently capping further selling even though the trend signal stays decidedly negative. Key SPX levels for the short, medium and long-term trend signals are given as 7560, 7527 and 7117.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS's CTA flow model forecasts total selling roughly as large as last week but less concentrated in North American flows than expected.",
+   "anchor": "Baseline flow forecasts within our model are roughly as large as last week, but not as",
+   "topic": "hedge fund positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS expects CTAs to sell $68bn of global equities over the next week.",
+   "anchor": "we expect CTAs to sell $68bn of global equities over the next week",
+   "topic": "hedge fund positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS expects CTAs to sell upwards of $106bn of global equities over the next month if prices and volatility stay near current levels.",
+   "anchor": "upwards of $106bn over the next month should prices and vols stay in line with current",
+   "topic": "hedge fund positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS expects the direction of flows from trend-following CTAs to remain selling despite the forecasts being subject to change as trend evolves.",
+   "anchor": "we expect the direction of flows from trend followers to remain selling",
+   "topic": "hedge fund positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS currently estimates CTAs are $11bn net short the S&P 500.",
+   "anchor": "we currently estimate CTAs are short $11bn",
+   "topic": "hedge fund positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS estimates CTAs will sell around $5.5bn of the S&P 500 this week.",
+   "anchor": "with around $5.5bn of selling estimated this week",
+   "topic": "hedge fund positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS's model estimated CTAs sold nearly $51bn of the S&P 500 over the past month.",
+   "anchor": "our model estimated CTAs to have sold nearly $51bn of SPX over the past month",
+   "topic": "hedge fund positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "Elevated volatility is currently preventing CTAs from selling the S&P 500 in larger size despite a decidedly negative trend signal.",
+   "anchor": "elevated vol is currently preventing CTAs from selling",
+   "topic": "hedge fund positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Futures Global Bonds CTA - Market Update - November 23, 2026",
+   "claim": "GS identifies key S&P 500 levels of 7560, 7527 and 7117 for short, medium and long-term CTA trend signals.",
+   "anchor": "Key levels to watch for short/medium/long term trend signals are",
+   "topic": "hedge fund positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "short/medium/long term"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-25/29063__gs-papandreadis-gs-futures-global-bonds-cta-market-update-no.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
