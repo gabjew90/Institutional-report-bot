@@ -26,6 +26,15 @@ name: pilot-readers
 # The editor's cron was deleted 2026-09-05 for the same reason.
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Speed test: read this many already-read notes again and commit nothing (0 = a normal run)"
+        required: false
+        default: "0"
+      workers:
+        description: "Documents read at the same time"
+        required: false
+        default: "3"
 
 permissions:
   contents: write
@@ -47,7 +56,11 @@ jobs:
     # reads past the 13:55 editor, voiding the day. The concurrency
     # group serialises runs, so a long run delays the next slot rather
     # than overlapping it.
-    timeout-minutes: 90
+    # 2026-11-25: the run stops handing out documents after 75 minutes
+    # (scripts/pilot_read.py), so the limit below is a backstop for a reader
+    # that hangs, not the way a run normally ends. Four runs that day were
+    # cancelled at 90:00 with documents in flight.
+    timeout-minutes: 100
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -65,6 +78,8 @@ jobs:
 
       - name: Find unread documents
         id: unread
+        env:
+          DRY: ${{ inputs.dry_run || '0' }}
         run: |
           # Unread = a source-text file with no matching cards file.
           # Skip-fast keeps the ~10 daily runs near a minute each when
@@ -72,6 +87,7 @@ jobs:
           python scripts/pilot_list_unread.py \
             --root "pilot-data/$PILOT_ROOT" --out /tmp/unread.json
           N=$(python -c "import json;print(len(json.load(open('/tmp/unread.json'))))")
+          if [ "$DRY" != "0" ]; then N="$DRY"; fi
           echo "count=$N" >> "$GITHUB_OUTPUT"
           echo "unread: $N"
 
@@ -85,8 +101,8 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
           set +e
-          out=$(claude -p "reply with exactly: ok" --model haiku \
-              --max-turns 1 2>&1)
+          out=$(cd "$RUNNER_TEMP" && claude -p "reply with exactly: ok" --model haiku \
+              --tools "" --max-turns 1 2>&1)
           rc=$?
           set -e
           if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
@@ -103,191 +119,24 @@ jobs:
             exit 1
           fi
 
-      - name: Read each document
+      - name: Read the documents
         if: steps.unread.outputs.count != '0'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          DRY: ${{ inputs.dry_run || '0' }}
+          WORKERS: ${{ inputs.workers || '3' }}
+          PYTHONUNBUFFERED: "1"
         run: |
           set -u
-          # Persist after EVERY document. Every readers run on 2026-09-03
-          # was killed by `timeout-minutes: 45` partway through this loop
-          # and the commit step (which ran after it) was skipped, so 20
-          # runs threw away every card they had verified and the backlog
-          # only grew. A kill now costs the document in flight, not the run.
+          # One reader per document, several at a time. The reading steps are
+          # in scripts/pilot_read_one.sh (the loop that was here until
+          # 2026-11-25, moved unchanged). Each document is committed as it
+          # finishes, so a cancelled run costs the documents in flight.
           git -C pilot-data config user.name  'pilot-reader-bot'
           git -C pilot-data config user.email 'actions@users.noreply.github.com'
-          persist () {  # $1 = commit message suffix
-            git -C pilot-data add "$PILOT_ROOT/cards/" "$PILOT_ROOT/ops/" "$PILOT_ROOT/read-failures/" 2>/dev/null || true
-            if git -C pilot-data diff --cached --quiet; then return 0; fi
-            git -C pilot-data commit -q -m "pilot: reader cards ($1)" || return 0
-            for attempt in 1 2 3; do
-              git -C pilot-data pull --rebase --quiet origin pilot-data || true
-              if git -C pilot-data push -q origin pilot-data; then return 0; fi
-              sleep 3
-            done
-            echo "::warning::could not push after $1; the next run retries"
-          }
-          # Every failure path records an attempt; after MAX_READ_ATTEMPTS
-          # (pilot_config) the document leaves the unread list instead of
-          # being re-read on every run (2026-09-05).
-          note_failure () {  # id date reason
-            out=$(python scripts/pilot_read_failure.py --root "pilot-data/$PILOT_ROOT" \
-              --id "$1" --date "$2" --reason "$3") || true
-            echo "$out"
-            # A document that just used up its attempts is RETIRED, not
-            # evidence the reader is broken; the tally below needs the
-            # difference (2026-09-07).
-            case "$out" in *given_up=True*) GAVE_UP=$((GAVE_UP+1));; esac
-          }
-          # TSV, read line-by-line: a `for` over command substitution
-          # word-splits, and document slugs are not guaranteed
-          # space-free.
-          python - <<'PY' > /tmp/unread.tsv
-          import json
-          for d in json.load(open("/tmp/unread.json")):
-              print("\t".join([d["id"], d["text_path"], d["model"],
-                               d["tier"], d["date"]]))
-          PY
-          TOTAL=0; FAILED=0; GAVE_UP=0
-          while IFS=$'\t' read -r ID TEXT MODEL TIER DATE; do
-            [ -z "${ID:-}" ] && continue
-            TOTAL=$((TOTAL+1))
-            OUT="pilot-data/$PILOT_ROOT/cards/$DATE/$ID.json"
-            mkdir -p "$(dirname "$OUT")"
-
-            # The running label list (spec §4 amendment 2026-09-10):
-            # every label already in the ledger window, rebuilt per
-            # document so this loop's earlier reads are in it. Readers
-            # that never saw each other's labels were the architecture
-            # half of metric 1's failure.
-            python scripts/pilot_known_labels.py --root "pilot-data/$PILOT_ROOT" \
-              --date "$DATE" --out /tmp/known_labels.txt \
-              || printf '(unavailable this run)\n' > /tmp/known_labels.txt
-
-            # Build the prompt in a FILE. Everything here stays
-            # indented: a column-0 line would terminate this YAML
-            # block scalar.
-            {
-              cat docs/superpowers/routines/pilot/reader.md
-              printf '\n\nSOURCE_TEXT_PATH=%s\n' "$TEXT"
-              printf '\nKNOWN_LABELS (already in this ledger window, most-used first; reuse verbatim when the subject matches at pulse-theme grain):\n'
-              cat /tmp/known_labels.txt
-            } > /tmp/reader_prompt.txt
-
-            # Turn budget scales with the document. Shakedown 2026-09-02:
-            # a 432 KB JPM strategy deck exhausted 12 turns just reading
-            # itself and returned "Reached max turns" instead of JSON;
-            # that alone was the day's reader failure rate.
-            # 2026-09-04: five documents of 64-136 KB, all under the old
-            # 150 KB step, failed at 12 turns on every one of fourteen
-            # runs. On 2026-09-05 the three 136 KB pieces read at 30
-            # turns while a 69 KB table dump (5,495 lines) and a 75 KB
-            # asset locator (2,944 lines) still failed at 20: the reader
-            # pages the file by LINES, so line count sets the budget as
-            # much as bytes. A cap only bites when it is reached, so a
-            # generous one costs nothing on a normal document; a wasted
-            # retry costs a full read.
-            # The floor was 12 until 2026-09-07, when six documents of
-            # 9-33 KB (191-427 lines) died on it in one weekend while
-            # 37 and 45 KB documents read fine. 12 was set against the
-            # older reader prompt; the topic rule added 2026-09-05 asks
-            # the reader to survey the document's subjects before it
-            # writes cards, which costs turns on the margin. Unused
-            # turns cost nothing, a retried document costs a full read.
-            BYTES=$(wc -c < "$TEXT" 2>/dev/null || echo 0)
-            LINES=$(wc -l < "$TEXT" 2>/dev/null || echo 0)
-            MAXT=20
-            if [ "$BYTES" -gt 50000 ] || [ "$LINES" -gt 1500 ]; then MAXT=30; fi
-            if [ "$BYTES" -gt 150000 ] || [ "$LINES" -gt 3500 ]; then MAXT=40; fi
-            if [ "$BYTES" -gt 300000 ]; then MAXT=50; fi
-            claude -p --model "$MODEL" \
-              --permission-mode bypassPermissions \
-              --max-turns "$MAXT" \
-              < /tmp/reader_prompt.txt > /tmp/reader_out.txt 2>/tmp/reader_err.txt || true
-
-            if ! python scripts/pilot_finalize_read.py \
-                --raw /tmp/reader_out.txt --out "$OUT" \
-                --source "$TEXT" --tier "$TIER" --model "$MODEL" \
-                --prompt docs/superpowers/routines/pilot/reader.md; then
-              echo "::warning::reader failed for $ID"
-              # stdout too: the CLI reports usage limits, auth and
-              # max-turns there, not on stderr (2026-09-04).
-              echo "reader stdout head:"; head -c 300 /tmp/reader_out.txt || true; echo
-              tail -3 /tmp/reader_err.txt || true
-              note_failure "$ID" "$DATE" "reader: $(head -c 120 /tmp/reader_out.txt | tr '\n' ' ')"
-              FAILED=$((FAILED+1))
-              continue
-            fi
-
-            # Pass 1: verify anchors, collect failures for ONE re-ask,
-            # in-session per spec section 3 (a deferred re-ask is a
-            # card lost for hours).
-            # Every step below is per-document: a failure must cost THIS
-            # document, not the run. Before 2026-09-03 these ran unguarded
-            # under the Actions default `bash -e`, so one bad document
-            # aborted the step; because the ops record is written at the end
-            # of this same step and the commit is gated on it succeeding,
-            # the whole run's cards vanished leaving no trace.
-            if ! python scripts/pilot_verify_cards.py "$OUT" "$TEXT" \
-              --reask-out /tmp/reask.json; then
-              echo "::warning::anchor verify (pass 1) failed for $ID"
-              note_failure "$ID" "$DATE" "anchor verify pass 1"
-              FAILED=$((FAILED+1)); continue
-            fi
-            NEEDS=$(python -c "import json;print(json.load(open('$OUT'))['verify']['needs_reask'])" 2>/dev/null || echo Error)
-            if [ "$NEEDS" = "Error" ]; then
-              echo "::warning::could not read the verify block for $ID"
-              note_failure "$ID" "$DATE" "verify block unreadable"
-              FAILED=$((FAILED+1)); continue
-            fi
-            if [ "$NEEDS" = "True" ]; then
-              {
-                cat /tmp/reader_prompt.txt
-                printf '\n[RE-ASK] failed_cards had anchors NOT found in the source; label_contract, when present, names a topic or macro_key contract breach:\n'
-                cat /tmp/reask.json
-                printf '\nRe-emit the COMPLETE artifact. For each failed card, either copy its anchor character-for-character from the source or omit that card. Apply the label_contract instruction if there is one. Change nothing else.\n'
-              } > /tmp/reask_prompt.txt
-              claude -p --model "$MODEL" \
-                --permission-mode bypassPermissions \
-                --max-turns "$MAXT" \
-                < /tmp/reask_prompt.txt > /tmp/reader_out.txt 2>/dev/null || true
-              python scripts/pilot_finalize_read.py \
-                --raw /tmp/reader_out.txt --out "$OUT" \
-                --source "$TEXT" --tier "$TIER" --model "$MODEL" \
-                --prompt docs/superpowers/routines/pilot/reader.md || true
-            fi
-            # Pass 2: drop whatever still fails, and count the drops.
-            if ! python scripts/pilot_verify_cards.py "$OUT" "$TEXT" --final; then
-              echo "::warning::anchor verify (final) failed for $ID"
-              note_failure "$ID" "$DATE" "anchor verify final"
-              FAILED=$((FAILED+1)); continue
-            fi
-            python scripts/pilot_ops_record.py --root "pilot-data/$PILOT_ROOT" \
-              --total "$TOTAL" --failed "$FAILED" || true
-            persist "$ID"
-          done < /tmp/unread.tsv
-          echo "read $TOTAL document(s), $FAILED failed"
-          # Metric 5 (ops): one entry per run, upserted by run id, so the
-          # per-document calls above collapse into a single record.
-          python scripts/pilot_ops_record.py --root "pilot-data/$PILOT_ROOT" \
-            --total "$TOTAL" --failed "$FAILED" || true
-          persist "final $TOTAL doc(s)"
-          # One poisoned PDF must not stop the pilot's day; a total
-          # wipeout should be loud. A run whose every failure was a
-          # RETIREMENT is not a wipeout: the give-up rule did its job and
-          # the document is recorded in read-failures/. Before this the
-          # 09:00 run on 2026-09-07 went red for retiring the single
-          # known-bad document it was handed, which is the designed
-          # outcome (a red run for working correctly trains the owner to
-          # ignore red runs).
-          if [ "$TOTAL" -gt 0 ] && [ "$FAILED" -eq "$TOTAL" ]; then
-            if [ "$GAVE_UP" -ge "$FAILED" ]; then
-              echo "::warning::every document this run was retired after \
-          exhausting its read attempts ($GAVE_UP); see read-failures/"
-            else
-              echo "::error::every reader failed this run"; exit 1
-            fi
-          fi
+          python scripts/pilot_read.py --unread /tmp/unread.json \
+            --root "pilot-data/$PILOT_ROOT" --workers "$WORKERS" \
+            --budget-minutes 75 --dry-run "$DRY"
 
       - name: Record a quiet run in ops
         if: steps.unread.outputs.count == '0'

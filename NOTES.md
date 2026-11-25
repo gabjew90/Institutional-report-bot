@@ -4336,3 +4336,15 @@ Three things to come back to. The Fed's 2027 dates are tentative on its own page
 
 **AGENTS.md, .agents/ and .codex/ came back.** They are written by the Codex desktop app, not by anything in this repository. `~/.codex/config.toml` has `external-agent-import-sync-enabled = true` with `external-agent-import-sync-item-types = "all"`. Every 12 hours (02:33 and 14:33 local) it copies CLAUDE.md to AGENTS.md with "Claude" replaced by "Codex" (which also turns `.claude/skills` into a path that does not exist), the skills to `.agents/skills`, the hooks to `.codex/hooks.json`, and imports Claude Code session transcripts as Codex threads (42 so far across the owner's projects, 3 from this one). The three paths are in `.gitignore` now. Turning the sync off is the owner's setting to change.
 
+## 2026-11-25 (evening): the Omnipulse readers run three at a time
+
+Owner: "For priorities do them one at a time in the order you prefer." After the pulse window, the readers.
+
+The loop body moved from the workflow file to `scripts/pilot_read_one.sh` with its steps and order kept (a test pins the order), and `scripts/pilot_read.py` runs three of them at once and stops handing out documents after 75 minutes. The reader prompt and the model strings are untouched. Changed in how a reader runs: read-only tools, no MCP or skills, the pilot-data checkout as its folder (no CLAUDE.md, no project hooks), its own temp folder, and one lock around every git command and every write to a tracked file.
+
+Dry run on a ci branch, three notes that already had cards: 9.1 minutes wall, 6.0, 8.7 and 9.0 minutes each, 41, 27 and 73 cards with every anchor matched and nothing dropped, against 51, 21 and 53 on record. So a read is not faster. Three at a time is the gain: 25 notes in about 70 minutes where it took over three hours.
+
+Not done: starting a reader run when notes land (the hourly clock stays), and anything about labels. A reader no longer sees the labels of the two notes being read beside it. Watch the label count per edition.
+
+Still to check on a live morning: an edition with `body_source: omnipulse` on a day research arrives after 5 AM ET.
+
