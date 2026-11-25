@@ -1,0 +1,1087 @@
+{
+ "brief": "Savone frames the week as open to two readings: still an AI unwind, or a broader growth scare. Nvidia beat revenue by about $7B and guided about $5B ahead, yet shares fell 22.7% as export controls, financing and doubts about AI-investment returns drove selling beyond Technology. Macro data (retail sales beat, low jobless claims, a 19-month high in job postings) signaled resilience even as 2-year yields fell 24bps, copper fell 9.9% and oil fell 5.8%, with the S&P 500's forward P/E falling to 16.5x. Hawkish Fedspeak evoked 2018: markets price about 62bps of hikes over 10 months, and Morgan Stanley's Metli argues 2018 showed it was pricing the pivot, not the pivot itself, that stopped the selloff. Asia (Taiwan -6.2%, Korea -5.2%, Japan -5.1%) and Europe (worst week since Liberation Day, a flight into Staples) extended the selloff; corporates sound more constructive than investors. Funds kept de-grossing, pushing US long/short net leverage to 41%, near COVID and Liberation Day lows. The remainder rounds up dozens of individual bank research calls across sectors, regions and asset classes.",
+ "cards": [
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "The S&P 500 posted its worst week since Liberation Day and the Nasdaq Composite its worst week since 2020.",
+   "anchor": "the S&P 500\u2019s worst week since\nLiberation Day and the Nasdaq Composite\u2019s worst since 2020",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "The Nasdaq Composite is down on the year and in technical bear-market territory after being up 18.7% on October 6.",
+   "anchor": "leaving the latter down on the year and in\ntechnical bear-market territory after being up 18.7% on October 6.",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Nvidia beat revenue expectations by about $7 billion and guided about $5 billion ahead.",
+   "anchor": "Nvidia (NVDA) beat\nrevenue expectations by ~$7B and guided ~$5B ahead",
+   "topic": "AI capex growth circularity",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Nvidia shares fell 22.7% over the week, leaving its forward P/E relative to the S&P 500 at a record low.",
+   "anchor": "yet the shares fell 22.7% over the week, leaving its\nforward P/E relative to the S&P 500 at a record low.",
+   "topic": "AI capex growth circularity",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Nvidia's reported demand remains strong, with doubts about export controls, financing and returns on AI investment driving the selloff.",
+   "anchor": "Reported demand remains strong; export controls,\nfinancing, and returns on AI investment are driving the doubts.",
+   "topic": "AI capex growth circularity",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Nvidia fell to 8.3x 12-month forward P/E, its lowest since the GFC lows, a record 50% P/E discount to the S&P 500.",
+   "anchor": "Nvidia (NVDA) fell to 8.3x 12M\nforward P/E, its lowest since the GFC lows, and a record 50% P/E discount to the SPX.",
+   "topic": "AI capex growth circularity",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "New US export controls on advanced AI chips and overseas computing access are more restrictive than markets anticipated.",
+   "anchor": "how new US export controls on advanced AI chips and overseas computing access are more\nrestrictive than markets anticipated",
+   "topic": "AI capex growth circularity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Ariana Salvatore and Stephen Byrd expect tighter licensing requirements to slow near-term data center development across Southeast Asia, particularly Malaysia and Thailand.",
+   "anchor": "The team\nexpects tighter licensing requirements to slow near-term data center development across Southeast Asia,\nparticularly Malaysia and Thailand",
+   "topic": "AI capex growth circularity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley sees US data center developers benefiting from the export-control-driven shift, naming Equinix, Cipher Mining, Galaxy Digital and Riot Platforms among preferred names.",
+   "anchor": "US data center developers could benefit, with Equinix (EQIX),\nCipher Mining (CIFR), Galaxy Digital (GLXY) and Riot Platforms (RIOT) among the preferred names.",
+   "topic": "AI capex growth circularity",
+   "status": "forecast",
+   "instruments": [
+    "EQIX",
+    "CIFR",
+    "GLXY",
+    "RIOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Serena Tang projects hyperscaler AI investment near $1.7 trillion in 2027.",
+   "anchor": "with hyperscaler investment projected near $1.7T in 2027.",
+   "topic": "AI capex growth circularity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "US long/short net leverage fell 5 percentage points week-on-week to 41%, in the 6th percentile since 2010 and at 12-month lows, while gross fell 4 percentage points to 195%.",
+   "anchor": "This\nactivity pushed US L/S net leverage down 5ppts WoW to 41% (6th %-tile since 2010; at 12-month lows),\nwhile gross fell 4ppts to 195%",
+   "topic": "hedge fund positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Funds continued to de-gross globally, though the pace of de-grossing moderated as fund flows exerted less impact on prices than in October.",
+   "anchor": "funds continued to de-gross\nglobally, though the pace of de-grossing moderated as fund flows exerted less impact on prices than in\n\nOctober",
+   "topic": "hedge fund positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Friday's market selloff could push US long/short net leverage below 40%, approaching the historic lows of about 30-35% observed during COVID and Liberation Day.",
+   "anchor": "though Friday\u2019s market selloff could push nets below 40%,\napproaching the historic lows of ~30\u201335% observed during COVID and Liberation Day.",
+   "topic": "hedge fund positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Markets price roughly 62bps of additional Fed hikes over the next ten months, about 2.5 quarter-point increases.",
+   "anchor": "Markets now price roughly 62bps of additional hikes\nover the next ten months, or ~2.5 quarter-point increases.",
+   "topic": "Fed hiking path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "ten months"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Michael Gapen forecasts US real GDP growth of 2.6% in 2026, 2.5% in 2027 and 2.7% in 2028, supported by sustained AI investment and wealth-driven consumption.",
+   "anchor": "He forecasts real GDP growth of 2.6% in 2026, 2.5% in 2027, and\n2.7% in 2028, supported by sustained AI investment and wealth-driven consumption.",
+   "topic": "Fed hiking path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Michael Gapen sees core PCE inflation slowing from 3.2% in 2026 to 2.6% in 2027 as energy pressures linger and tariff effects fade.",
+   "anchor": "he sees core PCE inflation slowing from 3.2% in 2026 to 2.6% in 2027 as energy pressures linger and\ntariff effects fade.",
+   "topic": "Fed hiking path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Michael Gapen expects 25bps Fed rate hikes in December and March, taking the fed funds target range to 4.25-4.50%.",
+   "anchor": "He expects 25bps rate hikes in December and March, taking the fed funds target range\nto 4.25-4.50%.",
+   "topic": "Fed hiking path",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "December-March"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Christopher Metli argues it wasn't the Powell Pivot that stopped equities from going lower on December 24, 2018, but pricing the pivot ahead of time.",
+   "anchor": "it wasn\u2019t the\nPowell Pivot that stopped equities from going lower on December 24th \u2013 it was pricing the pivot",
+   "topic": "2018 drawdown analog",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "The roughly 8bps fall in real 2-year yields today is, per Morgan Stanley's Metli, at least a start toward the kind of relief seen in 2018.",
+   "anchor": "the\n~8bps fall in real 2yr yields today is at least a start.",
+   "topic": "2018 drawdown analog",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Robin Xing expects China's K-shaped economy to persist in 2027, with real GDP growth slowing to 4.4% from 4.6% and nominal growth easing to 4.8%.",
+   "anchor": "China\u2019s K-shaped economy to persist in 2027, with real GDP\ngrowth slowing to 4.4% from 4.6%. He sees nominal growth easing to 4.8%",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley upgrades Nucor to Overweight from Equal-weight as it approaches the end of its latest capital spending cycle.",
+   "anchor": "is upgrading NUE to OW from EW as the company approaches the\nend of its latest capital spending cycle",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NUE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley forecasts Nucor's capex declining from about $3.4 billion in 2025 and $2.5 billion in 2026 to about $1.5 billion annually in 2027-28.",
+   "anchor": "He forecasts capex declining from ~$3.4B in 2025 and ~$2.5B in 2026\nto ~$1.5B annually in 2027-28",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "NUE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2025-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley raises its Nucor price target to $310, implying about 23% upside with a positive bull-bear skew of 2.3 to 1.0.",
+   "anchor": "He raises his NUE PT to $310 and sees ~23%\nupside with a positive bull-bear skew of 2.3:1.0.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "NUE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley forecasts Nucor's FCF yield at about 11% in the next two years, supporting a meaningful FCF inflection and greater flexibility for shareholder returns.",
+   "anchor": "supporting a meaningful FCF inflection (FCF yield of ~11% in the next\ntwo years) and greater flexibility for shareholder returns",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "NUE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next two years"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley downgrades Moncler to Underweight from Equal-weight.",
+   "anchor": "MS Research Analyst Natasha Bonnet downgrades Moncler to UW from EW.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley points out that Moncler is the most Asia-exposed name in its sector.",
+   "anchor": "She points out\nthat it is the most Asia-exposed name in the sector.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Chinese, Korean and Japanese clusters are about 66% of Moncler's sales versus about 45% for peers, with no sign of improvement in China or Korea.",
+   "anchor": "Chinese, Korean and Japanese clusters\nare ~66% of sales on MSe vs ~45% for peers, with no sign of improvement in China or Korea",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Intuit's strong first quarter was overshadowed by a Credit Karma-led FY27 revenue outlook cut.",
+   "anchor": "a strong first quarter was overshadowed by a Credit Karma-led FY27\nrevenue outlook cut",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Intuit's full-year operating income and EPS guidance held despite the revenue outlook cut.",
+   "anchor": "although full-year operating income and EPS guidance held.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Walmart showed weaker US comps and a slowing customer funnel challenging the bull case, even as its eCommerce flywheel remained intact.",
+   "anchor": "weaker US comps and a slowing customer funnel challenged the bull case, even as its eCommerce\nflywheel remained intact.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Tariff refunds and price reinvestment complicate Walmart's operating-income outlook, while about 40x forward earnings has investors paying a premium for its resilience.",
+   "anchor": "Tariff refunds and price reinvestment also complicate the operating-income\noutlook, while ~40x forward earnings leaves investors paying a premium for that resilience.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Target reported 5% traffic growth, with investors debating the merchandise mix and cost of higher investment.",
+   "anchor": "Target (TGT)\nreported 5% traffic growth, with investors debating the merchandise mix and cost of higher investment.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TGT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Ross Stores posted 8% comps, still below elevated buyside expectations.",
+   "anchor": "Ross Stores (ROST) posted 8% comps, still below elevated buyside expectations",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ROST"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Williams-Sonoma fell about 15% in the initial reaction despite positive comps across every brand and margin expansion, as freight costs and uncertainty around 2027 weighed.",
+   "anchor": "Williams-Sonoma\n(WSM) fell ~15% in the initial reaction despite positive comps across every brand and margin expansion,\nas freight costs and uncertainty around 2027 weighed.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "WSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Taiwan fell 6.2% on Friday, Korea dropped 5.2% and Japan's Nikkei declined 5.1%.",
+   "anchor": "Taiwan fell 6.2% on Friday, Korea dropped 5.2% and Japan\u2019s Nikkei declined\n5.1%.",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "More than 300 stocks across Taiwan's main and over-the-counter markets hit limit-down, while the KOSPI broke below 5,000.",
+   "anchor": "More than 300 stocks across Taiwan\u2019s main and over-the-counter markets hit limit-down, while the\nKOSPI broke below 5,000",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Alibaba guided to 30-45% cloud revenue growth in FY28 and 50% in FY29.",
+   "anchor": "Alibaba (BABA US)\nguided to 30\u201345% cloud revenue growth in FY28 and 50% in FY29",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28-FY29"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "US export-control restrictions prompted reductions to Alibaba's FY28-29 revenue and EBITA estimates.",
+   "anchor": "but the impact of those restrictions\nprompted reductions to FY28\u201329 revenue and EBITA estimates.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY28-29"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "PDD reported 12% growth in online marketing revenue, although total revenue was flat.",
+   "anchor": "PDD (PDD US) reported 12% growth in\nonline marketing revenue, although total revenue was flat.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PDD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Global Staples now trade at an earnings premium of more than 70% to Technology.",
+   "anchor": "global Staples now\ntrade at an earnings premium of more than 70% to Technology.",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Experian reported 7% organic revenue growth, 50bps of margin expansion, and an additional $500M buyback.",
+   "anchor": "Experian (EXPN LN) reported 7% organic revenue growth, 50bps of margin expansion,\nand an additional $500M buyback",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "NKT maintained its \u20ac400-430M FY26 operational EBITDA outlook, now expecting to finish toward the upper end.",
+   "anchor": "NKT (NKT DC) maintained its \u20ac400\u2013430M FY26 operational EBITDA outlook, now expecting\nto finish toward the upper end.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Infineon highlighted AI data-center demand above its \u20ac4 billion FY27 guide.",
+   "anchor": "Infineon (IFX GY) highlighted AI\ndata-center demand above its \u20ac4B FY27 guide",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Gold is now down a third from January highs, enduring the biggest 12-month drawdown since the early 1980s.",
+   "anchor": "Gold is now down a third from January highs,\nenduring the biggest 12M drawdown since the early 80s.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Gold's 14-day RSI is at its lowest level in 3 years.",
+   "anchor": "Overnight moves leave 14D RSIs at the lowest\nlevel in 3 years",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "A higher dollar and higher yields have weighed on gold in recent months, yet US 10-year real yields have come off their highs.",
+   "anchor": "A higher dollar and higher yields have clearly weighed on Gold in\nrecent months, yet US 10Y real yields have come off their highs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Dispersion across S&P 500 names in the last 2 weeks is in the 30th percentile versus the last 5 years.",
+   "anchor": "dispersion across S&P 500 names in the\nlast 2w is in the 30th %-tile vs the last 5Y",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Single-name volatility across S&P 500 names in the last 2 weeks is notably high, sitting in the 81st percentile versus the last 5 years.",
+   "anchor": "Single-\nname volatility across S&P 500 names in the last 2W is notably high relative to history, sitting in the 81st\n%-tile vs the last 5Y",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Global Risk Demand Index fell back into 'Fear' territory at -2.4 standard deviations, its 8th such drop in 3 months.",
+   "anchor": "the Global Risk Demand Index falling back into \u201cFear\u201d territory at -2.4SD\u2014its 8th such drop\nin 3M",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's QDS team notes US Defensives have beaten the Nasdaq by more than 25% in 6 weeks, the strongest outperformance since the early 2000s.",
+   "anchor": "QDS notes US Defensives have beaten the Nasdaq by >25% in 6W, the strongest outperformance since the\nearly 2000s",
+   "topic": "equity selloff technical extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "EU Basic Resources have underperformed the STOXX 600 by 26% since June, their largest 6-month relative drawdown since the 2015/16 China FX devaluation.",
+   "anchor": "EU Basic\nResources have underperformed the STOXX 600 by 26% since June, their largest 6M relative drawdown\nsince the 2015/16 China FX devaluation",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "TJX's Marmaxx comparable sales grew 2%, ahead of 1% expectations, suggesting recent merchandising and inventory challenges were temporary rather than structural.",
+   "anchor": "Marmaxx comparable sales grew 2%, ahead of 1% expectations, suggesting recent\nmerchandising and inventory challenges were temporary rather than structural.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TJX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Mike Wilson raises his 12-month S&P 500 target to 8,700, anticipating a durable mid-cycle expansion.",
+   "anchor": "Mike Wilson raises< his\n12-month S&P 500 target to 8,700, anticipating a durable mid-cycle expansion.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Mike Wilson forecasts S&P 500 EPS of $369 in 2026, $420 in 2027 and $458 in 2028.",
+   "anchor": "He forecasts EPS of $369\nin 2026, $420 in 2027 and $458 in 2028",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "44% of S&P 500 companies are reporting quantifiable AI adoption benefits, up from 32% a year earlier, per Morgan Stanley's Mike Wilson.",
+   "anchor": "He also highlights AI\nadoption as a growing margin catalyst, with 44% of S&P 500 companies reporting quantifiable benefits,\nup from 32% a year earlier.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Nike's Investor Day did little to change Morgan Stanley's Alex Straton's more cautious view of its sales and profitability potential.",
+   "anchor": "NKE\u2019s Investor Day did little to change MS Research Analyst Alex Straton\u2019s more cautious view of its\nsales and profitability potential.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Alex Straton sees Nike normalized sales near $40 billion, about 9.5% operating margin and about $2 EPS versus management's targets of about $47-48 billion, 12-14% margin and $3.00-3.50 EPS.",
+   "anchor": "She continues to see ~$40B in normalized sales, ~9.5% OM, and ~$2 EPS\nvs. management\u2019s targets of ~$47-48B, 12-14%, and $3.00-3.50, respectively.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "CBOE is poised to launch corporate KPI binary options across 23 companies and 113 metrics in the coming days.",
+   "anchor": "CBOE is poised to\nlaunch corporate KPI binary options across 23 companies and 113 metrics in the coming days.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CBOE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Mike Cyprys sees CBOE's new binary-options product's retail-led adoption broadening to institutions, with $1 billion-plus long-term revenue potential.",
+   "anchor": "He sees\nretail-led adoption broadening to institutions, with $1b+ LT revenue potential.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CBOE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "long term"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Lee Simpson thinks STMicroelectronics' upside is constrained amid risks to gigawatt build-out and memory headwinds to personal electronics.",
+   "anchor": "he thinks upside is\nconstrained amid risks to GW build-out and memory headwinds to personal electronics.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "STM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Dara Mohsenian is Overweight-rated on Monster Beverage and sees continued international momentum with share gains and strong category growth.",
+   "anchor": "Dara Mohsenian is OW-rated and sees continued MNST international momentum\nwith share gains and strong category growth",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MNST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Adam Jonas, Overweight-rated with a $300 price target, gives SpaceX's Flight 15 an overall grade of 'A'.",
+   "anchor": "MS Global Embodied AI & Robotics Strategist Adam Jonas would give SpaceX\u2019s (OW, $300 PT) Flight\n15 an overall grade of \u201cA\u201d.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Cedar Ekblom sees Kingspan with several routes to growth: panel share gains, more products for established data center customers, and new US roofing capacity.",
+   "anchor": "Kingspan has several routes to growth, through panel\nshare gains, more products for established data center customers, and new US roofing capacity.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Arthur Sitbon thinks market concerns over the financial impact of France's presidential election on Engie are overdone.",
+   "anchor": "He\nthinks market concerns are overdone regarding the likely financial impact on Engie.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Erik Woodring sees a growing disconnect between deteriorating smartphone fundamentals and more resilient share prices as an opportunity to book profits in key smartphone OEMs and suppliers.",
+   "anchor": "He believes that this\ngrowing disconnect between deteriorating smartphone fundamentals and more resilient share prices is an\nopportunity to book profits in key smartphone OEMs and suppliers",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's telecom analysts see Indonesia, the Philippines and Australia as the APAC markets most at risk from satellite disruption.",
+   "anchor": "MS Research Analysts Gary Yu, Da Wei Lee, and Andrew McLeod see Indonesia, the Philippines, and\nAustralia as the markets most at risk in APAC to Satellites.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Stefan Diaz initiates Comfort Systems USA Overweight at $1,410, EMCOR Overweight at $799, Quanta Services Equal-weight at $636, and MasTec Equal-weight at $220.",
+   "anchor": "FIX (OW, $1410 PT), EME (OW, $799 PT), PWR (EW, $636 PT), and MTZ (EW, $220 PT).",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "FIX",
+    "EME",
+    "PWR",
+    "MTZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Richard Xu sees stronger-than-expected household wealth accumulation and rising focus on investment returns driving a prolonged growth cycle for China's asset and wealth management industry.",
+   "anchor": "stronger-than-expected household wealth accumulation\nand rising focus on investment returns could drive a prolonged growth cycle for China's asset and wealth\nmanagement industry.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Mauricio Cepeda moves Hypera SA to Top Pick, rated Overweight with a BRL28 price target.",
+   "anchor": "moves Hypera SA (HYPE3 BZ OW, BRL28 PT) to Top Pick.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Jens Eisenschmidt forecasts euro area GDP expansion of 1.2% in 2027, supported by public spending and AI adoption.",
+   "anchor": "He forecasts GDP expansion of 1.2% in 2027,\nsupported by public spending and AI adoption.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Jens Eisenschmidt expects the ECB to hike twice, taking its deposit rate to 3.0% by March 2027.",
+   "anchor": "He expects the ECB to hike twice, taking its deposit rate to 3.0% by March\n2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by March 2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Marina Zavolock raises her MSCI Europe year-end 2027 target to 3,030, implying 15% upside.",
+   "anchor": "Marina Zavolock, who raises her MSCI Europe year-end 2027 target to 3,030, implying 15%\nupside.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end 2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Laura Wang forecasts MSCI China EPS growth of 8%, up from 6% in 2026.",
+   "anchor": "She forecasts EPS growth of 8%, up\nfrom 6% in 2026",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Laura Wang sets end-2027 targets of 76 for MSCI China and 4,550 for CSI 300, implying 11% and 13% upside respectively.",
+   "anchor": "Her end-2027 targets of 76 for MSCI China and\n4,550 for CSI 300 imply 11% and 13% upside, respectively.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end-2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Takeshi Yamaguchi forecasts Japan real GDP growth of 0.5% in 2027, revised down from 0.7%, with nominal growth reaching 3.4%.",
+   "anchor": "real GDP growth of 0.5% in 2027, revised down from 0.7%, while nominal growth reaches\n3.4%.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Takeshi Yamaguchi projects two additional 25bps BoJ hikes, in December 2026 and March 2027, bringing the terminal policy rate to 1.75%.",
+   "anchor": "He projects two additional 25bps BoJ hikes, in December 2026 and\nMarch 2027, bringing the terminal policy rate to 1.75%.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BOJ",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Dec 2026-Mar 2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "MS Savone - Global Reflections 21 Nov 2026",
+   "claim": "Morgan Stanley's Serena Tang raises global equities to maximum Overweight across all regions, with portfolio exposure +15% versus benchmark.",
+   "anchor": "Serena raises global\nequities to maximum Overweight across all regions, with portfolio exposure +15% versus benchmark",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-25/28923__ms-savone-global-reflections-21-nov-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 77,
+  "matched": 77,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 51,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
