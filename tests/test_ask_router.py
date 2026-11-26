@@ -395,7 +395,8 @@ def test_the_six_common_league_questions():
         "top 6 at the end of week 6": [sit, (R.T_FANTASY, {"topic": "table", "week": 6})],
         "hows my matchup": [sit],
         "hows my outlook": [sit],
-        "compare bk and declan teams": [sit],
+        # two rosters against each other (report/roster_strength.py, 2026-11-26)
+        "compare bk and declan teams": [(R.T_FANTASY, {"topic": "strength", "member": "BK"})],
         "is puka better than nabers": [sit],
         "rank the qbs": [sit],
         "who should i drop for puka": [sit],

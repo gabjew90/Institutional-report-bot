@@ -4348,3 +4348,19 @@ Not done: starting a reader run when notes land (the hourly clock stays), and an
 
 Still to check on a live morning: an edition with `body_source: omnipulse` on a day research arrives after 5 AM ET.
 
+## 2026-11-26: /ask ranks the league's rosters in code
+
+Owner sent a screenshot from the football channel. BK asked "assuming every person on each team's roster is fully healthy, who currently has the best team?" and the bot answered with the three highest season point totals. A member replied "This bot can't think for itself (yet). It just spews numbers."
+
+Cause, from the log: the question matched the `roster` topic on the word "roster", so the only prefetch was the asker's own week. The model then called `league`, `table` and `matchups` itself. None of them measures a roster, so it listed the figures it had and led with the asker. `ask_outcomes` does not see this one: the complaint was a reply to the asker, not to the bot.
+
+Built `report/roster_strength.py`: each team's best legal lineup from its current roster, every player at his average in the games he played, in league scoring. Checked first that the scoring formula over Sleeper's weekly stats reproduces the league's own player points (2,073 player-weeks, 0 mismatches). Two choices made in code and stated in the answer's last line: a game of under 10 snaps does not count (Lamar Jackson's one-snap week 8 put him at 16.0 a game, 20.0 without it), and "out" means on IR or missed the NFL team's last game.
+
+What the same question gets now (live harness, 3.1 s against 12.6 s): DeepFried has the best roster at full health, 153.3 points a week, 2.3 more than Vincenzo's. Then the top three with what makes each strong or thin, and "The 1 seed, Arxfic (8-3), ranks 7th at full health with 142.8."
+
+Of the 132 football-channel questions logged since August, the ones that need a value for a player or a roster are this kind (3) and trades (4). Trades are still answered from one week's projections. A player's season average in the `projections` payload is the next step there and is not built.
+
+Also fixed: `tests/test_chat_count.py` failed for the first 43 minutes of every New York day (its "today" rows were up to 43 minutes old). Found because the suite ran at 00:31 ET. A push in that window would have failed CI and Railway would have skipped the deploy.
+
+Open: the model is still called for this answer and told to reply OK. Skipping the call needs a change to the phase flow in `bot.py`.
+

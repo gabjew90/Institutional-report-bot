@@ -783,6 +783,22 @@ _FANTASY_RE = re.compile(
 # zeros (2026-09-03 review, same defect class as the week-slate prefetch).
 _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
     ("draft", re.compile(r"\bdraft(?!\s*kings)\b", re.I)),
+    # How good a roster is: its best lineup at full health and with who is
+    # playing now (report/roster_strength.py, 2026-11-26). "Assuming every
+    # person on each team's roster is fully healthy, who currently has the
+    # best team?" read as a roster question, got one manager's week, and was
+    # answered with the three highest season point totals.
+    ("strength", re.compile(
+        r"\b(?:(?:best|worst|strongest|weakest|deepest|scariest|most\s+(?:stacked|talented|loaded))"
+        r"\s+(?:overall\s+)?(?:team|roster|squad)s?"
+        r"|(?:team|roster|squad)\s+is\s+(?:the\s+)?(?:best|worst|strongest|weakest|most\s+stacked)"
+        # A health word alone is not here: "is CMC fully healthy" is about
+        # one player.
+        r"|power\s+rank\w*"
+        r"|how\s+much\s+better\s+is\s+\S+(?:\s+\S+)?\s+(?:team|roster|squad)"
+        r"|(?:team|roster|squad)\s+(?:is\s+)?(?:better|worse|stronger|weaker)\s+than"
+        r"|compare\s+(?:\S+\s+){1,5}?(?:teams?|rosters?|squads?)"
+        r"|rank\s+(?:the|all|every|each)\s+(?:teams?|rosters?|squads?))\b", re.I)),
     # "should I pick him up" wants to know if he is hot, not who moved
     # last week, so add/pickup goes to trending and the retrospective
     # wording goes to transactions.
@@ -815,7 +831,7 @@ _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
     # (discord_bot/league_lines.py, 2026-11-19); until then each of these
     # was assembled by the model from the current standings payload.
     ("table", re.compile(
-        r"\b(?:standings?|records?|first\s+place|last\s+place|best\s+team|worst\s+team"
+        r"\b(?:standings?|records?|first\s+place|last\s+place"
         r"|who(?:'s|s| is)\s+(?:winning|leading|best|worst)"
         r"|(?:gonna|going\s+to)\s+win\s+(?:the\s+)?(?:league|championship|it\s+all)"
         r"|playoffs?|post\s?season|clinch\w*|eliminated|seeds?|seeding"
@@ -826,6 +842,7 @@ _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
         r"|(?:toughest|hardest|easiest|softest)\s+(?:remaining\s+)?schedules?"
         r"|how(?:'s|s| is)\s+(?:the|our)\s+league(?:\s+looking)?)\b", re.I)),
 ]
+_ONE_WEEK_RE = re.compile(r"\b(?:this|last|next)\s+week\b|\btonight\b|\btoday\b|\byesterday\b", re.I)
 # "through week 6", "after week 6", "week 6 standings": the week a table
 # question is about.
 _TABLE_WEEK_RE = re.compile(r"\bweek\s+(\d{1,2})\b", re.I)
@@ -1006,6 +1023,12 @@ def _as_fantasy(r: "Route", q: str, reason: str, *,
     as the authoritative block."""
     topic = fantasy_topic(q, default=default_topic)
     r.shape, r.reason = FANTASY, f"{reason} -> topic {topic or 'none'}"
+    if topic == "strength":
+        # Every roster against every other. The asker's own week is not
+        # part of it, and with it in front the answer led with the asker.
+        # `member` only marks whose row is always shown.
+        r.prefetch = [(T_FANTASY, {"topic": "strength", **({"member": asker_manager} if asker_manager else {})})]
+        return r
     prefetch: list[tuple[str, dict]] = []
     # A manager asking anything about the league gets their whole week
     # first (roster with projections and slots, this week's opponent,
@@ -1050,6 +1073,10 @@ def fantasy_topic(question: str, *, default: str | None = "standings") -> str | 
     fallback when no topic word appears, not the answer for everything."""
     for topic, rx in _TOPIC_RES:
         if rx.search(question or ""):
+            # "who has the best team this week" is about one week's lineups
+            # and projections, not a roster's season
+            if topic == "strength" and _ONE_WEEK_RE.search(question or ""):
+                continue
             return topic
     return default
 _STAT_RE = re.compile(

@@ -2396,7 +2396,14 @@ def _build_fantasy_league_tool():
                     "points for and against, each team's remaining opponents, "
                     "playoff odds and expected wins. USE THIS for standings "
                     "at a past week, strength of schedule and playoff "
-                    "chances; never work those out yourself) | 'matchups' "
+                    "chances; never work those out yourself) | 'strength' "
+                    "(how good each ROSTER is: every team's best lineup at "
+                    "full health and with who is playing now, from each "
+                    "player's average in the games he played, with the "
+                    "position group that makes it strong or thin. USE THIS "
+                    "for best or worst team or roster, power rankings and "
+                    "'if everyone were healthy'. Points scored so far are "
+                    "not a roster's quality) | 'matchups' "
                     "(every game: scores, margins, who's left to play, "
                     "standouts, projected finals) | 'roster' (one manager's "
                     "starters + bench — requires `member`) | "
@@ -2426,7 +2433,7 @@ def _build_fantasy_league_tool():
                         "topic": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "league | standings | table | matchups | "
+                                "league | standings | table | strength | matchups | "
                                 "roster | transactions | draft | trending "
                                 "| projections | stats | situation"
                             ),

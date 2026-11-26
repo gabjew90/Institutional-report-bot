@@ -23,6 +23,12 @@ Views, from the asker's words:
 
 A question with none of these words gets no lines: the payload is still
 shown to the model, and nothing is posted for it.
+
+A fourth view has its own payload (`strength`, report/roster_strength.py,
+2026-11-26): how good each roster is. "Who has the best team if everyone is
+healthy" was answered with the three highest season point totals, because
+no payload measured a roster. `strength_lines` posts the answer first (who,
+by how much), then the teams with what makes each one strong or thin.
 """
 from __future__ import annotations
 
@@ -38,7 +44,7 @@ _PLAYOFF_RE = re.compile(
     r"|win\s+(?:the\s+)?(?:league|championship|it\s+all|chip|ship))\b", re.I)
 # "top 5 rbs" is about players: a count needs a word that says teams.
 _STANDINGS_RE = re.compile(
-    r"\b(?:standings?|records?|seeds?|seeding|first\s+place|last\s+place|best\s+team|worst\s+team"
+    r"\b(?:standings?|records?|seeds?|seeding|first\s+place|last\s+place"
     r"|(?:top|bottom)\s+\d{1,2}\s+(?:teams?|seeds?|spots?|managers?|at|after|through|thru|as\s+of"
     r"|in\s+(?:the\s+)?(?:league|standings))"
     r"|who(?:'s|s|\s+is)\s+(?:winning|leading|in\s+first|in\s+last)\s+(?:the\s+)?league"
@@ -162,3 +168,135 @@ def block_lines(result: dict, question: str = "") -> list[str]:
         # a past week has no schedule and no odds: its standings answer it
         lines = _standings(table, question)
     return [*note, *lines] if lines else []
+
+
+# ---- roster strength (report/roster_strength.py) ---------------------------
+
+TOP_ROWS = 3
+_ALL_RE = re.compile(
+    r"\b(?:power\s+rank\w*|rank\s+(?:the|all|every|each|them|us|our)\b|every\s+team|all\s+(?:\d{1,2}|twelve|the)\s+teams?"
+    r"|full\s+(?:list|rank\w*)|whole\s+league)", re.I)
+_WORST_RE = re.compile(r"\b(?:worst|weakest|thinnest|shallowest)\b", re.I)
+_BEST_RE = re.compile(r"\b(?:best|strongest|deepest)\b", re.I)
+_SUFFIXES = {"jr.", "jr", "sr.", "sr", "ii", "iii", "iv", "v"}
+_PARTICLES = {"st.", "st", "de", "van", "von"}
+_GROUP_NAME = {"QB": "quarterback", "RB": "running back", "WR": "receiver", "TE": "tight end"}
+
+
+def _short(name: str) -> str:
+    """'Kenneth Walker III' -> 'Walker', 'Amon-Ra St. Brown' -> 'St. Brown'."""
+    parts = (name or "").split()
+    while len(parts) > 1 and parts[-1].lower() in _SUFFIXES:
+        parts.pop()
+    if len(parts) >= 3 and parts[-2].lower() in _PARTICLES:
+        return " ".join(parts[-2:])
+    return parts[-1] if parts else (name or "")
+
+
+def _and(items: list[str]) -> str:
+    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
+
+
+# "my team", "our roster": the asker's own team is one of the two compared.
+# "I" alone is not: "who has the best team, I think it's DeepFried".
+_MINE_RE = re.compile(r"\b(?:my|mine|our|ours)\b", re.I)
+
+
+def _named(team: dict, question: str) -> bool:
+    """The question names this team: the room's name as a whole word, or a
+    word of four letters or more that is the manager's Discord or Sleeper
+    username or the end of it ("kyle" is bankerkyle, "jamal" is f.jamal).
+    The start of a username counts only when it is not an English word:
+    "dizzy" is dizzydean6, "them" is not _themelvin."""
+    q = (question or "").lower().replace("’", "'")
+    m = (team.get("manager") or "").strip().lower()
+    if m and re.search(rf"(?<![a-z0-9]){re.escape(m)}(?:'?s)?(?![a-z0-9])", q):
+        return True
+    words = {re.sub(r"[^a-z]", "", w[:-2] if w.endswith("'s") else w) for w in re.findall(r"[a-z0-9_.']{4,}", q)}
+    words = {w for w in words if len(w) >= 4}
+    if not words:
+        return False
+    from discord_bot.listed_symbols import english_words
+    for alias in team.get("aliases") or []:
+        a = re.sub(r"[^a-z]", "", (alias or "").lower())
+        for w in words:
+            if a and (a == w or a.endswith(w) or (a.startswith(w) and w not in english_words())):
+                return True
+    return False
+
+
+def _group(t: dict, pos: str) -> str:
+    g = (t.get("groups") or {}).get(pos) or {}
+    who = ", ".join(f"{_short(p['player'])} {p['avg']:.1f}" for p in g.get("players") or [])
+    return f"{_GROUP_NAME.get(pos, pos)} ({who})"
+
+
+def _strength_row(t: dict) -> str:
+    line = f"→ {t['rank']}. **{t['manager']}** ({t['record']}, seed {t['seed']}): **{t['full_health']:.1f}**"
+    out = [p["player"] for p in t.get("out_now") or []]
+    if out and t["available"] < t["full_health"]:
+        line += f", {t['available']:.1f} without {_and(out)}"
+    line = line.rstrip(".") + "."           # a name can end in "Jr."
+    groups = t.get("groups") or {}
+    best, thin = t.get("best_group"), t.get("thinnest_group")
+    if not best or not thin or best == thin:
+        return line
+    # "best" and "thinnest" are against the league's average for the group
+    up = (groups[best].get("vs_league_average") or 0) > 0
+    down = (groups[thin].get("vs_league_average") or 0) < 0
+    if up and down:
+        return line + f" Best at {_group(t, best)}, thinnest at {_group(t, thin)}."
+    if up:
+        return line + f" Above the league's average at every position, most at {_group(t, best)}."
+    return line + f" Below the league's average at every position, most at {_group(t, thin)}."
+
+
+def strength_lines(result: dict, question: str = "") -> list[str]:
+    """The posted lines for a `strength` payload: the answer, the teams
+    asked about, then what the figures are. [] when it has no table.
+
+    Two teams picked out by the question ("is my team better than Kyle's",
+    "compare BK and Declan's teams") are compared with each other. Any
+    other question is about the league: the best roster, or the weakest
+    when the words say so, with the teams next to it."""
+    s = (result or {}).get("strength") or {}
+    teams = s.get("teams") or []
+    if s.get("status") != "ok" or len(teams) < 2:
+        return []
+    q = question or ""
+    asker = s.get("asker") or ""
+    picked = [t for t in teams if _named(t, q) or (t["manager"] == asker and _MINE_RE.search(q))]
+    foot = (f"→ Each figure is a team's best lineup from its current roster, every player at his average in "
+            f"the games he played through week {s['through_week']}, in league scoring. Out means on IR or "
+            "missed his team's last game.")
+    if len(picked) == 2:
+        a, b = picked                       # stronger first: teams are in rank order
+        return [f"→ **{a['manager']}** has the better roster at full health: its best lineup averages "
+                f"**{a['full_health']:.1f}** points a week against **{b['manager']}**'s **{b['full_health']:.1f}**.",
+                _strength_row(a), _strength_row(b), foot]
+    worst = bool(_WORST_RE.search(q)) and not _BEST_RE.search(q)
+    top = _TOP_RE.search(q)
+    keep = len(teams) if _ALL_RE.search(q) else min(len(teams), int(top.group(1)) if top else TOP_ROWS)
+    shown = teams[-keep:][::-1] if worst else teams[:keep]
+    shown += [t for t in teams if t not in shown and (t in picked or t["manager"] == asker)]
+    if worst:
+        last, above = teams[-1], teams[-2]
+        lines = [f"→ **{last['manager']}** has the weakest roster at full health: its best lineup averages "
+                 f"**{last['full_health']:.1f}** points a week, {above['full_health'] - last['full_health']:.1f} "
+                 f"fewer than **{above['manager']}**'s."]
+    else:
+        lead, second = teams[0], teams[1]
+        lines = [f"→ **{lead['manager']}** has the best roster at full health: its best lineup averages "
+                 f"**{lead['full_health']:.1f}** points a week, {lead['full_health'] - second['full_health']:.1f} "
+                 f"more than **{second['manager']}**'s."]
+    lines += [_strength_row(t) for t in shown]
+    if not worst:
+        now = min(teams, key=lambda t: t.get("available_rank") or 99)
+        if now is not teams[0]:
+            lines.append(f"→ With the players who are out left off, the best lineup is **{now['manager']}**'s, "
+                         f"**{now['available']:.1f}**.")
+        one = next((t for t in teams if t.get("seed") == 1), None)
+        if one and one["rank"] > 1 and one not in shown:
+            lines.append(f"→ The 1 seed, **{one['manager']}** ({one['record']}), ranks {_ordinal(one['rank'])} "
+                         f"at full health with **{one['full_health']:.1f}**.")
+    return [*lines, foot]

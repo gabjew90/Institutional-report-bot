@@ -308,6 +308,9 @@ TOPICS = (
     # played: records, points, remaining opponents, playoff odds
     # (report/league_table.py, 2026-11-19).
     "table",
+    # How good each roster is: every team's best lineup at full health and
+    # with who is playing now (report/roster_strength.py, 2026-11-26).
+    "strength",
     # What players ACTUALLY scored, against what they were projected to.
     # fetch_weekly_stats has existed since the module was written and no
     # topic ever called it, so "what did he actually put up" was
@@ -650,6 +653,32 @@ def build_topic_payload(
             if week and int(week) > table["last_played_week"]:
                 out["records_note"] = (f"Week {int(week)} is not final. These records cover weeks "
                                        f"1-{table['through_week']}.")
+
+    elif topic == "strength":
+        # How good each roster is: its best lineup at full health and with
+        # who is playing now, from every player's average in the games he
+        # played (report/roster_strength.py, 2026-11-26).
+        from report import roster_strength as _rs
+        last = int((league.get("settings") or {}).get("last_scored_leg") or 0)
+        ids = sorted({str(p) for r in rosters for p in (r.get("players") or []) if p})
+        names = {r.get("roster_id"): _table_name(str(r.get("owner_id")), users_by_id)
+                 for r in rosters if r.get("roster_id") is not None}
+        scoring = league.get("scoring_settings") or {}
+        weeks = _rs.fetch_season(season, last, scoring) if season and last else {}
+        sid = _resolve_member(member or "", users_by_id)
+        strength = _rs.build(rosters, names, resolver(ids) if ids else {},
+                             league.get("roster_positions") or [], weeks, through_week=last,
+                             asker=_table_name(sid, users_by_id) if sid else "")
+        out["week"] = last or wk
+        if strength.get("status") != "ok":
+            return {**out, **strength}
+        # the names a question may use for a team (discord_bot/league_lines.py)
+        owner = {r.get("roster_id"): str(r.get("owner_id")) for r in rosters}
+        for t in strength["teams"]:
+            oid = owner.get(t["roster_id"], "")
+            t["aliases"] = [a for a in ((SLEEPER_TO_DISCORD.get(oid) or ("", "", ""))[1],
+                                        (users_by_id.get(oid) or {}).get("display_name")) if a]
+        out["strength"] = strength
 
     elif topic == "standings":
         rows = []

@@ -31,6 +31,13 @@ NOTE = ("\n\nPOSTED AS WRITTEN: the system posts the lines below as the body of 
         "in plain English, with no figure the lines do not carry. Do not list, repeat or "
         "recompute them.\n")
 
+# A block whose first line is itself the answer takes no opening: the
+# model's sentence can only say it again (2026-11-26 harness: "DeepFried
+# leads the league in full-health roster strength at 153.3" above
+# "DeepFried has the best roster at full health: ... 153.3").
+NOTE_WHOLE = ("\n\nPOSTED AS WRITTEN: the system posts the lines below as the whole reply, exactly as "
+              "they are, and nothing you write is added to them. Reply with the single word OK.\n")
+
 # The bot's own no-answer and refusal lines: never an opening.
 _NOT_A_LEAD = ("→ No response came back", "→ Thought myself in circles",
                "→ don't have that one", "→ ⚠️ Couldn't verify")
@@ -46,6 +53,7 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
     if not isinstance(result, dict) or result.get("status") != "ok":
         return None
     outline = None
+    whole = False
     if tool == "lookup_earnings_slate" and result.get("week_outline"):
         from discord_bot import slate_week
         outline = result["week_outline"]
@@ -69,6 +77,11 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
         # standings, remaining schedules and playoff odds (2026-11-19)
         from discord_bot import league_lines
         lines = league_lines.block_lines(result, question)
+    elif tool == "lookup_fantasy_league" and result.get("strength"):
+        # how good each roster is (2026-11-26)
+        from discord_bot import league_lines
+        lines = league_lines.strength_lines(result, question)
+        whole = True                        # its first line is the answer
     # A company's report date is no longer here: every turn about one stock
     # gets its lines from discord_bot/stock_body.py (2026-11-13). Several
     # companies in one question get a line each (2026-11-21).
@@ -87,12 +100,13 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
     if not lines:
         return None
     # plain data: the ask log serializes _ask_meta
-    return {"tool": tool, "lines": lines, "outline": outline, "today": today.isoformat()}
+    return {"tool": tool, "lines": lines, "outline": outline, "today": today.isoformat(),
+            **({"whole": True} if whole else {})}
 
 
 def note(block: dict) -> str:
     """What the model is shown under the prefetch block."""
-    return NOTE + "\n\n".join(block["lines"])
+    return (NOTE_WHOLE if block.get("whole") else NOTE) + "\n\n".join(block["lines"])
 
 
 def _lead(answer: str) -> str:
@@ -169,7 +183,7 @@ def compose(answer: str, blocks: list[dict], question: str = "") -> tuple[str, b
     body = "\n\n".join(ln for b in blocks for ln in b["lines"])
     if not body:
         return answer, False
-    lead = _lead(answer)
+    lead = "" if any(b.get("whole") for b in blocks) else _lead(answer)
     if lead and not _lead_ok(lead, blocks, body, question):
         lead = ""
     return ((lead + "\n\n") if lead else "") + body, bool(lead)
