@@ -1,0 +1,1084 @@
+BITWISEINVESTMENTS.COM
+TOKENIZATION, 
+24/7 TRADING,
+AND THE
+ECONOMICS
+OF SOLANA
+NOV.
+2026
+
+02
+Executive Summary
+03
+Understanding Solana
+06
+Transaction Economics
+10
+Solana’s Platform Advantage
+14
+Internet Capital Markets
+16
+Valuing Solana
+21
+Risks and Considerations
+22
+Looking Ahead
+About Bitwise
+Important information
+Bitwise Asset Management is a global asset manager 
+specializing in crypto and onchain finance with a nine-year 
+track record and more than $14 billion in client assets. The firm’s 
+suite of over 70 investment products—spanning ETFs, option 
+income strategies, model portfolios, DeFi vaults, tokenized 
+funds, and staking—helps investors access opportunities 
+across the financial frontier. Bitwise serves more than 5,500 
+private wealth teams, RIAs, family offices, and institutional 
+investors, as well as 21 banks and broker-dealers. The company 
+is headquartered in San Francisco, with offices in New York and 
+London. For more information, visit bitwiseinvestments.com.
+The opinions expressed herein are intended to provide insight 
+or education and should not be relied upon by the reader as 
+research or investment advice. This material represents an 
+assessment of the market environment at a specific time and is 
+not intended to be a forecast of future events, or a guarantee of 
+future results. Bitwise does not represent that this information 
+is accurate and complete and it should not be relied upon 
+as such. The information contained in this material is subject 
+to further discussion, completion, and amendment, and may 
+change without notice. Any use of this information is on an “as 
+is” and “as available” basis and is at the user’s sole risk.
+Table of Contents
+
+Solana has never struggled to define its raison d’être. The vision of building an onchain Nasdaq dates 
+back to its 2018 founding. It aimed to be the largest trading market and a price-discovery engine. Over 
+time, the vision broadened and grew more ambitious. Internet Capital Markets promises to go beyond 
+trading existing financial assets and to make it possible for anyone to create, issue, trade, and raise 
+capital around assets and ideas on a globally accessible network.
+More than six years after its genesis block, what Solana has achieved on its path toward that goal is 
+extraordinary. It processes nearly 1,800 transactions per second, far more than other major general-
+purpose blockchains combined. So far, it has been a primary venue for speculative trading, which has 
+helped it build resilience and stress-test its infrastructure under heavy load. Now, it is starting to onboard 
+the largest share of tokenized equities volume across all blockchains, bringing it a step closer to realizing 
+its ambitious Internet Capital Markets vision. 
+But this is only the beginning, and Solana still has a long way to go. 
+We think Solana presents a distinct opportunity, and investors underestimate its growth potential as 
+more financial activity moves onchain. 
+Solana wants to become the infrastructure for global financial markets. Its vision is a world where 
+financial activity operates at the speed and scale of the internet. If it succeeds, the opportunity extends 
+far beyond the crypto market Solana serves today.
+In this report, we explain how Solana's infrastructure was designed to support high transaction volumes 
+and how it manages to offer some of the cheapest fees for everyday transactions across all chains. We 
+look at the businesses that build on Solana today and explain why many more are likely to follow. We 
+discuss tokenization, which is expected to drive a significant share of onchain activity and revenue. 
+Solana is entering its next phase from a position of strength, but success is not inevitable. It must now 
+defend and extend its lead while delivering increasingly ambitious upgrades. We are optimistic, but the 
+opportunity comes with execution risk. With this in mind, we explore Solana's future valuation.
+Executive Summary
+Kam Benbrik
+Head of Onchain Research
+@KamBenbrik
+Rafal Klich
+Protocol Researcher
+@0xrafal
+02
+Executive Summary
+
+Understanding Solana
+03
+Understanding Solana
+A blockchain built for financial markets 
+Solana was built to be a fast blockchain that could support financial markets at scale.1 Its early pitch 
+described it as a “blockchain at Nasdaq speed” that would enable people to trade on a high-performance 
+public network while retaining control of their assets. 
+That idea has since evolved into the concept of “Internet Capital Markets”: a financial system where assets 
+can be issued, traded, transferred, and used as collateral on the same network. The goal is to make moving 
+money and assets as easy as moving information online.
+For its vision to work, Solana must handle the scale of global financial markets, with the capacity to process 
+billions of orders and settle transactions quickly and cheaply. 
+How Solana handles transactions 
+Virtually all early blockchains used sequential execution, processing transactions one after another. 
+This quickly led to congestion. Imagine a restaurant chef who must finish each order before starting 
+the next. As more customers arrive, the queue grows endlessly. Early blockchains were in a similar 
+position, with demand exceeding capacity, processing times growing ever longer, and fees rising as 
+users competed for priority.
+Solana was the first blockchain to tackle this issue. To do so, it introduced parallel execution, which 
+processes transactions at the same time as long as they don't conflict. If they do, one must wait for the 
+other to finish. The key is identifying which transactions can run together, which Solana does thanks to 
+its account system. 
+Parallel execution helps Solana process more transactions
+Sequential execution
+TRANSACTION A
+TRANSACTION B
+TRANSACTION C
+START
+FINISH
+Parallel execution
+START
+FINISH
+TIME
+TIME
+TRANSACTION A
+TRANSACTION B
+TRANSACTION C
+(1) Scalability was a key challenge for early blockchains; as usage grew, limited capacity slowed transactions and raised fees, making 
+them hard to use for most financial services. In 2017, Anatoly Yakovenko, an engineer who had worked at Qualcomm, began developing 
+Solana to address these limits. Raj Gokal, whose background was in venture investing and healthcare, joined him to build the project, and 
+the Solana network launched in March 2020.
+Source: Bitwise Asset Management.
+
+04
+Understanding Solana
+Solana runs on a network of computers called validators. Their role is to process transactions and verify 
+that they follow the rules. When someone makes a payment or a trade, that information needs to reach 
+the other validators so they can check it and update their records. The challenge is sharing these updates 
+quickly across the network as new transactions keep arriving.
+The validator that executes the next block is known as the leader. It divides the block into small pieces and 
+sends them to other validators. Those validators copy the pieces and distribute them across the network. 
+The pieces travel simultaneously, spreading the work without requiring the leader to send the full block 
+to everyone. Once validators have enough pieces to rebuild the block, they check it and vote to help the 
+network agree on which block to accept. Incredibly, for a batch of transactions, this process takes a fraction 
+of a second.
+Parallel execution and efficient block sharing help Solana handle more activity and reduce congestion. The 
+network can charge a low, fixed base fee, while users can add an optional fee to prioritize their transactions.
+How Solana shares transaction data
+03
+Check and vote
+Each validator rebuilds
+the block, checks the
+transactions and votes
+on the result.
+EACH VALIDATOR CHECKS FOR ITSELF
+REBUILD
+THE BLOCK
+01
+CHECK
+TRANSACTIONS
+02
+VOTE ON
+THE RESULT
+03
+TX TX TX
+THE VALIDATOR
+THAT PRODUCES
+THE BLOCK
+LEADER
+01
+Build and send
+The leader processes
+transactions as they arrive
+and sends them out in
+small pieces.
+PIECES SPREAD ACROSS THE NETWORK
+02
+Share the pieces
+Those validators copy the
+pieces and distribute them
+across the network.
+Source: Bitwise Asset Management.
+
+05
+Understanding Solana
+A broad ecosystem on one ledger 
+Solana has a broad ecosystem of financial applications on its network. These applications fall into different 
+categories, with each addressing a different need.
+Solana financial apps ecosystem
+Category
+Examples on Solana
+What users can do
+TradFi equivalent
+Trading
+Jupiter, Raydium
+Trade assets
+Exchanges and market 
+makers, such as Nasdaq 
+and NYSE
+Lending and
+borrowing
+Kamino
+Lend assets to earn 
+interest or borrow 
+against collateral
+Banks and prime brokers
+Payments
+and settlement
+Stripe
+Pay for goods 
+and services with 
+stablecoins
+Merchant payment services
+Tokenization
+Backpack, Ondo, 
+xStocks
+Hold and trade 
+tokenized stocks 
+onchain
+Stockbrokers and 
+investment platforms
+ Source: Bitwise Asset Management.
+The main strengths of Solana applications are their accessibility and composability. Users only need an 
+internet connection and a smartphone or computer to access Solana’s trading, lending, and payment 
+apps. They can then buy an asset through a trading app and use it as collateral in a lending app. Everything 
+happens in a few clicks, possibly in a single transaction.
+Who keeps the system going 
+Validators run Solana, processing transactions and maintaining the shared network record. Holders can 
+opt to stake their SOL (the Solana network's native token), which means locking their tokens with a 
+validator, who then uses it to build more blocks and increase its voting power. In return for locking their 
+SOL, holders earn yield. 
+SOL is also used to pay for transaction fees. Half of the base fee is burned (permanently removed from 
+circulation), which reduces the total supply of SOL. The rest, along with other fees, is split between validators 
+and delegators. For the most part, the yield comes from new SOL issuance. But, with growing network 
+activity and falling inflation (thanks to recent upgrades to SOL's tokenomics), the fees are expected to make 
+up a larger share of the stakers’ earnings.
+
+Transaction Economics
+06
+Transaction Economics
+Low fees, but high revenue
+Google processes billions of searches a day and charges nothing for them. Still, it has built one of the 
+most profitable businesses in history. It did so by making money from advertisers who bid to show their 
+products in the right place at the right moment.
+Solana works similarly, but most observers miss that.
+Solana is the busiest major blockchain. In September 2026, it processed 4.73 billion transactions, 
+accounting for 65.7% of total transactions across Solana and 17 other major chains combined, including 
+Ethereum and its largest Layer 2s.
+Solana is the busiest blockchain by a wide margin
+Monthly transactions, January 2025–September 2026
+Solana
+Others
+100%
+75%
+34.3%
+50%
+25%
+65.7%
+0
+Q1'25
+Q2'25
+Q3'25
+Q4'25
+Q1'26
+Q2'26
+Q3'26
+Source: Bitwise Asset Management with data from Allium. Data from January 1, 2025, to September 30, 2026.
+Note: “Others” includes Ethereum, Base, Robinhood Chain, Arbitrum One, OP Mainnet, MegaETH, Unichain, Ink, World Chain, ZKsync 
+Era, Mantle, BNB Chain, Polygon PoS, Monad, Avalanche C-Chain, Sui, and Aptos. MegaETH’s January 2026 TPS stress test is excluded. 
+Solana vote transactions are excluded.
+Like Google, Solana is essentially free to use. In Q3 2026, the median Solana transaction cost $0.00057, 
+less than on any chain we tracked except Aptos and more than 100 times cheaper than on Ethereum L1.
+
+07
+Transaction Economics
+$0
+$0.02
+$0.04
+$0.06
+$0.08
+$0.10
+Aptos
+$0.00040 (0.7X SOLANA)
+Solana
+$0.00057
+Monad
+$0.00168 (3.0X SOLANA)
+NEAR
+$0.00191 (3.4X SOLANA)
+HyperEVM
+$0.00239 (4.2X SOLANA)
+BNB Chain
+$0.00448 (7.9X SOLANA)
+Robinhood Chain
+$0.00527 (9.2X SOLANA)
+Arbitrum
+$0.00573 (10X SOLANA)
+Polygon
+$0.01046 (18X SOLANA)
+Avalanche
+$0.01625 (29X SOLANA)
+Base
+$0.00160 (2.8X SOLANA)
+Ethereum L1
+$0.08513 (149X SOLANA)
+Source: Bitwise Asset Management with data from Allium. Data from July 1 to September 30, 2026.
+Solana is one of the cheapest blockchains to use
+Median network fee per transaction and relative cost versus Solana
+At first glance, that doesn’t look like a great business. Despite processing enormous volumes, each 
+transaction pays almost nothing, which means Solana earns very little. Multiply the transaction count by 
+the base fee of 0.000005 SOL per signature; with SOL around $100, Q3 2026 base fees are $7.1 million. 
+Not nothing, but hardly impressive.
+
+08
+Transaction Economics
+Why users pay more for some transactions
+But users actually paid $69 million in transaction fees on Solana in Q3, which is almost 10 times what base 
+fees alone would suggest.
+The difference is in a small share of transactions that are especially valuable to users sending them, who 
+opt to pay additional priority fees and tips to improve their place in the transaction queue. If we rank Q3 
+transactions by fees paid, the top 1% paid 67.3% of all fees. The top 10% of transactions paid 87.1% of fees. 
+The remaining 90% of payments, transfers, and other everyday activity generated less than 13% of total 
+fees and tips.
+10% of Solana transactions pay 87% of all fees
+Cumulative share of fees in Q3 2026
+0
+20%
+40%
+60%
+80%
+100%
+MOST EXPENSIVE TRANSACTIONS
+LEAST EXPENSIVE TRANSACTIONS
+Top 1%: 67.3% of total fees
+Top 10%: 87.1% of total fees
+Source: Bitwise Asset Management with data from Allium. Data from Q3 2026.
+Note: Calculations based on 14.2 million non-vote transactions in randomly sampled blocks representing 0.1% of all Solana blocks 
+produced in Q3 2026. The sample covers every day of the quarter. Transactions are ranked by total fees paid, including base fees, 
+priority fees, and tips.
+
+09
+Transaction Economics
+Why would some users pay so much more for certain transactions? Because on Solana, they get three 
+services: Execution, Priority, and Ordering. 
+Different Solana fees pay for different transaction processing services
+Service
+What it buys
+Explanation
+How users pay
+Execution
+Basic processing of 
+a transaction
+Sending $100 to a friend doesn’t 
+require immediate execution. The 
+base fee is sufficient for these 
+types of transactions.
+Base fee
+Priority
+A better chance of 
+execution ahead 
+of competing 
+transactions
+A user buying an asset at a 
+specific price wants the trade 
+to execute before that price 
+changes. They can improve their 
+chances by paying a priority fee. If 
+more users compete for the same 
+opportunity, the fee increases.
+Priority fee (variable)
+Ordering
+Inclusion of multiple 
+transactions in an 
+exact sequence
+Some strategies require multiple 
+transactions to be executed 
+quickly and in a strict sequence. 
+For example, an arbitrageur may 
+buy an asset on one exchange 
+and sell it on another at a higher 
+price. Both legs must execute 
+in the correct order before the 
+arbitrage opportunity disappears.
+Tips and, increasingly,
+priority fees (variable)
+Source: Bitwise Asset Management.
+Solana does not guarantee the execution sequencing natively, but services built on top of it do. Traders 
+can submit transactions as a bundle that executes in exact order and atomically, meaning all transactions 
+succeed or none do. For a long time, traders paid for this mostly through tips denominated in SOL. New 
+services also accept priority fees, meaning both mechanisms are increasingly used to pay for ordering.
+This is where the Google analogy becomes clear. Google earns nothing from the search itself, but a lot 
+from businesses that want to appear in the right place at the right moment. On Solana, regular transactions 
+are cheap, but traders who value speed or position will pay for them.
+We call this ordering value: the economic advantage of when a transaction executes relative to others. The 
+network captures much of this value through priority fees and tips. As more trading moves onchain, this 
+revenue should grow, and capturing it is crucial to Solana's success.
+
+10
+Solana's Platform Advantage
+The platform opportunity
+Many critics argue that blockchains like Solana won’t accrue value in the long term. Useful technology 
+rails get commoditized, so their fees converge toward operating costs. Stock exchanges are the classic 
+example. NYSE and Nasdaq list some of the world’s biggest companies and handle hundreds of billions 
+of dollars in trades every day, yet their parent companies are worth only a small fraction of the value that 
+trades through them. If blockchains are just infrastructure for moving and trading assets, they should be 
+valued the same way.
+But this logic overlooks something important.
+Nasdaq is not a platform, and you cannot build a business on top of it. You can trade and market make, but 
+nobody can launch an exchange, game, payment service, or marketplace on Nasdaq. On Solana, anyone 
+can, without even asking for permission. So, there’s an argument that Solana isn't just an unnecessarily 
+complicated stock exchange, but more like Apple’s App Store.
+The iPhone’s value comes from the millions of apps built for it. Apple says its App Store facilitated about 
+$1.3 trillion in sales in 2024,2 and Apple took no commission on more than 90% of it. That’s how the flywheel 
+works: The more developers earn on the platform, the more motivated they are to build, the more people 
+need an iPhone to use the apps they build, and the more valuable the platform—whether Apple's iOS or 
+the Solana network—becomes.
+Why Solana attracts developers
+Solana has built a vibrant ecosystem, and it keeps growing. The number of apps earning more than 
+$100,000 a year has doubled since January 2025, from 54 to 107, even as total app revenue has fallen 
+from its early-2025 peak. In our view, that’s a sign that businesses are putting down roots on Solana and 
+are here for the long haul.
+An increasing number of Solana-based applications are earning revenue
+Number of applications with more than $100,000 of revenue in the preceding 365 days
+120
+107
+100
+80
+60
+54
+40
+20
+0
+Q1'25
+Q2'25
+Q3'25
+Q4'25
+Q1'26
+Q2'26
+Q3'26
+Source: Bitwise Asset Management with data from DefiLlama. Data from January 1, 2025 to September 30, 2026. Counts Solana apps 
+with more than $100,000 in reported revenue over the preceding 365 days at each month-end. Staking, MEV, and stablecoin issuers 
+are excluded.
+Solana's Platform Advantage
+(2) Global App Store helps developers reach new heights, supporting $1.3 trillion in billings and sales in 2024
+
+11
+Solana's Platform Advantage
+(3) Axiom exchange hits $100 million in revenue just four months after launch
+Solana’s apps also earn more than those on any other chain. Since the start of 2025, they have earned 
+$3.56 billion, about 27% more than apps on Ethereum and Hyperliquid L1 combined. They have out-earned 
+every other chain in each of the past 21 months, including April 2026, when revenue was almost 90% below 
+its January 2025 peak. Since then, revenue has more than doubled.
+Solana hosts the highest-earning apps in crypto
+Monthly revenue of Solana-based applications vs. apps on other blockchains (USD millions)
+Trading is Solana’s largest app category by a wide margin. Over the past year, the ten largest apps 
+on Solana generated $1.1 billion, accounting for 85% of all Solana app revenue. Nine of those apps 
+focus on trading, making trading Solana's largest app category by a wide margin. These apps include 
+decentralized exchanges such as Jupiter and Meteora; Phantom, a wallet that facilitates millions of 
+swaps; and memecoin launchpads and trading platforms such as Pump, Axiom, Fomo, and StonkFun. 
+The four memecoin platforms earned $707 million. The top ten also include Collector Crypt and Phygitals, 
+marketplaces for trading collectibles. ORE, which turns token mining into a game, is the only app in the 
+group not focused on trading.
+Axiom's success shows why Solana is a perfect launch environment, especially for trading apps. During 
+its time in Y Combinator, Axiom set the record as the fastest company in YC history to reach $100 million 
+in revenue.3 It achieved this in about 4 months, surpassing the previous record held by the AI coding tool 
+Cursor, which took 12 months to reach the same milestone.
+Solana
+Hyperliquid L1
+Ethereum
+BNB Chain
+Base
+$0
+$100M
+$200M
+$300M
+$600M
+$700M
+$650M
+Q1'25
+Q2'25
+Q3'25
+Q4'25
+Q1'26
+Q2'26
+Q3'26
+Source: Bitwise Asset Management with data from DefiLlama. Data from January 1, 2025 to September 30, 2026.  For Solana, we added 
+StonkFun revenue that DefiLlama reports but excludes from its chain total. Staking, MEV, and stablecoin app revenue are excluded.
+
+12
+Solana's Platform Advantage
+Trading leads Solana’s app economy
+Top ten Solana applications by reported revenue (USD millions)
+Memecoins, which are one of the most traded types of assets on Solana today, are easy to dismiss. But 
+we think that's a mistake. They have been Solana’s toughest stress test, with millions of users and bots 
+competing for the same trading opportunities at the same moments. That pressure pushed Solana to 
+keep increasing capacity and improving resilience. As a result, the network now processes billions of 
+transactions a month and hasn’t had a network-wide outage since February 2024. Over time, we expect 
+the mix of apps to broaden as tokenized assets grow, which we discuss in more detail in the next section.
+Trading apps
+Non-trading apps
+$0
+$100M
+$200M
+$300M
+$400M
+$500M
+$600M
+Pump
+Axiom
+Collector Crypt
+Jupiter
+Phantom
+Meteora
+$42.7M
+Ore
+$40.7M
+Fomo
+$40.0M
+Phygitals
+$30.1M
+StonkFun
+$29.7M
+$181.4M
+$81.0M
+$90.1M
+$455.4M
+$90.4M
+Source: Bitwise Asset Management with data from Blockworks. Data from Q4 2025 to Q3 2026. Note: Pacifica is excluded as it uses 
+Solana only for deposits and withdrawals.
+
+13
+Solana's Platform Advantage
+App revenue
+Solana revenue
+100%
+75%
+50%
+25%
+0
+Q1'25
+Q2'25
+Q3'25
+Q4'25
+Q1'26
+Q2'26
+Q3'26
+Source: Bitwise Asset Management with data from Blockworks. Data from January 1, 2025 to September 30, 2026.
+The app-network symbiosis
+Like the App Store, Solana retains a minority of the value created on its network. In early 2025, network 
+fees made up nearly half of combined chain and app revenue. Over the next 18 months, even after the 
+bull market peaked, Solana applications continued to gain traction, and their fees held up better than the 
+network’s. By September 2026, Solana’s share of total fees had fallen to 15%, with apps earning the rest. 
+Thanks to low transaction costs, more value now stays with the businesses building there, a trait of every 
+successful platform.
+Solana applications retain most of the revenue
+Weekly share of reported network and application revenue
+As apps grow, so do the network’s fees, because every app action is a transaction that pays the network. 
+As app revenue nearly doubled from July to September 2026, what users paid to Solana rose from $17 
+million to $27 million per month. Apps also create demand for SOL because every transaction is paid in 
+SOL and much of Solana’s trading is priced in SOL.
+We believe this is what sets Solana apart from traditional exchanges. An exchange that does one thing can 
+be commoditized. However, Solana is a platform where a growing number of businesses earn real revenue, 
+making it much harder to replace.
+
+14
+Internet Capital Markets
+The tokenization opportunity
+Brokers and issuers are moving conventional securities onchain, while crypto platforms now list stocks, 
+ETFs, and Treasury funds. This trend will drive blockchain adoption over the next decade, and we see 
+Solana as one of the few networks already built to support this activity at scale.
+Bringing those assets onchain is getting easier, and we’ve seen progress happening on a few fronts:
+Issuers: Since September 2025, approved investors have been able to hold Galaxy’s Class A shares on 
+Solana. These are the same shares that trade on Nasdaq and have the same voting and dividend rights.
+Brokers: In June 2026, Backpack launched Backpack Securities, giving eligible customers access to U.S. 
+stocks and ETFs through traditional brokerage infrastructure. Clients can convert supported holdings into 
+Solana tokens backed by securities held through a special-purpose vehicle (SPV), then convert them back 
+into brokerage holdings through Backpack, subject to its terms.4
+Regulators: In 2026, the SEC approved a Nasdaq rule allowing eligible stocks and ETFs to settle as tokens 
+and granted qualifying venues a five-year exemption for permissioned trading of tokenized U.S. stocks on 
+blockchains, subject to conditions including the preservation of shareholder rights.5
+Exchanges: Nasdaq plans to connect its own stock tokens with Kraken’s xStocks, allowing investors to 
+move between the two. Nasdaq expects its tokens to launch in the second quarter of 2027.6
+Yet tokenization is still in the very early stages. On September 30, 2026, RWA.xyz tracked $3.3 billion 
+of tokenized stocks and ETFs, compared to roughly $152 trillion of listed-company value tracked by 
+CompaniesMarketCap, or about $1 in every $47,000.7
+The starting point is small, but it is growing quickly. Tokenized stocks rose from about $0.7 billion at the 
+start of 2026 to $3.3 billion by the end of September, a jump of nearly 5x. With issuers, regulators, and 
+exchanges moving in the same direction, we expect that growth to accelerate.
+Only a fraction of traditional assets have been tokenized
+(4) Introducing Backpack Securities: The Crypto Stock Broker
+(5) Order Granting Temporary Conditional Exemptive Relief (Release No. 34-106402)
+(6) Nasdaq Deepens Relationship with Payward to Advance Tokenized Equities and Always-On Infrastructure
+(7) Source: RWA.xyz Stocks and CompaniesMarketCap, September 30, 2026. Bitwise calculation. The equity tracker is not an exhaustive global 
+census, and the asset categories differ.
+Stocks and ETFs
+Listed shares
+Treasury funds
+U.S. money market funds
+Tokenized stocks and ETFs
+$1 in every $46,000
+$152T
+$8.0T
+$3.3B
+Tokenized Treasury funds
+$1 in every $400
+$19.9B
+Source: Bitwise Asset Management with data from RWA.xyz, CompaniesMarketCap and ICI. Data as of September 30, 2026.
+Internet Capital Markets
+
+15
+Internet Capital Markets
+Why Solana can win
+Solana is already the busiest venue for onchain trading: Between January and September 2026, its 
+decentralized exchanges handled $719 billion in spot trading, almost double Ethereum's $383 billion and 
+31% of the total volume across all blockchains.
+Similarly, the figures for tokenized stocks show that Solana is an established venue for tokenized assets. 
+During the same period, Solana handled $13.4 billion of the $31.4 billion traded onchain in tokenized 
+equities, representing a 42% market share.8 The network now has 2,023 tokenized-equity products worth 
+$669 million, held across 630,000 wallets.
+Tokenized equity trading on Solana
+Monthly trading volume of tokenized equities on Solana (USD billions)
+$0
+$1B
+$2B
+$3B
+$4B
+$5B
+$0.2B
+JAN'26
+$0.3B
+FEB'26
+$0.6B
+MAR'26
+$0.7B
+APR'26
+MAY'26
+$3.5B
+JUN'26
+$1.5B
+JUL'26
+$1.3B
+AUG'26
+$4.4B
+SEP'26
+$0.9B
+Source: Bitwise Asset Management with data from Blockworks. Data from January to September 2026.
+(8) BNB Chain is excluded because Binance Alpha incentives distort trading volume.
+What sets Solana apart is that it remains inexpensive at scale. In Q3 2026, it processed about 14.2 
+billion transactions, or roughly 1,800 per second, while the median transaction cost remained a fraction 
+of a cent. Its capabilities to process transactions continued to scale throughout 2026 as a result of 
+several network upgrades. First, Solana increased the compute limit per block from 60 million to 100 
+million units, increasing capacity. Then it reduced slot times from 400 to 200 milliseconds, allowing it to 
+process transactions more frequently and handle more demand. Another major upgrade, "Alpenglow," 
+reduced the time needed to fully confirm a transaction from 12 seconds to around 150 milliseconds. 
+Continued capacity growth and low costs are key to enabling tokenized trading at scale on Solana.
+
+16
+Valuing Solana
+We value SOL based on Real Economic Value (REV), or the fees users pay for using the network.
+To arrive at the five-year price outlook, we estimate how many transactions Solana will process in 2031 in 
+each category, multiply by the average fee per transaction in that category, and apply a valuation multiple.
+Valuation model framework
+Tokenized Stocks
+Crypto Trading
+Payments
+Other
+Median
+REV (2031)  =  T  X  FEE  +  T  X  FEE  +  (T  +  T)  X  FEE
+PRICE OUTLOOK (2031)  =  REV (2031)  X  R  ÷  SOL SUPPLY (2031)
+PRESENT VALUE  =  PRICE OUTLOOK (2031)  ÷  (1 + DISCOUNT RATE)5
+Valuing Solana
+Variable definitions 
+Variable
+What it is
+Amount today
+T tokenized stocks
+Number of tokenized-stock transactions: successful swaps, failed 
+transactions, and supporting transactions. Grows with trading 
+volume: global stock and ETF trading ($235T a year) × share of 
+stocks tokenized × Solana's share × turnover vs. regular stocks.
+950M a year
+T crypto trading
+Number of spot DEX, trading app and perp DEX transactions, 
+growing at a fixed annual rate. Grew 61% year over year in Q3 2026. 
+Growth rate depends on the scenario.
+40.5B a year
+T payments
+Number of payment and transfer transactions, multiplied by a 
+growth factor.
+3.2B a year
+T other
+Number of transactions across oracles, gaming, and other activity, 
+growing at the same rate as crypto trading.
+12.1B a year
+Fee tokenized 
+stocks
+Average fee per tokenized-stock transaction, including priority fees 
+and tips.
+$0.0133
+Fee crypto trading
+Average fee per crypto trading transaction, including priority fees 
+and tips.
+$0.0063
+Fee median
+Median fee per transaction, applied to Payments and Other.
+$0.00057
+R
+Valuation multiple on REV. The base case uses 40x, between 
+early-stage crypto protocols (often hundreds of times revenue) and 
+established technology companies (around 30x).
+N/A
+SOL supply
+Total supply of SOL tokens.
+635M
+Source: Bitwise Asset Management with data from Blockworks, Allium, and the WFE 2025 Annual Statistics Guide.
+Note: "Amount Today" calculated by annualizing Q3 2026 values.
+
+17
+Valuing Solana
+Solana today
+In Q3 2026, Solana processed 14.2 billion transactions (excluding voting transactions), or 56.8 billion on an 
+annualized basis. Users paid an average of $0.0049 per each of those transactions, which puts annualized 
+network revenue at $278 million.
+Tokenized stocks account for a small share of network activity today, with around 950 million transactions 
+per year, or under 2% of all transactions. At the same time, they generate $33.5 billion in annual trading 
+volume across tokenized equities, credit and commodities, and pay $12.6 million a year in fees. That is 3.8 
+basis points of the volume traded, which we call the take rate.9
+(9) To obtain these results, we analyzed instructions involving tokenized assets throughout Q3 2026. For each successful swap, there 
+are about three failed transactions (typically arbitrage attempts that lost the ordering auction) and two supporting transactions (transfers, 
+orders, liquidity provision, and price feeds). Successful swaps pay an average of $0.052 per transaction, failed transactions $0.007, and 
+supporting transactions $0.003. The blended fee across the three categories is $0.0133 per transaction.
+Source: Bitwise Asset Management.
+Input
+Bear
+Base
+Bull
+Share of global stocks tokenized (by volume)
+3%
+4%
+5%
+Solana's share of tokenized stock trading
+in 2031
+30%
+50%
+65%
+Tokenized stock turnover vs. traditional stocks
+2x
+2.5x
+3x
+Annual growth of crypto trading and other 
+segments
+20%
+30%
+50%
+Payments growth in 2031 vs. today
+5x
+10x
+15x
+Trading fees in 2031 vs. today
+1.00x
+0.975x
+0.945x
+Median fee in 2031
+$0.00057
+$0.00057
+$0.00057
+R (revenue valuation multiple)
+20x
+40x
+60x
+SOL supply in 2031
+700M
+700M
+700M
+Assumptions
+Scenario
+
+18
+Valuing Solana
+Why we chose these assumptions
+Share of global stocks 
+tokenized (by volume)
+(Bear: 3% / Base: 4% /
+Bull: 5%)
+Citi's base case is that 1.9% of stocks will be tokenized by 2030.10 We 
+consider this estimate too conservative, as tokenization is entering a phase 
+of accelerated growth. We also estimate the share for 2031, a year later. We 
+apply a 5% growth rate per year to traditional stock trading volume and apply 
+the tokenized share to that value.
+Solana's share of tokenized 
+stock trading in 2031
+(30% / 50% / 65%)
+Solana is already a major venue for tokenized-stock trading. We think that, 
+thanks to its speed, network effects, and infrastructure, Solana is best 
+positioned to capture a substantial share (bear case), half (base), or the majority 
+of the market (bull).
+Tokenized stock turnover vs. 
+traditional stocks
+(2x / 2.5x / 3x)
+Tokenized stocks trade around the clock, also during holidays. With global stock 
+markets coming onchain, we assume each tokenized dollar trades more often 
+than a regular stock.
+Annual growth of crypto 
+trading and other segments
+(20% / 30% / 50% per year)
+Solana's transaction count grew 61% year over year in Q3 2026. As the network 
+grows, we expect growth to slow in all cases.
+Payments growth in 2031
+vs. today
+(5x / 10x / 15x)
+Stablecoins are worth about $300 billion today, including $15 billion on Solana. 
+Citi expects them to grow sixfold to about $1.9 trillion by 2030.11 Our base case 
+assumes payment and transfer transactions on Solana will grow 10x by 2031, 
+driven by the chain's suitability to capture agentic transfers. Since Solana starts 
+from a lower base, the higher growth should come more easily. This category 
+includes all token transfers between wallets, not only payments.
+Fee
+We model fees by category. Tokenized stocks pay $0.0133 per transaction as 
+described in the footnote. Crypto trading pays $0.0063 per transaction, or the 
+fee that remains after tokenized stocks, payments, and other are deducted from 
+today's total. Payments and other pay the median fee of $0.00057. We expect the 
+dollar cost of simple transfers to stay stable through 2031, which requires Solana 
+to adjust the base fee as SOL price appreciates.
+Trading fees in 2031 vs. today
+(1.0x / 0.975x / 0.945x)
+Trading fees on Solana come mostly from priority fees and tips. In the bear case, 
+we keep them at today’s level, while reducing them by 2.5% and 5.5% in the base 
+and bull cases, as more liquidity is available. The resulting take rate on tokenized 
+stock goes from 3.8 bps today to 3.8, 3.7, and 3.6 bps in 2031. These take rate 
+levels are justified by priority and ordering value, which drive most fees, while 
+regular swaps are cheaper.
+R (revenue valuation multiple)
+(20x / 40x / 60x)
+Our base case uses 40x. For context, early-stage crypto protocols often trade 
+at several hundred times revenue, and technology companies trade around 30x. 
+Solana currently trades at roughly 230x.
+SOL supply in 2031
+(700 million)
+Solana has around 635 million SOL supply today. Validators approved faster 
+disinflation in August 2026. If it goes live in 2027, we expect SOL supply to be 700 
+million in 2031.
+Discount rate (20%)
+We apply a 20% annual discount over five years to account for time and the risk 
+that the scenarios may not play out. The 20% rate is higher than the typical rate 
+for large-cap equities (8%–10%) and reflects higher risks related to the pace 
+of tokenization, the regulatory landscape, and execution. On the other hand, 
+the rate reflects that Solana is an established blockchain, with stress-tested 
+infrastructure and a large suite of apps that create network effects and provide 
+ideal conditions for growth.
+(10) Tokenization 2030: Wall Street Onchain, Citi
+(11) Stablecoins 2030: Web3 to Wall Street, Citi
+
+19
+Valuing Solana
+Projected values
+Result
+Bear
+Base
+Bull
+Tokenized-stock volume on Solana
+$5.7T
+$15.7T
+$30.7T
+T tokenized stocks
+160.7B
+446.4B
+870.4B
+T crypto trading
+100.8B
+150.4B
+307.6B
+T payments
+16.0B
+31.9B
+47.9B
+T other
+30.2B
+45.0B
+92.1B
+Total transactions, 2031
+307.6B
+673.7B
+1,318.0B
+Average fee per transaction
+$0.0091
+$0.0100
+$0.0097
+Tokenized-stock take rate
+3.8 bps
+3.7 bps
+3.6 bps
+REV (real economic value), 2031
+$2.80B
+$6.75B
+$12.83B
+We project that tokenization will be the main driver of Solana's growth as the Internet Capital Markets vision 
+comes to fruition over the next five years. In our base case, the share of tokenized-asset transactions goes 
+from under 2% today to around 66%. Most of the price increase depends on how quickly stocks move 
+onchain and how well Solana competes against other blockchains on tokenization.
+The base case implies that $15.7 trillion of tokenized stocks trade on Solana in 2031. That's 5% of projected 
+global stock market and ETF volumes in 2031 and a large step up from the $33.5 billion traded today.
+In the base case, REV increases 24 times, from $278 million to $6.7 billion, transaction volumes increase 12 
+times, and the average network fee rises from $0.0049 to $0.0100. Median fees for everyday transactions 
+remain very low. The average rises because tokenized stocks, which pay for transaction ordering, make up 
+a larger share of the activity, not because any category gets more expensive.
+The base case requires Solana to process about 21,000 transactions per second on average. Much 
+of this is failed and supporting transactions, which consume far less compute than a successful swap 
+transaction. Still, tokenized-stock transactions are heavy-duty: Successful swaps consumed 172,619 
+compute units on average in Q3 2026. On their own, they would require a block compute limit about 2.5 
+times higher in the base case and 5 times higher in the bull case. We consider this technically plausible 
+over five years, but it depends on continued improvements in network capacity, with some headroom 
+for peak trading periods.
+Source: Bitwise Asset Management.
+Valuation
+Bear
+Base
+Bull
+Network value, 2031
+$56B
+$270B
+$770B
+Price outlook, 2031
+$80
+$385
+$1,100
+Present value
+$32
+$155
+$442
+
+20
+Valuing Solana
+Bear case scenario
+Price outlook
+Network value
+REV (2031)
+Present value
+$80
+$56B
+$2.80B
+$32
+In the bear case, Solana grows more slowly than recently. As crypto trading matures and other activities 
+grow, transaction volume increases 20% a year, well below the 61% seen in Q3. Stablecoin payment 
+volume rises fivefold.
+Tokenization remains the biggest opportunity for crypto, but it moves slowly, with 3% of global stocks 
+tokenized by 2031. Solana is one of the larger trading venues, with 30% of tokenized equities volume, 
+though other chains hold most of the market share. Tokenized stocks become a large part of Solana's 
+activity, larger than crypto trading, and make up around half of transactions.
+Total transaction count grows five times, to about 840 million a day, and REV goes up around ten times 
+from today's $278 million. Fees per transaction stay at today's level.
+Base case scenario
+Price outlook
+Network value
+REV (2031)
+Present value
+$385
+$270B
+$6.75B
+$155
+In this scenario, with 4% of global stocks available onchain by 2031, tokenization is moving fast. Solana is 
+leveraging this momentum, making strides toward its Internet Capital Markets vision by capturing half of 
+the volume. This happens thanks to infrastructure and liquidity buildout by companies such as xStocks, 
+Backpack, and Sunrise.
+Total transaction count grows 12x from today to 1.8 billion a day. REV increases by about 24x from today's 
+$278 million. Pure crypto activity grows 30% annually, and payments add a 10x boost to transaction 
+volumes. Trading fees per transaction compress by 2.5% as liquidity deepens.
+In this case, tokenized stocks become Solana's largest activity, well ahead of crypto trading, making up 
+66% of total transaction volume.
+Bull case scenario
+Price outlook
+Network value
+REV (2031)
+Present value
+$1,100
+$770B
+$12.83B
+$442
+In the bull case, Solana becomes the primary global venue for onchain trading. By 2031, 5% of stocks are 
+tokenized, and Solana captures 65% of their volume.
+Crypto trading grows 50% a year, below the recent rate. Payments and transfers increase 15x from the 
+current base, outpacing the global market, making Solana a major player in stablecoins and agentic activity. 
+Trading fees per transaction drop by 5.5%, the most of the three cases, as liquidity is widely available. 
+Tokenized-stock volume on Solana grows to about 10% of global stock trading, and stocks make up 66% 
+of transactions, up from less than 2% today. Transaction count increases by about 23x to 3.6 billion a day, 
+while the network REV grows about 46x.
+This case asks the most of the network. Solana would need to widen its lead in tokenized stocks, overtake 
+Tron as the main stablecoin payment chain, and compete with NEAR for AI agent activity. All of this new 
+activity would require continuous work to boost the network's throughput: Tokenized-stock transactions 
+alone would need around five times today's block compute limit.
+There is no guarantee these forecasts or predictions will prove to be correct. Future events, revenues and values are estimated and 
+contingent upon the variables mentioned, and these should not be solely relied on for making an investment decision.
+
+21
+Risks and Considerations
+Risks and Considerations
+Our thesis depends on several things going right at the same time, but none of these is guaranteed. Below 
+are the areas we believe pose risk to our thesis:
+Loss of capital. SOL is volatile, and investors could lose all their invested capital. The risks outlined below 
+could each affect the value of SOL, sometimes sharply and at short notice.
+Regulation. A friendly regulatory environment cannot be taken for granted. A future administration or court 
+ruling may change today’s largely open stance toward tokenization. If traditional companies, financial or 
+otherwise, feel threatened by tokenization, they will likely fight it, including through regulatory channels. 
+Rules outside the U.S. may also limit who can trade tokenized stocks, which matters because much of 
+today’s volume comes from outside U.S. market hours. 
+Network resilience and governance. Solana’s usefulness depends on the network remaining available 
+and trusted. Past outages show that disruption can happen. Further outages, difficult upgrades, validator 
+concentration, or governance disputes could weaken confidence, even if demand for tokenization 
+continues to grow.
+Adoption. Our thesis assumes that issuers, institutions and users will move a meaningful share of activity 
+onchain. That shift may take longer than expected or remain limited to particular use cases, even where 
+the regulatory environment is supportive and Solana continues to compete effectively for the activity that 
+does move onchain.
+Competition. Even if the regulatory environment is welcoming and tokenization happens on public 
+blockchains, Solana still needs to win the market. The opportunity is so large that many competitors will try 
+to capture it. Today, Ethereum and L2s hold most tokenized assets by value, led by Treasuries and funds. 
+Robinhood and Base have a distribution advantage because their platforms onboard tens of millions of 
+users. While we believe Solana is uniquely positioned to capture the flow of tokenized assets, it's not the 
+only game in town.
+Fee capture. We assume the network will continue capturing fees from ordering value, which is where 
+most of the Solana REV comes from. However, this value isn't guaranteed to remain with the network. 
+Applications and validators can strike offchain deals to sell ordering value themselves, circumventing Jito 
+tips and priority fees, which are the main channels for capturing it today. Our model assumes that fees per 
+dollar of value traded remain close to today’s levels. If they fell, that would impact the network’s growth.
+Scaling. To achieve the high transaction volumes needed for our thesis to play out, Solana needs to 
+process 12 times today’s transaction load and about 2.5 times the block compute for tokenized stocks 
+alone. This number rises to 5x in the bull case. The throughput upgrade needs to happen while keeping 
+everyday transaction costs low and the network resilient. An outage during heavy trading would erode the 
+trust institutions need. While Solana has a strong record of solving difficult engineering challenges, a future 
+bottleneck is not out of the question.
+Decentralization. The cost of running validator software rises as the network scales. If stake concentrates 
+among fewer operators, or if governance disputes over fees or inflation become divisive, institutions and 
+regulators may question the network’s resilience, even amid growing demand for tokenization.
+Security. Exploits and wallet compromises remain common, and AI tools can make the vulnerabilities 
+easier to find. A hack of key tokenization infrastructure would be a major setback for the network. Over the 
+longer term, the threat of quantum computing breaking today’s cryptographic primitives looms. Migrating 
+wallets to post-quantum signatures will require significant coordination.
+Model risk. Our valuation rests on assumptions that are difficult to assess today. We don’t know the trade 
+size when institutions arrive, how tokenized trading volume will grow relative to regular stocks, or what 
+investors will be willing to pay for network revenue in five years. Today, Solana trades at 230x revenue, while 
+our base case uses a 40x multiple. The price outlooks are sensitive to changes in these inputs.
+
+22
+Looking Ahead
+Institutional interest in crypto is still young, but its growth shows how quickly the asset class is maturing. 
+Solana, a major trading platform leading the way, is one reason why. 
+Solana is developed enough to attract crypto-native companies and investors, yet it still has ample room 
+to grow. And its ambitions are boundless. It wants to become the place to trade and issue any asset, 
+raise capital, and serve as a payment network for agents and humans alike. Executing this vision is 
+unprecedented in difficulty, but so was bringing the network to where it is today.
+And today, Solana processes almost twice as many transactions as the 17 other major chains combined. 
+Most transactions cost a fraction of a cent. Yet users still paid $69 million in Q3 for valuable transactions.
+It is also a place where businesses make money. Together, Solana apps have earned $3.6 billion since the 
+start of 2025, more than all apps on Ethereum and Hyperliquid L1 combined.
+Its technology has been tested under tough conditions, proving it can handle higher trading volume.
+A taste of what comes next is already here. Tokenized assets, especially stocks, are in an early, rapid growth 
+phase, with trading volume exceeding $8.3 billion in Q3. As AI agents start paying for services, Solana 
+offers the kind of foundational layer they need. Monthly stablecoin payments on the network grew almost 
+fivefold this year to $3.3 billion, and Visa, Stripe, and Western Union are already building on it.
+All in all, we think Solana starts from a position no other chain has, with the speed, liquidity and apps to lead 
+onchain markets. We are excited about the journey ahead. 
+Looking Ahead
+
+23
+Risks and Important Information
+No Advice on Investment; Risk of Loss: Prior to making any investment decision, each investor must 
+undertake its own independent examination and investigation, including the merits and risks involved in 
+an investment, and must base its investment decision—including a determination whether the investment 
+would be a suitable investment for the investor—on such examination and investigation.
+Crypto assets are digital representations of value that function as a medium of exchange, a unit of account, 
+or a store of value, but they do not have legal tender status. Crypto assets are sometimes exchanged for 
+U.S. dollars or other currencies around the world, but they are not currently backed nor supported by any 
+government or central bank. Their value is completely derived by market forces of supply and demand, and 
+they are more volatile than traditional currencies, stocks, or bonds.
+Trading in crypto assets comes with significant risks, including volatile market price swings or flash crashes, 
+market manipulation, cybersecurity risks, and risk of losing principal or all of your investment. In addition, 
+crypto asset markets and exchanges are not regulated with the same controls or customer protections 
+available in equity, option, futures, or foreign exchange investing.
+Crypto asset trading requires knowledge of crypto asset markets. In attempting to profit through crypto 
+asset trading, you must compete with traders worldwide. You should have appropriate knowledge and 
+experience before engaging in substantial crypto asset trading. Crypto asset trading can lead to large 
+and immediate financial losses. Under certain market conditions, you may find it difficult or impossible to 
+liquidate a position quickly at a reasonable price.
+The opinions expressed represent an assessment of the market environment at a specific time and are 
+not intended to be a forecast of future events, or a guarantee of future results, and are subject to further 
+discussion, completion, and amendment. The information herein is not intended to provide, and should not 
+be relied upon for, accounting, legal, or tax advice, or investment recommendations. You should consult 
+your accounting, legal, tax, or other advisors about the matters discussed herein.
+
+BITWISEINVESTMENTS.COM
