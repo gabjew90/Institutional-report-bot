@@ -20,15 +20,18 @@ MID0 = 9_400_000_000
 def room(monkeypatch):
     conn = db.get_connection()
     now = datetime.now(timezone.utc)
+    # The three "today" rows are seconds old, not minutes: at 14, 29 and 43
+    # minutes old the oldest fell on yesterday for the first 43 minutes of
+    # every New York day and two tests failed (seen 2026-11-26, 00:31 ET).
     rows = [
         (ABE, "abullish_xyz", "abullish", STONKS, "💬-stonks-yapping-💬", 2, "So slam at open is what you're saying"),
         (ABE, "abullish_xyz", "abullish", STONKS, "💬-stonks-yapping-💬", 1, "I told you to slam it, then I slammed it"),
         (ABE, "abullish_xyz", "abullish", STONKS, "💬-stonks-yapping-💬", 1, "Islam is a religion"),
         (ABE, "abullish_xyz", "abullish", ABE_ALERTS, "🥷🏽-abe-alerts-🥷🏽", 30, "slam these calls"),
         (ABE, "abullish_xyz", "abullish", ABE_ALERTS, "🥷🏽-abe-alerts-🥷🏽", 3, "NVDA 190c @2.10"),
-        (BK, "bankerkyle", "BK", STONKS, "💬-stonks-yapping-💬", 0.01, "lol nigga what"),
-        (BK, "bankerkyle", "BK", STONKS, "💬-stonks-yapping-💬", 0.02, "lol lol"),
-        (SAM, "theorb_18574", "Sam", STONKS, "💬-stonks-yapping-💬", 0.03, "lol"),
+        (BK, "bankerkyle", "BK", STONKS, "💬-stonks-yapping-💬", 0.00001, "lol nigga what"),
+        (BK, "bankerkyle", "BK", STONKS, "💬-stonks-yapping-💬", 0.00002, "lol lol"),
+        (SAM, "theorb_18574", "Sam", STONKS, "💬-stonks-yapping-💬", 0.00003, "lol"),
     ]
     for i, (aid, user, disp, cid, cname, days_ago, text) in enumerate(rows):
         conn.execute(
