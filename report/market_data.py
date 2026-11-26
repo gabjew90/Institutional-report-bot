@@ -310,6 +310,84 @@ def fetch_price_history(
         return None
 
 
+# ---- a quote on the day of a stock split ------------------------------------
+# A split takes effect before the open, and for hours the feeds still give
+# the unsplit price as the previous close. On 2026-11-20 the bot posted
+# "SNDK $87.88 pre-market, -88.4% from the last close": $755.16 was the
+# close before an 8-for-1 split, and the move was about -7%. Yahoo's daily
+# history was already restated that morning, so the previous close is
+# checked against it whenever a move is too large to be an ordinary session.
+
+# price / previous close outside this band is checked against a split
+SPLIT_SUSPECT = (0.6, 1.6)
+# the feed's previous close over the restated one: a split, not a rounding gap
+_SPLIT_FACTOR = (0.7, 1.4)
+
+
+def split_label(factor: float) -> str:
+    """'8-for-1 split', '1-for-10 reverse split', '3-for-2 split', or plain
+    'stock split' when the factor is not a clean ratio."""
+    for num, den in ((3, 2), (5, 2), (4, 3), (5, 4)):
+        if abs(factor - num / den) < 0.02 * factor:
+            return f"{num}-for-{den} split"
+    if factor >= 1 and abs(factor - round(factor)) < 0.02 * factor:
+        return f"{round(factor)}-for-1 split"
+    if factor < 1 and abs(1 / factor - round(1 / factor)) < 0.02 / factor:
+        return f"1-for-{round(1 / factor)} reverse split"
+    return "stock split"
+
+
+def split_base(price: float, prev_close: float, restated_close: float | None) -> tuple[float, str] | None:
+    """(the previous close restated for a split, its label) when the feed's
+    previous close is the unsplit price. None when the move is ordinary,
+    when the history agrees with the feed (a real crash or spike), or when
+    the restated close does not make the move ordinary either."""
+    if not price or not prev_close or not restated_close:
+        return None
+    if SPLIT_SUSPECT[0] <= price / prev_close <= SPLIT_SUSPECT[1]:
+        return None
+    factor = prev_close / restated_close
+    if _SPLIT_FACTOR[0] < factor < _SPLIT_FACTOR[1]:
+        return None
+    if not SPLIT_SUSPECT[0] <= price / restated_close <= SPLIT_SUSPECT[1]:
+        return None
+    return float(restated_close), split_label(factor)
+
+
+def restated_last_close(symbol: str, now: datetime | None = None) -> float | None:
+    """The last daily close before today in Yahoo's history, which is
+    restated for splits. None when the history is unavailable."""
+    from datetime import timedelta as _td
+    from zoneinfo import ZoneInfo
+    now = now or datetime.now(ZoneInfo("America/New_York"))
+    today = now.date().isoformat()
+    bars = fetch_price_history(symbol, (now.date() - _td(days=12)).isoformat(), adjust=False) or []
+    before = [b for b in bars if b.get("date") and b["date"] < today and b.get("close")]
+    return float(before[-1]["close"]) if before else None
+
+
+def restate_quote(q: dict, base: float, label: str) -> None:
+    """Rewrite one quote's previous close and its moves on the restated
+    close, and say so on the quote."""
+    old, price = float(q["prev_close"]), float(q["price"])
+    q["prev_close"] = round(base, 4)
+    rc = q.get("regular_session_close")
+    if rc is not None and abs(float(rc) - old) <= 1e-6 * max(1.0, old):
+        # before the open the latest close IS the previous close
+        q["regular_session_close"] = rc = round(base, 4)
+    if q.get("change_incl_after_hours_pct") is not None and rc is not None:
+        # after hours: the session's own move, then the move with the late print
+        q["change_pct"] = (float(rc) - base) / base * 100.0
+        q["change_incl_after_hours_pct"] = (price - base) / base * 100.0
+    else:
+        q["change_pct"] = (price - base) / base * 100.0
+    if rc is not None and q.get("extended_hours_change_pct") is not None and float(rc):
+        q["extended_hours_change_pct"] = (price - float(rc)) / float(rc) * 100.0
+    q["split_adjusted"] = label
+    q["split_note"] = (f"prev_close and the moves are restated for a {label} that took effect after that close. "
+                       f"The feed's own previous close was {old:,.2f}, the unsplit price.")
+
+
 def volume_vs_average(symbol: str, now: datetime | None = None) -> dict | None:
     """Today's volume so far against the 20-session average, from the
     daily history (2026-10-18). During the session the latest bar is

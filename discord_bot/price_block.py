@@ -50,7 +50,15 @@ def _d(price: float) -> str:
 
 
 def quote_line(q: dict, session: str = "", with_symbol: bool = True) -> str:
-    """One quote as a line, '' when it carries no price."""
+    """One quote as a line, '' when it carries no price. On the day of a
+    stock split the line says the last close is restated for it."""
+    line = _quote_line(q, session, with_symbol)
+    if line and q.get("split_adjusted"):
+        line += f" The last close is restated for the {q['split_adjusted']}."
+    return line
+
+
+def _quote_line(q: dict, session: str = "", with_symbol: bool = True) -> str:
     if q.get("price") is None:
         return ""
     p, chg = float(q["price"]), q.get("change_pct")

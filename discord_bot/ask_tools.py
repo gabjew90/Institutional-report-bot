@@ -2847,6 +2847,25 @@ async def _execute_market_price(args: dict) -> dict:
                 ),
             })
 
+    # On the day of a split the feeds' previous close is still the unsplit
+    # price (report/market_data.py, 2026-11-26: SNDK "-88.4% from the last
+    # close"). Only a move too large for an ordinary session is checked.
+    async def _split(q):
+        try:
+            price, pc = float(q["price"]), float(q["prev_close"])
+            if not pc or _md.SPLIT_SUSPECT[0] <= price / pc <= _md.SPLIT_SUSPECT[1]:
+                return
+            restated = await asyncio.to_thread(_md.restated_last_close, q["symbol"])
+            hit = _md.split_base(price, pc, restated)
+            if hit:
+                _md.restate_quote(q, *hit)
+        except Exception as e:
+            log.info(f"split check for {q.get('symbol')} failed (non-fatal): {e}")
+    await asyncio.gather(*(_split(q) for q in quotes
+                           if q.get("price") is not None and q.get("prev_close")
+                           and q.get("source") in ("finnhub", "yahoo", "yahoo_extended_hours")
+                           and not str(q.get("symbol") or "").startswith("^")))
+
     # Caveat applicability depends on how Yahoo did:
     #   all stocks got live AH/PRE data       -> drop the caveat
     #   all stocks fell back to Finnhub close -> keep the original caveat

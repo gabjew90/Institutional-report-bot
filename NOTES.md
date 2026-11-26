@@ -4390,3 +4390,13 @@ So moving triage to Claude saves about $15 to $20 a month, adds 40% to 50% to wh
 
 Not built. If triage quality is the question and not cost, the cheap test is a shadow priority written by the lane on notes it already reads, compared with Gemini's. That changes the production analysis prompt, so it is the owner's call.
 
+## 2026-11-26 (later still): a quote on the day of a stock split
+
+2026-11-20, pre-market: "SNDK $87.88 pre-market, -88.4% from the last close." $755.16 was the close before an 8-for-1 split. The move was about -7%.
+
+A split takes effect before the open and the feeds keep the unsplit price as the previous close for hours. Yahoo's daily history is restated by then: its 11-19 close for SNDK reads 94.395, which is 755.16 divided by 8 (checked 2026-11-26).
+
+`report/market_data.py`: when a stock's price is under 60% or over 160% of the feed's previous close, the price tool reads the last daily close before today from Yahoo's history. If the feed's previous close is off from it by a split-sized factor, and the move is ordinary on the restated close, the quote's previous close and its moves are rewritten on it and the posted line ends "The last close is restated for the 8-for-1 split." A real crash is left alone: the history agrees with the feed.
+
+Not touched: the snapshot's own price and share count, which were also unsplit that morning (price 755.16, 142M shares against a 1.12B float).
+
