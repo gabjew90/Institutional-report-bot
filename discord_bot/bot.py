@@ -4176,6 +4176,17 @@ def _trace_figs(result) -> list[str]:
         return []
 
 
+def _trace_src(result) -> list[str]:
+    """Which provider served each row of a payload (a quote's `source`),
+    so the Data footer names that one and not every feed the tool can use
+    (data_footer.payload_sources, 2026-11-26)."""
+    try:
+        from discord_bot.data_footer import payload_sources
+        return payload_sources(result)
+    except Exception:
+        return []
+
+
 def _is_clapback_shaped(answer: str) -> bool:
     """True when the answer is a clapback AT THE ASKER — it addresses
     them in second person. The fidelity guard only applies here: a
@@ -5281,7 +5292,7 @@ async def _ask_02_call_model_with_tools(
             "status": str(_pf_res.get("status") or "ok"),
             "via": "prefetch",
             "result_chars": len(str(_pf_res)),
-            "figs": _trace_figs(_pf_res),
+            "figs": _trace_figs(_pf_res), "src": _trace_src(_pf_res),
             "excerpt": _trace_excerpt(_pf_res),
             "seconds": round(time.monotonic() - _pf_t0, 2),
             # a tool that names the feed it actually used (event_returns:
@@ -5486,7 +5497,7 @@ async def _ask_02_call_model_with_tools(
             _ask_tool_trace.append({
                 "tool": "spy_holdings", "args": {"figure": _iw_guard}, "status": "ok",
                 "via": "prefetch", "result_chars": len(str(_iw_val)),
-                "figs": _trace_figs(_iw_val), "excerpt": _trace_excerpt(_iw_val)})
+                "figs": _trace_figs(_iw_val), "src": _trace_src(_iw_val), "excerpt": _trace_excerpt(_iw_val)})
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
             text=_iw_note(question, _iw_val))]))
         _ask_meta["guards"].append(_iw_guard)
@@ -5841,7 +5852,7 @@ async def _ask_02_call_model_with_tools(
                 "args": _trace_args,
                 "status": _trace_status,
                 "result_chars": len(str(result)),
-                "figs": _trace_figs(result),
+                "figs": _trace_figs(result), "src": _trace_src(result),
                 "excerpt": _trace_excerpt(result),
             })
         contents.append(
@@ -6863,7 +6874,7 @@ async def _ask_07_validation_ladder(
                         "args": {"symbols": str(_price_symbols)[:80]},
                         "status": "backstop-fetch",
                         "result_chars": len(str(_price_result)),
-                        "figs": _trace_figs(_price_result),
+                        "figs": _trace_figs(_price_result), "src": _trace_src(_price_result),
                         "excerpt": _trace_excerpt(_price_result),
                     })
                     contents.append(types.Content(

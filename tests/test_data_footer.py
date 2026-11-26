@@ -9,8 +9,7 @@ def test_feeds_are_listed_once_in_first_use_order():
         {"tool": "search_chat_messages", "args": {}, "status": "ok"},
         {"tool": "lookup_earnings_slate", "args": {}, "status": "ok"},   # same feed, no repeat
     ]
-    assert F.footer(trace) == (
-        "\n\nData: earnings calendar (Finnhub, Nasdaq) · live prices (Finnhub, Binance.US, CoinGecko, Yahoo)")
+    assert F.footer(trace) == "\n\nData: Finnhub · Nasdaq · live prices"
     assert F.footer([{"tool": "search_chat_messages", "status": "ok"}]) == ""
 
 
@@ -46,7 +45,7 @@ def test_grounded_answers_keep_the_data_line():
     trace = [{"tool": "lookup_price_history", "status": "ok", "figs": ["212.4"]}]
     out = _DF.compose("\n\nSources: [1] trefis.com", "AMZN is at $212.40, up 81% in five years",
                       None, trace)
-    assert out.startswith("\n\nSources: [1] trefis.com") and "Data: price history (Yahoo)" in out
+    assert out.startswith("\n\nSources: [1] trefis.com") and out.endswith("Data: Yahoo")
 
 
 def test_a_figure_feed_is_named_only_when_its_numbers_are_used():
@@ -122,3 +121,37 @@ def test_a_model_written_data_line_is_dropped_2026_10_26():
     a = "→ **Netflix** headlines the slate\n\nData: earnings slate (Nasdaq feed)"
     assert strip_model_sources(a) == "→ **Netflix** headlines the slate"
     assert strip_model_sources("→ the Data: line inside text stays") == "→ the Data: line inside text stays"
+
+
+def test_the_line_names_providers_once_and_only_the_one_that_served_2026_11_26():
+    """Owner: the Sources list is clean and short, the Data line is
+    cluttered. A stock answer ended with five kinds and eight provider
+    names, and every price answer named all four price feeds."""
+    from discord_bot import data_footer as D
+    quotes = {"status": "ok", "quotes": [{"symbol": "NVDA", "price": 1.0, "source": "finnhub"},
+                                          {"symbol": "AMD", "price": 2.0, "source": "finnhub"}]}
+    assert D.payload_sources(quotes) == ["finnhub"]
+    assert D.payload_sources({"status": "ok", "notes": [{"source": "Goldman Sachs"}]}) == ["Goldman Sachs"]
+    assert D.payload_sources("text") == []
+    trace = [
+        {"tool": "ticker_primer", "status": "ok"},
+        {"tool": "lookup_earnings_date", "status": "ok"},
+        {"tool": "lookup_market_price", "status": "ok", "src": ["finnhub"]},
+        {"tool": "lookup_ticker_snapshot", "status": "ok",
+         "feed": "company and trading data (Yahoo), reported revenue (Finnhub)"},
+        {"tool": "ticker_news", "status": "ok"},
+    ]
+    assert D.footer(trace) == "\n\nData: Google search · Finnhub · Nasdaq · Yahoo"
+    # a coin and an after-hours stock quote: the two feeds that served them
+    mixed = [{"tool": "lookup_market_price", "status": "ok", "src": ["yahoo_extended_hours", "binance"]}]
+    assert D.footer(mixed) == "\n\nData: Yahoo · Binance.US"
+    # a bank name in a research payload is not a provider
+    assert D.footer([{"tool": "lookup_research", "status": "ok", "src": ["Goldman Sachs"]}]) == (
+        "\n\nData: bank research notes")
+    # a payload's own feed text with no provider in it is kept as written
+    assert D.footer([{"tool": "x", "status": "ok", "feed": "the bot's own count"}]) == "\n\nData: the bot's own count"
+    assert D.footer([{"tool": "event_returns", "status": "ok",
+                      "feed": "event dates (Google) and daily closes (Yahoo)"}]) == "\n\nData: Google search · Yahoo"
+    # the football channel's reply routing reads this exact text (ask_router)
+    assert D.footer([{"tool": "lookup_fantasy_league", "status": "ok"}]) == "\n\nData: Sleeper league"
+

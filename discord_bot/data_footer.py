@@ -11,30 +11,67 @@ from __future__ import annotations
 
 import re
 
-# tool name -> what the reader is told the figures came from
-FEEDS: dict[str, str] = {
-    "lookup_market_price": "live prices (Finnhub, Binance.US, CoinGecko, Yahoo)",
-    "lookup_earnings_date": "earnings calendar (Finnhub, Nasdaq)",
-    "lookup_earnings_slate": "earnings calendar (Finnhub, Nasdaq)",
-    "lookup_options_chain": "options chain (Yahoo)",
-    "lookup_price_history": "price history (Yahoo)",
-    "lookup_economic_calendar": "economic calendar (Finnhub, ForexFactory, BLS, BEA)",
-    "lookup_fantasy_league": "Sleeper league",
-    "lookup_user_profile": "room trade ledger",
-    "lookup_trade_log": "room trade ledger",
-    "lookup_room_positions": "room trade ledger",
-    "lookup_research": "bank research notes",
-    "lookup_ticker_snapshot": "company and trading data (Yahoo)",
-    "lookup_treasury_auctions": "Treasury auction results (TreasuryDirect)",
-    "margin_math": "margin math from the question's figures and live prices",
-    "event_returns": "event dates (Google) and daily closes (Yahoo)",
-    "price_stats": "daily closes (Yahoo), statistic computed by the bot",
-    "asked_fact": "report and call time (Google search)",
-    "spy_holdings": "S&P 500 figures from SPY's holdings and prices (Yahoo)",
-    "ticker_news": "news search (Google)",
-    "ticker_primer": "company background (Google)",
-    "query_data": "research database",
+# tool name -> who supplied the data, by the shortest name a reader knows.
+# Until 2026-11-26 each entry was a kind with its providers in brackets
+# ("live prices (Finnhub, Binance.US, CoinGecko, Yahoo)"), every price
+# answer named all four feeds whichever one served the quote, and a stock
+# answer ended "company background (Google) · earnings calendar (Finnhub,
+# Nasdaq) · live prices (Finnhub, Binance.US, CoinGecko, Yahoo) · company
+# and trading data (Yahoo) · news search (Google)" (owner: the Sources
+# list is clean and short, the Data line is cluttered). The same answer
+# now ends "Google search · Finnhub · Nasdaq · Yahoo".
+FEEDS: dict[str, tuple[str, ...]] = {
+    # narrowed to the quotes' own sources when the trace recorded them (SRC)
+    "lookup_market_price": ("live prices",),
+    "lookup_earnings_date": ("Finnhub", "Nasdaq"),
+    "lookup_earnings_slate": ("Finnhub", "Nasdaq"),
+    "lookup_options_chain": ("Yahoo",),
+    "lookup_price_history": ("Yahoo",),
+    "lookup_economic_calendar": ("economic calendar",),      # narrowed likewise
+    "lookup_fantasy_league": ("Sleeper league",),
+    "lookup_user_profile": ("room trade ledger",),
+    "lookup_trade_log": ("room trade ledger",),
+    "lookup_room_positions": ("room trade ledger",),
+    "lookup_research": ("bank research notes",),
+    "lookup_ticker_snapshot": ("Yahoo",),
+    "lookup_treasury_auctions": ("TreasuryDirect",),
+    "margin_math": ("live prices",),
+    "event_returns": ("Google search", "Yahoo"),
+    "price_stats": ("Yahoo",),
+    "asked_fact": ("Google search",),
+    "spy_holdings": ("Yahoo",),
+    "ticker_news": ("Google search",),
+    "ticker_primer": ("Google search",),
+    "query_data": ("research database",),
 }
+# A payload row's own `source` -> the provider's name. A tool listed here
+# is cited by the providers that served this turn's rows.
+SRC = {"finnhub": "Finnhub", "yahoo": "Yahoo", "yahoo_extended_hours": "Yahoo", "binance": "Binance.US",
+       "coingecko": "CoinGecko", "forexfactory": "ForexFactory", "fred": "FRED"}
+_SRC_TOOLS = frozenset({"lookup_market_price", "lookup_economic_calendar", "margin_math"})
+# Providers a payload's own `feed` text may name ("company and trading data
+# (Yahoo), reported revenue (Finnhub)").
+_KNOWN = (("Yahoo", "Yahoo"), ("Finnhub", "Finnhub"), ("Nasdaq", "Nasdaq"), ("Google", "Google search"),
+          ("TreasuryDirect", "TreasuryDirect"), ("ForexFactory", "ForexFactory"), ("CoinGecko", "CoinGecko"),
+          ("Binance.US", "Binance.US"), ("Sleeper", "Sleeper league"))
+
+
+def payload_sources(result) -> list[str]:
+    """The `source` of each row in a payload's lists (a quote, a calendar
+    event), in first-seen order. Kept on the trace entry as `src`."""
+    out: list[str] = []
+    if not isinstance(result, dict):
+        return out
+    for v in result.values():
+        if not isinstance(v, list):
+            continue
+        for row in v[:80]:
+            src = row.get("source") if isinstance(row, dict) else None
+            if isinstance(src, str) and src and src not in out:
+                out.append(src)
+    return out[:12]
+
+
 # Tools whose data is the room's own conversation. The reader is in the
 # room, so "Data: room chat" told them nothing (owner, 2026-09-30).
 NOT_CITED = frozenset({"search_chat_messages", "chat_recap"})
@@ -44,22 +81,30 @@ _FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout", "not_a
                      "metric_not_asked"})
 
 
-def _label(entry: dict) -> str | None:
-    """The feed label for one trace entry. The profile tool's racism
+def _names(entry: dict) -> list[str]:
+    """Who supplied one trace entry's data. The profile tool's racism
     ranking comes from the chat tags, not the trade ledger (2026-10-01:
     a racism board was footed 'room trade ledger'), and a lookup by
     username returns both ranks."""
     tool = str(entry.get("tool") or "")
     if entry.get("feed"):
-        return str(entry["feed"])
+        # a payload that names the feed it actually used (event_returns,
+        # the snapshot with Finnhub's reported revenue)
+        feed = str(entry["feed"])
+        found = sorted((feed.find(k), name) for k, name in _KNOWN if k in feed)
+        return [name for _, name in found] or [feed]
     if tool == "lookup_user_profile":
         args = entry.get("args") or {}
         metric = str(args.get("metric") or "").lower() if isinstance(args, dict) else ""
         if metric == "racism":
-            return "room chat tags"
+            return ["room chat tags"]
         if metric != "trader":
-            return "room trade ledger and chat tags"
-    return FEEDS.get(tool)
+            return ["room trade ledger and chat tags"]
+    if tool in _SRC_TOOLS:
+        served = [SRC[x] for x in entry.get("src") or [] if x in SRC]
+        if served:
+            return list(dict.fromkeys(served))
+    return list(FEEDS.get(tool) or ())
 
 
 # Feeds whose contribution is figures: cited only when one of the
@@ -123,8 +168,8 @@ def _used(entry: dict, answer: str | None) -> bool:
 
 
 def footer(tool_trace: list[dict] | None, answer: str | None = None) -> str:
-    """'\\n\\nData: a · b' for the feeds that returned data this turn, in
-    first-use order and without repeats. Empty when no tool did."""
+    """'\\n\\nData: a · b' for the providers behind the tools that returned
+    data this turn, in first-use order, each once. Empty when no tool did."""
     seen: list[str] = []
     for entry in tool_trace or []:
         if not isinstance(entry, dict):
@@ -140,9 +185,9 @@ def footer(tool_trace: list[dict] | None, answer: str | None = None) -> str:
         if (entry.get("tool") == "query_data" and isinstance(args, dict)
                 and not re.search(r"\bfrom\b", str(args.get("sql") or ""), re.I)):
             continue            # "SELECT 1" reads no table (2026-10-11 audit)
-        label = _label(entry)
-        if label and label not in seen:
-            seen.append(label)
+        for name in _names(entry):
+            if name not in seen:
+                seen.append(name)
     if not seen:
         return ""
     return "\n\nData: " + " · ".join(seen)

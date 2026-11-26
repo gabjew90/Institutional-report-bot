@@ -127,7 +127,7 @@ def test_news_links_are_cited_only_when_the_answer_uses_the_news():
     trace = [{"tool": "lookup_research", "status": "ok"}, {"tool": "ticker_news", "status": "ok"}]
     used = F.compose("", "→ **MU** beat: EPS **$33.42** vs **$31.61**", news, trace)
     assert used.startswith("\n\nSources:\n[1] [reuters.com](<https://r/1>)\nData: ")
-    assert "news search (Google)" in used and used.count("Data:") == 1
+    assert "Google search" in used and used.count("Data:") == 1
     ignored = F.compose("", "→ Goldman sees a 2026 beat on HBM", news, trace)
     assert "Sources" not in ignored and ignored.startswith("\n\nData: bank research notes")
     # Google sources keep the Data line beneath them (2026-10-08)

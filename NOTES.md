@@ -4364,3 +4364,29 @@ Also fixed: `tests/test_chat_count.py` failed for the first 43 minutes of every 
 
 Open: the model is still called for this answer and told to reply OK. Skipping the call needs a change to the phase flow in `bot.py`.
 
+## 2026-11-26 (later): the /ask Data line names providers only
+
+Owner, on the recent answers: "the sources section looks clean and short but the data looks too cluttered."
+
+Counted from the logs: every price answer ended "live prices (Finnhub, Binance.US, CoinGecko, Yahoo)" whichever feed served the quote, and a stock answer ended with five kinds and eight provider names.
+
+`discord_bot/data_footer.py` now lists who supplied the data, each name once, in first-use order. Each trace entry records the `source` of the rows in its payload (`src`), so a price is cited by the feed that served it. A payload's own `feed` text is reduced to the providers it names. The room's own sources keep their names (Sleeper league, room trade ledger, bank research notes, research database). "Sleeper league" is unchanged on purpose: the football channel's reply routing reads that text in the parent answer.
+
+Same NVDA question in the harness, before and after:
+- before: `Data: live prices (Finnhub, Binance.US, CoinGecko, Yahoo) · company background (Google) · bank research notes · company and trading data (Yahoo) · news search (Google)`
+- after: `Data: Finnhub · Google search · bank research notes · Yahoo`
+
+Left as it is: an entry with no row sources recorded falls back to "live prices" or "economic calendar".
+
+## 2026-11-26: step 2 (Claude sets the priority) measured, recommendation is to hold
+
+Numbers from the worker and the lane records, not estimates:
+- Notes per upload day: 155 to 792. LOW is 36% to 48% of them and gets no deep analysis, only the triage call.
+- Gemini triage: about 8,500 input tokens a note, 3.6M tokens on a 423-note day, about $1 a research day.
+- The Claude lane on 11-25: 163 notes, 4.46M input and 0.66M output tokens on Sonnet (median 18,254 in, 3,644 out a note).
+- The lane's `priority` field is Gemini's, passed through. Claude has never been asked for one.
+
+So moving triage to Claude saves about $15 to $20 a month, adds 40% to 50% to what the lane reads (Claude would have to read the LOW notes, whose text the worker does not publish today), and makes a GitHub workflow the thing that decides whether a note is HIGH before the readers can see it. Gemini triage would have to stay as the fallback for a lane outage. The expensive Gemini job, deep analysis at about $31 a month, already moved when the lane was fixed.
+
+Not built. If triage quality is the question and not cost, the cheap test is a shadow priority written by the lane on notes it already reads, compared with Gemini's. That changes the production analysis prompt, so it is the owner's call.
+
