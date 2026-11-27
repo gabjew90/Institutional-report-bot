@@ -1075,3 +1075,12 @@ no findings
 - **judgment (CONCERN)** (23:30, BK, Koreans/Thanksgiving): the shipped text lost the raw answer's US-holiday content and ends with "after the Thanksgiving break", which implies a Korean break.
 - **judgment (CONCERN)** (23:59, Broke Wock, "Abe telling me dump 10k"): speculative "court-ordered miracle wipeout" with no source, Abe's actual argument not stated.
 - **judgment (CONCERN)** (20:33, Sam, "is market open tomorrow"): stray cashtags "$ET and $PM" appended to a calendar answer. Possible regex: cashtag on a token that is a time-zone or AM/PM abbreviation in the question or answer text.
+
+## 2026-11-26
+
+- **12:10 Arxfic, "How has the mood been with return of Wock"** — bucket: regex-able. Banter answer invented chat facts about a named member ($38k port, an investment banking job, a bonus) with no tool and no support in the prompt. `scripts/validate_answer.py` returned no violation. The live guard `figure-provenance:all-unsourced` fired and changed nothing (record-only on banter).
+  Candidate fixture:
+  - question: `How has the mood been with return of Wock` (reply to a chat-recap answer, asker Arxfic)
+  - bad answer, verbatim: `absolute circus. abe declared his return the literal market bottom, wock rolled back in with a **$38k** port, and immediately announced he's grinding for an investment banking job so his first-year bonus can cover his portfolio losses. now everyone's just using his account balance as a standard unit of measurement.`
+  - assertion: fail when the answer holds `\$\d+(\.\d+)?[kKmM]\b` and that figure appears nowhere in the prompt block (profiles, chat, replied-to message). Pass on the same turn without the dollar figure.
+- Not queued as FAIL, for the session's attention: the 12:07 cliff-notes answer lost its main bullet (ACCH) to `figure-provenance:stripped:1`, leaving a summary that omits the room's main thread (judgment).
