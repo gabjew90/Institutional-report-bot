@@ -1,0 +1,13 @@
+{
+ "violations": [
+  {
+   "kind": "consensus-amnesia",
+   "severity": "hard",
+   "message": "RECAP reports $QQQ's actual print but never frames it against the consensus the previous pulse published. Beat or miss is the content of an earnings recap — state it.",
+   "name": "$QQQ"
+  }
+ ],
+ "hard_count": 1,
+ "soft_count": 0,
+ "exit_code": 3
+}

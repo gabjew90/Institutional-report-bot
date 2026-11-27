@@ -1,0 +1,131 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-11-27T14:05:23.413831Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=328; anchors 860/874 matched, 0 empty, 4 too_short (rate=0.984)",
+   "at": "2026-11-27T14:05:28.235678Z"
+  },
+  "omnipulse": {
+   "decision": "OMNIPULSE",
+   "detail": "omnipulse: 2026-11-27 ok, 6 themes -> omnipulse pulse",
+   "at": "2026-11-27T14:05:32.914814Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "clean",
+   "at": "2026-11-27T14:07:42.078039Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "1 hard issue(s)",
+   "at": "2026-11-27T14:09:05.275720Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-11-27T14:11:53.113275Z"
+  },
+  "final_validate": {
+   "decision": "DISPATCH_FIXUP",
+   "detail": "1 EDIT/SCRUB-introduced hard violation(s); violations at /tmp/final_fixup_violations.json; after FIXUP run: gate final_validate --recheck",
+   "at": "2026-11-27T14:11:58.750198Z"
+  },
+  "final_validate_recheck": {
+   "decision": "CONTINUE",
+   "detail": "WARNING: 1 residual(s) after FIXUP -- shipping; residuals in final_validation.json for QC",
+   "at": "2026-11-27T14:12:35.468062Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-11-27T14:12:36.101597Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-11-27T14:16:00.934856Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6: compose, then push",
+   "at": "2026-11-27T14:16:07.538211Z",
+   "final_sha256": "77409a24d9fdde2893b47521be0ba0914ffbf086258c3e469ba7cfacd3023879"
+  },
+  "compose": {
+   "decision": "PASS",
+   "detail": "/tmp/final_with_frontmatter.md written, seal 71a01bf3a5d1d9e5, target all configured channels",
+   "at": "2026-11-27T14:16:07.607109Z"
+  }
+ },
+ "budgets": {},
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:05:23.413831Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:05:28.235678Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "OMNIPULSE",
+   "at": "2026-11-27T14:05:32.914814Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:07:42.078039Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-11-27T14:09:05.275720Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:11:53.113275Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "DISPATCH_FIXUP",
+   "at": "2026-11-27T14:11:58.750198Z"
+  },
+  {
+   "gate": "final_validate_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:12:35.468062Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:12:36.101597Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-11-27T14:16:00.934856Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-11-27T14:16:07.538211Z"
+  },
+  {
+   "gate": "compose",
+   "decision": "PASS",
+   "at": "2026-11-27T14:16:07.607109Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
