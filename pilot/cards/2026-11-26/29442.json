@@ -1,0 +1,488 @@
+{
+ "brief": "Yesterday's AI-complex squeeze did not fix the underlying problem: former darlings remain under heavy selling and valuation compression across the AI chain is extreme. Bernstein's 66-stock, nine-sector study finds data center exposure explains ~45% of that compression; memory and server OEMs are hit hardest, networking held up better, so the market is turning selective. SNDK trades at 2.5x forward earnings versus a 10.4x three-year average, nearly double the compression Bernstein's exposure model implies, though its true exposure may be higher; it is oversold since October, down over half, nearing a bearish 50-day/200-day cross. But new customer deals lock in roughly half of FY27 and two-thirds of FY28 bit volumes, and Bernstein estimates high-bandwidth flash at 5% of NAND demand would need ~28% more wafers, suggesting the market overweights future supply versus demand, making SNDK almost a contrarian trade. Bernstein also prefers STX among cheap HDD names on an early pricing upcycle. CRWV stays under-punished: the risk is funding contracted demand, not demand itself. NBIS's bounce failed to hold, leaving $80 as key support. AVGO is Bernstein's top semiconductor pick for its better-capitalized AI customer base. CIEN could gain from AI infrastructure's power and land constraints, via distributed data-center networking.",
+ "cards": [
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Bernstein's data center exposure model explains roughly 45% of the variation in valuation compression across 66 AI-exposed stocks spanning nine sectors.",
+   "anchor": "Bernstein's analysis of 66 stocks across nine sectors shows that data center exposure explains roughly 45% of the variation in valuation compression.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "In Bernstein's analysis, memory and server OEM stocks have suffered the biggest valuation dislocations in the AI selloff while networking stocks have held up considerably better.",
+   "anchor": "memory and server OEMs have suffered some of the biggest valuation dislocations, while networking names have held up considerably better.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "SNDK was trading at 2.5x forward earnings as of Friday's close, versus its three-year average of 10.4x.",
+   "anchor": "SNDK was trading at just 2.5x forward earnings as of Friday's close, compared with its three-year average of 10.4x.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "SNDK's 76% forward-earnings multiple compression is almost twice what Bernstein's data center exposure model would imply, though AI-driven pricing may make the company's true exposure considerably higher.",
+   "anchor": "The 76% multiple compression is almost twice what Bernstein's data center exposure model would imply",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "The market does not believe SNDK's current earnings level is sustainable.",
+   "anchor": "The market clearly doesn't believe these earnings are sustainable.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "SNDK has been oversold since October and has more than halved in price since then.",
+   "anchor": "The stock has been oversold since October and has more than halved since then.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since October"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "SNDK is trading well below its 200-day moving average, with its 50-day moving average about to cross below the 200-day.",
+   "anchor": "SNDK is trading well below its 200-day moving average, with the 50-day about to cross below it.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "SNDK's technical damage is severe enough that it is almost worth exploring as a contrarian long trade.",
+   "anchor": "Things look so bad that you almost want to start exploring the contrarian trade.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "The market is increasingly worried about additional NAND capacity coming online in 2028-29.",
+   "anchor": "The market is increasingly worried about additional NAND capacity hitting in 2028\u201329.",
+   "topic": "Global memory pricing cycle",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028-2029"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "SNDK's new customer agreements cover roughly 50% of FY27 bit volumes and two-thirds of FY28 bit volumes, including volume commitments, pricing mechanisms and financial protections.",
+   "anchor": "SNDK's new customer agreements cover roughly 50% of FY27 bit volumes and two-thirds of FY28 volumes, incorporating volume commitments, pricing mechanisms and financial protections.",
+   "topic": "Global memory pricing cycle",
+   "status": "level",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27-FY28"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Bernstein estimates that if high-bandwidth flash reaches just 5% of NAND bit demand, the industry would need roughly 28% more wafers.",
+   "anchor": "Bernstein estimates that if high-bandwidth flash (HBF) eventually accounts for just 5% of NAND bit demand, the industry could require roughly 28% more wafers.",
+   "topic": "Global memory pricing cycle",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "STX and WDC were trading at 9.2x and 8.3x forward earnings, respectively, as of Friday's close.",
+   "anchor": "STX and WDC were trading at 9.2x and 8.3x forward earnings, respectively, as of Friday's close.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "STX",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Bernstein argues the HDD pricing upcycle is still in its early stages, supported by constrained capacity, disciplined supply additions and growing enterprise AI demand.",
+   "anchor": "Bernstein argues that the HDD pricing upcycle is still in its early stages, supported by constrained capacity, disciplined supply additions and growing enterprise AI demand.",
+   "topic": "AI valuation derating",
+   "status": "forecast",
+   "instruments": [
+    "STX",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Bernstein prefers STX over WDC given its technological lead in HAMR.",
+   "anchor": "Bernstein prefers STX given its technological lead in HAMR.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Despite the massive valuation reset across AI names, CRWV still screens as under-punished in Bernstein's analysis.",
+   "anchor": "Despite the massive valuation reset, CRWV still screens as under-punished in Bernstein's analysis.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "For CRWV there is a big difference between having an order book and having the capital to deliver it, meaning the risk is financing contracted demand rather than the demand itself.",
+   "anchor": "There is a big difference between having an order book and having the capital to deliver it.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "CRWV is trading at must-hold technical support, below which lies literally uncharted territory on the chart.",
+   "anchor": "The stock is trading at must-hold levels. Below is literally uncharted territory.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "A chart shows CRWV's stock plotted against an explosion in credit spreads tied to the company.",
+   "anchor": "Second chart shows the stock vs the explosion in credit spreads.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Yesterday's broad AI-complex squeeze did little to change the bigger picture for NBIS, which is back under intense selling pressure today.",
+   "anchor": "Yesterday's monster squeeze appears to have done little to change the bigger picture in NBIS.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "The $80 area is huge support for NBIS, although there is a massive unfilled chart gap below it.",
+   "anchor": "The $80 area is huge support, although there is a massive unfilled gap below it.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "AVGO has become Bernstein's top US semiconductor pick, trading at roughly 15x and 9x estimated 2027 and 2028 earnings respectively.",
+   "anchor": "AVGO has become Bernstein's top US semiconductor pick, trading at roughly 15x and 9x estimated 2027 and 2028 earnings, respectively.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "AVGO's AI exposure is concentrated among some of the best-capitalized customers in the industry, making it a somewhat different AI bet than peers.",
+   "anchor": "AI exposure concentrated among some of the best-capitalized customers in the industry makes AVGO a somewhat different AI bet.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Not all AI customers carry the same financing risk.",
+   "anchor": "Not all AI customers carry the same financing risk.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "AVGO's stock is trading right back at major support, coinciding with its longer-term trendline.",
+   "anchor": "The stock is trading right back at major support, coinciding with the longer-term trendline.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "AVGO hasn't traded this far below its 200-day moving average in a long time.",
+   "anchor": "the stock hasn't traded this far below its 200-day moving average in a long time.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "One of the big bear arguments against AI infrastructure is the growing shortage of power and land.",
+   "anchor": "One of the big bear arguments for AI infrastructure is the growing shortage of power and land.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "The power and land constraints that are bearish for AI infrastructure broadly could ironically benefit CIEN.",
+   "anchor": "Ironically, those very constraints could benefit CIEN.",
+   "topic": "AI valuation derating",
+   "status": "forecast",
+   "instruments": [
+    "CIEN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Building smaller, geographically dispersed data centers increases the need to connect them through scale-across networking.",
+   "anchor": "Building smaller, geographically dispersed data centers increases the need to connect them through scale-across networking.",
+   "topic": "AI valuation derating",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Bernstein highlights CIEN as particularly exposed to the networking opportunity created by distributed, power-constrained AI data center buildouts.",
+   "anchor": "Bernstein highlights CIEN as particularly exposed to this opportunity.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [
+    "CIEN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "The same power and land shortage driving the AI infrastructure selloff could become a growth driver for parts of the networking complex.",
+   "anchor": "The very problem driving the AI infrastructure sell-off could become a growth driver for parts of the networking complex.",
+   "topic": "AI valuation derating",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "Valuation compression across parts of the AI value chain has reached extraordinary levels even after a major squeeze.",
+   "anchor": "valuation compression across parts of the AI value chain has reached extraordinary levels.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "from ai euphoriato 2.5x earnings",
+   "claim": "There is a big difference between selling scarce hardware and financing expensive AI infrastructure, meaning not every AI-exposed stock deserves the same derating.",
+   "anchor": "there is a big difference between selling scarce hardware and financing expensive infrastructure.",
+   "topic": "AI valuation derating",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-11-26/29442__from-ai-euphoriato-2-5x-earnings.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
