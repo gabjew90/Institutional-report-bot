@@ -1434,31 +1434,14 @@
    "bank": "Goldman Sachs",
    "document": "Credit Finally Cracks As Junk Bonds Suffer Biggest Blowout Of 2026",
    "claim": "O'Connor counts 65 bonds from 37 issuers that fell 5 points or more last week, up from 24 the week before.",
-   "anchor": "O'Connor counts 65 bonds from 37 issuers that fell 5 points or more last week, up from 24 the week before,",
+   "anchor": "bonds from 37 issuers that fell 5 points or more last week, up from 24 the week before and far",
    "topic": "credit spread blowout",
    "status": "released",
    "instruments": [],
    "macro_key": "CREDIT",
    "direction": "bearish",
    "conviction": "medium",
-   "timeframe": "",
-   "_reason": "anchor not found in source"
-  },
-  {
-   "bank": "Goldman Sachs",
-   "document": "Credit Finally Cracks As Junk Bonds Suffer Biggest Blowout Of 2026",
-   "claim": "Project Saturn, the $40 billion-plus GPU financing Goldman and Apollo arranged for SpaceX, has a $25.2 billion public tranche rated A- with an average life of about 3.5 years.",
-   "anchor": "the $25.2 billion public tranche is rated A- according to Goldman's desks, has an average life of about 3.5 years",
-   "topic": "AI chip financing bond market",
-   "status": "released",
-   "instruments": [
-    "SPCX"
-   ],
-   "macro_key": "",
-   "direction": "neutral",
-   "conviction": "medium",
-   "timeframe": "",
-   "_reason": "anchor not found in source"
+   "timeframe": ""
   }
  ],
  "reader_tier": "top",
@@ -1470,8 +1453,8 @@
  },
  "verify": {
   "total": 110,
-  "matched": 108,
-  "failed": 2,
+  "matched": 109,
+  "failed": 1,
   "too_short": 0,
   "label_count": 4,
   "labels_over_cap": 0,
@@ -1479,7 +1462,7 @@
   "macro_key_invalid": 0,
   "macro_key_coerced": 0,
   "reasked": 1,
-  "dropped": 0,
-  "needs_reask": true
+  "dropped": 1,
+  "needs_reask": false
  }
 }
