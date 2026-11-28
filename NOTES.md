@@ -4475,3 +4475,43 @@ Total spent on the three triage tests: about $1.50, on a bare client, so not in 
 
 Claude allowance on 2026-11-28 06:00 UTC, 2.4 days into the week: 22% of all models and 20% of Fable, the second being these sessions. The lane and the readers at full load are a small share of the week so far, which is the first read of what moving triage to Claude would cost in allowance. One research day (11-26, 106 lane notes) is in that week.
 
+## 2026-11-28: triage measured on Claude, then built behind a switch
+
+Owner: "Yep triage to Claude." Gemini's triage is about $18 of the $38 a month still spent on Gemini.
+
+**The measurement.** 359 notes of 11-16 to 11-26 drawn at random from the 2,921 processed (166 LOW, 98 MEDIUM, 95 HIGH by Gemini). Each was downloaded again on the worker, read-only, and its first 32,000 characters bundled with Gemini's stored answer. On a GitHub runner the production triage prompt went through the Claude CLI the way the lane calls it (no tools, no project context): every note once on Sonnet 5.5 and once on Haiku 5.5, and 120 of them a second time on each. 958 calls, 6 at a time, 596 seconds, no error.
+
+| | same priority as Gemini | notes analysed (Gemini 193) | HIGH (Gemini 95) | another label on a second run |
+|---|---|---|---|---|
+| Sonnet 5.5 | 300 of 359 (84%) | 192 | 95 | 6 of 120 (5%) |
+| Haiku 5.5 | 282 of 359 (79%) | 161 | 79 | 13 of 120 (11%) |
+| Gemini (11-27 test) | | | | 2 of 179 (1%) |
+
+Sonnet and Gemini disagreed on 59 notes. Two blind reviewers (Opus, five packets each, no labels shown, 16 notes all three systems agreed on mixed in as controls) labelled them from the triage rulebook and the same text. The reviewers agreed with each other on 68 of 75 and gave the controls' label on 14 and 16 of 16.
+
+| where both reviewers agree (54 of 59) | Sonnet right | Gemini right | neither |
+|---|---|---|---|
+| all | 29 | 20 | 5 |
+| Gemini analyses, Sonnet skips (19) | 17 | 1 | 1 |
+| Gemini skips, Sonnet analyses (17) | 1 | 15 | 1 |
+| Gemini HIGH, Sonnet MEDIUM (10) | 7 | 0 | 3 |
+| Gemini MEDIUM, Sonnet HIGH (8) | 4 | 4 | 0 |
+
+Each sends about as many LOW notes to analysis as the other (Gemini FX and regional dailies, Sonnet a different set). Over the sample: Gemini wrong on about 34 of 354 (9.6%), Sonnet on about 25 (7.1%). HIGH given wrongly: Gemini 11, Sonnet 5. HIGH missed: Gemini 4, Sonnet 0. Analysable notes skipped: 2 each. The reviewers are Claude models, which could favour Sonnet. They sided with Gemini on 15 of the 17 notes Sonnet promoted, so they were not simply agreeing with it.
+
+Haiku is out: it changes its own label on one note in nine and analyses 17% fewer notes. Its labels on the 41 notes where it alone disagreed were not reviewed.
+
+Cost in Claude allowance: a triage call is about 13,800 input tokens on Sonnet and 230 out, 3.5 seconds. The weekly all-models meter went from 22% to 25% across the test, this session included, so the 720 uncached calls were about one point. A month of triage is about 7,500 notes.
+
+One side finding: Sonnet names the publication of the Dropbox folder as the source (ZeroHedge, The Market Ear) where Gemini named the bank the article relays, on 12 of 359 notes. The source agreed on 333.
+
+**What was built** (commit "Claude lane: triage can be the lane's too", `TRIAGE_BACKEND`, default `gemini`). The worker hands a note to the lane before any Gemini call, as one file. The lane's run triages it, writes the triage, copies a HIGH note for the Omnipulse readers and analyses HIGH and MEDIUM as before. The worker finishes a LOW note when its triage arrives. Every fallback is Gemini's, as before. CLAUDE.md has the flow in the `github_bridge/claude_lane.py` row.
+
+Not built: a passive week of Claude labelling beside Gemini in production. The replay on stored notes answers the quality question with blind review, which a passive week would not, and the plumbing a shadow would exercise is not the plumbing of the switch.
+
+Rehearsal on a runner from the side branch (`dry_run_triage=8`, nothing committed): 8 recent HIGH notes staged as untriaged, all triaged HIGH in 4 to 5 seconds each, all analysed, 80 seconds in all, 8 copies written for the readers in the scratch folder.
+
+The test bundle (the first 32,000 characters of 359 notes, 166 of them LOW notes whose text is not otherwise published) sat on `pilot-data` for about ten minutes as one gzip file and was removed. It remains in that branch's history.
+
+What changes for the pulse when the switch is on: which notes are HIGH (about one in six HIGH or MEDIUM labels moves, in both directions, with fewer wrong HIGHs), a HIGH note reaches the readers' folder a few minutes later (after the run's triage, not at hand-off), and reposts are filed under the publication.
+
