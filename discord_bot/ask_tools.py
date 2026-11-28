@@ -2403,7 +2403,12 @@ def _build_fantasy_league_tool():
                     "position group that makes it strong or thin. USE THIS "
                     "for best or worst team or roster, power rankings and "
                     "'if everyone were healthy'. Points scored so far are "
-                    "not a roster's quality) | 'matchups' "
+                    "not a roster's quality) | 'trade' (what a trade "
+                    "does to each side's best lineup, from season averages: "
+                    "pass the players in `players`. USE THIS for 'should I "
+                    "trade X for Y', 'is this trade fair' and 'what is X "
+                    "worth'; one week's projections do not value a "
+                    "trade) | 'matchups' "
                     "(every game: scores, margins, who's left to play, "
                     "standouts, projected finals) | 'roster' (one manager's "
                     "starters + bench — requires `member`) | "
@@ -2433,7 +2438,7 @@ def _build_fantasy_league_tool():
                         "topic": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "league | standings | table | strength | matchups | "
+                                "league | standings | table | strength | trade | matchups | "
                                 "roster | transactions | draft | trending "
                                 "| projections | stats | situation"
                             ),
@@ -2452,7 +2457,7 @@ def _build_fantasy_league_tool():
                         "players": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "projections only: text naming players "
+                                "projections and trade: text naming players "
                                 "(\"Wilson or Odunze\"); returns each "
                                 "rostered player named, with projection, "
                                 "team and the manager who has him."

@@ -300,3 +300,116 @@ def strength_lines(result: dict, question: str = "") -> list[str]:
             lines.append(f"→ The 1 seed, **{one['manager']}** ({one['record']}), ranks {_ordinal(one['rank'])} "
                          f"at full health with **{one['full_health']:.1f}**.")
     return [*lines, foot]
+
+
+# ---- a trade --------------------------------------------------------------------
+# The `trade` topic (report/roster_strength.py :: trade, 2026-11-27): what the
+# named players do to each side's best lineup. "should I trade bowers for both
+# Derrick Henry and LaPorta" was answered "Take it immediately" from one
+# week's projections, in a week one of the asker's backs was on a bye.
+
+def _pts(x: float) -> str:
+    return f"{abs(x):.1f}"
+
+
+def _who(rows: list[dict]) -> str:
+    return _and([f"{_short(r['player'])} ({r['avg']:.1f})" for r in rows])
+
+
+def _value(p: dict, first: bool) -> str:
+    """'Bowers **18.7** (TE1 of 23 rostered, 8 games)'."""
+    if p.get("avg") is None:
+        return f"{_short(p['player'])} no average (under 2 full games played, counted as zero)"
+    rank = (f"{p['position']}{p['position_rank']} of {p['position_count']}{' rostered' if first else ''}, "
+            if p.get("position_rank") else "")
+    return f"{_short(p['player'])} **{p['avg']:.1f}** ({rank}{p['games']} games)"
+
+
+def _side_row(sd: dict) -> str:
+    deal = f"→ **{sd['manager']}** sends {_and([_short(n) for n in sd['gives']])} and gets " \
+           f"{_and([_short(n) for n in sd['gets']])}: "
+    if sd["after"] == sd["before"] and not sd["comes_in"] and not sd["comes_out"]:
+        return deal + f"best lineup stays **{sd['before']:.1f}** points a week, with nobody new starting."
+    line = deal + (f"best lineup **{sd['before']:.1f}** to **{sd['after']:.1f}** points a week "
+                   f"({sd['change']:+.1f}).")
+    if sd["comes_in"]:
+        line += f" Into the lineup: {_who(sd['comes_in'])}."
+    if sd["comes_out"]:
+        line += f" Out of it: {_who(sd['comes_out'])}."
+    return line
+
+
+def _effect(sd: dict, first: bool) -> str:
+    c = sd["change"]
+    if c > 0:
+        return f"helps **{sd['manager']}** by **{_pts(c)}** points a week" if first else \
+            f"helps **{sd['manager']}** by {_pts(c)}"
+    if c < 0:
+        return f"costs **{sd['manager']}** **{_pts(c)}** points a week" if first else \
+            f"costs **{sd['manager']}** {_pts(c)}"
+    return f"leaves **{sd['manager']}**'s best lineup unchanged"
+
+
+def trade_lines(result: dict, question: str = "") -> list[str]:
+    """The posted lines for a `trade` payload: what the trade does to each
+    side's best lineup, the lineup changes, each player's season average,
+    then what the figures are. [] when nothing was measured.
+
+    Who sends whom is read from the rosters: a named player moves from the
+    team that has him."""
+    t = (result or {}).get("trade") or {}
+    players = t.get("players") or []
+    if t.get("status") != "ok" or not players:
+        return []
+    sides = t.get("sides") or []
+    foot = (f"→ Each figure is a team's best lineup from its roster, every player at his average in the games he "
+            f"played through week {t['through_week']}, in league scoring. Injuries, byes and the schedule ahead "
+            "are not in it.")
+    order = [n for sd in sides for n in sd.get("gives") or []]
+    players = sorted(players, key=lambda p: order.index(p["player"]) if p["player"] in order else len(order))
+    values = "→ Season averages: " + ", ".join(_value(p, i == 0) for i, p in enumerate(players)) + "."
+    if t.get("kind") == "swap" and len(sides) == 2:
+        a, b = sides
+        lines = [f"→ On season averages the trade {_effect(a, True)} and {_effect(b, False)}.",
+                 _side_row(a), _side_row(b), values]
+        for sd in sides:
+            n = sd["extra_players"]
+            if n == 1:
+                lines.append(f"→ **{sd['manager']}** gets one more player than it sends, so a roster spot has "
+                             "to be cleared.")
+            elif n > 1:
+                lines.append(f"→ **{sd['manager']}** gets {n} more players than it sends, so {n} roster spots "
+                             "have to be cleared.")
+        return [*lines, foot]
+    if t.get("kind") == "value" and sides:
+        own = sides[0]
+        who = _and([_short(n) for n in own["gives"]])
+        one = players[0]
+        if len(players) == 1 and one.get("avg") is not None:
+            rank = (f", {one['position']}{one['position_rank']} of the {one['position_count']} rostered"
+                    if one.get("position_rank") else "")
+            lines = [f"→ **{one['player']}** averages **{one['avg']:.1f}** points a game over {one['games']} "
+                     f"games{rank}."]
+        else:
+            lines = [values]
+        if own["change"] < 0:
+            lines.append(f"→ Without {who}, **{own['manager']}**'s best lineup goes from **{own['before']:.1f}** to "
+                         f"**{own['after']:.1f}** points a week ({own['change']:+.1f})"
+                         + (f": {_who(own['comes_in'])} would start." if own["comes_in"]
+                            else ": nobody on the roster would take the spot."))
+            lines.append(f"→ A return is even for **{own['manager']}** when it puts about **{_pts(own['change'])}** "
+                         "points a week back into that lineup.")
+        else:
+            lines.append(f"→ {who} {'is' if len(own['gives']) == 1 else 'are'} not in **{own['manager']}**'s best "
+                         f"lineup, which stays **{own['before']:.1f}** points a week either way.")
+        if len(sides) > 1:
+            buy = sides[1]
+            if buy["change"] > 0:
+                lines.append(f"→ With {who}, **{buy['manager']}**'s best lineup goes from **{buy['before']:.1f}** to "
+                             f"**{buy['after']:.1f}** ({buy['change']:+.1f})"
+                             + (f", in place of {_who(buy['comes_out'])}." if buy["comes_out"] else "."))
+            else:
+                lines.append(f"→ {who} would not start for **{buy['manager']}**, whose best lineup stays "
+                             f"**{buy['before']:.1f}**.")
+        return [*lines, foot]
+    return [values, foot]

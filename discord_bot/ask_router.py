@@ -799,6 +799,25 @@ _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
         r"|(?:team|roster|squad)\s+(?:is\s+)?(?:better|worse|stronger|weaker)\s+than"
         r"|compare\s+(?:\S+\s+){1,5}?(?:teams?|rosters?|squads?)"
         r"|rank\s+(?:the|all|every|each)\s+(?:teams?|rosters?|squads?))\b", re.I)),
+    # A trade weighed, proposed or priced: what it does to each side's best
+    # lineup (report/roster_strength.py :: trade, 2026-11-27). "should I
+    # trade bowers for both Derrick Henry and LaPorta" went to one week's
+    # projections. The retrospective wording ("who traded for him", "the
+    # trade deadline") stays with transactions below.
+    ("trade", re.compile(
+        # "trade X for Y", not "any trade offers for me" or "trade deadline
+        # is set for week 12", which are the log of moves
+        r"\b(?:trad(?:e|ing)\s+(?!offers?\b|deadline\b|block\b|talks?\b|activity\b|history\b|rumou?rs?\b)"
+        r"(?:\S+\s+){1,5}?for\s+\S"
+        # "return" and "deal" alone are not here: a kick return is a great
+        # return, and a deal is anything
+        r"|(?:fair|good|bad|even|lopsided|dumb|terrible|great)\s+(?:trade|offer)\b"
+        r"|(?:trade|offer)\s+(?:is|was|seems?|looks?|sounds?)?\s*(?:fair|good|bad|even|lopsided|worth)"
+        r"|(?:accept|take|decline|reject|veto)\s+(?:the|this|that|his|her|their)\s+(?:trade|offer|deal)"
+        r"|who\s+w(?:ins|on)\s+(?:the|that|this)\s+trade|trade\s+value"
+        r"|what\s+(?:could|can|would|should)\s+(?:i|we|he|she|they)\s+get\s+for"
+        # "should I move him to flex" is a lineup question
+        r"|should\s+(?:i|we|he|she|they)\s+trade\b)", re.I)),
     # "should I pick him up" wants to know if he is hot, not who moved
     # last week, so add/pickup goes to trending and the retrospective
     # wording goes to transactions.
@@ -869,7 +888,7 @@ _FANTASY_CHANNEL_RE = re.compile(r"(?:fantasy|football)", re.I)
 _FOOTBALL_RE = re.compile(
     r"\b(?:nfl|qb|rb|wr|te|dst|d/st|kicker|touchdown|tds?|snap\s+count|target\s+share"
     r"|injur(?:y|ed|ies)|questionable|doubtful|\bir\b|bye\s+week|handcuff|stream(?:er|ing)?"
-    r"|start|sit|bench|flex|line\s*up|points?|matchups?|trade|drop(?:ped|s)?|add(?:ed|s)?|pick(?:ed)?\s*up|claim"
+    r"|start|sit|bench|flex|line\s*up|points?|matchups?|trad(?:e|es|ed|ing)|drop(?:ped|s)?|what\s+(?:could|can|would|should)\s+(?:i|we)\s+get\s+for|add(?:ed|s)?|pick(?:ed)?\s*up|claim"
     # "am i winning", "whats the score of my game", "do i have any zero
     # players", "who's projected lowest" (2026-10-28 scoreboard)
     r"|scor(?:e|es|ing)|players?|projected|projections?|swap|best\s+team|worst\s+team"
@@ -1028,6 +1047,12 @@ def _as_fantasy(r: "Route", q: str, reason: str, *,
         # part of it, and with it in front the answer led with the asker.
         # `member` only marks whose row is always shown.
         r.prefetch = [(T_FANTASY, {"topic": "strength", **({"member": asker_manager} if asker_manager else {})})]
+        return r
+    if topic == "trade":
+        # The players are read from the asker's words by the tool, which
+        # knows the rosters. `member` puts the asker's side first.
+        r.prefetch = [(T_FANTASY, {"topic": "trade", "players": q,
+                                   **({"member": asker_manager} if asker_manager else {})})]
         return r
     prefetch: list[tuple[str, dict]] = []
     # A manager asking anything about the league gets their whole week

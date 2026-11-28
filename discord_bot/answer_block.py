@@ -82,6 +82,10 @@ def build(tool: str, result: dict, today: date, morning_reported: bool = False,
         from discord_bot import league_lines
         lines = league_lines.strength_lines(result, question)
         whole = True                        # its first line is the answer
+    elif tool == "lookup_fantasy_league" and result.get("trade"):
+        from discord_bot import league_lines
+        lines = league_lines.trade_lines(result, question)
+        whole = True
     # A company's report date is no longer here: every turn about one stock
     # gets its lines from discord_bot/stock_body.py (2026-11-13). Several
     # companies in one question get a line each (2026-11-21).

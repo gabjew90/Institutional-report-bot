@@ -4400,3 +4400,57 @@ A split takes effect before the open and the feeds keep the unsplit price as the
 
 Not touched: the snapshot's own price and share count, which were also unsplit that morning (price 755.16, 142M shares against a 1.12B float).
 
+## 2026-11-27: where the Gemini money goes, measured
+
+Owner: "I'm still getting charged for Gemini a lot."
+
+From the worker's ledger (`gemini_calls`, list prices, cached tokens priced as full input so slightly high), 30 days to 11-27: **$65.86**.
+
+| feature | 30 days | note |
+|---|---|---|
+| deep analysis of notes | $28.98 | stopped on 11-26, see below |
+| triage of notes | $18.28 | 7,537 calls for 7,180 notes, about 9,300 input tokens each |
+| profile refresh | $7.88 | about 18 members a night, already skips members with nothing new |
+| /ask | $5.43 | |
+| screenshot and chat OCR | $2.95 | |
+| trade classifier, member batch, race tags | $2.03 | |
+| backup pulse and the rest | $0.31 | |
+
+**Why the bill has not dropped yet.** HIGH and MEDIUM notes were handed to the Claude lane on 10-12 and 10-27, but until the fix of 11-23 the lane loaded almost none of them and Gemini wrote the analysis anyway. Stored analyses by who wrote them: 11-10 to 11-21, Gemini 1,841 and Claude 84. On 11-25, Gemini 108 and Claude 163 (the after-pulse window bug, fixed that day). On 11-26, Gemini 8 and Claude 106. So the $29 line ended two days ago and a research day now costs about $1 to $2 of Gemini in total where it cost $3.50 to $8.
+
+**Forward estimate: about $38 a month** (triage 18, profiles 8, /ask 5.5, OCR and trade reading 5, a little residual deep analysis).
+
+**Tested and rejected: sending triage less of each note.** Triage reads the first 32,000 characters. 180 notes from 11-25 and 11-26 (60 per priority) were downloaded again and triaged four ways on the worker with the production prompt (cost $1.12, not in the ledger):
+
+| input | tokens a note | same priority as today | analysed today, would be skipped | HIGH moved to MEDIUM |
+|---|---|---|---|---|
+| 32K characters again (noise) | 8,596 | 177 of 179 | 0 | 1 |
+| first 16K | 6,535 (-24%) | 163 | 4 | 6 |
+| first 8K plus four 2K samples | 6,395 (-26%) | 165 | 6 | 6 |
+| first 10K | 5,300 (-38%) | 152 | 8 | 4 |
+
+Triage is stable (99% on a re-run) and the long input is doing work: cutting it to save about $4.50 a month loses 2% to 3% of the notes that are analysed today. Not done.
+
+**What is left, all the owner's call:** move triage to Claude (takes the $18, costs Claude allowance, the step measured on 11-26), run the profile refresh less often, or leave it at about $38. The AI Studio bill itself was not read: the page needs the owner's Google sign-in. If it shows much more than the ledger's $56 for 11-01 to 11-26, something outside the bot is using the key.
+
+## 2026-11-27 (later): a trade is measured, not judged from one week
+
+2026-11-11, football channel: "should I trade bowers for both Derrick Henry and LaPorta, given the current state of my running backs?" Answer: "Take it immediately", from that week's projections, with one of the asker's backs on a bye. The trade happened. On season averages it cost the asker 1.7 points a week.
+
+Same cause as the roster question of 11-25: a judgment asked, no measure in any payload. `report/roster_strength.py :: trade` takes the roster measure twice, each side's best lineup before the trade and after it. The `trade` topic of `lookup_fantasy_league` reads the players from the asker's words and the sides from the rosters. `league_lines.trade_lines` posts the lines as the whole reply.
+
+Live harness, a league member asking "should I trade Chase for Jefferson" (2.75 s):
+
+> → On season averages the trade costs **Abe** **5.2** points a week and helps **DeepFried** by 5.2.
+> → **Abe** sends Chase and gets Jefferson: best lineup **148.3** to **143.1** points a week (-5.2). Into the lineup: Jefferson (15.0). Out of it: Chase (20.2).
+> → **DeepFried** sends Jefferson and gets Chase: best lineup **153.3** to **158.5** points a week (+5.2). Into the lineup: Chase (20.2). Out of it: Jefferson (15.0).
+> → Season averages: Chase **20.2** (WR3 of 63 rostered, 10 games), Jefferson **15.0** (WR18 of 63, 8 games).
+
+"what would be a fair trade for Gibbs?" gets his average and rank, what his team's lineup loses without him (17.4 a week), and "a return is even when it puts about 17.4 points a week back into that lineup". "should I accept this trade" with no player named gets "Who's in the trade? Name the players."
+
+Also fixed on the way: the shared name resolver matched a surname only when it was the last word of the name, so "Walker" (Kenneth Walker III) and every Jr. were found by full name with the suffix and nothing else. It now drops the suffix, reads a possessive, and reads names typed without their marks.
+
+Replay over the 963 logged questions: 3 routes change, the three trade questions of 11-11.
+
+Known gaps: a trade shown only in a Sleeper screenshot is not read by code (the model is told to call the tool with the names, and then words the answer itself). The measure is season averages at full health: it does not know a player is hurt now, and it values a position only through the two lineups.
+

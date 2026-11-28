@@ -269,3 +269,105 @@ def build(rosters: list[dict], names: dict, labels: dict[str, str], slots: list[
         "league_average_group_points": league,
         "teams": teams,
     }
+
+
+# ---- a trade ------------------------------------------------------------------
+# "should I trade bowers for both Derrick Henry and LaPorta, given the current
+# state of my running backs?" (2026-11-11) was answered from one week's
+# projections, in a week one of the backs was on a bye: the same gap as the
+# roster question, a judgment with no measure behind it. The measure is the one above, taken twice: each side's best
+# lineup from its roster before the trade and after it.
+
+def trade(rosters: list[dict], names: dict, labels: dict[str, str], slots: list[str],
+          weeks: dict[int, dict], *, through_week: int, named: list[str], asker_roster=None) -> dict:
+    """What moving the named players does to each side's best lineup.
+
+    `named` are the player ids the question names. A player moves from the
+    roster he is on. Named players on two rosters are a swap (kind 'swap'):
+    each side gives its named players and gets the other's. Named players
+    on one roster have no return named (kind 'value'): what that roster's
+    lineup loses without them, and what the asker's gains with them when
+    the asker is another team. Players on three or more rosters get their
+    averages only (kind 'values')."""
+    through_week = int(through_week or 0)
+    if through_week < 1:
+        return {"status": "empty",
+                "note": "No week has been scored yet, so no player has a season average and a trade cannot be "
+                        "measured this way. Say so."}
+    missing = [w for w in range(1, through_week + 1) if w not in weeks]
+    if missing:
+        return {"status": "unavailable",
+                "note": f"Sleeper's weekly stats did not come back for week(s) {missing}. "
+                        "Say the trade comparison is unavailable right now. Do not value the players yourself."}
+    parsed = {pid: parse_label(lbl) for pid, lbl in labels.items()}
+    positions = {pid: p[1] for pid, p in parsed.items()}
+    table = season_table({w: weeks[w] for w in weeks if w <= through_week}, positions)
+    roster_of: dict = {r.get("roster_id"): r for r in rosters}
+    owner: dict[str, object] = {}
+    for r in rosters:
+        for p in r.get("players") or []:
+            if p:
+                owner[str(p)] = r.get("roster_id")
+    named = [p for p in dict.fromkeys(str(x) for x in (named or [])) if p in owner and p in parsed]
+    if not named:
+        return {"status": "empty", "note": "The question names no rostered player."}
+
+    def has_avg(p: str) -> bool:
+        return table.get(p, {}).get("games", 0) >= MIN_GAMES and bool(positions.get(p))
+
+    def lineup(pids: list[str]) -> tuple[set, float]:
+        line = best_lineup([(p, positions[p], table[p]["avg"]) for p in pids if has_avg(p)], slots)
+        return {p for _, p in line}, round(sum(table[p]["avg"] for _, p in line), 1)
+
+    rank: dict[str, tuple[int, int]] = {}
+    for pos in {positions[p] for p in owner if positions.get(p)}:
+        have = sorted((p for p in owner if positions.get(p) == pos and has_avg(p)),
+                      key=lambda p: (-table[p]["avg"], p))
+        for i, p in enumerate(have, 1):
+            rank[p] = (i, len(have))
+
+    def manager(rid) -> str:
+        return names.get(rid) or f"roster {rid}"
+
+    def player(p: str) -> dict:
+        row = table.get(p) or {}
+        return {"player": parsed[p][0], "position": positions.get(p) or "", "manager": manager(owner[p]),
+                "avg": row["avg"] if has_avg(p) else None, "games": int(row.get("games") or 0),
+                "position_rank": rank.get(p, (None, None))[0], "position_count": rank.get(p, (None, None))[1]}
+
+    def brief(pids) -> list[dict]:
+        return [{"player": parsed[p][0], "avg": table[p]["avg"]}
+                for p in sorted(pids, key=lambda p: (-table[p]["avg"], p))]
+
+    def side(rid, gives: list[str], gets: list[str]) -> dict:
+        pids = [str(p) for p in (roster_of[rid].get("players") or []) if p]
+        before_set, before = lineup(pids)
+        after_set, after = lineup([p for p in pids if p not in gives] + [p for p in gets if p not in pids])
+        return {"manager": manager(rid), "roster_id": rid,
+                "gives": [parsed[p][0] for p in gives], "gets": [parsed[p][0] for p in gets],
+                "before": before, "after": after, "change": round(after - before, 1),
+                "comes_in": brief(after_set - before_set), "comes_out": brief(before_set - after_set),
+                "extra_players": len(gets) - len(gives)}
+
+    by_roster: dict = {}
+    for p in sorted(named, key=lambda p: (-(table[p]["avg"] if has_avg(p) else 0.0), p)):
+        by_roster.setdefault(owner[p], []).append(p)
+    out = {"status": "ok", "through_week": through_week, "players": [player(p) for p in named],
+           "measure": ("before and after are a team's best legal lineup from its roster without and with the "
+                       f"trade, each player at his average in the games he played this season (weeks 1-"
+                       f"{through_week}, league scoring, a game of under {MIN_SNAPS} snaps not counted, "
+                       f"{MIN_GAMES}+ games needed). A player with no average counts as zero. Injuries, byes "
+                       "and the schedule ahead are not in it. Not a projection.")}
+    if len(by_roster) == 2:
+        (ra, pa), (rb, pb) = by_roster.items()
+        sides = [side(ra, pa, pb), side(rb, pb, pa)]
+        if asker_roster is not None and rb == asker_roster:
+            sides.reverse()
+        return {**out, "kind": "swap", "sides": sides}
+    if len(by_roster) == 1:
+        (ra, pa), = by_roster.items()
+        sides = [side(ra, pa, [])]
+        if asker_roster is not None and asker_roster != ra and asker_roster in roster_of:
+            sides.append(side(asker_roster, [], pa))
+        return {**out, "kind": "value", "sides": sides}
+    return {**out, "kind": "values", "sides": []}

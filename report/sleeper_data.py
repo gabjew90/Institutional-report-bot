@@ -311,6 +311,9 @@ TOPICS = (
     # How good each roster is: every team's best lineup at full health and
     # with who is playing now (report/roster_strength.py, 2026-11-26).
     "strength",
+    # What a trade of the named players does to each side's best lineup
+    # (report/roster_strength.py :: trade, 2026-11-27).
+    "trade",
     # What players ACTUALLY scored, against what they were projected to.
     # fetch_weekly_stats has existed since the module was written and no
     # topic ever called it, so "what did he actually put up" was
@@ -415,11 +418,42 @@ _WORD_SURNAMES = frozenset({
     "pace", "wells", "banks", "mayer", "booth", "guy", "hall", "ward", "hand"})
 
 
+_NAME_SUFFIXES = frozenset({"jr", "sr", "ii", "iii", "iv", "v"})
+_NAME_PARTICLES = frozenset({"st", "de", "van", "von"})
+
+
+def _plain(text: str) -> str:
+    """Lowercase, with the marks a typed name drops removed: "D'Andre" is
+    "dandre", "A.J." is "aj", "Amon-Ra" is "amon ra". A possessive loses
+    its 's ("Henry's" is "henry") and a full stop that ends a sentence is
+    a space ("for henry.thoughts" keeps "henry" a word)."""
+    t = (text or "").lower().replace("’", "'")
+    t = re.sub(r"'s\b", "", t).replace("'", "")
+    t = re.sub(r"(?<=\b[a-z])\.", "", t)
+    return re.sub(r"\s+", " ", t.replace(".", " ").replace("-", " ")).strip()
+
+
+def _name_forms(name: str) -> tuple[str, str]:
+    """(the full name without a generational suffix, the surname) in plain
+    form. 'Kenneth Walker III' is ('kenneth walker', 'walker') and
+    'Amon-Ra St. Brown' is ('amon ra st brown', 'st brown'). Until
+    2026-11-27 the surname was the last token, so "Walker", "Harrison" and
+    every other Jr. or III was matched by the full name with its suffix
+    and nothing else."""
+    parts = _plain(name).split()
+    while len(parts) > 1 and parts[-1] in _NAME_SUFFIXES:
+        parts.pop()
+    if not parts:
+        return "", ""
+    last = " ".join(parts[-2:]) if len(parts) >= 3 and parts[-2] in _NAME_PARTICLES else parts[-1]
+    return " ".join(parts), last
+
+
 def _players_named(text: str, rosters: list[dict], resolver) -> list[tuple]:
     """[(player_id, label, owner_id, slot)] for every rostered player the
     text names by full name, or by last name when no other rostered
     player shares it. Labels are the resolver's "Name (POS, TEAM)"."""
-    low = (text or "").lower()
+    low = _plain(text)
     if not low:
         return []
     owner_slot: dict[str, tuple[str, str]] = {}
@@ -430,21 +464,21 @@ def _players_named(text: str, rosters: list[dict], resolver) -> list[tuple]:
                                   "starter" if str(p) in starters else "bench")
     ids = list(owner_slot)
     labels = dict(zip(ids, _names(ids, resolver)))
-    full = {pid: lab.split(" (")[0].strip() for pid, lab in labels.items()
-            if not lab.startswith("id:")}
+    forms = {pid: _name_forms(lab.split(" (")[0]) for pid, lab in labels.items()
+             if not lab.startswith("id:")}
     last_count: dict[str, int] = {}
-    for name in full.values():
-        last = name.split()[-1].lower() if name.split() else ""
+    for _, last in forms.values():
         last_count[last] = last_count.get(last, 0) + 1
 
     def _says(word: str) -> bool:
         return re.search(r"(?<![a-z])" + re.escape(word) + r"(?![a-z])", low) is not None
 
     out = []
-    for pid, name in full.items():
-        last = name.split()[-1].lower() if name.split() else ""
-        if _says(name.lower()) or (len(last) >= 4 and last_count.get(last) == 1
-                                   and last not in _WORD_SURNAMES and _says(last)):
+    for pid, (name, last) in forms.items():
+        if not name:
+            continue
+        if _says(name) or (len(last) >= 4 and last_count.get(last) == 1
+                           and last not in _WORD_SURNAMES and _says(last)):
             out.append((pid, labels[pid], *owner_slot[pid]))
     return out[:6]
 
@@ -557,6 +591,18 @@ def _game_story(sides: list[dict]) -> dict:
     return story
 
 
+def _season_inputs(league: dict, rosters: list[dict], users_by_id: dict, resolver, season) -> tuple:
+    """(last scored week, roster id -> manager name, player id -> label,
+    lineup slots, the season's weekly points) for report/roster_strength.py."""
+    from report import roster_strength as _rs
+    last = int((league.get("settings") or {}).get("last_scored_leg") or 0)
+    ids = sorted({str(p) for r in rosters for p in (r.get("players") or []) if p})
+    names = {r.get("roster_id"): _table_name(str(r.get("owner_id")), users_by_id)
+             for r in rosters if r.get("roster_id") is not None}
+    weeks = _rs.fetch_season(season, last, league.get("scoring_settings") or {}) if season and last else {}
+    return last, names, (resolver(ids) if ids else {}), league.get("roster_positions") or [], weeks
+
+
 def build_topic_payload(
     league_id: str,
     topic: str,
@@ -659,15 +705,9 @@ def build_topic_payload(
         # who is playing now, from every player's average in the games he
         # played (report/roster_strength.py, 2026-11-26).
         from report import roster_strength as _rs
-        last = int((league.get("settings") or {}).get("last_scored_leg") or 0)
-        ids = sorted({str(p) for r in rosters for p in (r.get("players") or []) if p})
-        names = {r.get("roster_id"): _table_name(str(r.get("owner_id")), users_by_id)
-                 for r in rosters if r.get("roster_id") is not None}
-        scoring = league.get("scoring_settings") or {}
-        weeks = _rs.fetch_season(season, last, scoring) if season and last else {}
+        last, names, labels, slots, weeks = _season_inputs(league, rosters, users_by_id, resolver, season)
         sid = _resolve_member(member or "", users_by_id)
-        strength = _rs.build(rosters, names, resolver(ids) if ids else {},
-                             league.get("roster_positions") or [], weeks, through_week=last,
+        strength = _rs.build(rosters, names, labels, slots, weeks, through_week=last,
                              asker=_table_name(sid, users_by_id) if sid else "")
         out["week"] = last or wk
         if strength.get("status") != "ok":
@@ -679,6 +719,28 @@ def build_topic_payload(
             t["aliases"] = [a for a in ((SLEEPER_TO_DISCORD.get(oid) or ("", "", ""))[1],
                                         (users_by_id.get(oid) or {}).get("display_name")) if a]
         out["strength"] = strength
+
+    elif topic == "trade":
+        # What moving the named players does to each side's best lineup,
+        # from season averages (report/roster_strength.py, 2026-11-27).
+        from report import roster_strength as _rs
+        named = _players_named(players, rosters, resolver) if players else []
+        if not named:
+            return {**out, "status": "empty",
+                    "note": "The asker's own words name no rostered player, so no trade was measured. If the "
+                            "conversation says which players are in it (a trade-offer screenshot, the message "
+                            "above), call this tool again with topic='trade' and `players` set to their full "
+                            "names. If it does not, ask which players. One week's projections do not value a "
+                            "trade, and no player is valued from memory."}
+        last, names, labels, slots, weeks = _season_inputs(league, rosters, users_by_id, resolver, season)
+        sid = _resolve_member(member or "", users_by_id)
+        mine = next((r.get("roster_id") for r in rosters if sid and str(r.get("owner_id")) == sid), None)
+        res = _rs.trade(rosters, names, labels, slots, weeks, through_week=last,
+                        named=[n[0] for n in named], asker_roster=mine)
+        out["week"] = last or wk
+        if res.get("status") != "ok":
+            return {**out, **res}
+        out["trade"] = res
 
     elif topic == "standings":
         rows = []
