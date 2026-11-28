@@ -4515,3 +4515,5 @@ The test bundle (the first 32,000 characters of 359 notes, 166 of them LOW notes
 
 What changes for the pulse when the switch is on: which notes are HIGH (about one in six HIGH or MEDIUM labels moves, in both directions, with fewer wrong HIGHs), a HIGH note reaches the readers' folder a few minutes later (after the run's triage, not at hand-off), and reposts are filed under the publication.
 
+
+**Switched on, 2026-11-28 12:18 UTC (owner: "Go").** `TRIAGE_BACKEND=claude_lane` set on the worker with `railway variable set`. The redeploy succeeded, `/healthz` answers 200, the worker's settings read `triage_backend = claude_lane` and the boot log has no error. Nothing was queued at the switch: the last note arrived 2026-11-26 22:08 UTC, before the holiday. The worker's hand-off before triage and its reading of triage records have run only in tests and in the runner rehearsal, so the first upload is the live test. What to read after it is in CLAUDE.md under Next Steps. To revert: set the variable to `gemini`. Notes already handed over still finish through the lane or its Gemini fallback.
