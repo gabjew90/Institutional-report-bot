@@ -4454,3 +4454,24 @@ Replay over the 963 logged questions: 3 routes change, the three trade questions
 
 Known gaps: a trade shown only in a Sleeper screenshot is not read by code (the model is told to call the tool with the names, and then words the answer itself). The measure is season averages at full health: it does not know a player is hurt now, and it values a position only through the two lineups.
 
+## 2026-11-27 (night): triage and Gemini's prompt cache, tested and rejected
+
+Gemini bills a cached prompt opening at a fraction of the input price. Since 11-10 the cache hit on 94% of deep-analysis calls (about 6,400 tokens a hit) and on 4% of triage calls (159 of 4,219, about 2,000 tokens a hit). The triage system prompt is about 2,040 tokens, and the user prompt puts the note's file name right after it.
+
+Idea: put the fixed lines of the user prompt ahead of the file name so the first cached block is the same on every call. Tested on the worker with the production system prompt, same 32,000 characters, notes from 11-25 and 11-26 downloaded again:
+
+| run | notes | cache hits | same priority as stored |
+|---|---|---|---|
+| first run of the reordered prompt | 89 | 3 (3%) | 81 (91%) |
+| second run, 89 of its notes repeated from the first | 119 | 75 (63%, the repeated notes, whole prompts) | 110 (92%) |
+
+Two results. A shared opening of one block (about 2,000 tokens) is not served from the cache: hits come in blocks of about 2,030 tokens and nearly all are two blocks or more, so triage's fixed text is too short to be cached wherever it sits. And moving one hint line from the end of the prompt to the start changed the priority of 8% to 9% of notes, against 1% on a plain re-run. The prompt was put back as it was. Nothing shipped.
+
+The only way to get triage cached is 2,000 more tokens of fixed text in front, which is padding or new examples that would change what triage decides. Not done.
+
+Also checked: skipping triage for sources that are always LOW. Over 30 days and 7,180 notes, the folders that are 95% LOW or more with at least 30 notes hold 0.7% of the notes (one folder), and 90% or more hold 2.7%. Nothing to save.
+
+Total spent on the three triage tests: about $1.50, on a bare client, so not in the ledger.
+
+Claude allowance on 2026-11-28 06:00 UTC, 2.4 days into the week: 22% of all models and 20% of Fable, the second being these sessions. The lane and the readers at full load are a small share of the week so far, which is the first read of what moving triage to Claude would cost in allowance. One research day (11-26, 106 lane notes) is in that week.
+
