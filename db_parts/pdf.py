@@ -526,6 +526,20 @@ def queue_for_claude_lane(pdf_file_id: int, analysis_path: str,
     conn.commit()
 
 
+def set_lane_triage(pdf_file_id: int, triage_json: str) -> bool:
+    """Store the triage the lane returned for a note handed over untriaged
+    (2026-11-28). Only while the row still waits: a row the timeout or the
+    pre-pulse sweep already sent to Gemini keeps what it has."""
+    conn = _db.get_connection()
+    cur = conn.execute(
+        "UPDATE bridge_ingestion_state SET triage_json = ? "
+        "WHERE pdf_file_id = ? AND status = 'committed'",
+        (triage_json, int(pdf_file_id)),
+    )
+    conn.commit()
+    return cur.rowcount == 1
+
+
 def get_lane_rows(status: str, path_prefix: str, limit: int = 100) -> list[dict]:
     """Claude-lane rows in one status, oldest hand-off first."""
     rows = _db.get_connection().execute(

@@ -1,6 +1,7 @@
 """Claude analysis lane helper (scripts/pilot_analyze.py, 2026-10-06)."""
 import datetime as dt
 import json
+from pathlib import Path
 
 from scripts import pilot_analyze as PA
 
@@ -298,13 +299,18 @@ def test_the_workflow_runs_the_parallel_driver_and_has_a_dry_run():
     doc = yaml.safe_load((Path(__file__).resolve().parents[1] / ".github" / "workflows"
                           / "pilot-analysis.yml").read_text(encoding="utf-8"))
     trig = doc.get("on", doc.get(True))
-    assert set(trig["workflow_dispatch"]["inputs"]) == {"dry_run", "workers"}
+    assert set(trig["workflow_dispatch"]["inputs"]) == {"dry_run", "workers", "dry_run_triage", "triage_bundle", "triage_runs"}
     assert "schedule" not in trig
     steps = {s["name"]: s for s in doc["jobs"]["analyze"]["steps"]}
     run = steps["Analyze"]["run"]
     assert "pilot_analyze.py run" in run and "--repo pilot-data" in run
     # Inputs reach the shell through the environment, never spliced into the script.
     assert "${{" not in run and "${{" not in steps["Find documents the worker is waiting for"]["run"]
+    # The side-by-side measurement is its own job and group: it never queues behind the lane.
+    assert doc["jobs"]["analyze"]["if"] == "${{ inputs.triage_bundle == '' }}"
+    assert doc["jobs"]["triage_test"]["if"] == "${{ inputs.triage_bundle != '' }}"
+    assert "pilot-triage-test" in doc["concurrency"]["group"]
+    assert "${{" not in {s["name"]: s for s in doc["jobs"]["triage_test"]["steps"]}["Triage the bundle"]["run"]
 
 
 def _git(cwd, *args):
@@ -407,3 +413,232 @@ def test_the_analysis_call_has_no_tools_and_reads_nothing_of_the_repository(tmp_
     src = (repo / ".github" / "workflows" / "pilot-analysis.yml").read_text(encoding="utf-8")
     assert "bypassPermissions" not in src.split("- name: Analyze")[1]
 
+
+# ── triage by the lane (2026-11-28) ─────────────────────────────────────────
+
+def _note(root, doc_id, date, *, folder="/Current/2026/November/Nov 27/Goldman",
+          file_name="GS_US_Economics.pdf", listed=True):
+    """A note the worker handed over before triage: one file, and an entry
+    on the list marked for triage."""
+    d = root / "pilot" / PA.NOTES / date
+    d.mkdir(parents=True, exist_ok=True)
+    (d / f"{doc_id}.json").write_text(json.dumps({
+        "pdf_file_id": int(doc_id), "file_name": file_name, "folder_path": folder,
+        "total_pages": 9, "note_date": "2026-11-27", "truncated": False, "text": TEXT}),
+        encoding="utf-8")
+    if listed:
+        f = root / "pilot" / PA.WAITING
+        f.parent.mkdir(parents=True, exist_ok=True)
+        rows = json.loads(f.read_text())["waiting"] if f.exists() else []
+        deadline = dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=120)
+        rows.append({"id": int(doc_id), "date": date, "priority": "untriaged", "triage": True,
+                     "deadline": deadline.strftime("%Y-%m-%dT%H:%M:%SZ")})
+        f.write_text(json.dumps({"waiting": rows}), encoding="utf-8")
+
+
+def _answers(by_id):
+    """A triage stub: the priority per note id, read from the prompt's file name."""
+    seen = []
+
+    def triage(prompt, model, cwd):
+        doc_id = next(k for k in by_id if f"note{k}.pdf" in prompt)
+        seen.append((doc_id, model))
+        got = by_id[doc_id]
+        if isinstance(got, dict):
+            return got
+        return {"priority": got, "report_type": "macro", "source": "Goldman Sachs",
+                "key_tickers": ["SPX"], "summary": "what it says", "in": 9000, "out": 200}
+    triage.seen = seen
+    return triage
+
+
+def test_a_note_waiting_for_triage_is_listed_apart_and_not_analysed(tmp_path):
+    date = dt.date.today().isoformat()
+    _note(tmp_path, "19001", date)
+    root = tmp_path / "pilot"
+    assert [r[0] for r in PA.untriaged(root)] == ["19001"]
+    assert PA.pending(root) == []
+    # with its triage written it is no longer waiting for one
+    (root / PA.TRIAGE / date).mkdir(parents=True)
+    (root / PA.TRIAGE / date / "19001.json").write_text(json.dumps({
+        "pdf_file_id": 19001, "source": "Goldman Sachs", "triage": {"priority": "low"}}))
+    assert PA.untriaged(root) == [] and PA.pending(root) == []      # LOW: nothing to analyse
+
+
+def test_run_triages_then_analyses_what_is_high_or_medium(tmp_path):
+    date = dt.date.today().isoformat()
+    for doc_id in ("19011", "19012", "19013"):
+        _note(tmp_path, doc_id, date, file_name=f"note{doc_id}.pdf")
+    root = tmp_path / "pilot"
+    order = []
+    triage = _answers({"19011": "low", "19012": "medium", "19013": "high"})
+
+    def ask(prompt, model):
+        order.append(model)
+        return GOOD
+    st = PA.run(root, workers=1, ask=ask, triage=triage, say=lambda *_: None)
+    assert st["triaged"] == 3 and st["analyzed"] == 2 and st["failed"] == 0
+    assert {m for _, m in triage.seen} == {PA.TRIAGE_MODEL}
+    rec = json.loads((root / PA.TRIAGE / date / "19012.json").read_text(encoding="utf-8"))
+    assert rec["pdf_file_id"] == 19012 and rec["triage"]["priority"] == "medium"
+    assert rec["source"] == "Goldman Sachs" and rec["model"] == PA.TRIAGE_MODEL
+    assert rec["usage"] == {"input_tokens": 9000, "output_tokens": 200}
+    # LOW: a triage record and nothing else
+    assert not (root / "analyses" / date / "19011.json").exists()
+    # MEDIUM and HIGH: analysed with the priority the triage gave
+    for doc_id, pri in (("19012", "medium"), ("19013", "high")):
+        a = json.loads((root / "analyses" / date / f"{doc_id}.json").read_text(encoding="utf-8"))
+        assert a["analysis"]["priority"] == pri and a["analysis"]["total_pages"] == 9
+    assert PA.untriaged(root) == [] and PA.pending(root) == []
+
+
+def test_a_note_triaged_high_is_analysed_before_the_other_triage_calls(tmp_path):
+    date = dt.date.today().isoformat()
+    for doc_id in ("19021", "19022", "19023"):
+        _note(tmp_path, doc_id, date, file_name=f"note{doc_id}.pdf")
+    root = tmp_path / "pilot"
+    steps = []
+    answers = _answers({"19021": "high", "19022": "medium", "19023": "low"})
+
+    def triage(prompt, model, cwd):
+        res = answers(prompt, model, cwd)
+        steps.append(("triage", answers.seen[-1][0]))
+        return res
+
+    def ask(prompt, model):
+        steps.append(("analysis", "19021" if "note19021.pdf" in Path(prompt).read_text(encoding="utf-8")
+                      else "19022"))
+        return GOOD
+    PA.run(root, workers=1, ask=ask, triage=triage, say=lambda *_: None)
+    assert steps == [("triage", "19021"), ("analysis", "19021"), ("triage", "19022"),
+                     ("triage", "19023"), ("analysis", "19022")]
+
+
+def test_a_high_note_is_copied_for_the_readers_in_their_layout(tmp_path, monkeypatch):
+    date = dt.date.today().isoformat()
+    _note(tmp_path, "19031", date, file_name="note19031.pdf")
+    _note(tmp_path, "19032", date, file_name="note19032.pdf")
+    root = tmp_path / "pilot"
+    PA.run(root, workers=1, ask=lambda p, m: GOOD, say=lambda *_: None,
+           triage=_answers({"19031": "high", "19032": "medium"}))
+    meta = json.loads((root / "source-text" / date / "19031.meta.json").read_text(encoding="utf-8"))
+    assert meta["priority"] == "high" and meta["source"] == "Goldman Sachs"
+    assert meta["pdf_file_id"] == 19031 and meta["file_name"] == "note19031.pdf"
+    assert meta["note_date"] == "2026-11-27" and meta["total_pages"] == 9 and "lane" not in meta
+    assert set(meta) == {"pdf_file_id", "file_name", "source", "title", "priority", "published_at",
+                         "text_path", "truncated", "total_pages", "note_date"}
+    assert (tmp_path / meta["text_path"]).read_text(encoding="utf-8") == TEXT
+    # MEDIUM never reaches the readers' folder
+    assert not (root / "source-text" / date / "19032.meta.json").exists()
+    # and the readers' own listing finds the HIGH note
+    import sys
+    from scripts import pilot_list_unread as plu
+    out = tmp_path / "unread.json"
+    monkeypatch.setattr(sys, "argv", ["x", "--root", str(root), "--out", str(out)])
+    assert plu.main() == 0
+    (row,) = json.loads(out.read_text(encoding="utf-8"))
+    assert row["id"] == "19031" and row["source"] == "Goldman Sachs" and row["tier"] == "top"
+    assert row["note_date"] == "2026-11-27"
+
+
+def test_a_failed_triage_counts_an_attempt_and_the_note_stops_after_three(tmp_path):
+    date = dt.date.today().isoformat()
+    _note(tmp_path, "19041", date, file_name="note19041.pdf")
+    root = tmp_path / "pilot"
+    bad = _answers({"19041": {"priority": "", "err": "no priority in the answer: sorry"}})
+    for n in (1, 2, 3):
+        st = PA.run(root, workers=1, triage=bad, say=lambda *_: None)
+        assert st["triaged"] == 0 and st["failed"] == 1
+        f = json.loads((root / PA.FAILURES / date / "19041.json").read_text())
+        assert f["attempts"] == n and f["history"][-1]["reason"].startswith("triage:")
+    assert PA.untriaged(root) == []         # given up: the worker's Gemini takes it
+    assert PA.run(root, workers=1, triage=bad, say=lambda *_: None)["failed"] == 0
+
+
+def test_a_usage_limit_during_triage_stops_the_run_and_fails_nothing(tmp_path):
+    date = dt.date.today().isoformat()
+    for doc_id in ("19051", "19052"):
+        _note(tmp_path, doc_id, date, file_name=f"note{doc_id}.pdf")
+    root = tmp_path / "pilot"
+    st = PA.run(root, workers=1, say=lambda *_: None,
+                triage=lambda p, m, c: {"limit": True, "err": "You've hit your limit"})
+    assert st["limit"] and st["triaged"] == 0 and st["failed"] == 0
+    assert not (root / PA.FAILURES).exists()
+    assert len(PA.untriaged(root)) == 2
+
+
+def test_a_note_filed_under_a_banned_publication_keeps_that_source(tmp_path):
+    date = dt.date.today().isoformat()
+    _note(tmp_path, "19061", date, file_name="note19061.pdf",
+          folder="/Current/2026/November/Nov 27/The Market Ear")
+    root = tmp_path / "pilot"
+    # the triage reads the author the text credits
+    triage = _answers({"19061": {"priority": "high", "report_type": "vol_commentary",
+                                 "source": "JPMorgan", "key_tickers": [], "summary": "s"}})
+    PA.run(root, workers=1, ask=lambda p, m: GOOD, triage=triage, say=lambda *_: None)
+    rec = json.loads((root / PA.TRIAGE / date / "19061.json").read_text(encoding="utf-8"))
+    assert rec["source"] == "The Market Ear" and rec["triage"]["source"] == "JPMorgan"
+    meta = json.loads((root / "source-text" / date / "19061.meta.json").read_text(encoding="utf-8"))
+    assert meta["source"] == "The Market Ear"
+    a = json.loads((root / "analyses" / date / "19061.json").read_text(encoding="utf-8"))
+    assert a["analysis"]["source"] == "The Market Ear"      # GOOD says Goldman Sachs
+
+
+def test_the_pending_command_counts_notes_waiting_for_triage(tmp_path, capsys):
+    date = _doc(tmp_path, "19071")
+    _note(tmp_path, "19072", date)
+    assert PA.main(["pending", "--root", str(tmp_path / "pilot"), "--limit", "1000"]) == 0
+    lines = [l.split("\t") for l in capsys.readouterr().out.splitlines() if l.strip()]
+    assert [l[0] for l in lines] == ["19071", "19072"]
+    assert lines[1][-1] == "triage" and len(lines[0]) == 4
+
+
+def test_triage_records_and_the_readers_copy_are_committed_and_pushed(tmp_path):
+    import subprocess
+    remote = tmp_path / "remote.git"
+    subprocess.run(["git", "init", "-q", "--bare", "-b", "pilot-data", str(remote)], check=True)
+    seed = tmp_path / "seed"
+    seed.mkdir()
+    date = dt.date.today().isoformat()
+    _note(seed, "19081", date, file_name="note19081.pdf")
+    _note(seed, "19082", date, file_name="note19082.pdf")
+    _git(seed, "init", "-q", "-b", "pilot-data")
+    for k, v in (("user.name", "t"), ("user.email", "t@example.com")):
+        _git(seed, "config", k, v)
+    _git(seed, "add", "-A")
+    _git(seed, "commit", "-q", "-m", "seed")
+    _git(seed, "remote", "add", "origin", str(remote))
+    _git(seed, "push", "-q", "origin", "pilot-data")
+    checkout = tmp_path / "pilot-data"
+    subprocess.run(["git", "clone", "-q", str(remote), str(checkout)], check=True)
+    for k, v in (("user.name", "t"), ("user.email", "t@example.com")):
+        _git(checkout, "config", k, v)
+    st = PA.run(checkout / "pilot", workers=2, repo=checkout, ask=lambda p, m: GOOD,
+                triage=_answers({"19081": "high", "19082": "low"}), say=lambda *_: None)
+    assert st["triaged"] == 2 and st["analyzed"] == 1
+    files = _git(remote, "ls-tree", "-r", "--name-only", "pilot-data").split()
+    assert f"pilot/{PA.TRIAGE}/{date}/19081.json" in files
+    assert f"pilot/{PA.TRIAGE}/{date}/19082.json" in files
+    assert f"pilot/source-text/{date}/19081.meta.json" in files
+    assert f"pilot/analyses/{date}/19081.json" in files
+    assert f"pilot/analyses/{date}/19082.json" not in files
+    assert _git(checkout, "status", "--porcelain").strip() == ""
+
+
+def test_the_rehearsal_stages_recent_notes_outside_the_checkout(tmp_path, capsys):
+    date = dt.date.today().isoformat()
+    for doc_id in ("19091", "19092"):
+        _doc(tmp_path, doc_id, date)
+    root = tmp_path / "pilot"
+    staged = tmp_path / "elsewhere" / "pilot"
+    assert PA.stage_untriaged(root, staged, 2) == 2
+    assert [r[0] for r in PA.untriaged(staged)] == ["19092", "19091"]
+    note = json.loads((staged / PA.NOTES / date / "19091.json").read_text(encoding="utf-8"))
+    assert note["text"] == TEXT and note["file_name"] == "GS_US_Economics.pdf"
+    st = PA.run(staged, workers=1, ask=lambda p, m: GOOD, say=lambda *_: None,
+                triage=lambda p, m, c: {"priority": "high", "report_type": "macro",
+                                        "source": "Goldman Sachs", "summary": "s"})
+    assert st["triaged"] == 2 and st["analyzed"] == 2
+    # nothing was written into the checkout the notes came from
+    assert not (root / PA.TRIAGE).exists() and not (root / "analyses").exists()
+    assert len(list((root / "source-text" / date).glob("*.meta.json"))) == 2

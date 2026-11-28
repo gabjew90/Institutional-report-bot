@@ -503,6 +503,14 @@ class Settings(BaseSettings):
     # MEDIUM PDFs to the same lane, behind the HIGH notes in each run;
     # same timeout and fallbacks. Acceptable values: "gemini" | "claude_lane"
     medium_ingestion_backend: str = "gemini"
+    # Who sets a note's priority (2026-11-28, owner: "triage to Claude").
+    # "claude_lane" hands every note to the lane before any Gemini call: the
+    # lane's run triages it with the same prompt, then analyses it when it is
+    # HIGH or MEDIUM (github_bridge/claude_lane.py, hand_off_untriaged).
+    # Gemini triages when the lane cannot take a note, gives up on it, runs
+    # past claude_lane_timeout_minutes, or in the pulse window.
+    # Acceptable values: "gemini" | "claude_lane"
+    triage_backend: str = "gemini"
     # Batch process (2026-10-27): PDF ingestion, the Claude lane, the bridge's
     # pulse-context build and the profile refresh run in a child process so
     # their CPU and memory cannot starve the Discord connection

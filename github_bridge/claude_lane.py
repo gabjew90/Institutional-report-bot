@@ -48,6 +48,33 @@ With it on:
 The Opus-bridge rows share the table; lane rows are told apart by their
 bridge_filename prefix, and the Opus jobs only run when the backend is
 "opus_bridge".
+
+Triage by the lane (2026-11-28, owner: "triage to Claude"). With
+TRIAGE_BACKEND=claude_lane a note is handed over before any Gemini call:
+
+  orchestrator, after text extraction -> hand_off_untriaged():
+    publishes the note as one file (pilot/lane/notes/<date>/<id>.json: the
+    text and what the triage prompt needs) and queues a row whose
+    triage_json is {"pending": true, ...}.
+  the lane's run (scripts/pilot_analyze.py):
+    runs the production triage prompt and writes pilot/lane/triage/<date>/
+    <id>.json. A HIGH note is copied to source-text/ for the Omnipulse
+    readers. HIGH and MEDIUM notes are then analysed as before.
+  pull():
+    a triage record has arrived -> the row gets the triage and the note its
+    priority. LOW is finished there (the triage is its analysis, as in the
+    pipeline). HIGH and MEDIUM wait for the analysis record.
+  every fallback is Gemini's, as before: the timeout, the lane giving up
+  and the pre-pulse sweep send the row to run_fallbacks(), which triages
+  with Gemini when the row has no triage yet.
+
+Measured before it was built, on 359 notes of 11-16 to 11-26 with the same
+prompt and the same first 32,000 characters: Sonnet gave Gemini's priority on
+84%, analysed the same number of notes (193 against 192) and the same number
+of HIGH. Two blind reviewers read the 59 notes the two disagreed on: where
+they agreed (54), Sonnet's label was theirs on 29, Gemini's on 20. Haiku
+agreed with Gemini on 79%, analysed 17% fewer notes and gave a different
+label on a second run for 11% of notes (Sonnet 5%, Gemini 1%). NOTES.md.
 """
 from __future__ import annotations
 
@@ -62,6 +89,8 @@ from pathlib import Path
 
 from config import settings
 import db
+
+from github_bridge.pilot_publish import title_from_file_name  # noqa: E402,F401
 
 log = logging.getLogger(__name__)
 
@@ -97,8 +126,12 @@ def waiting_entries(rows: list[dict], timeout_minutes: int) -> list[dict]:
             "date": _date_of(r["bridge_filename"]),
             "priority": _priority(r),
             "deadline": (t + timedelta(minutes=timeout_minutes)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            # the run triages it first (scripts/pilot_analyze.py)
+            **({"triage": True} if _untriaged(r) else {}),
         })
-    out.sort(key=lambda e: (e["priority"] != "high", e["deadline"], e["id"]))
+    # a note not triaged yet may be HIGH: ahead of the known MEDIUM ones
+    rank = {"high": 0, UNTRIAGED: 1}
+    out.sort(key=lambda e: (rank.get(e["priority"], 2), e["deadline"], e["id"]))
     return out
 
 
@@ -176,13 +209,39 @@ def enabled(priority: str = "high") -> bool:
     )
 
 
+def triage_enabled() -> bool:
+    """New notes are handed to the lane before triage (TRIAGE_BACKEND)."""
+    return (
+        getattr(settings, "triage_backend", "gemini") == "claude_lane"
+        and reachable()
+        and bool(getattr(settings, "pilot_publish_enabled", False))
+    )
+
+
+UNTRIAGED = "untriaged"
+LANE_ROWS = 2000
+
+
+def _triage_of(row: dict) -> dict:
+    try:
+        d = json.loads(row.get("triage_json") or "{}")
+    except ValueError:
+        return {}
+    return d if isinstance(d, dict) else {}
+
+
+def _untriaged(row: dict) -> bool:
+    """The row was handed over before triage and no triage has come back."""
+    return bool(_triage_of(row).get("pending"))
+
+
 def _priority(row: dict) -> str:
     """The triage priority stored with a lane row; rows from before MEDIUM
-    joined the lane are HIGH."""
-    try:
-        return str(json.loads(row.get("triage_json") or "{}").get("priority") or "high").lower()
-    except (ValueError, AttributeError):
-        return "high"
+    joined the lane are HIGH. A row still waiting for its triage has none."""
+    t = _triage_of(row)
+    if t.get("pending"):
+        return UNTRIAGED
+    return str(t.get("priority") or "high").lower()
 
 
 # The routine fires on its own UTC cron ("0 14 * * 1-5", CLAUDE.md) while
@@ -260,20 +319,6 @@ def _today() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
-def title_from_file_name(file_name: str) -> str:
-    """A readable title from a PDF's file name, for the pilot meta (the
-    Omnipulse editor labels notes by it). Gemini's extracted title is not
-    available yet at hand-off. Dropbox names replace ':' '?' and quotes
-    with '_': "Rollercoaster_ How August's Seasonal _Gift_ Came" becomes
-    "Rollercoaster: How August's Seasonal 'Gift' Came"."""
-    t = re.sub(r"\.pdf$", "", (file_name or "").strip(), flags=re.I)
-    t = re.sub(r"(^|\s)_([^_]+?)_(?=\s|$)", r"\1'\2'", t)  # _quoted_
-    t = re.sub(r"(?<=\w)_(?=\w)", " ", t)  # GS_US_Economics
-    t = re.sub(r"_ ", ": ", t)  # colon
-    t = t.replace("_", "")  # a trailing ? or '
-    return re.sub(r"\s+", " ", t).strip() or (file_name or "")
-
-
 def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
              total_pages: int, dropbox_path: str = "") -> bool:
     """Give one HIGH or MEDIUM document to the lane. False means "run
@@ -317,6 +362,132 @@ def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
     except Exception as e:
         log.warning(f"claude lane: hand-off failed for {pdf_file_id}, Gemini runs: {e}")
         return False
+
+
+def triage_path(pdf_file_id: int, date: str) -> str:
+    from scripts.pilot_analyze import TRIAGE
+    return f"{_pilot()[1]}/{TRIAGE}/{date}/{int(pdf_file_id)}.json"
+
+
+def hand_off_untriaged(*, pdf_file_id: int, file_name: str, full_text: str,
+                       total_pages: int, dropbox_path: str = "",
+                       folder_path: str = "") -> bool:
+    """Give one note to the lane before triage. False means "triage with
+    Gemini now": the note could not be put where the lane reads it, or the
+    pulse is too close for the lane to return it. Never raises."""
+    if not triage_enabled():
+        return False
+    if in_pulse_window():
+        log.info(f"claude lane: {pdf_file_id} arrived in the pulse window; Gemini triages")
+        return False
+    try:
+        from github_bridge.pilot_publish import publish_lane_note
+        # A note handed off before (a retry) keeps its first folder.
+        prior = db.get_bridge_state(pdf_file_id) or {}
+        prior_path = prior.get("bridge_filename") or ""
+        date = _date_of(prior_path) if prior_path.startswith(_prefix()) else _today()
+        if not publish_lane_note(pdf_file_id=pdf_file_id, file_name=file_name,
+                                 full_text=full_text, total_pages=total_pages, date=date,
+                                 dropbox_path=dropbox_path, folder_path=folder_path):
+            log.warning(f"claude lane: note {pdf_file_id} not on the branch; Gemini triages")
+            return False
+        db.queue_for_claude_lane(pdf_file_id, analysis_path(pdf_file_id, date), json.dumps({
+            "pending": True, "total_pages": int(total_pages or 0)}))
+        db.log_event(pdf_file_id, "claude_lane", "queued", "to the Claude lane for triage")
+        log.info(f"claude lane: handed off {pdf_file_id} ({file_name}) for triage")
+        return True
+    except Exception as e:
+        log.warning(f"claude lane: hand-off for triage failed for {pdf_file_id}, Gemini triages: {e}")
+        return False
+
+
+def _triage_problem(rec, pdf_file_id: int) -> str | None:
+    if not isinstance(rec, dict):
+        return "record is not an object"
+    if int(rec.get("pdf_file_id") or 0) != int(pdf_file_id):
+        return f"pdf_file_id {rec.get('pdf_file_id')} != {pdf_file_id}"
+    t = rec.get("triage")
+    if not isinstance(t, dict) or str(t.get("priority") or "").lower() not in ("high", "medium", "low"):
+        return "no priority"
+    return None
+
+
+def _take_triage(row: dict) -> str | None:
+    """Store the lane's triage on a row that waited for one and return the
+    priority. None when nothing was stored: the record is not readable yet
+    (the row still waits), or it is invalid or the row was taken meanwhile
+    (the row has left 'committed'). A LOW note is finished here. `row` is
+    updated in place."""
+    from ai_analysis.analysis_build import canonical_source
+    from github_bridge import client as gh
+    pdf_file_id = int(row["pdf_file_id"])
+    raw = gh.get_file_text(triage_path(pdf_file_id, _date_of(row["bridge_filename"])),
+                           ref=_pilot()[0])
+    if raw is None:
+        return None     # listed but not readable yet; next tick
+    try:
+        rec = json.loads(raw)
+    except ValueError:
+        rec = None
+    problem = _triage_problem(rec, pdf_file_id)
+    if problem:
+        _to_gemini(row, f"lane triage invalid: {problem}")
+        return None
+    t = rec["triage"]
+    priority = str(t["priority"]).lower()
+    tickers = t.get("key_tickers")
+    triage = {
+        # the TriageResult fields, so every reader of a stored triage is served
+        "priority": priority,
+        "report_type": str(t.get("report_type") or "other"),
+        "key_tickers": [str(x) for x in tickers] if isinstance(tickers, list) else [],
+        "summary": str(t.get("summary") or ""),
+        "source": canonical_source(str(rec.get("source") or t.get("source") or "")),
+        # Gemini's spend only: this triage ran on the Claude subscription
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "triage_model": str(rec.get("model") or "claude-lane"),
+        "total_pages": int(_triage_of(row).get("total_pages") or 0),
+    }
+    if not db.set_lane_triage(pdf_file_id, json.dumps(triage)):
+        return None     # the timeout or the sweep took the row
+    row["triage_json"] = json.dumps(triage)
+    db.update_pdf_priority(pdf_file_id, priority)
+    db.log_event(pdf_file_id, "triage", "completed",
+                 f"{priority.upper()} by the Claude lane ({triage['triage_model']})")
+    if priority == "low":
+        _finish_low(row, triage)
+    elif not enabled(priority):
+        # its analysis is Gemini's: that priority's switch is off
+        _to_gemini(row, f"{priority.upper()} notes are not on the Claude lane")
+    return priority
+
+
+def _finish_low(row: dict, triage: dict) -> bool:
+    """A LOW note is done at triage: the triage is stored as its analysis,
+    the same row the pipeline writes for a LOW."""
+    from ai_analysis.analysis_build import triage_only_analysis
+    pdf_file_id = int(row["pdf_file_id"])
+    if not db.move_bridge_row(pdf_file_id, "committed", "completed"):
+        return False
+    total_pages = int(triage.get("total_pages") or 0)
+    analysis = triage_only_analysis(
+        pdf_file_id=pdf_file_id, file_name=row.get("file_name") or "", source=triage["source"],
+        report_type=triage["report_type"], summary=triage["summary"], total_pages=total_pages)
+    try:
+        db.insert_analysis(
+            pdf_file_id=pdf_file_id, triage_json=json.dumps(triage),
+            analysis_json=json.dumps(asdict(analysis)), priority="low",
+            pages_analyzed=0, total_pages=total_pages, input_tokens=0, output_tokens=0,
+            model=triage["triage_model"], duration=0.0)
+    except Exception as e:
+        db.move_bridge_row(pdf_file_id, "completed", "committed")
+        log.error(f"claude lane: LOW insert failed for {pdf_file_id}: {e}", exc_info=True)
+        return False
+    db.update_pdf_status(pdf_file_id, "PROCESSED")
+    db.log_event(pdf_file_id, "process", "completed", "LOW, triaged by the Claude lane")
+    _remove_local(row)
+    return True
 
 
 def _age_minutes(row: dict, now: datetime) -> float:
@@ -417,20 +588,46 @@ def pull(now: datetime | None = None) -> dict:
     from github_bridge import client as gh
     branch, root, analyses, failures, max_attempts = _pilot()
     now = now or datetime.now(timezone.utc)
-    rows = db.get_lane_rows("committed", _prefix(), limit=500)
+    # Every note of a day can be waiting at once now that triage is the
+    # lane's too: the largest day on record is 792 notes.
+    rows = db.get_lane_rows("committed", _prefix(), limit=LANE_ROWS)
     by_date: dict[str, list[dict]] = defaultdict(list)
     for r in rows:
         by_date[_date_of(r["bridge_filename"])].append(r)
     timeout = settings.claude_lane_timeout_minutes
     waiting: list[dict] = []
+    triages = 0     # triage records taken this tick: the lane is working
     for date, group in by_date.items():
         done = {it.get("name") for it in gh.list_dir(f"{root}/{analyses}/{date}", ref=branch)
                 if it.get("type") == "file"}
         failed = {it.get("name") for it in gh.list_dir(f"{root}/{failures}/{date}", ref=branch)
                   if it.get("type") == "file"}
+        triaged: set = set()
+        if any(_untriaged(r) for r in group):
+            from scripts.pilot_analyze import TRIAGE
+            triaged = {it.get("name") for it in gh.list_dir(f"{root}/{TRIAGE}/{date}", ref=branch)
+                       if it.get("type") == "file"}
         for r in group:
             name = f"{int(r['pdf_file_id'])}.json"
-            if name in done:
+            if _untriaged(r) and name in triaged:
+                priority = _take_triage(r)
+                if priority == "low":
+                    out["ingested"] += 1
+                    continue
+                if priority is None and (db.get_bridge_state(r["pdf_file_id"]) or {}).get(
+                        "status") != "committed":
+                    # an invalid record sent it to Gemini, or the sweep took it
+                    out["to_gemini"] += 1
+                    continue
+                if priority is not None and not enabled(priority):
+                    out["to_gemini"] += 1
+                    continue
+                triages += priority is not None
+            if _untriaged(r):
+                # no analysis can exist before the triage: only the lane
+                # giving up and the timeout apply
+                pass
+            elif name in done:
                 if _ingest(r):
                     out["ingested"] += 1
                 continue
@@ -452,7 +649,7 @@ def pull(now: datetime | None = None) -> dict:
             waiting.append(r)
     publish_waiting(waiting_entries(waiting, timeout), now)
     if waiting:
-        _start_a_run(progress=out["ingested"] > 0)
+        _start_a_run(progress=out["ingested"] > 0 or triages > 0)
     if out["ingested"] or out["to_gemini"]:
         log.info(f"claude lane pull: {out}")
     return out
@@ -472,14 +669,26 @@ async def _gemini_one(row: dict) -> bool:
         if local_path != (row.get("local_path") or ""):
             row["_materialized"] = local_path
         extraction = await asyncio.to_thread(extract_pdf, local_path, None)
-        if row.get("triage_json"):
-            triage = TriageResult(**json.loads(row["triage_json"]))
+        stored = _triage_of(row)
+        fresh = not stored.get("priority")
+        if not fresh:
+            fields = TriageResult.__dataclass_fields__
+            triage = TriageResult(**{k: v for k, v in stored.items() if k in fields})
         else:
+            # handed over before triage and the lane never answered
             folder = (row.get("dropbox_path") or "").rsplit("/", 1)[0]
             triage = await triage_pdf(file_name, extraction.full_text, folder_path=folder)
-        analysis = await analyze_pdf_deep(
-            pdf_file_id=pdf_file_id, file_name=file_name, extraction=extraction,
-            priority=triage.priority, source=triage.source, report_type=triage.report_type)
+            db.update_pdf_priority(pdf_file_id, triage.priority)
+        if triage.priority == "low":
+            from ai_analysis.analysis_build import triage_only_analysis
+            analysis = triage_only_analysis(
+                pdf_file_id=pdf_file_id, file_name=file_name, source=triage.source,
+                report_type=triage.report_type, summary=triage.summary,
+                total_pages=extraction.total_pages)
+        else:
+            analysis = await analyze_pdf_deep(
+                pdf_file_id=pdf_file_id, file_name=file_name, extraction=extraction,
+                priority=triage.priority, source=triage.source, report_type=triage.report_type)
         # 'gemini_done', not 'completed', so /status can tell the lanes apart
         if not db.move_bridge_row(pdf_file_id, "fallback_to_gemini", "gemini_done"):
             return False
@@ -498,6 +707,19 @@ async def _gemini_one(row: dict) -> bool:
         db.update_pdf_status(pdf_file_id, "PROCESSED")
         db.log_event(pdf_file_id, "process", "completed",
                      f"Gemini after Claude lane ({row.get('fallback_reason') or 'n/a'})")
+        if fresh and triage.priority == "high":
+            # A note triaged here was never published for the Omnipulse
+            # readers: the hand-off before triage writes outside their folder.
+            try:
+                from github_bridge.pilot_publish import publish_high_document
+                await asyncio.to_thread(
+                    publish_high_document, pdf_file_id=pdf_file_id, file_name=file_name,
+                    source=triage.source, title=title_from_file_name(file_name), priority="high",
+                    published_at=None, full_text=extraction.full_text,
+                    total_pages=extraction.total_pages, date=_date_of(row["bridge_filename"]),
+                    dropbox_path=row.get("dropbox_path") or "")
+            except Exception as e:      # the note is stored: never fail it over the readers
+                log.warning(f"claude lane: {pdf_file_id} not published for the readers: {e}")
         _remove_local(row)
         return True
     except Exception as e:
@@ -551,12 +773,12 @@ async def sweep_before_pulse() -> dict:
         log.info(f"claude lane pre-pulse sweep: the pulse is out or none is due, nothing swept: {out}")
         return out
     swept = 0
-    for r in db.get_lane_rows("committed", _prefix(), limit=500):
+    for r in db.get_lane_rows("committed", _prefix(), limit=LANE_ROWS):
         swept += _to_gemini(r, "pre-pulse sweep")
     out["swept"] = swept
     # Nothing is waiting now: say so, or the workflow keeps analysing notes
     # Gemini is about to finish.
     await asyncio.to_thread(publish_waiting, [])
-    out["gemini_done"] = await run_fallbacks(limit=500)
+    out["gemini_done"] = await run_fallbacks(limit=LANE_ROWS)
     log.info(f"claude lane pre-pulse sweep: {out}")
     return out

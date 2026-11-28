@@ -1872,6 +1872,7 @@ from db_parts.pdf import (  # noqa: E402,F401
     log_event,
     queue_for_opus_bridge,
     queue_for_claude_lane,
+    set_lane_triage,
     get_lane_rows,
     move_bridge_row,
     record_pipeline_event,

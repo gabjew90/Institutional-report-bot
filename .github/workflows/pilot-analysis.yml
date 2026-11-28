@@ -10,6 +10,16 @@
 # documents at a time for up to 25 minutes and re-reads the list between
 # documents. The worker starts the next one while notes are still waiting.
 #
+# Triage (2026-11-28): with TRIAGE_BACKEND=claude_lane on the worker a note is
+# on the list before it has a priority. The run triages it first with the
+# production triage prompt, writes pilot/lane/triage/, copies a HIGH note to
+# source-text/ for the readers, then analyses HIGH and MEDIUM as before.
+#
+# Two inputs test without touching production: dry_run_triage rehearses the
+# whole triage-then-analysis path on recent notes outside the checkout, and
+# triage_bundle runs the side-by-side measurement (scripts/pilot_triage.py),
+# in its own concurrency group so it never queues behind the lane.
+#
 # Beside the frozen pilot readers: own concurrency group, own paths.
 name: pilot-analysis
 
@@ -24,12 +34,24 @@ on:
         description: "Documents analysed at the same time"
         required: false
         default: "4"
+      dry_run_triage:
+        description: "Rehearsal: triage and analyse this many recent HIGH notes as if untriaged, commit nothing"
+        required: false
+        default: "0"
+      triage_bundle:
+        description: "Triage test: a bundle file on pilot-data (path from the branch root). Runs only the test."
+        required: false
+        default: ""
+      triage_runs:
+        description: "Triage test runs: label=model[:first N notes], comma separated"
+        required: false
+        default: "haiku=claude-haiku-5-5,sonnet=claude-sonnet-5-5"
 
 permissions:
   contents: write
 
 concurrency:
-  group: pilot-analysis
+  group: ${{ inputs.triage_bundle && 'pilot-triage-test' || 'pilot-analysis' }}
   cancel-in-progress: false
 
 env:
@@ -39,7 +61,48 @@ env:
   PYTHONUNBUFFERED: "1"
 
 jobs:
+  triage_test:
+    if: ${{ inputs.triage_bundle != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Checkout pilot-data
+        uses: actions/checkout@v4
+        with:
+          ref: pilot-data
+          path: pilot-data
+          sparse-checkout: pilot/triage-test
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Triage the bundle
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          BUNDLE: ${{ inputs.triage_bundle }}
+          RUNS: ${{ inputs.triage_runs }}
+          WORKERS: ${{ inputs.workers || '6' }}
+        run: |
+          python scripts/pilot_triage.py bundle --bundle "pilot-data/$BUNDLE"             --out "$RUNNER_TEMP/triage_results.jsonl" --runs "$RUNS" --workers "$WORKERS"             --budget-minutes 40
+
+      - name: Keep the results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: triage-results
+          path: ${{ runner.temp }}/triage_results.jsonl
+          if-no-files-found: warn
+
   analyze:
+    if: ${{ inputs.triage_bundle == '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -61,8 +124,11 @@ jobs:
         id: pending
         env:
           DRY: ${{ inputs.dry_run || '0' }}
+          DRYT: ${{ inputs.dry_run_triage || '0' }}
         run: |
-          if [ "$DRY" != "0" ]; then
+          if [ "$DRYT" != "0" ]; then
+            N="$DRYT"
+          elif [ "$DRY" != "0" ]; then
             N="$DRY"
           else
             N=$(python scripts/pilot_analyze.py pending --root "pilot-data/$PILOT_ROOT" \
@@ -99,10 +165,11 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           DRY: ${{ inputs.dry_run || '0' }}
+          DRYT: ${{ inputs.dry_run_triage || '0' }}
           WORKERS: ${{ inputs.workers || '4' }}
         run: |
           set -u
           git -C pilot-data config user.name  'pilot-analysis-bot'
           git -C pilot-data config user.email 'actions@users.noreply.github.com'
           python scripts/pilot_analyze.py run --root "pilot-data/$PILOT_ROOT" --repo pilot-data \
-            --workers "$WORKERS" --budget-minutes 25 --dry-run "$DRY"
+            --workers "$WORKERS" --budget-minutes 25 --dry-run "$DRY" --dry-run-triage "$DRYT"

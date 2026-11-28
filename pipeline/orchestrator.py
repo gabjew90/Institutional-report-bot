@@ -76,6 +76,20 @@ async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> Pd
         pages = await asyncio.to_thread(extract_text_per_page, local_path)
         full_text = "\n".join(p.text for p in pages)
 
+        # Step 2a: with TRIAGE_BACKEND=claude_lane the note goes to the lane
+        # before any Gemini call. The lane's run sets the priority and, for a
+        # HIGH or MEDIUM note, writes the analysis. False means the lane
+        # cannot take it now, and Gemini triages as before.
+        if use_claude_lane:
+            from github_bridge import claude_lane
+            if claude_lane.triage_enabled() and await asyncio.to_thread(
+                    claude_lane.hand_off_untriaged, pdf_file_id=pdf_id, file_name=file_name,
+                    full_text=full_text, total_pages=len(pages),
+                    dropbox_path=dropbox_path, folder_path=folder_path):
+                # PROCESSING until the lane answers or Gemini runs as the
+                # fallback. The local PDF stays for that.
+                return None
+
         # Step 2: Triage with Gemini (folder_path lets it identify source reliably)
         triage = await triage_pdf(file_name, full_text, folder_path=folder_path)
         db.update_pdf_priority(pdf_id, triage.priority)
@@ -83,25 +97,12 @@ async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> Pd
 
         # Step 3: Based on priority, do deep analysis or skip
         if triage.priority == "low":
-            # Store triage result directly as the analysis.
-            # Use triage.source (Gemini-extracted) so LOW items show up under
-            # their bank in /status and pulse footer stats, not "Unknown".
-            analysis = PdfAnalysis(
-                pdf_file_id=pdf_id,
-                file_name=file_name,
-                source=triage.source or "Unknown",
-                title=file_name,
-                report_type=triage.report_type,
-                priority="low",
-                key_insights=[triage.summary] if triage.summary else [],
-                total_pages=len(pages),
-                # Zero, not triage's counts: insert_analysis below adds
-                # triage's tokens to these, and carrying them here too
-                # recorded every LOW row at exactly twice its real cost
-                # (20,354 recorded against 10,177 spent, 2026-09-29).
-                input_tokens=0,
-                output_tokens=0,
-            )
+            # The triage result is stored as the analysis.
+            from ai_analysis.analysis_build import triage_only_analysis
+            analysis = triage_only_analysis(
+                pdf_file_id=pdf_id, file_name=file_name, source=triage.source,
+                report_type=triage.report_type, summary=triage.summary,
+                total_pages=len(pages))
         else:
             # HIGH and MEDIUM, each behind its own switch (claude_lane.enabled)
             if triage.priority in ("high", "medium") and use_claude_lane:

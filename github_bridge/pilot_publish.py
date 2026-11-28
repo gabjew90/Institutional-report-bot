@@ -98,11 +98,7 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
         # "favored names remain MS, PNC and FITB" on line 203 of 17527),
         # so the graders scored the pulse against a library they could
         # not read. Readers were unaffected; they read the file whole.
-        text = (full_text or "").replace("\x00", "")
-        truncated = len(text.encode("utf-8")) > MAX_TEXT_BYTES
-        if truncated:
-            text = text.encode("utf-8")[:MAX_TEXT_BYTES].decode(
-                "utf-8", "ignore")
+        text, truncated = clean_text(full_text)
 
         gh.put_file(text_path, text,
                     f"pilot: source text {pdf_file_id} ({source})",
@@ -140,6 +136,87 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
 
 _MONTHS = {m: i for i, m in enumerate(
     ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+
+
+def title_from_file_name(file_name: str) -> str:
+    """A readable title from a PDF's file name, for the pilot meta (the
+    Omnipulse editor labels notes by it). Gemini's extracted title is not
+    available yet at hand-off. Dropbox names replace ':' '?' and quotes
+    with '_': "Rollercoaster_ How August's Seasonal _Gift_ Came" becomes
+    "Rollercoaster: How August's Seasonal 'Gift' Came"."""
+    t = re.sub(r"\.pdf$", "", (file_name or "").strip(), flags=re.I)
+    t = re.sub(r"(^|\s)_([^_]+?)_(?=\s|$)", r"\1'\2'", t)  # _quoted_
+    t = re.sub(r"(?<=\w)_(?=\w)", " ", t)  # GS_US_Economics
+    t = re.sub(r"_ ", ": ", t)  # colon
+    t = t.replace("_", "")  # a trailing ? or '
+    return re.sub(r"\s+", " ", t).strip() or (file_name or "")
+
+
+def lane_note_path(pdf_file_id: int, date: str) -> str:
+    """Where a note handed to the lane before triage lives on the pilot
+    branch (2026-11-28)."""
+    from scripts.pilot_analyze import NOTES
+    from scripts.pilot_config import PILOT_ROOT
+    return f"{PILOT_ROOT}/{NOTES}/{date}/{int(pdf_file_id)}.json"
+
+
+def clean_text(full_text: str) -> tuple[str, bool]:
+    """(the text as published, whether it was cut). NUL bytes go (see
+    publish_high_document) and one document is capped at MAX_TEXT_BYTES."""
+    text = (full_text or "").replace("\x00", "")
+    truncated = len(text.encode("utf-8")) > MAX_TEXT_BYTES
+    if truncated:
+        text = text.encode("utf-8")[:MAX_TEXT_BYTES].decode("utf-8", "ignore")
+    return text, truncated
+
+
+def publish_lane_note(*, pdf_file_id: int, file_name: str, full_text: str,
+                      total_pages: int, date: str, dropbox_path: str = "",
+                      folder_path: str = "") -> bool:
+    """Commit one note for the lane to triage: its text and what the triage
+    prompt needs, in ONE file. True when the file is on the branch. Never
+    raises.
+
+    One file, where a triaged note takes two (text and meta): every note
+    goes through here, LOW ones included, and a day's research is several
+    hundred notes inside an hour. The priority is not known yet, so nothing
+    is written to source-text/, the Omnipulse readers' folder. The lane's run
+    copies a note there once it has triaged it HIGH (scripts/pilot_analyze.py)."""
+    from config import settings
+    if not getattr(settings, "pilot_publish_enabled", False):
+        return False
+    try:
+        import time
+        from github_bridge import client as gh
+        from scripts.pilot_config import PILOT_BRANCH
+        path = lane_note_path(pdf_file_id, date)
+        text, truncated = clean_text(full_text)
+        body = json.dumps({
+            "pdf_file_id": int(pdf_file_id),
+            "file_name": file_name,
+            "folder_path": folder_path,
+            "total_pages": int(total_pages or 0),
+            "note_date": note_date_from_path(dropbox_path),
+            "truncated": truncated,
+            "text": text,
+        }, ensure_ascii=False)
+        # put_file overwrites a file that is there (a retried note), so no
+        # look-up first. The lane's run pushes to the same branch, and a
+        # write that lands between its commits can be refused: once more.
+        for attempt in (1, 2):
+            try:
+                gh.put_file(path, body, f"lane: note {pdf_file_id} to triage", ref=PILOT_BRANCH)
+                break
+            except gh.GitHubError as e:
+                if attempt == 2 or e.status not in (409, 500, 502, 503):
+                    raise
+                time.sleep(1.5)
+        log.info(f"lane: published {pdf_file_id} for triage, {len(text)} chars"
+                 f"{' [truncated]' if truncated else ''}")
+        return True
+    except Exception as e:
+        log.warning(f"lane: note {pdf_file_id} not published (non-fatal): {e}")
+        return False
 
 
 def note_date_from_path(dropbox_path: str) -> str | None:

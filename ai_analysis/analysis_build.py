@@ -99,6 +99,29 @@ def canonical_source(source: str) -> str:
     return _SOURCE_ALIASES.get(s.lower(), s)
 
 
+def triage_only_analysis(*, pdf_file_id: int, file_name: str, source: str, report_type: str,
+                         summary: str, total_pages: int) -> PdfAnalysis:
+    """The stored analysis of a LOW note: the triage is all there is. One
+    builder for the pipeline and for a LOW the Claude lane triaged.
+
+    The triage's source is kept so LOW notes count under their bank in
+    /status and the pulse footer, not under "Unknown". Token counts are zero:
+    insert_analysis is given the triage's own counts, and carrying them here
+    too recorded every LOW row at twice its cost (2026-09-29)."""
+    return PdfAnalysis(
+        pdf_file_id=pdf_file_id,
+        file_name=file_name,
+        source=source or "Unknown",
+        title=file_name,
+        report_type=report_type,
+        priority="low",
+        key_insights=[summary] if summary else [],
+        total_pages=total_pages,
+        input_tokens=0,
+        output_tokens=0,
+    )
+
+
 def build_analysis(data: dict, *, pdf_file_id: int, file_name: str, priority: str,
                    text_content: str, total_pages: int, pages_analyzed: int = 0,
                    input_tokens: int = 0, output_tokens: int = 0) -> PdfAnalysis:

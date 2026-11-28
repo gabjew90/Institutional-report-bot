@@ -562,3 +562,301 @@ def test_orchestrator_offers_medium_documents_to_the_lane(tmp_path, lane_on, mon
         {"id": pid, "file_name": "orch-med.pdf", "local_path": str(local),
          "dropbox_path": "/Current/UBS/orch-med.pdf"}))
     assert out is None and handed[0]["triage"].priority == "medium"
+
+
+# ── triage by the lane (2026-11-28) ─────────────────────────────────────────
+
+DAY = "2026-11-28"
+
+
+@pytest.fixture
+def triage_on(lane_on, monkeypatch):
+    monkeypatch.setattr(settings, "triage_backend", "claude_lane", raising=False)
+    monkeypatch.setattr(settings, "medium_ingestion_backend", "claude_lane", raising=False)
+    monkeypatch.setattr(L, "_today", lambda: DAY)
+
+
+def _hand_untriaged(tmp_path, name, folder="/Current/2026/November/Nov 27/Goldman"):
+    pid, local = _pdf(tmp_path, name)
+    assert L.hand_off_untriaged(pdf_file_id=pid, file_name=name, full_text="body " * 50,
+                                total_pages=7, dropbox_path=f"{folder}/{name}",
+                                folder_path=folder)
+    return pid, local
+
+
+def _triage_record(pid, priority, **over):
+    rec = {"pdf_file_id": pid, "model": "claude-sonnet-5-5", "source": "Goldman Sachs",
+           "triage": {"priority": priority, "report_type": "macro", "source": "GS",
+                      "key_tickers": ["SPX"], "summary": "what it says"}}
+    rec.update(over)
+    return json.dumps(rec)
+
+
+def test_triage_stays_with_gemini_until_its_switch(tmp_path, lane_on, fake_gh):
+    pid, _ = _pdf(tmp_path, "tr-off.pdf")
+    assert not L.triage_enabled()
+    assert L.hand_off_untriaged(pdf_file_id=pid, file_name="tr-off.pdf", full_text="t",
+                                total_pages=1) is False
+    assert fake_gh.files == {} and db.get_bridge_state(pid) is None
+
+
+def test_an_untriaged_note_is_published_as_one_file_and_queued(tmp_path, triage_on, fake_gh):
+    pid, local = _hand_untriaged(tmp_path, "tr-note.pdf")
+    from github_bridge.pilot_publish import lane_note_path
+    assert list(fake_gh.files) == [lane_note_path(pid, DAY)] and fake_gh.writes == 1
+    note = json.loads(fake_gh.files[lane_note_path(pid, DAY)])
+    assert note["file_name"] == "tr-note.pdf" and note["text"].startswith("body")
+    assert note["folder_path"].endswith("/Goldman") and note["note_date"] == "2026-11-27"
+    assert note["total_pages"] == 7
+    row = db.get_bridge_state(pid)
+    assert row["status"] == "committed" and row["bridge_filename"] == L.analysis_path(pid, DAY)
+    assert json.loads(row["triage_json"])["pending"] is True
+    assert _status(pid) == "PROCESSING" and local.exists()
+
+
+def test_a_note_in_the_pulse_window_is_triaged_by_gemini(tmp_path, triage_on, fake_gh, monkeypatch):
+    monkeypatch.setattr(L, "in_pulse_window", lambda now=None: True)
+    pid, _ = _pdf(tmp_path, "tr-window.pdf")
+    assert L.hand_off_untriaged(pdf_file_id=pid, file_name="tr-window.pdf", full_text="t",
+                                total_pages=1) is False
+    assert fake_gh.files == {}
+
+
+def test_a_note_that_cannot_be_published_is_triaged_by_gemini(tmp_path, triage_on, fake_gh, monkeypatch):
+    def boom(*a, **k):
+        raise RuntimeError("GitHub 502")
+    monkeypatch.setattr(gh, "put_file", boom)
+    pid, _ = _pdf(tmp_path, "tr-down.pdf")
+    assert L.hand_off_untriaged(pdf_file_id=pid, file_name="tr-down.pdf", full_text="t",
+                                total_pages=1) is False
+    assert db.get_bridge_state(pid) is None
+
+
+def test_a_refused_write_is_tried_once_more(tmp_path, triage_on, fake_gh, monkeypatch):
+    real, calls = gh.put_file, []
+
+    def flaky(path, content, message, ref=None):
+        calls.append(path)
+        if len(calls) == 1:
+            raise gh.GitHubError(409, "branch moved")
+        return real(path, content, message, ref=ref)
+    monkeypatch.setattr(gh, "put_file", flaky)
+    monkeypatch.setattr("time.sleep", lambda s: None)
+    pid, _ = _hand_untriaged(tmp_path, "tr-retry.pdf")
+    assert len(calls) == 2 and db.get_bridge_state(pid)["status"] == "committed"
+
+
+def test_the_list_marks_untriaged_notes_between_high_and_medium(tmp_path, triage_on, fake_gh):
+    med, _ = _pdf(tmp_path, "tr-med.pdf")
+    db.queue_for_claude_lane(med, L.analysis_path(med, DAY), json.dumps(MEDIUM.__dict__))
+    new, _ = _hand_untriaged(tmp_path, "tr-new.pdf")
+    high, _ = _pdf(tmp_path, "tr-high.pdf")
+    _queue(high, DAY)
+    assert L.pull()["waiting"] == 3
+    rows = _listed(fake_gh)
+    assert [(r["id"], r["priority"]) for r in rows] == [
+        (high, "high"), (new, "untriaged"), (med, "medium")]
+    assert [r.get("triage") for r in rows] == [None, True, None]
+
+
+def test_a_low_triage_finishes_the_note(tmp_path, triage_on, fake_gh):
+    pid, local = _hand_untriaged(tmp_path, "tr-low.pdf")
+    fake_gh.files[L.triage_path(pid, DAY)] = _triage_record(pid, "low")
+    out = L.pull()
+    assert out == {"ingested": 1, "to_gemini": 0, "waiting": 0}
+    row = _latest(pid)
+    assert row["priority"] == "low" and row["model_used"] == "claude-sonnet-5-5"
+    assert row["input_tokens_used"] == 0        # no Gemini call was made for it
+    a = json.loads(row["analysis_json"])
+    assert a["source"] == "Goldman Sachs" and a["key_insights"] == ["what it says"]
+    assert a["priority"] == "low" and a["total_pages"] == 7 and a["report_type"] == "macro"
+    assert json.loads(row["triage_json"])["triage_model"] == "claude-sonnet-5-5"
+    assert db.get_bridge_state(pid)["status"] == "completed"
+    assert _status(pid) == "PROCESSED" and not local.exists()
+    assert db.get_connection().execute(
+        "SELECT priority FROM pdf_files WHERE id = ?", (pid,)).fetchone()[0] == "low"
+    assert WAITING_PATH not in fake_gh.files      # nothing waits: no list is written
+
+
+def test_a_high_triage_sets_the_priority_and_waits_for_the_analysis(tmp_path, triage_on, fake_gh):
+    pid, local = _hand_untriaged(tmp_path, "tr-high-wait.pdf")
+    fake_gh.files[L.triage_path(pid, DAY)] = _triage_record(pid, "high")
+    out = L.pull()
+    assert out == {"ingested": 0, "to_gemini": 0, "waiting": 1}
+    assert db.get_connection().execute(
+        "SELECT priority FROM pdf_files WHERE id = ?", (pid,)).fetchone()[0] == "high"
+    (entry,) = _listed(fake_gh)
+    assert entry["priority"] == "high" and "triage" not in entry
+    assert _status(pid) == "PROCESSING" and local.exists()
+    # the analysis arrives on a later tick
+    fake_gh.files[L.analysis_path(pid, DAY)] = _record(pid)
+    assert L.pull()["ingested"] == 1
+    row = _latest(pid)
+    assert row["priority"] == "high" and row["input_tokens_used"] == 0
+    assert _status(pid) == "PROCESSED" and not local.exists()
+
+
+def test_triage_and_analysis_arriving_together_are_both_taken(tmp_path, triage_on, fake_gh):
+    pid, _ = _hand_untriaged(tmp_path, "tr-both.pdf")
+    fake_gh.files[L.triage_path(pid, DAY)] = _triage_record(pid, "medium")
+    fake_gh.files[L.analysis_path(pid, DAY)] = _record(pid)
+    assert L.pull() == {"ingested": 1, "to_gemini": 0, "waiting": 0}
+    assert _latest(pid)["priority"] == "medium"
+
+
+def test_an_analysis_is_never_taken_before_the_triage(tmp_path, triage_on, fake_gh):
+    pid, _ = _hand_untriaged(tmp_path, "tr-early.pdf")
+    fake_gh.files[L.analysis_path(pid, DAY)] = _record(pid)
+    assert L.pull() == {"ingested": 0, "to_gemini": 0, "waiting": 1}
+    assert db.get_bridge_state(pid)["status"] == "committed"
+
+
+def test_an_invalid_triage_record_sends_the_note_to_gemini(tmp_path, triage_on, fake_gh):
+    pid, _ = _hand_untriaged(tmp_path, "tr-bad.pdf")
+    fake_gh.files[L.triage_path(pid, DAY)] = _triage_record(pid, "urgent")
+    out = L.pull()
+    assert out["to_gemini"] == 1 and out["waiting"] == 0
+    row = db.get_bridge_state(pid)
+    assert row["status"] == "fallback_to_gemini" and "triage invalid" in row["fallback_reason"]
+    assert json.loads(row["triage_json"])["pending"] is True     # Gemini will triage it
+
+
+def test_a_medium_triage_goes_to_gemini_when_medium_is_off_the_lane(tmp_path, triage_on, fake_gh, monkeypatch):
+    monkeypatch.setattr(settings, "medium_ingestion_backend", "gemini", raising=False)
+    pid, _ = _hand_untriaged(tmp_path, "tr-med-off.pdf")
+    fake_gh.files[L.triage_path(pid, DAY)] = _triage_record(pid, "medium")
+    out = L.pull()
+    assert out["to_gemini"] == 1
+    row = db.get_bridge_state(pid)
+    assert row["status"] == "fallback_to_gemini"
+    assert json.loads(row["triage_json"])["priority"] == "medium"    # kept for the analysis
+    calls = []
+    _stub_gemini(monkeypatch, calls)        # its triage stub raises: the stored one is reused
+    assert asyncio.run(L.run_fallbacks()) == 1
+    assert calls[-1]["priority"] == "medium" and calls[-1]["source"] == "Goldman Sachs"
+
+
+def _stub_gemini_triage(monkeypatch, priority, deep_calls):
+    import ai_analysis.analyzer as an
+    import github_bridge.ingestion as ing
+    import pdf_processing.extractor as ex
+
+    async def triage(file_name, text, folder_path=""):
+        return TriageResult(priority=priority, report_type="macro", key_tickers=[], summary="g says",
+                            source="UBS", input_tokens=900, output_tokens=40)
+
+    async def deep(**kw):
+        deep_calls.append(kw)
+        return PdfAnalysis(pdf_file_id=kw["pdf_file_id"], file_name=kw["file_name"], source="UBS",
+                           title="t", report_type="macro", priority=kw["priority"],
+                           key_insights=["g"], input_tokens=5000, output_tokens=800)
+
+    monkeypatch.setattr(an, "triage_pdf", triage)
+    monkeypatch.setattr(an, "analyze_pdf_deep", deep)
+    monkeypatch.setattr(ex, "extract_pdf",
+                        lambda *a, **k: SimpleNamespace(full_text="the text", total_pages=7))
+    monkeypatch.setattr(ing, "_gather_local_path", lambda row: row.get("local_path"))
+
+
+def test_an_untriaged_note_past_its_deadline_is_triaged_by_gemini(tmp_path, triage_on, fake_gh, monkeypatch):
+    low, low_local = _hand_untriaged(tmp_path, "tr-late-low.pdf")
+    db.get_connection().execute(
+        "UPDATE bridge_ingestion_state SET committed_at = datetime('now','-200 minutes')")
+    db.get_connection().commit()
+    monkeypatch.setattr("discord_bot.ops_alert.ops_alert_sync", lambda *a, **k: None)
+    assert L.pull()["to_gemini"] == 1
+    deep_calls = []
+    _stub_gemini_triage(monkeypatch, "low", deep_calls)
+    assert asyncio.run(L.run_fallbacks()) == 1
+    assert deep_calls == []                         # a LOW note gets no deep analysis
+    row = _latest(low)
+    assert row["priority"] == "low" and row["model_used"] == settings.gemini_model
+    assert row["input_tokens_used"] == 900
+    assert json.loads(row["analysis_json"])["key_insights"] == ["g says"]
+    assert db.get_bridge_state(low)["status"] == "gemini_done"
+    assert _status(low) == "PROCESSED" and not low_local.exists()
+
+
+def test_a_note_gemini_triages_high_is_published_for_the_readers(tmp_path, triage_on, fake_gh, monkeypatch):
+    pid, _ = _hand_untriaged(tmp_path, "tr-late-high.pdf")
+    db.move_bridge_row(pid, "committed", "fallback_to_gemini", "test")
+    deep_calls = []
+    _stub_gemini_triage(monkeypatch, "high", deep_calls)
+    assert asyncio.run(L.run_fallbacks()) == 1
+    assert deep_calls[-1]["priority"] == "high"
+    assert _latest(pid)["priority"] == "high"
+    from github_bridge.pilot_publish import meta_path_for
+    meta = json.loads(fake_gh.files[meta_path_for(pid, DAY)])
+    assert meta["priority"] == "high" and meta["source"] == "UBS" and "lane" not in meta
+    assert fake_gh.files[meta["text_path"]] == "the text"
+
+
+def test_the_sweep_sends_untriaged_notes_to_gemini_too(tmp_path, triage_on, fake_gh, monkeypatch):
+    pid, _ = _hand_untriaged(tmp_path, "tr-sweep-new.pdf")
+    deep_calls = []
+    _stub_gemini_triage(monkeypatch, "medium", deep_calls)
+    out = asyncio.run(L.sweep_before_pulse())
+    assert out["swept"] == 1 and out["gemini_done"] == 1
+    assert _latest(pid)["priority"] == "medium" and deep_calls
+
+
+def test_orchestrator_hands_a_note_over_before_any_gemini_call(tmp_path, triage_on, monkeypatch):
+    import pipeline.orchestrator as orch
+    pid, local = _pdf(tmp_path, "tr-orch-new.pdf")
+
+    async def no_gemini(*a, **k):
+        raise AssertionError("Gemini must not be called")
+
+    monkeypatch.setattr(orch, "extract_text_per_page",
+                        lambda p: [SimpleNamespace(text="page one"), SimpleNamespace(text="page two")])
+    monkeypatch.setattr(orch, "triage_pdf", no_gemini)
+    monkeypatch.setattr(orch, "analyze_pdf_deep", no_gemini)
+    handed = []
+    monkeypatch.setattr(L, "hand_off_untriaged", lambda **kw: handed.append(kw) or True)
+    out = asyncio.run(orch.process_single_pdf(
+        {"id": pid, "file_name": "tr-orch-new.pdf", "local_path": str(local),
+         "dropbox_path": "/Current/2026/November/Nov 27/UBS/orch-new.pdf"}))
+    assert out is None
+    assert handed[0]["total_pages"] == 2 and handed[0]["full_text"] == "page one\npage two"
+    assert handed[0]["folder_path"].replace("\\", "/").endswith("/Nov 27/UBS")
+    assert _status(pid) == "PROCESSING" and local.exists()
+
+
+def test_orchestrator_triages_with_gemini_when_the_lane_cannot_take_the_note(tmp_path, triage_on, monkeypatch):
+    import pipeline.orchestrator as orch
+    pid, local = _pdf(tmp_path, "tr-orch-fallback.pdf")
+    asked = []
+
+    async def triage(*a, **k):
+        asked.append(a)
+        return TriageResult(priority="low", report_type="macro", key_tickers=[], summary="s",
+                            source="UBS", input_tokens=900, output_tokens=40)
+
+    monkeypatch.setattr(orch, "extract_text_per_page", lambda p: [SimpleNamespace(text="page one")])
+    monkeypatch.setattr(orch, "triage_pdf", triage)
+    monkeypatch.setattr(L, "hand_off_untriaged", lambda **kw: False)
+    out = asyncio.run(orch.process_single_pdf(
+        {"id": pid, "file_name": "tr-orch-fallback.pdf", "local_path": str(local),
+         "dropbox_path": "/Current/UBS/orch-fallback.pdf"}))
+    assert asked and out.priority == "low" and out.source == "UBS"
+    assert _latest(pid)["priority"] == "low" and _status(pid) == "PROCESSED"
+
+
+def test_reanalyze_never_hands_a_note_over_for_triage(tmp_path, triage_on, monkeypatch):
+    import pipeline.orchestrator as orch
+    pid, local = _pdf(tmp_path, "tr-re.pdf")
+
+    async def triage(*a, **k):
+        return TriageResult(priority="low", report_type="macro", key_tickers=[], summary="s",
+                            source="UBS")
+
+    monkeypatch.setattr(orch, "extract_text_per_page", lambda p: [SimpleNamespace(text="p")])
+    monkeypatch.setattr(orch, "triage_pdf", triage)
+
+    def never(**kw):
+        raise AssertionError("/reanalyze must not use the lane")
+    monkeypatch.setattr(L, "hand_off_untriaged", never)
+    out = asyncio.run(orch.process_single_pdf(
+        {"id": pid, "file_name": "tr-re.pdf", "local_path": str(local),
+         "dropbox_path": "/Current/UBS/re.pdf"}, use_claude_lane=False))
+    assert out.priority == "low"
